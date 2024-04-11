@@ -1,6 +1,6 @@
 "use client";
 
-import { BlogComment, NewBlogCommentParams, insertBlogCommentParams } from "@/lib/db/schema/blogComments";
+import { type BlogComment, type NewBlogCommentParams, insertBlogCommentParams } from "@/lib/db/schema/blogComments";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -103,7 +103,7 @@ const BlogCommentForm = ({
                   <SelectContent>
                     {blogs?.blogs.map((blog) => (
                       <SelectItem key={blog.id} value={blog.id.toString()}>
-                        {blog.id}  {/* TODO: Replace with a field from the blog model */}
+                        {blog.name}  {/* TODO: Replace with a field from the blog model */}
                       </SelectItem>
                     ))}
                   </SelectContent>
