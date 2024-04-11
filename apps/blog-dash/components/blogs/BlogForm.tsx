@@ -1,6 +1,6 @@
 "use client";
 
-import { Blog, NewBlogParams, insertBlogParams } from "@/lib/db/schema/blogs";
+import { type Blog, type NewBlogParams, insertBlogParams } from "@/lib/db/schema/blogs";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -15,7 +15,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { trpc } from "@/lib/trpc/client";
 import { Button } from "@/components/ui/button";
-import { z } from "zod";
+import type { z } from "zod";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
@@ -61,8 +61,8 @@ const BlogForm = ({
 
   const { mutate: createBlog, isLoading: isCreating } =
     trpc.blogs.createBlog.useMutation({
-      onSuccess: (res) => onSuccess("create"),
-      onError: (err) => onError("create", { error: err.message }),
+      onSuccess: () => onSuccess("create"),
+      onError: (err) => onSuccess("create", { error: err.message }),
     });
 
   const { mutate: updateBlog, isLoading: isUpdating } =
