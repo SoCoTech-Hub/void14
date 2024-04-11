@@ -6,23 +6,31 @@ import { blogs } from "./blogs"
 import { nanoid, timestamps } from "@/lib/utils";
 import type { getBlogComments } from "@/lib/api/blogComments/queries";
 
-export const blogComments = pgTable('blog_comments', {
-  id: varchar("id", { length: 191 }).primaryKey().$defaultFn(() => nanoid()),
-  blogId: varchar("blog_id", { length: 256 }).references(() => blogs.id, { onDelete: "cascade" }).notNull(),
-  comment: text("comment").notNull(),
-  parentId: integer("parent_id"),
-  userId: varchar("user_id", { length: 256 }).notNull(),
-  createdAt: timestamp("created_at")
-    .notNull()
-    .default(sql`now()`),
-  updatedAt: timestamp("updated_at")
-    .notNull()
-    .default(sql`now()`),
-}, (blogComments) => {
-  return {
-    blogIdIndex: uniqueIndex('blog_id_idx').on(blogComments.blogId),
-  }
-});
+export const blogComments = pgTable(
+	'blog_comments',
+	{
+		id: varchar('id', { length: 191 })
+			.primaryKey()
+			.$defaultFn(() => nanoid()),
+		blogId: varchar('blog_id', { length: 256 })
+			.references(() => blogs.id, { onDelete: 'cascade' })
+			.notNull(),
+		comment: text('comment').notNull(),
+		parentId: varchar('parent_id', { length: 191 }),
+		userId: varchar('user_id', { length: 256 }).notNull(),
+		createdAt: timestamp('created_at')
+			.notNull()
+			.default(sql`now()`),
+		updatedAt: timestamp('updated_at')
+			.notNull()
+			.default(sql`now()`)
+	},
+	(blogComments) => {
+		return {
+			blogIdIndex: uniqueIndex('blog_id_idx').on(blogComments.blogId)
+		}
+	}
+)
 
 
 // Schema for blogComments - used to validate API requests
