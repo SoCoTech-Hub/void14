@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS "inmail_responses" (
 	"starred" boolean,
 	"important" boolean,
 	"deleted" boolean,
-	"lable" varchar(256),
+	"label" varchar(256),
 	"inmail_id" varchar(256) NOT NULL,
 	"user_id" varchar(256) NOT NULL
 );
