@@ -12,4 +12,22 @@ export const defaultLinks: SidebarLink[] = [
   { href: "/settings", title: "Settings", icon: Cog },
 ];
 
-export const additionalLinks: AdditionalLinks[] = [];
+export const additionalLinks: AdditionalLinks[] = [
+  {
+    title: "Entities",
+    links: [
+      {
+        href: "/event-responses",
+        title: "Event Responses",
+        icon: Globe,
+      },
+      {
+        href: "/events",
+        title: "Events",
+        icon: Globe,
+      },
+    ],
+  },
+
+];
+
