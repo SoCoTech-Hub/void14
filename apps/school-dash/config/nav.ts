@@ -17,13 +17,13 @@ export const additionalLinks: AdditionalLinks[] = [
     title: "Entities",
     links: [
       {
-        href: "/shows-categories",
-        title: "Shows Categories",
+        href: "/schools",
+        title: "Schools",
         icon: Globe,
       },
       {
-        href: "/shows",
-        title: "Shows",
+        href: "/grades",
+        title: "Grades",
         icon: Globe,
       },
     ],

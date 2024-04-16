@@ -17,7 +17,7 @@ export default function ShowList({ shows }: { shows: CompleteShow[] }) {
   return (
     <ul>
       {s.shows.map((show) => (
-        <Show show={show} key={show.show.id} />
+        <Show show={show} key={show.id} />
       ))}
     </ul>
   );
@@ -27,9 +27,9 @@ const Show = ({ show }: { show: CompleteShow }) => {
   return (
     <li className="flex justify-between my-2">
       <div className="w-full">
-        <div>{show.show.name}</div>
+        <div>{show.name}</div>
       </div>
-      <ShowModal show={show.show} />
+      <ShowModal show={show} />
     </li>
   );
 };

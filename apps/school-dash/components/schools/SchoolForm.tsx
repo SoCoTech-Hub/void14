@@ -1,6 +1,6 @@
 "use client";
 
-import { Show, NewShowParams, insertShowParams } from "@/lib/db/schema/shows";
+import { School, NewSchoolParams, insertSchoolParams } from "@/lib/db/schema/schools";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -20,31 +20,32 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
-const ShowForm = ({
-  show,
+const SchoolForm = ({
+  school,
   closeModal,
 }: {
-  show?: Show;
+  school?: School;
   closeModal?: () => void;
 }) => {
-  const { data: showsCategories } = trpc.showsCategories.getShowsCategories.useQuery();
-  const editing = !!show?.id;
+  const { data: grades } = trpc.grades.getGrades.useQuery();
+  const editing = !!school?.id;
 
   const router = useRouter();
   const utils = trpc.useContext();
 
-  const form = useForm<z.infer<typeof insertShowParams>>({
+  const form = useForm<z.infer<typeof insertSchoolParams>>({
     // latest Zod release has introduced a TS error with zodResolver
     // open issue: https://github.com/colinhacks/zod/issues/2663
     // errors locally but not in production
-    resolver: zodResolver(insertShowParams),
-    defaultValues: show ?? {
+    resolver: zodResolver(insertSchoolParams),
+    defaultValues: school ?? {
       name: "",
-     image: "",
-     url: "",
-     description: "",
-     transcript: "",
-     showsCategoryId: ""
+     telephone: "",
+     country: "",
+     province: "",
+     suburb: "",
+     district: "",
+     gradeId: ""
     },
   });
 
@@ -56,35 +57,35 @@ const ShowForm = ({
       return;
     }
 
-    await utils.shows.getShows.invalidate();
+    await utils.schools.getSchools.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Show ${action}d!`);
+        toast.success(`School ${action}d!`);
   };
 
-  const { mutate: createShow, isLoading: isCreating } =
-    trpc.shows.createShow.useMutation({
+  const { mutate: createSchool, isLoading: isCreating } =
+    trpc.schools.createSchool.useMutation({
       onSuccess: (res) => onSuccess("create"),
       onError: (err) => onError("create", { error: err.message }),
     });
 
-  const { mutate: updateShow, isLoading: isUpdating } =
-    trpc.shows.updateShow.useMutation({
+  const { mutate: updateSchool, isLoading: isUpdating } =
+    trpc.schools.updateSchool.useMutation({
       onSuccess: (res) => onSuccess("update"),
       onError: (err) => onError("update", { error: err.message }),
     });
 
-  const { mutate: deleteShow, isLoading: isDeleting } =
-    trpc.shows.deleteShow.useMutation({
+  const { mutate: deleteSchool, isLoading: isDeleting } =
+    trpc.schools.deleteSchool.useMutation({
       onSuccess: (res) => onSuccess("delete"),
       onError: (err) => onError("delete", { error: err.message }),
     });
 
-  const handleSubmit = (values: NewShowParams) => {
+  const handleSubmit = (values: NewSchoolParams) => {
     if (editing) {
-      updateShow({ ...values, id: show.id });
+      updateSchool({ ...values, id: school.id });
     } else {
-      createShow(values);
+      createSchool(values);
     }
   };
   return (
@@ -105,9 +106,9 @@ const ShowForm = ({
         />
         <FormField
           control={form.control}
-          name="image"
+          name="telephone"
           render={({ field }) => (<FormItem>
-              <FormLabel>Image</FormLabel>
+              <FormLabel>Telephone</FormLabel>
                 <FormControl>
             <Input {...field} />
           </FormControl>
@@ -118,9 +119,9 @@ const ShowForm = ({
         />
         <FormField
           control={form.control}
-          name="url"
+          name="country"
           render={({ field }) => (<FormItem>
-              <FormLabel>Url</FormLabel>
+              <FormLabel>Country</FormLabel>
                 <FormControl>
             <Input {...field} />
           </FormControl>
@@ -131,9 +132,9 @@ const ShowForm = ({
         />
         <FormField
           control={form.control}
-          name="description"
+          name="province"
           render={({ field }) => (<FormItem>
-              <FormLabel>Description</FormLabel>
+              <FormLabel>Province</FormLabel>
                 <FormControl>
             <Input {...field} />
           </FormControl>
@@ -144,9 +145,9 @@ const ShowForm = ({
         />
         <FormField
           control={form.control}
-          name="transcript"
+          name="suburb"
           render={({ field }) => (<FormItem>
-              <FormLabel>Transcript</FormLabel>
+              <FormLabel>Suburb</FormLabel>
                 <FormControl>
             <Input {...field} />
           </FormControl>
@@ -157,21 +158,34 @@ const ShowForm = ({
         />
         <FormField
           control={form.control}
-          name="showsCategoryId"
+          name="district"
           render={({ field }) => (<FormItem>
-              <FormLabel>Shows Category Id</FormLabel>
+              <FormLabel>District</FormLabel>
+                <FormControl>
+            <Input {...field} />
+          </FormControl>
+
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="gradeId"
+          render={({ field }) => (<FormItem>
+              <FormLabel>Grade Id</FormLabel>
                 <FormControl>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={String(field.value)}
                 >
                   <SelectTrigger>
-                    <SelectValue placeholder="Select a shows category" />
+                    <SelectValue placeholder="Select a grade" />
                   </SelectTrigger>
                   <SelectContent>
-                    {showsCategories?.showsCategories.map((showsCategory) => (
-                      <SelectItem key={showsCategory.id} value={showsCategory.id.toString()}>
-                        {showsCategory.name}  {/* TODO: Replace with a field from the showsCategory model */}
+                    {grades?.grades.map((grade) => (
+                      <SelectItem key={grade.id} value={grade.id.toString()}>
+                        {grade.name}  {/* TODO: Replace with a field from the grade model */}
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -195,7 +209,7 @@ const ShowForm = ({
           <Button
             type="button"
             variant={"destructive"}
-            onClick={() => deleteShow({ id: show.id })}
+            onClick={() => deleteSchool({ id: school.id })}
           >
             Delet{isDeleting ? "ing..." : "e"}
           </Button>
@@ -205,4 +219,4 @@ const ShowForm = ({
   );
 };
 
-export default ShowForm;
+export default SchoolForm;
