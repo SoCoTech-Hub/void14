@@ -2,8 +2,8 @@
 
 ## Tables
 
-List of Tables with their function described below:
 ![Relationships Diagram](RelationshipsDiagram.png)
+List of Tables with their function described below:
 
 ### scorm
 
