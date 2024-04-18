@@ -334,6 +334,9 @@ importers:
 
   apps/analytics-dash:
     dependencies:
+      '@hookform/resolvers':
+        specifier: ^3.3.4
+        version: 3.3.4(react-hook-form@7.51.2)
       '@lucia-auth/adapter-drizzle':
         specifier: ^1.0.7
         version: 1.0.7(lucia@3.1.1)
@@ -346,12 +349,21 @@ importers:
       '@radix-ui/react-avatar':
         specifier: ^1.0.4
         version: 1.0.4(@types/react-dom@18.2.19)(@types/react@18.2.61)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-checkbox':
+        specifier: ^1.0.4
+        version: 1.0.4(@types/react-dom@18.2.19)(@types/react@18.2.61)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-dialog':
+        specifier: ^1.0.5
+        version: 1.0.5(@types/react-dom@18.2.19)(@types/react@18.2.61)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-dropdown-menu':
         specifier: ^2.0.6
         version: 2.0.6(@types/react-dom@18.2.19)(@types/react@18.2.61)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-label':
         specifier: ^2.0.2
         version: 2.0.2(@types/react-dom@18.2.19)(@types/react@18.2.61)(react-dom@18.2.0)(react@18.2.0)
+      '@radix-ui/react-popover':
+        specifier: ^1.0.7
+        version: 1.0.7(@types/react-dom@18.2.19)(@types/react@18.2.61)(react-dom@18.2.0)(react@18.2.0)
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.0.2(@types/react@18.2.61)(react@18.2.0)
@@ -379,6 +391,9 @@ importers:
       clsx:
         specifier: ^2.1.0
         version: 2.1.0
+      date-fns:
+        specifier: ^3.6.0
+        version: 3.6.0
       drizzle-orm:
         specifier: ^0.30.7
         version: 0.30.7(@types/react@18.2.61)(pg@8.11.5)(postgres@3.4.4)(react@18.2.0)
@@ -409,9 +424,15 @@ importers:
       react:
         specifier: ^18
         version: 18.2.0
+      react-day-picker:
+        specifier: ^8.10.0
+        version: 8.10.0(date-fns@3.6.0)(react@18.2.0)
       react-dom:
         specifier: ^18
         version: 18.2.0(react@18.2.0)
+      react-hook-form:
+        specifier: ^7.51.2
+        version: 7.51.2(react@18.2.0)
       server-only:
         specifier: ^0.0.1
         version: 0.0.1

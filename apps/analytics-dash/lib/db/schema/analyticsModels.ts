@@ -1,0 +1,66 @@
+import { sql } from "drizzle-orm";
+import { text, boolean, varchar, integer, timestamp, pgTable } from "drizzle-orm/pg-core";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { z } from "zod";
+
+import { type getAnalyticsModels } from "@/lib/api/analyticsModels/queries";
+
+import { nanoid, timestamps } from "@/lib/utils";
+
+
+export const analyticsModels = pgTable('analytics_models', {
+  id: varchar("id", { length: 191 }).primaryKey().$defaultFn(() => nanoid()),
+  contextIds: text("context_ids"),
+  enabled: boolean("enabled"),
+  indicators: text("indicators"),
+  name: varchar("name", { length: 256 }),
+  predictionsProcessor: varchar("predictions_processor", { length: 256 }),
+  target: varchar("target", { length: 256 }),
+  timeSplitting: varchar("time_splitting", { length: 256 }),
+  trained: boolean("trained"),
+  version: integer("version"),
+  userId: varchar("user_id", { length: 256 }).notNull(),
+  
+  createdAt: timestamp("created_at")
+    .notNull()
+    .default(sql`now()`),
+  updatedAt: timestamp("updated_at")
+    .notNull()
+    .default(sql`now()`),
+
+});
+
+
+// Schema for analyticsModels - used to validate API requests
+const baseSchema = createSelectSchema(analyticsModels).omit(timestamps)
+
+export const insertAnalyticsModelSchema = createInsertSchema(analyticsModels).omit(timestamps);
+export const insertAnalyticsModelParams = baseSchema.extend({
+  enabled: z.coerce.boolean(),
+  trained: z.coerce.boolean(),
+  version: z.coerce.number()
+}).omit({ 
+  id: true,
+  userId: true
+});
+
+export const updateAnalyticsModelSchema = baseSchema;
+export const updateAnalyticsModelParams = baseSchema.extend({
+  enabled: z.coerce.boolean(),
+  trained: z.coerce.boolean(),
+  version: z.coerce.number()
+}).omit({ 
+  userId: true
+});
+export const analyticsModelIdSchema = baseSchema.pick({ id: true });
+
+// Types for analyticsModels - used to type API request params and within Components
+export type AnalyticsModel = typeof analyticsModels.$inferSelect;
+export type NewAnalyticsModel = z.infer<typeof insertAnalyticsModelSchema>;
+export type NewAnalyticsModelParams = z.infer<typeof insertAnalyticsModelParams>;
+export type UpdateAnalyticsModelParams = z.infer<typeof updateAnalyticsModelParams>;
+export type AnalyticsModelId = z.infer<typeof analyticsModelIdSchema>["id"];
+    
+// this type infers the return from getAnalyticsModels() - meaning it will include any joins
+export type CompleteAnalyticsModel = Awaited<ReturnType<typeof getAnalyticsModels>>["analyticsModels"][number];
+
