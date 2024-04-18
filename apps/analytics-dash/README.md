@@ -1,4 +1,4 @@
-# Course Dash
+# Analytics Dash
 
 ## Tables
 
@@ -38,4 +38,4 @@ Table List of analysables used by each model
 
 ### analytics_used_files
 
-Table Files that have already been used for training and predictio
+Table Files that have already been used for training and predictions
