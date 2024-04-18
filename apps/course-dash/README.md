@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Course Dash
 
-## Getting Started
+## Tables
 
-First, run the development server:
+List of Tables with their function described below:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### course
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Table Central course table
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### course_categories
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Table Course categories
 
-## Learn More
+### course_completion_aggr_methd
 
-To learn more about Next.js, take a look at the following resources:
+Table Course completion aggregation methods for criteria
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### course_completion_crit_compl
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Table Course completion user records
 
-## Deploy on Vercel
+### course_completion_criteria
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Table Course completion criteria
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### course_completion_defaults
+
+Table Default settings for activities completion
+
+### course_completions
+
+Table Course completion records
+
+### course_format_options
+
+Table Stores format-specific options for the course or course sect
+
+### course_modules
+
+Table course_modules table retrofitted from MySQL
+
+### course_modules_completion
+
+Table Stores the completion state (completed or not completed, etc)
+
+### course_published
+
+Table Information about how and when an local courses were publish
+
+### course_request
+
+Table course requests
+
+### course_sections
+
+Table to define the sections for each course
