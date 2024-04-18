@@ -1,22 +1,22 @@
 "use client";
-import { CompleteAnalyticsModelsLog } from "@/lib/db/schema/analyticsModelsLog";
+import { CompleteAnalyticsModelsLog } from "@/lib/db/schema/analyticsModelsLogs";
 import { trpc } from "@/lib/trpc/client";
 import AnalyticsModelsLogModal from "./AnalyticsModelsLogModal";
 
 
-export default function AnalyticsModelsLogList({ analyticsModelsLog }: { analyticsModelsLog: CompleteAnalyticsModelsLog[] }) {
-  const { data: a } = trpc.analyticsModelsLog.getAnalyticsModelsLog.useQuery(undefined, {
-    initialData: { analyticsModelsLog },
+export default function AnalyticsModelsLogList({ analyticsModelsLogs }: { analyticsModelsLogs: CompleteAnalyticsModelsLog[] }) {
+  const { data: a } = trpc.analyticsModelsLogs.getAnalyticsModelsLogs.useQuery(undefined, {
+    initialData: { analyticsModelsLogs },
     refetchOnMount: false,
   });
 
-  if (a.analyticsModelsLog.length === 0) {
+  if (a.analyticsModelsLogs.length === 0) {
     return <EmptyState />;
   }
 
   return (
     <ul>
-      {a.analyticsModelsLog.map((analyticsModelsLog) => (
+      {a.analyticsModelsLogs.map((analyticsModelsLog) => (
         <AnalyticsModelsLog analyticsModelsLog={analyticsModelsLog} key={analyticsModelsLog.id} />
       ))}
     </ul>
@@ -38,7 +38,7 @@ const EmptyState = () => {
   return (
     <div className="text-center">
       <h3 className="mt-2 text-sm font-semibold text-secondary-foreground">
-        No analytics models log
+        No analytics models logs
       </h3>
       <p className="mt-1 text-sm text-muted-foreground">
         Get started by creating a new analytics models log.

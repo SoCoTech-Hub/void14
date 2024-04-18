@@ -6,16 +6,16 @@ import {
   UpdateAnalyticsModelsLogParams, 
   updateAnalyticsModelsLogSchema,
   insertAnalyticsModelsLogSchema, 
-  analyticsModelsLog,
+  analyticsModelsLogs,
   analyticsModelsLogIdSchema 
-} from "@/lib/db/schema/analyticsModelsLog";
+} from "@/lib/db/schema/analyticsModelsLogs";
 import { getUserAuth } from "@/lib/auth/utils";
 
 export const createAnalyticsModelsLog = async (analyticsModelsLog: NewAnalyticsModelsLogParams) => {
   const { session } = await getUserAuth();
   const newAnalyticsModelsLog = insertAnalyticsModelsLogSchema.parse({ ...analyticsModelsLog, userId: session?.user.id! });
   try {
-    const [a] =  await db.insert(analyticsModelsLog).values(newAnalyticsModelsLog).returning();
+    const [a] =  await db.insert(analyticsModelsLogs).values(newAnalyticsModelsLog).returning();
     return { analyticsModelsLog: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -30,9 +30,9 @@ export const updateAnalyticsModelsLog = async (id: AnalyticsModelsLogId, analyti
   const newAnalyticsModelsLog = updateAnalyticsModelsLogSchema.parse({ ...analyticsModelsLog, userId: session?.user.id! });
   try {
     const [a] =  await db
-     .update(analyticsModelsLog)
+     .update(analyticsModelsLogs)
      .set({...newAnalyticsModelsLog, updatedAt: new Date() })
-     .where(and(eq(analyticsModelsLog.id, analyticsModelsLogId!), eq(analyticsModelsLog.userId, session?.user.id!)))
+     .where(and(eq(analyticsModelsLogs.id, analyticsModelsLogId!), eq(analyticsModelsLogs.userId, session?.user.id!)))
      .returning();
     return { analyticsModelsLog: a };
   } catch (err) {
@@ -46,7 +46,7 @@ export const deleteAnalyticsModelsLog = async (id: AnalyticsModelsLogId) => {
   const { session } = await getUserAuth();
   const { id: analyticsModelsLogId } = analyticsModelsLogIdSchema.parse({ id });
   try {
-    const [a] =  await db.delete(analyticsModelsLog).where(and(eq(analyticsModelsLog.id, analyticsModelsLogId!), eq(analyticsModelsLog.userId, session?.user.id!)))
+    const [a] =  await db.delete(analyticsModelsLogs).where(and(eq(analyticsModelsLogs.id, analyticsModelsLogId!), eq(analyticsModelsLogs.userId, session?.user.id!)))
     .returning();
     return { analyticsModelsLog: a };
   } catch (err) {

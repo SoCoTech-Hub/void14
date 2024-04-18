@@ -1,6 +1,6 @@
 "use client";
 
-import { AnalyticsModelsLog, NewAnalyticsModelsLogParams, insertAnalyticsModelsLogParams } from "@/lib/db/schema/analyticsModelsLog";
+import { AnalyticsModelsLog, NewAnalyticsModelsLogParams, insertAnalyticsModelsLogParams } from "@/lib/db/schema/analyticsModelsLogs";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -58,26 +58,26 @@ const AnalyticsModelsLogForm = ({
       return;
     }
 
-    await utils.analyticsModelsLog.getAnalyticsModelsLog.invalidate();
+    await utils.analyticsModelsLogs.getAnalyticsModelsLogs.invalidate();
     router.refresh();
     if (closeModal) closeModal();
         toast.success(`Analytics Models Log ${action}d!`);
   };
 
   const { mutate: createAnalyticsModelsLog, isLoading: isCreating } =
-    trpc.analyticsModelsLog.createAnalyticsModelsLog.useMutation({
+    trpc.analyticsModelsLogs.createAnalyticsModelsLog.useMutation({
       onSuccess: (res) => onSuccess("create"),
       onError: (err) => onError("create", { error: err.message }),
     });
 
   const { mutate: updateAnalyticsModelsLog, isLoading: isUpdating } =
-    trpc.analyticsModelsLog.updateAnalyticsModelsLog.useMutation({
+    trpc.analyticsModelsLogs.updateAnalyticsModelsLog.useMutation({
       onSuccess: (res) => onSuccess("update"),
       onError: (err) => onError("update", { error: err.message }),
     });
 
   const { mutate: deleteAnalyticsModelsLog, isLoading: isDeleting } =
-    trpc.analyticsModelsLog.deleteAnalyticsModelsLog.useMutation({
+    trpc.analyticsModelsLogs.deleteAnalyticsModelsLog.useMutation({
       onSuccess: (res) => onSuccess("delete"),
       onError: (err) => onError("delete", { error: err.message }),
     });

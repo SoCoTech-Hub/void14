@@ -1,15 +1,15 @@
-import { getAnalyticsModelsLogById, getAnalyticsModelsLog } from "@/lib/api/analyticsModelsLog/queries";
+import { getAnalyticsModelsLogById, getAnalyticsModelsLogs } from "@/lib/api/analyticsModelsLogs/queries";
 import { publicProcedure, router } from "@/lib/server/trpc";
 import {
   analyticsModelsLogIdSchema,
   insertAnalyticsModelsLogParams,
   updateAnalyticsModelsLogParams,
-} from "@/lib/db/schema/analyticsModelsLog";
-import { createAnalyticsModelsLog, deleteAnalyticsModelsLog, updateAnalyticsModelsLog } from "@/lib/api/analyticsModelsLog/mutations";
+} from "@/lib/db/schema/analyticsModelsLogs";
+import { createAnalyticsModelsLog, deleteAnalyticsModelsLog, updateAnalyticsModelsLog } from "@/lib/api/analyticsModelsLogs/mutations";
 
-export const analyticsModelsLogRouter = router({
-  getAnalyticsModelsLog: publicProcedure.query(async () => {
-    return getAnalyticsModelsLog();
+export const analyticsModelsLogsRouter = router({
+  getAnalyticsModelsLogs: publicProcedure.query(async () => {
+    return getAnalyticsModelsLogs();
   }),
   getAnalyticsModelsLogById: publicProcedure.input(analyticsModelsLogIdSchema).query(async ({ input }) => {
     return getAnalyticsModelsLogById(input.id);

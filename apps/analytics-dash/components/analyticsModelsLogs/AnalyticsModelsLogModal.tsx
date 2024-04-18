@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import AnalyticsModelsLogForm from "./AnalyticsModelsLogForm";
-import { AnalyticsModelsLog } from "@/lib/db/schema/analyticsModelsLog";
+import { AnalyticsModelsLog } from "@/lib/db/schema/analyticsModelsLogs";
 
 export default function AnalyticsModelsLogModal({ 
   analyticsModelsLog,

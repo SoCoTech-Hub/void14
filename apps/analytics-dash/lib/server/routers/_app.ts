@@ -9,6 +9,7 @@ import { analyticsPredictionsRouter } from "./analyticsPredictions";
 import { analyticsTrainSamplesRouter } from "./analyticsTrainSamples";
 import { analyticsUsedAnalysablesRouter } from "./analyticsUsedAnalysables";
 import { analyticsUsedFilesRouter } from "./analyticsUsedFiles";
+import { analyticsModelsLogsRouter } from "./analyticsModelsLogs";
 
 export const appRouter = router({
   computers: computersRouter,
@@ -21,6 +22,7 @@ export const appRouter = router({
   analyticsTrainSamples: analyticsTrainSamplesRouter,
   analyticsUsedAnalysables: analyticsUsedAnalysablesRouter,
   analyticsUsedFiles: analyticsUsedFilesRouter,
+  analyticsModelsLogs: analyticsModelsLogsRouter,
 });
 
 export type AppRouter = typeof appRouter;

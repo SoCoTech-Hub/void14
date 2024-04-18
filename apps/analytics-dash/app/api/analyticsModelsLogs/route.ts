@@ -6,19 +6,19 @@ import {
   createAnalyticsModelsLog,
   deleteAnalyticsModelsLog,
   updateAnalyticsModelsLog,
-} from "@/lib/api/analyticsModelsLog/mutations";
+} from "@/lib/api/analyticsModelsLogs/mutations";
 import { 
   analyticsModelsLogIdSchema,
   insertAnalyticsModelsLogParams,
   updateAnalyticsModelsLogParams 
-} from "@/lib/db/schema/analyticsModelsLog";
+} from "@/lib/db/schema/analyticsModelsLogs";
 
 export async function POST(req: Request) {
   try {
     const validatedData = insertAnalyticsModelsLogParams.parse(await req.json());
     const { analyticsModelsLog } = await createAnalyticsModelsLog(validatedData);
 
-    revalidatePath("/analyticsModelsLog"); // optional - assumes you will have named route same as entity
+    revalidatePath("/analyticsModelsLogs"); // optional - assumes you will have named route same as entity
 
     return NextResponse.json(analyticsModelsLog, { status: 201 });
   } catch (err) {

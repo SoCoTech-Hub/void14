@@ -5,7 +5,7 @@ import {
   createAnalyticsModelsLog,
   deleteAnalyticsModelsLog,
   updateAnalyticsModelsLog,
-} from "@/lib/api/analyticsModelsLog/mutations";
+} from "@/lib/api/analyticsModelsLogs/mutations";
 import {
   AnalyticsModelsLogId,
   NewAnalyticsModelsLogParams,
@@ -13,7 +13,7 @@ import {
   analyticsModelsLogIdSchema,
   insertAnalyticsModelsLogParams,
   updateAnalyticsModelsLogParams,
-} from "@/lib/db/schema/analyticsModelsLog";
+} from "@/lib/db/schema/analyticsModelsLogs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,7 +25,7 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateAnalyticsModelsLogs = () => revalidatePath("/analytics-models-log");
+const revalidateAnalyticsModelsLogs = () => revalidatePath("/analytics-models-logs");
 
 export const createAnalyticsModelsLogAction = async (input: NewAnalyticsModelsLogParams) => {
   try {

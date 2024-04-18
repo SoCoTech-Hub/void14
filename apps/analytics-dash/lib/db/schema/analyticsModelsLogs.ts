@@ -11,12 +11,12 @@ import {
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 
-import { type getAnalyticsModelsLog } from '@/lib/api/analyticsModelsLog/queries'
+import { type getAnalyticsModelsLogs } from '@/lib/api/analyticsModelsLogs/queries'
 
 import { nanoid, timestamps } from '@/lib/utils'
 
-export const analyticsModelsLog = pgTable(
-	'analytics_models_log',
+export const analyticsModelsLogs = pgTable(
+	'analytics_models_logs',
 	{
 		id: varchar('id', { length: 191 })
 			.primaryKey()
@@ -39,18 +39,18 @@ export const analyticsModelsLog = pgTable(
 			.notNull()
 			.default(sql`now()`)
 	},
-	(analyticsModelsLog) => {
+	(analyticsModelsLogs) => {
 		return {
-			modelIdIndex: uniqueIndex('model_id_idx').on(analyticsModelsLog.modelId)
+			modelIdIndex: uniqueIndex('model_id_idx').on(analyticsModelsLogs.modelId)
 		}
 	}
 )
 
-// Schema for analyticsModelsLog - used to validate API requests
-const baseSchema = createSelectSchema(analyticsModelsLog).omit(timestamps)
+// Schema for analyticsModelsLogs - used to validate API requests
+const baseSchema = createSelectSchema(analyticsModelsLogs).omit(timestamps)
 
 export const insertAnalyticsModelsLogSchema =
-	createInsertSchema(analyticsModelsLog).omit(timestamps)
+	createInsertSchema(analyticsModelsLogs).omit(timestamps)
 export const insertAnalyticsModelsLogParams = baseSchema
 	.extend({
 		score: z.coerce.number(),
@@ -72,8 +72,8 @@ export const updateAnalyticsModelsLogParams = baseSchema
 	})
 export const analyticsModelsLogIdSchema = baseSchema.pick({ id: true })
 
-// Types for analyticsModelsLog - used to type API request params and within Components
-export type AnalyticsModelsLog = typeof analyticsModelsLog.$inferSelect
+// Types for analyticsModelsLogs - used to type API request params and within Components
+export type AnalyticsModelsLog = typeof analyticsModelsLogs.$inferSelect
 export type NewAnalyticsModelsLog = z.infer<
 	typeof insertAnalyticsModelsLogSchema
 >
@@ -87,7 +87,7 @@ export type AnalyticsModelsLogId = z.infer<
 	typeof analyticsModelsLogIdSchema
 >['id']
 
-// this type infers the return from getAnalyticsModelsLog() - meaning it will include any joins
+// this type infers the return from getAnalyticsModelsLogs() - meaning it will include any joins
 export type CompleteAnalyticsModelsLog = Awaited<
-	ReturnType<typeof getAnalyticsModelsLog>
->['analyticsModelsLog'][number]
+	ReturnType<typeof getAnalyticsModelsLogs>
+>['analyticsModelsLogs'][number]
