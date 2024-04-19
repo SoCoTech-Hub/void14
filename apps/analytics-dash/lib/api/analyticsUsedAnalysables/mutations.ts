@@ -28,7 +28,7 @@ export const updateAnalyticsUsedAnalysable = async (id: AnalyticsUsedAnalysableI
   try {
     const [a] =  await db
      .update(analyticsUsedAnalysables)
-     .set(newAnalyticsUsedAnalysable)
+     .set({...newAnalyticsUsedAnalysable, updatedAt: new Date() })
      .where(eq(analyticsUsedAnalysables.id, analyticsUsedAnalysableId!))
      .returning();
     return { analyticsUsedAnalysable: a };

@@ -24,8 +24,8 @@ export const analyticsPredictions = pgTable(
 		calculations: text('calculations'),
 		contextId: varchar('context_id', { length: 256 }),
 		modelId: varchar('model_id', { length: 256 }),
-		prediction: real('prediction'),
-		predictionScore: real('prediction_score'),
+		prediciton: real('prediciton'),
+		predicitonScore: real('prediciton_score'),
 		rangeIndex: integer('range_index'),
 		sampleId: varchar('sample_id', { length: 256 }),
 		startTime: timestamp('start_time'),
@@ -40,7 +40,9 @@ export const analyticsPredictions = pgTable(
 	},
 	(analyticsPredictions) => {
 		return {
-			modelIdIndex: uniqueIndex('model_id_idx').on(analyticsPredictions.modelId)
+			modelIdIndex: uniqueIndex('ap_model_id_idx').on(
+				analyticsPredictions.modelId
+			)
 		}
 	}
 )
@@ -52,8 +54,8 @@ export const insertAnalyticsPredictionSchema =
 	createInsertSchema(analyticsPredictions).omit(timestamps)
 export const insertAnalyticsPredictionParams = baseSchema
 	.extend({
-		prediction: z.coerce.number(),
-		predictionScore: z.coerce.number(),
+		prediciton: z.coerce.number(),
+		predicitonScore: z.coerce.number(),
 		rangeIndex: z.coerce.number(),
 		startTime: z.coerce.string().min(1),
 		endTime: z.coerce.string().min(1)
@@ -64,8 +66,8 @@ export const insertAnalyticsPredictionParams = baseSchema
 
 export const updateAnalyticsPredictionSchema = baseSchema
 export const updateAnalyticsPredictionParams = baseSchema.extend({
-	prediction: z.coerce.number(),
-	predictionScore: z.coerce.number(),
+	prediciton: z.coerce.number(),
+	predicitonScore: z.coerce.number(),
 	rangeIndex: z.coerce.number(),
 	startTime: z.coerce.string().min(1),
 	endTime: z.coerce.string().min(1)

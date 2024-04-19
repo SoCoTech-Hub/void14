@@ -39,8 +39,7 @@ const AnalyticsPredictionActionForm = ({
     resolver: zodResolver(insertAnalyticsPredictionActionParams),
     defaultValues: analyticsPredictionAction ?? {
       actionName: "",
-     predictionId: "",
-     deleteThisItem: ""
+     predictionId: ""
     },
   });
 
@@ -104,19 +103,6 @@ const AnalyticsPredictionActionForm = ({
           name="predictionId"
           render={({ field }) => (<FormItem>
               <FormLabel>Prediction Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
-
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
-          name="deleteThisItem"
-          render={({ field }) => (<FormItem>
-              <FormLabel>Delete This Item</FormLabel>
                 <FormControl>
             <Input {...field} />
           </FormControl>

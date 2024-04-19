@@ -40,13 +40,13 @@ const AnalyticsModelForm = ({
     resolver: zodResolver(insertAnalyticsModelParams),
     defaultValues: analyticsModel ?? {
       contextIds: "",
-     enabled: false,
+     isEnabled: false,
      indicators: "",
      name: "",
      predictionsProcessor: "",
      target: "",
      timeSplitting: "",
-     trained: false,
+     isTrained: false,
      version: 0
     },
   });
@@ -108,9 +108,9 @@ const AnalyticsModelForm = ({
         />
         <FormField
           control={form.control}
-          name="enabled"
+          name="isEnabled"
           render={({ field }) => (<FormItem>
-              <FormLabel>Enabled</FormLabel>
+              <FormLabel>Is Enabled</FormLabel>
                 <br />
             <FormControl>
               <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
@@ -186,9 +186,9 @@ const AnalyticsModelForm = ({
         />
         <FormField
           control={form.control}
-          name="trained"
+          name="isTrained"
           render={({ field }) => (<FormItem>
-              <FormLabel>Trained</FormLabel>
+              <FormLabel>Is Trained</FormLabel>
                 <br />
             <FormControl>
               <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />

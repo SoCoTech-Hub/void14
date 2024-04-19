@@ -12,12 +12,13 @@ export const analyticsIndicatorCalcs = pgTable('analytics_indicator_calcs', {
 		.primaryKey()
 		.$defaultFn(() => nanoid()),
 	contextId: varchar('context_id', { length: 256 }),
-	sampleId: varchar('sample_id', { length: 256 }),
-	sampleOrigin: varchar('sample_origin', { length: 256 }),
 	startTime: timestamp('start_time'),
 	endTime: timestamp('end_time'),
-	value: real('value'),
 	indicator: varchar('indicator', { length: 256 }),
+	sampleId: varchar('sample_id', { length: 256 }),
+	sampleOrigin: varchar('sample_origin', { length: 256 }),
+	value: real('value'),
+
 	createdAt: timestamp('created_at')
 		.notNull()
 		.default(sql`now()`),

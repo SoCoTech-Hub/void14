@@ -28,7 +28,7 @@ export const updateAnalyticsUsedFile = async (id: AnalyticsUsedFileId, analytics
   try {
     const [a] =  await db
      .update(analyticsUsedFiles)
-     .set(newAnalyticsUsedFile)
+     .set({...newAnalyticsUsedFile, updatedAt: new Date() })
      .where(eq(analyticsUsedFiles.id, analyticsUsedFileId!))
      .returning();
     return { analyticsUsedFile: a };

@@ -19,15 +19,16 @@ export const analyticsModels = pgTable('analytics_models', {
 		.primaryKey()
 		.$defaultFn(() => nanoid()),
 	contextIds: text('context_ids'),
-	enabled: boolean('enabled'),
+	isEnabled: boolean('is_enabled'),
 	indicators: text('indicators'),
 	name: varchar('name', { length: 256 }),
 	predictionsProcessor: varchar('predictions_processor', { length: 256 }),
 	target: varchar('target', { length: 256 }),
 	timeSplitting: varchar('time_splitting', { length: 256 }),
-	trained: boolean('trained'),
+	isTrained: boolean('is_trained'),
 	version: integer('version'),
 	userId: varchar('user_id', { length: 256 }).notNull(),
+
 	createdAt: timestamp('created_at')
 		.notNull()
 		.default(sql`now()`),
@@ -43,8 +44,8 @@ export const insertAnalyticsModelSchema =
 	createInsertSchema(analyticsModels).omit(timestamps)
 export const insertAnalyticsModelParams = baseSchema
 	.extend({
-		enabled: z.coerce.boolean(),
-		trained: z.coerce.boolean(),
+		isEnabled: z.coerce.boolean(),
+		isTrained: z.coerce.boolean(),
 		version: z.coerce.number()
 	})
 	.omit({
@@ -55,8 +56,8 @@ export const insertAnalyticsModelParams = baseSchema
 export const updateAnalyticsModelSchema = baseSchema
 export const updateAnalyticsModelParams = baseSchema
 	.extend({
-		enabled: z.coerce.boolean(),
-		trained: z.coerce.boolean(),
+		isEnabled: z.coerce.boolean(),
+		isTrained: z.coerce.boolean(),
 		version: z.coerce.number()
 	})
 	.omit({
