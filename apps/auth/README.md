@@ -1,6 +1,6 @@
 # Auth
 
-Authentication layer, ensuring sessions are managed per user
+Accounts linked to a users account.
 
 ## Tables
 
@@ -8,7 +8,7 @@ List of Tables with their function described below:
 
 ### auth_lti_linked_logins
 
-Table Stored indicator calculations
+Accounts linked to a users account.
 
 #### Fields
 
@@ -23,7 +23,7 @@ Table Stored indicator calculations
 
 ### auth_oauth2_linked_login
 
-Table Analytic models.
+Accounts linked to a users account.
 
 #### Fields
 
