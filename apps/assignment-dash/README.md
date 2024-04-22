@@ -18,7 +18,7 @@ This table saves information about an instance of mod_assign
 - attempt_reopen_method \* How to determine when students are allowed to open a new submission. Valid options are none, manual, untilpass
 - blind_marking \* Hide student/grader identities until the reveal identities action is performed
 - completion_submit \* If this field is set to 1, then the activity will be automatically marked as ‘complete’ once the user submits their assignment.
-- course
+- course_id
 - cut_off_date \* The final date after which submissions will no longer be accepted for this assignment without an extensions.
 - due_date \* The due date for the assignment. Displayed to students.
 - grade \* The maximum grade for this assignment. Can be negative to indicate the use of a scale.
@@ -41,7 +41,7 @@ This table saves information about an instance of mod_assign
 - submission_attachments
 - submission_drafts \* If true, assignment submissions will be considered drafts until the student clicks on the submit assignmnet button.
 - team_submission \* Do students submit in teams?
-- team_submissiongroupingid \* A grouping id to get groups for team submissions
+- team_submission_grouping_id \* A grouping id to get groups for team submissions
 - time_limit
 - created_at
 - updated_at \* The time the settings for this assign module instance were last modified.
@@ -53,7 +53,7 @@ Grading information about a single assignment submission.
 #### Fields
 
 - id
-- assignment
+- assignment_id
 - attempt_number \* The attempt number that this grade relates to
 - grade \* The numerical grade for this assignment submission. Can be determined by scales/advancedgradingforms etc but will always be converted back to a floating point number.
 - grader
@@ -69,7 +69,7 @@ The overrides to assign settings.
 
 - id
 - allow_submissions_from_date \* Time at which students may start attempting this assign. Can be null, in which case the assign default is used.
-- assignid \* Foreign key references assign.id
+- assign_id \* Foreign key references assign.id
 - cut_off_date \* Time by which students must have completed their attempt. Can be null, in which case the assign default is used.
 - due_date \* Time by which students must have completed their attempt. Can be null, in which case the assign default is used.
 - group_id \* Foreign key references groups.id. Can be null if this is a per-user override.
@@ -84,7 +84,7 @@ Config data for an instance of a plugin in an assignment.
 #### Fields
 
 - id
-- assignment
+- assignment_id
 - name
 - plugin
 - sub_type
@@ -97,7 +97,7 @@ This table keeps information about student interactions with
 #### Fields
 
 - id
-- assignment \*
+- assignment_id
 - attempt_number \* Used to track attempts for an assignment
 - group_id \* The group id for team submissions
 - latest \* Greatly simplifies queries wanting to know information about only the latest attempt.
@@ -115,10 +115,10 @@ List of flags that can be set for a single user in a single
 
 - id
 - allocated_marker \* The allocated marker to this submission
-- assignment \* The assignment these flags apply to.
+- assignment_id \* The assignment these flags apply to.
 - extension_due_date \* An extension date assigned to an individual student.
 - locked \* Student cannot make any changes to their submission if this flag is set.
-- mailed \* Has the student been sent a notification about this grade update?
+- is_mailed \* Has the student been sent a notification about this grade update?
 - workflow_state \* The current workflow state of the grade
 - user_id \* The id of the user these flags apply to.
 
@@ -129,22 +129,24 @@ Map an assignment specific id number to a user
 #### Fields
 
 - id
-- assignment
+- assignment_id
 - user_id
 
-### assignfeedback_comments
+### assign_feedback_comments
 
 Text feedback for submitted assignments
 
 #### Fields
 
 - id
-- assignment
+- assignment_id
 - comment_format \* The feedback text format
 - comment_text \* The feedback text
 - grade
+- created_at
+- updated_at
 
-### assignfeedback_editpdf_annot
+### assign_feedback_editpdf_annots
 
 stores annotations added to pdfs submitted by students
 
@@ -162,7 +164,7 @@ stores annotations added to pdfs submitted by students
 - x \* x-position of the start of the annotation (in pixels - image resolution is set to 100 pixels per inch)
 - y \* y-position of the start of the annotation (in pixels - image resolution is set to 100 pixels per inch)
 
-### assignfeedback_editpdf_cmnt
+### assign_feedback_editpdf_cmnts
 
 Stores comments added to pdfs
 
@@ -178,7 +180,7 @@ Stores comments added to pdfs
 - x \* x-position of the top-left corner of the comment (in pixels - image resolution is set to 100 pixels per inch)
 - y \* y-position of the top-left corner of the comment (in pixels - image resolution is set to 100 pixels per inch)
 
-### assignfeedback_editpdf_queue
+### assign_feedback_editpdf_queues
 
 Queue for processing.
 
@@ -189,7 +191,7 @@ Queue for processing.
 - submission_attempt
 - submission_id
 
-### assignfeedback_editpdf_quick
+### assign_feedback_editpdf_quick
 
 Stores teacher specified quicklist comments
 
@@ -201,7 +203,7 @@ Stores teacher specified quicklist comments
 - width
 - user_id
 
-### assignfeedback_editpdf_rot
+### assign_feedback_editpdf_rot
 
 Stores rotation information of a page.
 
@@ -214,15 +216,15 @@ Stores rotation information of a page.
 - page_no \* Page number
 - path_name_hash \* File path hash of the rotated page
 
-### assignfeedback_file
+### assign_feedback_files
 
 Stores info about the number of files submitted by a student
 
 #### Fields
 
 - id
-- assignment
-- grade
+- assignment_id
+- grade_id
 - num_files \* The number of files uploaded by a grader.
 
 ### assignment
@@ -233,9 +235,9 @@ Defines assignments
 
 - id
 - assignment_type
-- course
+- course_id
 - email_teachers
-- grade
+- grade_id
 - intro
 - intro_format
 - max_bytes
@@ -259,7 +261,7 @@ Info about submitted assignments
 #### Fields
 
 - id
-- assignment
+- assignment_id
 - data1
 - data2
 - format
@@ -287,7 +289,7 @@ Info about upgraded assignments
 - created_at
 - updated_at
 
-### assignsubmission_file
+### assign_submission_file
 
 Info about file submissions for assignments
 
@@ -298,14 +300,14 @@ Info about file submissions for assignments
 - num_files
 - submission
 
-### assignsubmission_onlinetext
+### assign_submission_onlinetext
 
 Info about onlinetext submission
 
 #### Fields
 
 - id
-- assignment
+- assignment_id
 - online_format
 - online_text
 - submission
