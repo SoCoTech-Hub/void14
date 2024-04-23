@@ -113,7 +113,10 @@ const AnalyticsIndicatorCalcForm = ({
 						<FormItem>
 							<FormLabel>Context Id</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -219,7 +222,10 @@ const AnalyticsIndicatorCalcForm = ({
 						<FormItem>
 							<FormLabel>Indicator</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -233,7 +239,10 @@ const AnalyticsIndicatorCalcForm = ({
 						<FormItem>
 							<FormLabel>Sample Id</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -247,7 +256,10 @@ const AnalyticsIndicatorCalcForm = ({
 						<FormItem>
 							<FormLabel>Sample Origin</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -261,7 +273,10 @@ const AnalyticsIndicatorCalcForm = ({
 						<FormItem>
 							<FormLabel>Value</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />

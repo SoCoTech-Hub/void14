@@ -101,7 +101,10 @@ const BackupLogForm = ({
 						<FormItem>
 							<FormLabel>Backup Id</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -115,7 +118,10 @@ const BackupLogForm = ({
 						<FormItem>
 							<FormLabel>Log Level</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -129,7 +135,10 @@ const BackupLogForm = ({
 						<FormItem>
 							<FormLabel>Message</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />

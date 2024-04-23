@@ -104,7 +104,10 @@ const MassMailRecipientForm = ({
 						<FormItem>
 							<FormLabel>Name</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -118,7 +121,10 @@ const MassMailRecipientForm = ({
 						<FormItem>
 							<FormLabel>Surname</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -132,7 +138,10 @@ const MassMailRecipientForm = ({
 						<FormItem>
 							<FormLabel>Full Name</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -146,7 +155,10 @@ const MassMailRecipientForm = ({
 						<FormItem>
 							<FormLabel>Mobile</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -160,7 +172,10 @@ const MassMailRecipientForm = ({
 						<FormItem>
 							<FormLabel>Email</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -174,7 +189,10 @@ const MassMailRecipientForm = ({
 						<FormItem>
 							<FormLabel>Title</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -188,7 +206,10 @@ const MassMailRecipientForm = ({
 						<FormItem>
 							<FormLabel>Company</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />

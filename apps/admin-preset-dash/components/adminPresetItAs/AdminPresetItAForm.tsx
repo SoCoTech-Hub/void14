@@ -100,7 +100,10 @@ const AdminPresetItAForm = ({
 						<FormItem>
 							<FormLabel>Item Id</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -114,7 +117,10 @@ const AdminPresetItAForm = ({
 						<FormItem>
 							<FormLabel>Name</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -128,7 +134,10 @@ const AdminPresetItAForm = ({
 						<FormItem>
 							<FormLabel>Value</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
