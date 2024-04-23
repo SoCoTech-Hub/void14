@@ -1,36 +1,210 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Badge - Dash
 
-## Getting Started
+Badges for achievements on the platform
 
-First, run the development server:
+## Tables
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+List of Tables with their function described below:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### badges
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Defines badge
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+#### Fields
 
-## Learn More
+- id
+- attachment \* Attach baked badge for download
+- course_id
+- description
+- expire_date
+- expire_period
+- image_author_email
+- image_author_name
+- image_author_url
+- image_caption
+- issuer_contact
+- issuer_name
+- issuer_url
+- language
+- message
+- message_subject
+- name
+- next_cron
+- notification \* Message when badge is awarded
+- status \* Badge status: 0 = inactive, 1 = active, 2 = active+locked, 3 = inactive+locked, 4 = archived
+- type \* 1 = site, 2 = course
+- version
+- created_at
+- updated_at
+- user_id
 
-To learn more about Next.js, take a look at the following resources:
+### badge_alignments
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Defines alignment for badges
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+#### Fields
 
-## Deploy on Vercel
+- id
+- badge_id
+- target_code
+- target_description
+- target_framework
+- target_name
+- target_url
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### badge_backpacks
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Defines settings for connecting external backpack
+
+#### Fields
+
+- id
+- auto_sync
+- backpack_uid
+- email
+- external_backpack_id
+- password
+- user_id
+
+### badge_backpack_oauth2s
+
+Default comment for the table, please edit me
+
+#### Fields
+
+- id
+- expires
+- external_backpack_id
+- issuer_id
+- refresh_token
+- scope
+- token
+- created_at
+- updated_at
+- user_id
+
+### badge_criterias
+
+Defines criteria for issuing badges
+
+#### Fields
+
+- id
+- badge_id
+- criteria_type \* The criteria type we are aggregating
+- description
+- description_format
+- method \* 1 = all, 2 = any
+
+### badge_criteria_mets
+
+Defines criteria that were met for an issued badge
+
+#### Fields
+
+- id
+- crit_id
+- date_met
+- issued_id
+- user_id
+
+### badge_criteria_params
+
+Defines parameters for badges criteria
+
+#### Fields
+
+- id
+- crit_id
+- name
+- value
+
+### badge_endorsements
+
+Defines endorsement for badge
+
+#### Fields
+
+- id
+- badge_id
+- claim_comment
+- claim_id
+- date_issued
+- issuer_email
+- issuer_name
+- issuer_url
+
+### badge_externals
+
+Setting for external badges display
+
+#### Fields
+
+- id
+- assertion \* Assertion of external badge
+- backpack_id \* ID of a backpack
+- collection_id \* Badge collection id in the backpack
+- entity_id
+
+### badge_external_backpacks
+
+Defines settings for site level backpacks that a user can co
+
+#### Fields
+
+- id
+- api_version
+- backpack_api_url
+- backpack_web_url
+- oauth2_issuer_id \* OAuth 2 Issuer
+- sort_order
+
+### badge_external_identifiers
+
+Setting for external badges mappings
+
+#### Fields
+
+- id
+- external_id
+- internal_id
+- site_backpack_id \* ID of a badge backpack
+- type
+
+### badge_issues
+
+Defines issued badges
+
+#### Fields
+
+- id
+- badge_id
+- date_expire
+- date_issued
+- issuer_notified
+- unique_hash
+- visible
+- user_id
+
+### badge_manual_awards
+
+Track manual award criteria for badges
+
+#### Fields
+
+- id
+- badge_id
+- date_met
+- issuer_id
+- issuer_role
+- recipient_id
+
+### badge_relateds
+
+Defines badge related for badges
+
+#### Fields
+
+- id
+- badge_id
+- related_badge_id

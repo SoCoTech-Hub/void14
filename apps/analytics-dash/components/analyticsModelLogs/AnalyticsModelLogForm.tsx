@@ -106,7 +106,10 @@ const AnalyticsModelLogForm = ({
 						<FormItem>
 							<FormLabel>Dir</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -120,7 +123,10 @@ const AnalyticsModelLogForm = ({
 						<FormItem>
 							<FormLabel>Evaluation Mode</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -134,7 +140,10 @@ const AnalyticsModelLogForm = ({
 						<FormItem>
 							<FormLabel>Indicators</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -148,7 +157,10 @@ const AnalyticsModelLogForm = ({
 						<FormItem>
 							<FormLabel>Info</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -162,7 +174,10 @@ const AnalyticsModelLogForm = ({
 						<FormItem>
 							<FormLabel>Model Id</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -176,7 +191,10 @@ const AnalyticsModelLogForm = ({
 						<FormItem>
 							<FormLabel>Score</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -190,7 +208,10 @@ const AnalyticsModelLogForm = ({
 						<FormItem>
 							<FormLabel>Target</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -204,7 +225,10 @@ const AnalyticsModelLogForm = ({
 						<FormItem>
 							<FormLabel>Time Splitting</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -218,7 +242,10 @@ const AnalyticsModelLogForm = ({
 						<FormItem>
 							<FormLabel>Version</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />

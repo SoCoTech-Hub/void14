@@ -95,7 +95,10 @@ const FaqForm = ({
 						<FormItem>
 							<FormLabel>Question</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -109,7 +112,10 @@ const FaqForm = ({
 						<FormItem>
 							<FormLabel>Answer</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -117,7 +123,7 @@ const FaqForm = ({
 					)}
 				/>
 				{
-          //TODO add multi-select dropdown for categories
+					//TODO add multi-select dropdown for categories
 				}
 				<Button
 					type='submit'

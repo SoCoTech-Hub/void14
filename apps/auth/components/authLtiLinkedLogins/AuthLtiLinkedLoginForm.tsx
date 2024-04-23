@@ -101,7 +101,10 @@ const AuthLtiLinkedLoginForm = ({
 						<FormItem>
 							<FormLabel>Issuer</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -115,7 +118,10 @@ const AuthLtiLinkedLoginForm = ({
 						<FormItem>
 							<FormLabel>Issuer 256</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -129,7 +135,10 @@ const AuthLtiLinkedLoginForm = ({
 						<FormItem>
 							<FormLabel>Sub</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -143,7 +152,10 @@ const AuthLtiLinkedLoginForm = ({
 						<FormItem>
 							<FormLabel>Sub 256</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />

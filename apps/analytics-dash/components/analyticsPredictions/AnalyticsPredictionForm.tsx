@@ -128,7 +128,10 @@ const AnalyticsPredictionForm = ({
 						<FormItem>
 							<FormLabel>Calculations</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -142,7 +145,10 @@ const AnalyticsPredictionForm = ({
 						<FormItem>
 							<FormLabel>Context Id</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -156,7 +162,10 @@ const AnalyticsPredictionForm = ({
 						<FormItem>
 							<FormLabel>Model Id</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -170,7 +179,10 @@ const AnalyticsPredictionForm = ({
 						<FormItem>
 							<FormLabel>Prediciton</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -184,7 +196,10 @@ const AnalyticsPredictionForm = ({
 						<FormItem>
 							<FormLabel>Prediciton Score</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -198,7 +213,10 @@ const AnalyticsPredictionForm = ({
 						<FormItem>
 							<FormLabel>Range Index</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -212,7 +230,10 @@ const AnalyticsPredictionForm = ({
 						<FormItem>
 							<FormLabel>Sample Id</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />

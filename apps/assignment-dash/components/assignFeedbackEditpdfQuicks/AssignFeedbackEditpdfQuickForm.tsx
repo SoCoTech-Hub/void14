@@ -109,7 +109,10 @@ const AssignFeedbackEditpdfQuickForm = ({
 						<FormItem>
 							<FormLabel>Color</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -123,7 +126,10 @@ const AssignFeedbackEditpdfQuickForm = ({
 						<FormItem>
 							<FormLabel>Raw Text</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -137,7 +143,10 @@ const AssignFeedbackEditpdfQuickForm = ({
 						<FormItem>
 							<FormLabel>Width</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />

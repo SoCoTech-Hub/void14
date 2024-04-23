@@ -103,7 +103,10 @@ const AuthOauth2LinkedLoginForm = ({
 						<FormItem>
 							<FormLabel>Confirm Token</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -117,7 +120,10 @@ const AuthOauth2LinkedLoginForm = ({
 						<FormItem>
 							<FormLabel>Confirm Token Expires</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -131,7 +137,10 @@ const AuthOauth2LinkedLoginForm = ({
 						<FormItem>
 							<FormLabel>Email</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -145,7 +154,10 @@ const AuthOauth2LinkedLoginForm = ({
 						<FormItem>
 							<FormLabel>Issuer Id</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -159,7 +171,10 @@ const AuthOauth2LinkedLoginForm = ({
 						<FormItem>
 							<FormLabel>User Modified Id</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -173,7 +188,10 @@ const AuthOauth2LinkedLoginForm = ({
 						<FormItem>
 							<FormLabel>User Name</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />

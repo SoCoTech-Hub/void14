@@ -121,7 +121,10 @@ const AssignUserFlagForm = ({
 						<FormItem>
 							<FormLabel>Allocated Marker</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -251,7 +254,10 @@ const AssignUserFlagForm = ({
 						<FormItem>
 							<FormLabel>Workflow State</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />

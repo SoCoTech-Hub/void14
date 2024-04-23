@@ -188,7 +188,10 @@ const InmailResponseForm = ({
 						<FormItem>
 							<FormLabel>Label</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
