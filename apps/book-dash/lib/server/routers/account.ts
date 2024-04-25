@@ -1,13 +1,8 @@
-import { getUserAuth } from "@/lib/auth/utils";
-import { publicProcedure, router } from "@/lib/server/trpc";
-import { getUserSubscriptionPlan } from "@/lib/stripe/subscription";
+import { getUserAuth } from '@/lib/auth/utils'
+import { publicProcedure, router } from '@/lib/server/trpc'
 export const accountRouter = router({
-  getUser: publicProcedure.query(async () => {
-    const { session } = await getUserAuth();
-    return session;
-  }),
-  getSubscription: publicProcedure.query(async () => {
-    const sub = await getUserSubscriptionPlan();
-    return sub;
-  }),
-});
+	getUser: publicProcedure.query(async () => {
+		const { session } = await getUserAuth()
+		return session
+	})
+})
