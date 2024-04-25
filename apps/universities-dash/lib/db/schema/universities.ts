@@ -1,0 +1,38 @@
+import { varchar, pgTable } from "drizzle-orm/pg-core";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { z } from "zod";
+
+import { type getUniversities } from "@/lib/api/universities/queries";
+
+import { nanoid } from "@/lib/utils";
+
+
+export const universities = pgTable('universities', {
+  id: varchar("id", { length: 191 }).primaryKey().$defaultFn(() => nanoid()),
+  name: varchar("name", { length: 256 }).notNull(),
+  logo: varchar("logo", { length: 256 }).notNull()
+});
+
+
+// Schema for universities - used to validate API requests
+const baseSchema = createSelectSchema(universities)
+
+export const insertUniversitySchema = createInsertSchema(universities);
+export const insertUniversityParams = baseSchema.extend({}).omit({ 
+  id: true
+});
+
+export const updateUniversitySchema = baseSchema;
+export const updateUniversityParams = baseSchema.extend({})
+export const universityIdSchema = baseSchema.pick({ id: true });
+
+// Types for universities - used to type API request params and within Components
+export type University = typeof universities.$inferSelect;
+export type NewUniversity = z.infer<typeof insertUniversitySchema>;
+export type NewUniversityParams = z.infer<typeof insertUniversityParams>;
+export type UpdateUniversityParams = z.infer<typeof updateUniversityParams>;
+export type UniversityId = z.infer<typeof universityIdSchema>["id"];
+    
+// this type infers the return from getUniversities() - meaning it will include any joins
+export type CompleteUniversity = Awaited<ReturnType<typeof getUniversities>>["universities"][number];
+
