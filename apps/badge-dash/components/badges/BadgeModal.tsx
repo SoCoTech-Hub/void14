@@ -10,7 +10,7 @@ import {
 	DialogTrigger
 } from '../ui/dialog'
 import BadgeForm from './BadgeForm'
-import { Badge } from '@/lib/db/schema/badges'
+import type { Badge } from '@/lib/db/schema/badges'
 
 export default function BadgeModal({
 	badge,
