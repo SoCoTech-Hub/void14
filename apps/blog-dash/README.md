@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Blog - Dash
 
-## Getting Started
+Blog articles for the platform
 
-First, run the development server:
+## Tables
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+List of Tables with their function described below:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### blog_associations
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Associations of blog entries with courses and module instanc
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+#### Fields
 
-## Learn More
+- id
+- blog_id
+- context_id
 
-To learn more about Next.js, take a look at the following resources:
+### blog_externals
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+External blog links used for RSS copying of blog entries to
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+#### Fields
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- id
+- description
+- failed_last_sync \* Whether or not the last sync failed for some reason
+- filter_tags \* Comma-separated list of tags that will be used to filter which entries are copied over from the external blog. They refer to existing tags in the external blog.
+- name
+- url
+- created_at
+- updated_at
+- user_id
