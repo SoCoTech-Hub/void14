@@ -12,4 +12,32 @@ export const defaultLinks: SidebarLink[] = [
   { href: "/settings", title: "Settings", icon: Cog },
 ];
 
-export const additionalLinks: AdditionalLinks[] = [];
+export const additionalLinks: AdditionalLinks[] = [
+  {
+    title: "Entities",
+    links: [
+      {
+        href: "/chat-users",
+        title: "Chat Users",
+        icon: Globe,
+      },
+      {
+        href: "/chat-messages-currents",
+        title: "Chat Messages Currents",
+        icon: Globe,
+      },
+      {
+        href: "/chat-messages",
+        title: "Chat Messages",
+        icon: Globe,
+      },
+      {
+        href: "/chats",
+        title: "Chats",
+        icon: Globe,
+      },
+    ],
+  },
+
+];
+
