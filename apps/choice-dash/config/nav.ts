@@ -1,0 +1,38 @@
+import { SidebarLink } from "@/components/SidebarItems";
+import { Cog, Globe, HomeIcon } from "lucide-react";
+
+type AdditionalLinks = {
+  title: string;
+  links: SidebarLink[];
+};
+
+export const defaultLinks: SidebarLink[] = [
+  { href: "/dashboard", title: "Home", icon: HomeIcon },
+  { href: "/account", title: "Account", icon: Cog },
+  { href: "/settings", title: "Settings", icon: Cog },
+];
+
+export const additionalLinks: AdditionalLinks[] = [
+  {
+    title: "Entities",
+    links: [
+      {
+        href: "/choice-answers",
+        title: "Choice Answers",
+        icon: Globe,
+      },
+      {
+        href: "/choice-options",
+        title: "Choice Options",
+        icon: Globe,
+      },
+      {
+        href: "/choices",
+        title: "Choices",
+        icon: Globe,
+      },
+    ],
+  },
+
+];
+
