@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Competency Dash
 
-## Getting Started
+## Tables
 
-First, run the development server:
+List of Tables with their function described below:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### competency
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### competency_course_comp
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### competency_course_comp_setting
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### competency_evidence
 
-## Learn More
+### competency_framework
 
-To learn more about Next.js, take a look at the following resources:
+### competency_module_comp
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### competency_plan
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### competency_plan_comp
 
-## Deploy on Vercel
+### competency_related_comp
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### competency_template
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### competency_template_cohort
+
+### competency_template_comp
+
+### competency_user_comp
+
+### competency_user_comp_course
+
+### competency_user_comp_plan
+
+### competency_user_evidence
+
+### competency_user_evidence_comp
