@@ -1,4 +1,4 @@
-# Course Dash
+# Admin Dash
 
 ## Tables
 
