@@ -56,7 +56,7 @@ export default function BadgeBackpackOauth2Modal({
 					</Button>
 				)}
 			</DialogTrigger>
-			<DialogContent>
+			<DialogContent className='max-h-screen overflow-auto my-4 custom-scrollbar'>
 				<DialogHeader className='px-5 pt-5'>
 					<DialogTitle>
 						{editing ? 'Edit' : 'Create'} Badge Backpack Oauth2
