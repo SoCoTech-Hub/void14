@@ -101,7 +101,7 @@ const CohortMemberForm = ({
                   <SelectContent>
                     {cohorts?.cohorts.map((cohort) => (
                       <SelectItem key={cohort.id} value={cohort.id.toString()}>
-                        {cohort.id}  {/* TODO: Replace with a field from the cohort model */}
+                        {cohort.name}  {/* TODO: Replace with a field from the cohort model */}
                       </SelectItem>
                     ))}
                   </SelectContent>

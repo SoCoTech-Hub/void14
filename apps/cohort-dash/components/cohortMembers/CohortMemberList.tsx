@@ -17,7 +17,7 @@ export default function CohortMemberList({ cohortMembers }: { cohortMembers: Com
   return (
     <ul>
       {c.cohortMembers.map((cohortMember) => (
-        <CohortMember cohortMember={cohortMember} key={cohortMember.cohortMember.id} />
+        <CohortMember cohortMember={cohortMember} key={cohortMember.id} />
       ))}
     </ul>
   );
@@ -27,9 +27,9 @@ const CohortMember = ({ cohortMember }: { cohortMember: CompleteCohortMember }) 
   return (
     <li className="flex justify-between my-2">
       <div className="w-full">
-        <div>{cohortMember.cohortMember.cohortId}</div>
+        <div>{cohortMember.cohortId}</div>
       </div>
-      <CohortMemberModal cohortMember={cohortMember.cohortMember} />
+      <CohortMemberModal cohortMember={cohortMember} />
     </li>
   );
 };
