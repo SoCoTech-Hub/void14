@@ -12,4 +12,47 @@ export const defaultLinks: SidebarLink[] = [
   { href: "/settings", title: "Settings", icon: Cog },
 ];
 
-export const additionalLinks: AdditionalLinks[] = [];
+export const additionalLinks: AdditionalLinks[] = [
+  {
+    title: "Entities",
+    links: [
+      {
+        href: "/wiki-versions",
+        title: "Wiki Versions",
+        icon: Globe,
+      },
+      {
+        href: "/wiki-synonyms",
+        title: "Wiki Synonyms",
+        icon: Globe,
+      },
+      {
+        href: "/wiki-subwikis",
+        title: "Wiki Subwikis",
+        icon: Globe,
+      },
+      {
+        href: "/wiki-locks",
+        title: "Wiki Locks",
+        icon: Globe,
+      },
+      {
+        href: "/wiki-links",
+        title: "Wiki Links",
+        icon: Globe,
+      },
+      {
+        href: "/wiki-pages",
+        title: "Wiki Pages",
+        icon: Globe,
+      },
+      {
+        href: "/wikis",
+        title: "Wikis",
+        icon: Globe,
+      },
+    ],
+  },
+
+];
+
