@@ -48,6 +48,17 @@ const BlockRecentActivityForm = ({
 		}
 	})
 
+	const onError = async (
+		action: 'create' | 'update' | 'delete',
+		data?: { error?: string }
+	) => {
+		if (data?.error) {
+			toast.error(data.error)
+			return
+		}
+		return
+	}
+
 	const onSuccess = async (
 		action: 'create' | 'update' | 'delete',
 		data?: { error?: string }
@@ -101,7 +112,10 @@ const BlockRecentActivityForm = ({
 						<FormItem>
 							<FormLabel>Action</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -115,7 +129,10 @@ const BlockRecentActivityForm = ({
 						<FormItem>
 							<FormLabel>Cm Id</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -129,7 +146,10 @@ const BlockRecentActivityForm = ({
 						<FormItem>
 							<FormLabel>Course Id</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -143,7 +163,10 @@ const BlockRecentActivityForm = ({
 						<FormItem>
 							<FormLabel>Mod Name</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />

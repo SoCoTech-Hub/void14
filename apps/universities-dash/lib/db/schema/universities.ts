@@ -1,23 +1,32 @@
-import { varchar, pgTable } from "drizzle-orm/pg-core";
+import { sql } from "drizzle-orm";
+import { varchar, timestamp, pgTable } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { type getUniversities } from "@/lib/api/universities/queries";
 
-import { nanoid } from "@/lib/utils";
+import { nanoid, timestamps } from "@/lib/utils";
 
 
 export const universities = pgTable('universities', {
   id: varchar("id", { length: 191 }).primaryKey().$defaultFn(() => nanoid()),
-  name: varchar("name", { length: 256 }).notNull(),
-  logo: varchar("logo", { length: 256 }).notNull()
+  name: varchar("name", { length: 256 }),
+  logo: varchar("logo", { length: 256 }),
+  
+  createdAt: timestamp("created_at")
+    .notNull()
+    .default(sql`now()`),
+  updatedAt: timestamp("updated_at")
+    .notNull()
+    .default(sql`now()`),
+
 });
 
 
 // Schema for universities - used to validate API requests
-const baseSchema = createSelectSchema(universities)
+const baseSchema = createSelectSchema(universities).omit(timestamps)
 
-export const insertUniversitySchema = createInsertSchema(universities);
+export const insertUniversitySchema = createInsertSchema(universities).omit(timestamps);
 export const insertUniversityParams = baseSchema.extend({}).omit({ 
   id: true
 });

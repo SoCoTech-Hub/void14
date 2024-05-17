@@ -1,5 +1,5 @@
 import { db } from "@/lib/db/index";
-import { and, eq } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import { 
   UserId, 
   NewUserParams,
@@ -9,11 +9,9 @@ import {
   users,
   userIdSchema 
 } from "@/lib/db/schema/users";
-import { getUserAuth } from "@/lib/auth/utils";
 
 export const createUser = async (user: NewUserParams) => {
-  const { session } = await getUserAuth();
-  const newUser = insertUserSchema.parse({ ...user, userId: session?.user.id! });
+  const newUser = insertUserSchema.parse(user);
   try {
     const [u] =  await db.insert(users).values(newUser).returning();
     return { user: u };
@@ -25,14 +23,13 @@ export const createUser = async (user: NewUserParams) => {
 };
 
 export const updateUser = async (id: UserId, user: UpdateUserParams) => {
-  const { session } = await getUserAuth();
   const { id: userId } = userIdSchema.parse({ id });
-  const newUser = updateUserSchema.parse({ ...user, userId: session?.user.id! });
+  const newUser = updateUserSchema.parse(user);
   try {
     const [u] =  await db
      .update(users)
      .set({...newUser, updatedAt: new Date() })
-     .where(and(eq(users.id, userId!), eq(users.userId, session?.user.id!)))
+     .where(eq(users.id, userId!))
      .returning();
     return { user: u };
   } catch (err) {
@@ -43,10 +40,9 @@ export const updateUser = async (id: UserId, user: UpdateUserParams) => {
 };
 
 export const deleteUser = async (id: UserId) => {
-  const { session } = await getUserAuth();
   const { id: userId } = userIdSchema.parse({ id });
   try {
-    const [u] =  await db.delete(users).where(and(eq(users.id, userId!), eq(users.userId, session?.user.id!)))
+    const [u] =  await db.delete(users).where(eq(users.id, userId!))
     .returning();
     return { user: u };
   } catch (err) {

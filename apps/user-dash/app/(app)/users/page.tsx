@@ -1,10 +1,8 @@
 import UserList from "@/components/users/UserList";
 import NewUserModal from "@/components/users/UserModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
 
 export default async function Users() {
-  await checkAuth();
   const { users } = await api.users.getUsers.query();  
 
   return (

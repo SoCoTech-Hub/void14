@@ -79,6 +79,17 @@ const WorkshopForm = ({
 		}
 	})
 
+	const onError = async (
+		action: 'create' | 'update' | 'delete',
+		data?: { error?: string }
+	) => {
+		if (data?.error) {
+			toast.error(data.error)
+			return
+		}
+		return
+	}
+
 	const onSuccess = async (
 		action: 'create' | 'update' | 'delete',
 		data?: { error?: string }
@@ -132,7 +143,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Assessment Start</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -146,7 +160,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Conclusion</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -160,7 +177,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Conclusion Format</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -174,7 +194,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Course Id</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -188,7 +211,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Evaluation</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -202,7 +228,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Examples Moden</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -216,7 +245,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Grade</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -230,7 +262,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Grade Decimals</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -244,7 +279,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Grading Grade</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -258,7 +296,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Instruct Authors</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -272,7 +313,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Instruct Authors Format</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -286,7 +330,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Instruct Reviewers</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -300,7 +347,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Instruct Reviewers Format</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -314,7 +364,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Intro</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -328,7 +381,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Intro Format</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -361,7 +417,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Max Bytes</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -375,7 +434,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Name</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -389,7 +451,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Natt Achments</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -403,7 +468,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Overall Feedback Files</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -417,7 +485,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Overall Feedback File Types</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -431,7 +502,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Overall Feedback Max Bytes</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -445,7 +519,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Overall Feedback Mode</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -459,7 +536,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Phase</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -492,7 +572,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Strategy</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -506,7 +589,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Submissionend</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -520,7 +606,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Submission File Types</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -534,7 +623,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Submission Start</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -605,7 +697,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Use Peer Assessment</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -619,7 +714,10 @@ const WorkshopForm = ({
 						<FormItem>
 							<FormLabel>Use Self Assessment</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />

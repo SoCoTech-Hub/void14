@@ -62,6 +62,17 @@ const BigBlueButtonBnRecordingForm = ({
 		}
 	})
 
+	const onError = async (
+		action: 'create' | 'update' | 'delete',
+		data?: { error?: string }
+	) => {
+		if (data?.error) {
+			toast.error(data.error)
+			return
+		}
+		return
+	}
+
 	const onSuccess = async (
 		action: 'create' | 'update' | 'delete',
 		data?: { error?: string }
@@ -161,7 +172,10 @@ const BigBlueButtonBnRecordingForm = ({
 						<FormItem>
 							<FormLabel>Course Id</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -175,7 +189,10 @@ const BigBlueButtonBnRecordingForm = ({
 						<FormItem>
 							<FormLabel>Group Id</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -227,7 +244,10 @@ const BigBlueButtonBnRecordingForm = ({
 						<FormItem>
 							<FormLabel>Imported Data</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -241,7 +261,10 @@ const BigBlueButtonBnRecordingForm = ({
 						<FormItem>
 							<FormLabel>Recording Id</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />

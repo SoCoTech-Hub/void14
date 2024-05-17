@@ -27,7 +27,7 @@ const User = ({ user }: { user: CompleteUser }) => {
   return (
     <li className="flex justify-between my-2">
       <div className="w-full">
-        <div>{user.userName}</div>
+        <div>{user.address}</div>
       </div>
       <UserModal user={user} />
     </li>

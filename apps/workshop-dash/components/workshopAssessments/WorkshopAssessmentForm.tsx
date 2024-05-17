@@ -56,6 +56,17 @@ const WorkshopAssessmentForm = ({
 		}
 	})
 
+	const onError = async (
+		action: 'create' | 'update' | 'delete',
+		data?: { error?: string }
+	) => {
+		if (data?.error) {
+			toast.error(data.error)
+			return
+		}
+		return
+	}
+
 	const onSuccess = async (
 		action: 'create' | 'update' | 'delete',
 		data?: { error?: string }
@@ -109,7 +120,10 @@ const WorkshopAssessmentForm = ({
 						<FormItem>
 							<FormLabel>Feedback Author</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -123,7 +137,10 @@ const WorkshopAssessmentForm = ({
 						<FormItem>
 							<FormLabel>Feedback Author Attachment</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -137,7 +154,10 @@ const WorkshopAssessmentForm = ({
 						<FormItem>
 							<FormLabel>Feedback Author Format</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -151,7 +171,10 @@ const WorkshopAssessmentForm = ({
 						<FormItem>
 							<FormLabel>Feedback Reviewer</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -165,7 +188,10 @@ const WorkshopAssessmentForm = ({
 						<FormItem>
 							<FormLabel>Feedback Reviewer Format</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -179,7 +205,10 @@ const WorkshopAssessmentForm = ({
 						<FormItem>
 							<FormLabel>Grade</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -193,7 +222,10 @@ const WorkshopAssessmentForm = ({
 						<FormItem>
 							<FormLabel>Grading Grade</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -207,7 +239,10 @@ const WorkshopAssessmentForm = ({
 						<FormItem>
 							<FormLabel>Grading Grade Over</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -221,7 +256,10 @@ const WorkshopAssessmentForm = ({
 						<FormItem>
 							<FormLabel>Grading Grade Over By</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -235,7 +273,10 @@ const WorkshopAssessmentForm = ({
 						<FormItem>
 							<FormLabel>Reviewer Id</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -249,7 +290,10 @@ const WorkshopAssessmentForm = ({
 						<FormItem>
 							<FormLabel>Submission Id</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -263,7 +307,10 @@ const WorkshopAssessmentForm = ({
 						<FormItem>
 							<FormLabel>Weight</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />

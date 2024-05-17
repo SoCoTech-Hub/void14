@@ -47,18 +47,64 @@ const UserForm = ({
 		// errors locally but not in production
 		resolver: zodResolver(insertUserParams),
 		defaultValues: user ?? {
-			userName: '',
+			address: '',
+			alternateName: '',
+			auth: '',
+			autoSubscribe: false,
+			calendarType: '',
+			city: '',
+			confirmed: false,
+			country: '',
+			currentLogin: '',
+			deleted: false,
+			department: '',
+			description: '',
+			descriptionFormat: 0,
 			email: '',
+			emailStop: false,
+			firstAccess: '',
+			firstName: '',
+			middleName: '',
+			lastName: '',
+			firstNamePhonetic: '',
+			lastNamePhonetic: '',
+			idNumber: '',
+			imageAlt: '',
+			institution: '',
+			lang: '',
+			lastAccess: '',
+			lastIp: '',
+			lastLogin: '',
+			mailDigest: false,
+			mailDisplay: 0,
+			mailFormat: false,
+			mnetHostId: '',
+			moodleNetProfile: '',
 			password: '',
-			deviceId: '',
-			expiryDate: '',
-			isConfirmed: false,
-			isBlocked: false,
-			isLoggedIn: false,
-			isDeleted: false,
-			isDisabled: false
+			phone1: '',
+			phone2: '',
+			picture: '',
+			policyAgreed: false,
+			secret: '',
+			suspended: false,
+			theme: '',
+			timeZone: '',
+			trackForums: false,
+			trustBitMask: '',
+			username: ''
 		}
 	})
+
+	const onError = async (
+		action: 'create' | 'update' | 'delete',
+		data?: { error?: string }
+	) => {
+		if (data?.error) {
+			toast.error(data.error)
+			return
+		}
+		return
+	}
 
 	const onSuccess = async (
 		action: 'create' | 'update' | 'delete',
@@ -108,10 +154,10 @@ const UserForm = ({
 			>
 				<FormField
 					control={form.control}
-					name='userName'
+					name='address'
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>User Name</FormLabel>
+							<FormLabel>Address</FormLabel>
 							<FormControl>
 								<Input
 									{...field}
@@ -125,10 +171,10 @@ const UserForm = ({
 				/>
 				<FormField
 					control={form.control}
-					name='email'
+					name='alternateName'
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Email</FormLabel>
+							<FormLabel>Alternate Name</FormLabel>
 							<FormControl>
 								<Input
 									{...field}
@@ -142,10 +188,10 @@ const UserForm = ({
 				/>
 				<FormField
 					control={form.control}
-					name='password'
+					name='auth'
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Password</FormLabel>
+							<FormLabel>Auth</FormLabel>
 							<FormControl>
 								<Input
 									{...field}
@@ -159,10 +205,29 @@ const UserForm = ({
 				/>
 				<FormField
 					control={form.control}
-					name='deviceId'
+					name='autoSubscribe'
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Device Id</FormLabel>
+							<FormLabel>Auto Subscribe</FormLabel>
+							<br />
+							<FormControl>
+								<Checkbox
+									{...field}
+									checked={!!field.value}
+									onCheckedChange={field.onChange}
+									value={''}
+								/>
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='calendarType'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Calendar Type</FormLabel>
 							<FormControl>
 								<Input
 									{...field}
@@ -176,10 +241,63 @@ const UserForm = ({
 				/>
 				<FormField
 					control={form.control}
-					name='expiryDate'
+					name='city'
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Expiry Date</FormLabel>
+							<FormLabel>City</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='confirmed'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Confirmed</FormLabel>
+							<br />
+							<FormControl>
+								<Checkbox
+									{...field}
+									checked={!!field.value}
+									onCheckedChange={field.onChange}
+									value={''}
+								/>
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='country'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Country</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='currentLogin'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Current Login</FormLabel>
 							<br />
 							<Popover>
 								<PopoverTrigger asChild>
@@ -222,10 +340,10 @@ const UserForm = ({
 				/>
 				<FormField
 					control={form.control}
-					name='isConfirmed'
+					name='deleted'
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Is Confirmed</FormLabel>
+							<FormLabel>Deleted</FormLabel>
 							<br />
 							<FormControl>
 								<Checkbox
@@ -241,10 +359,78 @@ const UserForm = ({
 				/>
 				<FormField
 					control={form.control}
-					name='isBlocked'
+					name='department'
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Is Blocked</FormLabel>
+							<FormLabel>Department</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='description'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Description</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='descriptionFormat'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Description Format</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='email'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Email</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='emailStop'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Email Stop</FormLabel>
 							<br />
 							<FormControl>
 								<Checkbox
@@ -260,10 +446,318 @@ const UserForm = ({
 				/>
 				<FormField
 					control={form.control}
-					name='isLoggedIn'
+					name='firstAccess'
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Is Logged In</FormLabel>
+							<FormLabel>First Access</FormLabel>
+							<br />
+							<Popover>
+								<PopoverTrigger asChild>
+									<FormControl>
+										<Button
+											variant={'outline'}
+											className={cn(
+												'w-[240px] pl-3 text-left font-normal',
+												!field.value && 'text-muted-foreground'
+											)}
+										>
+											{field.value ? (
+												format(new Date(field.value), 'PPP')
+											) : (
+												<span>Pick a date</span>
+											)}
+											<CalendarIcon className='ml-auto h-4 w-4 opacity-50' />
+										</Button>
+									</FormControl>
+								</PopoverTrigger>
+								<PopoverContent
+									className='w-auto p-0'
+									align='start'
+								>
+									<Calendar
+										mode='single'
+										selected={new Date(field.value)}
+										onSelect={field.onChange}
+										disabled={(date) =>
+											date > new Date() || date < new Date('1900-01-01')
+										}
+										initialFocus
+									/>
+								</PopoverContent>
+							</Popover>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='firstName'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>First Name</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='middleName'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Middle Name</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='lastName'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Last Name</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='firstNamePhonetic'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>First Name Phonetic</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='lastNamePhonetic'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Last Name Phonetic</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='idNumber'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Id Number</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='imageAlt'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Image Alt</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='institution'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Institution</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='lang'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Lang</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='lastAccess'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Last Access</FormLabel>
+							<br />
+							<Popover>
+								<PopoverTrigger asChild>
+									<FormControl>
+										<Button
+											variant={'outline'}
+											className={cn(
+												'w-[240px] pl-3 text-left font-normal',
+												!field.value && 'text-muted-foreground'
+											)}
+										>
+											{field.value ? (
+												format(new Date(field.value), 'PPP')
+											) : (
+												<span>Pick a date</span>
+											)}
+											<CalendarIcon className='ml-auto h-4 w-4 opacity-50' />
+										</Button>
+									</FormControl>
+								</PopoverTrigger>
+								<PopoverContent
+									className='w-auto p-0'
+									align='start'
+								>
+									<Calendar
+										mode='single'
+										selected={new Date(field.value)}
+										onSelect={field.onChange}
+										disabled={(date) =>
+											date > new Date() || date < new Date('1900-01-01')
+										}
+										initialFocus
+									/>
+								</PopoverContent>
+							</Popover>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='lastIp'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Last Ip</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='lastLogin'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Last Login</FormLabel>
+							<br />
+							<Popover>
+								<PopoverTrigger asChild>
+									<FormControl>
+										<Button
+											variant={'outline'}
+											className={cn(
+												'w-[240px] pl-3 text-left font-normal',
+												!field.value && 'text-muted-foreground'
+											)}
+										>
+											{field.value ? (
+												format(new Date(field.value), 'PPP')
+											) : (
+												<span>Pick a date</span>
+											)}
+											<CalendarIcon className='ml-auto h-4 w-4 opacity-50' />
+										</Button>
+									</FormControl>
+								</PopoverTrigger>
+								<PopoverContent
+									className='w-auto p-0'
+									align='start'
+								>
+									<Calendar
+										mode='single'
+										selected={new Date(field.value)}
+										onSelect={field.onChange}
+										disabled={(date) =>
+											date > new Date() || date < new Date('1900-01-01')
+										}
+										initialFocus
+									/>
+								</PopoverContent>
+							</Popover>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='mailDigest'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Mail Digest</FormLabel>
 							<br />
 							<FormControl>
 								<Checkbox
@@ -279,10 +773,27 @@ const UserForm = ({
 				/>
 				<FormField
 					control={form.control}
-					name='isDeleted'
+					name='mailDisplay'
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Is Deleted</FormLabel>
+							<FormLabel>Mail Display</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='mailFormat'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Mail Format</FormLabel>
 							<br />
 							<FormControl>
 								<Checkbox
@@ -298,10 +809,141 @@ const UserForm = ({
 				/>
 				<FormField
 					control={form.control}
-					name='isDisabled'
+					name='mnetHostId'
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Is Disabled</FormLabel>
+							<FormLabel>Mnet Host Id</FormLabel>
+							<br />
+							<Popover>
+								<PopoverTrigger asChild>
+									<FormControl>
+										<Button
+											variant={'outline'}
+											className={cn(
+												'w-[240px] pl-3 text-left font-normal',
+												!field.value && 'text-muted-foreground'
+											)}
+										>
+											{field.value ? (
+												format(new Date(field.value), 'PPP')
+											) : (
+												<span>Pick a date</span>
+											)}
+											<CalendarIcon className='ml-auto h-4 w-4 opacity-50' />
+										</Button>
+									</FormControl>
+								</PopoverTrigger>
+								<PopoverContent
+									className='w-auto p-0'
+									align='start'
+								>
+									<Calendar
+										mode='single'
+										selected={new Date(field.value)}
+										onSelect={field.onChange}
+										disabled={(date) =>
+											date > new Date() || date < new Date('1900-01-01')
+										}
+										initialFocus
+									/>
+								</PopoverContent>
+							</Popover>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='moodleNetProfile'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Moodle Net Profile</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='password'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Password</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='phone1'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Phone1</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='phone2'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Phone2</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='picture'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Picture</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='policyAgreed'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Policy Agreed</FormLabel>
 							<br />
 							<FormControl>
 								<Checkbox
@@ -311,6 +953,129 @@ const UserForm = ({
 									value={''}
 								/>
 							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='secret'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Secret</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='suspended'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Suspended</FormLabel>
+							<br />
+							<FormControl>
+								<Checkbox
+									{...field}
+									checked={!!field.value}
+									onCheckedChange={field.onChange}
+									value={''}
+								/>
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='theme'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Theme</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='timeZone'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Time Zone</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='trackForums'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Track Forums</FormLabel>
+							<br />
+							<FormControl>
+								<Checkbox
+									{...field}
+									checked={!!field.value}
+									onCheckedChange={field.onChange}
+									value={''}
+								/>
+							</FormControl>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='trustBitMask'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Trust Bit Mask</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
+					name='username'
+					render={({ field }) => (
+						<FormItem>
+							<FormLabel>Username</FormLabel>
+							<FormControl>
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
+							</FormControl>
+
 							<FormMessage />
 						</FormItem>
 					)}

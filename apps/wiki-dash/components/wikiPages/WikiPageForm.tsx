@@ -60,6 +60,17 @@ const WikiPageForm = ({
 		}
 	})
 
+	const onError = async (
+		action: 'create' | 'update' | 'delete',
+		data?: { error?: string }
+	) => {
+		if (data?.error) {
+			toast.error(data.error)
+			return
+		}
+		return
+	}
+
 	const onSuccess = async (
 		action: 'create' | 'update' | 'delete',
 		data?: { error?: string }
@@ -113,7 +124,10 @@ const WikiPageForm = ({
 						<FormItem>
 							<FormLabel>Cached Content</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -127,7 +141,10 @@ const WikiPageForm = ({
 						<FormItem>
 							<FormLabel>Page Views</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -160,7 +177,10 @@ const WikiPageForm = ({
 						<FormItem>
 							<FormLabel>Sub Wiki Id</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -220,7 +240,10 @@ const WikiPageForm = ({
 						<FormItem>
 							<FormLabel>Title</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />

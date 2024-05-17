@@ -28,7 +28,7 @@ export const updateUniversity = async (id: UniversityId, university: UpdateUnive
   try {
     const [u] =  await db
      .update(universities)
-     .set(newUniversity)
+     .set({...newUniversity, updatedAt: new Date() })
      .where(eq(universities.id, universityId!))
      .returning();
     return { university: u };

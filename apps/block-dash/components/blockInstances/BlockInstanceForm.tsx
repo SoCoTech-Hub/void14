@@ -54,6 +54,17 @@ const BlockInstanceForm = ({
 		}
 	})
 
+	const onError = async (
+		action: 'create' | 'update' | 'delete',
+		data?: { error?: string }
+	) => {
+		if (data?.error) {
+			toast.error(data.error)
+			return
+		}
+		return
+	}
+
 	const onSuccess = async (
 		action: 'create' | 'update' | 'delete',
 		data?: { error?: string }
@@ -107,7 +118,10 @@ const BlockInstanceForm = ({
 						<FormItem>
 							<FormLabel>Block Name</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -121,7 +135,10 @@ const BlockInstanceForm = ({
 						<FormItem>
 							<FormLabel>Config Data</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -135,7 +152,10 @@ const BlockInstanceForm = ({
 						<FormItem>
 							<FormLabel>Default Region</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -149,7 +169,10 @@ const BlockInstanceForm = ({
 						<FormItem>
 							<FormLabel>Default Weight</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -163,7 +186,10 @@ const BlockInstanceForm = ({
 						<FormItem>
 							<FormLabel>Page Type Pattern</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -177,7 +203,10 @@ const BlockInstanceForm = ({
 						<FormItem>
 							<FormLabel>Parent Context Id</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
@@ -229,7 +258,10 @@ const BlockInstanceForm = ({
 						<FormItem>
 							<FormLabel>Sub Page Pattern</FormLabel>
 							<FormControl>
-								<Input {...field} />
+								<Input
+									{...field}
+									value={field.value || ''}
+								/>
 							</FormControl>
 
 							<FormMessage />
