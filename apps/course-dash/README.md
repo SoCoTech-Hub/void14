@@ -180,10 +180,7 @@ This table stores course modules.
 - **module**: BIGINT(19)
 - **score**: SMALLINT(5)
 - **section**: BIGINT(19)
-- **showdescription**:
-
-BIT(1) \* Some module types support a ‘description’ which shows within the module pages. This option controls whether it also displays on the course main page. 0 = does not display (default), 1 = displays.
-
+- **showdescription**: BIT(1) \* Some module types support a ‘description’ which shows within the module pages. This option controls whether it also displays on the course main page. 0 = does not display (default), 1 = displays.
 - **visible**: BIT(1) \* Default: 1.
 - **visibleold**: BIT(1) \* Default: 1.
 - **visibleoncoursepage**: BIT(1) \* If stealth visibility is allowed for the course, this controls whether activity is visible on course page.

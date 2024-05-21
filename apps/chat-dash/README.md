@@ -1,73 +1,71 @@
-# Chat Dash
+# Chat Management
 
 ## Tables
 
 ![Relationships Diagram](RelationshipsDiagram.png)
 List of Tables with their function described below:
+This README provides an overview of the tables in the Chat Management application, along with their fields and functions.
 
-### chat
+### Table: chat
 
-Each of these is a chat room
-
-#### Fields
-
-- id
-- chat_time
-- course_id
-- intro
-- intro_format \* text format of intro field
-- keep_days
-- name
-- schedule
-- student_logs
-- created_at
-- updated_at
-
-### chat_messages
-
-Stores all the actual chat messages
+This table defines each chat room.
 
 #### Fields
 
-- id
-- chat_id
-- group_id
-- is_system
-- message
-- created_at
-- updated_at
-- user_id
+- **chattime**: BIGINT(19)
+- **course**: BIGINT(19)
+- **id**: BIGINT(19)
+- **intro**: LONGTEXT(2147483647)
+- **introformat**: SMALLINT(5) \* Text format of intro field.
+- **keepdays**: BIGINT(19)
+- **name**: VARCHAR(255)
+- **schedule**: SMALLINT(5)
+- **studentlogs**: SMALLINT(5)
+- **updated_at**: BIGINT(19)
 
-### chat_messages_current
+### Table: chat_messages
 
-Stores current session
-
-#### Fields
-
-- id
-- chat_id
-- group_id
-- is_system
-- message
-- created_at
-- updated_at
-- user_id
-
-### chat_users
-
-Keeps track of which users are in which chat rooms
+This table stores all the actual chat messages.
 
 #### Fields
 
-- id
-- chat_id
-- course_id
-- first_ping
-- group_id
-- ip
-- lang
-- last_message_ping
-- last_ping
-- sid
-- version
-- user_id
+- **chatid**: BIGINT(19)
+- **groupid**: BIGINT(19)
+- **id**: BIGINT(19)
+- **issystem**: BIT(1)
+- **message**: LONGTEXT(2147483647)
+- **timestamp**: BIGINT(19)
+- **userid**: BIGINT(19)
+
+### Table: chat_messages_current
+
+This table stores current session messages.
+
+#### Fields
+
+- **chatid**: BIGINT(19)
+- **groupid**: BIGINT(19)
+- **id**: BIGINT(19)
+- **issystem**: BIT(1)
+- **message**: LONGTEXT(2147483647)
+- **timestamp**: BIGINT(19)
+- **userid**: BIGINT(19)
+
+### Table: chat_users
+
+This table keeps track of which users are in which chat rooms.
+
+#### Fields
+
+- **chatid**: BIGINT(19)
+- **course**: BIGINT(19)
+- **firstping**: BIGINT(19)
+- **groupid**: BIGINT(19)
+- **id**: BIGINT(19)
+- **ip**: VARCHAR(45)
+- **lang**: VARCHAR(30)
+- **lastmessageping**: BIGINT(19)
+- **lastping**: BIGINT(19)
+- **sid**: VARCHAR(32)
+- **userid**: BIGINT(19)
+- **version**: VARCHAR(16)

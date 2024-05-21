@@ -1,57 +1,54 @@
-# Backup - Dash
-
-Backups of courses
+# Backup Management
 
 ## Tables
 
-List of Tables with their function described below:
+This README provides an overview of the tables in the Backup Management application, along with their fields and functions.
 
-### backup_controllers
+### Table: backup_controllers
 
-To store the backup_controllers as they are used
-
-#### Fields
-
-- id
-- backup_id \* unique id of the backup
-- checksum \* checksum of the backup_controller object
-- controller \* serialised backup_controller object
-- execution \* type of execution (immediate/delayed)
-- execution_time \* epoch secs when the backup should be executed (for delayed backups only)
-- format \* format of the backup (moodle/imscc…)
-- interactive \* is the backup interactive (1-yes/0-no)
-- item_id \* id of the module/section/activity being backup
-- operation \* backup Type of operation (backup/restore)
-- progress \* The backup or restore progress as a floating point number
-- purpose \* purpose (target) of the backup (general, import, hub…)
-- status \* current status of the backup (configured, ui, running…)
-- type \* Type of the backup (activity/section/course)
-- created_at \* time the controller was created
-- updated_at \* last time the controller was modified
-- user_id \* user that owns/performs the backup
-
-### backup_courses
-
-To store every course backup status
+This table stores the backup controllers as they are used.
 
 #### Fields
 
-- id
-- course_id
-- last_status
-- last_start_time
-- last_end_time
-- next_start_time
+- **backupid**: VARCHAR(32) \* Unique ID of the backup.
+- **checksum**: VARCHAR(32) \* Checksum of the backup_controller object.
+- **controller**: LONGTEXT(2147483647) \* Serialized backup_controller object.
+- **execution**: SMALLINT(5) \* Type of execution (immediate/delayed).
+- **executiontime**: BIGINT(19) \* Epoch seconds when the backup should be executed (for delayed backups only).
+- **format**: VARCHAR(20) \* Format of the backup (Moodle/IMSCC).
+- **id**: BIGINT(19)
+- **interactive**: SMALLINT(5) \* Is the backup interactive (1-yes/0-no).
+- **itemid**: BIGINT(19) \* ID of the module/section/activity being backed up.
+- **operation**: VARCHAR(20) \* Type of operation (backup/restore).
+- **progress**: DECIMAL(15) \* The backup or restore progress as a floating point number.
+- **purpose**: SMALLINT(5) \* Purpose (target) of the backup (general, import, hub).
+- **status**: SMALLINT(5) \* Current status of the backup (configured, UI, running).
+- **created_at**: BIGINT(19) \* Time the controller was created.
+- **updated_at**: BIGINT(19) \* Last time the controller was modified.
+- **type**: VARCHAR(10) \* Type of the backup (activity/section/course).
+- **userid**: BIGINT(19) \* User that owns/performs the backup.
 
-### backup_logs
+### Table: backup_courses
 
-To store all the logs from backup and restore operations
+This table stores every course backup status.
 
 #### Fields
 
-- id
-- backup_id \* backupid the log record belongs to
-- log_level \* level of the log (debug…error)
-- message \* text logged
-- created_at \* timestamp this log entry was created
-- updated_at
+- **courseid**: BIGINT(19)
+- **id**: BIGINT(19)
+- **lastendtime**: BIGINT(19)
+- **laststarttime**: BIGINT(19)
+- **laststatus**: VARCHAR(1)
+- **nextstarttime**: BIGINT(19)
+
+### Table: backup_logs
+
+This table stores all the logs from backup and restore operations.
+
+#### Fields
+
+- **backupid**: VARCHAR(32) \* Backup ID the log record belongs to.
+- **id**: BIGINT(19)
+- **loglevel**: SMALLINT(5) \* Level of the log (debug/error).
+- **message**: LONGTEXT(2147483647) \* Text logged.
+- **created_at**: BIGINT(19) \* Timestamp this log entry was created.

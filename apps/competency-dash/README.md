@@ -1,289 +1,286 @@
-# Competency Dash
+# Competency Management
 
 ## Tables
 
-List of Tables with their function described below:
+This README provides an overview of the tables in the Competency Management application, along with their fields and functions.
 
-### competency *
+### Table: competency
 
-This table contains the master record of each competency in
-
-#### Fields 
-
-- id
-- competency_framework_id */ The framework this competency relates to.
-- description */ Description of a single competency
-- description_format */ The format of the description field
-- id_number
-- parent_id */ The parent competency.
-- path */ Used to speed up queries that use an entire branch of the tree. Looks like /5/34/54.
-- rule_config
-- rule_outcome
-- rule_type
-- scale_configuration
-- scale_id
-- shortname */ Shortname of a competency
-- sort_order */ Relative sort order within the branch
-- time_created */ The time this competency was created.
-- time_modified */ The time this competency was last modified.
-- user_modified */ The user who last modified this competency
-
-### competency_course_comp *
-
-Link a competency to a course.
+This table contains the master record of each competency.
 
 #### Fields
 
-- id 
-- competency_id */ The competency that is linked to this course.
-- course_id */ The course this competency is linked to.
-- rule_outcome */ The rule that applies to the competency when the course is completed.
-- sort_order */ The display order for this link.
-- time_created */ The time this link was created.
-- time_modified */ The time this link was modified.
-- user_modified */ The user who modified this link.
+- **competencyframeworkid**: BIGINT(19) \* The framework this competency relates to.
+- **description**: LONGTEXT(2147483647) \* Description of a single competency.
+- **descriptionformat**: SMALLINT(5) \* Default: 0. The format of the description field.
+- **id**: BIGINT(19)
+- **idnumber**: VARCHAR(100) \* Unique identifier of a competency.
+- **parentid**: BIGINT(19) \* The parent competency.
+- **path**: VARCHAR(255) \* Used to speed up queries that use an entire branch of the tree. Looks like /5/34/54.
+- **ruleconfig**: LONGTEXT(2147483647)
+- **ruleoutcome**: TINYINT(3) \* Default: 0.
+- **ruletype**: VARCHAR(100)
+- **scaleconfiguration**: LONGTEXT(2147483647)
+- **scaleid**: BIGINT(19)
+- **shortname**: VARCHAR(100) \* Shortname of a competency.
+- **sortorder**: BIGINT(19)
+- **timecreated**: BIGINT(19) \* The time this competency was created.
+- **timemodified**: BIGINT(19) \* The time this competency was last modified.
+- **usermodified**: BIGINT(19)
 
+### Table: competency_coursecomp
 
-### competency_course_comp_setting
-
-This table contains the course specific settings for compete
-
-#### Fields
-
-- id
-- course_id */ The course this setting is linked to.
-- push_ratings_to_user_plans */ Does this course push ratings to user plans?
-- time_created */ The time this link was created.
-- time_modified */ The time this link was modified.
-- user_modified */ The user who modified this link.
-
-### competency_evidence *
-
-The evidence linked to a user competency
+This table links a competency to a course.
 
 #### Fields
 
-- id
-- action 
-- action_user_id 
-- context_id 
-- desca 
-- desc_component 
-- desc_identifier 
-- grade 
-- note */ A non-localised text to attach to the evidence.
-- url 
-- time_created 
-- time_modified 
-- user_competency_id 
-- user_modified 
+- **competencyid**: BIGINT(19) \* The competency that is linked to this course.
+- **courseid**: BIGINT(19) \* The course this competency is linked to.
+- **id**: BIGINT(19)
+- **ruleoutcome**: TINYINT(3)
+- **sortorder**: BIGINT(19)
+- **timecreated**: BIGINT(19) \* The time this link was created.
+- **timemodified**: BIGINT(19) \* The time this link was modified.
+- **usermodified**: BIGINT(19)
 
+### Table: competency_coursecompsetting
 
-### competency_framework *
-
-List of competency frameworks.
+This table contains the course-specific settings for competencies.
 
 #### Fields
 
-- id
-- visible */ Used to show/hide this competency framework.
-- context_id
-- description */ Description of this competency framework
-- description_format */ The format of the description field
-- idnumber */ Unique idnumber for this competency framework.
-- scale_configuration */ Scale information.
-- scale_id */ Scale used to define competency.
-- shortname */ Short name for the competency framework.
-- taxonomies */ Sequence of terms to use for each competency level.
-- time_created */ The time this competency framework was created.
-- time_modified */ The time this competency framework was last modified.
-- user_modified */ The user who last modified this framework.
+- **courseid**: BIGINT(19) \* The course this setting is linked to.
+- **id**: BIGINT(19)
+- **pushratingstouserplans**: TINYINT(3)
+- **timecreated**: BIGINT(19) \* The time this setting was created.
+- **timemodified**: BIGINT(19) \* The time this setting was last modified.
+- **usermodified**: BIGINT(19)
 
+### Table: competency_evidence
 
-### competency_module_comp *
-
-Link a competency to a module.
+This table stores evidence linked to a user competency.
 
 #### Fields
 
-- id
-- cm_id */ ID of the record in the course_modules table.
-- competency_id */ The course competency this activity is linked to.
-- rule_outcome */ The outcome when an activity is completed.
-- sort_order */ The field used to naturally sort this link.
-- time_created */ The time this record was created.
-- time_modified */ The time this record was last modified
-- user_modified */ The user who last modified this field.
+- **action**: TINYINT(3)
+- **actionuserid**: BIGINT(19)
+- **contextid**: BIGINT(19)
+- **desca**: LONGTEXT(2147483647)
+- **desccomponent**: VARCHAR(255)
+- **descidentifier**: VARCHAR(255)
+- **grade**: BIGINT(19)
+- **id**: BIGINT(19)
+- **note**: LONGTEXT(2147483647) \* A non-localized text to attach to the evidence.
+- **timecreated**: BIGINT(19)
+- **timemodified**: BIGINT(19)
+- **url**: VARCHAR(255)
+- **usercompetencyid**: BIGINT(19)
+- **usermodified**: BIGINT(19)
 
-### competency_plan *
+### Table: competency_framework
 
-Learning plans
-
-#### Fields
-
-- id
-- description
-- description_format
-- due_date
-- name
-- orig_template_id */ The template ID this plan was based on originally
-- reviewer_id
-- status
-- template_id
-- time_created
-- time_modified
-- user_id
-- user_modified
-
-### competency_plan_comp *
-
-Plan competencies
+This table stores the list of competency frameworks.
 
 #### Fields
 
-- id
-- competency_id
-- plan_id
-- sort_order */ Relative sort order
-- time_created
-- time_modified
-- user_modified
+- **contextid**: BIGINT(19)
+- **description**: LONGTEXT(2147483647) \* Description of this competency framework.
+- **descriptionformat**: SMALLINT(5) \* Default: 0.
+- **id**: BIGINT(19)
+- **idnumber**: VARCHAR(100) \* Unique idnumber for this competency framework.
+- **scaleconfiguration**: LONGTEXT(2147483647)
+- **scaleid**: BIGINT(19)
+- **shortname**: VARCHAR(100) \* Short name for the competency framework.
+- **taxonomies**: VARCHAR(255) \* Sequence of terms to use for each competency level.
+- **timecreated**: BIGINT(19) \* The time this competency framework was created.
+- **timemodified**: BIGINT(19) \* The time this competency framework was last modified.
+- **usermodified**: BIGINT(19)
+- **visible**: TINYINT(3) \* Default: 1. Used to show/hide this competency framework.
 
-### competency_related_comp *
+### Table: competency_modulecomp
 
-Related competencies
-
-#### Fields
-
-- id
-- competency_id
-- related_competency_id
-- time_created
-- time_modified
-- user_modified
-
-### competency_template *
-
-Learning plan templates.
+This table links a competency to a module.
 
 #### Fields
 
-- id
-- visible */ Used to show/hide this learning plan template.
-- context_id
-- description */ Description of this learning plan template
-- description_format */ The format of the description field
-- due_date */ The default due date for instances of this plan.
-- short_name */ Short name for the learning plan template.
-- time_created */ The time this learning plan template was created.
-- time_modified */ The time this learning plan template was last modified.
-- user_modified */ The user who last modified this learning plan template.
+- **cmid**: BIGINT(19) \* ID of the record in the course_modules table.
+- **competencyid**: BIGINT(19) \* The course competency this activity is linked to.
+- **id**: BIGINT(19)
+- **ruleoutcome**: TINYINT(3)
+- **sortorder**: BIGINT(19)
+- **timecreated**: BIGINT(19) \* The time this record was created.
+- **timemodified**: BIGINT(19) \* The time this record was last modified.
+- **usermodified**: BIGINT(19)
 
-### competency_template_cohort *
+### Table: competency_plan
 
-Default comment for the table, please edit me
+This table stores learning plans.
 
 #### Fields
 
-- id
-- cohort_id
-- template_id
-- time_created
-- time_modified
-- user_modified
+- **description**: LONGTEXT(2147483647)
+- **descriptionformat**: SMALLINT(5) \* Default: 0.
+- **duedate**: BIGINT(19)
+- **id**: BIGINT(19)
+- **name**: VARCHAR(100)
+- **origtemplateid**: BIGINT(19)
+- **reviewerid**: BIGINT(19)
+- **status**: BIT(1)
+- **templateid**: BIGINT(19)
+- **timecreated**: BIGINT(19)
+- **timemodified**: BIGINT(19)
+- **userid**: BIGINT(19)
+- **usermodified**: BIGINT(19)
 
-### competency_template_comp *
+### Table: competency_plancomp
 
-Link a competency to a learning plan template.
-
-#### Fields
-
-- id
-- competency_id */The competency that is linked to this course.
-- sort_order */Relative sort order
-- template_id */The template this competency is linked to.
-- time_created */The time this link was created.
-- time_modified */The time this link was modified.
-- user_modified */The user who modified this link.
-
-### competency_user_comp *
-
-User competencies
+This table stores plan competencies.
 
 #### Fields
 
-- id
-- competency_id */Competency associated to the user.
-- grade */Grade assigned to the competency.
-- proficiency */Indicate if the competency is proficient not.
-- reviewer_id */User that reviewed the competency.
-- status */Competency status.
-- time_created
-- time_modified
-- user_id */User associated to the competency.
-- user_modified
+- **competencyid**: BIGINT(19)
+- **id**: BIGINT(19)
+- **planid**: BIGINT(19)
+- **sortorder**: BIGINT(19)
+- **timecreated**: BIGINT(19)
+- **timemodified**: BIGINT(19)
+- **usermodified**: BIGINT(19)
 
-### competency_user_comp_course *
+### Table: competency_relatedcomp
 
-User competencies in a course
+This table stores related competencies.
 
 #### Fields
 
-- id
-- competency_id */Competency associated to the user.
-- course_id */The course this competency is linked to.
-- grade */The course grade assigned for the competency.
-- proficiency */Indicate if the competency is proficient not.
-- time_created
-- time_modified
-- user_id */User associated to the competency.
-- user_modified
+- **competencyid**: BIGINT(19)
+- **id**: BIGINT(19)
+- **relatedcompetencyid**: BIGINT(19)
+- **timecreated**: BIGINT(19)
+- **timemodified**: BIGINT(19)
+- **usermodified**: BIGINT(19)
 
+### Table: competency_template
 
-### competency_user_comp_plan *
-
-User competencies plans
+This table stores learning plan templates.
 
 #### Fields
 
-- id
-- competency_id */Competency associated to the user.
-- grade */Grade assigned to the competency.
-- plan_id */Plan associated to the user.
-- proficiency */Indicate if the competency is proficient not.
-- sort_order */Relative sort order
-- time_created
-- time_modified
-- user_id */User associated to the competency.
-- user_modified
+- **contextid**: BIGINT(19)
+- **description**: LONGTEXT(2147483647)
+- **descriptionformat**: SMALLINT(5) \* Default: 0.
+- **duedate**: BIGINT(19)
+- **id**: BIGINT(19)
+- **shortname**: VARCHAR(100)
+- **timecreated**: BIGINT(19)
+- **timemodified**: BIGINT(19)
+- **usermodified**: BIGINT(19)
+- **visible**: TINYINT(3) \* Default: 1.
 
+### Table: competency_templatecohort
 
-### competency_user_evidence
-
-The evidence of prior learning
-
-#### Fields
-
-- id
-- name 
-- description
-- description_format
-- url
-- user_id
-- time_created
-- time_modified
-- user_modified
-
-
-### competency_user_evidence_comp
-
-Relationship between user evidence and competencies
+This table stores cohort links to learning plan templates.
 
 #### Fields
 
-- id
-- competency_id
-- time_created
-- time_modified
-- user_evidence_id
-- user_modified
+- **cohortid**: BIGINT(19)
+- **id**: BIGINT(19)
+- **templateid**: BIGINT(19)
+- **timecreated**: BIGINT(19)
+- **timemodified**: BIGINT(19)
+- **usermodified**: BIGINT(19)
+
+### Table: competency_templatecomp
+
+This table links a competency to a learning plan template.
+
+#### Fields
+
+- **competencyid**: BIGINT(19) \* The competency that is linked to this course.
+- **id**: BIGINT(19)
+- **sortorder**: BIGINT(19)
+- **templateid**: BIGINT(19) \* The template this competency is linked to.
+- **timecreated**: BIGINT(19) \* The time this link was created.
+- **timemodified**: BIGINT(19) \* The time this link was modified.
+- **usermodified**: BIGINT(19)
+
+### Table: competency_usercomp
+
+This table stores user competencies.
+
+#### Fields
+
+- **competencyid**: BIGINT(19) \* Competency associated to the user.
+- **grade**: BIGINT(19)
+- **id**: BIGINT(19)
+- **proficiency**: TINYINT(3)
+- **reviewerid**: BIGINT(19)
+- **status**: TINYINT(3) \* Default:
+
+0.
+
+- **timecreated**: BIGINT(19)
+- **timemodified**: BIGINT(19)
+- **userid**: BIGINT(19) \* User associated to the competency.
+- **usermodified**: BIGINT(19)
+
+### Table: competency_usercompcourse
+
+This table stores user competencies in a course.
+
+#### Fields
+
+- **competencyid**: BIGINT(19) \* Competency associated to the user.
+- **courseid**: BIGINT(19)
+- **grade**: BIGINT(19)
+- **id**: BIGINT(19)
+- **proficiency**: TINYINT(3)
+- **timecreated**: BIGINT(19)
+- **timemodified**: BIGINT(19)
+- **userid**: BIGINT(19) \* User associated to the competency.
+- **usermodified**: BIGINT(19)
+
+### Table: competency_usercompplan
+
+This table stores user competency plans.
+
+#### Fields
+
+- **competencyid**: BIGINT(19) \* Competency associated to the user.
+- **grade**: BIGINT(19)
+- **id**: BIGINT(19)
+- **planid**: BIGINT(19)
+- **proficiency**: TINYINT(3)
+- **sortorder**: BIGINT(19)
+- **timecreated**: BIGINT(19)
+- **timemodified**: BIGINT(19)
+- **userid**: BIGINT(19) \* User associated to the competency.
+- **usermodified**: BIGINT(19)
+
+### Table: competency_userevidence
+
+This table stores evidence of prior learning.
+
+#### Fields
+
+- **description**: LONGTEXT(2147483647)
+- **descriptionformat**: BIT(1)
+- **id**: BIGINT(19)
+- **name**: VARCHAR(100)
+- **timecreated**: BIGINT(19)
+- **timemodified**: BIGINT(19)
+- **url**: LONGTEXT(2147483647)
+- **userid**: BIGINT(19)
+- **usermodified**: BIGINT(19)
+
+### Table: competency_userevidencecomp
+
+This table stores the relationship between user evidence and competencies.
+
+#### Fields
+
+- **competencyid**: BIGINT(19)
+- **id**: BIGINT(19)
+- **timecreated**: BIGINT(19)
+- **timemodified**: BIGINT(19)
+- **userevidenceid**: BIGINT(19)
+- **usermodified**: BIGINT(19)

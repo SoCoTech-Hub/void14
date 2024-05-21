@@ -1,58 +1,55 @@
-# choice Dash
+# Choice Management
 
 ## Tables
 
-List of Tables with their function described below:
+This README provides an overview of the tables in the Choice Management application, along with their fields and functions.
 
-### choices
+### Table: choice
 
-This table saves information about the available choices that are saved
-
-#### Fields
-
-- id
-- allow_multiple
-- allow_update
-- completion_submit
-- course
-- display
-- include_inactive
-- intro
-- intro_format
-- limit_answers
-- name
-- publish
-- show_available
-- show_preview
-- show_results
-- show_unanswered
-- time_close
-- created_at
-- updated_at
-
-### choice_options
-
-This table saves information about the available options to choice
+This table stores available choices.
 
 #### Fields
 
-- id
-- max_answers
-- text
-- choice_id
-- created_at
-- updated_at
+- **allowmultiple**: TINYINT(3) \* Default: 0.
+- **allowupdate**: TINYINT(3) \* Default: 0.
+- **completionsubmit**: BIT(1) \* If this field is set to 1, then the activity will be automatically marked as ‘complete’ once the user submits their choice.
+- **course**: BIGINT(19)
+- **display**: SMALLINT(5) \* Default: 0.
+- **id**: BIGINT(19)
+- **includeinactive**: TINYINT(3) \* Default: 1.
+- **intro**: LONGTEXT(2147483647)
+- **introformat**: SMALLINT(5) \* Default: 0.
+- **limitanswers**: TINYINT(3) \* Default: 0.
+- **name**: VARCHAR(255)
+- **publish**: TINYINT(3) \* Default: 0.
+- **showavailable**: BIT(1) \* If this field is set to 1, then the number of available spaces on choice options will be shown, given limitanswers is set to 1.
+- **showpreview**: TINYINT(3) \* Default: 0.
+- **showresults**: TINYINT(3) \* Default: 0.
+- **showunanswered**: TINYINT(3) \* Default: 0.
+- **timeclose**: BIGINT(19)
+- **timemodified**: BIGINT(19)
+- **timeopen**: BIGINT(19)
 
+### Table: choice_answers
 
-### choice_answers
-
-This table saves information about choices performed by the users
+This table stores choices performed by users.
 
 #### Fields
 
-- id
-- choice_id
-- option_id
-- created_at
-- updated_at
-- user_id
+- **choiceid**: BIGINT(19)
+- **id**: BIGINT(19)
+- **optionid**: BIGINT(19)
+- **timemodified**: BIGINT(19)
+- **userid**: BIGINT(19)
+
+### Table: choice_options
+
+This table stores available options for choices.
+
+#### Fields
+
+- **choiceid**: BIGINT(19)
+- **id**: BIGINT(19)
+- **maxanswers**: BIGINT(19) \* Default: 0.
+- **text**: LONGTEXT(2147483647)
+- **timemodified**: BIGINT(19)
