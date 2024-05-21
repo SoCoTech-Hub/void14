@@ -1,36 +1,153 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Table: h5p
 
-## Getting Started
+Stores H5P content information.
 
-First, run the development server:
+#### Fields
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **contenthash**: `VARCHAR(40)`, Defines the hash for the file content.
+- **displayoptions**: `SMALLINT(5)` (nullable), H5P Button display options.
+- **filtered**: `LONGTEXT` (nullable), Filtered version of `jsoncontent`.
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the H5P content.
+- **jsoncontent**: `LONGTEXT`, The content in JSON format.
+- **mainlibraryid**: `BIGINT(19)`, The library instantiated for this node.
+- **pathnamehash**: `VARCHAR(40)`, Defines the complete unique hash for the file path where the H5P content was added.
+- **timecreated**: `BIGINT(19)`, Timestamp of when the content was created.
+- **timemodified**: `BIGINT(19)`, Timestamp of the last modification.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Table: h5p_contents_libraries
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Stores which library is used in which content.
 
-## Learn More
+#### Fields
 
-To learn more about Next.js, take a look at the following resources:
+- **dependencytype**: `VARCHAR(10)`, The type of dependency (e.g., dynamic, preloaded, or editor).
+- **dropcss**: `BIT(1)`, Indicates if the preloaded CSS from the dependency is to be excluded.
+- **h5pid**: `BIGINT(19)`, Identifier for the H5P content.
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **libraryid**: `BIGINT(19)`, Identifier of the H5P library used by the content.
+- **weight**: `BIGINT(19)`, Determines the order in which the preloaded libraries will be loaded.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Table: h5p_libraries
 
-## Deploy on Vercel
+Stores information about libraries used by H5P content.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### Fields
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **addto**: `LONGTEXT` (nullable), Plugin configuration data.
+- **coremajor**: `SMALLINT(5)` (nullable), H5P core API major version required.
+- **coreminor**: `SMALLINT(5)` (nullable), H5P core API minor version required.
+- **droplibrarycss**: `LONGTEXT` (nullable), List of libraries that should not have CSS included if this library is used.
+- **embedtypes**: `VARCHAR(255)`, List of supported embed types.
+- **enabled**: `BIT(1)` (nullable), Defines if this library is enabled (1) or not (0).
+- **example**: `LONGTEXT` (nullable), Example URL.
+- **fullscreen**: `BIT(1)`, Display fullscreen button.
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the library.
+- **machinename**: `VARCHAR(255)`, The library machine name.
+- **majorversion**: `SMALLINT(5)`, Major version of the library.
+- **metadatasettings**: `LONGTEXT` (nullable), Library metadata settings.
+- **minorversion**: `SMALLINT(5)`, Minor version of the library.
+- **patchversion**: `SMALLINT(5)`, Patch version of the library.
+- **preloadedcss**: `LONGTEXT` (nullable), Comma-separated list of stylesheets to load.
+- **preloadedjs**: `LONGTEXT` (nullable), Comma-separated list of scripts to load.
+- **runnable**: `BIT(1)`, Can this library be started by the module?
+- **semantics**: `LONGTEXT` (nullable), The semantics definition in JSON format.
+- **title**: `VARCHAR(255)`, The human-readable name of this library.
+- **tutorial**: `LONGTEXT` (nullable), Tutorial URL.
+
+---
+
+### Table: h5p_libraries_cachedassets
+
+Stores H5P cached library assets.
+
+#### Fields
+
+- **hash**: `VARCHAR(255)`, Cache hash key that this library is part of.
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **libraryid**: `BIGINT(19)`, ID of the library.
+
+---
+
+### Table: h5p_library_dependencies
+
+Stores H5P library dependencies.
+
+#### Fields
+
+- **dependencytype**: `VARCHAR(255)`, The type of dependency (e.g., preloaded, dynamic, or editor).
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **libraryid**: `BIGINT(19)`, ID of the H5P library.
+- **requiredlibraryid**: `BIGINT(19)`, The dependent library to load.
+
+---
+
+### Table: h5pactivity
+
+Stores the h5pactivity activity module instances.
+
+#### Fields
+
+- **course**: `BIGINT(19)`, ID of the course this activity is part of.
+- **displayoptions**: `SMALLINT(5)`, H5P Button display options.
+- **enabletracking**: `BIT(1)`, Enable xAPI tracking.
+- **grade**: `BIGINT(19)` (nullable), Grade associated with the activity.
+- **grademethod**: `SMALLINT(5)`, Which H5P attempt is used for grading.
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the activity instance.
+- **intro**: `LONGTEXT` (nullable), Activity description.
+- **introformat**: `SMALLINT(5)`, Format of the intro field.
+- **name**: `VARCHAR(255)`, Name of the activity module instance.
+- **reviewmode**: `SMALLINT(5)` (nullable), Review mode setting.
+- **timecreated**: `BIGINT(19)`, Timestamp of when the instance was added to the course.
+- **timemodified**: `BIGINT(19)`, Timestamp of when the instance was last modified.
+
+---
+
+### Table: h5pactivity_attempts
+
+Stores users' attempts inside H5P activities.
+
+#### Fields
+
+- **attempt**: `MEDIUMINT(7)`, Attempt number.
+- **completion**: `BIT(1)` (nullable), Stores the xAPI tracking completion result.
+- **duration**: `BIGINT(19)` (nullable), Number of seconds invested in that attempt.
+- **h5pactivityid**: `BIGINT(19)`, H5P activity ID.
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **maxscore**: `BIGINT(19)` (nullable), Maximum score achieved.
+- **rawscore**: `BIGINT(19)` (nullable), Raw score achieved.
+- **scaled**: `DECIMAL(10)`, Scaled score (0..1) reflecting the learner's performance.
+- **success**: `BIT(1)` (nullable), Stores the xAPI tracking success result.
+- **timecreated**: `BIGINT(19)`, Timestamp of when the attempt was created.
+- **timemodified**: `BIGINT(19)`, Timestamp of when the attempt was last modified.
+- **userid**: `BIGINT(19)`, ID of the user who made the attempt.
+
+---
+
+### Table: h5pactivity_attempts_results
+
+Stores detailed tracking information for H5P activities attempts.
+
+#### Fields
+
+- **additionals**: `LONGTEXT` (nullable), Extra subcontent information in JSON format.
+- **attemptid**: `BIGINT(19)`, ID of the related attempt in `h5pactivity_attempts`.
+- **completion**: `BIT(1)` (nullable), Stores the xAPI tracking completion result.
+- **correctpattern**: `LONGTEXT` (nullable), Correct pattern in xAPI format.
+- **description**: `LONGTEXT` (nullable), Description of the attempt result.
+- **duration**: `BIGINT(19)` (nullable), Seconds invested in this result.
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **interactiontype**: `VARCHAR(128)` (nullable), Type of interaction.
+- **maxscore**: `BIGINT(19)`, Maximum score achievable.
+- **rawscore**: `BIGINT(19)`, Raw score achieved.
+- **response**: `LONGTEXT`, User response data in xAPI format.
+- **subcontent**: `VARCHAR(128)` (nullable), Subcontent identifier.
+- **success**: `BIT(1)` (nullable), Stores the xAPI tracking success result.
+- **timecreated**: `BIGINT(19)`, Timestamp of when the result was created.
+
+---
+
+This detailed information about the `h5p`, `h5p_contents_libraries`, `h5p_libraries`, `h5p_libraries_cachedassets`, `h5p_library_dependencies`, `h5pactivity`, `h5pactivity_attempts`, and `h5pactivity_attempts_results` tables provides a comprehensive understanding of how H5P content and related activities are structured and managed within the database schema.

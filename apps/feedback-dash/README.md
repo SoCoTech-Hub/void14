@@ -1,21 +1,143 @@
-# Feedback Dash
+# Feedback Table Documentation
+
+This README provides an overview of the `feedback` tables, which store feedback data within the Moodle system. These tables track feedback forms, user responses, and related data.
 
 ## Tables
 
-List of Tables with their function described below:
+### Table: feedback
 
-### feedback
+#### Description
 
-### feedback_completed
+The `feedback` table contains metadata about feedback forms created within Moodle. Each record represents a single feedback form.
 
-### feedback_completedtmp
+#### Fields
 
-### feedback_item
+- **anonymous**: `BIT(1)`, Indicates if the feedback is anonymous (1) or not (0).
+- **autonumbering**: `BIT(1)`, Specifies if items in the feedback are automatically numbered (1) or not (0).
+- **completionsubmit**: `BIT(1)`, If set to 1, the activity is automatically marked as complete once the user submits their feedback.
+- **course**: `BIGINT(19)`, ID of the course associated with the feedback.
+- **email_notification**: `BIT(1)`, Indicates if email notifications are sent for this feedback (1) or not (0).
+- **id**: `BIGINT(19)`, Primary Key, Auto-incremented. Unique identifier for each feedback form.
+- **intro**: `LONGTEXT`, Introduction or description of the feedback.
+- **introformat**: `SMALLINT(5)`, Format of the intro field (e.g., HTML, plain text).
+- **multiple_submit**: `BIT(1)`, Indicates if multiple submissions are allowed (1) or not (0).
+- **name**: `VARCHAR(255)`, Name of the feedback form.
+- **page_after_submit**: `LONGTEXT`, Content displayed after the user submits the feedback.
+- **page_after_submitformat**: `TINYINT(3)`, Format of the page_after_submit field.
+- **publish_stats**: `BIT(1)`, Indicates if the statistics of the feedback should be published (1) or not (0).
+- **site_after_submit**: `VARCHAR(255)`, URL of the site to redirect to after submission.
+- **timeclose**: `BIGINT(19)`, Timestamp when the feedback closes.
+- **timemodified**: `BIGINT(19)`, Timestamp when the feedback was last modified.
+- **timeopen**: `BIGINT(19)`, Timestamp when the feedback opens.
 
-### feedback_sitecourse_map
+### Table: feedback_completed
 
-### feedback_template
+#### Description
 
-### feedback_value
+The `feedback_completed` table stores records of completed feedback submissions.
 
-### feedback_valuetmp
+#### Fields
+
+- **anonymous_response**: `BIT(1)`, Indicates if the response is anonymous (1) or not (0).
+- **courseid**: `BIGINT(19)`, ID of the course associated with the feedback.
+- **feedback**: `BIGINT(19)`, ID of the feedback form.
+- **id**: `BIGINT(19)`, Primary Key, Auto-incremented. Unique identifier for each completed feedback.
+- **random_response**: `BIGINT(19)`, Randomized response identifier.
+- **timemodified**: `BIGINT(19)`, Timestamp when the feedback was completed.
+- **userid**: `BIGINT(19)`, ID of the user who completed the feedback.
+
+### Table: feedback_completedtmp
+
+#### Description
+
+The `feedback_completedtmp` table temporarily stores records of completed feedback submissions, often used during feedback processing or migration.
+
+#### Fields
+
+- **anonymous_response**: `BIT(1)`, Indicates if the response is anonymous (1) or not (0).
+- **courseid**: `BIGINT(19)`, ID of the course associated with the feedback.
+- **feedback**: `BIGINT(19)`, ID of the feedback form.
+- **guestid**: `VARCHAR(255)`, Guest identifier for anonymous submissions.
+- **id**: `BIGINT(19)`, Primary Key, Auto-incremented. Unique identifier for each completed feedback.
+- **random_response**: `BIGINT(19)`, Randomized response identifier.
+- **timemodified**: `BIGINT(19)`, Timestamp when the feedback was completed.
+- **userid**: `BIGINT(19)`, ID of the user who completed the feedback.
+
+### Table: feedback_item
+
+#### Description
+
+The `feedback_item` table stores the individual items or questions within a feedback form.
+
+#### Fields
+
+- **dependitem**: `BIGINT(19)`, ID of the item this item depends on, if any.
+- **dependvalue**: `VARCHAR(255)`, Value that triggers the dependency.
+- **feedback**: `BIGINT(19)`, ID of the feedback form this item belongs to.
+- **hasvalue**: `BIT(1)`, Indicates if the item has a value (1) or not (0).
+- **id**: `BIGINT(19)`, Primary Key, Auto-incremented. Unique identifier for each feedback item.
+- **label**: `VARCHAR(255)`, Label for the item.
+- **name**: `VARCHAR(255)`, Name of the item.
+- **options**: `VARCHAR(255)`, Options for the item, if applicable.
+- **position**: `SMALLINT(5)`, Position of the item within the feedback form.
+- **presentation**: `LONGTEXT`, Presentation details for the item.
+- **required**: `BIT(1)`, Indicates if the item is required (1) or not (0).
+- **template**: `BIGINT(19)`, ID of the template this item belongs to, if any.
+- **typ**: `VARCHAR(255)`, Type of the item (e.g., question, label).
+
+### Table: feedback_sitecourse_map
+
+#### Description
+
+The `feedback_sitecourse_map` table maps feedback forms to specific courses.
+
+#### Fields
+
+- **courseid**: `BIGINT(19)`, ID of the course.
+- **feedbackid**: `BIGINT(19)`, ID of the feedback form.
+- **id**: `BIGINT(19)`, Primary Key, Auto-incremented. Unique identifier for each map.
+
+### Table: feedback_template
+
+#### Description
+
+The `feedback_template` table stores templates of feedback structures, which can be reused for creating feedback forms.
+
+#### Fields
+
+- **course**: `BIGINT(19)`, ID of the course associated with the template.
+- **id**: `BIGINT(19)`, Primary Key, Auto-incremented. Unique identifier for each template.
+- **ispublic**: `BIT(1)`, Indicates if the template is public (1) or not (0).
+- **name**: `VARCHAR(255)`, Name of the template.
+
+### Table: feedback_value
+
+#### Description
+
+The `feedback_value` table stores the values of completed feedback items.
+
+#### Fields
+
+- **completed**: `BIGINT(19)`, ID of the completed feedback.
+- **course_id**: `BIGINT(19)`, ID of the course associated with the feedback.
+- **id**: `BIGINT(19)`, Primary Key, Auto-incremented. Unique identifier for each value.
+- **item**: `BIGINT(19)`, ID of the feedback item.
+- **tmp_completed**: `BIGINT(19)`, Temporary ID of the completed feedback, used during processing.
+- **value**: `LONGTEXT`, The actual value or response given by the user.
+
+### Table: feedback_valuetmp
+
+#### Description
+
+The `feedback_valuetmp` table temporarily stores values of completed feedback items during processing or migration.
+
+#### Fields
+
+- **completed**: `BIGINT(19)`, ID of the completed feedback.
+- **course_id**: `BIGINT(19)`, ID of the course associated with the feedback.
+- **id**: `BIGINT(19)`, Primary Key, Auto-incremented. Unique identifier for each value.
+- **item**: `BIGINT(19)`, ID of the feedback item.
+- **tmp_completed**: `BIGINT(19)`, Temporary ID of the completed feedback, used during processing.
+- **value**: `LONGTEXT`, The actual value or response given by the user.
+
+This documentation provides a detailed overview of the feedback-related tables within the Moodle system, covering the structure and purpose of each table and its fields.
