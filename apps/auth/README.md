@@ -1,39 +1,37 @@
-# Auth
-
-Accounts linked to a users account.
+# Authentication Dashboard
 
 ## Tables
 
-List of Tables with their function described below:
+This README provides an overview of the tables in the Authentication application, along with their fields and functions.
 
-### auth_lti_linked_logins
+### Table: auth_lti_linked_login
 
-Accounts linked to a users account.
-
-#### Fields
-
-- id
-- issuer
-- issuer_256 \* SHA256 hash of the issuer from which the platform user originates.
-- sub
-- sub_256 \* SHA256 hash of the subject identifying the user for the issuer.
-- created_at
-- updated_at
-- userid
-
-### auth_oauth2_linked_login
-
-Accounts linked to a users account.
+This table stores accounts linked to a user's account.
 
 #### Fields
 
-- id
-- confirm_token \* If this is not empty - the user has not confirmed their email to create the link.
-- confirm_token_expires
-- email \* The external email to map to this account
-- issuer_id
-- user_modified_id
-- user_name \* The external username to map to this account
-- created_at
-- updated_at
-- userid \* The user account this oauth login is linked to.
+- **id**: BIGINT(19)
+- **issuer**: LONGTEXT(2147483647)
+- **issuer256**: VARCHAR(64) \* SHA256 hash of the issuer from which the platform user originates.
+- **sub**: VARCHAR(255)
+- **sub256**: VARCHAR(64) \* SHA256 hash of the subject identifying the user for the issuer.
+- **timecreated**: BIGINT(19)
+- **timemodified**: BIGINT(19)
+- **user_id**: BIGINT(19) \* The user account the LTI user is linked to.
+
+### Table: auth_oauth2_linked_login
+
+This table stores accounts linked to a user's account.
+
+#### Fields
+
+- **confirmtoken**: VARCHAR(64) \* If this is not empty - the user has not confirmed their email to create the link.
+- **confirmtokenexpires**: BIGINT(19)
+- **email**: LONGTEXT(2147483647) \* The external email to map to this Moodle account.
+- **id**: BIGINT(19)
+- **issuerid**: BIGINT(19)
+- **timecreated**: BIGINT(19)
+- **timemodified**: BIGINT(19)
+- **user_id**: BIGINT(19) \* The user account this OAuth login is linked to.
+- **usermodified**: BIGINT(19)
+- **username**: VARCHAR(255) \* The external username to map to this Moodle account.

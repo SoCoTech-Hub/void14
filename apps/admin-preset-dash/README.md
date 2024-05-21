@@ -1,37 +1,103 @@
-# Admin Dash
+# Admin Preset Dashboard
 
 ## Tables
 
-List of Tables with their function described below:
+This README provides an overview of the tables in the Admin Presets application, along with their fields and functions.
 
-### adminpresets
+### Table: adminpresets
 
-Table to store presets data
+This table stores presets data.
 
-### adminpresets_app
+#### Fields
 
-Table Applied presets
+- **author**: VARCHAR(255)
+- **comments**: LONGTEXT(2147483647)
+- **id**: BIGINT(19)
+- **iscore**: BIT(1) \* Whether this is a core preset or not, and which core preset
+- **moodlerelease**: VARCHAR(255)
+- **moodleversion**: VARCHAR(20)
+- **name**: VARCHAR(255)
+- **site**: VARCHAR(255)
+- **timecreated**: BIGINT(19)
+- **timeimported**: BIGINT(19)
+- **userid**: BIGINT(19)
 
-### adminpresets_app_it
+### Table: adminpresets_app
 
-Table Admin presets applied items. To maintain the relation with c
+This table stores applied presets.
 
-### adminpresets_app_it_a
+#### Fields
 
-Table Attributes of the applied items
+- **adminpresetid**: BIGINT(19)
+- **id**: BIGINT(19)
+- **time**: BIGINT(19)
+- **userid**: BIGINT(19)
 
-### adminpresets_app_plug
+### Table: adminpresets_app_it
 
-Table Admin presets plugins applied
+This table stores admin presets applied items.
 
-### adminpresets_it
+#### Fields
 
-Table to store settings
+- **adminpresetapplyid**: BIGINT(19)
+- **configlogid**: BIGINT(19)
+- **id**: BIGINT(19)
 
-### adminpresets_it_a
+### Table: adminpresets_app_it_a
 
-Table Admin presets items attributes. For settings with attributes
+This table stores attributes of the applied items.
 
-### adminpresets_plug
+#### Fields
 
-Table Admin presets plugins status, to store information about whe
+- **adminpresetapplyid**: BIGINT(19)
+- **configlogid**: BIGINT(19)
+- **id**: BIGINT(19)
+- **itemname**: VARCHAR(100) \* Necessary to rollback
+
+### Table: adminpresets_app_plug
+
+This table stores admin presets plugins applied.
+
+#### Fields
+
+- **adminpresetapplyid**: BIGINT(19)
+- **id**: BIGINT(19)
+- **name**: VARCHAR(100)
+- **oldvalue**: SMALLINT(5)
+- **plugin**: VARCHAR(100)
+- **value**: SMALLINT(5)
+
+### Table: adminpresets_it
+
+This table stores settings.
+
+#### Fields
+
+- **adminpresetid**: BIGINT(19)
+- **id**: BIGINT(19)
+- **name**: VARCHAR(100)
+- **plugin**: VARCHAR(100)
+- **value**: LONGTEXT(2147483647)
+
+### Table: adminpresets_it_a
+
+This table stores admin presets items attributes.
+
+#### Fields
+
+- **id**: BIGINT(19)
+- **itemid**: BIGINT(19)
+- **name**: VARCHAR(100)
+- **value**: LONGTEXT(2147483647)
+
+### Table: adminpresets_plug
+
+This table stores admin presets plugins status.
+
+#### Fields
+
+- **adminpresetid**: BIGINT(19)
+- **enabled**: SMALLINT(5) \* Whether this plugin is currently enabled.
+- **id**: BIGINT(19)
+- **name**: VARCHAR(100)
+- **plugin**: VARCHAR(100)
