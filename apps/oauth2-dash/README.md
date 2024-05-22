@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Table: oauth2_access_token
 
-## Getting Started
+Stores access tokens for system accounts to access OAuth2 services.
 
-First, run the development server:
+#### Fields
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the access token.
+- **expires**: `BIGINT(19)`, Expiry timestamp according to the issuer.
+- **issuerid**: `BIGINT(19)`, Corresponding OAuth2 issuer ID.
+- **scope**: `LONGTEXT(2147483647)`, The scope of the access token.
+- **timecreated**: `BIGINT(19)`, Time this record was created.
+- **timemodified**: `BIGINT(19)`, Time this record was modified.
+- **token**: `LONGTEXT(2147483647)`, The access token.
+- **usermodified**: `BIGINT(19)`, The user who modified this record.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Table: oauth2_endpoint
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Describes the named endpoint for an OAuth2 service.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+#### Fields
 
-## Learn More
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the endpoint.
+- **issuerid**: `BIGINT(19)`, The identity provider this service belongs to.
+- **name**: `VARCHAR(255)`, The service name.
+- **timecreated**: `BIGINT(19)`, The time this record was created.
+- **timemodified**: `BIGINT(19)`, The time this record was modified.
+- **url**: `LONGTEXT(2147483647)`, The URL to the endpoint.
+- **usermodified**: `BIGINT(19)`, The user who modified this record.
 
-To learn more about Next.js, take a look at the following resources:
+### Table: oauth2_issuer
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Details for an OAuth2 connect identity issuer.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+#### Fields
 
-## Deploy on Vercel
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the issuer.
+- **alloweddomains**: `LONGTEXT(2147483647)`, Allowed domains for this issuer.
+- **baseurl**: `LONGTEXT(2147483647)`, The base URL to the issuer.
+- **basicauth**: `TINYINT(3)`, Use HTTP Basic authentication scheme when sending client ID and password.
+- **clientid**: `LONGTEXT(2147483647)`, The client ID used to connect to this OAuth2 service.
+- **clientsecret**: `LONGTEXT(2147483647)`, The secret used to connect to this OAuth2 service.
+- **enabled**: `TINYINT(3)`, Indicates if the issuer is enabled.
+- **image**: `LONGTEXT(2147483647)`, Image associated with the issuer.
+- **loginpagename**: `VARCHAR(255)`, Name to be displayed on the login page.
+- **loginparams**: `LONGTEXT(2147483647)`, Additional parameters sent for a login attempt.
+- **loginparamsoffline**: `LONGTEXT(2147483647)`, Additional parameters sent for a login attempt to generate a refresh token.
+- **loginscopes**: `LONGTEXT(2147483647)`, The scopes requested for a normal login attempt.
+- **loginscopesoffline**: `LONGTEXT(2147483647)`, The scopes requested for a login attempt to generate a refresh token.
+- **name**: `VARCHAR(255)`, The name of this identity issuer.
+- **requireconfirmation**: `TINYINT(3)`, Indicates if confirmation is required.
+- **scopessupported**: `LONGTEXT(2147483647)`, The list of scopes this service supports.
+- **servicetype**: `VARCHAR(255)`, Issuer service type, such as 'google' or 'facebook'.
+- **showonloginpage**: `TINYINT(3)`, Indicates if the issuer should be shown on the login page.
+- **sortorder**: `BIGINT(19)`, The defined sort order.
+- **timecreated**: `BIGINT(19)`, Time this record was created.
+- **timemodified**: `BIGINT(19)`, Time this record was modified.
+- **usermodified**: `BIGINT(19)`, The user who modified this record.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Table: oauth2_refresh_token
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Stores refresh tokens which can be exchanged for access tokens.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the refresh token.
+- **issuerid**: `BIGINT(19)`, Corresponding OAuth2 issuer ID.
+- **scopehash**: `VARCHAR(40)`, SHA1 hash of the scopes used when requesting the refresh token.
+- **timecreated**: `BIGINT(19)`, Time this record was created.
+- **timemodified**: `BIGINT(19)`, Time this record was modified.
+- **token**: `LONGTEXT(2147483647)`, The refresh token.
+- **userid**: `BIGINT(19)`, The user to whom this refresh token belongs.
+
+### Table: oauth2_system_account
+
+Stored details used to get an access token as a system user.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the system account.
+- **email**: `LONGTEXT(2147483647)`, The email connected to this issuer.
+- **grantedscopes**: `LONGTEXT(2147483647)`, The scopes that this system account has been granted access to.
+- **issuerid**: `BIGINT(19)`, The ID of the OAuth2 identity issuer.
+- **refreshtoken**: `LONGTEXT(2147483647)`, The refresh token used to request access tokens.
+- **timecreated**: `BIGINT(19)`, Time this record was created.
+- **timemodified**: `BIGINT(19)`, Time this record was modified.
+- **usermodified**: `BIGINT(19)`, The user who modified this record.
+- **username**: `LONGTEXT(2147483647)`, The username connected as a system account to this issuer.
+
+### Table: oauth2_user_field_mapping
+
+Mapping of OAuth user fields to Moodle fields.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the mapping.
+- **externalfield**: `VARCHAR(500)`, The field name returned by the userinfo endpoint.
+- **internalfield**: `VARCHAR(64)`, The name of the Moodle field this user field maps to.
+- **issuerid**: `BIGINT(19)`, The OAuth issuer ID.
+- **timecreated**: `BIGINT(19)`, The time this record was created.
+- **timemodified**: `BIGINT(19)`, The time this record was modified.
+- **usermodified**: `BIGINT(19)`, The user who modified this record.

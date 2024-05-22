@@ -1,36 +1,21 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Table: notifications
 
-## Getting Started
+This table stores all notifications.
 
-First, run the development server:
+#### Fields
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **component**: `VARCHAR(100)` (Nullable), The component that generated the notification.
+- **contexturl**: `LONGTEXT` (2147483647) (Nullable), URL related to the notification's context.
+- **contexturlname**: `LONGTEXT` (2147483647) (Nullable), Display name for the context URL.
+- **customdata**: `LONGTEXT` (2147483647) (Nullable), Custom data to be passed to the message processor. Must be serializable using `json_encode()`.
+- **eventtype**: `VARCHAR(100)` (Nullable), The type of event that triggered the notification.
+- **fullmessage**: `LONGTEXT` (2147483647) (Nullable), The full message of the notification.
+- **fullmessageformat**: `BIT(1)`, The format of the full message.
+- **fullmessagehtml**: `LONGTEXT` (2147483647) (Nullable), The full message in HTML format.
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the notification.
+- **smallmessage**: `LONGTEXT` (2147483647) (Nullable), A short version of the message (e.g., SMS).
+- **subject**: `LONGTEXT` (2147483647) (Nullable), The subject of the message.
+- **timecreated**: `BIGINT(19)`, The time when the notification was created.
+- **timeread**: `BIGINT(19)` (Nullable), The time when the notification was read.
+- **useridfrom**: `BIGINT(19)`, The user ID of the sender.
+- **useridto**: `BIGINT(19)`, The user ID of the recipient.
