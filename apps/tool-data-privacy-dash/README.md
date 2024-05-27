@@ -1,36 +1,126 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Table: tool_dataprivacy_category
 
-## Getting Started
+Data categories.
 
-First, run the development server:
+#### Fields
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **description**: `LONGTEXT(2147483647)`, Description of the data category.
+- **description_format**: `BIT(1)`, Format of the description.
+- **name**: `VARCHAR(100)`, Name of the data category.
+- **created_at**: `BIGINT(19)`, Time when the category was created.
+- **updated_at**: `BIGINT(19)`, Time when the category was last modified.
+- **user*id***: `BIGINT(19)`, ID of the user who last modified the category.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Table: tool_dataprivacy_ctxexpired
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Default comment for the table, please edit me.
 
-## Learn More
+#### Fields
 
-To learn more about Next.js, take a look at the following resources:
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **context_id**: `BIGINT(19)`, ID of the context.
+- **default_expired**: `BIT(1)`, Indicates if the default retention period has passed.
+- **expired_roles**: `LONGTEXT(2147483647)`, Explicitly expires roles.
+- **status**: `TINYINT(3)`, Status of the context.
+- **unexpired_roles**: `LONGTEXT(2147483647)`, Roles which have explicitly not expired yet.
+- **created_at**: `BIGINT(19)`, Time when the record was created.
+- **updated_at**: `BIGINT(19)`, Time when the record was last modified.
+- **user_id**: `BIGINT(19)`, ID of the user who last modified the record.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Table: tool_dataprivacy_ctxinstance
 
-## Deploy on Vercel
+Default comment for the table, please edit me.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### Fields
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **category_id**: `BIGINT(19)`, ID of the category.
+- **context_id**: `BIGINT(19)`, ID of the context.
+- **purpose_id**: `BIGINT(19)`, ID of the purpose.
+- **created_at**: `BIGINT(19)`, Time when the record was created.
+- **updated_at**: `BIGINT(19)`, Time when the record was last modified.
+- **user_id**: `BIGINT(19)`, ID of the user who last modified the record.
+
+---
+
+### Table: tool_dataprivacy_ctxlevel
+
+Default comment for the table, please edit me.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **category_id**: `BIGINT(19)`, ID of the category.
+- **context_level**: `SMALLINT(5)`, The context level.
+- **purpose_id**: `BIGINT(19)`, ID of the purpose.
+- **created_at**: `BIGINT(19)`, Time when the record was created.
+- **updated_at**: `BIGINT(19)`, Time when the record was last modified.
+- **user_id**: `BIGINT(19)`, ID of the user who last modified the record.
+
+---
+
+### Table: tool_dataprivacy_purpose
+
+Data purposes.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **description**: `LONGTEXT(2147483647)`, Description of the data purpose.
+- **description_format**: `BIT(1)`, Format of the description.
+- **lawful_bases**: `LONGTEXT(2147483647)`, Comma-separated IDs matching records in `tool_dataprivacy_lawfulbasis`.
+- **name**: `VARCHAR(100)`, Name of the data purpose.
+- **protected**: `BIT(1)`, Indicates if the data is protected.
+- **retention_period**: `VARCHAR(255)`, Retention period.
+- **sensitive_data_reasons**: `LONGTEXT(2147483647)`, Comma-separated IDs matching records in `tool_dataprivacy_sensitive`.
+- **created_at**: `BIGINT(19)`, Time when the record was created.
+- **updated_at**: `BIGINT(19)`, Time when the record was last modified.
+- **user_id**: `BIGINT(19)`, ID of the user who last modified the record.
+
+---
+
+### Table: tool_dataprivacy_purposerole
+
+Data purpose overrides for a specific role.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **lawful_bases**: `LONGTEXT(2147483647)`, Lawful bases.
+- **protected**: `BIT(1)`, Indicates if the data is protected.
+- **purpose_id**: `BIGINT(19)`, ID of the purpose.
+- **retention_period**: `VARCHAR(255)`, Retention period.
+- **role_id**: `BIGINT(19)`, ID of the role.
+- **sensitive_data_reasons**: `LONGTEXT(2147483647)`, Sensitive data reasons.
+- **created_at**: `BIGINT(19)`, Time when the record was created.
+- **updated_at**: `BIGINT(19)`, Time when the record was last modified.
+- **user_id**: `BIGINT(19)`, ID of the user who last modified the record.
+
+---
+
+### Table: tool_dataprivacy_request
+
+Table for data requests.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **comments**: `LONGTEXT(2147483647)`, More details about the request.
+- **comments_format**: `TINYINT(3)`, Format of the comments.
+- **creation_method**: `BIGINT(19)`, The type of the creation method of the data request.
+- **dpo**: `BIGINT(19)`, The user ID of the Data Protection Officer who is reviewing the request.
+- **dpo_comment**: `LONGTEXT(2147483647)`, DPO’s comments (e.g., reason for rejecting the request, etc.).
+- **dpo_comment_format**: `TINYINT(3)`, Format of the DPO comment.
+- **requested_by**: `BIGINT(19)`, The user ID of the one making the request.
+- **status**: `TINYINT(3)`, The current status of the data request.
+- **system_approved**: `SMALLINT(5)`, Indicates if the request is system approved (0 = no, 1 = yes).
+- **type**: `BIGINT(19)`, Data request type.
+- **user_modified**: `BIGINT(19)`, The user who created/modified this request object.
+- **created_at**: `BIGINT(19)`, The time this data request was created.
+- **updated_at**: `BIGINT(19)`, The last time this data request was updated.
+- **user_id**: `BIGINT(19)`, The user ID the request is being made for.
