@@ -1,50 +1,58 @@
 import { sql } from "drizzle-orm";
-import { integer, varchar, timestamp, boolean, text, pgTable } from "drizzle-orm/pg-core";
+import { integer, varchar, boolean, date, text, timestamp, pgTable } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
-import { courseCategories } from "./courseCategories"
+
 import { type getCourses } from "@/lib/api/courses/queries";
 
 import { nanoid, timestamps } from "@/lib/utils";
 
 
 export const courses = pgTable('courses', {
-  id: varchar("id", { length: 191 }).primaryKey().$defaultFn(() => nanoid()),
-  revId: integer("rev_id"),
-  courseCategoryId: varchar("course_category_id", { length: 256 }).references(() => courseCategories.id).notNull(),
-  startDate: timestamp("start_date"),
-  endDate: timestamp("end_date"),
-  marker: integer("marker"),
-  originalCourseId: varchar("original_course_id", { length: 256 }),
-  sortOrder: integer("sort_order"),
-  completionNotify: boolean("completion_notify"),
-  downloadContent: boolean("download_content"),
-  enableCompletion: boolean("enable_completion"),
-  showActivityDates: boolean("show_activity_dates"),
-  visible: boolean("visible"),
-  summary: text("summary"),
-  groupMode: integer("group_mode"),
-  groupModeForce: integer("group_mode_force"),
-  showReports: integer("show_reports"),
-  showGrades: integer("show_grades"),
-  fullName: varchar("full_name", { length: 256 }),
-  idNumber: varchar("id_number", { length: 256 }),
-  lang: varchar("lang", { length: 256 }),
-  shortName: varchar("short_name", { length: 256 }),
-  theme: varchar("theme", { length: 256 }).notNull(),
-  
-  createdAt: timestamp("created_at")
-    .notNull()
-    .default(sql`now()`),
-  updatedAt: timestamp("updated_at")
-    .notNull()
-    .default(sql`now()`),
+	id: varchar('id', { length: 191 })
+		.primaryKey()
+		.$defaultFn(() => nanoid()),
+	cacheRev: integer('cache_rev'),
+	calendarType: varchar('calendar_type', { length: 256 }),
+	category: integer('category'),
+	completionNotify: boolean('completion_notify'),
+	defaultGroupingId: varchar('default_grouping_id', { length: 191 }),
+	downloadContent: boolean('download_content'),
+	enableCompletion: boolean('enable_completion'),
+	endDate: date('end_date'),
+	format: varchar('format', { length: 256 }),
+	fullName: varchar('full_name', { length: 256 }),
+	groupMode: integer('group_mode'),
+	groupModeForce: integer('group_mode_force'),
+	idNumber: varchar('id_number', { length: 256 }),
+	lang: varchar('lang', { length: 256 }),
+	legacyFiles: integer('legacy_files'),
+	marker: integer('marker'),
+	maxBytes: integer('max_bytes'),
+	newsItems: integer('news_items'),
+	originalCourseId: varchar('original_course_id', { length: 256 }),
+	relativeDatesMode: boolean('relative_dates_mode'),
+	requested: boolean('requested'),
+	shortName: varchar('short_name', { length: 256 }),
+	showActivityDates: boolean('show_activity_dates'),
+	showCompletionConditions: boolean('show_completion_conditions'),
+	showGrades: integer('show_grades'),
+	showReports: integer('show_reports'),
+	sortOrder: integer('sort_order'),
+	startDate: integer('start_date'),
+	summary: text('summary'),
+	summaryFormat: integer('summary_format'),
+	theme: varchar('theme', { length: 256 }),
+	visible: boolean('visible'),
+	visibleOld: boolean('visible_old'),
 
-}, (courses) => {
-  return {
-    fullNameIndex: uniqueIndex('full_name_idx').on(courses.fullName),
-  }
-});
+	createdAt: timestamp('created_at')
+		.notNull()
+		.default(sql`now()`),
+	updatedAt: timestamp('updated_at')
+		.notNull()
+		.default(sql`now()`)
+})
 
 
 // Schema for courses - used to validate API requests
@@ -52,42 +60,60 @@ const baseSchema = createSelectSchema(courses).omit(timestamps)
 
 export const insertCourseSchema = createInsertSchema(courses).omit(timestamps);
 export const insertCourseParams = baseSchema.extend({
-  revId: z.coerce.number(),
-  courseCategoryId: z.coerce.string().min(1),
-  startDate: z.coerce.string().min(1),
-  endDate: z.coerce.string().min(1),
-  marker: z.coerce.number(),
-  sortOrder: z.coerce.number(),
+  cacheRev: z.coerce.number(),
+  category: z.coerce.number(),
   completionNotify: z.coerce.boolean(),
+  defaultGroupingId: z.coerce.number(),
   downloadContent: z.coerce.boolean(),
   enableCompletion: z.coerce.boolean(),
-  showActivityDates: z.coerce.boolean(),
-  visible: z.coerce.boolean(),
+  endDate: z.coerce.string().min(1),
   groupMode: z.coerce.number(),
   groupModeForce: z.coerce.number(),
+  legacyFiles: z.coerce.number(),
+  marker: z.coerce.number(),
+  maxBytes: z.coerce.number(),
+  newsItems: z.coerce.number(),
+  relativeDatesMode: z.coerce.boolean(),
+  requested: z.coerce.boolean(),
+  showActivityDates: z.coerce.boolean(),
+  showCompletionConditions: z.coerce.boolean(),
+  showGrades: z.coerce.number(),
   showReports: z.coerce.number(),
-  showGrades: z.coerce.number()
+  sortOrder: z.coerce.number(),
+  startDate: z.coerce.number(),
+  summaryFormat: z.coerce.number(),
+  visible: z.coerce.boolean(),
+  visibleOld: z.coerce.boolean()
 }).omit({ 
   id: true
 });
 
 export const updateCourseSchema = baseSchema;
 export const updateCourseParams = baseSchema.extend({
-  revId: z.coerce.number(),
-  courseCategoryId: z.coerce.string().min(1),
-  startDate: z.coerce.string().min(1),
-  endDate: z.coerce.string().min(1),
-  marker: z.coerce.number(),
-  sortOrder: z.coerce.number(),
+  cacheRev: z.coerce.number(),
+  category: z.coerce.number(),
   completionNotify: z.coerce.boolean(),
+  defaultGroupingId: z.coerce.number(),
   downloadContent: z.coerce.boolean(),
   enableCompletion: z.coerce.boolean(),
-  showActivityDates: z.coerce.boolean(),
-  visible: z.coerce.boolean(),
+  endDate: z.coerce.string().min(1),
   groupMode: z.coerce.number(),
   groupModeForce: z.coerce.number(),
+  legacyFiles: z.coerce.number(),
+  marker: z.coerce.number(),
+  maxBytes: z.coerce.number(),
+  newsItems: z.coerce.number(),
+  relativeDatesMode: z.coerce.boolean(),
+  requested: z.coerce.boolean(),
+  showActivityDates: z.coerce.boolean(),
+  showCompletionConditions: z.coerce.boolean(),
+  showGrades: z.coerce.number(),
   showReports: z.coerce.number(),
-  showGrades: z.coerce.number()
+  sortOrder: z.coerce.number(),
+  startDate: z.coerce.number(),
+  summaryFormat: z.coerce.number(),
+  visible: z.coerce.boolean(),
+  visibleOld: z.coerce.boolean()
 })
 export const courseIdSchema = baseSchema.pick({ id: true });
 

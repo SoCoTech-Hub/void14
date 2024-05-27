@@ -12,6 +12,7 @@ import { courseModulesCompletionsRouter } from "./courseModulesCompletions";
 import { coursePublishesRouter } from "./coursePublishes";
 import { courseRequestsRouter } from "./courseRequests";
 import { courseSectionsRouter } from "./courseSections";
+import { courseCompletionAggrMethdsRouter } from "./courseCompletionAggrMethds";
 
 export const appRouter = router({
   computers: computersRouter,
@@ -27,6 +28,7 @@ export const appRouter = router({
   coursePublishes: coursePublishesRouter,
   courseRequests: courseRequestsRouter,
   courseSections: courseSectionsRouter,
+  courseCompletionAggrMethds: courseCompletionAggrMethdsRouter,
 });
 
 export type AppRouter = typeof appRouter;

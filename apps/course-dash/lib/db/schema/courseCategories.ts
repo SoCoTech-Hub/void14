@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { integer, varchar, boolean, text, timestamp, pgTable } from "drizzle-orm/pg-core";
+import { integer, text, varchar, boolean, timestamp, pgTable } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -12,12 +12,16 @@ export const courseCategories = pgTable('course_categories', {
   id: varchar("id", { length: 191 }).primaryKey().$defaultFn(() => nanoid()),
   courseCount: integer("course_count"),
   depth: integer("depth"),
-  parentId: varchar("parent_id", { length: 256 }),
-  sortOrder: integer("sort_order"),
-  visible: boolean("visible"),
   description: text("description"),
+  descriptionFormat: integer("description_format"),
   idNumber: varchar("id_number", { length: 256 }),
-  name: varchar("name", { length: 256 }).notNull(),
+  name: varchar("name", { length: 256 }),
+  parent: integer("parent"),
+  path: varchar("path", { length: 256 }),
+  sortOrder: integer("sort_order"),
+  theme: varchar("theme", { length: 256 }),
+  visible: boolean("visible"),
+  visibleOld: boolean("visible_old"),
   
   createdAt: timestamp("created_at")
     .notNull()
@@ -26,10 +30,6 @@ export const courseCategories = pgTable('course_categories', {
     .notNull()
     .default(sql`now()`),
 
-}, (courseCategories) => {
-  return {
-    nameIndex: uniqueIndex('name_idx').on(courseCategories.name),
-  }
 });
 
 
@@ -40,8 +40,11 @@ export const insertCourseCategorySchema = createInsertSchema(courseCategories).o
 export const insertCourseCategoryParams = baseSchema.extend({
   courseCount: z.coerce.number(),
   depth: z.coerce.number(),
+  descriptionFormat: z.coerce.number(),
+  parent: z.coerce.number(),
   sortOrder: z.coerce.number(),
-  visible: z.coerce.boolean()
+  visible: z.coerce.boolean(),
+  visibleOld: z.coerce.boolean()
 }).omit({ 
   id: true
 });
@@ -50,8 +53,11 @@ export const updateCourseCategorySchema = baseSchema;
 export const updateCourseCategoryParams = baseSchema.extend({
   courseCount: z.coerce.number(),
   depth: z.coerce.number(),
+  descriptionFormat: z.coerce.number(),
+  parent: z.coerce.number(),
   sortOrder: z.coerce.number(),
-  visible: z.coerce.boolean()
+  visible: z.coerce.boolean(),
+  visibleOld: z.coerce.boolean()
 })
 export const courseCategoryIdSchema = baseSchema.pick({ id: true });
 

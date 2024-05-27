@@ -11,41 +11,41 @@ This table stores all database activities.
 #### Fields
 
 - **id**: BIGINT(19)
-- **addtemplate**: LONGTEXT(2147483647)
+- **add_template**: LONGTEXT(2147483647)
 - **approval**: SMALLINT(5) \* Default: 0.
-- **asearchtemplate**: LONGTEXT(2147483647)
 - **assessed**: BIGINT(19) \* Default: 0.
-- **assesstimefinish**: BIGINT(19) \* Default: 0.
-- **assesstimestart**: BIGINT(19) \* Default: 0.
+- **assess_time_finish**: BIGINT(19) \* Default: 0.
+- **assess_time_start**: BIGINT(19) \* Default: 0.
 - **comments**: SMALLINT(5) \* Default: 0.
-- **completionentries**: BIGINT(19) \* Default: 0. Number of entries required for completion.
+- **completion_entries**: BIGINT(19) \* Default: 0. Number of entries required for completion.
 - **config**: LONGTEXT(2147483647)
 - **course**: BIGINT(19)
-- **csstemplate**: LONGTEXT(2147483647)
-- **defaultsort**: BIGINT(19) \* Default: 0.
-- **defaultsortdir**: SMALLINT(5) \* Default: 0.
-- **editany**: SMALLINT(5) \* Default: 0.
+- **css_template**: LONGTEXT(2147483647)
+- **default_sort**: BIGINT(19) \* Default: 0.
+- **default_sort_dir**: SMALLINT(5) \* Default: 0.
+- **edit_any**: SMALLINT(5) \* Default: 0.
 - **intro**: LONGTEXT(2147483647)
-- **introformat**: SMALLINT(5) \* Default: 0.
-- **jstemplate**: LONGTEXT(2147483647)
-- **listtemplate**: LONGTEXT(2147483647)
-- **listtemplatefooter**: LONGTEXT(2147483647)
-- **listtemplateheader**: LONGTEXT(2147483647)
-- **manageapproved**: SMALLINT(5) \* Default: 1.
-- **maxentries**: INT(10) \* Default: 0.
+- **intro_format**: SMALLINT(5) \* Default: 0.
+- **js_template**: LONGTEXT(2147483647)
+- **list_template**: LONGTEXT(2147483647)
+- **list_template_footer**: LONGTEXT(2147483647)
+- **list_template_header**: LONGTEXT(2147483647)
+- **manage_approved**: SMALLINT(5) \* Default: 1.
+- **max_entries**: INT(10) \* Default: 0.
 - **name**: VARCHAR(255)
 - **notification**: BIGINT(19) \* Default: 0. Notify people when things change.
-- **requiredentries**: INT(10) \* Default: 0.
-- **requiredentriestoview**: INT(10) \* Default: 0.
-- **rssarticles**: SMALLINT(5) \* Default: 0.
-- **rsstemplate**: LONGTEXT(2147483647)
-- **rsstitletemplate**: LONGTEXT(2147483647)
+- **required_entries**: INT(10) \* Default: 0.
+- **required_entries_to_view**: INT(10) \* Default: 0.
+- **rss_articles**: SMALLINT(5) \* Default: 0.
+- **rss_template**: LONGTEXT(2147483647)
+- **rss_title_template**: LONGTEXT(2147483647)
 - **scale**: BIGINT(19) \* Default: 0.
-- **singletemplate**: LONGTEXT(2147483647)
-- **timeavailablefrom**: BIGINT(19) \* Default: 0.
-- **timeavailableto**: BIGINT(19) \* Default: 0.
-- **timeviewfrom**: BIGINT(19) \* Default: 0.
-- **timeviewto**: BIGINT(19) \* Default: 0.
+- **search_template**: LONGTEXT(2147483647)
+- **single_template**: LONGTEXT(2147483647)
+- **time_available_from**: BIGINT(19) \* Default: 0.
+- **time_available_to**: BIGINT(19) \* Default: 0.
+- **time_view_from**: BIGINT(19) \* Default: 0.
+- **time_view_to**: BIGINT(19) \* Default: 0.
 - **created_at**: BIGINT(19)
 - **updated_at**: BIGINT(19) \* The time the settings for this database module instance were last modified.
 
@@ -61,8 +61,8 @@ This table stores the content introduced in each record/field.
 - **content2**: LONGTEXT(2147483647)
 - **content3**: LONGTEXT(2147483647)
 - **content4**: LONGTEXT(2147483647)
-- **fieldid**: BIGINT(19)
-- **recordid**: BIGINT(19)
+- **field_id**: BIGINT(19)
+- **record_id**: BIGINT(19)
 
 ### Table: data_fields
 
@@ -71,7 +71,7 @@ This table stores every field available in the database activities.
 #### Fields
 
 - **id**: BIGINT(19)
-- **dataid**: BIGINT(19)
+- **data_id**: BIGINT(19)
 - **description**: LONGTEXT(2147483647)
 - **name**: VARCHAR(255)
 - **param1**: LONGTEXT(2147483647)
@@ -95,8 +95,8 @@ This table stores every record introduced in the database activities.
 
 - **id**: BIGINT(19)
 - **approved**: SMALLINT(5) \* Default: 0.
-- **dataid**: BIGINT(19)
-- **groupid**: BIGINT(19)
+- **data_id**: BIGINT(19)
+- **group_id**: BIGINT(19)
 - **created_at**: BIGINT(19)
 - **updated_at**: BIGINT(19)
-- **userid**: BIGINT(19)
+- **user_id**: BIGINT(19)

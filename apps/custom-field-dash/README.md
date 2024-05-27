@@ -4,7 +4,7 @@
 
 This README provides an overview of the tables in the Custom Field Management application, along with their fields and functions.
 
-### Table: custom_field_categories
+### Table: custom_field_categories **
 
 This table stores core custom field category information.
 
@@ -22,7 +22,7 @@ This table stores core custom field category information.
 - **created_at**: BIGINT(19)
 - **updated_at**: BIGINT(19)
 
-### Table: custom_field_datas
+### Table: custom_field_datas **
 
 This table stores core custom field data.
 
@@ -41,7 +41,7 @@ This table stores core custom field data.
 - **created_at**: BIGINT(19)
 - **updated_at**: BIGINT(19)
 
-### Table: custom_field_fields
+### Table: custom_field_fields **
 
 This table stores core custom field information.
 
