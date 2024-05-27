@@ -1,36 +1,121 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Table: role
 
-## Getting Started
+Moodle roles.
 
-First, run the development server:
+#### Fields
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the role.
+- **archetype**: `VARCHAR(30)`, Role archetype, used during install and role reset.
+- **description**: `LONGTEXT(2147483647)` (Nullable), Description of the role, empty descriptions may be automatically localized.
+- **name**: `VARCHAR(255)`, Name of the role, empty names are automatically localized.
+- **short_name**: `VARCHAR(100)`, Short name of the role.
+- **sort_order**: `INT(3)`, Sort order of the role.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Table: role_allow_assign
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Defines which roles can assign other roles.
 
-## Learn More
+#### Fields
 
-To learn more about Next.js, take a look at the following resources:
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **role_id**: `BIGINT(19)`, ID of the role that can assign.
+- **allow_assign_id**: `BIGINT(19)`, ID of the role that can be assigned.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Table: role_allow_override
 
-## Deploy on Vercel
+Defines which roles can override other roles.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### Fields
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **role_id**: `BIGINT(19)`, ID of the role that can override.
+- **allow_override_id**: `BIGINT(19)`, ID of the role that can be overridden.
+
+---
+
+### Table: role_allow_switch
+
+Defines which roles a user is allowed to switch to.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **role_id**: `BIGINT(19)`, ID of the role the user has.
+- **allow_switch_id**: `BIGINT(19)`, ID of the role the user is allowed to switch to.
+
+---
+
+### Table: role_allow_view
+
+Defines which roles a user is allowed to view.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **role_id**: `BIGINT(19)`, ID of the role the user has.
+- **allow_view_id**: `BIGINT(19)`, ID of the role the user is allowed to view.
+
+---
+
+### Table: role_assignments
+
+Assigning roles in different contexts.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **component**: `VARCHAR(100)`, Plugin responsible for the role assignment, empty when manually assigned.
+- **context_id**: `BIGINT(19)`, Context ID where the role is assigned.
+- **item_id**: `BIGINT(19)`, ID of the enrolment/auth instance responsible for this role assignment.
+- **modifier_id**: `BIGINT(19)`, ID of the user who modified the role assignment.
+- **role_id**: `BIGINT(19)`, ID of the assigned role.
+- **sort_order**: `INT(3)`, Sort order of the role assignment.
+- **created_at**: `BIGINT(19)`, Timestamp when the role assignment was created.
+- **updated_at**: `BIGINT(19)`, Timestamp when the role assignment was modified.
+- **user_id**: `BIGINT(19)`, ID of the user to whom the role is assigned.
+
+---
+
+### Table: role_capabilities
+
+Permission has to be signed, overriding a capability for a particular role.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **capability**: `VARCHAR(255)`, The capability name.
+- **context_id**: `BIGINT(19)`, Context ID where the capability is applied.
+- **permission**: `BIGINT(19)`, Permission level for the capability.
+- **role_id**: `BIGINT(19)`, ID of the role the capability applies to.
+- **created_at**: `BIGINT(19)`, Timestamp when the capability was created.
+- **updated_at**: `BIGINT(19)`, Timestamp when the capability was modified.
+- **user_id**: `BIGINT(19)`, ID of the user who modified the capability.
+
+---
+
+### Table: role_context_levels
+
+Lists which roles can be assigned at which context levels.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **context_level**: `BIGINT(19)`, Context level where the role can be assigned.
+- **role_id**: `BIGINT(19)`, ID of the role.
+
+---
+
+### Table: role_names
+
+Role names in native strings.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **context_id**: `BIGINT(19)`, Context ID where the role name is used.
+- **name**: `VARCHAR(255)`, Name of the role.
+- **role_id**: `BIGINT(19)`, ID of the role.
