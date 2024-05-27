@@ -1,36 +1,84 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Table: portfolio_instance
 
-## Getting Started
+Base table (not including config data) for instances of portfolio plugins.
 
-First, run the development server:
+#### Fields
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the portfolio instance.
+- **name**: `VARCHAR(255)`, Name of the portfolio plugin instance.
+- **plugin**: `VARCHAR(50)`, Foreign key to the plugin.
+- **visible**: `BIT(1)`, Indicates whether this instance is visible or not. Default is 1.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Table: portfolio_instance_config
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Stores configuration for portfolio plugin instances.
 
-## Learn More
+#### Fields
 
-To learn more about Next.js, take a look at the following resources:
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the configuration record.
+- **portfolio_instance_id**: `BIGINT(19)`, Foreign key to the portfolio instance being configured.
+- **name**: `VARCHAR(255)`, Name of the configuration field.
+- **value**: `LONGTEXT(2147483647)` (Nullable), Value of the configuration field.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Table: portfolio_instance_user
 
-## Deploy on Vercel
+Stores user data for portfolio instances.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### Fields
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the user configuration record.
+- **portfolio_instance_id**: `BIGINT(19)`, Foreign key to the portfolio instance.
+- **name**: `VARCHAR(255)`, Name of the configuration item.
+- **value**: `LONGTEXT(2147483647)` (Nullable), Value of the configuration item.
+- **userid**: `BIGINT(19)`, Foreign key to the user.
+
+---
+
+### Table: portfolio_log
+
+Stores log of portfolio transfers, used to later check for duplicates.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the log record.
+- **caller_class**: `VARCHAR(150)`, The name of the class used to create the transfer.
+- **caller_component**: `VARCHAR(255)` (Nullable), The component name responsible for exporting.
+- **caller_file**: `VARCHAR(255)`, Path to the file to include where the class definition lives (relative to dirroot).
+- **caller_sha1**: `VARCHAR(255)`, SHA1 hash of the exported content as far as the caller is concerned (before the portfolio plugin gets a hold of it).
+- **continue_url**: `VARCHAR(255)`, The URL the external system has set to view the transfer.
+- **portfolio**: `BIGINT(19)`, Foreign key to the portfolio instance.
+- **return_url**: `VARCHAR(255)`, The original "returnurl" of the export - takes us to the Moodle page we started from.
+- **temp_data_id**: `BIGINT(19)`, Old ID from portfolio_tempdata, used to catch a race condition between an external system requesting a file and causing the tempdata to be deleted before the user gets the "your transfer is requested" page.
+- **time**: `BIGINT(19)`, Time of the transfer (in the case of a queued transfer, this is the time the actual transfer ran, not when the user started).
+- **userid**: `BIGINT(19)`, User who exported the content.
+
+---
+
+### Table: portfolio_mahara_queue
+
+Maps Mahara tokens to transfer IDs.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **token**: `VARCHAR(50)`, The token Mahara sent us to use for this transfer.
+- **transfer_id**: `BIGINT(19)`, Foreign key to portfolio_tempdata.id.
+
+---
+
+### Table: portfolio_tempdata
+
+Stores temporary data for portfolio exports.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the temporary data record.
+- **data**: `LONGTEXT(2147483647)` (Nullable), Dumping ground for portfolio callers to store their data.
+- **expiry_time**: `BIGINT(19)`, Time this record will expire (used for cron cleanups) - the start of export + 24 hours.
+- **portfolio_instance_id**: `BIGINT(19)` (Nullable), Which portfolio plugin instance is being used.
+- **queued**: `BIT(1)`, Value 1 means the entry should be processed in cron.
+- **userid**: `BIGINT(19)`, Pseudo foreign key to the user. This is stored in the serialized data structure in the data field but added here for ease of lookups.

@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Table: post
 
-## Getting Started
+Generic post table to hold data for blog entries, etc., in different contexts.
 
-First, run the development server:
+#### Fields
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the post.
+- **attachment**: `VARCHAR(100)` (Nullable), Attachment associated with the post.
+- **content**: `LONGTEXT(2147483647)` (Nullable), The main content of the post.
+- **course_id**: `BIGINT(19)` , ID of the course related to the post. Default is 0.
+- **course_module_id**: `BIGINT(19)` , ID of the course module related to the post. Default is 0.
+- **format**: `BIGINT(19)` , Format of the content. Default is 0.
+- **groupid**: `BIGINT(19)` , ID of the group related to the post. Default is 0.
+- **module**: `VARCHAR(20)` , Name of the module associated with the post.
+- **module_id**: `BIGINT(19)` , ID of the module related to the post. Default is 0.
+- **publish_state**: `VARCHAR(20)` , State of the post publication (e.g., draft). Default is 'draft'.
+- **rating**: `BIGINT(19)` , Rating associated with the post. Default is 0.
+- **subject**: `VARCHAR(128)` , Subject or title of the post.
+- **summary**: `LONGTEXT(2147483647)` (Nullable), Summary of the post.
+- **summary_format**: `TINYINT(3)` , Format of the summary. Default is 0.
+- **unique_hash**: `VARCHAR(255)` , Unique hash for the post.
+- **user_modified**: `BIGINT(19)` (Nullable), ID of the user who last modified the post.
+- **created_at**: `BIGINT(19)` , Timestamp of when the post was created. Default is 0.
+- **updated_at**: `BIGINT(19)` , Timestamp of when the post was last modified. Default is 0.
+- **userid**: `BIGINT(19)` , ID of the user who created the post. Default is 0.

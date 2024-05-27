@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Table: quizaccess_seb_quiz_settings
 
-## Getting Started
+Stores the quiz-level Safe Exam Browser (SEB) configuration.
 
-First, run the development server:
+#### Fields
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **activate_url_filtering**: `BOOLEAN(1)`, Indicates whether URLs will be filtered.
+- **allowed_browser_exam_keys**: `LONGTEXT(2147483647)`, List of allowed browser exam keys.
+- **allow_reload_in_exam**: `BOOLEAN(1)`, Indicates whether the user can reload the exam.
+- **allow_spell_checking**: `BOOLEAN(1)`, Indicates whether spell checking is enabled in SEB.
+- **allow_user_quit_seb**: `BOOLEAN(1)`, Indicates whether the quit button is shown.
+- **cmid**: `BIGINT(19)`, Foreign key to the course module ID.
+- **enable_audio_control**: `BOOLEAN(1)`, Indicates whether volume and audio controls are shown.
+- **expressions_allowed**: `LONGTEXT(2147483647)`, Comma or newline-separated list of allowed expressions.
+- **expressions_blocked**: `LONGTEXT(2147483647)`, Comma or newline-separated list of blocked expressions.
+- **filter_embedded_content**: `BOOLEAN(1)`, Indicates whether embedded content will be filtered.
+- **link_quitseb**: `LONGTEXT(2147483647)`, Link to exit SEB.
+- **mute_on_startup**: `BOOLEAN(1)`, Indicates whether the browser starts muted.
+- **quit_password**: `LONGTEXT(2147483647)`, Password to exit SEB.
+- **quiz_id**: `BIGINT(19)`, Foreign key to the quiz ID.
+- **regex_allowed**: `LONGTEXT(2147483647)`, Regular expression of allowed URLs.
+- **regex_blocked**: `LONGTEXT(2147483647)`, Regular expression of blocked URLs.
+- **require_safe_exam_browser**: `BOOLEAN(1)`, Indicates whether SEB is required.
+- **show_keyboard_layout**: `BOOLEAN(1)`, Indicates whether the keyboard layout is shown.
+- **show_reload_button**: `BOOLEAN(1)`, Indicates whether the reload button is shown.
+- **show_seb_download_link**: `BOOLEAN(1)`, Indicates whether the SEB download link should appear.
+- **show_seb_taskbar**: `BOOLEAN(1)`, Indicates whether the SEB taskbar is shown.
+- **show_time**: `BOOLEAN(1)`, Indicates whether the clock is shown.
+- **show_wifi_control**: `BOOLEAN(1)`, Indicates whether the user can control networking.
+- **template_id**: `BIGINT(19)`, Foreign key to `quizaccess_seb_template.id`.
+- **user_confirm_quit**: `BOOLEAN(1)`, Indicates whether the confirm quit popup should appear.
+- **created_at**: `BIGINT(19)`, Timestamp of when the record was created.
+- **updated_at**: `BIGINT(19)`, Timestamp of when the record was last modified.
+- **user_id**: `BIGINT(19)`, ID of the user who last modified the record.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Table: quizaccess_seb_template
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Templates for Safe Exam Browser configuration.
 
-## Learn More
+#### Fields
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **content**: `LONGTEXT(2147483647)`, Content of the template.
+- **description**: `LONGTEXT(2147483647)`, Description of the template.
+- **enabled**: `BOOLEAN(1)`, Indicates whether the template is enabled.
+- **name**: `VARCHAR(255)`, Name of the template.
+- **sort_order**: `BIGINT(19)`, Sort order of the template.
+- **created_at**: `BIGINT(19)`, Timestamp of when the record was created.
+- **updated_at**: `BIGINT(19)`, Timestamp of when the record was last modified.
+- **user_id**: `BIGINT(19)`, ID of the user who last modified the record.

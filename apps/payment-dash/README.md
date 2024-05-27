@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Table: paygw_paypal
 
-## Getting Started
+Stores PayPal related information for payments.
 
-First, run the development server:
+#### Fields
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the PayPal payment record.
+- **paymentid**: `BIGINT(19)`, The ID of the payment this record is associated with.
+- **pp_orderid**: `VARCHAR(255)`, The ID of the order in PayPal.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Table: payment_accounts
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Stores information about payment accounts.
 
-## Learn More
+#### Fields
 
-To learn more about Next.js, take a look at the following resources:
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the payment account.
+- **archived**: `BIT(1)`, Indicates if the account is archived. Default is 0.
+- **context_id**: `BIGINT(19)`, Context ID associated with the payment account.
+- **enabled**: `BIT(1)`, Indicates if the account is enabled. Default is 0.
+- **id_number**: `VARCHAR(100)` (Nullable), ID number of the payment account.
+- **name**: `VARCHAR(255)`, Name of the payment account.
+- **created_at**: `BIGINT(19)` (Nullable), Timestamp of when the account was created.
+- **updated_at**: `BIGINT(19)` (Nullable), Timestamp of the last modification of the account.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Table: payment_gateways
 
-## Deploy on Vercel
+Stores configuration for payment gateways for different payment accounts.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### Fields
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the payment gateway configuration.
+- **account_id**: `BIGINT(19)`, The ID of the associated payment account.
+- **config**: `LONGTEXT(2147483647)` (Nullable), Configuration settings for the payment gateway.
+- **enabled**: `BIT(1)`, Indicates if the gateway is enabled. Default is 1.
+- **gateway**: `VARCHAR(100)`, Name of the payment gateway.
+- **created_at**: `BIGINT(19)`, Timestamp of when the gateway configuration was created.
+- **updated_at**: `BIGINT(19)`, Timestamp of the last modification of the gateway configuration.
+
+---
+
+### Table: payments
+
+Stores information about payments.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the payment.
+- **account_id**: `BIGINT(19)`, The ID of the associated payment account.
+- **amount**: `VARCHAR(20)`, Amount of the payment.
+- **component**: `VARCHAR(100)`, The plugin this payment belongs to.
+- **currency**: `VARCHAR(3)`, Currency of the payment.
+- **gateway**: `VARCHAR(100)`, The payment gateway used.
+- **item_id**: `BIGINT(19)`, The ID of the item associated with the payment.
+- **payment_area**: `VARCHAR(50)`, The name of the payable area.
+- **created_at**: `BIGINT(19)`, Timestamp of when the payment was created.
+- **updated_at**: `BIGINT(19)`, Timestamp of the last modification of the payment.
+- **user_id**: `BIGINT(19)`, The ID of the user who made the payment.

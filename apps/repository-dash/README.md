@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### Table: repository
 
-## Getting Started
+This table contains one entry for every configured external repository.
 
-First, run the development server:
+#### Fields
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **sort_order**: `BIGINT(19)`, Sort order of the repository.
+- **type**: `VARCHAR(255)`, Type of the repository.
+- **visible**: `BOOLEAN(1)`, Indicates whether the repository is visible. Default is 1.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Table: repository_instances
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+This table contains one entry for every configured external repository instance.
 
-## Learn More
+#### Fields
 
-To learn more about Next.js, take a look at the following resources:
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **context_id**: `BIGINT(19)`, Foreign key to the context.
+- **name**: `VARCHAR(255)`, Name of the repository instance.
+- **password**: `VARCHAR(255)`, Password for the repository instance.
+- **read_only**: `BOOLEAN(1)`, Indicates whether the repository instance is read-only. Default is 0.
+- **type_id**: `BIGINT(19)`, Foreign key to the repository type.
+- **user_name**: `VARCHAR(255)`, Username for the repository instance.
+- **created_at**: `BIGINT(19)`, Timestamp of when the record was created.
+- **updated_at**: `BIGINT(19)`, Timestamp of when the record was last modified.
+- **userid**: `BIGINT(19)`, Foreign key to the user.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### Table: repository_instance_config
 
-## Deploy on Vercel
+The config for instances of repositories.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### Fields
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **instance_id**: `BIGINT(19)`, Foreign key to the repository instance.
+- **name**: `VARCHAR(255)`, Name of the config item.
+- **value**: `LONGTEXT(2147483647)`, Value of the config item.
+
+---
+
+### Table: repository_onedrive_access
+
+List of temporary access grants for OneDrive repositories.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **item_id**: `VARCHAR(255)`, The item ID in OneDrive.
+- **permission_id**: `VARCHAR(255)`, The permission ID in OneDrive.
+- **created_at**: `BIGINT(19)`, Timestamp of when the record was created.
+- **updated_at**: `BIGINT(19)`, Timestamp of when the record was last modified.
+- **userid**: `BIGINT(19)`, Foreign key to the user who last modified the record.
