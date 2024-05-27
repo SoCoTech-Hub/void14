@@ -12,39 +12,39 @@ This table stores instances of enrolment plugins used in courses.
 
 - **id**: BIGINT(19), Primary Key, Nullable.
 - **cost**: VARCHAR(20), Optional, Custom - enrolment cost.
-- **courseid**: BIGINT(19), Nullable.
+- **course_id**: BIGINT(19), Nullable.
 - **currency**: VARCHAR(3), Optional, Custom - cost currency.
-- **customchar1**: VARCHAR(255), Optional, Custom - general short name.
-- **customchar2**: VARCHAR(255), Optional, Custom - general short name.
-- **customchar3**: VARCHAR(1333), Optional, Custom - general short name.
-- **customdec1**: DECIMAL(12), Optional, Custom - general decimal.
-- **customdec2**: DECIMAL(12), Optional, Custom - general decimal.
-- **customint1**: BIGINT(19), Optional, Custom - general int.
-- **customint2**: BIGINT(19), Optional, Custom - general int.
-- **customint3**: BIGINT(19), Optional, Custom - general int.
-- **customint4**: BIGINT(19), Optional, Custom - general int.
-- **customint5**: BIGINT(19), Optional, Custom - general int.
-- **customint6**: BIGINT(19), Optional, Custom - general int.
-- **customint7**: BIGINT(19), Optional, Custom - general int.
-- **customint8**: BIGINT(19), Optional, Custom - general int.
-- **customtext1**: LONGTEXT(2147483647), Optional, Custom - general text.
-- **customtext2**: LONGTEXT(2147483647), Optional, Custom - general text.
-- **customtext3**: LONGTEXT(2147483647), Optional, Custom - general text.
-- **customtext4**: LONGTEXT(2147483647), Optional, Custom - general text.
+- **custom_char1**: VARCHAR(255), Optional, Custom - general short name.
+- **custom_char2**: VARCHAR(255), Optional, Custom - general short name.
+- **custom_char3**: VARCHAR(1333), Optional, Custom - general short name.
+- **custom_dec1**: DECIMAL(12), Optional, Custom - general decimal.
+- **custom_dec2**: DECIMAL(12), Optional, Custom - general decimal.
+- **custom_int1**: BIGINT(19), Optional, Custom - general int.
+- **custom_int2**: BIGINT(19), Optional, Custom - general int.
+- **custom_int3**: BIGINT(19), Optional, Custom - general int.
+- **custom_int4**: BIGINT(19), Optional, Custom - general int.
+- **custom_int5**: BIGINT(19), Optional, Custom - general int.
+- **custom_int6**: BIGINT(19), Optional, Custom - general int.
+- **custom_int7**: BIGINT(19), Optional, Custom - general int.
+- **custom_int8**: BIGINT(19), Optional, Custom - general int.
+- **custom_text1**: LONGTEXT(2147483647), Optional, Custom - general text.
+- **custom_text2**: LONGTEXT(2147483647), Optional, Custom - general text.
+- **custom_text3**: LONGTEXT(2147483647), Optional, Custom - general text.
+- **custom_text4**: LONGTEXT(2147483647), Optional, Custom - general text.
 - **enrol**: VARCHAR(20), Mandatory.
-- **enrolenddate**: BIGINT(19), Optional, Custom - end of enrolment.
-- **enrolperiod**: BIGINT(19), Optional, Custom - enrolment duration.
-- **enrolstartdate**: BIGINT(19), Optional, Custom - start of self-enrolment.
-- **expirynotify**: BIT(1), Optional, Custom - notify users before expiration.
-- **expirythreshold**: BIGINT(19), Optional, Custom - when should the participants be notified.
+- **enrol_end_date**: BIGINT(19), Optional, Custom - end of enrolment.
+- **enrol_period**: BIGINT(19), Optional, Custom - enrolment duration.
+- **enrol_start_date**: BIGINT(19), Optional, Custom - start of self-enrolment.
+- **expiry_notify**: BIT(1), Optional, Custom - notify users before expiration.
+- **expiry_threshold**: BIGINT(19), Optional, Custom - when should the participants be notified.
 - **name**: VARCHAR(255), Optional, Nullable, Optional instance name.
-- **notifyall**: BIT(1), Optional, Custom - Notify both participant and person responsible for enrolments.
+- **notify_all**: BIT(1), Optional, Custom - Notify both participant and person responsible for enrolments.
 - **password**: VARCHAR(50), Optional, Custom - enrolment or access password.
-- **roleid**: BIGINT(19), Optional, Custom - the default role given to participants who self-enrol.
-- **sortorder**: BIGINT(19), Default 0, Order of enrol plugins in each course.
+- **role_id**: BIGINT(19), Optional, Custom - the default role given to participants who self-enrol.
+- **sort_order**: BIGINT(19), Default 0, Order of enrol plugins in each course.
 - **status**: BIGINT(19), Default 0, 0 means active enrolment, see ENROL*STATUS*\* constants, plugins may define own status greater than 10.
-- **timecreated**: BIGINT(19), Default 0.
-- **timemodified**: BIGINT(19), Default 0.
+- **time_created**: BIGINT(19), Default 0.
+- **time_modified**: BIGINT(19), Default 0.
 
 ### Table: enrol_flatfile
 
@@ -54,12 +54,12 @@ This table stores enrol_flatfile data.
 
 - **id**: BIGINT(19), Primary Key, Nullable.
 - **action**: VARCHAR(30), Mandatory.
-- **courseid**: BIGINT(19), Nullable.
-- **roleid**: BIGINT(19), Nullable.
-- **timeend**: BIGINT(19), Default 0.
-- **timemodified**: BIGINT(19), Default 0.
-- **timestart**: BIGINT(19), Default 0.
-- **userid**: BIGINT(19), Nullable.
+- **course_id**: BIGINT(19), Nullable.
+- **role_id**: BIGINT(19), Nullable.
+- **time_end**: BIGINT(19), Default 0.
+- **time_modified**: BIGINT(19), Default 0.
+- **time_start**: BIGINT(19), Default 0.
+- **user_id**: BIGINT(19), Nullable.
 
 ### Table: enrol_lti_app_registration
 
@@ -68,18 +68,18 @@ This table stores details of each application that has been registered with the 
 #### Fields
 
 - **id**: BIGINT(19), Primary Key, Nullable.
-- **accesstokenurl**: LONGTEXT(2147483647), Optional.
-- **authenticationrequesturl**: LONGTEXT(2147483647), Optional, The authorisation endpoint of the platform.
-- **clientid**: VARCHAR(1333), Optional, The clientid string, generated by the platform when setting up the tool.
-- **jwksurl**: LONGTEXT(2147483647), Optional, The JSON Web Key Set URL for the platform.
+- **access_token_url**: LONGTEXT(2147483647), Optional.
+- **authentication_request_url**: LONGTEXT(2147483647), Optional, The authorisation endpoint of the platform.
+- **client_id**: VARCHAR(1333), Optional, The client_id string, generated by the platform when setting up the tool.
+- **jwks_url**: LONGTEXT(2147483647), Optional, The JSON Web Key Set URL for the platform.
 - **name**: VARCHAR(255), Mandatory, Common name to identify this platform to users.
-- **platformclienthash**: VARCHAR(64), Optional, SHA256 hash of the platformid (issuer) and clientid.
-- **platformid**: LONGTEXT(2147483647), Optional, The issuer URL.
-- **platformuniqueidhash**: VARCHAR(64), Optional, SHA256 hash of the platformid (issuer) and uniqueid.
+- **platform_client_hash**: VARCHAR(64), Optional, SHA256 hash of the platform_id (issuer) and client_id.
+- **platform_id**: LONGTEXT(2147483647), Optional, The issuer URL.
+- **platform_unique_id_hash**: VARCHAR(64), Optional, SHA256 hash of the platform_id (issuer) and unique_id.
 - **status**: BIT(1), Default 0, Status of the registration, used to denote draft (incomplete) or active (complete).
-- **timecreated**: BIGINT(19), Nullable.
-- **timemodified**: BIGINT(19), Nullable.
-- **uniqueid**: VARCHAR(255), Mandatory, A unique local id, which can be used in the initiate login URI to provide {iss, clientid} uniqueness in the absence of the optional client_id claim.
+- **time_created**: BIGINT(19), Nullable.
+- **time_modified**: BIGINT(19), Nullable.
+- **unique_id**: VARCHAR(255), Mandatory, A unique local id, which can be used in the initiate login URI to provide {iss, client_id} uniqueness in the absence of the optional client_id claim.
 
 ### Table: enrol_lti_context
 
@@ -88,10 +88,10 @@ This table stores information about contexts in the LTI platform where resources
 #### Fields
 
 - **id**: BIGINT(19), Primary Key, Nullable.
-- **contextid**: VARCHAR(255), Mandatory, The id of the context on the platform.
-- **ltideploymentid**: BIGINT(19), Nullable, The id of the enrol_lti_deployment record containing the deployment information.
-- **timecreated**: BIGINT(19), Nullable.
-- **timemodified**: BIGINT(19), Nullable.
+- **context_id**: VARCHAR(255), Mandatory, The id of the context on the platform.
+- **lti_deployment_id**: BIGINT(19), Nullable, The id of the enrol_lti_deployment record containing the deployment information.
+- **time_created**: BIGINT(19), Nullable.
+- **time_modified**: BIGINT(19), Nullable.
 - **type**: LONGTEXT(2147483647), Optional, The type of the context on the platform.
 
 ### Table: enrol_lti_deployment
@@ -101,12 +101,12 @@ This table stores information about tool deployments within a platform.
 #### Fields
 
 - **id**: BIGINT(19), Primary Key, Nullable.
-- **deploymentid**: VARCHAR(255), Mandatory, The id of the deployment, as defined in the platform.
-- **legacyconsumerkey**: VARCHAR(255), Optional, The legacy consumer key mapped to this deployment, if the deployment represents a migrated tool.
+- **deployment_id**: VARCHAR(255), Mandatory, The id of the deployment, as defined in the platform.
+- **legacy_consumer_key**: VARCHAR(255), Optional, The legacy consumer key mapped to this deployment, if the deployment represents a migrated tool.
 - **name**: VARCHAR(255), Mandatory, A short name identifying the tool deployment to users.
-- **platformid**: BIGINT(19), Nullable, The platformid to which this deployment belongs.
-- **timecreated**: BIGINT(19), Nullable.
-- **timemodified**: BIGINT(19), Nullable.
+- **platform_id**: BIGINT(19), Nullable, The platform_id to which this deployment belongs.
+- **time_created**: BIGINT(19), Nullable.
+- **time_modified**: BIGINT(19), Nullable.
 
 ### Table: enrol_lti_lti2_consumer
 
@@ -115,23 +115,23 @@ This table stores information about LTI consumers interacting with Moodle.
 #### Fields
 
 - **id**: BIGINT(19), Primary Key, Nullable.
-- **consumerguid**: VARCHAR(1024), Optional.
-- **consumerkey**: LONGTEXT(2147483647), Optional.
-- **consumerkey256**: VARCHAR(255), Mandatory.
-- **consumername**: VARCHAR(255), Optional.
-- **consumerversion**: VARCHAR(255), Optional.
+- **consumer_guid**: VARCHAR(1024), Optional.
+- **consumer_key**: LONGTEXT(2147483647), Optional.
+- **consumer_key256**: VARCHAR(255), Mandatory.
+- **consumer_name**: VARCHAR(255), Optional.
+- **consumer_version**: VARCHAR(255), Optional.
 - **created**: BIGINT(19), Nullable.
 - **enabled**: BIT(1), Nullable.
-- **enablefrom**: BIGINT(19), Optional.
-- **enableuntil**: BIGINT(19), Optional.
-- **lastaccess**: BIGINT(19), Optional.
-- **ltiversion**: VARCHAR(10), Optional.
+- **enable_from**: BIGINT(19), Optional.
+- **enable_until**: BIGINT(19), Optional.
+- **last_access**: BIGINT(19), Optional.
+- **lti_version**: VARCHAR(10), Optional.
 - **name**: VARCHAR(50), Mandatory.
 - **profile**: LONGTEXT(2147483647), Optional.
 - **protected**: BIT(1), Nullable.
 - **secret**: VARCHAR(1024), Mandatory.
 - **settings**: LONGTEXT(2147483647), Optional.
-- **toolproxy**: LONGTEXT(2147483647), Optional.
+- **tool_proxy**: LONGTEXT(2147483647), Optional.
 - **updated**: BIGINT(19), Nullable.
 
 ### Table: enrol_lti_lti2_context
@@ -141,9 +141,9 @@ This table stores information about specific LTI contexts from the consumers.
 #### Fields
 
 - **id**: BIGINT(19), Primary Key, Nullable.
-- **consumerid**: BIGINT(19), Nullable.
+- **consumer_id**: BIGINT(19), Nullable.
 - **created**: BIGINT(19), Nullable.
-- **lticontextkey**: VARCHAR(255), Mandatory.
+- **lti_context_key**: VARCHAR(255), Mandatory.
 - **settings**: LONGTEXT(2147483647), Optional.
 - **type**: VARCHAR(100), Optional.
 - **updated**: BIGINT(19), Nullable.
@@ -155,7 +155,7 @@ This table stores nonce used for authentication between Moodle and a consumer.
 #### Fields
 
 - **id**: BIGINT(19), Primary Key, Nullable.
-- **consumerid**: BIGINT(19), Nullable.
+- **consumer_id**: BIGINT(19), Nullable.
 - **expires**: BIGINT(19), Nullable.
 - **value**: VARCHAR(64), Mandatory.
 
@@ -166,13 +166,13 @@ This table stores links from the consumer to the tool.
 #### Fields
 
 - **id**: BIGINT(19), Primary Key, Nullable.
-- **consumerid**: BIGINT(19), Optional.
-- **contextid**: BIGINT(19), Optional.
+- **consumer_id**: BIGINT(19), Optional.
+- **context_id**: BIGINT(19), Optional.
 - **created**: BIGINT(19), Nullable.
-- **ltiresourcelinkkey**: VARCHAR(255), Mandatory.
-- **primaryresourcelinkid**: BIGINT(19), Optional.
+- **lti_resource_link_key**: VARCHAR(255), Mandatory.
+- **primary_resource_link_id**: BIGINT(19), Optional.
 - **settings**: LONGTEXT(2147483647), Optional.
-- **shareapproved**: BIT(1), Optional.
+- **share_approved**: BIT(1), Optional.
 - **updated**: BIGINT(19), Nullable.
 
 ### Table: enrol_lti_lti2_share_key
@@ -182,10 +182,10 @@ This table stores resource link share key.
 #### Fields
 
 - **id**: BIGINT(19), Primary Key, Nullable.
-- **autoapprove**: BIT(1), Nullable.
+- **auto_approve**: BIT(1), Nullable.
 - **expires**: BIGINT(19), Nullable.
-- **resourcelinkid**: BIGINT(19), Nullable.
-- **sharekey**: VARCHAR(32), Mandatory.
+- **resource_link_id**: BIGINT(19), Nullable.
+- **share_key**: VARCHAR(32), Mandatory.
 
 ### Table: enrol_lti_lti2_tool_proxy
 
@@ -194,10 +194,10 @@ This table stores a tool proxy between Moodle and a consumer.
 #### Fields
 
 - **id**: BIGINT(19), Primary Key, Nullable.
-- **consumerid**: BIGINT(19), Nullable.
+- **consumer_id**: BIGINT(19), Nullable.
 - **created**: BIGINT(19), Nullable.
-- **toolproxy**: LONGTEXT(2147483647), Mandatory.
-- **toolproxykey**: VARCHAR(32), Mandatory.
+- **tool_proxy**: LONGTEXT(2147483647), Mandatory.
+- **tool_proxy_key**: VARCHAR(32), Mandatory.
 - **updated**: BIGINT(19), Nullable.
 
 ### Table: enrol_lti_lti2_user_result
@@ -208,9 +208,9 @@ This table stores results for each user for each resource link.
 
 - **id**: BIGINT(19), Primary Key, Nullable.
 - **created**: BIGINT(19), Nullable.
-- **ltiresultsourcedid**: VARCHAR(1024), Mandatory.
-- **ltiuserkey**: VARCHAR(255), Mandatory.
-- **resourcelinkid**: BIGINT(19), Nullable.
+- **lti_result_sourced_id**: VARCHAR(1024), Mandatory.
+- **lti_user_key**: VARCHAR(255), Mandatory.
+- **resource_link_id**: BIGINT(19), Nullable.
 - **updated**: BIGINT(19), Nullable.
 
 ### Table: enrol_lti_resource_link
@@ -220,19 +220,19 @@ This table stores resource links for a platform and deployment.
 #### Fields
 
 - **id**: BIGINT(19), Primary Key, Nullable.
-- **contextmembershipsurl**: VARCHAR(1333), Optional, The NRPS membership URL.
-- **lineitemscope**: VARCHAR(255), Optional, The ags line items authorization scope.
-- **lineitemservice**: VARCHAR(1333), Optional, The URL for the line item service (if only one line item present).
-- **lineitemsservice**: VARCHAR(1333), Optional, The URL for the line items service for this resource link.
-- **lticontextid**: BIGINT(19), Optional, The id of the enrol_lti_context record containing information about the context from which this resource link originates.
-- **ltideploymentid**: BIGINT(19), Nullable, The id of the enrol_lti_deployment record containing the deployment information.
-- **nrpsserviceversions**: VARCHAR(255), Optional, The NRPS supported service versions.
-- **resourceid**: BIGINT(19), Nullable, The id of the local enrol_lti_tools record containing information about the published resource to which this resource link relates.
-- **resourcelinkid**: VARCHAR(255), Mandatory, The platform-and-deployment-unique id of the resource link.
-- **resultscope**: VARCHAR(255), Optional, The ags result authorization scope.
-- **scorescope**: VARCHAR(255), Optional, The ags score items authorization scope.
-- **timecreated**: BIGINT(19), Nullable.
-- **timemodified**: BIGINT(19), Nullable.
+- **context_memberships_url**: VARCHAR(1333), Optional, The NRPS membership URL.
+- **line_item_scope**: VARCHAR(255), Optional, The ags line items authorization scope.
+- **line_item_service**: VARCHAR(1333), Optional, The URL for the line item service (if only one line item present).
+- **line_items_service**: VARCHAR(1333), Optional, The URL for the line items service for this resource link.
+- **lti_context_id**: BIGINT(19), Optional, The id of the enrol_lti_context record containing information about the context from which this resource link originates.
+- **lti_deployment_id**: BIGINT(19), Nullable, The id of the enrol_lti_deployment record containing the deployment information.
+- **nrps_service_versions**: VARCHAR(255), Optional, The NRPS supported service versions.
+- **resource_id**: BIGINT(19), Nullable, The id of the local enrol_lti_tools record containing information about the published resource to which this resource link relates.
+- **resource_link_id**: VARCHAR(255), Mandatory, The platform-and-deployment-unique id of the resource link.
+- **result_scope**: VARCHAR(255), Optional, The ags result authorization scope.
+- **score_scope**: VARCHAR(255), Optional, The ags score items authorization scope.
+- **time_created**: BIGINT(19), Nullable.
+- **time_modified**: BIGINT(19), Nullable.
 
 ### Table: enrol_lti_tool_consumer_map
 
@@ -241,8 +241,8 @@ This table maps the published tool to tool consumers.
 #### Fields
 
 - **id**: BIGINT(19), Primary Key, Nullable.
-- **consumerid**: BIGINT(19), Nullable, The consumer ID.
-- **toolid**: BIGINT(19), Nullable, The tool ID.
+- **consumer_id**: BIGINT(19), Nullable, The consumer ID.
+- **tool_id**: BIGINT(19), Nullable, The tool ID.
 
 ### Table: enrol_lti_tools
 
@@ -252,26 +252,26 @@ This table stores a list of tools provided to the remote system.
 
 - **id**: BIGINT(19), Primary Key, Nullable.
 - **city**: VARCHAR(120), Mandatory.
-- **contextid**: BIGINT(19), Nullable.
+- **context_id**: BIGINT(19), Nullable.
 - **country**: VARCHAR(2), Mandatory.
-- **enrolid**: BIGINT(19), Nullable.
-- **gradesync**: BIT(1), Default 0.
-- **gradesynccompletion**: BIT(1), Default 0.
+- **enrol_id**: BIGINT(19), Nullable.
+- **grade_sync**: BIT(1), Default 0.
+- **grade_sync_completion**: BIT(1), Default 0.
 - **institution**: VARCHAR(40), Mandatory.
 - **lang**: VARCHAR(30), Default 'en'.
-- **ltiversion**: VARCHAR(15), Default 'LTI-1p3'.
-- **maildisplay**: TINYINT(3), Default 2.
-- **maxenrolled**: BIGINT(19), Default 0.
-- **membersync**: BIT(1), Default 0.
-- **membersyncmode**: BIT(1), Default 0.
-- **provisioningmodeinstructor**: TINYINT(3), Optional.
-- **provisioningmodelearner**: TINYINT(3), Optional.
-- **roleinstructor**: BIGINT(19), Nullable.
-- **rolelearner**: BIGINT(19), Nullable.
+- **lti_version**: VARCHAR(15), Default 'LTI-1p3'.
+- **mail_display**: TINYINT(3), Default 2.
+- **max_enrolled**: BIGINT(19), Default 0.
+- **member_sync**: BIT(1), Default 0.
+- **member_sync_mode**: BIT(1), Default 0.
+- **provisioning_mode_instructor**: TINYINT(3), Optional.
+- **provisioning_mode_learner**: TINYINT(3), Optional.
+- **role_instructor**: BIGINT(19), Nullable.
+- **role_learner**: BIGINT(19), Nullable.
 - **secret**: LONGTEXT(2147483647), Optional.
-- **timecreated**: BIGINT(19), Nullable.
-- **timemodified**: BIGINT(19), Nullable.
-- **timezone**: VARCHAR(100), Default '99'.
+- **time_created**: BIGINT(19), Nullable.
+- **time_modified**: BIGINT(19), Nullable.
+- **time_zone**: VARCHAR(100), Default '99'.
 - **uuid**: VARCHAR(36), Optional.
 
 ### Table: enrol_lti_user_resource_link
@@ -281,8 +281,8 @@ This table maps users to resource links as this is a many-to-many relationship.
 #### Fields
 
 - **id**: BIGINT(19), Primary Key, Nullable.
-- **ltiuserid**: BIGINT(19), Nullable, The id of the enrol_lti_users record.
-- **resourcelinkid**: BIGINT(19), Nullable, The id of the enrol_lti_resource_link record.
+- **lti_user_id**: BIGINT(19), Nullable, The id of the enrol_lti_users record.
+- **resource_link_id**: BIGINT(19), Nullable, The id of the enrol_lti_resource_link record.
 
 ### Table: enrol_lti_users
 
@@ -291,18 +291,18 @@ This table stores user access log and gradeback data.
 #### Fields
 
 - **id**: BIGINT(19), Primary Key, Nullable.
-- **consumerkey**: LONGTEXT(2147483647), Optional.
-- **consumersecret**: LONGTEXT(2147483647), Optional.
-- **lastaccess**: BIGINT(19), Optional, The time the user last accessed.
-- **lastgrade**: DECIMAL(10), Optional, The last grade that was sent.
-- **ltideploymentid**: BIGINT(19), Optional.
-- **membershipsid**: LONGTEXT(2147483647), Optional.
-- **membershipsurl**: LONGTEXT(2147483647), Optional.
-- **serviceurl**: LONGTEXT(2147483647), Optional.
-- **sourceid**: LONGTEXT(2147483647), Optional.
-- **timecreated**: BIGINT(19), Optional, The time the user was created.
-- **toolid**: BIGINT(19), Nullable.
-- **userid**: BIGINT(19), Nullable.
+- **consumer_key**: LONGTEXT(2147483647), Optional.
+- **consumer_secret**: LONGTEXT(2147483647), Optional.
+- **last_access**: BIGINT(19), Optional, The time the user last accessed.
+- **last_grade**: DECIMAL(10), Optional, The last grade that was sent.
+- **lti_deployment_id**: BIGINT(19), Optional.
+- **memberships_id**: LONGTEXT(2147483647), Optional.
+- **memberships_url**: LONGTEXT(2147483647), Optional.
+- **service_url**: LONGTEXT(2147483647), Optional.
+- **source_id**: LONGTEXT(2147483647), Optional.
+- **time_created**: BIGINT(19), Optional, The time the user was created.
+- **tool_id**: BIGINT(19), Nullable.
+- **user_id**: BIGINT(19), Nullable.
 
 ### Table: enrol_paypal
 
@@ -312,8 +312,8 @@ This table stores all known information about PayPal transactions.
 
 - **id**: BIGINT(19), Primary Key, Nullable.
 - **business**: VARCHAR(255), Mandatory.
-- **courseid**: BIGINT(19), Default 0.
-- **instanceid**: BIGINT(19), Default 0.
+- **course_id**: BIGINT(19), Default 0.
+- **instance_id**: BIGINT(19), Default 0.
 - **item_name**: VARCHAR(255), Mandatory.
 - **memo**: VARCHAR(255), Mandatory.
 - **option_name1**: VARCHAR(255), Mandatory.
@@ -328,6 +328,6 @@ This table stores all known information about PayPal transactions.
 - **receiver_email**: VARCHAR(255), Mandatory.
 - **receiver_id**: VARCHAR(255), Mandatory.
 - **tax**: VARCHAR(255), Mandatory.
-- **timeupdated**: BIGINT(19), Default 0.
+- **time_updated**: BIGINT(19), Default 0.
 - **txn_id**: VARCHAR(255), Mandatory.
-- **userid**: BIGINT(19), Default 0.
+- **user_id**: BIGINT(19), Default 0.
