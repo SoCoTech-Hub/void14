@@ -5,100 +5,112 @@
 ![Relationships Diagram](RelationshipsDiagram.png)
 List of Tables with their function described below:
 
-### wikis
+### Table: wikis
 
-Stores Wiki activity configuration
-
-#### Fields
-
-- id
-- course_id \* Course wiki activity belongs to
-- default_format \* Wiki’s default editor
-- edit_begin
-- edit_end
-- first_page_title \* Wiki first page’s name
-- force_format \* Forces the default editor
-- intro \* General introduction of the wiki activity
-- intro_format \* Format of the intro field (MOODLE, HTML, MARKDOWN…)
-- name \* name field for moodle instances
-- wiki_mode \* Wiki mode (individual, collaborative)
-- created_at
-- updated_at
-
-### wiki_links
-
-Page wiki links
+Stores Wiki activity configuration.
 
 #### Fields
 
-- id
-- from_page_id \* Page id with a link
-- sub_wiki_id \* Subwiki instance
-- to_missing_page \* link to a nonexistent page
-- to_page_id \* Page id that recives a link
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the wiki activity.
+- **course_id**: `BIGINT(19)`, Foreign key reference to the course this wiki activity belongs to.
+- **name**: `VARCHAR(255)`, Name of the wiki activity.
+- **intro**: `LONGTEXT(2147483647)`, Introduction to the wiki activity.
+- **intro_format**: `SMALLINT(5)`, Format of the introduction field (e.g., MOODLE, HTML, MARKDOWN).
+- **default_format**: `VARCHAR(20)`, Default editor format for the wiki (e.g., creole).
+- **force_format**: `BIT(1)`, Whether the default editor format is forced.
+- **first_page_title**: `VARCHAR(255)`, Title of the first page of the wiki.
+- **wiki_mode**: `VARCHAR(20)`, Mode of the wiki (e.g., individual, collaborative).
+- **edit_begin**: `BIGINT(19)`, Start time for editing.
+- **edit_end**: `BIGINT(19)`, End time for editing.
+- **created_at**: `BIGINT(19)`, Timestamp when the wiki activity was created.
+- **updated_at**: `BIGINT(19)`, Timestamp when the wiki activity was last modified.
 
-### wiki_locks
+---
 
-Manages page locks
+### Table: wiki_links
 
-#### Fields
-
-- id
-- locke_dat
-- page_id
-- section_name
-- user_id
-
-### wiki_pages
-
-Stores wiki pages
+Stores links between wiki pages.
 
 #### Fields
 
-- id
-- cached_content \* Cache wiki content
-- page_views \* Number of page views
-- read_only \* Read only flag
-- sub_wiki_id \* Subwiki instance of this page
-- time_rendered \* Last render timestamp
-- title \* Page name
-- created_at \* Wiki page creation timestamp
-- updated_at \* page edition timestamp
-- userid \* Edition author
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the wiki link.
+- **from_page_id**: `BIGINT(19)`, ID of the page that contains the link.
+- **to_page_id**: `BIGINT(19)`, ID of the page that receives the link.
+- **to_missing_page**: `VARCHAR(255)`, Link to a nonexistent page.
+- **sub_wiki_id**: `BIGINT(19)`, ID of the subwiki instance.
 
-### wiki_subwikis
+---
 
-Stores subwiki instances
+### Table: wiki_locks
+
+Manages page locks to prevent simultaneous editing.
 
 #### Fields
 
-- id
-- group_id \* Group that owns this wiki
-- wiki_id \* Wiki activity
-- user_id \* Owner of that subwiki
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the lock.
+- **page_id**: `BIGINT(19)`, ID of the locked page.
+- **locked_at**: `BIGINT(19)`, Timestamp when the page was locked.
+- **section_name**: `VARCHAR(255)`, Section of the page that is locked.
+- **user_id**: `BIGINT(19)`, ID of the user who locked the page.
 
-### wiki_synonyms
+---
 
-Stores wiki pages synonyms
+### Table: wiki_pages
 
-#### Fields
-
-- id
-- page_id \* Original page
-- page_synonym \* Page name synonym
-- sub_wiki_id \* Subwiki instance
-
-### wiki_versions
-
-Stores wiki page history
+Stores wiki pages.
 
 #### Fields
 
-- id
-- content \* Not parsed wiki content
-- content_format \* Markup used to write content
-- page_id \* Page id
-- version \* Wiki page version
-- created_at \* Page edition timestamp
-- updated_at
-- user_id \* Edition autor
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the wiki page.
+- **sub_wiki_id**: `BIGINT(19)`, ID of the subwiki instance to which this page belongs.
+- **title**: `VARCHAR(255)`, Title of the page.
+- **cached_content**: `LONGTEXT(2147483647)`, Cached content of the page.
+- **time_rendered**: `BIGINT(19)`, Timestamp when the page was last rendered.
+- **page_views**: `BIGINT(19)`, Number of times the page has been viewed.
+- **read_only**: `BIT(1)`, Whether the page is read-only.
+- **created_at**: `BIGINT(19)`, Timestamp when the page was created.
+- **updated_at**: `BIGINT(19)`, Timestamp when the page was last modified.
+- **user_id**: `BIGINT(19)`, ID of the user who created or modified the page.
+
+---
+
+### Table: wiki_subwikis
+
+Stores subwiki instances.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the subwiki instance.
+- **wiki_id**: `BIGINT(19)`, ID of the wiki activity.
+- **group_id**: `BIGINT(19)`, ID of the group that owns this subwiki.
+- **user_id**: `BIGINT(19)`, ID of the user who owns this subwiki.
+
+---
+
+### Table: wiki_synonyms
+
+Stores wiki page synonyms.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the synonym.
+- **page_id**: `BIGINT(19)`, ID of the original page.
+- **page_synonym**: `VARCHAR(255)`, Synonym for the page.
+- **sub_wiki_id**: `BIGINT(19)`, ID of the subwiki instance.
+
+---
+
+### Table: wiki_versions
+
+Stores wiki page history.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the version.
+- **page_id**: `BIGINT(19)`, ID of the page.
+- **content**: `LONGTEXT(2147483647)`, Content of the page.
+- **content_format**: `VARCHAR(20)`, Markup used to write the content (e.g., creole).
+- **version**: `MEDIUMINT(7)`, Version number of the page.
+- **created_at**: `BIGINT(19)`, Timestamp when the version was created.
+- **updated_at**: `BIGINT(19)`, Timestamp when the version was updated.
+- **user_id**: `BIGINT(19)`, ID of the user who edited the page.
