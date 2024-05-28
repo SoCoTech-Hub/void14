@@ -4,7 +4,7 @@
 
 This README provides an overview of the tables in the Data Management application, along with their fields and functions.
 
-### Table: data
+### Table: data **
 
 This table stores all database activities.
 
@@ -49,7 +49,7 @@ This table stores all database activities.
 - **created_at**: BIGINT(19)
 - **updated_at**: BIGINT(19) \* The time the settings for this database module instance were last modified.
 
-### Table: data_content
+### Table: data_content **
 
 This table stores the content introduced in each record/field.
 
@@ -64,7 +64,7 @@ This table stores the content introduced in each record/field.
 - **field_id**: BIGINT(19)
 - **record_id**: BIGINT(19)
 
-### Table: data_fields
+### Table: data_fields **
 
 This table stores every field available in the database activities.
 
@@ -87,7 +87,7 @@ This table stores every field available in the database activities.
 - **required**: BIT(1) \* Default: 0. Required fields must have a value when inserted by a user.
 - **type**: VARCHAR(255)
 
-### Table: data_records
+### Table: data_records **
 
 This table stores every record introduced in the database activities.
 
