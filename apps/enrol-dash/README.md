@@ -4,7 +4,7 @@ This README provides an overview of the tables in the enrolment module, along wi
 
 ## Tables
 
-### Table: enrol
+### Table: enrol **
 
 This table stores instances of enrolment plugins used in courses.
 
@@ -46,7 +46,7 @@ This table stores instances of enrolment plugins used in courses.
 - **time_created**: BIGINT(19), Default 0.
 - **time_modified**: BIGINT(19), Default 0.
 
-### Table: enrol_flatfile
+### Table: enrol_flatfile **
 
 This table stores enrol_flatfile data.
 
@@ -61,7 +61,7 @@ This table stores enrol_flatfile data.
 - **time_start**: BIGINT(19), Default 0.
 - **user_id**: BIGINT(19), Nullable.
 
-### Table: enrol_lti_app_registration
+### Table: enrol_lti_app_registration **
 
 This table stores details of each application that has been registered with the LTI (Learning Tools Interoperability) system.
 
@@ -81,7 +81,7 @@ This table stores details of each application that has been registered with the 
 - **time_modified**: BIGINT(19), Nullable.
 - **unique_id**: VARCHAR(255), Mandatory, A unique local id, which can be used in the initiate login URI to provide {iss, client_id} uniqueness in the absence of the optional client_id claim.
 
-### Table: enrol_lti_context
+### Table: enrol_lti_context **
 
 This table stores information about contexts in the LTI platform where resources are shared.
 
@@ -94,7 +94,7 @@ This table stores information about contexts in the LTI platform where resources
 - **time_modified**: BIGINT(19), Nullable.
 - **type**: LONGTEXT(2147483647), Optional, The type of the context on the platform.
 
-### Table: enrol_lti_deployment
+### Table: enrol_lti_deployment **
 
 This table stores information about tool deployments within a platform.
 
@@ -108,7 +108,7 @@ This table stores information about tool deployments within a platform.
 - **time_created**: BIGINT(19), Nullable.
 - **time_modified**: BIGINT(19), Nullable.
 
-### Table: enrol_lti_lti2_consumer
+### Table: enrol_lti_lti2_consumer **
 
 This table stores information about LTI consumers interacting with Moodle.
 
@@ -120,10 +120,7 @@ This table stores information about LTI consumers interacting with Moodle.
 - **consumer_key256**: VARCHAR(255), Mandatory.
 - **consumer_name**: VARCHAR(255), Optional.
 - **consumer_version**: VARCHAR(255), Optional.
-- **created**: BIGINT(19), Nullable.
 - **enabled**: BIT(1), Nullable.
-- **enable_from**: BIGINT(19), Optional.
-- **enable_until**: BIGINT(19), Optional.
 - **last_access**: BIGINT(19), Optional.
 - **lti_version**: VARCHAR(10), Optional.
 - **name**: VARCHAR(50), Mandatory.
@@ -132,9 +129,12 @@ This table stores information about LTI consumers interacting with Moodle.
 - **secret**: VARCHAR(1024), Mandatory.
 - **settings**: LONGTEXT(2147483647), Optional.
 - **tool_proxy**: LONGTEXT(2147483647), Optional.
+- **enable_from**: BIGINT(19), Optional.
+- **enable_until**: BIGINT(19), Optional.
+- **created**: BIGINT(19), Nullable.
 - **updated**: BIGINT(19), Nullable.
 
-### Table: enrol_lti_lti2_context
+### Table: enrol_lti_lti2_context **
 
 This table stores information about specific LTI contexts from the consumers.
 
@@ -142,13 +142,13 @@ This table stores information about specific LTI contexts from the consumers.
 
 - **id**: BIGINT(19), Primary Key, Nullable.
 - **consumer_id**: BIGINT(19), Nullable.
-- **created**: BIGINT(19), Nullable.
 - **lti_context_key**: VARCHAR(255), Mandatory.
 - **settings**: LONGTEXT(2147483647), Optional.
 - **type**: VARCHAR(100), Optional.
+- **created**: BIGINT(19), Nullable.
 - **updated**: BIGINT(19), Nullable.
 
-### Table: enrol_lti_lti2_nonce
+### Table: enrol_lti_lti2_nonce **
 
 This table stores nonce used for authentication between Moodle and a consumer.
 
@@ -159,7 +159,7 @@ This table stores nonce used for authentication between Moodle and a consumer.
 - **expires**: BIGINT(19), Nullable.
 - **value**: VARCHAR(64), Mandatory.
 
-### Table: enrol_lti_lti2_resource_link
+### Table: enrol_lti_lti2_resource_link **
 
 This table stores links from the consumer to the tool.
 
@@ -168,14 +168,14 @@ This table stores links from the consumer to the tool.
 - **id**: BIGINT(19), Primary Key, Nullable.
 - **consumer_id**: BIGINT(19), Optional.
 - **context_id**: BIGINT(19), Optional.
-- **created**: BIGINT(19), Nullable.
 - **lti_resource_link_key**: VARCHAR(255), Mandatory.
 - **primary_resource_link_id**: BIGINT(19), Optional.
 - **settings**: LONGTEXT(2147483647), Optional.
 - **share_approved**: BIT(1), Optional.
+- **created**: BIGINT(19), Nullable.
 - **updated**: BIGINT(19), Nullable.
 
-### Table: enrol_lti_lti2_share_key
+### Table: enrol_lti_lti2_share_key 
 
 This table stores resource link share key.
 
