@@ -33,7 +33,6 @@ Each record represents one person.
 - **auto_subscribe**: `BOOLEAN(1)`, Auto-subscribe to forums.
 - **track_forums**: `BOOLEAN(1)`, Track forum posts.
 - **trust_bitmask**: `BIGINT(19)`, Trust bitmask.
-- **profile**: `VARCHAR(255)`, Moodle.net profile information.
 - **confirmed**: `BOOLEAN(1)`, Whether the account is confirmed.
 - **deleted**: `BOOLEAN(1)`, Whether the account is deleted.
 - **suspended**: `BOOLEAN(1)`, Whether the account is suspended.
@@ -131,14 +130,14 @@ Customisable user profile fields.
 #### Fields
 
 - **id**: `BIGINT(19)` (Primary Key), Unique identifier for the field.
-- **categoryid**: `BIGINT(19)`, Foreign key reference to the category.
-- **shortname**: `VARCHAR(255)`, Short name for the field.
+- **category_id**: `BIGINT(19)`, Foreign key reference to the category.
+- **short_name**: `VARCHAR(255)`, Short name for the field.
 - **name**: `LONGTEXT(2147483647)`, Field name.
 - **data_type**: `VARCHAR(255)`, Type of data held in this field.
 - **description**: `LONGTEXT(2147483647)`, Description of the field.
-- **descriptionformat**: `TINYINT(3)`, Format of the description.
-- **defaultdata**: `LONGTEXT(2147483647)`, Default value for the field.
-- **defaultdataformat**: `TINYINT(3)`, Format of the default data.
+- **description_format**: `TINYINT(3)`, Format of the description.
+- **default_data**: `LONGTEXT(2147483647)`, Default value for the field.
+- **default_data_format**: `TINYINT(3)`, Format of the default data.
 - **param1**: `LONGTEXT(2147483647)`, General parameter field.
 - **param2**: `LONGTEXT(2147483647)`, General parameter field.
 - **param3**: `LONGTEXT(2147483647)`, General parameter field.
@@ -219,7 +218,7 @@ Access keys used in cookieless scripts (e.g., RSS).
 - **value**: `VARCHAR(128)`, Private access key value.
 - **instance**: `BIGINT(19)`, Optional instance ID.
 - **ip_restriction**: `VARCHAR(255)`, IP restriction.
-- **validuntil**: `BIGINT(19)`, Timestamp until the key is valid.
+- **valid_until**: `BIGINT(19)`, Timestamp until the key is valid.
 - **created_at**: `BIGINT(19)`, Timestamp of key creation.
 - **updated_at**: `BIGINT(19)`, Timestamp of key updated.
 - **user_id**: `BIGINT(19)`, Foreign key reference to the user.
