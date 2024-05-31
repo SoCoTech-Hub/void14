@@ -175,7 +175,7 @@ This table stores links from the consumer to the tool.
 - **created**: BIGINT(19), Nullable.
 - **updated**: BIGINT(19), Nullable.
 
-### Table: enrol_lti_lti2_share_key 
+### Table: enrol_lti_lti2_share_key **
 
 This table stores resource link share key.
 
@@ -187,7 +187,7 @@ This table stores resource link share key.
 - **resource_link_id**: BIGINT(19), Nullable.
 - **share_key**: VARCHAR(32), Mandatory.
 
-### Table: enrol_lti_lti2_tool_proxy
+### Table: enrol_lti_lti2_tool_proxy **
 
 This table stores a tool proxy between Moodle and a consumer.
 
@@ -195,25 +195,25 @@ This table stores a tool proxy between Moodle and a consumer.
 
 - **id**: BIGINT(19), Primary Key, Nullable.
 - **consumer_id**: BIGINT(19), Nullable.
-- **created**: BIGINT(19), Nullable.
 - **tool_proxy**: LONGTEXT(2147483647), Mandatory.
 - **tool_proxy_key**: VARCHAR(32), Mandatory.
+- **created**: BIGINT(19), Nullable.
 - **updated**: BIGINT(19), Nullable.
 
-### Table: enrol_lti_lti2_user_result
+### Table: enrol_lti_lti2_user_result **
 
 This table stores results for each user for each resource link.
 
 #### Fields
 
 - **id**: BIGINT(19), Primary Key, Nullable.
-- **created**: BIGINT(19), Nullable.
 - **lti_result_sourced_id**: VARCHAR(1024), Mandatory.
 - **lti_user_key**: VARCHAR(255), Mandatory.
 - **resource_link_id**: BIGINT(19), Nullable.
+- **created**: BIGINT(19), Nullable.
 - **updated**: BIGINT(19), Nullable.
 
-### Table: enrol_lti_resource_link
+### Table: enrol_lti_resource_link **
 
 This table stores resource links for a platform and deployment.
 
@@ -234,7 +234,7 @@ This table stores resource links for a platform and deployment.
 - **time_created**: BIGINT(19), Nullable.
 - **time_modified**: BIGINT(19), Nullable.
 
-### Table: enrol_lti_tool_consumer_map
+### Table: enrol_lti_tool_consumer_map **
 
 This table maps the published tool to tool consumers.
 
@@ -244,7 +244,7 @@ This table maps the published tool to tool consumers.
 - **consumer_id**: BIGINT(19), Nullable, The consumer ID.
 - **tool_id**: BIGINT(19), Nullable, The tool ID.
 
-### Table: enrol_lti_tools
+### Table: enrol_lti_tools **
 
 This table stores a list of tools provided to the remote system.
 
@@ -269,12 +269,12 @@ This table stores a list of tools provided to the remote system.
 - **role_instructor**: BIGINT(19), Nullable.
 - **role_learner**: BIGINT(19), Nullable.
 - **secret**: LONGTEXT(2147483647), Optional.
-- **time_created**: BIGINT(19), Nullable.
-- **time_modified**: BIGINT(19), Nullable.
 - **time_zone**: VARCHAR(100), Default '99'.
 - **uuid**: VARCHAR(36), Optional.
+- **time_created**: BIGINT(19), Nullable.
+- **time_modified**: BIGINT(19), Nullable.
 
-### Table: enrol_lti_user_resource_link
+### Table: enrol_lti_user_resource_link **
 
 This table maps users to resource links as this is a many-to-many relationship.
 
@@ -284,7 +284,7 @@ This table maps users to resource links as this is a many-to-many relationship.
 - **lti_user_id**: BIGINT(19), Nullable, The id of the enrol_lti_users record.
 - **resource_link_id**: BIGINT(19), Nullable, The id of the enrol_lti_resource_link record.
 
-### Table: enrol_lti_users
+### Table: enrol_lti_users **
 
 This table stores user access log and gradeback data.
 
@@ -300,11 +300,11 @@ This table stores user access log and gradeback data.
 - **memberships_url**: LONGTEXT(2147483647), Optional.
 - **service_url**: LONGTEXT(2147483647), Optional.
 - **source_id**: LONGTEXT(2147483647), Optional.
-- **time_created**: BIGINT(19), Optional, The time the user was created.
 - **tool_id**: BIGINT(19), Nullable.
+- **time_created**: BIGINT(19), Optional, The time the user was created.
 - **user_id**: BIGINT(19), Nullable.
 
-### Table: enrol_paypal
+### Table: enrol_paypal **
 
 This table stores all known information about PayPal transactions.
 
@@ -328,6 +328,6 @@ This table stores all known information about PayPal transactions.
 - **receiver_email**: VARCHAR(255), Mandatory.
 - **receiver_id**: VARCHAR(255), Mandatory.
 - **tax**: VARCHAR(255), Mandatory.
-- **time_updated**: BIGINT(19), Default 0.
 - **txn_id**: VARCHAR(255), Mandatory.
+- **time_updated**: BIGINT(19), Default 0.
 - **user_id**: BIGINT(19), Default 0.
