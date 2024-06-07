@@ -2,7 +2,7 @@
 
 This README provides an overview of the `favourite` table, which stores relationships between users and their favourite items within the Moodle system. Each record in the table represents a favourite item for a user.
 
-## Table: favourite
+## Table: favourites
 
 ### Description
 

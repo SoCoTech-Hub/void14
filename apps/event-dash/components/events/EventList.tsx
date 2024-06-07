@@ -27,7 +27,7 @@ const Event = ({ event }: { event: CompleteEvent }) => {
   return (
     <li className="flex justify-between my-2">
       <div className="w-full">
-        <div>{event.name}</div>
+        <div>{event.categoryId}</div>
       </div>
       <EventModal event={event} />
     </li>

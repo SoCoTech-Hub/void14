@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { varchar, text, timestamp, pgTable } from "drizzle-orm/pg-core";
+import { varchar, text, integer, timestamp, boolean, pgTable } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -10,12 +10,26 @@ import { nanoid, timestamps } from "@/lib/utils";
 
 export const events = pgTable('events', {
   id: varchar("id", { length: 191 }).primaryKey().$defaultFn(() => nanoid()),
-  name: varchar("name", { length: 256 }).notNull(),
+  categoryId: varchar("category_id", { length: 256 }),
+  component: varchar("component", { length: 256 }),
+  courseId: varchar("course_id", { length: 256 }),
   description: text("description"),
-  startDate: timestamp("start_date"),
-  endDate: timestamp("end_date"),
+  eventType: varchar("event_type", { length: 256 }),
+  format: integer("format"),
+  groupId: varchar("group_id", { length: 256 }),
+  instance: integer("instance"),
   location: text("location"),
-  image: varchar("image", { length: 256 }),
+  moduleName: varchar("module_name", { length: 256 }),
+  name: text("name"),
+  priority: integer("priority"),
+  repeatId: varchar("repeat_id", { length: 256 }),
+  sequence: integer("sequence"),
+  subscriptionId: varchar("subscription_id", { length: 256 }),
+  timeSort: timestamp("time_sort"),
+  timeStart: timestamp("time_start"),
+  type: integer("type"),
+  uuid: varchar("uuid", { length: 256 }),
+  visible: boolean("visible"),
   userId: varchar("user_id", { length: 256 }).notNull(),
   
   createdAt: timestamp("created_at")
@@ -33,8 +47,14 @@ const baseSchema = createSelectSchema(events).omit(timestamps)
 
 export const insertEventSchema = createInsertSchema(events).omit(timestamps);
 export const insertEventParams = baseSchema.extend({
-  startDate: z.coerce.string().min(1),
-  endDate: z.coerce.string().min(1)
+  format: z.coerce.number(),
+  instance: z.coerce.number(),
+  priority: z.coerce.number(),
+  sequence: z.coerce.number(),
+  timeSort: z.coerce.string().min(1),
+  timeStart: z.coerce.string().min(1),
+  type: z.coerce.number(),
+  visible: z.coerce.boolean()
 }).omit({ 
   id: true,
   userId: true
@@ -42,8 +62,14 @@ export const insertEventParams = baseSchema.extend({
 
 export const updateEventSchema = baseSchema;
 export const updateEventParams = baseSchema.extend({
-  startDate: z.coerce.string().min(1),
-  endDate: z.coerce.string().min(1)
+  format: z.coerce.number(),
+  instance: z.coerce.number(),
+  priority: z.coerce.number(),
+  sequence: z.coerce.number(),
+  timeSort: z.coerce.string().min(1),
+  timeStart: z.coerce.string().min(1),
+  type: z.coerce.number(),
+  visible: z.coerce.boolean()
 }).omit({ 
   userId: true
 });
