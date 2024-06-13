@@ -54,7 +54,7 @@ Table to store rules.
 - **time_window**: `MEDIUMINT(7)`, Time window in seconds.
 - **created_at**: `BIGINT(19)`, Timestamp of when this rule was created.
 - **updated_at**: `BIGINT(19)`, Timestamp when this rule was last modified.
-- **userid**: `BIGINT(19)`, ID of the user who created the rule.
+- **user_id**: `BIGINT(19)`, ID of the user who created the rule.
 
 ---
 
