@@ -4,7 +4,7 @@
 
 List of Tables with their function described below:
 
-### Table: tool_recyclebin_category
+### Table: tool_recyclebin_categories
 
 A list of items in the category recycle bin.
 
@@ -19,7 +19,7 @@ A list of items in the category recycle bin.
 
 ---
 
-### Table: tool_recyclebin_course
+### Table: tool_recyclebin_courses
 
 A list of items in the course recycle bin.
 
@@ -27,8 +27,8 @@ A list of items in the course recycle bin.
 
 - **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
 - **course_id**: `BIGINT(19)`, ID of the course.
-- **module**: `BIGINT(19)`, ID of the module.
+- **module_id**: `BIGINT(19)`, ID of the module.
 - **name**: `VARCHAR(255)`, Name of the item.
-- **section**: `BIGINT(19)`, Section ID.
+- **section_id**: `BIGINT(19)`, Section ID.
 - **created_at**: `BIGINT(19)`, Timestamp of when the record was created.
 - **updated_at**: `BIGINT(19)`, Timestamp of when the record was updated.

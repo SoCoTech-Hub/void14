@@ -4,7 +4,7 @@
 
 List of Tables with their function described below:
 
-### Table: tool_usertours_steps
+### Table: tool_user_tours_steps
 
 Steps in a tour.
 
@@ -22,7 +22,7 @@ Steps in a tour.
 
 ---
 
-### Table: tool_usertours_tours
+### Table: tool_user_tours_tours
 
 List of tours.
 
