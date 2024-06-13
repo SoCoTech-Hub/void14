@@ -1,8 +1,10 @@
 import ThemeList from "@/components/themes/ThemeList";
 import NewThemeModal from "@/components/themes/ThemeModal";
 import { api } from "@/lib/trpc/api";
+import { checkAuth } from "@/lib/auth/utils";
 
 export default async function Themes() {
+  await checkAuth();
   const { themes } = await api.themes.getThemes.query();  
 
   return (

@@ -1,8 +1,8 @@
-import { computersRouter } from './computers'
 import { router } from '@/lib/server/trpc'
+import { toolCohortRolesRouter } from './toolCohortRoles'
 
 export const appRouter = router({
-	computers: computersRouter
+	toolCohortRoles: toolCohortRolesRouter
 })
 
 export type AppRouter = typeof appRouter
