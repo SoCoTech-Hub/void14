@@ -4,7 +4,7 @@
 
 List of Tables with their function described below:
 
-### Table: tool_customlangs
+### Table: tool_custom_langs
 
 Contains the working checkout of all strings and their customizations.
 
@@ -25,7 +25,7 @@ Contains the working checkout of all strings and their customizations.
 
 ---
 
-### Table: tool_customlang_components
+### Table: tool_custom_lang_components
 
 Contains the list of all installed plugins that provide their own strings.
 
