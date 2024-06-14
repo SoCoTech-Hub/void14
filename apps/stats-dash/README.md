@@ -1,4 +1,4 @@
-### Table: stats_daily
+### Table: stats_dailies
 
 To accumulate daily stats.
 
@@ -14,7 +14,7 @@ To accumulate daily stats.
 
 ---
 
-### Table: stats_monthly
+### Table: stats_monthlies
 
 To accumulate monthly stats.
 
@@ -30,7 +30,7 @@ To accumulate monthly stats.
 
 ---
 
-### Table: stats_user_daily
+### Table: stats_user_dailies
 
 To accumulate daily stats per course/user.
 
@@ -47,7 +47,7 @@ To accumulate daily stats per course/user.
 
 ---
 
-### Table: stats_user_monthly
+### Table: stats_user_monthlies
 
 To accumulate monthly stats per course/user.
 
@@ -64,7 +64,7 @@ To accumulate monthly stats per course/user.
 
 ---
 
-### Table: stats_user_weekly
+### Table: stats_user_weeklies
 
 To accumulate weekly stats per course/user.
 
@@ -81,7 +81,7 @@ To accumulate weekly stats per course/user.
 
 ---
 
-### Table: stats_weekly
+### Table: stats_weeklies
 
 To accumulate weekly stats.
 
