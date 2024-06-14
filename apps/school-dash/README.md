@@ -1,36 +1,28 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### grades
 
-## Getting Started
+id: varchar("id", { length: 191 }).primaryKey().$defaultFn(() => nanoid()),
+name: varchar("name", { length: 256 }).notNull(),
+image: varchar("image", { length: 256 })
 
-First, run the development server:
+### schools
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+id: varchar("id", { length: 191 }).primaryKey().$defaultFn(() => nanoid()),
+name: varchar("name", { length: 256 }).notNull(),
+telephone: varchar("telephone", { length: 256 }),
+country: varchar("country", { length: 256 }),
+province: varchar("province", { length: 256 }),
+suburb: varchar("suburb", { length: 256 }),
+district: varchar("district", { length: 256 }),
+gradeId: varchar("grade_id", { length: 256 }).references(() => grades.id, { onDelete: "cascade" }).notNull()
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### user_grades
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+id: varchar("id", { length: 191 }).primaryKey().$defaultFn(() => nanoid()),
+gradeId: varchar("grade_id", { length: 256 }).references(() => grades.id, { onDelete: "cascade" }).notNull(),
+userId: varchar("user_id", { length: 256 }).notNull()
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### user_schools
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+id: varchar("id", { length: 191 }).primaryKey().$defaultFn(() => nanoid()),
+schoolId: varchar("school_id", { length: 256 }).references(() => schools.id, { onDelete: "cascade" }).notNull(),
+userId: varchar("user_id", { length: 256 }).notNull()

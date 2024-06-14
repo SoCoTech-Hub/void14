@@ -46,7 +46,7 @@ Each record is one SCORM module and its configuration.
 - **sha1_hash**: `VARCHAR(40)`, SHA-1 hash of the package content or external path.
 - **skip_view**: `BOOLEAN(1)`, Indicates if the view should be skipped.
 - **time_close**: `BIGINT(19)`, Time when the SCORM module closes.
-- **timeopen**: `BIGINT(19)`, Time when the SCORM module opens.
+- **time_open**: `BIGINT(19)`, Time when the SCORM module opens.
 - **update_freq**: `BOOLEAN(1)`, Indicates if the package must be automatically updated.
 - **version**: `VARCHAR(9)`, Version of the SCORM package.
 - **what_grade**: `BIGINT(19)`, Indicates what grade is used.

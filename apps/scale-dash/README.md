@@ -1,4 +1,4 @@
-### Table: scale
+### Table: scales
 
 Defines grading scales.
 
@@ -16,7 +16,7 @@ Defines grading scales.
 
 ---
 
-### Table: scale_history
+### Table: scale_histories
 
 History table for grading scales.
 
