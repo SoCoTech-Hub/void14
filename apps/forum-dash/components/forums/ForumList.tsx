@@ -27,7 +27,7 @@ const Forum = ({ forum }: { forum: CompleteForum }) => {
   return (
     <li className="flex justify-between my-2">
       <div className="w-full">
-        <div>{forum.name}</div>
+        <div>{forum.assessed}</div>
       </div>
       <ForumModal forum={forum} />
     </li>

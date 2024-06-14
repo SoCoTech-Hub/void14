@@ -4,7 +4,7 @@
 
 List of Tables with their function described below:
 
-### Table: filter_active
+### Table: filter_actives **
 
 #### Description
 
@@ -18,7 +18,7 @@ The `filter_active` table stores information about which filters are active in s
 - **filter**: `VARCHAR(32)`, The internal name of the filter (e.g., 'tex').
 - **sort_order**: `BIGINT(19)`, The order in which filters should be applied. Only relevant if `contextid` points to the system context. In other cases, this field should contain `0`.
 
-### Table: filter_config
+### Table: filter_configs
 
 #### Description
 

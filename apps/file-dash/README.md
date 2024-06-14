@@ -1,4 +1,4 @@
-### Table: file_conversions
+### Table: file_conversions **
 
 #### Description
 
@@ -18,7 +18,7 @@ The `file_conversion` table tracks the conversion process of files within Moodle
 - **time_modified**: `BIGINT(19)`, Timestamp when the file conversion record was last modified.
 - **user_modified**: `BIGINT(19)`, ID of the user who last modified the record.
 
-### Table: files
+### Table: files **
 
 #### Description
 
@@ -29,7 +29,7 @@ The `files` table contains metadata about files stored in Moodle. The actual fil
 - **id**: `BIGINT(19)` (Primary Key), Unique identifier for the file record.
 - **author**: `VARCHAR(255)`, The original author of the file.
 - **component**: `VARCHAR(100)`, Full name of the component owning the area (e.g., "mod_forum").
-- **contenthash**: `VARCHAR(40)`, SHA1 hash of the file content.
+- **content_hash**: `VARCHAR(40)`, SHA1 hash of the file content.
 - **context_id**: `BIGINT(19)`, The context ID defined in the context table, identifying the instance of the plugin owning the file.
 - **file_area**: `VARCHAR(50)`, Area within the component where the file belongs (e.g., "coursefiles").
 - **file_name**: `VARCHAR(255)`, Full Unicode name of the file.
@@ -47,7 +47,7 @@ The `files` table contains metadata about files stored in Moodle. The actual fil
 - **time_modified**: `BIGINT(19)`, Timestamp when the file record was last modified.
 - **user_id**: `BIGINT(19)`, ID of the user associated with the file.
 
-### Table: files_references
+### Table: files_references **
 
 #### Description
 

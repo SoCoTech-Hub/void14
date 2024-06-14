@@ -1,10 +1,8 @@
 import ForumList from "@/components/forums/ForumList";
 import NewForumModal from "@/components/forums/ForumModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
 
 export default async function Forums() {
-  await checkAuth();
   const { forums } = await api.forums.getForums.query();  
 
   return (

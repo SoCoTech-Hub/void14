@@ -3,6 +3,10 @@ import { router } from '@/lib/server/trpc'
 import { faqsRouter } from './faqs'
 import { faqCategoriesRouter } from './faqCategories'
 import { faqFaqsCategoriesRouter } from './faqFaqsCategories'
+import { fileConversionsRouter } from "./fileConversions";
+import { filesRouter } from "./files";
+import { filesReferencesRouter } from "./filesReferences";
+import { foldersRouter } from "./folders";
 
 export const appRouter = router({
 	computers: computersRouter,
@@ -12,3 +16,7 @@ export const appRouter = router({
 })
 
 export type AppRouter = typeof appRouter
+  fileConversions: fileConversionsRouter,
+  files: filesRouter,
+  filesReferences: filesReferencesRouter,
+  folders: foldersRouter,
