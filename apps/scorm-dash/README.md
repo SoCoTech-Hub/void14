@@ -168,7 +168,7 @@ SCORM2004 sequencing rule.
 - **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
 - **action**: `VARCHAR(15)`, Action taken by the rule.
 - **child_activity_set**: `VARCHAR(15)`, Set of child activities affected by the rule.
-- **conditioncombination**: `VARCHAR(3)`, Combination of conditions (e.g., "all").
+- **condition_combination**: `VARCHAR(3)`, Combination of conditions (e.g., "all").
 - **minimum_count**: `BIGINT(19)`, Minimum count for the rule.
 - **minimum_percent**: `FLOAT(11)`, Minimum percentage for the rule.
 - **sco_id**: `BIGINT(19)`, Foreign key to the `scorm_scoes` table.
