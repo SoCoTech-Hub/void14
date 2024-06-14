@@ -1,37 +1,46 @@
-import { varchar, pgTable } from "drizzle-orm/pg-core";
+import { sql } from "drizzle-orm";
+import { varchar, timestamp, pgTable } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { type getThemes } from "@/lib/api/themes/queries";
 
-import { nanoid } from "@/lib/utils";
+import { nanoid, timestamps } from "@/lib/utils";
 
 
 export const themes = pgTable('themes', {
   id: varchar("id", { length: 191 }).primaryKey().$defaultFn(() => nanoid()),
-  name: varchar("name", { length: 256 }).notNull(),
-  primaryColor: varchar("primary_color", { length: 256 }),
-  secondaryColor: varchar("secondary_color", { length: 256 }),
-  logo: varchar("logo", { length: 256 }),
-  favicon: varchar("favicon", { length: 256 }),
-  componentBg: varchar("component_bg", { length: 256 }),
-  appBg: varchar("app_bg", { length: 256 }),
-  textColor: varchar("text_color", { length: 256 }),
-  icon1Color: varchar("icon1_color", { length: 256 }),
-  icon2Color: varchar("icon2_color", { length: 256 })
+  name: varchar("name", { length: 256 }),
+  organizationId: varchar("organization_id", { length: 256 }),
+  userId: varchar("user_id", { length: 256 }).notNull(),
+  
+  createdAt: timestamp("created_at")
+    .notNull()
+    .default(sql`now()`),
+  updatedAt: timestamp("updated_at")
+    .notNull()
+    .default(sql`now()`),
+
+}, (themes) => {
+  return {
+    organizationIdIndex: uniqueIndex('organization_id_idx').on(themes.organizationId),
+  }
 });
 
 
 // Schema for themes - used to validate API requests
-const baseSchema = createSelectSchema(themes)
+const baseSchema = createSelectSchema(themes).omit(timestamps)
 
-export const insertThemeSchema = createInsertSchema(themes);
+export const insertThemeSchema = createInsertSchema(themes).omit(timestamps);
 export const insertThemeParams = baseSchema.extend({}).omit({ 
-  id: true
+  id: true,
+  userId: true
 });
 
 export const updateThemeSchema = baseSchema;
-export const updateThemeParams = baseSchema.extend({})
+export const updateThemeParams = baseSchema.extend({}).omit({ 
+  userId: true
+});
 export const themeIdSchema = baseSchema.pick({ id: true });
 
 // Types for themes - used to type API request params and within Components

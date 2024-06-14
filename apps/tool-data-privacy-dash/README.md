@@ -1,4 +1,4 @@
-### Table: tool_dataprivacy_category
+### Table: tool_dataprivacy_categories
 
 Data categories.
 
@@ -14,7 +14,7 @@ Data categories.
 
 ---
 
-### Table: tool_dataprivacy_ctxexpired
+### Table: tool_dataprivacy_ctx_expireds
 
 Default comment for the table, please edit me.
 
@@ -32,7 +32,7 @@ Default comment for the table, please edit me.
 
 ---
 
-### Table: tool_dataprivacy_ctxinstance
+### Table: tool_dataprivacy_ctx_instances
 
 Default comment for the table, please edit me.
 
@@ -48,7 +48,7 @@ Default comment for the table, please edit me.
 
 ---
 
-### Table: tool_dataprivacy_ctxlevel
+### Table: tool_dataprivacy_ctx_levels
 
 Default comment for the table, please edit me.
 
@@ -64,7 +64,7 @@ Default comment for the table, please edit me.
 
 ---
 
-### Table: tool_dataprivacy_purpose
+### Table: tool_dataprivacy_purposes
 
 Data purposes.
 
@@ -84,7 +84,7 @@ Data purposes.
 
 ---
 
-### Table: tool_dataprivacy_purposerole
+### Table: tool_dataprivacy_purpose_roles
 
 Data purpose overrides for a specific role.
 
@@ -103,7 +103,7 @@ Data purpose overrides for a specific role.
 
 ---
 
-### Table: tool_dataprivacy_request
+### Table: tool_dataprivacy_requests
 
 Table for data requests.
 
