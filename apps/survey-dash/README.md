@@ -4,7 +4,7 @@
 
 List of Tables with their function described below:
 
-### Table: survey
+### Table: surveys
 
 Each record is one SURVEY module with its configuration.
 

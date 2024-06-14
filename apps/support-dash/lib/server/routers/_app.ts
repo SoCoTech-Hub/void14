@@ -1,18 +1,14 @@
-import { computersRouter } from "./computers";
-import { router } from "@/lib/server/trpc";
-import { supportStatusesRouter } from "./supportStatuses";
-import { supportDepartmentsRouter } from "./supportDepartments";
-import { supportTopicsRouter } from "./supportTopics";
-import { supportTicketsRouter } from "./supportTickets";
-import { supportCommentsRouter } from "./supportComments";
+import { computersRouter } from './computers'
+import { router } from '@/lib/server/trpc'
+import { faqsRouter } from './faqs'
+import { faqCategoriesRouter } from './faqCategories'
+import { faqFaqsCategoriesRouter } from './faqFaqsCategories'
 
 export const appRouter = router({
-  computers: computersRouter,
-  supportStatuses: supportStatusesRouter,
-  supportDepartments: supportDepartmentsRouter,
-  supportTopics: supportTopicsRouter,
-  supportTickets: supportTicketsRouter,
-  supportComments: supportCommentsRouter,
-});
+	computers: computersRouter,
+	faqs: faqsRouter,
+	faqCategories: faqCategoriesRouter,
+	faqFaqsCategories: faqFaqsCategoriesRouter
+})
 
-export type AppRouter = typeof appRouter;
+export type AppRouter = typeof appRouter

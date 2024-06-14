@@ -10,7 +10,8 @@ import { nanoid } from "@/lib/utils";
 export const subjectCategories = pgTable('subject_categories', {
   id: varchar("id", { length: 191 }).primaryKey().$defaultFn(() => nanoid()),
   name: varchar("name", { length: 256 }).notNull(),
-  color: varchar("color", { length: 256 })
+  organizationId: varchar("organization_id", { length: 256 }).notNull(),
+  image: varchar("image", { length: 256 })
 });
 
 

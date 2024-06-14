@@ -4,7 +4,7 @@
 
 List of Tables with their function described below:
 
-### Table: tag_coll
+### Table: tag_colls
 
 Defines different sets of tags.
 
@@ -20,7 +20,7 @@ Defines different sets of tags.
 
 ---
 
-### Table: tag
+### Table: tags
 
 Tag table - this generic table will replace the old “tags” table.
 
@@ -40,7 +40,7 @@ Tag table - this generic table will replace the old “tags” table.
 
 ---
 
-### Table: tag_area
+### Table: tag_areas
 
 Defines various tag areas, one area is identified by component, itemtype, and tagcollid.
 
@@ -52,13 +52,13 @@ Defines various tag areas, one area is identified by component, itemtype, and ta
 - **component**: `VARCHAR(100)`, Defines the Moodle component associated with the tag area.
 - **enabled**: `BOOLEAN(1)`, Indicates if the tag area is enabled (default 1).
 - **item_type**: `VARCHAR(100)`, Type of the item tagged.
-- **multiplecontexts**: `BOOLEAN(1)`, Indicates if the tag area allows tag instances to be created in multiple contexts (default 0).
+- **multiple_contexts**: `BOOLEAN(1)`, Indicates if the tag area allows tag instances to be created in multiple contexts (default 0).
 - **show_standard**: `BOOLEAN(1)`, Indicates if the standard tags should be shown (default 0).
 - **tag_coll_id**: `BIGINT(19)`, Foreign key to the tag collection.
 
 ---
 
-### Table: tag_correlation
+### Table: tag_correlations
 
 The rationale for the ‘tag_correlation’ table is performance improvements.
 
@@ -70,7 +70,7 @@ The rationale for the ‘tag_correlation’ table is performance improvements.
 
 ---
 
-### Table: tag_instance
+### Table: tag_instances
 
 Holds the information of associations between tags and items.
 

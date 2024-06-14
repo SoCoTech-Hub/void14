@@ -39,7 +39,7 @@ The log table for all tasks.
 - **host_name**: `VARCHAR(255)`, Hostname where the task was executed.
 - **output**: `LONGTEXT(2147483647)`, Output of the task.
 - **pid**: `BIGINT(19)`, PHP process ID that was running the task.
-- **result**: `TINYINT(3)`, Whether the task was successful or not. 0 = pass; 1 = fail.
+- **result**: `BOOLEAN(1)`, Whether the task was successful or not. 0 = pass; 1 = fail.
 - **type**: `SMALLINT(5)`, The type of task. Scheduled task = 0; Adhoc task = 1.
 - **created_at**: `DECIMAL(20)`, The end time of the task.
 - **updated_at**: `DECIMAL(20)`, The start time of the task.
@@ -54,13 +54,13 @@ List of scheduled tasks to be run by cron.
 #### Fields
 
 - **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
-- **blocking**: `TINYINT(3)`, Block the entire cron when this task is running (default 0).
+- **blocking**: `BOOLEAN(1)`, Block the entire cron when this task is running (default 0).
 - **classname**: `VARCHAR(255)`, The class extending `scheduled_task` to be called when running this task.
 - **component**: `VARCHAR(255)`, The component this scheduled task belongs to.
 - **customised**: `TINYINT(3)`, Used on upgrades to prevent overwriting custom schedules (default 0).
 - **day**: `VARCHAR(90)`, Day of the month the task should run.
 - **day_of_week**: `VARCHAR(25)`, Day of the week the task should run.
-- **disabled**: `BIT(1)`, Indicates if the task is disabled (default 0).
+- **disabled**: `BOOLEAN(1)`, Indicates if the task is disabled (default 0).
 - **fail_delay**: `BIGINT(19)`, Delay before retrying the task after failure.
 - **hostname**: `VARCHAR(255)`, Hostname where the task is running.
 - **hour**: `VARCHAR(70)`, Hour the task should run.
