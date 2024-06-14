@@ -15,7 +15,7 @@ Records requests for (re)indexing of specific contexts.
 
 ---
 
-### Table: search_simpledb_index
+### Table: search_simpledb_indexes
 
 Table containing the index data.
 

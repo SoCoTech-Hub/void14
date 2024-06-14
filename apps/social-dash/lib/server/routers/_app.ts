@@ -1,14 +1,14 @@
-import { computersRouter } from './computers'
 import { router } from '@/lib/server/trpc'
-import { faqsRouter } from './faqs'
-import { faqCategoriesRouter } from './faqCategories'
-import { faqFaqsCategoriesRouter } from './faqFaqsCategories'
+import { socialEmojisRouter } from './socialEmojis'
+import { socialLinksRouter } from './socialLinks'
+import { socialsRouter } from './socials'
+import { socialSharesRouter } from './socialShares'
 
 export const appRouter = router({
-	computers: computersRouter,
-	faqs: faqsRouter,
-	faqCategories: faqCategoriesRouter,
-	faqFaqsCategories: faqFaqsCategoriesRouter
+	socialEmojis: socialEmojisRouter,
+	socialLinks: socialLinksRouter,
+	socials: socialsRouter,
+	socialShares: socialSharesRouter
 })
 
 export type AppRouter = typeof appRouter
