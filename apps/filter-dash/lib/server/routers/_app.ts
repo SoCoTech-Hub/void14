@@ -1,18 +1,10 @@
-import { computersRouter } from './computers'
 import { router } from '@/lib/server/trpc'
-import { faqsRouter } from './faqs'
-import { faqCategoriesRouter } from './faqCategories'
-import { faqFaqsCategoriesRouter } from './faqFaqsCategories'
-import { filterActivesRouter } from "./filterActives";
-import { filterConfigsRouter } from "./filterConfigs";
+import { filterActivesRouter } from './filterActives'
+import { filterConfigsRouter } from './filterConfigs'
 
 export const appRouter = router({
-	computers: computersRouter,
-	faqs: faqsRouter,
-	faqCategories: faqCategoriesRouter,
-	faqFaqsCategories: faqFaqsCategoriesRouter
+	filterActives: filterActivesRouter,
+	filterConfigs: filterConfigsRouter
 })
 
 export type AppRouter = typeof appRouter
-  filterActives: filterActivesRouter,
-  filterConfigs: filterConfigsRouter,
