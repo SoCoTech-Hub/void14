@@ -12,4 +12,42 @@ export const defaultLinks: SidebarLink[] = [
   { href: "/settings", title: "Settings", icon: Cog },
 ];
 
-export const additionalLinks: AdditionalLinks[] = [];
+export const additionalLinks: AdditionalLinks[] = [
+  {
+    title: "Entities",
+    links: [
+      {
+        href: "/glossary-formats",
+        title: "Glossary Formats",
+        icon: Globe,
+      },
+      {
+        href: "/glossary-entries-categories",
+        title: "Glossary Entries Categories",
+        icon: Globe,
+      },
+      {
+        href: "/glossary-entries",
+        title: "Glossary Entries",
+        icon: Globe,
+      },
+      {
+        href: "/glossary-categories",
+        title: "Glossary Categories",
+        icon: Globe,
+      },
+      {
+        href: "/glossary-aliases",
+        title: "Glossary Aliases",
+        icon: Globe,
+      },
+      {
+        href: "/glossaries",
+        title: "Glossaries",
+        icon: Globe,
+      },
+    ],
+  },
+
+];
+
