@@ -4,3 +4,9 @@ import { twMerge } from "tailwind-merge"
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+
+export const timestamps: { createdAt: true; updatedAt: true } = {
+  createdAt: true,
+  updatedAt: true,
+};
+

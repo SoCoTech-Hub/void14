@@ -3,6 +3,8 @@ import { router } from '@/lib/server/trpc'
 import { faqsRouter } from './faqs'
 import { faqCategoriesRouter } from './faqCategories'
 import { faqFaqsCategoriesRouter } from './faqFaqsCategories'
+import { quizaccessSebTemplatesRouter } from "./quizaccessSebTemplates";
+import { quizaccessSebQuizSettingsRouter } from "./quizaccessSebQuizSettings";
 
 export const appRouter = router({
 	computers: computersRouter,
@@ -12,3 +14,5 @@ export const appRouter = router({
 })
 
 export type AppRouter = typeof appRouter
+  quizaccessSebTemplates: quizaccessSebTemplatesRouter,
+  quizaccessSebQuizSettings: quizaccessSebQuizSettingsRouter,
