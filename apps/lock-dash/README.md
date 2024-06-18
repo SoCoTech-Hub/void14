@@ -1,4 +1,4 @@
-### Table: lock_db
+### Table: lock_dbs
 
 #### Description
 
@@ -9,7 +9,7 @@ This table stores active and inactive lock types for database locking method.
 - **id**: `BIGINT(19)` (Primary Key), Unique identifier for the lock entry.
 - **expires**: `BIGINT(19)`, Expiry time for an active lock.
 - **owner**: `VARCHAR(36)` (nullable), UUID indicating the owner of the lock.
-- **resourcekey**: `VARCHAR(255)`, String identifying the resource to be locked. It should use the Frankenstyle format.
+- **resource_key**: `VARCHAR(255)`, String identifying the resource to be locked. It should use the Frankenstyle format.
 
 ---
 

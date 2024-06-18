@@ -7,6 +7,7 @@ import { fileConversionsRouter } from "./fileConversions";
 import { filesRouter } from "./files";
 import { filesReferencesRouter } from "./filesReferences";
 import { foldersRouter } from "./folders";
+import { infectedFilesRouter } from "./infectedFiles";
 
 export const appRouter = router({
 	computers: computersRouter,
@@ -20,3 +21,4 @@ export type AppRouter = typeof appRouter
   files: filesRouter,
   filesReferences: filesReferencesRouter,
   folders: foldersRouter,
+  infectedFiles: infectedFilesRouter,

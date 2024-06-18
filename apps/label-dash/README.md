@@ -7,9 +7,9 @@ Stores information about labels used in courses within the Moodle system. Labels
 - **id**: `BIGINT(19)` (Primary Key), Unique identifier for the label.
 - **course**: `BIGINT(19)`, The ID of the course that this label belongs to.
 - **intro**: `LONGTEXT`, The content of the label, which can include text, images, or other media.
-- **introformat**: `SMALLINT(5)` (nullable, default `0`), The format of the `intro` field (e.g., plain text, HTML).
+- **intro_format**: `SMALLINT(5)` (nullable, default `0`), The format of the `intro` field (e.g., plain text, HTML).
 - **name**: `VARCHAR(255)`, The name of the label.
-- **timemodified**: `BIGINT(19)`, Timestamp of the last modification of the label.
+- **time_modified**: `BIGINT(19)`, Timestamp of the last modification of the label.
 
 ---
 
