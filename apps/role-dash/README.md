@@ -1,11 +1,11 @@
-### Table: role
+### Table: roles
 
 Moodle roles.
 
 #### Fields
 
 - **id**: `BIGINT(19)` (Primary Key), Unique identifier for the role.
-- **archetype**: `VARCHAR(30)`, Role archetype, used during install and role reset.
+- **arche_type**: `VARCHAR(30)`, Role archetype, used during install and role reset.
 - **description**: `LONGTEXT(2147483647)` (Nullable), Description of the role, empty descriptions may be automatically localized.
 - **name**: `VARCHAR(255)`, Name of the role, empty names are automatically localized.
 - **short_name**: `VARCHAR(100)`, Short name of the role.
@@ -13,7 +13,7 @@ Moodle roles.
 
 ---
 
-### Table: role_allow_assign
+### Table: role_allow_assigns
 
 Defines which roles can assign other roles.
 
@@ -25,7 +25,7 @@ Defines which roles can assign other roles.
 
 ---
 
-### Table: role_allow_override
+### Table: role_allow_overrides
 
 Defines which roles can override other roles.
 
@@ -37,7 +37,7 @@ Defines which roles can override other roles.
 
 ---
 
-### Table: role_allow_switch
+### Table: role_allow_switches
 
 Defines which roles a user is allowed to switch to.
 
@@ -49,7 +49,7 @@ Defines which roles a user is allowed to switch to.
 
 ---
 
-### Table: role_allow_view
+### Table: role_allow_views
 
 Defines which roles a user is allowed to view.
 
@@ -71,7 +71,7 @@ Assigning roles in different contexts.
 - **component**: `VARCHAR(100)`, Plugin responsible for the role assignment, empty when manually assigned.
 - **context_id**: `BIGINT(19)`, Context ID where the role is assigned.
 - **item_id**: `BIGINT(19)`, ID of the enrolment/auth instance responsible for this role assignment.
-- **modifier_id**: `BIGINT(19)`, ID of the user who modified the role assignment.
+- **modifier_user_id**: `BIGINT(19)`, ID of the user who modified the role assignment.
 - **role_id**: `BIGINT(19)`, ID of the assigned role.
 - **sort_order**: `INT(3)`, Sort order of the role assignment.
 - **created_at**: `BIGINT(19)`, Timestamp when the role assignment was created.
