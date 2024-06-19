@@ -6,7 +6,8 @@ import {
 	real,
 	text,
 	timestamp,
-	pgTable
+	pgTable,
+	uniqueIndex
 } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
@@ -21,14 +22,14 @@ export const quizes = pgTable(
 		id: varchar('id', { length: 191 })
 			.primaryKey()
 			.$defaultFn(() => nanoid()),
-		allowOfflineAttempts: boolean('allow_offline_attempts'),
-		attemptOnLast: boolean('attempt_on_last'),
+		allowOfflineAttempts: boolean('allow_offline_attempts').default(false),
+		attemptOnLast: boolean('attempt_on_last').default(false),
 		attempts: integer('attempts').notNull(),
 		browserSecurity: varchar('browser_security', { length: 256 }),
-		canRedoQuestions: boolean('can_redo_questions').notNull(),
-		completionAttemptsExhausted: boolean(
-			'completion_attempts_exhausted'
-		).notNull(),
+		canRedoQuestions: boolean('can_redo_questions').notNull().default(false),
+		completionAttemptsExhausted: boolean('completion_attempts_exhausted')
+			.notNull()
+			.default(false),
 		completionMinAttempts: integer('completion_min_attempts').notNull(),
 		courseId: varchar('course_id', { length: 256 }).notNull(),
 		decimalPoints: integer('decimal_points').notNull(),
@@ -48,20 +49,19 @@ export const quizes = pgTable(
 		questionsPerPage: integer('questions_per_page'),
 		reviewAttempt: integer('review_attempt'),
 		reviewCorrectness: integer('review_correctness'),
-		showBlocks: boolean('show_blocks').notNull(),
+		showBlocks: boolean('show_blocks').notNull().default(false),
 		reviewGeneralFeedback: integer('review_general_feedback').notNull(),
 		reviewMarks: integer('review_marks').notNull(),
 		reviewOverallFeedback: integer('review_overall_feedback').notNull(),
 		reviewRightAnswer: integer('review_right_answer').notNull(),
 		reviewSpecificFeedback: integer('review_specific_feedback').notNull(),
-		showUserPicture: boolean('show_user_picture').notNull(),
-		shuffleAnswers: boolean('shuffle_answers').notNull(),
+		showUserPicture: boolean('show_user_picture').notNull().default(false),
+		shuffleAnswers: boolean('shuffle_answers').notNull().default(false),
 		subNet: varchar('sub_net', { length: 256 }),
 		sumGrades: real('sum_grades').notNull(),
 		timeClose: integer('time_close'),
 		timeLimit: integer('time_limit'),
 		timeOpen: integer('time_open'),
-
 		createdAt: timestamp('created_at')
 			.notNull()
 			.default(sql`now()`),
@@ -148,14 +148,14 @@ export const updateQuizeParams = baseSchema.extend({
 	timeLimit: z.coerce.number(),
 	timeOpen: z.coerce.number()
 })
-export const quizeIdSchema = baseSchema.pick({ id: true })
+export const quizIdSchema = baseSchema.pick({ id: true })
 
 // Types for quizes - used to type API request params and within Components
 export type Quize = typeof quizes.$inferSelect
 export type NewQuize = z.infer<typeof insertQuizeSchema>
 export type NewQuizeParams = z.infer<typeof insertQuizeParams>
 export type UpdateQuizeParams = z.infer<typeof updateQuizeParams>
-export type QuizeId = z.infer<typeof quizeIdSchema>['id']
+export type QuizId = z.infer<typeof quizIdSchema>['id']
 
 // this type infers the return from getQuizes() - meaning it will include any joins
 export type CompleteQuize = Awaited<

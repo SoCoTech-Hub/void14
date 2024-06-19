@@ -55,7 +55,7 @@ const QuizAttemptForm = ({
 			gradedNotificationSentTime: 0,
 			layout: '',
 			preview: false,
-			quizeId: '',
+			quizId: '',
 			state: '',
 			sumGrades: 0.0,
 			timeCheckState: 0,
@@ -189,7 +189,7 @@ const QuizAttemptForm = ({
 				/>
 				<FormField
 					control={form.control}
-					name='quizeId'
+					name='quizId'
 					render={({ field }) => (
 						<FormItem>
 							<FormLabel>Quize Id</FormLabel>

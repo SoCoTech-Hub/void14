@@ -25,8 +25,8 @@ export const quizAttempts = pgTable(
 		currentPage: integer('current_page').notNull(),
 		gradedNotificationSentTime: integer('graded_notification_sent_time'),
 		layout: text('layout'),
-		preview: boolean('preview').notNull(),
-		quizeId: varchar('quize_id', { length: 256 })
+		preview: boolean('preview').notNull().default(false),
+		quizId: varchar('quiz_id', { length: 256 })
 			.references(() => quizes.id, { onDelete: 'cascade' })
 			.notNull(),
 		state: varchar('state', { length: 256 }),
@@ -47,7 +47,7 @@ export const quizAttempts = pgTable(
 	},
 	(quizAttempts) => {
 		return {
-			quizeIdIndex: uniqueIndex('quize_id_idx').on(quizAttempts.quizeId)
+			quizIdIndex: uniqueIndex('quiz_id_idx').on(quizAttempts.quizId)
 		}
 	}
 )
@@ -63,7 +63,7 @@ export const insertQuizAttemptParams = baseSchema
 		currentPage: z.coerce.number(),
 		gradedNotificationSentTime: z.coerce.number(),
 		preview: z.coerce.boolean(),
-		quizeId: z.coerce.string().min(1),
+		quizId: z.coerce.string().min(1),
 		sumGrades: z.coerce.number(),
 		timeCheckState: z.coerce.number(),
 		timeFinish: z.coerce.number(),
@@ -82,7 +82,7 @@ export const updateQuizAttemptParams = baseSchema
 		currentPage: z.coerce.number(),
 		gradedNotificationSentTime: z.coerce.number(),
 		preview: z.coerce.boolean(),
-		quizeId: z.coerce.string().min(1),
+		quizId: z.coerce.string().min(1),
 		sumGrades: z.coerce.number(),
 		timeCheckState: z.coerce.number(),
 		timeFinish: z.coerce.number(),
