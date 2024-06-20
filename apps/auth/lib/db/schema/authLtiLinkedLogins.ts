@@ -8,6 +8,7 @@ import { type getAuthLtiLinkedLogins } from '@/lib/api/authLtiLinkedLogins/queri
 import { nanoid, timestamps } from '@/lib/utils'
 
 export const authLtiLinkedLogins = pgTable('auth_lti_linked_logins', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

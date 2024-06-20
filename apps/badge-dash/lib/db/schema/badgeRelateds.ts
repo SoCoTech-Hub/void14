@@ -7,6 +7,7 @@ import { type getBadgeRelateds } from '@/lib/api/badgeRelateds/queries'
 import { nanoid } from '@/lib/utils'
 
 export const badgeRelateds = pgTable('badge_relateds', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

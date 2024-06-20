@@ -1,14 +1,14 @@
-import { sql } from "drizzle-orm";
-import { varchar, text, integer, timestamp, pgTable } from "drizzle-orm/pg-core";
-import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { z } from "zod";
+import { sql } from 'drizzle-orm'
+import { varchar, text, integer, timestamp, pgTable } from 'drizzle-orm/pg-core'
+import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
+import { z } from 'zod'
 
-import { type getGradingDefinitions } from "@/lib/api/gradingDefinitions/queries";
+import { type getGradingDefinitions } from '@/lib/api/gradingDefinitions/queries'
 
-import { nanoid, timestamps } from "@/lib/utils";
-
+import { nanoid, timestamps } from '@/lib/utils'
 
 export const gradingDefinitions = pgTable('grading_definitions', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),
@@ -32,37 +32,48 @@ export const gradingDefinitions = pgTable('grading_definitions', {
 		.default(sql`now()`)
 })
 
-
 // Schema for gradingDefinitions - used to validate API requests
 const baseSchema = createSelectSchema(gradingDefinitions).omit(timestamps)
 
-export const insertGradingDefinitionSchema = createInsertSchema(gradingDefinitions).omit(timestamps);
-export const insertGradingDefinitionParams = baseSchema.extend({
-  descriptionFormat: z.coerce.number(),
-  status: z.coerce.number(),
-  timeCopied: z.coerce.string().min(1)
-}).omit({ 
-  id: true,
-  userId: true
-});
+export const insertGradingDefinitionSchema =
+	createInsertSchema(gradingDefinitions).omit(timestamps)
+export const insertGradingDefinitionParams = baseSchema
+	.extend({
+		descriptionFormat: z.coerce.number(),
+		status: z.coerce.number(),
+		timeCopied: z.coerce.string().min(1)
+	})
+	.omit({
+		id: true,
+		userId: true
+	})
 
-export const updateGradingDefinitionSchema = baseSchema;
-export const updateGradingDefinitionParams = baseSchema.extend({
-  descriptionFormat: z.coerce.number(),
-  status: z.coerce.number(),
-  timeCopied: z.coerce.string().min(1)
-}).omit({ 
-  userId: true
-});
-export const gradingDefinitionIdSchema = baseSchema.pick({ id: true });
+export const updateGradingDefinitionSchema = baseSchema
+export const updateGradingDefinitionParams = baseSchema
+	.extend({
+		descriptionFormat: z.coerce.number(),
+		status: z.coerce.number(),
+		timeCopied: z.coerce.string().min(1)
+	})
+	.omit({
+		userId: true
+	})
+export const gradingDefinitionIdSchema = baseSchema.pick({ id: true })
 
 // Types for gradingDefinitions - used to type API request params and within Components
-export type GradingDefinition = typeof gradingDefinitions.$inferSelect;
-export type NewGradingDefinition = z.infer<typeof insertGradingDefinitionSchema>;
-export type NewGradingDefinitionParams = z.infer<typeof insertGradingDefinitionParams>;
-export type UpdateGradingDefinitionParams = z.infer<typeof updateGradingDefinitionParams>;
-export type GradingDefinitionId = z.infer<typeof gradingDefinitionIdSchema>["id"];
-    
-// this type infers the return from getGradingDefinitions() - meaning it will include any joins
-export type CompleteGradingDefinition = Awaited<ReturnType<typeof getGradingDefinitions>>["gradingDefinitions"][number];
+export type GradingDefinition = typeof gradingDefinitions.$inferSelect
+export type NewGradingDefinition = z.infer<typeof insertGradingDefinitionSchema>
+export type NewGradingDefinitionParams = z.infer<
+	typeof insertGradingDefinitionParams
+>
+export type UpdateGradingDefinitionParams = z.infer<
+	typeof updateGradingDefinitionParams
+>
+export type GradingDefinitionId = z.infer<
+	typeof gradingDefinitionIdSchema
+>['id']
 
+// this type infers the return from getGradingDefinitions() - meaning it will include any joins
+export type CompleteGradingDefinition = Awaited<
+	ReturnType<typeof getGradingDefinitions>
+>['gradingDefinitions'][number]

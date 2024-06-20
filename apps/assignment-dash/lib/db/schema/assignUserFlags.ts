@@ -15,6 +15,7 @@ import { nanoid } from '@/lib/utils'
 export const assignUserFlags = pgTable(
 	'assign_user_flags',
 	{
+		organizationId: varchar('organization_id', { length: 191 }).notNull(),
 		id: varchar('id', { length: 191 })
 			.primaryKey()
 			.$defaultFn(() => nanoid()),

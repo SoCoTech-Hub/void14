@@ -8,6 +8,7 @@ import { type getRoleCapabilities } from '@/lib/api/roleCapabilities/queries'
 import { nanoid, timestamps } from '@/lib/utils'
 
 export const roleCapabilities = pgTable('role_capabilities', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

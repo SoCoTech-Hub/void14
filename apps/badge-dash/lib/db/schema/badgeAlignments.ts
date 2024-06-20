@@ -7,6 +7,7 @@ import { type getBadgeAlignments } from '@/lib/api/badgeAlignments/queries'
 import { nanoid } from '@/lib/utils'
 
 export const badgeAlignments = pgTable('badge_alignments', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

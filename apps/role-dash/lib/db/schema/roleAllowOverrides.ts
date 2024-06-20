@@ -7,6 +7,7 @@ import { type getRoleAllowOverrides } from '@/lib/api/roleAllowOverrides/queries
 import { nanoid } from '@/lib/utils'
 
 export const roleAllowOverrides = pgTable('role_allow_overrides', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

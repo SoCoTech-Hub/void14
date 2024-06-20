@@ -10,6 +10,7 @@ import { nanoid, timestamps } from '@/lib/utils'
 export const repositoryOnedriveAccesses = pgTable(
 	'repository_onedrive_accesses',
 	{
+		organizationId: varchar('organization_id', { length: 191 }).notNull(),
 		id: varchar('id', { length: 191 })
 			.primaryKey()
 			.$defaultFn(() => nanoid()),

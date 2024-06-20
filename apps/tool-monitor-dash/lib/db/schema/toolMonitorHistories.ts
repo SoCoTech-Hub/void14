@@ -8,6 +8,7 @@ import { type getToolMonitorHistories } from '@/lib/api/toolMonitorHistories/que
 import { nanoid, timestamps } from '@/lib/utils'
 
 export const toolMonitorHistories = pgTable('tool_monitor_histories', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

@@ -8,6 +8,7 @@ import { type getToolCohortRoles } from '@/lib/api/toolCohortRoles/queries'
 import { nanoid, timestamps } from '@/lib/utils'
 
 export const toolCohortRoles = pgTable('tool_cohort_roles', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

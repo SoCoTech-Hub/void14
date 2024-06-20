@@ -7,6 +7,7 @@ import { type getBadgeCriteriaMets } from '@/lib/api/badgeCriteriaMets/queries'
 import { nanoid } from '@/lib/utils'
 
 export const badgeCriteriaMets = pgTable('badge_criteria_mets', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

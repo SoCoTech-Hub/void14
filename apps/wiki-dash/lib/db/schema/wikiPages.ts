@@ -15,6 +15,7 @@ import { type getWikiPages } from '@/lib/api/wikiPages/queries'
 import { nanoid, timestamps } from '@/lib/utils'
 
 export const wikiPages = pgTable('wiki_pages', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

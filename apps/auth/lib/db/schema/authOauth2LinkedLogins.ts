@@ -8,6 +8,7 @@ import { type getAuthOauth2LinkedLogins } from '@/lib/api/authOauth2LinkedLogins
 import { nanoid, timestamps } from '@/lib/utils'
 
 export const authOauth2LinkedLogins = pgTable('auth_oauth2_linked_logins', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

@@ -8,6 +8,7 @@ import { type getUserPrivateKeys } from '@/lib/api/userPrivateKeys/queries'
 import { nanoid, timestamps } from '@/lib/utils'
 
 export const userPrivateKeys = pgTable('user_private_keys', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

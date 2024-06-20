@@ -7,6 +7,7 @@ import { type getRoleAllowViews } from '@/lib/api/roleAllowViews/queries'
 import { nanoid } from '@/lib/utils'
 
 export const roleAllowViews = pgTable('role_allow_views', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

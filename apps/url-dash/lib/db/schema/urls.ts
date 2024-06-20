@@ -17,6 +17,7 @@ import { nanoid, timestamps } from '@/lib/utils'
 export const urls = pgTable(
 	'urls',
 	{
+		organizationId: varchar('organization_id', { length: 191 }).notNull(),
 		id: varchar('id', { length: 191 })
 			.primaryKey()
 			.$defaultFn(() => nanoid()),

@@ -16,6 +16,7 @@ import { nanoid } from '@/lib/utils'
 export const badgeCriterias = pgTable(
 	'badge_criterias',
 	{
+		organizationId: varchar('organization_id', { length: 191 }).notNull(),
 		id: varchar('id', { length: 191 })
 			.primaryKey()
 			.$defaultFn(() => nanoid()),

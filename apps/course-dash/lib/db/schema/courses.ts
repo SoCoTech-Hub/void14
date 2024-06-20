@@ -1,14 +1,22 @@
-import { sql } from "drizzle-orm";
-import { integer, varchar, boolean, date, text, timestamp, pgTable } from "drizzle-orm/pg-core";
-import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { z } from "zod";
+import { sql } from 'drizzle-orm'
+import {
+	integer,
+	varchar,
+	boolean,
+	date,
+	text,
+	timestamp,
+	pgTable
+} from 'drizzle-orm/pg-core'
+import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
+import { z } from 'zod'
 
-import { type getCourses } from "@/lib/api/courses/queries";
+import { type getCourses } from '@/lib/api/courses/queries'
 
-import { nanoid, timestamps } from "@/lib/utils";
-
+import { nanoid, timestamps } from '@/lib/utils'
 
 export const courses = pgTable('courses', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),
@@ -54,76 +62,78 @@ export const courses = pgTable('courses', {
 		.default(sql`now()`)
 })
 
-
 // Schema for courses - used to validate API requests
 const baseSchema = createSelectSchema(courses).omit(timestamps)
 
-export const insertCourseSchema = createInsertSchema(courses).omit(timestamps);
-export const insertCourseParams = baseSchema.extend({
-  cacheRev: z.coerce.number(),
-  category: z.coerce.number(),
-  completionNotify: z.coerce.boolean(),
-  defaultGroupingId: z.coerce.number(),
-  downloadContent: z.coerce.boolean(),
-  enableCompletion: z.coerce.boolean(),
-  endDate: z.coerce.string().min(1),
-  groupMode: z.coerce.number(),
-  groupModeForce: z.coerce.number(),
-  legacyFiles: z.coerce.number(),
-  marker: z.coerce.number(),
-  maxBytes: z.coerce.number(),
-  newsItems: z.coerce.number(),
-  relativeDatesMode: z.coerce.boolean(),
-  requested: z.coerce.boolean(),
-  showActivityDates: z.coerce.boolean(),
-  showCompletionConditions: z.coerce.boolean(),
-  showGrades: z.coerce.number(),
-  showReports: z.coerce.number(),
-  sortOrder: z.coerce.number(),
-  startDate: z.coerce.number(),
-  summaryFormat: z.coerce.number(),
-  visible: z.coerce.boolean(),
-  visibleOld: z.coerce.boolean()
-}).omit({ 
-  id: true
-});
+export const insertCourseSchema = createInsertSchema(courses).omit(timestamps)
+export const insertCourseParams = baseSchema
+	.extend({
+		cacheRev: z.coerce.number(),
+		category: z.coerce.number(),
+		completionNotify: z.coerce.boolean(),
+		defaultGroupingId: z.coerce.number(),
+		downloadContent: z.coerce.boolean(),
+		enableCompletion: z.coerce.boolean(),
+		endDate: z.coerce.string().min(1),
+		groupMode: z.coerce.number(),
+		groupModeForce: z.coerce.number(),
+		legacyFiles: z.coerce.number(),
+		marker: z.coerce.number(),
+		maxBytes: z.coerce.number(),
+		newsItems: z.coerce.number(),
+		relativeDatesMode: z.coerce.boolean(),
+		requested: z.coerce.boolean(),
+		showActivityDates: z.coerce.boolean(),
+		showCompletionConditions: z.coerce.boolean(),
+		showGrades: z.coerce.number(),
+		showReports: z.coerce.number(),
+		sortOrder: z.coerce.number(),
+		startDate: z.coerce.number(),
+		summaryFormat: z.coerce.number(),
+		visible: z.coerce.boolean(),
+		visibleOld: z.coerce.boolean()
+	})
+	.omit({
+		id: true
+	})
 
-export const updateCourseSchema = baseSchema;
+export const updateCourseSchema = baseSchema
 export const updateCourseParams = baseSchema.extend({
-  cacheRev: z.coerce.number(),
-  category: z.coerce.number(),
-  completionNotify: z.coerce.boolean(),
-  defaultGroupingId: z.coerce.number(),
-  downloadContent: z.coerce.boolean(),
-  enableCompletion: z.coerce.boolean(),
-  endDate: z.coerce.string().min(1),
-  groupMode: z.coerce.number(),
-  groupModeForce: z.coerce.number(),
-  legacyFiles: z.coerce.number(),
-  marker: z.coerce.number(),
-  maxBytes: z.coerce.number(),
-  newsItems: z.coerce.number(),
-  relativeDatesMode: z.coerce.boolean(),
-  requested: z.coerce.boolean(),
-  showActivityDates: z.coerce.boolean(),
-  showCompletionConditions: z.coerce.boolean(),
-  showGrades: z.coerce.number(),
-  showReports: z.coerce.number(),
-  sortOrder: z.coerce.number(),
-  startDate: z.coerce.number(),
-  summaryFormat: z.coerce.number(),
-  visible: z.coerce.boolean(),
-  visibleOld: z.coerce.boolean()
+	cacheRev: z.coerce.number(),
+	category: z.coerce.number(),
+	completionNotify: z.coerce.boolean(),
+	defaultGroupingId: z.coerce.number(),
+	downloadContent: z.coerce.boolean(),
+	enableCompletion: z.coerce.boolean(),
+	endDate: z.coerce.string().min(1),
+	groupMode: z.coerce.number(),
+	groupModeForce: z.coerce.number(),
+	legacyFiles: z.coerce.number(),
+	marker: z.coerce.number(),
+	maxBytes: z.coerce.number(),
+	newsItems: z.coerce.number(),
+	relativeDatesMode: z.coerce.boolean(),
+	requested: z.coerce.boolean(),
+	showActivityDates: z.coerce.boolean(),
+	showCompletionConditions: z.coerce.boolean(),
+	showGrades: z.coerce.number(),
+	showReports: z.coerce.number(),
+	sortOrder: z.coerce.number(),
+	startDate: z.coerce.number(),
+	summaryFormat: z.coerce.number(),
+	visible: z.coerce.boolean(),
+	visibleOld: z.coerce.boolean()
 })
-export const courseIdSchema = baseSchema.pick({ id: true });
+export const courseIdSchema = baseSchema.pick({ id: true })
 
 // Types for courses - used to type API request params and within Components
-export type Course = typeof courses.$inferSelect;
-export type NewCourse = z.infer<typeof insertCourseSchema>;
-export type NewCourseParams = z.infer<typeof insertCourseParams>;
-export type UpdateCourseParams = z.infer<typeof updateCourseParams>;
-export type CourseId = z.infer<typeof courseIdSchema>["id"];
-    
-// this type infers the return from getCourses() - meaning it will include any joins
-export type CompleteCourse = Awaited<ReturnType<typeof getCourses>>["courses"][number];
+export type Course = typeof courses.$inferSelect
+export type NewCourse = z.infer<typeof insertCourseSchema>
+export type NewCourseParams = z.infer<typeof insertCourseParams>
+export type UpdateCourseParams = z.infer<typeof updateCourseParams>
+export type CourseId = z.infer<typeof courseIdSchema>['id']
 
+// this type infers the return from getCourses() - meaning it will include any joins
+export type CompleteCourse = Awaited<
+	ReturnType<typeof getCourses>
+>['courses'][number]

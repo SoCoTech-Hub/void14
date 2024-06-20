@@ -17,6 +17,7 @@ import { nanoid, timestamps } from '@/lib/utils'
 export const assignFeedbackComments = pgTable(
 	'assign_feedback_comments',
 	{
+		organizationId: varchar('organization_id', { length: 191 }).notNull(),
 		id: varchar('id', { length: 191 })
 			.primaryKey()
 			.$defaultFn(() => nanoid()),

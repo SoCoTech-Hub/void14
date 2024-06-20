@@ -16,6 +16,7 @@ import { nanoid } from '@/lib/utils'
 export const quizSections = pgTable(
 	'quiz_sections',
 	{
+		organizationId: varchar('organization_id', { length: 191 }).notNull(),
 		id: varchar('id', { length: 191 })
 			.primaryKey()
 			.$defaultFn(() => nanoid()),

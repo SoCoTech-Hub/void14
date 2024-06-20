@@ -19,7 +19,11 @@ import { nanoid, timestamps } from '@/lib/utils'
 export const backupControllers = pgTable(
 	'backup_controllers',
 	{
+		organizationId: varchar('organization_id', {
+			length: 191
+		}).notNull(),
 		id: varchar('id', { length: 191 })
+			.notNull()
 			.primaryKey()
 			.$defaultFn(() => nanoid()),
 		backupId: varchar('backup_id', { length: 256 }),

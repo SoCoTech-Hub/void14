@@ -8,6 +8,7 @@ import { type getUserLastAccesses } from '@/lib/api/userLastAccesses/queries'
 import { nanoid, timestamps } from '@/lib/utils'
 
 export const userLastAccesses = pgTable('user_last_accesses', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

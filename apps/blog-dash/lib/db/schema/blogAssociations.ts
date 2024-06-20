@@ -9,6 +9,7 @@ import { nanoid } from '@/lib/utils'
 export const blogAssociations = pgTable(
 	'blog_associations',
 	{
+		organizationId: varchar('organization_id', { length: 191 }).notNull(),
 		id: varchar('id', { length: 191 })
 			.primaryKey()
 			.$defaultFn(() => nanoid()),

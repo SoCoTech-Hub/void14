@@ -1,14 +1,21 @@
-import { sql } from "drizzle-orm";
-import { boolean, varchar, text, timestamp, pgTable, integer } from "drizzle-orm/pg-core";
-import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { z } from "zod";
+import { sql } from 'drizzle-orm'
+import {
+	boolean,
+	varchar,
+	text,
+	timestamp,
+	pgTable,
+	integer
+} from 'drizzle-orm/pg-core'
+import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
+import { z } from 'zod'
 
-import { type getCompetencyFrameworks } from "@/lib/api/competencyFrameworks/queries";
+import { type getCompetencyFrameworks } from '@/lib/api/competencyFrameworks/queries'
 
-import { nanoid, timestamps } from "@/lib/utils";
-
+import { nanoid, timestamps } from '@/lib/utils'
 
 export const competencyFrameworks = pgTable('competency_frameworks', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),
@@ -31,33 +38,46 @@ export const competencyFrameworks = pgTable('competency_frameworks', {
 		.default(sql`now()`)
 })
 
-
 // Schema for competencyFrameworks - used to validate API requests
 const baseSchema = createSelectSchema(competencyFrameworks).omit(timestamps)
 
-export const insertCompetencyFrameworkSchema = createInsertSchema(competencyFrameworks).omit(timestamps);
-export const insertCompetencyFrameworkParams = baseSchema.extend({
-  visible: z.coerce.boolean()
-}).omit({ 
-  id: true,
-  userId: true
-});
+export const insertCompetencyFrameworkSchema =
+	createInsertSchema(competencyFrameworks).omit(timestamps)
+export const insertCompetencyFrameworkParams = baseSchema
+	.extend({
+		visible: z.coerce.boolean()
+	})
+	.omit({
+		id: true,
+		userId: true
+	})
 
-export const updateCompetencyFrameworkSchema = baseSchema;
-export const updateCompetencyFrameworkParams = baseSchema.extend({
-  visible: z.coerce.boolean()
-}).omit({ 
-  userId: true
-});
-export const competencyFrameworkIdSchema = baseSchema.pick({ id: true });
+export const updateCompetencyFrameworkSchema = baseSchema
+export const updateCompetencyFrameworkParams = baseSchema
+	.extend({
+		visible: z.coerce.boolean()
+	})
+	.omit({
+		userId: true
+	})
+export const competencyFrameworkIdSchema = baseSchema.pick({ id: true })
 
 // Types for competencyFrameworks - used to type API request params and within Components
-export type CompetencyFramework = typeof competencyFrameworks.$inferSelect;
-export type NewCompetencyFramework = z.infer<typeof insertCompetencyFrameworkSchema>;
-export type NewCompetencyFrameworkParams = z.infer<typeof insertCompetencyFrameworkParams>;
-export type UpdateCompetencyFrameworkParams = z.infer<typeof updateCompetencyFrameworkParams>;
-export type CompetencyFrameworkId = z.infer<typeof competencyFrameworkIdSchema>["id"];
-    
-// this type infers the return from getCompetencyFrameworks() - meaning it will include any joins
-export type CompleteCompetencyFramework = Awaited<ReturnType<typeof getCompetencyFrameworks>>["competencyFrameworks"][number];
+export type CompetencyFramework = typeof competencyFrameworks.$inferSelect
+export type NewCompetencyFramework = z.infer<
+	typeof insertCompetencyFrameworkSchema
+>
+export type NewCompetencyFrameworkParams = z.infer<
+	typeof insertCompetencyFrameworkParams
+>
+export type UpdateCompetencyFrameworkParams = z.infer<
+	typeof updateCompetencyFrameworkParams
+>
+export type CompetencyFrameworkId = z.infer<
+	typeof competencyFrameworkIdSchema
+>['id']
 
+// this type infers the return from getCompetencyFrameworks() - meaning it will include any joins
+export type CompleteCompetencyFramework = Awaited<
+	ReturnType<typeof getCompetencyFrameworks>
+>['competencyFrameworks'][number]

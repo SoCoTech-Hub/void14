@@ -10,6 +10,7 @@ import { nanoid } from '@/lib/utils'
 export const bursaryCategoriesBursaries = pgTable(
 	'bursary_categories_bursaries',
 	{
+		organizationId: varchar('organization_id', { length: 191 }).notNull(),
 		id: varchar('id', { length: 191 })
 			.primaryKey()
 			.$defaultFn(() => nanoid()),

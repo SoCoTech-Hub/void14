@@ -1,38 +1,45 @@
-import { varchar, pgTable } from "drizzle-orm/pg-core";
-import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { z } from "zod";
+import { varchar, pgTable } from 'drizzle-orm/pg-core'
+import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
+import { z } from 'zod'
 
-import { type getAffiliatesStatuses } from "@/lib/api/affiliatesStatuses/queries";
+import { type getAffiliatesStatuses } from '@/lib/api/affiliatesStatuses/queries'
 
-import { nanoid } from "@/lib/utils";
-
+import { nanoid } from '@/lib/utils'
 
 export const affiliatesStatuses = pgTable('affiliates_statuses', {
-  id: varchar("id", { length: 191 }).primaryKey().$defaultFn(() => nanoid()),
-  name: varchar("name", { length: 256 }).notNull(),
-  color: varchar("color", { length: 256 }).notNull()
-});
-
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
+	id: varchar('id', { length: 191 })
+		.primaryKey()
+		.$defaultFn(() => nanoid()),
+	name: varchar('name', { length: 256 }).notNull(),
+	color: varchar('color', { length: 256 }).notNull()
+})
 
 // Schema for affiliatesStatuses - used to validate API requests
 const baseSchema = createSelectSchema(affiliatesStatuses)
 
-export const insertAffiliatesStatusSchema = createInsertSchema(affiliatesStatuses);
-export const insertAffiliatesStatusParams = baseSchema.extend({}).omit({ 
-  id: true
-});
+export const insertAffiliatesStatusSchema =
+	createInsertSchema(affiliatesStatuses)
+export const insertAffiliatesStatusParams = baseSchema.extend({}).omit({
+	id: true
+})
 
-export const updateAffiliatesStatusSchema = baseSchema;
+export const updateAffiliatesStatusSchema = baseSchema
 export const updateAffiliatesStatusParams = baseSchema.extend({})
-export const affiliatesStatusIdSchema = baseSchema.pick({ id: true });
+export const affiliatesStatusIdSchema = baseSchema.pick({ id: true })
 
 // Types for affiliatesStatuses - used to type API request params and within Components
-export type AffiliatesStatus = typeof affiliatesStatuses.$inferSelect;
-export type NewAffiliatesStatus = z.infer<typeof insertAffiliatesStatusSchema>;
-export type NewAffiliatesStatusParams = z.infer<typeof insertAffiliatesStatusParams>;
-export type UpdateAffiliatesStatusParams = z.infer<typeof updateAffiliatesStatusParams>;
-export type AffiliatesStatusId = z.infer<typeof affiliatesStatusIdSchema>["id"];
-    
-// this type infers the return from getAffiliatesStatuses() - meaning it will include any joins
-export type CompleteAffiliatesStatus = Awaited<ReturnType<typeof getAffiliatesStatuses>>["affiliatesStatuses"][number];
+export type AffiliatesStatus = typeof affiliatesStatuses.$inferSelect
+export type NewAffiliatesStatus = z.infer<typeof insertAffiliatesStatusSchema>
+export type NewAffiliatesStatusParams = z.infer<
+	typeof insertAffiliatesStatusParams
+>
+export type UpdateAffiliatesStatusParams = z.infer<
+	typeof updateAffiliatesStatusParams
+>
+export type AffiliatesStatusId = z.infer<typeof affiliatesStatusIdSchema>['id']
 
+// this type infers the return from getAffiliatesStatuses() - meaning it will include any joins
+export type CompleteAffiliatesStatus = Awaited<
+	ReturnType<typeof getAffiliatesStatuses>
+>['affiliatesStatuses'][number]

@@ -7,6 +7,7 @@ import { type getRoleAllowSwitches } from '@/lib/api/roleAllowSwitches/queries'
 import { nanoid } from '@/lib/utils'
 
 export const roleAllowSwitches = pgTable('role_allow_switches', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

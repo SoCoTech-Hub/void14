@@ -18,6 +18,7 @@ import { nanoid, timestamps } from '@/lib/utils'
 export const bookChapters = pgTable(
 	'book_chapters',
 	{
+		organizationId: varchar('organization_id', { length: 191 }).notNull(),
 		id: varchar('id', { length: 191 })
 			.primaryKey()
 			.$defaultFn(() => nanoid()),

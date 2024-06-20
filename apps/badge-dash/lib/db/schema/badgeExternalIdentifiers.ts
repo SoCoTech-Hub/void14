@@ -9,6 +9,7 @@ import { nanoid } from '@/lib/utils'
 export const badgeExternalIdentifiers = pgTable(
 	'badge_external_identifiers',
 	{
+		organizationId: varchar('organization_id', { length: 191 }).notNull(),
 		id: varchar('id', { length: 191 })
 			.primaryKey()
 			.$defaultFn(() => nanoid()),

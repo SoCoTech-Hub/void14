@@ -8,6 +8,7 @@ import { type getAdminPresets } from '@/lib/api/adminPresets/queries'
 import { nanoid, timestamps } from '@/lib/utils'
 
 export const adminPresets = pgTable('admin_presets', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

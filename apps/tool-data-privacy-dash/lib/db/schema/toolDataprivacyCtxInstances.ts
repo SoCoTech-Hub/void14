@@ -11,6 +11,7 @@ import { toolDataprivacyPurposes } from './toolDataprivacyPurposes'
 export const toolDataprivacyCtxInstances = pgTable(
 	'tool_dataprivacy_ctx_instances',
 	{
+		organizationId: varchar('organization_id', { length: 191 }).notNull(),
 		id: varchar('id', { length: 191 })
 			.primaryKey()
 			.$defaultFn(() => nanoid()),

@@ -15,6 +15,7 @@ import { type getAnalyticsModels } from '@/lib/api/analyticsModels/queries'
 import { nanoid, timestamps } from '@/lib/utils'
 
 export const analyticsModels = pgTable('analytics_models', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

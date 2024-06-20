@@ -15,6 +15,7 @@ import { type getAssigns } from '@/lib/api/assigns/queries'
 import { nanoid, timestamps } from '@/lib/utils'
 
 export const assigns = pgTable('assigns', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

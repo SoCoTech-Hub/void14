@@ -10,6 +10,7 @@ import { nanoid, timestamps } from '@/lib/utils'
 export const blockRecentlyAccessedItems = pgTable(
 	'block_recently_accessed_items',
 	{
+		organizationId: varchar('organization_id', { length: 191 }).notNull(),
 		id: varchar('id', { length: 191 })
 			.primaryKey()
 			.$defaultFn(() => nanoid()),

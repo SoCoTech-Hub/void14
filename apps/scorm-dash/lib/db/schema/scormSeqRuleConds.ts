@@ -7,6 +7,7 @@ import { type getScormSeqRuleConds } from '@/lib/api/scormSeqRuleConds/queries'
 import { nanoid } from '@/lib/utils'
 
 export const scormSeqRuleConds = pgTable('scorm_seq_rule_conds', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

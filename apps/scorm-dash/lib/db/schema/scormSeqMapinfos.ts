@@ -9,6 +9,7 @@ import { type getScormSeqMapinfos } from '@/lib/api/scormSeqMapinfos/queries'
 import { nanoid } from '@/lib/utils'
 
 export const scormSeqMapinfos = pgTable('scorm_seq_mapinfos', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

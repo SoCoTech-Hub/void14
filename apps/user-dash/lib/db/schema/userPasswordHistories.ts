@@ -8,6 +8,7 @@ import { type getUserPasswordHistories } from '@/lib/api/userPasswordHistories/q
 import { nanoid, timestamps } from '@/lib/utils'
 
 export const userPasswordHistories = pgTable('user_password_histories', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

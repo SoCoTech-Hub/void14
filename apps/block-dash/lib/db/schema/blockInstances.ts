@@ -15,6 +15,7 @@ import { type getBlockInstances } from '@/lib/api/blockInstances/queries'
 import { nanoid, timestamps } from '@/lib/utils'
 
 export const blockInstances = pgTable('block_instances', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

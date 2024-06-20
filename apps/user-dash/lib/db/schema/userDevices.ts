@@ -10,6 +10,7 @@ import { nanoid, timestamps } from '@/lib/utils'
 export const userDevices = pgTable(
 	'user_devices',
 	{
+		organizationId: varchar('organization_id', { length: 191 }).notNull(),
 		id: varchar('id', { length: 191 })
 			.primaryKey()
 			.$defaultFn(() => nanoid()),

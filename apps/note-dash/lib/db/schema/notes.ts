@@ -8,6 +8,7 @@ import { type getNotes } from '@/lib/api/notes/queries'
 import { nanoid, timestamps } from '@/lib/utils'
 
 export const notes = pgTable('notes', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

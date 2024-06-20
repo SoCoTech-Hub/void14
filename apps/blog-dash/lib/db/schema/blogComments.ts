@@ -1,14 +1,22 @@
-import { sql } from "drizzle-orm";
-import { varchar, text, integer, timestamp, pgTable, uniqueIndex } from "drizzle-orm/pg-core";
-import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { z } from "zod";
-import { blogs } from "./blogs"
-import { nanoid, timestamps } from "@/lib/utils";
-import type { getBlogComments } from "@/lib/api/blogComments/queries";
+import { sql } from 'drizzle-orm'
+import {
+	varchar,
+	text,
+	integer,
+	timestamp,
+	pgTable,
+	uniqueIndex
+} from 'drizzle-orm/pg-core'
+import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
+import { z } from 'zod'
+import { blogs } from './blogs'
+import { nanoid, timestamps } from '@/lib/utils'
+import type { getBlogComments } from '@/lib/api/blogComments/queries'
 
 export const blogComments = pgTable(
 	'blog_comments',
 	{
+		organizationId: varchar('organization_id', { length: 191 }).notNull(),
 		id: varchar('id', { length: 191 })
 			.primaryKey()
 			.$defaultFn(() => nanoid()),
@@ -32,35 +40,40 @@ export const blogComments = pgTable(
 	}
 )
 
-
 // Schema for blogComments - used to validate API requests
 const baseSchema = createSelectSchema(blogComments).omit(timestamps)
 
-export const insertBlogCommentSchema = createInsertSchema(blogComments).omit(timestamps);
-export const insertBlogCommentParams = baseSchema.extend({
-  blogId: z.coerce.string().min(1),
-  parentId: z.coerce.number()
-}).omit({ 
-  id: true,
-  userId: true
-});
+export const insertBlogCommentSchema =
+	createInsertSchema(blogComments).omit(timestamps)
+export const insertBlogCommentParams = baseSchema
+	.extend({
+		blogId: z.coerce.string().min(1),
+		parentId: z.coerce.number()
+	})
+	.omit({
+		id: true,
+		userId: true
+	})
 
-export const updateBlogCommentSchema = baseSchema;
-export const updateBlogCommentParams = baseSchema.extend({
-  blogId: z.coerce.string().min(1),
-  parentId: z.coerce.number()
-}).omit({ 
-  userId: true
-});
-export const blogCommentIdSchema = baseSchema.pick({ id: true });
+export const updateBlogCommentSchema = baseSchema
+export const updateBlogCommentParams = baseSchema
+	.extend({
+		blogId: z.coerce.string().min(1),
+		parentId: z.coerce.number()
+	})
+	.omit({
+		userId: true
+	})
+export const blogCommentIdSchema = baseSchema.pick({ id: true })
 
 // Types for blogComments - used to type API request params and within Components
-export type BlogComment = typeof blogComments.$inferSelect;
-export type NewBlogComment = z.infer<typeof insertBlogCommentSchema>;
-export type NewBlogCommentParams = z.infer<typeof insertBlogCommentParams>;
-export type UpdateBlogCommentParams = z.infer<typeof updateBlogCommentParams>;
-export type BlogCommentId = z.infer<typeof blogCommentIdSchema>["id"];
-    
-// this type infers the return from getBlogComments() - meaning it will include any joins
-export type CompleteBlogComment = Awaited<ReturnType<typeof getBlogComments>>["blogComments"][number];
+export type BlogComment = typeof blogComments.$inferSelect
+export type NewBlogComment = z.infer<typeof insertBlogCommentSchema>
+export type NewBlogCommentParams = z.infer<typeof insertBlogCommentParams>
+export type UpdateBlogCommentParams = z.infer<typeof updateBlogCommentParams>
+export type BlogCommentId = z.infer<typeof blogCommentIdSchema>['id']
 
+// this type infers the return from getBlogComments() - meaning it will include any joins
+export type CompleteBlogComment = Awaited<
+	ReturnType<typeof getBlogComments>
+>['blogComments'][number]

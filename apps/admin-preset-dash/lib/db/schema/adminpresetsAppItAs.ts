@@ -7,6 +7,7 @@ import { type getAdminpresetsAppItAs } from '@/lib/api/adminpresetsAppItAs/queri
 import { nanoid } from '@/lib/utils'
 
 export const adminpresetsAppItAs = pgTable('adminpresets_app_it_as', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

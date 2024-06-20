@@ -7,6 +7,7 @@ import { type getBadgeExternalBackpacks } from '@/lib/api/badgeExternalBackpacks
 import { nanoid } from '@/lib/utils'
 
 export const badgeExternalBackpacks = pgTable('badge_external_backpacks', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

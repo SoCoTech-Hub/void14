@@ -1,14 +1,23 @@
-import { sql } from "drizzle-orm";
-import { varchar, real, boolean, date, text, integer, timestamp, pgTable } from "drizzle-orm/pg-core";
-import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { z } from "zod";
+import { sql } from 'drizzle-orm'
+import {
+	varchar,
+	real,
+	boolean,
+	date,
+	text,
+	integer,
+	timestamp,
+	pgTable
+} from 'drizzle-orm/pg-core'
+import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
+import { z } from 'zod'
 
-import { type getGradeGrades } from "@/lib/api/gradeGrades/queries";
+import { type getGradeGrades } from '@/lib/api/gradeGrades/queries'
 
-import { nanoid, timestamps } from "@/lib/utils";
-
+import { nanoid, timestamps } from '@/lib/utils'
 
 export const gradeGrades = pgTable('grade_grades', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),
@@ -41,57 +50,62 @@ export const gradeGrades = pgTable('grade_grades', {
 		.default(sql`now()`)
 })
 
-
 // Schema for gradeGrades - used to validate API requests
 const baseSchema = createSelectSchema(gradeGrades).omit(timestamps)
 
-export const insertGradeGradeSchema = createInsertSchema(gradeGrades).omit(timestamps);
-export const insertGradeGradeParams = baseSchema.extend({
-  aggregationWeight: z.coerce.number(),
-  excluded: z.coerce.boolean(),
-  exported: z.coerce.string().min(1),
-  feedbackFormat: z.coerce.number(),
-  finalGrade: z.coerce.number(),
-  hidden: z.coerce.boolean(),
-  informationFormat: z.coerce.number(),
-  locked: z.coerce.boolean(),
-  lockTime: z.coerce.string().min(1),
-  overridden: z.coerce.boolean(),
-  rawGrade: z.coerce.number(),
-  rawGradeMax: z.coerce.number(),
-  rawGradeMin: z.coerce.number()
-}).omit({ 
-  id: true,
-  userId: true
-});
+export const insertGradeGradeSchema =
+	createInsertSchema(gradeGrades).omit(timestamps)
+export const insertGradeGradeParams = baseSchema
+	.extend({
+		aggregationWeight: z.coerce.number(),
+		excluded: z.coerce.boolean(),
+		exported: z.coerce.string().min(1),
+		feedbackFormat: z.coerce.number(),
+		finalGrade: z.coerce.number(),
+		hidden: z.coerce.boolean(),
+		informationFormat: z.coerce.number(),
+		locked: z.coerce.boolean(),
+		lockTime: z.coerce.string().min(1),
+		overridden: z.coerce.boolean(),
+		rawGrade: z.coerce.number(),
+		rawGradeMax: z.coerce.number(),
+		rawGradeMin: z.coerce.number()
+	})
+	.omit({
+		id: true,
+		userId: true
+	})
 
-export const updateGradeGradeSchema = baseSchema;
-export const updateGradeGradeParams = baseSchema.extend({
-  aggregationWeight: z.coerce.number(),
-  excluded: z.coerce.boolean(),
-  exported: z.coerce.string().min(1),
-  feedbackFormat: z.coerce.number(),
-  finalGrade: z.coerce.number(),
-  hidden: z.coerce.boolean(),
-  informationFormat: z.coerce.number(),
-  locked: z.coerce.boolean(),
-  lockTime: z.coerce.string().min(1),
-  overridden: z.coerce.boolean(),
-  rawGrade: z.coerce.number(),
-  rawGradeMax: z.coerce.number(),
-  rawGradeMin: z.coerce.number()
-}).omit({ 
-  userId: true
-});
-export const gradeGradeIdSchema = baseSchema.pick({ id: true });
+export const updateGradeGradeSchema = baseSchema
+export const updateGradeGradeParams = baseSchema
+	.extend({
+		aggregationWeight: z.coerce.number(),
+		excluded: z.coerce.boolean(),
+		exported: z.coerce.string().min(1),
+		feedbackFormat: z.coerce.number(),
+		finalGrade: z.coerce.number(),
+		hidden: z.coerce.boolean(),
+		informationFormat: z.coerce.number(),
+		locked: z.coerce.boolean(),
+		lockTime: z.coerce.string().min(1),
+		overridden: z.coerce.boolean(),
+		rawGrade: z.coerce.number(),
+		rawGradeMax: z.coerce.number(),
+		rawGradeMin: z.coerce.number()
+	})
+	.omit({
+		userId: true
+	})
+export const gradeGradeIdSchema = baseSchema.pick({ id: true })
 
 // Types for gradeGrades - used to type API request params and within Components
-export type GradeGrade = typeof gradeGrades.$inferSelect;
-export type NewGradeGrade = z.infer<typeof insertGradeGradeSchema>;
-export type NewGradeGradeParams = z.infer<typeof insertGradeGradeParams>;
-export type UpdateGradeGradeParams = z.infer<typeof updateGradeGradeParams>;
-export type GradeGradeId = z.infer<typeof gradeGradeIdSchema>["id"];
-    
-// this type infers the return from getGradeGrades() - meaning it will include any joins
-export type CompleteGradeGrade = Awaited<ReturnType<typeof getGradeGrades>>["gradeGrades"][number];
+export type GradeGrade = typeof gradeGrades.$inferSelect
+export type NewGradeGrade = z.infer<typeof insertGradeGradeSchema>
+export type NewGradeGradeParams = z.infer<typeof insertGradeGradeParams>
+export type UpdateGradeGradeParams = z.infer<typeof updateGradeGradeParams>
+export type GradeGradeId = z.infer<typeof gradeGradeIdSchema>['id']
 
+// this type infers the return from getGradeGrades() - meaning it will include any joins
+export type CompleteGradeGrade = Awaited<
+	ReturnType<typeof getGradeGrades>
+>['gradeGrades'][number]

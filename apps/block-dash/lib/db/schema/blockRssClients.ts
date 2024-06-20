@@ -7,6 +7,7 @@ import { type getBlockRssClients } from '@/lib/api/blockRssClients/queries'
 import { nanoid } from '@/lib/utils'
 
 export const blockRssClients = pgTable('block_rss_clients', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

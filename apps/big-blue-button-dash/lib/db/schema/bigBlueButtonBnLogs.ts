@@ -17,6 +17,7 @@ import { nanoid, timestamps } from '@/lib/utils'
 export const bigBlueButtonBnLogs = pgTable(
 	'big_blue_button_bn_logs',
 	{
+		organizationId: varchar('organization_id', { length: 191 }).notNull(),
 		id: varchar('id', { length: 191 })
 			.primaryKey()
 			.$defaultFn(() => nanoid()),

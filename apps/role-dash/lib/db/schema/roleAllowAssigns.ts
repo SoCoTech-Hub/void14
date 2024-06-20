@@ -8,6 +8,7 @@ import { type getRoleAllowAssigns } from '@/lib/api/roleAllowAssigns/queries'
 import { nanoid } from '@/lib/utils'
 
 export const roleAllowAssigns = pgTable('role_allow_assigns', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

@@ -8,6 +8,7 @@ import { type getMassMailRecipients } from '@/lib/api/massMailRecipients/queries
 import { nanoid, timestamps } from '@/lib/utils'
 
 export const massMailRecipients = pgTable('mass_mail_recipients', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

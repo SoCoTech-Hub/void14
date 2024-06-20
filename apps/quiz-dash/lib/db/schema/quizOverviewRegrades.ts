@@ -17,6 +17,7 @@ import { nanoid, timestamps } from '@/lib/utils'
 export const quizOverviewRegrades = pgTable(
 	'quiz_overview_regrades',
 	{
+		organizationId: varchar('organization_id', { length: 191 }).notNull(),
 		id: varchar('id', { length: 191 })
 			.primaryKey()
 			.$defaultFn(() => nanoid()),

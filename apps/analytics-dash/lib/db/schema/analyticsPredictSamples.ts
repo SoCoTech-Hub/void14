@@ -16,6 +16,7 @@ import { nanoid, timestamps } from '@/lib/utils'
 export const analyticsPredictSamples = pgTable(
 	'analytics_predict_samples',
 	{
+		organizationId: varchar('organization_id', { length: 191 }).notNull(),
 		id: varchar('id', { length: 191 })
 			.primaryKey()
 			.$defaultFn(() => nanoid()),

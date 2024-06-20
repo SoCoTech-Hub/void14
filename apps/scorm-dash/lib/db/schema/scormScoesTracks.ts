@@ -9,6 +9,7 @@ import { type getScormScoesTracks } from '@/lib/api/scormScoesTracks/queries'
 import { nanoid, timestamps } from '@/lib/utils'
 
 export const scormScoesTracks = pgTable('scorm_scoes_tracks', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

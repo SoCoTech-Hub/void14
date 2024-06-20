@@ -7,6 +7,7 @@ import { type getBadgeCriteriaParams } from '@/lib/api/badgeCriteriaParams/queri
 import { nanoid } from '@/lib/utils'
 
 export const badgeCriteriaParams = pgTable('badge_criteria_params', {
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
 	id: varchar('id', { length: 191 })
 		.primaryKey()
 		.$defaultFn(() => nanoid()),

@@ -1,38 +1,42 @@
-import { varchar, pgTable } from "drizzle-orm/pg-core";
-import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { z } from "zod";
+import { varchar, pgTable } from 'drizzle-orm/pg-core'
+import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
+import { z } from 'zod'
 
-import { type getSupportStatuses } from "@/lib/api/supportStatuses/queries";
+import { type getSupportStatuses } from '@/lib/api/supportStatuses/queries'
 
-import { nanoid } from "@/lib/utils";
-
+import { nanoid } from '@/lib/utils'
 
 export const supportStatuses = pgTable('support_statuses', {
-  id: varchar("id", { length: 191 }).primaryKey().$defaultFn(() => nanoid()),
-  name: varchar("name", { length: 256 }).notNull(),
-  color: varchar("color", { length: 256 })
-});
-
+	organizationId: varchar('organization_id', { length: 191 }).notNull(),
+	id: varchar('id', { length: 191 })
+		.primaryKey()
+		.$defaultFn(() => nanoid()),
+	name: varchar('name', { length: 256 }).notNull(),
+	color: varchar('color', { length: 256 })
+})
 
 // Schema for supportStatuses - used to validate API requests
 const baseSchema = createSelectSchema(supportStatuses)
 
-export const insertSupportStatusSchema = createInsertSchema(supportStatuses);
-export const insertSupportStatusParams = baseSchema.extend({}).omit({ 
-  id: true
-});
+export const insertSupportStatusSchema = createInsertSchema(supportStatuses)
+export const insertSupportStatusParams = baseSchema.extend({}).omit({
+	id: true
+})
 
-export const updateSupportStatusSchema = baseSchema;
+export const updateSupportStatusSchema = baseSchema
 export const updateSupportStatusParams = baseSchema.extend({})
-export const supportStatusIdSchema = baseSchema.pick({ id: true });
+export const supportStatusIdSchema = baseSchema.pick({ id: true })
 
 // Types for supportStatuses - used to type API request params and within Components
-export type SupportStatus = typeof supportStatuses.$inferSelect;
-export type NewSupportStatus = z.infer<typeof insertSupportStatusSchema>;
-export type NewSupportStatusParams = z.infer<typeof insertSupportStatusParams>;
-export type UpdateSupportStatusParams = z.infer<typeof updateSupportStatusParams>;
-export type SupportStatusId = z.infer<typeof supportStatusIdSchema>["id"];
-    
-// this type infers the return from getSupportStatuses() - meaning it will include any joins
-export type CompleteSupportStatus = Awaited<ReturnType<typeof getSupportStatuses>>["supportStatuses"][number];
+export type SupportStatus = typeof supportStatuses.$inferSelect
+export type NewSupportStatus = z.infer<typeof insertSupportStatusSchema>
+export type NewSupportStatusParams = z.infer<typeof insertSupportStatusParams>
+export type UpdateSupportStatusParams = z.infer<
+	typeof updateSupportStatusParams
+>
+export type SupportStatusId = z.infer<typeof supportStatusIdSchema>['id']
 
+// this type infers the return from getSupportStatuses() - meaning it will include any joins
+export type CompleteSupportStatus = Awaited<
+	ReturnType<typeof getSupportStatuses>
+>['supportStatuses'][number]
