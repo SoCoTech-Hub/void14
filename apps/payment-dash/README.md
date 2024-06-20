@@ -37,7 +37,7 @@ Stores configuration for payment gateways for different payment accounts.
 - **account_id**: `BIGINT(19)`, The ID of the associated payment account.
 - **config**: `LONGTEXT(2147483647)` (Nullable), Configuration settings for the payment gateway.
 - **enabled**: `BIT(1)`, Indicates if the gateway is enabled. Default is 1.
-- **gateway**: `VARCHAR(100)`, Name of the payment gateway.
+- **gateway_name**: `VARCHAR(100)`, Name of the payment gateway.
 - **created_at**: `BIGINT(19)`, Timestamp of when the gateway configuration was created.
 - **updated_at**: `BIGINT(19)`, Timestamp of the last modification of the gateway configuration.
 
