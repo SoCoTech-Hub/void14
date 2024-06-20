@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+### addresses
 
-## Getting Started
+- id: varchar("id" { length: 191 }).primaryKey().$defaultFn(() => nanoid())
+- line1: varchar("line_1" { length: 256 })
+- line2: varchar("line_2" { length: 256 })
+- city: varchar("city" { length: 256 })
+- zipCode: varchar("zip_code" { length: 256 })
+- state: varchar("state" { length: 256 })
+- country: varchar("country" { length: 256 })
+- userId: varchar("user_id" { length: 256 }).notNull()
+- createdAt: timestamp("created_at").notNull().default(sql`now()`)
+- updatedAt: timestamp("updated_at").notNull().default(sql`now()`)
 
-First, run the development server:
+### genders
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- id: varchar("id" { length: 191 }).primaryKey().$defaultFn(() => nanoid())
+- name: varchar("name" { length: 256 }).notNull()
+- icon: varchar("icon" { length: 256 })
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### nextOfKins
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- id: varchar("id" { length: 191 }).primaryKey().$defaultFn(() => nanoid())
+- name: varchar("name" { length: 256 }).notNull()
+- surname: varchar("surname" { length: 256 })
+- fullName: varchar("full_name" { length: 256 })
+- mobile: varchar("mobile" { length: 256 })
+- email: varchar("email" { length: 256 })
+- title: varchar("title" { length: 256 })
+- dateOfBirth: varchar("date_of_birth" { length: 256 })
+- relation: varchar("relation" { length: 256 })
+- userId: varchar("user_id" { length: 256 }).notNull()
+- createdAt: timestamp("created_at").notNull().default(sql`now()`)
+- updatedAt: timestamp("updated_at").notNull().default(sql`now()`)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### profiles
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- id: varchar("id" { length: 191 }).primaryKey().$defaultFn(() => nanoid())
+- name: varchar("name" { length: 256 }).notNull()
+- surname: varchar("surname" { length: 256 })
+- fullName: varchar("full_name" { length: 256 })
+- idNumber: varchar("id_number" { length: 256 })
+- mobile: varchar("mobile" { length: 256 })
+- bio: text("bio")
+- dateOfBirth: date("date_of_birth")
+- uniqueId: varchar("unique_id" { length: 256 })
+- addressId: varchar("address_id" { length: 256 }).references(() => addresses.id { onDelete: "cascade" }).notNull()
+- genderId: varchar("gender_id" { length: 256 }).references(() => genders.id { onDelete: "cascade" }).notNull()
+- nextOfKinId: varchar("next_of_kin_id" { length: 256 }).references(() => nextOfKins.id { onDelete: "cascade" }).notNull()
+- userId: varchar("user_id" { length: 256 }).notNull()
+- createdAt: timestamp("created_at").notNull().default(sql`now()`)
+- updatedAt: timestamp("updated_at").notNull().default(sql`now()`)

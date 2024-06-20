@@ -27,7 +27,7 @@ const Notification = ({ notification }: { notification: CompleteNotification }) 
   return (
     <li className="flex justify-between my-2">
       <div className="w-full">
-        <div>{notification.name}</div>
+        <div>{notification.component}</div>
       </div>
       <NotificationModal notification={notification} />
     </li>

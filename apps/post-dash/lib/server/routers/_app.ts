@@ -3,6 +3,7 @@ import { router } from '@/lib/server/trpc'
 import { faqsRouter } from './faqs'
 import { faqCategoriesRouter } from './faqCategories'
 import { faqFaqsCategoriesRouter } from './faqFaqsCategories'
+import { postsRouter } from "./posts";
 
 export const appRouter = router({
 	computers: computersRouter,
@@ -12,3 +13,4 @@ export const appRouter = router({
 })
 
 export type AppRouter = typeof appRouter
+  posts: postsRouter,

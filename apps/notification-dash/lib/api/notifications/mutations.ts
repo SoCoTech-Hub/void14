@@ -31,7 +31,7 @@ export const updateNotification = async (id: NotificationId, notification: Updat
   try {
     const [n] =  await db
      .update(notifications)
-     .set(newNotification)
+     .set({...newNotification, updatedAt: new Date() })
      .where(and(eq(notifications.id, notificationId!), eq(notifications.userId, session?.user.id!)))
      .returning();
     return { notification: n };
