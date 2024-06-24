@@ -1,10 +1,8 @@
 {
-  "id": "937b249c-03c0-4ff9-975d-36b3c91578cb",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "admin_preset_app_plugs": {
+    "public.admin_preset_app_plugs": {
       "name": "admin_preset_app_plugs",
       "schema": "",
       "columns": {
@@ -53,32 +51,40 @@
       },
       "indexes": {
         "admin_preset_app_plugs_admin_presets_app_id_idx": {
-          "name": "admin_preset_app_plugs_admin_presets_app_id_idx",
           "columns": [
-            "admin_presets_app_id"
+            {
+              "expression": "admin_presets_app_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "admin_preset_app_plugs_admin_presets_app_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "admin_preset_app_plugs_admin_presets_app_id_admin_presets_apps_id_fk": {
           "name": "admin_preset_app_plugs_admin_presets_app_id_admin_presets_apps_id_fk",
           "tableFrom": "admin_preset_app_plugs",
-          "tableTo": "admin_presets_apps",
           "columnsFrom": [
             "admin_presets_app_id"
           ],
+          "tableTo": "admin_presets_apps",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "admin_preset_it_as": {
+    "public.admin_preset_it_as": {
       "name": "admin_preset_it_as",
       "schema": "",
       "columns": {
@@ -115,18 +121,26 @@
       },
       "indexes": {
         "item_id_idx": {
-          "name": "item_id_idx",
           "columns": [
-            "item_id"
+            {
+              "expression": "item_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "item_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "admin_preset_its": {
+    "public.admin_preset_its": {
       "name": "admin_preset_its",
       "schema": "",
       "columns": {
@@ -169,32 +183,40 @@
       },
       "indexes": {
         "admin_preset_its_admin_presets_app_id_idx": {
-          "name": "admin_preset_its_admin_presets_app_id_idx",
           "columns": [
-            "admin_presets_app_id"
+            {
+              "expression": "admin_presets_app_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "admin_preset_its_admin_presets_app_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "admin_preset_its_admin_presets_app_id_admin_presets_apps_id_fk": {
           "name": "admin_preset_its_admin_presets_app_id_admin_presets_apps_id_fk",
           "tableFrom": "admin_preset_its",
-          "tableTo": "admin_presets_apps",
           "columnsFrom": [
             "admin_presets_app_id"
           ],
+          "tableTo": "admin_presets_apps",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "admin_preset_plugs": {
+    "public.admin_preset_plugs": {
       "name": "admin_preset_plugs",
       "schema": "",
       "columns": {
@@ -237,32 +259,40 @@
       },
       "indexes": {
         "admin_preset_plugs_admin_preset_id_idx": {
-          "name": "admin_preset_plugs_admin_preset_id_idx",
           "columns": [
-            "admin_preset_id"
+            {
+              "expression": "admin_preset_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "admin_preset_plugs_admin_preset_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "admin_preset_plugs_admin_preset_id_admin_presets_id_fk": {
           "name": "admin_preset_plugs_admin_preset_id_admin_presets_id_fk",
           "tableFrom": "admin_preset_plugs",
-          "tableTo": "admin_presets",
           "columnsFrom": [
             "admin_preset_id"
           ],
+          "tableTo": "admin_presets",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "admin_presets": {
+    "public.admin_presets": {
       "name": "admin_presets",
       "schema": "",
       "columns": {
@@ -346,7 +376,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "adminpresets_app_it_as": {
+    "public.adminpresets_app_it_as": {
       "name": "adminpresets_app_it_as",
       "schema": "",
       "columns": {
@@ -386,21 +416,21 @@
         "adminpresets_app_it_as_admin_presets_app_id_admin_presets_apps_id_fk": {
           "name": "adminpresets_app_it_as_admin_presets_app_id_admin_presets_apps_id_fk",
           "tableFrom": "adminpresets_app_it_as",
-          "tableTo": "admin_presets_apps",
           "columnsFrom": [
             "admin_presets_app_id"
           ],
+          "tableTo": "admin_presets_apps",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "adminpresets_app_its": {
+    "public.adminpresets_app_its": {
       "name": "adminpresets_app_its",
       "schema": "",
       "columns": {
@@ -431,32 +461,40 @@
       },
       "indexes": {
         "adminpresets_app_its_admin_presets_app_id_idx": {
-          "name": "adminpresets_app_its_admin_presets_app_id_idx",
           "columns": [
-            "admin_presets_app_id"
+            {
+              "expression": "admin_presets_app_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "adminpresets_app_its_admin_presets_app_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "adminpresets_app_its_admin_presets_app_id_admin_presets_apps_id_fk": {
           "name": "adminpresets_app_its_admin_presets_app_id_admin_presets_apps_id_fk",
           "tableFrom": "adminpresets_app_its",
-          "tableTo": "admin_presets_apps",
           "columnsFrom": [
             "admin_presets_app_id"
           ],
+          "tableTo": "admin_presets_apps",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "admin_presets_apps": {
+    "public.admin_presets_apps": {
       "name": "admin_presets_apps",
       "schema": "",
       "columns": {
@@ -507,32 +545,40 @@
       },
       "indexes": {
         "admin_presets_apps_admin_preset_id_idx": {
-          "name": "admin_presets_apps_admin_preset_id_idx",
           "columns": [
-            "admin_preset_id"
+            {
+              "expression": "admin_preset_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "admin_presets_apps_admin_preset_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "admin_presets_apps_admin_preset_id_admin_presets_id_fk": {
           "name": "admin_presets_apps_admin_preset_id_admin_presets_id_fk",
           "tableFrom": "admin_presets_apps",
-          "tableTo": "admin_presets",
           "columnsFrom": [
             "admin_preset_id"
           ],
+          "tableTo": "admin_presets",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "session": {
+    "public.session": {
       "name": "session",
       "schema": "",
       "columns": {
@@ -560,21 +606,21 @@
         "session_user_id_user_id_fk": {
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user": {
+    "public.user": {
       "name": "user",
       "schema": "",
       "columns": {
@@ -609,10 +655,10 @@
       "uniqueConstraints": {
         "user_email_unique": {
           "name": "user_email_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     }
@@ -620,8 +666,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "937b249c-03c0-4ff9-975d-36b3c91578cb",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }

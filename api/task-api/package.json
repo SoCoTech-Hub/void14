@@ -12,7 +12,8 @@
 		"db:drop": "drizzle-kit drop",
 		"db:pull": "drizzle-kit introspect",
 		"db:studio": "drizzle-kit studio",
-		"db:check": "drizzle-kit check"
+		"db:check": "drizzle-kit check",
+		"db:up": "drizzle-kit up"
 	},
 	"dependencies": {
 		"drizzle-orm": "^0.31.2",
