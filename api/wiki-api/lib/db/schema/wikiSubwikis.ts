@@ -1,4 +1,4 @@
-import { varchar, pgTable } from 'drizzle-orm/pg-core'
+import { varchar, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { wikis } from './wikis'
@@ -21,7 +21,9 @@ export const wikiSubwikis = pgTable(
 	},
 	(wikiSubwikis) => {
 		return {
-			wikiIdIndex: uniqueIndex('wiki_id_idx').on(wikiSubwikis.wikiId)
+			wikiIdIndex: uniqueIndex('wiki_subwikis_wiki_id_idx').on(
+				wikiSubwikis.wikiId
+			)
 		}
 	}
 )

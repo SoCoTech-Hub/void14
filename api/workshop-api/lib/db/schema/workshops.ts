@@ -69,7 +69,9 @@ export const workshops = pgTable(
 	},
 	(workshops) => {
 		return {
-			courseIdIndex: uniqueIndex('course_id_idx').on(workshops.courseId)
+			courseIdIndex: uniqueIndex('workshops_course_id_idx').on(
+				workshops.courseId
+			)
 		}
 	}
 )

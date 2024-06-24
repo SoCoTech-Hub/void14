@@ -5,7 +5,8 @@ import {
 	boolean,
 	text,
 	timestamp,
-	pgTable
+	pgTable,
+	uniqueIndex
 } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
@@ -41,7 +42,7 @@ export const wikis = pgTable(
 	},
 	(wikis) => {
 		return {
-			courseIdIndex: uniqueIndex('course_id_idx').on(wikis.courseId)
+			courseIdIndex: uniqueIndex('wikis_course_id_idx').on(wikis.courseId)
 		}
 	}
 )

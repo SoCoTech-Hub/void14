@@ -1,5 +1,5 @@
 import { sql } from 'drizzle-orm'
-import { text, integer, varchar, timestamp, pgTable } from 'drizzle-orm/pg-core'
+import { text, integer, varchar, timestamp, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { wikiPages } from './wikiPages'
@@ -31,7 +31,7 @@ export const wikiVersions = pgTable(
 	},
 	(wikiVersions) => {
 		return {
-			wikiPageIdIndex: uniqueIndex('wiki_page_id_idx').on(
+			wikiPageIdIndex: uniqueIndex('wiki_versions_wiki_page_id_idx').on(
 				wikiVersions.wikiPageId
 			)
 		}

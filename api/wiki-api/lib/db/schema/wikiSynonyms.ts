@@ -1,4 +1,4 @@
-import { varchar, pgTable } from 'drizzle-orm/pg-core'
+import { varchar, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { wikiPages } from './wikiPages'
@@ -24,7 +24,7 @@ export const wikiSynonyms = pgTable(
 	},
 	(wikiSynonyms) => {
 		return {
-			wikiPageIdIndex: uniqueIndex('wiki_page_id_idx').on(
+			wikiPageIdIndex: uniqueIndex('wiki_synonyms_wiki_page_id_idx').on(
 				wikiSynonyms.wikiPageId
 			)
 		}

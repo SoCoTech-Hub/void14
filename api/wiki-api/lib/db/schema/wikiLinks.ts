@@ -2,9 +2,6 @@ import { varchar, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { wikiPages } from './wikiPages'
-import { wikiPages } from './wikiPages'
-import { wikiPages } from './wikiPages'
-import { wikiPages } from './wikiPages'
 import { type getWikiLinks } from '@/lib/api/wikiLinks/queries'
 
 import { nanoid } from '@/lib/utils'
@@ -31,7 +28,9 @@ export const wikiLinks = pgTable(
 	},
 	(wikiLinks) => {
 		return {
-			fromPageIdIndex: uniqueIndex('from_page_id_idx').on(wikiLinks.fromPageId)
+			fromPageIdIndex: uniqueIndex('wiki_links_from_page_id_idx').on(
+				wikiLinks.fromPageId
+			)
 		}
 	}
 )
