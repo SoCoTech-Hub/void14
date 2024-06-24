@@ -1,0 +1,54 @@
+import { db } from "@/lib/db/index";
+import { eq } from "drizzle-orm";
+import { 
+  BackupCourseId, 
+  NewBackupCourseParams,
+  UpdateBackupCourseParams, 
+  updateBackupCourseSchema,
+  insertBackupCourseSchema, 
+  backupCourses,
+  backupCourseIdSchema 
+} from "@/lib/db/schema/backupCourses";
+
+export const createBackupCourse = async (backupCourse: NewBackupCourseParams) => {
+  const newBackupCourse = insertBackupCourseSchema.parse(backupCourse);
+  try {
+    const [b] =  await db.insert(backupCourses).values(newBackupCourse).returning();
+    return { backupCourse: b };
+  } catch (err) {
+    const message = (err as Error).message ?? "Error, please try again";
+    console.error(message);
+    throw { error: message };
+  }
+};
+
+export const updateBackupCourse = async (id: BackupCourseId, backupCourse: UpdateBackupCourseParams) => {
+  const { id: backupCourseId } = backupCourseIdSchema.parse({ id });
+  const newBackupCourse = updateBackupCourseSchema.parse(backupCourse);
+  try {
+    const [b] =  await db
+     .update(backupCourses)
+     .set({...newBackupCourse, updatedAt: new Date() })
+     .where(eq(backupCourses.id, backupCourseId!))
+     .returning();
+    return { backupCourse: b };
+  } catch (err) {
+    const message = (err as Error).message ?? "Error, please try again";
+    console.error(message);
+    throw { error: message };
+  }
+};
+
+export const deleteBackupCourse = async (id: BackupCourseId) => {
+  const { id: backupCourseId } = backupCourseIdSchema.parse({ id });
+  try {
+    const [b] =  await db.delete(backupCourses).where(eq(backupCourses.id, backupCourseId!))
+    .returning();
+    return { backupCourse: b };
+  } catch (err) {
+    const message = (err as Error).message ?? "Error, please try again";
+    console.error(message);
+    throw { error: message };
+  }
+};
+
