@@ -28,7 +28,7 @@ export const workshopFormRubrics = pgTable(
 	},
 	(workshopFormRubrics) => {
 		return {
-			workshopIdIndex: uniqueIndex('workshop_id_idx').on(
+			workshopIdIndex: uniqueIndex('workshop_form_rubrics_workshop_id_idx').on(
 				workshopFormRubrics.workshopId
 			)
 		}

@@ -35,7 +35,7 @@ export const workshopAggregations = pgTable(
 	},
 	(workshopAggregations) => {
 		return {
-			workshopIdIndex: uniqueIndex('workshop_id_idx').on(
+			workshopIdIndex: uniqueIndex('workshop_aggregations_workshop_id_idx').on(
 				workshopAggregations.workshopId
 			)
 		}

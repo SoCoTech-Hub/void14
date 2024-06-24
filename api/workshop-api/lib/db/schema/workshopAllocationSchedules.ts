@@ -5,7 +5,8 @@ import {
 	integer,
 	varchar,
 	timestamp,
-	pgTable
+	pgTable,
+	uniqueIndex
 } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
@@ -40,9 +41,9 @@ export const workshopAllocationSchedules = pgTable(
 	},
 	(workshopAllocationSchedules) => {
 		return {
-			workshopIdIndex: uniqueIndex('workshop_id_idx').on(
-				workshopAllocationSchedules.workshopId
-			)
+			workshopIdIndex: uniqueIndex(
+				'workshop_allocation_schedules_workshop_id_idx'
+			).on(workshopAllocationSchedules.workshopId)
 		}
 	}
 )

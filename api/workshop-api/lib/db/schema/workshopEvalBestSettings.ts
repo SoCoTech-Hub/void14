@@ -1,4 +1,4 @@
-import { integer, varchar, pgTable } from 'drizzle-orm/pg-core'
+import { integer, varchar, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { workshops } from './workshops'
@@ -20,9 +20,9 @@ export const workshopEvalBestSettings = pgTable(
 	},
 	(workshopEvalBestSettings) => {
 		return {
-			workshopIdIndex: uniqueIndex('workshop_id_idx').on(
-				workshopEvalBestSettings.workshopId
-			)
+			workshopIdIndex: uniqueIndex(
+				'workshop_eval_best_settings_workshop_id_idx'
+			).on(workshopEvalBestSettings.workshopId)
 		}
 	}
 )

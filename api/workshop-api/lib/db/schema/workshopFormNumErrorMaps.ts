@@ -1,4 +1,10 @@
-import { real, integer, varchar, pgTable } from 'drizzle-orm/pg-core'
+import {
+	real,
+	integer,
+	varchar,
+	pgTable,
+	uniqueIndex
+} from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { workshops } from './workshops'
@@ -21,9 +27,9 @@ export const workshopFormNumErrorMaps = pgTable(
 	},
 	(workshopFormNumErrorMaps) => {
 		return {
-			workshopIdIndex: uniqueIndex('workshop_id_idx').on(
-				workshopFormNumErrorMaps.workshopId
-			)
+			workshopIdIndex: uniqueIndex(
+				'workshop_form_num_error_maps_workshop_id_idx'
+			).on(workshopFormNumErrorMaps.workshopId)
 		}
 	}
 )

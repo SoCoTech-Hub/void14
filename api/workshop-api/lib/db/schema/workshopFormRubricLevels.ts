@@ -1,4 +1,11 @@
-import { text, integer, varchar, real, pgTable } from 'drizzle-orm/pg-core'
+import {
+	text,
+	integer,
+	varchar,
+	real,
+	pgTable,
+	uniqueIndex
+} from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 
@@ -20,9 +27,9 @@ export const workshopFormRubricLevels = pgTable(
 	},
 	(workshopFormRubricLevels) => {
 		return {
-			dimensionIdIndex: uniqueIndex('dimension_id_idx').on(
-				workshopFormRubricLevels.dimensionId
-			)
+			dimensionIdIndex: uniqueIndex(
+				'workshop_form_rubric_levels_dimension_id_idx'
+			).on(workshopFormRubricLevels.dimensionId)
 		}
 	}
 )

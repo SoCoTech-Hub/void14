@@ -1,4 +1,10 @@
-import { text, integer, varchar, pgTable } from 'drizzle-orm/pg-core'
+import {
+	text,
+	integer,
+	varchar,
+	pgTable,
+	uniqueIndex
+} from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { workshops } from './workshops'
@@ -24,9 +30,9 @@ export const workshopFormAccumulatives = pgTable(
 	},
 	(workshopFormAccumulatives) => {
 		return {
-			workshopIdIndex: uniqueIndex('workshop_id_idx').on(
-				workshopFormAccumulatives.workshopId
-			)
+			workshopIdIndex: uniqueIndex(
+				'workshop_form_accumulatives_workshop_id_idx'
+			).on(workshopFormAccumulatives.workshopId)
 		}
 	}
 )
