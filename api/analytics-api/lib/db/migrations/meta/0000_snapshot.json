@@ -1,10 +1,8 @@
 {
-  "id": "6512ef5a-9da4-417d-ae6b-2b3f097871b0",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "analytics_indicator_calcs": {
+    "public.analytics_indicator_calcs": {
       "name": "analytics_indicator_calcs",
       "schema": "",
       "columns": {
@@ -76,7 +74,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "analytics_model_logs": {
+    "public.analytics_model_logs": {
       "name": "analytics_model_logs",
       "schema": "",
       "columns": {
@@ -163,18 +161,26 @@
       },
       "indexes": {
         "aml_model_id_idx": {
-          "name": "aml_model_id_idx",
           "columns": [
-            "model_id"
+            {
+              "expression": "model_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "aml_model_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "analytics_models": {
+    "public.analytics_models": {
       "name": "analytics_models",
       "schema": "",
       "columns": {
@@ -264,7 +270,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "analytics_prediction_actions": {
+    "public.analytics_prediction_actions": {
       "name": "analytics_prediction_actions",
       "schema": "",
       "columns": {
@@ -309,18 +315,26 @@
       },
       "indexes": {
         "prediction_id_idx": {
-          "name": "prediction_id_idx",
           "columns": [
-            "prediction_id"
+            {
+              "expression": "prediction_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "prediction_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "analytics_predictions": {
+    "public.analytics_predictions": {
       "name": "analytics_predictions",
       "schema": "",
       "columns": {
@@ -401,18 +415,26 @@
       },
       "indexes": {
         "ap_model_id_idx": {
-          "name": "ap_model_id_idx",
           "columns": [
-            "model_id"
+            {
+              "expression": "model_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "ap_model_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "analytics_predict_samples": {
+    "public.analytics_predict_samples": {
       "name": "analytics_predict_samples",
       "schema": "",
       "columns": {
@@ -469,18 +491,26 @@
       },
       "indexes": {
         "aps_model_id_idx": {
-          "name": "aps_model_id_idx",
           "columns": [
-            "model_id"
+            {
+              "expression": "model_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "aps_model_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "analytics_train_samples": {
+    "public.analytics_train_samples": {
       "name": "analytics_train_samples",
       "schema": "",
       "columns": {
@@ -531,18 +561,26 @@
       },
       "indexes": {
         "ats_model_id_idx": {
-          "name": "ats_model_id_idx",
           "columns": [
-            "model_id"
+            {
+              "expression": "model_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "ats_model_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "analytics_used_analysables": {
+    "public.analytics_used_analysables": {
       "name": "analytics_used_analysables",
       "schema": "",
       "columns": {
@@ -593,18 +631,26 @@
       },
       "indexes": {
         "aua_model_id_idx": {
-          "name": "aua_model_id_idx",
           "columns": [
-            "model_id"
+            {
+              "expression": "model_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "aua_model_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "analytics_used_files": {
+    "public.analytics_used_files": {
       "name": "analytics_used_files",
       "schema": "",
       "columns": {
@@ -649,18 +695,26 @@
       },
       "indexes": {
         "auf_model_id_idx": {
-          "name": "auf_model_id_idx",
           "columns": [
-            "model_id"
+            {
+              "expression": "model_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "auf_model_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "session": {
+    "public.session": {
       "name": "session",
       "schema": "",
       "columns": {
@@ -688,21 +742,21 @@
         "session_user_id_user_id_fk": {
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user": {
+    "public.user": {
       "name": "user",
       "schema": "",
       "columns": {
@@ -737,10 +791,10 @@
       "uniqueConstraints": {
         "user_email_unique": {
           "name": "user_email_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     }
@@ -748,8 +802,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "6512ef5a-9da4-417d-ae6b-2b3f097871b0",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }

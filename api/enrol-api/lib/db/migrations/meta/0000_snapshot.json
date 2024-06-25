@@ -1,0 +1,1606 @@
+{
+  "id": "3a0265a6-dc73-4e61-9f9e-7f3fbd18134f",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.enrol_flatfiles": {
+      "name": "enrol_flatfiles",
+      "schema": "",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "action": {
+          "name": "action",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "course_id": {
+          "name": "course_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "role_id": {
+          "name": "role_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.enrol_lti_app_registrations": {
+      "name": "enrol_lti_app_registrations",
+      "schema": "",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "access_token_url": {
+          "name": "access_token_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "authentication_request_url": {
+          "name": "authentication_request_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "client_id": {
+          "name": "client_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "jwks_url": {
+          "name": "jwks_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "platform_client_hash": {
+          "name": "platform_client_hash",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "platform_id": {
+          "name": "platform_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "platform_unique_id_hash": {
+          "name": "platform_unique_id_hash",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "unique_id": {
+          "name": "unique_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.enrol_lti_contexts": {
+      "name": "enrol_lti_contexts",
+      "schema": "",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "context_id": {
+          "name": "context_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "lti_deployment_id": {
+          "name": "lti_deployment_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "type": {
+          "name": "type",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.enrol_lti_deployments": {
+      "name": "enrol_lti_deployments",
+      "schema": "",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "deployment_id": {
+          "name": "deployment_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "legacy_consumer_key": {
+          "name": "legacy_consumer_key",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "platform_id": {
+          "name": "platform_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.enrol_lti_lti2_consumers": {
+      "name": "enrol_lti_lti2_consumers",
+      "schema": "",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "consumer_guid": {
+          "name": "consumer_guid",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "consumer_key": {
+          "name": "consumer_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "consumer_key256": {
+          "name": "consumer_key256",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "consumer_name": {
+          "name": "consumer_name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "consumer_version": {
+          "name": "consumer_version",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "enabled": {
+          "name": "enabled",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_access": {
+          "name": "last_access",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "lti_version": {
+          "name": "lti_version",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "profile": {
+          "name": "profile",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "protected": {
+          "name": "protected",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "secret": {
+          "name": "secret",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "settings": {
+          "name": "settings",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tool_proxy": {
+          "name": "tool_proxy",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "enable_from": {
+          "name": "enable_from",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "enable_until": {
+          "name": "enable_until",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.enrol_lti_lti2_contexts": {
+      "name": "enrol_lti_lti2_contexts",
+      "schema": "",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "consumer_id": {
+          "name": "consumer_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "settings": {
+          "name": "settings",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "lti_context_key": {
+          "name": "lti_context_key",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "type": {
+          "name": "type",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.enrol_lti_lti2_nonces": {
+      "name": "enrol_lti_lti2_nonces",
+      "schema": "",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "consumer_id": {
+          "name": "consumer_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "expires": {
+          "name": "expires",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "value": {
+          "name": "value",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.enrol_lti_lti2_resource_links": {
+      "name": "enrol_lti_lti2_resource_links",
+      "schema": "",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "consumer_id": {
+          "name": "consumer_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "context_id": {
+          "name": "context_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "lti_resource_link_key": {
+          "name": "lti_resource_link_key",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "primary_resource_link_id": {
+          "name": "primary_resource_link_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "settings": {
+          "name": "settings",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "share_approved": {
+          "name": "share_approved",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.enrol_lti_lti2_share_keys": {
+      "name": "enrol_lti_lti2_share_keys",
+      "schema": "",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "auto_approve": {
+          "name": "auto_approve",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "expires": {
+          "name": "expires",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "resource_link_id": {
+          "name": "resource_link_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "share_key": {
+          "name": "share_key",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.enrol_lti_lti2_tool_proxys": {
+      "name": "enrol_lti_lti2_tool_proxys",
+      "schema": "",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "consumer_id": {
+          "name": "consumer_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tool_proxy": {
+          "name": "tool_proxy",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tool_proxy_key": {
+          "name": "tool_proxy_key",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.enrol_lti_lti2_user_results": {
+      "name": "enrol_lti_lti2_user_results",
+      "schema": "",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "lti_result_sourced_id": {
+          "name": "lti_result_sourced_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "lti_user_key": {
+          "name": "lti_user_key",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "resource_link_id": {
+          "name": "resource_link_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.enrol_lti_resource_links": {
+      "name": "enrol_lti_resource_links",
+      "schema": "",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "context_memberships_url": {
+          "name": "context_memberships_url",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "line_item_scope": {
+          "name": "line_item_scope",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "line_item_service": {
+          "name": "line_item_service",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "line_items_service": {
+          "name": "line_items_service",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "lti_context_id": {
+          "name": "lti_context_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "lti_deployment_id": {
+          "name": "lti_deployment_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "nrps_service_versions": {
+          "name": "nrps_service_versions",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "resource_id": {
+          "name": "resource_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "resource_link_id": {
+          "name": "resource_link_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "result_scope": {
+          "name": "result_scope",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "score_scope": {
+          "name": "score_scope",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.enrol_lti_tool_consumer_maps": {
+      "name": "enrol_lti_tool_consumer_maps",
+      "schema": "",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "consumer_id": {
+          "name": "consumer_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tool_id": {
+          "name": "tool_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.enrol_lti_tools": {
+      "name": "enrol_lti_tools",
+      "schema": "",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "city": {
+          "name": "city",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "context_id": {
+          "name": "context_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "country": {
+          "name": "country",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "enrol_id": {
+          "name": "enrol_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "grade_sync": {
+          "name": "grade_sync",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "grade_sync_completion": {
+          "name": "grade_sync_completion",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "institution": {
+          "name": "institution",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "lang": {
+          "name": "lang",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "lti_version": {
+          "name": "lti_version",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mail_display": {
+          "name": "mail_display",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "max_enrolled": {
+          "name": "max_enrolled",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "member_sync": {
+          "name": "member_sync",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "member_sync_mode": {
+          "name": "member_sync_mode",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "provisioning_mode_instructor": {
+          "name": "provisioning_mode_instructor",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "provisioning_mode_learner": {
+          "name": "provisioning_mode_learner",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "role_instructor": {
+          "name": "role_instructor",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "role_learner": {
+          "name": "role_learner",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "secret": {
+          "name": "secret",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "time_zone": {
+          "name": "time_zone",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "uuid": {
+          "name": "uuid",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.enrol_lti_user_resource_links": {
+      "name": "enrol_lti_user_resource_links",
+      "schema": "",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "enrol_lti_user_id": {
+          "name": "enrol_lti_user_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "enrol_lti_resource_link_id": {
+          "name": "enrol_lti_resource_link_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "enrol_lti_user_resource_links_enrol_lti_user_id_enrol_lti_users_id_fk": {
+          "name": "enrol_lti_user_resource_links_enrol_lti_user_id_enrol_lti_users_id_fk",
+          "tableFrom": "enrol_lti_user_resource_links",
+          "tableTo": "enrol_lti_users",
+          "columnsFrom": [
+            "enrol_lti_user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "enrol_lti_user_resource_links_enrol_lti_resource_link_id_enrol_lti_resource_links_id_fk": {
+          "name": "enrol_lti_user_resource_links_enrol_lti_resource_link_id_enrol_lti_resource_links_id_fk",
+          "tableFrom": "enrol_lti_user_resource_links",
+          "tableTo": "enrol_lti_resource_links",
+          "columnsFrom": [
+            "enrol_lti_resource_link_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.enrol_lti_users": {
+      "name": "enrol_lti_users",
+      "schema": "",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "consumer_key": {
+          "name": "consumer_key",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "consumer_secret": {
+          "name": "consumer_secret",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_access": {
+          "name": "last_access",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "last_grade": {
+          "name": "last_grade",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "enrol_lti_deployment_id": {
+          "name": "enrol_lti_deployment_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "memberships_id": {
+          "name": "memberships_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "memberships_url": {
+          "name": "memberships_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "service_url": {
+          "name": "service_url",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "source_id": {
+          "name": "source_id",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "tool_id": {
+          "name": "tool_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "enrol_lti_users_enrol_lti_deployment_id_enrol_lti_deployments_id_fk": {
+          "name": "enrol_lti_users_enrol_lti_deployment_id_enrol_lti_deployments_id_fk",
+          "tableFrom": "enrol_lti_users",
+          "tableTo": "enrol_lti_deployments",
+          "columnsFrom": [
+            "enrol_lti_deployment_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.enrol_paypals": {
+      "name": "enrol_paypals",
+      "schema": "",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "business": {
+          "name": "business",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "course_id": {
+          "name": "course_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "instance_id": {
+          "name": "instance_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "item_name": {
+          "name": "item_name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "memo": {
+          "name": "memo",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "option_name1": {
+          "name": "option_name1",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "option_name2": {
+          "name": "option_name2",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "option_selection1_x": {
+          "name": "option_selection1_x",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "option_selection2_x": {
+          "name": "option_selection2_x",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "parent_txn_id": {
+          "name": "parent_txn_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "payment_status": {
+          "name": "payment_status",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "payment_type": {
+          "name": "payment_type",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "pending_reason": {
+          "name": "pending_reason",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "reason_code": {
+          "name": "reason_code",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "receiver_email": {
+          "name": "receiver_email",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "receiver_id": {
+          "name": "receiver_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "tax": {
+          "name": "tax",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "txn_id": {
+          "name": "txn_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.enrols": {
+      "name": "enrols",
+      "schema": "",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "cost": {
+          "name": "cost",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "course_id": {
+          "name": "course_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "currency": {
+          "name": "currency",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "custom_char1": {
+          "name": "custom_char1",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "custom_char2": {
+          "name": "custom_char2",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "custom_char3": {
+          "name": "custom_char3",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "custom_dec1": {
+          "name": "custom_dec1",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "custom_dec2": {
+          "name": "custom_dec2",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "custom_int1": {
+          "name": "custom_int1",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "custom_int2": {
+          "name": "custom_int2",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "custom_int3": {
+          "name": "custom_int3",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "custom_int4": {
+          "name": "custom_int4",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "custom_int5": {
+          "name": "custom_int5",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "custom_int6": {
+          "name": "custom_int6",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "custom_int7": {
+          "name": "custom_int7",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "custom_int8": {
+          "name": "custom_int8",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "custom_text1": {
+          "name": "custom_text1",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "custom_text2": {
+          "name": "custom_text2",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "custom_text3": {
+          "name": "custom_text3",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "custom_text4": {
+          "name": "custom_text4",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "enrol": {
+          "name": "enrol",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "enrol_end_date": {
+          "name": "enrol_end_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "enrol_start_date": {
+          "name": "enrol_start_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "enrol_period": {
+          "name": "enrol_period",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "expiry_notify": {
+          "name": "expiry_notify",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "expiry_threshold": {
+          "name": "expiry_threshold",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "notify_all": {
+          "name": "notify_all",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "password": {
+          "name": "password",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "role_id": {
+          "name": "role_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "sort_order": {
+          "name": "sort_order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "status": {
+          "name": "status",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        }
+      },
+      "indexes": {
+        "enrols_sort_order_idx": {
+          "name": "enrols_sort_order_idx",
+          "columns": [
+            {
+              "expression": "sort_order",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

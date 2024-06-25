@@ -1,10 +1,8 @@
 {
-  "id": "7c133ed0-b952-4475-9c2d-82857611f7a3",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "session": {
+    "public.session": {
       "name": "session",
       "schema": "",
       "columns": {
@@ -32,21 +30,21 @@
         "session_user_id_user_id_fk": {
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user": {
+    "public.user": {
       "name": "user",
       "schema": "",
       "columns": {
@@ -81,14 +79,14 @@
       "uniqueConstraints": {
         "user_email_unique": {
           "name": "user_email_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     },
-    "bursaries": {
+    "public.bursaries": {
       "name": "bursaries",
       "schema": "",
       "columns": {
@@ -178,7 +176,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "bursary_categories": {
+    "public.bursary_categories": {
       "name": "bursary_categories",
       "schema": "",
       "columns": {
@@ -218,7 +216,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "bursary_categories_bursaries": {
+    "public.bursary_categories_bursaries": {
       "name": "bursary_categories_bursaries",
       "schema": "",
       "columns": {
@@ -243,45 +241,53 @@
       },
       "indexes": {
         "bursary_category_id_idx": {
-          "name": "bursary_category_id_idx",
           "columns": [
-            "bursary_category_id"
+            {
+              "expression": "bursary_category_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "bursary_category_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "bursary_categories_bursaries_bursary_id_bursaries_id_fk": {
           "name": "bursary_categories_bursaries_bursary_id_bursaries_id_fk",
           "tableFrom": "bursary_categories_bursaries",
-          "tableTo": "bursaries",
           "columnsFrom": [
             "bursary_id"
           ],
+          "tableTo": "bursaries",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         },
         "bursary_categories_bursaries_bursary_category_id_bursary_categories_id_fk": {
           "name": "bursary_categories_bursaries_bursary_category_id_bursary_categories_id_fk",
           "tableFrom": "bursary_categories_bursaries",
-          "tableTo": "bursary_categories",
           "columnsFrom": [
             "bursary_category_id"
           ],
+          "tableTo": "bursary_categories",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "bursary_responses": {
+    "public.bursary_responses": {
       "name": "bursary_responses",
       "schema": "",
       "columns": {
@@ -323,15 +329,15 @@
         "bursary_responses_bursary_id_bursaries_id_fk": {
           "name": "bursary_responses_bursary_id_bursaries_id_fk",
           "tableFrom": "bursary_responses",
-          "tableTo": "bursaries",
           "columnsFrom": [
             "bursary_id"
           ],
+          "tableTo": "bursaries",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
@@ -341,8 +347,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "7c133ed0-b952-4475-9c2d-82857611f7a3",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }

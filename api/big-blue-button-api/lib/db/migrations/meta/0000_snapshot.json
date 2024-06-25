@@ -1,10 +1,8 @@
 {
-  "id": "3fb42c6f-244f-43ef-b02e-e953ef09f2bc",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "session": {
+    "public.session": {
       "name": "session",
       "schema": "",
       "columns": {
@@ -32,21 +30,21 @@
         "session_user_id_user_id_fk": {
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user": {
+    "public.user": {
       "name": "user",
       "schema": "",
       "columns": {
@@ -81,14 +79,14 @@
       "uniqueConstraints": {
         "user_email_unique": {
           "name": "user_email_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     },
-    "big_blue_button_bn_logs": {
+    "public.big_blue_button_bn_logs": {
       "name": "big_blue_button_bn_logs",
       "schema": "",
       "columns": {
@@ -151,32 +149,40 @@
       },
       "indexes": {
         "bl_course_id_idx": {
-          "name": "bl_course_id_idx",
           "columns": [
-            "course_id"
+            {
+              "expression": "course_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "bl_course_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "big_blue_button_bn_logs_big_blue_button_bn_id_big_blue_button_bns_id_fk": {
           "name": "big_blue_button_bn_logs_big_blue_button_bn_id_big_blue_button_bns_id_fk",
           "tableFrom": "big_blue_button_bn_logs",
-          "tableTo": "big_blue_button_bns",
           "columnsFrom": [
             "big_blue_button_bn_id"
           ],
+          "tableTo": "big_blue_button_bns",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "big_blue_button_bn_recordings": {
+    "public.big_blue_button_bn_recordings": {
       "name": "big_blue_button_bn_recordings",
       "schema": "",
       "columns": {
@@ -257,32 +263,40 @@
       },
       "indexes": {
         "br_course_id_idx": {
-          "name": "br_course_id_idx",
           "columns": [
-            "course_id"
+            {
+              "expression": "course_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "br_course_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "big_blue_button_bn_recordings_big_blue_button_bn_id_big_blue_button_bns_id_fk": {
           "name": "big_blue_button_bn_recordings_big_blue_button_bn_id_big_blue_button_bns_id_fk",
           "tableFrom": "big_blue_button_bn_recordings",
-          "tableTo": "big_blue_button_bns",
           "columnsFrom": [
             "big_blue_button_bn_id"
           ],
+          "tableTo": "big_blue_button_bns",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "big_blue_button_bns": {
+    "public.big_blue_button_bns": {
       "name": "big_blue_button_bns",
       "schema": "",
       "columns": {
@@ -549,11 +563,19 @@
       },
       "indexes": {
         "course_id_idx": {
-          "name": "course_id_idx",
           "columns": [
-            "course_id"
+            {
+              "expression": "course_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "course_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {},
@@ -564,8 +586,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "3fb42c6f-244f-43ef-b02e-e953ef09f2bc",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }

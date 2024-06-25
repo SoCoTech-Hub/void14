@@ -1,10 +1,8 @@
 {
-  "id": "961e8d61-1f36-4491-a66c-0439f19e8c95",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "session": {
+    "public.session": {
       "name": "session",
       "schema": "",
       "columns": {
@@ -32,21 +30,21 @@
         "session_user_id_user_id_fk": {
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user": {
+    "public.user": {
       "name": "user",
       "schema": "",
       "columns": {
@@ -81,14 +79,14 @@
       "uniqueConstraints": {
         "user_email_unique": {
           "name": "user_email_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     },
-    "faq_categories": {
+    "public.faq_categories": {
       "name": "faq_categories",
       "schema": "",
       "columns": {
@@ -128,7 +126,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "faq_faqs_categories": {
+    "public.faq_faqs_categories": {
       "name": "faq_faqs_categories",
       "schema": "",
       "columns": {
@@ -156,34 +154,34 @@
         "faq_faqs_categories_faq_category_id_faq_categories_id_fk": {
           "name": "faq_faqs_categories_faq_category_id_faq_categories_id_fk",
           "tableFrom": "faq_faqs_categories",
-          "tableTo": "faq_categories",
           "columnsFrom": [
             "faq_category_id"
           ],
+          "tableTo": "faq_categories",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "faq_faqs_categories_faq_id_faqs_id_fk": {
           "name": "faq_faqs_categories_faq_id_faqs_id_fk",
           "tableFrom": "faq_faqs_categories",
-          "tableTo": "faqs",
           "columnsFrom": [
             "faq_id"
           ],
+          "tableTo": "faqs",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "faqs": {
+    "public.faqs": {
       "name": "faqs",
       "schema": "",
       "columns": {
@@ -215,8 +213,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "961e8d61-1f36-4491-a66c-0439f19e8c95",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }

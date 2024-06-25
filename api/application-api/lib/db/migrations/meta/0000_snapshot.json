@@ -1,10 +1,8 @@
 {
-  "id": "f2b0b6f9-7f3c-4476-bf26-ba41652c2635",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "application_categories": {
+    "public.application_categories": {
       "name": "application_categories",
       "schema": "",
       "columns": {
@@ -41,18 +39,26 @@
       },
       "indexes": {
         "name_idx": {
-          "name": "name_idx",
           "columns": [
-            "name"
+            {
+              "expression": "name",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "name_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "application_responses": {
+    "public.application_responses": {
       "name": "application_responses",
       "schema": "",
       "columns": {
@@ -94,21 +100,21 @@
         "application_responses_job_application_id_job_applications_id_fk": {
           "name": "application_responses_job_application_id_job_applications_id_fk",
           "tableFrom": "application_responses",
-          "tableTo": "job_applications",
           "columnsFrom": [
             "job_application_id"
           ],
+          "tableTo": "job_applications",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "session": {
+    "public.session": {
       "name": "session",
       "schema": "",
       "columns": {
@@ -136,21 +142,21 @@
         "session_user_id_user_id_fk": {
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user": {
+    "public.user": {
       "name": "user",
       "schema": "",
       "columns": {
@@ -185,14 +191,14 @@
       "uniqueConstraints": {
         "user_email_unique": {
           "name": "user_email_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     },
-    "job_applications": {
+    "public.job_applications": {
       "name": "job_applications",
       "schema": "",
       "columns": {
@@ -252,7 +258,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "job_applications_application_categories": {
+    "public.job_applications_application_categories": {
       "name": "job_applications_application_categories",
       "schema": "",
       "columns": {
@@ -280,28 +286,28 @@
         "job_applications_application_categories_job_application_id_job_applications_id_fk": {
           "name": "job_applications_application_categories_job_application_id_job_applications_id_fk",
           "tableFrom": "job_applications_application_categories",
-          "tableTo": "job_applications",
           "columnsFrom": [
             "job_application_id"
           ],
+          "tableTo": "job_applications",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "job_applications_application_categories_application_category_id_application_categories_id_fk": {
           "name": "job_applications_application_categories_application_category_id_application_categories_id_fk",
           "tableFrom": "job_applications_application_categories",
-          "tableTo": "application_categories",
           "columnsFrom": [
             "application_category_id"
           ],
+          "tableTo": "application_categories",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -311,8 +317,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "f2b0b6f9-7f3c-4476-bf26-ba41652c2635",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }

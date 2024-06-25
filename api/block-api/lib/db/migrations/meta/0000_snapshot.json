@@ -1,10 +1,8 @@
 {
-  "id": "26ce96d8-853e-4184-90e9-f034e0f90917",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "session": {
+    "public.session": {
       "name": "session",
       "schema": "",
       "columns": {
@@ -32,21 +30,21 @@
         "session_user_id_user_id_fk": {
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user": {
+    "public.user": {
       "name": "user",
       "schema": "",
       "columns": {
@@ -81,14 +79,14 @@
       "uniqueConstraints": {
         "user_email_unique": {
           "name": "user_email_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     },
-    "block_instances": {
+    "public.block_instances": {
       "name": "block_instances",
       "schema": "",
       "columns": {
@@ -172,7 +170,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "block_positions": {
+    "public.block_positions": {
       "name": "block_positions",
       "schema": "",
       "columns": {
@@ -227,32 +225,40 @@
       },
       "indexes": {
         "bp_block_instance_id_idx": {
-          "name": "bp_block_instance_id_idx",
           "columns": [
-            "block_instance_id"
+            {
+              "expression": "block_instance_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "bp_block_instance_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "block_positions_block_instance_id_block_instances_id_fk": {
           "name": "block_positions_block_instance_id_block_instances_id_fk",
           "tableFrom": "block_positions",
-          "tableTo": "block_instances",
           "columnsFrom": [
             "block_instance_id"
           ],
+          "tableTo": "block_instances",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "block_recent_activities": {
+    "public.block_recent_activities": {
       "name": "block_recent_activities",
       "schema": "",
       "columns": {
@@ -309,18 +315,26 @@
       },
       "indexes": {
         "course_id_idx": {
-          "name": "course_id_idx",
           "columns": [
-            "course_id"
+            {
+              "expression": "course_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "course_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "block_recently_accessed_items": {
+    "public.block_recently_accessed_items": {
       "name": "block_recently_accessed_items",
       "schema": "",
       "columns": {
@@ -365,18 +379,26 @@
       },
       "indexes": {
         "brai_course_id_idx": {
-          "name": "brai_course_id_idx",
           "columns": [
-            "course_id"
+            {
+              "expression": "course_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "brai_course_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "block_rss_clients": {
+    "public.block_rss_clients": {
       "name": "block_rss_clients",
       "schema": "",
       "columns": {
@@ -440,7 +462,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "blocks": {
+    "public.blocks": {
       "name": "blocks",
       "schema": "",
       "columns": {
@@ -477,11 +499,19 @@
       },
       "indexes": {
         "b_cron_id_idx": {
-          "name": "b_cron_id_idx",
           "columns": [
-            "cron_id"
+            {
+              "expression": "cron_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "b_cron_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {},
@@ -492,8 +522,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "26ce96d8-853e-4184-90e9-f034e0f90917",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }

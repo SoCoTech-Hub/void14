@@ -1,10 +1,8 @@
 {
-  "id": "f77dc398-1906-402d-a4cf-def61fd354b7",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "session": {
+    "public.session": {
       "name": "session",
       "schema": "",
       "columns": {
@@ -32,21 +30,21 @@
         "session_user_id_user_id_fk": {
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user": {
+    "public.user": {
       "name": "user",
       "schema": "",
       "columns": {
@@ -81,14 +79,14 @@
       "uniqueConstraints": {
         "user_email_unique": {
           "name": "user_email_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     },
-    "choice_answers": {
+    "public.choice_answers": {
       "name": "choice_answers",
       "schema": "",
       "columns": {
@@ -136,34 +134,34 @@
         "choice_answers_choice_option_id_choice_options_id_fk": {
           "name": "choice_answers_choice_option_id_choice_options_id_fk",
           "tableFrom": "choice_answers",
-          "tableTo": "choice_options",
           "columnsFrom": [
             "choice_option_id"
           ],
+          "tableTo": "choice_options",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "choice_answers_choice_id_choices_id_fk": {
           "name": "choice_answers_choice_id_choices_id_fk",
           "tableFrom": "choice_answers",
-          "tableTo": "choices",
           "columnsFrom": [
             "choice_id"
           ],
+          "tableTo": "choices",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "choice_options": {
+    "public.choice_options": {
       "name": "choice_options",
       "schema": "",
       "columns": {
@@ -211,21 +209,21 @@
         "choice_options_choice_id_choices_id_fk": {
           "name": "choice_options_choice_id_choices_id_fk",
           "tableFrom": "choice_options",
-          "tableTo": "choices",
           "columnsFrom": [
             "choice_id"
           ],
+          "tableTo": "choices",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "choices": {
+    "public.choices": {
       "name": "choices",
       "schema": "",
       "columns": {
@@ -355,8 +353,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "f77dc398-1906-402d-a4cf-def61fd354b7",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }

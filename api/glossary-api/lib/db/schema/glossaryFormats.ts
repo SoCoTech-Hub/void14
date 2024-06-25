@@ -1,4 +1,4 @@
-import { varchar, boolean, pgTable } from 'drizzle-orm/pg-core'
+import { varchar, boolean, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 
@@ -25,7 +25,7 @@ export const glossaryFormats = pgTable(
 	},
 	(glossaryFormats) => {
 		return {
-			sortOrderIndex: uniqueIndex('sort_order_idx').on(
+			sortOrderIndex: uniqueIndex('glossary_formats_sort_order_idx').on(
 				glossaryFormats.sortOrder
 			)
 		}

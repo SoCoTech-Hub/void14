@@ -1,4 +1,11 @@
-import { timestamp, varchar, boolean, text, pgTable } from 'drizzle-orm/pg-core'
+import {
+	timestamp,
+	varchar,
+	boolean,
+	text,
+	pgTable,
+	uniqueIndex
+} from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { courses } from './courses'
@@ -26,7 +33,7 @@ export const courseCompletionDefaults = pgTable(
 	},
 	(courseCompletionDefaults) => {
 		return {
-			courseIdIndex: uniqueIndex('course_id_idx').on(
+			courseIdIndex: uniqueIndex('course_completion_defaults_course_id_idx').on(
 				courseCompletionDefaults.courseId
 			)
 		}

@@ -1,10 +1,8 @@
 {
-  "id": "c5c315d3-342f-44d4-b4d1-2269ff8c53ab",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "session": {
+    "public.session": {
       "name": "session",
       "schema": "",
       "columns": {
@@ -32,21 +30,21 @@
         "session_user_id_user_id_fk": {
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user": {
+    "public.user": {
       "name": "user",
       "schema": "",
       "columns": {
@@ -81,14 +79,14 @@
       "uniqueConstraints": {
         "user_email_unique": {
           "name": "user_email_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     },
-    "digilib": {
+    "public.digilib": {
       "name": "digilib",
       "schema": "",
       "columns": {
@@ -163,32 +161,40 @@
       },
       "indexes": {
         "digilib_category_id_idx": {
-          "name": "digilib_category_id_idx",
           "columns": [
-            "digilib_category_id"
+            {
+              "expression": "digilib_category_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "digilib_category_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "digilib_digilib_category_id_digilib_categories_id_fk": {
           "name": "digilib_digilib_category_id_digilib_categories_id_fk",
           "tableFrom": "digilib",
-          "tableTo": "digilib_categories",
           "columnsFrom": [
             "digilib_category_id"
           ],
+          "tableTo": "digilib_categories",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "digilib_categories": {
+    "public.digilib_categories": {
       "name": "digilib_categories",
       "schema": "",
       "columns": {
@@ -238,8 +244,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "c5c315d3-342f-44d4-b4d1-2269ff8c53ab",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }

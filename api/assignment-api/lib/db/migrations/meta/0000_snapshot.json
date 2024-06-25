@@ -1,10 +1,8 @@
 {
-  "id": "d74a2d01-fe7a-4241-a13f-f9d74289e2bd",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "assign_feedback_comments": {
+    "public.assign_feedback_comments": {
       "name": "assign_feedback_comments",
       "schema": "",
       "columns": {
@@ -55,32 +53,40 @@
       },
       "indexes": {
         "assignment_id_idx": {
-          "name": "assignment_id_idx",
           "columns": [
-            "assignment_id"
+            {
+              "expression": "assignment_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "assignment_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "assign_feedback_comments_assignment_id_assignments_id_fk": {
           "name": "assign_feedback_comments_assignment_id_assignments_id_fk",
           "tableFrom": "assign_feedback_comments",
-          "tableTo": "assignments",
           "columnsFrom": [
             "assignment_id"
           ],
+          "tableTo": "assignments",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "assign_feedback_editpdf_annots": {
+    "public.assign_feedback_editpdf_annots": {
       "name": "assign_feedback_editpdf_annots",
       "schema": "",
       "columns": {
@@ -156,7 +162,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "assign_feedback_editpdf_cmnts": {
+    "public.assign_feedback_editpdf_cmnts": {
       "name": "assign_feedback_editpdf_cmnts",
       "schema": "",
       "columns": {
@@ -220,7 +226,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "assign_feedback_editpdf_queues": {
+    "public.assign_feedback_editpdf_queues": {
       "name": "assign_feedback_editpdf_queues",
       "schema": "",
       "columns": {
@@ -254,7 +260,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "assign_feedback_editpdf_quicks": {
+    "public.assign_feedback_editpdf_quicks": {
       "name": "assign_feedback_editpdf_quicks",
       "schema": "",
       "columns": {
@@ -294,7 +300,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "assign_feedback_editpdf_rots": {
+    "public.assign_feedback_editpdf_rots": {
       "name": "assign_feedback_editpdf_rots",
       "schema": "",
       "columns": {
@@ -340,7 +346,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "assign_feedback_files": {
+    "public.assign_feedback_files": {
       "name": "assign_feedback_files",
       "schema": "",
       "columns": {
@@ -371,32 +377,40 @@
       },
       "indexes": {
         "aff_assignment_id_idx": {
-          "name": "aff_assignment_id_idx",
           "columns": [
-            "assignment_id"
+            {
+              "expression": "assignment_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "aff_assignment_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "assign_feedback_files_assignment_id_assignments_id_fk": {
           "name": "assign_feedback_files_assignment_id_assignments_id_fk",
           "tableFrom": "assign_feedback_files",
-          "tableTo": "assignments",
           "columnsFrom": [
             "assignment_id"
           ],
+          "tableTo": "assignments",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "assign_grades": {
+    "public.assign_grades": {
       "name": "assign_grades",
       "schema": "",
       "columns": {
@@ -453,32 +467,40 @@
       },
       "indexes": {
         "ag_assignment_id_idx": {
-          "name": "ag_assignment_id_idx",
           "columns": [
-            "assignment_id"
+            {
+              "expression": "assignment_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "ag_assignment_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "assign_grades_assignment_id_assignments_id_fk": {
           "name": "assign_grades_assignment_id_assignments_id_fk",
           "tableFrom": "assign_grades",
-          "tableTo": "assignments",
           "columnsFrom": [
             "assignment_id"
           ],
+          "tableTo": "assignments",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "assignments": {
+    "public.assignments": {
       "name": "assignments",
       "schema": "",
       "columns": {
@@ -607,18 +629,26 @@
       },
       "indexes": {
         "a_course_id_idx": {
-          "name": "a_course_id_idx",
           "columns": [
-            "course_id"
+            {
+              "expression": "course_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "a_course_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "assignment_submissions": {
+    "public.assignment_submissions": {
       "name": "assignment_submissions",
       "schema": "",
       "columns": {
@@ -711,32 +741,40 @@
       },
       "indexes": {
         "as_assignment_id_idx": {
-          "name": "as_assignment_id_idx",
           "columns": [
-            "assignment_id"
+            {
+              "expression": "assignment_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "as_assignment_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "assignment_submissions_assignment_id_assignments_id_fk": {
           "name": "assignment_submissions_assignment_id_assignments_id_fk",
           "tableFrom": "assignment_submissions",
-          "tableTo": "assignments",
           "columnsFrom": [
             "assignment_id"
           ],
+          "tableTo": "assignments",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "assignment_upgrades": {
+    "public.assignment_upgrades": {
       "name": "assignment_upgrades",
       "schema": "",
       "columns": {
@@ -790,7 +828,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "assign_overrides": {
+    "public.assign_overrides": {
       "name": "assign_overrides",
       "schema": "",
       "columns": {
@@ -851,32 +889,40 @@
       },
       "indexes": {
         "ao_assign_id_idx": {
-          "name": "ao_assign_id_idx",
           "columns": [
-            "assign_id"
+            {
+              "expression": "assign_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "ao_assign_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "assign_overrides_assign_id_assigns_id_fk": {
           "name": "assign_overrides_assign_id_assigns_id_fk",
           "tableFrom": "assign_overrides",
-          "tableTo": "assigns",
           "columnsFrom": [
             "assign_id"
           ],
+          "tableTo": "assigns",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "assign_plugin_configs": {
+    "public.assign_plugin_configs": {
       "name": "assign_plugin_configs",
       "schema": "",
       "columns": {
@@ -919,32 +965,40 @@
       },
       "indexes": {
         "apc_assignment_id_idx": {
-          "name": "apc_assignment_id_idx",
           "columns": [
-            "assignment_id"
+            {
+              "expression": "assignment_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "apc_assignment_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "assign_plugin_configs_assignment_id_assignments_id_fk": {
           "name": "assign_plugin_configs_assignment_id_assignments_id_fk",
           "tableFrom": "assign_plugin_configs",
-          "tableTo": "assignments",
           "columnsFrom": [
             "assignment_id"
           ],
+          "tableTo": "assignments",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "assigns": {
+    "public.assigns": {
       "name": "assigns",
       "schema": "",
       "columns": {
@@ -1172,7 +1226,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "assign_submission_files": {
+    "public.assign_submission_files": {
       "name": "assign_submission_files",
       "schema": "",
       "columns": {
@@ -1203,32 +1257,40 @@
       },
       "indexes": {
         "asf_assignment_id_idx": {
-          "name": "asf_assignment_id_idx",
           "columns": [
-            "assignment_id"
+            {
+              "expression": "assignment_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "asf_assignment_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "assign_submission_files_assignment_id_assignments_id_fk": {
           "name": "assign_submission_files_assignment_id_assignments_id_fk",
           "tableFrom": "assign_submission_files",
-          "tableTo": "assignments",
           "columnsFrom": [
             "assignment_id"
           ],
+          "tableTo": "assignments",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "assign_submission_online_texts": {
+    "public.assign_submission_online_texts": {
       "name": "assign_submission_online_texts",
       "schema": "",
       "columns": {
@@ -1265,32 +1327,40 @@
       },
       "indexes": {
         "asot_assignment_id_idx": {
-          "name": "asot_assignment_id_idx",
           "columns": [
-            "assignment_id"
+            {
+              "expression": "assignment_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "asot_assignment_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "assign_submission_online_texts_assignment_id_assignments_id_fk": {
           "name": "assign_submission_online_texts_assignment_id_assignments_id_fk",
           "tableFrom": "assign_submission_online_texts",
-          "tableTo": "assignments",
           "columnsFrom": [
             "assignment_id"
           ],
+          "tableTo": "assignments",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "assign_submissions": {
+    "public.assign_submissions": {
       "name": "assign_submissions",
       "schema": "",
       "columns": {
@@ -1359,32 +1429,40 @@
       },
       "indexes": {
         "asub_assignment_id_idx": {
-          "name": "asub_assignment_id_idx",
           "columns": [
-            "assignment_id"
+            {
+              "expression": "assignment_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "asub_assignment_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "assign_submissions_assignment_id_assignments_id_fk": {
           "name": "assign_submissions_assignment_id_assignments_id_fk",
           "tableFrom": "assign_submissions",
-          "tableTo": "assignments",
           "columnsFrom": [
             "assignment_id"
           ],
+          "tableTo": "assignments",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "assign_user_flags": {
+    "public.assign_user_flags": {
       "name": "assign_user_flags",
       "schema": "",
       "columns": {
@@ -1439,32 +1517,40 @@
       },
       "indexes": {
         "auf_assignment_id_idx": {
-          "name": "auf_assignment_id_idx",
           "columns": [
-            "assignment_id"
+            {
+              "expression": "assignment_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "auf_assignment_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "assign_user_flags_assignment_id_assignments_id_fk": {
           "name": "assign_user_flags_assignment_id_assignments_id_fk",
           "tableFrom": "assign_user_flags",
-          "tableTo": "assignments",
           "columnsFrom": [
             "assignment_id"
           ],
+          "tableTo": "assignments",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "assign_user_mappings": {
+    "public.assign_user_mappings": {
       "name": "assign_user_mappings",
       "schema": "",
       "columns": {
@@ -1489,32 +1575,40 @@
       },
       "indexes": {
         "aum_assignment_id_idx": {
-          "name": "aum_assignment_id_idx",
           "columns": [
-            "assignment_id"
+            {
+              "expression": "assignment_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "aum_assignment_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "assign_user_mappings_assignment_id_assignments_id_fk": {
           "name": "assign_user_mappings_assignment_id_assignments_id_fk",
           "tableFrom": "assign_user_mappings",
-          "tableTo": "assignments",
           "columnsFrom": [
             "assignment_id"
           ],
+          "tableTo": "assignments",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "session": {
+    "public.session": {
       "name": "session",
       "schema": "",
       "columns": {
@@ -1542,21 +1636,21 @@
         "session_user_id_user_id_fk": {
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user": {
+    "public.user": {
       "name": "user",
       "schema": "",
       "columns": {
@@ -1591,10 +1685,10 @@
       "uniqueConstraints": {
         "user_email_unique": {
           "name": "user_email_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     }
@@ -1602,8 +1696,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "d74a2d01-fe7a-4241-a13f-f9d74289e2bd",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }

@@ -4,7 +4,8 @@ import {
 	boolean,
 	integer,
 	text,
-	pgTable
+	pgTable,
+	uniqueIndex
 } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
@@ -47,7 +48,9 @@ export const courseModules = pgTable(
 	},
 	(courseModules) => {
 		return {
-			courseIdIndex: uniqueIndex('course_id_idx').on(courseModules.courseId)
+			courseIdIndex: uniqueIndex('course_modules_course_id_idx').on(
+				courseModules.courseId
+			)
 		}
 	}
 )

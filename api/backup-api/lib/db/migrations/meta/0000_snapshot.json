@@ -1,10 +1,8 @@
 {
-  "id": "683f4ea2-c711-449c-bb98-61c934d2b8e5",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "session": {
+    "public.session": {
       "name": "session",
       "schema": "",
       "columns": {
@@ -32,21 +30,21 @@
         "session_user_id_user_id_fk": {
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user": {
+    "public.user": {
       "name": "user",
       "schema": "",
       "columns": {
@@ -81,14 +79,14 @@
       "uniqueConstraints": {
         "user_email_unique": {
           "name": "user_email_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     },
-    "backup_controllers": {
+    "public.backup_controllers": {
       "name": "backup_controllers",
       "schema": "",
       "columns": {
@@ -199,18 +197,26 @@
       },
       "indexes": {
         "bc_backup_id_idx": {
-          "name": "bc_backup_id_idx",
           "columns": [
-            "backup_id"
+            {
+              "expression": "backup_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "bc_backup_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "backup_courses": {
+    "public.backup_courses": {
       "name": "backup_courses",
       "schema": "",
       "columns": {
@@ -270,7 +276,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "backup_logs": {
+    "public.backup_logs": {
       "name": "backup_logs",
       "schema": "",
       "columns": {
@@ -315,11 +321,19 @@
       },
       "indexes": {
         "bl_backup_id_idx": {
-          "name": "bl_backup_id_idx",
           "columns": [
-            "backup_id"
+            {
+              "expression": "backup_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "bl_backup_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {},
@@ -330,8 +344,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "683f4ea2-c711-449c-bb98-61c934d2b8e5",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }

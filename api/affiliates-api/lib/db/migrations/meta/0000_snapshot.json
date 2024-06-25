@@ -1,10 +1,8 @@
 {
-  "id": "6f13d79e-cff2-45fa-8efc-30e98796a235",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "affiliates": {
+    "public.affiliates": {
       "name": "affiliates",
       "schema": "",
       "columns": {
@@ -38,7 +36,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "affiliates_details": {
+    "public.affiliates_details": {
       "name": "affiliates_details",
       "schema": "",
       "columns": {
@@ -90,21 +88,21 @@
         "affiliates_details_affiliate_id_affiliates_id_fk": {
           "name": "affiliates_details_affiliate_id_affiliates_id_fk",
           "tableFrom": "affiliates_details",
-          "tableTo": "affiliates",
           "columnsFrom": [
             "affiliate_id"
           ],
+          "tableTo": "affiliates",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "affiliates_settings": {
+    "public.affiliates_settings": {
       "name": "affiliates_settings",
       "schema": "",
       "columns": {
@@ -144,7 +142,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "affiliates_statuses": {
+    "public.affiliates_statuses": {
       "name": "affiliates_statuses",
       "schema": "",
       "columns": {
@@ -172,7 +170,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "affiliates_transactions": {
+    "public.affiliates_transactions": {
       "name": "affiliates_transactions",
       "schema": "",
       "columns": {
@@ -224,34 +222,34 @@
         "affiliates_transactions_affiliate_id_affiliates_id_fk": {
           "name": "affiliates_transactions_affiliate_id_affiliates_id_fk",
           "tableFrom": "affiliates_transactions",
-          "tableTo": "affiliates",
           "columnsFrom": [
             "affiliate_id"
           ],
+          "tableTo": "affiliates",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "affiliates_transactions_affiliates_status_id_affiliates_statuses_id_fk": {
           "name": "affiliates_transactions_affiliates_status_id_affiliates_statuses_id_fk",
           "tableFrom": "affiliates_transactions",
-          "tableTo": "affiliates_statuses",
           "columnsFrom": [
             "affiliates_status_id"
           ],
+          "tableTo": "affiliates_statuses",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "session": {
+    "public.session": {
       "name": "session",
       "schema": "",
       "columns": {
@@ -279,21 +277,21 @@
         "session_user_id_user_id_fk": {
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user": {
+    "public.user": {
       "name": "user",
       "schema": "",
       "columns": {
@@ -328,10 +326,10 @@
       "uniqueConstraints": {
         "user_email_unique": {
           "name": "user_email_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     }
@@ -339,8 +337,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "6f13d79e-cff2-45fa-8efc-30e98796a235",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }

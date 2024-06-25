@@ -1,5 +1,5 @@
 import { sql } from 'drizzle-orm'
-import { varchar, integer, timestamp, pgTable } from 'drizzle-orm/pg-core'
+import { varchar, integer, timestamp, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { competencies } from './competencies'
@@ -35,9 +35,9 @@ export const competencyUserCompPlans = pgTable(
 	},
 	(competencyUserCompPlans) => {
 		return {
-			sortOrderIndex: uniqueIndex('sort_order_idx').on(
-				competencyUserCompPlans.sortOrder
-			)
+			sortOrderIndex: uniqueIndex(
+				'competency_user_comp_plans_sort_order_idx'
+			).on(competencyUserCompPlans.sortOrder)
 		}
 	}
 )

@@ -39,7 +39,7 @@ export const customFieldCategories = pgTable(
 	},
 	(customFieldCategories) => {
 		return {
-			sortOrderIndex: uniqueIndex('sort_order').on(
+			sortOrderIndex: uniqueIndex('custom_field_categories_sort_order').on(
 				customFieldCategories.sortOrder
 			)
 		}

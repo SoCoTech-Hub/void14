@@ -39,7 +39,7 @@ export const competencyPlanComps = pgTable(
 	},
 	(competencyPlanComps) => {
 		return {
-			sortOrderIndex: uniqueIndex('sort_order_idx').on(
+			sortOrderIndex: uniqueIndex('competency_plan_comps_sort_order_idx').on(
 				competencyPlanComps.sortOrder
 			)
 		}

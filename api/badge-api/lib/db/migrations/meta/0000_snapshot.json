@@ -1,10 +1,8 @@
 {
-  "id": "08bc29b4-699c-47c2-b864-3f01d9c810ed",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "session": {
+    "public.session": {
       "name": "session",
       "schema": "",
       "columns": {
@@ -32,21 +30,21 @@
         "session_user_id_user_id_fk": {
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user": {
+    "public.user": {
       "name": "user",
       "schema": "",
       "columns": {
@@ -81,14 +79,14 @@
       "uniqueConstraints": {
         "user_email_unique": {
           "name": "user_email_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     },
-    "badge_alignments": {
+    "public.badge_alignments": {
       "name": "badge_alignments",
       "schema": "",
       "columns": {
@@ -140,21 +138,21 @@
         "badge_alignments_badge_id_badges_id_fk": {
           "name": "badge_alignments_badge_id_badges_id_fk",
           "tableFrom": "badge_alignments",
-          "tableTo": "badges",
           "columnsFrom": [
             "badge_id"
           ],
+          "tableTo": "badges",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "badge_backpack_oauth2s": {
+    "public.badge_backpack_oauth2s": {
       "name": "badge_backpack_oauth2s",
       "schema": "",
       "columns": {
@@ -226,7 +224,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "badge_backpacks": {
+    "public.badge_backpacks": {
       "name": "badge_backpacks",
       "schema": "",
       "columns": {
@@ -278,7 +276,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "badge_criteria_mets": {
+    "public.badge_criteria_mets": {
       "name": "badge_criteria_mets",
       "schema": "",
       "columns": {
@@ -318,21 +316,21 @@
         "badge_criteria_mets_badge_criteria_id_badge_criterias_id_fk": {
           "name": "badge_criteria_mets_badge_criteria_id_badge_criterias_id_fk",
           "tableFrom": "badge_criteria_mets",
-          "tableTo": "badge_criterias",
           "columnsFrom": [
             "badge_criteria_id"
           ],
+          "tableTo": "badge_criterias",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "badge_criteria_params": {
+    "public.badge_criteria_params": {
       "name": "badge_criteria_params",
       "schema": "",
       "columns": {
@@ -366,21 +364,21 @@
         "badge_criteria_params_badge_criteria_id_badge_criterias_id_fk": {
           "name": "badge_criteria_params_badge_criteria_id_badge_criterias_id_fk",
           "tableFrom": "badge_criteria_params",
-          "tableTo": "badge_criterias",
           "columnsFrom": [
             "badge_criteria_id"
           ],
+          "tableTo": "badge_criterias",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "badge_criterias": {
+    "public.badge_criterias": {
       "name": "badge_criterias",
       "schema": "",
       "columns": {
@@ -423,32 +421,40 @@
       },
       "indexes": {
         "bc_badge_id_idx": {
-          "name": "bc_badge_id_idx",
           "columns": [
-            "badge_id"
+            {
+              "expression": "badge_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "bc_badge_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "badge_criterias_badge_id_badges_id_fk": {
           "name": "badge_criterias_badge_id_badges_id_fk",
           "tableFrom": "badge_criterias",
-          "tableTo": "badges",
           "columnsFrom": [
             "badge_id"
           ],
+          "tableTo": "badges",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "badge_endorsements": {
+    "public.badge_endorsements": {
       "name": "badge_endorsements",
       "schema": "",
       "columns": {
@@ -517,32 +523,40 @@
       },
       "indexes": {
         "be_badge_id_idx": {
-          "name": "be_badge_id_idx",
           "columns": [
-            "badge_id"
+            {
+              "expression": "badge_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "be_badge_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "badge_endorsements_badge_id_badges_id_fk": {
           "name": "badge_endorsements_badge_id_badges_id_fk",
           "tableFrom": "badge_endorsements",
-          "tableTo": "badges",
           "columnsFrom": [
             "badge_id"
           ],
+          "tableTo": "badges",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "badge_external_backpacks": {
+    "public.badge_external_backpacks": {
       "name": "badge_external_backpacks",
       "schema": "",
       "columns": {
@@ -588,7 +602,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "badge_external_identifiers": {
+    "public.badge_external_identifiers": {
       "name": "badge_external_identifiers",
       "schema": "",
       "columns": {
@@ -625,32 +639,40 @@
       },
       "indexes": {
         "bei_internal_id_idx": {
-          "name": "bei_internal_id_idx",
           "columns": [
-            "internal_id"
+            {
+              "expression": "internal_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "bei_internal_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "badge_external_identifiers_badge_backpack_id_badge_backpacks_id_fk": {
           "name": "badge_external_identifiers_badge_backpack_id_badge_backpacks_id_fk",
           "tableFrom": "badge_external_identifiers",
-          "tableTo": "badge_backpacks",
           "columnsFrom": [
             "badge_backpack_id"
           ],
+          "tableTo": "badge_backpacks",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "badge_externals": {
+    "public.badge_externals": {
       "name": "badge_externals",
       "schema": "",
       "columns": {
@@ -690,21 +712,21 @@
         "badge_externals_badge_backpack_id_badge_backpacks_id_fk": {
           "name": "badge_externals_badge_backpack_id_badge_backpacks_id_fk",
           "tableFrom": "badge_externals",
-          "tableTo": "badge_backpacks",
           "columnsFrom": [
             "badge_backpack_id"
           ],
+          "tableTo": "badge_backpacks",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "badge_issues": {
+    "public.badge_issues": {
       "name": "badge_issues",
       "schema": "",
       "columns": {
@@ -759,32 +781,40 @@
       },
       "indexes": {
         "bi_badge_id_idx": {
-          "name": "bi_badge_id_idx",
           "columns": [
-            "badge_id"
+            {
+              "expression": "badge_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "bi_badge_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "badge_issues_badge_id_badges_id_fk": {
           "name": "badge_issues_badge_id_badges_id_fk",
           "tableFrom": "badge_issues",
-          "tableTo": "badges",
           "columnsFrom": [
             "badge_id"
           ],
+          "tableTo": "badges",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "badge_manual_awards": {
+    "public.badge_manual_awards": {
       "name": "badge_manual_awards",
       "schema": "",
       "columns": {
@@ -827,32 +857,40 @@
       },
       "indexes": {
         "bma_badge_id_idx": {
-          "name": "bma_badge_id_idx",
           "columns": [
-            "badge_id"
+            {
+              "expression": "badge_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "bma_badge_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "badge_manual_awards_badge_id_badges_id_fk": {
           "name": "badge_manual_awards_badge_id_badges_id_fk",
           "tableFrom": "badge_manual_awards",
-          "tableTo": "badges",
           "columnsFrom": [
             "badge_id"
           ],
+          "tableTo": "badges",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "badge_relateds": {
+    "public.badge_relateds": {
       "name": "badge_relateds",
       "schema": "",
       "columns": {
@@ -880,34 +918,34 @@
         "badge_relateds_badge_id_badges_id_fk": {
           "name": "badge_relateds_badge_id_badges_id_fk",
           "tableFrom": "badge_relateds",
-          "tableTo": "badges",
           "columnsFrom": [
             "badge_id"
           ],
+          "tableTo": "badges",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         },
         "badge_relateds_related_badge_id_badges_id_fk": {
           "name": "badge_relateds_related_badge_id_badges_id_fk",
           "tableFrom": "badge_relateds",
-          "tableTo": "badges",
           "columnsFrom": [
             "related_badge_id"
           ],
+          "tableTo": "badges",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "badges": {
+    "public.badges": {
       "name": "badges",
       "schema": "",
       "columns": {
@@ -1073,8 +1111,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "08bc29b4-699c-47c2-b864-3f01d9c810ed",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }

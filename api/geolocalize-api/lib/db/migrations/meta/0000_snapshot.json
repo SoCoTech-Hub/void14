@@ -1,10 +1,8 @@
 {
-  "id": "9a806fd7-7f78-4bbf-966c-031d599e6589",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "session": {
+    "public.session": {
       "name": "session",
       "schema": "",
       "columns": {
@@ -32,21 +30,21 @@
         "session_user_id_user_id_fk": {
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user": {
+    "public.user": {
       "name": "user",
       "schema": "",
       "columns": {
@@ -81,14 +79,14 @@
       "uniqueConstraints": {
         "user_email_unique": {
           "name": "user_email_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     },
-    "countries": {
+    "public.countries": {
       "name": "countries",
       "schema": "",
       "columns": {
@@ -122,7 +120,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "districts": {
+    "public.districts": {
       "name": "districts",
       "schema": "",
       "columns": {
@@ -150,21 +148,21 @@
         "districts_province_id_provinces_id_fk": {
           "name": "districts_province_id_provinces_id_fk",
           "tableFrom": "districts",
-          "tableTo": "provinces",
           "columnsFrom": [
             "province_id"
           ],
+          "tableTo": "provinces",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "provinces": {
+    "public.provinces": {
       "name": "provinces",
       "schema": "",
       "columns": {
@@ -192,15 +190,15 @@
         "provinces_country_id_countries_id_fk": {
           "name": "provinces_country_id_countries_id_fk",
           "tableFrom": "provinces",
-          "tableTo": "countries",
           "columnsFrom": [
             "country_id"
           ],
+          "tableTo": "countries",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -210,8 +208,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "9a806fd7-7f78-4bbf-966c-031d599e6589",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }

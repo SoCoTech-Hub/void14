@@ -1,4 +1,4 @@
-import { varchar, text, pgTable } from 'drizzle-orm/pg-core'
+import { varchar, text, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { courses } from './courses'
@@ -23,7 +23,7 @@ export const courseFormatOptions = pgTable(
 	},
 	(courseFormatOptions) => {
 		return {
-			courseIdIndex: uniqueIndex('course_id_idx').on(
+			courseIdIndex: uniqueIndex('course_format_options_course_id_idx').on(
 				courseFormatOptions.courseId
 			)
 		}

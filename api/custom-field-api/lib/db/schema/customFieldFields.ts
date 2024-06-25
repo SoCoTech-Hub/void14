@@ -1,5 +1,12 @@
 import { sql } from 'drizzle-orm'
-import { varchar, text, integer, timestamp, pgTable } from 'drizzle-orm/pg-core'
+import {
+	varchar,
+	text,
+	integer,
+	timestamp,
+	pgTable,
+	uniqueIndex
+} from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { customFieldCategories } from './customFieldCategories'
@@ -34,7 +41,7 @@ export const customFieldFields = pgTable(
 	},
 	(customFieldFields) => {
 		return {
-			sortOrderIndex: uniqueIndex('sort_order_idx').on(
+			sortOrderIndex: uniqueIndex('custom_field_fields_sort_order_idx').on(
 				customFieldFields.sortOrder
 			)
 		}
