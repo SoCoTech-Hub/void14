@@ -47,9 +47,8 @@ export async function PUT(req: Request) {
 	} catch (err) {
 		if (err instanceof z.ZodError) {
 			return NextResponse.json({ error: err.issues }, { status: 400 })
-		} else {
-			return NextResponse.json(err, { status: 500 })
 		}
+		return NextResponse.json(err, { status: 500 })
 	}
 }
 
@@ -65,8 +64,7 @@ export async function DELETE(req: Request) {
 	} catch (err) {
 		if (err instanceof z.ZodError) {
 			return NextResponse.json({ error: err.issues }, { status: 400 })
-		} else {
-			return NextResponse.json(err, { status: 500 })
 		}
+		return NextResponse.json(err, { status: 500 })
 	}
 }

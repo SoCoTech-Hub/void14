@@ -1,70 +1,69 @@
-import { NextResponse } from "next/server";
-import { revalidatePath } from "next/cache";
-import { z } from "zod";
+import { NextResponse } from 'next/server'
+import { revalidatePath } from 'next/cache'
+import { z } from 'zod'
 
 import {
-  createUserPreference,
-  deleteUserPreference,
-  updateUserPreference,
-} from "@/lib/api/userPreferences/mutations";
-import { 
-  userPreferenceIdSchema,
-  insertUserPreferenceParams,
-  updateUserPreferenceParams 
-} from "@/lib/db/schema/userPreferences";
+	createUserPreference,
+	deleteUserPreference,
+	updateUserPreference
+} from '@/lib/api/userPreferences/mutations'
+import {
+	userPreferenceIdSchema,
+	insertUserPreferenceParams,
+	updateUserPreferenceParams
+} from '@/lib/db/schema/userPreferences'
 
 export async function POST(req: Request) {
-  try {
-    const validatedData = insertUserPreferenceParams.parse(await req.json());
-    const { userPreference } = await createUserPreference(validatedData);
+	try {
+		const validatedData = insertUserPreferenceParams.parse(await req.json())
+		const { userPreference } = await createUserPreference(validatedData)
 
-    revalidatePath("/userPreferences"); // optional - assumes you will have named route same as entity
+		revalidatePath('/userPreferences') // optional - assumes you will have named route same as entity
 
-    return NextResponse.json(userPreference, { status: 201 });
-  } catch (err) {
-    if (err instanceof z.ZodError) {
-      return NextResponse.json({ error: err.issues }, { status: 400 });
-    } else {
-      return NextResponse.json({ error: err }, { status: 500 });
-    }
-  }
+		return NextResponse.json(userPreference, { status: 201 })
+	} catch (err) {
+		if (err instanceof z.ZodError) {
+			return NextResponse.json({ error: err.issues }, { status: 400 })
+		}
+		return NextResponse.json({ error: err }, { status: 500 })
+	}
 }
 
-
 export async function PUT(req: Request) {
-  try {
-    const { searchParams } = new URL(req.url);
-    const id = searchParams.get("id");
+	try {
+		const { searchParams } = new URL(req.url)
+		const id = searchParams.get('id')
 
-    const validatedData = updateUserPreferenceParams.parse(await req.json());
-    const validatedParams = userPreferenceIdSchema.parse({ id });
+		const validatedData = updateUserPreferenceParams.parse(await req.json())
+		const validatedParams = userPreferenceIdSchema.parse({ id })
 
-    const { userPreference } = await updateUserPreference(validatedParams.id, validatedData);
+		const { userPreference } = await updateUserPreference(
+			validatedParams.id,
+			validatedData
+		)
 
-    return NextResponse.json(userPreference, { status: 200 });
-  } catch (err) {
-    if (err instanceof z.ZodError) {
-      return NextResponse.json({ error: err.issues }, { status: 400 });
-    } else {
-      return NextResponse.json(err, { status: 500 });
-    }
-  }
+		return NextResponse.json(userPreference, { status: 200 })
+	} catch (err) {
+		if (err instanceof z.ZodError) {
+			return NextResponse.json({ error: err.issues }, { status: 400 })
+		}
+		return NextResponse.json(err, { status: 500 })
+	}
 }
 
 export async function DELETE(req: Request) {
-  try {
-    const { searchParams } = new URL(req.url);
-    const id = searchParams.get("id");
+	try {
+		const { searchParams } = new URL(req.url)
+		const id = searchParams.get('id')
 
-    const validatedParams = userPreferenceIdSchema.parse({ id });
-    const { userPreference } = await deleteUserPreference(validatedParams.id);
+		const validatedParams = userPreferenceIdSchema.parse({ id })
+		const { userPreference } = await deleteUserPreference(validatedParams.id)
 
-    return NextResponse.json(userPreference, { status: 200 });
-  } catch (err) {
-    if (err instanceof z.ZodError) {
-      return NextResponse.json({ error: err.issues }, { status: 400 });
-    } else {
-      return NextResponse.json(err, { status: 500 });
-    }
-  }
+		return NextResponse.json(userPreference, { status: 200 })
+	} catch (err) {
+		if (err instanceof z.ZodError) {
+			return NextResponse.json({ error: err.issues }, { status: 400 })
+		}
+		return NextResponse.json(err, { status: 500 })
+	}
 }

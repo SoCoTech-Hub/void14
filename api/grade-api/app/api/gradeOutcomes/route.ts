@@ -1,70 +1,69 @@
-import { NextResponse } from "next/server";
-import { revalidatePath } from "next/cache";
-import { z } from "zod";
+import { NextResponse } from 'next/server'
+import { revalidatePath } from 'next/cache'
+import { z } from 'zod'
 
 import {
-  createGradeOutcome,
-  deleteGradeOutcome,
-  updateGradeOutcome,
-} from "@/lib/api/gradeOutcomes/mutations";
-import { 
-  gradeOutcomeIdSchema,
-  insertGradeOutcomeParams,
-  updateGradeOutcomeParams 
-} from "@/lib/db/schema/gradeOutcomes";
+	createGradeOutcome,
+	deleteGradeOutcome,
+	updateGradeOutcome
+} from '@/lib/api/gradeOutcomes/mutations'
+import {
+	gradeOutcomeIdSchema,
+	insertGradeOutcomeParams,
+	updateGradeOutcomeParams
+} from '@/lib/db/schema/gradeOutcomes'
 
 export async function POST(req: Request) {
-  try {
-    const validatedData = insertGradeOutcomeParams.parse(await req.json());
-    const { gradeOutcome } = await createGradeOutcome(validatedData);
+	try {
+		const validatedData = insertGradeOutcomeParams.parse(await req.json())
+		const { gradeOutcome } = await createGradeOutcome(validatedData)
 
-    revalidatePath("/gradeOutcomes"); // optional - assumes you will have named route same as entity
+		revalidatePath('/gradeOutcomes') // optional - assumes you will have named route same as entity
 
-    return NextResponse.json(gradeOutcome, { status: 201 });
-  } catch (err) {
-    if (err instanceof z.ZodError) {
-      return NextResponse.json({ error: err.issues }, { status: 400 });
-    } else {
-      return NextResponse.json({ error: err }, { status: 500 });
-    }
-  }
+		return NextResponse.json(gradeOutcome, { status: 201 })
+	} catch (err) {
+		if (err instanceof z.ZodError) {
+			return NextResponse.json({ error: err.issues }, { status: 400 })
+		}
+		return NextResponse.json({ error: err }, { status: 500 })
+	}
 }
 
-
 export async function PUT(req: Request) {
-  try {
-    const { searchParams } = new URL(req.url);
-    const id = searchParams.get("id");
+	try {
+		const { searchParams } = new URL(req.url)
+		const id = searchParams.get('id')
 
-    const validatedData = updateGradeOutcomeParams.parse(await req.json());
-    const validatedParams = gradeOutcomeIdSchema.parse({ id });
+		const validatedData = updateGradeOutcomeParams.parse(await req.json())
+		const validatedParams = gradeOutcomeIdSchema.parse({ id })
 
-    const { gradeOutcome } = await updateGradeOutcome(validatedParams.id, validatedData);
+		const { gradeOutcome } = await updateGradeOutcome(
+			validatedParams.id,
+			validatedData
+		)
 
-    return NextResponse.json(gradeOutcome, { status: 200 });
-  } catch (err) {
-    if (err instanceof z.ZodError) {
-      return NextResponse.json({ error: err.issues }, { status: 400 });
-    } else {
-      return NextResponse.json(err, { status: 500 });
-    }
-  }
+		return NextResponse.json(gradeOutcome, { status: 200 })
+	} catch (err) {
+		if (err instanceof z.ZodError) {
+			return NextResponse.json({ error: err.issues }, { status: 400 })
+		}
+		return NextResponse.json(err, { status: 500 })
+	}
 }
 
 export async function DELETE(req: Request) {
-  try {
-    const { searchParams } = new URL(req.url);
-    const id = searchParams.get("id");
+	try {
+		const { searchParams } = new URL(req.url)
+		const id = searchParams.get('id')
 
-    const validatedParams = gradeOutcomeIdSchema.parse({ id });
-    const { gradeOutcome } = await deleteGradeOutcome(validatedParams.id);
+		const validatedParams = gradeOutcomeIdSchema.parse({ id })
+		const { gradeOutcome } = await deleteGradeOutcome(validatedParams.id)
 
-    return NextResponse.json(gradeOutcome, { status: 200 });
-  } catch (err) {
-    if (err instanceof z.ZodError) {
-      return NextResponse.json({ error: err.issues }, { status: 400 });
-    } else {
-      return NextResponse.json(err, { status: 500 });
-    }
-  }
+		return NextResponse.json(gradeOutcome, { status: 200 })
+	} catch (err) {
+		if (err instanceof z.ZodError) {
+			return NextResponse.json({ error: err.issues }, { status: 400 })
+		}
+		return NextResponse.json(err, { status: 500 })
+	}
 }

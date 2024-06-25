@@ -2,7 +2,7 @@ import { varchar, integer, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { adminPresetsApps } from './adminPresetsApps'
-import { type getAdminPresetAppPlugs } from '@/lib/api/adminPresetAppPlugs/queries'
+import type { getAdminPresetAppPlugs } from '@/lib/api/adminPresetAppPlugs/queries'
 
 import { nanoid } from '@/lib/utils'
 

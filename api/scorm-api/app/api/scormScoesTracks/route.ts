@@ -1,70 +1,69 @@
-import { NextResponse } from "next/server";
-import { revalidatePath } from "next/cache";
-import { z } from "zod";
+import { NextResponse } from 'next/server'
+import { revalidatePath } from 'next/cache'
+import { z } from 'zod'
 
 import {
-  createScormScoesTrack,
-  deleteScormScoesTrack,
-  updateScormScoesTrack,
-} from "@/lib/api/scormScoesTracks/mutations";
-import { 
-  scormScoesTrackIdSchema,
-  insertScormScoesTrackParams,
-  updateScormScoesTrackParams 
-} from "@/lib/db/schema/scormScoesTracks";
+	createScormScoesTrack,
+	deleteScormScoesTrack,
+	updateScormScoesTrack
+} from '@/lib/api/scormScoesTracks/mutations'
+import {
+	scormScoesTrackIdSchema,
+	insertScormScoesTrackParams,
+	updateScormScoesTrackParams
+} from '@/lib/db/schema/scormScoesTracks'
 
 export async function POST(req: Request) {
-  try {
-    const validatedData = insertScormScoesTrackParams.parse(await req.json());
-    const { scormScoesTrack } = await createScormScoesTrack(validatedData);
+	try {
+		const validatedData = insertScormScoesTrackParams.parse(await req.json())
+		const { scormScoesTrack } = await createScormScoesTrack(validatedData)
 
-    revalidatePath("/scormScoesTracks"); // optional - assumes you will have named route same as entity
+		revalidatePath('/scormScoesTracks') // optional - assumes you will have named route same as entity
 
-    return NextResponse.json(scormScoesTrack, { status: 201 });
-  } catch (err) {
-    if (err instanceof z.ZodError) {
-      return NextResponse.json({ error: err.issues }, { status: 400 });
-    } else {
-      return NextResponse.json({ error: err }, { status: 500 });
-    }
-  }
+		return NextResponse.json(scormScoesTrack, { status: 201 })
+	} catch (err) {
+		if (err instanceof z.ZodError) {
+			return NextResponse.json({ error: err.issues }, { status: 400 })
+		}
+		return NextResponse.json({ error: err }, { status: 500 })
+	}
 }
 
-
 export async function PUT(req: Request) {
-  try {
-    const { searchParams } = new URL(req.url);
-    const id = searchParams.get("id");
+	try {
+		const { searchParams } = new URL(req.url)
+		const id = searchParams.get('id')
 
-    const validatedData = updateScormScoesTrackParams.parse(await req.json());
-    const validatedParams = scormScoesTrackIdSchema.parse({ id });
+		const validatedData = updateScormScoesTrackParams.parse(await req.json())
+		const validatedParams = scormScoesTrackIdSchema.parse({ id })
 
-    const { scormScoesTrack } = await updateScormScoesTrack(validatedParams.id, validatedData);
+		const { scormScoesTrack } = await updateScormScoesTrack(
+			validatedParams.id,
+			validatedData
+		)
 
-    return NextResponse.json(scormScoesTrack, { status: 200 });
-  } catch (err) {
-    if (err instanceof z.ZodError) {
-      return NextResponse.json({ error: err.issues }, { status: 400 });
-    } else {
-      return NextResponse.json(err, { status: 500 });
-    }
-  }
+		return NextResponse.json(scormScoesTrack, { status: 200 })
+	} catch (err) {
+		if (err instanceof z.ZodError) {
+			return NextResponse.json({ error: err.issues }, { status: 400 })
+		}
+		return NextResponse.json(err, { status: 500 })
+	}
 }
 
 export async function DELETE(req: Request) {
-  try {
-    const { searchParams } = new URL(req.url);
-    const id = searchParams.get("id");
+	try {
+		const { searchParams } = new URL(req.url)
+		const id = searchParams.get('id')
 
-    const validatedParams = scormScoesTrackIdSchema.parse({ id });
-    const { scormScoesTrack } = await deleteScormScoesTrack(validatedParams.id);
+		const validatedParams = scormScoesTrackIdSchema.parse({ id })
+		const { scormScoesTrack } = await deleteScormScoesTrack(validatedParams.id)
 
-    return NextResponse.json(scormScoesTrack, { status: 200 });
-  } catch (err) {
-    if (err instanceof z.ZodError) {
-      return NextResponse.json({ error: err.issues }, { status: 400 });
-    } else {
-      return NextResponse.json(err, { status: 500 });
-    }
-  }
+		return NextResponse.json(scormScoesTrack, { status: 200 })
+	} catch (err) {
+		if (err instanceof z.ZodError) {
+			return NextResponse.json({ error: err.issues }, { status: 400 })
+		}
+		return NextResponse.json(err, { status: 500 })
+	}
 }
