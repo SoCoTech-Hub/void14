@@ -1,8 +1,8 @@
-import { boolean, varchar, pgTable } from 'drizzle-orm/pg-core'
+import { boolean, varchar, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 
-import { type getMnetRemoteRpc } from '@/lib/api/mnetRemoteRpc/queries'
+import { type getMnetRemoteRpcs } from '@/lib/api/mnetRemoteRpc/queries'
 
 import { nanoid } from '@/lib/utils'
 
@@ -21,7 +21,7 @@ export const mnetRemoteRpc = pgTable(
 	},
 	(mnetRemoteRpc) => {
 		return {
-			functionNameIndex: uniqueIndex('function_name_idx').on(
+			functionNameIndex: uniqueIndex('mnet_remote_rpc_function_name_idx').on(
 				mnetRemoteRpc.functionName
 			)
 		}
@@ -57,5 +57,5 @@ export type MnetRemoteRpcId = z.infer<typeof mnetRemoteRpcIdSchema>['id']
 
 // this type infers the return from getMnetRemoteRpc() - meaning it will include any joins
 export type CompleteMnetRemoteRpc = Awaited<
-	ReturnType<typeof getMnetRemoteRpc>
+	ReturnType<typeof getMnetRemoteRpcs>
 >['mnetRemoteRpc'][number]

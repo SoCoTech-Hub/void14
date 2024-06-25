@@ -1,10 +1,8 @@
 {
-  "id": "813a59f1-d90a-4592-a92b-77dbddccc65d",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "session": {
+    "public.session": {
       "name": "session",
       "schema": "",
       "columns": {
@@ -32,21 +30,21 @@
         "session_user_id_user_id_fk": {
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user": {
+    "public.user": {
       "name": "user",
       "schema": "",
       "columns": {
@@ -81,14 +79,14 @@
       "uniqueConstraints": {
         "user_email_unique": {
           "name": "user_email_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     },
-    "qualifications": {
+    "public.qualifications": {
       "name": "qualifications",
       "schema": "",
       "columns": {
@@ -206,7 +204,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "qualifications_responses": {
+    "public.qualifications_responses": {
       "name": "qualifications_responses",
       "schema": "",
       "columns": {
@@ -246,15 +244,15 @@
         "qualifications_responses_qualification_id_qualifications_id_fk": {
           "name": "qualifications_responses_qualification_id_qualifications_id_fk",
           "tableFrom": "qualifications_responses",
-          "tableTo": "qualifications",
           "columnsFrom": [
             "qualification_id"
           ],
+          "tableTo": "qualifications",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -264,8 +262,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "813a59f1-d90a-4592-a92b-77dbddccc65d",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }

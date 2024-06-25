@@ -49,7 +49,9 @@ export const quizStatistics = pgTable(
 	},
 	(quizStatistics) => {
 		return {
-			hashcodeIndex: uniqueIndex('hashcode_idx').on(quizStatistics.hashcode)
+			hashcodeIndex: uniqueIndex('quiz_statistics_hashcode_idx').on(
+				quizStatistics.hashcode
+			)
 		}
 	}
 )

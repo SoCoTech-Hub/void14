@@ -1,4 +1,4 @@
-import { varchar, boolean, pgTable } from 'drizzle-orm/pg-core'
+import { varchar, boolean, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 
@@ -19,7 +19,9 @@ export const portfolioInstances = pgTable(
 	},
 	(portfolioInstances) => {
 		return {
-			visibleIndex: uniqueIndex('visible_idx').on(portfolioInstances.visible)
+			visibleIndex: uniqueIndex('portfolio_instances_visible_idx').on(
+				portfolioInstances.visible
+			)
 		}
 	}
 )

@@ -1,4 +1,4 @@
-import { varchar, pgTable } from 'drizzle-orm/pg-core'
+import { varchar, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { portfolioTempdatas } from './portfolioTempdatas'
@@ -20,9 +20,9 @@ export const portfolioMaharaQueues = pgTable(
 	},
 	(portfolioMaharaQueues) => {
 		return {
-			portfolioTempdataIdIndex: uniqueIndex('portfolio_tempdata_id_idx').on(
-				portfolioMaharaQueues.portfolioTempdataId
-			)
+			portfolioTempdataIdIndex: uniqueIndex(
+				'portfolio_mahara_queues_portfolio_tempdata_id_idx'
+			).on(portfolioMaharaQueues.portfolioTempdataId)
 		}
 	}
 )

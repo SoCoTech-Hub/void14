@@ -1,4 +1,4 @@
-import { varchar, text, pgTable } from 'drizzle-orm/pg-core'
+import { varchar, text, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 
@@ -22,9 +22,9 @@ export const questionSetReferences = pgTable(
 	},
 	(questionSetReferences) => {
 		return {
-			questionsContextIdIndex: uniqueIndex('questions_context_id_idx').on(
-				questionSetReferences.questionsContextId
-			)
+			questionsContextIdIndex: uniqueIndex(
+				'question_set_references_questions_context_id_idx'
+			).on(questionSetReferences.questionsContextId)
 		}
 	}
 )

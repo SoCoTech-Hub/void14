@@ -1,4 +1,11 @@
-import { integer, text, varchar, boolean, pgTable } from 'drizzle-orm/pg-core'
+import {
+	integer,
+	text,
+	varchar,
+	boolean,
+	pgTable,
+	uniqueIndex
+} from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 
@@ -30,7 +37,7 @@ export const qtypeEssayOptions = pgTable(
 	},
 	(qtypeEssayOptions) => {
 		return {
-			questionIdIndex: uniqueIndex('question_id_idx').on(
+			questionIdIndex: uniqueIndex('qtype_essay_options_question_id_idx').on(
 				qtypeEssayOptions.questionId
 			)
 		}

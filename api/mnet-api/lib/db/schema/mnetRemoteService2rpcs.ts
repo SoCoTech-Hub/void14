@@ -1,4 +1,4 @@
-import { varchar, pgTable } from 'drizzle-orm/pg-core'
+import { varchar, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 
@@ -18,7 +18,9 @@ export const mnetRemoteService2rpcs = pgTable(
 	},
 	(mnetRemoteService2rpcs) => {
 		return {
-			rpcIdIndex: uniqueIndex('rpc_id_idx').on(mnetRemoteService2rpcs.rpcId)
+			rpcIdIndex: uniqueIndex('mnet_remote_service2rpcs_rpc_id_idx').on(
+				mnetRemoteService2rpcs.rpcId
+			)
 		}
 	}
 )

@@ -1,8 +1,14 @@
 import { sql } from 'drizzle-orm'
-import { text, varchar, timestamp, pgTable } from 'drizzle-orm/pg-core'
+import {
+	text,
+	varchar,
+	timestamp,
+	pgTable,
+	uniqueIndex
+} from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
-import { oauth2issuers } from './oauth2issuers'
+import { oauth2Issuers } from './oauth2Issuers'
 import { type getOauth2SystemAccounts } from '@/lib/api/oauth2SystemAccounts/queries'
 
 import { nanoid, timestamps } from '@/lib/utils'
@@ -17,7 +23,7 @@ export const oauth2SystemAccounts = pgTable(
 		email: text('email'),
 		grantedScopes: text('granted_scopes'),
 		oauth2issuerId: varchar('oauth2issuer_id', { length: 256 })
-			.references(() => oauth2issuers.id, { onDelete: 'cascade' })
+			.references(() => oauth2Issuers.id, { onDelete: 'cascade' })
 			.notNull(),
 		refreshToken: text('refresh_token'),
 		username: text('username'),
@@ -32,9 +38,9 @@ export const oauth2SystemAccounts = pgTable(
 	},
 	(oauth2SystemAccounts) => {
 		return {
-			oauth2issuerIdIndex: uniqueIndex('oauth2issuer_id_idx').on(
-				oauth2SystemAccounts.oauth2issuerId
-			)
+			oauth2issuerIdIndex: uniqueIndex(
+				'oauth2_system_accounts_oauth2issuer_id_idx'
+			).on(oauth2SystemAccounts.oauth2issuerId)
 		}
 	}
 )

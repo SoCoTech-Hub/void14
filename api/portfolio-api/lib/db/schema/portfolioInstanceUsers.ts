@@ -22,9 +22,9 @@ export const portfolioInstanceUsers = pgTable(
 	},
 	(portfolioInstanceUsers) => {
 		return {
-			portfolioInstanceIdIndex: uniqueIndex('portfolio_instance_id_idx').on(
-				portfolioInstanceUsers.portfolioInstanceId
-			)
+			portfolioInstanceIdIndex: uniqueIndex(
+				'portfolio_instance_users_portfolio_instance_id_idx'
+			).on(portfolioInstanceUsers.portfolioInstanceId)
 		}
 	}
 )

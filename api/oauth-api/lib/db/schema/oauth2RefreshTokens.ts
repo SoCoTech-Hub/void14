@@ -1,8 +1,8 @@
 import { sql } from 'drizzle-orm'
-import { varchar, text, timestamp, pgTable } from 'drizzle-orm/pg-core'
+import { varchar, text, timestamp, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
-import { oauth2issuers } from './oauth2issuers'
+import {oauth2Issuers } from './oauth2Issuers'
 import { type getOauth2RefreshTokens } from '@/lib/api/oauth2RefreshTokens/queries'
 
 import { nanoid, timestamps } from '@/lib/utils'
@@ -15,7 +15,7 @@ export const oauth2RefreshTokens = pgTable(
 			.primaryKey()
 			.$defaultFn(() => nanoid()),
 		oauth2issuerId: varchar('oauth2issuer_id', { length: 256 })
-			.references(() => oauth2issuers.id, { onDelete: 'cascade' })
+			.references(() => oauth2Issuers.id, { onDelete: 'cascade' })
 			.notNull(),
 		scopeHash: varchar('scope_hash', { length: 256 }).notNull(),
 		token: text('token').notNull(),
@@ -30,9 +30,9 @@ export const oauth2RefreshTokens = pgTable(
 	},
 	(oauth2RefreshTokens) => {
 		return {
-			oauth2issuerIdIndex: uniqueIndex('oauth2issuer_id_idx').on(
-				oauth2RefreshTokens.oauth2issuerId
-			)
+			oauth2issuerIdIndex: uniqueIndex(
+				'oauth2_refresh_tokens_oauth2issuer_id_idx'
+			).on(oauth2RefreshTokens.oauth2issuerId)
 		}
 	}
 )

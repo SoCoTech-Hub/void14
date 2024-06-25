@@ -1,4 +1,4 @@
-import { varchar, integer, pgTable } from 'drizzle-orm/pg-core'
+import { varchar, integer, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { questionDatasetDefinitions } from './questionDatasetDefinitions'
@@ -24,7 +24,7 @@ export const questionDatasetItems = pgTable(
 	(questionDatasetItems) => {
 		return {
 			questionDatasetDefinitionIdIndex: uniqueIndex(
-				'question_dataset_definition_id_idx'
+				'question_dataset_items_question_dataset_definition_id_idx'
 			).on(questionDatasetItems.questionDatasetDefinitionId)
 		}
 	}

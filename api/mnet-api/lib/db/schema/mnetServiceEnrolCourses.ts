@@ -1,4 +1,10 @@
-import { varchar, integer, text, pgTable } from 'drizzle-orm/pg-core'
+import {
+	varchar,
+	integer,
+	text,
+	pgTable,
+	uniqueIndex
+} from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { mnetHosts } from './mnetHosts'
@@ -31,9 +37,9 @@ export const mnetServiceEnrolCourses = pgTable(
 	},
 	(mnetServiceEnrolCourses) => {
 		return {
-			categoryIdIndex: uniqueIndex('category_id_idx').on(
-				mnetServiceEnrolCourses.categoryId
-			)
+			categoryIdIndex: uniqueIndex(
+				'mnet_service_enrol_courses_category_id_idx'
+			).on(mnetServiceEnrolCourses.categoryId)
 		}
 	}
 )

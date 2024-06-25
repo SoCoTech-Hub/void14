@@ -1,4 +1,11 @@
-import { integer, text, varchar, boolean, pgTable } from 'drizzle-orm/pg-core'
+import {
+	integer,
+	text,
+	varchar,
+	boolean,
+	pgTable,
+	uniqueIndex
+} from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 
@@ -28,9 +35,9 @@ export const qtypeRandomsamatchOptions = pgTable(
 	},
 	(qtypeRandomsamatchOptions) => {
 		return {
-			questionIdIndex: uniqueIndex('question_id_idx').on(
-				qtypeRandomsamatchOptions.questionId
-			)
+			questionIdIndex: uniqueIndex(
+				'qtype_randomsamatch_options_question_id_idx'
+			).on(qtypeRandomsamatchOptions.questionId)
 		}
 	}
 )

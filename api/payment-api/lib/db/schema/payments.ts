@@ -1,5 +1,11 @@
 import { sql } from 'drizzle-orm'
-import { varchar, real, timestamp, pgTable } from 'drizzle-orm/pg-core'
+import {
+	varchar,
+	real,
+	timestamp,
+	pgTable,
+	uniqueIndex
+} from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { paymentAccounts } from './paymentAccounts'
@@ -34,7 +40,7 @@ export const payments = pgTable(
 	},
 	(payments) => {
 		return {
-			paymentAccountIdIndex: uniqueIndex('payment_account_id_idx').on(
+			paymentAccountIdIndex: uniqueIndex('payments_payment_account_id_idx').on(
 				payments.paymentAccountId
 			)
 		}

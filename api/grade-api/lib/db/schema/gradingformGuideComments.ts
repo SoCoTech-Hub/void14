@@ -1,4 +1,10 @@
-import { varchar, text, integer, pgTable } from 'drizzle-orm/pg-core'
+import {
+	varchar,
+	text,
+	integer,
+	pgTable,
+	uniqueIndex
+} from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 
@@ -20,9 +26,9 @@ export const gradingformGuideComments = pgTable(
 	},
 	(gradingformGuideComments) => {
 		return {
-			sortOrderIndex: uniqueIndex('sort_order_idx').on(
-				gradingformGuideComments.sortOrder
-			)
+			sortOrderIndex: uniqueIndex(
+				'gradingform_guide_comments_sort_order_idx'
+			).on(gradingformGuideComments.sortOrder)
 		}
 	}
 )

@@ -1,5 +1,12 @@
 import { sql } from 'drizzle-orm'
-import { varchar, text, boolean, timestamp, pgTable } from 'drizzle-orm/pg-core'
+import {
+	varchar,
+	text,
+	boolean,
+	timestamp,
+	pgTable,
+	uniqueIndex
+} from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { paymentAccounts } from './paymentAccounts'
@@ -30,9 +37,9 @@ export const paymentGateways = pgTable(
 	},
 	(paymentGateways) => {
 		return {
-			paymentAccountIdIndex: uniqueIndex('payment_account_id_idx').on(
-				paymentGateways.paymentAccountId
-			)
+			paymentAccountIdIndex: uniqueIndex(
+				'payment_gateways_payment_account_id_idx'
+			).on(paymentGateways.paymentAccountId)
 		}
 	}
 )

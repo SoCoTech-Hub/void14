@@ -1,4 +1,4 @@
-import { integer, varchar, pgTable } from 'drizzle-orm/pg-core'
+import { integer, varchar, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { quizes } from './quizes'
@@ -26,7 +26,9 @@ export const quizOverrides = pgTable(
 	},
 	(quizOverrides) => {
 		return {
-			quizIdIndex: uniqueIndex('quiz_id_idx').on(quizOverrides.quizId)
+			quizIdIndex: uniqueIndex('quiz_overrides_quiz_id_idx').on(
+				quizOverrides.quizId
+			)
 		}
 	}
 )

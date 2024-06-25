@@ -1,4 +1,4 @@
-import { varchar, boolean, pgTable } from 'drizzle-orm/pg-core'
+import { varchar, boolean, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { mnetHosts } from './mnetHosts'
@@ -25,7 +25,7 @@ export const mnetHost2services = pgTable(
 	},
 	(mnetHost2services) => {
 		return {
-			mnetHostIdIndex: uniqueIndex('mnet_host_id_idx').on(
+			mnetHostIdIndex: uniqueIndex('mnet_host2services_mnet_host_id_idx').on(
 				mnetHost2services.mnetHostId
 			)
 		}

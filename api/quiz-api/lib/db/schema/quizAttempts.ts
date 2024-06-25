@@ -6,7 +6,8 @@ import {
 	varchar,
 	real,
 	timestamp,
-	pgTable
+	pgTable,
+	uniqueIndex
 } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
@@ -48,7 +49,9 @@ export const quizAttempts = pgTable(
 	},
 	(quizAttempts) => {
 		return {
-			quizIdIndex: uniqueIndex('quiz_id_idx').on(quizAttempts.quizId)
+			quizIdIndex: uniqueIndex('quiz_attempts_quiz_id_idx').on(
+				quizAttempts.quizId
+			)
 		}
 	}
 )

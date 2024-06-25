@@ -1,8 +1,14 @@
 import { sql } from 'drizzle-orm'
-import { varchar, text, timestamp, pgTable } from 'drizzle-orm/pg-core'
+import {
+	varchar,
+	text,
+	timestamp,
+	pgTable,
+	uniqueIndex
+} from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
-import { oauth2issuers } from './oauth2issuers'
+import { oauth2Issuers } from './oauth2Issuers'
 import { type getOauth2Endpoints } from '@/lib/api/oauth2Endpoints/queries'
 
 import { nanoid, timestamps } from '@/lib/utils'
@@ -15,7 +21,7 @@ export const oauth2Endpoints = pgTable(
 			.primaryKey()
 			.$defaultFn(() => nanoid()),
 		oauth2issuerId: varchar('oauth2issuer_id', { length: 256 })
-			.references(() => oauth2issuers.id, { onDelete: 'cascade' })
+			.references(() => oauth2Issuers.id, { onDelete: 'cascade' })
 			.notNull(),
 		name: varchar('name', { length: 256 }),
 		url: text('url'),
@@ -30,9 +36,9 @@ export const oauth2Endpoints = pgTable(
 	},
 	(oauth2Endpoints) => {
 		return {
-			oauth2issuerIdIndex: uniqueIndex('oauth2issuer_id_idx').on(
-				oauth2Endpoints.oauth2issuerId
-			)
+			oauth2issuerIdIndex: uniqueIndex(
+				'oauth2_endpoints_oauth2issuer_id_idx'
+			).on(oauth2Endpoints.oauth2issuerId)
 		}
 	}
 )

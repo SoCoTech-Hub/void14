@@ -1,4 +1,11 @@
-import { boolean, text, varchar, integer, pgTable } from 'drizzle-orm/pg-core'
+import {
+	boolean,
+	text,
+	varchar,
+	integer,
+	pgTable,
+	uniqueIndex
+} from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 
@@ -23,7 +30,9 @@ export const licenses = pgTable(
 	},
 	(licenses) => {
 		return {
-			sortOrderIndex: uniqueIndex('sort_order_idx').on(licenses.sortOrder)
+			sortOrderIndex: uniqueIndex('licenses_sort_order_idx').on(
+				licenses.sortOrder
+			)
 		}
 	}
 )

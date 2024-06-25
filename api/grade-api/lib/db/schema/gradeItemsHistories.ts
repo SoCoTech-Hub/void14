@@ -6,7 +6,8 @@ import {
 	varchar,
 	boolean,
 	timestamp,
-	pgTable
+	pgTable,
+	uniqueIndex
 } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
@@ -64,7 +65,7 @@ export const gradeItemsHistories = pgTable(
 	},
 	(gradeItemsHistories) => {
 		return {
-			sortOrderIndex: uniqueIndex('sort_order_idx').on(
+			sortOrderIndex: uniqueIndex('grade_items_histories_sort_order_idx').on(
 				gradeItemsHistories.sortOrder
 			)
 		}

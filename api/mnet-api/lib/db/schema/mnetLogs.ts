@@ -30,7 +30,7 @@ export const mnetLogs = pgTable(
 	},
 	(mnetLogs) => {
 		return {
-			actionIndex: uniqueIndex('action_idx').on(mnetLogs.action)
+			actionIndex: uniqueIndex('mnet_logs_action_idx').on(mnetLogs.action)
 		}
 	}
 )

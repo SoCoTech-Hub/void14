@@ -41,9 +41,9 @@ export const questionResponseAnalysises = pgTable(
 	},
 	(questionResponseAnalysises) => {
 		return {
-			questionIdIndex: uniqueIndex('question_id_idx').on(
-				questionResponseAnalysises.questionId
-			)
+			questionIdIndex: uniqueIndex(
+				'question_response_analysises_question_id_idx'
+			).on(questionResponseAnalysises.questionId)
 		}
 	}
 )

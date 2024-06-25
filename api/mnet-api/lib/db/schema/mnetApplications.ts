@@ -21,7 +21,9 @@ export const mnetApplications = pgTable(
 	},
 	(mnetApplications) => {
 		return {
-			nameIndex: uniqueIndex('name_idx').on(mnetApplications.name)
+			nameIndex: uniqueIndex('mnet_applications_name_idx').on(
+				mnetApplications.name
+			)
 		}
 	}
 )

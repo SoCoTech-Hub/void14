@@ -1,10 +1,8 @@
 {
-  "id": "86d96bfb-3ea9-48e7-9f39-6545cb4b2022",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "session": {
+    "public.session": {
       "name": "session",
       "schema": "",
       "columns": {
@@ -32,21 +30,21 @@
         "session_user_id_user_id_fk": {
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user": {
+    "public.user": {
       "name": "user",
       "schema": "",
       "columns": {
@@ -81,14 +79,14 @@
       "uniqueConstraints": {
         "user_email_unique": {
           "name": "user_email_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     },
-    "localization_fields": {
+    "public.localization_fields": {
       "name": "localization_fields",
       "schema": "",
       "columns": {
@@ -122,7 +120,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "localization_languages": {
+    "public.localization_languages": {
       "name": "localization_languages",
       "schema": "",
       "columns": {
@@ -153,18 +151,26 @@
       },
       "indexes": {
         "name_idx": {
-          "name": "name_idx",
           "columns": [
-            "name"
+            {
+              "expression": "name",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "name_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "localization_translations": {
+    "public.localization_translations": {
       "name": "localization_translations",
       "schema": "",
       "columns": {
@@ -198,34 +204,34 @@
         "localization_translations_localization_field_id_localization_fields_id_fk": {
           "name": "localization_translations_localization_field_id_localization_fields_id_fk",
           "tableFrom": "localization_translations",
-          "tableTo": "localization_fields",
           "columnsFrom": [
             "localization_field_id"
           ],
+          "tableTo": "localization_fields",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "localization_translations_localization_language_id_localization_languages_id_fk": {
           "name": "localization_translations_localization_language_id_localization_languages_id_fk",
           "tableFrom": "localization_translations",
-          "tableTo": "localization_languages",
           "columnsFrom": [
             "localization_language_id"
           ],
+          "tableTo": "localization_languages",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "localization_user": {
+    "public.localization_user": {
       "name": "localization_user",
       "schema": "",
       "columns": {
@@ -253,15 +259,15 @@
         "localization_user_localization_language_id_localization_languages_id_fk": {
           "name": "localization_user_localization_language_id_localization_languages_id_fk",
           "tableFrom": "localization_user",
-          "tableTo": "localization_languages",
           "columnsFrom": [
             "localization_language_id"
           ],
+          "tableTo": "localization_languages",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -271,8 +277,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "86d96bfb-3ea9-48e7-9f39-6545cb4b2022",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }

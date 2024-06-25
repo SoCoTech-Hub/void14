@@ -1,10 +1,8 @@
 {
-  "id": "286335c6-7145-42d8-9114-2c2dfa33d4d7",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "addresses": {
+    "public.addresses": {
       "name": "addresses",
       "schema": "",
       "columns": {
@@ -73,18 +71,26 @@
       },
       "indexes": {
         "country_idx": {
-          "name": "country_idx",
           "columns": [
-            "country"
+            {
+              "expression": "country",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "country_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "session": {
+    "public.session": {
       "name": "session",
       "schema": "",
       "columns": {
@@ -112,21 +118,21 @@
         "session_user_id_user_id_fk": {
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user": {
+    "public.user": {
       "name": "user",
       "schema": "",
       "columns": {
@@ -161,14 +167,14 @@
       "uniqueConstraints": {
         "user_email_unique": {
           "name": "user_email_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     },
-    "genders": {
+    "public.genders": {
       "name": "genders",
       "schema": "",
       "columns": {
@@ -196,7 +202,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "next_of_kins": {
+    "public.next_of_kins": {
       "name": "next_of_kins",
       "schema": "",
       "columns": {
@@ -280,7 +286,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "profiles": {
+    "public.profiles": {
       "name": "profiles",
       "schema": "",
       "columns": {
@@ -379,52 +385,60 @@
       },
       "indexes": {
         "unique_id_idx": {
-          "name": "unique_id_idx",
           "columns": [
-            "unique_id"
+            {
+              "expression": "unique_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "unique_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "profiles_address_id_addresses_id_fk": {
           "name": "profiles_address_id_addresses_id_fk",
           "tableFrom": "profiles",
-          "tableTo": "addresses",
           "columnsFrom": [
             "address_id"
           ],
+          "tableTo": "addresses",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "profiles_gender_id_genders_id_fk": {
           "name": "profiles_gender_id_genders_id_fk",
           "tableFrom": "profiles",
-          "tableTo": "genders",
           "columnsFrom": [
             "gender_id"
           ],
+          "tableTo": "genders",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "profiles_next_of_kin_id_next_of_kins_id_fk": {
           "name": "profiles_next_of_kin_id_next_of_kins_id_fk",
           "tableFrom": "profiles",
-          "tableTo": "next_of_kins",
           "columnsFrom": [
             "next_of_kin_id"
           ],
+          "tableTo": "next_of_kins",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -434,8 +448,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "286335c6-7145-42d8-9114-2c2dfa33d4d7",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }

@@ -1,10 +1,8 @@
 {
-  "id": "a58aba3f-39ae-4449-bc36-4f2d72614f62",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "session": {
+    "public.session": {
       "name": "session",
       "schema": "",
       "columns": {
@@ -32,21 +30,21 @@
         "session_user_id_user_id_fk": {
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user": {
+    "public.user": {
       "name": "user",
       "schema": "",
       "columns": {
@@ -81,14 +79,14 @@
       "uniqueConstraints": {
         "user_email_unique": {
           "name": "user_email_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     },
-    "mass_mail_lists": {
+    "public.mass_mail_lists": {
       "name": "mass_mail_lists",
       "schema": "",
       "columns": {
@@ -136,7 +134,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "mass_mail_lists_recipients": {
+    "public.mass_mail_lists_recipients": {
       "name": "mass_mail_lists_recipients",
       "schema": "",
       "columns": {
@@ -164,34 +162,34 @@
         "mass_mail_lists_recipients_mass_mail_list_id_mass_mail_lists_id_fk": {
           "name": "mass_mail_lists_recipients_mass_mail_list_id_mass_mail_lists_id_fk",
           "tableFrom": "mass_mail_lists_recipients",
-          "tableTo": "mass_mail_lists",
           "columnsFrom": [
             "mass_mail_list_id"
           ],
+          "tableTo": "mass_mail_lists",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "mass_mail_lists_recipients_mass_mail_recipient_id_mass_mail_recipients_id_fk": {
           "name": "mass_mail_lists_recipients_mass_mail_recipient_id_mass_mail_recipients_id_fk",
           "tableFrom": "mass_mail_lists_recipients",
-          "tableTo": "mass_mail_recipients",
           "columnsFrom": [
             "mass_mail_recipient_id"
           ],
+          "tableTo": "mass_mail_recipients",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "mass_mail_messages": {
+    "public.mass_mail_messages": {
       "name": "mass_mail_messages",
       "schema": "",
       "columns": {
@@ -248,32 +246,40 @@
       },
       "indexes": {
         "mass_mail_list_id_idx": {
-          "name": "mass_mail_list_id_idx",
           "columns": [
-            "mass_mail_list_id"
+            {
+              "expression": "mass_mail_list_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "mass_mail_list_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "mass_mail_messages_mass_mail_list_id_mass_mail_lists_id_fk": {
           "name": "mass_mail_messages_mass_mail_list_id_mass_mail_lists_id_fk",
           "tableFrom": "mass_mail_messages",
-          "tableTo": "mass_mail_lists",
           "columnsFrom": [
             "mass_mail_list_id"
           ],
+          "tableTo": "mass_mail_lists",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "mass_mail_recipients": {
+    "public.mass_mail_recipients": {
       "name": "mass_mail_recipients",
       "schema": "",
       "columns": {
@@ -355,8 +361,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "a58aba3f-39ae-4449-bc36-4f2d72614f62",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }

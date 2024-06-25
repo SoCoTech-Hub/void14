@@ -1,4 +1,4 @@
-import { varchar, pgTable } from 'drizzle-orm/pg-core'
+import { varchar, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { payments } from './payments'
@@ -20,7 +20,9 @@ export const paygwPaypals = pgTable(
 	},
 	(paygwPaypals) => {
 		return {
-			paymentIdIndex: uniqueIndex('payment_id_idx').on(paygwPaypals.paymentId)
+			paymentIdIndex: uniqueIndex('paygw_paypals_payment_id_idx').on(
+				paygwPaypals.paymentId
+			)
 		}
 	}
 )

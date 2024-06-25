@@ -26,7 +26,7 @@ export const questionTruefalse = pgTable(
 	},
 	(questionTruefalse) => {
 		return {
-			questionIdIndex: uniqueIndex('question_id_idx').on(
+			questionIdIndex: uniqueIndex('question_truefalse_question_id_idx').on(
 				questionTruefalse.questionId
 			)
 		}

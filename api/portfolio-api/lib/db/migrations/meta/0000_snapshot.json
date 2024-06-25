@@ -1,0 +1,488 @@
+{
+  "id": "a735b4cb-cbbf-4704-9eb7-b1553b5db138",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.portfolio_instance_configs": {
+      "name": "portfolio_instance_configs",
+      "schema": "",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "portfolio_instance_id": {
+          "name": "portfolio_instance_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "value": {
+          "name": "value",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "portfolio_instance_configs_portfolio_instance_id_idx": {
+          "name": "portfolio_instance_configs_portfolio_instance_id_idx",
+          "columns": [
+            {
+              "expression": "portfolio_instance_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "portfolio_instance_configs_portfolio_instance_id_portfolio_instances_id_fk": {
+          "name": "portfolio_instance_configs_portfolio_instance_id_portfolio_instances_id_fk",
+          "tableFrom": "portfolio_instance_configs",
+          "tableTo": "portfolio_instances",
+          "columnsFrom": [
+            "portfolio_instance_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.portfolio_instances": {
+      "name": "portfolio_instances",
+      "schema": "",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "plugin": {
+          "name": "plugin",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "visible": {
+          "name": "visible",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "portfolio_instances_visible_idx": {
+          "name": "portfolio_instances_visible_idx",
+          "columns": [
+            {
+              "expression": "visible",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.portfolio_instance_users": {
+      "name": "portfolio_instance_users",
+      "schema": "",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "portfolio_instance_id": {
+          "name": "portfolio_instance_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "value": {
+          "name": "value",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "portfolio_instance_users_portfolio_instance_id_idx": {
+          "name": "portfolio_instance_users_portfolio_instance_id_idx",
+          "columns": [
+            {
+              "expression": "portfolio_instance_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "portfolio_instance_users_portfolio_instance_id_portfolio_instances_id_fk": {
+          "name": "portfolio_instance_users_portfolio_instance_id_portfolio_instances_id_fk",
+          "tableFrom": "portfolio_instance_users",
+          "tableTo": "portfolio_instances",
+          "columnsFrom": [
+            "portfolio_instance_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.portfolio_logs": {
+      "name": "portfolio_logs",
+      "schema": "",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "caller_class": {
+          "name": "caller_class",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "caller_component": {
+          "name": "caller_component",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "caller_file": {
+          "name": "caller_file",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "caller_sha1": {
+          "name": "caller_sha1",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "continue_url": {
+          "name": "continue_url",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "portfolio_instance_id": {
+          "name": "portfolio_instance_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "return_url": {
+          "name": "return_url",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "portfolio_tempdata_id": {
+          "name": "portfolio_tempdata_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "time": {
+          "name": "time",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "portfolio_logs_portfolio_instance_id_idx": {
+          "name": "portfolio_logs_portfolio_instance_id_idx",
+          "columns": [
+            {
+              "expression": "portfolio_instance_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "portfolio_logs_portfolio_instance_id_portfolio_instances_id_fk": {
+          "name": "portfolio_logs_portfolio_instance_id_portfolio_instances_id_fk",
+          "tableFrom": "portfolio_logs",
+          "tableTo": "portfolio_instances",
+          "columnsFrom": [
+            "portfolio_instance_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "portfolio_logs_portfolio_tempdata_id_portfolio_tempdatas_id_fk": {
+          "name": "portfolio_logs_portfolio_tempdata_id_portfolio_tempdatas_id_fk",
+          "tableFrom": "portfolio_logs",
+          "tableTo": "portfolio_tempdatas",
+          "columnsFrom": [
+            "portfolio_tempdata_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.portfolio_mahara_queues": {
+      "name": "portfolio_mahara_queues",
+      "schema": "",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "token": {
+          "name": "token",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "portfolio_tempdata_id": {
+          "name": "portfolio_tempdata_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "portfolio_mahara_queues_portfolio_tempdata_id_idx": {
+          "name": "portfolio_mahara_queues_portfolio_tempdata_id_idx",
+          "columns": [
+            {
+              "expression": "portfolio_tempdata_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "portfolio_mahara_queues_portfolio_tempdata_id_portfolio_tempdatas_id_fk": {
+          "name": "portfolio_mahara_queues_portfolio_tempdata_id_portfolio_tempdatas_id_fk",
+          "tableFrom": "portfolio_mahara_queues",
+          "tableTo": "portfolio_tempdatas",
+          "columnsFrom": [
+            "portfolio_tempdata_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "public.portfolio_tempdatas": {
+      "name": "portfolio_tempdatas",
+      "schema": "",
+      "columns": {
+        "organization_id": {
+          "name": "organization_id",
+          "type": "varchar(191)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "id": {
+          "name": "id",
+          "type": "varchar(191)",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "data": {
+          "name": "data",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "expiry_time": {
+          "name": "expiry_time",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "portfolio_instance_id": {
+          "name": "portfolio_instance_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "queued": {
+          "name": "queued",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "user_id": {
+          "name": "user_id",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {
+        "portfolio_tempdatas_portfolio_instance_id_idx": {
+          "name": "portfolio_tempdatas_portfolio_instance_id_idx",
+          "columns": [
+            {
+              "expression": "portfolio_instance_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "portfolio_tempdatas_portfolio_instance_id_portfolio_instances_id_fk": {
+          "name": "portfolio_tempdatas_portfolio_instance_id_portfolio_instances_id_fk",
+          "tableFrom": "portfolio_tempdatas",
+          "tableTo": "portfolio_instances",
+          "columnsFrom": [
+            "portfolio_instance_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}

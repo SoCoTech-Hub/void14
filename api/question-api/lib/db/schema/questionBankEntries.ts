@@ -1,4 +1,4 @@
-import { varchar, pgTable } from 'drizzle-orm/pg-core'
+import { varchar, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { questionCategories } from './questionCategories'
@@ -21,9 +21,9 @@ export const questionBankEntries = pgTable(
 	},
 	(questionBankEntries) => {
 		return {
-			questionCategoryIdIndex: uniqueIndex('question_category_id_idx').on(
-				questionBankEntries.questionCategoryId
-			)
+			questionCategoryIdIndex: uniqueIndex(
+				'question_bank_entries_question_category_id_idx'
+			).on(questionBankEntries.questionCategoryId)
 		}
 	}
 )

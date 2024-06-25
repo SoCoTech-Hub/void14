@@ -9,7 +9,7 @@ import {
 } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
-import { oauth2issuers } from './oauth2issuers'
+import {oauth2Issuers } from './oauth2Issuers'
 import { type getOauth2AccessTokens } from '@/lib/api/oauth2AccessTokens/queries'
 
 import { nanoid, timestamps } from '@/lib/utils'
@@ -23,7 +23,7 @@ export const oauth2AccessTokens = pgTable(
 			.$defaultFn(() => nanoid()),
 		expires: integer('expires').notNull(),
 		oauth2issuerId: varchar('oauth2issuer_id', { length: 256 })
-			.references(() => oauth2issuers.id, { onDelete: 'cascade' })
+			.references(() => oauth2Issuers.id, { onDelete: 'cascade' })
 			.notNull(),
 		scope: text('scope'),
 		token: text('token'),
@@ -38,9 +38,9 @@ export const oauth2AccessTokens = pgTable(
 	},
 	(oauth2AccessTokens) => {
 		return {
-			oauth2issuerIdIndex: uniqueIndex('oauth2issuer_id_idx').on(
-				oauth2AccessTokens.oauth2issuerId
-			)
+			oauth2issuerIdIndex: uniqueIndex(
+				'oauth2_access_tokens_oauth2issuer_id_idx'
+			).on(oauth2AccessTokens.oauth2issuerId)
 		}
 	}
 )

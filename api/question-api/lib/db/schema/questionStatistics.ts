@@ -6,7 +6,8 @@ import {
 	text,
 	integer,
 	timestamp,
-	pgTable
+	pgTable,
+	uniqueIndex
 } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
@@ -50,7 +51,7 @@ export const questionStatistics = pgTable(
 	},
 	(questionStatistics) => {
 		return {
-			questionIdIndex: uniqueIndex('question_id_idx').on(
+			questionIdIndex: uniqueIndex('question_statistics_question_id_idx').on(
 				questionStatistics.questionId
 			)
 		}

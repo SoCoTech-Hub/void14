@@ -40,7 +40,7 @@ export const mnetHosts = pgTable(
 	},
 	(mnetHosts) => {
 		return {
-			applicationIdIndex: uniqueIndex('application_id_idx').on(
+			applicationIdIndex: uniqueIndex('mnet_hosts_application_id_idx').on(
 				mnetHosts.applicationId
 			)
 		}

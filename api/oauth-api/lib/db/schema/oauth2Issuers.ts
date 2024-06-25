@@ -5,7 +5,8 @@ import {
 	varchar,
 	integer,
 	timestamp,
-	pgTable
+	pgTable,
+	uniqueIndex
 } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
@@ -50,7 +51,7 @@ export const oauth2Issuers = pgTable(
 	},
 	(oauth2Issuers) => {
 		return {
-			nameIndex: uniqueIndex('name_idx').on(oauth2Issuers.name)
+			nameIndex: uniqueIndex('oauth2_issuers_name_idx').on(oauth2Issuers.name)
 		}
 	}
 )

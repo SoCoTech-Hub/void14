@@ -1,4 +1,4 @@
-import { varchar, text, pgTable } from 'drizzle-orm/pg-core'
+import { varchar, text, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { questions } from './questions'
@@ -20,7 +20,7 @@ export const questionMultianswers = pgTable(
 	},
 	(questionMultianswers) => {
 		return {
-			questionIdIndex: uniqueIndex('question_id_idx').on(
+			questionIdIndex: uniqueIndex('question_multianswers_question_id_idx').on(
 				questionMultianswers.questionId
 			)
 		}

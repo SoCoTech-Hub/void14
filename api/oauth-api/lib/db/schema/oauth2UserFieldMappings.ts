@@ -1,8 +1,8 @@
 import { sql } from 'drizzle-orm'
-import { varchar, timestamp, pgTable } from 'drizzle-orm/pg-core'
+import { varchar, timestamp, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
-import { oauth2issuers } from './oauth2issuers'
+import { oauth2Issuers } from './oauth2Issuers'
 import { type getOauth2UserFieldMappings } from '@/lib/api/oauth2UserFieldMappings/queries'
 
 import { nanoid, timestamps } from '@/lib/utils'
@@ -17,7 +17,7 @@ export const oauth2UserFieldMappings = pgTable(
 		externalField: varchar('external_field', { length: 256 }),
 		internalField: varchar('internal_field', { length: 256 }),
 		oauth2issuerId: varchar('oauth2issuer_id', { length: 256 })
-			.references(() => oauth2issuers.id, { onDelete: 'cascade' })
+			.references(() => oauth2Issuers.id, { onDelete: 'cascade' })
 			.notNull(),
 		userId: varchar('user_id', { length: 256 }).notNull(),
 
@@ -30,9 +30,9 @@ export const oauth2UserFieldMappings = pgTable(
 	},
 	(oauth2UserFieldMappings) => {
 		return {
-			oauth2issuerIdIndex: uniqueIndex('oauth2issuer_id_idx').on(
-				oauth2UserFieldMappings.oauth2issuerId
-			)
+			oauth2issuerIdIndex: uniqueIndex(
+				'oauth2_user_field_mappings_oauth2issuer_id_idx'
+			).on(oauth2UserFieldMappings.oauth2issuerId)
 		}
 	}
 )

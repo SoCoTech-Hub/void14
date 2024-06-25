@@ -5,7 +5,8 @@ import {
 	varchar,
 	integer,
 	timestamp,
-	pgTable
+	pgTable,
+	uniqueIndex
 } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
@@ -63,7 +64,7 @@ export const quizaccessSebQuizSettings = pgTable(
 	(quizaccessSebQuizSettings) => {
 		return {
 			quizaccessSebTemplateIdIndex: uniqueIndex(
-				'quizaccess_seb_template_id_idx'
+				'quizaccess_seb_quiz_settings_quizaccess_seb_template_id_idx'
 			).on(quizaccessSebQuizSettings.quizaccessSebTemplateId)
 		}
 	}

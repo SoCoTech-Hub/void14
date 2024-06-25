@@ -1,4 +1,10 @@
-import { varchar, text, integer, pgTable } from 'drizzle-orm/pg-core'
+import {
+	varchar,
+	text,
+	integer,
+	pgTable,
+	uniqueIndex
+} from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 
@@ -20,9 +26,9 @@ export const qtypeMatchSubquestions = pgTable(
 	},
 	(qtypeMatchSubquestions) => {
 		return {
-			questionIdIndex: uniqueIndex('question_id_idx').on(
-				qtypeMatchSubquestions.questionId
-			)
+			questionIdIndex: uniqueIndex(
+				'qtype_match_subquestions_question_id_idx'
+			).on(qtypeMatchSubquestions.questionId)
 		}
 	}
 )

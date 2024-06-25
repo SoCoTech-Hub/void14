@@ -72,7 +72,7 @@ export const quizes = pgTable(
 	},
 	(quizes) => {
 		return {
-			courseIdIndex: uniqueIndex('course_id_idx').on(quizes.courseId)
+			courseIdIndex: uniqueIndex('quizes_course_id_idx').on(quizes.courseId)
 		}
 	}
 )

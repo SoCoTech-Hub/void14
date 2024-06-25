@@ -38,9 +38,9 @@ export const questionAttemptSteps = pgTable(
 	},
 	(questionAttemptSteps) => {
 		return {
-			questionAttemptIdIndex: uniqueIndex('question_attempt_id_idx').on(
-				questionAttemptSteps.questionAttemptId
-			)
+			questionAttemptIdIndex: uniqueIndex(
+				'question_attempt_steps_question_attempt_id_idx'
+			).on(questionAttemptSteps.questionAttemptId)
 		}
 	}
 )

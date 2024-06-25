@@ -36,7 +36,9 @@ export const quizOverviewRegrades = pgTable(
 	},
 	(quizOverviewRegrades) => {
 		return {
-			slotIdIndex: uniqueIndex('slot_id_idx').on(quizOverviewRegrades.slotId)
+			slotIdIndex: uniqueIndex('quiz_overview_regrades_slot_id_idx').on(
+				quizOverviewRegrades.slotId
+			)
 		}
 	}
 )

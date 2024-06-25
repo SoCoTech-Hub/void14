@@ -1,4 +1,4 @@
-import { varchar, integer, pgTable } from 'drizzle-orm/pg-core'
+import { varchar, integer, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { questionResponseAnalysises } from './questionResponseAnalysises'
@@ -24,7 +24,7 @@ export const questionResponseCounts = pgTable(
 	(questionResponseCounts) => {
 		return {
 			questionResponseAnalysiseIdIndex: uniqueIndex(
-				'question_response_analysise_id_idx'
+				'question_response_counts_question_response_analysise_id_idx'
 			).on(questionResponseCounts.questionResponseAnalysiseId)
 		}
 	}
