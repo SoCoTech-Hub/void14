@@ -1,10 +1,8 @@
 {
-  "id": "5286f14d-e7b0-4591-aa77-0ce75e415dc1",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "session": {
+    "public.session": {
       "name": "session",
       "schema": "",
       "columns": {
@@ -32,21 +30,21 @@
         "session_user_id_user_id_fk": {
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user": {
+    "public.user": {
       "name": "user",
       "schema": "",
       "columns": {
@@ -81,14 +79,14 @@
       "uniqueConstraints": {
         "user_email_unique": {
           "name": "user_email_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     },
-    "support_comments": {
+    "public.support_comments": {
       "name": "support_comments",
       "schema": "",
       "columns": {
@@ -134,21 +132,21 @@
         "support_comments_support_ticket_id_support_tickets_id_fk": {
           "name": "support_comments_support_ticket_id_support_tickets_id_fk",
           "tableFrom": "support_comments",
-          "tableTo": "support_tickets",
           "columnsFrom": [
             "support_ticket_id"
           ],
+          "tableTo": "support_tickets",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "support_departments": {
+    "public.support_departments": {
       "name": "support_departments",
       "schema": "",
       "columns": {
@@ -182,7 +180,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "support_statuses": {
+    "public.support_statuses": {
       "name": "support_statuses",
       "schema": "",
       "columns": {
@@ -210,7 +208,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "support_tickets": {
+    "public.support_tickets": {
       "name": "support_tickets",
       "schema": "",
       "columns": {
@@ -321,58 +319,66 @@
       },
       "indexes": {
         "support_department_id_idx": {
-          "name": "support_department_id_idx",
           "columns": [
-            "support_department_id"
+            {
+              "expression": "support_department_id",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "support_department_id_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "support_tickets_support_department_id_support_departments_id_fk": {
           "name": "support_tickets_support_department_id_support_departments_id_fk",
           "tableFrom": "support_tickets",
-          "tableTo": "support_departments",
           "columnsFrom": [
             "support_department_id"
           ],
+          "tableTo": "support_departments",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "support_tickets_support_topic_id_support_topics_id_fk": {
           "name": "support_tickets_support_topic_id_support_topics_id_fk",
           "tableFrom": "support_tickets",
-          "tableTo": "support_topics",
           "columnsFrom": [
             "support_topic_id"
           ],
+          "tableTo": "support_topics",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "support_tickets_support_status_id_support_statuses_id_fk": {
           "name": "support_tickets_support_status_id_support_statuses_id_fk",
           "tableFrom": "support_tickets",
-          "tableTo": "support_statuses",
           "columnsFrom": [
             "support_status_id"
           ],
+          "tableTo": "support_statuses",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "support_topics": {
+    "public.support_topics": {
       "name": "support_topics",
       "schema": "",
       "columns": {
@@ -400,15 +406,15 @@
         "support_topics_support_department_id_support_departments_id_fk": {
           "name": "support_topics_support_department_id_support_departments_id_fk",
           "tableFrom": "support_topics",
-          "tableTo": "support_departments",
           "columnsFrom": [
             "support_department_id"
           ],
+          "tableTo": "support_departments",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -418,8 +424,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "5286f14d-e7b0-4591-aa77-0ce75e415dc1",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }

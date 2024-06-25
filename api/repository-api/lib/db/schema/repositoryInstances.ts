@@ -1,5 +1,5 @@
 import { sql } from 'drizzle-orm'
-import { varchar, boolean, timestamp, pgTable } from 'drizzle-orm/pg-core'
+import { varchar, boolean, timestamp, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 
@@ -31,7 +31,7 @@ export const repositoryInstances = pgTable(
 	},
 	(repositoryInstances) => {
 		return {
-			contextIdIndex: uniqueIndex('context_id_idx').on(
+			contextIdIndex: uniqueIndex('repository_instances_context_id_idx').on(
 				repositoryInstances.contextId
 			)
 		}

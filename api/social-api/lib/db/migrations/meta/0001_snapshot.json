@@ -1,10 +1,8 @@
 {
-  "id": "14ddcd24-4288-4cf7-bf5d-2e8be791887f",
-  "prevId": "a41dfd8d-685e-4111-aaf7-b92d1049f77d",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "session": {
+    "public.session": {
       "name": "session",
       "schema": "",
       "columns": {
@@ -32,21 +30,21 @@
         "session_user_id_user_id_fk": {
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user": {
+    "public.user": {
       "name": "user",
       "schema": "",
       "columns": {
@@ -81,14 +79,14 @@
       "uniqueConstraints": {
         "user_email_unique": {
           "name": "user_email_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     },
-    "social_emojis": {
+    "public.social_emojis": {
       "name": "social_emojis",
       "schema": "",
       "columns": {
@@ -116,7 +114,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "social_links": {
+    "public.social_links": {
       "name": "social_links",
       "schema": "",
       "columns": {
@@ -150,7 +148,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "socials": {
+    "public.socials": {
       "name": "socials",
       "schema": "",
       "columns": {
@@ -190,21 +188,21 @@
         "socials_social_emoji_id_social_emojis_id_fk": {
           "name": "socials_social_emoji_id_social_emojis_id_fk",
           "tableFrom": "socials",
-          "tableTo": "social_emojis",
           "columnsFrom": [
             "social_emoji_id"
           ],
+          "tableTo": "social_emojis",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "social_shares": {
+    "public.social_shares": {
       "name": "social_shares",
       "schema": "",
       "columns": {
@@ -244,15 +242,15 @@
         "social_shares_social_link_id_social_links_id_fk": {
           "name": "social_shares_social_link_id_social_links_id_fk",
           "tableFrom": "social_shares",
-          "tableTo": "social_links",
           "columnsFrom": [
             "social_link_id"
           ],
+          "tableTo": "social_links",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -262,8 +260,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "14ddcd24-4288-4cf7-bf5d-2e8be791887f",
+  "prevId": "a41dfd8d-685e-4111-aaf7-b92d1049f77d"
 }

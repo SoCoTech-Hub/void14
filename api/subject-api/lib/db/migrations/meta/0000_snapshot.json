@@ -1,10 +1,8 @@
 {
-  "id": "672e733c-d80c-4108-ae44-5f6bae934ce7",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "session": {
+    "public.session": {
       "name": "session",
       "schema": "",
       "columns": {
@@ -32,21 +30,21 @@
         "session_user_id_user_id_fk": {
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user": {
+    "public.user": {
       "name": "user",
       "schema": "",
       "columns": {
@@ -81,14 +79,14 @@
       "uniqueConstraints": {
         "user_email_unique": {
           "name": "user_email_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     },
-    "subject_categories": {
+    "public.subject_categories": {
       "name": "subject_categories",
       "schema": "",
       "columns": {
@@ -116,7 +114,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "subjects": {
+    "public.subjects": {
       "name": "subjects",
       "schema": "",
       "columns": {
@@ -150,7 +148,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "subjects_subject_categories": {
+    "public.subjects_subject_categories": {
       "name": "subjects_subject_categories",
       "schema": "",
       "columns": {
@@ -178,28 +176,28 @@
         "subjects_subject_categories_subject_category_id_subject_categories_id_fk": {
           "name": "subjects_subject_categories_subject_category_id_subject_categories_id_fk",
           "tableFrom": "subjects_subject_categories",
-          "tableTo": "subject_categories",
           "columnsFrom": [
             "subject_category_id"
           ],
+          "tableTo": "subject_categories",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         },
         "subjects_subject_categories_subject_id_subjects_id_fk": {
           "name": "subjects_subject_categories_subject_id_subjects_id_fk",
           "tableFrom": "subjects_subject_categories",
-          "tableTo": "subjects",
           "columnsFrom": [
             "subject_id"
           ],
+          "tableTo": "subjects",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -209,8 +207,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "672e733c-d80c-4108-ae44-5f6bae934ce7",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }

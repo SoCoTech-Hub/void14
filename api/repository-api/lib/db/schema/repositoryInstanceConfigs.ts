@@ -21,9 +21,9 @@ export const repositoryInstanceConfigs = pgTable(
 	},
 	(repositoryInstanceConfigs) => {
 		return {
-			repositoryInstanceIdIndex: uniqueIndex('repository_instance_id_idx').on(
-				repositoryInstanceConfigs.repositoryInstanceId
-			)
+			repositoryInstanceIdIndex: uniqueIndex(
+				'repository_instance_configs_repository_instance_id_idx'
+			).on(repositoryInstanceConfigs.repositoryInstanceId)
 		}
 	}
 )

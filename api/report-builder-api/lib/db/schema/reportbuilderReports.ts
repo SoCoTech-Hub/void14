@@ -5,7 +5,8 @@ import {
 	integer,
 	boolean,
 	timestamp,
-	pgTable
+	pgTable,
+	uniqueIndex
 } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
@@ -42,7 +43,7 @@ export const reportbuilderReports = pgTable(
 	},
 	(reportbuilderReports) => {
 		return {
-			contextIdIndex: uniqueIndex('context_id_idx').on(
+			contextIdIndex: uniqueIndex('reportbuilder_reports_context_id_idx').on(
 				reportbuilderReports.contextId
 			)
 		}

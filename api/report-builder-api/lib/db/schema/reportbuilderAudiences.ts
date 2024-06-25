@@ -1,5 +1,11 @@
 import { sql } from 'drizzle-orm'
-import { varchar, text, timestamp, pgTable } from 'drizzle-orm/pg-core'
+import {
+	varchar,
+	text,
+	timestamp,
+	pgTable,
+	uniqueIndex
+} from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 
@@ -30,7 +36,7 @@ export const reportbuilderAudiences = pgTable(
 	},
 	(reportbuilderAudiences) => {
 		return {
-			reportIdIndex: uniqueIndex('report_id_idx').on(
+			reportIdIndex: uniqueIndex('reportbuilder_audiences_report_id_idx').on(
 				reportbuilderAudiences.reportId
 			)
 		}

@@ -1,10 +1,8 @@
 {
-  "id": "3ddbe0c4-b405-4a4b-a7bd-8128d053861c",
-  "prevId": "00000000-0000-0000-0000-000000000000",
-  "version": "5",
-  "dialect": "pg",
+  "version": "7",
+  "dialect": "postgresql",
   "tables": {
-    "session": {
+    "public.session": {
       "name": "session",
       "schema": "",
       "columns": {
@@ -32,21 +30,21 @@
         "session_user_id_user_id_fk": {
           "name": "session_user_id_user_id_fk",
           "tableFrom": "session",
-          "tableTo": "user",
           "columnsFrom": [
             "user_id"
           ],
+          "tableTo": "user",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "no action"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user": {
+    "public.user": {
       "name": "user",
       "schema": "",
       "columns": {
@@ -81,14 +79,14 @@
       "uniqueConstraints": {
         "user_email_unique": {
           "name": "user_email_unique",
-          "nullsNotDistinct": false,
           "columns": [
             "email"
-          ]
+          ],
+          "nullsNotDistinct": false
         }
       }
     },
-    "grades": {
+    "public.grades": {
       "name": "grades",
       "schema": "",
       "columns": {
@@ -116,7 +114,7 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "schools": {
+    "public.schools": {
       "name": "schools",
       "schema": "",
       "columns": {
@@ -171,32 +169,40 @@
       },
       "indexes": {
         "name_idx": {
-          "name": "name_idx",
           "columns": [
-            "name"
+            {
+              "expression": "name",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
           ],
-          "isUnique": true
+          "with": {},
+          "name": "name_idx",
+          "isUnique": true,
+          "method": "btree",
+          "concurrently": false
         }
       },
       "foreignKeys": {
         "schools_grade_id_grades_id_fk": {
           "name": "schools_grade_id_grades_id_fk",
           "tableFrom": "schools",
-          "tableTo": "grades",
           "columnsFrom": [
             "grade_id"
           ],
+          "tableTo": "grades",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user_grades": {
+    "public.user_grades": {
       "name": "user_grades",
       "schema": "",
       "columns": {
@@ -224,21 +230,21 @@
         "user_grades_grade_id_grades_id_fk": {
           "name": "user_grades_grade_id_grades_id_fk",
           "tableFrom": "user_grades",
-          "tableTo": "grades",
           "columnsFrom": [
             "grade_id"
           ],
+          "tableTo": "grades",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user_schools": {
+    "public.user_schools": {
       "name": "user_schools",
       "schema": "",
       "columns": {
@@ -266,15 +272,15 @@
         "user_schools_school_id_schools_id_fk": {
           "name": "user_schools_school_id_schools_id_fk",
           "tableFrom": "user_schools",
-          "tableTo": "schools",
           "columnsFrom": [
             "school_id"
           ],
+          "tableTo": "schools",
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "no action"
+          "onUpdate": "no action",
+          "onDelete": "cascade"
         }
       },
       "compositePrimaryKeys": {},
@@ -284,8 +290,10 @@
   "enums": {},
   "schemas": {},
   "_meta": {
-    "columns": {},
     "schemas": {},
-    "tables": {}
-  }
+    "tables": {},
+    "columns": {}
+  },
+  "id": "3ddbe0c4-b405-4a4b-a7bd-8128d053861c",
+  "prevId": "00000000-0000-0000-0000-000000000000"
 }
