@@ -2,7 +2,7 @@ import { varchar, text, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 
-import { type getAdminPresetItAs } from '@/lib/api/adminPresetItAs/queries'
+import type { getAdminPresetItAs } from '@/lib/api/adminPresetItAs/queries'
 
 import { nanoid } from '@/lib/utils'
 
