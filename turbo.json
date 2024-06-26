@@ -1,17 +1,56 @@
 {
-	"$schema": "https://turbo.build/schema.json",
-	"globalDependencies": ["**/.env.*local"],
-	"pipeline": {
+	"$schema": "https://turborepo.org/schema.json",
+	"ui": "tui",
+	"tasks": {
+		"topo": {
+			"dependsOn": ["^topo"]
+		},
 		"build": {
 			"dependsOn": ["^build"],
-			"outputs": [".next/**", "!.next/cache/**"]
-		},
-		"lint": {
-			"dependsOn": ["^lint"]
+			"outputs": [
+				".next/**",
+				"!.next/cache/**",
+				"next-env.d.ts",
+				".expo/**",
+				".output/**",
+				".vercel/output/**"
+			]
 		},
 		"dev": {
+			"persistent": true,
+			"cache": false
+		},
+		"format": {
+			"outputs": ["node_modules/.cache/.prettiercache"],
+			"outputLogs": "new-only"
+		},
+		"lint": {
+			"dependsOn": ["^topo", "^build"],
+			"outputs": ["node_modules/.cache/.eslintcache"]
+		},
+		"typecheck": {
+			"dependsOn": ["^topo", "^build"],
+			"outputs": ["node_modules/.cache/tsbuildinfo.json"]
+		},
+		"clean": {
+			"cache": false
+		},
+		"//#clean": {
+			"cache": false
+		},
+		"push": {
+			"cache": false,
+			"interactive": true
+		},
+		"studio": {
 			"cache": false,
 			"persistent": true
+		},
+		"ui-add": {
+			"cache": false,
+			"interactive": true
 		}
-	}
+	},
+	"globalEnv": [""],
+	"globalPassThroughEnv": ["NODE_ENV", "npm_lifecycle_event"]
 }
