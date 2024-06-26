@@ -1,5 +1,5 @@
 {
-	"name": "admin-presets-api",
+	"name": "@acme/admin-presets-api",
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {

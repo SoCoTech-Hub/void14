@@ -6,6 +6,7 @@ import { revalidatePath } from "next/cache";
 
 export async function PUT(request: Request) {
   const { session } = await getUserAuth();
+  console.log({session})
   if (!session) return new Response("Error", { status: 400 });
   const body = (await request.json()) as { name?: string; email?: string };
 
