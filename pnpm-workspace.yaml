@@ -1,4 +1,6 @@
 packages:
-  - apps/*
+  - apps/api/*
+  - apps/dashboard/*
+  - apps/frontend/*
   - packages/*
   - tooling/*
