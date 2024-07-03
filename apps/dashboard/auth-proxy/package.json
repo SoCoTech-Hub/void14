@@ -15,7 +15,6 @@
   "devDependencies": {
     "@soco/eslint-config": "workspace:*",
     "@soco/prettier-config": "workspace:*",
-    "@soco/tailwind-config": "workspace:*",
     "@soco/tsconfig": "workspace:*",
     "@types/node": "^20.12.9",
     "eslint": "^9.4.0",
