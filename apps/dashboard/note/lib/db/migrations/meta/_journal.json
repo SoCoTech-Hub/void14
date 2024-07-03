@@ -1,0 +1,13 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1712843178287,
+      "tag": "0000_calm_genesis",
+      "breakpoints": true
+    }
+  ]
+}

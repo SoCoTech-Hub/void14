@@ -1,0 +1,20 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1712742432513,
+      "tag": "0000_fantastic_arclight",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1714045891773,
+      "tag": "0001_tan_zombie",
+      "breakpoints": true
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+{
+  "extends": "@soco/tsconfig/base.json",
+  "include": ["routes"]
+}
