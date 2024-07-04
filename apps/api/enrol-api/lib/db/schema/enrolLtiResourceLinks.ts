@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getEnrolLtiResourceLinks } from "../api/enrolLtiResourceLinks/queries";
+import { type getEnrolLtiResourceLinks } from "../../api/enrolLtiResourceLinks/queries";
 
 export const enrolLtiResourceLinks = pgTable("enrol_lti_resource_links", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

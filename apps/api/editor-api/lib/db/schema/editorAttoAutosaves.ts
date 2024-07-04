@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getEditorAttoAutosaves } from "../api/editorAttoAutosaves/queries";
+import { type getEditorAttoAutosaves } from "../../api/editorAttoAutosaves/queries";
 
 export const editorAttoAutosaves = pgTable("editor_atto_autosaves", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

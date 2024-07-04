@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getPortfolioLogs } from "../api/portfolioLogs/queries";
+import { type getPortfolioLogs } from "../../api/portfolioLogs/queries";
 import { portfolioInstances } from "./portfolioInstances";
 import { portfolioTempdatas } from "./portfolioTempdatas";
 

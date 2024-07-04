@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getCompetencyTemplates } from "../api/competencyTemplates/queries";
+import { type getCompetencyTemplates } from "../../api/competencyTemplates/queries";
 
 export const competencyTemplates = pgTable("competency_templates", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getScormSeqRollupRules } from "../api/scormSeqRollupRules/queries";
+import { type getScormSeqRollupRules } from "../../api/scormSeqRollupRules/queries";
 import { scormScoes } from "./scormScoes";
 
 export const scormSeqRollupRules = pgTable("scorm_seq_rollup_rules", {

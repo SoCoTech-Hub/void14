@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getRegistrationHubs } from "../api/registrationHubs/queries";
+import { type getRegistrationHubs } from "../../api/registrationHubs/queries";
 
 export const registrationHubs = pgTable(
   "registration_hubs",

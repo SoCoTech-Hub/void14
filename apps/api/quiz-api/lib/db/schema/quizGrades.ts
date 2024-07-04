@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getQuizGrades } from "../api/quizGrades/queries";
+import { type getQuizGrades } from "../../api/quizGrades/queries";
 import { quizes } from "./quizes";
 
 export const quizGrades = pgTable(

@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getCourseCompletionAggrMethds } from "../api/courseCompletionAggrMethds/queries";
+import { type getCourseCompletionAggrMethds } from "../../api/courseCompletionAggrMethds/queries";
 import { courses } from "./courses";
 
 export const courseCompletionAggrMethds = pgTable(

@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getThemes } from "../api/themes/queries";
+import { type getThemes } from "../../api/themes/queries";
 
 export const themes = pgTable(
   "themes",

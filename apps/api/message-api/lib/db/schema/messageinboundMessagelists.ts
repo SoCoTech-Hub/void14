@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getMessageinboundMessagelists } from "../api/messageinboundMessagelists/queries";
+import { type getMessageinboundMessagelists } from "../../api/messageinboundMessagelists/queries";
 
 export const messageinboundMessagelists = pgTable(
   "messageinbound_messagelists",

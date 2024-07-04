@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getQuestionUsages } from "../api/questionUsages/queries";
+import { type getQuestionUsages } from "../../api/questionUsages/queries";
 
 export const questionUsages = pgTable(
   "question_usages",

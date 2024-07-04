@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getLtiToolSettings } from "../api/ltiToolSettings/queries";
+import { type getLtiToolSettings } from "../../api/ltiToolSettings/queries";
 
 export const ltiToolSettings = pgTable("lti_tool_settings", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

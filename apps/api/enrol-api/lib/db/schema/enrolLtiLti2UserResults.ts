@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getEnrolLtiLti2UserResults } from "../api/enrolLtiLti2UserResults/queries";
+import { type getEnrolLtiLti2UserResults } from "../../api/enrolLtiLti2UserResults/queries";
 
 export const enrolLtiLti2UserResults = pgTable("enrol_lti_lti2_user_results", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

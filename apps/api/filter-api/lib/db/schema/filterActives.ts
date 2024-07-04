@@ -10,7 +10,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getFilterActives } from "../api/filterActives/queries";
+import { type getFilterActives } from "../../api/filterActives/queries";
 
 export const filterActives = pgTable(
   "filter_actives",

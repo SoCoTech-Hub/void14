@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getMnetServices } from "../api/mnetServices/queries";
+import { type getMnetServices } from "../../api/mnetServices/queries";
 
 export const mnetServices = pgTable(
   "mnet_services",

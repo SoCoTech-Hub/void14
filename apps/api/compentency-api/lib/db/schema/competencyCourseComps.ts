@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getCompetencyCourseComps } from "../api/competencyCourseComps/queries";
+import { type getCompetencyCourseComps } from "../../api/competencyCourseComps/queries";
 import { competencies } from "./competencies";
 
 export const competencyCourseComps = pgTable(

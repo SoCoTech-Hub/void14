@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getQuestionCalculateds } from "../api/questionCalculateds/queries";
+import { type getQuestionCalculateds } from "../../api/questionCalculateds/queries";
 import { questionAnswers } from "./questionAnswers";
 import { questions } from "./questions";
 

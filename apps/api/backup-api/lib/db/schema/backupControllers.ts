@@ -14,7 +14,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getBackupControllers } from "../api/backupControllers/queries";
+import { type getBackupControllers } from "../../api/backupControllers/queries";
 
 export const backupControllers = pgTable(
   "backup_controllers",

@@ -4,7 +4,7 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 
 import { nanoid } from "@soco/utils";
 
-import type { getSocialIcons } from "../api/socialIcons/queries";
+import type { getSocialIcons } from "../../api/socialIcons/queries";
 
 export const socialIcons = pgTable(
   "social_icons",

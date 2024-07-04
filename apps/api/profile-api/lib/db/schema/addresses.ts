@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getAddresses } from "../api/addresses/queries";
+import { type getAddresses } from "../../api/addresses/queries";
 
 export const addresses = pgTable(
   "addresses",

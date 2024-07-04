@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getWorkshopFormRubricConfigs } from "../api/workshopFormRubricConfigs/queries";
+import { type getWorkshopFormRubricConfigs } from "../../api/workshopFormRubricConfigs/queries";
 import { workshops } from "./workshops";
 
 export const workshopFormRubricConfigs = pgTable(

@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getRepositoryInstanceConfigs } from "../api/repositoryInstanceConfigs/queries";
+import { type getRepositoryInstanceConfigs } from "../../api/repositoryInstanceConfigs/queries";
 import { repositoryInstances } from "./repositoryInstances";
 
 export const repositoryInstanceConfigs = pgTable(

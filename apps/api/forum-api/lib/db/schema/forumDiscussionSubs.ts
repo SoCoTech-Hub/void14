@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getForumDiscussionSubs } from "../api/forumDiscussionSubs/queries";
+import { type getForumDiscussionSubs } from "../../api/forumDiscussionSubs/queries";
 
 export const forumDiscussionSubs = pgTable("forum_discussion_subs", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

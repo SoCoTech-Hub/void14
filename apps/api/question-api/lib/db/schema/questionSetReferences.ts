@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getQuestionSetReferences } from "../api/questionSetReferences/queries";
+import { type getQuestionSetReferences } from "../../api/questionSetReferences/queries";
 
 export const questionSetReferences = pgTable(
   "question_set_references",

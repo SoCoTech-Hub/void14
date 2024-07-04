@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getAdminPresetIts } from "../api/adminPresetIts/queries";
+import type { getAdminPresetIts } from "../../api/adminPresetIts/queries";
 import { adminPresetsApps } from "./adminPresetsApps";
 
 export const adminPresetIts = pgTable(

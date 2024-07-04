@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getCompetencyUserCompCourses } from "../api/competencyUserCompCourses/queries";
+import { type getCompetencyUserCompCourses } from "../../api/competencyUserCompCourses/queries";
 import { competencies } from "./competencies";
 
 export const competencyUserCompCourses = pgTable(

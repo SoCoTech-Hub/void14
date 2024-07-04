@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getTags } from "../api/tags/queries";
+import { type getTags } from "../../api/tags/queries";
 import { tagColls } from "./tagColls";
 
 export const tags = pgTable("tags", {

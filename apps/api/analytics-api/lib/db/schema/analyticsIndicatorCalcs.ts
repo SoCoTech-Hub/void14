@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getAnalyticsIndicatorCalcs } from "../api/analyticsIndicatorCalcs/queries";
+import { type getAnalyticsIndicatorCalcs } from "../../api/analyticsIndicatorCalcs/queries";
 
 export const analyticsIndicatorCalcs = pgTable("analytics_indicator_calcs", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

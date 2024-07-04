@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getGenders } from "../api/genders/queries";
+import { type getGenders } from "../../api/genders/queries";
 
 export const genders = pgTable("genders", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getScormSeqRuleConds } from "../api/scormSeqRuleConds/queries";
+import { type getScormSeqRuleConds } from "../../api/scormSeqRuleConds/queries";
 import { scormScoes } from "./scormScoes";
 
 export const scormSeqRuleConds = pgTable("scorm_seq_rule_conds", {

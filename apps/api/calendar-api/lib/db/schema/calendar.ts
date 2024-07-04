@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getCalendar } from "../api/calendar/queries";
+import { type getCalendar } from "../../api/calendar/queries";
 
 export const calendar = pgTable("calendar", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

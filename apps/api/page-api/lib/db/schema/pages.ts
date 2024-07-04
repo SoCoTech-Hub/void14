@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getPages } from "../api/pages/queries";
+import { type getPages } from "../../api/pages/queries";
 
 export const pages = pgTable(
   "pages",

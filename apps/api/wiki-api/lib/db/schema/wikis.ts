@@ -13,7 +13,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getWikis } from "../api/wikis/queries";
+import { type getWikis } from "../../api/wikis/queries";
 
 export const wikis = pgTable(
   "wikis",

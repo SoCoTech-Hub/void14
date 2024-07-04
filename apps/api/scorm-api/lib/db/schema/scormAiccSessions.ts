@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getScormAiccSessions } from "../api/scormAiccSessions/queries";
+import { type getScormAiccSessions } from "../../api/scormAiccSessions/queries";
 import { scorms } from "./scorms";
 import { scormScoes } from "./scormScoes";
 

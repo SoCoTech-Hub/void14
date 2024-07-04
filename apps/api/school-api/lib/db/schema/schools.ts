@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getSchools } from "../api/schools/queries";
+import { type getSchools } from "../../api/schools/queries";
 import { grades } from "./grades";
 
 export const schools = pgTable(

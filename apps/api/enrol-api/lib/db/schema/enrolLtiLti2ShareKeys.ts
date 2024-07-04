@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getEnrolLtiLti2ShareKeys } from "../api/enrolLtiLti2ShareKeys/queries";
+import { type getEnrolLtiLti2ShareKeys } from "../../api/enrolLtiLti2ShareKeys/queries";
 
 export const enrolLtiLti2ShareKeys = pgTable("enrol_lti_lti2_share_keys", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getDataContents } from "../api/dataContents/queries";
+import { type getDataContents } from "../../api/dataContents/queries";
 import { dataRecords } from "./dataRecords";
 import { fields } from "./fields";
 

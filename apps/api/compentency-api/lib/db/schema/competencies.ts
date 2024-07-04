@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getCompetencies } from "../api/competencies/queries";
+import { type getCompetencies } from "../../api/competencies/queries";
 import { competencyFrameworks } from "./competencyFrameworks";
 
 export const competencies = pgTable(

@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getMnetSsoAccessControls } from "../api/mnetSsoAccessControls/queries";
+import { type getMnetSsoAccessControls } from "../../api/mnetSsoAccessControls/queries";
 import { mnetHosts } from "./mnetHosts";
 
 export const mnetSsoAccessControls = pgTable(

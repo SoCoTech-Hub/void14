@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getBursaries } from "../api/bursaries/queries";
+import { type getBursaries } from "../../api/bursaries/queries";
 
 export const bursaries = pgTable("bursaries", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

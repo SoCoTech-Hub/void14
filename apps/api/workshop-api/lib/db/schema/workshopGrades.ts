@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getWorkshopGrades } from "../api/workshopGrades/queries";
+import { type getWorkshopGrades } from "../../api/workshopGrades/queries";
 
 export const workshopGrades = pgTable(
   "workshop_grades",

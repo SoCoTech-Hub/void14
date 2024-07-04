@@ -13,7 +13,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import type { getBookChapters } from "../api/bookChapters/queries";
+import type { getBookChapters } from "../../api/bookChapters/queries";
 import { books } from "./books";
 
 export const bookChapters = pgTable(

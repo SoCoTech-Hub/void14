@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getUserPreferences } from "../api/userPreferences/queries";
+import { type getUserPreferences } from "../../api/userPreferences/queries";
 
 export const userPreferences = pgTable("user_preferences", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

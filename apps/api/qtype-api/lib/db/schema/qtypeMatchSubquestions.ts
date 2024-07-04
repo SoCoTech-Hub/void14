@@ -10,7 +10,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getQtypeMatchSubquestions } from "../api/qtypeMatchSubquestions/queries";
+import { type getQtypeMatchSubquestions } from "../../api/qtypeMatchSubquestions/queries";
 
 export const qtypeMatchSubquestions = pgTable(
   "qtype_match_subquestions",

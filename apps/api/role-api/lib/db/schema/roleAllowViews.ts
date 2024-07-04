@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getRoleAllowViews } from "../api/roleAllowViews/queries";
+import { type getRoleAllowViews } from "../../api/roleAllowViews/queries";
 import { roles } from "./roles";
 
 export const roleAllowViews = pgTable("role_allow_views", {

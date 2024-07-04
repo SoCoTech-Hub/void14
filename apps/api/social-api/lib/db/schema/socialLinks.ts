@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getSocialLinks } from "../api/socialLinks/queries";
+import { type getSocialLinks } from "../../api/socialLinks/queries";
 
 export const socialLinks = pgTable("social_links", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

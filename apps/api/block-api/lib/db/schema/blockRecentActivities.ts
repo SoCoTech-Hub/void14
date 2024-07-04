@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getBlockRecentActivities } from "../api/blockRecentActivities/queries";
+import { type getBlockRecentActivities } from "../../api/blockRecentActivities/queries";
 
 export const blockRecentActivities = pgTable(
   "block_recent_activities",

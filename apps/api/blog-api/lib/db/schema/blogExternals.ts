@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getBlogExternals } from "../api/blogExternals/queries";
+import { type getBlogExternals } from "../../api/blogExternals/queries";
 
 export const blogExternals = pgTable("blog_externals", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getZooms } from "../api/zooms/queries";
+import { type getZooms } from "../../api/zooms/queries";
 
 export const zooms = pgTable("zooms", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

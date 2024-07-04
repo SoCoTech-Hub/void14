@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getMessageAirnotifierDevices } from "../api/messageAirnotifierDevices/queries";
+import { type getMessageAirnotifierDevices } from "../../api/messageAirnotifierDevices/queries";
 
 export const messageAirnotifierDevices = pgTable(
   "message_airnotifier_devices",

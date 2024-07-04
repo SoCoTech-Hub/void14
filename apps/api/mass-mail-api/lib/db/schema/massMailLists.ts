@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getMassMailLists } from "../api/massMailLists/queries";
+import { type getMassMailLists } from "../../api/massMailLists/queries";
 
 export const massMailLists = pgTable("mass_mail_lists", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

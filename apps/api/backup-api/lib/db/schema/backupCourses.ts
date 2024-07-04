@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getBackupCourses } from "../api/backupCourses/queries";
+import { type getBackupCourses } from "../../api/backupCourses/queries";
 
 export const backupCourses = pgTable("backup_courses", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

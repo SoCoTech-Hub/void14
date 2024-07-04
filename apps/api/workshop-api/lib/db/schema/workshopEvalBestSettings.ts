@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getWorkshopEvalBestSettings } from "../api/workshopEvalBestSettings/queries";
+import { type getWorkshopEvalBestSettings } from "../../api/workshopEvalBestSettings/queries";
 import { workshops } from "./workshops";
 
 export const workshopEvalBestSettings = pgTable(

@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getTagAreas } from "../api/tagAreas/queries";
+import { type getTagAreas } from "../../api/tagAreas/queries";
 import { tagColls } from "./tagColls";
 
 export const tagAreas = pgTable("tag_areas", {

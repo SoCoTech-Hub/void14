@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getCompetencyUserEvidenceComps } from "../api/competencyUserEvidenceComps/queries";
+import { type getCompetencyUserEvidenceComps } from "../../api/competencyUserEvidenceComps/queries";
 import { competencies } from "./competencies";
 import { competencyUserEvidences } from "./competencyUserEvidences";
 

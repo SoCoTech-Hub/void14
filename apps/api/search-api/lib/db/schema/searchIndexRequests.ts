@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getSearchIndexRequests } from "../api/searchIndexRequests/queries";
+import { type getSearchIndexRequests } from "../../api/searchIndexRequests/queries";
 
 export const searchIndexRequests = pgTable("search_index_requests", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

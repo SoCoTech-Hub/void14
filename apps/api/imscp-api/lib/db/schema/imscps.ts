@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getImscps } from "../api/imscps/queries";
+import { type getImscps } from "../../api/imscps/queries";
 
 export const imscps = pgTable("imscps", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getJobApplicationsApplicationCategories } from "../api/jobApplicationsApplicationCategories/queries";
+import { type getJobApplicationsApplicationCategories } from "../../api/jobApplicationsApplicationCategories/queries";
 import { applicationCategories } from "./applicationCategories";
 import { jobApplications } from "./jobApplications";
 

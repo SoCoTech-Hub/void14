@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getQtypeRandomsamatchOptions } from "../api/qtypeRandomsamatchOptions/queries";
+import { type getQtypeRandomsamatchOptions } from "../../api/qtypeRandomsamatchOptions/queries";
 
 export const qtypeRandomsamatchOptions = pgTable(
   "qtype_randomsamatch_options",

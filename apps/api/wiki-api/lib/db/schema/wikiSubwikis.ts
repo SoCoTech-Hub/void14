@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getWikiSubwikis } from "../api/wikiSubwikis/queries";
+import { type getWikiSubwikis } from "../../api/wikiSubwikis/queries";
 import { wikis } from "./wikis";
 
 export const wikiSubwikis = pgTable(

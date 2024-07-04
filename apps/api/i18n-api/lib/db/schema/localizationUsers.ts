@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getLocalizationUsers } from "../api/localizationUsers/queries";
+import { type getLocalizationUsers } from "../../api/localizationUsers/queries";
 import { localizationLanguages } from "./localizationLanguages";
 
 export const localizationUsers = pgTable("localization_users", {

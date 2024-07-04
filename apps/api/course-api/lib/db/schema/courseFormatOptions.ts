@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getCourseFormatOptions } from "../api/courseFormatOptions/queries";
+import { type getCourseFormatOptions } from "../../api/courseFormatOptions/queries";
 import { courses } from "./courses";
 
 export const courseFormatOptions = pgTable(

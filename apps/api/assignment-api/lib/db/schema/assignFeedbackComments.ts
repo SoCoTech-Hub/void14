@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getAssignFeedbackComments } from "../api/assignFeedbackComments/queries";
+import { type getAssignFeedbackComments } from "../../api/assignFeedbackComments/queries";
 import { assignments } from "./assignments";
 
 export const assignFeedbackComments = pgTable(

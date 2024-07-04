@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getUserPasswordResets } from "../api/userPasswordResets/queries";
+import { type getUserPasswordResets } from "../../api/userPasswordResets/queries";
 
 export const userPasswordResets = pgTable("user_password_resets", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

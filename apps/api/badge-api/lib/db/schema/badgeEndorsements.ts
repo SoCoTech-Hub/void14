@@ -1,4 +1,3 @@
-import { type getBadgeEndorsements } from "../api/badgeEndorsements/queries";
 import { sql } from "drizzle-orm";
 import {
   pgTable,
@@ -12,6 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getBadgeEndorsements } from "../../api/badgeEndorsements/queries";
 import { badges } from "./badges";
 
 export const badgeEndorsements = pgTable(

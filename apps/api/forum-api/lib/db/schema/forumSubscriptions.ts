@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getForumSubscriptions } from "../api/forumSubscriptions/queries";
+import { type getForumSubscriptions } from "../../api/forumSubscriptions/queries";
 import { forums } from "./forums";
 
 export const forumSubscriptions = pgTable("forum_subscriptions", {

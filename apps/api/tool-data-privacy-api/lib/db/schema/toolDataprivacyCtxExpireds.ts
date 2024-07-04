@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getToolDataprivacyCtxExpireds } from "../api/toolDataprivacyCtxExpireds/queries";
+import { type getToolDataprivacyCtxExpireds } from "../../api/toolDataprivacyCtxExpireds/queries";
 
 export const toolDataprivacyCtxExpireds = pgTable(
   "tool_dataprivacy_ctx_expireds",

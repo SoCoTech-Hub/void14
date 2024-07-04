@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getRatings } from "../api/ratings/queries";
+import { type getRatings } from "../../api/ratings/queries";
 
 export const ratings = pgTable(
   "ratings",

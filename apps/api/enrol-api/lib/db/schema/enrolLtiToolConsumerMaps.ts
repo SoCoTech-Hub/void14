@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getEnrolLtiToolConsumerMaps } from "../api/enrolLtiToolConsumerMaps/queries";
+import { type getEnrolLtiToolConsumerMaps } from "../../api/enrolLtiToolConsumerMaps/queries";
 
 export const enrolLtiToolConsumerMaps = pgTable(
   "enrol_lti_tool_consumer_maps",

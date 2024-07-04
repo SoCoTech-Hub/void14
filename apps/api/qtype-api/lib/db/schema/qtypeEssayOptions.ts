@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getQtypeEssayOptions } from "../api/qtypeEssayOptions/queries";
+import { type getQtypeEssayOptions } from "../../api/qtypeEssayOptions/queries";
 
 export const qtypeEssayOptions = pgTable(
   "qtype_essay_options",

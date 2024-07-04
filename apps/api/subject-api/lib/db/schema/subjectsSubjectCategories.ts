@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getSubjectsSubjectCategories } from "../api/subjectsSubjectCategories/queries";
+import { type getSubjectsSubjectCategories } from "../../api/subjectsSubjectCategories/queries";
 import { subjectCategories } from "./subjectCategories";
 import { subjects } from "./subjects";
 

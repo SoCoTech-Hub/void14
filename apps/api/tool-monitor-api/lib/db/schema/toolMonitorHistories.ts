@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getToolMonitorHistories } from "../api/toolMonitorHistories/queries";
+import { type getToolMonitorHistories } from "../../api/toolMonitorHistories/queries";
 
 export const toolMonitorHistories = pgTable("tool_monitor_histories", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

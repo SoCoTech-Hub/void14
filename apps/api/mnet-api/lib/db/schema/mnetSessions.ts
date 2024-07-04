@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getMnetSessions } from "../api/mnetSessions/queries";
+import { type getMnetSessions } from "../../api/mnetSessions/queries";
 import { mnetHosts } from "./mnetHosts";
 
 export const mnetSessions = pgTable(

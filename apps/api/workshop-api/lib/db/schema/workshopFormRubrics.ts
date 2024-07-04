@@ -10,7 +10,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getWorkshopFormRubrics } from "../api/workshopFormRubrics/queries";
+import { type getWorkshopFormRubrics } from "../../api/workshopFormRubrics/queries";
 import { workshops } from "./workshops";
 
 export const workshopFormRubrics = pgTable(

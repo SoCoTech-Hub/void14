@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getOauth2SystemAccounts } from "../api/oauth2SystemAccounts/queries";
+import { type getOauth2SystemAccounts } from "../../api/oauth2SystemAccounts/queries";
 import { oauth2Issuers } from "./oauth2Issuers";
 
 export const oauth2SystemAccounts = pgTable(

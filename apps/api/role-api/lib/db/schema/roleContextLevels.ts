@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getRoleContextLevels } from "../api/roleContextLevels/queries";
+import { type getRoleContextLevels } from "../../api/roleContextLevels/queries";
 import { roles } from "./roles";
 
 export const roleContextLevels = pgTable("role_context_levels", {

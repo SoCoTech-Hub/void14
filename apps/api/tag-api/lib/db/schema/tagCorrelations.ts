@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getTagCorrelations } from "../api/tagCorrelations/queries";
+import { type getTagCorrelations } from "../../api/tagCorrelations/queries";
 import { tags } from "./tags";
 
 export const tagCorrelations = pgTable("tag_correlations", {

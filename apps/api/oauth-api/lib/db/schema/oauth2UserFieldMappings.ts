@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getOauth2UserFieldMappings } from "../api/oauth2UserFieldMappings/queries";
+import { type getOauth2UserFieldMappings } from "../../api/oauth2UserFieldMappings/queries";
 import { oauth2Issuers } from "./oauth2Issuers";
 
 export const oauth2UserFieldMappings = pgTable(

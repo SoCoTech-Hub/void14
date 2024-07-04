@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getSupportComments } from "../api/supportComments/queries";
+import { type getSupportComments } from "../../api/supportComments/queries";
 import { supportTickets } from "./supportTickets";
 
 export const supportComments = pgTable("support_comments", {

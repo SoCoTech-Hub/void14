@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getScormScoesDatas } from "../api/scormScoesDatas/queries";
+import { type getScormScoesDatas } from "../../api/scormScoesDatas/queries";
 import { scormScoes } from "./scormScoes";
 
 export const scormScoesDatas = pgTable("scorm_scoes_datas", {

@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getStatsDailies } from "../api/statsDailies/queries";
+import { type getStatsDailies } from "../../api/statsDailies/queries";
 
 export const statsDailies = pgTable("stats_dailies", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

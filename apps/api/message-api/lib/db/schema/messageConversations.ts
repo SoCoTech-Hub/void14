@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getMessageConversations } from "../api/messageConversations/queries";
+import { type getMessageConversations } from "../../api/messageConversations/queries";
 
 export const messageConversations = pgTable("message_conversations", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

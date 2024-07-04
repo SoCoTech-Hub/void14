@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getAnalyticsPredictionActions } from "../api/analyticsPredictionActions/queries";
+import { type getAnalyticsPredictionActions } from "../../api/analyticsPredictionActions/queries";
 
 export const analyticsPredictionActions = pgTable(
   "analytics_prediction_actions",

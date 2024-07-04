@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getInfectedFiles } from "../api/infectedFiles/queries";
+import { type getInfectedFiles } from "../../api/infectedFiles/queries";
 
 export const infectedFiles = pgTable("infected_files", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getMedias } from "../api/medias/queries";
+import { type getMedias } from "../../api/medias/queries";
 
 export const medias = pgTable(
   "medias",

@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getSessions } from "../api/sessions/queries";
+import { type getSessions } from "../../api/sessions/queries";
 
 export const sessions = pgTable("sessions", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

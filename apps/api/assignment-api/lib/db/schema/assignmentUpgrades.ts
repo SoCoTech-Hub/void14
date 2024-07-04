@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getAssignmentUpgrades } from "../api/assignmentUpgrades/queries";
+import { type getAssignmentUpgrades } from "../../api/assignmentUpgrades/queries";
 
 export const assignmentUpgrades = pgTable("assignment_upgrades", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

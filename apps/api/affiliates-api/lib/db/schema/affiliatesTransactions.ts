@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getAffiliatesTransactions } from "../api/affiliatesTransactions/queries";
+import { type getAffiliatesTransactions } from "../../api/affiliatesTransactions/queries";
 import { affiliates } from "./affiliates";
 import { affiliatesStatuses } from "./affiliatesStatuses";
 

@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getCustomFieldCategories } from "../api/customFieldCategories/queries";
+import { type getCustomFieldCategories } from "../../api/customFieldCategories/queries";
 
 export const customFieldCategories = pgTable(
   "custom_field_categories",

@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getApplicationCategories } from "../api/applicationCategories/queries";
+import { type getApplicationCategories } from "../../api/applicationCategories/queries";
 
 export const applicationCategories = pgTable(
   "application_categories",

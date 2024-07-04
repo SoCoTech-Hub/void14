@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getLtiAccessTokens } from "../api/ltiAccessTokens/queries";
+import { type getLtiAccessTokens } from "../../api/ltiAccessTokens/queries";
 
 export const ltiAccessTokens = pgTable("lti_access_tokens", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

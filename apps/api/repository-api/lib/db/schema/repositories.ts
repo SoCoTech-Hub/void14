@@ -10,7 +10,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getRepositories } from "../api/repositories/queries";
+import { type getRepositories } from "../../api/repositories/queries";
 
 export const repositories = pgTable(
   "repositories",

@@ -10,7 +10,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getMnetRpcs } from "../api/mnetRpcs/queries";
+import { type getMnetRpcs } from "../../api/mnetRpcs/queries";
 
 export const mnetRpcs = pgTable(
   "mnet_rpcs",

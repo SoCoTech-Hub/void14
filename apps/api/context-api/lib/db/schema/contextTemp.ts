@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getContextTemp } from "../api/contextTemp/queries";
+import { type getContextTemp } from "../../api/contextTemp/queries";
 import { contexts } from "./contexts";
 
 export const contextTemp = pgTable("context_temp", {

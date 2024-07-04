@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getBadgeAlignments } from "../api/badgeAlignments/queries";
+import { type getBadgeAlignments } from "../../api/badgeAlignments/queries";
 import { badges } from "./badges";
 
 export const badgeAlignments = pgTable("badge_alignments", {

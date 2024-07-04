@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getFields } from "../api/fields/queries";
+import { type getFields } from "../../api/fields/queries";
 import { datas } from "./datas";
 
 export const fields = pgTable("fields", {

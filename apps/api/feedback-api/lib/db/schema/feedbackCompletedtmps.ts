@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getFeedbackCompletedtmps } from "../api/feedbackCompletedtmps/queries";
+import { type getFeedbackCompletedtmps } from "../../api/feedbackCompletedtmps/queries";
 
 export const feedbackCompletedtmps = pgTable("feedback_completedtmps", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

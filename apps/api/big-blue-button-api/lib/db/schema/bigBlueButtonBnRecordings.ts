@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getBigBlueButtonBnRecordings } from "../api/bigBlueButtonBnRecordings/queries";
+import { type getBigBlueButtonBnRecordings } from "../../api/bigBlueButtonBnRecordings/queries";
 import { bigBlueButtonBns } from "./bigBlueButtonBns";
 
 export const bigBlueButtonBnRecordings = pgTable(

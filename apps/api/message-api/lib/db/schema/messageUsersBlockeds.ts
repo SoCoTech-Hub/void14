@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getMessageUsersBlockeds } from "../api/messageUsersBlockeds/queries";
+import { type getMessageUsersBlockeds } from "../../api/messageUsersBlockeds/queries";
 
 export const messageUsersBlockeds = pgTable("message_users_blockeds", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

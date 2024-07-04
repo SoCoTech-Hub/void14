@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getAssignFeedbackFiles } from "../api/assignFeedbackFiles/queries";
+import { type getAssignFeedbackFiles } from "../../api/assignFeedbackFiles/queries";
 import { assignments } from "./assignments";
 
 export const assignFeedbackFiles = pgTable(

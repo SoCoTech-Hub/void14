@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getAnalyticsTrainSamples } from "../api/analyticsTrainSamples/queries";
+import { type getAnalyticsTrainSamples } from "../../api/analyticsTrainSamples/queries";
 
 export const analyticsTrainSamples = pgTable(
   "analytics_train_samples",

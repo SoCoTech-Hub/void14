@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getAssignFeedbackEditpdfQuicks } from "../api/assignFeedbackEditpdfQuicks/queries";
+import { type getAssignFeedbackEditpdfQuicks } from "../../api/assignFeedbackEditpdfQuicks/queries";
 
 export const assignFeedbackEditpdfQuicks = pgTable(
   "assign_feedback_editpdf_quicks",

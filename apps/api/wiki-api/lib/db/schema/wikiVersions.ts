@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getWikiVersions } from "../api/wikiVersions/queries";
+import { type getWikiVersions } from "../../api/wikiVersions/queries";
 import { wikiPages } from "./wikiPages";
 
 export const wikiVersions = pgTable(

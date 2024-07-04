@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getToolRecyclebinCategories } from "../api/toolRecyclebinCategories/queries";
+import { type getToolRecyclebinCategories } from "../../api/toolRecyclebinCategories/queries";
 
 export const toolRecyclebinCategories = pgTable(
   "tool_recyclebin_categories",

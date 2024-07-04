@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getNotes } from "../api/notes/queries";
+import { type getNotes } from "../../api/notes/queries";
 
 export const notes = pgTable("notes", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

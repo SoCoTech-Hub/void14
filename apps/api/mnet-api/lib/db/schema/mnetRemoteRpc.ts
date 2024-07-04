@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getMnetRemoteRpcs } from "../api/mnetRemoteRpc/queries";
+import { type getMnetRemoteRpcs } from "../../api/mnetRemoteRpc/queries";
 
 export const mnetRemoteRpc = pgTable(
   "mnet_remote_rpc",

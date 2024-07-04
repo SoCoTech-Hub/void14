@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getGlossaryEntries } from "../api/glossaryEntries/queries";
+import { type getGlossaryEntries } from "../../api/glossaryEntries/queries";
 
 export const glossaryEntries = pgTable("glossary_entries", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

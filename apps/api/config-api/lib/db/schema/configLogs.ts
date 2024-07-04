@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getConfigLogs } from "../api/configLogs/queries";
+import { type getConfigLogs } from "../../api/configLogs/queries";
 
 export const configLogs = pgTable("config_logs", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

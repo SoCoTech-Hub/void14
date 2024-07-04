@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getFileConversions } from "../api/fileConversions/queries";
+import { type getFileConversions } from "../../api/fileConversions/queries";
 
 export const fileConversions = pgTable("file_conversions", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

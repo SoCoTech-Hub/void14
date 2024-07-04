@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getCompetencyPlanComps } from "../api/competencyPlanComps/queries";
+import { type getCompetencyPlanComps } from "../../api/competencyPlanComps/queries";
 import { competencies } from "./competencies";
 import { competencyPlans } from "./competencyPlans";
 

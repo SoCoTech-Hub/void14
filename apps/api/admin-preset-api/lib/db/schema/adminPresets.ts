@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getAdminPresets } from "../api/adminPresets/queries";
+import type { getAdminPresets } from "../../api/adminPresets/queries";
 
 export const adminPresets = pgTable("admin_presets", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getH5pactivityAttemptsResults } from "../api/h5pactivityAttemptsResults/queries";
+import { type getH5pactivityAttemptsResults } from "../../api/h5pactivityAttemptsResults/queries";
 
 export const h5pactivityAttemptsResults = pgTable(
   "h5pactivity_attempts_results",

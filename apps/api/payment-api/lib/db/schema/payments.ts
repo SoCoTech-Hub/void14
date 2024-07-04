@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getPayments } from "../api/payments/queries";
+import { type getPayments } from "../../api/payments/queries";
 import { paymentAccounts } from "./paymentAccounts";
 
 export const payments = pgTable(

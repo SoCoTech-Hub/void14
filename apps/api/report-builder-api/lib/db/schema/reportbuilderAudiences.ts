@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getReportbuilderAudiences } from "../api/reportbuilderAudiences/queries";
+import { type getReportbuilderAudiences } from "../../api/reportbuilderAudiences/queries";
 
 export const reportbuilderAudiences = pgTable(
   "reportbuilder_audiences",

@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getWikiLocks } from "../api/wikiLocks/queries";
+import { type getWikiLocks } from "../../api/wikiLocks/queries";
 import { wikiPages } from "./wikiPages";
 
 export const wikiLocks = pgTable("wiki_locks", {

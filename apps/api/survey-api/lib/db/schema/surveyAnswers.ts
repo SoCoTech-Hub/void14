@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getSurveyAnswers } from "../api/surveyAnswers/queries";
+import { type getSurveyAnswers } from "../../api/surveyAnswers/queries";
 import { surveyQuestions } from "./surveyQuestions";
 import { surveys } from "./surveys";
 

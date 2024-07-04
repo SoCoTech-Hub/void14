@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getAssignPluginConfigs } from "../api/assignPluginConfigs/queries";
+import { type getAssignPluginConfigs } from "../../api/assignPluginConfigs/queries";
 import { assignments } from "./assignments";
 
 export const assignPluginConfigs = pgTable(

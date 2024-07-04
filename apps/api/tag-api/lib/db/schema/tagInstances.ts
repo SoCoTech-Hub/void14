@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getTagInstances } from "../api/tagInstances/queries";
+import { type getTagInstances } from "../../api/tagInstances/queries";
 import { tags } from "./tags";
 
 export const tagInstances = pgTable("tag_instances", {

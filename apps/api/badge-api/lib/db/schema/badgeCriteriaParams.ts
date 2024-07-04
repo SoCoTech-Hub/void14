@@ -1,10 +1,10 @@
-import { type getBadgeCriteriaParams } from "../api/badgeCriteriaParams/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getBadgeCriteriaParams } from "../../api/badgeCriteriaParams/queries";
 import { badgeCriterias } from "./badgeCriterias";
 
 export const badgeCriteriaParams = pgTable("badge_criteria_params", {

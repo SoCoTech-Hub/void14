@@ -13,7 +13,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getForums } from "../api/forums/queries";
+import { type getForums } from "../../api/forums/queries";
 
 export const forums = pgTable("forums", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getLocalizationFields } from "../api/localizationFields/queries";
+import { type getLocalizationFields } from "../../api/localizationFields/queries";
 
 export const localizationFields = pgTable("localization_fields", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

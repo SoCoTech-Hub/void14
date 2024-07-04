@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getMnetService2rpcs } from "../api/mnetService2rpcs/queries";
+import { type getMnetService2rpcs } from "../../api/mnetService2rpcs/queries";
 import { mnetRpcs } from "./mnetRpcs";
 import { mnetServices } from "./mnetServices";
 

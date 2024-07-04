@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getQtypeShortanswerOptions } from "../api/qtypeShortanswerOptions/queries";
+import { type getQtypeShortanswerOptions } from "../../api/qtypeShortanswerOptions/queries";
 
 export const qtypeShortanswerOptions = pgTable(
   "qtype_shortanswer_options",

@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import type { getBlogAssociations } from "../api/blogAssociations/queries";
+import type { getBlogAssociations } from "../../api/blogAssociations/queries";
 import { blogExternals } from "./blogExternals";
 
 export const blogAssociations = pgTable(

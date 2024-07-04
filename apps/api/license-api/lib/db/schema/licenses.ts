@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getLicenses } from "../api/licenses/queries";
+import { type getLicenses } from "../../api/licenses/queries";
 
 export const licenses = pgTable(
   "licenses",

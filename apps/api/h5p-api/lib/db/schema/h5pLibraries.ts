@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getH5pLibraries } from "../api/h5pLibraries/queries";
+import { type getH5pLibraries } from "../../api/h5pLibraries/queries";
 
 export const h5pLibraries = pgTable("h5p_libraries", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

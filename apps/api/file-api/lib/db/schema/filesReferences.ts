@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getFilesReferences } from "../api/filesReferences/queries";
+import { type getFilesReferences } from "../../api/filesReferences/queries";
 
 export const filesReferences = pgTable("files_references", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

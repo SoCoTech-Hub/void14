@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getJobApplications } from "../api/jobApplications/queries";
+import { type getJobApplications } from "../../api/jobApplications/queries";
 
 export const jobApplications = pgTable("job_applications", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

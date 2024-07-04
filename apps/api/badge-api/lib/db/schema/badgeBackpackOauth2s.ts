@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getBadgeBackpackOauth2s } from "../api/badgeBackpackOauth2s/queries";
+import { type getBadgeBackpackOauth2s } from "../../api/badgeBackpackOauth2s/queries";
 
 export const badgeBackpackOauth2s = pgTable("badge_backpack_oauth2s", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

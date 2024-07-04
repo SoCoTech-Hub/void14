@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getBlockRecentlyAccessedItems } from "../api/blockRecentlyAccessedItems/queries";
+import { type getBlockRecentlyAccessedItems } from "../../api/blockRecentlyAccessedItems/queries";
 
 export const blockRecentlyAccessedItems = pgTable(
   "block_recently_accessed_items",

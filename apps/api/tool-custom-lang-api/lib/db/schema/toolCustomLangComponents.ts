@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getToolCustomLangComponents } from "../api/toolCustomLangComponents/queries";
+import { type getToolCustomLangComponents } from "../../api/toolCustomLangComponents/queries";
 
 export const toolCustomLangComponents = pgTable("tool_custom_lang_components", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getLtiTypesConfigs } from "../api/ltiTypesConfigs/queries";
+import { type getLtiTypesConfigs } from "../../api/ltiTypesConfigs/queries";
 
 export const ltiTypesConfigs = pgTable("lti_types_configs", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

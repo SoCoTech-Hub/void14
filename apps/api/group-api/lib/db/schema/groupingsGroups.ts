@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getGroupingsGroups } from "../api/groupingsGroups/queries";
+import { type getGroupingsGroups } from "../../api/groupingsGroups/queries";
 import { groupings } from "./groupings";
 import { groups } from "./groups";
 

@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getAssignSubmissionFiles } from "../api/assignSubmissionFiles/queries";
+import { type getAssignSubmissionFiles } from "../../api/assignSubmissionFiles/queries";
 import { assignments } from "./assignments";
 
 export const assignSubmissionFiles = pgTable(

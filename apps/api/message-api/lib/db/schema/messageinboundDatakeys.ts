@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getMessageinboundDatakeys } from "../api/messageinboundDatakeys/queries";
+import { type getMessageinboundDatakeys } from "../../api/messageinboundDatakeys/queries";
 
 export const messageinboundDatakeys = pgTable("messageinbound_datakeys", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

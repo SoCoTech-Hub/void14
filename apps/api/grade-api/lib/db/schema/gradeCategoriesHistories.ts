@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getGradeCategoriesHistories } from "../api/gradeCategoriesHistories/queries";
+import { type getGradeCategoriesHistories } from "../../api/gradeCategoriesHistories/queries";
 
 export const gradeCategoriesHistories = pgTable("grade_categories_histories", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

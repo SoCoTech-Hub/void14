@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getScormSeqRuleConditions } from "../api/scormSeqRuleConditions/queries";
+import { type getScormSeqRuleConditions } from "../../api/scormSeqRuleConditions/queries";
 import { scormScoes } from "./scormScoes";
 import { scormSeqRuleConds } from "./scormSeqRuleConds";
 

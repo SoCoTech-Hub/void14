@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getShows } from "../api/shows/queries";
+import { type getShows } from "../../api/shows/queries";
 import { showsCategories } from "./showsCategories";
 
 export const shows = pgTable(

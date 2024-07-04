@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getEventResponses } from "../api/eventResponses/queries";
+import { type getEventResponses } from "../../api/eventResponses/queries";
 import { events } from "./events";
 
 export const eventResponses = pgTable(

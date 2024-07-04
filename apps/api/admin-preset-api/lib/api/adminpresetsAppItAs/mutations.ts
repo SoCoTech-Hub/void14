@@ -2,12 +2,12 @@ import { eq } from "drizzle-orm";
 
 import { db } from "../../db/index";
 import {
-  AdminpresetsAppItAId,
+  type AdminpresetsAppItAId,
   adminpresetsAppItAIdSchema,
   adminpresetsAppItAs,
   insertAdminpresetsAppItASchema,
-  NewAdminpresetsAppItAParams,
-  UpdateAdminpresetsAppItAParams,
+  type NewAdminpresetsAppItAParams,
+  type UpdateAdminpresetsAppItAParams,
   updateAdminpresetsAppItASchema,
 } from "../../db/schema/adminpresetsAppItAs";
 

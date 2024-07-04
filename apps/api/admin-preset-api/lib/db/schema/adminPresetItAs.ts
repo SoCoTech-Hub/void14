@@ -1,10 +1,10 @@
 import { pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
-import { z } from "zod";
+import type { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import type { getAdminPresetItAs } from "../api/adminPresetItAs/queries";
+import type { getAdminPresetItAs } from "../../api/adminPresetItAs/queries";
 
 export const adminPresetItAs = pgTable(
   "admin_preset_it_as",

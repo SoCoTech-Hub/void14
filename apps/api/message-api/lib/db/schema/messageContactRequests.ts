@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getMessageContactRequests } from "../api/messageContactRequests/queries";
+import { type getMessageContactRequests } from "../../api/messageContactRequests/queries";
 
 export const messageContactRequests = pgTable("message_contact_requests", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

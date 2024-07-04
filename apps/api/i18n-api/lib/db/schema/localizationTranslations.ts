@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getLocalizationTranslations } from "../api/localizationTranslations/queries";
+import { type getLocalizationTranslations } from "../../api/localizationTranslations/queries";
 import { localizationFields } from "./localizationFields";
 import { localizationLanguages } from "./localizationLanguages";
 

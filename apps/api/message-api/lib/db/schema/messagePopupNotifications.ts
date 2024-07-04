@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getMessagePopupNotifications } from "../api/messagePopupNotifications/queries";
+import { type getMessagePopupNotifications } from "../../api/messagePopupNotifications/queries";
 
 export const messagePopupNotifications = pgTable(
   "message_popup_notifications",

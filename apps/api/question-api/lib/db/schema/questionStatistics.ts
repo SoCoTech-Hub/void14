@@ -14,7 +14,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getQuestionStatistics } from "../api/questionStatistics/queries";
+import { type getQuestionStatistics } from "../../api/questionStatistics/queries";
 import { questions } from "./questions";
 
 export const questionStatistics = pgTable(

@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getQtypeDdmarkerDrags } from "../api/qtypeDdmarkerDrags/queries";
+import { type getQtypeDdmarkerDrags } from "../../api/qtypeDdmarkerDrags/queries";
 
 export const qtypeDdmarkerDrags = pgTable(
   "qtype_ddmarker_drags",

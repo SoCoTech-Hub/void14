@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getToolMonitorRules } from "../api/toolMonitorRules/queries";
+import { type getToolMonitorRules } from "../../api/toolMonitorRules/queries";
 
 export const toolMonitorRules = pgTable("tool_monitor_rules", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

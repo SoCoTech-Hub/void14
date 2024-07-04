@@ -13,7 +13,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getQuizaccessSebQuizSettings } from "../api/quizaccessSebQuizSettings/queries";
+import { type getQuizaccessSebQuizSettings } from "../../api/quizaccessSebQuizSettings/queries";
 import { quizaccessSebTemplates } from "./quizaccessSebTemplates";
 
 export const quizaccessSebQuizSettings = pgTable(

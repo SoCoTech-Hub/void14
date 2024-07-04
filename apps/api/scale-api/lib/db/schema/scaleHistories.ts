@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getScaleHistories } from "../api/scaleHistories/queries";
+import { type getScaleHistories } from "../../api/scaleHistories/queries";
 
 export const scaleHistories = pgTable("scale_histories", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

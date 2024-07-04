@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getProvinceOrganizations } from "../api/provinceOrganizations/queries";
+import { type getProvinceOrganizations } from "../../api/provinceOrganizations/queries";
 import { provinces } from "./provinces";
 
 export const provinceOrganizations = pgTable(

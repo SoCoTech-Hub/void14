@@ -10,7 +10,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getAssignSubmissionOnlineTexts } from "../api/assignSubmissionOnlineTexts/queries";
+import { type getAssignSubmissionOnlineTexts } from "../../api/assignSubmissionOnlineTexts/queries";
 import { assignments } from "./assignments";
 
 export const assignSubmissionOnlineTexts = pgTable(

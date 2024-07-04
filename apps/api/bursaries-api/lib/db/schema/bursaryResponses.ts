@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getBursaryResponses } from "../api/bursaryResponses/queries";
+import { type getBursaryResponses } from "../../api/bursaryResponses/queries";
 import { bursaries } from "./bursaries";
 
 export const bursaryResponses = pgTable("bursary_responses", {

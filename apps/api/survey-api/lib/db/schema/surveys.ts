@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getSurveys } from "../api/surveys/queries";
+import { type getSurveys } from "../../api/surveys/queries";
 
 export const surveys = pgTable("surveys", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

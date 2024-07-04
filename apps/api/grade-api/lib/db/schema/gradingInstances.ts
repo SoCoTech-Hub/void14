@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getGradingInstances } from "../api/gradingInstances/queries";
+import { type getGradingInstances } from "../../api/gradingInstances/queries";
 
 export const gradingInstances = pgTable("grading_instances", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

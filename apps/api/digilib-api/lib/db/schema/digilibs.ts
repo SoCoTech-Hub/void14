@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getDigilibs } from "../api/digilibs/queries";
+import { type getDigilibs } from "../../api/digilibs/queries";
 import { digilibCategories } from "./digilibCategories";
 
 export const digilibs = pgTable(

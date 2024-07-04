@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getToolCohortRoles } from "../api/toolCohortRoles/queries";
+import { type getToolCohortRoles } from "../../api/toolCohortRoles/queries";
 
 export const toolCohortRoles = pgTable("tool_cohort_roles", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

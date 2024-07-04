@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getRoleAssignments } from "../api/roleAssignments/queries";
+import { type getRoleAssignments } from "../../api/roleAssignments/queries";
 import { roles } from "./roles";
 
 export const roleAssignments = pgTable("role_assignments", {

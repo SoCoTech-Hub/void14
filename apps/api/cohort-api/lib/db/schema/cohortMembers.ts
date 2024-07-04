@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getCohortMembers } from "../api/cohortMembers/queries";
+import { type getCohortMembers } from "../../api/cohortMembers/queries";
 import { cohorts } from "./cohorts";
 
 export const cohortMembers = pgTable("cohort_members", {

@@ -11,7 +11,7 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import type { getBlogs } from "../api/blogs/queries";
+import type { getBlogs } from "../../api/blogs/queries";
 
 export const blogs = pgTable(
   "blogs",

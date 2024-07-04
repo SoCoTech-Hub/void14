@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getSearchSimpledbIndexes } from "../api/searchSimpledbIndexes/queries";
+import { type getSearchSimpledbIndexes } from "../../api/searchSimpledbIndexes/queries";
 
 export const searchSimpledbIndexes = pgTable("search_simpledb_indexes", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

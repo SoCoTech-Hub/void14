@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getEnrolLtiUserResourceLinks } from "../api/enrolLtiUserResourceLinks/queries";
+import { type getEnrolLtiUserResourceLinks } from "../../api/enrolLtiUserResourceLinks/queries";
 import { enrolLtiResourceLinks } from "./enrolLtiResourceLinks";
 import { enrolLtiUsers } from "./enrolLtiUsers";
 

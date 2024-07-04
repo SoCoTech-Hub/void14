@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getGradingDefinitions } from "../api/gradingDefinitions/queries";
+import { type getGradingDefinitions } from "../../api/gradingDefinitions/queries";
 
 export const gradingDefinitions = pgTable("grading_definitions", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

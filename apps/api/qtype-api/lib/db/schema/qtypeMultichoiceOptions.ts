@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getQtypeMultichoiceOptions } from "../api/qtypeMultichoiceOptions/queries";
+import { type getQtypeMultichoiceOptions } from "../../api/qtypeMultichoiceOptions/queries";
 
 export const qtypeMultichoiceOptions = pgTable(
   "qtype_multichoice_options",

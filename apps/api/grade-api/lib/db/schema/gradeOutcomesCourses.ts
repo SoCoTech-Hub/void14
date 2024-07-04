@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getGradeOutcomesCourses } from "../api/gradeOutcomesCourses/queries";
+import { type getGradeOutcomesCourses } from "../../api/gradeOutcomesCourses/queries";
 import { gradeOutcomes } from "./gradeOutcomes";
 
 export const gradeOutcomesCourses = pgTable("grade_outcomes_courses", {

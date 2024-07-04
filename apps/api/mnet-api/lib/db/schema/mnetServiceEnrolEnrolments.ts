@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getMnetServiceEnrolEnrolments } from "../api/mnetServiceEnrolEnrolments/queries";
+import { type getMnetServiceEnrolEnrolments } from "../../api/mnetServiceEnrolEnrolments/queries";
 import { mnetHosts } from "./mnetHosts";
 
 export const mnetServiceEnrolEnrolments = pgTable(

@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getNextOfKins } from "../api/nextOfKins/queries";
+import { type getNextOfKins } from "../../api/nextOfKins/queries";
 
 export const nextOfKins = pgTable("next_of_kins", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

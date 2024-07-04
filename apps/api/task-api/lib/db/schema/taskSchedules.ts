@@ -10,7 +10,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getTaskSchedules } from "../api/taskSchedules/queries";
+import { type getTaskSchedules } from "../../api/taskSchedules/queries";
 
 export const taskSchedules = pgTable("task_schedules", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

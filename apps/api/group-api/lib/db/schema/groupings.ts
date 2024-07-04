@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getGroupings } from "../api/groupings/queries";
+import { type getGroupings } from "../../api/groupings/queries";
 
 export const groupings = pgTable("groupings", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

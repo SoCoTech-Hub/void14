@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getCourseModules } from "../api/courseModules/queries";
+import { type getCourseModules } from "../../api/courseModules/queries";
 import { courses } from "./courses";
 
 export const courseModules = pgTable(

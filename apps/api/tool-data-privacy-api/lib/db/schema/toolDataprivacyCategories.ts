@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getToolDataprivacyCategories } from "../api/toolDataprivacyCategories/queries";
+import { type getToolDataprivacyCategories } from "../../api/toolDataprivacyCategories/queries";
 
 export const toolDataprivacyCategories = pgTable(
   "tool_dataprivacy_categories",

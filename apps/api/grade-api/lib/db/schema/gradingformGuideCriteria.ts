@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getGradingformGuideCriteria } from "../api/gradingformGuideCriteria/queries";
+import { type getGradingformGuideCriteria } from "../../api/gradingformGuideCriteria/queries";
 
 export const gradingformGuideCriteria = pgTable(
   "gradingform_guide_criteria",

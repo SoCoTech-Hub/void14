@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getFeedbackValuetmps } from "../api/feedbackValuetmps/queries";
+import { type getFeedbackValuetmps } from "../../api/feedbackValuetmps/queries";
 
 export const feedbackValuetmps = pgTable("feedback_valuetmps", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

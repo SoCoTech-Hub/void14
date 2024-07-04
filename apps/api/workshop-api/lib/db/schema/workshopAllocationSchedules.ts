@@ -13,7 +13,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getWorkshopAllocationSchedules } from "../api/workshopAllocationSchedules/queries";
+import { type getWorkshopAllocationSchedules } from "../../api/workshopAllocationSchedules/queries";
 import { workshops } from "./workshops";
 
 export const workshopAllocationSchedules = pgTable(

@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getQuizOverrides } from "../api/quizOverrides/queries";
+import { type getQuizOverrides } from "../../api/quizOverrides/queries";
 import { quizes } from "./quizes";
 
 export const quizOverrides = pgTable(

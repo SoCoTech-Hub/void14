@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getFolders } from "../api/folders/queries";
+import { type getFolders } from "../../api/folders/queries";
 
 export const folders = pgTable("folders", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

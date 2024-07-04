@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getBadgeCriteriaMets } from "../api/badgeCriteriaMets/queries";
+import { type getBadgeCriteriaMets } from "../../api/badgeCriteriaMets/queries";
 import { badgeCriterias } from "./badgeCriterias";
 
 export const badgeCriteriaMets = pgTable("badge_criteria_mets", {

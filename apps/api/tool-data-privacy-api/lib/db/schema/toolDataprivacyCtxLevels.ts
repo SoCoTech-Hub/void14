@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getToolDataprivacyCtxLevels } from "../api/toolDataprivacyCtxLevels/queries";
+import { type getToolDataprivacyCtxLevels } from "../../api/toolDataprivacyCtxLevels/queries";
 import { toolDataprivacyCategories } from "./toolDataprivacyCategories";
 import { toolDataprivacyPurposes } from "./toolDataprivacyPurposes";
 

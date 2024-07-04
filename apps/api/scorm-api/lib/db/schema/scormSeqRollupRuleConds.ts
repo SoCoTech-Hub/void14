@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getScormSeqRollupRuleConds } from "../api/scormSeqRollupRuleConds/queries";
+import { type getScormSeqRollupRuleConds } from "../../api/scormSeqRollupRuleConds/queries";
 import { scormScoes } from "./scormScoes";
 import { scormSeqRollupRules } from "./scormSeqRollupRules";
 

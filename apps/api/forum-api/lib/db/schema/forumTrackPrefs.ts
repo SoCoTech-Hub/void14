@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getForumTrackPrefs } from "../api/forumTrackPrefs/queries";
+import { type getForumTrackPrefs } from "../../api/forumTrackPrefs/queries";
 import { forums } from "./forums";
 
 export const forumTrackPrefs = pgTable("forum_track_prefs", {

@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getPortfolioInstanceUsers } from "../api/portfolioInstanceUsers/queries";
+import { type getPortfolioInstanceUsers } from "../../api/portfolioInstanceUsers/queries";
 import { portfolioInstances } from "./portfolioInstances";
 
 export const portfolioInstanceUsers = pgTable(

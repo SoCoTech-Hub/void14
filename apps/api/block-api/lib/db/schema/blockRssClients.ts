@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getBlockRssClients } from "../api/blockRssClients/queries";
+import { type getBlockRssClients } from "../../api/blockRssClients/queries";
 
 export const blockRssClients = pgTable("block_rss_clients", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

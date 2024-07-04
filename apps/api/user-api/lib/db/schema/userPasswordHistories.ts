@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getUserPasswordHistories } from "../api/userPasswordHistories/queries";
+import { type getUserPasswordHistories } from "../../api/userPasswordHistories/queries";
 
 export const userPasswordHistories = pgTable("user_password_histories", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

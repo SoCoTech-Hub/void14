@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getQuestionCalculatedOptions } from "../api/questionCalculatedOptions/queries";
+import { type getQuestionCalculatedOptions } from "../../api/questionCalculatedOptions/queries";
 import { questions } from "./questions";
 
 export const questionCalculatedOptions = pgTable(

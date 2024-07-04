@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getAssignSubmissions } from "../api/assignSubmissions/queries";
+import { type getAssignSubmissions } from "../../api/assignSubmissions/queries";
 import { assignments } from "./assignments";
 
 export const assignSubmissions = pgTable(

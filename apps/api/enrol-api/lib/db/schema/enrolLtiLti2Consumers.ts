@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getEnrolLtiLti2Consumers } from "../api/enrolLtiLti2Consumers/queries";
+import { type getEnrolLtiLti2Consumers } from "../../api/enrolLtiLti2Consumers/queries";
 
 export const enrolLtiLti2Consumers = pgTable("enrol_lti_lti2_consumers", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

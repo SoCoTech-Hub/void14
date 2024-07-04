@@ -3,12 +3,12 @@ import { and, eq } from "drizzle-orm";
 import { getUserAuth } from "../../auth/utils";
 import { db } from "../../db/index";
 import {
-  AdminPresetId,
+  type AdminPresetId,
   adminPresetIdSchema,
   adminPresets,
   insertAdminPresetSchema,
-  NewAdminPresetParams,
-  UpdateAdminPresetParams,
+  type NewAdminPresetParams,
+  type UpdateAdminPresetParams,
   updateAdminPresetSchema,
 } from "../../db/schema/adminPresets";
 

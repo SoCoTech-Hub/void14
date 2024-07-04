@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getForumReads } from "../api/forumReads/queries";
+import { type getForumReads } from "../../api/forumReads/queries";
 
 export const forumReads = pgTable("forum_reads", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

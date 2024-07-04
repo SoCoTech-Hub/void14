@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getMnetHosts } from "../api/mnetHosts/queries";
+import { type getMnetHosts } from "../../api/mnetHosts/queries";
 import { mnetApplications } from "./mnetApplications";
 
 export const mnetHosts = pgTable(

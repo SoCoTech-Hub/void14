@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getMessageinboundHandlers } from "../api/messageinboundHandlers/queries";
+import { type getMessageinboundHandlers } from "../../api/messageinboundHandlers/queries";
 
 export const messageinboundHandlers = pgTable("messageinbound_handlers", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

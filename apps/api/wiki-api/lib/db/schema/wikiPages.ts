@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getWikiPages } from "../api/wikiPages/queries";
+import { type getWikiPages } from "../../api/wikiPages/queries";
 
 export const wikiPages = pgTable("wiki_pages", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

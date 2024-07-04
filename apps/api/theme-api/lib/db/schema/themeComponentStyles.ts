@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getThemeComponentStyles } from "../api/themeComponentStyles/queries";
+import { type getThemeComponentStyles } from "../../api/themeComponentStyles/queries";
 import { themeComponents } from "./themeComponents";
 import { themes } from "./themes";
 

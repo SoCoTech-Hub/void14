@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getLessonOverrides } from "../api/lessonOverrides/queries";
+import { type getLessonOverrides } from "../../api/lessonOverrides/queries";
 import { lessons } from "./lessons";
 
 export const lessonOverrides = pgTable("lesson_overrides", {

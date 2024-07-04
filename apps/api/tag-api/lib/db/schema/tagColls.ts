@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getTagColls } from "../api/tagColls/queries";
+import { type getTagColls } from "../../api/tagColls/queries";
 
 export const tagColls = pgTable("tag_colls", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

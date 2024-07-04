@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getRoleAllowOverrides } from "../api/roleAllowOverrides/queries";
+import { type getRoleAllowOverrides } from "../../api/roleAllowOverrides/queries";
 import { roles } from "./roles";
 
 export const roleAllowOverrides = pgTable("role_allow_overrides", {

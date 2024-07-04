@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getToolRecyclebinCourses } from "../api/toolRecyclebinCourses/queries";
+import { type getToolRecyclebinCourses } from "../../api/toolRecyclebinCourses/queries";
 
 export const toolRecyclebinCourses = pgTable("tool_recyclebin_courses", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

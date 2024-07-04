@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getDigilibCategories } from "../api/digilibCategories/queries";
+import { type getDigilibCategories } from "../../api/digilibCategories/queries";
 
 export const digilibCategories = pgTable("digilib_categories", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

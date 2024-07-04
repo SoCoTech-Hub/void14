@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getBadges } from "../api/badges/queries";
+import { type getBadges } from "../../api/badges/queries";
 
 export const badges = pgTable("badges", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getContexts } from "../api/contexts/queries";
+import { type getContexts } from "../../api/contexts/queries";
 
 export const contexts = pgTable("contexts", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getFavourites } from "../api/favourites/queries";
+import { type getFavourites } from "../../api/favourites/queries";
 
 export const favourites = pgTable("favourites", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

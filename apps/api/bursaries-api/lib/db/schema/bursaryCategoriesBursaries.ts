@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getBursaryCategoriesBursaries } from "../api/bursaryCategoriesBursaries/queries";
+import { type getBursaryCategoriesBursaries } from "../../api/bursaryCategoriesBursaries/queries";
 import { bursaries } from "./bursaries";
 import { bursaryCategories } from "./bursaryCategories";
 

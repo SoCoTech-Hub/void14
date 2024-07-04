@@ -10,7 +10,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getGradingformGuideComments } from "../api/gradingformGuideComments/queries";
+import { type getGradingformGuideComments } from "../../api/gradingformGuideComments/queries";
 
 export const gradingformGuideComments = pgTable(
   "gradingform_guide_comments",

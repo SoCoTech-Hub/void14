@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getLessonBranches } from "../api/lessonBranches/queries";
+import { type getLessonBranches } from "../../api/lessonBranches/queries";
 import { lessonPages } from "./lessonPages";
 import { lessons } from "./lessons";
 

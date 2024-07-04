@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getAnalyticsUsedAnalysables } from "../api/analyticsUsedAnalysables/queries";
+import { type getAnalyticsUsedAnalysables } from "../../api/analyticsUsedAnalysables/queries";
 
 export const analyticsUsedAnalysables = pgTable(
   "analytics_used_analysables",

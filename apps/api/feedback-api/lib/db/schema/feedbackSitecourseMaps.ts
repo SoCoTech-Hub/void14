@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getFeedbackSitecourseMaps } from "../api/feedbackSitecourseMaps/queries";
+import { type getFeedbackSitecourseMaps } from "../../api/feedbackSitecourseMaps/queries";
 import { feedbacks } from "./feedbacks";
 
 export const feedbackSitecourseMaps = pgTable("feedback_sitecourse_maps", {

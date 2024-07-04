@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getMassMailMessages } from "../api/massMailMessages/queries";
+import { type getMassMailMessages } from "../../api/massMailMessages/queries";
 import { massMailLists } from "./massMailLists";
 
 export const massMailMessages = pgTable(

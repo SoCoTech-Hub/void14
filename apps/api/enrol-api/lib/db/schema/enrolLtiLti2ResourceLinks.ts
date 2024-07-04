@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getEnrolLtiLti2ResourceLinks } from "../api/enrolLtiLti2ResourceLinks/queries";
+import { type getEnrolLtiLti2ResourceLinks } from "../../api/enrolLtiLti2ResourceLinks/queries";
 
 export const enrolLtiLti2ResourceLinks = pgTable(
   "enrol_lti_lti2_resource_links",

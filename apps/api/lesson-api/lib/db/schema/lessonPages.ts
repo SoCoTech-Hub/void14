@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getLessonPages } from "../api/lessonPages/queries";
+import { type getLessonPages } from "../../api/lessonPages/queries";
 
 export const lessonPages = pgTable("lesson_pages", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

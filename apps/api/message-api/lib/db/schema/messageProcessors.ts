@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getMessageProcessors } from "../api/messageProcessors/queries";
+import { type getMessageProcessors } from "../../api/messageProcessors/queries";
 
 export const messageProcessors = pgTable("message_processors", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

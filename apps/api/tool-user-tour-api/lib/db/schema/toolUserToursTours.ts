@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getToolUserToursTours } from "../api/toolUserToursTours/queries";
+import { type getToolUserToursTours } from "../../api/toolUserToursTours/queries";
 
 export const toolUserToursTours = pgTable("tool_user_tours_tours", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

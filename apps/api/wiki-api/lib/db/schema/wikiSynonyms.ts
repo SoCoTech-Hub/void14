@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getWikiSynonyms } from "../api/wikiSynonyms/queries";
+import { type getWikiSynonyms } from "../../api/wikiSynonyms/queries";
 import { wikiPages } from "./wikiPages";
 import { wikiSubwikis } from "./wikiSubwikis";
 

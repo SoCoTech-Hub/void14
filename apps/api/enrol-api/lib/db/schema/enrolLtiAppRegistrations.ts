@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getEnrolLtiAppRegistrations } from "../api/enrolLtiAppRegistrations/queries";
+import { type getEnrolLtiAppRegistrations } from "../../api/enrolLtiAppRegistrations/queries";
 
 export const enrolLtiAppRegistrations = pgTable("enrol_lti_app_registrations", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

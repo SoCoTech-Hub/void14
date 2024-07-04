@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getEventsHandlers } from "../api/eventsHandlers/queries";
+import { type getEventsHandlers } from "../../api/eventsHandlers/queries";
 
 export const eventsHandlers = pgTable("events_handlers", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

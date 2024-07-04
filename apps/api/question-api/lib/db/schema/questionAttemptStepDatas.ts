@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getQuestionAttemptStepDatas } from "../api/questionAttemptStepDatas/queries";
+import { type getQuestionAttemptStepDatas } from "../../api/questionAttemptStepDatas/queries";
 import { questionAttemptSteps } from "./questionAttemptSteps";
 
 export const questionAttemptStepDatas = pgTable(

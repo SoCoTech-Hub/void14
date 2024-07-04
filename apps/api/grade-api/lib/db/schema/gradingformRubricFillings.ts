@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getGradingformRubricFillings } from "../api/gradingformRubricFillings/queries";
+import { type getGradingformRubricFillings } from "../../api/gradingformRubricFillings/queries";
 
 export const gradingformRubricFillings = pgTable(
   "gradingform_rubric_fillings",

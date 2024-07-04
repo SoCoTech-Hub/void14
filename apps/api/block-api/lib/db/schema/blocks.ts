@@ -10,7 +10,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getBlocks } from "../api/blocks/queries";
+import { type getBlocks } from "../../api/blocks/queries";
 
 export const blocks = pgTable(
   "blocks",

@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getUserLastAccesses } from "../api/userLastAccesses/queries";
+import { type getUserLastAccesses } from "../../api/userLastAccesses/queries";
 
 export const userLastAccesses = pgTable("user_last_accesses", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

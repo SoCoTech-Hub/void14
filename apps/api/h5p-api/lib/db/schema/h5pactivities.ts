@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getH5pactivities } from "../api/h5pactivities/queries";
+import { type getH5pactivities } from "../../api/h5pactivities/queries";
 
 export const h5pactivities = pgTable("h5pactivities", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

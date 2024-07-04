@@ -13,7 +13,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getOauth2Issuers } from "../api/oauth2Issuers/queries";
+import { type getOauth2Issuers } from "../../api/oauth2Issuers/queries";
 
 export const oauth2Issuers = pgTable(
   "oauth2_issuers",

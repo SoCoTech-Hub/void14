@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getWorkshopAggregations } from "../api/workshopAggregations/queries";
+import { type getWorkshopAggregations } from "../../api/workshopAggregations/queries";
 import { workshops } from "./workshops";
 
 export const workshopAggregations = pgTable(

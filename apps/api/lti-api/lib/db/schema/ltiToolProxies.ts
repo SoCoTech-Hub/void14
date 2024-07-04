@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getLtiToolProxies } from "../api/ltiToolProxies/queries";
+import { type getLtiToolProxies } from "../../api/ltiToolProxies/queries";
 
 export const ltiToolProxies = pgTable("lti_tool_proxies", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

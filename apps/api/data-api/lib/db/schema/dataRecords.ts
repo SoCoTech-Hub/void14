@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getDataRecords } from "../api/dataRecords/queries";
+import { type getDataRecords } from "../../api/dataRecords/queries";
 import { datas } from "./datas";
 
 export const dataRecords = pgTable("data_records", {

@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getStickers } from "../api/stickers/queries";
+import { type getStickers } from "../../api/stickers/queries";
 
 export const stickers = pgTable("stickers", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

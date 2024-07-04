@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getToolPolicies } from "../api/toolPolicies/queries";
+import { type getToolPolicies } from "../../api/toolPolicies/queries";
 
 export const toolPolicies = pgTable("tool_policies", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

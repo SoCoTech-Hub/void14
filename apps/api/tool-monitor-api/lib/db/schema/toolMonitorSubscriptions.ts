@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getToolMonitorSubscriptions } from "../api/toolMonitorSubscriptions/queries";
+import { type getToolMonitorSubscriptions } from "../../api/toolMonitorSubscriptions/queries";
 import { toolMonitorRules } from "./toolMonitorRules";
 
 export const toolMonitorSubscriptions = pgTable("tool_monitor_subscriptions", {

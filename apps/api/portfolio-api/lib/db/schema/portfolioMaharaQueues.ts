@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getPortfolioMaharaQueues } from "../api/portfolioMaharaQueues/queries";
+import { type getPortfolioMaharaQueues } from "../../api/portfolioMaharaQueues/queries";
 import { portfolioTempdatas } from "./portfolioTempdatas";
 
 export const portfolioMaharaQueues = pgTable(

@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getBadgeIssues } from "../api/badgeIssues/queries";
+import { type getBadgeIssues } from "../../api/badgeIssues/queries";
 import { badges } from "./badges";
 
 export const badgeIssues = pgTable(

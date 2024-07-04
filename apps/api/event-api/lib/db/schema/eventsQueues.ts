@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getEventsQueues } from "../api/eventsQueues/queries";
+import { type getEventsQueues } from "../../api/eventsQueues/queries";
 
 export const eventsQueues = pgTable("events_queues", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

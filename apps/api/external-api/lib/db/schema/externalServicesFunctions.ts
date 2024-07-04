@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getExternalServicesFunctions } from "../api/externalServicesFunctions/queries";
+import { type getExternalServicesFunctions } from "../../api/externalServicesFunctions/queries";
 
 export const externalServicesFunctions = pgTable(
   "external_services_functions",

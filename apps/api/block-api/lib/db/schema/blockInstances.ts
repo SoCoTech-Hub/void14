@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getBlockInstances } from "../api/blockInstances/queries";
+import { type getBlockInstances } from "../../api/blockInstances/queries";
 
 export const blockInstances = pgTable("block_instances", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

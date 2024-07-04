@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getNotificationResponses } from "../api/notificationResponses/queries";
+import { type getNotificationResponses } from "../../api/notificationResponses/queries";
 import { notifications } from "./notifications";
 
 export const notificationResponses = pgTable("notification_responses", {

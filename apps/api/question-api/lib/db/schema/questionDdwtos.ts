@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getQuestionDdwtos } from "../api/questionDdwtos/queries";
+import { type getQuestionDdwtos } from "../../api/questionDdwtos/queries";
 import { questions } from "./questions";
 
 export const questionDdwtos = pgTable(

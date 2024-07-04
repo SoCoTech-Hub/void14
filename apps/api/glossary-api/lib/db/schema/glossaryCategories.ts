@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getGlossaryCategories } from "../api/glossaryCategories/queries";
+import { type getGlossaryCategories } from "../../api/glossaryCategories/queries";
 import { glossaries } from "./glossaries";
 
 export const glossaryCategories = pgTable("glossary_categories", {

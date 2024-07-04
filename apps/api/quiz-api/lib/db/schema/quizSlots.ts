@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getQuizSlots } from "../api/quizSlots/queries";
+import { type getQuizSlots } from "../../api/quizSlots/queries";
 import { quizes } from "./quizes";
 
 export const quizSlots = pgTable(

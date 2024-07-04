@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getMnetRemoteService2rpcs } from "../api/mnetRemoteService2rpcs/queries";
+import { type getMnetRemoteService2rpcs } from "../../api/mnetRemoteService2rpcs/queries";
 
 export const mnetRemoteService2rpcs = pgTable(
   "mnet_remote_service2rpcs",

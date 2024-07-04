@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getScormSeqObjectives } from "../api/scormSeqObjectives/queries";
+import { type getScormSeqObjectives } from "../../api/scormSeqObjectives/queries";
 import { scormScoes } from "./scormScoes";
 
 export const scormSeqObjectives = pgTable("scorm_seq_objectives", {

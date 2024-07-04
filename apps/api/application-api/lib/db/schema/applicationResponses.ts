@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getApplicationResponses } from "../api/applicationResponses/queries";
+import { type getApplicationResponses } from "../../api/applicationResponses/queries";
 import { jobApplications } from "./jobApplications";
 
 export const applicationResponses = pgTable("application_responses", {

@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getLessonAttempts } from "../api/lessonAttempts/queries";
+import { type getLessonAttempts } from "../../api/lessonAttempts/queries";
 import { lessonAnswers } from "./lessonAnswers";
 import { lessonPages } from "./lessonPages";
 import { lessons } from "./lessons";

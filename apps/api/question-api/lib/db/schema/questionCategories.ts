@@ -10,7 +10,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getQuestionCategories } from "../api/questionCategories/queries";
+import { type getQuestionCategories } from "../../api/questionCategories/queries";
 
 export const questionCategories = pgTable(
   "question_categories",

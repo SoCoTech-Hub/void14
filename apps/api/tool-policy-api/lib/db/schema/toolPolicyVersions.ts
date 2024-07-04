@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getToolPolicyVersions } from "../api/toolPolicyVersions/queries";
+import { type getToolPolicyVersions } from "../../api/toolPolicyVersions/queries";
 import { toolPolicies } from "./toolPolicies";
 
 export const toolPolicyVersions = pgTable("tool_policy_versions", {

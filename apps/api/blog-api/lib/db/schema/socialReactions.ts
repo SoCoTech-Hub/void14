@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import type { getSocialReactions } from "../api/socialReactions/queries";
+import type { getSocialReactions } from "../../api/socialReactions/queries";
 import { blogs } from "./blogs";
 import { socialIcons } from "./socialIcons";
 

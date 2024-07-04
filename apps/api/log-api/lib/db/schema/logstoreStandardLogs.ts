@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getLogstoreStandardLogs } from "../api/logstoreStandardLogs/queries";
+import { type getLogstoreStandardLogs } from "../../api/logstoreStandardLogs/queries";
 
 export const logstoreStandardLogs = pgTable("logstore_standard_logs", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

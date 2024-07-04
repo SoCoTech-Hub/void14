@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getCourseModulesCompletions } from "../api/courseModulesCompletions/queries";
+import { type getCourseModulesCompletions } from "../../api/courseModulesCompletions/queries";
 
 export const courseModulesCompletions = pgTable(
   "course_modules_completions",

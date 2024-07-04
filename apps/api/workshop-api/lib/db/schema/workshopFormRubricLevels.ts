@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getWorkshopFormRubricLevels } from "../api/workshopFormRubricLevels/queries";
+import { type getWorkshopFormRubricLevels } from "../../api/workshopFormRubricLevels/queries";
 
 export const workshopFormRubricLevels = pgTable(
   "workshop_form_rubric_levels",

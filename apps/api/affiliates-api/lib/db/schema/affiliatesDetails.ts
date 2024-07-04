@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getAffiliatesDetails } from "../api/affiliatesDetails/queries";
+import { type getAffiliatesDetails } from "../../api/affiliatesDetails/queries";
 import { affiliates } from "./affiliates";
 
 export const affiliatesDetails = pgTable("affiliates_details", {

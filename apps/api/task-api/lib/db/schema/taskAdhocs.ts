@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getTaskAdhocs } from "../api/taskAdhocs/queries";
+import { type getTaskAdhocs } from "../../api/taskAdhocs/queries";
 
 export const taskAdhocs = pgTable("task_adhocs", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

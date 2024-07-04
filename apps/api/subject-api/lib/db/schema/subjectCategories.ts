@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getSubjectCategories } from "../api/subjectCategories/queries";
+import { type getSubjectCategories } from "../../api/subjectCategories/queries";
 
 export const subjectCategories = pgTable("subject_categories", {
   id: varchar("id", { length: 191 })

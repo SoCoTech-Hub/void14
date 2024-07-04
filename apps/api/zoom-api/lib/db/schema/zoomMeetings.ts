@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getZoomMeetings } from "../api/zoomMeetings/queries";
+import { type getZoomMeetings } from "../../api/zoomMeetings/queries";
 import { zooms } from "./zooms";
 
 export const zoomMeetings = pgTable("zoom_meetings", {

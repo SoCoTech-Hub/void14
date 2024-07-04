@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getMessageEmailMessages } from "../api/messageEmailMessages/queries";
+import { type getMessageEmailMessages } from "../../api/messageEmailMessages/queries";
 
 export const messageEmailMessages = pgTable("message_email_messages", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

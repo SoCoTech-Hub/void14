@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getRepositoryInstances } from "../api/repositoryInstances/queries";
+import { type getRepositoryInstances } from "../../api/repositoryInstances/queries";
 
 export const repositoryInstances = pgTable(
   "repository_instances",

@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getPortfolioTempdatas } from "../api/portfolioTempdatas/queries";
+import { type getPortfolioTempdatas } from "../../api/portfolioTempdatas/queries";
 import { portfolioInstances } from "./portfolioInstances";
 
 export const portfolioTempdatas = pgTable(

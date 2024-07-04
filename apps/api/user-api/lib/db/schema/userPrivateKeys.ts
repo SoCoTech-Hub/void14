@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getUserPrivateKeys } from "../api/userPrivateKeys/queries";
+import { type getUserPrivateKeys } from "../../api/userPrivateKeys/queries";
 
 export const userPrivateKeys = pgTable("user_private_keys", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

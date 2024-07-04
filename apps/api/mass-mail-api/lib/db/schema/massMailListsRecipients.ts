@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getMassMailListsRecipients } from "../api/massMailListsRecipients/queries";
+import { type getMassMailListsRecipients } from "../../api/massMailListsRecipients/queries";
 import { massMailLists } from "./massMailLists";
 import { massMailRecipients } from "./massMailRecipients";
 

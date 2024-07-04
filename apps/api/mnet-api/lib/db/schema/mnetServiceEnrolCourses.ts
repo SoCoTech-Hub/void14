@@ -10,7 +10,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getMnetServiceEnrolCourses } from "../api/mnetServiceEnrolCourses/queries";
+import { type getMnetServiceEnrolCourses } from "../../api/mnetServiceEnrolCourses/queries";
 import { mnetHosts } from "./mnetHosts";
 
 export const mnetServiceEnrolCourses = pgTable(

@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getGlossaryAliases } from "../api/glossaryAliases/queries";
+import { type getGlossaryAliases } from "../../api/glossaryAliases/queries";
 
 export const glossaryAliases = pgTable("glossary_aliases", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

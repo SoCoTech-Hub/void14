@@ -14,7 +14,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getGradeItemsHistories } from "../api/gradeItemsHistories/queries";
+import { type getGradeItemsHistories } from "../../api/gradeItemsHistories/queries";
 
 export const gradeItemsHistories = pgTable(
   "grade_items_histories",

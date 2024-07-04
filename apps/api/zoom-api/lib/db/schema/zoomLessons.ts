@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getZoomLessons } from "../api/zoomLessons/queries";
+import { type getZoomLessons } from "../../api/zoomLessons/queries";
 
 export const zoomLessons = pgTable(
   "zoom_lessons",

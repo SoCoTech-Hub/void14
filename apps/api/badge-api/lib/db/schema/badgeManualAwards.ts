@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getBadgeManualAwards } from "../api/badgeManualAwards/queries";
+import { type getBadgeManualAwards } from "../../api/badgeManualAwards/queries";
 import { badges } from "./badges";
 
 export const badgeManualAwards = pgTable(

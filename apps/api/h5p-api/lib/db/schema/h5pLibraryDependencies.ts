@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getH5pLibraryDependencies } from "../api/h5pLibraryDependencies/queries";
+import { type getH5pLibraryDependencies } from "../../api/h5pLibraryDependencies/queries";
 import { h5pLibraries } from "./h5pLibraries";
 
 export const h5pLibraryDependencies = pgTable("h5p_library_dependencies", {

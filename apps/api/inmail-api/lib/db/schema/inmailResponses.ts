@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getInmailResponses } from "../api/inmailResponses/queries";
+import { type getInmailResponses } from "../../api/inmailResponses/queries";
 import { inmails } from "./inmails";
 
 export const inmailResponses = pgTable(

@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getQtypeDdimageortextDrags } from "../api/qtypeDdimageortextDrags/queries";
+import { type getQtypeDdimageortextDrags } from "../../api/qtypeDdimageortextDrags/queries";
 
 export const qtypeDdimageortextDrags = pgTable(
   "qtype_ddimageortext_drags",

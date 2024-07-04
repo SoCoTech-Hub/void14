@@ -14,7 +14,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getQuestionAttempts } from "../api/questionAttempts/queries";
+import { type getQuestionAttempts } from "../../api/questionAttempts/queries";
 import { questions } from "./questions";
 import { questionUsages } from "./questionUsages";
 

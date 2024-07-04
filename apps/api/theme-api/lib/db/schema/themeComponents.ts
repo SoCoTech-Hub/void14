@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getThemeComponents } from "../api/themeComponents/queries";
+import { type getThemeComponents } from "../../api/themeComponents/queries";
 
 export const themeComponents = pgTable("theme_components", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

@@ -12,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getPaymentGateways } from "../api/paymentGateways/queries";
+import { type getPaymentGateways } from "../../api/paymentGateways/queries";
 import { paymentAccounts } from "./paymentAccounts";
 
 export const paymentGateways = pgTable(

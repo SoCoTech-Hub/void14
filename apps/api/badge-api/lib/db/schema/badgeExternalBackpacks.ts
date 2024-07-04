@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getBadgeExternalBackpacks } from "../api/badgeExternalBackpacks/queries";
+import { type getBadgeExternalBackpacks } from "../../api/badgeExternalBackpacks/queries";
 
 export const badgeExternalBackpacks = pgTable("badge_external_backpacks", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

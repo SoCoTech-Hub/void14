@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getEnrolPaypals } from "../api/enrolPaypals/queries";
+import { type getEnrolPaypals } from "../../api/enrolPaypals/queries";
 
 export const enrolPaypals = pgTable("enrol_paypals", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

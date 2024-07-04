@@ -13,7 +13,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getFiles } from "../api/files/queries";
+import { type getFiles } from "../../api/files/queries";
 
 export const files = pgTable(
   "files",

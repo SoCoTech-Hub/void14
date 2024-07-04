@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getLockDbs } from "../api/lockDbs/queries";
+import { type getLockDbs } from "../../api/lockDbs/queries";
 
 export const lockDbs = pgTable("lock_dbs", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

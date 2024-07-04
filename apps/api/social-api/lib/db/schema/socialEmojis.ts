@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getSocialEmojis } from "../api/socialEmojis/queries";
+import { type getSocialEmojis } from "../../api/socialEmojis/queries";
 
 export const socialEmojis = pgTable("social_emojis", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

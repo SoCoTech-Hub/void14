@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getRepositoryOnedriveAccesses } from "../api/repositoryOnedriveAccesses/queries";
+import { type getRepositoryOnedriveAccesses } from "../../api/repositoryOnedriveAccesses/queries";
 
 export const repositoryOnedriveAccesses = pgTable(
   "repository_onedrive_accesses",

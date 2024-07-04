@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getSocialShares } from "../api/socialShares/queries";
+import { type getSocialShares } from "../../api/socialShares/queries";
 import { socialLinks } from "./socialLinks";
 
 export const socialShares = pgTable("social_shares", {

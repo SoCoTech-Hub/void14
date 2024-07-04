@@ -5,7 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getExternalServices } from "../api/externalServices/queries";
+import { type getExternalServices } from "../../api/externalServices/queries";
 
 export const externalServices = pgTable("external_services", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

@@ -10,7 +10,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getCourseCompletionCritCompls } from "../api/courseCompletionCritCompls/queries";
+import { type getCourseCompletionCritCompls } from "../../api/courseCompletionCritCompls/queries";
 import { courses } from "./courses";
 
 export const courseCompletionCritCompls = pgTable(

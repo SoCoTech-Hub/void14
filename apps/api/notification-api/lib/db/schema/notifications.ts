@@ -11,7 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getNotifications } from "../api/notifications/queries";
+import { type getNotifications } from "../../api/notifications/queries";
 
 export const notifications = pgTable(
   "notifications",

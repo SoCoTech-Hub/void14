@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getAssignUserMappings } from "../api/assignUserMappings/queries";
+import { type getAssignUserMappings } from "../../api/assignUserMappings/queries";
 import { assignments } from "./assignments";
 
 export const assignUserMappings = pgTable(

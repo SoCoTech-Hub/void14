@@ -4,7 +4,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getQuestionResponseCounts } from "../api/questionResponseCounts/queries";
+import { type getQuestionResponseCounts } from "../../api/questionResponseCounts/queries";
 import { questionResponseAnalysises } from "./questionResponseAnalysises";
 
 export const questionResponseCounts = pgTable(

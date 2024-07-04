@@ -13,7 +13,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { type getReportbuilderReports } from "../api/reportbuilderReports/queries";
+import { type getReportbuilderReports } from "../../api/reportbuilderReports/queries";
 
 export const reportbuilderReports = pgTable(
   "reportbuilder_reports",

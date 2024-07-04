@@ -10,7 +10,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
-import { type getWorkshopFormNumErrorMaps } from "../api/workshopFormNumErrorMaps/queries";
+import { type getWorkshopFormNumErrorMaps } from "../../api/workshopFormNumErrorMaps/queries";
 import { workshops } from "./workshops";
 
 export const workshopFormNumErrorMaps = pgTable(
