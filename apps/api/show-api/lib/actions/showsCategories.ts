@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createShowsCategory,
   deleteShowsCategory,
   updateShowsCategory,
-} from "@/lib/api/showsCategories/mutations";
+} from "../api/showsCategories/mutations";
 import {
-  ShowsCategoryId,
-  NewShowsCategoryParams,
-  UpdateShowsCategoryParams,
-  showsCategoryIdSchema,
   insertShowsCategoryParams,
+  NewShowsCategoryParams,
+  ShowsCategoryId,
+  showsCategoryIdSchema,
+  UpdateShowsCategoryParams,
   updateShowsCategoryParams,
-} from "@/lib/db/schema/showsCategories";
+} from "../db/schema/showsCategories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateShowsCategories = () => revalidatePath("/shows-categories");
 
-export const createShowsCategoryAction = async (input: NewShowsCategoryParams) => {
+export const createShowsCategoryAction = async (
+  input: NewShowsCategoryParams,
+) => {
   try {
     const payload = insertShowsCategoryParams.parse(input);
     await createShowsCategory(payload);
@@ -37,7 +40,9 @@ export const createShowsCategoryAction = async (input: NewShowsCategoryParams) =
   }
 };
 
-export const updateShowsCategoryAction = async (input: UpdateShowsCategoryParams) => {
+export const updateShowsCategoryAction = async (
+  input: UpdateShowsCategoryParams,
+) => {
   try {
     const payload = updateShowsCategoryParams.parse(input);
     await updateShowsCategory(payload.id, payload);

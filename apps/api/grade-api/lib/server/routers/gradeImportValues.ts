@@ -1,19 +1,28 @@
-import { getGradeImportValueById, getGradeImportValues } from "@/lib/api/gradeImportValues/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createGradeImportValue,
+  deleteGradeImportValue,
+  updateGradeImportValue,
+} from "../api/gradeImportValues/mutations";
+import {
+  getGradeImportValueById,
+  getGradeImportValues,
+} from "../api/gradeImportValues/queries";
 import {
   gradeImportValueIdSchema,
   insertGradeImportValueParams,
   updateGradeImportValueParams,
-} from "@/lib/db/schema/gradeImportValues";
-import { createGradeImportValue, deleteGradeImportValue, updateGradeImportValue } from "@/lib/api/gradeImportValues/mutations";
+} from "../db/schema/gradeImportValues";
+import { publicProcedure, router } from "../server/trpc";
 
 export const gradeImportValuesRouter = router({
   getGradeImportValues: publicProcedure.query(async () => {
     return getGradeImportValues();
   }),
-  getGradeImportValueById: publicProcedure.input(gradeImportValueIdSchema).query(async ({ input }) => {
-    return getGradeImportValueById(input.id);
-  }),
+  getGradeImportValueById: publicProcedure
+    .input(gradeImportValueIdSchema)
+    .query(async ({ input }) => {
+      return getGradeImportValueById(input.id);
+    }),
   createGradeImportValue: publicProcedure
     .input(insertGradeImportValueParams)
     .mutation(async ({ input }) => {

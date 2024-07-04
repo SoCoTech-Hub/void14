@@ -1,4 +1,3 @@
-import { type getH5pactivityAttemptsResults } from "@/lib/api/h5pactivityAttemptsResults/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -12,6 +11,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getH5pactivityAttemptsResults } from "../api/h5pactivityAttemptsResults/queries";
 
 export const h5pactivityAttemptsResults = pgTable(
   "h5pactivity_attempts_results",

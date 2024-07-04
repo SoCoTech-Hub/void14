@@ -1,19 +1,25 @@
-import { getDataRecordById, getDataRecords } from "@/lib/api/dataRecords/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createDataRecord,
+  deleteDataRecord,
+  updateDataRecord,
+} from "../api/dataRecords/mutations";
+import { getDataRecordById, getDataRecords } from "../api/dataRecords/queries";
 import {
   dataRecordIdSchema,
   insertDataRecordParams,
   updateDataRecordParams,
-} from "@/lib/db/schema/dataRecords";
-import { createDataRecord, deleteDataRecord, updateDataRecord } from "@/lib/api/dataRecords/mutations";
+} from "../db/schema/dataRecords";
+import { publicProcedure, router } from "../server/trpc";
 
 export const dataRecordsRouter = router({
   getDataRecords: publicProcedure.query(async () => {
     return getDataRecords();
   }),
-  getDataRecordById: publicProcedure.input(dataRecordIdSchema).query(async ({ input }) => {
-    return getDataRecordById(input.id);
-  }),
+  getDataRecordById: publicProcedure
+    .input(dataRecordIdSchema)
+    .query(async ({ input }) => {
+      return getDataRecordById(input.id);
+    }),
   createDataRecord: publicProcedure
     .input(insertDataRecordParams)
     .mutation(async ({ input }) => {

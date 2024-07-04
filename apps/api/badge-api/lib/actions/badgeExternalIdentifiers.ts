@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBadgeExternalIdentifier,
   deleteBadgeExternalIdentifier,
   updateBadgeExternalIdentifier,
-} from "@/lib/api/badgeExternalIdentifiers/mutations";
+} from "../api/badgeExternalIdentifiers/mutations";
 import {
   BadgeExternalIdentifierId,
-  NewBadgeExternalIdentifierParams,
-  UpdateBadgeExternalIdentifierParams,
   badgeExternalIdentifierIdSchema,
   insertBadgeExternalIdentifierParams,
+  NewBadgeExternalIdentifierParams,
+  UpdateBadgeExternalIdentifierParams,
   updateBadgeExternalIdentifierParams,
-} from "@/lib/db/schema/badgeExternalIdentifiers";
+} from "../db/schema/badgeExternalIdentifiers";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateBadgeExternalIdentifiers = () => revalidatePath("/badge-external-identifiers");
+const revalidateBadgeExternalIdentifiers = () =>
+  revalidatePath("/badge-external-identifiers");
 
-export const createBadgeExternalIdentifierAction = async (input: NewBadgeExternalIdentifierParams) => {
+export const createBadgeExternalIdentifierAction = async (
+  input: NewBadgeExternalIdentifierParams,
+) => {
   try {
     const payload = insertBadgeExternalIdentifierParams.parse(input);
     await createBadgeExternalIdentifier(payload);
@@ -37,7 +41,9 @@ export const createBadgeExternalIdentifierAction = async (input: NewBadgeExterna
   }
 };
 
-export const updateBadgeExternalIdentifierAction = async (input: UpdateBadgeExternalIdentifierParams) => {
+export const updateBadgeExternalIdentifierAction = async (
+  input: UpdateBadgeExternalIdentifierParams,
+) => {
   try {
     const payload = updateBadgeExternalIdentifierParams.parse(input);
     await updateBadgeExternalIdentifier(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateBadgeExternalIdentifierAction = async (input: UpdateBadgeExte
   }
 };
 
-export const deleteBadgeExternalIdentifierAction = async (input: BadgeExternalIdentifierId) => {
+export const deleteBadgeExternalIdentifierAction = async (
+  input: BadgeExternalIdentifierId,
+) => {
   try {
     const payload = badgeExternalIdentifierIdSchema.parse({ id: input });
     await deleteBadgeExternalIdentifier(payload.id);

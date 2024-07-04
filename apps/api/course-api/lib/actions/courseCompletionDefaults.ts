@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCourseCompletionDefault,
   deleteCourseCompletionDefault,
   updateCourseCompletionDefault,
-} from "@/lib/api/courseCompletionDefaults/mutations";
+} from "../api/courseCompletionDefaults/mutations";
 import {
   CourseCompletionDefaultId,
-  NewCourseCompletionDefaultParams,
-  UpdateCourseCompletionDefaultParams,
   courseCompletionDefaultIdSchema,
   insertCourseCompletionDefaultParams,
+  NewCourseCompletionDefaultParams,
+  UpdateCourseCompletionDefaultParams,
   updateCourseCompletionDefaultParams,
-} from "@/lib/db/schema/courseCompletionDefaults";
+} from "../db/schema/courseCompletionDefaults";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateCourseCompletionDefaults = () => revalidatePath("/course-completion-defaults");
+const revalidateCourseCompletionDefaults = () =>
+  revalidatePath("/course-completion-defaults");
 
-export const createCourseCompletionDefaultAction = async (input: NewCourseCompletionDefaultParams) => {
+export const createCourseCompletionDefaultAction = async (
+  input: NewCourseCompletionDefaultParams,
+) => {
   try {
     const payload = insertCourseCompletionDefaultParams.parse(input);
     await createCourseCompletionDefault(payload);
@@ -37,7 +41,9 @@ export const createCourseCompletionDefaultAction = async (input: NewCourseComple
   }
 };
 
-export const updateCourseCompletionDefaultAction = async (input: UpdateCourseCompletionDefaultParams) => {
+export const updateCourseCompletionDefaultAction = async (
+  input: UpdateCourseCompletionDefaultParams,
+) => {
   try {
     const payload = updateCourseCompletionDefaultParams.parse(input);
     await updateCourseCompletionDefault(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateCourseCompletionDefaultAction = async (input: UpdateCourseCom
   }
 };
 
-export const deleteCourseCompletionDefaultAction = async (input: CourseCompletionDefaultId) => {
+export const deleteCourseCompletionDefaultAction = async (
+  input: CourseCompletionDefaultId,
+) => {
   try {
     const payload = courseCompletionDefaultIdSchema.parse({ id: input });
     await deleteCourseCompletionDefault(payload.id);

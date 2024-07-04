@@ -1,8 +1,8 @@
+import { router } from "../server/trpc";
 import { computersRouter } from "./computers";
-import { router } from "@/lib/server/trpc";
-import { themesRouter } from "./themes";
 import { themeComponentsRouter } from "./themeComponents";
 import { themeComponentStylesRouter } from "./themeComponentStyles";
+import { themesRouter } from "./themes";
 
 export const appRouter = router({
   computers: computersRouter,

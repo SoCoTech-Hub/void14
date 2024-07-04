@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAddress,
   deleteAddress,
   updateAddress,
-} from "@/lib/api/addresses/mutations";
+} from "../api/addresses/mutations";
 import {
   AddressId,
-  NewAddressParams,
-  UpdateAddressParams,
   addressIdSchema,
   insertAddressParams,
+  NewAddressParams,
+  UpdateAddressParams,
   updateAddressParams,
-} from "@/lib/db/schema/addresses";
+} from "../db/schema/addresses";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

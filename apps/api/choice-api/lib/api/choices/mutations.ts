@@ -1,19 +1,20 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  ChoiceId, 
-  NewChoiceParams,
-  UpdateChoiceParams, 
-  updateChoiceSchema,
-  insertChoiceSchema, 
+
+import { db } from "../db/index";
+import {
+  ChoiceId,
+  choiceIdSchema,
   choices,
-  choiceIdSchema 
-} from "@/lib/db/schema/choices";
+  insertChoiceSchema,
+  NewChoiceParams,
+  UpdateChoiceParams,
+  updateChoiceSchema,
+} from "../db/schema/choices";
 
 export const createChoice = async (choice: NewChoiceParams) => {
   const newChoice = insertChoiceSchema.parse(choice);
   try {
-    const [c] =  await db.insert(choices).values(newChoice).returning();
+    const [c] = await db.insert(choices).values(newChoice).returning();
     return { choice: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +23,18 @@ export const createChoice = async (choice: NewChoiceParams) => {
   }
 };
 
-export const updateChoice = async (id: ChoiceId, choice: UpdateChoiceParams) => {
+export const updateChoice = async (
+  id: ChoiceId,
+  choice: UpdateChoiceParams,
+) => {
   const { id: choiceId } = choiceIdSchema.parse({ id });
   const newChoice = updateChoiceSchema.parse(choice);
   try {
-    const [c] =  await db
-     .update(choices)
-     .set({...newChoice, updatedAt: new Date() })
-     .where(eq(choices.id, choiceId!))
-     .returning();
+    const [c] = await db
+      .update(choices)
+      .set({ ...newChoice, updatedAt: new Date() })
+      .where(eq(choices.id, choiceId!))
+      .returning();
     return { choice: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +46,10 @@ export const updateChoice = async (id: ChoiceId, choice: UpdateChoiceParams) => 
 export const deleteChoice = async (id: ChoiceId) => {
   const { id: choiceId } = choiceIdSchema.parse({ id });
   try {
-    const [c] =  await db.delete(choices).where(eq(choices.id, choiceId!))
-    .returning();
+    const [c] = await db
+      .delete(choices)
+      .where(eq(choices.id, choiceId!))
+      .returning();
     return { choice: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +57,3 @@ export const deleteChoice = async (id: ChoiceId) => {
     throw { error: message };
   }
 };
-

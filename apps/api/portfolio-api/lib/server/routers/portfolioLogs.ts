@@ -1,19 +1,28 @@
-import { getPortfolioLogById, getPortfolioLogs } from "@/lib/api/portfolioLogs/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  portfolioLogIdSchema,
+  createPortfolioLog,
+  deletePortfolioLog,
+  updatePortfolioLog,
+} from "../api/portfolioLogs/mutations";
+import {
+  getPortfolioLogById,
+  getPortfolioLogs,
+} from "../api/portfolioLogs/queries";
+import {
   insertPortfolioLogParams,
+  portfolioLogIdSchema,
   updatePortfolioLogParams,
-} from "@/lib/db/schema/portfolioLogs";
-import { createPortfolioLog, deletePortfolioLog, updatePortfolioLog } from "@/lib/api/portfolioLogs/mutations";
+} from "../db/schema/portfolioLogs";
+import { publicProcedure, router } from "../server/trpc";
 
 export const portfolioLogsRouter = router({
   getPortfolioLogs: publicProcedure.query(async () => {
     return getPortfolioLogs();
   }),
-  getPortfolioLogById: publicProcedure.input(portfolioLogIdSchema).query(async ({ input }) => {
-    return getPortfolioLogById(input.id);
-  }),
+  getPortfolioLogById: publicProcedure
+    .input(portfolioLogIdSchema)
+    .query(async ({ input }) => {
+      return getPortfolioLogById(input.id);
+    }),
   createPortfolioLog: publicProcedure
     .input(insertPortfolioLogParams)
     .mutation(async ({ input }) => {

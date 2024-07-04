@@ -1,19 +1,25 @@
-import { getContextById, getContexts } from "@/lib/api/contexts/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createContext,
+  deleteContext,
+  updateContext,
+} from "../api/contexts/mutations";
+import { getContextById, getContexts } from "../api/contexts/queries";
 import {
   contextIdSchema,
   insertContextParams,
   updateContextParams,
-} from "@/lib/db/schema/contexts";
-import { createContext, deleteContext, updateContext } from "@/lib/api/contexts/mutations";
+} from "../db/schema/contexts";
+import { publicProcedure, router } from "../server/trpc";
 
 export const contextsRouter = router({
   getContexts: publicProcedure.query(async () => {
     return getContexts();
   }),
-  getContextById: publicProcedure.input(contextIdSchema).query(async ({ input }) => {
-    return getContextById(input.id);
-  }),
+  getContextById: publicProcedure
+    .input(contextIdSchema)
+    .query(async ({ input }) => {
+      return getContextById(input.id);
+    }),
   createContext: publicProcedure
     .input(insertContextParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAffiliatesSetting,
   deleteAffiliatesSetting,
   updateAffiliatesSetting,
-} from "@/lib/api/affiliatesSettings/mutations";
+} from "../api/affiliatesSettings/mutations";
 import {
   AffiliatesSettingId,
-  NewAffiliatesSettingParams,
-  UpdateAffiliatesSettingParams,
   affiliatesSettingIdSchema,
   insertAffiliatesSettingParams,
+  NewAffiliatesSettingParams,
+  UpdateAffiliatesSettingParams,
   updateAffiliatesSettingParams,
-} from "@/lib/db/schema/affiliatesSettings";
+} from "../db/schema/affiliatesSettings";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateAffiliatesSettings = () => revalidatePath("/affiliates-settings");
+const revalidateAffiliatesSettings = () =>
+  revalidatePath("/affiliates-settings");
 
-export const createAffiliatesSettingAction = async (input: NewAffiliatesSettingParams) => {
+export const createAffiliatesSettingAction = async (
+  input: NewAffiliatesSettingParams,
+) => {
   try {
     const payload = insertAffiliatesSettingParams.parse(input);
     await createAffiliatesSetting(payload);
@@ -37,7 +41,9 @@ export const createAffiliatesSettingAction = async (input: NewAffiliatesSettingP
   }
 };
 
-export const updateAffiliatesSettingAction = async (input: UpdateAffiliatesSettingParams) => {
+export const updateAffiliatesSettingAction = async (
+  input: UpdateAffiliatesSettingParams,
+) => {
   try {
     const payload = updateAffiliatesSettingParams.parse(input);
     await updateAffiliatesSetting(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateAffiliatesSettingAction = async (input: UpdateAffiliatesSetti
   }
 };
 
-export const deleteAffiliatesSettingAction = async (input: AffiliatesSettingId) => {
+export const deleteAffiliatesSettingAction = async (
+  input: AffiliatesSettingId,
+) => {
   try {
     const payload = affiliatesSettingIdSchema.parse({ id: input });
     await deleteAffiliatesSetting(payload.id);

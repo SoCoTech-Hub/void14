@@ -1,4 +1,3 @@
-import { type getQuestionAttemptSteps } from "@/lib/api/questionAttemptSteps/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -13,6 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getQuestionAttemptSteps } from "../api/questionAttemptSteps/queries";
 import { questionAttempts } from "./questionAttempts";
 
 export const questionAttemptSteps = pgTable(

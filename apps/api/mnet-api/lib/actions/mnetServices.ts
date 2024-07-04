@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMnetService,
   deleteMnetService,
   updateMnetService,
-} from "@/lib/api/mnetServices/mutations";
+} from "../api/mnetServices/mutations";
 import {
+  insertMnetServiceParams,
   MnetServiceId,
+  mnetServiceIdSchema,
   NewMnetServiceParams,
   UpdateMnetServiceParams,
-  mnetServiceIdSchema,
-  insertMnetServiceParams,
   updateMnetServiceParams,
-} from "@/lib/db/schema/mnetServices";
+} from "../db/schema/mnetServices";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createMnetServiceAction = async (input: NewMnetServiceParams) => {
   }
 };
 
-export const updateMnetServiceAction = async (input: UpdateMnetServiceParams) => {
+export const updateMnetServiceAction = async (
+  input: UpdateMnetServiceParams,
+) => {
   try {
     const payload = updateMnetServiceParams.parse(input);
     await updateMnetService(payload.id, payload);

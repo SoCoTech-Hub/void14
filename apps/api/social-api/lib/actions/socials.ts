@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createSocial,
   deleteSocial,
   updateSocial,
-} from "@/lib/api/socials/mutations";
+} from "../api/socials/mutations";
 import {
-  SocialId,
-  NewSocialParams,
-  UpdateSocialParams,
-  socialIdSchema,
   insertSocialParams,
+  NewSocialParams,
+  SocialId,
+  socialIdSchema,
+  UpdateSocialParams,
   updateSocialParams,
-} from "@/lib/db/schema/socials";
+} from "../db/schema/socials";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

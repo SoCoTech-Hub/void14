@@ -1,19 +1,28 @@
-import { getMnetService2rpcById, getMnetService2rpcs } from "@/lib/api/mnetService2rpcs/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  mnetService2rpcIdSchema,
+  createMnetService2rpc,
+  deleteMnetService2rpc,
+  updateMnetService2rpc,
+} from "../api/mnetService2rpcs/mutations";
+import {
+  getMnetService2rpcById,
+  getMnetService2rpcs,
+} from "../api/mnetService2rpcs/queries";
+import {
   insertMnetService2rpcParams,
+  mnetService2rpcIdSchema,
   updateMnetService2rpcParams,
-} from "@/lib/db/schema/mnetService2rpcs";
-import { createMnetService2rpc, deleteMnetService2rpc, updateMnetService2rpc } from "@/lib/api/mnetService2rpcs/mutations";
+} from "../db/schema/mnetService2rpcs";
+import { publicProcedure, router } from "../server/trpc";
 
 export const mnetService2rpcsRouter = router({
   getMnetService2rpcs: publicProcedure.query(async () => {
     return getMnetService2rpcs();
   }),
-  getMnetService2rpcById: publicProcedure.input(mnetService2rpcIdSchema).query(async ({ input }) => {
-    return getMnetService2rpcById(input.id);
-  }),
+  getMnetService2rpcById: publicProcedure
+    .input(mnetService2rpcIdSchema)
+    .query(async ({ input }) => {
+      return getMnetService2rpcById(input.id);
+    }),
   createMnetService2rpc: publicProcedure
     .input(insertMnetService2rpcParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createToolRecyclebinCategory,
   deleteToolRecyclebinCategory,
   updateToolRecyclebinCategory,
-} from "@/lib/api/toolRecyclebinCategories/mutations";
+} from "../api/toolRecyclebinCategories/mutations";
 import {
-  ToolRecyclebinCategoryId,
-  NewToolRecyclebinCategoryParams,
-  UpdateToolRecyclebinCategoryParams,
-  toolRecyclebinCategoryIdSchema,
   insertToolRecyclebinCategoryParams,
+  NewToolRecyclebinCategoryParams,
+  ToolRecyclebinCategoryId,
+  toolRecyclebinCategoryIdSchema,
+  UpdateToolRecyclebinCategoryParams,
   updateToolRecyclebinCategoryParams,
-} from "@/lib/db/schema/toolRecyclebinCategories";
+} from "../db/schema/toolRecyclebinCategories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateToolRecyclebinCategories = () => revalidatePath("/tool-recyclebin-categories");
+const revalidateToolRecyclebinCategories = () =>
+  revalidatePath("/tool-recyclebin-categories");
 
-export const createToolRecyclebinCategoryAction = async (input: NewToolRecyclebinCategoryParams) => {
+export const createToolRecyclebinCategoryAction = async (
+  input: NewToolRecyclebinCategoryParams,
+) => {
   try {
     const payload = insertToolRecyclebinCategoryParams.parse(input);
     await createToolRecyclebinCategory(payload);
@@ -37,7 +41,9 @@ export const createToolRecyclebinCategoryAction = async (input: NewToolRecyclebi
   }
 };
 
-export const updateToolRecyclebinCategoryAction = async (input: UpdateToolRecyclebinCategoryParams) => {
+export const updateToolRecyclebinCategoryAction = async (
+  input: UpdateToolRecyclebinCategoryParams,
+) => {
   try {
     const payload = updateToolRecyclebinCategoryParams.parse(input);
     await updateToolRecyclebinCategory(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateToolRecyclebinCategoryAction = async (input: UpdateToolRecycl
   }
 };
 
-export const deleteToolRecyclebinCategoryAction = async (input: ToolRecyclebinCategoryId) => {
+export const deleteToolRecyclebinCategoryAction = async (
+  input: ToolRecyclebinCategoryId,
+) => {
   try {
     const payload = toolRecyclebinCategoryIdSchema.parse({ id: input });
     await deleteToolRecyclebinCategory(payload.id);

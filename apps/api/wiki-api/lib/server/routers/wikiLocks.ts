@@ -1,19 +1,25 @@
-import { getWikiLockById, getWikiLocks } from "@/lib/api/wikiLocks/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  wikiLockIdSchema,
+  createWikiLock,
+  deleteWikiLock,
+  updateWikiLock,
+} from "../api/wikiLocks/mutations";
+import { getWikiLockById, getWikiLocks } from "../api/wikiLocks/queries";
+import {
   insertWikiLockParams,
   updateWikiLockParams,
-} from "@/lib/db/schema/wikiLocks";
-import { createWikiLock, deleteWikiLock, updateWikiLock } from "@/lib/api/wikiLocks/mutations";
+  wikiLockIdSchema,
+} from "../db/schema/wikiLocks";
+import { publicProcedure, router } from "../server/trpc";
 
 export const wikiLocksRouter = router({
   getWikiLocks: publicProcedure.query(async () => {
     return getWikiLocks();
   }),
-  getWikiLockById: publicProcedure.input(wikiLockIdSchema).query(async ({ input }) => {
-    return getWikiLockById(input.id);
-  }),
+  getWikiLockById: publicProcedure
+    .input(wikiLockIdSchema)
+    .query(async ({ input }) => {
+      return getWikiLockById(input.id);
+    }),
   createWikiLock: publicProcedure
     .input(insertWikiLockParams)
     .mutation(async ({ input }) => {

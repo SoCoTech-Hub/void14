@@ -1,12 +1,12 @@
-import { computersRouter } from "./computers";
-import { router } from "@/lib/server/trpc";
+import { router } from "../server/trpc";
 import { accountRouter } from "./account";
-import { blogsRouter } from "./blogs";
-import { socialIconsRouter } from "./socialIcons";
-import { socialReactionsRouter } from "./socialReactions";
+import { blogAssociationsRouter } from "./blogAssociations";
 import { blogCommentsRouter } from "./blogComments";
 import { blogExternalsRouter } from "./blogExternals";
-import { blogAssociationsRouter } from "./blogAssociations";
+import { blogsRouter } from "./blogs";
+import { computersRouter } from "./computers";
+import { socialIconsRouter } from "./socialIcons";
+import { socialReactionsRouter } from "./socialReactions";
 
 export const appRouter = router({
   computers: computersRouter,

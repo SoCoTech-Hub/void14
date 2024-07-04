@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMessagePopup,
   deleteMessagePopup,
   updateMessagePopup,
-} from "@/lib/api/messagePopups/mutations";
+} from "../api/messagePopups/mutations";
 import {
+  insertMessagePopupParams,
   MessagePopupId,
+  messagePopupIdSchema,
   NewMessagePopupParams,
   UpdateMessagePopupParams,
-  messagePopupIdSchema,
-  insertMessagePopupParams,
   updateMessagePopupParams,
-} from "@/lib/db/schema/messagePopups";
+} from "../db/schema/messagePopups";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateMessagePopups = () => revalidatePath("/message-popups");
 
-export const createMessagePopupAction = async (input: NewMessagePopupParams) => {
+export const createMessagePopupAction = async (
+  input: NewMessagePopupParams,
+) => {
   try {
     const payload = insertMessagePopupParams.parse(input);
     await createMessagePopup(payload);
@@ -37,7 +40,9 @@ export const createMessagePopupAction = async (input: NewMessagePopupParams) => 
   }
 };
 
-export const updateMessagePopupAction = async (input: UpdateMessagePopupParams) => {
+export const updateMessagePopupAction = async (
+  input: UpdateMessagePopupParams,
+) => {
   try {
     const payload = updateMessagePopupParams.parse(input);
     await updateMessagePopup(payload.id, payload);

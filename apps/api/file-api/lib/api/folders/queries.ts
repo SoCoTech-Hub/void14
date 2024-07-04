@@ -1,10 +1,12 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { type FolderId, folderIdSchema, folders } from "@/lib/db/schema/folders";
+
+import type { FolderId } from "../db/schema/folders";
+import { db } from "../db/index";
+import { folderIdSchema, folders } from "../db/schema/folders";
 
 export const getFolders = async () => {
   const rows = await db.select().from(folders);
-  const f = rows
+  const f = rows;
   return { folders: f };
 };
 
@@ -15,5 +17,3 @@ export const getFolderById = async (id: FolderId) => {
   const f = row;
   return { folder: f };
 };
-
-

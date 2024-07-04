@@ -1,19 +1,22 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { type LogDisplayId, logDisplayIdSchema, logDisplays } from "@/lib/db/schema/logDisplays";
+
+import type { LogDisplayId } from "../db/schema/logDisplays";
+import { db } from "../db/index";
+import { logDisplayIdSchema, logDisplays } from "../db/schema/logDisplays";
 
 export const getLogDisplays = async () => {
   const rows = await db.select().from(logDisplays);
-  const l = rows
+  const l = rows;
   return { logDisplays: l };
 };
 
 export const getLogDisplayById = async (id: LogDisplayId) => {
   const { id: logDisplayId } = logDisplayIdSchema.parse({ id });
-  const [row] = await db.select().from(logDisplays).where(eq(logDisplays.id, logDisplayId));
+  const [row] = await db
+    .select()
+    .from(logDisplays)
+    .where(eq(logDisplays.id, logDisplayId));
   if (row === undefined) return {};
   const l = row;
   return { logDisplay: l };
 };
-
-

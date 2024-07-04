@@ -1,4 +1,4 @@
-import { router } from '@/lib/server/trpc'
+import { router } from '../server/trpc'
 import { countriesRouter } from './countries'
 import { provincesRouter } from './provinces'
 import { districtsRouter } from './districts'

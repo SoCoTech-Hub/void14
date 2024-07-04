@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createZoomLesson,
   deleteZoomLesson,
   updateZoomLesson,
-} from "@/lib/api/zoomLessons/mutations";
+} from "../api/zoomLessons/mutations";
 import {
-  ZoomLessonId,
+  insertZoomLessonParams,
   NewZoomLessonParams,
   UpdateZoomLessonParams,
-  zoomLessonIdSchema,
-  insertZoomLessonParams,
   updateZoomLessonParams,
-} from "@/lib/db/schema/zoomLessons";
+  ZoomLessonId,
+  zoomLessonIdSchema,
+} from "../db/schema/zoomLessons";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

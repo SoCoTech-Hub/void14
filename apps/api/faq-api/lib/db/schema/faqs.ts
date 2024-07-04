@@ -1,9 +1,10 @@
-import { type getFaqs } from "@/lib/api/faqs/queries";
 import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getFaqs } from "../api/faqs/queries";
 
 export const faqs = pgTable("faqs", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

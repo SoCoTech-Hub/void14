@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMessageRead,
   deleteMessageRead,
   updateMessageRead,
-} from "@/lib/api/messageReads/mutations";
+} from "../api/messageReads/mutations";
 import {
+  insertMessageReadParams,
   MessageReadId,
+  messageReadIdSchema,
   NewMessageReadParams,
   UpdateMessageReadParams,
-  messageReadIdSchema,
-  insertMessageReadParams,
   updateMessageReadParams,
-} from "@/lib/db/schema/messageReads";
+} from "../db/schema/messageReads";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createMessageReadAction = async (input: NewMessageReadParams) => {
   }
 };
 
-export const updateMessageReadAction = async (input: UpdateMessageReadParams) => {
+export const updateMessageReadAction = async (
+  input: UpdateMessageReadParams,
+) => {
   try {
     const payload = updateMessageReadParams.parse(input);
     await updateMessageRead(payload.id, payload);

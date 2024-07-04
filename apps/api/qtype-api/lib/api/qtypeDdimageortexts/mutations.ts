@@ -1,19 +1,26 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  QtypeDdimageortextId, 
-  NewQtypeDdimageortextParams,
-  UpdateQtypeDdimageortextParams, 
-  updateQtypeDdimageortextSchema,
-  insertQtypeDdimageortextSchema, 
-  qtypeDdimageortexts,
-  qtypeDdimageortextIdSchema 
-} from "@/lib/db/schema/qtypeDdimageortexts";
 
-export const createQtypeDdimageortext = async (qtypeDdimageortext: NewQtypeDdimageortextParams) => {
-  const newQtypeDdimageortext = insertQtypeDdimageortextSchema.parse(qtypeDdimageortext);
+import { db } from "../db/index";
+import {
+  insertQtypeDdimageortextSchema,
+  NewQtypeDdimageortextParams,
+  QtypeDdimageortextId,
+  qtypeDdimageortextIdSchema,
+  qtypeDdimageortexts,
+  UpdateQtypeDdimageortextParams,
+  updateQtypeDdimageortextSchema,
+} from "../db/schema/qtypeDdimageortexts";
+
+export const createQtypeDdimageortext = async (
+  qtypeDdimageortext: NewQtypeDdimageortextParams,
+) => {
+  const newQtypeDdimageortext =
+    insertQtypeDdimageortextSchema.parse(qtypeDdimageortext);
   try {
-    const [q] =  await db.insert(qtypeDdimageortexts).values(newQtypeDdimageortext).returning();
+    const [q] = await db
+      .insert(qtypeDdimageortexts)
+      .values(newQtypeDdimageortext)
+      .returning();
     return { qtypeDdimageortext: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,19 @@ export const createQtypeDdimageortext = async (qtypeDdimageortext: NewQtypeDdima
   }
 };
 
-export const updateQtypeDdimageortext = async (id: QtypeDdimageortextId, qtypeDdimageortext: UpdateQtypeDdimageortextParams) => {
+export const updateQtypeDdimageortext = async (
+  id: QtypeDdimageortextId,
+  qtypeDdimageortext: UpdateQtypeDdimageortextParams,
+) => {
   const { id: qtypeDdimageortextId } = qtypeDdimageortextIdSchema.parse({ id });
-  const newQtypeDdimageortext = updateQtypeDdimageortextSchema.parse(qtypeDdimageortext);
+  const newQtypeDdimageortext =
+    updateQtypeDdimageortextSchema.parse(qtypeDdimageortext);
   try {
-    const [q] =  await db
-     .update(qtypeDdimageortexts)
-     .set(newQtypeDdimageortext)
-     .where(eq(qtypeDdimageortexts.id, qtypeDdimageortextId!))
-     .returning();
+    const [q] = await db
+      .update(qtypeDdimageortexts)
+      .set(newQtypeDdimageortext)
+      .where(eq(qtypeDdimageortexts.id, qtypeDdimageortextId!))
+      .returning();
     return { qtypeDdimageortext: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +53,10 @@ export const updateQtypeDdimageortext = async (id: QtypeDdimageortextId, qtypeDd
 export const deleteQtypeDdimageortext = async (id: QtypeDdimageortextId) => {
   const { id: qtypeDdimageortextId } = qtypeDdimageortextIdSchema.parse({ id });
   try {
-    const [q] =  await db.delete(qtypeDdimageortexts).where(eq(qtypeDdimageortexts.id, qtypeDdimageortextId!))
-    .returning();
+    const [q] = await db
+      .delete(qtypeDdimageortexts)
+      .where(eq(qtypeDdimageortexts.id, qtypeDdimageortextId!))
+      .returning();
     return { qtypeDdimageortext: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +64,3 @@ export const deleteQtypeDdimageortext = async (id: QtypeDdimageortextId) => {
     throw { error: message };
   }
 };
-

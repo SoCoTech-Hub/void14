@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createRepository,
   deleteRepository,
   updateRepository,
-} from "@/lib/api/repositories/mutations";
+} from "../api/repositories/mutations";
 import {
-  RepositoryId,
-  NewRepositoryParams,
-  UpdateRepositoryParams,
-  repositoryIdSchema,
   insertRepositoryParams,
+  NewRepositoryParams,
+  RepositoryId,
+  repositoryIdSchema,
+  UpdateRepositoryParams,
   updateRepositoryParams,
-} from "@/lib/db/schema/repositories";
+} from "../db/schema/repositories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

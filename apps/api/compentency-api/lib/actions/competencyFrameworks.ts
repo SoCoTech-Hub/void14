@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCompetencyFramework,
   deleteCompetencyFramework,
   updateCompetencyFramework,
-} from "@/lib/api/competencyFrameworks/mutations";
+} from "../api/competencyFrameworks/mutations";
 import {
   CompetencyFrameworkId,
-  NewCompetencyFrameworkParams,
-  UpdateCompetencyFrameworkParams,
   competencyFrameworkIdSchema,
   insertCompetencyFrameworkParams,
+  NewCompetencyFrameworkParams,
+  UpdateCompetencyFrameworkParams,
   updateCompetencyFrameworkParams,
-} from "@/lib/db/schema/competencyFrameworks";
+} from "../db/schema/competencyFrameworks";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateCompetencyFrameworks = () => revalidatePath("/competency-frameworks");
+const revalidateCompetencyFrameworks = () =>
+  revalidatePath("/competency-frameworks");
 
-export const createCompetencyFrameworkAction = async (input: NewCompetencyFrameworkParams) => {
+export const createCompetencyFrameworkAction = async (
+  input: NewCompetencyFrameworkParams,
+) => {
   try {
     const payload = insertCompetencyFrameworkParams.parse(input);
     await createCompetencyFramework(payload);
@@ -37,7 +41,9 @@ export const createCompetencyFrameworkAction = async (input: NewCompetencyFramew
   }
 };
 
-export const updateCompetencyFrameworkAction = async (input: UpdateCompetencyFrameworkParams) => {
+export const updateCompetencyFrameworkAction = async (
+  input: UpdateCompetencyFrameworkParams,
+) => {
   try {
     const payload = updateCompetencyFrameworkParams.parse(input);
     await updateCompetencyFramework(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateCompetencyFrameworkAction = async (input: UpdateCompetencyFra
   }
 };
 
-export const deleteCompetencyFrameworkAction = async (input: CompetencyFrameworkId) => {
+export const deleteCompetencyFrameworkAction = async (
+  input: CompetencyFrameworkId,
+) => {
   try {
     const payload = competencyFrameworkIdSchema.parse({ id: input });
     await deleteCompetencyFramework(payload.id);

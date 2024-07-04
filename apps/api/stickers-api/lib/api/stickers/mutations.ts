@@ -1,19 +1,20 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  StickerId, 
+
+import { db } from "../db/index";
+import {
+  insertStickerSchema,
   NewStickerParams,
-  UpdateStickerParams, 
-  updateStickerSchema,
-  insertStickerSchema, 
+  StickerId,
+  stickerIdSchema,
   stickers,
-  stickerIdSchema 
-} from "@/lib/db/schema/stickers";
+  UpdateStickerParams,
+  updateStickerSchema,
+} from "../db/schema/stickers";
 
 export const createSticker = async (sticker: NewStickerParams) => {
   const newSticker = insertStickerSchema.parse(sticker);
   try {
-    const [s] =  await db.insert(stickers).values(newSticker).returning();
+    const [s] = await db.insert(stickers).values(newSticker).returning();
     return { sticker: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +23,18 @@ export const createSticker = async (sticker: NewStickerParams) => {
   }
 };
 
-export const updateSticker = async (id: StickerId, sticker: UpdateStickerParams) => {
+export const updateSticker = async (
+  id: StickerId,
+  sticker: UpdateStickerParams,
+) => {
   const { id: stickerId } = stickerIdSchema.parse({ id });
   const newSticker = updateStickerSchema.parse(sticker);
   try {
-    const [s] =  await db
-     .update(stickers)
-     .set(newSticker)
-     .where(eq(stickers.id, stickerId!))
-     .returning();
+    const [s] = await db
+      .update(stickers)
+      .set(newSticker)
+      .where(eq(stickers.id, stickerId!))
+      .returning();
     return { sticker: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +46,10 @@ export const updateSticker = async (id: StickerId, sticker: UpdateStickerParams)
 export const deleteSticker = async (id: StickerId) => {
   const { id: stickerId } = stickerIdSchema.parse({ id });
   try {
-    const [s] =  await db.delete(stickers).where(eq(stickers.id, stickerId!))
-    .returning();
+    const [s] = await db
+      .delete(stickers)
+      .where(eq(stickers.id, stickerId!))
+      .returning();
     return { sticker: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +57,3 @@ export const deleteSticker = async (id: StickerId) => {
     throw { error: message };
   }
 };
-

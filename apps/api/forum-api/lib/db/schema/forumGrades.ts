@@ -1,4 +1,3 @@
-import { type getForumGrades } from "@/lib/api/forumGrades/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getForumGrades } from "../api/forumGrades/queries";
 
 export const forumGrades = pgTable("forum_grades", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

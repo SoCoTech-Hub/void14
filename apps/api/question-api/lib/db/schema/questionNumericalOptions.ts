@@ -1,4 +1,3 @@
-import { type getQuestionNumericalOptions } from "@/lib/api/questionNumericalOptions/queries";
 import {
   integer,
   pgTable,
@@ -11,6 +10,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getQuestionNumericalOptions } from "../api/questionNumericalOptions/queries";
 import { questions } from "./questions";
 
 export const questionNumericalOptions = pgTable(

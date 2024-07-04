@@ -1,9 +1,10 @@
-import { type getMessageAirnotifierDevices } from "@/lib/api/messageAirnotifierDevices/queries";
 import { boolean, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getMessageAirnotifierDevices } from "../api/messageAirnotifierDevices/queries";
 
 export const messageAirnotifierDevices = pgTable(
   "message_airnotifier_devices",

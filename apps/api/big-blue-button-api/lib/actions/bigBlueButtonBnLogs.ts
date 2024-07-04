@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBigBlueButtonBnLog,
   deleteBigBlueButtonBnLog,
   updateBigBlueButtonBnLog,
-} from "@/lib/api/bigBlueButtonBnLogs/mutations";
+} from "../api/bigBlueButtonBnLogs/mutations";
 import {
   BigBlueButtonBnLogId,
-  NewBigBlueButtonBnLogParams,
-  UpdateBigBlueButtonBnLogParams,
   bigBlueButtonBnLogIdSchema,
   insertBigBlueButtonBnLogParams,
+  NewBigBlueButtonBnLogParams,
+  UpdateBigBlueButtonBnLogParams,
   updateBigBlueButtonBnLogParams,
-} from "@/lib/db/schema/bigBlueButtonBnLogs";
+} from "../db/schema/bigBlueButtonBnLogs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateBigBlueButtonBnLogs = () => revalidatePath("/big-blue-button-bn-logs");
+const revalidateBigBlueButtonBnLogs = () =>
+  revalidatePath("/big-blue-button-bn-logs");
 
-export const createBigBlueButtonBnLogAction = async (input: NewBigBlueButtonBnLogParams) => {
+export const createBigBlueButtonBnLogAction = async (
+  input: NewBigBlueButtonBnLogParams,
+) => {
   try {
     const payload = insertBigBlueButtonBnLogParams.parse(input);
     await createBigBlueButtonBnLog(payload);
@@ -37,7 +41,9 @@ export const createBigBlueButtonBnLogAction = async (input: NewBigBlueButtonBnLo
   }
 };
 
-export const updateBigBlueButtonBnLogAction = async (input: UpdateBigBlueButtonBnLogParams) => {
+export const updateBigBlueButtonBnLogAction = async (
+  input: UpdateBigBlueButtonBnLogParams,
+) => {
   try {
     const payload = updateBigBlueButtonBnLogParams.parse(input);
     await updateBigBlueButtonBnLog(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateBigBlueButtonBnLogAction = async (input: UpdateBigBlueButtonB
   }
 };
 
-export const deleteBigBlueButtonBnLogAction = async (input: BigBlueButtonBnLogId) => {
+export const deleteBigBlueButtonBnLogAction = async (
+  input: BigBlueButtonBnLogId,
+) => {
   try {
     const payload = bigBlueButtonBnLogIdSchema.parse({ id: input });
     await deleteBigBlueButtonBnLog(payload.id);

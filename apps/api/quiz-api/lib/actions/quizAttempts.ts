@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuizAttempt,
   deleteQuizAttempt,
   updateQuizAttempt,
-} from "@/lib/api/quizAttempts/mutations";
+} from "../api/quizAttempts/mutations";
 import {
-  QuizAttemptId,
-  NewQuizAttemptParams,
-  UpdateQuizAttemptParams,
-  quizAttemptIdSchema,
   insertQuizAttemptParams,
+  NewQuizAttemptParams,
+  QuizAttemptId,
+  quizAttemptIdSchema,
+  UpdateQuizAttemptParams,
   updateQuizAttemptParams,
-} from "@/lib/db/schema/quizAttempts";
+} from "../db/schema/quizAttempts";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createQuizAttemptAction = async (input: NewQuizAttemptParams) => {
   }
 };
 
-export const updateQuizAttemptAction = async (input: UpdateQuizAttemptParams) => {
+export const updateQuizAttemptAction = async (
+  input: UpdateQuizAttemptParams,
+) => {
   try {
     const payload = updateQuizAttemptParams.parse(input);
     await updateQuizAttempt(payload.id, payload);

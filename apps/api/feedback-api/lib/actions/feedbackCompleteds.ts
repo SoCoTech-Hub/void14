@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createFeedbackCompleted,
   deleteFeedbackCompleted,
   updateFeedbackCompleted,
-} from "@/lib/api/feedbackCompleteds/mutations";
+} from "../api/feedbackCompleteds/mutations";
 import {
   FeedbackCompletedId,
-  NewFeedbackCompletedParams,
-  UpdateFeedbackCompletedParams,
   feedbackCompletedIdSchema,
   insertFeedbackCompletedParams,
+  NewFeedbackCompletedParams,
+  UpdateFeedbackCompletedParams,
   updateFeedbackCompletedParams,
-} from "@/lib/db/schema/feedbackCompleteds";
+} from "../db/schema/feedbackCompleteds";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateFeedbackCompleteds = () => revalidatePath("/feedback-completeds");
+const revalidateFeedbackCompleteds = () =>
+  revalidatePath("/feedback-completeds");
 
-export const createFeedbackCompletedAction = async (input: NewFeedbackCompletedParams) => {
+export const createFeedbackCompletedAction = async (
+  input: NewFeedbackCompletedParams,
+) => {
   try {
     const payload = insertFeedbackCompletedParams.parse(input);
     await createFeedbackCompleted(payload);
@@ -37,7 +41,9 @@ export const createFeedbackCompletedAction = async (input: NewFeedbackCompletedP
   }
 };
 
-export const updateFeedbackCompletedAction = async (input: UpdateFeedbackCompletedParams) => {
+export const updateFeedbackCompletedAction = async (
+  input: UpdateFeedbackCompletedParams,
+) => {
   try {
     const payload = updateFeedbackCompletedParams.parse(input);
     await updateFeedbackCompleted(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateFeedbackCompletedAction = async (input: UpdateFeedbackComplet
   }
 };
 
-export const deleteFeedbackCompletedAction = async (input: FeedbackCompletedId) => {
+export const deleteFeedbackCompletedAction = async (
+  input: FeedbackCompletedId,
+) => {
   try {
     const payload = feedbackCompletedIdSchema.parse({ id: input });
     await deleteFeedbackCompleted(payload.id);

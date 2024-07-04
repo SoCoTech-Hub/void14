@@ -1,11 +1,11 @@
-import { getNoteById, getNotes } from "@/lib/api/notes/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import { createNote, deleteNote, updateNote } from "../api/notes/mutations";
+import { getNoteById, getNotes } from "../api/notes/queries";
 import {
-  noteIdSchema,
   insertNoteParams,
+  noteIdSchema,
   updateNoteParams,
-} from "@/lib/db/schema/notes";
-import { createNote, deleteNote, updateNote } from "@/lib/api/notes/mutations";
+} from "../db/schema/notes";
+import { publicProcedure, router } from "../server/trpc";
 
 export const notesRouter = router({
   getNotes: publicProcedure.query(async () => {

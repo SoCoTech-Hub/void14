@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createRoleName,
   deleteRoleName,
   updateRoleName,
-} from "@/lib/api/roleNames/mutations";
+} from "../api/roleNames/mutations";
 import {
-  RoleNameId,
-  NewRoleNameParams,
-  UpdateRoleNameParams,
-  roleNameIdSchema,
   insertRoleNameParams,
+  NewRoleNameParams,
+  RoleNameId,
+  roleNameIdSchema,
+  UpdateRoleNameParams,
   updateRoleNameParams,
-} from "@/lib/db/schema/roleNames";
+} from "../db/schema/roleNames";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

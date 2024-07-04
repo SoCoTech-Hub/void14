@@ -1,19 +1,25 @@
-import { getQuizGradeById, getQuizGrades } from "@/lib/api/quizGrades/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  quizGradeIdSchema,
+  createQuizGrade,
+  deleteQuizGrade,
+  updateQuizGrade,
+} from "../api/quizGrades/mutations";
+import { getQuizGradeById, getQuizGrades } from "../api/quizGrades/queries";
+import {
   insertQuizGradeParams,
+  quizGradeIdSchema,
   updateQuizGradeParams,
-} from "@/lib/db/schema/quizGrades";
-import { createQuizGrade, deleteQuizGrade, updateQuizGrade } from "@/lib/api/quizGrades/mutations";
+} from "../db/schema/quizGrades";
+import { publicProcedure, router } from "../server/trpc";
 
 export const quizGradesRouter = router({
   getQuizGrades: publicProcedure.query(async () => {
     return getQuizGrades();
   }),
-  getQuizGradeById: publicProcedure.input(quizGradeIdSchema).query(async ({ input }) => {
-    return getQuizGradeById(input.id);
-  }),
+  getQuizGradeById: publicProcedure
+    .input(quizGradeIdSchema)
+    .query(async ({ input }) => {
+      return getQuizGradeById(input.id);
+    }),
   createQuizGrade: publicProcedure
     .input(insertQuizGradeParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createReportbuilderReport,
   deleteReportbuilderReport,
   updateReportbuilderReport,
-} from "@/lib/api/reportbuilderReports/mutations";
+} from "../api/reportbuilderReports/mutations";
 import {
-  ReportbuilderReportId,
-  NewReportbuilderReportParams,
-  UpdateReportbuilderReportParams,
-  reportbuilderReportIdSchema,
   insertReportbuilderReportParams,
+  NewReportbuilderReportParams,
+  ReportbuilderReportId,
+  reportbuilderReportIdSchema,
+  UpdateReportbuilderReportParams,
   updateReportbuilderReportParams,
-} from "@/lib/db/schema/reportbuilderReports";
+} from "../db/schema/reportbuilderReports";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateReportbuilderReports = () => revalidatePath("/reportbuilder-reports");
+const revalidateReportbuilderReports = () =>
+  revalidatePath("/reportbuilder-reports");
 
-export const createReportbuilderReportAction = async (input: NewReportbuilderReportParams) => {
+export const createReportbuilderReportAction = async (
+  input: NewReportbuilderReportParams,
+) => {
   try {
     const payload = insertReportbuilderReportParams.parse(input);
     await createReportbuilderReport(payload);
@@ -37,7 +41,9 @@ export const createReportbuilderReportAction = async (input: NewReportbuilderRep
   }
 };
 
-export const updateReportbuilderReportAction = async (input: UpdateReportbuilderReportParams) => {
+export const updateReportbuilderReportAction = async (
+  input: UpdateReportbuilderReportParams,
+) => {
   try {
     const payload = updateReportbuilderReportParams.parse(input);
     await updateReportbuilderReport(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateReportbuilderReportAction = async (input: UpdateReportbuilder
   }
 };
 
-export const deleteReportbuilderReportAction = async (input: ReportbuilderReportId) => {
+export const deleteReportbuilderReportAction = async (
+  input: ReportbuilderReportId,
+) => {
   try {
     const payload = reportbuilderReportIdSchema.parse({ id: input });
     await deleteReportbuilderReport(payload.id);

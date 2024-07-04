@@ -1,19 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import {
-  createBadge,
-  deleteBadge,
-  updateBadge,
-} from "@/lib/api/badges/mutations";
+
+import { createBadge, deleteBadge, updateBadge } from "../api/badges/mutations";
 import {
   BadgeId,
-  NewBadgeParams,
-  UpdateBadgeParams,
   badgeIdSchema,
   insertBadgeParams,
+  NewBadgeParams,
+  UpdateBadgeParams,
   updateBadgeParams,
-} from "@/lib/db/schema/badges";
+} from "../db/schema/badges";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

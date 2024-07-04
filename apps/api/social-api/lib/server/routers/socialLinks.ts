@@ -1,19 +1,25 @@
-import { getSocialLinkById, getSocialLinks } from "@/lib/api/socialLinks/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  socialLinkIdSchema,
+  createSocialLink,
+  deleteSocialLink,
+  updateSocialLink,
+} from "../api/socialLinks/mutations";
+import { getSocialLinkById, getSocialLinks } from "../api/socialLinks/queries";
+import {
   insertSocialLinkParams,
+  socialLinkIdSchema,
   updateSocialLinkParams,
-} from "@/lib/db/schema/socialLinks";
-import { createSocialLink, deleteSocialLink, updateSocialLink } from "@/lib/api/socialLinks/mutations";
+} from "../db/schema/socialLinks";
+import { publicProcedure, router } from "../server/trpc";
 
 export const socialLinksRouter = router({
   getSocialLinks: publicProcedure.query(async () => {
     return getSocialLinks();
   }),
-  getSocialLinkById: publicProcedure.input(socialLinkIdSchema).query(async ({ input }) => {
-    return getSocialLinkById(input.id);
-  }),
+  getSocialLinkById: publicProcedure
+    .input(socialLinkIdSchema)
+    .query(async ({ input }) => {
+      return getSocialLinkById(input.id);
+    }),
   createSocialLink: publicProcedure
     .input(insertSocialLinkParams)
     .mutation(async ({ input }) => {

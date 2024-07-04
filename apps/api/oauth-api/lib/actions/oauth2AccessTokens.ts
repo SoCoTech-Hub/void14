@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createOauth2AccessToken,
   deleteOauth2AccessToken,
   updateOauth2AccessToken,
-} from "@/lib/api/oauth2AccessTokens/mutations";
+} from "../api/oauth2AccessTokens/mutations";
 import {
-  Oauth2AccessTokenId,
-  NewOauth2AccessTokenParams,
-  UpdateOauth2AccessTokenParams,
-  oauth2AccessTokenIdSchema,
   insertOauth2AccessTokenParams,
+  NewOauth2AccessTokenParams,
+  Oauth2AccessTokenId,
+  oauth2AccessTokenIdSchema,
+  UpdateOauth2AccessTokenParams,
   updateOauth2AccessTokenParams,
-} from "@/lib/db/schema/oauth2AccessTokens";
+} from "../db/schema/oauth2AccessTokens";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateOauth2AccessTokens = () => revalidatePath("/oauth2-access-tokens");
+const revalidateOauth2AccessTokens = () =>
+  revalidatePath("/oauth2-access-tokens");
 
-export const createOauth2AccessTokenAction = async (input: NewOauth2AccessTokenParams) => {
+export const createOauth2AccessTokenAction = async (
+  input: NewOauth2AccessTokenParams,
+) => {
   try {
     const payload = insertOauth2AccessTokenParams.parse(input);
     await createOauth2AccessToken(payload);
@@ -37,7 +41,9 @@ export const createOauth2AccessTokenAction = async (input: NewOauth2AccessTokenP
   }
 };
 
-export const updateOauth2AccessTokenAction = async (input: UpdateOauth2AccessTokenParams) => {
+export const updateOauth2AccessTokenAction = async (
+  input: UpdateOauth2AccessTokenParams,
+) => {
   try {
     const payload = updateOauth2AccessTokenParams.parse(input);
     await updateOauth2AccessToken(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateOauth2AccessTokenAction = async (input: UpdateOauth2AccessTok
   }
 };
 
-export const deleteOauth2AccessTokenAction = async (input: Oauth2AccessTokenId) => {
+export const deleteOauth2AccessTokenAction = async (
+  input: Oauth2AccessTokenId,
+) => {
   try {
     const payload = oauth2AccessTokenIdSchema.parse({ id: input });
     await deleteOauth2AccessToken(payload.id);

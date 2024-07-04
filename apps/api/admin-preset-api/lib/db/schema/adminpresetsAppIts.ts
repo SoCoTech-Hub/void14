@@ -1,10 +1,10 @@
-import { type getAdminpresetsAppIts } from "@/lib/api/adminpresetsAppIts/queries";
 import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getAdminpresetsAppIts } from "../api/adminpresetsAppIts/queries";
 import { adminPresetsApps } from "./adminPresetsApps";
 
 export const adminpresetsAppIts = pgTable(

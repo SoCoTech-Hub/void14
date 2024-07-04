@@ -1,19 +1,21 @@
-import { getScaleById, getScales } from "@/lib/api/scales/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import { createScale, deleteScale, updateScale } from "../api/scales/mutations";
+import { getScaleById, getScales } from "../api/scales/queries";
 import {
-  scaleIdSchema,
   insertScaleParams,
+  scaleIdSchema,
   updateScaleParams,
-} from "@/lib/db/schema/scales";
-import { createScale, deleteScale, updateScale } from "@/lib/api/scales/mutations";
+} from "../db/schema/scales";
+import { publicProcedure, router } from "../server/trpc";
 
 export const scalesRouter = router({
   getScales: publicProcedure.query(async () => {
     return getScales();
   }),
-  getScaleById: publicProcedure.input(scaleIdSchema).query(async ({ input }) => {
-    return getScaleById(input.id);
-  }),
+  getScaleById: publicProcedure
+    .input(scaleIdSchema)
+    .query(async ({ input }) => {
+      return getScaleById(input.id);
+    }),
   createScale: publicProcedure
     .input(insertScaleParams)
     .mutation(async ({ input }) => {

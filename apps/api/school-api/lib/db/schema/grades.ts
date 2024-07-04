@@ -1,9 +1,10 @@
-import { type getGrades } from "@/lib/api/grades/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getGrades } from "../api/grades/queries";
 
 export const grades = pgTable("grades", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

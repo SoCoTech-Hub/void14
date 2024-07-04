@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createFaqCategory,
   deleteFaqCategory,
   updateFaqCategory,
-} from "@/lib/api/faqCategories/mutations";
+} from "../api/faqCategories/mutations";
 import {
   FaqCategoryId,
-  NewFaqCategoryParams,
-  UpdateFaqCategoryParams,
   faqCategoryIdSchema,
   insertFaqCategoryParams,
+  NewFaqCategoryParams,
+  UpdateFaqCategoryParams,
   updateFaqCategoryParams,
-} from "@/lib/db/schema/faqCategories";
+} from "../db/schema/faqCategories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createFaqCategoryAction = async (input: NewFaqCategoryParams) => {
   }
 };
 
-export const updateFaqCategoryAction = async (input: UpdateFaqCategoryParams) => {
+export const updateFaqCategoryAction = async (
+  input: UpdateFaqCategoryParams,
+) => {
   try {
     const payload = updateFaqCategoryParams.parse(input);
     await updateFaqCategory(payload.id, payload);

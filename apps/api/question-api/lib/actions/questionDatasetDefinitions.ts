@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuestionDatasetDefinition,
   deleteQuestionDatasetDefinition,
   updateQuestionDatasetDefinition,
-} from "@/lib/api/questionDatasetDefinitions/mutations";
+} from "../api/questionDatasetDefinitions/mutations";
 import {
-  QuestionDatasetDefinitionId,
-  NewQuestionDatasetDefinitionParams,
-  UpdateQuestionDatasetDefinitionParams,
-  questionDatasetDefinitionIdSchema,
   insertQuestionDatasetDefinitionParams,
+  NewQuestionDatasetDefinitionParams,
+  QuestionDatasetDefinitionId,
+  questionDatasetDefinitionIdSchema,
+  UpdateQuestionDatasetDefinitionParams,
   updateQuestionDatasetDefinitionParams,
-} from "@/lib/db/schema/questionDatasetDefinitions";
+} from "../db/schema/questionDatasetDefinitions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQuestionDatasetDefinitions = () => revalidatePath("/question-dataset-definitions");
+const revalidateQuestionDatasetDefinitions = () =>
+  revalidatePath("/question-dataset-definitions");
 
-export const createQuestionDatasetDefinitionAction = async (input: NewQuestionDatasetDefinitionParams) => {
+export const createQuestionDatasetDefinitionAction = async (
+  input: NewQuestionDatasetDefinitionParams,
+) => {
   try {
     const payload = insertQuestionDatasetDefinitionParams.parse(input);
     await createQuestionDatasetDefinition(payload);
@@ -37,7 +41,9 @@ export const createQuestionDatasetDefinitionAction = async (input: NewQuestionDa
   }
 };
 
-export const updateQuestionDatasetDefinitionAction = async (input: UpdateQuestionDatasetDefinitionParams) => {
+export const updateQuestionDatasetDefinitionAction = async (
+  input: UpdateQuestionDatasetDefinitionParams,
+) => {
   try {
     const payload = updateQuestionDatasetDefinitionParams.parse(input);
     await updateQuestionDatasetDefinition(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQuestionDatasetDefinitionAction = async (input: UpdateQuestio
   }
 };
 
-export const deleteQuestionDatasetDefinitionAction = async (input: QuestionDatasetDefinitionId) => {
+export const deleteQuestionDatasetDefinitionAction = async (
+  input: QuestionDatasetDefinitionId,
+) => {
   try {
     const payload = questionDatasetDefinitionIdSchema.parse({ id: input });
     await deleteQuestionDatasetDefinition(payload.id);

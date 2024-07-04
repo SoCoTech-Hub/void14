@@ -1,10 +1,10 @@
-import { type getFields } from "@/lib/api/fields/queries";
 import { boolean, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getFields } from "../api/fields/queries";
 import { datas } from "./datas";
 
 export const fields = pgTable("fields", {

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createSupportStatus,
   deleteSupportStatus,
   updateSupportStatus,
-} from "@/lib/api/supportStatuses/mutations";
+} from "../api/supportStatuses/mutations";
 import {
-  SupportStatusId,
-  NewSupportStatusParams,
-  UpdateSupportStatusParams,
-  supportStatusIdSchema,
   insertSupportStatusParams,
+  NewSupportStatusParams,
+  SupportStatusId,
+  supportStatusIdSchema,
+  UpdateSupportStatusParams,
   updateSupportStatusParams,
-} from "@/lib/db/schema/supportStatuses";
+} from "../db/schema/supportStatuses";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateSupportStatuses = () => revalidatePath("/support-statuses");
 
-export const createSupportStatusAction = async (input: NewSupportStatusParams) => {
+export const createSupportStatusAction = async (
+  input: NewSupportStatusParams,
+) => {
   try {
     const payload = insertSupportStatusParams.parse(input);
     await createSupportStatus(payload);
@@ -37,7 +40,9 @@ export const createSupportStatusAction = async (input: NewSupportStatusParams) =
   }
 };
 
-export const updateSupportStatusAction = async (input: UpdateSupportStatusParams) => {
+export const updateSupportStatusAction = async (
+  input: UpdateSupportStatusParams,
+) => {
   try {
     const payload = updateSupportStatusParams.parse(input);
     await updateSupportStatus(payload.id, payload);

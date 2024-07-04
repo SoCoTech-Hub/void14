@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCohort,
   deleteCohort,
   updateCohort,
-} from "@/lib/api/cohorts/mutations";
+} from "../api/cohorts/mutations";
 import {
   CohortId,
-  NewCohortParams,
-  UpdateCohortParams,
   cohortIdSchema,
   insertCohortParams,
+  NewCohortParams,
+  UpdateCohortParams,
   updateCohortParams,
-} from "@/lib/db/schema/cohorts";
+} from "../db/schema/cohorts";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

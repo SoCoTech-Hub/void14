@@ -1,19 +1,28 @@
-import { getLtiserviceGradebookserviceById, getLtiserviceGradebookservices } from "@/lib/api/ltiserviceGradebookservices/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  ltiserviceGradebookserviceIdSchema,
+  createLtiserviceGradebookservice,
+  deleteLtiserviceGradebookservice,
+  updateLtiserviceGradebookservice,
+} from "../api/ltiserviceGradebookservices/mutations";
+import {
+  getLtiserviceGradebookserviceById,
+  getLtiserviceGradebookservices,
+} from "../api/ltiserviceGradebookservices/queries";
+import {
   insertLtiserviceGradebookserviceParams,
+  ltiserviceGradebookserviceIdSchema,
   updateLtiserviceGradebookserviceParams,
-} from "@/lib/db/schema/ltiserviceGradebookservices";
-import { createLtiserviceGradebookservice, deleteLtiserviceGradebookservice, updateLtiserviceGradebookservice } from "@/lib/api/ltiserviceGradebookservices/mutations";
+} from "../db/schema/ltiserviceGradebookservices";
+import { publicProcedure, router } from "../server/trpc";
 
 export const ltiserviceGradebookservicesRouter = router({
   getLtiserviceGradebookservices: publicProcedure.query(async () => {
     return getLtiserviceGradebookservices();
   }),
-  getLtiserviceGradebookserviceById: publicProcedure.input(ltiserviceGradebookserviceIdSchema).query(async ({ input }) => {
-    return getLtiserviceGradebookserviceById(input.id);
-  }),
+  getLtiserviceGradebookserviceById: publicProcedure
+    .input(ltiserviceGradebookserviceIdSchema)
+    .query(async ({ input }) => {
+      return getLtiserviceGradebookserviceById(input.id);
+    }),
   createLtiserviceGradebookservice: publicProcedure
     .input(insertLtiserviceGradebookserviceParams)
     .mutation(async ({ input }) => {

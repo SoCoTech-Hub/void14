@@ -1,19 +1,25 @@
-import { getTagCollById, getTagColls } from "@/lib/api/tagColls/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  tagCollIdSchema,
+  createTagColl,
+  deleteTagColl,
+  updateTagColl,
+} from "../api/tagColls/mutations";
+import { getTagCollById, getTagColls } from "../api/tagColls/queries";
+import {
   insertTagCollParams,
+  tagCollIdSchema,
   updateTagCollParams,
-} from "@/lib/db/schema/tagColls";
-import { createTagColl, deleteTagColl, updateTagColl } from "@/lib/api/tagColls/mutations";
+} from "../db/schema/tagColls";
+import { publicProcedure, router } from "../server/trpc";
 
 export const tagCollsRouter = router({
   getTagColls: publicProcedure.query(async () => {
     return getTagColls();
   }),
-  getTagCollById: publicProcedure.input(tagCollIdSchema).query(async ({ input }) => {
-    return getTagCollById(input.id);
-  }),
+  getTagCollById: publicProcedure
+    .input(tagCollIdSchema)
+    .query(async ({ input }) => {
+      return getTagCollById(input.id);
+    }),
   createTagColl: publicProcedure
     .input(insertTagCollParams)
     .mutation(async ({ input }) => {

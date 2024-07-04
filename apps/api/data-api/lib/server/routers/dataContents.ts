@@ -1,19 +1,28 @@
-import { getDataContentById, getDataContents } from "@/lib/api/dataContents/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createDataContent,
+  deleteDataContent,
+  updateDataContent,
+} from "../api/dataContents/mutations";
+import {
+  getDataContentById,
+  getDataContents,
+} from "../api/dataContents/queries";
 import {
   dataContentIdSchema,
   insertDataContentParams,
   updateDataContentParams,
-} from "@/lib/db/schema/dataContents";
-import { createDataContent, deleteDataContent, updateDataContent } from "@/lib/api/dataContents/mutations";
+} from "../db/schema/dataContents";
+import { publicProcedure, router } from "../server/trpc";
 
 export const dataContentsRouter = router({
   getDataContents: publicProcedure.query(async () => {
     return getDataContents();
   }),
-  getDataContentById: publicProcedure.input(dataContentIdSchema).query(async ({ input }) => {
-    return getDataContentById(input.id);
-  }),
+  getDataContentById: publicProcedure
+    .input(dataContentIdSchema)
+    .query(async ({ input }) => {
+      return getDataContentById(input.id);
+    }),
   createDataContent: publicProcedure
     .input(insertDataContentParams)
     .mutation(async ({ input }) => {

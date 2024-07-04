@@ -1,19 +1,25 @@
-import { getSocialById, getSocials } from "@/lib/api/socials/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  socialIdSchema,
+  createSocial,
+  deleteSocial,
+  updateSocial,
+} from "../api/socials/mutations";
+import { getSocialById, getSocials } from "../api/socials/queries";
+import {
   insertSocialParams,
+  socialIdSchema,
   updateSocialParams,
-} from "@/lib/db/schema/socials";
-import { createSocial, deleteSocial, updateSocial } from "@/lib/api/socials/mutations";
+} from "../db/schema/socials";
+import { publicProcedure, router } from "../server/trpc";
 
 export const socialsRouter = router({
   getSocials: publicProcedure.query(async () => {
     return getSocials();
   }),
-  getSocialById: publicProcedure.input(socialIdSchema).query(async ({ input }) => {
-    return getSocialById(input.id);
-  }),
+  getSocialById: publicProcedure
+    .input(socialIdSchema)
+    .query(async ({ input }) => {
+      return getSocialById(input.id);
+    }),
   createSocial: publicProcedure
     .input(insertSocialParams)
     .mutation(async ({ input }) => {

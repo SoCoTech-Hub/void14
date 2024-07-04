@@ -1,4 +1,3 @@
-import type { getBookChapters } from "@/lib/api/bookChapters/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -14,6 +13,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import type { getBookChapters } from "../api/bookChapters/queries";
 import { books } from "./books";
 
 export const bookChapters = pgTable(

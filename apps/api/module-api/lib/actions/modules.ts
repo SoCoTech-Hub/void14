@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createModule,
   deleteModule,
   updateModule,
-} from "@/lib/api/modules/mutations";
+} from "../api/modules/mutations";
 import {
+  insertModuleParams,
   ModuleId,
+  moduleIdSchema,
   NewModuleParams,
   UpdateModuleParams,
-  moduleIdSchema,
-  insertModuleParams,
   updateModuleParams,
-} from "@/lib/db/schema/modules";
+} from "../db/schema/modules";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

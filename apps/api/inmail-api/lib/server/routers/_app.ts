@@ -1,7 +1,7 @@
+import { router } from "../server/trpc";
 import { computersRouter } from "./computers";
-import { router } from "@/lib/server/trpc";
-import { inmailsRouter } from "./inmails";
 import { inmailResponsesRouter } from "./inmailResponses";
+import { inmailsRouter } from "./inmails";
 
 export const appRouter = router({
   computers: computersRouter,

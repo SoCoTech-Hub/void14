@@ -1,19 +1,28 @@
-import { getOauth2AccessTokenById, getOauth2AccessTokens } from "@/lib/api/oauth2AccessTokens/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  oauth2AccessTokenIdSchema,
+  createOauth2AccessToken,
+  deleteOauth2AccessToken,
+  updateOauth2AccessToken,
+} from "../api/oauth2AccessTokens/mutations";
+import {
+  getOauth2AccessTokenById,
+  getOauth2AccessTokens,
+} from "../api/oauth2AccessTokens/queries";
+import {
   insertOauth2AccessTokenParams,
+  oauth2AccessTokenIdSchema,
   updateOauth2AccessTokenParams,
-} from "@/lib/db/schema/oauth2AccessTokens";
-import { createOauth2AccessToken, deleteOauth2AccessToken, updateOauth2AccessToken } from "@/lib/api/oauth2AccessTokens/mutations";
+} from "../db/schema/oauth2AccessTokens";
+import { publicProcedure, router } from "../server/trpc";
 
 export const oauth2AccessTokensRouter = router({
   getOauth2AccessTokens: publicProcedure.query(async () => {
     return getOauth2AccessTokens();
   }),
-  getOauth2AccessTokenById: publicProcedure.input(oauth2AccessTokenIdSchema).query(async ({ input }) => {
-    return getOauth2AccessTokenById(input.id);
-  }),
+  getOauth2AccessTokenById: publicProcedure
+    .input(oauth2AccessTokenIdSchema)
+    .query(async ({ input }) => {
+      return getOauth2AccessTokenById(input.id);
+    }),
   createOauth2AccessToken: publicProcedure
     .input(insertOauth2AccessTokenParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,27 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  QtypeMultichoiceOptionId, 
+
+import { db } from "../db/index";
+import {
+  insertQtypeMultichoiceOptionSchema,
   NewQtypeMultichoiceOptionParams,
-  UpdateQtypeMultichoiceOptionParams, 
-  updateQtypeMultichoiceOptionSchema,
-  insertQtypeMultichoiceOptionSchema, 
+  QtypeMultichoiceOptionId,
+  qtypeMultichoiceOptionIdSchema,
   qtypeMultichoiceOptions,
-  qtypeMultichoiceOptionIdSchema 
-} from "@/lib/db/schema/qtypeMultichoiceOptions";
+  UpdateQtypeMultichoiceOptionParams,
+  updateQtypeMultichoiceOptionSchema,
+} from "../db/schema/qtypeMultichoiceOptions";
 
-export const createQtypeMultichoiceOption = async (qtypeMultichoiceOption: NewQtypeMultichoiceOptionParams) => {
-  const newQtypeMultichoiceOption = insertQtypeMultichoiceOptionSchema.parse(qtypeMultichoiceOption);
+export const createQtypeMultichoiceOption = async (
+  qtypeMultichoiceOption: NewQtypeMultichoiceOptionParams,
+) => {
+  const newQtypeMultichoiceOption = insertQtypeMultichoiceOptionSchema.parse(
+    qtypeMultichoiceOption,
+  );
   try {
-    const [q] =  await db.insert(qtypeMultichoiceOptions).values(newQtypeMultichoiceOption).returning();
+    const [q] = await db
+      .insert(qtypeMultichoiceOptions)
+      .values(newQtypeMultichoiceOption)
+      .returning();
     return { qtypeMultichoiceOption: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,22 @@ export const createQtypeMultichoiceOption = async (qtypeMultichoiceOption: NewQt
   }
 };
 
-export const updateQtypeMultichoiceOption = async (id: QtypeMultichoiceOptionId, qtypeMultichoiceOption: UpdateQtypeMultichoiceOptionParams) => {
-  const { id: qtypeMultichoiceOptionId } = qtypeMultichoiceOptionIdSchema.parse({ id });
-  const newQtypeMultichoiceOption = updateQtypeMultichoiceOptionSchema.parse(qtypeMultichoiceOption);
+export const updateQtypeMultichoiceOption = async (
+  id: QtypeMultichoiceOptionId,
+  qtypeMultichoiceOption: UpdateQtypeMultichoiceOptionParams,
+) => {
+  const { id: qtypeMultichoiceOptionId } = qtypeMultichoiceOptionIdSchema.parse(
+    { id },
+  );
+  const newQtypeMultichoiceOption = updateQtypeMultichoiceOptionSchema.parse(
+    qtypeMultichoiceOption,
+  );
   try {
-    const [q] =  await db
-     .update(qtypeMultichoiceOptions)
-     .set(newQtypeMultichoiceOption)
-     .where(eq(qtypeMultichoiceOptions.id, qtypeMultichoiceOptionId!))
-     .returning();
+    const [q] = await db
+      .update(qtypeMultichoiceOptions)
+      .set(newQtypeMultichoiceOption)
+      .where(eq(qtypeMultichoiceOptions.id, qtypeMultichoiceOptionId!))
+      .returning();
     return { qtypeMultichoiceOption: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +54,17 @@ export const updateQtypeMultichoiceOption = async (id: QtypeMultichoiceOptionId,
   }
 };
 
-export const deleteQtypeMultichoiceOption = async (id: QtypeMultichoiceOptionId) => {
-  const { id: qtypeMultichoiceOptionId } = qtypeMultichoiceOptionIdSchema.parse({ id });
+export const deleteQtypeMultichoiceOption = async (
+  id: QtypeMultichoiceOptionId,
+) => {
+  const { id: qtypeMultichoiceOptionId } = qtypeMultichoiceOptionIdSchema.parse(
+    { id },
+  );
   try {
-    const [q] =  await db.delete(qtypeMultichoiceOptions).where(eq(qtypeMultichoiceOptions.id, qtypeMultichoiceOptionId!))
-    .returning();
+    const [q] = await db
+      .delete(qtypeMultichoiceOptions)
+      .where(eq(qtypeMultichoiceOptions.id, qtypeMultichoiceOptionId!))
+      .returning();
     return { qtypeMultichoiceOption: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +72,3 @@ export const deleteQtypeMultichoiceOption = async (id: QtypeMultichoiceOptionId)
     throw { error: message };
   }
 };
-

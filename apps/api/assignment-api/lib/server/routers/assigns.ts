@@ -1,19 +1,25 @@
-import { getAssignById, getAssigns } from "@/lib/api/assigns/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createAssign,
+  deleteAssign,
+  updateAssign,
+} from "../api/assigns/mutations";
+import { getAssignById, getAssigns } from "../api/assigns/queries";
 import {
   assignIdSchema,
   insertAssignParams,
   updateAssignParams,
-} from "@/lib/db/schema/assigns";
-import { createAssign, deleteAssign, updateAssign } from "@/lib/api/assigns/mutations";
+} from "../db/schema/assigns";
+import { publicProcedure, router } from "../server/trpc";
 
 export const assignsRouter = router({
   getAssigns: publicProcedure.query(async () => {
     return getAssigns();
   }),
-  getAssignById: publicProcedure.input(assignIdSchema).query(async ({ input }) => {
-    return getAssignById(input.id);
-  }),
+  getAssignById: publicProcedure
+    .input(assignIdSchema)
+    .query(async ({ input }) => {
+      return getAssignById(input.id);
+    }),
   createAssign: publicProcedure
     .input(insertAssignParams)
     .mutation(async ({ input }) => {

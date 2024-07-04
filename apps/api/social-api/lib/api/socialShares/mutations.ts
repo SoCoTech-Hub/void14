@@ -1,21 +1,29 @@
-import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
-import { 
-  SocialShareId, 
-  NewSocialShareParams,
-  UpdateSocialShareParams, 
-  updateSocialShareSchema,
-  insertSocialShareSchema, 
-  socialShares,
-  socialShareIdSchema 
-} from "@/lib/db/schema/socialShares";
+
 import { getUserAuth } from "@soco/auth/utils";
+
+import { db } from "../db/index";
+import {
+  insertSocialShareSchema,
+  NewSocialShareParams,
+  SocialShareId,
+  socialShareIdSchema,
+  socialShares,
+  UpdateSocialShareParams,
+  updateSocialShareSchema,
+} from "../db/schema/socialShares";
 
 export const createSocialShare = async (socialShare: NewSocialShareParams) => {
   const { session } = await getUserAuth();
-  const newSocialShare = insertSocialShareSchema.parse({ ...socialShare, userId: session?.user.id! });
+  const newSocialShare = insertSocialShareSchema.parse({
+    ...socialShare,
+    userId: session?.user.id!,
+  });
   try {
-    const [s] =  await db.insert(socialShares).values(newSocialShare).returning();
+    const [s] = await db
+      .insert(socialShares)
+      .values(newSocialShare)
+      .returning();
     return { socialShare: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +32,27 @@ export const createSocialShare = async (socialShare: NewSocialShareParams) => {
   }
 };
 
-export const updateSocialShare = async (id: SocialShareId, socialShare: UpdateSocialShareParams) => {
+export const updateSocialShare = async (
+  id: SocialShareId,
+  socialShare: UpdateSocialShareParams,
+) => {
   const { session } = await getUserAuth();
   const { id: socialShareId } = socialShareIdSchema.parse({ id });
-  const newSocialShare = updateSocialShareSchema.parse({ ...socialShare, userId: session?.user.id! });
+  const newSocialShare = updateSocialShareSchema.parse({
+    ...socialShare,
+    userId: session?.user.id!,
+  });
   try {
-    const [s] =  await db
-     .update(socialShares)
-     .set(newSocialShare)
-     .where(and(eq(socialShares.id, socialShareId!), eq(socialShares.userId, session?.user.id!)))
-     .returning();
+    const [s] = await db
+      .update(socialShares)
+      .set(newSocialShare)
+      .where(
+        and(
+          eq(socialShares.id, socialShareId!),
+          eq(socialShares.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { socialShare: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +65,15 @@ export const deleteSocialShare = async (id: SocialShareId) => {
   const { session } = await getUserAuth();
   const { id: socialShareId } = socialShareIdSchema.parse({ id });
   try {
-    const [s] =  await db.delete(socialShares).where(and(eq(socialShares.id, socialShareId!), eq(socialShares.userId, session?.user.id!)))
-    .returning();
+    const [s] = await db
+      .delete(socialShares)
+      .where(
+        and(
+          eq(socialShares.id, socialShareId!),
+          eq(socialShares.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { socialShare: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +81,3 @@ export const deleteSocialShare = async (id: SocialShareId) => {
     throw { error: message };
   }
 };
-

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createEnrolLtiAppRegistration,
   deleteEnrolLtiAppRegistration,
   updateEnrolLtiAppRegistration,
-} from "@/lib/api/enrolLtiAppRegistrations/mutations";
+} from "../api/enrolLtiAppRegistrations/mutations";
 import {
   EnrolLtiAppRegistrationId,
-  NewEnrolLtiAppRegistrationParams,
-  UpdateEnrolLtiAppRegistrationParams,
   enrolLtiAppRegistrationIdSchema,
   insertEnrolLtiAppRegistrationParams,
+  NewEnrolLtiAppRegistrationParams,
+  UpdateEnrolLtiAppRegistrationParams,
   updateEnrolLtiAppRegistrationParams,
-} from "@/lib/db/schema/enrolLtiAppRegistrations";
+} from "../db/schema/enrolLtiAppRegistrations";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateEnrolLtiAppRegistrations = () => revalidatePath("/enrol-lti-app-registrations");
+const revalidateEnrolLtiAppRegistrations = () =>
+  revalidatePath("/enrol-lti-app-registrations");
 
-export const createEnrolLtiAppRegistrationAction = async (input: NewEnrolLtiAppRegistrationParams) => {
+export const createEnrolLtiAppRegistrationAction = async (
+  input: NewEnrolLtiAppRegistrationParams,
+) => {
   try {
     const payload = insertEnrolLtiAppRegistrationParams.parse(input);
     await createEnrolLtiAppRegistration(payload);
@@ -37,7 +41,9 @@ export const createEnrolLtiAppRegistrationAction = async (input: NewEnrolLtiAppR
   }
 };
 
-export const updateEnrolLtiAppRegistrationAction = async (input: UpdateEnrolLtiAppRegistrationParams) => {
+export const updateEnrolLtiAppRegistrationAction = async (
+  input: UpdateEnrolLtiAppRegistrationParams,
+) => {
   try {
     const payload = updateEnrolLtiAppRegistrationParams.parse(input);
     await updateEnrolLtiAppRegistration(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateEnrolLtiAppRegistrationAction = async (input: UpdateEnrolLtiA
   }
 };
 
-export const deleteEnrolLtiAppRegistrationAction = async (input: EnrolLtiAppRegistrationId) => {
+export const deleteEnrolLtiAppRegistrationAction = async (
+  input: EnrolLtiAppRegistrationId,
+) => {
   try {
     const payload = enrolLtiAppRegistrationIdSchema.parse({ id: input });
     await deleteEnrolLtiAppRegistration(payload.id);

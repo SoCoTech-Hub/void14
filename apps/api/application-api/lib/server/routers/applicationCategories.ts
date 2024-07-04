@@ -1,19 +1,28 @@
-import { getApplicationCategoryById, getApplicationCategories } from "@/lib/api/applicationCategories/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createApplicationCategory,
+  deleteApplicationCategory,
+  updateApplicationCategory,
+} from "../api/applicationCategories/mutations";
+import {
+  getApplicationCategories,
+  getApplicationCategoryById,
+} from "../api/applicationCategories/queries";
 import {
   applicationCategoryIdSchema,
   insertApplicationCategoryParams,
   updateApplicationCategoryParams,
-} from "@/lib/db/schema/applicationCategories";
-import { createApplicationCategory, deleteApplicationCategory, updateApplicationCategory } from "@/lib/api/applicationCategories/mutations";
+} from "../db/schema/applicationCategories";
+import { publicProcedure, router } from "../server/trpc";
 
 export const applicationCategoriesRouter = router({
   getApplicationCategories: publicProcedure.query(async () => {
     return getApplicationCategories();
   }),
-  getApplicationCategoryById: publicProcedure.input(applicationCategoryIdSchema).query(async ({ input }) => {
-    return getApplicationCategoryById(input.id);
-  }),
+  getApplicationCategoryById: publicProcedure
+    .input(applicationCategoryIdSchema)
+    .query(async ({ input }) => {
+      return getApplicationCategoryById(input.id);
+    }),
   createApplicationCategory: publicProcedure
     .input(insertApplicationCategoryParams)
     .mutation(async ({ input }) => {

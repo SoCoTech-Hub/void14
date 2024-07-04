@@ -1,10 +1,11 @@
-import { type getMessageContactRequests } from "@/lib/api/messageContactRequests/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getMessageContactRequests } from "../api/messageContactRequests/queries";
 
 export const messageContactRequests = pgTable("message_contact_requests", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

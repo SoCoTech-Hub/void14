@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createToolDataprivacyPurpose,
   deleteToolDataprivacyPurpose,
   updateToolDataprivacyPurpose,
-} from "@/lib/api/toolDataprivacyPurposes/mutations";
+} from "../api/toolDataprivacyPurposes/mutations";
 import {
-  ToolDataprivacyPurposeId,
-  NewToolDataprivacyPurposeParams,
-  UpdateToolDataprivacyPurposeParams,
-  toolDataprivacyPurposeIdSchema,
   insertToolDataprivacyPurposeParams,
+  NewToolDataprivacyPurposeParams,
+  ToolDataprivacyPurposeId,
+  toolDataprivacyPurposeIdSchema,
+  UpdateToolDataprivacyPurposeParams,
   updateToolDataprivacyPurposeParams,
-} from "@/lib/db/schema/toolDataprivacyPurposes";
+} from "../db/schema/toolDataprivacyPurposes";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateToolDataprivacyPurposes = () => revalidatePath("/tool-dataprivacy-purposes");
+const revalidateToolDataprivacyPurposes = () =>
+  revalidatePath("/tool-dataprivacy-purposes");
 
-export const createToolDataprivacyPurposeAction = async (input: NewToolDataprivacyPurposeParams) => {
+export const createToolDataprivacyPurposeAction = async (
+  input: NewToolDataprivacyPurposeParams,
+) => {
   try {
     const payload = insertToolDataprivacyPurposeParams.parse(input);
     await createToolDataprivacyPurpose(payload);
@@ -37,7 +41,9 @@ export const createToolDataprivacyPurposeAction = async (input: NewToolDatapriva
   }
 };
 
-export const updateToolDataprivacyPurposeAction = async (input: UpdateToolDataprivacyPurposeParams) => {
+export const updateToolDataprivacyPurposeAction = async (
+  input: UpdateToolDataprivacyPurposeParams,
+) => {
   try {
     const payload = updateToolDataprivacyPurposeParams.parse(input);
     await updateToolDataprivacyPurpose(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateToolDataprivacyPurposeAction = async (input: UpdateToolDatapr
   }
 };
 
-export const deleteToolDataprivacyPurposeAction = async (input: ToolDataprivacyPurposeId) => {
+export const deleteToolDataprivacyPurposeAction = async (
+  input: ToolDataprivacyPurposeId,
+) => {
   try {
     const payload = toolDataprivacyPurposeIdSchema.parse({ id: input });
     await deleteToolDataprivacyPurpose(payload.id);

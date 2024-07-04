@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createRoleAllowView,
   deleteRoleAllowView,
   updateRoleAllowView,
-} from "@/lib/api/roleAllowViews/mutations";
+} from "../api/roleAllowViews/mutations";
 import {
-  RoleAllowViewId,
-  NewRoleAllowViewParams,
-  UpdateRoleAllowViewParams,
-  roleAllowViewIdSchema,
   insertRoleAllowViewParams,
+  NewRoleAllowViewParams,
+  RoleAllowViewId,
+  roleAllowViewIdSchema,
+  UpdateRoleAllowViewParams,
   updateRoleAllowViewParams,
-} from "@/lib/db/schema/roleAllowViews";
+} from "../db/schema/roleAllowViews";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateRoleAllowViews = () => revalidatePath("/role-allow-views");
 
-export const createRoleAllowViewAction = async (input: NewRoleAllowViewParams) => {
+export const createRoleAllowViewAction = async (
+  input: NewRoleAllowViewParams,
+) => {
   try {
     const payload = insertRoleAllowViewParams.parse(input);
     await createRoleAllowView(payload);
@@ -37,7 +40,9 @@ export const createRoleAllowViewAction = async (input: NewRoleAllowViewParams) =
   }
 };
 
-export const updateRoleAllowViewAction = async (input: UpdateRoleAllowViewParams) => {
+export const updateRoleAllowViewAction = async (
+  input: UpdateRoleAllowViewParams,
+) => {
   try {
     const payload = updateRoleAllowViewParams.parse(input);
     await updateRoleAllowView(payload.id, payload);

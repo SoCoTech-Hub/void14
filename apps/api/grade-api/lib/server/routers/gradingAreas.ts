@@ -1,19 +1,28 @@
-import { getGradingAreaById, getGradingAreas } from "@/lib/api/gradingAreas/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createGradingArea,
+  deleteGradingArea,
+  updateGradingArea,
+} from "../api/gradingAreas/mutations";
+import {
+  getGradingAreaById,
+  getGradingAreas,
+} from "../api/gradingAreas/queries";
 import {
   gradingAreaIdSchema,
   insertGradingAreaParams,
   updateGradingAreaParams,
-} from "@/lib/db/schema/gradingAreas";
-import { createGradingArea, deleteGradingArea, updateGradingArea } from "@/lib/api/gradingAreas/mutations";
+} from "../db/schema/gradingAreas";
+import { publicProcedure, router } from "../server/trpc";
 
 export const gradingAreasRouter = router({
   getGradingAreas: publicProcedure.query(async () => {
     return getGradingAreas();
   }),
-  getGradingAreaById: publicProcedure.input(gradingAreaIdSchema).query(async ({ input }) => {
-    return getGradingAreaById(input.id);
-  }),
+  getGradingAreaById: publicProcedure
+    .input(gradingAreaIdSchema)
+    .query(async ({ input }) => {
+      return getGradingAreaById(input.id);
+    }),
   createGradingArea: publicProcedure
     .input(insertGradingAreaParams)
     .mutation(async ({ input }) => {

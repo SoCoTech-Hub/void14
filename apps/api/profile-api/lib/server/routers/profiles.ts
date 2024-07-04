@@ -1,19 +1,25 @@
-import { getProfileById, getProfiles } from "@/lib/api/profiles/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  profileIdSchema,
+  createProfile,
+  deleteProfile,
+  updateProfile,
+} from "../api/profiles/mutations";
+import { getProfileById, getProfiles } from "../api/profiles/queries";
+import {
   insertProfileParams,
+  profileIdSchema,
   updateProfileParams,
-} from "@/lib/db/schema/profiles";
-import { createProfile, deleteProfile, updateProfile } from "@/lib/api/profiles/mutations";
+} from "../db/schema/profiles";
+import { publicProcedure, router } from "../server/trpc";
 
 export const profilesRouter = router({
   getProfiles: publicProcedure.query(async () => {
     return getProfiles();
   }),
-  getProfileById: publicProcedure.input(profileIdSchema).query(async ({ input }) => {
-    return getProfileById(input.id);
-  }),
+  getProfileById: publicProcedure
+    .input(profileIdSchema)
+    .query(async ({ input }) => {
+      return getProfileById(input.id);
+    }),
   createProfile: publicProcedure
     .input(insertProfileParams)
     .mutation(async ({ input }) => {

@@ -1,10 +1,10 @@
-import { type getPaygwPaypals } from "@/lib/api/paygwPaypals/queries";
 import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getPaygwPaypals } from "../api/paygwPaypals/queries";
 import { payments } from "./payments";
 
 export const paygwPaypals = pgTable(

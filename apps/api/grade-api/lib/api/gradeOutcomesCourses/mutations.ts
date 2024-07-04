@@ -1,19 +1,26 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  GradeOutcomesCourseId, 
-  NewGradeOutcomesCourseParams,
-  UpdateGradeOutcomesCourseParams, 
-  updateGradeOutcomesCourseSchema,
-  insertGradeOutcomesCourseSchema, 
-  gradeOutcomesCourses,
-  gradeOutcomesCourseIdSchema 
-} from "@/lib/db/schema/gradeOutcomesCourses";
 
-export const createGradeOutcomesCourse = async (gradeOutcomesCourse: NewGradeOutcomesCourseParams) => {
-  const newGradeOutcomesCourse = insertGradeOutcomesCourseSchema.parse(gradeOutcomesCourse);
+import { db } from "../db/index";
+import {
+  GradeOutcomesCourseId,
+  gradeOutcomesCourseIdSchema,
+  gradeOutcomesCourses,
+  insertGradeOutcomesCourseSchema,
+  NewGradeOutcomesCourseParams,
+  UpdateGradeOutcomesCourseParams,
+  updateGradeOutcomesCourseSchema,
+} from "../db/schema/gradeOutcomesCourses";
+
+export const createGradeOutcomesCourse = async (
+  gradeOutcomesCourse: NewGradeOutcomesCourseParams,
+) => {
+  const newGradeOutcomesCourse =
+    insertGradeOutcomesCourseSchema.parse(gradeOutcomesCourse);
   try {
-    const [g] =  await db.insert(gradeOutcomesCourses).values(newGradeOutcomesCourse).returning();
+    const [g] = await db
+      .insert(gradeOutcomesCourses)
+      .values(newGradeOutcomesCourse)
+      .returning();
     return { gradeOutcomesCourse: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,21 @@ export const createGradeOutcomesCourse = async (gradeOutcomesCourse: NewGradeOut
   }
 };
 
-export const updateGradeOutcomesCourse = async (id: GradeOutcomesCourseId, gradeOutcomesCourse: UpdateGradeOutcomesCourseParams) => {
-  const { id: gradeOutcomesCourseId } = gradeOutcomesCourseIdSchema.parse({ id });
-  const newGradeOutcomesCourse = updateGradeOutcomesCourseSchema.parse(gradeOutcomesCourse);
+export const updateGradeOutcomesCourse = async (
+  id: GradeOutcomesCourseId,
+  gradeOutcomesCourse: UpdateGradeOutcomesCourseParams,
+) => {
+  const { id: gradeOutcomesCourseId } = gradeOutcomesCourseIdSchema.parse({
+    id,
+  });
+  const newGradeOutcomesCourse =
+    updateGradeOutcomesCourseSchema.parse(gradeOutcomesCourse);
   try {
-    const [g] =  await db
-     .update(gradeOutcomesCourses)
-     .set(newGradeOutcomesCourse)
-     .where(eq(gradeOutcomesCourses.id, gradeOutcomesCourseId!))
-     .returning();
+    const [g] = await db
+      .update(gradeOutcomesCourses)
+      .set(newGradeOutcomesCourse)
+      .where(eq(gradeOutcomesCourses.id, gradeOutcomesCourseId!))
+      .returning();
     return { gradeOutcomesCourse: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -40,10 +53,14 @@ export const updateGradeOutcomesCourse = async (id: GradeOutcomesCourseId, grade
 };
 
 export const deleteGradeOutcomesCourse = async (id: GradeOutcomesCourseId) => {
-  const { id: gradeOutcomesCourseId } = gradeOutcomesCourseIdSchema.parse({ id });
+  const { id: gradeOutcomesCourseId } = gradeOutcomesCourseIdSchema.parse({
+    id,
+  });
   try {
-    const [g] =  await db.delete(gradeOutcomesCourses).where(eq(gradeOutcomesCourses.id, gradeOutcomesCourseId!))
-    .returning();
+    const [g] = await db
+      .delete(gradeOutcomesCourses)
+      .where(eq(gradeOutcomesCourses.id, gradeOutcomesCourseId!))
+      .returning();
     return { gradeOutcomesCourse: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +68,3 @@ export const deleteGradeOutcomesCourse = async (id: GradeOutcomesCourseId) => {
     throw { error: message };
   }
 };
-

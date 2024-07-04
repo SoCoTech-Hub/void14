@@ -1,19 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
+import { createShow, deleteShow, updateShow } from "../api/shows/mutations";
 import {
-  createShow,
-  deleteShow,
-  updateShow,
-} from "@/lib/api/shows/mutations";
-import {
-  ShowId,
-  NewShowParams,
-  UpdateShowParams,
-  showIdSchema,
   insertShowParams,
+  NewShowParams,
+  ShowId,
+  showIdSchema,
+  UpdateShowParams,
   updateShowParams,
-} from "@/lib/db/schema/shows";
+} from "../db/schema/shows";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

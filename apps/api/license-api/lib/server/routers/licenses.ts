@@ -1,19 +1,25 @@
-import { getLicenseById, getLicenses } from "@/lib/api/licenses/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  licenseIdSchema,
+  createLicense,
+  deleteLicense,
+  updateLicense,
+} from "../api/licenses/mutations";
+import { getLicenseById, getLicenses } from "../api/licenses/queries";
+import {
   insertLicenseParams,
+  licenseIdSchema,
   updateLicenseParams,
-} from "@/lib/db/schema/licenses";
-import { createLicense, deleteLicense, updateLicense } from "@/lib/api/licenses/mutations";
+} from "../db/schema/licenses";
+import { publicProcedure, router } from "../server/trpc";
 
 export const licensesRouter = router({
   getLicenses: publicProcedure.query(async () => {
     return getLicenses();
   }),
-  getLicenseById: publicProcedure.input(licenseIdSchema).query(async ({ input }) => {
-    return getLicenseById(input.id);
-  }),
+  getLicenseById: publicProcedure
+    .input(licenseIdSchema)
+    .query(async ({ input }) => {
+      return getLicenseById(input.id);
+    }),
   createLicense: publicProcedure
     .input(insertLicenseParams)
     .mutation(async ({ input }) => {

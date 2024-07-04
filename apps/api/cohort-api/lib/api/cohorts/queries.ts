@@ -1,10 +1,12 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { type CohortId, cohortIdSchema, cohorts } from "@/lib/db/schema/cohorts";
+
+import type { CohortId } from "../db/schema/cohorts";
+import { db } from "../db/index";
+import { cohortIdSchema, cohorts } from "../db/schema/cohorts";
 
 export const getCohorts = async () => {
   const rows = await db.select().from(cohorts);
-  const c = rows
+  const c = rows;
   return { cohorts: c };
 };
 
@@ -15,5 +17,3 @@ export const getCohortById = async (id: CohortId) => {
   const c = row;
   return { cohort: c };
 };
-
-

@@ -1,19 +1,28 @@
-import { getReportbuilderScheduleById, getReportbuilderSchedules } from "@/lib/api/reportbuilderSchedules/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  reportbuilderScheduleIdSchema,
+  createReportbuilderSchedule,
+  deleteReportbuilderSchedule,
+  updateReportbuilderSchedule,
+} from "../api/reportbuilderSchedules/mutations";
+import {
+  getReportbuilderScheduleById,
+  getReportbuilderSchedules,
+} from "../api/reportbuilderSchedules/queries";
+import {
   insertReportbuilderScheduleParams,
+  reportbuilderScheduleIdSchema,
   updateReportbuilderScheduleParams,
-} from "@/lib/db/schema/reportbuilderSchedules";
-import { createReportbuilderSchedule, deleteReportbuilderSchedule, updateReportbuilderSchedule } from "@/lib/api/reportbuilderSchedules/mutations";
+} from "../db/schema/reportbuilderSchedules";
+import { publicProcedure, router } from "../server/trpc";
 
 export const reportbuilderSchedulesRouter = router({
   getReportbuilderSchedules: publicProcedure.query(async () => {
     return getReportbuilderSchedules();
   }),
-  getReportbuilderScheduleById: publicProcedure.input(reportbuilderScheduleIdSchema).query(async ({ input }) => {
-    return getReportbuilderScheduleById(input.id);
-  }),
+  getReportbuilderScheduleById: publicProcedure
+    .input(reportbuilderScheduleIdSchema)
+    .query(async ({ input }) => {
+      return getReportbuilderScheduleById(input.id);
+    }),
   createReportbuilderSchedule: publicProcedure
     .input(insertReportbuilderScheduleParams)
     .mutation(async ({ input }) => {

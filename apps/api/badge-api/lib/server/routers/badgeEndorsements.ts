@@ -1,19 +1,28 @@
-import { getBadgeEndorsementById, getBadgeEndorsements } from "@/lib/api/badgeEndorsements/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createBadgeEndorsement,
+  deleteBadgeEndorsement,
+  updateBadgeEndorsement,
+} from "../api/badgeEndorsements/mutations";
+import {
+  getBadgeEndorsementById,
+  getBadgeEndorsements,
+} from "../api/badgeEndorsements/queries";
 import {
   badgeEndorsementIdSchema,
   insertBadgeEndorsementParams,
   updateBadgeEndorsementParams,
-} from "@/lib/db/schema/badgeEndorsements";
-import { createBadgeEndorsement, deleteBadgeEndorsement, updateBadgeEndorsement } from "@/lib/api/badgeEndorsements/mutations";
+} from "../db/schema/badgeEndorsements";
+import { publicProcedure, router } from "../server/trpc";
 
 export const badgeEndorsementsRouter = router({
   getBadgeEndorsements: publicProcedure.query(async () => {
     return getBadgeEndorsements();
   }),
-  getBadgeEndorsementById: publicProcedure.input(badgeEndorsementIdSchema).query(async ({ input }) => {
-    return getBadgeEndorsementById(input.id);
-  }),
+  getBadgeEndorsementById: publicProcedure
+    .input(badgeEndorsementIdSchema)
+    .query(async ({ input }) => {
+      return getBadgeEndorsementById(input.id);
+    }),
   createBadgeEndorsement: publicProcedure
     .input(insertBadgeEndorsementParams)
     .mutation(async ({ input }) => {

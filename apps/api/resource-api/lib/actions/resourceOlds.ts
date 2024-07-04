@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createResourceOld,
   deleteResourceOld,
   updateResourceOld,
-} from "@/lib/api/resourceOlds/mutations";
+} from "../api/resourceOlds/mutations";
 import {
-  ResourceOldId,
-  NewResourceOldParams,
-  UpdateResourceOldParams,
-  resourceOldIdSchema,
   insertResourceOldParams,
+  NewResourceOldParams,
+  ResourceOldId,
+  resourceOldIdSchema,
+  UpdateResourceOldParams,
   updateResourceOldParams,
-} from "@/lib/db/schema/resourceOlds";
+} from "../db/schema/resourceOlds";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createResourceOldAction = async (input: NewResourceOldParams) => {
   }
 };
 
-export const updateResourceOldAction = async (input: UpdateResourceOldParams) => {
+export const updateResourceOldAction = async (
+  input: UpdateResourceOldParams,
+) => {
   try {
     const payload = updateResourceOldParams.parse(input);
     await updateResourceOld(payload.id, payload);

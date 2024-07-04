@@ -1,4 +1,3 @@
-import { type getCompetencyEvidences } from "@/lib/api/competencyEvidences/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getCompetencyEvidences } from "../api/competencyEvidences/queries";
 
 export const competencyEvidences = pgTable("competency_evidences", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

@@ -1,4 +1,3 @@
-import { type getCustomFieldDatas } from "@/lib/api/customFieldDatas/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -12,6 +11,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getCustomFieldDatas } from "../api/customFieldDatas/queries";
 
 export const customFieldDatas = pgTable("custom_field_datas", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

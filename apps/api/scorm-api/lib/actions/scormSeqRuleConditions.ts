@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createScormSeqRuleCondition,
   deleteScormSeqRuleCondition,
   updateScormSeqRuleCondition,
-} from "@/lib/api/scormSeqRuleConditions/mutations";
+} from "../api/scormSeqRuleConditions/mutations";
 import {
-  ScormSeqRuleConditionId,
-  NewScormSeqRuleConditionParams,
-  UpdateScormSeqRuleConditionParams,
-  scormSeqRuleConditionIdSchema,
   insertScormSeqRuleConditionParams,
+  NewScormSeqRuleConditionParams,
+  ScormSeqRuleConditionId,
+  scormSeqRuleConditionIdSchema,
+  UpdateScormSeqRuleConditionParams,
   updateScormSeqRuleConditionParams,
-} from "@/lib/db/schema/scormSeqRuleConditions";
+} from "../db/schema/scormSeqRuleConditions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateScormSeqRuleConditions = () => revalidatePath("/scorm-seq-rule-conditions");
+const revalidateScormSeqRuleConditions = () =>
+  revalidatePath("/scorm-seq-rule-conditions");
 
-export const createScormSeqRuleConditionAction = async (input: NewScormSeqRuleConditionParams) => {
+export const createScormSeqRuleConditionAction = async (
+  input: NewScormSeqRuleConditionParams,
+) => {
   try {
     const payload = insertScormSeqRuleConditionParams.parse(input);
     await createScormSeqRuleCondition(payload);
@@ -37,7 +41,9 @@ export const createScormSeqRuleConditionAction = async (input: NewScormSeqRuleCo
   }
 };
 
-export const updateScormSeqRuleConditionAction = async (input: UpdateScormSeqRuleConditionParams) => {
+export const updateScormSeqRuleConditionAction = async (
+  input: UpdateScormSeqRuleConditionParams,
+) => {
   try {
     const payload = updateScormSeqRuleConditionParams.parse(input);
     await updateScormSeqRuleCondition(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateScormSeqRuleConditionAction = async (input: UpdateScormSeqRul
   }
 };
 
-export const deleteScormSeqRuleConditionAction = async (input: ScormSeqRuleConditionId) => {
+export const deleteScormSeqRuleConditionAction = async (
+  input: ScormSeqRuleConditionId,
+) => {
   try {
     const payload = scormSeqRuleConditionIdSchema.parse({ id: input });
     await deleteScormSeqRuleCondition(payload.id);

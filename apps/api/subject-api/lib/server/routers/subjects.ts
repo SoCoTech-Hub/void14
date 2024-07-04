@@ -1,19 +1,25 @@
-import { getSubjectById, getSubjects } from "@/lib/api/subjects/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  subjectIdSchema,
+  createSubject,
+  deleteSubject,
+  updateSubject,
+} from "../api/subjects/mutations";
+import { getSubjectById, getSubjects } from "../api/subjects/queries";
+import {
   insertSubjectParams,
+  subjectIdSchema,
   updateSubjectParams,
-} from "@/lib/db/schema/subjects";
-import { createSubject, deleteSubject, updateSubject } from "@/lib/api/subjects/mutations";
+} from "../db/schema/subjects";
+import { publicProcedure, router } from "../server/trpc";
 
 export const subjectsRouter = router({
   getSubjects: publicProcedure.query(async () => {
     return getSubjects();
   }),
-  getSubjectById: publicProcedure.input(subjectIdSchema).query(async ({ input }) => {
-    return getSubjectById(input.id);
-  }),
+  getSubjectById: publicProcedure
+    .input(subjectIdSchema)
+    .query(async ({ input }) => {
+      return getSubjectById(input.id);
+    }),
   createSubject: publicProcedure
     .input(insertSubjectParams)
     .mutation(async ({ input }) => {

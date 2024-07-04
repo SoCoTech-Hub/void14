@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createTaskSchedule,
   deleteTaskSchedule,
   updateTaskSchedule,
-} from "@/lib/api/taskSchedules/mutations";
+} from "../api/taskSchedules/mutations";
 import {
-  TaskScheduleId,
-  NewTaskScheduleParams,
-  UpdateTaskScheduleParams,
-  taskScheduleIdSchema,
   insertTaskScheduleParams,
+  NewTaskScheduleParams,
+  TaskScheduleId,
+  taskScheduleIdSchema,
+  UpdateTaskScheduleParams,
   updateTaskScheduleParams,
-} from "@/lib/db/schema/taskSchedules";
+} from "../db/schema/taskSchedules";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateTaskSchedules = () => revalidatePath("/task-schedules");
 
-export const createTaskScheduleAction = async (input: NewTaskScheduleParams) => {
+export const createTaskScheduleAction = async (
+  input: NewTaskScheduleParams,
+) => {
   try {
     const payload = insertTaskScheduleParams.parse(input);
     await createTaskSchedule(payload);
@@ -37,7 +40,9 @@ export const createTaskScheduleAction = async (input: NewTaskScheduleParams) => 
   }
 };
 
-export const updateTaskScheduleAction = async (input: UpdateTaskScheduleParams) => {
+export const updateTaskScheduleAction = async (
+  input: UpdateTaskScheduleParams,
+) => {
   try {
     const payload = updateTaskScheduleParams.parse(input);
     await updateTaskSchedule(payload.id, payload);

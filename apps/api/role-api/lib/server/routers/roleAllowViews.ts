@@ -1,19 +1,28 @@
-import { getRoleAllowViewById, getRoleAllowViews } from "@/lib/api/roleAllowViews/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  roleAllowViewIdSchema,
+  createRoleAllowView,
+  deleteRoleAllowView,
+  updateRoleAllowView,
+} from "../api/roleAllowViews/mutations";
+import {
+  getRoleAllowViewById,
+  getRoleAllowViews,
+} from "../api/roleAllowViews/queries";
+import {
   insertRoleAllowViewParams,
+  roleAllowViewIdSchema,
   updateRoleAllowViewParams,
-} from "@/lib/db/schema/roleAllowViews";
-import { createRoleAllowView, deleteRoleAllowView, updateRoleAllowView } from "@/lib/api/roleAllowViews/mutations";
+} from "../db/schema/roleAllowViews";
+import { publicProcedure, router } from "../server/trpc";
 
 export const roleAllowViewsRouter = router({
   getRoleAllowViews: publicProcedure.query(async () => {
     return getRoleAllowViews();
   }),
-  getRoleAllowViewById: publicProcedure.input(roleAllowViewIdSchema).query(async ({ input }) => {
-    return getRoleAllowViewById(input.id);
-  }),
+  getRoleAllowViewById: publicProcedure
+    .input(roleAllowViewIdSchema)
+    .query(async ({ input }) => {
+      return getRoleAllowViewById(input.id);
+    }),
   createRoleAllowView: publicProcedure
     .input(insertRoleAllowViewParams)
     .mutation(async ({ input }) => {

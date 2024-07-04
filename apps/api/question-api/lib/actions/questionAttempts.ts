@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuestionAttempt,
   deleteQuestionAttempt,
   updateQuestionAttempt,
-} from "@/lib/api/questionAttempts/mutations";
+} from "../api/questionAttempts/mutations";
 import {
-  QuestionAttemptId,
-  NewQuestionAttemptParams,
-  UpdateQuestionAttemptParams,
-  questionAttemptIdSchema,
   insertQuestionAttemptParams,
+  NewQuestionAttemptParams,
+  QuestionAttemptId,
+  questionAttemptIdSchema,
+  UpdateQuestionAttemptParams,
   updateQuestionAttemptParams,
-} from "@/lib/db/schema/questionAttempts";
+} from "../db/schema/questionAttempts";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateQuestionAttempts = () => revalidatePath("/question-attempts");
 
-export const createQuestionAttemptAction = async (input: NewQuestionAttemptParams) => {
+export const createQuestionAttemptAction = async (
+  input: NewQuestionAttemptParams,
+) => {
   try {
     const payload = insertQuestionAttemptParams.parse(input);
     await createQuestionAttempt(payload);
@@ -37,7 +40,9 @@ export const createQuestionAttemptAction = async (input: NewQuestionAttemptParam
   }
 };
 
-export const updateQuestionAttemptAction = async (input: UpdateQuestionAttemptParams) => {
+export const updateQuestionAttemptAction = async (
+  input: UpdateQuestionAttemptParams,
+) => {
   try {
     const payload = updateQuestionAttemptParams.parse(input);
     await updateQuestionAttempt(payload.id, payload);

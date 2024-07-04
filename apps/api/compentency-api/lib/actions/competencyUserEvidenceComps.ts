@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCompetencyUserEvidenceComp,
   deleteCompetencyUserEvidenceComp,
   updateCompetencyUserEvidenceComp,
-} from "@/lib/api/competencyUserEvidenceComps/mutations";
+} from "../api/competencyUserEvidenceComps/mutations";
 import {
   CompetencyUserEvidenceCompId,
-  NewCompetencyUserEvidenceCompParams,
-  UpdateCompetencyUserEvidenceCompParams,
   competencyUserEvidenceCompIdSchema,
   insertCompetencyUserEvidenceCompParams,
+  NewCompetencyUserEvidenceCompParams,
+  UpdateCompetencyUserEvidenceCompParams,
   updateCompetencyUserEvidenceCompParams,
-} from "@/lib/db/schema/competencyUserEvidenceComps";
+} from "../db/schema/competencyUserEvidenceComps";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateCompetencyUserEvidenceComps = () => revalidatePath("/competency-user-evidence-comps");
+const revalidateCompetencyUserEvidenceComps = () =>
+  revalidatePath("/competency-user-evidence-comps");
 
-export const createCompetencyUserEvidenceCompAction = async (input: NewCompetencyUserEvidenceCompParams) => {
+export const createCompetencyUserEvidenceCompAction = async (
+  input: NewCompetencyUserEvidenceCompParams,
+) => {
   try {
     const payload = insertCompetencyUserEvidenceCompParams.parse(input);
     await createCompetencyUserEvidenceComp(payload);
@@ -37,7 +41,9 @@ export const createCompetencyUserEvidenceCompAction = async (input: NewCompetenc
   }
 };
 
-export const updateCompetencyUserEvidenceCompAction = async (input: UpdateCompetencyUserEvidenceCompParams) => {
+export const updateCompetencyUserEvidenceCompAction = async (
+  input: UpdateCompetencyUserEvidenceCompParams,
+) => {
   try {
     const payload = updateCompetencyUserEvidenceCompParams.parse(input);
     await updateCompetencyUserEvidenceComp(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateCompetencyUserEvidenceCompAction = async (input: UpdateCompet
   }
 };
 
-export const deleteCompetencyUserEvidenceCompAction = async (input: CompetencyUserEvidenceCompId) => {
+export const deleteCompetencyUserEvidenceCompAction = async (
+  input: CompetencyUserEvidenceCompId,
+) => {
   try {
     const payload = competencyUserEvidenceCompIdSchema.parse({ id: input });
     await deleteCompetencyUserEvidenceComp(payload.id);

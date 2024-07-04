@@ -1,19 +1,28 @@
-import { getToolUserToursStepById, getToolUserToursSteps } from "@/lib/api/toolUserToursSteps/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  toolUserToursStepIdSchema,
+  createToolUserToursStep,
+  deleteToolUserToursStep,
+  updateToolUserToursStep,
+} from "../api/toolUserToursSteps/mutations";
+import {
+  getToolUserToursStepById,
+  getToolUserToursSteps,
+} from "../api/toolUserToursSteps/queries";
+import {
   insertToolUserToursStepParams,
+  toolUserToursStepIdSchema,
   updateToolUserToursStepParams,
-} from "@/lib/db/schema/toolUserToursSteps";
-import { createToolUserToursStep, deleteToolUserToursStep, updateToolUserToursStep } from "@/lib/api/toolUserToursSteps/mutations";
+} from "../db/schema/toolUserToursSteps";
+import { publicProcedure, router } from "../server/trpc";
 
 export const toolUserToursStepsRouter = router({
   getToolUserToursSteps: publicProcedure.query(async () => {
     return getToolUserToursSteps();
   }),
-  getToolUserToursStepById: publicProcedure.input(toolUserToursStepIdSchema).query(async ({ input }) => {
-    return getToolUserToursStepById(input.id);
-  }),
+  getToolUserToursStepById: publicProcedure
+    .input(toolUserToursStepIdSchema)
+    .query(async ({ input }) => {
+      return getToolUserToursStepById(input.id);
+    }),
   createToolUserToursStep: publicProcedure
     .input(insertToolUserToursStepParams)
     .mutation(async ({ input }) => {

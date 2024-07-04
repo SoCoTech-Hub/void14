@@ -1,9 +1,10 @@
-import { type getFeedbackItems } from "@/lib/api/feedbackItems/queries";
 import { boolean, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getFeedbackItems } from "../api/feedbackItems/queries";
 
 export const feedbackItems = pgTable("feedback_items", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

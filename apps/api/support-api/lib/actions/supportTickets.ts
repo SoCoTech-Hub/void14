@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createSupportTicket,
   deleteSupportTicket,
   updateSupportTicket,
-} from "@/lib/api/supportTickets/mutations";
+} from "../api/supportTickets/mutations";
 import {
-  SupportTicketId,
-  NewSupportTicketParams,
-  UpdateSupportTicketParams,
-  supportTicketIdSchema,
   insertSupportTicketParams,
+  NewSupportTicketParams,
+  SupportTicketId,
+  supportTicketIdSchema,
+  UpdateSupportTicketParams,
   updateSupportTicketParams,
-} from "@/lib/db/schema/supportTickets";
+} from "../db/schema/supportTickets";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateSupportTickets = () => revalidatePath("/support-tickets");
 
-export const createSupportTicketAction = async (input: NewSupportTicketParams) => {
+export const createSupportTicketAction = async (
+  input: NewSupportTicketParams,
+) => {
   try {
     const payload = insertSupportTicketParams.parse(input);
     await createSupportTicket(payload);
@@ -37,7 +40,9 @@ export const createSupportTicketAction = async (input: NewSupportTicketParams) =
   }
 };
 
-export const updateSupportTicketAction = async (input: UpdateSupportTicketParams) => {
+export const updateSupportTicketAction = async (
+  input: UpdateSupportTicketParams,
+) => {
   try {
     const payload = updateSupportTicketParams.parse(input);
     await updateSupportTicket(payload.id, payload);

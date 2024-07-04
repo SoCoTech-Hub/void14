@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBackupLog,
   deleteBackupLog,
   updateBackupLog,
-} from "@/lib/api/backupLogs/mutations";
+} from "../api/backupLogs/mutations";
 import {
   BackupLogId,
-  NewBackupLogParams,
-  UpdateBackupLogParams,
   backupLogIdSchema,
   insertBackupLogParams,
+  NewBackupLogParams,
+  UpdateBackupLogParams,
   updateBackupLogParams,
-} from "@/lib/db/schema/backupLogs";
+} from "../db/schema/backupLogs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

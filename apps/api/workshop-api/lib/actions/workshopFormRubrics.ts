@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createWorkshopFormRubric,
   deleteWorkshopFormRubric,
   updateWorkshopFormRubric,
-} from "@/lib/api/workshopFormRubrics/mutations";
+} from "../api/workshopFormRubrics/mutations";
 import {
-  WorkshopFormRubricId,
+  insertWorkshopFormRubricParams,
   NewWorkshopFormRubricParams,
   UpdateWorkshopFormRubricParams,
-  workshopFormRubricIdSchema,
-  insertWorkshopFormRubricParams,
   updateWorkshopFormRubricParams,
-} from "@/lib/db/schema/workshopFormRubrics";
+  WorkshopFormRubricId,
+  workshopFormRubricIdSchema,
+} from "../db/schema/workshopFormRubrics";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateWorkshopFormRubrics = () => revalidatePath("/workshop-form-rubrics");
+const revalidateWorkshopFormRubrics = () =>
+  revalidatePath("/workshop-form-rubrics");
 
-export const createWorkshopFormRubricAction = async (input: NewWorkshopFormRubricParams) => {
+export const createWorkshopFormRubricAction = async (
+  input: NewWorkshopFormRubricParams,
+) => {
   try {
     const payload = insertWorkshopFormRubricParams.parse(input);
     await createWorkshopFormRubric(payload);
@@ -37,7 +41,9 @@ export const createWorkshopFormRubricAction = async (input: NewWorkshopFormRubri
   }
 };
 
-export const updateWorkshopFormRubricAction = async (input: UpdateWorkshopFormRubricParams) => {
+export const updateWorkshopFormRubricAction = async (
+  input: UpdateWorkshopFormRubricParams,
+) => {
   try {
     const payload = updateWorkshopFormRubricParams.parse(input);
     await updateWorkshopFormRubric(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateWorkshopFormRubricAction = async (input: UpdateWorkshopFormRu
   }
 };
 
-export const deleteWorkshopFormRubricAction = async (input: WorkshopFormRubricId) => {
+export const deleteWorkshopFormRubricAction = async (
+  input: WorkshopFormRubricId,
+) => {
   try {
     const payload = workshopFormRubricIdSchema.parse({ id: input });
     await deleteWorkshopFormRubric(payload.id);

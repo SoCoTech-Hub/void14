@@ -1,19 +1,28 @@
-import { getGradingformGuideFillingById, getGradingformGuideFillings } from "@/lib/api/gradingformGuideFillings/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createGradingformGuideFilling,
+  deleteGradingformGuideFilling,
+  updateGradingformGuideFilling,
+} from "../api/gradingformGuideFillings/mutations";
+import {
+  getGradingformGuideFillingById,
+  getGradingformGuideFillings,
+} from "../api/gradingformGuideFillings/queries";
 import {
   gradingformGuideFillingIdSchema,
   insertGradingformGuideFillingParams,
   updateGradingformGuideFillingParams,
-} from "@/lib/db/schema/gradingformGuideFillings";
-import { createGradingformGuideFilling, deleteGradingformGuideFilling, updateGradingformGuideFilling } from "@/lib/api/gradingformGuideFillings/mutations";
+} from "../db/schema/gradingformGuideFillings";
+import { publicProcedure, router } from "../server/trpc";
 
 export const gradingformGuideFillingsRouter = router({
   getGradingformGuideFillings: publicProcedure.query(async () => {
     return getGradingformGuideFillings();
   }),
-  getGradingformGuideFillingById: publicProcedure.input(gradingformGuideFillingIdSchema).query(async ({ input }) => {
-    return getGradingformGuideFillingById(input.id);
-  }),
+  getGradingformGuideFillingById: publicProcedure
+    .input(gradingformGuideFillingIdSchema)
+    .query(async ({ input }) => {
+      return getGradingformGuideFillingById(input.id);
+    }),
   createGradingformGuideFilling: publicProcedure
     .input(insertGradingformGuideFillingParams)
     .mutation(async ({ input }) => {

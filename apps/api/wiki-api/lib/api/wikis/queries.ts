@@ -1,10 +1,12 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { type WikiId, wikiIdSchema, wikis } from "@/lib/db/schema/wikis";
+
+import type { WikiId } from "../db/schema/wikis";
+import { db } from "../db/index";
+import { wikiIdSchema, wikis } from "../db/schema/wikis";
 
 export const getWikis = async () => {
   const rows = await db.select().from(wikis);
-  const w = rows
+  const w = rows;
   return { wikis: w };
 };
 
@@ -15,5 +17,3 @@ export const getWikiById = async (id: WikiId) => {
   const w = row;
   return { wiki: w };
 };
-
-

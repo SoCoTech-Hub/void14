@@ -1,4 +1,3 @@
-import { type getToolCustomLangs } from "@/lib/api/toolCustomLangs/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getToolCustomLangs } from "../api/toolCustomLangs/queries";
 
 export const toolCustomLangs = pgTable("tool_custom_langs", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

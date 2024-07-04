@@ -1,4 +1,3 @@
-import { type getLtiToolProxies } from "@/lib/api/ltiToolProxies/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getLtiToolProxies } from "../api/ltiToolProxies/queries";
 
 export const ltiToolProxies = pgTable("lti_tool_proxies", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

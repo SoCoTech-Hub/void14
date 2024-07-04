@@ -1,4 +1,3 @@
-import { type getSessions } from "@/lib/api/sessions/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getSessions } from "../api/sessions/queries";
 
 export const sessions = pgTable("sessions", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

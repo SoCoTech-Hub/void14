@@ -1,4 +1,3 @@
-import { type getAnalyticsModelLogs } from "@/lib/api/analyticsModelLogs/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -13,6 +12,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getAnalyticsModelLogs } from "../api/analyticsModelLogs/queries";
 
 export const analyticsModelLogs = pgTable(
   "analytics_model_logs",

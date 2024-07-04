@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createSurvey,
   deleteSurvey,
   updateSurvey,
-} from "@/lib/api/surveys/mutations";
+} from "../api/surveys/mutations";
 import {
-  SurveyId,
-  NewSurveyParams,
-  UpdateSurveyParams,
-  surveyIdSchema,
   insertSurveyParams,
+  NewSurveyParams,
+  SurveyId,
+  surveyIdSchema,
+  UpdateSurveyParams,
   updateSurveyParams,
-} from "@/lib/db/schema/surveys";
+} from "../db/schema/surveys";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

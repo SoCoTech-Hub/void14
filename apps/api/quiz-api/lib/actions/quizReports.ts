@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuizReport,
   deleteQuizReport,
   updateQuizReport,
-} from "@/lib/api/quizReports/mutations";
+} from "../api/quizReports/mutations";
 import {
-  QuizReportId,
-  NewQuizReportParams,
-  UpdateQuizReportParams,
-  quizReportIdSchema,
   insertQuizReportParams,
+  NewQuizReportParams,
+  QuizReportId,
+  quizReportIdSchema,
+  UpdateQuizReportParams,
   updateQuizReportParams,
-} from "@/lib/db/schema/quizReports";
+} from "../db/schema/quizReports";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

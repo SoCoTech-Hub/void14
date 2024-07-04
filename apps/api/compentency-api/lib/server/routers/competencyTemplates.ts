@@ -1,19 +1,28 @@
-import { getCompetencyTemplateById, getCompetencyTemplates } from "@/lib/api/competencyTemplates/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createCompetencyTemplate,
+  deleteCompetencyTemplate,
+  updateCompetencyTemplate,
+} from "../api/competencyTemplates/mutations";
+import {
+  getCompetencyTemplateById,
+  getCompetencyTemplates,
+} from "../api/competencyTemplates/queries";
 import {
   competencyTemplateIdSchema,
   insertCompetencyTemplateParams,
   updateCompetencyTemplateParams,
-} from "@/lib/db/schema/competencyTemplates";
-import { createCompetencyTemplate, deleteCompetencyTemplate, updateCompetencyTemplate } from "@/lib/api/competencyTemplates/mutations";
+} from "../db/schema/competencyTemplates";
+import { publicProcedure, router } from "../server/trpc";
 
 export const competencyTemplatesRouter = router({
   getCompetencyTemplates: publicProcedure.query(async () => {
     return getCompetencyTemplates();
   }),
-  getCompetencyTemplateById: publicProcedure.input(competencyTemplateIdSchema).query(async ({ input }) => {
-    return getCompetencyTemplateById(input.id);
-  }),
+  getCompetencyTemplateById: publicProcedure
+    .input(competencyTemplateIdSchema)
+    .query(async ({ input }) => {
+      return getCompetencyTemplateById(input.id);
+    }),
   createCompetencyTemplate: publicProcedure
     .input(insertCompetencyTemplateParams)
     .mutation(async ({ input }) => {

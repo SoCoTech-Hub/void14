@@ -1,19 +1,28 @@
-import { getAssignmentSubmissionById, getAssignmentSubmissions } from "@/lib/api/assignmentSubmissions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createAssignmentSubmission,
+  deleteAssignmentSubmission,
+  updateAssignmentSubmission,
+} from "../api/assignmentSubmissions/mutations";
+import {
+  getAssignmentSubmissionById,
+  getAssignmentSubmissions,
+} from "../api/assignmentSubmissions/queries";
 import {
   assignmentSubmissionIdSchema,
   insertAssignmentSubmissionParams,
   updateAssignmentSubmissionParams,
-} from "@/lib/db/schema/assignmentSubmissions";
-import { createAssignmentSubmission, deleteAssignmentSubmission, updateAssignmentSubmission } from "@/lib/api/assignmentSubmissions/mutations";
+} from "../db/schema/assignmentSubmissions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const assignmentSubmissionsRouter = router({
   getAssignmentSubmissions: publicProcedure.query(async () => {
     return getAssignmentSubmissions();
   }),
-  getAssignmentSubmissionById: publicProcedure.input(assignmentSubmissionIdSchema).query(async ({ input }) => {
-    return getAssignmentSubmissionById(input.id);
-  }),
+  getAssignmentSubmissionById: publicProcedure
+    .input(assignmentSubmissionIdSchema)
+    .query(async ({ input }) => {
+      return getAssignmentSubmissionById(input.id);
+    }),
   createAssignmentSubmission: publicProcedure
     .input(insertAssignmentSubmissionParams)
     .mutation(async ({ input }) => {

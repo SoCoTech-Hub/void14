@@ -1,19 +1,26 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  AssignFeedbackEditpdfAnnotId, 
-  NewAssignFeedbackEditpdfAnnotParams,
-  UpdateAssignFeedbackEditpdfAnnotParams, 
-  updateAssignFeedbackEditpdfAnnotSchema,
-  insertAssignFeedbackEditpdfAnnotSchema, 
+
+import { db } from "../db/index";
+import {
+  AssignFeedbackEditpdfAnnotId,
+  assignFeedbackEditpdfAnnotIdSchema,
   assignFeedbackEditpdfAnnots,
-  assignFeedbackEditpdfAnnotIdSchema 
-} from "@/lib/db/schema/assignFeedbackEditpdfAnnots";
+  insertAssignFeedbackEditpdfAnnotSchema,
+  NewAssignFeedbackEditpdfAnnotParams,
+  UpdateAssignFeedbackEditpdfAnnotParams,
+  updateAssignFeedbackEditpdfAnnotSchema,
+} from "../db/schema/assignFeedbackEditpdfAnnots";
 
-export const createAssignFeedbackEditpdfAnnot = async (assignFeedbackEditpdfAnnot: NewAssignFeedbackEditpdfAnnotParams) => {
-  const newAssignFeedbackEditpdfAnnot = insertAssignFeedbackEditpdfAnnotSchema.parse(assignFeedbackEditpdfAnnot);
+export const createAssignFeedbackEditpdfAnnot = async (
+  assignFeedbackEditpdfAnnot: NewAssignFeedbackEditpdfAnnotParams,
+) => {
+  const newAssignFeedbackEditpdfAnnot =
+    insertAssignFeedbackEditpdfAnnotSchema.parse(assignFeedbackEditpdfAnnot);
   try {
-    const [a] =  await db.insert(assignFeedbackEditpdfAnnots).values(newAssignFeedbackEditpdfAnnot).returning();
+    const [a] = await db
+      .insert(assignFeedbackEditpdfAnnots)
+      .values(newAssignFeedbackEditpdfAnnot)
+      .returning();
     return { assignFeedbackEditpdfAnnot: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,20 @@ export const createAssignFeedbackEditpdfAnnot = async (assignFeedbackEditpdfAnno
   }
 };
 
-export const updateAssignFeedbackEditpdfAnnot = async (id: AssignFeedbackEditpdfAnnotId, assignFeedbackEditpdfAnnot: UpdateAssignFeedbackEditpdfAnnotParams) => {
-  const { id: assignFeedbackEditpdfAnnotId } = assignFeedbackEditpdfAnnotIdSchema.parse({ id });
-  const newAssignFeedbackEditpdfAnnot = updateAssignFeedbackEditpdfAnnotSchema.parse(assignFeedbackEditpdfAnnot);
+export const updateAssignFeedbackEditpdfAnnot = async (
+  id: AssignFeedbackEditpdfAnnotId,
+  assignFeedbackEditpdfAnnot: UpdateAssignFeedbackEditpdfAnnotParams,
+) => {
+  const { id: assignFeedbackEditpdfAnnotId } =
+    assignFeedbackEditpdfAnnotIdSchema.parse({ id });
+  const newAssignFeedbackEditpdfAnnot =
+    updateAssignFeedbackEditpdfAnnotSchema.parse(assignFeedbackEditpdfAnnot);
   try {
-    const [a] =  await db
-     .update(assignFeedbackEditpdfAnnots)
-     .set(newAssignFeedbackEditpdfAnnot)
-     .where(eq(assignFeedbackEditpdfAnnots.id, assignFeedbackEditpdfAnnotId!))
-     .returning();
+    const [a] = await db
+      .update(assignFeedbackEditpdfAnnots)
+      .set(newAssignFeedbackEditpdfAnnot)
+      .where(eq(assignFeedbackEditpdfAnnots.id, assignFeedbackEditpdfAnnotId!))
+      .returning();
     return { assignFeedbackEditpdfAnnot: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +51,16 @@ export const updateAssignFeedbackEditpdfAnnot = async (id: AssignFeedbackEditpdf
   }
 };
 
-export const deleteAssignFeedbackEditpdfAnnot = async (id: AssignFeedbackEditpdfAnnotId) => {
-  const { id: assignFeedbackEditpdfAnnotId } = assignFeedbackEditpdfAnnotIdSchema.parse({ id });
+export const deleteAssignFeedbackEditpdfAnnot = async (
+  id: AssignFeedbackEditpdfAnnotId,
+) => {
+  const { id: assignFeedbackEditpdfAnnotId } =
+    assignFeedbackEditpdfAnnotIdSchema.parse({ id });
   try {
-    const [a] =  await db.delete(assignFeedbackEditpdfAnnots).where(eq(assignFeedbackEditpdfAnnots.id, assignFeedbackEditpdfAnnotId!))
-    .returning();
+    const [a] = await db
+      .delete(assignFeedbackEditpdfAnnots)
+      .where(eq(assignFeedbackEditpdfAnnots.id, assignFeedbackEditpdfAnnotId!))
+      .returning();
     return { assignFeedbackEditpdfAnnot: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +68,3 @@ export const deleteAssignFeedbackEditpdfAnnot = async (id: AssignFeedbackEditpdf
     throw { error: message };
   }
 };
-

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createRoleAllowSwitch,
   deleteRoleAllowSwitch,
   updateRoleAllowSwitch,
-} from "@/lib/api/roleAllowSwitches/mutations";
+} from "../api/roleAllowSwitches/mutations";
 import {
-  RoleAllowSwitchId,
-  NewRoleAllowSwitchParams,
-  UpdateRoleAllowSwitchParams,
-  roleAllowSwitchIdSchema,
   insertRoleAllowSwitchParams,
+  NewRoleAllowSwitchParams,
+  RoleAllowSwitchId,
+  roleAllowSwitchIdSchema,
+  UpdateRoleAllowSwitchParams,
   updateRoleAllowSwitchParams,
-} from "@/lib/db/schema/roleAllowSwitches";
+} from "../db/schema/roleAllowSwitches";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateRoleAllowSwitches = () => revalidatePath("/role-allow-switches");
+const revalidateRoleAllowSwitches = () =>
+  revalidatePath("/role-allow-switches");
 
-export const createRoleAllowSwitchAction = async (input: NewRoleAllowSwitchParams) => {
+export const createRoleAllowSwitchAction = async (
+  input: NewRoleAllowSwitchParams,
+) => {
   try {
     const payload = insertRoleAllowSwitchParams.parse(input);
     await createRoleAllowSwitch(payload);
@@ -37,7 +41,9 @@ export const createRoleAllowSwitchAction = async (input: NewRoleAllowSwitchParam
   }
 };
 
-export const updateRoleAllowSwitchAction = async (input: UpdateRoleAllowSwitchParams) => {
+export const updateRoleAllowSwitchAction = async (
+  input: UpdateRoleAllowSwitchParams,
+) => {
   try {
     const payload = updateRoleAllowSwitchParams.parse(input);
     await updateRoleAllowSwitch(payload.id, payload);

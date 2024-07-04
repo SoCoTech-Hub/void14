@@ -1,10 +1,10 @@
-import { type getH5pLibrariesCachedassets } from "@/lib/api/h5pLibrariesCachedassets/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getH5pLibrariesCachedassets } from "../api/h5pLibrariesCachedassets/queries";
 import { h5pLibraries } from "./h5pLibraries";
 
 export const h5pLibrariesCachedassets = pgTable("h5p_libraries_cachedassets", {

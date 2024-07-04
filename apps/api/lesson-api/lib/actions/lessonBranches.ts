@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createLessonBranch,
   deleteLessonBranch,
   updateLessonBranch,
-} from "@/lib/api/lessonBranches/mutations";
+} from "../api/lessonBranches/mutations";
 import {
+  insertLessonBranchParams,
   LessonBranchId,
+  lessonBranchIdSchema,
   NewLessonBranchParams,
   UpdateLessonBranchParams,
-  lessonBranchIdSchema,
-  insertLessonBranchParams,
   updateLessonBranchParams,
-} from "@/lib/db/schema/lessonBranches";
+} from "../db/schema/lessonBranches";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateLessonBranches = () => revalidatePath("/lesson-branches");
 
-export const createLessonBranchAction = async (input: NewLessonBranchParams) => {
+export const createLessonBranchAction = async (
+  input: NewLessonBranchParams,
+) => {
   try {
     const payload = insertLessonBranchParams.parse(input);
     await createLessonBranch(payload);
@@ -37,7 +40,9 @@ export const createLessonBranchAction = async (input: NewLessonBranchParams) => 
   }
 };
 
-export const updateLessonBranchAction = async (input: UpdateLessonBranchParams) => {
+export const updateLessonBranchAction = async (
+  input: UpdateLessonBranchParams,
+) => {
   try {
     const payload = updateLessonBranchParams.parse(input);
     await updateLessonBranch(payload.id, payload);

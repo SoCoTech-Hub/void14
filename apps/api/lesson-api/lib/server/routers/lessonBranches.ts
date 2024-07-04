@@ -1,19 +1,28 @@
-import { getLessonBranchById, getLessonBranches } from "@/lib/api/lessonBranches/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  lessonBranchIdSchema,
+  createLessonBranch,
+  deleteLessonBranch,
+  updateLessonBranch,
+} from "../api/lessonBranches/mutations";
+import {
+  getLessonBranchById,
+  getLessonBranches,
+} from "../api/lessonBranches/queries";
+import {
   insertLessonBranchParams,
+  lessonBranchIdSchema,
   updateLessonBranchParams,
-} from "@/lib/db/schema/lessonBranches";
-import { createLessonBranch, deleteLessonBranch, updateLessonBranch } from "@/lib/api/lessonBranches/mutations";
+} from "../db/schema/lessonBranches";
+import { publicProcedure, router } from "../server/trpc";
 
 export const lessonBranchesRouter = router({
   getLessonBranches: publicProcedure.query(async () => {
     return getLessonBranches();
   }),
-  getLessonBranchById: publicProcedure.input(lessonBranchIdSchema).query(async ({ input }) => {
-    return getLessonBranchById(input.id);
-  }),
+  getLessonBranchById: publicProcedure
+    .input(lessonBranchIdSchema)
+    .query(async ({ input }) => {
+      return getLessonBranchById(input.id);
+    }),
   createLessonBranch: publicProcedure
     .input(insertLessonBranchParams)
     .mutation(async ({ input }) => {

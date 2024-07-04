@@ -1,11 +1,11 @@
-import { getUrlById, getUrls } from "@/lib/api/urls/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import { createUrl, deleteUrl, updateUrl } from "../api/urls/mutations";
+import { getUrlById, getUrls } from "../api/urls/queries";
 import {
-  urlIdSchema,
   insertUrlParams,
   updateUrlParams,
-} from "@/lib/db/schema/urls";
-import { createUrl, deleteUrl, updateUrl } from "@/lib/api/urls/mutations";
+  urlIdSchema,
+} from "../db/schema/urls";
+import { publicProcedure, router } from "../server/trpc";
 
 export const urlsRouter = router({
   getUrls: publicProcedure.query(async () => {
@@ -24,9 +24,7 @@ export const urlsRouter = router({
     .mutation(async ({ input }) => {
       return updateUrl(input.id, input);
     }),
-  deleteUrl: publicProcedure
-    .input(urlIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteUrl(input.id);
-    }),
+  deleteUrl: publicProcedure.input(urlIdSchema).mutation(async ({ input }) => {
+    return deleteUrl(input.id);
+  }),
 });

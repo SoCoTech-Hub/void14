@@ -1,19 +1,25 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  TagCorrelationId, 
-  NewTagCorrelationParams,
-  UpdateTagCorrelationParams, 
-  updateTagCorrelationSchema,
-  insertTagCorrelationSchema, 
-  tagCorrelations,
-  tagCorrelationIdSchema 
-} from "@/lib/db/schema/tagCorrelations";
 
-export const createTagCorrelation = async (tagCorrelation: NewTagCorrelationParams) => {
+import { db } from "../db/index";
+import {
+  insertTagCorrelationSchema,
+  NewTagCorrelationParams,
+  TagCorrelationId,
+  tagCorrelationIdSchema,
+  tagCorrelations,
+  UpdateTagCorrelationParams,
+  updateTagCorrelationSchema,
+} from "../db/schema/tagCorrelations";
+
+export const createTagCorrelation = async (
+  tagCorrelation: NewTagCorrelationParams,
+) => {
   const newTagCorrelation = insertTagCorrelationSchema.parse(tagCorrelation);
   try {
-    const [t] =  await db.insert(tagCorrelations).values(newTagCorrelation).returning();
+    const [t] = await db
+      .insert(tagCorrelations)
+      .values(newTagCorrelation)
+      .returning();
     return { tagCorrelation: t };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +28,18 @@ export const createTagCorrelation = async (tagCorrelation: NewTagCorrelationPara
   }
 };
 
-export const updateTagCorrelation = async (id: TagCorrelationId, tagCorrelation: UpdateTagCorrelationParams) => {
+export const updateTagCorrelation = async (
+  id: TagCorrelationId,
+  tagCorrelation: UpdateTagCorrelationParams,
+) => {
   const { id: tagCorrelationId } = tagCorrelationIdSchema.parse({ id });
   const newTagCorrelation = updateTagCorrelationSchema.parse(tagCorrelation);
   try {
-    const [t] =  await db
-     .update(tagCorrelations)
-     .set(newTagCorrelation)
-     .where(eq(tagCorrelations.id, tagCorrelationId!))
-     .returning();
+    const [t] = await db
+      .update(tagCorrelations)
+      .set(newTagCorrelation)
+      .where(eq(tagCorrelations.id, tagCorrelationId!))
+      .returning();
     return { tagCorrelation: t };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +51,10 @@ export const updateTagCorrelation = async (id: TagCorrelationId, tagCorrelation:
 export const deleteTagCorrelation = async (id: TagCorrelationId) => {
   const { id: tagCorrelationId } = tagCorrelationIdSchema.parse({ id });
   try {
-    const [t] =  await db.delete(tagCorrelations).where(eq(tagCorrelations.id, tagCorrelationId!))
-    .returning();
+    const [t] = await db
+      .delete(tagCorrelations)
+      .where(eq(tagCorrelations.id, tagCorrelationId!))
+      .returning();
     return { tagCorrelation: t };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +62,3 @@ export const deleteTagCorrelation = async (id: TagCorrelationId) => {
     throw { error: message };
   }
 };
-

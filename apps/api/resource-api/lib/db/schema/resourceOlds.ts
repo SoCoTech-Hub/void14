@@ -1,4 +1,3 @@
-import { type getResourceOlds } from "@/lib/api/resourceOlds/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -12,6 +11,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getResourceOlds } from "../api/resourceOlds/queries";
 
 export const resourceOlds = pgTable("resource_olds", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

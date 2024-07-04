@@ -1,19 +1,25 @@
-import { getWikiLinkById, getWikiLinks } from "@/lib/api/wikiLinks/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  wikiLinkIdSchema,
+  createWikiLink,
+  deleteWikiLink,
+  updateWikiLink,
+} from "../api/wikiLinks/mutations";
+import { getWikiLinkById, getWikiLinks } from "../api/wikiLinks/queries";
+import {
   insertWikiLinkParams,
   updateWikiLinkParams,
-} from "@/lib/db/schema/wikiLinks";
-import { createWikiLink, deleteWikiLink, updateWikiLink } from "@/lib/api/wikiLinks/mutations";
+  wikiLinkIdSchema,
+} from "../db/schema/wikiLinks";
+import { publicProcedure, router } from "../server/trpc";
 
 export const wikiLinksRouter = router({
   getWikiLinks: publicProcedure.query(async () => {
     return getWikiLinks();
   }),
-  getWikiLinkById: publicProcedure.input(wikiLinkIdSchema).query(async ({ input }) => {
-    return getWikiLinkById(input.id);
-  }),
+  getWikiLinkById: publicProcedure
+    .input(wikiLinkIdSchema)
+    .query(async ({ input }) => {
+      return getWikiLinkById(input.id);
+    }),
   createWikiLink: publicProcedure
     .input(insertWikiLinkParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
+import { createLabel, deleteLabel, updateLabel } from "../api/labels/mutations";
 import {
-  createLabel,
-  deleteLabel,
-  updateLabel,
-} from "@/lib/api/labels/mutations";
-import {
+  insertLabelParams,
   LabelId,
+  labelIdSchema,
   NewLabelParams,
   UpdateLabelParams,
-  labelIdSchema,
-  insertLabelParams,
   updateLabelParams,
-} from "@/lib/db/schema/labels";
+} from "../db/schema/labels";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

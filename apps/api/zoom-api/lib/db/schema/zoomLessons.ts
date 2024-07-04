@@ -1,9 +1,10 @@
-import { type getZoomLessons } from "@/lib/api/zoomLessons/queries";
 import { boolean, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getZoomLessons } from "../api/zoomLessons/queries";
 
 export const zoomLessons = pgTable(
   "zoom_lessons",

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuestionBankEntry,
   deleteQuestionBankEntry,
   updateQuestionBankEntry,
-} from "@/lib/api/questionBankEntries/mutations";
+} from "../api/questionBankEntries/mutations";
 import {
-  QuestionBankEntryId,
-  NewQuestionBankEntryParams,
-  UpdateQuestionBankEntryParams,
-  questionBankEntryIdSchema,
   insertQuestionBankEntryParams,
+  NewQuestionBankEntryParams,
+  QuestionBankEntryId,
+  questionBankEntryIdSchema,
+  UpdateQuestionBankEntryParams,
   updateQuestionBankEntryParams,
-} from "@/lib/db/schema/questionBankEntries";
+} from "../db/schema/questionBankEntries";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQuestionBankEntries = () => revalidatePath("/question-bank-entries");
+const revalidateQuestionBankEntries = () =>
+  revalidatePath("/question-bank-entries");
 
-export const createQuestionBankEntryAction = async (input: NewQuestionBankEntryParams) => {
+export const createQuestionBankEntryAction = async (
+  input: NewQuestionBankEntryParams,
+) => {
   try {
     const payload = insertQuestionBankEntryParams.parse(input);
     await createQuestionBankEntry(payload);
@@ -37,7 +41,9 @@ export const createQuestionBankEntryAction = async (input: NewQuestionBankEntryP
   }
 };
 
-export const updateQuestionBankEntryAction = async (input: UpdateQuestionBankEntryParams) => {
+export const updateQuestionBankEntryAction = async (
+  input: UpdateQuestionBankEntryParams,
+) => {
   try {
     const payload = updateQuestionBankEntryParams.parse(input);
     await updateQuestionBankEntry(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQuestionBankEntryAction = async (input: UpdateQuestionBankEnt
   }
 };
 
-export const deleteQuestionBankEntryAction = async (input: QuestionBankEntryId) => {
+export const deleteQuestionBankEntryAction = async (
+  input: QuestionBankEntryId,
+) => {
   try {
     const payload = questionBankEntryIdSchema.parse({ id: input });
     await deleteQuestionBankEntry(payload.id);

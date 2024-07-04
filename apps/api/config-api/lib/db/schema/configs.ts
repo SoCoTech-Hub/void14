@@ -1,9 +1,10 @@
-import { type getConfigs } from "@/lib/api/configs/queries";
 import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getConfigs } from "../api/configs/queries";
 
 export const configs = pgTable("configs", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

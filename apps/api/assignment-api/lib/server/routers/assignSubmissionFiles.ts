@@ -1,19 +1,28 @@
-import { getAssignSubmissionFileById, getAssignSubmissionFiles } from "@/lib/api/assignSubmissionFiles/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createAssignSubmissionFile,
+  deleteAssignSubmissionFile,
+  updateAssignSubmissionFile,
+} from "../api/assignSubmissionFiles/mutations";
+import {
+  getAssignSubmissionFileById,
+  getAssignSubmissionFiles,
+} from "../api/assignSubmissionFiles/queries";
 import {
   assignSubmissionFileIdSchema,
   insertAssignSubmissionFileParams,
   updateAssignSubmissionFileParams,
-} from "@/lib/db/schema/assignSubmissionFiles";
-import { createAssignSubmissionFile, deleteAssignSubmissionFile, updateAssignSubmissionFile } from "@/lib/api/assignSubmissionFiles/mutations";
+} from "../db/schema/assignSubmissionFiles";
+import { publicProcedure, router } from "../server/trpc";
 
 export const assignSubmissionFilesRouter = router({
   getAssignSubmissionFiles: publicProcedure.query(async () => {
     return getAssignSubmissionFiles();
   }),
-  getAssignSubmissionFileById: publicProcedure.input(assignSubmissionFileIdSchema).query(async ({ input }) => {
-    return getAssignSubmissionFileById(input.id);
-  }),
+  getAssignSubmissionFileById: publicProcedure
+    .input(assignSubmissionFileIdSchema)
+    .query(async ({ input }) => {
+      return getAssignSubmissionFileById(input.id);
+    }),
   createAssignSubmissionFile: publicProcedure
     .input(insertAssignSubmissionFileParams)
     .mutation(async ({ input }) => {

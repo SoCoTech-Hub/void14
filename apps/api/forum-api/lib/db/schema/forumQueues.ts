@@ -1,10 +1,11 @@
-import { type getForumQueues } from "@/lib/api/forumQueues/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getForumQueues } from "../api/forumQueues/queries";
 
 export const forumQueues = pgTable("forum_queues", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

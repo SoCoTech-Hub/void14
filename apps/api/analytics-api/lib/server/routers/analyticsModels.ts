@@ -1,19 +1,28 @@
-import { getAnalyticsModelById, getAnalyticsModels } from "@/lib/api/analyticsModels/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createAnalyticsModel,
+  deleteAnalyticsModel,
+  updateAnalyticsModel,
+} from "../api/analyticsModels/mutations";
+import {
+  getAnalyticsModelById,
+  getAnalyticsModels,
+} from "../api/analyticsModels/queries";
 import {
   analyticsModelIdSchema,
   insertAnalyticsModelParams,
   updateAnalyticsModelParams,
-} from "@/lib/db/schema/analyticsModels";
-import { createAnalyticsModel, deleteAnalyticsModel, updateAnalyticsModel } from "@/lib/api/analyticsModels/mutations";
+} from "../db/schema/analyticsModels";
+import { publicProcedure, router } from "../server/trpc";
 
 export const analyticsModelsRouter = router({
   getAnalyticsModels: publicProcedure.query(async () => {
     return getAnalyticsModels();
   }),
-  getAnalyticsModelById: publicProcedure.input(analyticsModelIdSchema).query(async ({ input }) => {
-    return getAnalyticsModelById(input.id);
-  }),
+  getAnalyticsModelById: publicProcedure
+    .input(analyticsModelIdSchema)
+    .query(async ({ input }) => {
+      return getAnalyticsModelById(input.id);
+    }),
   createAnalyticsModel: publicProcedure
     .input(insertAnalyticsModelParams)
     .mutation(async ({ input }) => {

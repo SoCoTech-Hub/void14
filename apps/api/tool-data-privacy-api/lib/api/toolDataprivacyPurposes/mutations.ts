@@ -1,21 +1,31 @@
-import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
-import { 
-  ToolDataprivacyPurposeId, 
-  NewToolDataprivacyPurposeParams,
-  UpdateToolDataprivacyPurposeParams, 
-  updateToolDataprivacyPurposeSchema,
-  insertToolDataprivacyPurposeSchema, 
-  toolDataprivacyPurposes,
-  toolDataprivacyPurposeIdSchema 
-} from "@/lib/db/schema/toolDataprivacyPurposes";
+
 import { getUserAuth } from "@soco/auth/utils";
 
-export const createToolDataprivacyPurpose = async (toolDataprivacyPurpose: NewToolDataprivacyPurposeParams) => {
+import { db } from "../db/index";
+import {
+  insertToolDataprivacyPurposeSchema,
+  NewToolDataprivacyPurposeParams,
+  ToolDataprivacyPurposeId,
+  toolDataprivacyPurposeIdSchema,
+  toolDataprivacyPurposes,
+  UpdateToolDataprivacyPurposeParams,
+  updateToolDataprivacyPurposeSchema,
+} from "../db/schema/toolDataprivacyPurposes";
+
+export const createToolDataprivacyPurpose = async (
+  toolDataprivacyPurpose: NewToolDataprivacyPurposeParams,
+) => {
   const { session } = await getUserAuth();
-  const newToolDataprivacyPurpose = insertToolDataprivacyPurposeSchema.parse({ ...toolDataprivacyPurpose, userId: session?.user.id! });
+  const newToolDataprivacyPurpose = insertToolDataprivacyPurposeSchema.parse({
+    ...toolDataprivacyPurpose,
+    userId: session?.user.id!,
+  });
   try {
-    const [t] =  await db.insert(toolDataprivacyPurposes).values(newToolDataprivacyPurpose).returning();
+    const [t] = await db
+      .insert(toolDataprivacyPurposes)
+      .values(newToolDataprivacyPurpose)
+      .returning();
     return { toolDataprivacyPurpose: t };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +34,29 @@ export const createToolDataprivacyPurpose = async (toolDataprivacyPurpose: NewTo
   }
 };
 
-export const updateToolDataprivacyPurpose = async (id: ToolDataprivacyPurposeId, toolDataprivacyPurpose: UpdateToolDataprivacyPurposeParams) => {
+export const updateToolDataprivacyPurpose = async (
+  id: ToolDataprivacyPurposeId,
+  toolDataprivacyPurpose: UpdateToolDataprivacyPurposeParams,
+) => {
   const { session } = await getUserAuth();
-  const { id: toolDataprivacyPurposeId } = toolDataprivacyPurposeIdSchema.parse({ id });
-  const newToolDataprivacyPurpose = updateToolDataprivacyPurposeSchema.parse({ ...toolDataprivacyPurpose, userId: session?.user.id! });
+  const { id: toolDataprivacyPurposeId } = toolDataprivacyPurposeIdSchema.parse(
+    { id },
+  );
+  const newToolDataprivacyPurpose = updateToolDataprivacyPurposeSchema.parse({
+    ...toolDataprivacyPurpose,
+    userId: session?.user.id!,
+  });
   try {
-    const [t] =  await db
-     .update(toolDataprivacyPurposes)
-     .set({...newToolDataprivacyPurpose, updatedAt: new Date() })
-     .where(and(eq(toolDataprivacyPurposes.id, toolDataprivacyPurposeId!), eq(toolDataprivacyPurposes.userId, session?.user.id!)))
-     .returning();
+    const [t] = await db
+      .update(toolDataprivacyPurposes)
+      .set({ ...newToolDataprivacyPurpose, updatedAt: new Date() })
+      .where(
+        and(
+          eq(toolDataprivacyPurposes.id, toolDataprivacyPurposeId!),
+          eq(toolDataprivacyPurposes.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { toolDataprivacyPurpose: t };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,12 +65,23 @@ export const updateToolDataprivacyPurpose = async (id: ToolDataprivacyPurposeId,
   }
 };
 
-export const deleteToolDataprivacyPurpose = async (id: ToolDataprivacyPurposeId) => {
+export const deleteToolDataprivacyPurpose = async (
+  id: ToolDataprivacyPurposeId,
+) => {
   const { session } = await getUserAuth();
-  const { id: toolDataprivacyPurposeId } = toolDataprivacyPurposeIdSchema.parse({ id });
+  const { id: toolDataprivacyPurposeId } = toolDataprivacyPurposeIdSchema.parse(
+    { id },
+  );
   try {
-    const [t] =  await db.delete(toolDataprivacyPurposes).where(and(eq(toolDataprivacyPurposes.id, toolDataprivacyPurposeId!), eq(toolDataprivacyPurposes.userId, session?.user.id!)))
-    .returning();
+    const [t] = await db
+      .delete(toolDataprivacyPurposes)
+      .where(
+        and(
+          eq(toolDataprivacyPurposes.id, toolDataprivacyPurposeId!),
+          eq(toolDataprivacyPurposes.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { toolDataprivacyPurpose: t };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +89,3 @@ export const deleteToolDataprivacyPurpose = async (id: ToolDataprivacyPurposeId)
     throw { error: message };
   }
 };
-

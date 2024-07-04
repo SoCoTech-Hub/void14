@@ -1,9 +1,10 @@
-import { type getGradingformRubricFillings } from "@/lib/api/gradingformRubricFillings/queries";
 import { integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getGradingformRubricFillings } from "../api/gradingformRubricFillings/queries";
 
 export const gradingformRubricFillings = pgTable(
   "gradingform_rubric_fillings",

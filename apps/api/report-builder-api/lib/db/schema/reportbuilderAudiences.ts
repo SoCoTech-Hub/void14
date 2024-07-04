@@ -1,4 +1,3 @@
-import { type getReportbuilderAudiences } from "@/lib/api/reportbuilderAudiences/queries";
 import { sql } from "drizzle-orm";
 import {
   pgTable,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getReportbuilderAudiences } from "../api/reportbuilderAudiences/queries";
 
 export const reportbuilderAudiences = pgTable(
   "reportbuilder_audiences",

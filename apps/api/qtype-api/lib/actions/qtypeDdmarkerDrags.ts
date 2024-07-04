@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQtypeDdmarkerDrag,
   deleteQtypeDdmarkerDrag,
   updateQtypeDdmarkerDrag,
-} from "@/lib/api/qtypeDdmarkerDrags/mutations";
+} from "../api/qtypeDdmarkerDrags/mutations";
 import {
-  QtypeDdmarkerDragId,
-  NewQtypeDdmarkerDragParams,
-  UpdateQtypeDdmarkerDragParams,
-  qtypeDdmarkerDragIdSchema,
   insertQtypeDdmarkerDragParams,
+  NewQtypeDdmarkerDragParams,
+  QtypeDdmarkerDragId,
+  qtypeDdmarkerDragIdSchema,
+  UpdateQtypeDdmarkerDragParams,
   updateQtypeDdmarkerDragParams,
-} from "@/lib/db/schema/qtypeDdmarkerDrags";
+} from "../db/schema/qtypeDdmarkerDrags";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQtypeDdmarkerDrags = () => revalidatePath("/qtype-ddmarker-drags");
+const revalidateQtypeDdmarkerDrags = () =>
+  revalidatePath("/qtype-ddmarker-drags");
 
-export const createQtypeDdmarkerDragAction = async (input: NewQtypeDdmarkerDragParams) => {
+export const createQtypeDdmarkerDragAction = async (
+  input: NewQtypeDdmarkerDragParams,
+) => {
   try {
     const payload = insertQtypeDdmarkerDragParams.parse(input);
     await createQtypeDdmarkerDrag(payload);
@@ -37,7 +41,9 @@ export const createQtypeDdmarkerDragAction = async (input: NewQtypeDdmarkerDragP
   }
 };
 
-export const updateQtypeDdmarkerDragAction = async (input: UpdateQtypeDdmarkerDragParams) => {
+export const updateQtypeDdmarkerDragAction = async (
+  input: UpdateQtypeDdmarkerDragParams,
+) => {
   try {
     const payload = updateQtypeDdmarkerDragParams.parse(input);
     await updateQtypeDdmarkerDrag(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQtypeDdmarkerDragAction = async (input: UpdateQtypeDdmarkerDr
   }
 };
 
-export const deleteQtypeDdmarkerDragAction = async (input: QtypeDdmarkerDragId) => {
+export const deleteQtypeDdmarkerDragAction = async (
+  input: QtypeDdmarkerDragId,
+) => {
   try {
     const payload = qtypeDdmarkerDragIdSchema.parse({ id: input });
     await deleteQtypeDdmarkerDrag(payload.id);

@@ -1,19 +1,28 @@
-import { getMessageinboundMessagelistById, getMessageinboundMessagelists } from "@/lib/api/messageinboundMessagelists/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  messageinboundMessagelistIdSchema,
+  createMessageinboundMessagelist,
+  deleteMessageinboundMessagelist,
+  updateMessageinboundMessagelist,
+} from "../api/messageinboundMessagelists/mutations";
+import {
+  getMessageinboundMessagelistById,
+  getMessageinboundMessagelists,
+} from "../api/messageinboundMessagelists/queries";
+import {
   insertMessageinboundMessagelistParams,
+  messageinboundMessagelistIdSchema,
   updateMessageinboundMessagelistParams,
-} from "@/lib/db/schema/messageinboundMessagelists";
-import { createMessageinboundMessagelist, deleteMessageinboundMessagelist, updateMessageinboundMessagelist } from "@/lib/api/messageinboundMessagelists/mutations";
+} from "../db/schema/messageinboundMessagelists";
+import { publicProcedure, router } from "../server/trpc";
 
 export const messageinboundMessagelistsRouter = router({
   getMessageinboundMessagelists: publicProcedure.query(async () => {
     return getMessageinboundMessagelists();
   }),
-  getMessageinboundMessagelistById: publicProcedure.input(messageinboundMessagelistIdSchema).query(async ({ input }) => {
-    return getMessageinboundMessagelistById(input.id);
-  }),
+  getMessageinboundMessagelistById: publicProcedure
+    .input(messageinboundMessagelistIdSchema)
+    .query(async ({ input }) => {
+      return getMessageinboundMessagelistById(input.id);
+    }),
   createMessageinboundMessagelist: publicProcedure
     .input(insertMessageinboundMessagelistParams)
     .mutation(async ({ input }) => {

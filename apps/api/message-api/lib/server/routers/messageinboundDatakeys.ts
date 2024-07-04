@@ -1,19 +1,28 @@
-import { getMessageinboundDatakeyById, getMessageinboundDatakeys } from "@/lib/api/messageinboundDatakeys/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  messageinboundDatakeyIdSchema,
+  createMessageinboundDatakey,
+  deleteMessageinboundDatakey,
+  updateMessageinboundDatakey,
+} from "../api/messageinboundDatakeys/mutations";
+import {
+  getMessageinboundDatakeyById,
+  getMessageinboundDatakeys,
+} from "../api/messageinboundDatakeys/queries";
+import {
   insertMessageinboundDatakeyParams,
+  messageinboundDatakeyIdSchema,
   updateMessageinboundDatakeyParams,
-} from "@/lib/db/schema/messageinboundDatakeys";
-import { createMessageinboundDatakey, deleteMessageinboundDatakey, updateMessageinboundDatakey } from "@/lib/api/messageinboundDatakeys/mutations";
+} from "../db/schema/messageinboundDatakeys";
+import { publicProcedure, router } from "../server/trpc";
 
 export const messageinboundDatakeysRouter = router({
   getMessageinboundDatakeys: publicProcedure.query(async () => {
     return getMessageinboundDatakeys();
   }),
-  getMessageinboundDatakeyById: publicProcedure.input(messageinboundDatakeyIdSchema).query(async ({ input }) => {
-    return getMessageinboundDatakeyById(input.id);
-  }),
+  getMessageinboundDatakeyById: publicProcedure
+    .input(messageinboundDatakeyIdSchema)
+    .query(async ({ input }) => {
+      return getMessageinboundDatakeyById(input.id);
+    }),
   createMessageinboundDatakey: publicProcedure
     .input(insertMessageinboundDatakeyParams)
     .mutation(async ({ input }) => {

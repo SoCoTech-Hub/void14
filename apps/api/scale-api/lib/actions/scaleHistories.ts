@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createScaleHistory,
   deleteScaleHistory,
   updateScaleHistory,
-} from "@/lib/api/scaleHistories/mutations";
+} from "../api/scaleHistories/mutations";
 import {
-  ScaleHistoryId,
-  NewScaleHistoryParams,
-  UpdateScaleHistoryParams,
-  scaleHistoryIdSchema,
   insertScaleHistoryParams,
+  NewScaleHistoryParams,
+  ScaleHistoryId,
+  scaleHistoryIdSchema,
+  UpdateScaleHistoryParams,
   updateScaleHistoryParams,
-} from "@/lib/db/schema/scaleHistories";
+} from "../db/schema/scaleHistories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateScaleHistories = () => revalidatePath("/scale-histories");
 
-export const createScaleHistoryAction = async (input: NewScaleHistoryParams) => {
+export const createScaleHistoryAction = async (
+  input: NewScaleHistoryParams,
+) => {
   try {
     const payload = insertScaleHistoryParams.parse(input);
     await createScaleHistory(payload);
@@ -37,7 +40,9 @@ export const createScaleHistoryAction = async (input: NewScaleHistoryParams) => 
   }
 };
 
-export const updateScaleHistoryAction = async (input: UpdateScaleHistoryParams) => {
+export const updateScaleHistoryAction = async (
+  input: UpdateScaleHistoryParams,
+) => {
   try {
     const payload = updateScaleHistoryParams.parse(input);
     await updateScaleHistory(payload.id, payload);

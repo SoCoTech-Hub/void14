@@ -1,19 +1,28 @@
-import { getAssignFeedbackEditpdfQuickById, getAssignFeedbackEditpdfQuicks } from "@/lib/api/assignFeedbackEditpdfQuicks/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createAssignFeedbackEditpdfQuick,
+  deleteAssignFeedbackEditpdfQuick,
+  updateAssignFeedbackEditpdfQuick,
+} from "../api/assignFeedbackEditpdfQuicks/mutations";
+import {
+  getAssignFeedbackEditpdfQuickById,
+  getAssignFeedbackEditpdfQuicks,
+} from "../api/assignFeedbackEditpdfQuicks/queries";
 import {
   assignFeedbackEditpdfQuickIdSchema,
   insertAssignFeedbackEditpdfQuickParams,
   updateAssignFeedbackEditpdfQuickParams,
-} from "@/lib/db/schema/assignFeedbackEditpdfQuicks";
-import { createAssignFeedbackEditpdfQuick, deleteAssignFeedbackEditpdfQuick, updateAssignFeedbackEditpdfQuick } from "@/lib/api/assignFeedbackEditpdfQuicks/mutations";
+} from "../db/schema/assignFeedbackEditpdfQuicks";
+import { publicProcedure, router } from "../server/trpc";
 
 export const assignFeedbackEditpdfQuicksRouter = router({
   getAssignFeedbackEditpdfQuicks: publicProcedure.query(async () => {
     return getAssignFeedbackEditpdfQuicks();
   }),
-  getAssignFeedbackEditpdfQuickById: publicProcedure.input(assignFeedbackEditpdfQuickIdSchema).query(async ({ input }) => {
-    return getAssignFeedbackEditpdfQuickById(input.id);
-  }),
+  getAssignFeedbackEditpdfQuickById: publicProcedure
+    .input(assignFeedbackEditpdfQuickIdSchema)
+    .query(async ({ input }) => {
+      return getAssignFeedbackEditpdfQuickById(input.id);
+    }),
   createAssignFeedbackEditpdfQuick: publicProcedure
     .input(insertAssignFeedbackEditpdfQuickParams)
     .mutation(async ({ input }) => {

@@ -1,10 +1,10 @@
-import { type getWikiLocks } from "@/lib/api/wikiLocks/queries";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getWikiLocks } from "../api/wikiLocks/queries";
 import { wikiPages } from "./wikiPages";
 
 export const wikiLocks = pgTable("wiki_locks", {

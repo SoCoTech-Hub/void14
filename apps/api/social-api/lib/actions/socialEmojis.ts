@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createSocialEmoji,
   deleteSocialEmoji,
   updateSocialEmoji,
-} from "@/lib/api/socialEmojis/mutations";
+} from "../api/socialEmojis/mutations";
 import {
-  SocialEmojiId,
-  NewSocialEmojiParams,
-  UpdateSocialEmojiParams,
-  socialEmojiIdSchema,
   insertSocialEmojiParams,
+  NewSocialEmojiParams,
+  SocialEmojiId,
+  socialEmojiIdSchema,
+  UpdateSocialEmojiParams,
   updateSocialEmojiParams,
-} from "@/lib/db/schema/socialEmojis";
+} from "../db/schema/socialEmojis";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createSocialEmojiAction = async (input: NewSocialEmojiParams) => {
   }
 };
 
-export const updateSocialEmojiAction = async (input: UpdateSocialEmojiParams) => {
+export const updateSocialEmojiAction = async (
+  input: UpdateSocialEmojiParams,
+) => {
   try {
     const payload = updateSocialEmojiParams.parse(input);
     await updateSocialEmoji(payload.id, payload);

@@ -1,19 +1,28 @@
-import { getQuizSectionById, getQuizSections } from "@/lib/api/quizSections/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  quizSectionIdSchema,
+  createQuizSection,
+  deleteQuizSection,
+  updateQuizSection,
+} from "../api/quizSections/mutations";
+import {
+  getQuizSectionById,
+  getQuizSections,
+} from "../api/quizSections/queries";
+import {
   insertQuizSectionParams,
+  quizSectionIdSchema,
   updateQuizSectionParams,
-} from "@/lib/db/schema/quizSections";
-import { createQuizSection, deleteQuizSection, updateQuizSection } from "@/lib/api/quizSections/mutations";
+} from "../db/schema/quizSections";
+import { publicProcedure, router } from "../server/trpc";
 
 export const quizSectionsRouter = router({
   getQuizSections: publicProcedure.query(async () => {
     return getQuizSections();
   }),
-  getQuizSectionById: publicProcedure.input(quizSectionIdSchema).query(async ({ input }) => {
-    return getQuizSectionById(input.id);
-  }),
+  getQuizSectionById: publicProcedure
+    .input(quizSectionIdSchema)
+    .query(async ({ input }) => {
+      return getQuizSectionById(input.id);
+    }),
   createQuizSection: publicProcedure
     .input(insertQuizSectionParams)
     .mutation(async ({ input }) => {

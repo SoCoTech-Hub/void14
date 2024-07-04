@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createStatsUserMonthly,
   deleteStatsUserMonthly,
   updateStatsUserMonthly,
-} from "@/lib/api/statsUserMonthlies/mutations";
+} from "../api/statsUserMonthlies/mutations";
 import {
-  StatsUserMonthlyId,
-  NewStatsUserMonthlyParams,
-  UpdateStatsUserMonthlyParams,
-  statsUserMonthlyIdSchema,
   insertStatsUserMonthlyParams,
+  NewStatsUserMonthlyParams,
+  StatsUserMonthlyId,
+  statsUserMonthlyIdSchema,
+  UpdateStatsUserMonthlyParams,
   updateStatsUserMonthlyParams,
-} from "@/lib/db/schema/statsUserMonthlies";
+} from "../db/schema/statsUserMonthlies";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateStatsUserMonthlies = () => revalidatePath("/stats-user-monthlies");
+const revalidateStatsUserMonthlies = () =>
+  revalidatePath("/stats-user-monthlies");
 
-export const createStatsUserMonthlyAction = async (input: NewStatsUserMonthlyParams) => {
+export const createStatsUserMonthlyAction = async (
+  input: NewStatsUserMonthlyParams,
+) => {
   try {
     const payload = insertStatsUserMonthlyParams.parse(input);
     await createStatsUserMonthly(payload);
@@ -37,7 +41,9 @@ export const createStatsUserMonthlyAction = async (input: NewStatsUserMonthlyPar
   }
 };
 
-export const updateStatsUserMonthlyAction = async (input: UpdateStatsUserMonthlyParams) => {
+export const updateStatsUserMonthlyAction = async (
+  input: UpdateStatsUserMonthlyParams,
+) => {
   try {
     const payload = updateStatsUserMonthlyParams.parse(input);
     await updateStatsUserMonthly(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateStatsUserMonthlyAction = async (input: UpdateStatsUserMonthly
   }
 };
 
-export const deleteStatsUserMonthlyAction = async (input: StatsUserMonthlyId) => {
+export const deleteStatsUserMonthlyAction = async (
+  input: StatsUserMonthlyId,
+) => {
   try {
     const payload = statsUserMonthlyIdSchema.parse({ id: input });
     await deleteStatsUserMonthly(payload.id);

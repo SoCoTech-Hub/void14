@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createEventSubscription,
   deleteEventSubscription,
   updateEventSubscription,
-} from "@/lib/api/eventSubscriptions/mutations";
+} from "../api/eventSubscriptions/mutations";
 import {
   EventSubscriptionId,
-  NewEventSubscriptionParams,
-  UpdateEventSubscriptionParams,
   eventSubscriptionIdSchema,
   insertEventSubscriptionParams,
+  NewEventSubscriptionParams,
+  UpdateEventSubscriptionParams,
   updateEventSubscriptionParams,
-} from "@/lib/db/schema/eventSubscriptions";
+} from "../db/schema/eventSubscriptions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateEventSubscriptions = () => revalidatePath("/event-subscriptions");
+const revalidateEventSubscriptions = () =>
+  revalidatePath("/event-subscriptions");
 
-export const createEventSubscriptionAction = async (input: NewEventSubscriptionParams) => {
+export const createEventSubscriptionAction = async (
+  input: NewEventSubscriptionParams,
+) => {
   try {
     const payload = insertEventSubscriptionParams.parse(input);
     await createEventSubscription(payload);
@@ -37,7 +41,9 @@ export const createEventSubscriptionAction = async (input: NewEventSubscriptionP
   }
 };
 
-export const updateEventSubscriptionAction = async (input: UpdateEventSubscriptionParams) => {
+export const updateEventSubscriptionAction = async (
+  input: UpdateEventSubscriptionParams,
+) => {
   try {
     const payload = updateEventSubscriptionParams.parse(input);
     await updateEventSubscription(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateEventSubscriptionAction = async (input: UpdateEventSubscripti
   }
 };
 
-export const deleteEventSubscriptionAction = async (input: EventSubscriptionId) => {
+export const deleteEventSubscriptionAction = async (
+  input: EventSubscriptionId,
+) => {
   try {
     const payload = eventSubscriptionIdSchema.parse({ id: input });
     await deleteEventSubscription(payload.id);

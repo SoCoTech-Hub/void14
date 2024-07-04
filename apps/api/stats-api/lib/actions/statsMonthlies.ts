@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createStatsMonthly,
   deleteStatsMonthly,
   updateStatsMonthly,
-} from "@/lib/api/statsMonthlies/mutations";
+} from "../api/statsMonthlies/mutations";
 import {
-  StatsMonthlyId,
-  NewStatsMonthlyParams,
-  UpdateStatsMonthlyParams,
-  statsMonthlyIdSchema,
   insertStatsMonthlyParams,
+  NewStatsMonthlyParams,
+  StatsMonthlyId,
+  statsMonthlyIdSchema,
+  UpdateStatsMonthlyParams,
   updateStatsMonthlyParams,
-} from "@/lib/db/schema/statsMonthlies";
+} from "../db/schema/statsMonthlies";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateStatsMonthlies = () => revalidatePath("/stats-monthlies");
 
-export const createStatsMonthlyAction = async (input: NewStatsMonthlyParams) => {
+export const createStatsMonthlyAction = async (
+  input: NewStatsMonthlyParams,
+) => {
   try {
     const payload = insertStatsMonthlyParams.parse(input);
     await createStatsMonthly(payload);
@@ -37,7 +40,9 @@ export const createStatsMonthlyAction = async (input: NewStatsMonthlyParams) => 
   }
 };
 
-export const updateStatsMonthlyAction = async (input: UpdateStatsMonthlyParams) => {
+export const updateStatsMonthlyAction = async (
+  input: UpdateStatsMonthlyParams,
+) => {
   try {
     const payload = updateStatsMonthlyParams.parse(input);
     await updateStatsMonthly(payload.id, payload);

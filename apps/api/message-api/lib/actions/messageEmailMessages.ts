@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMessageEmailMessage,
   deleteMessageEmailMessage,
   updateMessageEmailMessage,
-} from "@/lib/api/messageEmailMessages/mutations";
+} from "../api/messageEmailMessages/mutations";
 import {
+  insertMessageEmailMessageParams,
   MessageEmailMessageId,
+  messageEmailMessageIdSchema,
   NewMessageEmailMessageParams,
   UpdateMessageEmailMessageParams,
-  messageEmailMessageIdSchema,
-  insertMessageEmailMessageParams,
   updateMessageEmailMessageParams,
-} from "@/lib/db/schema/messageEmailMessages";
+} from "../db/schema/messageEmailMessages";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateMessageEmailMessages = () => revalidatePath("/message-email-messages");
+const revalidateMessageEmailMessages = () =>
+  revalidatePath("/message-email-messages");
 
-export const createMessageEmailMessageAction = async (input: NewMessageEmailMessageParams) => {
+export const createMessageEmailMessageAction = async (
+  input: NewMessageEmailMessageParams,
+) => {
   try {
     const payload = insertMessageEmailMessageParams.parse(input);
     await createMessageEmailMessage(payload);
@@ -37,7 +41,9 @@ export const createMessageEmailMessageAction = async (input: NewMessageEmailMess
   }
 };
 
-export const updateMessageEmailMessageAction = async (input: UpdateMessageEmailMessageParams) => {
+export const updateMessageEmailMessageAction = async (
+  input: UpdateMessageEmailMessageParams,
+) => {
   try {
     const payload = updateMessageEmailMessageParams.parse(input);
     await updateMessageEmailMessage(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateMessageEmailMessageAction = async (input: UpdateMessageEmailM
   }
 };
 
-export const deleteMessageEmailMessageAction = async (input: MessageEmailMessageId) => {
+export const deleteMessageEmailMessageAction = async (
+  input: MessageEmailMessageId,
+) => {
   try {
     const payload = messageEmailMessageIdSchema.parse({ id: input });
     await deleteMessageEmailMessage(payload.id);

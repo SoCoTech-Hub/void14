@@ -1,4 +1,3 @@
-import { type getQuestionHints } from "@/lib/api/questionHints/queries";
 import {
   boolean,
   integer,
@@ -12,6 +11,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getQuestionHints } from "../api/questionHints/queries";
 import { questions } from "./questions";
 
 export const questionHints = pgTable(

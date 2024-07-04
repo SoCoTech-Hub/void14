@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGradingformRubricCriteria,
   deleteGradingformRubricCriteria,
   updateGradingformRubricCriteria,
-} from "@/lib/api/gradingformRubricCriterias/mutations";
+} from "../api/gradingformRubricCriterias/mutations";
 import {
   GradingformRubricCriteriaId,
-  NewGradingformRubricCriteriaParams,
-  UpdateGradingformRubricCriteriaParams,
   gradingformRubricCriteriaIdSchema,
   insertGradingformRubricCriteriaParams,
+  NewGradingformRubricCriteriaParams,
+  UpdateGradingformRubricCriteriaParams,
   updateGradingformRubricCriteriaParams,
-} from "@/lib/db/schema/gradingformRubricCriterias";
+} from "../db/schema/gradingformRubricCriterias";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateGradingformRubricCriterias = () => revalidatePath("/gradingform-rubric-criterias");
+const revalidateGradingformRubricCriterias = () =>
+  revalidatePath("/gradingform-rubric-criterias");
 
-export const createGradingformRubricCriteriaAction = async (input: NewGradingformRubricCriteriaParams) => {
+export const createGradingformRubricCriteriaAction = async (
+  input: NewGradingformRubricCriteriaParams,
+) => {
   try {
     const payload = insertGradingformRubricCriteriaParams.parse(input);
     await createGradingformRubricCriteria(payload);
@@ -37,7 +41,9 @@ export const createGradingformRubricCriteriaAction = async (input: NewGradingfor
   }
 };
 
-export const updateGradingformRubricCriteriaAction = async (input: UpdateGradingformRubricCriteriaParams) => {
+export const updateGradingformRubricCriteriaAction = async (
+  input: UpdateGradingformRubricCriteriaParams,
+) => {
   try {
     const payload = updateGradingformRubricCriteriaParams.parse(input);
     await updateGradingformRubricCriteria(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateGradingformRubricCriteriaAction = async (input: UpdateGrading
   }
 };
 
-export const deleteGradingformRubricCriteriaAction = async (input: GradingformRubricCriteriaId) => {
+export const deleteGradingformRubricCriteriaAction = async (
+  input: GradingformRubricCriteriaId,
+) => {
   try {
     const payload = gradingformRubricCriteriaIdSchema.parse({ id: input });
     await deleteGradingformRubricCriteria(payload.id);

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createSocialLink,
   deleteSocialLink,
   updateSocialLink,
-} from "@/lib/api/socialLinks/mutations";
+} from "../api/socialLinks/mutations";
 import {
-  SocialLinkId,
-  NewSocialLinkParams,
-  UpdateSocialLinkParams,
-  socialLinkIdSchema,
   insertSocialLinkParams,
+  NewSocialLinkParams,
+  SocialLinkId,
+  socialLinkIdSchema,
+  UpdateSocialLinkParams,
   updateSocialLinkParams,
-} from "@/lib/db/schema/socialLinks";
+} from "../db/schema/socialLinks";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

@@ -1,5 +1,5 @@
 import { computersRouter } from './computers'
-import { router } from '@/lib/server/trpc'
+import { router } from '../server/trpc'
 import { faqsRouter } from './faqs'
 import { faqCategoriesRouter } from './faqCategories'
 import { faqFaqsCategoriesRouter } from './faqFaqsCategories'

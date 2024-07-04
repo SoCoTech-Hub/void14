@@ -1,19 +1,28 @@
-import { getGradeOutcomeById, getGradeOutcomes } from "@/lib/api/gradeOutcomes/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createGradeOutcome,
+  deleteGradeOutcome,
+  updateGradeOutcome,
+} from "../api/gradeOutcomes/mutations";
+import {
+  getGradeOutcomeById,
+  getGradeOutcomes,
+} from "../api/gradeOutcomes/queries";
 import {
   gradeOutcomeIdSchema,
   insertGradeOutcomeParams,
   updateGradeOutcomeParams,
-} from "@/lib/db/schema/gradeOutcomes";
-import { createGradeOutcome, deleteGradeOutcome, updateGradeOutcome } from "@/lib/api/gradeOutcomes/mutations";
+} from "../db/schema/gradeOutcomes";
+import { publicProcedure, router } from "../server/trpc";
 
 export const gradeOutcomesRouter = router({
   getGradeOutcomes: publicProcedure.query(async () => {
     return getGradeOutcomes();
   }),
-  getGradeOutcomeById: publicProcedure.input(gradeOutcomeIdSchema).query(async ({ input }) => {
-    return getGradeOutcomeById(input.id);
-  }),
+  getGradeOutcomeById: publicProcedure
+    .input(gradeOutcomeIdSchema)
+    .query(async ({ input }) => {
+      return getGradeOutcomeById(input.id);
+    }),
   createGradeOutcome: publicProcedure
     .input(insertGradeOutcomeParams)
     .mutation(async ({ input }) => {

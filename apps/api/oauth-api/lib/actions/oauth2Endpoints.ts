@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createOauth2Endpoint,
   deleteOauth2Endpoint,
   updateOauth2Endpoint,
-} from "@/lib/api/oauth2Endpoints/mutations";
+} from "../api/oauth2Endpoints/mutations";
 import {
-  Oauth2EndpointId,
-  NewOauth2EndpointParams,
-  UpdateOauth2EndpointParams,
-  oauth2EndpointIdSchema,
   insertOauth2EndpointParams,
+  NewOauth2EndpointParams,
+  Oauth2EndpointId,
+  oauth2EndpointIdSchema,
+  UpdateOauth2EndpointParams,
   updateOauth2EndpointParams,
-} from "@/lib/db/schema/oauth2Endpoints";
+} from "../db/schema/oauth2Endpoints";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateOauth2Endpoints = () => revalidatePath("/oauth2-endpoints");
 
-export const createOauth2EndpointAction = async (input: NewOauth2EndpointParams) => {
+export const createOauth2EndpointAction = async (
+  input: NewOauth2EndpointParams,
+) => {
   try {
     const payload = insertOauth2EndpointParams.parse(input);
     await createOauth2Endpoint(payload);
@@ -37,7 +40,9 @@ export const createOauth2EndpointAction = async (input: NewOauth2EndpointParams)
   }
 };
 
-export const updateOauth2EndpointAction = async (input: UpdateOauth2EndpointParams) => {
+export const updateOauth2EndpointAction = async (
+  input: UpdateOauth2EndpointParams,
+) => {
   try {
     const payload = updateOauth2EndpointParams.parse(input);
     await updateOauth2Endpoint(payload.id, payload);

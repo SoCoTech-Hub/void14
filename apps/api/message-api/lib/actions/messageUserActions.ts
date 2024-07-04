@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMessageUserAction,
   deleteMessageUserAction,
   updateMessageUserAction,
-} from "@/lib/api/messageUserActions/mutations";
+} from "../api/messageUserActions/mutations";
 import {
+  insertMessageUserActionParams,
   MessageUserActionId,
+  messageUserActionIdSchema,
   NewMessageUserActionParams,
   UpdateMessageUserActionParams,
-  messageUserActionIdSchema,
-  insertMessageUserActionParams,
   updateMessageUserActionParams,
-} from "@/lib/db/schema/messageUserActions";
+} from "../db/schema/messageUserActions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateMessageUserActions = () => revalidatePath("/message-user-actions");
+const revalidateMessageUserActions = () =>
+  revalidatePath("/message-user-actions");
 
-export const createMessageUserActionAction = async (input: NewMessageUserActionParams) => {
+export const createMessageUserActionAction = async (
+  input: NewMessageUserActionParams,
+) => {
   try {
     const payload = insertMessageUserActionParams.parse(input);
     await createMessageUserAction(payload);
@@ -37,7 +41,9 @@ export const createMessageUserActionAction = async (input: NewMessageUserActionP
   }
 };
 
-export const updateMessageUserActionAction = async (input: UpdateMessageUserActionParams) => {
+export const updateMessageUserActionAction = async (
+  input: UpdateMessageUserActionParams,
+) => {
   try {
     const payload = updateMessageUserActionParams.parse(input);
     await updateMessageUserAction(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateMessageUserActionAction = async (input: UpdateMessageUserActi
   }
 };
 
-export const deleteMessageUserActionAction = async (input: MessageUserActionId) => {
+export const deleteMessageUserActionAction = async (
+  input: MessageUserActionId,
+) => {
   try {
     const payload = messageUserActionIdSchema.parse({ id: input });
     await deleteMessageUserAction(payload.id);

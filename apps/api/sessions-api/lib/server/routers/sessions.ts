@@ -1,19 +1,25 @@
-import { getSessionById, getSessions } from "@/lib/api/sessions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  sessionIdSchema,
+  createSession,
+  deleteSession,
+  updateSession,
+} from "../api/sessions/mutations";
+import { getSessionById, getSessions } from "../api/sessions/queries";
+import {
   insertSessionParams,
+  sessionIdSchema,
   updateSessionParams,
-} from "@/lib/db/schema/sessions";
-import { createSession, deleteSession, updateSession } from "@/lib/api/sessions/mutations";
+} from "../db/schema/sessions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const sessionsRouter = router({
   getSessions: publicProcedure.query(async () => {
     return getSessions();
   }),
-  getSessionById: publicProcedure.input(sessionIdSchema).query(async ({ input }) => {
-    return getSessionById(input.id);
-  }),
+  getSessionById: publicProcedure
+    .input(sessionIdSchema)
+    .query(async ({ input }) => {
+      return getSessionById(input.id);
+    }),
   createSession: publicProcedure
     .input(insertSessionParams)
     .mutation(async ({ input }) => {

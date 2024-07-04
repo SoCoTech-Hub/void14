@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createEditorAttoAutosave,
   deleteEditorAttoAutosave,
   updateEditorAttoAutosave,
-} from "@/lib/api/editorAttoAutosaves/mutations";
+} from "../api/editorAttoAutosaves/mutations";
 import {
   EditorAttoAutosaveId,
-  NewEditorAttoAutosaveParams,
-  UpdateEditorAttoAutosaveParams,
   editorAttoAutosaveIdSchema,
   insertEditorAttoAutosaveParams,
+  NewEditorAttoAutosaveParams,
+  UpdateEditorAttoAutosaveParams,
   updateEditorAttoAutosaveParams,
-} from "@/lib/db/schema/editorAttoAutosaves";
+} from "../db/schema/editorAttoAutosaves";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateEditorAttoAutosaves = () => revalidatePath("/editor-atto-autosaves");
+const revalidateEditorAttoAutosaves = () =>
+  revalidatePath("/editor-atto-autosaves");
 
-export const createEditorAttoAutosaveAction = async (input: NewEditorAttoAutosaveParams) => {
+export const createEditorAttoAutosaveAction = async (
+  input: NewEditorAttoAutosaveParams,
+) => {
   try {
     const payload = insertEditorAttoAutosaveParams.parse(input);
     await createEditorAttoAutosave(payload);
@@ -37,7 +41,9 @@ export const createEditorAttoAutosaveAction = async (input: NewEditorAttoAutosav
   }
 };
 
-export const updateEditorAttoAutosaveAction = async (input: UpdateEditorAttoAutosaveParams) => {
+export const updateEditorAttoAutosaveAction = async (
+  input: UpdateEditorAttoAutosaveParams,
+) => {
   try {
     const payload = updateEditorAttoAutosaveParams.parse(input);
     await updateEditorAttoAutosave(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateEditorAttoAutosaveAction = async (input: UpdateEditorAttoAuto
   }
 };
 
-export const deleteEditorAttoAutosaveAction = async (input: EditorAttoAutosaveId) => {
+export const deleteEditorAttoAutosaveAction = async (
+  input: EditorAttoAutosaveId,
+) => {
   try {
     const payload = editorAttoAutosaveIdSchema.parse({ id: input });
     await deleteEditorAttoAutosave(payload.id);

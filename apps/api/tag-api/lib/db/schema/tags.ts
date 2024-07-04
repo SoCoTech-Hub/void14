@@ -1,4 +1,3 @@
-import { type getTags } from "@/lib/api/tags/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -13,6 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getTags } from "../api/tags/queries";
 import { tagColls } from "./tagColls";
 
 export const tags = pgTable("tags", {

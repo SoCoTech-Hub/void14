@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAnalyticsTrainSample,
   deleteAnalyticsTrainSample,
   updateAnalyticsTrainSample,
-} from "@/lib/api/analyticsTrainSamples/mutations";
+} from "../api/analyticsTrainSamples/mutations";
 import {
   AnalyticsTrainSampleId,
-  NewAnalyticsTrainSampleParams,
-  UpdateAnalyticsTrainSampleParams,
   analyticsTrainSampleIdSchema,
   insertAnalyticsTrainSampleParams,
+  NewAnalyticsTrainSampleParams,
+  UpdateAnalyticsTrainSampleParams,
   updateAnalyticsTrainSampleParams,
-} from "@/lib/db/schema/analyticsTrainSamples";
+} from "../db/schema/analyticsTrainSamples";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateAnalyticsTrainSamples = () => revalidatePath("/analytics-train-samples");
+const revalidateAnalyticsTrainSamples = () =>
+  revalidatePath("/analytics-train-samples");
 
-export const createAnalyticsTrainSampleAction = async (input: NewAnalyticsTrainSampleParams) => {
+export const createAnalyticsTrainSampleAction = async (
+  input: NewAnalyticsTrainSampleParams,
+) => {
   try {
     const payload = insertAnalyticsTrainSampleParams.parse(input);
     await createAnalyticsTrainSample(payload);
@@ -37,7 +41,9 @@ export const createAnalyticsTrainSampleAction = async (input: NewAnalyticsTrainS
   }
 };
 
-export const updateAnalyticsTrainSampleAction = async (input: UpdateAnalyticsTrainSampleParams) => {
+export const updateAnalyticsTrainSampleAction = async (
+  input: UpdateAnalyticsTrainSampleParams,
+) => {
   try {
     const payload = updateAnalyticsTrainSampleParams.parse(input);
     await updateAnalyticsTrainSample(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateAnalyticsTrainSampleAction = async (input: UpdateAnalyticsTra
   }
 };
 
-export const deleteAnalyticsTrainSampleAction = async (input: AnalyticsTrainSampleId) => {
+export const deleteAnalyticsTrainSampleAction = async (
+  input: AnalyticsTrainSampleId,
+) => {
   try {
     const payload = analyticsTrainSampleIdSchema.parse({ id: input });
     await deleteAnalyticsTrainSample(payload.id);

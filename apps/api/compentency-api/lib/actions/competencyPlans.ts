@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCompetencyPlan,
   deleteCompetencyPlan,
   updateCompetencyPlan,
-} from "@/lib/api/competencyPlans/mutations";
+} from "../api/competencyPlans/mutations";
 import {
   CompetencyPlanId,
-  NewCompetencyPlanParams,
-  UpdateCompetencyPlanParams,
   competencyPlanIdSchema,
   insertCompetencyPlanParams,
+  NewCompetencyPlanParams,
+  UpdateCompetencyPlanParams,
   updateCompetencyPlanParams,
-} from "@/lib/db/schema/competencyPlans";
+} from "../db/schema/competencyPlans";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateCompetencyPlans = () => revalidatePath("/competency-plans");
 
-export const createCompetencyPlanAction = async (input: NewCompetencyPlanParams) => {
+export const createCompetencyPlanAction = async (
+  input: NewCompetencyPlanParams,
+) => {
   try {
     const payload = insertCompetencyPlanParams.parse(input);
     await createCompetencyPlan(payload);
@@ -37,7 +40,9 @@ export const createCompetencyPlanAction = async (input: NewCompetencyPlanParams)
   }
 };
 
-export const updateCompetencyPlanAction = async (input: UpdateCompetencyPlanParams) => {
+export const updateCompetencyPlanAction = async (
+  input: UpdateCompetencyPlanParams,
+) => {
   try {
     const payload = updateCompetencyPlanParams.parse(input);
     await updateCompetencyPlan(payload.id, payload);

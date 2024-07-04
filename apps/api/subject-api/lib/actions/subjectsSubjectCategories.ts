@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createSubjectsSubjectCategory,
   deleteSubjectsSubjectCategory,
   updateSubjectsSubjectCategory,
-} from "@/lib/api/subjectsSubjectCategories/mutations";
+} from "../api/subjectsSubjectCategories/mutations";
 import {
-  SubjectsSubjectCategoryId,
-  NewSubjectsSubjectCategoryParams,
-  UpdateSubjectsSubjectCategoryParams,
-  subjectsSubjectCategoryIdSchema,
   insertSubjectsSubjectCategoryParams,
+  NewSubjectsSubjectCategoryParams,
+  SubjectsSubjectCategoryId,
+  subjectsSubjectCategoryIdSchema,
+  UpdateSubjectsSubjectCategoryParams,
   updateSubjectsSubjectCategoryParams,
-} from "@/lib/db/schema/subjectsSubjectCategories";
+} from "../db/schema/subjectsSubjectCategories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateSubjectsSubjectCategories = () => revalidatePath("/subjects-subject-categories");
+const revalidateSubjectsSubjectCategories = () =>
+  revalidatePath("/subjects-subject-categories");
 
-export const createSubjectsSubjectCategoryAction = async (input: NewSubjectsSubjectCategoryParams) => {
+export const createSubjectsSubjectCategoryAction = async (
+  input: NewSubjectsSubjectCategoryParams,
+) => {
   try {
     const payload = insertSubjectsSubjectCategoryParams.parse(input);
     await createSubjectsSubjectCategory(payload);
@@ -37,7 +41,9 @@ export const createSubjectsSubjectCategoryAction = async (input: NewSubjectsSubj
   }
 };
 
-export const updateSubjectsSubjectCategoryAction = async (input: UpdateSubjectsSubjectCategoryParams) => {
+export const updateSubjectsSubjectCategoryAction = async (
+  input: UpdateSubjectsSubjectCategoryParams,
+) => {
   try {
     const payload = updateSubjectsSubjectCategoryParams.parse(input);
     await updateSubjectsSubjectCategory(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateSubjectsSubjectCategoryAction = async (input: UpdateSubjectsS
   }
 };
 
-export const deleteSubjectsSubjectCategoryAction = async (input: SubjectsSubjectCategoryId) => {
+export const deleteSubjectsSubjectCategoryAction = async (
+  input: SubjectsSubjectCategoryId,
+) => {
   try {
     const payload = subjectsSubjectCategoryIdSchema.parse({ id: input });
     await deleteSubjectsSubjectCategory(payload.id);

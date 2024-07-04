@@ -1,4 +1,3 @@
-import { type getAdminPresetsApps } from "@/lib/api/adminPresetsApps/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -6,6 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getAdminPresetsApps } from "../api/adminPresetsApps/queries";
 import { adminPresets } from "./adminPresets";
 
 export const adminPresetsApps = pgTable(

@@ -1,10 +1,12 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { type UserId, userIdSchema, users } from "@/lib/db/schema/users";
+
+import type { UserId } from "../db/schema/users";
+import { db } from "../db/index";
+import { userIdSchema, users } from "../db/schema/users";
 
 export const getUsers = async () => {
   const rows = await db.select().from(users);
-  const u = rows
+  const u = rows;
   return { users: u };
 };
 
@@ -15,5 +17,3 @@ export const getUserById = async (id: UserId) => {
   const u = row;
   return { user: u };
 };
-
-

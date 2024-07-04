@@ -1,19 +1,28 @@
-import { getReportbuilderReportById, getReportbuilderReports } from "@/lib/api/reportbuilderReports/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  reportbuilderReportIdSchema,
+  createReportbuilderReport,
+  deleteReportbuilderReport,
+  updateReportbuilderReport,
+} from "../api/reportbuilderReports/mutations";
+import {
+  getReportbuilderReportById,
+  getReportbuilderReports,
+} from "../api/reportbuilderReports/queries";
+import {
   insertReportbuilderReportParams,
+  reportbuilderReportIdSchema,
   updateReportbuilderReportParams,
-} from "@/lib/db/schema/reportbuilderReports";
-import { createReportbuilderReport, deleteReportbuilderReport, updateReportbuilderReport } from "@/lib/api/reportbuilderReports/mutations";
+} from "../db/schema/reportbuilderReports";
+import { publicProcedure, router } from "../server/trpc";
 
 export const reportbuilderReportsRouter = router({
   getReportbuilderReports: publicProcedure.query(async () => {
     return getReportbuilderReports();
   }),
-  getReportbuilderReportById: publicProcedure.input(reportbuilderReportIdSchema).query(async ({ input }) => {
-    return getReportbuilderReportById(input.id);
-  }),
+  getReportbuilderReportById: publicProcedure
+    .input(reportbuilderReportIdSchema)
+    .query(async ({ input }) => {
+      return getReportbuilderReportById(input.id);
+    }),
   createReportbuilderReport: publicProcedure
     .input(insertReportbuilderReportParams)
     .mutation(async ({ input }) => {

@@ -1,11 +1,11 @@
-import { getPageById, getPages } from "@/lib/api/pages/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import { createPage, deletePage, updatePage } from "../api/pages/mutations";
+import { getPageById, getPages } from "../api/pages/queries";
 import {
-  pageIdSchema,
   insertPageParams,
+  pageIdSchema,
   updatePageParams,
-} from "@/lib/db/schema/pages";
-import { createPage, deletePage, updatePage } from "@/lib/api/pages/mutations";
+} from "../db/schema/pages";
+import { publicProcedure, router } from "../server/trpc";
 
 export const pagesRouter = router({
   getPages: publicProcedure.query(async () => {

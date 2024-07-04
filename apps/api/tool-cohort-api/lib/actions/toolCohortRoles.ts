@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createToolCohortRole,
   deleteToolCohortRole,
   updateToolCohortRole,
-} from "@/lib/api/toolCohortRoles/mutations";
+} from "../api/toolCohortRoles/mutations";
 import {
-  ToolCohortRoleId,
-  NewToolCohortRoleParams,
-  UpdateToolCohortRoleParams,
-  toolCohortRoleIdSchema,
   insertToolCohortRoleParams,
+  NewToolCohortRoleParams,
+  ToolCohortRoleId,
+  toolCohortRoleIdSchema,
+  UpdateToolCohortRoleParams,
   updateToolCohortRoleParams,
-} from "@/lib/db/schema/toolCohortRoles";
+} from "../db/schema/toolCohortRoles";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateToolCohortRoles = () => revalidatePath("/tool-cohort-roles");
 
-export const createToolCohortRoleAction = async (input: NewToolCohortRoleParams) => {
+export const createToolCohortRoleAction = async (
+  input: NewToolCohortRoleParams,
+) => {
   try {
     const payload = insertToolCohortRoleParams.parse(input);
     await createToolCohortRole(payload);
@@ -37,7 +40,9 @@ export const createToolCohortRoleAction = async (input: NewToolCohortRoleParams)
   }
 };
 
-export const updateToolCohortRoleAction = async (input: UpdateToolCohortRoleParams) => {
+export const updateToolCohortRoleAction = async (
+  input: UpdateToolCohortRoleParams,
+) => {
   try {
     const payload = updateToolCohortRoleParams.parse(input);
     await updateToolCohortRole(payload.id, payload);

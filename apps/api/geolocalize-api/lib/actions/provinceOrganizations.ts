@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createProvinceOrganization,
   deleteProvinceOrganization,
   updateProvinceOrganization,
-} from "@/lib/api/provinceOrganizations/mutations";
+} from "../api/provinceOrganizations/mutations";
 import {
-  ProvinceOrganizationId,
-  NewProvinceOrganizationParams,
-  UpdateProvinceOrganizationParams,
-  provinceOrganizationIdSchema,
   insertProvinceOrganizationParams,
+  NewProvinceOrganizationParams,
+  ProvinceOrganizationId,
+  provinceOrganizationIdSchema,
+  UpdateProvinceOrganizationParams,
   updateProvinceOrganizationParams,
-} from "@/lib/db/schema/provinceOrganizations";
+} from "../db/schema/provinceOrganizations";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateProvinceOrganizations = () => revalidatePath("/province-organizations");
+const revalidateProvinceOrganizations = () =>
+  revalidatePath("/province-organizations");
 
-export const createProvinceOrganizationAction = async (input: NewProvinceOrganizationParams) => {
+export const createProvinceOrganizationAction = async (
+  input: NewProvinceOrganizationParams,
+) => {
   try {
     const payload = insertProvinceOrganizationParams.parse(input);
     await createProvinceOrganization(payload);
@@ -37,7 +41,9 @@ export const createProvinceOrganizationAction = async (input: NewProvinceOrganiz
   }
 };
 
-export const updateProvinceOrganizationAction = async (input: UpdateProvinceOrganizationParams) => {
+export const updateProvinceOrganizationAction = async (
+  input: UpdateProvinceOrganizationParams,
+) => {
   try {
     const payload = updateProvinceOrganizationParams.parse(input);
     await updateProvinceOrganization(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateProvinceOrganizationAction = async (input: UpdateProvinceOrga
   }
 };
 
-export const deleteProvinceOrganizationAction = async (input: ProvinceOrganizationId) => {
+export const deleteProvinceOrganizationAction = async (
+  input: ProvinceOrganizationId,
+) => {
   try {
     const payload = provinceOrganizationIdSchema.parse({ id: input });
     await deleteProvinceOrganization(payload.id);

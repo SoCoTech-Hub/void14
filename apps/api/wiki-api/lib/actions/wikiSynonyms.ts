@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createWikiSynonym,
   deleteWikiSynonym,
   updateWikiSynonym,
-} from "@/lib/api/wikiSynonyms/mutations";
+} from "../api/wikiSynonyms/mutations";
 import {
-  WikiSynonymId,
+  insertWikiSynonymParams,
   NewWikiSynonymParams,
   UpdateWikiSynonymParams,
-  wikiSynonymIdSchema,
-  insertWikiSynonymParams,
   updateWikiSynonymParams,
-} from "@/lib/db/schema/wikiSynonyms";
+  WikiSynonymId,
+  wikiSynonymIdSchema,
+} from "../db/schema/wikiSynonyms";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createWikiSynonymAction = async (input: NewWikiSynonymParams) => {
   }
 };
 
-export const updateWikiSynonymAction = async (input: UpdateWikiSynonymParams) => {
+export const updateWikiSynonymAction = async (
+  input: UpdateWikiSynonymParams,
+) => {
   try {
     const payload = updateWikiSynonymParams.parse(input);
     await updateWikiSynonym(payload.id, payload);

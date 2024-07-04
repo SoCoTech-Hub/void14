@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQtypeRandomsamatchOption,
   deleteQtypeRandomsamatchOption,
   updateQtypeRandomsamatchOption,
-} from "@/lib/api/qtypeRandomsamatchOptions/mutations";
+} from "../api/qtypeRandomsamatchOptions/mutations";
 import {
-  QtypeRandomsamatchOptionId,
-  NewQtypeRandomsamatchOptionParams,
-  UpdateQtypeRandomsamatchOptionParams,
-  qtypeRandomsamatchOptionIdSchema,
   insertQtypeRandomsamatchOptionParams,
+  NewQtypeRandomsamatchOptionParams,
+  QtypeRandomsamatchOptionId,
+  qtypeRandomsamatchOptionIdSchema,
+  UpdateQtypeRandomsamatchOptionParams,
   updateQtypeRandomsamatchOptionParams,
-} from "@/lib/db/schema/qtypeRandomsamatchOptions";
+} from "../db/schema/qtypeRandomsamatchOptions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQtypeRandomsamatchOptions = () => revalidatePath("/qtype-randomsamatch-options");
+const revalidateQtypeRandomsamatchOptions = () =>
+  revalidatePath("/qtype-randomsamatch-options");
 
-export const createQtypeRandomsamatchOptionAction = async (input: NewQtypeRandomsamatchOptionParams) => {
+export const createQtypeRandomsamatchOptionAction = async (
+  input: NewQtypeRandomsamatchOptionParams,
+) => {
   try {
     const payload = insertQtypeRandomsamatchOptionParams.parse(input);
     await createQtypeRandomsamatchOption(payload);
@@ -37,7 +41,9 @@ export const createQtypeRandomsamatchOptionAction = async (input: NewQtypeRandom
   }
 };
 
-export const updateQtypeRandomsamatchOptionAction = async (input: UpdateQtypeRandomsamatchOptionParams) => {
+export const updateQtypeRandomsamatchOptionAction = async (
+  input: UpdateQtypeRandomsamatchOptionParams,
+) => {
   try {
     const payload = updateQtypeRandomsamatchOptionParams.parse(input);
     await updateQtypeRandomsamatchOption(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQtypeRandomsamatchOptionAction = async (input: UpdateQtypeRan
   }
 };
 
-export const deleteQtypeRandomsamatchOptionAction = async (input: QtypeRandomsamatchOptionId) => {
+export const deleteQtypeRandomsamatchOptionAction = async (
+  input: QtypeRandomsamatchOptionId,
+) => {
   try {
     const payload = qtypeRandomsamatchOptionIdSchema.parse({ id: input });
     await deleteQtypeRandomsamatchOption(payload.id);

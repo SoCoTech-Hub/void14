@@ -1,19 +1,25 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  FeedbackValueId, 
-  NewFeedbackValueParams,
-  UpdateFeedbackValueParams, 
-  updateFeedbackValueSchema,
-  insertFeedbackValueSchema, 
-  feedbackValues,
-  feedbackValueIdSchema 
-} from "@/lib/db/schema/feedbackValues";
 
-export const createFeedbackValue = async (feedbackValue: NewFeedbackValueParams) => {
+import { db } from "../db/index";
+import {
+  FeedbackValueId,
+  feedbackValueIdSchema,
+  feedbackValues,
+  insertFeedbackValueSchema,
+  NewFeedbackValueParams,
+  UpdateFeedbackValueParams,
+  updateFeedbackValueSchema,
+} from "../db/schema/feedbackValues";
+
+export const createFeedbackValue = async (
+  feedbackValue: NewFeedbackValueParams,
+) => {
   const newFeedbackValue = insertFeedbackValueSchema.parse(feedbackValue);
   try {
-    const [f] =  await db.insert(feedbackValues).values(newFeedbackValue).returning();
+    const [f] = await db
+      .insert(feedbackValues)
+      .values(newFeedbackValue)
+      .returning();
     return { feedbackValue: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +28,18 @@ export const createFeedbackValue = async (feedbackValue: NewFeedbackValueParams)
   }
 };
 
-export const updateFeedbackValue = async (id: FeedbackValueId, feedbackValue: UpdateFeedbackValueParams) => {
+export const updateFeedbackValue = async (
+  id: FeedbackValueId,
+  feedbackValue: UpdateFeedbackValueParams,
+) => {
   const { id: feedbackValueId } = feedbackValueIdSchema.parse({ id });
   const newFeedbackValue = updateFeedbackValueSchema.parse(feedbackValue);
   try {
-    const [f] =  await db
-     .update(feedbackValues)
-     .set(newFeedbackValue)
-     .where(eq(feedbackValues.id, feedbackValueId!))
-     .returning();
+    const [f] = await db
+      .update(feedbackValues)
+      .set(newFeedbackValue)
+      .where(eq(feedbackValues.id, feedbackValueId!))
+      .returning();
     return { feedbackValue: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +51,10 @@ export const updateFeedbackValue = async (id: FeedbackValueId, feedbackValue: Up
 export const deleteFeedbackValue = async (id: FeedbackValueId) => {
   const { id: feedbackValueId } = feedbackValueIdSchema.parse({ id });
   try {
-    const [f] =  await db.delete(feedbackValues).where(eq(feedbackValues.id, feedbackValueId!))
-    .returning();
+    const [f] = await db
+      .delete(feedbackValues)
+      .where(eq(feedbackValues.id, feedbackValueId!))
+      .returning();
     return { feedbackValue: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +62,3 @@ export const deleteFeedbackValue = async (id: FeedbackValueId) => {
     throw { error: message };
   }
 };
-

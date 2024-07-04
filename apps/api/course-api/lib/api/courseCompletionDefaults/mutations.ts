@@ -1,19 +1,27 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  CourseCompletionDefaultId, 
-  NewCourseCompletionDefaultParams,
-  UpdateCourseCompletionDefaultParams, 
-  updateCourseCompletionDefaultSchema,
-  insertCourseCompletionDefaultSchema, 
+
+import { db } from "../db/index";
+import {
+  CourseCompletionDefaultId,
+  courseCompletionDefaultIdSchema,
   courseCompletionDefaults,
-  courseCompletionDefaultIdSchema 
-} from "@/lib/db/schema/courseCompletionDefaults";
+  insertCourseCompletionDefaultSchema,
+  NewCourseCompletionDefaultParams,
+  UpdateCourseCompletionDefaultParams,
+  updateCourseCompletionDefaultSchema,
+} from "../db/schema/courseCompletionDefaults";
 
-export const createCourseCompletionDefault = async (courseCompletionDefault: NewCourseCompletionDefaultParams) => {
-  const newCourseCompletionDefault = insertCourseCompletionDefaultSchema.parse(courseCompletionDefault);
+export const createCourseCompletionDefault = async (
+  courseCompletionDefault: NewCourseCompletionDefaultParams,
+) => {
+  const newCourseCompletionDefault = insertCourseCompletionDefaultSchema.parse(
+    courseCompletionDefault,
+  );
   try {
-    const [c] =  await db.insert(courseCompletionDefaults).values(newCourseCompletionDefault).returning();
+    const [c] = await db
+      .insert(courseCompletionDefaults)
+      .values(newCourseCompletionDefault)
+      .returning();
     return { courseCompletionDefault: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,21 @@ export const createCourseCompletionDefault = async (courseCompletionDefault: New
   }
 };
 
-export const updateCourseCompletionDefault = async (id: CourseCompletionDefaultId, courseCompletionDefault: UpdateCourseCompletionDefaultParams) => {
-  const { id: courseCompletionDefaultId } = courseCompletionDefaultIdSchema.parse({ id });
-  const newCourseCompletionDefault = updateCourseCompletionDefaultSchema.parse(courseCompletionDefault);
+export const updateCourseCompletionDefault = async (
+  id: CourseCompletionDefaultId,
+  courseCompletionDefault: UpdateCourseCompletionDefaultParams,
+) => {
+  const { id: courseCompletionDefaultId } =
+    courseCompletionDefaultIdSchema.parse({ id });
+  const newCourseCompletionDefault = updateCourseCompletionDefaultSchema.parse(
+    courseCompletionDefault,
+  );
   try {
-    const [c] =  await db
-     .update(courseCompletionDefaults)
-     .set(newCourseCompletionDefault)
-     .where(eq(courseCompletionDefaults.id, courseCompletionDefaultId!))
-     .returning();
+    const [c] = await db
+      .update(courseCompletionDefaults)
+      .set(newCourseCompletionDefault)
+      .where(eq(courseCompletionDefaults.id, courseCompletionDefaultId!))
+      .returning();
     return { courseCompletionDefault: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +53,16 @@ export const updateCourseCompletionDefault = async (id: CourseCompletionDefaultI
   }
 };
 
-export const deleteCourseCompletionDefault = async (id: CourseCompletionDefaultId) => {
-  const { id: courseCompletionDefaultId } = courseCompletionDefaultIdSchema.parse({ id });
+export const deleteCourseCompletionDefault = async (
+  id: CourseCompletionDefaultId,
+) => {
+  const { id: courseCompletionDefaultId } =
+    courseCompletionDefaultIdSchema.parse({ id });
   try {
-    const [c] =  await db.delete(courseCompletionDefaults).where(eq(courseCompletionDefaults.id, courseCompletionDefaultId!))
-    .returning();
+    const [c] = await db
+      .delete(courseCompletionDefaults)
+      .where(eq(courseCompletionDefaults.id, courseCompletionDefaultId!))
+      .returning();
     return { courseCompletionDefault: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +70,3 @@ export const deleteCourseCompletionDefault = async (id: CourseCompletionDefaultI
     throw { error: message };
   }
 };
-

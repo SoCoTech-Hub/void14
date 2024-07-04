@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createToolMonitorSubscription,
   deleteToolMonitorSubscription,
   updateToolMonitorSubscription,
-} from "@/lib/api/toolMonitorSubscriptions/mutations";
+} from "../api/toolMonitorSubscriptions/mutations";
 import {
-  ToolMonitorSubscriptionId,
-  NewToolMonitorSubscriptionParams,
-  UpdateToolMonitorSubscriptionParams,
-  toolMonitorSubscriptionIdSchema,
   insertToolMonitorSubscriptionParams,
+  NewToolMonitorSubscriptionParams,
+  ToolMonitorSubscriptionId,
+  toolMonitorSubscriptionIdSchema,
+  UpdateToolMonitorSubscriptionParams,
   updateToolMonitorSubscriptionParams,
-} from "@/lib/db/schema/toolMonitorSubscriptions";
+} from "../db/schema/toolMonitorSubscriptions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateToolMonitorSubscriptions = () => revalidatePath("/tool-monitor-subscriptions");
+const revalidateToolMonitorSubscriptions = () =>
+  revalidatePath("/tool-monitor-subscriptions");
 
-export const createToolMonitorSubscriptionAction = async (input: NewToolMonitorSubscriptionParams) => {
+export const createToolMonitorSubscriptionAction = async (
+  input: NewToolMonitorSubscriptionParams,
+) => {
   try {
     const payload = insertToolMonitorSubscriptionParams.parse(input);
     await createToolMonitorSubscription(payload);
@@ -37,7 +41,9 @@ export const createToolMonitorSubscriptionAction = async (input: NewToolMonitorS
   }
 };
 
-export const updateToolMonitorSubscriptionAction = async (input: UpdateToolMonitorSubscriptionParams) => {
+export const updateToolMonitorSubscriptionAction = async (
+  input: UpdateToolMonitorSubscriptionParams,
+) => {
   try {
     const payload = updateToolMonitorSubscriptionParams.parse(input);
     await updateToolMonitorSubscription(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateToolMonitorSubscriptionAction = async (input: UpdateToolMonit
   }
 };
 
-export const deleteToolMonitorSubscriptionAction = async (input: ToolMonitorSubscriptionId) => {
+export const deleteToolMonitorSubscriptionAction = async (
+  input: ToolMonitorSubscriptionId,
+) => {
   try {
     const payload = toolMonitorSubscriptionIdSchema.parse({ id: input });
     await deleteToolMonitorSubscription(payload.id);

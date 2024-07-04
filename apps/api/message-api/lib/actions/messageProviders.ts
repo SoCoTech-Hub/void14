@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMessageProvider,
   deleteMessageProvider,
   updateMessageProvider,
-} from "@/lib/api/messageProviders/mutations";
+} from "../api/messageProviders/mutations";
 import {
+  insertMessageProviderParams,
   MessageProviderId,
+  messageProviderIdSchema,
   NewMessageProviderParams,
   UpdateMessageProviderParams,
-  messageProviderIdSchema,
-  insertMessageProviderParams,
   updateMessageProviderParams,
-} from "@/lib/db/schema/messageProviders";
+} from "../db/schema/messageProviders";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateMessageProviders = () => revalidatePath("/message-providers");
 
-export const createMessageProviderAction = async (input: NewMessageProviderParams) => {
+export const createMessageProviderAction = async (
+  input: NewMessageProviderParams,
+) => {
   try {
     const payload = insertMessageProviderParams.parse(input);
     await createMessageProvider(payload);
@@ -37,7 +40,9 @@ export const createMessageProviderAction = async (input: NewMessageProviderParam
   }
 };
 
-export const updateMessageProviderAction = async (input: UpdateMessageProviderParams) => {
+export const updateMessageProviderAction = async (
+  input: UpdateMessageProviderParams,
+) => {
   try {
     const payload = updateMessageProviderParams.parse(input);
     await updateMessageProvider(payload.id, payload);

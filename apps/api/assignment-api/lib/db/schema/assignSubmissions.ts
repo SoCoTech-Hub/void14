@@ -1,4 +1,3 @@
-import { type getAssignSubmissions } from "@/lib/api/assignSubmissions/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -13,6 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getAssignSubmissions } from "../api/assignSubmissions/queries";
 import { assignments } from "./assignments";
 
 export const assignSubmissions = pgTable(

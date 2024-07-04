@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createToolDataprivacyCtxInstance,
   deleteToolDataprivacyCtxInstance,
   updateToolDataprivacyCtxInstance,
-} from "@/lib/api/toolDataprivacyCtxInstances/mutations";
+} from "../api/toolDataprivacyCtxInstances/mutations";
 import {
-  ToolDataprivacyCtxInstanceId,
-  NewToolDataprivacyCtxInstanceParams,
-  UpdateToolDataprivacyCtxInstanceParams,
-  toolDataprivacyCtxInstanceIdSchema,
   insertToolDataprivacyCtxInstanceParams,
+  NewToolDataprivacyCtxInstanceParams,
+  ToolDataprivacyCtxInstanceId,
+  toolDataprivacyCtxInstanceIdSchema,
+  UpdateToolDataprivacyCtxInstanceParams,
   updateToolDataprivacyCtxInstanceParams,
-} from "@/lib/db/schema/toolDataprivacyCtxInstances";
+} from "../db/schema/toolDataprivacyCtxInstances";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateToolDataprivacyCtxInstances = () => revalidatePath("/tool-dataprivacy-ctx-instances");
+const revalidateToolDataprivacyCtxInstances = () =>
+  revalidatePath("/tool-dataprivacy-ctx-instances");
 
-export const createToolDataprivacyCtxInstanceAction = async (input: NewToolDataprivacyCtxInstanceParams) => {
+export const createToolDataprivacyCtxInstanceAction = async (
+  input: NewToolDataprivacyCtxInstanceParams,
+) => {
   try {
     const payload = insertToolDataprivacyCtxInstanceParams.parse(input);
     await createToolDataprivacyCtxInstance(payload);
@@ -37,7 +41,9 @@ export const createToolDataprivacyCtxInstanceAction = async (input: NewToolDatap
   }
 };
 
-export const updateToolDataprivacyCtxInstanceAction = async (input: UpdateToolDataprivacyCtxInstanceParams) => {
+export const updateToolDataprivacyCtxInstanceAction = async (
+  input: UpdateToolDataprivacyCtxInstanceParams,
+) => {
   try {
     const payload = updateToolDataprivacyCtxInstanceParams.parse(input);
     await updateToolDataprivacyCtxInstance(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateToolDataprivacyCtxInstanceAction = async (input: UpdateToolDa
   }
 };
 
-export const deleteToolDataprivacyCtxInstanceAction = async (input: ToolDataprivacyCtxInstanceId) => {
+export const deleteToolDataprivacyCtxInstanceAction = async (
+  input: ToolDataprivacyCtxInstanceId,
+) => {
   try {
     const payload = toolDataprivacyCtxInstanceIdSchema.parse({ id: input });
     await deleteToolDataprivacyCtxInstance(payload.id);

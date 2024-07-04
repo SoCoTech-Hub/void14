@@ -1,19 +1,28 @@
-import { getBadgeCriteriaById, getBadgeCriterias } from "@/lib/api/badgeCriterias/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createBadgeCriteria,
+  deleteBadgeCriteria,
+  updateBadgeCriteria,
+} from "../api/badgeCriterias/mutations";
+import {
+  getBadgeCriteriaById,
+  getBadgeCriterias,
+} from "../api/badgeCriterias/queries";
 import {
   badgeCriteriaIdSchema,
   insertBadgeCriteriaParams,
   updateBadgeCriteriaParams,
-} from "@/lib/db/schema/badgeCriterias";
-import { createBadgeCriteria, deleteBadgeCriteria, updateBadgeCriteria } from "@/lib/api/badgeCriterias/mutations";
+} from "../db/schema/badgeCriterias";
+import { publicProcedure, router } from "../server/trpc";
 
 export const badgeCriteriasRouter = router({
   getBadgeCriterias: publicProcedure.query(async () => {
     return getBadgeCriterias();
   }),
-  getBadgeCriteriaById: publicProcedure.input(badgeCriteriaIdSchema).query(async ({ input }) => {
-    return getBadgeCriteriaById(input.id);
-  }),
+  getBadgeCriteriaById: publicProcedure
+    .input(badgeCriteriaIdSchema)
+    .query(async ({ input }) => {
+      return getBadgeCriteriaById(input.id);
+    }),
   createBadgeCriteria: publicProcedure
     .input(insertBadgeCriteriaParams)
     .mutation(async ({ input }) => {

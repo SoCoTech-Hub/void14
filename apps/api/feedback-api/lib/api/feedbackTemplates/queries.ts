@@ -1,19 +1,25 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { type FeedbackTemplateId, feedbackTemplateIdSchema, feedbackTemplates } from "@/lib/db/schema/feedbackTemplates";
+
+import type { FeedbackTemplateId } from "../db/schema/feedbackTemplates";
+import { db } from "../db/index";
+import {
+  feedbackTemplateIdSchema,
+  feedbackTemplates,
+} from "../db/schema/feedbackTemplates";
 
 export const getFeedbackTemplates = async () => {
   const rows = await db.select().from(feedbackTemplates);
-  const f = rows
+  const f = rows;
   return { feedbackTemplates: f };
 };
 
 export const getFeedbackTemplateById = async (id: FeedbackTemplateId) => {
   const { id: feedbackTemplateId } = feedbackTemplateIdSchema.parse({ id });
-  const [row] = await db.select().from(feedbackTemplates).where(eq(feedbackTemplates.id, feedbackTemplateId));
+  const [row] = await db
+    .select()
+    .from(feedbackTemplates)
+    .where(eq(feedbackTemplates.id, feedbackTemplateId));
   if (row === undefined) return {};
   const f = row;
   return { feedbackTemplate: f };
 };
-
-

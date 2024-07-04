@@ -1,9 +1,8 @@
-import { router } from '@/lib/server/trpc'
-import { notificationsRouter } from "./notifications";
+import { router } from "../server/trpc";
 import { notificationResponsesRouter } from "./notificationResponses";
+import { notificationsRouter } from "./notifications";
 
 export const appRouter = router({
-	notifications: notificationsRouter,
+  notifications: notificationsRouter,
   notificationResponses: notificationResponsesRouter,
-})
-
+});

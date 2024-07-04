@@ -1,19 +1,28 @@
-import { getToolCohortRoleById, getToolCohortRoles } from "@/lib/api/toolCohortRoles/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  toolCohortRoleIdSchema,
+  createToolCohortRole,
+  deleteToolCohortRole,
+  updateToolCohortRole,
+} from "../api/toolCohortRoles/mutations";
+import {
+  getToolCohortRoleById,
+  getToolCohortRoles,
+} from "../api/toolCohortRoles/queries";
+import {
   insertToolCohortRoleParams,
+  toolCohortRoleIdSchema,
   updateToolCohortRoleParams,
-} from "@/lib/db/schema/toolCohortRoles";
-import { createToolCohortRole, deleteToolCohortRole, updateToolCohortRole } from "@/lib/api/toolCohortRoles/mutations";
+} from "../db/schema/toolCohortRoles";
+import { publicProcedure, router } from "../server/trpc";
 
 export const toolCohortRolesRouter = router({
   getToolCohortRoles: publicProcedure.query(async () => {
     return getToolCohortRoles();
   }),
-  getToolCohortRoleById: publicProcedure.input(toolCohortRoleIdSchema).query(async ({ input }) => {
-    return getToolCohortRoleById(input.id);
-  }),
+  getToolCohortRoleById: publicProcedure
+    .input(toolCohortRoleIdSchema)
+    .query(async ({ input }) => {
+      return getToolCohortRoleById(input.id);
+    }),
   createToolCohortRole: publicProcedure
     .input(insertToolCohortRoleParams)
     .mutation(async ({ input }) => {

@@ -1,10 +1,10 @@
-import { type getBadgeAlignments } from "@/lib/api/badgeAlignments/queries";
 import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getBadgeAlignments } from "../api/badgeAlignments/queries";
 import { badges } from "./badges";
 
 export const badgeAlignments = pgTable("badge_alignments", {

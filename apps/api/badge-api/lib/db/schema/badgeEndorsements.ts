@@ -1,4 +1,4 @@
-import { type getBadgeEndorsements } from "@/lib/api/badgeEndorsements/queries";
+import { type getBadgeEndorsements } from "../api/badgeEndorsements/queries";
 import { sql } from "drizzle-orm";
 import {
   pgTable,

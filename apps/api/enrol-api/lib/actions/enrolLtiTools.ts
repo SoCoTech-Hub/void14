@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createEnrolLtiTool,
   deleteEnrolLtiTool,
   updateEnrolLtiTool,
-} from "@/lib/api/enrolLtiTools/mutations";
+} from "../api/enrolLtiTools/mutations";
 import {
   EnrolLtiToolId,
-  NewEnrolLtiToolParams,
-  UpdateEnrolLtiToolParams,
   enrolLtiToolIdSchema,
   insertEnrolLtiToolParams,
+  NewEnrolLtiToolParams,
+  UpdateEnrolLtiToolParams,
   updateEnrolLtiToolParams,
-} from "@/lib/db/schema/enrolLtiTools";
+} from "../db/schema/enrolLtiTools";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateEnrolLtiTools = () => revalidatePath("/enrol-lti-tools");
 
-export const createEnrolLtiToolAction = async (input: NewEnrolLtiToolParams) => {
+export const createEnrolLtiToolAction = async (
+  input: NewEnrolLtiToolParams,
+) => {
   try {
     const payload = insertEnrolLtiToolParams.parse(input);
     await createEnrolLtiTool(payload);
@@ -37,7 +40,9 @@ export const createEnrolLtiToolAction = async (input: NewEnrolLtiToolParams) => 
   }
 };
 
-export const updateEnrolLtiToolAction = async (input: UpdateEnrolLtiToolParams) => {
+export const updateEnrolLtiToolAction = async (
+  input: UpdateEnrolLtiToolParams,
+) => {
   try {
     const payload = updateEnrolLtiToolParams.parse(input);
     await updateEnrolLtiTool(payload.id, payload);

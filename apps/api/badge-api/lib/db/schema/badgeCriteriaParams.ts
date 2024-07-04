@@ -1,4 +1,4 @@
-import { type getBadgeCriteriaParams } from "@/lib/api/badgeCriteriaParams/queries";
+import { type getBadgeCriteriaParams } from "../api/badgeCriteriaParams/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";

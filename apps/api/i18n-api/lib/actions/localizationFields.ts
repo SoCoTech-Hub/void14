@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createLocalizationField,
   deleteLocalizationField,
   updateLocalizationField,
-} from "@/lib/api/localizationFields/mutations";
+} from "../api/localizationFields/mutations";
 import {
+  insertLocalizationFieldParams,
   LocalizationFieldId,
+  localizationFieldIdSchema,
   NewLocalizationFieldParams,
   UpdateLocalizationFieldParams,
-  localizationFieldIdSchema,
-  insertLocalizationFieldParams,
   updateLocalizationFieldParams,
-} from "@/lib/db/schema/localizationFields";
+} from "../db/schema/localizationFields";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateLocalizationFields = () => revalidatePath("/localization-fields");
+const revalidateLocalizationFields = () =>
+  revalidatePath("/localization-fields");
 
-export const createLocalizationFieldAction = async (input: NewLocalizationFieldParams) => {
+export const createLocalizationFieldAction = async (
+  input: NewLocalizationFieldParams,
+) => {
   try {
     const payload = insertLocalizationFieldParams.parse(input);
     await createLocalizationField(payload);
@@ -37,7 +41,9 @@ export const createLocalizationFieldAction = async (input: NewLocalizationFieldP
   }
 };
 
-export const updateLocalizationFieldAction = async (input: UpdateLocalizationFieldParams) => {
+export const updateLocalizationFieldAction = async (
+  input: UpdateLocalizationFieldParams,
+) => {
   try {
     const payload = updateLocalizationFieldParams.parse(input);
     await updateLocalizationField(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateLocalizationFieldAction = async (input: UpdateLocalizationFie
   }
 };
 
-export const deleteLocalizationFieldAction = async (input: LocalizationFieldId) => {
+export const deleteLocalizationFieldAction = async (
+  input: LocalizationFieldId,
+) => {
   try {
     const payload = localizationFieldIdSchema.parse({ id: input });
     await deleteLocalizationField(payload.id);

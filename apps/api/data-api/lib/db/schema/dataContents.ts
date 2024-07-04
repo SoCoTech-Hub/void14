@@ -1,10 +1,10 @@
-import { type getDataContents } from "@/lib/api/dataContents/queries";
 import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getDataContents } from "../api/dataContents/queries";
 import { dataRecords } from "./dataRecords";
 import { fields } from "./fields";
 

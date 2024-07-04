@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createToolDataprivacyCtxExpired,
   deleteToolDataprivacyCtxExpired,
   updateToolDataprivacyCtxExpired,
-} from "@/lib/api/toolDataprivacyCtxExpireds/mutations";
+} from "../api/toolDataprivacyCtxExpireds/mutations";
 import {
-  ToolDataprivacyCtxExpiredId,
-  NewToolDataprivacyCtxExpiredParams,
-  UpdateToolDataprivacyCtxExpiredParams,
-  toolDataprivacyCtxExpiredIdSchema,
   insertToolDataprivacyCtxExpiredParams,
+  NewToolDataprivacyCtxExpiredParams,
+  ToolDataprivacyCtxExpiredId,
+  toolDataprivacyCtxExpiredIdSchema,
+  UpdateToolDataprivacyCtxExpiredParams,
   updateToolDataprivacyCtxExpiredParams,
-} from "@/lib/db/schema/toolDataprivacyCtxExpireds";
+} from "../db/schema/toolDataprivacyCtxExpireds";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateToolDataprivacyCtxExpireds = () => revalidatePath("/tool-dataprivacy-ctx-expireds");
+const revalidateToolDataprivacyCtxExpireds = () =>
+  revalidatePath("/tool-dataprivacy-ctx-expireds");
 
-export const createToolDataprivacyCtxExpiredAction = async (input: NewToolDataprivacyCtxExpiredParams) => {
+export const createToolDataprivacyCtxExpiredAction = async (
+  input: NewToolDataprivacyCtxExpiredParams,
+) => {
   try {
     const payload = insertToolDataprivacyCtxExpiredParams.parse(input);
     await createToolDataprivacyCtxExpired(payload);
@@ -37,7 +41,9 @@ export const createToolDataprivacyCtxExpiredAction = async (input: NewToolDatapr
   }
 };
 
-export const updateToolDataprivacyCtxExpiredAction = async (input: UpdateToolDataprivacyCtxExpiredParams) => {
+export const updateToolDataprivacyCtxExpiredAction = async (
+  input: UpdateToolDataprivacyCtxExpiredParams,
+) => {
   try {
     const payload = updateToolDataprivacyCtxExpiredParams.parse(input);
     await updateToolDataprivacyCtxExpired(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateToolDataprivacyCtxExpiredAction = async (input: UpdateToolDat
   }
 };
 
-export const deleteToolDataprivacyCtxExpiredAction = async (input: ToolDataprivacyCtxExpiredId) => {
+export const deleteToolDataprivacyCtxExpiredAction = async (
+  input: ToolDataprivacyCtxExpiredId,
+) => {
   try {
     const payload = toolDataprivacyCtxExpiredIdSchema.parse({ id: input });
     await deleteToolDataprivacyCtxExpired(payload.id);

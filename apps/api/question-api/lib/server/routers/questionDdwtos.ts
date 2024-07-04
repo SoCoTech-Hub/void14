@@ -1,19 +1,28 @@
-import { getQuestionDdwtoById, getQuestionDdwtos } from "@/lib/api/questionDdwtos/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  questionDdwtoIdSchema,
+  createQuestionDdwto,
+  deleteQuestionDdwto,
+  updateQuestionDdwto,
+} from "../api/questionDdwtos/mutations";
+import {
+  getQuestionDdwtoById,
+  getQuestionDdwtos,
+} from "../api/questionDdwtos/queries";
+import {
   insertQuestionDdwtoParams,
+  questionDdwtoIdSchema,
   updateQuestionDdwtoParams,
-} from "@/lib/db/schema/questionDdwtos";
-import { createQuestionDdwto, deleteQuestionDdwto, updateQuestionDdwto } from "@/lib/api/questionDdwtos/mutations";
+} from "../db/schema/questionDdwtos";
+import { publicProcedure, router } from "../server/trpc";
 
 export const questionDdwtosRouter = router({
   getQuestionDdwtos: publicProcedure.query(async () => {
     return getQuestionDdwtos();
   }),
-  getQuestionDdwtoById: publicProcedure.input(questionDdwtoIdSchema).query(async ({ input }) => {
-    return getQuestionDdwtoById(input.id);
-  }),
+  getQuestionDdwtoById: publicProcedure
+    .input(questionDdwtoIdSchema)
+    .query(async ({ input }) => {
+      return getQuestionDdwtoById(input.id);
+    }),
   createQuestionDdwto: publicProcedure
     .input(insertQuestionDdwtoParams)
     .mutation(async ({ input }) => {

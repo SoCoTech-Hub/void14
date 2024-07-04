@@ -1,4 +1,4 @@
-import { db } from "@/lib/db/index";
+import { db } from "../db/index";
 import { eq } from "drizzle-orm";
 import { 
   SocialEmojiId, 
@@ -8,7 +8,7 @@ import {
   insertSocialEmojiSchema, 
   socialEmojis,
   socialEmojiIdSchema 
-} from "@/lib/db/schema/socialEmojis";
+} from "../db/schema/socialEmojis";
 
 export const createSocialEmoji = async (socialEmoji: NewSocialEmojiParams) => {
   const newSocialEmoji = insertSocialEmojiSchema.parse(socialEmoji);

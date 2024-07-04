@@ -1,10 +1,10 @@
-import { type getQuestionDatasetDefinitions } from "@/lib/api/questionDatasetDefinitions/queries";
 import { integer, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getQuestionDatasetDefinitions } from "../api/questionDatasetDefinitions/queries";
 import { questionCategories } from "./questionCategories";
 
 export const questionDatasetDefinitions = pgTable(

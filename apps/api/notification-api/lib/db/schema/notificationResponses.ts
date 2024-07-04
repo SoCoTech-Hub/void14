@@ -1,10 +1,10 @@
-import { type getNotificationResponses } from "@/lib/api/notificationResponses/queries";
 import { boolean, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getNotificationResponses } from "../api/notificationResponses/queries";
 import { notifications } from "./notifications";
 
 export const notificationResponses = pgTable("notification_responses", {

@@ -1,19 +1,28 @@
-import { getLocalizationTranslationById, getLocalizationTranslations } from "@/lib/api/localizationTranslations/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  localizationTranslationIdSchema,
+  createLocalizationTranslation,
+  deleteLocalizationTranslation,
+  updateLocalizationTranslation,
+} from "../api/localizationTranslations/mutations";
+import {
+  getLocalizationTranslationById,
+  getLocalizationTranslations,
+} from "../api/localizationTranslations/queries";
+import {
   insertLocalizationTranslationParams,
+  localizationTranslationIdSchema,
   updateLocalizationTranslationParams,
-} from "@/lib/db/schema/localizationTranslations";
-import { createLocalizationTranslation, deleteLocalizationTranslation, updateLocalizationTranslation } from "@/lib/api/localizationTranslations/mutations";
+} from "../db/schema/localizationTranslations";
+import { publicProcedure, router } from "../server/trpc";
 
 export const localizationTranslationsRouter = router({
   getLocalizationTranslations: publicProcedure.query(async () => {
     return getLocalizationTranslations();
   }),
-  getLocalizationTranslationById: publicProcedure.input(localizationTranslationIdSchema).query(async ({ input }) => {
-    return getLocalizationTranslationById(input.id);
-  }),
+  getLocalizationTranslationById: publicProcedure
+    .input(localizationTranslationIdSchema)
+    .query(async ({ input }) => {
+      return getLocalizationTranslationById(input.id);
+    }),
   createLocalizationTranslation: publicProcedure
     .input(insertLocalizationTranslationParams)
     .mutation(async ({ input }) => {

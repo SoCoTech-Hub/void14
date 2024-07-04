@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createEnrolPaypal,
   deleteEnrolPaypal,
   updateEnrolPaypal,
-} from "@/lib/api/enrolPaypals/mutations";
+} from "../api/enrolPaypals/mutations";
 import {
   EnrolPaypalId,
-  NewEnrolPaypalParams,
-  UpdateEnrolPaypalParams,
   enrolPaypalIdSchema,
   insertEnrolPaypalParams,
+  NewEnrolPaypalParams,
+  UpdateEnrolPaypalParams,
   updateEnrolPaypalParams,
-} from "@/lib/db/schema/enrolPaypals";
+} from "../db/schema/enrolPaypals";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createEnrolPaypalAction = async (input: NewEnrolPaypalParams) => {
   }
 };
 
-export const updateEnrolPaypalAction = async (input: UpdateEnrolPaypalParams) => {
+export const updateEnrolPaypalAction = async (
+  input: UpdateEnrolPaypalParams,
+) => {
   try {
     const payload = updateEnrolPaypalParams.parse(input);
     await updateEnrolPaypal(payload.id, payload);

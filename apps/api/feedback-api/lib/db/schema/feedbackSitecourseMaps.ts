@@ -1,10 +1,10 @@
-import { type getFeedbackSitecourseMaps } from "@/lib/api/feedbackSitecourseMaps/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getFeedbackSitecourseMaps } from "../api/feedbackSitecourseMaps/queries";
 import { feedbacks } from "./feedbacks";
 
 export const feedbackSitecourseMaps = pgTable("feedback_sitecourse_maps", {

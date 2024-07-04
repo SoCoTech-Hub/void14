@@ -1,19 +1,28 @@
-import { getMnetSsoAccessControlById, getMnetSsoAccessControls } from "@/lib/api/mnetSsoAccessControls/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  mnetSsoAccessControlIdSchema,
+  createMnetSsoAccessControl,
+  deleteMnetSsoAccessControl,
+  updateMnetSsoAccessControl,
+} from "../api/mnetSsoAccessControls/mutations";
+import {
+  getMnetSsoAccessControlById,
+  getMnetSsoAccessControls,
+} from "../api/mnetSsoAccessControls/queries";
+import {
   insertMnetSsoAccessControlParams,
+  mnetSsoAccessControlIdSchema,
   updateMnetSsoAccessControlParams,
-} from "@/lib/db/schema/mnetSsoAccessControls";
-import { createMnetSsoAccessControl, deleteMnetSsoAccessControl, updateMnetSsoAccessControl } from "@/lib/api/mnetSsoAccessControls/mutations";
+} from "../db/schema/mnetSsoAccessControls";
+import { publicProcedure, router } from "../server/trpc";
 
 export const mnetSsoAccessControlsRouter = router({
   getMnetSsoAccessControls: publicProcedure.query(async () => {
     return getMnetSsoAccessControls();
   }),
-  getMnetSsoAccessControlById: publicProcedure.input(mnetSsoAccessControlIdSchema).query(async ({ input }) => {
-    return getMnetSsoAccessControlById(input.id);
-  }),
+  getMnetSsoAccessControlById: publicProcedure
+    .input(mnetSsoAccessControlIdSchema)
+    .query(async ({ input }) => {
+      return getMnetSsoAccessControlById(input.id);
+    }),
   createMnetSsoAccessControl: publicProcedure
     .input(insertMnetSsoAccessControlParams)
     .mutation(async ({ input }) => {

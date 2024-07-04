@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createEventsQueueHandler,
   deleteEventsQueueHandler,
   updateEventsQueueHandler,
-} from "@/lib/api/eventsQueueHandlers/mutations";
+} from "../api/eventsQueueHandlers/mutations";
 import {
   EventsQueueHandlerId,
-  NewEventsQueueHandlerParams,
-  UpdateEventsQueueHandlerParams,
   eventsQueueHandlerIdSchema,
   insertEventsQueueHandlerParams,
+  NewEventsQueueHandlerParams,
+  UpdateEventsQueueHandlerParams,
   updateEventsQueueHandlerParams,
-} from "@/lib/db/schema/eventsQueueHandlers";
+} from "../db/schema/eventsQueueHandlers";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateEventsQueueHandlers = () => revalidatePath("/events-queue-handlers");
+const revalidateEventsQueueHandlers = () =>
+  revalidatePath("/events-queue-handlers");
 
-export const createEventsQueueHandlerAction = async (input: NewEventsQueueHandlerParams) => {
+export const createEventsQueueHandlerAction = async (
+  input: NewEventsQueueHandlerParams,
+) => {
   try {
     const payload = insertEventsQueueHandlerParams.parse(input);
     await createEventsQueueHandler(payload);
@@ -37,7 +41,9 @@ export const createEventsQueueHandlerAction = async (input: NewEventsQueueHandle
   }
 };
 
-export const updateEventsQueueHandlerAction = async (input: UpdateEventsQueueHandlerParams) => {
+export const updateEventsQueueHandlerAction = async (
+  input: UpdateEventsQueueHandlerParams,
+) => {
   try {
     const payload = updateEventsQueueHandlerParams.parse(input);
     await updateEventsQueueHandler(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateEventsQueueHandlerAction = async (input: UpdateEventsQueueHan
   }
 };
 
-export const deleteEventsQueueHandlerAction = async (input: EventsQueueHandlerId) => {
+export const deleteEventsQueueHandlerAction = async (
+  input: EventsQueueHandlerId,
+) => {
   try {
     const payload = eventsQueueHandlerIdSchema.parse({ id: input });
     await deleteEventsQueueHandler(payload.id);

@@ -1,4 +1,3 @@
-import { type getWorkshopGrades } from "@/lib/api/workshopGrades/queries";
 import {
   integer,
   pgTable,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getWorkshopGrades } from "../api/workshopGrades/queries";
 
 export const workshopGrades = pgTable(
   "workshop_grades",

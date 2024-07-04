@@ -1,19 +1,28 @@
-import { getUserInfoCategoryById, getUserInfoCategories } from "@/lib/api/userInfoCategories/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  userInfoCategoryIdSchema,
+  createUserInfoCategory,
+  deleteUserInfoCategory,
+  updateUserInfoCategory,
+} from "../api/userInfoCategories/mutations";
+import {
+  getUserInfoCategories,
+  getUserInfoCategoryById,
+} from "../api/userInfoCategories/queries";
+import {
   insertUserInfoCategoryParams,
   updateUserInfoCategoryParams,
-} from "@/lib/db/schema/userInfoCategories";
-import { createUserInfoCategory, deleteUserInfoCategory, updateUserInfoCategory } from "@/lib/api/userInfoCategories/mutations";
+  userInfoCategoryIdSchema,
+} from "../db/schema/userInfoCategories";
+import { publicProcedure, router } from "../server/trpc";
 
 export const userInfoCategoriesRouter = router({
   getUserInfoCategories: publicProcedure.query(async () => {
     return getUserInfoCategories();
   }),
-  getUserInfoCategoryById: publicProcedure.input(userInfoCategoryIdSchema).query(async ({ input }) => {
-    return getUserInfoCategoryById(input.id);
-  }),
+  getUserInfoCategoryById: publicProcedure
+    .input(userInfoCategoryIdSchema)
+    .query(async ({ input }) => {
+      return getUserInfoCategoryById(input.id);
+    }),
   createUserInfoCategory: publicProcedure
     .input(insertUserInfoCategoryParams)
     .mutation(async ({ input }) => {

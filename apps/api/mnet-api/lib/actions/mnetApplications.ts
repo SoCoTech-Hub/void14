@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMnetApplication,
   deleteMnetApplication,
   updateMnetApplication,
-} from "@/lib/api/mnetApplications/mutations";
+} from "../api/mnetApplications/mutations";
 import {
+  insertMnetApplicationParams,
   MnetApplicationId,
+  mnetApplicationIdSchema,
   NewMnetApplicationParams,
   UpdateMnetApplicationParams,
-  mnetApplicationIdSchema,
-  insertMnetApplicationParams,
   updateMnetApplicationParams,
-} from "@/lib/db/schema/mnetApplications";
+} from "../db/schema/mnetApplications";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateMnetApplications = () => revalidatePath("/mnet-applications");
 
-export const createMnetApplicationAction = async (input: NewMnetApplicationParams) => {
+export const createMnetApplicationAction = async (
+  input: NewMnetApplicationParams,
+) => {
   try {
     const payload = insertMnetApplicationParams.parse(input);
     await createMnetApplication(payload);
@@ -37,7 +40,9 @@ export const createMnetApplicationAction = async (input: NewMnetApplicationParam
   }
 };
 
-export const updateMnetApplicationAction = async (input: UpdateMnetApplicationParams) => {
+export const updateMnetApplicationAction = async (
+  input: UpdateMnetApplicationParams,
+) => {
   try {
     const payload = updateMnetApplicationParams.parse(input);
     await updateMnetApplication(payload.id, payload);

@@ -1,10 +1,10 @@
-import { type getForumTrackPrefs } from "@/lib/api/forumTrackPrefs/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getForumTrackPrefs } from "../api/forumTrackPrefs/queries";
 import { forums } from "./forums";
 
 export const forumTrackPrefs = pgTable("forum_track_prefs", {

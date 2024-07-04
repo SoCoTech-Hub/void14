@@ -1,19 +1,25 @@
-import { getUserGradeById, getUserGrades } from "@/lib/api/userGrades/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  userGradeIdSchema,
+  createUserGrade,
+  deleteUserGrade,
+  updateUserGrade,
+} from "../api/userGrades/mutations";
+import { getUserGradeById, getUserGrades } from "../api/userGrades/queries";
+import {
   insertUserGradeParams,
   updateUserGradeParams,
-} from "@/lib/db/schema/userGrades";
-import { createUserGrade, deleteUserGrade, updateUserGrade } from "@/lib/api/userGrades/mutations";
+  userGradeIdSchema,
+} from "../db/schema/userGrades";
+import { publicProcedure, router } from "../server/trpc";
 
 export const userGradesRouter = router({
   getUserGrades: publicProcedure.query(async () => {
     return getUserGrades();
   }),
-  getUserGradeById: publicProcedure.input(userGradeIdSchema).query(async ({ input }) => {
-    return getUserGradeById(input.id);
-  }),
+  getUserGradeById: publicProcedure
+    .input(userGradeIdSchema)
+    .query(async ({ input }) => {
+      return getUserGradeById(input.id);
+    }),
   createUserGrade: publicProcedure
     .input(insertUserGradeParams)
     .mutation(async ({ input }) => {

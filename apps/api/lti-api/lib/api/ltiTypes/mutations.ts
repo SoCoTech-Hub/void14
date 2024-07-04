@@ -1,19 +1,20 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  LtiTypeId, 
-  NewLtiTypeParams,
-  UpdateLtiTypeParams, 
-  updateLtiTypeSchema,
-  insertLtiTypeSchema, 
+
+import { db } from "../db/index";
+import {
+  insertLtiTypeSchema,
+  LtiTypeId,
+  ltiTypeIdSchema,
   ltiTypes,
-  ltiTypeIdSchema 
-} from "@/lib/db/schema/ltiTypes";
+  NewLtiTypeParams,
+  UpdateLtiTypeParams,
+  updateLtiTypeSchema,
+} from "../db/schema/ltiTypes";
 
 export const createLtiType = async (ltiType: NewLtiTypeParams) => {
   const newLtiType = insertLtiTypeSchema.parse(ltiType);
   try {
-    const [l] =  await db.insert(ltiTypes).values(newLtiType).returning();
+    const [l] = await db.insert(ltiTypes).values(newLtiType).returning();
     return { ltiType: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +23,18 @@ export const createLtiType = async (ltiType: NewLtiTypeParams) => {
   }
 };
 
-export const updateLtiType = async (id: LtiTypeId, ltiType: UpdateLtiTypeParams) => {
+export const updateLtiType = async (
+  id: LtiTypeId,
+  ltiType: UpdateLtiTypeParams,
+) => {
   const { id: ltiTypeId } = ltiTypeIdSchema.parse({ id });
   const newLtiType = updateLtiTypeSchema.parse(ltiType);
   try {
-    const [l] =  await db
-     .update(ltiTypes)
-     .set({...newLtiType, updatedAt: new Date() })
-     .where(eq(ltiTypes.id, ltiTypeId!))
-     .returning();
+    const [l] = await db
+      .update(ltiTypes)
+      .set({ ...newLtiType, updatedAt: new Date() })
+      .where(eq(ltiTypes.id, ltiTypeId!))
+      .returning();
     return { ltiType: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +46,10 @@ export const updateLtiType = async (id: LtiTypeId, ltiType: UpdateLtiTypeParams)
 export const deleteLtiType = async (id: LtiTypeId) => {
   const { id: ltiTypeId } = ltiTypeIdSchema.parse({ id });
   try {
-    const [l] =  await db.delete(ltiTypes).where(eq(ltiTypes.id, ltiTypeId!))
-    .returning();
+    const [l] = await db
+      .delete(ltiTypes)
+      .where(eq(ltiTypes.id, ltiTypeId!))
+      .returning();
     return { ltiType: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +57,3 @@ export const deleteLtiType = async (id: LtiTypeId) => {
     throw { error: message };
   }
 };
-

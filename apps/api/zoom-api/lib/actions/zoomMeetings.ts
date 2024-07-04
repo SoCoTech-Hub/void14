@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createZoomMeeting,
   deleteZoomMeeting,
   updateZoomMeeting,
-} from "@/lib/api/zoomMeetings/mutations";
+} from "../api/zoomMeetings/mutations";
 import {
-  ZoomMeetingId,
+  insertZoomMeetingParams,
   NewZoomMeetingParams,
   UpdateZoomMeetingParams,
-  zoomMeetingIdSchema,
-  insertZoomMeetingParams,
   updateZoomMeetingParams,
-} from "@/lib/db/schema/zoomMeetings";
+  ZoomMeetingId,
+  zoomMeetingIdSchema,
+} from "../db/schema/zoomMeetings";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createZoomMeetingAction = async (input: NewZoomMeetingParams) => {
   }
 };
 
-export const updateZoomMeetingAction = async (input: UpdateZoomMeetingParams) => {
+export const updateZoomMeetingAction = async (
+  input: UpdateZoomMeetingParams,
+) => {
   try {
     const payload = updateZoomMeetingParams.parse(input);
     await updateZoomMeeting(payload.id, payload);

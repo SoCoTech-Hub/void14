@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createContextTemp,
   deleteContextTemp,
   updateContextTemp,
-} from "@/lib/api/contextTemp/mutations";
+} from "../api/contextTemp/mutations";
 import {
   ContextTempId,
-  NewContextTempParams,
-  UpdateContextTempParams,
   contextTempIdSchema,
   insertContextTempParams,
+  NewContextTempParams,
+  UpdateContextTempParams,
   updateContextTempParams,
-} from "@/lib/db/schema/contextTemp";
+} from "../db/schema/contextTemp";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createContextTempAction = async (input: NewContextTempParams) => {
   }
 };
 
-export const updateContextTempAction = async (input: UpdateContextTempParams) => {
+export const updateContextTempAction = async (
+  input: UpdateContextTempParams,
+) => {
   try {
     const payload = updateContextTempParams.parse(input);
     await updateContextTemp(payload.id, payload);

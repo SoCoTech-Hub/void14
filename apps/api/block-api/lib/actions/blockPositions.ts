@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBlockPosition,
   deleteBlockPosition,
   updateBlockPosition,
-} from "@/lib/api/blockPositions/mutations";
+} from "../api/blockPositions/mutations";
 import {
   BlockPositionId,
-  NewBlockPositionParams,
-  UpdateBlockPositionParams,
   blockPositionIdSchema,
   insertBlockPositionParams,
+  NewBlockPositionParams,
+  UpdateBlockPositionParams,
   updateBlockPositionParams,
-} from "@/lib/db/schema/blockPositions";
+} from "../db/schema/blockPositions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateBlockPositions = () => revalidatePath("/block-positions");
 
-export const createBlockPositionAction = async (input: NewBlockPositionParams) => {
+export const createBlockPositionAction = async (
+  input: NewBlockPositionParams,
+) => {
   try {
     const payload = insertBlockPositionParams.parse(input);
     await createBlockPosition(payload);
@@ -37,7 +40,9 @@ export const createBlockPositionAction = async (input: NewBlockPositionParams) =
   }
 };
 
-export const updateBlockPositionAction = async (input: UpdateBlockPositionParams) => {
+export const updateBlockPositionAction = async (
+  input: UpdateBlockPositionParams,
+) => {
   try {
     const payload = updateBlockPositionParams.parse(input);
     await updateBlockPosition(payload.id, payload);

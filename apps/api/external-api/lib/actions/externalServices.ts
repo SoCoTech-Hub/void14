@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createExternalService,
   deleteExternalService,
   updateExternalService,
-} from "@/lib/api/externalServices/mutations";
+} from "../api/externalServices/mutations";
 import {
   ExternalServiceId,
-  NewExternalServiceParams,
-  UpdateExternalServiceParams,
   externalServiceIdSchema,
   insertExternalServiceParams,
+  NewExternalServiceParams,
+  UpdateExternalServiceParams,
   updateExternalServiceParams,
-} from "@/lib/db/schema/externalServices";
+} from "../db/schema/externalServices";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateExternalServices = () => revalidatePath("/external-services");
 
-export const createExternalServiceAction = async (input: NewExternalServiceParams) => {
+export const createExternalServiceAction = async (
+  input: NewExternalServiceParams,
+) => {
   try {
     const payload = insertExternalServiceParams.parse(input);
     await createExternalService(payload);
@@ -37,7 +40,9 @@ export const createExternalServiceAction = async (input: NewExternalServiceParam
   }
 };
 
-export const updateExternalServiceAction = async (input: UpdateExternalServiceParams) => {
+export const updateExternalServiceAction = async (
+  input: UpdateExternalServiceParams,
+) => {
   try {
     const payload = updateExternalServiceParams.parse(input);
     await updateExternalService(payload.id, payload);

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createResource,
   deleteResource,
   updateResource,
-} from "@/lib/api/resources/mutations";
+} from "../api/resources/mutations";
 import {
-  ResourceId,
-  NewResourceParams,
-  UpdateResourceParams,
-  resourceIdSchema,
   insertResourceParams,
+  NewResourceParams,
+  ResourceId,
+  resourceIdSchema,
+  UpdateResourceParams,
   updateResourceParams,
-} from "@/lib/db/schema/resources";
+} from "../db/schema/resources";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

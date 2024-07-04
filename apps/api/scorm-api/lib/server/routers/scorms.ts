@@ -1,19 +1,21 @@
-import { getScormById, getScorms } from "@/lib/api/scorms/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import { createScorm, deleteScorm, updateScorm } from "../api/scorms/mutations";
+import { getScormById, getScorms } from "../api/scorms/queries";
 import {
-  scormIdSchema,
   insertScormParams,
+  scormIdSchema,
   updateScormParams,
-} from "@/lib/db/schema/scorms";
-import { createScorm, deleteScorm, updateScorm } from "@/lib/api/scorms/mutations";
+} from "../db/schema/scorms";
+import { publicProcedure, router } from "../server/trpc";
 
 export const scormsRouter = router({
   getScorms: publicProcedure.query(async () => {
     return getScorms();
   }),
-  getScormById: publicProcedure.input(scormIdSchema).query(async ({ input }) => {
-    return getScormById(input.id);
-  }),
+  getScormById: publicProcedure
+    .input(scormIdSchema)
+    .query(async ({ input }) => {
+      return getScormById(input.id);
+    }),
   createScorm: publicProcedure
     .input(insertScormParams)
     .mutation(async ({ input }) => {

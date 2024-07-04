@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMessageinboundMessagelist,
   deleteMessageinboundMessagelist,
   updateMessageinboundMessagelist,
-} from "@/lib/api/messageinboundMessagelists/mutations";
+} from "../api/messageinboundMessagelists/mutations";
 import {
+  insertMessageinboundMessagelistParams,
   MessageinboundMessagelistId,
+  messageinboundMessagelistIdSchema,
   NewMessageinboundMessagelistParams,
   UpdateMessageinboundMessagelistParams,
-  messageinboundMessagelistIdSchema,
-  insertMessageinboundMessagelistParams,
   updateMessageinboundMessagelistParams,
-} from "@/lib/db/schema/messageinboundMessagelists";
+} from "../db/schema/messageinboundMessagelists";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateMessageinboundMessagelists = () => revalidatePath("/messageinbound-messagelists");
+const revalidateMessageinboundMessagelists = () =>
+  revalidatePath("/messageinbound-messagelists");
 
-export const createMessageinboundMessagelistAction = async (input: NewMessageinboundMessagelistParams) => {
+export const createMessageinboundMessagelistAction = async (
+  input: NewMessageinboundMessagelistParams,
+) => {
   try {
     const payload = insertMessageinboundMessagelistParams.parse(input);
     await createMessageinboundMessagelist(payload);
@@ -37,7 +41,9 @@ export const createMessageinboundMessagelistAction = async (input: NewMessageinb
   }
 };
 
-export const updateMessageinboundMessagelistAction = async (input: UpdateMessageinboundMessagelistParams) => {
+export const updateMessageinboundMessagelistAction = async (
+  input: UpdateMessageinboundMessagelistParams,
+) => {
   try {
     const payload = updateMessageinboundMessagelistParams.parse(input);
     await updateMessageinboundMessagelist(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateMessageinboundMessagelistAction = async (input: UpdateMessage
   }
 };
 
-export const deleteMessageinboundMessagelistAction = async (input: MessageinboundMessagelistId) => {
+export const deleteMessageinboundMessagelistAction = async (
+  input: MessageinboundMessagelistId,
+) => {
   try {
     const payload = messageinboundMessagelistIdSchema.parse({ id: input });
     await deleteMessageinboundMessagelist(payload.id);

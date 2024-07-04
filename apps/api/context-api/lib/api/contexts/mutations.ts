@@ -1,19 +1,20 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  ContextId, 
-  NewContextParams,
-  UpdateContextParams, 
-  updateContextSchema,
-  insertContextSchema, 
+
+import { db } from "../db/index";
+import {
+  ContextId,
+  contextIdSchema,
   contexts,
-  contextIdSchema 
-} from "@/lib/db/schema/contexts";
+  insertContextSchema,
+  NewContextParams,
+  UpdateContextParams,
+  updateContextSchema,
+} from "../db/schema/contexts";
 
 export const createContext = async (context: NewContextParams) => {
   const newContext = insertContextSchema.parse(context);
   try {
-    const [c] =  await db.insert(contexts).values(newContext).returning();
+    const [c] = await db.insert(contexts).values(newContext).returning();
     return { context: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +23,18 @@ export const createContext = async (context: NewContextParams) => {
   }
 };
 
-export const updateContext = async (id: ContextId, context: UpdateContextParams) => {
+export const updateContext = async (
+  id: ContextId,
+  context: UpdateContextParams,
+) => {
   const { id: contextId } = contextIdSchema.parse({ id });
   const newContext = updateContextSchema.parse(context);
   try {
-    const [c] =  await db
-     .update(contexts)
-     .set(newContext)
-     .where(eq(contexts.id, contextId!))
-     .returning();
+    const [c] = await db
+      .update(contexts)
+      .set(newContext)
+      .where(eq(contexts.id, contextId!))
+      .returning();
     return { context: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +46,10 @@ export const updateContext = async (id: ContextId, context: UpdateContextParams)
 export const deleteContext = async (id: ContextId) => {
   const { id: contextId } = contextIdSchema.parse({ id });
   try {
-    const [c] =  await db.delete(contexts).where(eq(contexts.id, contextId!))
-    .returning();
+    const [c] = await db
+      .delete(contexts)
+      .where(eq(contexts.id, contextId!))
+      .returning();
     return { context: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +57,3 @@ export const deleteContext = async (id: ContextId) => {
     throw { error: message };
   }
 };
-

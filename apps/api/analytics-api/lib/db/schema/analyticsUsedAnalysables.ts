@@ -1,10 +1,11 @@
-import { type getAnalyticsUsedAnalysables } from "@/lib/api/analyticsUsedAnalysables/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getAnalyticsUsedAnalysables } from "../api/analyticsUsedAnalysables/queries";
 
 export const analyticsUsedAnalysables = pgTable(
   "analytics_used_analysables",

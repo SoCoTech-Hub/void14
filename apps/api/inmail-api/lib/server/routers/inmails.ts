@@ -1,19 +1,25 @@
-import { getInmailById, getInmails } from "@/lib/api/inmails/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createInmail,
+  deleteInmail,
+  updateInmail,
+} from "../api/inmails/mutations";
+import { getInmailById, getInmails } from "../api/inmails/queries";
 import {
   inmailIdSchema,
   insertInmailParams,
   updateInmailParams,
-} from "@/lib/db/schema/inmails";
-import { createInmail, deleteInmail, updateInmail } from "@/lib/api/inmails/mutations";
+} from "../db/schema/inmails";
+import { publicProcedure, router } from "../server/trpc";
 
 export const inmailsRouter = router({
   getInmails: publicProcedure.query(async () => {
     return getInmails();
   }),
-  getInmailById: publicProcedure.input(inmailIdSchema).query(async ({ input }) => {
-    return getInmailById(input.id);
-  }),
+  getInmailById: publicProcedure
+    .input(inmailIdSchema)
+    .query(async ({ input }) => {
+      return getInmailById(input.id);
+    }),
   createInmail: publicProcedure
     .input(insertInmailParams)
     .mutation(async ({ input }) => {

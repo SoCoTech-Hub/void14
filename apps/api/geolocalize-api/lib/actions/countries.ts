@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCountry,
   deleteCountry,
   updateCountry,
-} from "@/lib/api/countries/mutations";
+} from "../api/countries/mutations";
 import {
   CountryId,
-  NewCountryParams,
-  UpdateCountryParams,
   countryIdSchema,
   insertCountryParams,
+  NewCountryParams,
+  UpdateCountryParams,
   updateCountryParams,
-} from "@/lib/db/schema/countries";
+} from "../db/schema/countries";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

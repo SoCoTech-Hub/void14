@@ -1,19 +1,28 @@
-import { getQuestionAttemptStepDataById, getQuestionAttemptStepDatas } from "@/lib/api/questionAttemptStepDatas/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  questionAttemptStepDataIdSchema,
+  createQuestionAttemptStepData,
+  deleteQuestionAttemptStepData,
+  updateQuestionAttemptStepData,
+} from "../api/questionAttemptStepDatas/mutations";
+import {
+  getQuestionAttemptStepDataById,
+  getQuestionAttemptStepDatas,
+} from "../api/questionAttemptStepDatas/queries";
+import {
   insertQuestionAttemptStepDataParams,
+  questionAttemptStepDataIdSchema,
   updateQuestionAttemptStepDataParams,
-} from "@/lib/db/schema/questionAttemptStepDatas";
-import { createQuestionAttemptStepData, deleteQuestionAttemptStepData, updateQuestionAttemptStepData } from "@/lib/api/questionAttemptStepDatas/mutations";
+} from "../db/schema/questionAttemptStepDatas";
+import { publicProcedure, router } from "../server/trpc";
 
 export const questionAttemptStepDatasRouter = router({
   getQuestionAttemptStepDatas: publicProcedure.query(async () => {
     return getQuestionAttemptStepDatas();
   }),
-  getQuestionAttemptStepDataById: publicProcedure.input(questionAttemptStepDataIdSchema).query(async ({ input }) => {
-    return getQuestionAttemptStepDataById(input.id);
-  }),
+  getQuestionAttemptStepDataById: publicProcedure
+    .input(questionAttemptStepDataIdSchema)
+    .query(async ({ input }) => {
+      return getQuestionAttemptStepDataById(input.id);
+    }),
   createQuestionAttemptStepData: publicProcedure
     .input(insertQuestionAttemptStepDataParams)
     .mutation(async ({ input }) => {

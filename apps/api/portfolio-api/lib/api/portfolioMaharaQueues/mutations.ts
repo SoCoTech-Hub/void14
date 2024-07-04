@@ -1,19 +1,26 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  PortfolioMaharaQueueId, 
+
+import { db } from "../db/index";
+import {
+  insertPortfolioMaharaQueueSchema,
   NewPortfolioMaharaQueueParams,
-  UpdatePortfolioMaharaQueueParams, 
-  updatePortfolioMaharaQueueSchema,
-  insertPortfolioMaharaQueueSchema, 
+  PortfolioMaharaQueueId,
+  portfolioMaharaQueueIdSchema,
   portfolioMaharaQueues,
-  portfolioMaharaQueueIdSchema 
-} from "@/lib/db/schema/portfolioMaharaQueues";
+  UpdatePortfolioMaharaQueueParams,
+  updatePortfolioMaharaQueueSchema,
+} from "../db/schema/portfolioMaharaQueues";
 
-export const createPortfolioMaharaQueue = async (portfolioMaharaQueue: NewPortfolioMaharaQueueParams) => {
-  const newPortfolioMaharaQueue = insertPortfolioMaharaQueueSchema.parse(portfolioMaharaQueue);
+export const createPortfolioMaharaQueue = async (
+  portfolioMaharaQueue: NewPortfolioMaharaQueueParams,
+) => {
+  const newPortfolioMaharaQueue =
+    insertPortfolioMaharaQueueSchema.parse(portfolioMaharaQueue);
   try {
-    const [p] =  await db.insert(portfolioMaharaQueues).values(newPortfolioMaharaQueue).returning();
+    const [p] = await db
+      .insert(portfolioMaharaQueues)
+      .values(newPortfolioMaharaQueue)
+      .returning();
     return { portfolioMaharaQueue: p };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,21 @@ export const createPortfolioMaharaQueue = async (portfolioMaharaQueue: NewPortfo
   }
 };
 
-export const updatePortfolioMaharaQueue = async (id: PortfolioMaharaQueueId, portfolioMaharaQueue: UpdatePortfolioMaharaQueueParams) => {
-  const { id: portfolioMaharaQueueId } = portfolioMaharaQueueIdSchema.parse({ id });
-  const newPortfolioMaharaQueue = updatePortfolioMaharaQueueSchema.parse(portfolioMaharaQueue);
+export const updatePortfolioMaharaQueue = async (
+  id: PortfolioMaharaQueueId,
+  portfolioMaharaQueue: UpdatePortfolioMaharaQueueParams,
+) => {
+  const { id: portfolioMaharaQueueId } = portfolioMaharaQueueIdSchema.parse({
+    id,
+  });
+  const newPortfolioMaharaQueue =
+    updatePortfolioMaharaQueueSchema.parse(portfolioMaharaQueue);
   try {
-    const [p] =  await db
-     .update(portfolioMaharaQueues)
-     .set(newPortfolioMaharaQueue)
-     .where(eq(portfolioMaharaQueues.id, portfolioMaharaQueueId!))
-     .returning();
+    const [p] = await db
+      .update(portfolioMaharaQueues)
+      .set(newPortfolioMaharaQueue)
+      .where(eq(portfolioMaharaQueues.id, portfolioMaharaQueueId!))
+      .returning();
     return { portfolioMaharaQueue: p };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +52,17 @@ export const updatePortfolioMaharaQueue = async (id: PortfolioMaharaQueueId, por
   }
 };
 
-export const deletePortfolioMaharaQueue = async (id: PortfolioMaharaQueueId) => {
-  const { id: portfolioMaharaQueueId } = portfolioMaharaQueueIdSchema.parse({ id });
+export const deletePortfolioMaharaQueue = async (
+  id: PortfolioMaharaQueueId,
+) => {
+  const { id: portfolioMaharaQueueId } = portfolioMaharaQueueIdSchema.parse({
+    id,
+  });
   try {
-    const [p] =  await db.delete(portfolioMaharaQueues).where(eq(portfolioMaharaQueues.id, portfolioMaharaQueueId!))
-    .returning();
+    const [p] = await db
+      .delete(portfolioMaharaQueues)
+      .where(eq(portfolioMaharaQueues.id, portfolioMaharaQueueId!))
+      .returning();
     return { portfolioMaharaQueue: p };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +70,3 @@ export const deletePortfolioMaharaQueue = async (id: PortfolioMaharaQueueId) => 
     throw { error: message };
   }
 };
-

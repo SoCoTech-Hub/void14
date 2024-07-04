@@ -1,19 +1,28 @@
-import { getGroupsMemberById, getGroupsMembers } from "@/lib/api/groupsMembers/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createGroupsMember,
+  deleteGroupsMember,
+  updateGroupsMember,
+} from "../api/groupsMembers/mutations";
+import {
+  getGroupsMemberById,
+  getGroupsMembers,
+} from "../api/groupsMembers/queries";
 import {
   groupsMemberIdSchema,
   insertGroupsMemberParams,
   updateGroupsMemberParams,
-} from "@/lib/db/schema/groupsMembers";
-import { createGroupsMember, deleteGroupsMember, updateGroupsMember } from "@/lib/api/groupsMembers/mutations";
+} from "../db/schema/groupsMembers";
+import { publicProcedure, router } from "../server/trpc";
 
 export const groupsMembersRouter = router({
   getGroupsMembers: publicProcedure.query(async () => {
     return getGroupsMembers();
   }),
-  getGroupsMemberById: publicProcedure.input(groupsMemberIdSchema).query(async ({ input }) => {
-    return getGroupsMemberById(input.id);
-  }),
+  getGroupsMemberById: publicProcedure
+    .input(groupsMemberIdSchema)
+    .query(async ({ input }) => {
+      return getGroupsMemberById(input.id);
+    }),
   createGroupsMember: publicProcedure
     .input(insertGroupsMemberParams)
     .mutation(async ({ input }) => {

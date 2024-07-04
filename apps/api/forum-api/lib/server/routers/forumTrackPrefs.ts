@@ -1,19 +1,28 @@
-import { getForumTrackPrefById, getForumTrackPrefs } from "@/lib/api/forumTrackPrefs/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createForumTrackPref,
+  deleteForumTrackPref,
+  updateForumTrackPref,
+} from "../api/forumTrackPrefs/mutations";
+import {
+  getForumTrackPrefById,
+  getForumTrackPrefs,
+} from "../api/forumTrackPrefs/queries";
 import {
   forumTrackPrefIdSchema,
   insertForumTrackPrefParams,
   updateForumTrackPrefParams,
-} from "@/lib/db/schema/forumTrackPrefs";
-import { createForumTrackPref, deleteForumTrackPref, updateForumTrackPref } from "@/lib/api/forumTrackPrefs/mutations";
+} from "../db/schema/forumTrackPrefs";
+import { publicProcedure, router } from "../server/trpc";
 
 export const forumTrackPrefsRouter = router({
   getForumTrackPrefs: publicProcedure.query(async () => {
     return getForumTrackPrefs();
   }),
-  getForumTrackPrefById: publicProcedure.input(forumTrackPrefIdSchema).query(async ({ input }) => {
-    return getForumTrackPrefById(input.id);
-  }),
+  getForumTrackPrefById: publicProcedure
+    .input(forumTrackPrefIdSchema)
+    .query(async ({ input }) => {
+      return getForumTrackPrefById(input.id);
+    }),
   createForumTrackPref: publicProcedure
     .input(insertForumTrackPrefParams)
     .mutation(async ({ input }) => {

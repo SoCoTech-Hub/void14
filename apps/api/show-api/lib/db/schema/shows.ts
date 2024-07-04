@@ -1,4 +1,3 @@
-import { type getShows } from "@/lib/api/shows/queries";
 import { sql } from "drizzle-orm";
 import {
   pgTable,
@@ -12,6 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getShows } from "../api/shows/queries";
 import { showsCategories } from "./showsCategories";
 
 export const shows = pgTable(

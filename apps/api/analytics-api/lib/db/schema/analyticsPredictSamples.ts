@@ -1,4 +1,3 @@
-import { type getAnalyticsPredictSamples } from "@/lib/api/analyticsPredictSamples/queries";
 import { sql } from "drizzle-orm";
 import {
   pgTable,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getAnalyticsPredictSamples } from "../api/analyticsPredictSamples/queries";
 
 export const analyticsPredictSamples = pgTable(
   "analytics_predict_samples",

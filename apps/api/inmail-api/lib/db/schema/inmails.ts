@@ -1,4 +1,3 @@
-import { type getInmails } from "@/lib/api/inmails/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getInmails } from "../api/inmails/queries";
 
 export const inmails = pgTable("inmails", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

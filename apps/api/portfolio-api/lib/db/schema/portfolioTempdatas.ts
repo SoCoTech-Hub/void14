@@ -1,4 +1,3 @@
-import { type getPortfolioTempdatas } from "@/lib/api/portfolioTempdatas/queries";
 import {
   boolean,
   integer,
@@ -12,6 +11,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getPortfolioTempdatas } from "../api/portfolioTempdatas/queries";
 import { portfolioInstances } from "./portfolioInstances";
 
 export const portfolioTempdatas = pgTable(

@@ -1,10 +1,11 @@
-import { type getAddresses } from "@/lib/api/addresses/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getAddresses } from "../api/addresses/queries";
 
 export const addresses = pgTable(
   "addresses",

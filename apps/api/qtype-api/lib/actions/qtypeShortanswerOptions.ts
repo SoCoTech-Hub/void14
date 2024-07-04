@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQtypeShortanswerOption,
   deleteQtypeShortanswerOption,
   updateQtypeShortanswerOption,
-} from "@/lib/api/qtypeShortanswerOptions/mutations";
+} from "../api/qtypeShortanswerOptions/mutations";
 import {
-  QtypeShortanswerOptionId,
-  NewQtypeShortanswerOptionParams,
-  UpdateQtypeShortanswerOptionParams,
-  qtypeShortanswerOptionIdSchema,
   insertQtypeShortanswerOptionParams,
+  NewQtypeShortanswerOptionParams,
+  QtypeShortanswerOptionId,
+  qtypeShortanswerOptionIdSchema,
+  UpdateQtypeShortanswerOptionParams,
   updateQtypeShortanswerOptionParams,
-} from "@/lib/db/schema/qtypeShortanswerOptions";
+} from "../db/schema/qtypeShortanswerOptions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQtypeShortanswerOptions = () => revalidatePath("/qtype-shortanswer-options");
+const revalidateQtypeShortanswerOptions = () =>
+  revalidatePath("/qtype-shortanswer-options");
 
-export const createQtypeShortanswerOptionAction = async (input: NewQtypeShortanswerOptionParams) => {
+export const createQtypeShortanswerOptionAction = async (
+  input: NewQtypeShortanswerOptionParams,
+) => {
   try {
     const payload = insertQtypeShortanswerOptionParams.parse(input);
     await createQtypeShortanswerOption(payload);
@@ -37,7 +41,9 @@ export const createQtypeShortanswerOptionAction = async (input: NewQtypeShortans
   }
 };
 
-export const updateQtypeShortanswerOptionAction = async (input: UpdateQtypeShortanswerOptionParams) => {
+export const updateQtypeShortanswerOptionAction = async (
+  input: UpdateQtypeShortanswerOptionParams,
+) => {
   try {
     const payload = updateQtypeShortanswerOptionParams.parse(input);
     await updateQtypeShortanswerOption(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQtypeShortanswerOptionAction = async (input: UpdateQtypeShort
   }
 };
 
-export const deleteQtypeShortanswerOptionAction = async (input: QtypeShortanswerOptionId) => {
+export const deleteQtypeShortanswerOptionAction = async (
+  input: QtypeShortanswerOptionId,
+) => {
   try {
     const payload = qtypeShortanswerOptionIdSchema.parse({ id: input });
     await deleteQtypeShortanswerOption(payload.id);

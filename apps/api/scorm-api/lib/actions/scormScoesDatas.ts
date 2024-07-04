@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createScormScoesData,
   deleteScormScoesData,
   updateScormScoesData,
-} from "@/lib/api/scormScoesDatas/mutations";
+} from "../api/scormScoesDatas/mutations";
 import {
-  ScormScoesDataId,
-  NewScormScoesDataParams,
-  UpdateScormScoesDataParams,
-  scormScoesDataIdSchema,
   insertScormScoesDataParams,
+  NewScormScoesDataParams,
+  ScormScoesDataId,
+  scormScoesDataIdSchema,
+  UpdateScormScoesDataParams,
   updateScormScoesDataParams,
-} from "@/lib/db/schema/scormScoesDatas";
+} from "../db/schema/scormScoesDatas";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateScormScoesDatas = () => revalidatePath("/scorm-scoes-datas");
 
-export const createScormScoesDataAction = async (input: NewScormScoesDataParams) => {
+export const createScormScoesDataAction = async (
+  input: NewScormScoesDataParams,
+) => {
   try {
     const payload = insertScormScoesDataParams.parse(input);
     await createScormScoesData(payload);
@@ -37,7 +40,9 @@ export const createScormScoesDataAction = async (input: NewScormScoesDataParams)
   }
 };
 
-export const updateScormScoesDataAction = async (input: UpdateScormScoesDataParams) => {
+export const updateScormScoesDataAction = async (
+  input: UpdateScormScoesDataParams,
+) => {
   try {
     const payload = updateScormScoesDataParams.parse(input);
     await updateScormScoesData(payload.id, payload);

@@ -1,10 +1,10 @@
-import { type getContextTemp } from "@/lib/api/contextTemp/queries";
 import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getContextTemp } from "../api/contextTemp/queries";
 import { contexts } from "./contexts";
 
 export const contextTemp = pgTable("context_temp", {

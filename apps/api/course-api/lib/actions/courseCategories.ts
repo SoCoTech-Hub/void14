@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCourseCategory,
   deleteCourseCategory,
   updateCourseCategory,
-} from "@/lib/api/courseCategories/mutations";
+} from "../api/courseCategories/mutations";
 import {
   CourseCategoryId,
-  NewCourseCategoryParams,
-  UpdateCourseCategoryParams,
   courseCategoryIdSchema,
   insertCourseCategoryParams,
+  NewCourseCategoryParams,
+  UpdateCourseCategoryParams,
   updateCourseCategoryParams,
-} from "@/lib/db/schema/courseCategories";
+} from "../db/schema/courseCategories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateCourseCategories = () => revalidatePath("/course-categories");
 
-export const createCourseCategoryAction = async (input: NewCourseCategoryParams) => {
+export const createCourseCategoryAction = async (
+  input: NewCourseCategoryParams,
+) => {
   try {
     const payload = insertCourseCategoryParams.parse(input);
     await createCourseCategory(payload);
@@ -37,7 +40,9 @@ export const createCourseCategoryAction = async (input: NewCourseCategoryParams)
   }
 };
 
-export const updateCourseCategoryAction = async (input: UpdateCourseCategoryParams) => {
+export const updateCourseCategoryAction = async (
+  input: UpdateCourseCategoryParams,
+) => {
   try {
     const payload = updateCourseCategoryParams.parse(input);
     await updateCourseCategory(payload.id, payload);

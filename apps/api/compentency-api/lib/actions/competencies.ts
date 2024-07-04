@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCompetency,
   deleteCompetency,
   updateCompetency,
-} from "@/lib/api/competencies/mutations";
+} from "../api/competencies/mutations";
 import {
   CompetencyId,
-  NewCompetencyParams,
-  UpdateCompetencyParams,
   competencyIdSchema,
   insertCompetencyParams,
+  NewCompetencyParams,
+  UpdateCompetencyParams,
   updateCompetencyParams,
-} from "@/lib/db/schema/competencies";
+} from "../db/schema/competencies";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createProfile,
   deleteProfile,
   updateProfile,
-} from "@/lib/api/profiles/mutations";
+} from "../api/profiles/mutations";
 import {
-  ProfileId,
-  NewProfileParams,
-  UpdateProfileParams,
-  profileIdSchema,
   insertProfileParams,
+  NewProfileParams,
+  ProfileId,
+  profileIdSchema,
+  UpdateProfileParams,
   updateProfileParams,
-} from "@/lib/db/schema/profiles";
+} from "../db/schema/profiles";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

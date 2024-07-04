@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createH5pLibraryDependency,
   deleteH5pLibraryDependency,
   updateH5pLibraryDependency,
-} from "@/lib/api/h5pLibraryDependencies/mutations";
+} from "../api/h5pLibraryDependencies/mutations";
 import {
   H5pLibraryDependencyId,
-  NewH5pLibraryDependencyParams,
-  UpdateH5pLibraryDependencyParams,
   h5pLibraryDependencyIdSchema,
   insertH5pLibraryDependencyParams,
+  NewH5pLibraryDependencyParams,
+  UpdateH5pLibraryDependencyParams,
   updateH5pLibraryDependencyParams,
-} from "@/lib/db/schema/h5pLibraryDependencies";
+} from "../db/schema/h5pLibraryDependencies";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateH5pLibraryDependencies = () => revalidatePath("/h5p-library-dependencies");
+const revalidateH5pLibraryDependencies = () =>
+  revalidatePath("/h5p-library-dependencies");
 
-export const createH5pLibraryDependencyAction = async (input: NewH5pLibraryDependencyParams) => {
+export const createH5pLibraryDependencyAction = async (
+  input: NewH5pLibraryDependencyParams,
+) => {
   try {
     const payload = insertH5pLibraryDependencyParams.parse(input);
     await createH5pLibraryDependency(payload);
@@ -37,7 +41,9 @@ export const createH5pLibraryDependencyAction = async (input: NewH5pLibraryDepen
   }
 };
 
-export const updateH5pLibraryDependencyAction = async (input: UpdateH5pLibraryDependencyParams) => {
+export const updateH5pLibraryDependencyAction = async (
+  input: UpdateH5pLibraryDependencyParams,
+) => {
   try {
     const payload = updateH5pLibraryDependencyParams.parse(input);
     await updateH5pLibraryDependency(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateH5pLibraryDependencyAction = async (input: UpdateH5pLibraryDe
   }
 };
 
-export const deleteH5pLibraryDependencyAction = async (input: H5pLibraryDependencyId) => {
+export const deleteH5pLibraryDependencyAction = async (
+  input: H5pLibraryDependencyId,
+) => {
   try {
     const payload = h5pLibraryDependencyIdSchema.parse({ id: input });
     await deleteH5pLibraryDependency(payload.id);

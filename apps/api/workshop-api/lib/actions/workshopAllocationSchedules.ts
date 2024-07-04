@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createWorkshopAllocationSchedule,
   deleteWorkshopAllocationSchedule,
   updateWorkshopAllocationSchedule,
-} from "@/lib/api/workshopAllocationSchedules/mutations";
+} from "../api/workshopAllocationSchedules/mutations";
 import {
-  WorkshopAllocationScheduleId,
+  insertWorkshopAllocationScheduleParams,
   NewWorkshopAllocationScheduleParams,
   UpdateWorkshopAllocationScheduleParams,
-  workshopAllocationScheduleIdSchema,
-  insertWorkshopAllocationScheduleParams,
   updateWorkshopAllocationScheduleParams,
-} from "@/lib/db/schema/workshopAllocationSchedules";
+  WorkshopAllocationScheduleId,
+  workshopAllocationScheduleIdSchema,
+} from "../db/schema/workshopAllocationSchedules";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateWorkshopAllocationSchedules = () => revalidatePath("/workshop-allocation-schedules");
+const revalidateWorkshopAllocationSchedules = () =>
+  revalidatePath("/workshop-allocation-schedules");
 
-export const createWorkshopAllocationScheduleAction = async (input: NewWorkshopAllocationScheduleParams) => {
+export const createWorkshopAllocationScheduleAction = async (
+  input: NewWorkshopAllocationScheduleParams,
+) => {
   try {
     const payload = insertWorkshopAllocationScheduleParams.parse(input);
     await createWorkshopAllocationSchedule(payload);
@@ -37,7 +41,9 @@ export const createWorkshopAllocationScheduleAction = async (input: NewWorkshopA
   }
 };
 
-export const updateWorkshopAllocationScheduleAction = async (input: UpdateWorkshopAllocationScheduleParams) => {
+export const updateWorkshopAllocationScheduleAction = async (
+  input: UpdateWorkshopAllocationScheduleParams,
+) => {
   try {
     const payload = updateWorkshopAllocationScheduleParams.parse(input);
     await updateWorkshopAllocationSchedule(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateWorkshopAllocationScheduleAction = async (input: UpdateWorksh
   }
 };
 
-export const deleteWorkshopAllocationScheduleAction = async (input: WorkshopAllocationScheduleId) => {
+export const deleteWorkshopAllocationScheduleAction = async (
+  input: WorkshopAllocationScheduleId,
+) => {
   try {
     const payload = workshopAllocationScheduleIdSchema.parse({ id: input });
     await deleteWorkshopAllocationSchedule(payload.id);

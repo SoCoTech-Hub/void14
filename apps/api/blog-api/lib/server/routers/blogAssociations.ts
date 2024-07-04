@@ -1,19 +1,28 @@
-import { getBlogAssociationById, getBlogAssociations } from "@/lib/api/blogAssociations/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createBlogAssociation,
+  deleteBlogAssociation,
+  updateBlogAssociation,
+} from "../api/blogAssociations/mutations";
+import {
+  getBlogAssociationById,
+  getBlogAssociations,
+} from "../api/blogAssociations/queries";
 import {
   blogAssociationIdSchema,
   insertBlogAssociationParams,
   updateBlogAssociationParams,
-} from "@/lib/db/schema/blogAssociations";
-import { createBlogAssociation, deleteBlogAssociation, updateBlogAssociation } from "@/lib/api/blogAssociations/mutations";
+} from "../db/schema/blogAssociations";
+import { publicProcedure, router } from "../server/trpc";
 
 export const blogAssociationsRouter = router({
   getBlogAssociations: publicProcedure.query(async () => {
     return getBlogAssociations();
   }),
-  getBlogAssociationById: publicProcedure.input(blogAssociationIdSchema).query(async ({ input }) => {
-    return getBlogAssociationById(input.id);
-  }),
+  getBlogAssociationById: publicProcedure
+    .input(blogAssociationIdSchema)
+    .query(async ({ input }) => {
+      return getBlogAssociationById(input.id);
+    }),
   createBlogAssociation: publicProcedure
     .input(insertBlogAssociationParams)
     .mutation(async ({ input }) => {

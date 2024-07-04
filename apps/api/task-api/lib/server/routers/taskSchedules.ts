@@ -1,19 +1,28 @@
-import { getTaskScheduleById, getTaskSchedules } from "@/lib/api/taskSchedules/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  taskScheduleIdSchema,
+  createTaskSchedule,
+  deleteTaskSchedule,
+  updateTaskSchedule,
+} from "../api/taskSchedules/mutations";
+import {
+  getTaskScheduleById,
+  getTaskSchedules,
+} from "../api/taskSchedules/queries";
+import {
   insertTaskScheduleParams,
+  taskScheduleIdSchema,
   updateTaskScheduleParams,
-} from "@/lib/db/schema/taskSchedules";
-import { createTaskSchedule, deleteTaskSchedule, updateTaskSchedule } from "@/lib/api/taskSchedules/mutations";
+} from "../db/schema/taskSchedules";
+import { publicProcedure, router } from "../server/trpc";
 
 export const taskSchedulesRouter = router({
   getTaskSchedules: publicProcedure.query(async () => {
     return getTaskSchedules();
   }),
-  getTaskScheduleById: publicProcedure.input(taskScheduleIdSchema).query(async ({ input }) => {
-    return getTaskScheduleById(input.id);
-  }),
+  getTaskScheduleById: publicProcedure
+    .input(taskScheduleIdSchema)
+    .query(async ({ input }) => {
+      return getTaskScheduleById(input.id);
+    }),
   createTaskSchedule: publicProcedure
     .input(insertTaskScheduleParams)
     .mutation(async ({ input }) => {

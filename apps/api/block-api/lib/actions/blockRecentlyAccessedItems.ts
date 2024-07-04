@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBlockRecentlyAccessedItem,
   deleteBlockRecentlyAccessedItem,
   updateBlockRecentlyAccessedItem,
-} from "@/lib/api/blockRecentlyAccessedItems/mutations";
+} from "../api/blockRecentlyAccessedItems/mutations";
 import {
   BlockRecentlyAccessedItemId,
-  NewBlockRecentlyAccessedItemParams,
-  UpdateBlockRecentlyAccessedItemParams,
   blockRecentlyAccessedItemIdSchema,
   insertBlockRecentlyAccessedItemParams,
+  NewBlockRecentlyAccessedItemParams,
+  UpdateBlockRecentlyAccessedItemParams,
   updateBlockRecentlyAccessedItemParams,
-} from "@/lib/db/schema/blockRecentlyAccessedItems";
+} from "../db/schema/blockRecentlyAccessedItems";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateBlockRecentlyAccessedItems = () => revalidatePath("/block-recently-accessed-items");
+const revalidateBlockRecentlyAccessedItems = () =>
+  revalidatePath("/block-recently-accessed-items");
 
-export const createBlockRecentlyAccessedItemAction = async (input: NewBlockRecentlyAccessedItemParams) => {
+export const createBlockRecentlyAccessedItemAction = async (
+  input: NewBlockRecentlyAccessedItemParams,
+) => {
   try {
     const payload = insertBlockRecentlyAccessedItemParams.parse(input);
     await createBlockRecentlyAccessedItem(payload);
@@ -37,7 +41,9 @@ export const createBlockRecentlyAccessedItemAction = async (input: NewBlockRecen
   }
 };
 
-export const updateBlockRecentlyAccessedItemAction = async (input: UpdateBlockRecentlyAccessedItemParams) => {
+export const updateBlockRecentlyAccessedItemAction = async (
+  input: UpdateBlockRecentlyAccessedItemParams,
+) => {
   try {
     const payload = updateBlockRecentlyAccessedItemParams.parse(input);
     await updateBlockRecentlyAccessedItem(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateBlockRecentlyAccessedItemAction = async (input: UpdateBlockRe
   }
 };
 
-export const deleteBlockRecentlyAccessedItemAction = async (input: BlockRecentlyAccessedItemId) => {
+export const deleteBlockRecentlyAccessedItemAction = async (
+  input: BlockRecentlyAccessedItemId,
+) => {
   try {
     const payload = blockRecentlyAccessedItemIdSchema.parse({ id: input });
     await deleteBlockRecentlyAccessedItem(payload.id);

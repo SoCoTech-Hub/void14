@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createToolRecyclebinCourse,
   deleteToolRecyclebinCourse,
   updateToolRecyclebinCourse,
-} from "@/lib/api/toolRecyclebinCourses/mutations";
+} from "../api/toolRecyclebinCourses/mutations";
 import {
-  ToolRecyclebinCourseId,
-  NewToolRecyclebinCourseParams,
-  UpdateToolRecyclebinCourseParams,
-  toolRecyclebinCourseIdSchema,
   insertToolRecyclebinCourseParams,
+  NewToolRecyclebinCourseParams,
+  ToolRecyclebinCourseId,
+  toolRecyclebinCourseIdSchema,
+  UpdateToolRecyclebinCourseParams,
   updateToolRecyclebinCourseParams,
-} from "@/lib/db/schema/toolRecyclebinCourses";
+} from "../db/schema/toolRecyclebinCourses";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateToolRecyclebinCourses = () => revalidatePath("/tool-recyclebin-courses");
+const revalidateToolRecyclebinCourses = () =>
+  revalidatePath("/tool-recyclebin-courses");
 
-export const createToolRecyclebinCourseAction = async (input: NewToolRecyclebinCourseParams) => {
+export const createToolRecyclebinCourseAction = async (
+  input: NewToolRecyclebinCourseParams,
+) => {
   try {
     const payload = insertToolRecyclebinCourseParams.parse(input);
     await createToolRecyclebinCourse(payload);
@@ -37,7 +41,9 @@ export const createToolRecyclebinCourseAction = async (input: NewToolRecyclebinC
   }
 };
 
-export const updateToolRecyclebinCourseAction = async (input: UpdateToolRecyclebinCourseParams) => {
+export const updateToolRecyclebinCourseAction = async (
+  input: UpdateToolRecyclebinCourseParams,
+) => {
   try {
     const payload = updateToolRecyclebinCourseParams.parse(input);
     await updateToolRecyclebinCourse(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateToolRecyclebinCourseAction = async (input: UpdateToolRecycleb
   }
 };
 
-export const deleteToolRecyclebinCourseAction = async (input: ToolRecyclebinCourseId) => {
+export const deleteToolRecyclebinCourseAction = async (
+  input: ToolRecyclebinCourseId,
+) => {
   try {
     const payload = toolRecyclebinCourseIdSchema.parse({ id: input });
     await deleteToolRecyclebinCourse(payload.id);

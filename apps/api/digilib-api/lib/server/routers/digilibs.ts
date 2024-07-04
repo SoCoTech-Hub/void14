@@ -1,19 +1,25 @@
-import { getDigilibById, getDigilibs } from "@/lib/api/digilibs/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createDigilib,
+  deleteDigilib,
+  updateDigilib,
+} from "../api/digilibs/mutations";
+import { getDigilibById, getDigilibs } from "../api/digilibs/queries";
 import {
   digilibIdSchema,
   insertDigilibParams,
   updateDigilibParams,
-} from "@/lib/db/schema/digilibs";
-import { createDigilib, deleteDigilib, updateDigilib } from "@/lib/api/digilibs/mutations";
+} from "../db/schema/digilibs";
+import { publicProcedure, router } from "../server/trpc";
 
 export const digilibsRouter = router({
   getDigilibs: publicProcedure.query(async () => {
     return getDigilibs();
   }),
-  getDigilibById: publicProcedure.input(digilibIdSchema).query(async ({ input }) => {
-    return getDigilibById(input.id);
-  }),
+  getDigilibById: publicProcedure
+    .input(digilibIdSchema)
+    .query(async ({ input }) => {
+      return getDigilibById(input.id);
+    }),
   createDigilib: publicProcedure
     .input(insertDigilibParams)
     .mutation(async ({ input }) => {

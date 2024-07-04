@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGradingInstance,
   deleteGradingInstance,
   updateGradingInstance,
-} from "@/lib/api/gradingInstances/mutations";
+} from "../api/gradingInstances/mutations";
 import {
   GradingInstanceId,
-  NewGradingInstanceParams,
-  UpdateGradingInstanceParams,
   gradingInstanceIdSchema,
   insertGradingInstanceParams,
+  NewGradingInstanceParams,
+  UpdateGradingInstanceParams,
   updateGradingInstanceParams,
-} from "@/lib/db/schema/gradingInstances";
+} from "../db/schema/gradingInstances";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateGradingInstances = () => revalidatePath("/grading-instances");
 
-export const createGradingInstanceAction = async (input: NewGradingInstanceParams) => {
+export const createGradingInstanceAction = async (
+  input: NewGradingInstanceParams,
+) => {
   try {
     const payload = insertGradingInstanceParams.parse(input);
     await createGradingInstance(payload);
@@ -37,7 +40,9 @@ export const createGradingInstanceAction = async (input: NewGradingInstanceParam
   }
 };
 
-export const updateGradingInstanceAction = async (input: UpdateGradingInstanceParams) => {
+export const updateGradingInstanceAction = async (
+  input: UpdateGradingInstanceParams,
+) => {
   try {
     const payload = updateGradingInstanceParams.parse(input);
     await updateGradingInstance(payload.id, payload);

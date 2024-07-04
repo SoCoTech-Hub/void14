@@ -1,19 +1,28 @@
-import { getScormSeqObjectiveById, getScormSeqObjectives } from "@/lib/api/scormSeqObjectives/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  scormSeqObjectiveIdSchema,
+  createScormSeqObjective,
+  deleteScormSeqObjective,
+  updateScormSeqObjective,
+} from "../api/scormSeqObjectives/mutations";
+import {
+  getScormSeqObjectiveById,
+  getScormSeqObjectives,
+} from "../api/scormSeqObjectives/queries";
+import {
   insertScormSeqObjectiveParams,
+  scormSeqObjectiveIdSchema,
   updateScormSeqObjectiveParams,
-} from "@/lib/db/schema/scormSeqObjectives";
-import { createScormSeqObjective, deleteScormSeqObjective, updateScormSeqObjective } from "@/lib/api/scormSeqObjectives/mutations";
+} from "../db/schema/scormSeqObjectives";
+import { publicProcedure, router } from "../server/trpc";
 
 export const scormSeqObjectivesRouter = router({
   getScormSeqObjectives: publicProcedure.query(async () => {
     return getScormSeqObjectives();
   }),
-  getScormSeqObjectiveById: publicProcedure.input(scormSeqObjectiveIdSchema).query(async ({ input }) => {
-    return getScormSeqObjectiveById(input.id);
-  }),
+  getScormSeqObjectiveById: publicProcedure
+    .input(scormSeqObjectiveIdSchema)
+    .query(async ({ input }) => {
+      return getScormSeqObjectiveById(input.id);
+    }),
   createScormSeqObjective: publicProcedure
     .input(insertScormSeqObjectiveParams)
     .mutation(async ({ input }) => {

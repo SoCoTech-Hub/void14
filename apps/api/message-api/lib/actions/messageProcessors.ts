@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMessageProcessor,
   deleteMessageProcessor,
   updateMessageProcessor,
-} from "@/lib/api/messageProcessors/mutations";
+} from "../api/messageProcessors/mutations";
 import {
+  insertMessageProcessorParams,
   MessageProcessorId,
+  messageProcessorIdSchema,
   NewMessageProcessorParams,
   UpdateMessageProcessorParams,
-  messageProcessorIdSchema,
-  insertMessageProcessorParams,
   updateMessageProcessorParams,
-} from "@/lib/db/schema/messageProcessors";
+} from "../db/schema/messageProcessors";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateMessageProcessors = () => revalidatePath("/message-processors");
 
-export const createMessageProcessorAction = async (input: NewMessageProcessorParams) => {
+export const createMessageProcessorAction = async (
+  input: NewMessageProcessorParams,
+) => {
   try {
     const payload = insertMessageProcessorParams.parse(input);
     await createMessageProcessor(payload);
@@ -37,7 +40,9 @@ export const createMessageProcessorAction = async (input: NewMessageProcessorPar
   }
 };
 
-export const updateMessageProcessorAction = async (input: UpdateMessageProcessorParams) => {
+export const updateMessageProcessorAction = async (
+  input: UpdateMessageProcessorParams,
+) => {
   try {
     const payload = updateMessageProcessorParams.parse(input);
     await updateMessageProcessor(payload.id, payload);
@@ -47,7 +52,9 @@ export const updateMessageProcessorAction = async (input: UpdateMessageProcessor
   }
 };
 
-export const deleteMessageProcessorAction = async (input: MessageProcessorId) => {
+export const deleteMessageProcessorAction = async (
+  input: MessageProcessorId,
+) => {
   try {
     const payload = messageProcessorIdSchema.parse({ id: input });
     await deleteMessageProcessor(payload.id);

@@ -1,19 +1,20 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  SurveyId, 
+
+import { db } from "../db/index";
+import {
+  insertSurveySchema,
   NewSurveyParams,
-  UpdateSurveyParams, 
-  updateSurveySchema,
-  insertSurveySchema, 
+  SurveyId,
+  surveyIdSchema,
   surveys,
-  surveyIdSchema 
-} from "@/lib/db/schema/surveys";
+  UpdateSurveyParams,
+  updateSurveySchema,
+} from "../db/schema/surveys";
 
 export const createSurvey = async (survey: NewSurveyParams) => {
   const newSurvey = insertSurveySchema.parse(survey);
   try {
-    const [s] =  await db.insert(surveys).values(newSurvey).returning();
+    const [s] = await db.insert(surveys).values(newSurvey).returning();
     return { survey: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +23,18 @@ export const createSurvey = async (survey: NewSurveyParams) => {
   }
 };
 
-export const updateSurvey = async (id: SurveyId, survey: UpdateSurveyParams) => {
+export const updateSurvey = async (
+  id: SurveyId,
+  survey: UpdateSurveyParams,
+) => {
   const { id: surveyId } = surveyIdSchema.parse({ id });
   const newSurvey = updateSurveySchema.parse(survey);
   try {
-    const [s] =  await db
-     .update(surveys)
-     .set({...newSurvey, updatedAt: new Date() })
-     .where(eq(surveys.id, surveyId!))
-     .returning();
+    const [s] = await db
+      .update(surveys)
+      .set({ ...newSurvey, updatedAt: new Date() })
+      .where(eq(surveys.id, surveyId!))
+      .returning();
     return { survey: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +46,10 @@ export const updateSurvey = async (id: SurveyId, survey: UpdateSurveyParams) => 
 export const deleteSurvey = async (id: SurveyId) => {
   const { id: surveyId } = surveyIdSchema.parse({ id });
   try {
-    const [s] =  await db.delete(surveys).where(eq(surveys.id, surveyId!))
-    .returning();
+    const [s] = await db
+      .delete(surveys)
+      .where(eq(surveys.id, surveyId!))
+      .returning();
     return { survey: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +57,3 @@ export const deleteSurvey = async (id: SurveyId) => {
     throw { error: message };
   }
 };
-

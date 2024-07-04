@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createPortfolioLog,
   deletePortfolioLog,
   updatePortfolioLog,
-} from "@/lib/api/portfolioLogs/mutations";
+} from "../api/portfolioLogs/mutations";
 import {
-  PortfolioLogId,
-  NewPortfolioLogParams,
-  UpdatePortfolioLogParams,
-  portfolioLogIdSchema,
   insertPortfolioLogParams,
+  NewPortfolioLogParams,
+  PortfolioLogId,
+  portfolioLogIdSchema,
+  UpdatePortfolioLogParams,
   updatePortfolioLogParams,
-} from "@/lib/db/schema/portfolioLogs";
+} from "../db/schema/portfolioLogs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidatePortfolioLogs = () => revalidatePath("/portfolio-logs");
 
-export const createPortfolioLogAction = async (input: NewPortfolioLogParams) => {
+export const createPortfolioLogAction = async (
+  input: NewPortfolioLogParams,
+) => {
   try {
     const payload = insertPortfolioLogParams.parse(input);
     await createPortfolioLog(payload);
@@ -37,7 +40,9 @@ export const createPortfolioLogAction = async (input: NewPortfolioLogParams) => 
   }
 };
 
-export const updatePortfolioLogAction = async (input: UpdatePortfolioLogParams) => {
+export const updatePortfolioLogAction = async (
+  input: UpdatePortfolioLogParams,
+) => {
   try {
     const payload = updatePortfolioLogParams.parse(input);
     await updatePortfolioLog(payload.id, payload);

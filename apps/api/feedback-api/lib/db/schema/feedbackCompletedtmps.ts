@@ -1,4 +1,3 @@
-import { type getFeedbackCompletedtmps } from "@/lib/api/feedbackCompletedtmps/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getFeedbackCompletedtmps } from "../api/feedbackCompletedtmps/queries";
 
 export const feedbackCompletedtmps = pgTable("feedback_completedtmps", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

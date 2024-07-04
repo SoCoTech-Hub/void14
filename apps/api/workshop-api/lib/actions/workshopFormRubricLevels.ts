@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createWorkshopFormRubricLevel,
   deleteWorkshopFormRubricLevel,
   updateWorkshopFormRubricLevel,
-} from "@/lib/api/workshopFormRubricLevels/mutations";
+} from "../api/workshopFormRubricLevels/mutations";
 import {
-  WorkshopFormRubricLevelId,
+  insertWorkshopFormRubricLevelParams,
   NewWorkshopFormRubricLevelParams,
   UpdateWorkshopFormRubricLevelParams,
-  workshopFormRubricLevelIdSchema,
-  insertWorkshopFormRubricLevelParams,
   updateWorkshopFormRubricLevelParams,
-} from "@/lib/db/schema/workshopFormRubricLevels";
+  WorkshopFormRubricLevelId,
+  workshopFormRubricLevelIdSchema,
+} from "../db/schema/workshopFormRubricLevels";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateWorkshopFormRubricLevels = () => revalidatePath("/workshop-form-rubric-levels");
+const revalidateWorkshopFormRubricLevels = () =>
+  revalidatePath("/workshop-form-rubric-levels");
 
-export const createWorkshopFormRubricLevelAction = async (input: NewWorkshopFormRubricLevelParams) => {
+export const createWorkshopFormRubricLevelAction = async (
+  input: NewWorkshopFormRubricLevelParams,
+) => {
   try {
     const payload = insertWorkshopFormRubricLevelParams.parse(input);
     await createWorkshopFormRubricLevel(payload);
@@ -37,7 +41,9 @@ export const createWorkshopFormRubricLevelAction = async (input: NewWorkshopForm
   }
 };
 
-export const updateWorkshopFormRubricLevelAction = async (input: UpdateWorkshopFormRubricLevelParams) => {
+export const updateWorkshopFormRubricLevelAction = async (
+  input: UpdateWorkshopFormRubricLevelParams,
+) => {
   try {
     const payload = updateWorkshopFormRubricLevelParams.parse(input);
     await updateWorkshopFormRubricLevel(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateWorkshopFormRubricLevelAction = async (input: UpdateWorkshopF
   }
 };
 
-export const deleteWorkshopFormRubricLevelAction = async (input: WorkshopFormRubricLevelId) => {
+export const deleteWorkshopFormRubricLevelAction = async (
+  input: WorkshopFormRubricLevelId,
+) => {
   try {
     const payload = workshopFormRubricLevelIdSchema.parse({ id: input });
     await deleteWorkshopFormRubricLevel(payload.id);

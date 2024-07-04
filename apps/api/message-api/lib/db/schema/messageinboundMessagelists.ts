@@ -1,10 +1,11 @@
-import { type getMessageinboundMessagelists } from "@/lib/api/messageinboundMessagelists/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getMessageinboundMessagelists } from "../api/messageinboundMessagelists/queries";
 
 export const messageinboundMessagelists = pgTable(
   "messageinbound_messagelists",

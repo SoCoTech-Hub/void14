@@ -1,19 +1,28 @@
-import { getEnrolLtiLti2ShareKeyById, getEnrolLtiLti2ShareKeys } from "@/lib/api/enrolLtiLti2ShareKeys/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createEnrolLtiLti2ShareKey,
+  deleteEnrolLtiLti2ShareKey,
+  updateEnrolLtiLti2ShareKey,
+} from "../api/enrolLtiLti2ShareKeys/mutations";
+import {
+  getEnrolLtiLti2ShareKeyById,
+  getEnrolLtiLti2ShareKeys,
+} from "../api/enrolLtiLti2ShareKeys/queries";
 import {
   enrolLtiLti2ShareKeyIdSchema,
   insertEnrolLtiLti2ShareKeyParams,
   updateEnrolLtiLti2ShareKeyParams,
-} from "@/lib/db/schema/enrolLtiLti2ShareKeys";
-import { createEnrolLtiLti2ShareKey, deleteEnrolLtiLti2ShareKey, updateEnrolLtiLti2ShareKey } from "@/lib/api/enrolLtiLti2ShareKeys/mutations";
+} from "../db/schema/enrolLtiLti2ShareKeys";
+import { publicProcedure, router } from "../server/trpc";
 
 export const enrolLtiLti2ShareKeysRouter = router({
   getEnrolLtiLti2ShareKeys: publicProcedure.query(async () => {
     return getEnrolLtiLti2ShareKeys();
   }),
-  getEnrolLtiLti2ShareKeyById: publicProcedure.input(enrolLtiLti2ShareKeyIdSchema).query(async ({ input }) => {
-    return getEnrolLtiLti2ShareKeyById(input.id);
-  }),
+  getEnrolLtiLti2ShareKeyById: publicProcedure
+    .input(enrolLtiLti2ShareKeyIdSchema)
+    .query(async ({ input }) => {
+      return getEnrolLtiLti2ShareKeyById(input.id);
+    }),
   createEnrolLtiLti2ShareKey: publicProcedure
     .input(insertEnrolLtiLti2ShareKeyParams)
     .mutation(async ({ input }) => {

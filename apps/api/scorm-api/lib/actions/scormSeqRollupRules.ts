@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createScormSeqRollupRule,
   deleteScormSeqRollupRule,
   updateScormSeqRollupRule,
-} from "@/lib/api/scormSeqRollupRules/mutations";
+} from "../api/scormSeqRollupRules/mutations";
 import {
-  ScormSeqRollupRuleId,
-  NewScormSeqRollupRuleParams,
-  UpdateScormSeqRollupRuleParams,
-  scormSeqRollupRuleIdSchema,
   insertScormSeqRollupRuleParams,
+  NewScormSeqRollupRuleParams,
+  ScormSeqRollupRuleId,
+  scormSeqRollupRuleIdSchema,
+  UpdateScormSeqRollupRuleParams,
   updateScormSeqRollupRuleParams,
-} from "@/lib/db/schema/scormSeqRollupRules";
+} from "../db/schema/scormSeqRollupRules";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateScormSeqRollupRules = () => revalidatePath("/scorm-seq-rollup-rules");
+const revalidateScormSeqRollupRules = () =>
+  revalidatePath("/scorm-seq-rollup-rules");
 
-export const createScormSeqRollupRuleAction = async (input: NewScormSeqRollupRuleParams) => {
+export const createScormSeqRollupRuleAction = async (
+  input: NewScormSeqRollupRuleParams,
+) => {
   try {
     const payload = insertScormSeqRollupRuleParams.parse(input);
     await createScormSeqRollupRule(payload);
@@ -37,7 +41,9 @@ export const createScormSeqRollupRuleAction = async (input: NewScormSeqRollupRul
   }
 };
 
-export const updateScormSeqRollupRuleAction = async (input: UpdateScormSeqRollupRuleParams) => {
+export const updateScormSeqRollupRuleAction = async (
+  input: UpdateScormSeqRollupRuleParams,
+) => {
   try {
     const payload = updateScormSeqRollupRuleParams.parse(input);
     await updateScormSeqRollupRule(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateScormSeqRollupRuleAction = async (input: UpdateScormSeqRollup
   }
 };
 
-export const deleteScormSeqRollupRuleAction = async (input: ScormSeqRollupRuleId) => {
+export const deleteScormSeqRollupRuleAction = async (
+  input: ScormSeqRollupRuleId,
+) => {
   try {
     const payload = scormSeqRollupRuleIdSchema.parse({ id: input });
     await deleteScormSeqRollupRule(payload.id);

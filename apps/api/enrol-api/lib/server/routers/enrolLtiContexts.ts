@@ -1,19 +1,28 @@
-import { getEnrolLtiContextById, getEnrolLtiContexts } from "@/lib/api/enrolLtiContexts/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createEnrolLtiContext,
+  deleteEnrolLtiContext,
+  updateEnrolLtiContext,
+} from "../api/enrolLtiContexts/mutations";
+import {
+  getEnrolLtiContextById,
+  getEnrolLtiContexts,
+} from "../api/enrolLtiContexts/queries";
 import {
   enrolLtiContextIdSchema,
   insertEnrolLtiContextParams,
   updateEnrolLtiContextParams,
-} from "@/lib/db/schema/enrolLtiContexts";
-import { createEnrolLtiContext, deleteEnrolLtiContext, updateEnrolLtiContext } from "@/lib/api/enrolLtiContexts/mutations";
+} from "../db/schema/enrolLtiContexts";
+import { publicProcedure, router } from "../server/trpc";
 
 export const enrolLtiContextsRouter = router({
   getEnrolLtiContexts: publicProcedure.query(async () => {
     return getEnrolLtiContexts();
   }),
-  getEnrolLtiContextById: publicProcedure.input(enrolLtiContextIdSchema).query(async ({ input }) => {
-    return getEnrolLtiContextById(input.id);
-  }),
+  getEnrolLtiContextById: publicProcedure
+    .input(enrolLtiContextIdSchema)
+    .query(async ({ input }) => {
+      return getEnrolLtiContextById(input.id);
+    }),
   createEnrolLtiContext: publicProcedure
     .input(insertEnrolLtiContextParams)
     .mutation(async ({ input }) => {

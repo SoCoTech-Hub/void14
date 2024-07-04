@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuizStatistic,
   deleteQuizStatistic,
   updateQuizStatistic,
-} from "@/lib/api/quizStatistics/mutations";
+} from "../api/quizStatistics/mutations";
 import {
-  QuizStatisticId,
-  NewQuizStatisticParams,
-  UpdateQuizStatisticParams,
-  quizStatisticIdSchema,
   insertQuizStatisticParams,
+  NewQuizStatisticParams,
+  QuizStatisticId,
+  quizStatisticIdSchema,
+  UpdateQuizStatisticParams,
   updateQuizStatisticParams,
-} from "@/lib/db/schema/quizStatistics";
+} from "../db/schema/quizStatistics";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateQuizStatistics = () => revalidatePath("/quiz-statistics");
 
-export const createQuizStatisticAction = async (input: NewQuizStatisticParams) => {
+export const createQuizStatisticAction = async (
+  input: NewQuizStatisticParams,
+) => {
   try {
     const payload = insertQuizStatisticParams.parse(input);
     await createQuizStatistic(payload);
@@ -37,7 +40,9 @@ export const createQuizStatisticAction = async (input: NewQuizStatisticParams) =
   }
 };
 
-export const updateQuizStatisticAction = async (input: UpdateQuizStatisticParams) => {
+export const updateQuizStatisticAction = async (
+  input: UpdateQuizStatisticParams,
+) => {
   try {
     const payload = updateQuizStatisticParams.parse(input);
     await updateQuizStatistic(payload.id, payload);

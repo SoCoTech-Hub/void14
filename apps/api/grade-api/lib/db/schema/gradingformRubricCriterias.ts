@@ -1,4 +1,3 @@
-import { type getGradingformRubricCriterias } from "@/lib/api/gradingformRubricCriterias/queries";
 import {
   integer,
   pgTable,
@@ -10,6 +9,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getGradingformRubricCriterias } from "../api/gradingformRubricCriterias/queries";
 
 export const gradingformRubricCriterias = pgTable(
   "gradingform_rubric_criterias",

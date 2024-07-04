@@ -1,19 +1,28 @@
-import { getAssignFeedbackEditpdfRotById, getAssignFeedbackEditpdfRots } from "@/lib/api/assignFeedbackEditpdfRots/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createAssignFeedbackEditpdfRot,
+  deleteAssignFeedbackEditpdfRot,
+  updateAssignFeedbackEditpdfRot,
+} from "../api/assignFeedbackEditpdfRots/mutations";
+import {
+  getAssignFeedbackEditpdfRotById,
+  getAssignFeedbackEditpdfRots,
+} from "../api/assignFeedbackEditpdfRots/queries";
 import {
   assignFeedbackEditpdfRotIdSchema,
   insertAssignFeedbackEditpdfRotParams,
   updateAssignFeedbackEditpdfRotParams,
-} from "@/lib/db/schema/assignFeedbackEditpdfRots";
-import { createAssignFeedbackEditpdfRot, deleteAssignFeedbackEditpdfRot, updateAssignFeedbackEditpdfRot } from "@/lib/api/assignFeedbackEditpdfRots/mutations";
+} from "../db/schema/assignFeedbackEditpdfRots";
+import { publicProcedure, router } from "../server/trpc";
 
 export const assignFeedbackEditpdfRotsRouter = router({
   getAssignFeedbackEditpdfRots: publicProcedure.query(async () => {
     return getAssignFeedbackEditpdfRots();
   }),
-  getAssignFeedbackEditpdfRotById: publicProcedure.input(assignFeedbackEditpdfRotIdSchema).query(async ({ input }) => {
-    return getAssignFeedbackEditpdfRotById(input.id);
-  }),
+  getAssignFeedbackEditpdfRotById: publicProcedure
+    .input(assignFeedbackEditpdfRotIdSchema)
+    .query(async ({ input }) => {
+      return getAssignFeedbackEditpdfRotById(input.id);
+    }),
   createAssignFeedbackEditpdfRot: publicProcedure
     .input(insertAssignFeedbackEditpdfRotParams)
     .mutation(async ({ input }) => {

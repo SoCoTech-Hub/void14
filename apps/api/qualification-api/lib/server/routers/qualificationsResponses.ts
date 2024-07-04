@@ -1,19 +1,28 @@
-import { getQualificationsResponseById, getQualificationsResponses } from "@/lib/api/qualificationsResponses/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  qualificationsResponseIdSchema,
+  createQualificationsResponse,
+  deleteQualificationsResponse,
+  updateQualificationsResponse,
+} from "../api/qualificationsResponses/mutations";
+import {
+  getQualificationsResponseById,
+  getQualificationsResponses,
+} from "../api/qualificationsResponses/queries";
+import {
   insertQualificationsResponseParams,
+  qualificationsResponseIdSchema,
   updateQualificationsResponseParams,
-} from "@/lib/db/schema/qualificationsResponses";
-import { createQualificationsResponse, deleteQualificationsResponse, updateQualificationsResponse } from "@/lib/api/qualificationsResponses/mutations";
+} from "../db/schema/qualificationsResponses";
+import { publicProcedure, router } from "../server/trpc";
 
 export const qualificationsResponsesRouter = router({
   getQualificationsResponses: publicProcedure.query(async () => {
     return getQualificationsResponses();
   }),
-  getQualificationsResponseById: publicProcedure.input(qualificationsResponseIdSchema).query(async ({ input }) => {
-    return getQualificationsResponseById(input.id);
-  }),
+  getQualificationsResponseById: publicProcedure
+    .input(qualificationsResponseIdSchema)
+    .query(async ({ input }) => {
+      return getQualificationsResponseById(input.id);
+    }),
   createQualificationsResponse: publicProcedure
     .input(insertQualificationsResponseParams)
     .mutation(async ({ input }) => {

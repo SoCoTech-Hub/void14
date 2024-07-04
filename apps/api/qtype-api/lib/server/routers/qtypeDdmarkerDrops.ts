@@ -1,19 +1,28 @@
-import { getQtypeDdmarkerDropById, getQtypeDdmarkerDrops } from "@/lib/api/qtypeDdmarkerDrops/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  qtypeDdmarkerDropIdSchema,
+  createQtypeDdmarkerDrop,
+  deleteQtypeDdmarkerDrop,
+  updateQtypeDdmarkerDrop,
+} from "../api/qtypeDdmarkerDrops/mutations";
+import {
+  getQtypeDdmarkerDropById,
+  getQtypeDdmarkerDrops,
+} from "../api/qtypeDdmarkerDrops/queries";
+import {
   insertQtypeDdmarkerDropParams,
+  qtypeDdmarkerDropIdSchema,
   updateQtypeDdmarkerDropParams,
-} from "@/lib/db/schema/qtypeDdmarkerDrops";
-import { createQtypeDdmarkerDrop, deleteQtypeDdmarkerDrop, updateQtypeDdmarkerDrop } from "@/lib/api/qtypeDdmarkerDrops/mutations";
+} from "../db/schema/qtypeDdmarkerDrops";
+import { publicProcedure, router } from "../server/trpc";
 
 export const qtypeDdmarkerDropsRouter = router({
   getQtypeDdmarkerDrops: publicProcedure.query(async () => {
     return getQtypeDdmarkerDrops();
   }),
-  getQtypeDdmarkerDropById: publicProcedure.input(qtypeDdmarkerDropIdSchema).query(async ({ input }) => {
-    return getQtypeDdmarkerDropById(input.id);
-  }),
+  getQtypeDdmarkerDropById: publicProcedure
+    .input(qtypeDdmarkerDropIdSchema)
+    .query(async ({ input }) => {
+      return getQtypeDdmarkerDropById(input.id);
+    }),
   createQtypeDdmarkerDrop: publicProcedure
     .input(insertQtypeDdmarkerDropParams)
     .mutation(async ({ input }) => {

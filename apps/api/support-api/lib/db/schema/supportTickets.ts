@@ -1,4 +1,3 @@
-import { type getSupportTickets } from "@/lib/api/supportTickets/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -13,6 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getSupportTickets } from "../api/supportTickets/queries";
 import { supportDepartments } from "./supportDepartments";
 import { supportStatuses } from "./supportStatuses";
 import { supportTopics } from "./supportTopics";

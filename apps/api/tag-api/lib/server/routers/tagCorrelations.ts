@@ -1,19 +1,28 @@
-import { getTagCorrelationById, getTagCorrelations } from "@/lib/api/tagCorrelations/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  tagCorrelationIdSchema,
+  createTagCorrelation,
+  deleteTagCorrelation,
+  updateTagCorrelation,
+} from "../api/tagCorrelations/mutations";
+import {
+  getTagCorrelationById,
+  getTagCorrelations,
+} from "../api/tagCorrelations/queries";
+import {
   insertTagCorrelationParams,
+  tagCorrelationIdSchema,
   updateTagCorrelationParams,
-} from "@/lib/db/schema/tagCorrelations";
-import { createTagCorrelation, deleteTagCorrelation, updateTagCorrelation } from "@/lib/api/tagCorrelations/mutations";
+} from "../db/schema/tagCorrelations";
+import { publicProcedure, router } from "../server/trpc";
 
 export const tagCorrelationsRouter = router({
   getTagCorrelations: publicProcedure.query(async () => {
     return getTagCorrelations();
   }),
-  getTagCorrelationById: publicProcedure.input(tagCorrelationIdSchema).query(async ({ input }) => {
-    return getTagCorrelationById(input.id);
-  }),
+  getTagCorrelationById: publicProcedure
+    .input(tagCorrelationIdSchema)
+    .query(async ({ input }) => {
+      return getTagCorrelationById(input.id);
+    }),
   createTagCorrelation: publicProcedure
     .input(insertTagCorrelationParams)
     .mutation(async ({ input }) => {

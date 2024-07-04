@@ -1,19 +1,28 @@
-import { getH5pactivityById, getH5pactivities } from "@/lib/api/h5pactivities/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createH5pactivity,
+  deleteH5pactivity,
+  updateH5pactivity,
+} from "../api/h5pactivities/mutations";
+import {
+  getH5pactivities,
+  getH5pactivityById,
+} from "../api/h5pactivities/queries";
 import {
   h5pactivityIdSchema,
   insertH5pactivityParams,
   updateH5pactivityParams,
-} from "@/lib/db/schema/h5pactivities";
-import { createH5pactivity, deleteH5pactivity, updateH5pactivity } from "@/lib/api/h5pactivities/mutations";
+} from "../db/schema/h5pactivities";
+import { publicProcedure, router } from "../server/trpc";
 
 export const h5pactivitiesRouter = router({
   getH5pactivities: publicProcedure.query(async () => {
     return getH5pactivities();
   }),
-  getH5pactivityById: publicProcedure.input(h5pactivityIdSchema).query(async ({ input }) => {
-    return getH5pactivityById(input.id);
-  }),
+  getH5pactivityById: publicProcedure
+    .input(h5pactivityIdSchema)
+    .query(async ({ input }) => {
+      return getH5pactivityById(input.id);
+    }),
   createH5pactivity: publicProcedure
     .input(insertH5pactivityParams)
     .mutation(async ({ input }) => {

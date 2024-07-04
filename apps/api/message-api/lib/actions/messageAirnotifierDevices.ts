@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMessageAirnotifierDevice,
   deleteMessageAirnotifierDevice,
   updateMessageAirnotifierDevice,
-} from "@/lib/api/messageAirnotifierDevices/mutations";
+} from "../api/messageAirnotifierDevices/mutations";
 import {
+  insertMessageAirnotifierDeviceParams,
   MessageAirnotifierDeviceId,
+  messageAirnotifierDeviceIdSchema,
   NewMessageAirnotifierDeviceParams,
   UpdateMessageAirnotifierDeviceParams,
-  messageAirnotifierDeviceIdSchema,
-  insertMessageAirnotifierDeviceParams,
   updateMessageAirnotifierDeviceParams,
-} from "@/lib/db/schema/messageAirnotifierDevices";
+} from "../db/schema/messageAirnotifierDevices";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateMessageAirnotifierDevices = () => revalidatePath("/message-airnotifier-devices");
+const revalidateMessageAirnotifierDevices = () =>
+  revalidatePath("/message-airnotifier-devices");
 
-export const createMessageAirnotifierDeviceAction = async (input: NewMessageAirnotifierDeviceParams) => {
+export const createMessageAirnotifierDeviceAction = async (
+  input: NewMessageAirnotifierDeviceParams,
+) => {
   try {
     const payload = insertMessageAirnotifierDeviceParams.parse(input);
     await createMessageAirnotifierDevice(payload);
@@ -37,7 +41,9 @@ export const createMessageAirnotifierDeviceAction = async (input: NewMessageAirn
   }
 };
 
-export const updateMessageAirnotifierDeviceAction = async (input: UpdateMessageAirnotifierDeviceParams) => {
+export const updateMessageAirnotifierDeviceAction = async (
+  input: UpdateMessageAirnotifierDeviceParams,
+) => {
   try {
     const payload = updateMessageAirnotifierDeviceParams.parse(input);
     await updateMessageAirnotifierDevice(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateMessageAirnotifierDeviceAction = async (input: UpdateMessageA
   }
 };
 
-export const deleteMessageAirnotifierDeviceAction = async (input: MessageAirnotifierDeviceId) => {
+export const deleteMessageAirnotifierDeviceAction = async (
+  input: MessageAirnotifierDeviceId,
+) => {
   try {
     const payload = messageAirnotifierDeviceIdSchema.parse({ id: input });
     await deleteMessageAirnotifierDevice(payload.id);

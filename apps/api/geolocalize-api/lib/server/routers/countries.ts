@@ -1,19 +1,25 @@
-import { getCountryById, getCountries } from "@/lib/api/countries/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createCountry,
+  deleteCountry,
+  updateCountry,
+} from "../api/countries/mutations";
+import { getCountries, getCountryById } from "../api/countries/queries";
 import {
   countryIdSchema,
   insertCountryParams,
   updateCountryParams,
-} from "@/lib/db/schema/countries";
-import { createCountry, deleteCountry, updateCountry } from "@/lib/api/countries/mutations";
+} from "../db/schema/countries";
+import { publicProcedure, router } from "../server/trpc";
 
 export const countriesRouter = router({
   getCountries: publicProcedure.query(async () => {
     return getCountries();
   }),
-  getCountryById: publicProcedure.input(countryIdSchema).query(async ({ input }) => {
-    return getCountryById(input.id);
-  }),
+  getCountryById: publicProcedure
+    .input(countryIdSchema)
+    .query(async ({ input }) => {
+      return getCountryById(input.id);
+    }),
   createCountry: publicProcedure
     .input(insertCountryParams)
     .mutation(async ({ input }) => {

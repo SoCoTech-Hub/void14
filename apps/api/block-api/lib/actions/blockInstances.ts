@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBlockInstance,
   deleteBlockInstance,
   updateBlockInstance,
-} from "@/lib/api/blockInstances/mutations";
+} from "../api/blockInstances/mutations";
 import {
   BlockInstanceId,
-  NewBlockInstanceParams,
-  UpdateBlockInstanceParams,
   blockInstanceIdSchema,
   insertBlockInstanceParams,
+  NewBlockInstanceParams,
+  UpdateBlockInstanceParams,
   updateBlockInstanceParams,
-} from "@/lib/db/schema/blockInstances";
+} from "../db/schema/blockInstances";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateBlockInstances = () => revalidatePath("/block-instances");
 
-export const createBlockInstanceAction = async (input: NewBlockInstanceParams) => {
+export const createBlockInstanceAction = async (
+  input: NewBlockInstanceParams,
+) => {
   try {
     const payload = insertBlockInstanceParams.parse(input);
     await createBlockInstance(payload);
@@ -37,7 +40,9 @@ export const createBlockInstanceAction = async (input: NewBlockInstanceParams) =
   }
 };
 
-export const updateBlockInstanceAction = async (input: UpdateBlockInstanceParams) => {
+export const updateBlockInstanceAction = async (
+  input: UpdateBlockInstanceParams,
+) => {
   try {
     const payload = updateBlockInstanceParams.parse(input);
     await updateBlockInstance(payload.id, payload);

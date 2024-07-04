@@ -1,19 +1,28 @@
-import { getGradeLetterById, getGradeLetters } from "@/lib/api/gradeLetters/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createGradeLetter,
+  deleteGradeLetter,
+  updateGradeLetter,
+} from "../api/gradeLetters/mutations";
+import {
+  getGradeLetterById,
+  getGradeLetters,
+} from "../api/gradeLetters/queries";
 import {
   gradeLetterIdSchema,
   insertGradeLetterParams,
   updateGradeLetterParams,
-} from "@/lib/db/schema/gradeLetters";
-import { createGradeLetter, deleteGradeLetter, updateGradeLetter } from "@/lib/api/gradeLetters/mutations";
+} from "../db/schema/gradeLetters";
+import { publicProcedure, router } from "../server/trpc";
 
 export const gradeLettersRouter = router({
   getGradeLetters: publicProcedure.query(async () => {
     return getGradeLetters();
   }),
-  getGradeLetterById: publicProcedure.input(gradeLetterIdSchema).query(async ({ input }) => {
-    return getGradeLetterById(input.id);
-  }),
+  getGradeLetterById: publicProcedure
+    .input(gradeLetterIdSchema)
+    .query(async ({ input }) => {
+      return getGradeLetterById(input.id);
+    }),
   createGradeLetter: publicProcedure
     .input(insertGradeLetterParams)
     .mutation(async ({ input }) => {

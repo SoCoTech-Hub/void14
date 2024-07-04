@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMessageUsersBlocked,
   deleteMessageUsersBlocked,
   updateMessageUsersBlocked,
-} from "@/lib/api/messageUsersBlockeds/mutations";
+} from "../api/messageUsersBlockeds/mutations";
 import {
+  insertMessageUsersBlockedParams,
   MessageUsersBlockedId,
+  messageUsersBlockedIdSchema,
   NewMessageUsersBlockedParams,
   UpdateMessageUsersBlockedParams,
-  messageUsersBlockedIdSchema,
-  insertMessageUsersBlockedParams,
   updateMessageUsersBlockedParams,
-} from "@/lib/db/schema/messageUsersBlockeds";
+} from "../db/schema/messageUsersBlockeds";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateMessageUsersBlockeds = () => revalidatePath("/message-users-blockeds");
+const revalidateMessageUsersBlockeds = () =>
+  revalidatePath("/message-users-blockeds");
 
-export const createMessageUsersBlockedAction = async (input: NewMessageUsersBlockedParams) => {
+export const createMessageUsersBlockedAction = async (
+  input: NewMessageUsersBlockedParams,
+) => {
   try {
     const payload = insertMessageUsersBlockedParams.parse(input);
     await createMessageUsersBlocked(payload);
@@ -37,7 +41,9 @@ export const createMessageUsersBlockedAction = async (input: NewMessageUsersBloc
   }
 };
 
-export const updateMessageUsersBlockedAction = async (input: UpdateMessageUsersBlockedParams) => {
+export const updateMessageUsersBlockedAction = async (
+  input: UpdateMessageUsersBlockedParams,
+) => {
   try {
     const payload = updateMessageUsersBlockedParams.parse(input);
     await updateMessageUsersBlocked(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateMessageUsersBlockedAction = async (input: UpdateMessageUsersB
   }
 };
 
-export const deleteMessageUsersBlockedAction = async (input: MessageUsersBlockedId) => {
+export const deleteMessageUsersBlockedAction = async (
+  input: MessageUsersBlockedId,
+) => {
   try {
     const payload = messageUsersBlockedIdSchema.parse({ id: input });
     await deleteMessageUsersBlocked(payload.id);

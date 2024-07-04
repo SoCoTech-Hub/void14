@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAssignSubmissionFile,
   deleteAssignSubmissionFile,
   updateAssignSubmissionFile,
-} from "@/lib/api/assignSubmissionFiles/mutations";
+} from "../api/assignSubmissionFiles/mutations";
 import {
   AssignSubmissionFileId,
-  NewAssignSubmissionFileParams,
-  UpdateAssignSubmissionFileParams,
   assignSubmissionFileIdSchema,
   insertAssignSubmissionFileParams,
+  NewAssignSubmissionFileParams,
+  UpdateAssignSubmissionFileParams,
   updateAssignSubmissionFileParams,
-} from "@/lib/db/schema/assignSubmissionFiles";
+} from "../db/schema/assignSubmissionFiles";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateAssignSubmissionFiles = () => revalidatePath("/assign-submission-files");
+const revalidateAssignSubmissionFiles = () =>
+  revalidatePath("/assign-submission-files");
 
-export const createAssignSubmissionFileAction = async (input: NewAssignSubmissionFileParams) => {
+export const createAssignSubmissionFileAction = async (
+  input: NewAssignSubmissionFileParams,
+) => {
   try {
     const payload = insertAssignSubmissionFileParams.parse(input);
     await createAssignSubmissionFile(payload);
@@ -37,7 +41,9 @@ export const createAssignSubmissionFileAction = async (input: NewAssignSubmissio
   }
 };
 
-export const updateAssignSubmissionFileAction = async (input: UpdateAssignSubmissionFileParams) => {
+export const updateAssignSubmissionFileAction = async (
+  input: UpdateAssignSubmissionFileParams,
+) => {
   try {
     const payload = updateAssignSubmissionFileParams.parse(input);
     await updateAssignSubmissionFile(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateAssignSubmissionFileAction = async (input: UpdateAssignSubmis
   }
 };
 
-export const deleteAssignSubmissionFileAction = async (input: AssignSubmissionFileId) => {
+export const deleteAssignSubmissionFileAction = async (
+  input: AssignSubmissionFileId,
+) => {
   try {
     const payload = assignSubmissionFileIdSchema.parse({ id: input });
     await deleteAssignSubmissionFile(payload.id);

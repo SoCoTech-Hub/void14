@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCustomFieldField,
   deleteCustomFieldField,
   updateCustomFieldField,
-} from "@/lib/api/customFieldFields/mutations";
+} from "../api/customFieldFields/mutations";
 import {
   CustomFieldFieldId,
-  NewCustomFieldFieldParams,
-  UpdateCustomFieldFieldParams,
   customFieldFieldIdSchema,
   insertCustomFieldFieldParams,
+  NewCustomFieldFieldParams,
+  UpdateCustomFieldFieldParams,
   updateCustomFieldFieldParams,
-} from "@/lib/db/schema/customFieldFields";
+} from "../db/schema/customFieldFields";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateCustomFieldFields = () => revalidatePath("/custom-field-fields");
+const revalidateCustomFieldFields = () =>
+  revalidatePath("/custom-field-fields");
 
-export const createCustomFieldFieldAction = async (input: NewCustomFieldFieldParams) => {
+export const createCustomFieldFieldAction = async (
+  input: NewCustomFieldFieldParams,
+) => {
   try {
     const payload = insertCustomFieldFieldParams.parse(input);
     await createCustomFieldField(payload);
@@ -37,7 +41,9 @@ export const createCustomFieldFieldAction = async (input: NewCustomFieldFieldPar
   }
 };
 
-export const updateCustomFieldFieldAction = async (input: UpdateCustomFieldFieldParams) => {
+export const updateCustomFieldFieldAction = async (
+  input: UpdateCustomFieldFieldParams,
+) => {
   try {
     const payload = updateCustomFieldFieldParams.parse(input);
     await updateCustomFieldField(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateCustomFieldFieldAction = async (input: UpdateCustomFieldField
   }
 };
 
-export const deleteCustomFieldFieldAction = async (input: CustomFieldFieldId) => {
+export const deleteCustomFieldFieldAction = async (
+  input: CustomFieldFieldId,
+) => {
   try {
     const payload = customFieldFieldIdSchema.parse({ id: input });
     await deleteCustomFieldField(payload.id);

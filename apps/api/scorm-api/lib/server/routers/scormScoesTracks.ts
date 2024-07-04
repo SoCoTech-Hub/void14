@@ -1,41 +1,41 @@
 import {
-	getScormScoesTrackById,
-	getScormScoesTracks
-} from '@/lib/api/scormScoesTracks/queries'
-import { publicProcedure, router } from '@/lib/server/trpc'
+  createScormScoesTrack,
+  deleteScormScoesTrack,
+  updateScormScoesTrack,
+} from "../api/scormScoesTracks/mutations";
 import {
-	scormScoesTrackIdSchema,
-	insertScormScoesTrackParams,
-	updateScormScoesTrackParams
-} from '@/lib/db/schema/scormScoesTracks'
+  getScormScoesTrackById,
+  getScormScoesTracks,
+} from "../api/scormScoesTracks/queries";
 import {
-	createScormScoesTrack,
-	deleteScormScoesTrack,
-	updateScormScoesTrack
-} from '@/lib/api/scormScoesTracks/mutations'
+  insertScormScoesTrackParams,
+  scormScoesTrackIdSchema,
+  updateScormScoesTrackParams,
+} from "../db/schema/scormScoesTracks";
+import { publicProcedure, router } from "../server/trpc";
 
 export const scormScoesTracksRouter = router({
-	getScormScoesTracks: publicProcedure.query(async () => {
-		return getScormScoesTracks()
-	}),
-	getScormScoesTrackById: publicProcedure
-		.input(scormScoesTrackIdSchema)
-		.query(async ({ input }) => {
-			return getScormScoesTrackById(input.id)
-		}),
-	createScormScoesTrack: publicProcedure
-		.input(insertScormScoesTrackParams)
-		.mutation(async ({ input }) => {
-			return createScormScoesTrack(input)
-		}),
-	updateScormScoesTrack: publicProcedure
-		.input(updateScormScoesTrackParams)
-		.mutation(async ({ input }) => {
-			return updateScormScoesTrack(input.id, input)
-		}),
-	deleteScormScoesTrack: publicProcedure
-		.input(scormScoesTrackIdSchema)
-		.mutation(async ({ input }) => {
-			return deleteScormScoesTrack(input.id)
-		})
-})
+  getScormScoesTracks: publicProcedure.query(async () => {
+    return getScormScoesTracks();
+  }),
+  getScormScoesTrackById: publicProcedure
+    .input(scormScoesTrackIdSchema)
+    .query(async ({ input }) => {
+      return getScormScoesTrackById(input.id);
+    }),
+  createScormScoesTrack: publicProcedure
+    .input(insertScormScoesTrackParams)
+    .mutation(async ({ input }) => {
+      return createScormScoesTrack(input);
+    }),
+  updateScormScoesTrack: publicProcedure
+    .input(updateScormScoesTrackParams)
+    .mutation(async ({ input }) => {
+      return updateScormScoesTrack(input.id, input);
+    }),
+  deleteScormScoesTrack: publicProcedure
+    .input(scormScoesTrackIdSchema)
+    .mutation(async ({ input }) => {
+      return deleteScormScoesTrack(input.id);
+    }),
+});

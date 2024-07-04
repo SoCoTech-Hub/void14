@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMnetService2rpc,
   deleteMnetService2rpc,
   updateMnetService2rpc,
-} from "@/lib/api/mnetService2rpcs/mutations";
+} from "../api/mnetService2rpcs/mutations";
 import {
+  insertMnetService2rpcParams,
   MnetService2rpcId,
+  mnetService2rpcIdSchema,
   NewMnetService2rpcParams,
   UpdateMnetService2rpcParams,
-  mnetService2rpcIdSchema,
-  insertMnetService2rpcParams,
   updateMnetService2rpcParams,
-} from "@/lib/db/schema/mnetService2rpcs";
+} from "../db/schema/mnetService2rpcs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateMnetService2rpcs = () => revalidatePath("/mnet-service2rpcs");
 
-export const createMnetService2rpcAction = async (input: NewMnetService2rpcParams) => {
+export const createMnetService2rpcAction = async (
+  input: NewMnetService2rpcParams,
+) => {
   try {
     const payload = insertMnetService2rpcParams.parse(input);
     await createMnetService2rpc(payload);
@@ -37,7 +40,9 @@ export const createMnetService2rpcAction = async (input: NewMnetService2rpcParam
   }
 };
 
-export const updateMnetService2rpcAction = async (input: UpdateMnetService2rpcParams) => {
+export const updateMnetService2rpcAction = async (
+  input: UpdateMnetService2rpcParams,
+) => {
   try {
     const payload = updateMnetService2rpcParams.parse(input);
     await updateMnetService2rpc(payload.id, payload);

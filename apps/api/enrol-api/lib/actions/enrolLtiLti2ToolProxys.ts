@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createEnrolLtiLti2ToolProxy,
   deleteEnrolLtiLti2ToolProxy,
   updateEnrolLtiLti2ToolProxy,
-} from "@/lib/api/enrolLtiLti2ToolProxys/mutations";
+} from "../api/enrolLtiLti2ToolProxys/mutations";
 import {
   EnrolLtiLti2ToolProxyId,
-  NewEnrolLtiLti2ToolProxyParams,
-  UpdateEnrolLtiLti2ToolProxyParams,
   enrolLtiLti2ToolProxyIdSchema,
   insertEnrolLtiLti2ToolProxyParams,
+  NewEnrolLtiLti2ToolProxyParams,
+  UpdateEnrolLtiLti2ToolProxyParams,
   updateEnrolLtiLti2ToolProxyParams,
-} from "@/lib/db/schema/enrolLtiLti2ToolProxys";
+} from "../db/schema/enrolLtiLti2ToolProxys";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateEnrolLtiLti2ToolProxys = () => revalidatePath("/enrol-lti-lti2-tool-proxys");
+const revalidateEnrolLtiLti2ToolProxys = () =>
+  revalidatePath("/enrol-lti-lti2-tool-proxys");
 
-export const createEnrolLtiLti2ToolProxyAction = async (input: NewEnrolLtiLti2ToolProxyParams) => {
+export const createEnrolLtiLti2ToolProxyAction = async (
+  input: NewEnrolLtiLti2ToolProxyParams,
+) => {
   try {
     const payload = insertEnrolLtiLti2ToolProxyParams.parse(input);
     await createEnrolLtiLti2ToolProxy(payload);
@@ -37,7 +41,9 @@ export const createEnrolLtiLti2ToolProxyAction = async (input: NewEnrolLtiLti2To
   }
 };
 
-export const updateEnrolLtiLti2ToolProxyAction = async (input: UpdateEnrolLtiLti2ToolProxyParams) => {
+export const updateEnrolLtiLti2ToolProxyAction = async (
+  input: UpdateEnrolLtiLti2ToolProxyParams,
+) => {
   try {
     const payload = updateEnrolLtiLti2ToolProxyParams.parse(input);
     await updateEnrolLtiLti2ToolProxy(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateEnrolLtiLti2ToolProxyAction = async (input: UpdateEnrolLtiLti
   }
 };
 
-export const deleteEnrolLtiLti2ToolProxyAction = async (input: EnrolLtiLti2ToolProxyId) => {
+export const deleteEnrolLtiLti2ToolProxyAction = async (
+  input: EnrolLtiLti2ToolProxyId,
+) => {
   try {
     const payload = enrolLtiLti2ToolProxyIdSchema.parse({ id: input });
     await deleteEnrolLtiLti2ToolProxy(payload.id);

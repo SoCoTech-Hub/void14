@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGroupingsGroup,
   deleteGroupingsGroup,
   updateGroupingsGroup,
-} from "@/lib/api/groupingsGroups/mutations";
+} from "../api/groupingsGroups/mutations";
 import {
   GroupingsGroupId,
-  NewGroupingsGroupParams,
-  UpdateGroupingsGroupParams,
   groupingsGroupIdSchema,
   insertGroupingsGroupParams,
+  NewGroupingsGroupParams,
+  UpdateGroupingsGroupParams,
   updateGroupingsGroupParams,
-} from "@/lib/db/schema/groupingsGroups";
+} from "../db/schema/groupingsGroups";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateGroupingsGroups = () => revalidatePath("/groupings-groups");
 
-export const createGroupingsGroupAction = async (input: NewGroupingsGroupParams) => {
+export const createGroupingsGroupAction = async (
+  input: NewGroupingsGroupParams,
+) => {
   try {
     const payload = insertGroupingsGroupParams.parse(input);
     await createGroupingsGroup(payload);
@@ -37,7 +40,9 @@ export const createGroupingsGroupAction = async (input: NewGroupingsGroupParams)
   }
 };
 
-export const updateGroupingsGroupAction = async (input: UpdateGroupingsGroupParams) => {
+export const updateGroupingsGroupAction = async (
+  input: UpdateGroupingsGroupParams,
+) => {
   try {
     const payload = updateGroupingsGroupParams.parse(input);
     await updateGroupingsGroup(payload.id, payload);

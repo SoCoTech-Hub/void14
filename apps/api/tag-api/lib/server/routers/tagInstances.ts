@@ -1,19 +1,28 @@
-import { getTagInstanceById, getTagInstances } from "@/lib/api/tagInstances/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  tagInstanceIdSchema,
+  createTagInstance,
+  deleteTagInstance,
+  updateTagInstance,
+} from "../api/tagInstances/mutations";
+import {
+  getTagInstanceById,
+  getTagInstances,
+} from "../api/tagInstances/queries";
+import {
   insertTagInstanceParams,
+  tagInstanceIdSchema,
   updateTagInstanceParams,
-} from "@/lib/db/schema/tagInstances";
-import { createTagInstance, deleteTagInstance, updateTagInstance } from "@/lib/api/tagInstances/mutations";
+} from "../db/schema/tagInstances";
+import { publicProcedure, router } from "../server/trpc";
 
 export const tagInstancesRouter = router({
   getTagInstances: publicProcedure.query(async () => {
     return getTagInstances();
   }),
-  getTagInstanceById: publicProcedure.input(tagInstanceIdSchema).query(async ({ input }) => {
-    return getTagInstanceById(input.id);
-  }),
+  getTagInstanceById: publicProcedure
+    .input(tagInstanceIdSchema)
+    .query(async ({ input }) => {
+      return getTagInstanceById(input.id);
+    }),
   createTagInstance: publicProcedure
     .input(insertTagInstanceParams)
     .mutation(async ({ input }) => {

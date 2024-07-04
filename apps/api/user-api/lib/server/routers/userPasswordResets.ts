@@ -1,19 +1,28 @@
-import { getUserPasswordResetById, getUserPasswordResets } from "@/lib/api/userPasswordResets/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  userPasswordResetIdSchema,
+  createUserPasswordReset,
+  deleteUserPasswordReset,
+  updateUserPasswordReset,
+} from "../api/userPasswordResets/mutations";
+import {
+  getUserPasswordResetById,
+  getUserPasswordResets,
+} from "../api/userPasswordResets/queries";
+import {
   insertUserPasswordResetParams,
   updateUserPasswordResetParams,
-} from "@/lib/db/schema/userPasswordResets";
-import { createUserPasswordReset, deleteUserPasswordReset, updateUserPasswordReset } from "@/lib/api/userPasswordResets/mutations";
+  userPasswordResetIdSchema,
+} from "../db/schema/userPasswordResets";
+import { publicProcedure, router } from "../server/trpc";
 
 export const userPasswordResetsRouter = router({
   getUserPasswordResets: publicProcedure.query(async () => {
     return getUserPasswordResets();
   }),
-  getUserPasswordResetById: publicProcedure.input(userPasswordResetIdSchema).query(async ({ input }) => {
-    return getUserPasswordResetById(input.id);
-  }),
+  getUserPasswordResetById: publicProcedure
+    .input(userPasswordResetIdSchema)
+    .query(async ({ input }) => {
+      return getUserPasswordResetById(input.id);
+    }),
   createUserPasswordReset: publicProcedure
     .input(insertUserPasswordResetParams)
     .mutation(async ({ input }) => {

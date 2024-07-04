@@ -1,19 +1,25 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  LessonOverrideId, 
-  NewLessonOverrideParams,
-  UpdateLessonOverrideParams, 
-  updateLessonOverrideSchema,
-  insertLessonOverrideSchema, 
-  lessonOverrides,
-  lessonOverrideIdSchema 
-} from "@/lib/db/schema/lessonOverrides";
 
-export const createLessonOverride = async (lessonOverride: NewLessonOverrideParams) => {
+import { db } from "../db/index";
+import {
+  insertLessonOverrideSchema,
+  LessonOverrideId,
+  lessonOverrideIdSchema,
+  lessonOverrides,
+  NewLessonOverrideParams,
+  UpdateLessonOverrideParams,
+  updateLessonOverrideSchema,
+} from "../db/schema/lessonOverrides";
+
+export const createLessonOverride = async (
+  lessonOverride: NewLessonOverrideParams,
+) => {
   const newLessonOverride = insertLessonOverrideSchema.parse(lessonOverride);
   try {
-    const [l] =  await db.insert(lessonOverrides).values(newLessonOverride).returning();
+    const [l] = await db
+      .insert(lessonOverrides)
+      .values(newLessonOverride)
+      .returning();
     return { lessonOverride: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +28,18 @@ export const createLessonOverride = async (lessonOverride: NewLessonOverridePara
   }
 };
 
-export const updateLessonOverride = async (id: LessonOverrideId, lessonOverride: UpdateLessonOverrideParams) => {
+export const updateLessonOverride = async (
+  id: LessonOverrideId,
+  lessonOverride: UpdateLessonOverrideParams,
+) => {
   const { id: lessonOverrideId } = lessonOverrideIdSchema.parse({ id });
   const newLessonOverride = updateLessonOverrideSchema.parse(lessonOverride);
   try {
-    const [l] =  await db
-     .update(lessonOverrides)
-     .set(newLessonOverride)
-     .where(eq(lessonOverrides.id, lessonOverrideId!))
-     .returning();
+    const [l] = await db
+      .update(lessonOverrides)
+      .set(newLessonOverride)
+      .where(eq(lessonOverrides.id, lessonOverrideId!))
+      .returning();
     return { lessonOverride: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +51,10 @@ export const updateLessonOverride = async (id: LessonOverrideId, lessonOverride:
 export const deleteLessonOverride = async (id: LessonOverrideId) => {
   const { id: lessonOverrideId } = lessonOverrideIdSchema.parse({ id });
   try {
-    const [l] =  await db.delete(lessonOverrides).where(eq(lessonOverrides.id, lessonOverrideId!))
-    .returning();
+    const [l] = await db
+      .delete(lessonOverrides)
+      .where(eq(lessonOverrides.id, lessonOverrideId!))
+      .returning();
     return { lessonOverride: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +62,3 @@ export const deleteLessonOverride = async (id: LessonOverrideId) => {
     throw { error: message };
   }
 };
-

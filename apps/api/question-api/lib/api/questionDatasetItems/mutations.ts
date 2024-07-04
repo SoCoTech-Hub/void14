@@ -1,19 +1,26 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  QuestionDatasetItemId, 
-  NewQuestionDatasetItemParams,
-  UpdateQuestionDatasetItemParams, 
-  updateQuestionDatasetItemSchema,
-  insertQuestionDatasetItemSchema, 
-  questionDatasetItems,
-  questionDatasetItemIdSchema 
-} from "@/lib/db/schema/questionDatasetItems";
 
-export const createQuestionDatasetItem = async (questionDatasetItem: NewQuestionDatasetItemParams) => {
-  const newQuestionDatasetItem = insertQuestionDatasetItemSchema.parse(questionDatasetItem);
+import { db } from "../db/index";
+import {
+  insertQuestionDatasetItemSchema,
+  NewQuestionDatasetItemParams,
+  QuestionDatasetItemId,
+  questionDatasetItemIdSchema,
+  questionDatasetItems,
+  UpdateQuestionDatasetItemParams,
+  updateQuestionDatasetItemSchema,
+} from "../db/schema/questionDatasetItems";
+
+export const createQuestionDatasetItem = async (
+  questionDatasetItem: NewQuestionDatasetItemParams,
+) => {
+  const newQuestionDatasetItem =
+    insertQuestionDatasetItemSchema.parse(questionDatasetItem);
   try {
-    const [q] =  await db.insert(questionDatasetItems).values(newQuestionDatasetItem).returning();
+    const [q] = await db
+      .insert(questionDatasetItems)
+      .values(newQuestionDatasetItem)
+      .returning();
     return { questionDatasetItem: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,21 @@ export const createQuestionDatasetItem = async (questionDatasetItem: NewQuestion
   }
 };
 
-export const updateQuestionDatasetItem = async (id: QuestionDatasetItemId, questionDatasetItem: UpdateQuestionDatasetItemParams) => {
-  const { id: questionDatasetItemId } = questionDatasetItemIdSchema.parse({ id });
-  const newQuestionDatasetItem = updateQuestionDatasetItemSchema.parse(questionDatasetItem);
+export const updateQuestionDatasetItem = async (
+  id: QuestionDatasetItemId,
+  questionDatasetItem: UpdateQuestionDatasetItemParams,
+) => {
+  const { id: questionDatasetItemId } = questionDatasetItemIdSchema.parse({
+    id,
+  });
+  const newQuestionDatasetItem =
+    updateQuestionDatasetItemSchema.parse(questionDatasetItem);
   try {
-    const [q] =  await db
-     .update(questionDatasetItems)
-     .set(newQuestionDatasetItem)
-     .where(eq(questionDatasetItems.id, questionDatasetItemId!))
-     .returning();
+    const [q] = await db
+      .update(questionDatasetItems)
+      .set(newQuestionDatasetItem)
+      .where(eq(questionDatasetItems.id, questionDatasetItemId!))
+      .returning();
     return { questionDatasetItem: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -40,10 +53,14 @@ export const updateQuestionDatasetItem = async (id: QuestionDatasetItemId, quest
 };
 
 export const deleteQuestionDatasetItem = async (id: QuestionDatasetItemId) => {
-  const { id: questionDatasetItemId } = questionDatasetItemIdSchema.parse({ id });
+  const { id: questionDatasetItemId } = questionDatasetItemIdSchema.parse({
+    id,
+  });
   try {
-    const [q] =  await db.delete(questionDatasetItems).where(eq(questionDatasetItems.id, questionDatasetItemId!))
-    .returning();
+    const [q] = await db
+      .delete(questionDatasetItems)
+      .where(eq(questionDatasetItems.id, questionDatasetItemId!))
+      .returning();
     return { questionDatasetItem: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +68,3 @@ export const deleteQuestionDatasetItem = async (id: QuestionDatasetItemId) => {
     throw { error: message };
   }
 };
-

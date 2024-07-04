@@ -1,4 +1,3 @@
-import { type getDigilibs } from "@/lib/api/digilibs/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -13,6 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getDigilibs } from "../api/digilibs/queries";
 import { digilibCategories } from "./digilibCategories";
 
 export const digilibs = pgTable(

@@ -1,19 +1,28 @@
-import { getSupportTopicById, getSupportTopics } from "@/lib/api/supportTopics/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  supportTopicIdSchema,
+  createSupportTopic,
+  deleteSupportTopic,
+  updateSupportTopic,
+} from "../api/supportTopics/mutations";
+import {
+  getSupportTopicById,
+  getSupportTopics,
+} from "../api/supportTopics/queries";
+import {
   insertSupportTopicParams,
+  supportTopicIdSchema,
   updateSupportTopicParams,
-} from "@/lib/db/schema/supportTopics";
-import { createSupportTopic, deleteSupportTopic, updateSupportTopic } from "@/lib/api/supportTopics/mutations";
+} from "../db/schema/supportTopics";
+import { publicProcedure, router } from "../server/trpc";
 
 export const supportTopicsRouter = router({
   getSupportTopics: publicProcedure.query(async () => {
     return getSupportTopics();
   }),
-  getSupportTopicById: publicProcedure.input(supportTopicIdSchema).query(async ({ input }) => {
-    return getSupportTopicById(input.id);
-  }),
+  getSupportTopicById: publicProcedure
+    .input(supportTopicIdSchema)
+    .query(async ({ input }) => {
+      return getSupportTopicById(input.id);
+    }),
   createSupportTopic: publicProcedure
     .input(insertSupportTopicParams)
     .mutation(async ({ input }) => {

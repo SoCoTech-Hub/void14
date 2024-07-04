@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createRoleCapability,
   deleteRoleCapability,
   updateRoleCapability,
-} from "@/lib/api/roleCapabilities/mutations";
+} from "../api/roleCapabilities/mutations";
 import {
-  RoleCapabilityId,
-  NewRoleCapabilityParams,
-  UpdateRoleCapabilityParams,
-  roleCapabilityIdSchema,
   insertRoleCapabilityParams,
+  NewRoleCapabilityParams,
+  RoleCapabilityId,
+  roleCapabilityIdSchema,
+  UpdateRoleCapabilityParams,
   updateRoleCapabilityParams,
-} from "@/lib/db/schema/roleCapabilities";
+} from "../db/schema/roleCapabilities";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateRoleCapabilities = () => revalidatePath("/role-capabilities");
 
-export const createRoleCapabilityAction = async (input: NewRoleCapabilityParams) => {
+export const createRoleCapabilityAction = async (
+  input: NewRoleCapabilityParams,
+) => {
   try {
     const payload = insertRoleCapabilityParams.parse(input);
     await createRoleCapability(payload);
@@ -37,7 +40,9 @@ export const createRoleCapabilityAction = async (input: NewRoleCapabilityParams)
   }
 };
 
-export const updateRoleCapabilityAction = async (input: UpdateRoleCapabilityParams) => {
+export const updateRoleCapabilityAction = async (
+  input: UpdateRoleCapabilityParams,
+) => {
   try {
     const payload = updateRoleCapabilityParams.parse(input);
     await updateRoleCapability(payload.id, payload);

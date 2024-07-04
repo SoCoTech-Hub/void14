@@ -1,19 +1,28 @@
-import { getUserPreferenceById, getUserPreferences } from "@/lib/api/userPreferences/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  userPreferenceIdSchema,
+  createUserPreference,
+  deleteUserPreference,
+  updateUserPreference,
+} from "../api/userPreferences/mutations";
+import {
+  getUserPreferenceById,
+  getUserPreferences,
+} from "../api/userPreferences/queries";
+import {
   insertUserPreferenceParams,
   updateUserPreferenceParams,
-} from "@/lib/db/schema/userPreferences";
-import { createUserPreference, deleteUserPreference, updateUserPreference } from "@/lib/api/userPreferences/mutations";
+  userPreferenceIdSchema,
+} from "../db/schema/userPreferences";
+import { publicProcedure, router } from "../server/trpc";
 
 export const userPreferencesRouter = router({
   getUserPreferences: publicProcedure.query(async () => {
     return getUserPreferences();
   }),
-  getUserPreferenceById: publicProcedure.input(userPreferenceIdSchema).query(async ({ input }) => {
-    return getUserPreferenceById(input.id);
-  }),
+  getUserPreferenceById: publicProcedure
+    .input(userPreferenceIdSchema)
+    .query(async ({ input }) => {
+      return getUserPreferenceById(input.id);
+    }),
   createUserPreference: publicProcedure
     .input(insertUserPreferenceParams)
     .mutation(async ({ input }) => {

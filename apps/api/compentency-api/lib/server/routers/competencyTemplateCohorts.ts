@@ -1,19 +1,28 @@
-import { getCompetencyTemplateCohortById, getCompetencyTemplateCohorts } from "@/lib/api/competencyTemplateCohorts/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createCompetencyTemplateCohort,
+  deleteCompetencyTemplateCohort,
+  updateCompetencyTemplateCohort,
+} from "../api/competencyTemplateCohorts/mutations";
+import {
+  getCompetencyTemplateCohortById,
+  getCompetencyTemplateCohorts,
+} from "../api/competencyTemplateCohorts/queries";
 import {
   competencyTemplateCohortIdSchema,
   insertCompetencyTemplateCohortParams,
   updateCompetencyTemplateCohortParams,
-} from "@/lib/db/schema/competencyTemplateCohorts";
-import { createCompetencyTemplateCohort, deleteCompetencyTemplateCohort, updateCompetencyTemplateCohort } from "@/lib/api/competencyTemplateCohorts/mutations";
+} from "../db/schema/competencyTemplateCohorts";
+import { publicProcedure, router } from "../server/trpc";
 
 export const competencyTemplateCohortsRouter = router({
   getCompetencyTemplateCohorts: publicProcedure.query(async () => {
     return getCompetencyTemplateCohorts();
   }),
-  getCompetencyTemplateCohortById: publicProcedure.input(competencyTemplateCohortIdSchema).query(async ({ input }) => {
-    return getCompetencyTemplateCohortById(input.id);
-  }),
+  getCompetencyTemplateCohortById: publicProcedure
+    .input(competencyTemplateCohortIdSchema)
+    .query(async ({ input }) => {
+      return getCompetencyTemplateCohortById(input.id);
+    }),
   createCompetencyTemplateCohort: publicProcedure
     .input(insertCompetencyTemplateCohortParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAssignUserMapping,
   deleteAssignUserMapping,
   updateAssignUserMapping,
-} from "@/lib/api/assignUserMappings/mutations";
+} from "../api/assignUserMappings/mutations";
 import {
   AssignUserMappingId,
-  NewAssignUserMappingParams,
-  UpdateAssignUserMappingParams,
   assignUserMappingIdSchema,
   insertAssignUserMappingParams,
+  NewAssignUserMappingParams,
+  UpdateAssignUserMappingParams,
   updateAssignUserMappingParams,
-} from "@/lib/db/schema/assignUserMappings";
+} from "../db/schema/assignUserMappings";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateAssignUserMappings = () => revalidatePath("/assign-user-mappings");
+const revalidateAssignUserMappings = () =>
+  revalidatePath("/assign-user-mappings");
 
-export const createAssignUserMappingAction = async (input: NewAssignUserMappingParams) => {
+export const createAssignUserMappingAction = async (
+  input: NewAssignUserMappingParams,
+) => {
   try {
     const payload = insertAssignUserMappingParams.parse(input);
     await createAssignUserMapping(payload);
@@ -37,7 +41,9 @@ export const createAssignUserMappingAction = async (input: NewAssignUserMappingP
   }
 };
 
-export const updateAssignUserMappingAction = async (input: UpdateAssignUserMappingParams) => {
+export const updateAssignUserMappingAction = async (
+  input: UpdateAssignUserMappingParams,
+) => {
   try {
     const payload = updateAssignUserMappingParams.parse(input);
     await updateAssignUserMapping(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateAssignUserMappingAction = async (input: UpdateAssignUserMappi
   }
 };
 
-export const deleteAssignUserMappingAction = async (input: AssignUserMappingId) => {
+export const deleteAssignUserMappingAction = async (
+  input: AssignUserMappingId,
+) => {
   try {
     const payload = assignUserMappingIdSchema.parse({ id: input });
     await deleteAssignUserMapping(payload.id);

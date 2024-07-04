@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createEventsQueue,
   deleteEventsQueue,
   updateEventsQueue,
-} from "@/lib/api/eventsQueues/mutations";
+} from "../api/eventsQueues/mutations";
 import {
   EventsQueueId,
-  NewEventsQueueParams,
-  UpdateEventsQueueParams,
   eventsQueueIdSchema,
   insertEventsQueueParams,
+  NewEventsQueueParams,
+  UpdateEventsQueueParams,
   updateEventsQueueParams,
-} from "@/lib/db/schema/eventsQueues";
+} from "../db/schema/eventsQueues";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createEventsQueueAction = async (input: NewEventsQueueParams) => {
   }
 };
 
-export const updateEventsQueueAction = async (input: UpdateEventsQueueParams) => {
+export const updateEventsQueueAction = async (
+  input: UpdateEventsQueueParams,
+) => {
   try {
     const payload = updateEventsQueueParams.parse(input);
     await updateEventsQueue(payload.id, payload);

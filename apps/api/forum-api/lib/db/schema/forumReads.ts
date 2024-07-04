@@ -1,9 +1,10 @@
-import { type getForumReads } from "@/lib/api/forumReads/queries";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getForumReads } from "../api/forumReads/queries";
 
 export const forumReads = pgTable("forum_reads", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

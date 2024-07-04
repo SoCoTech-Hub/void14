@@ -1,19 +1,28 @@
-import { getQuestionBankEntryById, getQuestionBankEntries } from "@/lib/api/questionBankEntries/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  questionBankEntryIdSchema,
+  createQuestionBankEntry,
+  deleteQuestionBankEntry,
+  updateQuestionBankEntry,
+} from "../api/questionBankEntries/mutations";
+import {
+  getQuestionBankEntries,
+  getQuestionBankEntryById,
+} from "../api/questionBankEntries/queries";
+import {
   insertQuestionBankEntryParams,
+  questionBankEntryIdSchema,
   updateQuestionBankEntryParams,
-} from "@/lib/db/schema/questionBankEntries";
-import { createQuestionBankEntry, deleteQuestionBankEntry, updateQuestionBankEntry } from "@/lib/api/questionBankEntries/mutations";
+} from "../db/schema/questionBankEntries";
+import { publicProcedure, router } from "../server/trpc";
 
 export const questionBankEntriesRouter = router({
   getQuestionBankEntries: publicProcedure.query(async () => {
     return getQuestionBankEntries();
   }),
-  getQuestionBankEntryById: publicProcedure.input(questionBankEntryIdSchema).query(async ({ input }) => {
-    return getQuestionBankEntryById(input.id);
-  }),
+  getQuestionBankEntryById: publicProcedure
+    .input(questionBankEntryIdSchema)
+    .query(async ({ input }) => {
+      return getQuestionBankEntryById(input.id);
+    }),
   createQuestionBankEntry: publicProcedure
     .input(insertQuestionBankEntryParams)
     .mutation(async ({ input }) => {

@@ -1,8 +1,8 @@
-import { computersRouter } from "./computers";
-import { router } from "@/lib/server/trpc";
-import { choicesRouter } from "./choices";
-import { choiceOptionsRouter } from "./choiceOptions";
+import { router } from "../server/trpc";
 import { choiceAnswersRouter } from "./choiceAnswers";
+import { choiceOptionsRouter } from "./choiceOptions";
+import { choicesRouter } from "./choices";
+import { computersRouter } from "./computers";
 
 export const appRouter = router({
   computers: computersRouter,

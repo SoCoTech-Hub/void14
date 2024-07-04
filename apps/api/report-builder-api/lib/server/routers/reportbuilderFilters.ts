@@ -1,19 +1,28 @@
-import { getReportbuilderFilterById, getReportbuilderFilters } from "@/lib/api/reportbuilderFilters/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  reportbuilderFilterIdSchema,
+  createReportbuilderFilter,
+  deleteReportbuilderFilter,
+  updateReportbuilderFilter,
+} from "../api/reportbuilderFilters/mutations";
+import {
+  getReportbuilderFilterById,
+  getReportbuilderFilters,
+} from "../api/reportbuilderFilters/queries";
+import {
   insertReportbuilderFilterParams,
+  reportbuilderFilterIdSchema,
   updateReportbuilderFilterParams,
-} from "@/lib/db/schema/reportbuilderFilters";
-import { createReportbuilderFilter, deleteReportbuilderFilter, updateReportbuilderFilter } from "@/lib/api/reportbuilderFilters/mutations";
+} from "../db/schema/reportbuilderFilters";
+import { publicProcedure, router } from "../server/trpc";
 
 export const reportbuilderFiltersRouter = router({
   getReportbuilderFilters: publicProcedure.query(async () => {
     return getReportbuilderFilters();
   }),
-  getReportbuilderFilterById: publicProcedure.input(reportbuilderFilterIdSchema).query(async ({ input }) => {
-    return getReportbuilderFilterById(input.id);
-  }),
+  getReportbuilderFilterById: publicProcedure
+    .input(reportbuilderFilterIdSchema)
+    .query(async ({ input }) => {
+      return getReportbuilderFilterById(input.id);
+    }),
   createReportbuilderFilter: publicProcedure
     .input(insertReportbuilderFilterParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBadgeExternal,
   deleteBadgeExternal,
   updateBadgeExternal,
-} from "@/lib/api/badgeExternals/mutations";
+} from "../api/badgeExternals/mutations";
 import {
   BadgeExternalId,
-  NewBadgeExternalParams,
-  UpdateBadgeExternalParams,
   badgeExternalIdSchema,
   insertBadgeExternalParams,
+  NewBadgeExternalParams,
+  UpdateBadgeExternalParams,
   updateBadgeExternalParams,
-} from "@/lib/db/schema/badgeExternals";
+} from "../db/schema/badgeExternals";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateBadgeExternals = () => revalidatePath("/badge-externals");
 
-export const createBadgeExternalAction = async (input: NewBadgeExternalParams) => {
+export const createBadgeExternalAction = async (
+  input: NewBadgeExternalParams,
+) => {
   try {
     const payload = insertBadgeExternalParams.parse(input);
     await createBadgeExternal(payload);
@@ -37,7 +40,9 @@ export const createBadgeExternalAction = async (input: NewBadgeExternalParams) =
   }
 };
 
-export const updateBadgeExternalAction = async (input: UpdateBadgeExternalParams) => {
+export const updateBadgeExternalAction = async (
+  input: UpdateBadgeExternalParams,
+) => {
   try {
     const payload = updateBadgeExternalParams.parse(input);
     await updateBadgeExternal(payload.id, payload);

@@ -1,19 +1,28 @@
-import { getQuestionDatasetDefinitionById, getQuestionDatasetDefinitions } from "@/lib/api/questionDatasetDefinitions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  questionDatasetDefinitionIdSchema,
+  createQuestionDatasetDefinition,
+  deleteQuestionDatasetDefinition,
+  updateQuestionDatasetDefinition,
+} from "../api/questionDatasetDefinitions/mutations";
+import {
+  getQuestionDatasetDefinitionById,
+  getQuestionDatasetDefinitions,
+} from "../api/questionDatasetDefinitions/queries";
+import {
   insertQuestionDatasetDefinitionParams,
+  questionDatasetDefinitionIdSchema,
   updateQuestionDatasetDefinitionParams,
-} from "@/lib/db/schema/questionDatasetDefinitions";
-import { createQuestionDatasetDefinition, deleteQuestionDatasetDefinition, updateQuestionDatasetDefinition } from "@/lib/api/questionDatasetDefinitions/mutations";
+} from "../db/schema/questionDatasetDefinitions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const questionDatasetDefinitionsRouter = router({
   getQuestionDatasetDefinitions: publicProcedure.query(async () => {
     return getQuestionDatasetDefinitions();
   }),
-  getQuestionDatasetDefinitionById: publicProcedure.input(questionDatasetDefinitionIdSchema).query(async ({ input }) => {
-    return getQuestionDatasetDefinitionById(input.id);
-  }),
+  getQuestionDatasetDefinitionById: publicProcedure
+    .input(questionDatasetDefinitionIdSchema)
+    .query(async ({ input }) => {
+      return getQuestionDatasetDefinitionById(input.id);
+    }),
   createQuestionDatasetDefinition: publicProcedure
     .input(insertQuestionDatasetDefinitionParams)
     .mutation(async ({ input }) => {

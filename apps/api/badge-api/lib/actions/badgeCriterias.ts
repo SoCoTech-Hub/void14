@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBadgeCriteria,
   deleteBadgeCriteria,
   updateBadgeCriteria,
-} from "@/lib/api/badgeCriterias/mutations";
+} from "../api/badgeCriterias/mutations";
 import {
   BadgeCriteriaId,
-  NewBadgeCriteriaParams,
-  UpdateBadgeCriteriaParams,
   badgeCriteriaIdSchema,
   insertBadgeCriteriaParams,
+  NewBadgeCriteriaParams,
+  UpdateBadgeCriteriaParams,
   updateBadgeCriteriaParams,
-} from "@/lib/db/schema/badgeCriterias";
+} from "../db/schema/badgeCriterias";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateBadgeCriterias = () => revalidatePath("/badge-criterias");
 
-export const createBadgeCriteriaAction = async (input: NewBadgeCriteriaParams) => {
+export const createBadgeCriteriaAction = async (
+  input: NewBadgeCriteriaParams,
+) => {
   try {
     const payload = insertBadgeCriteriaParams.parse(input);
     await createBadgeCriteria(payload);
@@ -37,7 +40,9 @@ export const createBadgeCriteriaAction = async (input: NewBadgeCriteriaParams) =
   }
 };
 
-export const updateBadgeCriteriaAction = async (input: UpdateBadgeCriteriaParams) => {
+export const updateBadgeCriteriaAction = async (
+  input: UpdateBadgeCriteriaParams,
+) => {
   try {
     const payload = updateBadgeCriteriaParams.parse(input);
     await updateBadgeCriteria(payload.id, payload);

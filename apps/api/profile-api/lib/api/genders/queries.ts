@@ -1,10 +1,12 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { type GenderId, genderIdSchema, genders } from "@/lib/db/schema/genders";
+
+import type { GenderId } from "../db/schema/genders";
+import { db } from "../db/index";
+import { genderIdSchema, genders } from "../db/schema/genders";
 
 export const getGenders = async () => {
   const rows = await db.select().from(genders);
-  const g = rows
+  const g = rows;
   return { genders: g };
 };
 
@@ -15,5 +17,3 @@ export const getGenderById = async (id: GenderId) => {
   const g = row;
   return { gender: g };
 };
-
-

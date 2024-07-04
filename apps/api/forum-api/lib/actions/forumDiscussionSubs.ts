@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createForumDiscussionSub,
   deleteForumDiscussionSub,
   updateForumDiscussionSub,
-} from "@/lib/api/forumDiscussionSubs/mutations";
+} from "../api/forumDiscussionSubs/mutations";
 import {
   ForumDiscussionSubId,
-  NewForumDiscussionSubParams,
-  UpdateForumDiscussionSubParams,
   forumDiscussionSubIdSchema,
   insertForumDiscussionSubParams,
+  NewForumDiscussionSubParams,
+  UpdateForumDiscussionSubParams,
   updateForumDiscussionSubParams,
-} from "@/lib/db/schema/forumDiscussionSubs";
+} from "../db/schema/forumDiscussionSubs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateForumDiscussionSubs = () => revalidatePath("/forum-discussion-subs");
+const revalidateForumDiscussionSubs = () =>
+  revalidatePath("/forum-discussion-subs");
 
-export const createForumDiscussionSubAction = async (input: NewForumDiscussionSubParams) => {
+export const createForumDiscussionSubAction = async (
+  input: NewForumDiscussionSubParams,
+) => {
   try {
     const payload = insertForumDiscussionSubParams.parse(input);
     await createForumDiscussionSub(payload);
@@ -37,7 +41,9 @@ export const createForumDiscussionSubAction = async (input: NewForumDiscussionSu
   }
 };
 
-export const updateForumDiscussionSubAction = async (input: UpdateForumDiscussionSubParams) => {
+export const updateForumDiscussionSubAction = async (
+  input: UpdateForumDiscussionSubParams,
+) => {
   try {
     const payload = updateForumDiscussionSubParams.parse(input);
     await updateForumDiscussionSub(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateForumDiscussionSubAction = async (input: UpdateForumDiscussio
   }
 };
 
-export const deleteForumDiscussionSubAction = async (input: ForumDiscussionSubId) => {
+export const deleteForumDiscussionSubAction = async (
+  input: ForumDiscussionSubId,
+) => {
   try {
     const payload = forumDiscussionSubIdSchema.parse({ id: input });
     await deleteForumDiscussionSub(payload.id);

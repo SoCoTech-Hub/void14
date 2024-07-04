@@ -1,11 +1,11 @@
-import { getDataById, getDatas } from "@/lib/api/datas/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import { createData, deleteData, updateData } from "../api/datas/mutations";
+import { getDataById, getDatas } from "../api/datas/queries";
 import {
   dataIdSchema,
   insertDataParams,
   updateDataParams,
-} from "@/lib/db/schema/datas";
-import { createData, deleteData, updateData } from "@/lib/api/datas/mutations";
+} from "../db/schema/datas";
+import { publicProcedure, router } from "../server/trpc";
 
 export const datasRouter = router({
   getDatas: publicProcedure.query(async () => {

@@ -1,4 +1,3 @@
-import { type getMyPages } from "@/lib/api/myPages/queries";
 import {
   boolean,
   integer,
@@ -10,6 +9,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getMyPages } from "../api/myPages/queries";
 
 export const myPages = pgTable(
   "my_pages",

@@ -1,19 +1,28 @@
-import { getQuestionDatasetItemById, getQuestionDatasetItems } from "@/lib/api/questionDatasetItems/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  questionDatasetItemIdSchema,
+  createQuestionDatasetItem,
+  deleteQuestionDatasetItem,
+  updateQuestionDatasetItem,
+} from "../api/questionDatasetItems/mutations";
+import {
+  getQuestionDatasetItemById,
+  getQuestionDatasetItems,
+} from "../api/questionDatasetItems/queries";
+import {
   insertQuestionDatasetItemParams,
+  questionDatasetItemIdSchema,
   updateQuestionDatasetItemParams,
-} from "@/lib/db/schema/questionDatasetItems";
-import { createQuestionDatasetItem, deleteQuestionDatasetItem, updateQuestionDatasetItem } from "@/lib/api/questionDatasetItems/mutations";
+} from "../db/schema/questionDatasetItems";
+import { publicProcedure, router } from "../server/trpc";
 
 export const questionDatasetItemsRouter = router({
   getQuestionDatasetItems: publicProcedure.query(async () => {
     return getQuestionDatasetItems();
   }),
-  getQuestionDatasetItemById: publicProcedure.input(questionDatasetItemIdSchema).query(async ({ input }) => {
-    return getQuestionDatasetItemById(input.id);
-  }),
+  getQuestionDatasetItemById: publicProcedure
+    .input(questionDatasetItemIdSchema)
+    .query(async ({ input }) => {
+      return getQuestionDatasetItemById(input.id);
+    }),
   createQuestionDatasetItem: publicProcedure
     .input(insertQuestionDatasetItemParams)
     .mutation(async ({ input }) => {

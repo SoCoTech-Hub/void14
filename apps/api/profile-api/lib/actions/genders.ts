@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGender,
   deleteGender,
   updateGender,
-} from "@/lib/api/genders/mutations";
+} from "../api/genders/mutations";
 import {
   GenderId,
-  NewGenderParams,
-  UpdateGenderParams,
   genderIdSchema,
   insertGenderParams,
+  NewGenderParams,
+  UpdateGenderParams,
   updateGenderParams,
-} from "@/lib/db/schema/genders";
+} from "../db/schema/genders";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

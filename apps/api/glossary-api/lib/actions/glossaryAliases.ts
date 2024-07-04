@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGlossaryAlias,
   deleteGlossaryAlias,
   updateGlossaryAlias,
-} from "@/lib/api/glossaryAliases/mutations";
+} from "../api/glossaryAliases/mutations";
 import {
   GlossaryAliasId,
-  NewGlossaryAliasParams,
-  UpdateGlossaryAliasParams,
   glossaryAliasIdSchema,
   insertGlossaryAliasParams,
+  NewGlossaryAliasParams,
+  UpdateGlossaryAliasParams,
   updateGlossaryAliasParams,
-} from "@/lib/db/schema/glossaryAliases";
+} from "../db/schema/glossaryAliases";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateGlossaryAliases = () => revalidatePath("/glossary-aliases");
 
-export const createGlossaryAliasAction = async (input: NewGlossaryAliasParams) => {
+export const createGlossaryAliasAction = async (
+  input: NewGlossaryAliasParams,
+) => {
   try {
     const payload = insertGlossaryAliasParams.parse(input);
     await createGlossaryAlias(payload);
@@ -37,7 +40,9 @@ export const createGlossaryAliasAction = async (input: NewGlossaryAliasParams) =
   }
 };
 
-export const updateGlossaryAliasAction = async (input: UpdateGlossaryAliasParams) => {
+export const updateGlossaryAliasAction = async (
+  input: UpdateGlossaryAliasParams,
+) => {
   try {
     const payload = updateGlossaryAliasParams.parse(input);
     await updateGlossaryAlias(payload.id, payload);

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createLessonOverride,
   deleteLessonOverride,
   updateLessonOverride,
-} from "@/lib/api/lessonOverrides/mutations";
+} from "../api/lessonOverrides/mutations";
 import {
+  insertLessonOverrideParams,
   LessonOverrideId,
+  lessonOverrideIdSchema,
   NewLessonOverrideParams,
   UpdateLessonOverrideParams,
-  lessonOverrideIdSchema,
-  insertLessonOverrideParams,
   updateLessonOverrideParams,
-} from "@/lib/db/schema/lessonOverrides";
+} from "../db/schema/lessonOverrides";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateLessonOverrides = () => revalidatePath("/lesson-overrides");
 
-export const createLessonOverrideAction = async (input: NewLessonOverrideParams) => {
+export const createLessonOverrideAction = async (
+  input: NewLessonOverrideParams,
+) => {
   try {
     const payload = insertLessonOverrideParams.parse(input);
     await createLessonOverride(payload);
@@ -37,7 +40,9 @@ export const createLessonOverrideAction = async (input: NewLessonOverrideParams)
   }
 };
 
-export const updateLessonOverrideAction = async (input: UpdateLessonOverrideParams) => {
+export const updateLessonOverrideAction = async (
+  input: UpdateLessonOverrideParams,
+) => {
   try {
     const payload = updateLessonOverrideParams.parse(input);
     await updateLessonOverride(payload.id, payload);

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBigBlueButtonBn,
   deleteBigBlueButtonBn,
   updateBigBlueButtonBn,
-} from "@/lib/api/bigBlueButtonBns/mutations";
+} from "../api/bigBlueButtonBns/mutations";
 import {
   BigBlueButtonBnId,
-  NewBigBlueButtonBnParams,
-  UpdateBigBlueButtonBnParams,
   bigBlueButtonBnIdSchema,
   insertBigBlueButtonBnParams,
+  NewBigBlueButtonBnParams,
+  UpdateBigBlueButtonBnParams,
   updateBigBlueButtonBnParams,
-} from "@/lib/db/schema/bigBlueButtonBns";
+} from "../db/schema/bigBlueButtonBns";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateBigBlueButtonBns = () => revalidatePath("/big-blue-button-bns");
 
-export const createBigBlueButtonBnAction = async (input: NewBigBlueButtonBnParams) => {
+export const createBigBlueButtonBnAction = async (
+  input: NewBigBlueButtonBnParams,
+) => {
   try {
     const payload = insertBigBlueButtonBnParams.parse(input);
     await createBigBlueButtonBn(payload);
@@ -37,7 +40,9 @@ export const createBigBlueButtonBnAction = async (input: NewBigBlueButtonBnParam
   }
 };
 
-export const updateBigBlueButtonBnAction = async (input: UpdateBigBlueButtonBnParams) => {
+export const updateBigBlueButtonBnAction = async (
+  input: UpdateBigBlueButtonBnParams,
+) => {
   try {
     const payload = updateBigBlueButtonBnParams.parse(input);
     await updateBigBlueButtonBn(payload.id, payload);

@@ -1,19 +1,26 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  CustomFieldCategoryId, 
-  NewCustomFieldCategoryParams,
-  UpdateCustomFieldCategoryParams, 
-  updateCustomFieldCategorySchema,
-  insertCustomFieldCategorySchema, 
-  customFieldCategories,
-  customFieldCategoryIdSchema 
-} from "@/lib/db/schema/customFieldCategories";
 
-export const createCustomFieldCategory = async (customFieldCategory: NewCustomFieldCategoryParams) => {
-  const newCustomFieldCategory = insertCustomFieldCategorySchema.parse(customFieldCategory);
+import { db } from "../db/index";
+import {
+  customFieldCategories,
+  CustomFieldCategoryId,
+  customFieldCategoryIdSchema,
+  insertCustomFieldCategorySchema,
+  NewCustomFieldCategoryParams,
+  UpdateCustomFieldCategoryParams,
+  updateCustomFieldCategorySchema,
+} from "../db/schema/customFieldCategories";
+
+export const createCustomFieldCategory = async (
+  customFieldCategory: NewCustomFieldCategoryParams,
+) => {
+  const newCustomFieldCategory =
+    insertCustomFieldCategorySchema.parse(customFieldCategory);
   try {
-    const [c] =  await db.insert(customFieldCategories).values(newCustomFieldCategory).returning();
+    const [c] = await db
+      .insert(customFieldCategories)
+      .values(newCustomFieldCategory)
+      .returning();
     return { customFieldCategory: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,21 @@ export const createCustomFieldCategory = async (customFieldCategory: NewCustomFi
   }
 };
 
-export const updateCustomFieldCategory = async (id: CustomFieldCategoryId, customFieldCategory: UpdateCustomFieldCategoryParams) => {
-  const { id: customFieldCategoryId } = customFieldCategoryIdSchema.parse({ id });
-  const newCustomFieldCategory = updateCustomFieldCategorySchema.parse(customFieldCategory);
+export const updateCustomFieldCategory = async (
+  id: CustomFieldCategoryId,
+  customFieldCategory: UpdateCustomFieldCategoryParams,
+) => {
+  const { id: customFieldCategoryId } = customFieldCategoryIdSchema.parse({
+    id,
+  });
+  const newCustomFieldCategory =
+    updateCustomFieldCategorySchema.parse(customFieldCategory);
   try {
-    const [c] =  await db
-     .update(customFieldCategories)
-     .set({...newCustomFieldCategory, updatedAt: new Date() })
-     .where(eq(customFieldCategories.id, customFieldCategoryId!))
-     .returning();
+    const [c] = await db
+      .update(customFieldCategories)
+      .set({ ...newCustomFieldCategory, updatedAt: new Date() })
+      .where(eq(customFieldCategories.id, customFieldCategoryId!))
+      .returning();
     return { customFieldCategory: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -40,10 +53,14 @@ export const updateCustomFieldCategory = async (id: CustomFieldCategoryId, custo
 };
 
 export const deleteCustomFieldCategory = async (id: CustomFieldCategoryId) => {
-  const { id: customFieldCategoryId } = customFieldCategoryIdSchema.parse({ id });
+  const { id: customFieldCategoryId } = customFieldCategoryIdSchema.parse({
+    id,
+  });
   try {
-    const [c] =  await db.delete(customFieldCategories).where(eq(customFieldCategories.id, customFieldCategoryId!))
-    .returning();
+    const [c] = await db
+      .delete(customFieldCategories)
+      .where(eq(customFieldCategories.id, customFieldCategoryId!))
+      .returning();
     return { customFieldCategory: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +68,3 @@ export const deleteCustomFieldCategory = async (id: CustomFieldCategoryId) => {
     throw { error: message };
   }
 };
-

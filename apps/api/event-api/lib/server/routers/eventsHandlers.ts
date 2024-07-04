@@ -1,19 +1,28 @@
-import { getEventsHandlerById, getEventsHandlers } from "@/lib/api/eventsHandlers/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createEventsHandler,
+  deleteEventsHandler,
+  updateEventsHandler,
+} from "../api/eventsHandlers/mutations";
+import {
+  getEventsHandlerById,
+  getEventsHandlers,
+} from "../api/eventsHandlers/queries";
 import {
   eventsHandlerIdSchema,
   insertEventsHandlerParams,
   updateEventsHandlerParams,
-} from "@/lib/db/schema/eventsHandlers";
-import { createEventsHandler, deleteEventsHandler, updateEventsHandler } from "@/lib/api/eventsHandlers/mutations";
+} from "../db/schema/eventsHandlers";
+import { publicProcedure, router } from "../server/trpc";
 
 export const eventsHandlersRouter = router({
   getEventsHandlers: publicProcedure.query(async () => {
     return getEventsHandlers();
   }),
-  getEventsHandlerById: publicProcedure.input(eventsHandlerIdSchema).query(async ({ input }) => {
-    return getEventsHandlerById(input.id);
-  }),
+  getEventsHandlerById: publicProcedure
+    .input(eventsHandlerIdSchema)
+    .query(async ({ input }) => {
+      return getEventsHandlerById(input.id);
+    }),
   createEventsHandler: publicProcedure
     .input(insertEventsHandlerParams)
     .mutation(async ({ input }) => {

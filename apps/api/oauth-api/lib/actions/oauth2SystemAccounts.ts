@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createOauth2SystemAccount,
   deleteOauth2SystemAccount,
   updateOauth2SystemAccount,
-} from "@/lib/api/oauth2SystemAccounts/mutations";
+} from "../api/oauth2SystemAccounts/mutations";
 import {
-  Oauth2SystemAccountId,
-  NewOauth2SystemAccountParams,
-  UpdateOauth2SystemAccountParams,
-  oauth2SystemAccountIdSchema,
   insertOauth2SystemAccountParams,
+  NewOauth2SystemAccountParams,
+  Oauth2SystemAccountId,
+  oauth2SystemAccountIdSchema,
+  UpdateOauth2SystemAccountParams,
   updateOauth2SystemAccountParams,
-} from "@/lib/db/schema/oauth2SystemAccounts";
+} from "../db/schema/oauth2SystemAccounts";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateOauth2SystemAccounts = () => revalidatePath("/oauth2-system-accounts");
+const revalidateOauth2SystemAccounts = () =>
+  revalidatePath("/oauth2-system-accounts");
 
-export const createOauth2SystemAccountAction = async (input: NewOauth2SystemAccountParams) => {
+export const createOauth2SystemAccountAction = async (
+  input: NewOauth2SystemAccountParams,
+) => {
   try {
     const payload = insertOauth2SystemAccountParams.parse(input);
     await createOauth2SystemAccount(payload);
@@ -37,7 +41,9 @@ export const createOauth2SystemAccountAction = async (input: NewOauth2SystemAcco
   }
 };
 
-export const updateOauth2SystemAccountAction = async (input: UpdateOauth2SystemAccountParams) => {
+export const updateOauth2SystemAccountAction = async (
+  input: UpdateOauth2SystemAccountParams,
+) => {
   try {
     const payload = updateOauth2SystemAccountParams.parse(input);
     await updateOauth2SystemAccount(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateOauth2SystemAccountAction = async (input: UpdateOauth2SystemA
   }
 };
 
-export const deleteOauth2SystemAccountAction = async (input: Oauth2SystemAccountId) => {
+export const deleteOauth2SystemAccountAction = async (
+  input: Oauth2SystemAccountId,
+) => {
   try {
     const payload = oauth2SystemAccountIdSchema.parse({ id: input });
     await deleteOauth2SystemAccount(payload.id);

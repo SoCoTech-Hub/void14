@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createSocialReaction,
   deleteSocialReaction,
   updateSocialReaction,
-} from "@/lib/api/socialReactions/mutations";
+} from "../api/socialReactions/mutations";
 import {
-  SocialReactionId,
-  NewSocialReactionParams,
-  UpdateSocialReactionParams,
-  socialReactionIdSchema,
   insertSocialReactionParams,
+  NewSocialReactionParams,
+  SocialReactionId,
+  socialReactionIdSchema,
+  UpdateSocialReactionParams,
   updateSocialReactionParams,
-} from "@/lib/db/schema/socialReactions";
+} from "../db/schema/socialReactions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateSocialReactions = () => revalidatePath("/social-reactions");
 
-export const createSocialReactionAction = async (input: NewSocialReactionParams) => {
+export const createSocialReactionAction = async (
+  input: NewSocialReactionParams,
+) => {
   try {
     const payload = insertSocialReactionParams.parse(input);
     await createSocialReaction(payload);
@@ -37,7 +40,9 @@ export const createSocialReactionAction = async (input: NewSocialReactionParams)
   }
 };
 
-export const updateSocialReactionAction = async (input: UpdateSocialReactionParams) => {
+export const updateSocialReactionAction = async (
+  input: UpdateSocialReactionParams,
+) => {
   try {
     const payload = updateSocialReactionParams.parse(input);
     await updateSocialReaction(payload.id, payload);

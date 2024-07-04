@@ -1,10 +1,12 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { type LockDbId, lockDbIdSchema, lockDbs } from "@/lib/db/schema/lockDbs";
+
+import type { LockDbId } from "../db/schema/lockDbs";
+import { db } from "../db/index";
+import { lockDbIdSchema, lockDbs } from "../db/schema/lockDbs";
 
 export const getLockDbs = async () => {
   const rows = await db.select().from(lockDbs);
-  const l = rows
+  const l = rows;
   return { lockDbs: l };
 };
 
@@ -15,5 +17,3 @@ export const getLockDbById = async (id: LockDbId) => {
   const l = row;
   return { lockDb: l };
 };
-
-

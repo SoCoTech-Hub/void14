@@ -1,19 +1,25 @@
-import { getCourseById, getCourses } from "@/lib/api/courses/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createCourse,
+  deleteCourse,
+  updateCourse,
+} from "../api/courses/mutations";
+import { getCourseById, getCourses } from "../api/courses/queries";
 import {
   courseIdSchema,
   insertCourseParams,
   updateCourseParams,
-} from "@/lib/db/schema/courses";
-import { createCourse, deleteCourse, updateCourse } from "@/lib/api/courses/mutations";
+} from "../db/schema/courses";
+import { publicProcedure, router } from "../server/trpc";
 
 export const coursesRouter = router({
   getCourses: publicProcedure.query(async () => {
     return getCourses();
   }),
-  getCourseById: publicProcedure.input(courseIdSchema).query(async ({ input }) => {
-    return getCourseById(input.id);
-  }),
+  getCourseById: publicProcedure
+    .input(courseIdSchema)
+    .query(async ({ input }) => {
+      return getCourseById(input.id);
+    }),
   createCourse: publicProcedure
     .input(insertCourseParams)
     .mutation(async ({ input }) => {

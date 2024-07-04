@@ -1,4 +1,3 @@
-import { type getQuizSections } from "@/lib/api/quizSections/queries";
 import {
   boolean,
   integer,
@@ -12,6 +11,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getQuizSections } from "../api/quizSections/queries";
 import { quizes } from "./quizes";
 
 export const quizSections = pgTable(

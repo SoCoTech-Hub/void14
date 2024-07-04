@@ -1,19 +1,19 @@
+import { router } from "../server/trpc";
 import { computersRouter } from "./computers";
-import { router } from "@/lib/server/trpc";
-import { workshopsRouter } from "./workshops";
 import { workshopAggregationsRouter } from "./workshopAggregations";
-import { workshopAssessmentsRouter } from "./workshopAssessments";
-import { workshopGradesRouter } from "./workshopGrades";
-import { workshopSubmissionsRouter } from "./workshopSubmissions";
 import { workshopAllocationSchedulesRouter } from "./workshopAllocationSchedules";
+import { workshopAssessmentsRouter } from "./workshopAssessments";
 import { workshopEvalBestSettingsRouter } from "./workshopEvalBestSettings";
 import { workshopFormAccumulativesRouter } from "./workshopFormAccumulatives";
 import { workshopFormCommentsRouter } from "./workshopFormComments";
-import { workshopFormNumErrorsRouter } from "./workshopFormNumErrors";
 import { workshopFormNumErrorMapsRouter } from "./workshopFormNumErrorMaps";
-import { workshopFormRubricsRouter } from "./workshopFormRubrics";
+import { workshopFormNumErrorsRouter } from "./workshopFormNumErrors";
 import { workshopFormRubricConfigsRouter } from "./workshopFormRubricConfigs";
 import { workshopFormRubricLevelsRouter } from "./workshopFormRubricLevels";
+import { workshopFormRubricsRouter } from "./workshopFormRubrics";
+import { workshopGradesRouter } from "./workshopGrades";
+import { workshopsRouter } from "./workshops";
+import { workshopSubmissionsRouter } from "./workshopSubmissions";
 
 export const appRouter = router({
   computers: computersRouter,

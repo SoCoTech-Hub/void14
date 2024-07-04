@@ -1,19 +1,28 @@
-import { getWorkshopSubmissionById, getWorkshopSubmissions } from "@/lib/api/workshopSubmissions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  workshopSubmissionIdSchema,
+  createWorkshopSubmission,
+  deleteWorkshopSubmission,
+  updateWorkshopSubmission,
+} from "../api/workshopSubmissions/mutations";
+import {
+  getWorkshopSubmissionById,
+  getWorkshopSubmissions,
+} from "../api/workshopSubmissions/queries";
+import {
   insertWorkshopSubmissionParams,
   updateWorkshopSubmissionParams,
-} from "@/lib/db/schema/workshopSubmissions";
-import { createWorkshopSubmission, deleteWorkshopSubmission, updateWorkshopSubmission } from "@/lib/api/workshopSubmissions/mutations";
+  workshopSubmissionIdSchema,
+} from "../db/schema/workshopSubmissions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const workshopSubmissionsRouter = router({
   getWorkshopSubmissions: publicProcedure.query(async () => {
     return getWorkshopSubmissions();
   }),
-  getWorkshopSubmissionById: publicProcedure.input(workshopSubmissionIdSchema).query(async ({ input }) => {
-    return getWorkshopSubmissionById(input.id);
-  }),
+  getWorkshopSubmissionById: publicProcedure
+    .input(workshopSubmissionIdSchema)
+    .query(async ({ input }) => {
+      return getWorkshopSubmissionById(input.id);
+    }),
   createWorkshopSubmission: publicProcedure
     .input(insertWorkshopSubmissionParams)
     .mutation(async ({ input }) => {

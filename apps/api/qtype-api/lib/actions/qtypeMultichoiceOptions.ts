@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQtypeMultichoiceOption,
   deleteQtypeMultichoiceOption,
   updateQtypeMultichoiceOption,
-} from "@/lib/api/qtypeMultichoiceOptions/mutations";
+} from "../api/qtypeMultichoiceOptions/mutations";
 import {
-  QtypeMultichoiceOptionId,
-  NewQtypeMultichoiceOptionParams,
-  UpdateQtypeMultichoiceOptionParams,
-  qtypeMultichoiceOptionIdSchema,
   insertQtypeMultichoiceOptionParams,
+  NewQtypeMultichoiceOptionParams,
+  QtypeMultichoiceOptionId,
+  qtypeMultichoiceOptionIdSchema,
+  UpdateQtypeMultichoiceOptionParams,
   updateQtypeMultichoiceOptionParams,
-} from "@/lib/db/schema/qtypeMultichoiceOptions";
+} from "../db/schema/qtypeMultichoiceOptions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQtypeMultichoiceOptions = () => revalidatePath("/qtype-multichoice-options");
+const revalidateQtypeMultichoiceOptions = () =>
+  revalidatePath("/qtype-multichoice-options");
 
-export const createQtypeMultichoiceOptionAction = async (input: NewQtypeMultichoiceOptionParams) => {
+export const createQtypeMultichoiceOptionAction = async (
+  input: NewQtypeMultichoiceOptionParams,
+) => {
   try {
     const payload = insertQtypeMultichoiceOptionParams.parse(input);
     await createQtypeMultichoiceOption(payload);
@@ -37,7 +41,9 @@ export const createQtypeMultichoiceOptionAction = async (input: NewQtypeMulticho
   }
 };
 
-export const updateQtypeMultichoiceOptionAction = async (input: UpdateQtypeMultichoiceOptionParams) => {
+export const updateQtypeMultichoiceOptionAction = async (
+  input: UpdateQtypeMultichoiceOptionParams,
+) => {
   try {
     const payload = updateQtypeMultichoiceOptionParams.parse(input);
     await updateQtypeMultichoiceOption(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQtypeMultichoiceOptionAction = async (input: UpdateQtypeMulti
   }
 };
 
-export const deleteQtypeMultichoiceOptionAction = async (input: QtypeMultichoiceOptionId) => {
+export const deleteQtypeMultichoiceOptionAction = async (
+  input: QtypeMultichoiceOptionId,
+) => {
   try {
     const payload = qtypeMultichoiceOptionIdSchema.parse({ id: input });
     await deleteQtypeMultichoiceOption(payload.id);

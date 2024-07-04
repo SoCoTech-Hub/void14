@@ -1,19 +1,27 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  MessageinboundHandlerId, 
-  NewMessageinboundHandlerParams,
-  UpdateMessageinboundHandlerParams, 
-  updateMessageinboundHandlerSchema,
-  insertMessageinboundHandlerSchema, 
+
+import { db } from "../db/index";
+import {
+  insertMessageinboundHandlerSchema,
+  MessageinboundHandlerId,
+  messageinboundHandlerIdSchema,
   messageinboundHandlers,
-  messageinboundHandlerIdSchema 
-} from "@/lib/db/schema/messageinboundHandlers";
+  NewMessageinboundHandlerParams,
+  UpdateMessageinboundHandlerParams,
+  updateMessageinboundHandlerSchema,
+} from "../db/schema/messageinboundHandlers";
 
-export const createMessageinboundHandler = async (messageinboundHandler: NewMessageinboundHandlerParams) => {
-  const newMessageinboundHandler = insertMessageinboundHandlerSchema.parse(messageinboundHandler);
+export const createMessageinboundHandler = async (
+  messageinboundHandler: NewMessageinboundHandlerParams,
+) => {
+  const newMessageinboundHandler = insertMessageinboundHandlerSchema.parse(
+    messageinboundHandler,
+  );
   try {
-    const [m] =  await db.insert(messageinboundHandlers).values(newMessageinboundHandler).returning();
+    const [m] = await db
+      .insert(messageinboundHandlers)
+      .values(newMessageinboundHandler)
+      .returning();
     return { messageinboundHandler: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,22 @@ export const createMessageinboundHandler = async (messageinboundHandler: NewMess
   }
 };
 
-export const updateMessageinboundHandler = async (id: MessageinboundHandlerId, messageinboundHandler: UpdateMessageinboundHandlerParams) => {
-  const { id: messageinboundHandlerId } = messageinboundHandlerIdSchema.parse({ id });
-  const newMessageinboundHandler = updateMessageinboundHandlerSchema.parse(messageinboundHandler);
+export const updateMessageinboundHandler = async (
+  id: MessageinboundHandlerId,
+  messageinboundHandler: UpdateMessageinboundHandlerParams,
+) => {
+  const { id: messageinboundHandlerId } = messageinboundHandlerIdSchema.parse({
+    id,
+  });
+  const newMessageinboundHandler = updateMessageinboundHandlerSchema.parse(
+    messageinboundHandler,
+  );
   try {
-    const [m] =  await db
-     .update(messageinboundHandlers)
-     .set(newMessageinboundHandler)
-     .where(eq(messageinboundHandlers.id, messageinboundHandlerId!))
-     .returning();
+    const [m] = await db
+      .update(messageinboundHandlers)
+      .set(newMessageinboundHandler)
+      .where(eq(messageinboundHandlers.id, messageinboundHandlerId!))
+      .returning();
     return { messageinboundHandler: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +54,17 @@ export const updateMessageinboundHandler = async (id: MessageinboundHandlerId, m
   }
 };
 
-export const deleteMessageinboundHandler = async (id: MessageinboundHandlerId) => {
-  const { id: messageinboundHandlerId } = messageinboundHandlerIdSchema.parse({ id });
+export const deleteMessageinboundHandler = async (
+  id: MessageinboundHandlerId,
+) => {
+  const { id: messageinboundHandlerId } = messageinboundHandlerIdSchema.parse({
+    id,
+  });
   try {
-    const [m] =  await db.delete(messageinboundHandlers).where(eq(messageinboundHandlers.id, messageinboundHandlerId!))
-    .returning();
+    const [m] = await db
+      .delete(messageinboundHandlers)
+      .where(eq(messageinboundHandlers.id, messageinboundHandlerId!))
+      .returning();
     return { messageinboundHandler: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +72,3 @@ export const deleteMessageinboundHandler = async (id: MessageinboundHandlerId) =
     throw { error: message };
   }
 };
-

@@ -1,19 +1,28 @@
-import { getMnetServiceEnrolCourseById, getMnetServiceEnrolCourses } from "@/lib/api/mnetServiceEnrolCourses/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  mnetServiceEnrolCourseIdSchema,
+  createMnetServiceEnrolCourse,
+  deleteMnetServiceEnrolCourse,
+  updateMnetServiceEnrolCourse,
+} from "../api/mnetServiceEnrolCourses/mutations";
+import {
+  getMnetServiceEnrolCourseById,
+  getMnetServiceEnrolCourses,
+} from "../api/mnetServiceEnrolCourses/queries";
+import {
   insertMnetServiceEnrolCourseParams,
+  mnetServiceEnrolCourseIdSchema,
   updateMnetServiceEnrolCourseParams,
-} from "@/lib/db/schema/mnetServiceEnrolCourses";
-import { createMnetServiceEnrolCourse, deleteMnetServiceEnrolCourse, updateMnetServiceEnrolCourse } from "@/lib/api/mnetServiceEnrolCourses/mutations";
+} from "../db/schema/mnetServiceEnrolCourses";
+import { publicProcedure, router } from "../server/trpc";
 
 export const mnetServiceEnrolCoursesRouter = router({
   getMnetServiceEnrolCourses: publicProcedure.query(async () => {
     return getMnetServiceEnrolCourses();
   }),
-  getMnetServiceEnrolCourseById: publicProcedure.input(mnetServiceEnrolCourseIdSchema).query(async ({ input }) => {
-    return getMnetServiceEnrolCourseById(input.id);
-  }),
+  getMnetServiceEnrolCourseById: publicProcedure
+    .input(mnetServiceEnrolCourseIdSchema)
+    .query(async ({ input }) => {
+      return getMnetServiceEnrolCourseById(input.id);
+    }),
   createMnetServiceEnrolCourse: publicProcedure
     .input(insertMnetServiceEnrolCourseParams)
     .mutation(async ({ input }) => {

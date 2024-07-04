@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createLtiAccessToken,
   deleteLtiAccessToken,
   updateLtiAccessToken,
-} from "@/lib/api/ltiAccessTokens/mutations";
+} from "../api/ltiAccessTokens/mutations";
 import {
+  insertLtiAccessTokenParams,
   LtiAccessTokenId,
+  ltiAccessTokenIdSchema,
   NewLtiAccessTokenParams,
   UpdateLtiAccessTokenParams,
-  ltiAccessTokenIdSchema,
-  insertLtiAccessTokenParams,
   updateLtiAccessTokenParams,
-} from "@/lib/db/schema/ltiAccessTokens";
+} from "../db/schema/ltiAccessTokens";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateLtiAccessTokens = () => revalidatePath("/lti-access-tokens");
 
-export const createLtiAccessTokenAction = async (input: NewLtiAccessTokenParams) => {
+export const createLtiAccessTokenAction = async (
+  input: NewLtiAccessTokenParams,
+) => {
   try {
     const payload = insertLtiAccessTokenParams.parse(input);
     await createLtiAccessToken(payload);
@@ -37,7 +40,9 @@ export const createLtiAccessTokenAction = async (input: NewLtiAccessTokenParams)
   }
 };
 
-export const updateLtiAccessTokenAction = async (input: UpdateLtiAccessTokenParams) => {
+export const updateLtiAccessTokenAction = async (
+  input: UpdateLtiAccessTokenParams,
+) => {
   try {
     const payload = updateLtiAccessTokenParams.parse(input);
     await updateLtiAccessToken(payload.id, payload);

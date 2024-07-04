@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createOauth2Issuer,
   deleteOauth2Issuer,
   updateOauth2Issuer,
-} from "@/lib/api/oauth2Issuers/mutations";
+} from "../api/oauth2Issuers/mutations";
 import {
-  Oauth2IssuerId,
-  NewOauth2IssuerParams,
-  UpdateOauth2IssuerParams,
-  oauth2IssuerIdSchema,
   insertOauth2IssuerParams,
+  NewOauth2IssuerParams,
+  Oauth2IssuerId,
+  oauth2IssuerIdSchema,
+  UpdateOauth2IssuerParams,
   updateOauth2IssuerParams,
-} from "@/lib/db/schema/oauth2Issuers";
+} from "../db/schema/oauth2Issuers";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateOauth2Issuers = () => revalidatePath("/oauth2-issuers");
 
-export const createOauth2IssuerAction = async (input: NewOauth2IssuerParams) => {
+export const createOauth2IssuerAction = async (
+  input: NewOauth2IssuerParams,
+) => {
   try {
     const payload = insertOauth2IssuerParams.parse(input);
     await createOauth2Issuer(payload);
@@ -37,7 +40,9 @@ export const createOauth2IssuerAction = async (input: NewOauth2IssuerParams) => 
   }
 };
 
-export const updateOauth2IssuerAction = async (input: UpdateOauth2IssuerParams) => {
+export const updateOauth2IssuerAction = async (
+  input: UpdateOauth2IssuerParams,
+) => {
   try {
     const payload = updateOauth2IssuerParams.parse(input);
     await updateOauth2Issuer(payload.id, payload);

@@ -1,19 +1,28 @@
-import { getSocialEmojiById, getSocialEmojis } from "@/lib/api/socialEmojis/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  socialEmojiIdSchema,
+  createSocialEmoji,
+  deleteSocialEmoji,
+  updateSocialEmoji,
+} from "../api/socialEmojis/mutations";
+import {
+  getSocialEmojiById,
+  getSocialEmojis,
+} from "../api/socialEmojis/queries";
+import {
   insertSocialEmojiParams,
+  socialEmojiIdSchema,
   updateSocialEmojiParams,
-} from "@/lib/db/schema/socialEmojis";
-import { createSocialEmoji, deleteSocialEmoji, updateSocialEmoji } from "@/lib/api/socialEmojis/mutations";
+} from "../db/schema/socialEmojis";
+import { publicProcedure, router } from "../server/trpc";
 
 export const socialEmojisRouter = router({
   getSocialEmojis: publicProcedure.query(async () => {
     return getSocialEmojis();
   }),
-  getSocialEmojiById: publicProcedure.input(socialEmojiIdSchema).query(async ({ input }) => {
-    return getSocialEmojiById(input.id);
-  }),
+  getSocialEmojiById: publicProcedure
+    .input(socialEmojiIdSchema)
+    .query(async ({ input }) => {
+      return getSocialEmojiById(input.id);
+    }),
   createSocialEmoji: publicProcedure
     .input(insertSocialEmojiParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMnetSsoAccessControl,
   deleteMnetSsoAccessControl,
   updateMnetSsoAccessControl,
-} from "@/lib/api/mnetSsoAccessControls/mutations";
+} from "../api/mnetSsoAccessControls/mutations";
 import {
+  insertMnetSsoAccessControlParams,
   MnetSsoAccessControlId,
+  mnetSsoAccessControlIdSchema,
   NewMnetSsoAccessControlParams,
   UpdateMnetSsoAccessControlParams,
-  mnetSsoAccessControlIdSchema,
-  insertMnetSsoAccessControlParams,
   updateMnetSsoAccessControlParams,
-} from "@/lib/db/schema/mnetSsoAccessControls";
+} from "../db/schema/mnetSsoAccessControls";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateMnetSsoAccessControls = () => revalidatePath("/mnet-sso-access-controls");
+const revalidateMnetSsoAccessControls = () =>
+  revalidatePath("/mnet-sso-access-controls");
 
-export const createMnetSsoAccessControlAction = async (input: NewMnetSsoAccessControlParams) => {
+export const createMnetSsoAccessControlAction = async (
+  input: NewMnetSsoAccessControlParams,
+) => {
   try {
     const payload = insertMnetSsoAccessControlParams.parse(input);
     await createMnetSsoAccessControl(payload);
@@ -37,7 +41,9 @@ export const createMnetSsoAccessControlAction = async (input: NewMnetSsoAccessCo
   }
 };
 
-export const updateMnetSsoAccessControlAction = async (input: UpdateMnetSsoAccessControlParams) => {
+export const updateMnetSsoAccessControlAction = async (
+  input: UpdateMnetSsoAccessControlParams,
+) => {
   try {
     const payload = updateMnetSsoAccessControlParams.parse(input);
     await updateMnetSsoAccessControl(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateMnetSsoAccessControlAction = async (input: UpdateMnetSsoAcces
   }
 };
 
-export const deleteMnetSsoAccessControlAction = async (input: MnetSsoAccessControlId) => {
+export const deleteMnetSsoAccessControlAction = async (
+  input: MnetSsoAccessControlId,
+) => {
   try {
     const payload = mnetSsoAccessControlIdSchema.parse({ id: input });
     await deleteMnetSsoAccessControl(payload.id);

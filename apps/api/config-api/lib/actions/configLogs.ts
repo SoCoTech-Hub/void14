@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createConfigLog,
   deleteConfigLog,
   updateConfigLog,
-} from "@/lib/api/configLogs/mutations";
+} from "../api/configLogs/mutations";
 import {
   ConfigLogId,
-  NewConfigLogParams,
-  UpdateConfigLogParams,
   configLogIdSchema,
   insertConfigLogParams,
+  NewConfigLogParams,
+  UpdateConfigLogParams,
   updateConfigLogParams,
-} from "@/lib/db/schema/configLogs";
+} from "../db/schema/configLogs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

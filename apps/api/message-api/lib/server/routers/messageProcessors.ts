@@ -1,19 +1,28 @@
-import { getMessageProcessorById, getMessageProcessors } from "@/lib/api/messageProcessors/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  messageProcessorIdSchema,
+  createMessageProcessor,
+  deleteMessageProcessor,
+  updateMessageProcessor,
+} from "../api/messageProcessors/mutations";
+import {
+  getMessageProcessorById,
+  getMessageProcessors,
+} from "../api/messageProcessors/queries";
+import {
   insertMessageProcessorParams,
+  messageProcessorIdSchema,
   updateMessageProcessorParams,
-} from "@/lib/db/schema/messageProcessors";
-import { createMessageProcessor, deleteMessageProcessor, updateMessageProcessor } from "@/lib/api/messageProcessors/mutations";
+} from "../db/schema/messageProcessors";
+import { publicProcedure, router } from "../server/trpc";
 
 export const messageProcessorsRouter = router({
   getMessageProcessors: publicProcedure.query(async () => {
     return getMessageProcessors();
   }),
-  getMessageProcessorById: publicProcedure.input(messageProcessorIdSchema).query(async ({ input }) => {
-    return getMessageProcessorById(input.id);
-  }),
+  getMessageProcessorById: publicProcedure
+    .input(messageProcessorIdSchema)
+    .query(async ({ input }) => {
+      return getMessageProcessorById(input.id);
+    }),
   createMessageProcessor: publicProcedure
     .input(insertMessageProcessorParams)
     .mutation(async ({ input }) => {

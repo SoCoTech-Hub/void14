@@ -1,9 +1,10 @@
-import { type getBlockRssClients } from "@/lib/api/blockRssClients/queries";
 import { boolean, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getBlockRssClients } from "../api/blockRssClients/queries";
 
 export const blockRssClients = pgTable("block_rss_clients", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

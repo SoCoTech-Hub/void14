@@ -1,19 +1,28 @@
-import { getH5pLibraryById, getH5pLibraries } from "@/lib/api/h5pLibraries/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createH5pLibrary,
+  deleteH5pLibrary,
+  updateH5pLibrary,
+} from "../api/h5pLibraries/mutations";
+import {
+  getH5pLibraries,
+  getH5pLibraryById,
+} from "../api/h5pLibraries/queries";
 import {
   h5pLibraryIdSchema,
   insertH5pLibraryParams,
   updateH5pLibraryParams,
-} from "@/lib/db/schema/h5pLibraries";
-import { createH5pLibrary, deleteH5pLibrary, updateH5pLibrary } from "@/lib/api/h5pLibraries/mutations";
+} from "../db/schema/h5pLibraries";
+import { publicProcedure, router } from "../server/trpc";
 
 export const h5pLibrariesRouter = router({
   getH5pLibraries: publicProcedure.query(async () => {
     return getH5pLibraries();
   }),
-  getH5pLibraryById: publicProcedure.input(h5pLibraryIdSchema).query(async ({ input }) => {
-    return getH5pLibraryById(input.id);
-  }),
+  getH5pLibraryById: publicProcedure
+    .input(h5pLibraryIdSchema)
+    .query(async ({ input }) => {
+      return getH5pLibraryById(input.id);
+    }),
   createH5pLibrary: publicProcedure
     .input(insertH5pLibraryParams)
     .mutation(async ({ input }) => {

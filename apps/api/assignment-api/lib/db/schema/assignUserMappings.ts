@@ -1,10 +1,10 @@
-import { type getAssignUserMappings } from "@/lib/api/assignUserMappings/queries";
 import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getAssignUserMappings } from "../api/assignUserMappings/queries";
 import { assignments } from "./assignments";
 
 export const assignUserMappings = pgTable(

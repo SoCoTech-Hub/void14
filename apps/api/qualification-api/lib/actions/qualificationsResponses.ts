@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQualificationsResponse,
   deleteQualificationsResponse,
   updateQualificationsResponse,
-} from "@/lib/api/qualificationsResponses/mutations";
+} from "../api/qualificationsResponses/mutations";
 import {
-  QualificationsResponseId,
-  NewQualificationsResponseParams,
-  UpdateQualificationsResponseParams,
-  qualificationsResponseIdSchema,
   insertQualificationsResponseParams,
+  NewQualificationsResponseParams,
+  QualificationsResponseId,
+  qualificationsResponseIdSchema,
+  UpdateQualificationsResponseParams,
   updateQualificationsResponseParams,
-} from "@/lib/db/schema/qualificationsResponses";
+} from "../db/schema/qualificationsResponses";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQualificationsResponses = () => revalidatePath("/qualifications-responses");
+const revalidateQualificationsResponses = () =>
+  revalidatePath("/qualifications-responses");
 
-export const createQualificationsResponseAction = async (input: NewQualificationsResponseParams) => {
+export const createQualificationsResponseAction = async (
+  input: NewQualificationsResponseParams,
+) => {
   try {
     const payload = insertQualificationsResponseParams.parse(input);
     await createQualificationsResponse(payload);
@@ -37,7 +41,9 @@ export const createQualificationsResponseAction = async (input: NewQualification
   }
 };
 
-export const updateQualificationsResponseAction = async (input: UpdateQualificationsResponseParams) => {
+export const updateQualificationsResponseAction = async (
+  input: UpdateQualificationsResponseParams,
+) => {
   try {
     const payload = updateQualificationsResponseParams.parse(input);
     await updateQualificationsResponse(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQualificationsResponseAction = async (input: UpdateQualificat
   }
 };
 
-export const deleteQualificationsResponseAction = async (input: QualificationsResponseId) => {
+export const deleteQualificationsResponseAction = async (
+  input: QualificationsResponseId,
+) => {
   try {
     const payload = qualificationsResponseIdSchema.parse({ id: input });
     await deleteQualificationsResponse(payload.id);

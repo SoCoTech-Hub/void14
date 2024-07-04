@@ -1,19 +1,28 @@
-import { getResourceOldById, getResourceOlds } from "@/lib/api/resourceOlds/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  resourceOldIdSchema,
+  createResourceOld,
+  deleteResourceOld,
+  updateResourceOld,
+} from "../api/resourceOlds/mutations";
+import {
+  getResourceOldById,
+  getResourceOlds,
+} from "../api/resourceOlds/queries";
+import {
   insertResourceOldParams,
+  resourceOldIdSchema,
   updateResourceOldParams,
-} from "@/lib/db/schema/resourceOlds";
-import { createResourceOld, deleteResourceOld, updateResourceOld } from "@/lib/api/resourceOlds/mutations";
+} from "../db/schema/resourceOlds";
+import { publicProcedure, router } from "../server/trpc";
 
 export const resourceOldsRouter = router({
   getResourceOlds: publicProcedure.query(async () => {
     return getResourceOlds();
   }),
-  getResourceOldById: publicProcedure.input(resourceOldIdSchema).query(async ({ input }) => {
-    return getResourceOldById(input.id);
-  }),
+  getResourceOldById: publicProcedure
+    .input(resourceOldIdSchema)
+    .query(async ({ input }) => {
+      return getResourceOldById(input.id);
+    }),
   createResourceOld: publicProcedure
     .input(insertResourceOldParams)
     .mutation(async ({ input }) => {

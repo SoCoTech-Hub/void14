@@ -1,19 +1,28 @@
-import { getWorkshopFormRubricConfigById, getWorkshopFormRubricConfigs } from "@/lib/api/workshopFormRubricConfigs/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  workshopFormRubricConfigIdSchema,
+  createWorkshopFormRubricConfig,
+  deleteWorkshopFormRubricConfig,
+  updateWorkshopFormRubricConfig,
+} from "../api/workshopFormRubricConfigs/mutations";
+import {
+  getWorkshopFormRubricConfigById,
+  getWorkshopFormRubricConfigs,
+} from "../api/workshopFormRubricConfigs/queries";
+import {
   insertWorkshopFormRubricConfigParams,
   updateWorkshopFormRubricConfigParams,
-} from "@/lib/db/schema/workshopFormRubricConfigs";
-import { createWorkshopFormRubricConfig, deleteWorkshopFormRubricConfig, updateWorkshopFormRubricConfig } from "@/lib/api/workshopFormRubricConfigs/mutations";
+  workshopFormRubricConfigIdSchema,
+} from "../db/schema/workshopFormRubricConfigs";
+import { publicProcedure, router } from "../server/trpc";
 
 export const workshopFormRubricConfigsRouter = router({
   getWorkshopFormRubricConfigs: publicProcedure.query(async () => {
     return getWorkshopFormRubricConfigs();
   }),
-  getWorkshopFormRubricConfigById: publicProcedure.input(workshopFormRubricConfigIdSchema).query(async ({ input }) => {
-    return getWorkshopFormRubricConfigById(input.id);
-  }),
+  getWorkshopFormRubricConfigById: publicProcedure
+    .input(workshopFormRubricConfigIdSchema)
+    .query(async ({ input }) => {
+      return getWorkshopFormRubricConfigById(input.id);
+    }),
   createWorkshopFormRubricConfig: publicProcedure
     .input(insertWorkshopFormRubricConfigParams)
     .mutation(async ({ input }) => {

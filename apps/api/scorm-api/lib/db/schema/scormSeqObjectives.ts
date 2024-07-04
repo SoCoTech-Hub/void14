@@ -1,10 +1,10 @@
-import { type getScormSeqObjectives } from "@/lib/api/scormSeqObjectives/queries";
 import { boolean, pgTable, real, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getScormSeqObjectives } from "../api/scormSeqObjectives/queries";
 import { scormScoes } from "./scormScoes";
 
 export const scormSeqObjectives = pgTable("scorm_seq_objectives", {

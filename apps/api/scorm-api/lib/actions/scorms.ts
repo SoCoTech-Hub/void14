@@ -1,19 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
+import { createScorm, deleteScorm, updateScorm } from "../api/scorms/mutations";
 import {
-  createScorm,
-  deleteScorm,
-  updateScorm,
-} from "@/lib/api/scorms/mutations";
-import {
-  ScormId,
-  NewScormParams,
-  UpdateScormParams,
-  scormIdSchema,
   insertScormParams,
+  NewScormParams,
+  ScormId,
+  scormIdSchema,
+  UpdateScormParams,
   updateScormParams,
-} from "@/lib/db/schema/scorms";
+} from "../db/schema/scorms";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

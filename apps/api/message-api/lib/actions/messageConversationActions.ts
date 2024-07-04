@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMessageConversationAction,
   deleteMessageConversationAction,
   updateMessageConversationAction,
-} from "@/lib/api/messageConversationActions/mutations";
+} from "../api/messageConversationActions/mutations";
 import {
+  insertMessageConversationActionParams,
   MessageConversationActionId,
+  messageConversationActionIdSchema,
   NewMessageConversationActionParams,
   UpdateMessageConversationActionParams,
-  messageConversationActionIdSchema,
-  insertMessageConversationActionParams,
   updateMessageConversationActionParams,
-} from "@/lib/db/schema/messageConversationActions";
+} from "../db/schema/messageConversationActions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateMessageConversationActions = () => revalidatePath("/message-conversation-actions");
+const revalidateMessageConversationActions = () =>
+  revalidatePath("/message-conversation-actions");
 
-export const createMessageConversationActionAction = async (input: NewMessageConversationActionParams) => {
+export const createMessageConversationActionAction = async (
+  input: NewMessageConversationActionParams,
+) => {
   try {
     const payload = insertMessageConversationActionParams.parse(input);
     await createMessageConversationAction(payload);
@@ -37,7 +41,9 @@ export const createMessageConversationActionAction = async (input: NewMessageCon
   }
 };
 
-export const updateMessageConversationActionAction = async (input: UpdateMessageConversationActionParams) => {
+export const updateMessageConversationActionAction = async (
+  input: UpdateMessageConversationActionParams,
+) => {
   try {
     const payload = updateMessageConversationActionParams.parse(input);
     await updateMessageConversationAction(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateMessageConversationActionAction = async (input: UpdateMessage
   }
 };
 
-export const deleteMessageConversationActionAction = async (input: MessageConversationActionId) => {
+export const deleteMessageConversationActionAction = async (
+  input: MessageConversationActionId,
+) => {
   try {
     const payload = messageConversationActionIdSchema.parse({ id: input });
     await deleteMessageConversationAction(payload.id);

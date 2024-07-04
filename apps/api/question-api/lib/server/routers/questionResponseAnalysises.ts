@@ -1,19 +1,28 @@
-import { getQuestionResponseAnalysiseById, getQuestionResponseAnalysises } from "@/lib/api/questionResponseAnalysises/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  questionResponseAnalysiseIdSchema,
+  createQuestionResponseAnalysise,
+  deleteQuestionResponseAnalysise,
+  updateQuestionResponseAnalysise,
+} from "../api/questionResponseAnalysises/mutations";
+import {
+  getQuestionResponseAnalysiseById,
+  getQuestionResponseAnalysises,
+} from "../api/questionResponseAnalysises/queries";
+import {
   insertQuestionResponseAnalysiseParams,
+  questionResponseAnalysiseIdSchema,
   updateQuestionResponseAnalysiseParams,
-} from "@/lib/db/schema/questionResponseAnalysises";
-import { createQuestionResponseAnalysise, deleteQuestionResponseAnalysise, updateQuestionResponseAnalysise } from "@/lib/api/questionResponseAnalysises/mutations";
+} from "../db/schema/questionResponseAnalysises";
+import { publicProcedure, router } from "../server/trpc";
 
 export const questionResponseAnalysisesRouter = router({
   getQuestionResponseAnalysises: publicProcedure.query(async () => {
     return getQuestionResponseAnalysises();
   }),
-  getQuestionResponseAnalysiseById: publicProcedure.input(questionResponseAnalysiseIdSchema).query(async ({ input }) => {
-    return getQuestionResponseAnalysiseById(input.id);
-  }),
+  getQuestionResponseAnalysiseById: publicProcedure
+    .input(questionResponseAnalysiseIdSchema)
+    .query(async ({ input }) => {
+      return getQuestionResponseAnalysiseById(input.id);
+    }),
   createQuestionResponseAnalysise: publicProcedure
     .input(insertQuestionResponseAnalysiseParams)
     .mutation(async ({ input }) => {

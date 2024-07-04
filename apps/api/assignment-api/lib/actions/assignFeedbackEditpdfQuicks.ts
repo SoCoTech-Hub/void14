@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAssignFeedbackEditpdfQuick,
   deleteAssignFeedbackEditpdfQuick,
   updateAssignFeedbackEditpdfQuick,
-} from "@/lib/api/assignFeedbackEditpdfQuicks/mutations";
+} from "../api/assignFeedbackEditpdfQuicks/mutations";
 import {
   AssignFeedbackEditpdfQuickId,
-  NewAssignFeedbackEditpdfQuickParams,
-  UpdateAssignFeedbackEditpdfQuickParams,
   assignFeedbackEditpdfQuickIdSchema,
   insertAssignFeedbackEditpdfQuickParams,
+  NewAssignFeedbackEditpdfQuickParams,
+  UpdateAssignFeedbackEditpdfQuickParams,
   updateAssignFeedbackEditpdfQuickParams,
-} from "@/lib/db/schema/assignFeedbackEditpdfQuicks";
+} from "../db/schema/assignFeedbackEditpdfQuicks";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateAssignFeedbackEditpdfQuicks = () => revalidatePath("/assign-feedback-editpdf-quicks");
+const revalidateAssignFeedbackEditpdfQuicks = () =>
+  revalidatePath("/assign-feedback-editpdf-quicks");
 
-export const createAssignFeedbackEditpdfQuickAction = async (input: NewAssignFeedbackEditpdfQuickParams) => {
+export const createAssignFeedbackEditpdfQuickAction = async (
+  input: NewAssignFeedbackEditpdfQuickParams,
+) => {
   try {
     const payload = insertAssignFeedbackEditpdfQuickParams.parse(input);
     await createAssignFeedbackEditpdfQuick(payload);
@@ -37,7 +41,9 @@ export const createAssignFeedbackEditpdfQuickAction = async (input: NewAssignFee
   }
 };
 
-export const updateAssignFeedbackEditpdfQuickAction = async (input: UpdateAssignFeedbackEditpdfQuickParams) => {
+export const updateAssignFeedbackEditpdfQuickAction = async (
+  input: UpdateAssignFeedbackEditpdfQuickParams,
+) => {
   try {
     const payload = updateAssignFeedbackEditpdfQuickParams.parse(input);
     await updateAssignFeedbackEditpdfQuick(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateAssignFeedbackEditpdfQuickAction = async (input: UpdateAssign
   }
 };
 
-export const deleteAssignFeedbackEditpdfQuickAction = async (input: AssignFeedbackEditpdfQuickId) => {
+export const deleteAssignFeedbackEditpdfQuickAction = async (
+  input: AssignFeedbackEditpdfQuickId,
+) => {
   try {
     const payload = assignFeedbackEditpdfQuickIdSchema.parse({ id: input });
     await deleteAssignFeedbackEditpdfQuick(payload.id);

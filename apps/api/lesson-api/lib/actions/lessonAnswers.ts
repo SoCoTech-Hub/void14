@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createLessonAnswer,
   deleteLessonAnswer,
   updateLessonAnswer,
-} from "@/lib/api/lessonAnswers/mutations";
+} from "../api/lessonAnswers/mutations";
 import {
+  insertLessonAnswerParams,
   LessonAnswerId,
+  lessonAnswerIdSchema,
   NewLessonAnswerParams,
   UpdateLessonAnswerParams,
-  lessonAnswerIdSchema,
-  insertLessonAnswerParams,
   updateLessonAnswerParams,
-} from "@/lib/db/schema/lessonAnswers";
+} from "../db/schema/lessonAnswers";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateLessonAnswers = () => revalidatePath("/lesson-answers");
 
-export const createLessonAnswerAction = async (input: NewLessonAnswerParams) => {
+export const createLessonAnswerAction = async (
+  input: NewLessonAnswerParams,
+) => {
   try {
     const payload = insertLessonAnswerParams.parse(input);
     await createLessonAnswer(payload);
@@ -37,7 +40,9 @@ export const createLessonAnswerAction = async (input: NewLessonAnswerParams) => 
   }
 };
 
-export const updateLessonAnswerAction = async (input: UpdateLessonAnswerParams) => {
+export const updateLessonAnswerAction = async (
+  input: UpdateLessonAnswerParams,
+) => {
   try {
     const payload = updateLessonAnswerParams.parse(input);
     await updateLessonAnswer(payload.id, payload);

@@ -1,19 +1,26 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  GradingformRubricFillingId, 
-  NewGradingformRubricFillingParams,
-  UpdateGradingformRubricFillingParams, 
-  updateGradingformRubricFillingSchema,
-  insertGradingformRubricFillingSchema, 
+
+import { db } from "../db/index";
+import {
+  GradingformRubricFillingId,
+  gradingformRubricFillingIdSchema,
   gradingformRubricFillings,
-  gradingformRubricFillingIdSchema 
-} from "@/lib/db/schema/gradingformRubricFillings";
+  insertGradingformRubricFillingSchema,
+  NewGradingformRubricFillingParams,
+  UpdateGradingformRubricFillingParams,
+  updateGradingformRubricFillingSchema,
+} from "../db/schema/gradingformRubricFillings";
 
-export const createGradingformRubricFilling = async (gradingformRubricFilling: NewGradingformRubricFillingParams) => {
-  const newGradingformRubricFilling = insertGradingformRubricFillingSchema.parse(gradingformRubricFilling);
+export const createGradingformRubricFilling = async (
+  gradingformRubricFilling: NewGradingformRubricFillingParams,
+) => {
+  const newGradingformRubricFilling =
+    insertGradingformRubricFillingSchema.parse(gradingformRubricFilling);
   try {
-    const [g] =  await db.insert(gradingformRubricFillings).values(newGradingformRubricFilling).returning();
+    const [g] = await db
+      .insert(gradingformRubricFillings)
+      .values(newGradingformRubricFilling)
+      .returning();
     return { gradingformRubricFilling: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,20 @@ export const createGradingformRubricFilling = async (gradingformRubricFilling: N
   }
 };
 
-export const updateGradingformRubricFilling = async (id: GradingformRubricFillingId, gradingformRubricFilling: UpdateGradingformRubricFillingParams) => {
-  const { id: gradingformRubricFillingId } = gradingformRubricFillingIdSchema.parse({ id });
-  const newGradingformRubricFilling = updateGradingformRubricFillingSchema.parse(gradingformRubricFilling);
+export const updateGradingformRubricFilling = async (
+  id: GradingformRubricFillingId,
+  gradingformRubricFilling: UpdateGradingformRubricFillingParams,
+) => {
+  const { id: gradingformRubricFillingId } =
+    gradingformRubricFillingIdSchema.parse({ id });
+  const newGradingformRubricFilling =
+    updateGradingformRubricFillingSchema.parse(gradingformRubricFilling);
   try {
-    const [g] =  await db
-     .update(gradingformRubricFillings)
-     .set(newGradingformRubricFilling)
-     .where(eq(gradingformRubricFillings.id, gradingformRubricFillingId!))
-     .returning();
+    const [g] = await db
+      .update(gradingformRubricFillings)
+      .set(newGradingformRubricFilling)
+      .where(eq(gradingformRubricFillings.id, gradingformRubricFillingId!))
+      .returning();
     return { gradingformRubricFilling: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +51,16 @@ export const updateGradingformRubricFilling = async (id: GradingformRubricFillin
   }
 };
 
-export const deleteGradingformRubricFilling = async (id: GradingformRubricFillingId) => {
-  const { id: gradingformRubricFillingId } = gradingformRubricFillingIdSchema.parse({ id });
+export const deleteGradingformRubricFilling = async (
+  id: GradingformRubricFillingId,
+) => {
+  const { id: gradingformRubricFillingId } =
+    gradingformRubricFillingIdSchema.parse({ id });
   try {
-    const [g] =  await db.delete(gradingformRubricFillings).where(eq(gradingformRubricFillings.id, gradingformRubricFillingId!))
-    .returning();
+    const [g] = await db
+      .delete(gradingformRubricFillings)
+      .where(eq(gradingformRubricFillings.id, gradingformRubricFillingId!))
+      .returning();
     return { gradingformRubricFilling: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +68,3 @@ export const deleteGradingformRubricFilling = async (id: GradingformRubricFillin
     throw { error: message };
   }
 };
-

@@ -1,4 +1,3 @@
-import { type getFolders } from "@/lib/api/folders/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -12,6 +11,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getFolders } from "../api/folders/queries";
 
 export const folders = pgTable("folders", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

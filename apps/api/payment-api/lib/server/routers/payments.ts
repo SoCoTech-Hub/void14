@@ -1,19 +1,25 @@
-import { getPaymentById, getPayments } from "@/lib/api/payments/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  paymentIdSchema,
+  createPayment,
+  deletePayment,
+  updatePayment,
+} from "../api/payments/mutations";
+import { getPaymentById, getPayments } from "../api/payments/queries";
+import {
   insertPaymentParams,
+  paymentIdSchema,
   updatePaymentParams,
-} from "@/lib/db/schema/payments";
-import { createPayment, deletePayment, updatePayment } from "@/lib/api/payments/mutations";
+} from "../db/schema/payments";
+import { publicProcedure, router } from "../server/trpc";
 
 export const paymentsRouter = router({
   getPayments: publicProcedure.query(async () => {
     return getPayments();
   }),
-  getPaymentById: publicProcedure.input(paymentIdSchema).query(async ({ input }) => {
-    return getPaymentById(input.id);
-  }),
+  getPaymentById: publicProcedure
+    .input(paymentIdSchema)
+    .query(async ({ input }) => {
+      return getPaymentById(input.id);
+    }),
   createPayment: publicProcedure
     .input(insertPaymentParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,26 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  WorkshopFormAccumulativeId, 
+
+import { db } from "../db/index";
+import {
+  insertWorkshopFormAccumulativeSchema,
   NewWorkshopFormAccumulativeParams,
-  UpdateWorkshopFormAccumulativeParams, 
+  UpdateWorkshopFormAccumulativeParams,
   updateWorkshopFormAccumulativeSchema,
-  insertWorkshopFormAccumulativeSchema, 
+  WorkshopFormAccumulativeId,
+  workshopFormAccumulativeIdSchema,
   workshopFormAccumulatives,
-  workshopFormAccumulativeIdSchema 
-} from "@/lib/db/schema/workshopFormAccumulatives";
+} from "../db/schema/workshopFormAccumulatives";
 
-export const createWorkshopFormAccumulative = async (workshopFormAccumulative: NewWorkshopFormAccumulativeParams) => {
-  const newWorkshopFormAccumulative = insertWorkshopFormAccumulativeSchema.parse(workshopFormAccumulative);
+export const createWorkshopFormAccumulative = async (
+  workshopFormAccumulative: NewWorkshopFormAccumulativeParams,
+) => {
+  const newWorkshopFormAccumulative =
+    insertWorkshopFormAccumulativeSchema.parse(workshopFormAccumulative);
   try {
-    const [w] =  await db.insert(workshopFormAccumulatives).values(newWorkshopFormAccumulative).returning();
+    const [w] = await db
+      .insert(workshopFormAccumulatives)
+      .values(newWorkshopFormAccumulative)
+      .returning();
     return { workshopFormAccumulative: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,20 @@ export const createWorkshopFormAccumulative = async (workshopFormAccumulative: N
   }
 };
 
-export const updateWorkshopFormAccumulative = async (id: WorkshopFormAccumulativeId, workshopFormAccumulative: UpdateWorkshopFormAccumulativeParams) => {
-  const { id: workshopFormAccumulativeId } = workshopFormAccumulativeIdSchema.parse({ id });
-  const newWorkshopFormAccumulative = updateWorkshopFormAccumulativeSchema.parse(workshopFormAccumulative);
+export const updateWorkshopFormAccumulative = async (
+  id: WorkshopFormAccumulativeId,
+  workshopFormAccumulative: UpdateWorkshopFormAccumulativeParams,
+) => {
+  const { id: workshopFormAccumulativeId } =
+    workshopFormAccumulativeIdSchema.parse({ id });
+  const newWorkshopFormAccumulative =
+    updateWorkshopFormAccumulativeSchema.parse(workshopFormAccumulative);
   try {
-    const [w] =  await db
-     .update(workshopFormAccumulatives)
-     .set(newWorkshopFormAccumulative)
-     .where(eq(workshopFormAccumulatives.id, workshopFormAccumulativeId!))
-     .returning();
+    const [w] = await db
+      .update(workshopFormAccumulatives)
+      .set(newWorkshopFormAccumulative)
+      .where(eq(workshopFormAccumulatives.id, workshopFormAccumulativeId!))
+      .returning();
     return { workshopFormAccumulative: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +51,16 @@ export const updateWorkshopFormAccumulative = async (id: WorkshopFormAccumulativ
   }
 };
 
-export const deleteWorkshopFormAccumulative = async (id: WorkshopFormAccumulativeId) => {
-  const { id: workshopFormAccumulativeId } = workshopFormAccumulativeIdSchema.parse({ id });
+export const deleteWorkshopFormAccumulative = async (
+  id: WorkshopFormAccumulativeId,
+) => {
+  const { id: workshopFormAccumulativeId } =
+    workshopFormAccumulativeIdSchema.parse({ id });
   try {
-    const [w] =  await db.delete(workshopFormAccumulatives).where(eq(workshopFormAccumulatives.id, workshopFormAccumulativeId!))
-    .returning();
+    const [w] = await db
+      .delete(workshopFormAccumulatives)
+      .where(eq(workshopFormAccumulatives.id, workshopFormAccumulativeId!))
+      .returning();
     return { workshopFormAccumulative: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +68,3 @@ export const deleteWorkshopFormAccumulative = async (id: WorkshopFormAccumulativ
     throw { error: message };
   }
 };
-

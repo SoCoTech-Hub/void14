@@ -1,4 +1,3 @@
-import { type getEnrolLtiUsers } from "@/lib/api/enrolLtiUsers/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, real, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -6,6 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getEnrolLtiUsers } from "../api/enrolLtiUsers/queries";
 import { enrolLtiDeployments } from "./enrolLtiDeployments";
 
 export const enrolLtiUsers = pgTable("enrol_lti_users", {

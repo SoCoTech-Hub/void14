@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuestionAttemptStep,
   deleteQuestionAttemptStep,
   updateQuestionAttemptStep,
-} from "@/lib/api/questionAttemptSteps/mutations";
+} from "../api/questionAttemptSteps/mutations";
 import {
-  QuestionAttemptStepId,
-  NewQuestionAttemptStepParams,
-  UpdateQuestionAttemptStepParams,
-  questionAttemptStepIdSchema,
   insertQuestionAttemptStepParams,
+  NewQuestionAttemptStepParams,
+  QuestionAttemptStepId,
+  questionAttemptStepIdSchema,
+  UpdateQuestionAttemptStepParams,
   updateQuestionAttemptStepParams,
-} from "@/lib/db/schema/questionAttemptSteps";
+} from "../db/schema/questionAttemptSteps";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQuestionAttemptSteps = () => revalidatePath("/question-attempt-steps");
+const revalidateQuestionAttemptSteps = () =>
+  revalidatePath("/question-attempt-steps");
 
-export const createQuestionAttemptStepAction = async (input: NewQuestionAttemptStepParams) => {
+export const createQuestionAttemptStepAction = async (
+  input: NewQuestionAttemptStepParams,
+) => {
   try {
     const payload = insertQuestionAttemptStepParams.parse(input);
     await createQuestionAttemptStep(payload);
@@ -37,7 +41,9 @@ export const createQuestionAttemptStepAction = async (input: NewQuestionAttemptS
   }
 };
 
-export const updateQuestionAttemptStepAction = async (input: UpdateQuestionAttemptStepParams) => {
+export const updateQuestionAttemptStepAction = async (
+  input: UpdateQuestionAttemptStepParams,
+) => {
   try {
     const payload = updateQuestionAttemptStepParams.parse(input);
     await updateQuestionAttemptStep(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQuestionAttemptStepAction = async (input: UpdateQuestionAttem
   }
 };
 
-export const deleteQuestionAttemptStepAction = async (input: QuestionAttemptStepId) => {
+export const deleteQuestionAttemptStepAction = async (
+  input: QuestionAttemptStepId,
+) => {
   try {
     const payload = questionAttemptStepIdSchema.parse({ id: input });
     await deleteQuestionAttemptStep(payload.id);

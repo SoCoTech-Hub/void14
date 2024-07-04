@@ -1,4 +1,3 @@
-import { type getWorkshopFormRubricLevels } from "@/lib/api/workshopFormRubricLevels/queries";
 import {
   integer,
   pgTable,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getWorkshopFormRubricLevels } from "../api/workshopFormRubricLevels/queries";
 
 export const workshopFormRubricLevels = pgTable(
   "workshop_form_rubric_levels",

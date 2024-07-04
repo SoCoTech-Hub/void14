@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createPayment,
   deletePayment,
   updatePayment,
-} from "@/lib/api/payments/mutations";
+} from "../api/payments/mutations";
 import {
-  PaymentId,
-  NewPaymentParams,
-  UpdatePaymentParams,
-  paymentIdSchema,
   insertPaymentParams,
+  NewPaymentParams,
+  PaymentId,
+  paymentIdSchema,
+  UpdatePaymentParams,
   updatePaymentParams,
-} from "@/lib/db/schema/payments";
+} from "../db/schema/payments";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

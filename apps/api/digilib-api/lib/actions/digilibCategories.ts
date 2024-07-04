@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createDigilibCategory,
   deleteDigilibCategory,
   updateDigilibCategory,
-} from "@/lib/api/digilibCategories/mutations";
+} from "../api/digilibCategories/mutations";
 import {
   DigilibCategoryId,
-  NewDigilibCategoryParams,
-  UpdateDigilibCategoryParams,
   digilibCategoryIdSchema,
   insertDigilibCategoryParams,
+  NewDigilibCategoryParams,
+  UpdateDigilibCategoryParams,
   updateDigilibCategoryParams,
-} from "@/lib/db/schema/digilibCategories";
+} from "../db/schema/digilibCategories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateDigilibCategories = () => revalidatePath("/digilib-categories");
 
-export const createDigilibCategoryAction = async (input: NewDigilibCategoryParams) => {
+export const createDigilibCategoryAction = async (
+  input: NewDigilibCategoryParams,
+) => {
   try {
     const payload = insertDigilibCategoryParams.parse(input);
     await createDigilibCategory(payload);
@@ -37,7 +40,9 @@ export const createDigilibCategoryAction = async (input: NewDigilibCategoryParam
   }
 };
 
-export const updateDigilibCategoryAction = async (input: UpdateDigilibCategoryParams) => {
+export const updateDigilibCategoryAction = async (
+  input: UpdateDigilibCategoryParams,
+) => {
   try {
     const payload = updateDigilibCategoryParams.parse(input);
     await updateDigilibCategory(payload.id, payload);

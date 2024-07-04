@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createDistrictOrganization,
   deleteDistrictOrganization,
   updateDistrictOrganization,
-} from "@/lib/api/districtOrganizations/mutations";
+} from "../api/districtOrganizations/mutations";
 import {
   DistrictOrganizationId,
-  NewDistrictOrganizationParams,
-  UpdateDistrictOrganizationParams,
   districtOrganizationIdSchema,
   insertDistrictOrganizationParams,
+  NewDistrictOrganizationParams,
+  UpdateDistrictOrganizationParams,
   updateDistrictOrganizationParams,
-} from "@/lib/db/schema/districtOrganizations";
+} from "../db/schema/districtOrganizations";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateDistrictOrganizations = () => revalidatePath("/district-organizations");
+const revalidateDistrictOrganizations = () =>
+  revalidatePath("/district-organizations");
 
-export const createDistrictOrganizationAction = async (input: NewDistrictOrganizationParams) => {
+export const createDistrictOrganizationAction = async (
+  input: NewDistrictOrganizationParams,
+) => {
   try {
     const payload = insertDistrictOrganizationParams.parse(input);
     await createDistrictOrganization(payload);
@@ -37,7 +41,9 @@ export const createDistrictOrganizationAction = async (input: NewDistrictOrganiz
   }
 };
 
-export const updateDistrictOrganizationAction = async (input: UpdateDistrictOrganizationParams) => {
+export const updateDistrictOrganizationAction = async (
+  input: UpdateDistrictOrganizationParams,
+) => {
   try {
     const payload = updateDistrictOrganizationParams.parse(input);
     await updateDistrictOrganization(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateDistrictOrganizationAction = async (input: UpdateDistrictOrga
   }
 };
 
-export const deleteDistrictOrganizationAction = async (input: DistrictOrganizationId) => {
+export const deleteDistrictOrganizationAction = async (
+  input: DistrictOrganizationId,
+) => {
   try {
     const payload = districtOrganizationIdSchema.parse({ id: input });
     await deleteDistrictOrganization(payload.id);

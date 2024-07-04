@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createSurveyAnalysiss,
   deleteSurveyAnalysiss,
   updateSurveyAnalysiss,
-} from "@/lib/api/surveyAnalysiss/mutations";
+} from "../api/surveyAnalysiss/mutations";
 import {
-  SurveyAnalysissId,
-  NewSurveyAnalysissParams,
-  UpdateSurveyAnalysissParams,
-  surveyAnalysissIdSchema,
   insertSurveyAnalysissParams,
+  NewSurveyAnalysissParams,
+  SurveyAnalysissId,
+  surveyAnalysissIdSchema,
+  UpdateSurveyAnalysissParams,
   updateSurveyAnalysissParams,
-} from "@/lib/db/schema/surveyAnalysiss";
+} from "../db/schema/surveyAnalysiss";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateSurveyAnalysisses = () => revalidatePath("/survey-analysiss");
 
-export const createSurveyAnalysissAction = async (input: NewSurveyAnalysissParams) => {
+export const createSurveyAnalysissAction = async (
+  input: NewSurveyAnalysissParams,
+) => {
   try {
     const payload = insertSurveyAnalysissParams.parse(input);
     await createSurveyAnalysiss(payload);
@@ -37,7 +40,9 @@ export const createSurveyAnalysissAction = async (input: NewSurveyAnalysissParam
   }
 };
 
-export const updateSurveyAnalysissAction = async (input: UpdateSurveyAnalysissParams) => {
+export const updateSurveyAnalysissAction = async (
+  input: UpdateSurveyAnalysissParams,
+) => {
   try {
     const payload = updateSurveyAnalysissParams.parse(input);
     await updateSurveyAnalysiss(payload.id, payload);

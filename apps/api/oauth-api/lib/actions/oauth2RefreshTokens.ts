@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createOauth2RefreshToken,
   deleteOauth2RefreshToken,
   updateOauth2RefreshToken,
-} from "@/lib/api/oauth2RefreshTokens/mutations";
+} from "../api/oauth2RefreshTokens/mutations";
 import {
-  Oauth2RefreshTokenId,
-  NewOauth2RefreshTokenParams,
-  UpdateOauth2RefreshTokenParams,
-  oauth2RefreshTokenIdSchema,
   insertOauth2RefreshTokenParams,
+  NewOauth2RefreshTokenParams,
+  Oauth2RefreshTokenId,
+  oauth2RefreshTokenIdSchema,
+  UpdateOauth2RefreshTokenParams,
   updateOauth2RefreshTokenParams,
-} from "@/lib/db/schema/oauth2RefreshTokens";
+} from "../db/schema/oauth2RefreshTokens";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateOauth2RefreshTokens = () => revalidatePath("/oauth2-refresh-tokens");
+const revalidateOauth2RefreshTokens = () =>
+  revalidatePath("/oauth2-refresh-tokens");
 
-export const createOauth2RefreshTokenAction = async (input: NewOauth2RefreshTokenParams) => {
+export const createOauth2RefreshTokenAction = async (
+  input: NewOauth2RefreshTokenParams,
+) => {
   try {
     const payload = insertOauth2RefreshTokenParams.parse(input);
     await createOauth2RefreshToken(payload);
@@ -37,7 +41,9 @@ export const createOauth2RefreshTokenAction = async (input: NewOauth2RefreshToke
   }
 };
 
-export const updateOauth2RefreshTokenAction = async (input: UpdateOauth2RefreshTokenParams) => {
+export const updateOauth2RefreshTokenAction = async (
+  input: UpdateOauth2RefreshTokenParams,
+) => {
   try {
     const payload = updateOauth2RefreshTokenParams.parse(input);
     await updateOauth2RefreshToken(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateOauth2RefreshTokenAction = async (input: UpdateOauth2RefreshT
   }
 };
 
-export const deleteOauth2RefreshTokenAction = async (input: Oauth2RefreshTokenId) => {
+export const deleteOauth2RefreshTokenAction = async (
+  input: Oauth2RefreshTokenId,
+) => {
   try {
     const payload = oauth2RefreshTokenIdSchema.parse({ id: input });
     await deleteOauth2RefreshToken(payload.id);

@@ -1,19 +1,27 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  MassMailListsRecipientId, 
-  NewMassMailListsRecipientParams,
-  UpdateMassMailListsRecipientParams, 
-  updateMassMailListsRecipientSchema,
-  insertMassMailListsRecipientSchema, 
+
+import { db } from "../db/index";
+import {
+  insertMassMailListsRecipientSchema,
+  MassMailListsRecipientId,
+  massMailListsRecipientIdSchema,
   massMailListsRecipients,
-  massMailListsRecipientIdSchema 
-} from "@/lib/db/schema/massMailListsRecipients";
+  NewMassMailListsRecipientParams,
+  UpdateMassMailListsRecipientParams,
+  updateMassMailListsRecipientSchema,
+} from "../db/schema/massMailListsRecipients";
 
-export const createMassMailListsRecipient = async (massMailListsRecipient: NewMassMailListsRecipientParams) => {
-  const newMassMailListsRecipient = insertMassMailListsRecipientSchema.parse(massMailListsRecipient);
+export const createMassMailListsRecipient = async (
+  massMailListsRecipient: NewMassMailListsRecipientParams,
+) => {
+  const newMassMailListsRecipient = insertMassMailListsRecipientSchema.parse(
+    massMailListsRecipient,
+  );
   try {
-    const [m] =  await db.insert(massMailListsRecipients).values(newMassMailListsRecipient).returning();
+    const [m] = await db
+      .insert(massMailListsRecipients)
+      .values(newMassMailListsRecipient)
+      .returning();
     return { massMailListsRecipient: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,22 @@ export const createMassMailListsRecipient = async (massMailListsRecipient: NewMa
   }
 };
 
-export const updateMassMailListsRecipient = async (id: MassMailListsRecipientId, massMailListsRecipient: UpdateMassMailListsRecipientParams) => {
-  const { id: massMailListsRecipientId } = massMailListsRecipientIdSchema.parse({ id });
-  const newMassMailListsRecipient = updateMassMailListsRecipientSchema.parse(massMailListsRecipient);
+export const updateMassMailListsRecipient = async (
+  id: MassMailListsRecipientId,
+  massMailListsRecipient: UpdateMassMailListsRecipientParams,
+) => {
+  const { id: massMailListsRecipientId } = massMailListsRecipientIdSchema.parse(
+    { id },
+  );
+  const newMassMailListsRecipient = updateMassMailListsRecipientSchema.parse(
+    massMailListsRecipient,
+  );
   try {
-    const [m] =  await db
-     .update(massMailListsRecipients)
-     .set(newMassMailListsRecipient)
-     .where(eq(massMailListsRecipients.id, massMailListsRecipientId!))
-     .returning();
+    const [m] = await db
+      .update(massMailListsRecipients)
+      .set(newMassMailListsRecipient)
+      .where(eq(massMailListsRecipients.id, massMailListsRecipientId!))
+      .returning();
     return { massMailListsRecipient: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +54,17 @@ export const updateMassMailListsRecipient = async (id: MassMailListsRecipientId,
   }
 };
 
-export const deleteMassMailListsRecipient = async (id: MassMailListsRecipientId) => {
-  const { id: massMailListsRecipientId } = massMailListsRecipientIdSchema.parse({ id });
+export const deleteMassMailListsRecipient = async (
+  id: MassMailListsRecipientId,
+) => {
+  const { id: massMailListsRecipientId } = massMailListsRecipientIdSchema.parse(
+    { id },
+  );
   try {
-    const [m] =  await db.delete(massMailListsRecipients).where(eq(massMailListsRecipients.id, massMailListsRecipientId!))
-    .returning();
+    const [m] = await db
+      .delete(massMailListsRecipients)
+      .where(eq(massMailListsRecipients.id, massMailListsRecipientId!))
+      .returning();
     return { massMailListsRecipient: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +72,3 @@ export const deleteMassMailListsRecipient = async (id: MassMailListsRecipientId)
     throw { error: message };
   }
 };
-

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCompetencyEvidence,
   deleteCompetencyEvidence,
   updateCompetencyEvidence,
-} from "@/lib/api/competencyEvidences/mutations";
+} from "../api/competencyEvidences/mutations";
 import {
   CompetencyEvidenceId,
-  NewCompetencyEvidenceParams,
-  UpdateCompetencyEvidenceParams,
   competencyEvidenceIdSchema,
   insertCompetencyEvidenceParams,
+  NewCompetencyEvidenceParams,
+  UpdateCompetencyEvidenceParams,
   updateCompetencyEvidenceParams,
-} from "@/lib/db/schema/competencyEvidences";
+} from "../db/schema/competencyEvidences";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateCompetencyEvidences = () => revalidatePath("/competency-evidences");
+const revalidateCompetencyEvidences = () =>
+  revalidatePath("/competency-evidences");
 
-export const createCompetencyEvidenceAction = async (input: NewCompetencyEvidenceParams) => {
+export const createCompetencyEvidenceAction = async (
+  input: NewCompetencyEvidenceParams,
+) => {
   try {
     const payload = insertCompetencyEvidenceParams.parse(input);
     await createCompetencyEvidence(payload);
@@ -37,7 +41,9 @@ export const createCompetencyEvidenceAction = async (input: NewCompetencyEvidenc
   }
 };
 
-export const updateCompetencyEvidenceAction = async (input: UpdateCompetencyEvidenceParams) => {
+export const updateCompetencyEvidenceAction = async (
+  input: UpdateCompetencyEvidenceParams,
+) => {
   try {
     const payload = updateCompetencyEvidenceParams.parse(input);
     await updateCompetencyEvidence(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateCompetencyEvidenceAction = async (input: UpdateCompetencyEvid
   }
 };
 
-export const deleteCompetencyEvidenceAction = async (input: CompetencyEvidenceId) => {
+export const deleteCompetencyEvidenceAction = async (
+  input: CompetencyEvidenceId,
+) => {
   try {
     const payload = competencyEvidenceIdSchema.parse({ id: input });
     await deleteCompetencyEvidence(payload.id);

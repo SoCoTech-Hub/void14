@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createEnrolLtiLti2Context,
   deleteEnrolLtiLti2Context,
   updateEnrolLtiLti2Context,
-} from "@/lib/api/enrolLtiLti2Contexts/mutations";
+} from "../api/enrolLtiLti2Contexts/mutations";
 import {
   EnrolLtiLti2ContextId,
-  NewEnrolLtiLti2ContextParams,
-  UpdateEnrolLtiLti2ContextParams,
   enrolLtiLti2ContextIdSchema,
   insertEnrolLtiLti2ContextParams,
+  NewEnrolLtiLti2ContextParams,
+  UpdateEnrolLtiLti2ContextParams,
   updateEnrolLtiLti2ContextParams,
-} from "@/lib/db/schema/enrolLtiLti2Contexts";
+} from "../db/schema/enrolLtiLti2Contexts";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateEnrolLtiLti2Contexts = () => revalidatePath("/enrol-lti-lti2-contexts");
+const revalidateEnrolLtiLti2Contexts = () =>
+  revalidatePath("/enrol-lti-lti2-contexts");
 
-export const createEnrolLtiLti2ContextAction = async (input: NewEnrolLtiLti2ContextParams) => {
+export const createEnrolLtiLti2ContextAction = async (
+  input: NewEnrolLtiLti2ContextParams,
+) => {
   try {
     const payload = insertEnrolLtiLti2ContextParams.parse(input);
     await createEnrolLtiLti2Context(payload);
@@ -37,7 +41,9 @@ export const createEnrolLtiLti2ContextAction = async (input: NewEnrolLtiLti2Cont
   }
 };
 
-export const updateEnrolLtiLti2ContextAction = async (input: UpdateEnrolLtiLti2ContextParams) => {
+export const updateEnrolLtiLti2ContextAction = async (
+  input: UpdateEnrolLtiLti2ContextParams,
+) => {
   try {
     const payload = updateEnrolLtiLti2ContextParams.parse(input);
     await updateEnrolLtiLti2Context(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateEnrolLtiLti2ContextAction = async (input: UpdateEnrolLtiLti2C
   }
 };
 
-export const deleteEnrolLtiLti2ContextAction = async (input: EnrolLtiLti2ContextId) => {
+export const deleteEnrolLtiLti2ContextAction = async (
+  input: EnrolLtiLti2ContextId,
+) => {
   try {
     const payload = enrolLtiLti2ContextIdSchema.parse({ id: input });
     await deleteEnrolLtiLti2Context(payload.id);

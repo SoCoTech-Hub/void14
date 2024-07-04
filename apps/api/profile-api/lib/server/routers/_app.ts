@@ -1,9 +1,9 @@
+import { router } from "../server/trpc";
+import { addressesRouter } from "./addresses";
 import { computersRouter } from "./computers";
-import { router } from "@/lib/server/trpc";
-import { profilesRouter } from "./profiles";
 import { gendersRouter } from "./genders";
 import { nextOfKinsRouter } from "./nextOfKins";
-import { addressesRouter } from "./addresses";
+import { profilesRouter } from "./profiles";
 
 export const appRouter = router({
   computers: computersRouter,

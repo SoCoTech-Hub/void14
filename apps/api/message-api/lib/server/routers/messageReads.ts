@@ -1,19 +1,28 @@
-import { getMessageReadById, getMessageReads } from "@/lib/api/messageReads/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  messageReadIdSchema,
+  createMessageRead,
+  deleteMessageRead,
+  updateMessageRead,
+} from "../api/messageReads/mutations";
+import {
+  getMessageReadById,
+  getMessageReads,
+} from "../api/messageReads/queries";
+import {
   insertMessageReadParams,
+  messageReadIdSchema,
   updateMessageReadParams,
-} from "@/lib/db/schema/messageReads";
-import { createMessageRead, deleteMessageRead, updateMessageRead } from "@/lib/api/messageReads/mutations";
+} from "../db/schema/messageReads";
+import { publicProcedure, router } from "../server/trpc";
 
 export const messageReadsRouter = router({
   getMessageReads: publicProcedure.query(async () => {
     return getMessageReads();
   }),
-  getMessageReadById: publicProcedure.input(messageReadIdSchema).query(async ({ input }) => {
-    return getMessageReadById(input.id);
-  }),
+  getMessageReadById: publicProcedure
+    .input(messageReadIdSchema)
+    .query(async ({ input }) => {
+      return getMessageReadById(input.id);
+    }),
   createMessageRead: publicProcedure
     .input(insertMessageReadParams)
     .mutation(async ({ input }) => {

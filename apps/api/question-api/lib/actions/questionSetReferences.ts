@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuestionSetReference,
   deleteQuestionSetReference,
   updateQuestionSetReference,
-} from "@/lib/api/questionSetReferences/mutations";
+} from "../api/questionSetReferences/mutations";
 import {
-  QuestionSetReferenceId,
-  NewQuestionSetReferenceParams,
-  UpdateQuestionSetReferenceParams,
-  questionSetReferenceIdSchema,
   insertQuestionSetReferenceParams,
+  NewQuestionSetReferenceParams,
+  QuestionSetReferenceId,
+  questionSetReferenceIdSchema,
+  UpdateQuestionSetReferenceParams,
   updateQuestionSetReferenceParams,
-} from "@/lib/db/schema/questionSetReferences";
+} from "../db/schema/questionSetReferences";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQuestionSetReferences = () => revalidatePath("/question-set-references");
+const revalidateQuestionSetReferences = () =>
+  revalidatePath("/question-set-references");
 
-export const createQuestionSetReferenceAction = async (input: NewQuestionSetReferenceParams) => {
+export const createQuestionSetReferenceAction = async (
+  input: NewQuestionSetReferenceParams,
+) => {
   try {
     const payload = insertQuestionSetReferenceParams.parse(input);
     await createQuestionSetReference(payload);
@@ -37,7 +41,9 @@ export const createQuestionSetReferenceAction = async (input: NewQuestionSetRefe
   }
 };
 
-export const updateQuestionSetReferenceAction = async (input: UpdateQuestionSetReferenceParams) => {
+export const updateQuestionSetReferenceAction = async (
+  input: UpdateQuestionSetReferenceParams,
+) => {
   try {
     const payload = updateQuestionSetReferenceParams.parse(input);
     await updateQuestionSetReference(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQuestionSetReferenceAction = async (input: UpdateQuestionSetR
   }
 };
 
-export const deleteQuestionSetReferenceAction = async (input: QuestionSetReferenceId) => {
+export const deleteQuestionSetReferenceAction = async (
+  input: QuestionSetReferenceId,
+) => {
   try {
     const payload = questionSetReferenceIdSchema.parse({ id: input });
     await deleteQuestionSetReference(payload.id);

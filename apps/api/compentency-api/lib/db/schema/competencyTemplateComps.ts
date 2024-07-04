@@ -1,4 +1,3 @@
-import { type getCompetencyTemplateComps } from "@/lib/api/competencyTemplateComps/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -12,6 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getCompetencyTemplateComps } from "../api/competencyTemplateComps/queries";
 import { competencies } from "./competencies";
 import { competencyTemplates } from "./competencyTemplates";
 

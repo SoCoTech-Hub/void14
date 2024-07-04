@@ -1,19 +1,20 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  ModuleId, 
-  NewModuleParams,
-  UpdateModuleParams, 
-  updateModuleSchema,
-  insertModuleSchema, 
+
+import { db } from "../db/index";
+import {
+  insertModuleSchema,
+  ModuleId,
+  moduleIdSchema,
   modules,
-  moduleIdSchema 
-} from "@/lib/db/schema/modules";
+  NewModuleParams,
+  UpdateModuleParams,
+  updateModuleSchema,
+} from "../db/schema/modules";
 
 export const createModule = async (module: NewModuleParams) => {
   const newModule = insertModuleSchema.parse(module);
   try {
-    const [m] =  await db.insert(modules).values(newModule).returning();
+    const [m] = await db.insert(modules).values(newModule).returning();
     return { module: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +23,18 @@ export const createModule = async (module: NewModuleParams) => {
   }
 };
 
-export const updateModule = async (id: ModuleId, module: UpdateModuleParams) => {
+export const updateModule = async (
+  id: ModuleId,
+  module: UpdateModuleParams,
+) => {
   const { id: moduleId } = moduleIdSchema.parse({ id });
   const newModule = updateModuleSchema.parse(module);
   try {
-    const [m] =  await db
-     .update(modules)
-     .set(newModule)
-     .where(eq(modules.id, moduleId!))
-     .returning();
+    const [m] = await db
+      .update(modules)
+      .set(newModule)
+      .where(eq(modules.id, moduleId!))
+      .returning();
     return { module: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +46,10 @@ export const updateModule = async (id: ModuleId, module: UpdateModuleParams) => 
 export const deleteModule = async (id: ModuleId) => {
   const { id: moduleId } = moduleIdSchema.parse({ id });
   try {
-    const [m] =  await db.delete(modules).where(eq(modules.id, moduleId!))
-    .returning();
+    const [m] = await db
+      .delete(modules)
+      .where(eq(modules.id, moduleId!))
+      .returning();
     return { module: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +57,3 @@ export const deleteModule = async (id: ModuleId) => {
     throw { error: message };
   }
 };
-

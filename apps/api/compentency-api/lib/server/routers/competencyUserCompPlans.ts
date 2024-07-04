@@ -1,19 +1,28 @@
-import { getCompetencyUserCompPlanById, getCompetencyUserCompPlans } from "@/lib/api/competencyUserCompPlans/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createCompetencyUserCompPlan,
+  deleteCompetencyUserCompPlan,
+  updateCompetencyUserCompPlan,
+} from "../api/competencyUserCompPlans/mutations";
+import {
+  getCompetencyUserCompPlanById,
+  getCompetencyUserCompPlans,
+} from "../api/competencyUserCompPlans/queries";
 import {
   competencyUserCompPlanIdSchema,
   insertCompetencyUserCompPlanParams,
   updateCompetencyUserCompPlanParams,
-} from "@/lib/db/schema/competencyUserCompPlans";
-import { createCompetencyUserCompPlan, deleteCompetencyUserCompPlan, updateCompetencyUserCompPlan } from "@/lib/api/competencyUserCompPlans/mutations";
+} from "../db/schema/competencyUserCompPlans";
+import { publicProcedure, router } from "../server/trpc";
 
 export const competencyUserCompPlansRouter = router({
   getCompetencyUserCompPlans: publicProcedure.query(async () => {
     return getCompetencyUserCompPlans();
   }),
-  getCompetencyUserCompPlanById: publicProcedure.input(competencyUserCompPlanIdSchema).query(async ({ input }) => {
-    return getCompetencyUserCompPlanById(input.id);
-  }),
+  getCompetencyUserCompPlanById: publicProcedure
+    .input(competencyUserCompPlanIdSchema)
+    .query(async ({ input }) => {
+      return getCompetencyUserCompPlanById(input.id);
+    }),
   createCompetencyUserCompPlan: publicProcedure
     .input(insertCompetencyUserCompPlanParams)
     .mutation(async ({ input }) => {

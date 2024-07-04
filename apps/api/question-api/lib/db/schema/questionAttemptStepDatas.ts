@@ -1,10 +1,10 @@
-import { type getQuestionAttemptStepDatas } from "@/lib/api/questionAttemptStepDatas/queries";
 import { pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getQuestionAttemptStepDatas } from "../api/questionAttemptStepDatas/queries";
 import { questionAttemptSteps } from "./questionAttemptSteps";
 
 export const questionAttemptStepDatas = pgTable(

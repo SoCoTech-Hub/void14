@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createEnrolLtiToolConsumerMap,
   deleteEnrolLtiToolConsumerMap,
   updateEnrolLtiToolConsumerMap,
-} from "@/lib/api/enrolLtiToolConsumerMaps/mutations";
+} from "../api/enrolLtiToolConsumerMaps/mutations";
 import {
   EnrolLtiToolConsumerMapId,
-  NewEnrolLtiToolConsumerMapParams,
-  UpdateEnrolLtiToolConsumerMapParams,
   enrolLtiToolConsumerMapIdSchema,
   insertEnrolLtiToolConsumerMapParams,
+  NewEnrolLtiToolConsumerMapParams,
+  UpdateEnrolLtiToolConsumerMapParams,
   updateEnrolLtiToolConsumerMapParams,
-} from "@/lib/db/schema/enrolLtiToolConsumerMaps";
+} from "../db/schema/enrolLtiToolConsumerMaps";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateEnrolLtiToolConsumerMaps = () => revalidatePath("/enrol-lti-tool-consumer-maps");
+const revalidateEnrolLtiToolConsumerMaps = () =>
+  revalidatePath("/enrol-lti-tool-consumer-maps");
 
-export const createEnrolLtiToolConsumerMapAction = async (input: NewEnrolLtiToolConsumerMapParams) => {
+export const createEnrolLtiToolConsumerMapAction = async (
+  input: NewEnrolLtiToolConsumerMapParams,
+) => {
   try {
     const payload = insertEnrolLtiToolConsumerMapParams.parse(input);
     await createEnrolLtiToolConsumerMap(payload);
@@ -37,7 +41,9 @@ export const createEnrolLtiToolConsumerMapAction = async (input: NewEnrolLtiTool
   }
 };
 
-export const updateEnrolLtiToolConsumerMapAction = async (input: UpdateEnrolLtiToolConsumerMapParams) => {
+export const updateEnrolLtiToolConsumerMapAction = async (
+  input: UpdateEnrolLtiToolConsumerMapParams,
+) => {
   try {
     const payload = updateEnrolLtiToolConsumerMapParams.parse(input);
     await updateEnrolLtiToolConsumerMap(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateEnrolLtiToolConsumerMapAction = async (input: UpdateEnrolLtiT
   }
 };
 
-export const deleteEnrolLtiToolConsumerMapAction = async (input: EnrolLtiToolConsumerMapId) => {
+export const deleteEnrolLtiToolConsumerMapAction = async (
+  input: EnrolLtiToolConsumerMapId,
+) => {
   try {
     const payload = enrolLtiToolConsumerMapIdSchema.parse({ id: input });
     await deleteEnrolLtiToolConsumerMap(payload.id);

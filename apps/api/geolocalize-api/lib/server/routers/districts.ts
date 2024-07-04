@@ -1,19 +1,25 @@
-import { getDistrictById, getDistricts } from "@/lib/api/districts/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createDistrict,
+  deleteDistrict,
+  updateDistrict,
+} from "../api/districts/mutations";
+import { getDistrictById, getDistricts } from "../api/districts/queries";
 import {
   districtIdSchema,
   insertDistrictParams,
   updateDistrictParams,
-} from "@/lib/db/schema/districts";
-import { createDistrict, deleteDistrict, updateDistrict } from "@/lib/api/districts/mutations";
+} from "../db/schema/districts";
+import { publicProcedure, router } from "../server/trpc";
 
 export const districtsRouter = router({
   getDistricts: publicProcedure.query(async () => {
     return getDistricts();
   }),
-  getDistrictById: publicProcedure.input(districtIdSchema).query(async ({ input }) => {
-    return getDistrictById(input.id);
-  }),
+  getDistrictById: publicProcedure
+    .input(districtIdSchema)
+    .query(async ({ input }) => {
+      return getDistrictById(input.id);
+    }),
   createDistrict: publicProcedure
     .input(insertDistrictParams)
     .mutation(async ({ input }) => {

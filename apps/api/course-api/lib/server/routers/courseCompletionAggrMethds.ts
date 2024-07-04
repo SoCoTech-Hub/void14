@@ -1,19 +1,28 @@
-import { getCourseCompletionAggrMethdById, getCourseCompletionAggrMethds } from "@/lib/api/courseCompletionAggrMethds/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createCourseCompletionAggrMethd,
+  deleteCourseCompletionAggrMethd,
+  updateCourseCompletionAggrMethd,
+} from "../api/courseCompletionAggrMethds/mutations";
+import {
+  getCourseCompletionAggrMethdById,
+  getCourseCompletionAggrMethds,
+} from "../api/courseCompletionAggrMethds/queries";
 import {
   courseCompletionAggrMethdIdSchema,
   insertCourseCompletionAggrMethdParams,
   updateCourseCompletionAggrMethdParams,
-} from "@/lib/db/schema/courseCompletionAggrMethds";
-import { createCourseCompletionAggrMethd, deleteCourseCompletionAggrMethd, updateCourseCompletionAggrMethd } from "@/lib/api/courseCompletionAggrMethds/mutations";
+} from "../db/schema/courseCompletionAggrMethds";
+import { publicProcedure, router } from "../server/trpc";
 
 export const courseCompletionAggrMethdsRouter = router({
   getCourseCompletionAggrMethds: publicProcedure.query(async () => {
     return getCourseCompletionAggrMethds();
   }),
-  getCourseCompletionAggrMethdById: publicProcedure.input(courseCompletionAggrMethdIdSchema).query(async ({ input }) => {
-    return getCourseCompletionAggrMethdById(input.id);
-  }),
+  getCourseCompletionAggrMethdById: publicProcedure
+    .input(courseCompletionAggrMethdIdSchema)
+    .query(async ({ input }) => {
+      return getCourseCompletionAggrMethdById(input.id);
+    }),
   createCourseCompletionAggrMethd: publicProcedure
     .input(insertCourseCompletionAggrMethdParams)
     .mutation(async ({ input }) => {

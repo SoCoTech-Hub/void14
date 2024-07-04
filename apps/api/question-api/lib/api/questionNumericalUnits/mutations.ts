@@ -1,19 +1,27 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  QuestionNumericalUnitId, 
+
+import { db } from "../db/index";
+import {
+  insertQuestionNumericalUnitSchema,
   NewQuestionNumericalUnitParams,
-  UpdateQuestionNumericalUnitParams, 
-  updateQuestionNumericalUnitSchema,
-  insertQuestionNumericalUnitSchema, 
+  QuestionNumericalUnitId,
+  questionNumericalUnitIdSchema,
   questionNumericalUnits,
-  questionNumericalUnitIdSchema 
-} from "@/lib/db/schema/questionNumericalUnits";
+  UpdateQuestionNumericalUnitParams,
+  updateQuestionNumericalUnitSchema,
+} from "../db/schema/questionNumericalUnits";
 
-export const createQuestionNumericalUnit = async (questionNumericalUnit: NewQuestionNumericalUnitParams) => {
-  const newQuestionNumericalUnit = insertQuestionNumericalUnitSchema.parse(questionNumericalUnit);
+export const createQuestionNumericalUnit = async (
+  questionNumericalUnit: NewQuestionNumericalUnitParams,
+) => {
+  const newQuestionNumericalUnit = insertQuestionNumericalUnitSchema.parse(
+    questionNumericalUnit,
+  );
   try {
-    const [q] =  await db.insert(questionNumericalUnits).values(newQuestionNumericalUnit).returning();
+    const [q] = await db
+      .insert(questionNumericalUnits)
+      .values(newQuestionNumericalUnit)
+      .returning();
     return { questionNumericalUnit: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,22 @@ export const createQuestionNumericalUnit = async (questionNumericalUnit: NewQues
   }
 };
 
-export const updateQuestionNumericalUnit = async (id: QuestionNumericalUnitId, questionNumericalUnit: UpdateQuestionNumericalUnitParams) => {
-  const { id: questionNumericalUnitId } = questionNumericalUnitIdSchema.parse({ id });
-  const newQuestionNumericalUnit = updateQuestionNumericalUnitSchema.parse(questionNumericalUnit);
+export const updateQuestionNumericalUnit = async (
+  id: QuestionNumericalUnitId,
+  questionNumericalUnit: UpdateQuestionNumericalUnitParams,
+) => {
+  const { id: questionNumericalUnitId } = questionNumericalUnitIdSchema.parse({
+    id,
+  });
+  const newQuestionNumericalUnit = updateQuestionNumericalUnitSchema.parse(
+    questionNumericalUnit,
+  );
   try {
-    const [q] =  await db
-     .update(questionNumericalUnits)
-     .set(newQuestionNumericalUnit)
-     .where(eq(questionNumericalUnits.id, questionNumericalUnitId!))
-     .returning();
+    const [q] = await db
+      .update(questionNumericalUnits)
+      .set(newQuestionNumericalUnit)
+      .where(eq(questionNumericalUnits.id, questionNumericalUnitId!))
+      .returning();
     return { questionNumericalUnit: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +54,17 @@ export const updateQuestionNumericalUnit = async (id: QuestionNumericalUnitId, q
   }
 };
 
-export const deleteQuestionNumericalUnit = async (id: QuestionNumericalUnitId) => {
-  const { id: questionNumericalUnitId } = questionNumericalUnitIdSchema.parse({ id });
+export const deleteQuestionNumericalUnit = async (
+  id: QuestionNumericalUnitId,
+) => {
+  const { id: questionNumericalUnitId } = questionNumericalUnitIdSchema.parse({
+    id,
+  });
   try {
-    const [q] =  await db.delete(questionNumericalUnits).where(eq(questionNumericalUnits.id, questionNumericalUnitId!))
-    .returning();
+    const [q] = await db
+      .delete(questionNumericalUnits)
+      .where(eq(questionNumericalUnits.id, questionNumericalUnitId!))
+      .returning();
     return { questionNumericalUnit: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +72,3 @@ export const deleteQuestionNumericalUnit = async (id: QuestionNumericalUnitId) =
     throw { error: message };
   }
 };
-

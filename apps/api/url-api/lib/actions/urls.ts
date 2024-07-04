@@ -1,19 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
+import { createUrl, deleteUrl, updateUrl } from "../api/urls/mutations";
 import {
-  createUrl,
-  deleteUrl,
-  updateUrl,
-} from "@/lib/api/urls/mutations";
-import {
-  UrlId,
+  insertUrlParams,
   NewUrlParams,
   UpdateUrlParams,
-  urlIdSchema,
-  insertUrlParams,
   updateUrlParams,
-} from "@/lib/db/schema/urls";
+  UrlId,
+  urlIdSchema,
+} from "../db/schema/urls";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

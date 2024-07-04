@@ -1,19 +1,25 @@
-import { getSchoolById, getSchools } from "@/lib/api/schools/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  schoolIdSchema,
+  createSchool,
+  deleteSchool,
+  updateSchool,
+} from "../api/schools/mutations";
+import { getSchoolById, getSchools } from "../api/schools/queries";
+import {
   insertSchoolParams,
+  schoolIdSchema,
   updateSchoolParams,
-} from "@/lib/db/schema/schools";
-import { createSchool, deleteSchool, updateSchool } from "@/lib/api/schools/mutations";
+} from "../db/schema/schools";
+import { publicProcedure, router } from "../server/trpc";
 
 export const schoolsRouter = router({
   getSchools: publicProcedure.query(async () => {
     return getSchools();
   }),
-  getSchoolById: publicProcedure.input(schoolIdSchema).query(async ({ input }) => {
-    return getSchoolById(input.id);
-  }),
+  getSchoolById: publicProcedure
+    .input(schoolIdSchema)
+    .query(async ({ input }) => {
+      return getSchoolById(input.id);
+    }),
   createSchool: publicProcedure
     .input(insertSchoolParams)
     .mutation(async ({ input }) => {

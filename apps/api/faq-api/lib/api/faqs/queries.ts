@@ -1,10 +1,12 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { type FaqId, faqIdSchema, faqs } from "@/lib/db/schema/faqs";
+
+import type { FaqId } from "../db/schema/faqs";
+import { db } from "../db/index";
+import { faqIdSchema, faqs } from "../db/schema/faqs";
 
 export const getFaqs = async () => {
   const rows = await db.select().from(faqs);
-  const f = rows
+  const f = rows;
   return { faqs: f };
 };
 
@@ -15,5 +17,3 @@ export const getFaqById = async (id: FaqId) => {
   const f = row;
   return { faq: f };
 };
-
-

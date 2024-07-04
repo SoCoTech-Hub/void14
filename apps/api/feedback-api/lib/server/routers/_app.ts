@@ -1,4 +1,4 @@
-import { router } from '@/lib/server/trpc'
+import { router } from '../server/trpc'
 import { feedbacksRouter } from "./feedbacks";
 import { feedbackCompletedsRouter } from "./feedbackCompleteds";
 import { feedbackCompletedtmpsRouter } from "./feedbackCompletedtmps";

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBadgeExternalBackpack,
   deleteBadgeExternalBackpack,
   updateBadgeExternalBackpack,
-} from "@/lib/api/badgeExternalBackpacks/mutations";
+} from "../api/badgeExternalBackpacks/mutations";
 import {
   BadgeExternalBackpackId,
-  NewBadgeExternalBackpackParams,
-  UpdateBadgeExternalBackpackParams,
   badgeExternalBackpackIdSchema,
   insertBadgeExternalBackpackParams,
+  NewBadgeExternalBackpackParams,
+  UpdateBadgeExternalBackpackParams,
   updateBadgeExternalBackpackParams,
-} from "@/lib/db/schema/badgeExternalBackpacks";
+} from "../db/schema/badgeExternalBackpacks";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateBadgeExternalBackpacks = () => revalidatePath("/badge-external-backpacks");
+const revalidateBadgeExternalBackpacks = () =>
+  revalidatePath("/badge-external-backpacks");
 
-export const createBadgeExternalBackpackAction = async (input: NewBadgeExternalBackpackParams) => {
+export const createBadgeExternalBackpackAction = async (
+  input: NewBadgeExternalBackpackParams,
+) => {
   try {
     const payload = insertBadgeExternalBackpackParams.parse(input);
     await createBadgeExternalBackpack(payload);
@@ -37,7 +41,9 @@ export const createBadgeExternalBackpackAction = async (input: NewBadgeExternalB
   }
 };
 
-export const updateBadgeExternalBackpackAction = async (input: UpdateBadgeExternalBackpackParams) => {
+export const updateBadgeExternalBackpackAction = async (
+  input: UpdateBadgeExternalBackpackParams,
+) => {
   try {
     const payload = updateBadgeExternalBackpackParams.parse(input);
     await updateBadgeExternalBackpack(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateBadgeExternalBackpackAction = async (input: UpdateBadgeExtern
   }
 };
 
-export const deleteBadgeExternalBackpackAction = async (input: BadgeExternalBackpackId) => {
+export const deleteBadgeExternalBackpackAction = async (
+  input: BadgeExternalBackpackId,
+) => {
   try {
     const payload = badgeExternalBackpackIdSchema.parse({ id: input });
     await deleteBadgeExternalBackpack(payload.id);

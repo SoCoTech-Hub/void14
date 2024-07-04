@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createTagCorrelation,
   deleteTagCorrelation,
   updateTagCorrelation,
-} from "@/lib/api/tagCorrelations/mutations";
+} from "../api/tagCorrelations/mutations";
 import {
-  TagCorrelationId,
-  NewTagCorrelationParams,
-  UpdateTagCorrelationParams,
-  tagCorrelationIdSchema,
   insertTagCorrelationParams,
+  NewTagCorrelationParams,
+  TagCorrelationId,
+  tagCorrelationIdSchema,
+  UpdateTagCorrelationParams,
   updateTagCorrelationParams,
-} from "@/lib/db/schema/tagCorrelations";
+} from "../db/schema/tagCorrelations";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateTagCorrelations = () => revalidatePath("/tag-correlations");
 
-export const createTagCorrelationAction = async (input: NewTagCorrelationParams) => {
+export const createTagCorrelationAction = async (
+  input: NewTagCorrelationParams,
+) => {
   try {
     const payload = insertTagCorrelationParams.parse(input);
     await createTagCorrelation(payload);
@@ -37,7 +40,9 @@ export const createTagCorrelationAction = async (input: NewTagCorrelationParams)
   }
 };
 
-export const updateTagCorrelationAction = async (input: UpdateTagCorrelationParams) => {
+export const updateTagCorrelationAction = async (
+  input: UpdateTagCorrelationParams,
+) => {
   try {
     const payload = updateTagCorrelationParams.parse(input);
     await updateTagCorrelation(payload.id, payload);

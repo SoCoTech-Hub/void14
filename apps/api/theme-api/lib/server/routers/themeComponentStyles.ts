@@ -1,19 +1,28 @@
-import { getThemeComponentStyleById, getThemeComponentStyles } from "@/lib/api/themeComponentStyles/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  themeComponentStyleIdSchema,
+  createThemeComponentStyle,
+  deleteThemeComponentStyle,
+  updateThemeComponentStyle,
+} from "../api/themeComponentStyles/mutations";
+import {
+  getThemeComponentStyleById,
+  getThemeComponentStyles,
+} from "../api/themeComponentStyles/queries";
+import {
   insertThemeComponentStyleParams,
+  themeComponentStyleIdSchema,
   updateThemeComponentStyleParams,
-} from "@/lib/db/schema/themeComponentStyles";
-import { createThemeComponentStyle, deleteThemeComponentStyle, updateThemeComponentStyle } from "@/lib/api/themeComponentStyles/mutations";
+} from "../db/schema/themeComponentStyles";
+import { publicProcedure, router } from "../server/trpc";
 
 export const themeComponentStylesRouter = router({
   getThemeComponentStyles: publicProcedure.query(async () => {
     return getThemeComponentStyles();
   }),
-  getThemeComponentStyleById: publicProcedure.input(themeComponentStyleIdSchema).query(async ({ input }) => {
-    return getThemeComponentStyleById(input.id);
-  }),
+  getThemeComponentStyleById: publicProcedure
+    .input(themeComponentStyleIdSchema)
+    .query(async ({ input }) => {
+      return getThemeComponentStyleById(input.id);
+    }),
   createThemeComponentStyle: publicProcedure
     .input(insertThemeComponentStyleParams)
     .mutation(async ({ input }) => {

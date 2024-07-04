@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAssignSubmissionOnlineText,
   deleteAssignSubmissionOnlineText,
   updateAssignSubmissionOnlineText,
-} from "@/lib/api/assignSubmissionOnlineTexts/mutations";
+} from "../api/assignSubmissionOnlineTexts/mutations";
 import {
   AssignSubmissionOnlineTextId,
-  NewAssignSubmissionOnlineTextParams,
-  UpdateAssignSubmissionOnlineTextParams,
   assignSubmissionOnlineTextIdSchema,
   insertAssignSubmissionOnlineTextParams,
+  NewAssignSubmissionOnlineTextParams,
+  UpdateAssignSubmissionOnlineTextParams,
   updateAssignSubmissionOnlineTextParams,
-} from "@/lib/db/schema/assignSubmissionOnlineTexts";
+} from "../db/schema/assignSubmissionOnlineTexts";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateAssignSubmissionOnlineTexts = () => revalidatePath("/assign-submission-online-texts");
+const revalidateAssignSubmissionOnlineTexts = () =>
+  revalidatePath("/assign-submission-online-texts");
 
-export const createAssignSubmissionOnlineTextAction = async (input: NewAssignSubmissionOnlineTextParams) => {
+export const createAssignSubmissionOnlineTextAction = async (
+  input: NewAssignSubmissionOnlineTextParams,
+) => {
   try {
     const payload = insertAssignSubmissionOnlineTextParams.parse(input);
     await createAssignSubmissionOnlineText(payload);
@@ -37,7 +41,9 @@ export const createAssignSubmissionOnlineTextAction = async (input: NewAssignSub
   }
 };
 
-export const updateAssignSubmissionOnlineTextAction = async (input: UpdateAssignSubmissionOnlineTextParams) => {
+export const updateAssignSubmissionOnlineTextAction = async (
+  input: UpdateAssignSubmissionOnlineTextParams,
+) => {
   try {
     const payload = updateAssignSubmissionOnlineTextParams.parse(input);
     await updateAssignSubmissionOnlineText(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateAssignSubmissionOnlineTextAction = async (input: UpdateAssign
   }
 };
 
-export const deleteAssignSubmissionOnlineTextAction = async (input: AssignSubmissionOnlineTextId) => {
+export const deleteAssignSubmissionOnlineTextAction = async (
+  input: AssignSubmissionOnlineTextId,
+) => {
   try {
     const payload = assignSubmissionOnlineTextIdSchema.parse({ id: input });
     await deleteAssignSubmissionOnlineText(payload.id);

@@ -1,19 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import {
-  createGrade,
-  deleteGrade,
-  updateGrade,
-} from "@/lib/api/grades/mutations";
+
+import { createGrade, deleteGrade, updateGrade } from "../api/grades/mutations";
 import {
   GradeId,
-  NewGradeParams,
-  UpdateGradeParams,
   gradeIdSchema,
   insertGradeParams,
+  NewGradeParams,
+  UpdateGradeParams,
   updateGradeParams,
-} from "@/lib/db/schema/grades";
+} from "../db/schema/grades";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

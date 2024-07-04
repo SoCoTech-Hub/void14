@@ -1,8 +1,8 @@
-import { router } from '@/lib/server/trpc'
-import { ratingsRouter } from './ratings'
+import { router } from "../server/trpc";
+import { ratingsRouter } from "./ratings";
 
 export const appRouter = router({
-	ratings: ratingsRouter
-})
+  ratings: ratingsRouter,
+});
 
-export type AppRouter = typeof appRouter
+export type AppRouter = typeof appRouter;

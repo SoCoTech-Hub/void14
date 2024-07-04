@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createOrganization,
   deleteOrganization,
   updateOrganization,
-} from "@/lib/api/organizations/mutations";
+} from "../api/organizations/mutations";
 import {
-  OrganizationId,
-  NewOrganizationParams,
-  UpdateOrganizationParams,
-  organizationIdSchema,
   insertOrganizationParams,
+  NewOrganizationParams,
+  OrganizationId,
+  organizationIdSchema,
+  UpdateOrganizationParams,
   updateOrganizationParams,
-} from "@/lib/db/schema/organizations";
+} from "../db/schema/organizations";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateOrganizations = () => revalidatePath("/organizations");
 
-export const createOrganizationAction = async (input: NewOrganizationParams) => {
+export const createOrganizationAction = async (
+  input: NewOrganizationParams,
+) => {
   try {
     const payload = insertOrganizationParams.parse(input);
     await createOrganization(payload);
@@ -37,7 +40,9 @@ export const createOrganizationAction = async (input: NewOrganizationParams) => 
   }
 };
 
-export const updateOrganizationAction = async (input: UpdateOrganizationParams) => {
+export const updateOrganizationAction = async (
+  input: UpdateOrganizationParams,
+) => {
   try {
     const payload = updateOrganizationParams.parse(input);
     await updateOrganization(payload.id, payload);

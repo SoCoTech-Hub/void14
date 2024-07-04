@@ -1,19 +1,28 @@
-import { getQuizaccessSebQuizSettingById, getQuizaccessSebQuizSettings } from "@/lib/api/quizaccessSebQuizSettings/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  quizaccessSebQuizSettingIdSchema,
+  createQuizaccessSebQuizSetting,
+  deleteQuizaccessSebQuizSetting,
+  updateQuizaccessSebQuizSetting,
+} from "../api/quizaccessSebQuizSettings/mutations";
+import {
+  getQuizaccessSebQuizSettingById,
+  getQuizaccessSebQuizSettings,
+} from "../api/quizaccessSebQuizSettings/queries";
+import {
   insertQuizaccessSebQuizSettingParams,
+  quizaccessSebQuizSettingIdSchema,
   updateQuizaccessSebQuizSettingParams,
-} from "@/lib/db/schema/quizaccessSebQuizSettings";
-import { createQuizaccessSebQuizSetting, deleteQuizaccessSebQuizSetting, updateQuizaccessSebQuizSetting } from "@/lib/api/quizaccessSebQuizSettings/mutations";
+} from "../db/schema/quizaccessSebQuizSettings";
+import { publicProcedure, router } from "../server/trpc";
 
 export const quizaccessSebQuizSettingsRouter = router({
   getQuizaccessSebQuizSettings: publicProcedure.query(async () => {
     return getQuizaccessSebQuizSettings();
   }),
-  getQuizaccessSebQuizSettingById: publicProcedure.input(quizaccessSebQuizSettingIdSchema).query(async ({ input }) => {
-    return getQuizaccessSebQuizSettingById(input.id);
-  }),
+  getQuizaccessSebQuizSettingById: publicProcedure
+    .input(quizaccessSebQuizSettingIdSchema)
+    .query(async ({ input }) => {
+      return getQuizaccessSebQuizSettingById(input.id);
+    }),
   createQuizaccessSebQuizSetting: publicProcedure
     .input(insertQuizaccessSebQuizSettingParams)
     .mutation(async ({ input }) => {

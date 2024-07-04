@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createUserPasswordHistory,
   deleteUserPasswordHistory,
   updateUserPasswordHistory,
-} from "@/lib/api/userPasswordHistories/mutations";
+} from "../api/userPasswordHistories/mutations";
 import {
-  UserPasswordHistoryId,
+  insertUserPasswordHistoryParams,
   NewUserPasswordHistoryParams,
   UpdateUserPasswordHistoryParams,
-  userPasswordHistoryIdSchema,
-  insertUserPasswordHistoryParams,
   updateUserPasswordHistoryParams,
-} from "@/lib/db/schema/userPasswordHistories";
+  UserPasswordHistoryId,
+  userPasswordHistoryIdSchema,
+} from "../db/schema/userPasswordHistories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateUserPasswordHistories = () => revalidatePath("/user-password-histories");
+const revalidateUserPasswordHistories = () =>
+  revalidatePath("/user-password-histories");
 
-export const createUserPasswordHistoryAction = async (input: NewUserPasswordHistoryParams) => {
+export const createUserPasswordHistoryAction = async (
+  input: NewUserPasswordHistoryParams,
+) => {
   try {
     const payload = insertUserPasswordHistoryParams.parse(input);
     await createUserPasswordHistory(payload);
@@ -37,7 +41,9 @@ export const createUserPasswordHistoryAction = async (input: NewUserPasswordHist
   }
 };
 
-export const updateUserPasswordHistoryAction = async (input: UpdateUserPasswordHistoryParams) => {
+export const updateUserPasswordHistoryAction = async (
+  input: UpdateUserPasswordHistoryParams,
+) => {
   try {
     const payload = updateUserPasswordHistoryParams.parse(input);
     await updateUserPasswordHistory(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateUserPasswordHistoryAction = async (input: UpdateUserPasswordH
   }
 };
 
-export const deleteUserPasswordHistoryAction = async (input: UserPasswordHistoryId) => {
+export const deleteUserPasswordHistoryAction = async (
+  input: UserPasswordHistoryId,
+) => {
   try {
     const payload = userPasswordHistoryIdSchema.parse({ id: input });
     await deleteUserPasswordHistory(payload.id);

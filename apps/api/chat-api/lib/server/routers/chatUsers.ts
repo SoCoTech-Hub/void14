@@ -1,19 +1,25 @@
-import { getChatUserById, getChatUsers } from "@/lib/api/chatUsers/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createChatUser,
+  deleteChatUser,
+  updateChatUser,
+} from "../api/chatUsers/mutations";
+import { getChatUserById, getChatUsers } from "../api/chatUsers/queries";
 import {
   chatUserIdSchema,
   insertChatUserParams,
   updateChatUserParams,
-} from "@/lib/db/schema/chatUsers";
-import { createChatUser, deleteChatUser, updateChatUser } from "@/lib/api/chatUsers/mutations";
+} from "../db/schema/chatUsers";
+import { publicProcedure, router } from "../server/trpc";
 
 export const chatUsersRouter = router({
   getChatUsers: publicProcedure.query(async () => {
     return getChatUsers();
   }),
-  getChatUserById: publicProcedure.input(chatUserIdSchema).query(async ({ input }) => {
-    return getChatUserById(input.id);
-  }),
+  getChatUserById: publicProcedure
+    .input(chatUserIdSchema)
+    .query(async ({ input }) => {
+      return getChatUserById(input.id);
+    }),
   createChatUser: publicProcedure
     .input(insertChatUserParams)
     .mutation(async ({ input }) => {

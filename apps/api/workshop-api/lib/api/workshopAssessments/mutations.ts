@@ -1,19 +1,26 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  WorkshopAssessmentId, 
-  NewWorkshopAssessmentParams,
-  UpdateWorkshopAssessmentParams, 
-  updateWorkshopAssessmentSchema,
-  insertWorkshopAssessmentSchema, 
-  workshopAssessments,
-  workshopAssessmentIdSchema 
-} from "@/lib/db/schema/workshopAssessments";
 
-export const createWorkshopAssessment = async (workshopAssessment: NewWorkshopAssessmentParams) => {
-  const newWorkshopAssessment = insertWorkshopAssessmentSchema.parse(workshopAssessment);
+import { db } from "../db/index";
+import {
+  insertWorkshopAssessmentSchema,
+  NewWorkshopAssessmentParams,
+  UpdateWorkshopAssessmentParams,
+  updateWorkshopAssessmentSchema,
+  WorkshopAssessmentId,
+  workshopAssessmentIdSchema,
+  workshopAssessments,
+} from "../db/schema/workshopAssessments";
+
+export const createWorkshopAssessment = async (
+  workshopAssessment: NewWorkshopAssessmentParams,
+) => {
+  const newWorkshopAssessment =
+    insertWorkshopAssessmentSchema.parse(workshopAssessment);
   try {
-    const [w] =  await db.insert(workshopAssessments).values(newWorkshopAssessment).returning();
+    const [w] = await db
+      .insert(workshopAssessments)
+      .values(newWorkshopAssessment)
+      .returning();
     return { workshopAssessment: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,19 @@ export const createWorkshopAssessment = async (workshopAssessment: NewWorkshopAs
   }
 };
 
-export const updateWorkshopAssessment = async (id: WorkshopAssessmentId, workshopAssessment: UpdateWorkshopAssessmentParams) => {
+export const updateWorkshopAssessment = async (
+  id: WorkshopAssessmentId,
+  workshopAssessment: UpdateWorkshopAssessmentParams,
+) => {
   const { id: workshopAssessmentId } = workshopAssessmentIdSchema.parse({ id });
-  const newWorkshopAssessment = updateWorkshopAssessmentSchema.parse(workshopAssessment);
+  const newWorkshopAssessment =
+    updateWorkshopAssessmentSchema.parse(workshopAssessment);
   try {
-    const [w] =  await db
-     .update(workshopAssessments)
-     .set({...newWorkshopAssessment, updatedAt: new Date() })
-     .where(eq(workshopAssessments.id, workshopAssessmentId!))
-     .returning();
+    const [w] = await db
+      .update(workshopAssessments)
+      .set({ ...newWorkshopAssessment, updatedAt: new Date() })
+      .where(eq(workshopAssessments.id, workshopAssessmentId!))
+      .returning();
     return { workshopAssessment: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +53,10 @@ export const updateWorkshopAssessment = async (id: WorkshopAssessmentId, worksho
 export const deleteWorkshopAssessment = async (id: WorkshopAssessmentId) => {
   const { id: workshopAssessmentId } = workshopAssessmentIdSchema.parse({ id });
   try {
-    const [w] =  await db.delete(workshopAssessments).where(eq(workshopAssessments.id, workshopAssessmentId!))
-    .returning();
+    const [w] = await db
+      .delete(workshopAssessments)
+      .where(eq(workshopAssessments.id, workshopAssessmentId!))
+      .returning();
     return { workshopAssessment: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +64,3 @@ export const deleteWorkshopAssessment = async (id: WorkshopAssessmentId) => {
     throw { error: message };
   }
 };
-

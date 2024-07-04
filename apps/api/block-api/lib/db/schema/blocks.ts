@@ -1,4 +1,3 @@
-import { type getBlocks } from "@/lib/api/blocks/queries";
 import {
   boolean,
   pgTable,
@@ -10,6 +9,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getBlocks } from "../api/blocks/queries";
 
 export const blocks = pgTable(
   "blocks",

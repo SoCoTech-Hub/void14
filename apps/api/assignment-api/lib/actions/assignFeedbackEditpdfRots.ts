@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAssignFeedbackEditpdfRot,
   deleteAssignFeedbackEditpdfRot,
   updateAssignFeedbackEditpdfRot,
-} from "@/lib/api/assignFeedbackEditpdfRots/mutations";
+} from "../api/assignFeedbackEditpdfRots/mutations";
 import {
   AssignFeedbackEditpdfRotId,
-  NewAssignFeedbackEditpdfRotParams,
-  UpdateAssignFeedbackEditpdfRotParams,
   assignFeedbackEditpdfRotIdSchema,
   insertAssignFeedbackEditpdfRotParams,
+  NewAssignFeedbackEditpdfRotParams,
+  UpdateAssignFeedbackEditpdfRotParams,
   updateAssignFeedbackEditpdfRotParams,
-} from "@/lib/db/schema/assignFeedbackEditpdfRots";
+} from "../db/schema/assignFeedbackEditpdfRots";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateAssignFeedbackEditpdfRots = () => revalidatePath("/assign-feedback-editpdf-rots");
+const revalidateAssignFeedbackEditpdfRots = () =>
+  revalidatePath("/assign-feedback-editpdf-rots");
 
-export const createAssignFeedbackEditpdfRotAction = async (input: NewAssignFeedbackEditpdfRotParams) => {
+export const createAssignFeedbackEditpdfRotAction = async (
+  input: NewAssignFeedbackEditpdfRotParams,
+) => {
   try {
     const payload = insertAssignFeedbackEditpdfRotParams.parse(input);
     await createAssignFeedbackEditpdfRot(payload);
@@ -37,7 +41,9 @@ export const createAssignFeedbackEditpdfRotAction = async (input: NewAssignFeedb
   }
 };
 
-export const updateAssignFeedbackEditpdfRotAction = async (input: UpdateAssignFeedbackEditpdfRotParams) => {
+export const updateAssignFeedbackEditpdfRotAction = async (
+  input: UpdateAssignFeedbackEditpdfRotParams,
+) => {
   try {
     const payload = updateAssignFeedbackEditpdfRotParams.parse(input);
     await updateAssignFeedbackEditpdfRot(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateAssignFeedbackEditpdfRotAction = async (input: UpdateAssignFe
   }
 };
 
-export const deleteAssignFeedbackEditpdfRotAction = async (input: AssignFeedbackEditpdfRotId) => {
+export const deleteAssignFeedbackEditpdfRotAction = async (
+  input: AssignFeedbackEditpdfRotId,
+) => {
   try {
     const payload = assignFeedbackEditpdfRotIdSchema.parse({ id: input });
     await deleteAssignFeedbackEditpdfRot(payload.id);

@@ -1,19 +1,25 @@
-import { getMnetLogById, getMnetLogs } from "@/lib/api/mnetLogs/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  mnetLogIdSchema,
+  createMnetLog,
+  deleteMnetLog,
+  updateMnetLog,
+} from "../api/mnetLogs/mutations";
+import { getMnetLogById, getMnetLogs } from "../api/mnetLogs/queries";
+import {
   insertMnetLogParams,
+  mnetLogIdSchema,
   updateMnetLogParams,
-} from "@/lib/db/schema/mnetLogs";
-import { createMnetLog, deleteMnetLog, updateMnetLog } from "@/lib/api/mnetLogs/mutations";
+} from "../db/schema/mnetLogs";
+import { publicProcedure, router } from "../server/trpc";
 
 export const mnetLogsRouter = router({
   getMnetLogs: publicProcedure.query(async () => {
     return getMnetLogs();
   }),
-  getMnetLogById: publicProcedure.input(mnetLogIdSchema).query(async ({ input }) => {
-    return getMnetLogById(input.id);
-  }),
+  getMnetLogById: publicProcedure
+    .input(mnetLogIdSchema)
+    .query(async ({ input }) => {
+      return getMnetLogById(input.id);
+    }),
   createMnetLog: publicProcedure
     .input(insertMnetLogParams)
     .mutation(async ({ input }) => {

@@ -1,9 +1,10 @@
-import { type getMnetServices } from "@/lib/api/mnetServices/queries";
 import { boolean, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getMnetServices } from "../api/mnetServices/queries";
 
 export const mnetServices = pgTable(
   "mnet_services",

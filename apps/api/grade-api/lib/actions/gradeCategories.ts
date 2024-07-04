@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGradeCategory,
   deleteGradeCategory,
   updateGradeCategory,
-} from "@/lib/api/gradeCategories/mutations";
+} from "../api/gradeCategories/mutations";
 import {
   GradeCategoryId,
-  NewGradeCategoryParams,
-  UpdateGradeCategoryParams,
   gradeCategoryIdSchema,
   insertGradeCategoryParams,
+  NewGradeCategoryParams,
+  UpdateGradeCategoryParams,
   updateGradeCategoryParams,
-} from "@/lib/db/schema/gradeCategories";
+} from "../db/schema/gradeCategories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateGradeCategories = () => revalidatePath("/grade-categories");
 
-export const createGradeCategoryAction = async (input: NewGradeCategoryParams) => {
+export const createGradeCategoryAction = async (
+  input: NewGradeCategoryParams,
+) => {
   try {
     const payload = insertGradeCategoryParams.parse(input);
     await createGradeCategory(payload);
@@ -37,7 +40,9 @@ export const createGradeCategoryAction = async (input: NewGradeCategoryParams) =
   }
 };
 
-export const updateGradeCategoryAction = async (input: UpdateGradeCategoryParams) => {
+export const updateGradeCategoryAction = async (
+  input: UpdateGradeCategoryParams,
+) => {
   try {
     const payload = updateGradeCategoryParams.parse(input);
     await updateGradeCategory(payload.id, payload);

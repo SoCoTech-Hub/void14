@@ -1,4 +1,3 @@
-import { type getChoiceAnswers } from "@/lib/api/choiceAnswers/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -6,6 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getChoiceAnswers } from "../api/choiceAnswers/queries";
 import { choiceOptions } from "./choiceOptions";
 import { choices } from "./choices";
 

@@ -1,11 +1,11 @@
-import { getShowById, getShows } from "@/lib/api/shows/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import { createShow, deleteShow, updateShow } from "../api/shows/mutations";
+import { getShowById, getShows } from "../api/shows/queries";
 import {
-  showIdSchema,
   insertShowParams,
+  showIdSchema,
   updateShowParams,
-} from "@/lib/db/schema/shows";
-import { createShow, deleteShow, updateShow } from "@/lib/api/shows/mutations";
+} from "../db/schema/shows";
+import { publicProcedure, router } from "../server/trpc";
 
 export const showsRouter = router({
   getShows: publicProcedure.query(async () => {

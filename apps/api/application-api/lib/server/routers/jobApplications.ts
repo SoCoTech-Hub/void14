@@ -1,19 +1,28 @@
-import { getJobApplicationById, getJobApplications } from "@/lib/api/jobApplications/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  jobApplicationIdSchema,
+  createJobApplication,
+  deleteJobApplication,
+  updateJobApplication,
+} from "../api/jobApplications/mutations";
+import {
+  getJobApplicationById,
+  getJobApplications,
+} from "../api/jobApplications/queries";
+import {
   insertJobApplicationParams,
+  jobApplicationIdSchema,
   updateJobApplicationParams,
-} from "@/lib/db/schema/jobApplications";
-import { createJobApplication, deleteJobApplication, updateJobApplication } from "@/lib/api/jobApplications/mutations";
+} from "../db/schema/jobApplications";
+import { publicProcedure, router } from "../server/trpc";
 
 export const jobApplicationsRouter = router({
   getJobApplications: publicProcedure.query(async () => {
     return getJobApplications();
   }),
-  getJobApplicationById: publicProcedure.input(jobApplicationIdSchema).query(async ({ input }) => {
-    return getJobApplicationById(input.id);
-  }),
+  getJobApplicationById: publicProcedure
+    .input(jobApplicationIdSchema)
+    .query(async ({ input }) => {
+      return getJobApplicationById(input.id);
+    }),
   createJobApplication: publicProcedure
     .input(insertJobApplicationParams)
     .mutation(async ({ input }) => {

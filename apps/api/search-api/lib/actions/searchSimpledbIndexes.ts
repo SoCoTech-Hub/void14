@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createSearchSimpledbIndex,
   deleteSearchSimpledbIndex,
   updateSearchSimpledbIndex,
-} from "@/lib/api/searchSimpledbIndexes/mutations";
+} from "../api/searchSimpledbIndexes/mutations";
 import {
-  SearchSimpledbIndexId,
-  NewSearchSimpledbIndexParams,
-  UpdateSearchSimpledbIndexParams,
-  searchSimpledbIndexIdSchema,
   insertSearchSimpledbIndexParams,
+  NewSearchSimpledbIndexParams,
+  SearchSimpledbIndexId,
+  searchSimpledbIndexIdSchema,
+  UpdateSearchSimpledbIndexParams,
   updateSearchSimpledbIndexParams,
-} from "@/lib/db/schema/searchSimpledbIndexes";
+} from "../db/schema/searchSimpledbIndexes";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateSearchSimpledbIndexes = () => revalidatePath("/search-simpledb-indexes");
+const revalidateSearchSimpledbIndexes = () =>
+  revalidatePath("/search-simpledb-indexes");
 
-export const createSearchSimpledbIndexAction = async (input: NewSearchSimpledbIndexParams) => {
+export const createSearchSimpledbIndexAction = async (
+  input: NewSearchSimpledbIndexParams,
+) => {
   try {
     const payload = insertSearchSimpledbIndexParams.parse(input);
     await createSearchSimpledbIndex(payload);
@@ -37,7 +41,9 @@ export const createSearchSimpledbIndexAction = async (input: NewSearchSimpledbIn
   }
 };
 
-export const updateSearchSimpledbIndexAction = async (input: UpdateSearchSimpledbIndexParams) => {
+export const updateSearchSimpledbIndexAction = async (
+  input: UpdateSearchSimpledbIndexParams,
+) => {
   try {
     const payload = updateSearchSimpledbIndexParams.parse(input);
     await updateSearchSimpledbIndex(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateSearchSimpledbIndexAction = async (input: UpdateSearchSimpled
   }
 };
 
-export const deleteSearchSimpledbIndexAction = async (input: SearchSimpledbIndexId) => {
+export const deleteSearchSimpledbIndexAction = async (
+  input: SearchSimpledbIndexId,
+) => {
   try {
     const payload = searchSimpledbIndexIdSchema.parse({ id: input });
     await deleteSearchSimpledbIndex(payload.id);

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createWorkshopGrade,
   deleteWorkshopGrade,
   updateWorkshopGrade,
-} from "@/lib/api/workshopGrades/mutations";
+} from "../api/workshopGrades/mutations";
 import {
-  WorkshopGradeId,
+  insertWorkshopGradeParams,
   NewWorkshopGradeParams,
   UpdateWorkshopGradeParams,
-  workshopGradeIdSchema,
-  insertWorkshopGradeParams,
   updateWorkshopGradeParams,
-} from "@/lib/db/schema/workshopGrades";
+  WorkshopGradeId,
+  workshopGradeIdSchema,
+} from "../db/schema/workshopGrades";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateWorkshopGrades = () => revalidatePath("/workshop-grades");
 
-export const createWorkshopGradeAction = async (input: NewWorkshopGradeParams) => {
+export const createWorkshopGradeAction = async (
+  input: NewWorkshopGradeParams,
+) => {
   try {
     const payload = insertWorkshopGradeParams.parse(input);
     await createWorkshopGrade(payload);
@@ -37,7 +40,9 @@ export const createWorkshopGradeAction = async (input: NewWorkshopGradeParams) =
   }
 };
 
-export const updateWorkshopGradeAction = async (input: UpdateWorkshopGradeParams) => {
+export const updateWorkshopGradeAction = async (
+  input: UpdateWorkshopGradeParams,
+) => {
   try {
     const payload = updateWorkshopGradeParams.parse(input);
     await updateWorkshopGrade(payload.id, payload);

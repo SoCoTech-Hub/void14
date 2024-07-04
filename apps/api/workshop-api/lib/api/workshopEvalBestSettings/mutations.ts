@@ -1,19 +1,27 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  WorkshopEvalBestSettingId, 
+
+import { db } from "../db/index";
+import {
+  insertWorkshopEvalBestSettingSchema,
   NewWorkshopEvalBestSettingParams,
-  UpdateWorkshopEvalBestSettingParams, 
+  UpdateWorkshopEvalBestSettingParams,
   updateWorkshopEvalBestSettingSchema,
-  insertWorkshopEvalBestSettingSchema, 
+  WorkshopEvalBestSettingId,
+  workshopEvalBestSettingIdSchema,
   workshopEvalBestSettings,
-  workshopEvalBestSettingIdSchema 
-} from "@/lib/db/schema/workshopEvalBestSettings";
+} from "../db/schema/workshopEvalBestSettings";
 
-export const createWorkshopEvalBestSetting = async (workshopEvalBestSetting: NewWorkshopEvalBestSettingParams) => {
-  const newWorkshopEvalBestSetting = insertWorkshopEvalBestSettingSchema.parse(workshopEvalBestSetting);
+export const createWorkshopEvalBestSetting = async (
+  workshopEvalBestSetting: NewWorkshopEvalBestSettingParams,
+) => {
+  const newWorkshopEvalBestSetting = insertWorkshopEvalBestSettingSchema.parse(
+    workshopEvalBestSetting,
+  );
   try {
-    const [w] =  await db.insert(workshopEvalBestSettings).values(newWorkshopEvalBestSetting).returning();
+    const [w] = await db
+      .insert(workshopEvalBestSettings)
+      .values(newWorkshopEvalBestSetting)
+      .returning();
     return { workshopEvalBestSetting: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,21 @@ export const createWorkshopEvalBestSetting = async (workshopEvalBestSetting: New
   }
 };
 
-export const updateWorkshopEvalBestSetting = async (id: WorkshopEvalBestSettingId, workshopEvalBestSetting: UpdateWorkshopEvalBestSettingParams) => {
-  const { id: workshopEvalBestSettingId } = workshopEvalBestSettingIdSchema.parse({ id });
-  const newWorkshopEvalBestSetting = updateWorkshopEvalBestSettingSchema.parse(workshopEvalBestSetting);
+export const updateWorkshopEvalBestSetting = async (
+  id: WorkshopEvalBestSettingId,
+  workshopEvalBestSetting: UpdateWorkshopEvalBestSettingParams,
+) => {
+  const { id: workshopEvalBestSettingId } =
+    workshopEvalBestSettingIdSchema.parse({ id });
+  const newWorkshopEvalBestSetting = updateWorkshopEvalBestSettingSchema.parse(
+    workshopEvalBestSetting,
+  );
   try {
-    const [w] =  await db
-     .update(workshopEvalBestSettings)
-     .set(newWorkshopEvalBestSetting)
-     .where(eq(workshopEvalBestSettings.id, workshopEvalBestSettingId!))
-     .returning();
+    const [w] = await db
+      .update(workshopEvalBestSettings)
+      .set(newWorkshopEvalBestSetting)
+      .where(eq(workshopEvalBestSettings.id, workshopEvalBestSettingId!))
+      .returning();
     return { workshopEvalBestSetting: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +53,16 @@ export const updateWorkshopEvalBestSetting = async (id: WorkshopEvalBestSettingI
   }
 };
 
-export const deleteWorkshopEvalBestSetting = async (id: WorkshopEvalBestSettingId) => {
-  const { id: workshopEvalBestSettingId } = workshopEvalBestSettingIdSchema.parse({ id });
+export const deleteWorkshopEvalBestSetting = async (
+  id: WorkshopEvalBestSettingId,
+) => {
+  const { id: workshopEvalBestSettingId } =
+    workshopEvalBestSettingIdSchema.parse({ id });
   try {
-    const [w] =  await db.delete(workshopEvalBestSettings).where(eq(workshopEvalBestSettings.id, workshopEvalBestSettingId!))
-    .returning();
+    const [w] = await db
+      .delete(workshopEvalBestSettings)
+      .where(eq(workshopEvalBestSettings.id, workshopEvalBestSettingId!))
+      .returning();
     return { workshopEvalBestSetting: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +70,3 @@ export const deleteWorkshopEvalBestSetting = async (id: WorkshopEvalBestSettingI
     throw { error: message };
   }
 };
-

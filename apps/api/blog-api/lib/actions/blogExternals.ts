@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBlogExternal,
   deleteBlogExternal,
   updateBlogExternal,
-} from "@/lib/api/blogExternals/mutations";
+} from "../api/blogExternals/mutations";
 import {
   BlogExternalId,
-  NewBlogExternalParams,
-  UpdateBlogExternalParams,
   blogExternalIdSchema,
   insertBlogExternalParams,
+  NewBlogExternalParams,
+  UpdateBlogExternalParams,
   updateBlogExternalParams,
-} from "@/lib/db/schema/blogExternals";
+} from "../db/schema/blogExternals";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateBlogExternals = () => revalidatePath("/blog-externals");
 
-export const createBlogExternalAction = async (input: NewBlogExternalParams) => {
+export const createBlogExternalAction = async (
+  input: NewBlogExternalParams,
+) => {
   try {
     const payload = insertBlogExternalParams.parse(input);
     await createBlogExternal(payload);
@@ -37,7 +40,9 @@ export const createBlogExternalAction = async (input: NewBlogExternalParams) => 
   }
 };
 
-export const updateBlogExternalAction = async (input: UpdateBlogExternalParams) => {
+export const updateBlogExternalAction = async (
+  input: UpdateBlogExternalParams,
+) => {
   try {
     const payload = updateBlogExternalParams.parse(input);
     await updateBlogExternal(payload.id, payload);

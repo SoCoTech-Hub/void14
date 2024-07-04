@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createWorkshopFormRubricConfig,
   deleteWorkshopFormRubricConfig,
   updateWorkshopFormRubricConfig,
-} from "@/lib/api/workshopFormRubricConfigs/mutations";
+} from "../api/workshopFormRubricConfigs/mutations";
 import {
-  WorkshopFormRubricConfigId,
+  insertWorkshopFormRubricConfigParams,
   NewWorkshopFormRubricConfigParams,
   UpdateWorkshopFormRubricConfigParams,
-  workshopFormRubricConfigIdSchema,
-  insertWorkshopFormRubricConfigParams,
   updateWorkshopFormRubricConfigParams,
-} from "@/lib/db/schema/workshopFormRubricConfigs";
+  WorkshopFormRubricConfigId,
+  workshopFormRubricConfigIdSchema,
+} from "../db/schema/workshopFormRubricConfigs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateWorkshopFormRubricConfigs = () => revalidatePath("/workshop-form-rubric-configs");
+const revalidateWorkshopFormRubricConfigs = () =>
+  revalidatePath("/workshop-form-rubric-configs");
 
-export const createWorkshopFormRubricConfigAction = async (input: NewWorkshopFormRubricConfigParams) => {
+export const createWorkshopFormRubricConfigAction = async (
+  input: NewWorkshopFormRubricConfigParams,
+) => {
   try {
     const payload = insertWorkshopFormRubricConfigParams.parse(input);
     await createWorkshopFormRubricConfig(payload);
@@ -37,7 +41,9 @@ export const createWorkshopFormRubricConfigAction = async (input: NewWorkshopFor
   }
 };
 
-export const updateWorkshopFormRubricConfigAction = async (input: UpdateWorkshopFormRubricConfigParams) => {
+export const updateWorkshopFormRubricConfigAction = async (
+  input: UpdateWorkshopFormRubricConfigParams,
+) => {
   try {
     const payload = updateWorkshopFormRubricConfigParams.parse(input);
     await updateWorkshopFormRubricConfig(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateWorkshopFormRubricConfigAction = async (input: UpdateWorkshop
   }
 };
 
-export const deleteWorkshopFormRubricConfigAction = async (input: WorkshopFormRubricConfigId) => {
+export const deleteWorkshopFormRubricConfigAction = async (
+  input: WorkshopFormRubricConfigId,
+) => {
   try {
     const payload = workshopFormRubricConfigIdSchema.parse({ id: input });
     await deleteWorkshopFormRubricConfig(payload.id);

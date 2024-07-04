@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuestionCalculated,
   deleteQuestionCalculated,
   updateQuestionCalculated,
-} from "@/lib/api/questionCalculateds/mutations";
+} from "../api/questionCalculateds/mutations";
 import {
-  QuestionCalculatedId,
-  NewQuestionCalculatedParams,
-  UpdateQuestionCalculatedParams,
-  questionCalculatedIdSchema,
   insertQuestionCalculatedParams,
+  NewQuestionCalculatedParams,
+  QuestionCalculatedId,
+  questionCalculatedIdSchema,
+  UpdateQuestionCalculatedParams,
   updateQuestionCalculatedParams,
-} from "@/lib/db/schema/questionCalculateds";
+} from "../db/schema/questionCalculateds";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQuestionCalculateds = () => revalidatePath("/question-calculateds");
+const revalidateQuestionCalculateds = () =>
+  revalidatePath("/question-calculateds");
 
-export const createQuestionCalculatedAction = async (input: NewQuestionCalculatedParams) => {
+export const createQuestionCalculatedAction = async (
+  input: NewQuestionCalculatedParams,
+) => {
   try {
     const payload = insertQuestionCalculatedParams.parse(input);
     await createQuestionCalculated(payload);
@@ -37,7 +41,9 @@ export const createQuestionCalculatedAction = async (input: NewQuestionCalculate
   }
 };
 
-export const updateQuestionCalculatedAction = async (input: UpdateQuestionCalculatedParams) => {
+export const updateQuestionCalculatedAction = async (
+  input: UpdateQuestionCalculatedParams,
+) => {
   try {
     const payload = updateQuestionCalculatedParams.parse(input);
     await updateQuestionCalculated(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQuestionCalculatedAction = async (input: UpdateQuestionCalcul
   }
 };
 
-export const deleteQuestionCalculatedAction = async (input: QuestionCalculatedId) => {
+export const deleteQuestionCalculatedAction = async (
+  input: QuestionCalculatedId,
+) => {
   try {
     const payload = questionCalculatedIdSchema.parse({ id: input });
     await deleteQuestionCalculated(payload.id);

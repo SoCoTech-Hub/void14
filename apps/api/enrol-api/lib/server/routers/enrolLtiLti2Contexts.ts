@@ -1,19 +1,28 @@
-import { getEnrolLtiLti2ContextById, getEnrolLtiLti2Contexts } from "@/lib/api/enrolLtiLti2Contexts/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createEnrolLtiLti2Context,
+  deleteEnrolLtiLti2Context,
+  updateEnrolLtiLti2Context,
+} from "../api/enrolLtiLti2Contexts/mutations";
+import {
+  getEnrolLtiLti2ContextById,
+  getEnrolLtiLti2Contexts,
+} from "../api/enrolLtiLti2Contexts/queries";
 import {
   enrolLtiLti2ContextIdSchema,
   insertEnrolLtiLti2ContextParams,
   updateEnrolLtiLti2ContextParams,
-} from "@/lib/db/schema/enrolLtiLti2Contexts";
-import { createEnrolLtiLti2Context, deleteEnrolLtiLti2Context, updateEnrolLtiLti2Context } from "@/lib/api/enrolLtiLti2Contexts/mutations";
+} from "../db/schema/enrolLtiLti2Contexts";
+import { publicProcedure, router } from "../server/trpc";
 
 export const enrolLtiLti2ContextsRouter = router({
   getEnrolLtiLti2Contexts: publicProcedure.query(async () => {
     return getEnrolLtiLti2Contexts();
   }),
-  getEnrolLtiLti2ContextById: publicProcedure.input(enrolLtiLti2ContextIdSchema).query(async ({ input }) => {
-    return getEnrolLtiLti2ContextById(input.id);
-  }),
+  getEnrolLtiLti2ContextById: publicProcedure
+    .input(enrolLtiLti2ContextIdSchema)
+    .query(async ({ input }) => {
+      return getEnrolLtiLti2ContextById(input.id);
+    }),
   createEnrolLtiLti2Context: publicProcedure
     .input(insertEnrolLtiLti2ContextParams)
     .mutation(async ({ input }) => {

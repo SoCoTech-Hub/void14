@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createJobApplicationsApplicationCategory,
   deleteJobApplicationsApplicationCategory,
   updateJobApplicationsApplicationCategory,
-} from "@/lib/api/jobApplicationsApplicationCategories/mutations";
+} from "../api/jobApplicationsApplicationCategories/mutations";
 import {
+  insertJobApplicationsApplicationCategoryParams,
   JobApplicationsApplicationCategoryId,
+  jobApplicationsApplicationCategoryIdSchema,
   NewJobApplicationsApplicationCategoryParams,
   UpdateJobApplicationsApplicationCategoryParams,
-  jobApplicationsApplicationCategoryIdSchema,
-  insertJobApplicationsApplicationCategoryParams,
   updateJobApplicationsApplicationCategoryParams,
-} from "@/lib/db/schema/jobApplicationsApplicationCategories";
+} from "../db/schema/jobApplicationsApplicationCategories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateJobApplicationsApplicationCategories = () => revalidatePath("/job-applications-application-categories");
+const revalidateJobApplicationsApplicationCategories = () =>
+  revalidatePath("/job-applications-application-categories");
 
-export const createJobApplicationsApplicationCategoryAction = async (input: NewJobApplicationsApplicationCategoryParams) => {
+export const createJobApplicationsApplicationCategoryAction = async (
+  input: NewJobApplicationsApplicationCategoryParams,
+) => {
   try {
     const payload = insertJobApplicationsApplicationCategoryParams.parse(input);
     await createJobApplicationsApplicationCategory(payload);
@@ -37,7 +41,9 @@ export const createJobApplicationsApplicationCategoryAction = async (input: NewJ
   }
 };
 
-export const updateJobApplicationsApplicationCategoryAction = async (input: UpdateJobApplicationsApplicationCategoryParams) => {
+export const updateJobApplicationsApplicationCategoryAction = async (
+  input: UpdateJobApplicationsApplicationCategoryParams,
+) => {
   try {
     const payload = updateJobApplicationsApplicationCategoryParams.parse(input);
     await updateJobApplicationsApplicationCategory(payload.id, payload);
@@ -47,9 +53,13 @@ export const updateJobApplicationsApplicationCategoryAction = async (input: Upda
   }
 };
 
-export const deleteJobApplicationsApplicationCategoryAction = async (input: JobApplicationsApplicationCategoryId) => {
+export const deleteJobApplicationsApplicationCategoryAction = async (
+  input: JobApplicationsApplicationCategoryId,
+) => {
   try {
-    const payload = jobApplicationsApplicationCategoryIdSchema.parse({ id: input });
+    const payload = jobApplicationsApplicationCategoryIdSchema.parse({
+      id: input,
+    });
     await deleteJobApplicationsApplicationCategory(payload.id);
     revalidateJobApplicationsApplicationCategories();
   } catch (e) {

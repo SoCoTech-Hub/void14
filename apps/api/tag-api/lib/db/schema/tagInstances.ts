@@ -1,4 +1,3 @@
-import { type getTagInstances } from "@/lib/api/tagInstances/queries";
 import { sql } from "drizzle-orm";
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -6,6 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getTagInstances } from "../api/tagInstances/queries";
 import { tags } from "./tags";
 
 export const tagInstances = pgTable("tag_instances", {

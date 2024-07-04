@@ -1,19 +1,25 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  DigilibCategoryId, 
-  NewDigilibCategoryParams,
-  UpdateDigilibCategoryParams, 
-  updateDigilibCategorySchema,
-  insertDigilibCategorySchema, 
-  digilibCategories,
-  digilibCategoryIdSchema 
-} from "@/lib/db/schema/digilibCategories";
 
-export const createDigilibCategory = async (digilibCategory: NewDigilibCategoryParams) => {
+import { db } from "../db/index";
+import {
+  digilibCategories,
+  DigilibCategoryId,
+  digilibCategoryIdSchema,
+  insertDigilibCategorySchema,
+  NewDigilibCategoryParams,
+  UpdateDigilibCategoryParams,
+  updateDigilibCategorySchema,
+} from "../db/schema/digilibCategories";
+
+export const createDigilibCategory = async (
+  digilibCategory: NewDigilibCategoryParams,
+) => {
   const newDigilibCategory = insertDigilibCategorySchema.parse(digilibCategory);
   try {
-    const [d] =  await db.insert(digilibCategories).values(newDigilibCategory).returning();
+    const [d] = await db
+      .insert(digilibCategories)
+      .values(newDigilibCategory)
+      .returning();
     return { digilibCategory: d };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +28,18 @@ export const createDigilibCategory = async (digilibCategory: NewDigilibCategoryP
   }
 };
 
-export const updateDigilibCategory = async (id: DigilibCategoryId, digilibCategory: UpdateDigilibCategoryParams) => {
+export const updateDigilibCategory = async (
+  id: DigilibCategoryId,
+  digilibCategory: UpdateDigilibCategoryParams,
+) => {
   const { id: digilibCategoryId } = digilibCategoryIdSchema.parse({ id });
   const newDigilibCategory = updateDigilibCategorySchema.parse(digilibCategory);
   try {
-    const [d] =  await db
-     .update(digilibCategories)
-     .set(newDigilibCategory)
-     .where(eq(digilibCategories.id, digilibCategoryId!))
-     .returning();
+    const [d] = await db
+      .update(digilibCategories)
+      .set(newDigilibCategory)
+      .where(eq(digilibCategories.id, digilibCategoryId!))
+      .returning();
     return { digilibCategory: d };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +51,10 @@ export const updateDigilibCategory = async (id: DigilibCategoryId, digilibCatego
 export const deleteDigilibCategory = async (id: DigilibCategoryId) => {
   const { id: digilibCategoryId } = digilibCategoryIdSchema.parse({ id });
   try {
-    const [d] =  await db.delete(digilibCategories).where(eq(digilibCategories.id, digilibCategoryId!))
-    .returning();
+    const [d] = await db
+      .delete(digilibCategories)
+      .where(eq(digilibCategories.id, digilibCategoryId!))
+      .returning();
     return { digilibCategory: d };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +62,3 @@ export const deleteDigilibCategory = async (id: DigilibCategoryId) => {
     throw { error: message };
   }
 };
-

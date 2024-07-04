@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGradingArea,
   deleteGradingArea,
   updateGradingArea,
-} from "@/lib/api/gradingAreas/mutations";
+} from "../api/gradingAreas/mutations";
 import {
   GradingAreaId,
-  NewGradingAreaParams,
-  UpdateGradingAreaParams,
   gradingAreaIdSchema,
   insertGradingAreaParams,
+  NewGradingAreaParams,
+  UpdateGradingAreaParams,
   updateGradingAreaParams,
-} from "@/lib/db/schema/gradingAreas";
+} from "../db/schema/gradingAreas";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createGradingAreaAction = async (input: NewGradingAreaParams) => {
   }
 };
 
-export const updateGradingAreaAction = async (input: UpdateGradingAreaParams) => {
+export const updateGradingAreaAction = async (
+  input: UpdateGradingAreaParams,
+) => {
   try {
     const payload = updateGradingAreaParams.parse(input);
     await updateGradingArea(payload.id, payload);

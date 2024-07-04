@@ -1,10 +1,11 @@
-import { type getNextOfKins } from "@/lib/api/nextOfKins/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getNextOfKins } from "../api/nextOfKins/queries";
 
 export const nextOfKins = pgTable("next_of_kins", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createLessonPage,
   deleteLessonPage,
   updateLessonPage,
-} from "@/lib/api/lessonPages/mutations";
+} from "../api/lessonPages/mutations";
 import {
+  insertLessonPageParams,
   LessonPageId,
+  lessonPageIdSchema,
   NewLessonPageParams,
   UpdateLessonPageParams,
-  lessonPageIdSchema,
-  insertLessonPageParams,
   updateLessonPageParams,
-} from "@/lib/db/schema/lessonPages";
+} from "../db/schema/lessonPages";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

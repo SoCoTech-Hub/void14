@@ -1,19 +1,28 @@
-import { getForumDiscussionById, getForumDiscussions } from "@/lib/api/forumDiscussions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createForumDiscussion,
+  deleteForumDiscussion,
+  updateForumDiscussion,
+} from "../api/forumDiscussions/mutations";
+import {
+  getForumDiscussionById,
+  getForumDiscussions,
+} from "../api/forumDiscussions/queries";
 import {
   forumDiscussionIdSchema,
   insertForumDiscussionParams,
   updateForumDiscussionParams,
-} from "@/lib/db/schema/forumDiscussions";
-import { createForumDiscussion, deleteForumDiscussion, updateForumDiscussion } from "@/lib/api/forumDiscussions/mutations";
+} from "../db/schema/forumDiscussions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const forumDiscussionsRouter = router({
   getForumDiscussions: publicProcedure.query(async () => {
     return getForumDiscussions();
   }),
-  getForumDiscussionById: publicProcedure.input(forumDiscussionIdSchema).query(async ({ input }) => {
-    return getForumDiscussionById(input.id);
-  }),
+  getForumDiscussionById: publicProcedure
+    .input(forumDiscussionIdSchema)
+    .query(async ({ input }) => {
+      return getForumDiscussionById(input.id);
+    }),
   createForumDiscussion: publicProcedure
     .input(insertForumDiscussionParams)
     .mutation(async ({ input }) => {

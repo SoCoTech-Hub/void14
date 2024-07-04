@@ -1,19 +1,28 @@
-import { getRepositoryInstanceConfigById, getRepositoryInstanceConfigs } from "@/lib/api/repositoryInstanceConfigs/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  repositoryInstanceConfigIdSchema,
+  createRepositoryInstanceConfig,
+  deleteRepositoryInstanceConfig,
+  updateRepositoryInstanceConfig,
+} from "../api/repositoryInstanceConfigs/mutations";
+import {
+  getRepositoryInstanceConfigById,
+  getRepositoryInstanceConfigs,
+} from "../api/repositoryInstanceConfigs/queries";
+import {
   insertRepositoryInstanceConfigParams,
+  repositoryInstanceConfigIdSchema,
   updateRepositoryInstanceConfigParams,
-} from "@/lib/db/schema/repositoryInstanceConfigs";
-import { createRepositoryInstanceConfig, deleteRepositoryInstanceConfig, updateRepositoryInstanceConfig } from "@/lib/api/repositoryInstanceConfigs/mutations";
+} from "../db/schema/repositoryInstanceConfigs";
+import { publicProcedure, router } from "../server/trpc";
 
 export const repositoryInstanceConfigsRouter = router({
   getRepositoryInstanceConfigs: publicProcedure.query(async () => {
     return getRepositoryInstanceConfigs();
   }),
-  getRepositoryInstanceConfigById: publicProcedure.input(repositoryInstanceConfigIdSchema).query(async ({ input }) => {
-    return getRepositoryInstanceConfigById(input.id);
-  }),
+  getRepositoryInstanceConfigById: publicProcedure
+    .input(repositoryInstanceConfigIdSchema)
+    .query(async ({ input }) => {
+      return getRepositoryInstanceConfigById(input.id);
+    }),
   createRepositoryInstanceConfig: publicProcedure
     .input(insertRepositoryInstanceConfigParams)
     .mutation(async ({ input }) => {

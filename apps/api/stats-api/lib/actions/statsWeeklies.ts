@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createStatsWeekly,
   deleteStatsWeekly,
   updateStatsWeekly,
-} from "@/lib/api/statsWeeklies/mutations";
+} from "../api/statsWeeklies/mutations";
 import {
-  StatsWeeklyId,
-  NewStatsWeeklyParams,
-  UpdateStatsWeeklyParams,
-  statsWeeklyIdSchema,
   insertStatsWeeklyParams,
+  NewStatsWeeklyParams,
+  StatsWeeklyId,
+  statsWeeklyIdSchema,
+  UpdateStatsWeeklyParams,
   updateStatsWeeklyParams,
-} from "@/lib/db/schema/statsWeeklies";
+} from "../db/schema/statsWeeklies";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createStatsWeeklyAction = async (input: NewStatsWeeklyParams) => {
   }
 };
 
-export const updateStatsWeeklyAction = async (input: UpdateStatsWeeklyParams) => {
+export const updateStatsWeeklyAction = async (
+  input: UpdateStatsWeeklyParams,
+) => {
   try {
     const payload = updateStatsWeeklyParams.parse(input);
     await updateStatsWeekly(payload.id, payload);

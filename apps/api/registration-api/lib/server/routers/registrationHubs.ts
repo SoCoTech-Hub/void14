@@ -1,19 +1,28 @@
-import { getRegistrationHubById, getRegistrationHubs } from "@/lib/api/registrationHubs/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  registrationHubIdSchema,
+  createRegistrationHub,
+  deleteRegistrationHub,
+  updateRegistrationHub,
+} from "../api/registrationHubs/mutations";
+import {
+  getRegistrationHubById,
+  getRegistrationHubs,
+} from "../api/registrationHubs/queries";
+import {
   insertRegistrationHubParams,
+  registrationHubIdSchema,
   updateRegistrationHubParams,
-} from "@/lib/db/schema/registrationHubs";
-import { createRegistrationHub, deleteRegistrationHub, updateRegistrationHub } from "@/lib/api/registrationHubs/mutations";
+} from "../db/schema/registrationHubs";
+import { publicProcedure, router } from "../server/trpc";
 
 export const registrationHubsRouter = router({
   getRegistrationHubs: publicProcedure.query(async () => {
     return getRegistrationHubs();
   }),
-  getRegistrationHubById: publicProcedure.input(registrationHubIdSchema).query(async ({ input }) => {
-    return getRegistrationHubById(input.id);
-  }),
+  getRegistrationHubById: publicProcedure
+    .input(registrationHubIdSchema)
+    .query(async ({ input }) => {
+      return getRegistrationHubById(input.id);
+    }),
   createRegistrationHub: publicProcedure
     .input(insertRegistrationHubParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,25 @@
-import { getLogDisplayById, getLogDisplays } from "@/lib/api/logDisplays/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  logDisplayIdSchema,
+  createLogDisplay,
+  deleteLogDisplay,
+  updateLogDisplay,
+} from "../api/logDisplays/mutations";
+import { getLogDisplayById, getLogDisplays } from "../api/logDisplays/queries";
+import {
   insertLogDisplayParams,
+  logDisplayIdSchema,
   updateLogDisplayParams,
-} from "@/lib/db/schema/logDisplays";
-import { createLogDisplay, deleteLogDisplay, updateLogDisplay } from "@/lib/api/logDisplays/mutations";
+} from "../db/schema/logDisplays";
+import { publicProcedure, router } from "../server/trpc";
 
 export const logDisplaysRouter = router({
   getLogDisplays: publicProcedure.query(async () => {
     return getLogDisplays();
   }),
-  getLogDisplayById: publicProcedure.input(logDisplayIdSchema).query(async ({ input }) => {
-    return getLogDisplayById(input.id);
-  }),
+  getLogDisplayById: publicProcedure
+    .input(logDisplayIdSchema)
+    .query(async ({ input }) => {
+      return getLogDisplayById(input.id);
+    }),
   createLogDisplay: publicProcedure
     .input(insertLogDisplayParams)
     .mutation(async ({ input }) => {

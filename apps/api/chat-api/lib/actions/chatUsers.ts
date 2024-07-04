@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createChatUser,
   deleteChatUser,
   updateChatUser,
-} from "@/lib/api/chatUsers/mutations";
+} from "../api/chatUsers/mutations";
 import {
   ChatUserId,
-  NewChatUserParams,
-  UpdateChatUserParams,
   chatUserIdSchema,
   insertChatUserParams,
+  NewChatUserParams,
+  UpdateChatUserParams,
   updateChatUserParams,
-} from "@/lib/db/schema/chatUsers";
+} from "../db/schema/chatUsers";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

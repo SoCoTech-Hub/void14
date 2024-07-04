@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createFeedbackItem,
   deleteFeedbackItem,
   updateFeedbackItem,
-} from "@/lib/api/feedbackItems/mutations";
+} from "../api/feedbackItems/mutations";
 import {
   FeedbackItemId,
-  NewFeedbackItemParams,
-  UpdateFeedbackItemParams,
   feedbackItemIdSchema,
   insertFeedbackItemParams,
+  NewFeedbackItemParams,
+  UpdateFeedbackItemParams,
   updateFeedbackItemParams,
-} from "@/lib/db/schema/feedbackItems";
+} from "../db/schema/feedbackItems";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateFeedbackItems = () => revalidatePath("/feedback-items");
 
-export const createFeedbackItemAction = async (input: NewFeedbackItemParams) => {
+export const createFeedbackItemAction = async (
+  input: NewFeedbackItemParams,
+) => {
   try {
     const payload = insertFeedbackItemParams.parse(input);
     await createFeedbackItem(payload);
@@ -37,7 +40,9 @@ export const createFeedbackItemAction = async (input: NewFeedbackItemParams) => 
   }
 };
 
-export const updateFeedbackItemAction = async (input: UpdateFeedbackItemParams) => {
+export const updateFeedbackItemAction = async (
+  input: UpdateFeedbackItemParams,
+) => {
   try {
     const payload = updateFeedbackItemParams.parse(input);
     await updateFeedbackItem(payload.id, payload);

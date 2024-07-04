@@ -1,10 +1,10 @@
-import { router } from '@/lib/server/trpc'
-import { quizaccessSebTemplatesRouter } from './quizaccessSebTemplates'
-import { quizaccessSebQuizSettingsRouter } from './quizaccessSebQuizSettings'
+import { router } from "../server/trpc";
+import { quizaccessSebQuizSettingsRouter } from "./quizaccessSebQuizSettings";
+import { quizaccessSebTemplatesRouter } from "./quizaccessSebTemplates";
 
 export const appRouter = router({
-	quizaccessSebTemplates: quizaccessSebTemplatesRouter,
-	quizaccessSebQuizSettings: quizaccessSebQuizSettingsRouter
-})
+  quizaccessSebTemplates: quizaccessSebTemplatesRouter,
+  quizaccessSebQuizSettings: quizaccessSebQuizSettingsRouter,
+});
 
-export type AppRouter = typeof appRouter
+export type AppRouter = typeof appRouter;

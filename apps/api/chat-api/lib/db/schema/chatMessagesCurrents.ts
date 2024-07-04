@@ -1,4 +1,3 @@
-import { type getChatMessagesCurrents } from "@/lib/api/chatMessagesCurrents/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -13,6 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getChatMessagesCurrents } from "../api/chatMessagesCurrents/queries";
 import { chats } from "./chats";
 
 export const chatMessagesCurrents = pgTable(

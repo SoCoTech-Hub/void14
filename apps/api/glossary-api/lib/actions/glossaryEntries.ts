@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGlossaryEntry,
   deleteGlossaryEntry,
   updateGlossaryEntry,
-} from "@/lib/api/glossaryEntries/mutations";
+} from "../api/glossaryEntries/mutations";
 import {
   GlossaryEntryId,
-  NewGlossaryEntryParams,
-  UpdateGlossaryEntryParams,
   glossaryEntryIdSchema,
   insertGlossaryEntryParams,
+  NewGlossaryEntryParams,
+  UpdateGlossaryEntryParams,
   updateGlossaryEntryParams,
-} from "@/lib/db/schema/glossaryEntries";
+} from "../db/schema/glossaryEntries";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateGlossaryEntries = () => revalidatePath("/glossary-entries");
 
-export const createGlossaryEntryAction = async (input: NewGlossaryEntryParams) => {
+export const createGlossaryEntryAction = async (
+  input: NewGlossaryEntryParams,
+) => {
   try {
     const payload = insertGlossaryEntryParams.parse(input);
     await createGlossaryEntry(payload);
@@ -37,7 +40,9 @@ export const createGlossaryEntryAction = async (input: NewGlossaryEntryParams) =
   }
 };
 
-export const updateGlossaryEntryAction = async (input: UpdateGlossaryEntryParams) => {
+export const updateGlossaryEntryAction = async (
+  input: UpdateGlossaryEntryParams,
+) => {
   try {
     const payload = updateGlossaryEntryParams.parse(input);
     await updateGlossaryEntry(payload.id, payload);

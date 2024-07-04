@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMessageContact,
   deleteMessageContact,
   updateMessageContact,
-} from "@/lib/api/messageContacts/mutations";
+} from "../api/messageContacts/mutations";
 import {
+  insertMessageContactParams,
   MessageContactId,
+  messageContactIdSchema,
   NewMessageContactParams,
   UpdateMessageContactParams,
-  messageContactIdSchema,
-  insertMessageContactParams,
   updateMessageContactParams,
-} from "@/lib/db/schema/messageContacts";
+} from "../db/schema/messageContacts";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateMessageContacts = () => revalidatePath("/message-contacts");
 
-export const createMessageContactAction = async (input: NewMessageContactParams) => {
+export const createMessageContactAction = async (
+  input: NewMessageContactParams,
+) => {
   try {
     const payload = insertMessageContactParams.parse(input);
     await createMessageContact(payload);
@@ -37,7 +40,9 @@ export const createMessageContactAction = async (input: NewMessageContactParams)
   }
 };
 
-export const updateMessageContactAction = async (input: UpdateMessageContactParams) => {
+export const updateMessageContactAction = async (
+  input: UpdateMessageContactParams,
+) => {
   try {
     const payload = updateMessageContactParams.parse(input);
     await updateMessageContact(payload.id, payload);

@@ -1,19 +1,28 @@
-import { getBlogCommentById, getBlogComments } from "@/lib/api/blogComments/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createBlogComment,
+  deleteBlogComment,
+  updateBlogComment,
+} from "../api/blogComments/mutations";
+import {
+  getBlogCommentById,
+  getBlogComments,
+} from "../api/blogComments/queries";
 import {
   blogCommentIdSchema,
   insertBlogCommentParams,
   updateBlogCommentParams,
-} from "@/lib/db/schema/blogComments";
-import { createBlogComment, deleteBlogComment, updateBlogComment } from "@/lib/api/blogComments/mutations";
+} from "../db/schema/blogComments";
+import { publicProcedure, router } from "../server/trpc";
 
 export const blogCommentsRouter = router({
   getBlogComments: publicProcedure.query(async () => {
     return getBlogComments();
   }),
-  getBlogCommentById: publicProcedure.input(blogCommentIdSchema).query(async ({ input }) => {
-    return getBlogCommentById(input.id);
-  }),
+  getBlogCommentById: publicProcedure
+    .input(blogCommentIdSchema)
+    .query(async ({ input }) => {
+      return getBlogCommentById(input.id);
+    }),
   createBlogComment: publicProcedure
     .input(insertBlogCommentParams)
     .mutation(async ({ input }) => {

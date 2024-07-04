@@ -1,10 +1,10 @@
-import { type getBadgeManualAwards } from "@/lib/api/badgeManualAwards/queries";
 import { pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getBadgeManualAwards } from "../api/badgeManualAwards/queries";
 import { badges } from "./badges";
 
 export const badgeManualAwards = pgTable(

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createLogstoreStandardLog,
   deleteLogstoreStandardLog,
   updateLogstoreStandardLog,
-} from "@/lib/api/logstoreStandardLogs/mutations";
+} from "../api/logstoreStandardLogs/mutations";
 import {
+  insertLogstoreStandardLogParams,
   LogstoreStandardLogId,
+  logstoreStandardLogIdSchema,
   NewLogstoreStandardLogParams,
   UpdateLogstoreStandardLogParams,
-  logstoreStandardLogIdSchema,
-  insertLogstoreStandardLogParams,
   updateLogstoreStandardLogParams,
-} from "@/lib/db/schema/logstoreStandardLogs";
+} from "../db/schema/logstoreStandardLogs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateLogstoreStandardLogs = () => revalidatePath("/logstore-standard-logs");
+const revalidateLogstoreStandardLogs = () =>
+  revalidatePath("/logstore-standard-logs");
 
-export const createLogstoreStandardLogAction = async (input: NewLogstoreStandardLogParams) => {
+export const createLogstoreStandardLogAction = async (
+  input: NewLogstoreStandardLogParams,
+) => {
   try {
     const payload = insertLogstoreStandardLogParams.parse(input);
     await createLogstoreStandardLog(payload);
@@ -37,7 +41,9 @@ export const createLogstoreStandardLogAction = async (input: NewLogstoreStandard
   }
 };
 
-export const updateLogstoreStandardLogAction = async (input: UpdateLogstoreStandardLogParams) => {
+export const updateLogstoreStandardLogAction = async (
+  input: UpdateLogstoreStandardLogParams,
+) => {
   try {
     const payload = updateLogstoreStandardLogParams.parse(input);
     await updateLogstoreStandardLog(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateLogstoreStandardLogAction = async (input: UpdateLogstoreStand
   }
 };
 
-export const deleteLogstoreStandardLogAction = async (input: LogstoreStandardLogId) => {
+export const deleteLogstoreStandardLogAction = async (
+  input: LogstoreStandardLogId,
+) => {
   try {
     const payload = logstoreStandardLogIdSchema.parse({ id: input });
     await deleteLogstoreStandardLog(payload.id);

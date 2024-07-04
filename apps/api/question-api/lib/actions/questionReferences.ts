@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuestionReference,
   deleteQuestionReference,
   updateQuestionReference,
-} from "@/lib/api/questionReferences/mutations";
+} from "../api/questionReferences/mutations";
 import {
-  QuestionReferenceId,
-  NewQuestionReferenceParams,
-  UpdateQuestionReferenceParams,
-  questionReferenceIdSchema,
   insertQuestionReferenceParams,
+  NewQuestionReferenceParams,
+  QuestionReferenceId,
+  questionReferenceIdSchema,
+  UpdateQuestionReferenceParams,
   updateQuestionReferenceParams,
-} from "@/lib/db/schema/questionReferences";
+} from "../db/schema/questionReferences";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQuestionReferences = () => revalidatePath("/question-references");
+const revalidateQuestionReferences = () =>
+  revalidatePath("/question-references");
 
-export const createQuestionReferenceAction = async (input: NewQuestionReferenceParams) => {
+export const createQuestionReferenceAction = async (
+  input: NewQuestionReferenceParams,
+) => {
   try {
     const payload = insertQuestionReferenceParams.parse(input);
     await createQuestionReference(payload);
@@ -37,7 +41,9 @@ export const createQuestionReferenceAction = async (input: NewQuestionReferenceP
   }
 };
 
-export const updateQuestionReferenceAction = async (input: UpdateQuestionReferenceParams) => {
+export const updateQuestionReferenceAction = async (
+  input: UpdateQuestionReferenceParams,
+) => {
   try {
     const payload = updateQuestionReferenceParams.parse(input);
     await updateQuestionReference(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQuestionReferenceAction = async (input: UpdateQuestionReferen
   }
 };
 
-export const deleteQuestionReferenceAction = async (input: QuestionReferenceId) => {
+export const deleteQuestionReferenceAction = async (
+  input: QuestionReferenceId,
+) => {
   try {
     const payload = questionReferenceIdSchema.parse({ id: input });
     await deleteQuestionReference(payload.id);

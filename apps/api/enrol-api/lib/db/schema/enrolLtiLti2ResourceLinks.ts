@@ -1,4 +1,3 @@
-import { type getEnrolLtiLti2ResourceLinks } from "@/lib/api/enrolLtiLti2ResourceLinks/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getEnrolLtiLti2ResourceLinks } from "../api/enrolLtiLti2ResourceLinks/queries";
 
 export const enrolLtiLti2ResourceLinks = pgTable(
   "enrol_lti_lti2_resource_links",

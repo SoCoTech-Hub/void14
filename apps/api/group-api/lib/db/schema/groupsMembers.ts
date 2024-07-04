@@ -1,9 +1,10 @@
-import { type getGroupsMembers } from "@/lib/api/groupsMembers/queries";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getGroupsMembers } from "../api/groupsMembers/queries";
 
 export const groupsMembers = pgTable("groups_members", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

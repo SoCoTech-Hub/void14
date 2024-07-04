@@ -1,4 +1,3 @@
-import { type getAnalyticsTrainSamples } from "@/lib/api/analyticsTrainSamples/queries";
 import { sql } from "drizzle-orm";
 import {
   pgTable,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getAnalyticsTrainSamples } from "../api/analyticsTrainSamples/queries";
 
 export const analyticsTrainSamples = pgTable(
   "analytics_train_samples",

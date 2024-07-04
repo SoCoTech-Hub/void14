@@ -1,19 +1,28 @@
-import { getLessonOverrideById, getLessonOverrides } from "@/lib/api/lessonOverrides/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  lessonOverrideIdSchema,
+  createLessonOverride,
+  deleteLessonOverride,
+  updateLessonOverride,
+} from "../api/lessonOverrides/mutations";
+import {
+  getLessonOverrideById,
+  getLessonOverrides,
+} from "../api/lessonOverrides/queries";
+import {
   insertLessonOverrideParams,
+  lessonOverrideIdSchema,
   updateLessonOverrideParams,
-} from "@/lib/db/schema/lessonOverrides";
-import { createLessonOverride, deleteLessonOverride, updateLessonOverride } from "@/lib/api/lessonOverrides/mutations";
+} from "../db/schema/lessonOverrides";
+import { publicProcedure, router } from "../server/trpc";
 
 export const lessonOverridesRouter = router({
   getLessonOverrides: publicProcedure.query(async () => {
     return getLessonOverrides();
   }),
-  getLessonOverrideById: publicProcedure.input(lessonOverrideIdSchema).query(async ({ input }) => {
-    return getLessonOverrideById(input.id);
-  }),
+  getLessonOverrideById: publicProcedure
+    .input(lessonOverrideIdSchema)
+    .query(async ({ input }) => {
+      return getLessonOverrideById(input.id);
+    }),
   createLessonOverride: publicProcedure
     .input(insertLessonOverrideParams)
     .mutation(async ({ input }) => {

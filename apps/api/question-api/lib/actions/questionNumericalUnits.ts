@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuestionNumericalUnit,
   deleteQuestionNumericalUnit,
   updateQuestionNumericalUnit,
-} from "@/lib/api/questionNumericalUnits/mutations";
+} from "../api/questionNumericalUnits/mutations";
 import {
-  QuestionNumericalUnitId,
-  NewQuestionNumericalUnitParams,
-  UpdateQuestionNumericalUnitParams,
-  questionNumericalUnitIdSchema,
   insertQuestionNumericalUnitParams,
+  NewQuestionNumericalUnitParams,
+  QuestionNumericalUnitId,
+  questionNumericalUnitIdSchema,
+  UpdateQuestionNumericalUnitParams,
   updateQuestionNumericalUnitParams,
-} from "@/lib/db/schema/questionNumericalUnits";
+} from "../db/schema/questionNumericalUnits";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQuestionNumericalUnits = () => revalidatePath("/question-numerical-units");
+const revalidateQuestionNumericalUnits = () =>
+  revalidatePath("/question-numerical-units");
 
-export const createQuestionNumericalUnitAction = async (input: NewQuestionNumericalUnitParams) => {
+export const createQuestionNumericalUnitAction = async (
+  input: NewQuestionNumericalUnitParams,
+) => {
   try {
     const payload = insertQuestionNumericalUnitParams.parse(input);
     await createQuestionNumericalUnit(payload);
@@ -37,7 +41,9 @@ export const createQuestionNumericalUnitAction = async (input: NewQuestionNumeri
   }
 };
 
-export const updateQuestionNumericalUnitAction = async (input: UpdateQuestionNumericalUnitParams) => {
+export const updateQuestionNumericalUnitAction = async (
+  input: UpdateQuestionNumericalUnitParams,
+) => {
   try {
     const payload = updateQuestionNumericalUnitParams.parse(input);
     await updateQuestionNumericalUnit(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQuestionNumericalUnitAction = async (input: UpdateQuestionNum
   }
 };
 
-export const deleteQuestionNumericalUnitAction = async (input: QuestionNumericalUnitId) => {
+export const deleteQuestionNumericalUnitAction = async (
+  input: QuestionNumericalUnitId,
+) => {
   try {
     const payload = questionNumericalUnitIdSchema.parse({ id: input });
     await deleteQuestionNumericalUnit(payload.id);

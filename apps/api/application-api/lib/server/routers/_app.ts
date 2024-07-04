@@ -1,8 +1,8 @@
-import { computersRouter } from "./computers";
-import { router } from "@/lib/server/trpc";
+import { router } from "../server/trpc";
 import { applicationCategoriesRouter } from "./applicationCategories";
-import { jobApplicationsRouter } from "./jobApplications";
 import { applicationResponsesRouter } from "./applicationResponses";
+import { computersRouter } from "./computers";
+import { jobApplicationsRouter } from "./jobApplications";
 import { jobApplicationsApplicationCategoriesRouter } from "./jobApplicationsApplicationCategories";
 
 export const appRouter = router({
@@ -10,7 +10,8 @@ export const appRouter = router({
   applicationCategories: applicationCategoriesRouter,
   jobApplications: jobApplicationsRouter,
   applicationResponses: applicationResponsesRouter,
-  jobApplicationsApplicationCategories: jobApplicationsApplicationCategoriesRouter,
+  jobApplicationsApplicationCategories:
+    jobApplicationsApplicationCategoriesRouter,
 });
 
 export type AppRouter = typeof appRouter;

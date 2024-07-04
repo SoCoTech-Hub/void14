@@ -1,8 +1,8 @@
-import { computersRouter } from "./computers";
-import { router } from "@/lib/server/trpc";
+import { router } from "../server/trpc";
 import { backupControllersRouter } from "./backupControllers";
 import { backupCoursesRouter } from "./backupCourses";
 import { backupLogsRouter } from "./backupLogs";
+import { computersRouter } from "./computers";
 
 export const appRouter = router({
   computers: computersRouter,

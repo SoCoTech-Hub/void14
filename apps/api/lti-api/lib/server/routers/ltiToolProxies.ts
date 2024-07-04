@@ -1,19 +1,28 @@
-import { getLtiToolProxyById, getLtiToolProxies } from "@/lib/api/ltiToolProxies/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  ltiToolProxyIdSchema,
+  createLtiToolProxy,
+  deleteLtiToolProxy,
+  updateLtiToolProxy,
+} from "../api/ltiToolProxies/mutations";
+import {
+  getLtiToolProxies,
+  getLtiToolProxyById,
+} from "../api/ltiToolProxies/queries";
+import {
   insertLtiToolProxyParams,
+  ltiToolProxyIdSchema,
   updateLtiToolProxyParams,
-} from "@/lib/db/schema/ltiToolProxies";
-import { createLtiToolProxy, deleteLtiToolProxy, updateLtiToolProxy } from "@/lib/api/ltiToolProxies/mutations";
+} from "../db/schema/ltiToolProxies";
+import { publicProcedure, router } from "../server/trpc";
 
 export const ltiToolProxiesRouter = router({
   getLtiToolProxies: publicProcedure.query(async () => {
     return getLtiToolProxies();
   }),
-  getLtiToolProxyById: publicProcedure.input(ltiToolProxyIdSchema).query(async ({ input }) => {
-    return getLtiToolProxyById(input.id);
-  }),
+  getLtiToolProxyById: publicProcedure
+    .input(ltiToolProxyIdSchema)
+    .query(async ({ input }) => {
+      return getLtiToolProxyById(input.id);
+    }),
   createLtiToolProxy: publicProcedure
     .input(insertLtiToolProxyParams)
     .mutation(async ({ input }) => {

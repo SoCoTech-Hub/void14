@@ -1,9 +1,10 @@
-import { type getMessagePopupNotifications } from "@/lib/api/messagePopupNotifications/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getMessagePopupNotifications } from "../api/messagePopupNotifications/queries";
 
 export const messagePopupNotifications = pgTable(
   "message_popup_notifications",

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuestionGapselect,
   deleteQuestionGapselect,
   updateQuestionGapselect,
-} from "@/lib/api/questionGapselects/mutations";
+} from "../api/questionGapselects/mutations";
 import {
-  QuestionGapselectId,
-  NewQuestionGapselectParams,
-  UpdateQuestionGapselectParams,
-  questionGapselectIdSchema,
   insertQuestionGapselectParams,
+  NewQuestionGapselectParams,
+  QuestionGapselectId,
+  questionGapselectIdSchema,
+  UpdateQuestionGapselectParams,
   updateQuestionGapselectParams,
-} from "@/lib/db/schema/questionGapselects";
+} from "../db/schema/questionGapselects";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQuestionGapselects = () => revalidatePath("/question-gapselects");
+const revalidateQuestionGapselects = () =>
+  revalidatePath("/question-gapselects");
 
-export const createQuestionGapselectAction = async (input: NewQuestionGapselectParams) => {
+export const createQuestionGapselectAction = async (
+  input: NewQuestionGapselectParams,
+) => {
   try {
     const payload = insertQuestionGapselectParams.parse(input);
     await createQuestionGapselect(payload);
@@ -37,7 +41,9 @@ export const createQuestionGapselectAction = async (input: NewQuestionGapselectP
   }
 };
 
-export const updateQuestionGapselectAction = async (input: UpdateQuestionGapselectParams) => {
+export const updateQuestionGapselectAction = async (
+  input: UpdateQuestionGapselectParams,
+) => {
   try {
     const payload = updateQuestionGapselectParams.parse(input);
     await updateQuestionGapselect(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQuestionGapselectAction = async (input: UpdateQuestionGapsele
   }
 };
 
-export const deleteQuestionGapselectAction = async (input: QuestionGapselectId) => {
+export const deleteQuestionGapselectAction = async (
+  input: QuestionGapselectId,
+) => {
   try {
     const payload = questionGapselectIdSchema.parse({ id: input });
     await deleteQuestionGapselect(payload.id);

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createLessonAttempt,
   deleteLessonAttempt,
   updateLessonAttempt,
-} from "@/lib/api/lessonAttempts/mutations";
+} from "../api/lessonAttempts/mutations";
 import {
+  insertLessonAttemptParams,
   LessonAttemptId,
+  lessonAttemptIdSchema,
   NewLessonAttemptParams,
   UpdateLessonAttemptParams,
-  lessonAttemptIdSchema,
-  insertLessonAttemptParams,
   updateLessonAttemptParams,
-} from "@/lib/db/schema/lessonAttempts";
+} from "../db/schema/lessonAttempts";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateLessonAttempts = () => revalidatePath("/lesson-attempts");
 
-export const createLessonAttemptAction = async (input: NewLessonAttemptParams) => {
+export const createLessonAttemptAction = async (
+  input: NewLessonAttemptParams,
+) => {
   try {
     const payload = insertLessonAttemptParams.parse(input);
     await createLessonAttempt(payload);
@@ -37,7 +40,9 @@ export const createLessonAttemptAction = async (input: NewLessonAttemptParams) =
   }
 };
 
-export const updateLessonAttemptAction = async (input: UpdateLessonAttemptParams) => {
+export const updateLessonAttemptAction = async (
+  input: UpdateLessonAttemptParams,
+) => {
   try {
     const payload = updateLessonAttemptParams.parse(input);
     await updateLessonAttempt(payload.id, payload);

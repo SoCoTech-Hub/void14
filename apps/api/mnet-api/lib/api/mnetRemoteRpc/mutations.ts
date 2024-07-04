@@ -1,19 +1,25 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  MnetRemoteRpcId, 
-  NewMnetRemoteRpcParams,
-  UpdateMnetRemoteRpcParams, 
-  updateMnetRemoteRpcSchema,
-  insertMnetRemoteRpcSchema, 
-  mnetRemoteRpc,
-  mnetRemoteRpcIdSchema 
-} from "@/lib/db/schema/mnetRemoteRpc";
 
-export const createMnetRemoteRpc = async (mnetRemoteRpc: NewMnetRemoteRpcParams) => {
+import { db } from "../db/index";
+import {
+  insertMnetRemoteRpcSchema,
+  mnetRemoteRpc,
+  MnetRemoteRpcId,
+  mnetRemoteRpcIdSchema,
+  NewMnetRemoteRpcParams,
+  UpdateMnetRemoteRpcParams,
+  updateMnetRemoteRpcSchema,
+} from "../db/schema/mnetRemoteRpc";
+
+export const createMnetRemoteRpc = async (
+  mnetRemoteRpc: NewMnetRemoteRpcParams,
+) => {
   const newMnetRemoteRpc = insertMnetRemoteRpcSchema.parse(mnetRemoteRpc);
   try {
-    const [m] =  await db.insert(mnetRemoteRpc).values(newMnetRemoteRpc).returning();
+    const [m] = await db
+      .insert(mnetRemoteRpc)
+      .values(newMnetRemoteRpc)
+      .returning();
     return { mnetRemoteRpc: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +28,18 @@ export const createMnetRemoteRpc = async (mnetRemoteRpc: NewMnetRemoteRpcParams)
   }
 };
 
-export const updateMnetRemoteRpc = async (id: MnetRemoteRpcId, mnetRemoteRpc: UpdateMnetRemoteRpcParams) => {
+export const updateMnetRemoteRpc = async (
+  id: MnetRemoteRpcId,
+  mnetRemoteRpc: UpdateMnetRemoteRpcParams,
+) => {
   const { id: mnetRemoteRpcId } = mnetRemoteRpcIdSchema.parse({ id });
   const newMnetRemoteRpc = updateMnetRemoteRpcSchema.parse(mnetRemoteRpc);
   try {
-    const [m] =  await db
-     .update(mnetRemoteRpc)
-     .set(newMnetRemoteRpc)
-     .where(eq(mnetRemoteRpc.id, mnetRemoteRpcId!))
-     .returning();
+    const [m] = await db
+      .update(mnetRemoteRpc)
+      .set(newMnetRemoteRpc)
+      .where(eq(mnetRemoteRpc.id, mnetRemoteRpcId!))
+      .returning();
     return { mnetRemoteRpc: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +51,10 @@ export const updateMnetRemoteRpc = async (id: MnetRemoteRpcId, mnetRemoteRpc: Up
 export const deleteMnetRemoteRpc = async (id: MnetRemoteRpcId) => {
   const { id: mnetRemoteRpcId } = mnetRemoteRpcIdSchema.parse({ id });
   try {
-    const [m] =  await db.delete(mnetRemoteRpc).where(eq(mnetRemoteRpc.id, mnetRemoteRpcId!))
-    .returning();
+    const [m] = await db
+      .delete(mnetRemoteRpc)
+      .where(eq(mnetRemoteRpc.id, mnetRemoteRpcId!))
+      .returning();
     return { mnetRemoteRpc: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +62,3 @@ export const deleteMnetRemoteRpc = async (id: MnetRemoteRpcId) => {
     throw { error: message };
   }
 };
-

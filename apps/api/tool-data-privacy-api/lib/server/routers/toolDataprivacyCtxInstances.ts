@@ -1,19 +1,28 @@
-import { getToolDataprivacyCtxInstanceById, getToolDataprivacyCtxInstances } from "@/lib/api/toolDataprivacyCtxInstances/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  toolDataprivacyCtxInstanceIdSchema,
+  createToolDataprivacyCtxInstance,
+  deleteToolDataprivacyCtxInstance,
+  updateToolDataprivacyCtxInstance,
+} from "../api/toolDataprivacyCtxInstances/mutations";
+import {
+  getToolDataprivacyCtxInstanceById,
+  getToolDataprivacyCtxInstances,
+} from "../api/toolDataprivacyCtxInstances/queries";
+import {
   insertToolDataprivacyCtxInstanceParams,
+  toolDataprivacyCtxInstanceIdSchema,
   updateToolDataprivacyCtxInstanceParams,
-} from "@/lib/db/schema/toolDataprivacyCtxInstances";
-import { createToolDataprivacyCtxInstance, deleteToolDataprivacyCtxInstance, updateToolDataprivacyCtxInstance } from "@/lib/api/toolDataprivacyCtxInstances/mutations";
+} from "../db/schema/toolDataprivacyCtxInstances";
+import { publicProcedure, router } from "../server/trpc";
 
 export const toolDataprivacyCtxInstancesRouter = router({
   getToolDataprivacyCtxInstances: publicProcedure.query(async () => {
     return getToolDataprivacyCtxInstances();
   }),
-  getToolDataprivacyCtxInstanceById: publicProcedure.input(toolDataprivacyCtxInstanceIdSchema).query(async ({ input }) => {
-    return getToolDataprivacyCtxInstanceById(input.id);
-  }),
+  getToolDataprivacyCtxInstanceById: publicProcedure
+    .input(toolDataprivacyCtxInstanceIdSchema)
+    .query(async ({ input }) => {
+      return getToolDataprivacyCtxInstanceById(input.id);
+    }),
   createToolDataprivacyCtxInstance: publicProcedure
     .input(insertToolDataprivacyCtxInstanceParams)
     .mutation(async ({ input }) => {

@@ -1,11 +1,11 @@
-import { getBookById, getBooks } from "@/lib/api/books/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import { createBook, deleteBook, updateBook } from "../api/books/mutations";
+import { getBookById, getBooks } from "../api/books/queries";
 import {
   bookIdSchema,
   insertBookParams,
   updateBookParams,
-} from "@/lib/db/schema/books";
-import { createBook, deleteBook, updateBook } from "@/lib/api/books/mutations";
+} from "../db/schema/books";
+import { publicProcedure, router } from "../server/trpc";
 
 export const booksRouter = router({
   getBooks: publicProcedure.query(async () => {

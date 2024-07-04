@@ -1,19 +1,20 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  ContextTempId, 
-  NewContextTempParams,
-  UpdateContextTempParams, 
-  updateContextTempSchema,
-  insertContextTempSchema, 
+
+import { db } from "../db/index";
+import {
   contextTemp,
-  contextTempIdSchema 
-} from "@/lib/db/schema/contextTemp";
+  ContextTempId,
+  contextTempIdSchema,
+  insertContextTempSchema,
+  NewContextTempParams,
+  UpdateContextTempParams,
+  updateContextTempSchema,
+} from "../db/schema/contextTemp";
 
 export const createContextTemp = async (contextTemp: NewContextTempParams) => {
   const newContextTemp = insertContextTempSchema.parse(contextTemp);
   try {
-    const [c] =  await db.insert(contextTemp).values(newContextTemp).returning();
+    const [c] = await db.insert(contextTemp).values(newContextTemp).returning();
     return { contextTemp: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +23,18 @@ export const createContextTemp = async (contextTemp: NewContextTempParams) => {
   }
 };
 
-export const updateContextTemp = async (id: ContextTempId, contextTemp: UpdateContextTempParams) => {
+export const updateContextTemp = async (
+  id: ContextTempId,
+  contextTemp: UpdateContextTempParams,
+) => {
   const { id: contextTempId } = contextTempIdSchema.parse({ id });
   const newContextTemp = updateContextTempSchema.parse(contextTemp);
   try {
-    const [c] =  await db
-     .update(contextTemp)
-     .set(newContextTemp)
-     .where(eq(contextTemp.id, contextTempId!))
-     .returning();
+    const [c] = await db
+      .update(contextTemp)
+      .set(newContextTemp)
+      .where(eq(contextTemp.id, contextTempId!))
+      .returning();
     return { contextTemp: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +46,10 @@ export const updateContextTemp = async (id: ContextTempId, contextTemp: UpdateCo
 export const deleteContextTemp = async (id: ContextTempId) => {
   const { id: contextTempId } = contextTempIdSchema.parse({ id });
   try {
-    const [c] =  await db.delete(contextTemp).where(eq(contextTemp.id, contextTempId!))
-    .returning();
+    const [c] = await db
+      .delete(contextTemp)
+      .where(eq(contextTemp.id, contextTempId!))
+      .returning();
     return { contextTemp: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +57,3 @@ export const deleteContextTemp = async (id: ContextTempId) => {
     throw { error: message };
   }
 };
-

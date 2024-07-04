@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuestionNumerical,
   deleteQuestionNumerical,
   updateQuestionNumerical,
-} from "@/lib/api/questionNumericals/mutations";
+} from "../api/questionNumericals/mutations";
 import {
-  QuestionNumericalId,
-  NewQuestionNumericalParams,
-  UpdateQuestionNumericalParams,
-  questionNumericalIdSchema,
   insertQuestionNumericalParams,
+  NewQuestionNumericalParams,
+  QuestionNumericalId,
+  questionNumericalIdSchema,
+  UpdateQuestionNumericalParams,
   updateQuestionNumericalParams,
-} from "@/lib/db/schema/questionNumericals";
+} from "../db/schema/questionNumericals";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQuestionNumericals = () => revalidatePath("/question-numericals");
+const revalidateQuestionNumericals = () =>
+  revalidatePath("/question-numericals");
 
-export const createQuestionNumericalAction = async (input: NewQuestionNumericalParams) => {
+export const createQuestionNumericalAction = async (
+  input: NewQuestionNumericalParams,
+) => {
   try {
     const payload = insertQuestionNumericalParams.parse(input);
     await createQuestionNumerical(payload);
@@ -37,7 +41,9 @@ export const createQuestionNumericalAction = async (input: NewQuestionNumericalP
   }
 };
 
-export const updateQuestionNumericalAction = async (input: UpdateQuestionNumericalParams) => {
+export const updateQuestionNumericalAction = async (
+  input: UpdateQuestionNumericalParams,
+) => {
   try {
     const payload = updateQuestionNumericalParams.parse(input);
     await updateQuestionNumerical(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQuestionNumericalAction = async (input: UpdateQuestionNumeric
   }
 };
 
-export const deleteQuestionNumericalAction = async (input: QuestionNumericalId) => {
+export const deleteQuestionNumericalAction = async (
+  input: QuestionNumericalId,
+) => {
   try {
     const payload = questionNumericalIdSchema.parse({ id: input });
     await deleteQuestionNumerical(payload.id);

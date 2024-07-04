@@ -1,9 +1,10 @@
-import { type getGenders } from "@/lib/api/genders/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getGenders } from "../api/genders/queries";
 
 export const genders = pgTable("genders", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

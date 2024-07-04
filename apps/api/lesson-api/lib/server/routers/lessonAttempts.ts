@@ -1,19 +1,28 @@
-import { getLessonAttemptById, getLessonAttempts } from "@/lib/api/lessonAttempts/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  lessonAttemptIdSchema,
+  createLessonAttempt,
+  deleteLessonAttempt,
+  updateLessonAttempt,
+} from "../api/lessonAttempts/mutations";
+import {
+  getLessonAttemptById,
+  getLessonAttempts,
+} from "../api/lessonAttempts/queries";
+import {
   insertLessonAttemptParams,
+  lessonAttemptIdSchema,
   updateLessonAttemptParams,
-} from "@/lib/db/schema/lessonAttempts";
-import { createLessonAttempt, deleteLessonAttempt, updateLessonAttempt } from "@/lib/api/lessonAttempts/mutations";
+} from "../db/schema/lessonAttempts";
+import { publicProcedure, router } from "../server/trpc";
 
 export const lessonAttemptsRouter = router({
   getLessonAttempts: publicProcedure.query(async () => {
     return getLessonAttempts();
   }),
-  getLessonAttemptById: publicProcedure.input(lessonAttemptIdSchema).query(async ({ input }) => {
-    return getLessonAttemptById(input.id);
-  }),
+  getLessonAttemptById: publicProcedure
+    .input(lessonAttemptIdSchema)
+    .query(async ({ input }) => {
+      return getLessonAttemptById(input.id);
+    }),
   createLessonAttempt: publicProcedure
     .input(insertLessonAttemptParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,28 @@
-import { getGradeSettingById, getGradeSettings } from "@/lib/api/gradeSettings/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createGradeSetting,
+  deleteGradeSetting,
+  updateGradeSetting,
+} from "../api/gradeSettings/mutations";
+import {
+  getGradeSettingById,
+  getGradeSettings,
+} from "../api/gradeSettings/queries";
 import {
   gradeSettingIdSchema,
   insertGradeSettingParams,
   updateGradeSettingParams,
-} from "@/lib/db/schema/gradeSettings";
-import { createGradeSetting, deleteGradeSetting, updateGradeSetting } from "@/lib/api/gradeSettings/mutations";
+} from "../db/schema/gradeSettings";
+import { publicProcedure, router } from "../server/trpc";
 
 export const gradeSettingsRouter = router({
   getGradeSettings: publicProcedure.query(async () => {
     return getGradeSettings();
   }),
-  getGradeSettingById: publicProcedure.input(gradeSettingIdSchema).query(async ({ input }) => {
-    return getGradeSettingById(input.id);
-  }),
+  getGradeSettingById: publicProcedure
+    .input(gradeSettingIdSchema)
+    .query(async ({ input }) => {
+      return getGradeSettingById(input.id);
+    }),
   createGradeSetting: publicProcedure
     .input(insertGradeSettingParams)
     .mutation(async ({ input }) => {

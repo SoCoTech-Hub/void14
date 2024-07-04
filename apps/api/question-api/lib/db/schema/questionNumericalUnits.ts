@@ -1,10 +1,10 @@
-import { type getQuestionNumericalUnits } from "@/lib/api/questionNumericalUnits/queries";
 import { pgTable, real, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getQuestionNumericalUnits } from "../api/questionNumericalUnits/queries";
 import { questions } from "./questions";
 
 export const questionNumericalUnits = pgTable(

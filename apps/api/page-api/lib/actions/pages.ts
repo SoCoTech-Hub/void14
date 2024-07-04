@@ -1,19 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
+import { createPage, deletePage, updatePage } from "../api/pages/mutations";
 import {
-  createPage,
-  deletePage,
-  updatePage,
-} from "@/lib/api/pages/mutations";
-import {
-  PageId,
-  NewPageParams,
-  UpdatePageParams,
-  pageIdSchema,
   insertPageParams,
+  NewPageParams,
+  PageId,
+  pageIdSchema,
+  UpdatePageParams,
   updatePageParams,
-} from "@/lib/db/schema/pages";
+} from "../db/schema/pages";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

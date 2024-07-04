@@ -1,10 +1,10 @@
-import { type getLocalizationUsers } from "@/lib/api/localizationUsers/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getLocalizationUsers } from "../api/localizationUsers/queries";
 import { localizationLanguages } from "./localizationLanguages";
 
 export const localizationUsers = pgTable("localization_users", {

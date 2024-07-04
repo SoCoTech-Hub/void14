@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGradeCategoriesHistory,
   deleteGradeCategoriesHistory,
   updateGradeCategoriesHistory,
-} from "@/lib/api/gradeCategoriesHistories/mutations";
+} from "../api/gradeCategoriesHistories/mutations";
 import {
   GradeCategoriesHistoryId,
-  NewGradeCategoriesHistoryParams,
-  UpdateGradeCategoriesHistoryParams,
   gradeCategoriesHistoryIdSchema,
   insertGradeCategoriesHistoryParams,
+  NewGradeCategoriesHistoryParams,
+  UpdateGradeCategoriesHistoryParams,
   updateGradeCategoriesHistoryParams,
-} from "@/lib/db/schema/gradeCategoriesHistories";
+} from "../db/schema/gradeCategoriesHistories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateGradeCategoriesHistories = () => revalidatePath("/grade-categories-histories");
+const revalidateGradeCategoriesHistories = () =>
+  revalidatePath("/grade-categories-histories");
 
-export const createGradeCategoriesHistoryAction = async (input: NewGradeCategoriesHistoryParams) => {
+export const createGradeCategoriesHistoryAction = async (
+  input: NewGradeCategoriesHistoryParams,
+) => {
   try {
     const payload = insertGradeCategoriesHistoryParams.parse(input);
     await createGradeCategoriesHistory(payload);
@@ -37,7 +41,9 @@ export const createGradeCategoriesHistoryAction = async (input: NewGradeCategori
   }
 };
 
-export const updateGradeCategoriesHistoryAction = async (input: UpdateGradeCategoriesHistoryParams) => {
+export const updateGradeCategoriesHistoryAction = async (
+  input: UpdateGradeCategoriesHistoryParams,
+) => {
   try {
     const payload = updateGradeCategoriesHistoryParams.parse(input);
     await updateGradeCategoriesHistory(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateGradeCategoriesHistoryAction = async (input: UpdateGradeCateg
   }
 };
 
-export const deleteGradeCategoriesHistoryAction = async (input: GradeCategoriesHistoryId) => {
+export const deleteGradeCategoriesHistoryAction = async (
+  input: GradeCategoriesHistoryId,
+) => {
   try {
     const payload = gradeCategoriesHistoryIdSchema.parse({ id: input });
     await deleteGradeCategoriesHistory(payload.id);

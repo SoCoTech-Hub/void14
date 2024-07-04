@@ -1,19 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import {
-  createBlog,
-  deleteBlog,
-  updateBlog,
-} from "@/lib/api/blogs/mutations";
+
+import { createBlog, deleteBlog, updateBlog } from "../api/blogs/mutations";
 import {
   BlogId,
-  NewBlogParams,
-  UpdateBlogParams,
   blogIdSchema,
   insertBlogParams,
+  NewBlogParams,
+  UpdateBlogParams,
   updateBlogParams,
-} from "@/lib/db/schema/blogs";
+} from "../db/schema/blogs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

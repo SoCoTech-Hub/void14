@@ -1,4 +1,3 @@
-import { type getToolDataprivacyRequests } from "@/lib/api/toolDataprivacyRequests/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -12,6 +11,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getToolDataprivacyRequests } from "../api/toolDataprivacyRequests/queries";
 
 export const toolDataprivacyRequests = pgTable("tool_dataprivacy_requests", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

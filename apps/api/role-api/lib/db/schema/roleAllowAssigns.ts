@@ -3,7 +3,7 @@ import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { roles } from './roles'
 import { roles } from './roles'
-import { type getRoleAllowAssigns } from '@/lib/api/roleAllowAssigns/queries'
+import { type getRoleAllowAssigns } from '../api/roleAllowAssigns/queries'
 
 import { nanoid } from '@soco/utils'
 

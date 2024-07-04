@@ -1,19 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
+import { createScale, deleteScale, updateScale } from "../api/scales/mutations";
 import {
-  createScale,
-  deleteScale,
-  updateScale,
-} from "@/lib/api/scales/mutations";
-import {
-  ScaleId,
-  NewScaleParams,
-  UpdateScaleParams,
-  scaleIdSchema,
   insertScaleParams,
+  NewScaleParams,
+  ScaleId,
+  scaleIdSchema,
+  UpdateScaleParams,
   updateScaleParams,
-} from "@/lib/db/schema/scales";
+} from "../db/schema/scales";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

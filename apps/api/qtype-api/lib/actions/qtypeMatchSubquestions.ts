@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQtypeMatchSubquestion,
   deleteQtypeMatchSubquestion,
   updateQtypeMatchSubquestion,
-} from "@/lib/api/qtypeMatchSubquestions/mutations";
+} from "../api/qtypeMatchSubquestions/mutations";
 import {
-  QtypeMatchSubquestionId,
-  NewQtypeMatchSubquestionParams,
-  UpdateQtypeMatchSubquestionParams,
-  qtypeMatchSubquestionIdSchema,
   insertQtypeMatchSubquestionParams,
+  NewQtypeMatchSubquestionParams,
+  QtypeMatchSubquestionId,
+  qtypeMatchSubquestionIdSchema,
+  UpdateQtypeMatchSubquestionParams,
   updateQtypeMatchSubquestionParams,
-} from "@/lib/db/schema/qtypeMatchSubquestions";
+} from "../db/schema/qtypeMatchSubquestions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQtypeMatchSubquestions = () => revalidatePath("/qtype-match-subquestions");
+const revalidateQtypeMatchSubquestions = () =>
+  revalidatePath("/qtype-match-subquestions");
 
-export const createQtypeMatchSubquestionAction = async (input: NewQtypeMatchSubquestionParams) => {
+export const createQtypeMatchSubquestionAction = async (
+  input: NewQtypeMatchSubquestionParams,
+) => {
   try {
     const payload = insertQtypeMatchSubquestionParams.parse(input);
     await createQtypeMatchSubquestion(payload);
@@ -37,7 +41,9 @@ export const createQtypeMatchSubquestionAction = async (input: NewQtypeMatchSubq
   }
 };
 
-export const updateQtypeMatchSubquestionAction = async (input: UpdateQtypeMatchSubquestionParams) => {
+export const updateQtypeMatchSubquestionAction = async (
+  input: UpdateQtypeMatchSubquestionParams,
+) => {
   try {
     const payload = updateQtypeMatchSubquestionParams.parse(input);
     await updateQtypeMatchSubquestion(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQtypeMatchSubquestionAction = async (input: UpdateQtypeMatchS
   }
 };
 
-export const deleteQtypeMatchSubquestionAction = async (input: QtypeMatchSubquestionId) => {
+export const deleteQtypeMatchSubquestionAction = async (
+  input: QtypeMatchSubquestionId,
+) => {
   try {
     const payload = qtypeMatchSubquestionIdSchema.parse({ id: input });
     await deleteQtypeMatchSubquestion(payload.id);

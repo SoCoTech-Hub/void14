@@ -1,19 +1,28 @@
-import { getSurveyAnalysissById, getSurveyAnalysiss } from "@/lib/api/surveyAnalysiss/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  surveyAnalysissIdSchema,
+  createSurveyAnalysiss,
+  deleteSurveyAnalysiss,
+  updateSurveyAnalysiss,
+} from "../api/surveyAnalysiss/mutations";
+import {
+  getSurveyAnalysiss,
+  getSurveyAnalysissById,
+} from "../api/surveyAnalysiss/queries";
+import {
   insertSurveyAnalysissParams,
+  surveyAnalysissIdSchema,
   updateSurveyAnalysissParams,
-} from "@/lib/db/schema/surveyAnalysiss";
-import { createSurveyAnalysiss, deleteSurveyAnalysiss, updateSurveyAnalysiss } from "@/lib/api/surveyAnalysiss/mutations";
+} from "../db/schema/surveyAnalysiss";
+import { publicProcedure, router } from "../server/trpc";
 
 export const surveyAnalysissRouter = router({
   getSurveyAnalysiss: publicProcedure.query(async () => {
     return getSurveyAnalysiss();
   }),
-  getSurveyAnalysissById: publicProcedure.input(surveyAnalysissIdSchema).query(async ({ input }) => {
-    return getSurveyAnalysissById(input.id);
-  }),
+  getSurveyAnalysissById: publicProcedure
+    .input(surveyAnalysissIdSchema)
+    .query(async ({ input }) => {
+      return getSurveyAnalysissById(input.id);
+    }),
   createSurveyAnalysiss: publicProcedure
     .input(insertSurveyAnalysissParams)
     .mutation(async ({ input }) => {

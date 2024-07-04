@@ -1,4 +1,3 @@
-import { type getMessages } from "@/lib/api/messages/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -12,6 +11,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getMessages } from "../api/messages/queries";
 
 export const messages = pgTable("messages", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

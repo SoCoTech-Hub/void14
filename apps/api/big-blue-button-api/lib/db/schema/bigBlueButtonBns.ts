@@ -1,4 +1,3 @@
-import { type getBigBlueButtonBns } from "@/lib/api/bigBlueButtonBns/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -13,6 +12,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getBigBlueButtonBns } from "../api/bigBlueButtonBns/queries";
 
 export const bigBlueButtonBns = pgTable(
   "big_blue_button_bns",

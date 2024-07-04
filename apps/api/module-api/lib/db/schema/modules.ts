@@ -1,4 +1,3 @@
-import { type getModules } from "@/lib/api/modules/queries";
 import {
   boolean,
   integer,
@@ -10,6 +9,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getModules } from "../api/modules/queries";
 
 export const modules = pgTable(
   "modules",

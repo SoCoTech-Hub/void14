@@ -1,9 +1,9 @@
-import { computersRouter } from "./computers";
-import { router } from "@/lib/server/trpc";
-import { bursaryCategoriesRouter } from "./bursaryCategories";
+import { router } from "../server/trpc";
 import { bursariesRouter } from "./bursaries";
+import { bursaryCategoriesRouter } from "./bursaryCategories";
 import { bursaryCategoriesBursariesRouter } from "./bursaryCategoriesBursaries";
 import { bursaryResponsesRouter } from "./bursaryResponses";
+import { computersRouter } from "./computers";
 
 export const appRouter = router({
   computers: computersRouter,

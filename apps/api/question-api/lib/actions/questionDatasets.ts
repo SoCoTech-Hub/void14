@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuestionDataset,
   deleteQuestionDataset,
   updateQuestionDataset,
-} from "@/lib/api/questionDatasets/mutations";
+} from "../api/questionDatasets/mutations";
 import {
-  QuestionDatasetId,
-  NewQuestionDatasetParams,
-  UpdateQuestionDatasetParams,
-  questionDatasetIdSchema,
   insertQuestionDatasetParams,
+  NewQuestionDatasetParams,
+  QuestionDatasetId,
+  questionDatasetIdSchema,
+  UpdateQuestionDatasetParams,
   updateQuestionDatasetParams,
-} from "@/lib/db/schema/questionDatasets";
+} from "../db/schema/questionDatasets";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateQuestionDatasets = () => revalidatePath("/question-datasets");
 
-export const createQuestionDatasetAction = async (input: NewQuestionDatasetParams) => {
+export const createQuestionDatasetAction = async (
+  input: NewQuestionDatasetParams,
+) => {
   try {
     const payload = insertQuestionDatasetParams.parse(input);
     await createQuestionDataset(payload);
@@ -37,7 +40,9 @@ export const createQuestionDatasetAction = async (input: NewQuestionDatasetParam
   }
 };
 
-export const updateQuestionDatasetAction = async (input: UpdateQuestionDatasetParams) => {
+export const updateQuestionDatasetAction = async (
+  input: UpdateQuestionDatasetParams,
+) => {
   try {
     const payload = updateQuestionDatasetParams.parse(input);
     await updateQuestionDataset(payload.id, payload);

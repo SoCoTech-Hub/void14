@@ -1,10 +1,10 @@
-import { type getMnetHost2services } from "@/lib/api/mnetHost2services/queries";
 import { boolean, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getMnetHost2services } from "../api/mnetHost2services/queries";
 import { mnetHosts } from "./mnetHosts";
 import { mnetServices } from "./mnetServices";
 

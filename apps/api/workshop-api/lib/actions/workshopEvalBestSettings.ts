@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createWorkshopEvalBestSetting,
   deleteWorkshopEvalBestSetting,
   updateWorkshopEvalBestSetting,
-} from "@/lib/api/workshopEvalBestSettings/mutations";
+} from "../api/workshopEvalBestSettings/mutations";
 import {
-  WorkshopEvalBestSettingId,
+  insertWorkshopEvalBestSettingParams,
   NewWorkshopEvalBestSettingParams,
   UpdateWorkshopEvalBestSettingParams,
-  workshopEvalBestSettingIdSchema,
-  insertWorkshopEvalBestSettingParams,
   updateWorkshopEvalBestSettingParams,
-} from "@/lib/db/schema/workshopEvalBestSettings";
+  WorkshopEvalBestSettingId,
+  workshopEvalBestSettingIdSchema,
+} from "../db/schema/workshopEvalBestSettings";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateWorkshopEvalBestSettings = () => revalidatePath("/workshop-eval-best-settings");
+const revalidateWorkshopEvalBestSettings = () =>
+  revalidatePath("/workshop-eval-best-settings");
 
-export const createWorkshopEvalBestSettingAction = async (input: NewWorkshopEvalBestSettingParams) => {
+export const createWorkshopEvalBestSettingAction = async (
+  input: NewWorkshopEvalBestSettingParams,
+) => {
   try {
     const payload = insertWorkshopEvalBestSettingParams.parse(input);
     await createWorkshopEvalBestSetting(payload);
@@ -37,7 +41,9 @@ export const createWorkshopEvalBestSettingAction = async (input: NewWorkshopEval
   }
 };
 
-export const updateWorkshopEvalBestSettingAction = async (input: UpdateWorkshopEvalBestSettingParams) => {
+export const updateWorkshopEvalBestSettingAction = async (
+  input: UpdateWorkshopEvalBestSettingParams,
+) => {
   try {
     const payload = updateWorkshopEvalBestSettingParams.parse(input);
     await updateWorkshopEvalBestSetting(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateWorkshopEvalBestSettingAction = async (input: UpdateWorkshopE
   }
 };
 
-export const deleteWorkshopEvalBestSettingAction = async (input: WorkshopEvalBestSettingId) => {
+export const deleteWorkshopEvalBestSettingAction = async (
+  input: WorkshopEvalBestSettingId,
+) => {
   try {
     const payload = workshopEvalBestSettingIdSchema.parse({ id: input });
     await deleteWorkshopEvalBestSetting(payload.id);

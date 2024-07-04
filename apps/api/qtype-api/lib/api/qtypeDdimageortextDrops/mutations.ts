@@ -1,19 +1,27 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  QtypeDdimageortextDropId, 
+
+import { db } from "../db/index";
+import {
+  insertQtypeDdimageortextDropSchema,
   NewQtypeDdimageortextDropParams,
-  UpdateQtypeDdimageortextDropParams, 
-  updateQtypeDdimageortextDropSchema,
-  insertQtypeDdimageortextDropSchema, 
+  QtypeDdimageortextDropId,
+  qtypeDdimageortextDropIdSchema,
   qtypeDdimageortextDrops,
-  qtypeDdimageortextDropIdSchema 
-} from "@/lib/db/schema/qtypeDdimageortextDrops";
+  UpdateQtypeDdimageortextDropParams,
+  updateQtypeDdimageortextDropSchema,
+} from "../db/schema/qtypeDdimageortextDrops";
 
-export const createQtypeDdimageortextDrop = async (qtypeDdimageortextDrop: NewQtypeDdimageortextDropParams) => {
-  const newQtypeDdimageortextDrop = insertQtypeDdimageortextDropSchema.parse(qtypeDdimageortextDrop);
+export const createQtypeDdimageortextDrop = async (
+  qtypeDdimageortextDrop: NewQtypeDdimageortextDropParams,
+) => {
+  const newQtypeDdimageortextDrop = insertQtypeDdimageortextDropSchema.parse(
+    qtypeDdimageortextDrop,
+  );
   try {
-    const [q] =  await db.insert(qtypeDdimageortextDrops).values(newQtypeDdimageortextDrop).returning();
+    const [q] = await db
+      .insert(qtypeDdimageortextDrops)
+      .values(newQtypeDdimageortextDrop)
+      .returning();
     return { qtypeDdimageortextDrop: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,22 @@ export const createQtypeDdimageortextDrop = async (qtypeDdimageortextDrop: NewQt
   }
 };
 
-export const updateQtypeDdimageortextDrop = async (id: QtypeDdimageortextDropId, qtypeDdimageortextDrop: UpdateQtypeDdimageortextDropParams) => {
-  const { id: qtypeDdimageortextDropId } = qtypeDdimageortextDropIdSchema.parse({ id });
-  const newQtypeDdimageortextDrop = updateQtypeDdimageortextDropSchema.parse(qtypeDdimageortextDrop);
+export const updateQtypeDdimageortextDrop = async (
+  id: QtypeDdimageortextDropId,
+  qtypeDdimageortextDrop: UpdateQtypeDdimageortextDropParams,
+) => {
+  const { id: qtypeDdimageortextDropId } = qtypeDdimageortextDropIdSchema.parse(
+    { id },
+  );
+  const newQtypeDdimageortextDrop = updateQtypeDdimageortextDropSchema.parse(
+    qtypeDdimageortextDrop,
+  );
   try {
-    const [q] =  await db
-     .update(qtypeDdimageortextDrops)
-     .set(newQtypeDdimageortextDrop)
-     .where(eq(qtypeDdimageortextDrops.id, qtypeDdimageortextDropId!))
-     .returning();
+    const [q] = await db
+      .update(qtypeDdimageortextDrops)
+      .set(newQtypeDdimageortextDrop)
+      .where(eq(qtypeDdimageortextDrops.id, qtypeDdimageortextDropId!))
+      .returning();
     return { qtypeDdimageortextDrop: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +54,17 @@ export const updateQtypeDdimageortextDrop = async (id: QtypeDdimageortextDropId,
   }
 };
 
-export const deleteQtypeDdimageortextDrop = async (id: QtypeDdimageortextDropId) => {
-  const { id: qtypeDdimageortextDropId } = qtypeDdimageortextDropIdSchema.parse({ id });
+export const deleteQtypeDdimageortextDrop = async (
+  id: QtypeDdimageortextDropId,
+) => {
+  const { id: qtypeDdimageortextDropId } = qtypeDdimageortextDropIdSchema.parse(
+    { id },
+  );
   try {
-    const [q] =  await db.delete(qtypeDdimageortextDrops).where(eq(qtypeDdimageortextDrops.id, qtypeDdimageortextDropId!))
-    .returning();
+    const [q] = await db
+      .delete(qtypeDdimageortextDrops)
+      .where(eq(qtypeDdimageortextDrops.id, qtypeDdimageortextDropId!))
+      .returning();
     return { qtypeDdimageortextDrop: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +72,3 @@ export const deleteQtypeDdimageortextDrop = async (id: QtypeDdimageortextDropId)
     throw { error: message };
   }
 };
-

@@ -1,11 +1,11 @@
-import { getLtiById, getLtis } from "@/lib/api/ltis/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import { createLti, deleteLti, updateLti } from "../api/ltis/mutations";
+import { getLtiById, getLtis } from "../api/ltis/queries";
 import {
-  ltiIdSchema,
   insertLtiParams,
+  ltiIdSchema,
   updateLtiParams,
-} from "@/lib/db/schema/ltis";
-import { createLti, deleteLti, updateLti } from "@/lib/api/ltis/mutations";
+} from "../db/schema/ltis";
+import { publicProcedure, router } from "../server/trpc";
 
 export const ltisRouter = router({
   getLtis: publicProcedure.query(async () => {
@@ -24,9 +24,7 @@ export const ltisRouter = router({
     .mutation(async ({ input }) => {
       return updateLti(input.id, input);
     }),
-  deleteLti: publicProcedure
-    .input(ltiIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteLti(input.id);
-    }),
+  deleteLti: publicProcedure.input(ltiIdSchema).mutation(async ({ input }) => {
+    return deleteLti(input.id);
+  }),
 });

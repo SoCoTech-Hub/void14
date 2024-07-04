@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAssignmentSubmission,
   deleteAssignmentSubmission,
   updateAssignmentSubmission,
-} from "@/lib/api/assignmentSubmissions/mutations";
+} from "../api/assignmentSubmissions/mutations";
 import {
   AssignmentSubmissionId,
-  NewAssignmentSubmissionParams,
-  UpdateAssignmentSubmissionParams,
   assignmentSubmissionIdSchema,
   insertAssignmentSubmissionParams,
+  NewAssignmentSubmissionParams,
+  UpdateAssignmentSubmissionParams,
   updateAssignmentSubmissionParams,
-} from "@/lib/db/schema/assignmentSubmissions";
+} from "../db/schema/assignmentSubmissions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateAssignmentSubmissions = () => revalidatePath("/assignment-submissions");
+const revalidateAssignmentSubmissions = () =>
+  revalidatePath("/assignment-submissions");
 
-export const createAssignmentSubmissionAction = async (input: NewAssignmentSubmissionParams) => {
+export const createAssignmentSubmissionAction = async (
+  input: NewAssignmentSubmissionParams,
+) => {
   try {
     const payload = insertAssignmentSubmissionParams.parse(input);
     await createAssignmentSubmission(payload);
@@ -37,7 +41,9 @@ export const createAssignmentSubmissionAction = async (input: NewAssignmentSubmi
   }
 };
 
-export const updateAssignmentSubmissionAction = async (input: UpdateAssignmentSubmissionParams) => {
+export const updateAssignmentSubmissionAction = async (
+  input: UpdateAssignmentSubmissionParams,
+) => {
   try {
     const payload = updateAssignmentSubmissionParams.parse(input);
     await updateAssignmentSubmission(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateAssignmentSubmissionAction = async (input: UpdateAssignmentSu
   }
 };
 
-export const deleteAssignmentSubmissionAction = async (input: AssignmentSubmissionId) => {
+export const deleteAssignmentSubmissionAction = async (
+  input: AssignmentSubmissionId,
+) => {
   try {
     const payload = assignmentSubmissionIdSchema.parse({ id: input });
     await deleteAssignmentSubmission(payload.id);

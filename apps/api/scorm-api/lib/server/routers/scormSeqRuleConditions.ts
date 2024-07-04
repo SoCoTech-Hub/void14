@@ -1,19 +1,28 @@
-import { getScormSeqRuleConditionById, getScormSeqRuleConditions } from "@/lib/api/scormSeqRuleConditions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  scormSeqRuleConditionIdSchema,
+  createScormSeqRuleCondition,
+  deleteScormSeqRuleCondition,
+  updateScormSeqRuleCondition,
+} from "../api/scormSeqRuleConditions/mutations";
+import {
+  getScormSeqRuleConditionById,
+  getScormSeqRuleConditions,
+} from "../api/scormSeqRuleConditions/queries";
+import {
   insertScormSeqRuleConditionParams,
+  scormSeqRuleConditionIdSchema,
   updateScormSeqRuleConditionParams,
-} from "@/lib/db/schema/scormSeqRuleConditions";
-import { createScormSeqRuleCondition, deleteScormSeqRuleCondition, updateScormSeqRuleCondition } from "@/lib/api/scormSeqRuleConditions/mutations";
+} from "../db/schema/scormSeqRuleConditions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const scormSeqRuleConditionsRouter = router({
   getScormSeqRuleConditions: publicProcedure.query(async () => {
     return getScormSeqRuleConditions();
   }),
-  getScormSeqRuleConditionById: publicProcedure.input(scormSeqRuleConditionIdSchema).query(async ({ input }) => {
-    return getScormSeqRuleConditionById(input.id);
-  }),
+  getScormSeqRuleConditionById: publicProcedure
+    .input(scormSeqRuleConditionIdSchema)
+    .query(async ({ input }) => {
+      return getScormSeqRuleConditionById(input.id);
+    }),
   createScormSeqRuleCondition: publicProcedure
     .input(insertScormSeqRuleConditionParams)
     .mutation(async ({ input }) => {

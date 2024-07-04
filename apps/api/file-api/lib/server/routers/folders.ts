@@ -1,19 +1,25 @@
-import { getFolderById, getFolders } from "@/lib/api/folders/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createFolder,
+  deleteFolder,
+  updateFolder,
+} from "../api/folders/mutations";
+import { getFolderById, getFolders } from "../api/folders/queries";
 import {
   folderIdSchema,
   insertFolderParams,
   updateFolderParams,
-} from "@/lib/db/schema/folders";
-import { createFolder, deleteFolder, updateFolder } from "@/lib/api/folders/mutations";
+} from "../db/schema/folders";
+import { publicProcedure, router } from "../server/trpc";
 
 export const foldersRouter = router({
   getFolders: publicProcedure.query(async () => {
     return getFolders();
   }),
-  getFolderById: publicProcedure.input(folderIdSchema).query(async ({ input }) => {
-    return getFolderById(input.id);
-  }),
+  getFolderById: publicProcedure
+    .input(folderIdSchema)
+    .query(async ({ input }) => {
+      return getFolderById(input.id);
+    }),
   createFolder: publicProcedure
     .input(insertFolderParams)
     .mutation(async ({ input }) => {

@@ -1,10 +1,11 @@
-import { type getUserPasswordHistories } from "@/lib/api/userPasswordHistories/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getUserPasswordHistories } from "../api/userPasswordHistories/queries";
 
 export const userPasswordHistories = pgTable("user_password_histories", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

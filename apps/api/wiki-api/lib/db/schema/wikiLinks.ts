@@ -1,10 +1,10 @@
-import { type getWikiLinks } from "@/lib/api/wikiLinks/queries";
 import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getWikiLinks } from "../api/wikiLinks/queries";
 import { wikiPages } from "./wikiPages";
 
 export const wikiLinks = pgTable(

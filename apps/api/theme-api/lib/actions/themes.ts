@@ -1,19 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
+import { createTheme, deleteTheme, updateTheme } from "../api/themes/mutations";
 import {
-  createTheme,
-  deleteTheme,
-  updateTheme,
-} from "@/lib/api/themes/mutations";
-import {
-  ThemeId,
-  NewThemeParams,
-  UpdateThemeParams,
-  themeIdSchema,
   insertThemeParams,
+  NewThemeParams,
+  ThemeId,
+  themeIdSchema,
+  UpdateThemeParams,
   updateThemeParams,
-} from "@/lib/db/schema/themes";
+} from "../db/schema/themes";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

@@ -1,10 +1,10 @@
-import { type getInmailResponses } from "@/lib/api/inmailResponses/queries";
 import { boolean, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getInmailResponses } from "../api/inmailResponses/queries";
 import { inmails } from "./inmails";
 
 export const inmailResponses = pgTable(

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createConfig,
   deleteConfig,
   updateConfig,
-} from "@/lib/api/configs/mutations";
+} from "../api/configs/mutations";
 import {
   ConfigId,
-  NewConfigParams,
-  UpdateConfigParams,
   configIdSchema,
   insertConfigParams,
+  NewConfigParams,
+  UpdateConfigParams,
   updateConfigParams,
-} from "@/lib/db/schema/configs";
+} from "../db/schema/configs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

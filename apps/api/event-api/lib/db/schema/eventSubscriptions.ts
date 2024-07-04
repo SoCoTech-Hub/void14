@@ -1,10 +1,11 @@
-import { type getEventSubscriptions } from "@/lib/api/eventSubscriptions/queries";
 import { sql } from "drizzle-orm";
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getEventSubscriptions } from "../api/eventSubscriptions/queries";
 
 export const eventSubscriptions = pgTable("event_subscriptions", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

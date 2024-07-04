@@ -1,10 +1,10 @@
-import { type getMnetSsoAccessControls } from "@/lib/api/mnetSsoAccessControls/queries";
 import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getMnetSsoAccessControls } from "../api/mnetSsoAccessControls/queries";
 import { mnetHosts } from "./mnetHosts";
 
 export const mnetSsoAccessControls = pgTable(

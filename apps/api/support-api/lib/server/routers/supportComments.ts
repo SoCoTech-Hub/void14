@@ -1,19 +1,28 @@
-import { getSupportCommentById, getSupportComments } from "@/lib/api/supportComments/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  supportCommentIdSchema,
+  createSupportComment,
+  deleteSupportComment,
+  updateSupportComment,
+} from "../api/supportComments/mutations";
+import {
+  getSupportCommentById,
+  getSupportComments,
+} from "../api/supportComments/queries";
+import {
   insertSupportCommentParams,
+  supportCommentIdSchema,
   updateSupportCommentParams,
-} from "@/lib/db/schema/supportComments";
-import { createSupportComment, deleteSupportComment, updateSupportComment } from "@/lib/api/supportComments/mutations";
+} from "../db/schema/supportComments";
+import { publicProcedure, router } from "../server/trpc";
 
 export const supportCommentsRouter = router({
   getSupportComments: publicProcedure.query(async () => {
     return getSupportComments();
   }),
-  getSupportCommentById: publicProcedure.input(supportCommentIdSchema).query(async ({ input }) => {
-    return getSupportCommentById(input.id);
-  }),
+  getSupportCommentById: publicProcedure
+    .input(supportCommentIdSchema)
+    .query(async ({ input }) => {
+      return getSupportCommentById(input.id);
+    }),
   createSupportComment: publicProcedure
     .input(insertSupportCommentParams)
     .mutation(async ({ input }) => {

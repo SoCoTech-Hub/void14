@@ -1,7 +1,7 @@
+import { router } from "../server/trpc";
 import { computersRouter } from "./computers";
-import { router } from "@/lib/server/trpc";
-import { localizationLanguagesRouter } from "./localizationLanguages";
 import { localizationFieldsRouter } from "./localizationFields";
+import { localizationLanguagesRouter } from "./localizationLanguages";
 import { localizationTranslationsRouter } from "./localizationTranslations";
 import { localizationUsersRouter } from "./localizationUsers";
 

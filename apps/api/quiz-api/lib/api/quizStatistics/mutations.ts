@@ -1,19 +1,25 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  QuizStatisticId, 
-  NewQuizStatisticParams,
-  UpdateQuizStatisticParams, 
-  updateQuizStatisticSchema,
-  insertQuizStatisticSchema, 
-  quizStatistics,
-  quizStatisticIdSchema 
-} from "@/lib/db/schema/quizStatistics";
 
-export const createQuizStatistic = async (quizStatistic: NewQuizStatisticParams) => {
+import { db } from "../db/index";
+import {
+  insertQuizStatisticSchema,
+  NewQuizStatisticParams,
+  QuizStatisticId,
+  quizStatisticIdSchema,
+  quizStatistics,
+  UpdateQuizStatisticParams,
+  updateQuizStatisticSchema,
+} from "../db/schema/quizStatistics";
+
+export const createQuizStatistic = async (
+  quizStatistic: NewQuizStatisticParams,
+) => {
   const newQuizStatistic = insertQuizStatisticSchema.parse(quizStatistic);
   try {
-    const [q] =  await db.insert(quizStatistics).values(newQuizStatistic).returning();
+    const [q] = await db
+      .insert(quizStatistics)
+      .values(newQuizStatistic)
+      .returning();
     return { quizStatistic: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +28,18 @@ export const createQuizStatistic = async (quizStatistic: NewQuizStatisticParams)
   }
 };
 
-export const updateQuizStatistic = async (id: QuizStatisticId, quizStatistic: UpdateQuizStatisticParams) => {
+export const updateQuizStatistic = async (
+  id: QuizStatisticId,
+  quizStatistic: UpdateQuizStatisticParams,
+) => {
   const { id: quizStatisticId } = quizStatisticIdSchema.parse({ id });
   const newQuizStatistic = updateQuizStatisticSchema.parse(quizStatistic);
   try {
-    const [q] =  await db
-     .update(quizStatistics)
-     .set({...newQuizStatistic, updatedAt: new Date() })
-     .where(eq(quizStatistics.id, quizStatisticId!))
-     .returning();
+    const [q] = await db
+      .update(quizStatistics)
+      .set({ ...newQuizStatistic, updatedAt: new Date() })
+      .where(eq(quizStatistics.id, quizStatisticId!))
+      .returning();
     return { quizStatistic: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +51,10 @@ export const updateQuizStatistic = async (id: QuizStatisticId, quizStatistic: Up
 export const deleteQuizStatistic = async (id: QuizStatisticId) => {
   const { id: quizStatisticId } = quizStatisticIdSchema.parse({ id });
   try {
-    const [q] =  await db.delete(quizStatistics).where(eq(quizStatistics.id, quizStatisticId!))
-    .returning();
+    const [q] = await db
+      .delete(quizStatistics)
+      .where(eq(quizStatistics.id, quizStatisticId!))
+      .returning();
     return { quizStatistic: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +62,3 @@ export const deleteQuizStatistic = async (id: QuizStatisticId) => {
     throw { error: message };
   }
 };
-

@@ -1,19 +1,28 @@
-import { getEventsQueueHandlerById, getEventsQueueHandlers } from "@/lib/api/eventsQueueHandlers/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createEventsQueueHandler,
+  deleteEventsQueueHandler,
+  updateEventsQueueHandler,
+} from "../api/eventsQueueHandlers/mutations";
+import {
+  getEventsQueueHandlerById,
+  getEventsQueueHandlers,
+} from "../api/eventsQueueHandlers/queries";
 import {
   eventsQueueHandlerIdSchema,
   insertEventsQueueHandlerParams,
   updateEventsQueueHandlerParams,
-} from "@/lib/db/schema/eventsQueueHandlers";
-import { createEventsQueueHandler, deleteEventsQueueHandler, updateEventsQueueHandler } from "@/lib/api/eventsQueueHandlers/mutations";
+} from "../db/schema/eventsQueueHandlers";
+import { publicProcedure, router } from "../server/trpc";
 
 export const eventsQueueHandlersRouter = router({
   getEventsQueueHandlers: publicProcedure.query(async () => {
     return getEventsQueueHandlers();
   }),
-  getEventsQueueHandlerById: publicProcedure.input(eventsQueueHandlerIdSchema).query(async ({ input }) => {
-    return getEventsQueueHandlerById(input.id);
-  }),
+  getEventsQueueHandlerById: publicProcedure
+    .input(eventsQueueHandlerIdSchema)
+    .query(async ({ input }) => {
+      return getEventsQueueHandlerById(input.id);
+    }),
   createEventsQueueHandler: publicProcedure
     .input(insertEventsQueueHandlerParams)
     .mutation(async ({ input }) => {

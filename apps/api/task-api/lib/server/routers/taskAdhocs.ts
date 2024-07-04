@@ -1,19 +1,25 @@
-import { getTaskAdhocById, getTaskAdhocs } from "@/lib/api/taskAdhocs/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  taskAdhocIdSchema,
+  createTaskAdhoc,
+  deleteTaskAdhoc,
+  updateTaskAdhoc,
+} from "../api/taskAdhocs/mutations";
+import { getTaskAdhocById, getTaskAdhocs } from "../api/taskAdhocs/queries";
+import {
   insertTaskAdhocParams,
+  taskAdhocIdSchema,
   updateTaskAdhocParams,
-} from "@/lib/db/schema/taskAdhocs";
-import { createTaskAdhoc, deleteTaskAdhoc, updateTaskAdhoc } from "@/lib/api/taskAdhocs/mutations";
+} from "../db/schema/taskAdhocs";
+import { publicProcedure, router } from "../server/trpc";
 
 export const taskAdhocsRouter = router({
   getTaskAdhocs: publicProcedure.query(async () => {
     return getTaskAdhocs();
   }),
-  getTaskAdhocById: publicProcedure.input(taskAdhocIdSchema).query(async ({ input }) => {
-    return getTaskAdhocById(input.id);
-  }),
+  getTaskAdhocById: publicProcedure
+    .input(taskAdhocIdSchema)
+    .query(async ({ input }) => {
+      return getTaskAdhocById(input.id);
+    }),
   createTaskAdhoc: publicProcedure
     .input(insertTaskAdhocParams)
     .mutation(async ({ input }) => {

@@ -1,4 +1,3 @@
-import { type getQtypeMatchSubquestions } from "@/lib/api/qtypeMatchSubquestions/queries";
 import {
   integer,
   pgTable,
@@ -10,6 +9,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getQtypeMatchSubquestions } from "../api/qtypeMatchSubquestions/queries";
 
 export const qtypeMatchSubquestions = pgTable(
   "qtype_match_subquestions",

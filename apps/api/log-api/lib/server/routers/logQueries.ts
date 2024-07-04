@@ -1,19 +1,25 @@
-import { getLogQueryById, getLogQueries } from "@/lib/api/logQueries/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  logQueryIdSchema,
+  createLogQuery,
+  deleteLogQuery,
+  updateLogQuery,
+} from "../api/logQueries/mutations";
+import { getLogQueries, getLogQueryById } from "../api/logQueries/queries";
+import {
   insertLogQueryParams,
+  logQueryIdSchema,
   updateLogQueryParams,
-} from "@/lib/db/schema/logQueries";
-import { createLogQuery, deleteLogQuery, updateLogQuery } from "@/lib/api/logQueries/mutations";
+} from "../db/schema/logQueries";
+import { publicProcedure, router } from "../server/trpc";
 
 export const logQueriesRouter = router({
   getLogQueries: publicProcedure.query(async () => {
     return getLogQueries();
   }),
-  getLogQueryById: publicProcedure.input(logQueryIdSchema).query(async ({ input }) => {
-    return getLogQueryById(input.id);
-  }),
+  getLogQueryById: publicProcedure
+    .input(logQueryIdSchema)
+    .query(async ({ input }) => {
+      return getLogQueryById(input.id);
+    }),
   createLogQuery: publicProcedure
     .input(insertLogQueryParams)
     .mutation(async ({ input }) => {

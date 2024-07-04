@@ -1,19 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import {
-  createGroup,
-  deleteGroup,
-  updateGroup,
-} from "@/lib/api/groups/mutations";
+
+import { createGroup, deleteGroup, updateGroup } from "../api/groups/mutations";
 import {
   GroupId,
-  NewGroupParams,
-  UpdateGroupParams,
   groupIdSchema,
   insertGroupParams,
+  NewGroupParams,
+  UpdateGroupParams,
   updateGroupParams,
-} from "@/lib/db/schema/groups";
+} from "../db/schema/groups";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

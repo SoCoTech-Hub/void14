@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGradeItemsHistory,
   deleteGradeItemsHistory,
   updateGradeItemsHistory,
-} from "@/lib/api/gradeItemsHistories/mutations";
+} from "../api/gradeItemsHistories/mutations";
 import {
   GradeItemsHistoryId,
-  NewGradeItemsHistoryParams,
-  UpdateGradeItemsHistoryParams,
   gradeItemsHistoryIdSchema,
   insertGradeItemsHistoryParams,
+  NewGradeItemsHistoryParams,
+  UpdateGradeItemsHistoryParams,
   updateGradeItemsHistoryParams,
-} from "@/lib/db/schema/gradeItemsHistories";
+} from "../db/schema/gradeItemsHistories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateGradeItemsHistories = () => revalidatePath("/grade-items-histories");
+const revalidateGradeItemsHistories = () =>
+  revalidatePath("/grade-items-histories");
 
-export const createGradeItemsHistoryAction = async (input: NewGradeItemsHistoryParams) => {
+export const createGradeItemsHistoryAction = async (
+  input: NewGradeItemsHistoryParams,
+) => {
   try {
     const payload = insertGradeItemsHistoryParams.parse(input);
     await createGradeItemsHistory(payload);
@@ -37,7 +41,9 @@ export const createGradeItemsHistoryAction = async (input: NewGradeItemsHistoryP
   }
 };
 
-export const updateGradeItemsHistoryAction = async (input: UpdateGradeItemsHistoryParams) => {
+export const updateGradeItemsHistoryAction = async (
+  input: UpdateGradeItemsHistoryParams,
+) => {
   try {
     const payload = updateGradeItemsHistoryParams.parse(input);
     await updateGradeItemsHistory(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateGradeItemsHistoryAction = async (input: UpdateGradeItemsHisto
   }
 };
 
-export const deleteGradeItemsHistoryAction = async (input: GradeItemsHistoryId) => {
+export const deleteGradeItemsHistoryAction = async (
+  input: GradeItemsHistoryId,
+) => {
   try {
     const payload = gradeItemsHistoryIdSchema.parse({ id: input });
     await deleteGradeItemsHistory(payload.id);

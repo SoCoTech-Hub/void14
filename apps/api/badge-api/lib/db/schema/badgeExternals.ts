@@ -1,10 +1,10 @@
-import { type getBadgeExternals } from "@/lib/api/badgeExternals/queries";
 import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getBadgeExternals } from "../api/badgeExternals/queries";
 import { badgeBackpacks } from "./badgeBackpacks";
 
 export const badgeExternals = pgTable("badge_externals", {

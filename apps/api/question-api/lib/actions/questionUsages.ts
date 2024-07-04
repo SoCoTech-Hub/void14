@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuestionUsage,
   deleteQuestionUsage,
   updateQuestionUsage,
-} from "@/lib/api/questionUsages/mutations";
+} from "../api/questionUsages/mutations";
 import {
-  QuestionUsageId,
-  NewQuestionUsageParams,
-  UpdateQuestionUsageParams,
-  questionUsageIdSchema,
   insertQuestionUsageParams,
+  NewQuestionUsageParams,
+  QuestionUsageId,
+  questionUsageIdSchema,
+  UpdateQuestionUsageParams,
   updateQuestionUsageParams,
-} from "@/lib/db/schema/questionUsages";
+} from "../db/schema/questionUsages";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateQuestionUsages = () => revalidatePath("/question-usages");
 
-export const createQuestionUsageAction = async (input: NewQuestionUsageParams) => {
+export const createQuestionUsageAction = async (
+  input: NewQuestionUsageParams,
+) => {
   try {
     const payload = insertQuestionUsageParams.parse(input);
     await createQuestionUsage(payload);
@@ -37,7 +40,9 @@ export const createQuestionUsageAction = async (input: NewQuestionUsageParams) =
   }
 };
 
-export const updateQuestionUsageAction = async (input: UpdateQuestionUsageParams) => {
+export const updateQuestionUsageAction = async (
+  input: UpdateQuestionUsageParams,
+) => {
   try {
     const payload = updateQuestionUsageParams.parse(input);
     await updateQuestionUsage(payload.id, payload);

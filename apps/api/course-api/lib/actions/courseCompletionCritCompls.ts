@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCourseCompletionCritCompl,
   deleteCourseCompletionCritCompl,
   updateCourseCompletionCritCompl,
-} from "@/lib/api/courseCompletionCritCompls/mutations";
+} from "../api/courseCompletionCritCompls/mutations";
 import {
   CourseCompletionCritComplId,
-  NewCourseCompletionCritComplParams,
-  UpdateCourseCompletionCritComplParams,
   courseCompletionCritComplIdSchema,
   insertCourseCompletionCritComplParams,
+  NewCourseCompletionCritComplParams,
+  UpdateCourseCompletionCritComplParams,
   updateCourseCompletionCritComplParams,
-} from "@/lib/db/schema/courseCompletionCritCompls";
+} from "../db/schema/courseCompletionCritCompls";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateCourseCompletionCritCompls = () => revalidatePath("/course-completion-crit-compls");
+const revalidateCourseCompletionCritCompls = () =>
+  revalidatePath("/course-completion-crit-compls");
 
-export const createCourseCompletionCritComplAction = async (input: NewCourseCompletionCritComplParams) => {
+export const createCourseCompletionCritComplAction = async (
+  input: NewCourseCompletionCritComplParams,
+) => {
   try {
     const payload = insertCourseCompletionCritComplParams.parse(input);
     await createCourseCompletionCritCompl(payload);
@@ -37,7 +41,9 @@ export const createCourseCompletionCritComplAction = async (input: NewCourseComp
   }
 };
 
-export const updateCourseCompletionCritComplAction = async (input: UpdateCourseCompletionCritComplParams) => {
+export const updateCourseCompletionCritComplAction = async (
+  input: UpdateCourseCompletionCritComplParams,
+) => {
   try {
     const payload = updateCourseCompletionCritComplParams.parse(input);
     await updateCourseCompletionCritCompl(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateCourseCompletionCritComplAction = async (input: UpdateCourseC
   }
 };
 
-export const deleteCourseCompletionCritComplAction = async (input: CourseCompletionCritComplId) => {
+export const deleteCourseCompletionCritComplAction = async (
+  input: CourseCompletionCritComplId,
+) => {
   try {
     const payload = courseCompletionCritComplIdSchema.parse({ id: input });
     await deleteCourseCompletionCritCompl(payload.id);

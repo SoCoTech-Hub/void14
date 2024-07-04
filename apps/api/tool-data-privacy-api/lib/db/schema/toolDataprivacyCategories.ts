@@ -1,4 +1,3 @@
-import { type getToolDataprivacyCategories } from "@/lib/api/toolDataprivacyCategories/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getToolDataprivacyCategories } from "../api/toolDataprivacyCategories/queries";
 
 export const toolDataprivacyCategories = pgTable(
   "tool_dataprivacy_categories",

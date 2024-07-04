@@ -1,10 +1,11 @@
-import { type getMessageUsersBlockeds } from "@/lib/api/messageUsersBlockeds/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getMessageUsersBlockeds } from "../api/messageUsersBlockeds/queries";
 
 export const messageUsersBlockeds = pgTable("message_users_blockeds", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

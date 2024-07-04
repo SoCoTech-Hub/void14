@@ -1,19 +1,28 @@
-import { getBackupCourseById, getBackupCourses } from "@/lib/api/backupCourses/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createBackupCourse,
+  deleteBackupCourse,
+  updateBackupCourse,
+} from "../api/backupCourses/mutations";
+import {
+  getBackupCourseById,
+  getBackupCourses,
+} from "../api/backupCourses/queries";
 import {
   backupCourseIdSchema,
   insertBackupCourseParams,
   updateBackupCourseParams,
-} from "@/lib/db/schema/backupCourses";
-import { createBackupCourse, deleteBackupCourse, updateBackupCourse } from "@/lib/api/backupCourses/mutations";
+} from "../db/schema/backupCourses";
+import { publicProcedure, router } from "../server/trpc";
 
 export const backupCoursesRouter = router({
   getBackupCourses: publicProcedure.query(async () => {
     return getBackupCourses();
   }),
-  getBackupCourseById: publicProcedure.input(backupCourseIdSchema).query(async ({ input }) => {
-    return getBackupCourseById(input.id);
-  }),
+  getBackupCourseById: publicProcedure
+    .input(backupCourseIdSchema)
+    .query(async ({ input }) => {
+      return getBackupCourseById(input.id);
+    }),
   createBackupCourse: publicProcedure
     .input(insertBackupCourseParams)
     .mutation(async ({ input }) => {

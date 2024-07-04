@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMessagePopupNotification,
   deleteMessagePopupNotification,
   updateMessagePopupNotification,
-} from "@/lib/api/messagePopupNotifications/mutations";
+} from "../api/messagePopupNotifications/mutations";
 import {
+  insertMessagePopupNotificationParams,
   MessagePopupNotificationId,
+  messagePopupNotificationIdSchema,
   NewMessagePopupNotificationParams,
   UpdateMessagePopupNotificationParams,
-  messagePopupNotificationIdSchema,
-  insertMessagePopupNotificationParams,
   updateMessagePopupNotificationParams,
-} from "@/lib/db/schema/messagePopupNotifications";
+} from "../db/schema/messagePopupNotifications";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateMessagePopupNotifications = () => revalidatePath("/message-popup-notifications");
+const revalidateMessagePopupNotifications = () =>
+  revalidatePath("/message-popup-notifications");
 
-export const createMessagePopupNotificationAction = async (input: NewMessagePopupNotificationParams) => {
+export const createMessagePopupNotificationAction = async (
+  input: NewMessagePopupNotificationParams,
+) => {
   try {
     const payload = insertMessagePopupNotificationParams.parse(input);
     await createMessagePopupNotification(payload);
@@ -37,7 +41,9 @@ export const createMessagePopupNotificationAction = async (input: NewMessagePopu
   }
 };
 
-export const updateMessagePopupNotificationAction = async (input: UpdateMessagePopupNotificationParams) => {
+export const updateMessagePopupNotificationAction = async (
+  input: UpdateMessagePopupNotificationParams,
+) => {
   try {
     const payload = updateMessagePopupNotificationParams.parse(input);
     await updateMessagePopupNotification(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateMessagePopupNotificationAction = async (input: UpdateMessageP
   }
 };
 
-export const deleteMessagePopupNotificationAction = async (input: MessagePopupNotificationId) => {
+export const deleteMessagePopupNotificationAction = async (
+  input: MessagePopupNotificationId,
+) => {
   try {
     const payload = messagePopupNotificationIdSchema.parse({ id: input });
     await deleteMessagePopupNotification(payload.id);

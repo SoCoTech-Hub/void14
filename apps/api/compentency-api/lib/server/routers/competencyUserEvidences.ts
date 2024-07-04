@@ -1,19 +1,28 @@
-import { getCompetencyUserEvidenceById, getCompetencyUserEvidences } from "@/lib/api/competencyUserEvidences/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createCompetencyUserEvidence,
+  deleteCompetencyUserEvidence,
+  updateCompetencyUserEvidence,
+} from "../api/competencyUserEvidences/mutations";
+import {
+  getCompetencyUserEvidenceById,
+  getCompetencyUserEvidences,
+} from "../api/competencyUserEvidences/queries";
 import {
   competencyUserEvidenceIdSchema,
   insertCompetencyUserEvidenceParams,
   updateCompetencyUserEvidenceParams,
-} from "@/lib/db/schema/competencyUserEvidences";
-import { createCompetencyUserEvidence, deleteCompetencyUserEvidence, updateCompetencyUserEvidence } from "@/lib/api/competencyUserEvidences/mutations";
+} from "../db/schema/competencyUserEvidences";
+import { publicProcedure, router } from "../server/trpc";
 
 export const competencyUserEvidencesRouter = router({
   getCompetencyUserEvidences: publicProcedure.query(async () => {
     return getCompetencyUserEvidences();
   }),
-  getCompetencyUserEvidenceById: publicProcedure.input(competencyUserEvidenceIdSchema).query(async ({ input }) => {
-    return getCompetencyUserEvidenceById(input.id);
-  }),
+  getCompetencyUserEvidenceById: publicProcedure
+    .input(competencyUserEvidenceIdSchema)
+    .query(async ({ input }) => {
+      return getCompetencyUserEvidenceById(input.id);
+    }),
   createCompetencyUserEvidence: publicProcedure
     .input(insertCompetencyUserEvidenceParams)
     .mutation(async ({ input }) => {

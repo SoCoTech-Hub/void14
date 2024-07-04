@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createScormSeqRollupRuleCond,
   deleteScormSeqRollupRuleCond,
   updateScormSeqRollupRuleCond,
-} from "@/lib/api/scormSeqRollupRuleConds/mutations";
+} from "../api/scormSeqRollupRuleConds/mutations";
 import {
-  ScormSeqRollupRuleCondId,
-  NewScormSeqRollupRuleCondParams,
-  UpdateScormSeqRollupRuleCondParams,
-  scormSeqRollupRuleCondIdSchema,
   insertScormSeqRollupRuleCondParams,
+  NewScormSeqRollupRuleCondParams,
+  ScormSeqRollupRuleCondId,
+  scormSeqRollupRuleCondIdSchema,
+  UpdateScormSeqRollupRuleCondParams,
   updateScormSeqRollupRuleCondParams,
-} from "@/lib/db/schema/scormSeqRollupRuleConds";
+} from "../db/schema/scormSeqRollupRuleConds";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateScormSeqRollupRuleConds = () => revalidatePath("/scorm-seq-rollup-rule-conds");
+const revalidateScormSeqRollupRuleConds = () =>
+  revalidatePath("/scorm-seq-rollup-rule-conds");
 
-export const createScormSeqRollupRuleCondAction = async (input: NewScormSeqRollupRuleCondParams) => {
+export const createScormSeqRollupRuleCondAction = async (
+  input: NewScormSeqRollupRuleCondParams,
+) => {
   try {
     const payload = insertScormSeqRollupRuleCondParams.parse(input);
     await createScormSeqRollupRuleCond(payload);
@@ -37,7 +41,9 @@ export const createScormSeqRollupRuleCondAction = async (input: NewScormSeqRollu
   }
 };
 
-export const updateScormSeqRollupRuleCondAction = async (input: UpdateScormSeqRollupRuleCondParams) => {
+export const updateScormSeqRollupRuleCondAction = async (
+  input: UpdateScormSeqRollupRuleCondParams,
+) => {
   try {
     const payload = updateScormSeqRollupRuleCondParams.parse(input);
     await updateScormSeqRollupRuleCond(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateScormSeqRollupRuleCondAction = async (input: UpdateScormSeqRo
   }
 };
 
-export const deleteScormSeqRollupRuleCondAction = async (input: ScormSeqRollupRuleCondId) => {
+export const deleteScormSeqRollupRuleCondAction = async (
+  input: ScormSeqRollupRuleCondId,
+) => {
   try {
     const payload = scormSeqRollupRuleCondIdSchema.parse({ id: input });
     await deleteScormSeqRollupRuleCond(payload.id);

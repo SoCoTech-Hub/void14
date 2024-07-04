@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuestionHint,
   deleteQuestionHint,
   updateQuestionHint,
-} from "@/lib/api/questionHints/mutations";
+} from "../api/questionHints/mutations";
 import {
-  QuestionHintId,
-  NewQuestionHintParams,
-  UpdateQuestionHintParams,
-  questionHintIdSchema,
   insertQuestionHintParams,
+  NewQuestionHintParams,
+  QuestionHintId,
+  questionHintIdSchema,
+  UpdateQuestionHintParams,
   updateQuestionHintParams,
-} from "@/lib/db/schema/questionHints";
+} from "../db/schema/questionHints";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateQuestionHints = () => revalidatePath("/question-hints");
 
-export const createQuestionHintAction = async (input: NewQuestionHintParams) => {
+export const createQuestionHintAction = async (
+  input: NewQuestionHintParams,
+) => {
   try {
     const payload = insertQuestionHintParams.parse(input);
     await createQuestionHint(payload);
@@ -37,7 +40,9 @@ export const createQuestionHintAction = async (input: NewQuestionHintParams) => 
   }
 };
 
-export const updateQuestionHintAction = async (input: UpdateQuestionHintParams) => {
+export const updateQuestionHintAction = async (
+  input: UpdateQuestionHintParams,
+) => {
   try {
     const payload = updateQuestionHintParams.parse(input);
     await updateQuestionHint(payload.id, payload);

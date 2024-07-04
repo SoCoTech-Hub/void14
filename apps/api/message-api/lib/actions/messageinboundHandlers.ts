@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMessageinboundHandler,
   deleteMessageinboundHandler,
   updateMessageinboundHandler,
-} from "@/lib/api/messageinboundHandlers/mutations";
+} from "../api/messageinboundHandlers/mutations";
 import {
+  insertMessageinboundHandlerParams,
   MessageinboundHandlerId,
+  messageinboundHandlerIdSchema,
   NewMessageinboundHandlerParams,
   UpdateMessageinboundHandlerParams,
-  messageinboundHandlerIdSchema,
-  insertMessageinboundHandlerParams,
   updateMessageinboundHandlerParams,
-} from "@/lib/db/schema/messageinboundHandlers";
+} from "../db/schema/messageinboundHandlers";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateMessageinboundHandlers = () => revalidatePath("/messageinbound-handlers");
+const revalidateMessageinboundHandlers = () =>
+  revalidatePath("/messageinbound-handlers");
 
-export const createMessageinboundHandlerAction = async (input: NewMessageinboundHandlerParams) => {
+export const createMessageinboundHandlerAction = async (
+  input: NewMessageinboundHandlerParams,
+) => {
   try {
     const payload = insertMessageinboundHandlerParams.parse(input);
     await createMessageinboundHandler(payload);
@@ -37,7 +41,9 @@ export const createMessageinboundHandlerAction = async (input: NewMessageinbound
   }
 };
 
-export const updateMessageinboundHandlerAction = async (input: UpdateMessageinboundHandlerParams) => {
+export const updateMessageinboundHandlerAction = async (
+  input: UpdateMessageinboundHandlerParams,
+) => {
   try {
     const payload = updateMessageinboundHandlerParams.parse(input);
     await updateMessageinboundHandler(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateMessageinboundHandlerAction = async (input: UpdateMessageinbo
   }
 };
 
-export const deleteMessageinboundHandlerAction = async (input: MessageinboundHandlerId) => {
+export const deleteMessageinboundHandlerAction = async (
+  input: MessageinboundHandlerId,
+) => {
   try {
     const payload = messageinboundHandlerIdSchema.parse({ id: input });
     await deleteMessageinboundHandler(payload.id);

@@ -1,4 +1,3 @@
-import { type getToolDataprivacyCtxLevels } from "@/lib/api/toolDataprivacyCtxLevels/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -6,6 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getToolDataprivacyCtxLevels } from "../api/toolDataprivacyCtxLevels/queries";
 import { toolDataprivacyCategories } from "./toolDataprivacyCategories";
 import { toolDataprivacyPurposes } from "./toolDataprivacyPurposes";
 

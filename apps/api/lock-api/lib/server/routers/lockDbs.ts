@@ -1,19 +1,25 @@
-import { getLockDbById, getLockDbs } from "@/lib/api/lockDbs/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  lockDbIdSchema,
+  createLockDb,
+  deleteLockDb,
+  updateLockDb,
+} from "../api/lockDbs/mutations";
+import { getLockDbById, getLockDbs } from "../api/lockDbs/queries";
+import {
   insertLockDbParams,
+  lockDbIdSchema,
   updateLockDbParams,
-} from "@/lib/db/schema/lockDbs";
-import { createLockDb, deleteLockDb, updateLockDb } from "@/lib/api/lockDbs/mutations";
+} from "../db/schema/lockDbs";
+import { publicProcedure, router } from "../server/trpc";
 
 export const lockDbsRouter = router({
   getLockDbs: publicProcedure.query(async () => {
     return getLockDbs();
   }),
-  getLockDbById: publicProcedure.input(lockDbIdSchema).query(async ({ input }) => {
-    return getLockDbById(input.id);
-  }),
+  getLockDbById: publicProcedure
+    .input(lockDbIdSchema)
+    .query(async ({ input }) => {
+      return getLockDbById(input.id);
+    }),
   createLockDb: publicProcedure
     .input(insertLockDbParams)
     .mutation(async ({ input }) => {

@@ -1,4 +1,3 @@
-import { type getScormAiccSessions } from "@/lib/api/scormAiccSessions/queries";
 import { sql } from "drizzle-orm";
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -6,6 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getScormAiccSessions } from "../api/scormAiccSessions/queries";
 import { scorms } from "./scorms";
 import { scormScoes } from "./scormScoes";
 

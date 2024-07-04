@@ -1,19 +1,28 @@
-import { getEnrolLtiUserById, getEnrolLtiUsers } from "@/lib/api/enrolLtiUsers/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createEnrolLtiUser,
+  deleteEnrolLtiUser,
+  updateEnrolLtiUser,
+} from "../api/enrolLtiUsers/mutations";
+import {
+  getEnrolLtiUserById,
+  getEnrolLtiUsers,
+} from "../api/enrolLtiUsers/queries";
 import {
   enrolLtiUserIdSchema,
   insertEnrolLtiUserParams,
   updateEnrolLtiUserParams,
-} from "@/lib/db/schema/enrolLtiUsers";
-import { createEnrolLtiUser, deleteEnrolLtiUser, updateEnrolLtiUser } from "@/lib/api/enrolLtiUsers/mutations";
+} from "../db/schema/enrolLtiUsers";
+import { publicProcedure, router } from "../server/trpc";
 
 export const enrolLtiUsersRouter = router({
   getEnrolLtiUsers: publicProcedure.query(async () => {
     return getEnrolLtiUsers();
   }),
-  getEnrolLtiUserById: publicProcedure.input(enrolLtiUserIdSchema).query(async ({ input }) => {
-    return getEnrolLtiUserById(input.id);
-  }),
+  getEnrolLtiUserById: publicProcedure
+    .input(enrolLtiUserIdSchema)
+    .query(async ({ input }) => {
+      return getEnrolLtiUserById(input.id);
+    }),
   createEnrolLtiUser: publicProcedure
     .input(insertEnrolLtiUserParams)
     .mutation(async ({ input }) => {

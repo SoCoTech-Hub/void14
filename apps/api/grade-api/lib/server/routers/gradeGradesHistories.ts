@@ -1,19 +1,28 @@
-import { getGradeGradesHistoryById, getGradeGradesHistories } from "@/lib/api/gradeGradesHistories/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createGradeGradesHistory,
+  deleteGradeGradesHistory,
+  updateGradeGradesHistory,
+} from "../api/gradeGradesHistories/mutations";
+import {
+  getGradeGradesHistories,
+  getGradeGradesHistoryById,
+} from "../api/gradeGradesHistories/queries";
 import {
   gradeGradesHistoryIdSchema,
   insertGradeGradesHistoryParams,
   updateGradeGradesHistoryParams,
-} from "@/lib/db/schema/gradeGradesHistories";
-import { createGradeGradesHistory, deleteGradeGradesHistory, updateGradeGradesHistory } from "@/lib/api/gradeGradesHistories/mutations";
+} from "../db/schema/gradeGradesHistories";
+import { publicProcedure, router } from "../server/trpc";
 
 export const gradeGradesHistoriesRouter = router({
   getGradeGradesHistories: publicProcedure.query(async () => {
     return getGradeGradesHistories();
   }),
-  getGradeGradesHistoryById: publicProcedure.input(gradeGradesHistoryIdSchema).query(async ({ input }) => {
-    return getGradeGradesHistoryById(input.id);
-  }),
+  getGradeGradesHistoryById: publicProcedure
+    .input(gradeGradesHistoryIdSchema)
+    .query(async ({ input }) => {
+      return getGradeGradesHistoryById(input.id);
+    }),
   createGradeGradesHistory: publicProcedure
     .input(insertGradeGradesHistoryParams)
     .mutation(async ({ input }) => {

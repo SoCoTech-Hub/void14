@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createEnrolFlatfile,
   deleteEnrolFlatfile,
   updateEnrolFlatfile,
-} from "@/lib/api/enrolFlatfiles/mutations";
+} from "../api/enrolFlatfiles/mutations";
 import {
   EnrolFlatfileId,
-  NewEnrolFlatfileParams,
-  UpdateEnrolFlatfileParams,
   enrolFlatfileIdSchema,
   insertEnrolFlatfileParams,
+  NewEnrolFlatfileParams,
+  UpdateEnrolFlatfileParams,
   updateEnrolFlatfileParams,
-} from "@/lib/db/schema/enrolFlatfiles";
+} from "../db/schema/enrolFlatfiles";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateEnrolFlatfiles = () => revalidatePath("/enrol-flatfiles");
 
-export const createEnrolFlatfileAction = async (input: NewEnrolFlatfileParams) => {
+export const createEnrolFlatfileAction = async (
+  input: NewEnrolFlatfileParams,
+) => {
   try {
     const payload = insertEnrolFlatfileParams.parse(input);
     await createEnrolFlatfile(payload);
@@ -37,7 +40,9 @@ export const createEnrolFlatfileAction = async (input: NewEnrolFlatfileParams) =
   }
 };
 
-export const updateEnrolFlatfileAction = async (input: UpdateEnrolFlatfileParams) => {
+export const updateEnrolFlatfileAction = async (
+  input: UpdateEnrolFlatfileParams,
+) => {
   try {
     const payload = updateEnrolFlatfileParams.parse(input);
     await updateEnrolFlatfile(payload.id, payload);

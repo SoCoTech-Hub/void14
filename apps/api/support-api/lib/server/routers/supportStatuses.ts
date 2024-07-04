@@ -1,19 +1,28 @@
-import { getSupportStatusById, getSupportStatuses } from "@/lib/api/supportStatuses/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  supportStatusIdSchema,
+  createSupportStatus,
+  deleteSupportStatus,
+  updateSupportStatus,
+} from "../api/supportStatuses/mutations";
+import {
+  getSupportStatusById,
+  getSupportStatuses,
+} from "../api/supportStatuses/queries";
+import {
   insertSupportStatusParams,
+  supportStatusIdSchema,
   updateSupportStatusParams,
-} from "@/lib/db/schema/supportStatuses";
-import { createSupportStatus, deleteSupportStatus, updateSupportStatus } from "@/lib/api/supportStatuses/mutations";
+} from "../db/schema/supportStatuses";
+import { publicProcedure, router } from "../server/trpc";
 
 export const supportStatusesRouter = router({
   getSupportStatuses: publicProcedure.query(async () => {
     return getSupportStatuses();
   }),
-  getSupportStatusById: publicProcedure.input(supportStatusIdSchema).query(async ({ input }) => {
-    return getSupportStatusById(input.id);
-  }),
+  getSupportStatusById: publicProcedure
+    .input(supportStatusIdSchema)
+    .query(async ({ input }) => {
+      return getSupportStatusById(input.id);
+    }),
   createSupportStatus: publicProcedure
     .input(insertSupportStatusParams)
     .mutation(async ({ input }) => {

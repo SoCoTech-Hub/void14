@@ -1,19 +1,28 @@
-import { getLocalizationUserById, getLocalizationUsers } from "@/lib/api/localizationUsers/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  localizationUserIdSchema,
+  createLocalizationUser,
+  deleteLocalizationUser,
+  updateLocalizationUser,
+} from "../api/localizationUsers/mutations";
+import {
+  getLocalizationUserById,
+  getLocalizationUsers,
+} from "../api/localizationUsers/queries";
+import {
   insertLocalizationUserParams,
+  localizationUserIdSchema,
   updateLocalizationUserParams,
-} from "@/lib/db/schema/localizationUsers";
-import { createLocalizationUser, deleteLocalizationUser, updateLocalizationUser } from "@/lib/api/localizationUsers/mutations";
+} from "../db/schema/localizationUsers";
+import { publicProcedure, router } from "../server/trpc";
 
 export const localizationUsersRouter = router({
   getLocalizationUsers: publicProcedure.query(async () => {
     return getLocalizationUsers();
   }),
-  getLocalizationUserById: publicProcedure.input(localizationUserIdSchema).query(async ({ input }) => {
-    return getLocalizationUserById(input.id);
-  }),
+  getLocalizationUserById: publicProcedure
+    .input(localizationUserIdSchema)
+    .query(async ({ input }) => {
+      return getLocalizationUserById(input.id);
+    }),
   createLocalizationUser: publicProcedure
     .input(insertLocalizationUserParams)
     .mutation(async ({ input }) => {

@@ -1,10 +1,10 @@
-import { type getQuestionResponseCounts } from "@/lib/api/questionResponseCounts/queries";
 import { integer, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getQuestionResponseCounts } from "../api/questionResponseCounts/queries";
 import { questionResponseAnalysises } from "./questionResponseAnalysises";
 
 export const questionResponseCounts = pgTable(

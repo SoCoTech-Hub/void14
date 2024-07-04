@@ -1,19 +1,26 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  GradeImportNewitemId, 
-  NewGradeImportNewitemParams,
-  UpdateGradeImportNewitemParams, 
-  updateGradeImportNewitemSchema,
-  insertGradeImportNewitemSchema, 
-  gradeImportNewitems,
-  gradeImportNewitemIdSchema 
-} from "@/lib/db/schema/gradeImportNewitems";
 
-export const createGradeImportNewitem = async (gradeImportNewitem: NewGradeImportNewitemParams) => {
-  const newGradeImportNewitem = insertGradeImportNewitemSchema.parse(gradeImportNewitem);
+import { db } from "../db/index";
+import {
+  GradeImportNewitemId,
+  gradeImportNewitemIdSchema,
+  gradeImportNewitems,
+  insertGradeImportNewitemSchema,
+  NewGradeImportNewitemParams,
+  UpdateGradeImportNewitemParams,
+  updateGradeImportNewitemSchema,
+} from "../db/schema/gradeImportNewitems";
+
+export const createGradeImportNewitem = async (
+  gradeImportNewitem: NewGradeImportNewitemParams,
+) => {
+  const newGradeImportNewitem =
+    insertGradeImportNewitemSchema.parse(gradeImportNewitem);
   try {
-    const [g] =  await db.insert(gradeImportNewitems).values(newGradeImportNewitem).returning();
+    const [g] = await db
+      .insert(gradeImportNewitems)
+      .values(newGradeImportNewitem)
+      .returning();
     return { gradeImportNewitem: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,19 @@ export const createGradeImportNewitem = async (gradeImportNewitem: NewGradeImpor
   }
 };
 
-export const updateGradeImportNewitem = async (id: GradeImportNewitemId, gradeImportNewitem: UpdateGradeImportNewitemParams) => {
+export const updateGradeImportNewitem = async (
+  id: GradeImportNewitemId,
+  gradeImportNewitem: UpdateGradeImportNewitemParams,
+) => {
   const { id: gradeImportNewitemId } = gradeImportNewitemIdSchema.parse({ id });
-  const newGradeImportNewitem = updateGradeImportNewitemSchema.parse(gradeImportNewitem);
+  const newGradeImportNewitem =
+    updateGradeImportNewitemSchema.parse(gradeImportNewitem);
   try {
-    const [g] =  await db
-     .update(gradeImportNewitems)
-     .set(newGradeImportNewitem)
-     .where(eq(gradeImportNewitems.id, gradeImportNewitemId!))
-     .returning();
+    const [g] = await db
+      .update(gradeImportNewitems)
+      .set(newGradeImportNewitem)
+      .where(eq(gradeImportNewitems.id, gradeImportNewitemId!))
+      .returning();
     return { gradeImportNewitem: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +53,10 @@ export const updateGradeImportNewitem = async (id: GradeImportNewitemId, gradeIm
 export const deleteGradeImportNewitem = async (id: GradeImportNewitemId) => {
   const { id: gradeImportNewitemId } = gradeImportNewitemIdSchema.parse({ id });
   try {
-    const [g] =  await db.delete(gradeImportNewitems).where(eq(gradeImportNewitems.id, gradeImportNewitemId!))
-    .returning();
+    const [g] = await db
+      .delete(gradeImportNewitems)
+      .where(eq(gradeImportNewitems.id, gradeImportNewitemId!))
+      .returning();
     return { gradeImportNewitem: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +64,3 @@ export const deleteGradeImportNewitem = async (id: GradeImportNewitemId) => {
     throw { error: message };
   }
 };
-

@@ -1,19 +1,28 @@
-import { getBlockPositionById, getBlockPositions } from "@/lib/api/blockPositions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createBlockPosition,
+  deleteBlockPosition,
+  updateBlockPosition,
+} from "../api/blockPositions/mutations";
+import {
+  getBlockPositionById,
+  getBlockPositions,
+} from "../api/blockPositions/queries";
 import {
   blockPositionIdSchema,
   insertBlockPositionParams,
   updateBlockPositionParams,
-} from "@/lib/db/schema/blockPositions";
-import { createBlockPosition, deleteBlockPosition, updateBlockPosition } from "@/lib/api/blockPositions/mutations";
+} from "../db/schema/blockPositions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const blockPositionsRouter = router({
   getBlockPositions: publicProcedure.query(async () => {
     return getBlockPositions();
   }),
-  getBlockPositionById: publicProcedure.input(blockPositionIdSchema).query(async ({ input }) => {
-    return getBlockPositionById(input.id);
-  }),
+  getBlockPositionById: publicProcedure
+    .input(blockPositionIdSchema)
+    .query(async ({ input }) => {
+      return getBlockPositionById(input.id);
+    }),
   createBlockPosition: publicProcedure
     .input(insertBlockPositionParams)
     .mutation(async ({ input }) => {

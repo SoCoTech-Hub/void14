@@ -1,16 +1,16 @@
-import { computersRouter } from './computers'
-import { router } from '@/lib/server/trpc'
-import { massMailListsRouter } from './massMailLists'
-import { massMailRecipientsRouter } from './massMailRecipients'
-import { massMailMessagesRouter } from './massMailMessages'
-import { massMailListsRecipientsRouter } from './massMailListsRecipients'
+import { router } from "../server/trpc";
+import { computersRouter } from "./computers";
+import { massMailListsRouter } from "./massMailLists";
+import { massMailListsRecipientsRouter } from "./massMailListsRecipients";
+import { massMailMessagesRouter } from "./massMailMessages";
+import { massMailRecipientsRouter } from "./massMailRecipients";
 
 export const appRouter = router({
-	computers: computersRouter,
-	massMailLists: massMailListsRouter,
-	massMailRecipients: massMailRecipientsRouter,
-	massMailMessages: massMailMessagesRouter,
-	massMailListsRecipients: massMailListsRecipientsRouter
-})
+  computers: computersRouter,
+  massMailLists: massMailListsRouter,
+  massMailRecipients: massMailRecipientsRouter,
+  massMailMessages: massMailMessagesRouter,
+  massMailListsRecipients: massMailListsRecipientsRouter,
+});
 
-export type AppRouter = typeof appRouter
+export type AppRouter = typeof appRouter;

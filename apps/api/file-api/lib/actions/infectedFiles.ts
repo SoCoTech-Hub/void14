@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createInfectedFile,
   deleteInfectedFile,
   updateInfectedFile,
-} from "@/lib/api/infectedFiles/mutations";
+} from "../api/infectedFiles/mutations";
 import {
   InfectedFileId,
-  NewInfectedFileParams,
-  UpdateInfectedFileParams,
   infectedFileIdSchema,
   insertInfectedFileParams,
+  NewInfectedFileParams,
+  UpdateInfectedFileParams,
   updateInfectedFileParams,
-} from "@/lib/db/schema/infectedFiles";
+} from "../db/schema/infectedFiles";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateInfectedFiles = () => revalidatePath("/infected-files");
 
-export const createInfectedFileAction = async (input: NewInfectedFileParams) => {
+export const createInfectedFileAction = async (
+  input: NewInfectedFileParams,
+) => {
   try {
     const payload = insertInfectedFileParams.parse(input);
     await createInfectedFile(payload);
@@ -37,7 +40,9 @@ export const createInfectedFileAction = async (input: NewInfectedFileParams) => 
   }
 };
 
-export const updateInfectedFileAction = async (input: UpdateInfectedFileParams) => {
+export const updateInfectedFileAction = async (
+  input: UpdateInfectedFileParams,
+) => {
   try {
     const payload = updateInfectedFileParams.parse(input);
     await updateInfectedFile(payload.id, payload);

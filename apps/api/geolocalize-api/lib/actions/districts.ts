@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createDistrict,
   deleteDistrict,
   updateDistrict,
-} from "@/lib/api/districts/mutations";
+} from "../api/districts/mutations";
 import {
   DistrictId,
-  NewDistrictParams,
-  UpdateDistrictParams,
   districtIdSchema,
   insertDistrictParams,
+  NewDistrictParams,
+  UpdateDistrictParams,
   updateDistrictParams,
-} from "@/lib/db/schema/districts";
+} from "../db/schema/districts";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

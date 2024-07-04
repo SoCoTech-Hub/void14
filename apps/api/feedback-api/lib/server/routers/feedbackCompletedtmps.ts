@@ -1,19 +1,28 @@
-import { getFeedbackCompletedtmpById, getFeedbackCompletedtmps } from "@/lib/api/feedbackCompletedtmps/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createFeedbackCompletedtmp,
+  deleteFeedbackCompletedtmp,
+  updateFeedbackCompletedtmp,
+} from "../api/feedbackCompletedtmps/mutations";
+import {
+  getFeedbackCompletedtmpById,
+  getFeedbackCompletedtmps,
+} from "../api/feedbackCompletedtmps/queries";
 import {
   feedbackCompletedtmpIdSchema,
   insertFeedbackCompletedtmpParams,
   updateFeedbackCompletedtmpParams,
-} from "@/lib/db/schema/feedbackCompletedtmps";
-import { createFeedbackCompletedtmp, deleteFeedbackCompletedtmp, updateFeedbackCompletedtmp } from "@/lib/api/feedbackCompletedtmps/mutations";
+} from "../db/schema/feedbackCompletedtmps";
+import { publicProcedure, router } from "../server/trpc";
 
 export const feedbackCompletedtmpsRouter = router({
   getFeedbackCompletedtmps: publicProcedure.query(async () => {
     return getFeedbackCompletedtmps();
   }),
-  getFeedbackCompletedtmpById: publicProcedure.input(feedbackCompletedtmpIdSchema).query(async ({ input }) => {
-    return getFeedbackCompletedtmpById(input.id);
-  }),
+  getFeedbackCompletedtmpById: publicProcedure
+    .input(feedbackCompletedtmpIdSchema)
+    .query(async ({ input }) => {
+      return getFeedbackCompletedtmpById(input.id);
+    }),
   createFeedbackCompletedtmp: publicProcedure
     .input(insertFeedbackCompletedtmpParams)
     .mutation(async ({ input }) => {

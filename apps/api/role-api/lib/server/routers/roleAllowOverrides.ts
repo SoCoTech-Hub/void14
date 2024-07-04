@@ -1,19 +1,28 @@
-import { getRoleAllowOverrideById, getRoleAllowOverrides } from "@/lib/api/roleAllowOverrides/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  roleAllowOverrideIdSchema,
+  createRoleAllowOverride,
+  deleteRoleAllowOverride,
+  updateRoleAllowOverride,
+} from "../api/roleAllowOverrides/mutations";
+import {
+  getRoleAllowOverrideById,
+  getRoleAllowOverrides,
+} from "../api/roleAllowOverrides/queries";
+import {
   insertRoleAllowOverrideParams,
+  roleAllowOverrideIdSchema,
   updateRoleAllowOverrideParams,
-} from "@/lib/db/schema/roleAllowOverrides";
-import { createRoleAllowOverride, deleteRoleAllowOverride, updateRoleAllowOverride } from "@/lib/api/roleAllowOverrides/mutations";
+} from "../db/schema/roleAllowOverrides";
+import { publicProcedure, router } from "../server/trpc";
 
 export const roleAllowOverridesRouter = router({
   getRoleAllowOverrides: publicProcedure.query(async () => {
     return getRoleAllowOverrides();
   }),
-  getRoleAllowOverrideById: publicProcedure.input(roleAllowOverrideIdSchema).query(async ({ input }) => {
-    return getRoleAllowOverrideById(input.id);
-  }),
+  getRoleAllowOverrideById: publicProcedure
+    .input(roleAllowOverrideIdSchema)
+    .query(async ({ input }) => {
+      return getRoleAllowOverrideById(input.id);
+    }),
   createRoleAllowOverride: publicProcedure
     .input(insertRoleAllowOverrideParams)
     .mutation(async ({ input }) => {

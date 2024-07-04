@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createRegistrationHub,
   deleteRegistrationHub,
   updateRegistrationHub,
-} from "@/lib/api/registrationHubs/mutations";
+} from "../api/registrationHubs/mutations";
 import {
-  RegistrationHubId,
-  NewRegistrationHubParams,
-  UpdateRegistrationHubParams,
-  registrationHubIdSchema,
   insertRegistrationHubParams,
+  NewRegistrationHubParams,
+  RegistrationHubId,
+  registrationHubIdSchema,
+  UpdateRegistrationHubParams,
   updateRegistrationHubParams,
-} from "@/lib/db/schema/registrationHubs";
+} from "../db/schema/registrationHubs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateRegistrationHubs = () => revalidatePath("/registration-hubs");
 
-export const createRegistrationHubAction = async (input: NewRegistrationHubParams) => {
+export const createRegistrationHubAction = async (
+  input: NewRegistrationHubParams,
+) => {
   try {
     const payload = insertRegistrationHubParams.parse(input);
     await createRegistrationHub(payload);
@@ -37,7 +40,9 @@ export const createRegistrationHubAction = async (input: NewRegistrationHubParam
   }
 };
 
-export const updateRegistrationHubAction = async (input: UpdateRegistrationHubParams) => {
+export const updateRegistrationHubAction = async (
+  input: UpdateRegistrationHubParams,
+) => {
   try {
     const payload = updateRegistrationHubParams.parse(input);
     await updateRegistrationHub(payload.id, payload);

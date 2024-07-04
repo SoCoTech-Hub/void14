@@ -1,19 +1,28 @@
-import { getToolDataprivacyCtxExpiredById, getToolDataprivacyCtxExpireds } from "@/lib/api/toolDataprivacyCtxExpireds/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  toolDataprivacyCtxExpiredIdSchema,
+  createToolDataprivacyCtxExpired,
+  deleteToolDataprivacyCtxExpired,
+  updateToolDataprivacyCtxExpired,
+} from "../api/toolDataprivacyCtxExpireds/mutations";
+import {
+  getToolDataprivacyCtxExpiredById,
+  getToolDataprivacyCtxExpireds,
+} from "../api/toolDataprivacyCtxExpireds/queries";
+import {
   insertToolDataprivacyCtxExpiredParams,
+  toolDataprivacyCtxExpiredIdSchema,
   updateToolDataprivacyCtxExpiredParams,
-} from "@/lib/db/schema/toolDataprivacyCtxExpireds";
-import { createToolDataprivacyCtxExpired, deleteToolDataprivacyCtxExpired, updateToolDataprivacyCtxExpired } from "@/lib/api/toolDataprivacyCtxExpireds/mutations";
+} from "../db/schema/toolDataprivacyCtxExpireds";
+import { publicProcedure, router } from "../server/trpc";
 
 export const toolDataprivacyCtxExpiredsRouter = router({
   getToolDataprivacyCtxExpireds: publicProcedure.query(async () => {
     return getToolDataprivacyCtxExpireds();
   }),
-  getToolDataprivacyCtxExpiredById: publicProcedure.input(toolDataprivacyCtxExpiredIdSchema).query(async ({ input }) => {
-    return getToolDataprivacyCtxExpiredById(input.id);
-  }),
+  getToolDataprivacyCtxExpiredById: publicProcedure
+    .input(toolDataprivacyCtxExpiredIdSchema)
+    .query(async ({ input }) => {
+      return getToolDataprivacyCtxExpiredById(input.id);
+    }),
   createToolDataprivacyCtxExpired: publicProcedure
     .input(insertToolDataprivacyCtxExpiredParams)
     .mutation(async ({ input }) => {

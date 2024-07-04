@@ -1,4 +1,3 @@
-import { type getFilterActives } from "@/lib/api/filterActives/queries";
 import {
   boolean,
   integer,
@@ -10,6 +9,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getFilterActives } from "../api/filterActives/queries";
 
 export const filterActives = pgTable(
   "filter_actives",

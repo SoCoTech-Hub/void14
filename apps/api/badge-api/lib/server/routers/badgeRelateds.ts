@@ -1,19 +1,28 @@
-import { getBadgeRelatedById, getBadgeRelateds } from "@/lib/api/badgeRelateds/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createBadgeRelated,
+  deleteBadgeRelated,
+  updateBadgeRelated,
+} from "../api/badgeRelateds/mutations";
+import {
+  getBadgeRelatedById,
+  getBadgeRelateds,
+} from "../api/badgeRelateds/queries";
 import {
   badgeRelatedIdSchema,
   insertBadgeRelatedParams,
   updateBadgeRelatedParams,
-} from "@/lib/db/schema/badgeRelateds";
-import { createBadgeRelated, deleteBadgeRelated, updateBadgeRelated } from "@/lib/api/badgeRelateds/mutations";
+} from "../db/schema/badgeRelateds";
+import { publicProcedure, router } from "../server/trpc";
 
 export const badgeRelatedsRouter = router({
   getBadgeRelateds: publicProcedure.query(async () => {
     return getBadgeRelateds();
   }),
-  getBadgeRelatedById: publicProcedure.input(badgeRelatedIdSchema).query(async ({ input }) => {
-    return getBadgeRelatedById(input.id);
-  }),
+  getBadgeRelatedById: publicProcedure
+    .input(badgeRelatedIdSchema)
+    .query(async ({ input }) => {
+      return getBadgeRelatedById(input.id);
+    }),
   createBadgeRelated: publicProcedure
     .input(insertBadgeRelatedParams)
     .mutation(async ({ input }) => {

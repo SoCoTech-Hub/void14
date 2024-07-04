@@ -1,19 +1,20 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  QuizSlotId, 
+
+import { db } from "../db/index";
+import {
+  insertQuizSlotSchema,
   NewQuizSlotParams,
-  UpdateQuizSlotParams, 
-  updateQuizSlotSchema,
-  insertQuizSlotSchema, 
+  QuizSlotId,
+  quizSlotIdSchema,
   quizSlots,
-  quizSlotIdSchema 
-} from "@/lib/db/schema/quizSlots";
+  UpdateQuizSlotParams,
+  updateQuizSlotSchema,
+} from "../db/schema/quizSlots";
 
 export const createQuizSlot = async (quizSlot: NewQuizSlotParams) => {
   const newQuizSlot = insertQuizSlotSchema.parse(quizSlot);
   try {
-    const [q] =  await db.insert(quizSlots).values(newQuizSlot).returning();
+    const [q] = await db.insert(quizSlots).values(newQuizSlot).returning();
     return { quizSlot: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +23,18 @@ export const createQuizSlot = async (quizSlot: NewQuizSlotParams) => {
   }
 };
 
-export const updateQuizSlot = async (id: QuizSlotId, quizSlot: UpdateQuizSlotParams) => {
+export const updateQuizSlot = async (
+  id: QuizSlotId,
+  quizSlot: UpdateQuizSlotParams,
+) => {
   const { id: quizSlotId } = quizSlotIdSchema.parse({ id });
   const newQuizSlot = updateQuizSlotSchema.parse(quizSlot);
   try {
-    const [q] =  await db
-     .update(quizSlots)
-     .set(newQuizSlot)
-     .where(eq(quizSlots.id, quizSlotId!))
-     .returning();
+    const [q] = await db
+      .update(quizSlots)
+      .set(newQuizSlot)
+      .where(eq(quizSlots.id, quizSlotId!))
+      .returning();
     return { quizSlot: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +46,10 @@ export const updateQuizSlot = async (id: QuizSlotId, quizSlot: UpdateQuizSlotPar
 export const deleteQuizSlot = async (id: QuizSlotId) => {
   const { id: quizSlotId } = quizSlotIdSchema.parse({ id });
   try {
-    const [q] =  await db.delete(quizSlots).where(eq(quizSlots.id, quizSlotId!))
-    .returning();
+    const [q] = await db
+      .delete(quizSlots)
+      .where(eq(quizSlots.id, quizSlotId!))
+      .returning();
     return { quizSlot: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +57,3 @@ export const deleteQuizSlot = async (id: QuizSlotId) => {
     throw { error: message };
   }
 };
-

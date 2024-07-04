@@ -1,19 +1,28 @@
-import { getQuestionVersionById, getQuestionVersions } from "@/lib/api/questionVersions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  questionVersionIdSchema,
+  createQuestionVersion,
+  deleteQuestionVersion,
+  updateQuestionVersion,
+} from "../api/questionVersions/mutations";
+import {
+  getQuestionVersionById,
+  getQuestionVersions,
+} from "../api/questionVersions/queries";
+import {
   insertQuestionVersionParams,
+  questionVersionIdSchema,
   updateQuestionVersionParams,
-} from "@/lib/db/schema/questionVersions";
-import { createQuestionVersion, deleteQuestionVersion, updateQuestionVersion } from "@/lib/api/questionVersions/mutations";
+} from "../db/schema/questionVersions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const questionVersionsRouter = router({
   getQuestionVersions: publicProcedure.query(async () => {
     return getQuestionVersions();
   }),
-  getQuestionVersionById: publicProcedure.input(questionVersionIdSchema).query(async ({ input }) => {
-    return getQuestionVersionById(input.id);
-  }),
+  getQuestionVersionById: publicProcedure
+    .input(questionVersionIdSchema)
+    .query(async ({ input }) => {
+      return getQuestionVersionById(input.id);
+    }),
   createQuestionVersion: publicProcedure
     .input(insertQuestionVersionParams)
     .mutation(async ({ input }) => {

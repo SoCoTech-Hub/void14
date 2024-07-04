@@ -1,19 +1,25 @@
-import { getLessonById, getLessons } from "@/lib/api/lessons/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  lessonIdSchema,
+  createLesson,
+  deleteLesson,
+  updateLesson,
+} from "../api/lessons/mutations";
+import { getLessonById, getLessons } from "../api/lessons/queries";
+import {
   insertLessonParams,
+  lessonIdSchema,
   updateLessonParams,
-} from "@/lib/db/schema/lessons";
-import { createLesson, deleteLesson, updateLesson } from "@/lib/api/lessons/mutations";
+} from "../db/schema/lessons";
+import { publicProcedure, router } from "../server/trpc";
 
 export const lessonsRouter = router({
   getLessons: publicProcedure.query(async () => {
     return getLessons();
   }),
-  getLessonById: publicProcedure.input(lessonIdSchema).query(async ({ input }) => {
-    return getLessonById(input.id);
-  }),
+  getLessonById: publicProcedure
+    .input(lessonIdSchema)
+    .query(async ({ input }) => {
+      return getLessonById(input.id);
+    }),
   createLesson: publicProcedure
     .input(insertLessonParams)
     .mutation(async ({ input }) => {

@@ -1,9 +1,10 @@
-import { type getDigilibCategories } from "@/lib/api/digilibCategories/queries";
 import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getDigilibCategories } from "../api/digilibCategories/queries";
 
 export const digilibCategories = pgTable("digilib_categories", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

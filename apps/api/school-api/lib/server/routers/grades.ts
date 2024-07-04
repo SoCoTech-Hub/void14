@@ -1,19 +1,21 @@
-import { getGradeById, getGrades } from "@/lib/api/grades/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import { createGrade, deleteGrade, updateGrade } from "../api/grades/mutations";
+import { getGradeById, getGrades } from "../api/grades/queries";
 import {
   gradeIdSchema,
   insertGradeParams,
   updateGradeParams,
-} from "@/lib/db/schema/grades";
-import { createGrade, deleteGrade, updateGrade } from "@/lib/api/grades/mutations";
+} from "../db/schema/grades";
+import { publicProcedure, router } from "../server/trpc";
 
 export const gradesRouter = router({
   getGrades: publicProcedure.query(async () => {
     return getGrades();
   }),
-  getGradeById: publicProcedure.input(gradeIdSchema).query(async ({ input }) => {
-    return getGradeById(input.id);
-  }),
+  getGradeById: publicProcedure
+    .input(gradeIdSchema)
+    .query(async ({ input }) => {
+      return getGradeById(input.id);
+    }),
   createGrade: publicProcedure
     .input(insertGradeParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBackupController,
   deleteBackupController,
   updateBackupController,
-} from "@/lib/api/backupControllers/mutations";
+} from "../api/backupControllers/mutations";
 import {
   BackupControllerId,
-  NewBackupControllerParams,
-  UpdateBackupControllerParams,
   backupControllerIdSchema,
   insertBackupControllerParams,
+  NewBackupControllerParams,
+  UpdateBackupControllerParams,
   updateBackupControllerParams,
-} from "@/lib/db/schema/backupControllers";
+} from "../db/schema/backupControllers";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateBackupControllers = () => revalidatePath("/backup-controllers");
 
-export const createBackupControllerAction = async (input: NewBackupControllerParams) => {
+export const createBackupControllerAction = async (
+  input: NewBackupControllerParams,
+) => {
   try {
     const payload = insertBackupControllerParams.parse(input);
     await createBackupController(payload);
@@ -37,7 +40,9 @@ export const createBackupControllerAction = async (input: NewBackupControllerPar
   }
 };
 
-export const updateBackupControllerAction = async (input: UpdateBackupControllerParams) => {
+export const updateBackupControllerAction = async (
+  input: UpdateBackupControllerParams,
+) => {
   try {
     const payload = updateBackupControllerParams.parse(input);
     await updateBackupController(payload.id, payload);
@@ -47,7 +52,9 @@ export const updateBackupControllerAction = async (input: UpdateBackupController
   }
 };
 
-export const deleteBackupControllerAction = async (input: BackupControllerId) => {
+export const deleteBackupControllerAction = async (
+  input: BackupControllerId,
+) => {
   try {
     const payload = backupControllerIdSchema.parse({ id: input });
     await deleteBackupController(payload.id);

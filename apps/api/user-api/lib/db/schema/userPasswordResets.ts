@@ -1,10 +1,11 @@
-import { type getUserPasswordResets } from "@/lib/api/userPasswordResets/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getUserPasswordResets } from "../api/userPasswordResets/queries";
 
 export const userPasswordResets = pgTable("user_password_resets", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

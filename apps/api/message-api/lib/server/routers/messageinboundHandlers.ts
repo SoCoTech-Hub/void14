@@ -1,19 +1,28 @@
-import { getMessageinboundHandlerById, getMessageinboundHandlers } from "@/lib/api/messageinboundHandlers/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  messageinboundHandlerIdSchema,
+  createMessageinboundHandler,
+  deleteMessageinboundHandler,
+  updateMessageinboundHandler,
+} from "../api/messageinboundHandlers/mutations";
+import {
+  getMessageinboundHandlerById,
+  getMessageinboundHandlers,
+} from "../api/messageinboundHandlers/queries";
+import {
   insertMessageinboundHandlerParams,
+  messageinboundHandlerIdSchema,
   updateMessageinboundHandlerParams,
-} from "@/lib/db/schema/messageinboundHandlers";
-import { createMessageinboundHandler, deleteMessageinboundHandler, updateMessageinboundHandler } from "@/lib/api/messageinboundHandlers/mutations";
+} from "../db/schema/messageinboundHandlers";
+import { publicProcedure, router } from "../server/trpc";
 
 export const messageinboundHandlersRouter = router({
   getMessageinboundHandlers: publicProcedure.query(async () => {
     return getMessageinboundHandlers();
   }),
-  getMessageinboundHandlerById: publicProcedure.input(messageinboundHandlerIdSchema).query(async ({ input }) => {
-    return getMessageinboundHandlerById(input.id);
-  }),
+  getMessageinboundHandlerById: publicProcedure
+    .input(messageinboundHandlerIdSchema)
+    .query(async ({ input }) => {
+      return getMessageinboundHandlerById(input.id);
+    }),
   createMessageinboundHandler: publicProcedure
     .input(insertMessageinboundHandlerParams)
     .mutation(async ({ input }) => {

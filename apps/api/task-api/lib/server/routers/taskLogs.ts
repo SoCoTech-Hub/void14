@@ -1,19 +1,25 @@
-import { getTaskLogById, getTaskLogs } from "@/lib/api/taskLogs/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  taskLogIdSchema,
+  createTaskLog,
+  deleteTaskLog,
+  updateTaskLog,
+} from "../api/taskLogs/mutations";
+import { getTaskLogById, getTaskLogs } from "../api/taskLogs/queries";
+import {
   insertTaskLogParams,
+  taskLogIdSchema,
   updateTaskLogParams,
-} from "@/lib/db/schema/taskLogs";
-import { createTaskLog, deleteTaskLog, updateTaskLog } from "@/lib/api/taskLogs/mutations";
+} from "../db/schema/taskLogs";
+import { publicProcedure, router } from "../server/trpc";
 
 export const taskLogsRouter = router({
   getTaskLogs: publicProcedure.query(async () => {
     return getTaskLogs();
   }),
-  getTaskLogById: publicProcedure.input(taskLogIdSchema).query(async ({ input }) => {
-    return getTaskLogById(input.id);
-  }),
+  getTaskLogById: publicProcedure
+    .input(taskLogIdSchema)
+    .query(async ({ input }) => {
+      return getTaskLogById(input.id);
+    }),
   createTaskLog: publicProcedure
     .input(insertTaskLogParams)
     .mutation(async ({ input }) => {

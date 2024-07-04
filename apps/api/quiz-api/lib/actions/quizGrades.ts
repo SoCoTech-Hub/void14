@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuizGrade,
   deleteQuizGrade,
   updateQuizGrade,
-} from "@/lib/api/quizGrades/mutations";
+} from "../api/quizGrades/mutations";
 import {
-  QuizGradeId,
-  NewQuizGradeParams,
-  UpdateQuizGradeParams,
-  quizGradeIdSchema,
   insertQuizGradeParams,
+  NewQuizGradeParams,
+  QuizGradeId,
+  quizGradeIdSchema,
+  UpdateQuizGradeParams,
   updateQuizGradeParams,
-} from "@/lib/db/schema/quizGrades";
+} from "../db/schema/quizGrades";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

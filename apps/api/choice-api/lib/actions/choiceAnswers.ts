@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createChoiceAnswer,
   deleteChoiceAnswer,
   updateChoiceAnswer,
-} from "@/lib/api/choiceAnswers/mutations";
+} from "../api/choiceAnswers/mutations";
 import {
   ChoiceAnswerId,
-  NewChoiceAnswerParams,
-  UpdateChoiceAnswerParams,
   choiceAnswerIdSchema,
   insertChoiceAnswerParams,
+  NewChoiceAnswerParams,
+  UpdateChoiceAnswerParams,
   updateChoiceAnswerParams,
-} from "@/lib/db/schema/choiceAnswers";
+} from "../db/schema/choiceAnswers";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateChoiceAnswers = () => revalidatePath("/choice-answers");
 
-export const createChoiceAnswerAction = async (input: NewChoiceAnswerParams) => {
+export const createChoiceAnswerAction = async (
+  input: NewChoiceAnswerParams,
+) => {
   try {
     const payload = insertChoiceAnswerParams.parse(input);
     await createChoiceAnswer(payload);
@@ -37,7 +40,9 @@ export const createChoiceAnswerAction = async (input: NewChoiceAnswerParams) => 
   }
 };
 
-export const updateChoiceAnswerAction = async (input: UpdateChoiceAnswerParams) => {
+export const updateChoiceAnswerAction = async (
+  input: UpdateChoiceAnswerParams,
+) => {
   try {
     const payload = updateChoiceAnswerParams.parse(input);
     await updateChoiceAnswer(payload.id, payload);

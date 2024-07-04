@@ -1,19 +1,28 @@
-import { getAssignmentUpgradeById, getAssignmentUpgrades } from "@/lib/api/assignmentUpgrades/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createAssignmentUpgrade,
+  deleteAssignmentUpgrade,
+  updateAssignmentUpgrade,
+} from "../api/assignmentUpgrades/mutations";
+import {
+  getAssignmentUpgradeById,
+  getAssignmentUpgrades,
+} from "../api/assignmentUpgrades/queries";
 import {
   assignmentUpgradeIdSchema,
   insertAssignmentUpgradeParams,
   updateAssignmentUpgradeParams,
-} from "@/lib/db/schema/assignmentUpgrades";
-import { createAssignmentUpgrade, deleteAssignmentUpgrade, updateAssignmentUpgrade } from "@/lib/api/assignmentUpgrades/mutations";
+} from "../db/schema/assignmentUpgrades";
+import { publicProcedure, router } from "../server/trpc";
 
 export const assignmentUpgradesRouter = router({
   getAssignmentUpgrades: publicProcedure.query(async () => {
     return getAssignmentUpgrades();
   }),
-  getAssignmentUpgradeById: publicProcedure.input(assignmentUpgradeIdSchema).query(async ({ input }) => {
-    return getAssignmentUpgradeById(input.id);
-  }),
+  getAssignmentUpgradeById: publicProcedure
+    .input(assignmentUpgradeIdSchema)
+    .query(async ({ input }) => {
+      return getAssignmentUpgradeById(input.id);
+    }),
   createAssignmentUpgrade: publicProcedure
     .input(insertAssignmentUpgradeParams)
     .mutation(async ({ input }) => {

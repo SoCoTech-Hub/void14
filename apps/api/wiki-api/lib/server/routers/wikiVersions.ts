@@ -1,19 +1,28 @@
-import { getWikiVersionById, getWikiVersions } from "@/lib/api/wikiVersions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  wikiVersionIdSchema,
+  createWikiVersion,
+  deleteWikiVersion,
+  updateWikiVersion,
+} from "../api/wikiVersions/mutations";
+import {
+  getWikiVersionById,
+  getWikiVersions,
+} from "../api/wikiVersions/queries";
+import {
   insertWikiVersionParams,
   updateWikiVersionParams,
-} from "@/lib/db/schema/wikiVersions";
-import { createWikiVersion, deleteWikiVersion, updateWikiVersion } from "@/lib/api/wikiVersions/mutations";
+  wikiVersionIdSchema,
+} from "../db/schema/wikiVersions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const wikiVersionsRouter = router({
   getWikiVersions: publicProcedure.query(async () => {
     return getWikiVersions();
   }),
-  getWikiVersionById: publicProcedure.input(wikiVersionIdSchema).query(async ({ input }) => {
-    return getWikiVersionById(input.id);
-  }),
+  getWikiVersionById: publicProcedure
+    .input(wikiVersionIdSchema)
+    .query(async ({ input }) => {
+      return getWikiVersionById(input.id);
+    }),
   createWikiVersion: publicProcedure
     .input(insertWikiVersionParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuestionStatistic,
   deleteQuestionStatistic,
   updateQuestionStatistic,
-} from "@/lib/api/questionStatistics/mutations";
+} from "../api/questionStatistics/mutations";
 import {
-  QuestionStatisticId,
-  NewQuestionStatisticParams,
-  UpdateQuestionStatisticParams,
-  questionStatisticIdSchema,
   insertQuestionStatisticParams,
+  NewQuestionStatisticParams,
+  QuestionStatisticId,
+  questionStatisticIdSchema,
+  UpdateQuestionStatisticParams,
   updateQuestionStatisticParams,
-} from "@/lib/db/schema/questionStatistics";
+} from "../db/schema/questionStatistics";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQuestionStatistics = () => revalidatePath("/question-statistics");
+const revalidateQuestionStatistics = () =>
+  revalidatePath("/question-statistics");
 
-export const createQuestionStatisticAction = async (input: NewQuestionStatisticParams) => {
+export const createQuestionStatisticAction = async (
+  input: NewQuestionStatisticParams,
+) => {
   try {
     const payload = insertQuestionStatisticParams.parse(input);
     await createQuestionStatistic(payload);
@@ -37,7 +41,9 @@ export const createQuestionStatisticAction = async (input: NewQuestionStatisticP
   }
 };
 
-export const updateQuestionStatisticAction = async (input: UpdateQuestionStatisticParams) => {
+export const updateQuestionStatisticAction = async (
+  input: UpdateQuestionStatisticParams,
+) => {
   try {
     const payload = updateQuestionStatisticParams.parse(input);
     await updateQuestionStatistic(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQuestionStatisticAction = async (input: UpdateQuestionStatist
   }
 };
 
-export const deleteQuestionStatisticAction = async (input: QuestionStatisticId) => {
+export const deleteQuestionStatisticAction = async (
+  input: QuestionStatisticId,
+) => {
   try {
     const payload = questionStatisticIdSchema.parse({ id: input });
     await deleteQuestionStatistic(payload.id);

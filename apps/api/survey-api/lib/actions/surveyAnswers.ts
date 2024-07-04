@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createSurveyAnswer,
   deleteSurveyAnswer,
   updateSurveyAnswer,
-} from "@/lib/api/surveyAnswers/mutations";
+} from "../api/surveyAnswers/mutations";
 import {
-  SurveyAnswerId,
-  NewSurveyAnswerParams,
-  UpdateSurveyAnswerParams,
-  surveyAnswerIdSchema,
   insertSurveyAnswerParams,
+  NewSurveyAnswerParams,
+  SurveyAnswerId,
+  surveyAnswerIdSchema,
+  UpdateSurveyAnswerParams,
   updateSurveyAnswerParams,
-} from "@/lib/db/schema/surveyAnswers";
+} from "../db/schema/surveyAnswers";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateSurveyAnswers = () => revalidatePath("/survey-answers");
 
-export const createSurveyAnswerAction = async (input: NewSurveyAnswerParams) => {
+export const createSurveyAnswerAction = async (
+  input: NewSurveyAnswerParams,
+) => {
   try {
     const payload = insertSurveyAnswerParams.parse(input);
     await createSurveyAnswer(payload);
@@ -37,7 +40,9 @@ export const createSurveyAnswerAction = async (input: NewSurveyAnswerParams) => 
   }
 };
 
-export const updateSurveyAnswerAction = async (input: UpdateSurveyAnswerParams) => {
+export const updateSurveyAnswerAction = async (
+  input: UpdateSurveyAnswerParams,
+) => {
   try {
     const payload = updateSurveyAnswerParams.parse(input);
     await updateSurveyAnswer(payload.id, payload);

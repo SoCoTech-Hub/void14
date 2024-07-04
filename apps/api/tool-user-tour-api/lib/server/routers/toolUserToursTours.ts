@@ -1,19 +1,28 @@
-import { getToolUserToursTourById, getToolUserToursTours } from "@/lib/api/toolUserToursTours/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  toolUserToursTourIdSchema,
+  createToolUserToursTour,
+  deleteToolUserToursTour,
+  updateToolUserToursTour,
+} from "../api/toolUserToursTours/mutations";
+import {
+  getToolUserToursTourById,
+  getToolUserToursTours,
+} from "../api/toolUserToursTours/queries";
+import {
   insertToolUserToursTourParams,
+  toolUserToursTourIdSchema,
   updateToolUserToursTourParams,
-} from "@/lib/db/schema/toolUserToursTours";
-import { createToolUserToursTour, deleteToolUserToursTour, updateToolUserToursTour } from "@/lib/api/toolUserToursTours/mutations";
+} from "../db/schema/toolUserToursTours";
+import { publicProcedure, router } from "../server/trpc";
 
 export const toolUserToursToursRouter = router({
   getToolUserToursTours: publicProcedure.query(async () => {
     return getToolUserToursTours();
   }),
-  getToolUserToursTourById: publicProcedure.input(toolUserToursTourIdSchema).query(async ({ input }) => {
-    return getToolUserToursTourById(input.id);
-  }),
+  getToolUserToursTourById: publicProcedure
+    .input(toolUserToursTourIdSchema)
+    .query(async ({ input }) => {
+      return getToolUserToursTourById(input.id);
+    }),
   createToolUserToursTour: publicProcedure
     .input(insertToolUserToursTourParams)
     .mutation(async ({ input }) => {

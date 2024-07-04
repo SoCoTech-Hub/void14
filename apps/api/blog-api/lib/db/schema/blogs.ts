@@ -1,4 +1,3 @@
-import type { getBlogs } from "@/lib/api/blogs/queries";
 import type { z } from "zod";
 import { sql } from "drizzle-orm";
 import {
@@ -11,6 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import type { getBlogs } from "../api/blogs/queries";
 
 export const blogs = pgTable(
   "blogs",

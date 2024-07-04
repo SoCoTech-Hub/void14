@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createUserEnrolment,
   deleteUserEnrolment,
   updateUserEnrolment,
-} from "@/lib/api/userEnrolments/mutations";
+} from "../api/userEnrolments/mutations";
 import {
-  UserEnrolmentId,
+  insertUserEnrolmentParams,
   NewUserEnrolmentParams,
   UpdateUserEnrolmentParams,
-  userEnrolmentIdSchema,
-  insertUserEnrolmentParams,
   updateUserEnrolmentParams,
-} from "@/lib/db/schema/userEnrolments";
+  UserEnrolmentId,
+  userEnrolmentIdSchema,
+} from "../db/schema/userEnrolments";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateUserEnrolments = () => revalidatePath("/user-enrolments");
 
-export const createUserEnrolmentAction = async (input: NewUserEnrolmentParams) => {
+export const createUserEnrolmentAction = async (
+  input: NewUserEnrolmentParams,
+) => {
   try {
     const payload = insertUserEnrolmentParams.parse(input);
     await createUserEnrolment(payload);
@@ -37,7 +40,9 @@ export const createUserEnrolmentAction = async (input: NewUserEnrolmentParams) =
   }
 };
 
-export const updateUserEnrolmentAction = async (input: UpdateUserEnrolmentParams) => {
+export const updateUserEnrolmentAction = async (
+  input: UpdateUserEnrolmentParams,
+) => {
   try {
     const payload = updateUserEnrolmentParams.parse(input);
     await updateUserEnrolment(payload.id, payload);

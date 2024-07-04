@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAssignmentUpgrade,
   deleteAssignmentUpgrade,
   updateAssignmentUpgrade,
-} from "@/lib/api/assignmentUpgrades/mutations";
+} from "../api/assignmentUpgrades/mutations";
 import {
   AssignmentUpgradeId,
-  NewAssignmentUpgradeParams,
-  UpdateAssignmentUpgradeParams,
   assignmentUpgradeIdSchema,
   insertAssignmentUpgradeParams,
+  NewAssignmentUpgradeParams,
+  UpdateAssignmentUpgradeParams,
   updateAssignmentUpgradeParams,
-} from "@/lib/db/schema/assignmentUpgrades";
+} from "../db/schema/assignmentUpgrades";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateAssignmentUpgrades = () => revalidatePath("/assignment-upgrades");
+const revalidateAssignmentUpgrades = () =>
+  revalidatePath("/assignment-upgrades");
 
-export const createAssignmentUpgradeAction = async (input: NewAssignmentUpgradeParams) => {
+export const createAssignmentUpgradeAction = async (
+  input: NewAssignmentUpgradeParams,
+) => {
   try {
     const payload = insertAssignmentUpgradeParams.parse(input);
     await createAssignmentUpgrade(payload);
@@ -37,7 +41,9 @@ export const createAssignmentUpgradeAction = async (input: NewAssignmentUpgradeP
   }
 };
 
-export const updateAssignmentUpgradeAction = async (input: UpdateAssignmentUpgradeParams) => {
+export const updateAssignmentUpgradeAction = async (
+  input: UpdateAssignmentUpgradeParams,
+) => {
   try {
     const payload = updateAssignmentUpgradeParams.parse(input);
     await updateAssignmentUpgrade(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateAssignmentUpgradeAction = async (input: UpdateAssignmentUpgra
   }
 };
 
-export const deleteAssignmentUpgradeAction = async (input: AssignmentUpgradeId) => {
+export const deleteAssignmentUpgradeAction = async (
+  input: AssignmentUpgradeId,
+) => {
   try {
     const payload = assignmentUpgradeIdSchema.parse({ id: input });
     await deleteAssignmentUpgrade(payload.id);

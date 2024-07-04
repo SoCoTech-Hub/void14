@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createChatMessagesCurrent,
   deleteChatMessagesCurrent,
   updateChatMessagesCurrent,
-} from "@/lib/api/chatMessagesCurrents/mutations";
+} from "../api/chatMessagesCurrents/mutations";
 import {
   ChatMessagesCurrentId,
-  NewChatMessagesCurrentParams,
-  UpdateChatMessagesCurrentParams,
   chatMessagesCurrentIdSchema,
   insertChatMessagesCurrentParams,
+  NewChatMessagesCurrentParams,
+  UpdateChatMessagesCurrentParams,
   updateChatMessagesCurrentParams,
-} from "@/lib/db/schema/chatMessagesCurrents";
+} from "../db/schema/chatMessagesCurrents";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateChatMessagesCurrents = () => revalidatePath("/chat-messages-currents");
+const revalidateChatMessagesCurrents = () =>
+  revalidatePath("/chat-messages-currents");
 
-export const createChatMessagesCurrentAction = async (input: NewChatMessagesCurrentParams) => {
+export const createChatMessagesCurrentAction = async (
+  input: NewChatMessagesCurrentParams,
+) => {
   try {
     const payload = insertChatMessagesCurrentParams.parse(input);
     await createChatMessagesCurrent(payload);
@@ -37,7 +41,9 @@ export const createChatMessagesCurrentAction = async (input: NewChatMessagesCurr
   }
 };
 
-export const updateChatMessagesCurrentAction = async (input: UpdateChatMessagesCurrentParams) => {
+export const updateChatMessagesCurrentAction = async (
+  input: UpdateChatMessagesCurrentParams,
+) => {
   try {
     const payload = updateChatMessagesCurrentParams.parse(input);
     await updateChatMessagesCurrent(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateChatMessagesCurrentAction = async (input: UpdateChatMessagesC
   }
 };
 
-export const deleteChatMessagesCurrentAction = async (input: ChatMessagesCurrentId) => {
+export const deleteChatMessagesCurrentAction = async (
+  input: ChatMessagesCurrentId,
+) => {
   try {
     const payload = chatMessagesCurrentIdSchema.parse({ id: input });
     await deleteChatMessagesCurrent(payload.id);

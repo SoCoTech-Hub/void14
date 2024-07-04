@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createPaymentGateway,
   deletePaymentGateway,
   updatePaymentGateway,
-} from "@/lib/api/paymentGateways/mutations";
+} from "../api/paymentGateways/mutations";
 import {
-  PaymentGatewayId,
-  NewPaymentGatewayParams,
-  UpdatePaymentGatewayParams,
-  paymentGatewayIdSchema,
   insertPaymentGatewayParams,
+  NewPaymentGatewayParams,
+  PaymentGatewayId,
+  paymentGatewayIdSchema,
+  UpdatePaymentGatewayParams,
   updatePaymentGatewayParams,
-} from "@/lib/db/schema/paymentGateways";
+} from "../db/schema/paymentGateways";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidatePaymentGateways = () => revalidatePath("/payment-gateways");
 
-export const createPaymentGatewayAction = async (input: NewPaymentGatewayParams) => {
+export const createPaymentGatewayAction = async (
+  input: NewPaymentGatewayParams,
+) => {
   try {
     const payload = insertPaymentGatewayParams.parse(input);
     await createPaymentGateway(payload);
@@ -37,7 +40,9 @@ export const createPaymentGatewayAction = async (input: NewPaymentGatewayParams)
   }
 };
 
-export const updatePaymentGatewayAction = async (input: UpdatePaymentGatewayParams) => {
+export const updatePaymentGatewayAction = async (
+  input: UpdatePaymentGatewayParams,
+) => {
   try {
     const payload = updatePaymentGatewayParams.parse(input);
     await updatePaymentGateway(payload.id, payload);

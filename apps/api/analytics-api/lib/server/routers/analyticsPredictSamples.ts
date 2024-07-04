@@ -1,19 +1,28 @@
-import { getAnalyticsPredictSampleById, getAnalyticsPredictSamples } from "@/lib/api/analyticsPredictSamples/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createAnalyticsPredictSample,
+  deleteAnalyticsPredictSample,
+  updateAnalyticsPredictSample,
+} from "../api/analyticsPredictSamples/mutations";
+import {
+  getAnalyticsPredictSampleById,
+  getAnalyticsPredictSamples,
+} from "../api/analyticsPredictSamples/queries";
 import {
   analyticsPredictSampleIdSchema,
   insertAnalyticsPredictSampleParams,
   updateAnalyticsPredictSampleParams,
-} from "@/lib/db/schema/analyticsPredictSamples";
-import { createAnalyticsPredictSample, deleteAnalyticsPredictSample, updateAnalyticsPredictSample } from "@/lib/api/analyticsPredictSamples/mutations";
+} from "../db/schema/analyticsPredictSamples";
+import { publicProcedure, router } from "../server/trpc";
 
 export const analyticsPredictSamplesRouter = router({
   getAnalyticsPredictSamples: publicProcedure.query(async () => {
     return getAnalyticsPredictSamples();
   }),
-  getAnalyticsPredictSampleById: publicProcedure.input(analyticsPredictSampleIdSchema).query(async ({ input }) => {
-    return getAnalyticsPredictSampleById(input.id);
-  }),
+  getAnalyticsPredictSampleById: publicProcedure
+    .input(analyticsPredictSampleIdSchema)
+    .query(async ({ input }) => {
+      return getAnalyticsPredictSampleById(input.id);
+    }),
   createAnalyticsPredictSample: publicProcedure
     .input(insertAnalyticsPredictSampleParams)
     .mutation(async ({ input }) => {

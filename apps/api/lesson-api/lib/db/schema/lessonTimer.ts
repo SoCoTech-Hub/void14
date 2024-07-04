@@ -1,4 +1,3 @@
-import { type getLessonTimer } from "@/lib/api/lessonTimer/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -12,6 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getLessonTimer } from "../api/lessonTimer/queries";
 import { lessons } from "./lessons";
 
 export const lessonTimer = pgTable("lesson_timer", {

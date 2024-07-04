@@ -1,19 +1,28 @@
-import { getEditorAttoAutosaveById, getEditorAttoAutosaves } from "@/lib/api/editorAttoAutosaves/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createEditorAttoAutosave,
+  deleteEditorAttoAutosave,
+  updateEditorAttoAutosave,
+} from "../api/editorAttoAutosaves/mutations";
+import {
+  getEditorAttoAutosaveById,
+  getEditorAttoAutosaves,
+} from "../api/editorAttoAutosaves/queries";
 import {
   editorAttoAutosaveIdSchema,
   insertEditorAttoAutosaveParams,
   updateEditorAttoAutosaveParams,
-} from "@/lib/db/schema/editorAttoAutosaves";
-import { createEditorAttoAutosave, deleteEditorAttoAutosave, updateEditorAttoAutosave } from "@/lib/api/editorAttoAutosaves/mutations";
+} from "../db/schema/editorAttoAutosaves";
+import { publicProcedure, router } from "../server/trpc";
 
 export const editorAttoAutosavesRouter = router({
   getEditorAttoAutosaves: publicProcedure.query(async () => {
     return getEditorAttoAutosaves();
   }),
-  getEditorAttoAutosaveById: publicProcedure.input(editorAttoAutosaveIdSchema).query(async ({ input }) => {
-    return getEditorAttoAutosaveById(input.id);
-  }),
+  getEditorAttoAutosaveById: publicProcedure
+    .input(editorAttoAutosaveIdSchema)
+    .query(async ({ input }) => {
+      return getEditorAttoAutosaveById(input.id);
+    }),
   createEditorAttoAutosave: publicProcedure
     .input(insertEditorAttoAutosaveParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,28 @@
-import { getQtypeEssayOptionById, getQtypeEssayOptions } from "@/lib/api/qtypeEssayOptions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  qtypeEssayOptionIdSchema,
+  createQtypeEssayOption,
+  deleteQtypeEssayOption,
+  updateQtypeEssayOption,
+} from "../api/qtypeEssayOptions/mutations";
+import {
+  getQtypeEssayOptionById,
+  getQtypeEssayOptions,
+} from "../api/qtypeEssayOptions/queries";
+import {
   insertQtypeEssayOptionParams,
+  qtypeEssayOptionIdSchema,
   updateQtypeEssayOptionParams,
-} from "@/lib/db/schema/qtypeEssayOptions";
-import { createQtypeEssayOption, deleteQtypeEssayOption, updateQtypeEssayOption } from "@/lib/api/qtypeEssayOptions/mutations";
+} from "../db/schema/qtypeEssayOptions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const qtypeEssayOptionsRouter = router({
   getQtypeEssayOptions: publicProcedure.query(async () => {
     return getQtypeEssayOptions();
   }),
-  getQtypeEssayOptionById: publicProcedure.input(qtypeEssayOptionIdSchema).query(async ({ input }) => {
-    return getQtypeEssayOptionById(input.id);
-  }),
+  getQtypeEssayOptionById: publicProcedure
+    .input(qtypeEssayOptionIdSchema)
+    .query(async ({ input }) => {
+      return getQtypeEssayOptionById(input.id);
+    }),
   createQtypeEssayOption: publicProcedure
     .input(insertQtypeEssayOptionParams)
     .mutation(async ({ input }) => {

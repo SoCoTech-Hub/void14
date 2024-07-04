@@ -1,19 +1,28 @@
-import { getPortfolioInstanceConfigById, getPortfolioInstanceConfigs } from "@/lib/api/portfolioInstanceConfigs/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  portfolioInstanceConfigIdSchema,
+  createPortfolioInstanceConfig,
+  deletePortfolioInstanceConfig,
+  updatePortfolioInstanceConfig,
+} from "../api/portfolioInstanceConfigs/mutations";
+import {
+  getPortfolioInstanceConfigById,
+  getPortfolioInstanceConfigs,
+} from "../api/portfolioInstanceConfigs/queries";
+import {
   insertPortfolioInstanceConfigParams,
+  portfolioInstanceConfigIdSchema,
   updatePortfolioInstanceConfigParams,
-} from "@/lib/db/schema/portfolioInstanceConfigs";
-import { createPortfolioInstanceConfig, deletePortfolioInstanceConfig, updatePortfolioInstanceConfig } from "@/lib/api/portfolioInstanceConfigs/mutations";
+} from "../db/schema/portfolioInstanceConfigs";
+import { publicProcedure, router } from "../server/trpc";
 
 export const portfolioInstanceConfigsRouter = router({
   getPortfolioInstanceConfigs: publicProcedure.query(async () => {
     return getPortfolioInstanceConfigs();
   }),
-  getPortfolioInstanceConfigById: publicProcedure.input(portfolioInstanceConfigIdSchema).query(async ({ input }) => {
-    return getPortfolioInstanceConfigById(input.id);
-  }),
+  getPortfolioInstanceConfigById: publicProcedure
+    .input(portfolioInstanceConfigIdSchema)
+    .query(async ({ input }) => {
+      return getPortfolioInstanceConfigById(input.id);
+    }),
   createPortfolioInstanceConfig: publicProcedure
     .input(insertPortfolioInstanceConfigParams)
     .mutation(async ({ input }) => {

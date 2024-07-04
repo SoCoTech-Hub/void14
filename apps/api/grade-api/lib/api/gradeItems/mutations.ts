@@ -1,19 +1,20 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  GradeItemId, 
-  NewGradeItemParams,
-  UpdateGradeItemParams, 
-  updateGradeItemSchema,
-  insertGradeItemSchema, 
+
+import { db } from "../db/index";
+import {
+  GradeItemId,
+  gradeItemIdSchema,
   gradeItems,
-  gradeItemIdSchema 
-} from "@/lib/db/schema/gradeItems";
+  insertGradeItemSchema,
+  NewGradeItemParams,
+  UpdateGradeItemParams,
+  updateGradeItemSchema,
+} from "../db/schema/gradeItems";
 
 export const createGradeItem = async (gradeItem: NewGradeItemParams) => {
   const newGradeItem = insertGradeItemSchema.parse(gradeItem);
   try {
-    const [g] =  await db.insert(gradeItems).values(newGradeItem).returning();
+    const [g] = await db.insert(gradeItems).values(newGradeItem).returning();
     return { gradeItem: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +23,18 @@ export const createGradeItem = async (gradeItem: NewGradeItemParams) => {
   }
 };
 
-export const updateGradeItem = async (id: GradeItemId, gradeItem: UpdateGradeItemParams) => {
+export const updateGradeItem = async (
+  id: GradeItemId,
+  gradeItem: UpdateGradeItemParams,
+) => {
   const { id: gradeItemId } = gradeItemIdSchema.parse({ id });
   const newGradeItem = updateGradeItemSchema.parse(gradeItem);
   try {
-    const [g] =  await db
-     .update(gradeItems)
-     .set({...newGradeItem, updatedAt: new Date() })
-     .where(eq(gradeItems.id, gradeItemId!))
-     .returning();
+    const [g] = await db
+      .update(gradeItems)
+      .set({ ...newGradeItem, updatedAt: new Date() })
+      .where(eq(gradeItems.id, gradeItemId!))
+      .returning();
     return { gradeItem: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +46,10 @@ export const updateGradeItem = async (id: GradeItemId, gradeItem: UpdateGradeIte
 export const deleteGradeItem = async (id: GradeItemId) => {
   const { id: gradeItemId } = gradeItemIdSchema.parse({ id });
   try {
-    const [g] =  await db.delete(gradeItems).where(eq(gradeItems.id, gradeItemId!))
-    .returning();
+    const [g] = await db
+      .delete(gradeItems)
+      .where(eq(gradeItems.id, gradeItemId!))
+      .returning();
     return { gradeItem: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +57,3 @@ export const deleteGradeItem = async (id: GradeItemId) => {
     throw { error: message };
   }
 };
-

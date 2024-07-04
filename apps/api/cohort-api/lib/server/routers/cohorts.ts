@@ -1,19 +1,25 @@
-import { getCohortById, getCohorts } from "@/lib/api/cohorts/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createCohort,
+  deleteCohort,
+  updateCohort,
+} from "../api/cohorts/mutations";
+import { getCohortById, getCohorts } from "../api/cohorts/queries";
 import {
   cohortIdSchema,
   insertCohortParams,
   updateCohortParams,
-} from "@/lib/db/schema/cohorts";
-import { createCohort, deleteCohort, updateCohort } from "@/lib/api/cohorts/mutations";
+} from "../db/schema/cohorts";
+import { publicProcedure, router } from "../server/trpc";
 
 export const cohortsRouter = router({
   getCohorts: publicProcedure.query(async () => {
     return getCohorts();
   }),
-  getCohortById: publicProcedure.input(cohortIdSchema).query(async ({ input }) => {
-    return getCohortById(input.id);
-  }),
+  getCohortById: publicProcedure
+    .input(cohortIdSchema)
+    .query(async ({ input }) => {
+      return getCohortById(input.id);
+    }),
   createCohort: publicProcedure
     .input(insertCohortParams)
     .mutation(async ({ input }) => {

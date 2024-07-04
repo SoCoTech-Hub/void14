@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGrouping,
   deleteGrouping,
   updateGrouping,
-} from "@/lib/api/groupings/mutations";
+} from "../api/groupings/mutations";
 import {
   GroupingId,
-  NewGroupingParams,
-  UpdateGroupingParams,
   groupingIdSchema,
   insertGroupingParams,
+  NewGroupingParams,
+  UpdateGroupingParams,
   updateGroupingParams,
-} from "@/lib/db/schema/groupings";
+} from "../db/schema/groupings";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

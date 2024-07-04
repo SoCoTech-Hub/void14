@@ -1,10 +1,12 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { type LessonId, lessonIdSchema, lessons } from "@/lib/db/schema/lessons";
+
+import type { LessonId } from "../db/schema/lessons";
+import { db } from "../db/index";
+import { lessonIdSchema, lessons } from "../db/schema/lessons";
 
 export const getLessons = async () => {
   const rows = await db.select().from(lessons);
-  const l = rows
+  const l = rows;
   return { lessons: l };
 };
 
@@ -15,5 +17,3 @@ export const getLessonById = async (id: LessonId) => {
   const l = row;
   return { lesson: l };
 };
-
-

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createJobApplication,
   deleteJobApplication,
   updateJobApplication,
-} from "@/lib/api/jobApplications/mutations";
+} from "../api/jobApplications/mutations";
 import {
+  insertJobApplicationParams,
   JobApplicationId,
+  jobApplicationIdSchema,
   NewJobApplicationParams,
   UpdateJobApplicationParams,
-  jobApplicationIdSchema,
-  insertJobApplicationParams,
   updateJobApplicationParams,
-} from "@/lib/db/schema/jobApplications";
+} from "../db/schema/jobApplications";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateJobApplications = () => revalidatePath("/job-applications");
 
-export const createJobApplicationAction = async (input: NewJobApplicationParams) => {
+export const createJobApplicationAction = async (
+  input: NewJobApplicationParams,
+) => {
   try {
     const payload = insertJobApplicationParams.parse(input);
     await createJobApplication(payload);
@@ -37,7 +40,9 @@ export const createJobApplicationAction = async (input: NewJobApplicationParams)
   }
 };
 
-export const updateJobApplicationAction = async (input: UpdateJobApplicationParams) => {
+export const updateJobApplicationAction = async (
+  input: UpdateJobApplicationParams,
+) => {
   try {
     const payload = updateJobApplicationParams.parse(input);
     await updateJobApplication(payload.id, payload);

@@ -1,19 +1,28 @@
-import { getEnrolLtiToolConsumerMapById, getEnrolLtiToolConsumerMaps } from "@/lib/api/enrolLtiToolConsumerMaps/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createEnrolLtiToolConsumerMap,
+  deleteEnrolLtiToolConsumerMap,
+  updateEnrolLtiToolConsumerMap,
+} from "../api/enrolLtiToolConsumerMaps/mutations";
+import {
+  getEnrolLtiToolConsumerMapById,
+  getEnrolLtiToolConsumerMaps,
+} from "../api/enrolLtiToolConsumerMaps/queries";
 import {
   enrolLtiToolConsumerMapIdSchema,
   insertEnrolLtiToolConsumerMapParams,
   updateEnrolLtiToolConsumerMapParams,
-} from "@/lib/db/schema/enrolLtiToolConsumerMaps";
-import { createEnrolLtiToolConsumerMap, deleteEnrolLtiToolConsumerMap, updateEnrolLtiToolConsumerMap } from "@/lib/api/enrolLtiToolConsumerMaps/mutations";
+} from "../db/schema/enrolLtiToolConsumerMaps";
+import { publicProcedure, router } from "../server/trpc";
 
 export const enrolLtiToolConsumerMapsRouter = router({
   getEnrolLtiToolConsumerMaps: publicProcedure.query(async () => {
     return getEnrolLtiToolConsumerMaps();
   }),
-  getEnrolLtiToolConsumerMapById: publicProcedure.input(enrolLtiToolConsumerMapIdSchema).query(async ({ input }) => {
-    return getEnrolLtiToolConsumerMapById(input.id);
-  }),
+  getEnrolLtiToolConsumerMapById: publicProcedure
+    .input(enrolLtiToolConsumerMapIdSchema)
+    .query(async ({ input }) => {
+      return getEnrolLtiToolConsumerMapById(input.id);
+    }),
   createEnrolLtiToolConsumerMap: publicProcedure
     .input(insertEnrolLtiToolConsumerMapParams)
     .mutation(async ({ input }) => {

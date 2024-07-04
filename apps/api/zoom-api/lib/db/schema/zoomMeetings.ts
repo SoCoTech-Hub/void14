@@ -1,10 +1,10 @@
-import { type getZoomMeetings } from "@/lib/api/zoomMeetings/queries";
 import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getZoomMeetings } from "../api/zoomMeetings/queries";
 import { zooms } from "./zooms";
 
 export const zoomMeetings = pgTable("zoom_meetings", {

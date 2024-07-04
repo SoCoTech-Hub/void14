@@ -1,19 +1,28 @@
-import { getZoomMeetingById, getZoomMeetings } from "@/lib/api/zoomMeetings/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  zoomMeetingIdSchema,
+  createZoomMeeting,
+  deleteZoomMeeting,
+  updateZoomMeeting,
+} from "../api/zoomMeetings/mutations";
+import {
+  getZoomMeetingById,
+  getZoomMeetings,
+} from "../api/zoomMeetings/queries";
+import {
   insertZoomMeetingParams,
   updateZoomMeetingParams,
-} from "@/lib/db/schema/zoomMeetings";
-import { createZoomMeeting, deleteZoomMeeting, updateZoomMeeting } from "@/lib/api/zoomMeetings/mutations";
+  zoomMeetingIdSchema,
+} from "../db/schema/zoomMeetings";
+import { publicProcedure, router } from "../server/trpc";
 
 export const zoomMeetingsRouter = router({
   getZoomMeetings: publicProcedure.query(async () => {
     return getZoomMeetings();
   }),
-  getZoomMeetingById: publicProcedure.input(zoomMeetingIdSchema).query(async ({ input }) => {
-    return getZoomMeetingById(input.id);
-  }),
+  getZoomMeetingById: publicProcedure
+    .input(zoomMeetingIdSchema)
+    .query(async ({ input }) => {
+      return getZoomMeetingById(input.id);
+    }),
   createZoomMeeting: publicProcedure
     .input(insertZoomMeetingParams)
     .mutation(async ({ input }) => {

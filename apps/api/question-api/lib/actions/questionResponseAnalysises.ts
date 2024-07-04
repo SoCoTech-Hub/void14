@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuestionResponseAnalysise,
   deleteQuestionResponseAnalysise,
   updateQuestionResponseAnalysise,
-} from "@/lib/api/questionResponseAnalysises/mutations";
+} from "../api/questionResponseAnalysises/mutations";
 import {
-  QuestionResponseAnalysiseId,
-  NewQuestionResponseAnalysiseParams,
-  UpdateQuestionResponseAnalysiseParams,
-  questionResponseAnalysiseIdSchema,
   insertQuestionResponseAnalysiseParams,
+  NewQuestionResponseAnalysiseParams,
+  QuestionResponseAnalysiseId,
+  questionResponseAnalysiseIdSchema,
+  UpdateQuestionResponseAnalysiseParams,
   updateQuestionResponseAnalysiseParams,
-} from "@/lib/db/schema/questionResponseAnalysises";
+} from "../db/schema/questionResponseAnalysises";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQuestionResponseAnalysises = () => revalidatePath("/question-response-analysises");
+const revalidateQuestionResponseAnalysises = () =>
+  revalidatePath("/question-response-analysises");
 
-export const createQuestionResponseAnalysiseAction = async (input: NewQuestionResponseAnalysiseParams) => {
+export const createQuestionResponseAnalysiseAction = async (
+  input: NewQuestionResponseAnalysiseParams,
+) => {
   try {
     const payload = insertQuestionResponseAnalysiseParams.parse(input);
     await createQuestionResponseAnalysise(payload);
@@ -37,7 +41,9 @@ export const createQuestionResponseAnalysiseAction = async (input: NewQuestionRe
   }
 };
 
-export const updateQuestionResponseAnalysiseAction = async (input: UpdateQuestionResponseAnalysiseParams) => {
+export const updateQuestionResponseAnalysiseAction = async (
+  input: UpdateQuestionResponseAnalysiseParams,
+) => {
   try {
     const payload = updateQuestionResponseAnalysiseParams.parse(input);
     await updateQuestionResponseAnalysise(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQuestionResponseAnalysiseAction = async (input: UpdateQuestio
   }
 };
 
-export const deleteQuestionResponseAnalysiseAction = async (input: QuestionResponseAnalysiseId) => {
+export const deleteQuestionResponseAnalysiseAction = async (
+  input: QuestionResponseAnalysiseId,
+) => {
   try {
     const payload = questionResponseAnalysiseIdSchema.parse({ id: input });
     await deleteQuestionResponseAnalysise(payload.id);

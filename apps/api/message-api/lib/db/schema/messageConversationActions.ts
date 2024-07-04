@@ -1,10 +1,11 @@
-import { type getMessageConversationActions } from "@/lib/api/messageConversationActions/queries";
 import { sql } from "drizzle-orm";
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getMessageConversationActions } from "../api/messageConversationActions/queries";
 
 export const messageConversationActions = pgTable(
   "message_conversation_actions",

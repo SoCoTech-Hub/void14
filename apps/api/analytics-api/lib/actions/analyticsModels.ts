@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAnalyticsModel,
   deleteAnalyticsModel,
   updateAnalyticsModel,
-} from "@/lib/api/analyticsModels/mutations";
+} from "../api/analyticsModels/mutations";
 import {
   AnalyticsModelId,
-  NewAnalyticsModelParams,
-  UpdateAnalyticsModelParams,
   analyticsModelIdSchema,
   insertAnalyticsModelParams,
+  NewAnalyticsModelParams,
+  UpdateAnalyticsModelParams,
   updateAnalyticsModelParams,
-} from "@/lib/db/schema/analyticsModels";
+} from "../db/schema/analyticsModels";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateAnalyticsModels = () => revalidatePath("/analytics-models");
 
-export const createAnalyticsModelAction = async (input: NewAnalyticsModelParams) => {
+export const createAnalyticsModelAction = async (
+  input: NewAnalyticsModelParams,
+) => {
   try {
     const payload = insertAnalyticsModelParams.parse(input);
     await createAnalyticsModel(payload);
@@ -37,7 +40,9 @@ export const createAnalyticsModelAction = async (input: NewAnalyticsModelParams)
   }
 };
 
-export const updateAnalyticsModelAction = async (input: UpdateAnalyticsModelParams) => {
+export const updateAnalyticsModelAction = async (
+  input: UpdateAnalyticsModelParams,
+) => {
   try {
     const payload = updateAnalyticsModelParams.parse(input);
     await updateAnalyticsModel(payload.id, payload);

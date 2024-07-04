@@ -1,19 +1,26 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  LtiserviceGradebookserviceId, 
-  NewLtiserviceGradebookserviceParams,
-  UpdateLtiserviceGradebookserviceParams, 
-  updateLtiserviceGradebookserviceSchema,
-  insertLtiserviceGradebookserviceSchema, 
+
+import { db } from "../db/index";
+import {
+  insertLtiserviceGradebookserviceSchema,
+  LtiserviceGradebookserviceId,
+  ltiserviceGradebookserviceIdSchema,
   ltiserviceGradebookservices,
-  ltiserviceGradebookserviceIdSchema 
-} from "@/lib/db/schema/ltiserviceGradebookservices";
+  NewLtiserviceGradebookserviceParams,
+  UpdateLtiserviceGradebookserviceParams,
+  updateLtiserviceGradebookserviceSchema,
+} from "../db/schema/ltiserviceGradebookservices";
 
-export const createLtiserviceGradebookservice = async (ltiserviceGradebookservice: NewLtiserviceGradebookserviceParams) => {
-  const newLtiserviceGradebookservice = insertLtiserviceGradebookserviceSchema.parse(ltiserviceGradebookservice);
+export const createLtiserviceGradebookservice = async (
+  ltiserviceGradebookservice: NewLtiserviceGradebookserviceParams,
+) => {
+  const newLtiserviceGradebookservice =
+    insertLtiserviceGradebookserviceSchema.parse(ltiserviceGradebookservice);
   try {
-    const [l] =  await db.insert(ltiserviceGradebookservices).values(newLtiserviceGradebookservice).returning();
+    const [l] = await db
+      .insert(ltiserviceGradebookservices)
+      .values(newLtiserviceGradebookservice)
+      .returning();
     return { ltiserviceGradebookservice: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,20 @@ export const createLtiserviceGradebookservice = async (ltiserviceGradebookservic
   }
 };
 
-export const updateLtiserviceGradebookservice = async (id: LtiserviceGradebookserviceId, ltiserviceGradebookservice: UpdateLtiserviceGradebookserviceParams) => {
-  const { id: ltiserviceGradebookserviceId } = ltiserviceGradebookserviceIdSchema.parse({ id });
-  const newLtiserviceGradebookservice = updateLtiserviceGradebookserviceSchema.parse(ltiserviceGradebookservice);
+export const updateLtiserviceGradebookservice = async (
+  id: LtiserviceGradebookserviceId,
+  ltiserviceGradebookservice: UpdateLtiserviceGradebookserviceParams,
+) => {
+  const { id: ltiserviceGradebookserviceId } =
+    ltiserviceGradebookserviceIdSchema.parse({ id });
+  const newLtiserviceGradebookservice =
+    updateLtiserviceGradebookserviceSchema.parse(ltiserviceGradebookservice);
   try {
-    const [l] =  await db
-     .update(ltiserviceGradebookservices)
-     .set(newLtiserviceGradebookservice)
-     .where(eq(ltiserviceGradebookservices.id, ltiserviceGradebookserviceId!))
-     .returning();
+    const [l] = await db
+      .update(ltiserviceGradebookservices)
+      .set(newLtiserviceGradebookservice)
+      .where(eq(ltiserviceGradebookservices.id, ltiserviceGradebookserviceId!))
+      .returning();
     return { ltiserviceGradebookservice: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +51,16 @@ export const updateLtiserviceGradebookservice = async (id: LtiserviceGradebookse
   }
 };
 
-export const deleteLtiserviceGradebookservice = async (id: LtiserviceGradebookserviceId) => {
-  const { id: ltiserviceGradebookserviceId } = ltiserviceGradebookserviceIdSchema.parse({ id });
+export const deleteLtiserviceGradebookservice = async (
+  id: LtiserviceGradebookserviceId,
+) => {
+  const { id: ltiserviceGradebookserviceId } =
+    ltiserviceGradebookserviceIdSchema.parse({ id });
   try {
-    const [l] =  await db.delete(ltiserviceGradebookservices).where(eq(ltiserviceGradebookservices.id, ltiserviceGradebookserviceId!))
-    .returning();
+    const [l] = await db
+      .delete(ltiserviceGradebookservices)
+      .where(eq(ltiserviceGradebookservices.id, ltiserviceGradebookserviceId!))
+      .returning();
     return { ltiserviceGradebookservice: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +68,3 @@ export const deleteLtiserviceGradebookservice = async (id: LtiserviceGradebookse
     throw { error: message };
   }
 };
-

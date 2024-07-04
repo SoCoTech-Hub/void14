@@ -1,4 +1,3 @@
-import { type getProfiles } from "@/lib/api/profiles/queries";
 import { sql } from "drizzle-orm";
 import {
   date,
@@ -13,6 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getProfiles } from "../api/profiles/queries";
 import { addresses } from "./addresses";
 import { genders } from "./genders";
 import { nextOfKins } from "./nextOfKins";

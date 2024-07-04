@@ -1,10 +1,11 @@
-import { type getMassMailLists } from "@/lib/api/massMailLists/queries";
 import { sql } from "drizzle-orm";
 import { boolean, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getMassMailLists } from "../api/massMailLists/queries";
 
 export const massMailLists = pgTable("mass_mail_lists", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

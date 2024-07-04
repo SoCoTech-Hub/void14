@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createUserPreference,
   deleteUserPreference,
   updateUserPreference,
-} from "@/lib/api/userPreferences/mutations";
+} from "../api/userPreferences/mutations";
 import {
-  UserPreferenceId,
+  insertUserPreferenceParams,
   NewUserPreferenceParams,
   UpdateUserPreferenceParams,
-  userPreferenceIdSchema,
-  insertUserPreferenceParams,
   updateUserPreferenceParams,
-} from "@/lib/db/schema/userPreferences";
+  UserPreferenceId,
+  userPreferenceIdSchema,
+} from "../db/schema/userPreferences";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateUserPreferences = () => revalidatePath("/user-preferences");
 
-export const createUserPreferenceAction = async (input: NewUserPreferenceParams) => {
+export const createUserPreferenceAction = async (
+  input: NewUserPreferenceParams,
+) => {
   try {
     const payload = insertUserPreferenceParams.parse(input);
     await createUserPreference(payload);
@@ -37,7 +40,9 @@ export const createUserPreferenceAction = async (input: NewUserPreferenceParams)
   }
 };
 
-export const updateUserPreferenceAction = async (input: UpdateUserPreferenceParams) => {
+export const updateUserPreferenceAction = async (
+  input: UpdateUserPreferenceParams,
+) => {
   try {
     const payload = updateUserPreferenceParams.parse(input);
     await updateUserPreference(payload.id, payload);

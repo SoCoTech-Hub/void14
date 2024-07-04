@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createToolMonitorEvent,
   deleteToolMonitorEvent,
   updateToolMonitorEvent,
-} from "@/lib/api/toolMonitorEvents/mutations";
+} from "../api/toolMonitorEvents/mutations";
 import {
-  ToolMonitorEventId,
-  NewToolMonitorEventParams,
-  UpdateToolMonitorEventParams,
-  toolMonitorEventIdSchema,
   insertToolMonitorEventParams,
+  NewToolMonitorEventParams,
+  ToolMonitorEventId,
+  toolMonitorEventIdSchema,
+  UpdateToolMonitorEventParams,
   updateToolMonitorEventParams,
-} from "@/lib/db/schema/toolMonitorEvents";
+} from "../db/schema/toolMonitorEvents";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateToolMonitorEvents = () => revalidatePath("/tool-monitor-events");
+const revalidateToolMonitorEvents = () =>
+  revalidatePath("/tool-monitor-events");
 
-export const createToolMonitorEventAction = async (input: NewToolMonitorEventParams) => {
+export const createToolMonitorEventAction = async (
+  input: NewToolMonitorEventParams,
+) => {
   try {
     const payload = insertToolMonitorEventParams.parse(input);
     await createToolMonitorEvent(payload);
@@ -37,7 +41,9 @@ export const createToolMonitorEventAction = async (input: NewToolMonitorEventPar
   }
 };
 
-export const updateToolMonitorEventAction = async (input: UpdateToolMonitorEventParams) => {
+export const updateToolMonitorEventAction = async (
+  input: UpdateToolMonitorEventParams,
+) => {
   try {
     const payload = updateToolMonitorEventParams.parse(input);
     await updateToolMonitorEvent(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateToolMonitorEventAction = async (input: UpdateToolMonitorEvent
   }
 };
 
-export const deleteToolMonitorEventAction = async (input: ToolMonitorEventId) => {
+export const deleteToolMonitorEventAction = async (
+  input: ToolMonitorEventId,
+) => {
   try {
     const payload = toolMonitorEventIdSchema.parse({ id: input });
     await deleteToolMonitorEvent(payload.id);

@@ -1,19 +1,28 @@
-import { getGradeOutcomesHistoryById, getGradeOutcomesHistories } from "@/lib/api/gradeOutcomesHistories/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createGradeOutcomesHistory,
+  deleteGradeOutcomesHistory,
+  updateGradeOutcomesHistory,
+} from "../api/gradeOutcomesHistories/mutations";
+import {
+  getGradeOutcomesHistories,
+  getGradeOutcomesHistoryById,
+} from "../api/gradeOutcomesHistories/queries";
 import {
   gradeOutcomesHistoryIdSchema,
   insertGradeOutcomesHistoryParams,
   updateGradeOutcomesHistoryParams,
-} from "@/lib/db/schema/gradeOutcomesHistories";
-import { createGradeOutcomesHistory, deleteGradeOutcomesHistory, updateGradeOutcomesHistory } from "@/lib/api/gradeOutcomesHistories/mutations";
+} from "../db/schema/gradeOutcomesHistories";
+import { publicProcedure, router } from "../server/trpc";
 
 export const gradeOutcomesHistoriesRouter = router({
   getGradeOutcomesHistories: publicProcedure.query(async () => {
     return getGradeOutcomesHistories();
   }),
-  getGradeOutcomesHistoryById: publicProcedure.input(gradeOutcomesHistoryIdSchema).query(async ({ input }) => {
-    return getGradeOutcomesHistoryById(input.id);
-  }),
+  getGradeOutcomesHistoryById: publicProcedure
+    .input(gradeOutcomesHistoryIdSchema)
+    .query(async ({ input }) => {
+      return getGradeOutcomesHistoryById(input.id);
+    }),
   createGradeOutcomesHistory: publicProcedure
     .input(insertGradeOutcomesHistoryParams)
     .mutation(async ({ input }) => {

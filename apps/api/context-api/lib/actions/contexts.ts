@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createContext,
   deleteContext,
   updateContext,
-} from "@/lib/api/contexts/mutations";
+} from "../api/contexts/mutations";
 import {
   ContextId,
-  NewContextParams,
-  UpdateContextParams,
   contextIdSchema,
   insertContextParams,
+  NewContextParams,
+  UpdateContextParams,
   updateContextParams,
-} from "@/lib/db/schema/contexts";
+} from "../db/schema/contexts";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

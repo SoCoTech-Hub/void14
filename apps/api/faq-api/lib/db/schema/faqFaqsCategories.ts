@@ -1,10 +1,10 @@
-import { type getFaqFaqsCategories } from "@/lib/api/faqFaqsCategories/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getFaqFaqsCategories } from "../api/faqFaqsCategories/queries";
 import { faqCategories } from "./faqCategories";
 import { faqs } from "./faqs";
 

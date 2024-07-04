@@ -1,4 +1,3 @@
-import { type getCoursePublishes } from "@/lib/api/coursePublishes/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -12,6 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getCoursePublishes } from "../api/coursePublishes/queries";
 import { courses } from "./courses";
 
 export const coursePublishes = pgTable(

@@ -1,19 +1,27 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  MessageinboundDatakeyId, 
-  NewMessageinboundDatakeyParams,
-  UpdateMessageinboundDatakeyParams, 
-  updateMessageinboundDatakeySchema,
-  insertMessageinboundDatakeySchema, 
+
+import { db } from "../db/index";
+import {
+  insertMessageinboundDatakeySchema,
+  MessageinboundDatakeyId,
+  messageinboundDatakeyIdSchema,
   messageinboundDatakeys,
-  messageinboundDatakeyIdSchema 
-} from "@/lib/db/schema/messageinboundDatakeys";
+  NewMessageinboundDatakeyParams,
+  UpdateMessageinboundDatakeyParams,
+  updateMessageinboundDatakeySchema,
+} from "../db/schema/messageinboundDatakeys";
 
-export const createMessageinboundDatakey = async (messageinboundDatakey: NewMessageinboundDatakeyParams) => {
-  const newMessageinboundDatakey = insertMessageinboundDatakeySchema.parse(messageinboundDatakey);
+export const createMessageinboundDatakey = async (
+  messageinboundDatakey: NewMessageinboundDatakeyParams,
+) => {
+  const newMessageinboundDatakey = insertMessageinboundDatakeySchema.parse(
+    messageinboundDatakey,
+  );
   try {
-    const [m] =  await db.insert(messageinboundDatakeys).values(newMessageinboundDatakey).returning();
+    const [m] = await db
+      .insert(messageinboundDatakeys)
+      .values(newMessageinboundDatakey)
+      .returning();
     return { messageinboundDatakey: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,22 @@ export const createMessageinboundDatakey = async (messageinboundDatakey: NewMess
   }
 };
 
-export const updateMessageinboundDatakey = async (id: MessageinboundDatakeyId, messageinboundDatakey: UpdateMessageinboundDatakeyParams) => {
-  const { id: messageinboundDatakeyId } = messageinboundDatakeyIdSchema.parse({ id });
-  const newMessageinboundDatakey = updateMessageinboundDatakeySchema.parse(messageinboundDatakey);
+export const updateMessageinboundDatakey = async (
+  id: MessageinboundDatakeyId,
+  messageinboundDatakey: UpdateMessageinboundDatakeyParams,
+) => {
+  const { id: messageinboundDatakeyId } = messageinboundDatakeyIdSchema.parse({
+    id,
+  });
+  const newMessageinboundDatakey = updateMessageinboundDatakeySchema.parse(
+    messageinboundDatakey,
+  );
   try {
-    const [m] =  await db
-     .update(messageinboundDatakeys)
-     .set({...newMessageinboundDatakey, updatedAt: new Date() })
-     .where(eq(messageinboundDatakeys.id, messageinboundDatakeyId!))
-     .returning();
+    const [m] = await db
+      .update(messageinboundDatakeys)
+      .set({ ...newMessageinboundDatakey, updatedAt: new Date() })
+      .where(eq(messageinboundDatakeys.id, messageinboundDatakeyId!))
+      .returning();
     return { messageinboundDatakey: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +54,17 @@ export const updateMessageinboundDatakey = async (id: MessageinboundDatakeyId, m
   }
 };
 
-export const deleteMessageinboundDatakey = async (id: MessageinboundDatakeyId) => {
-  const { id: messageinboundDatakeyId } = messageinboundDatakeyIdSchema.parse({ id });
+export const deleteMessageinboundDatakey = async (
+  id: MessageinboundDatakeyId,
+) => {
+  const { id: messageinboundDatakeyId } = messageinboundDatakeyIdSchema.parse({
+    id,
+  });
   try {
-    const [m] =  await db.delete(messageinboundDatakeys).where(eq(messageinboundDatakeys.id, messageinboundDatakeyId!))
-    .returning();
+    const [m] = await db
+      .delete(messageinboundDatakeys)
+      .where(eq(messageinboundDatakeys.id, messageinboundDatakeyId!))
+      .returning();
     return { messageinboundDatakey: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +72,3 @@ export const deleteMessageinboundDatakey = async (id: MessageinboundDatakeyId) =
     throw { error: message };
   }
 };
-

@@ -1,19 +1,23 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  StatsWeeklyId, 
+
+import { db } from "../db/index";
+import {
+  insertStatsWeeklySchema,
   NewStatsWeeklyParams,
-  UpdateStatsWeeklyParams, 
-  updateStatsWeeklySchema,
-  insertStatsWeeklySchema, 
   statsWeeklies,
-  statsWeeklyIdSchema 
-} from "@/lib/db/schema/statsWeeklies";
+  StatsWeeklyId,
+  statsWeeklyIdSchema,
+  UpdateStatsWeeklyParams,
+  updateStatsWeeklySchema,
+} from "../db/schema/statsWeeklies";
 
 export const createStatsWeekly = async (statsWeekly: NewStatsWeeklyParams) => {
   const newStatsWeekly = insertStatsWeeklySchema.parse(statsWeekly);
   try {
-    const [s] =  await db.insert(statsWeeklies).values(newStatsWeekly).returning();
+    const [s] = await db
+      .insert(statsWeeklies)
+      .values(newStatsWeekly)
+      .returning();
     return { statsWeekly: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +26,18 @@ export const createStatsWeekly = async (statsWeekly: NewStatsWeeklyParams) => {
   }
 };
 
-export const updateStatsWeekly = async (id: StatsWeeklyId, statsWeekly: UpdateStatsWeeklyParams) => {
+export const updateStatsWeekly = async (
+  id: StatsWeeklyId,
+  statsWeekly: UpdateStatsWeeklyParams,
+) => {
   const { id: statsWeeklyId } = statsWeeklyIdSchema.parse({ id });
   const newStatsWeekly = updateStatsWeeklySchema.parse(statsWeekly);
   try {
-    const [s] =  await db
-     .update(statsWeeklies)
-     .set(newStatsWeekly)
-     .where(eq(statsWeeklies.id, statsWeeklyId!))
-     .returning();
+    const [s] = await db
+      .update(statsWeeklies)
+      .set(newStatsWeekly)
+      .where(eq(statsWeeklies.id, statsWeeklyId!))
+      .returning();
     return { statsWeekly: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +49,10 @@ export const updateStatsWeekly = async (id: StatsWeeklyId, statsWeekly: UpdateSt
 export const deleteStatsWeekly = async (id: StatsWeeklyId) => {
   const { id: statsWeeklyId } = statsWeeklyIdSchema.parse({ id });
   try {
-    const [s] =  await db.delete(statsWeeklies).where(eq(statsWeeklies.id, statsWeeklyId!))
-    .returning();
+    const [s] = await db
+      .delete(statsWeeklies)
+      .where(eq(statsWeeklies.id, statsWeeklyId!))
+      .returning();
     return { statsWeekly: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +60,3 @@ export const deleteStatsWeekly = async (id: StatsWeeklyId) => {
     throw { error: message };
   }
 };
-

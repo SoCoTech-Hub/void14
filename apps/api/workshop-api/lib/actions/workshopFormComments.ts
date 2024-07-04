@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createWorkshopFormComment,
   deleteWorkshopFormComment,
   updateWorkshopFormComment,
-} from "@/lib/api/workshopFormComments/mutations";
+} from "../api/workshopFormComments/mutations";
 import {
-  WorkshopFormCommentId,
+  insertWorkshopFormCommentParams,
   NewWorkshopFormCommentParams,
   UpdateWorkshopFormCommentParams,
-  workshopFormCommentIdSchema,
-  insertWorkshopFormCommentParams,
   updateWorkshopFormCommentParams,
-} from "@/lib/db/schema/workshopFormComments";
+  WorkshopFormCommentId,
+  workshopFormCommentIdSchema,
+} from "../db/schema/workshopFormComments";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateWorkshopFormComments = () => revalidatePath("/workshop-form-comments");
+const revalidateWorkshopFormComments = () =>
+  revalidatePath("/workshop-form-comments");
 
-export const createWorkshopFormCommentAction = async (input: NewWorkshopFormCommentParams) => {
+export const createWorkshopFormCommentAction = async (
+  input: NewWorkshopFormCommentParams,
+) => {
   try {
     const payload = insertWorkshopFormCommentParams.parse(input);
     await createWorkshopFormComment(payload);
@@ -37,7 +41,9 @@ export const createWorkshopFormCommentAction = async (input: NewWorkshopFormComm
   }
 };
 
-export const updateWorkshopFormCommentAction = async (input: UpdateWorkshopFormCommentParams) => {
+export const updateWorkshopFormCommentAction = async (
+  input: UpdateWorkshopFormCommentParams,
+) => {
   try {
     const payload = updateWorkshopFormCommentParams.parse(input);
     await updateWorkshopFormComment(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateWorkshopFormCommentAction = async (input: UpdateWorkshopFormC
   }
 };
 
-export const deleteWorkshopFormCommentAction = async (input: WorkshopFormCommentId) => {
+export const deleteWorkshopFormCommentAction = async (
+  input: WorkshopFormCommentId,
+) => {
   try {
     const payload = workshopFormCommentIdSchema.parse({ id: input });
     await deleteWorkshopFormComment(payload.id);

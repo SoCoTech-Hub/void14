@@ -1,4 +1,3 @@
-import { type getWorkshopAllocationSchedules } from "@/lib/api/workshopAllocationSchedules/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -14,6 +13,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getWorkshopAllocationSchedules } from "../api/workshopAllocationSchedules/queries";
 import { workshops } from "./workshops";
 
 export const workshopAllocationSchedules = pgTable(

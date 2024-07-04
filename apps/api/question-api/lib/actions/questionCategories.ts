@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuestionCategory,
   deleteQuestionCategory,
   updateQuestionCategory,
-} from "@/lib/api/questionCategories/mutations";
+} from "../api/questionCategories/mutations";
 import {
-  QuestionCategoryId,
-  NewQuestionCategoryParams,
-  UpdateQuestionCategoryParams,
-  questionCategoryIdSchema,
   insertQuestionCategoryParams,
+  NewQuestionCategoryParams,
+  QuestionCategoryId,
+  questionCategoryIdSchema,
+  UpdateQuestionCategoryParams,
   updateQuestionCategoryParams,
-} from "@/lib/db/schema/questionCategories";
+} from "../db/schema/questionCategories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQuestionCategories = () => revalidatePath("/question-categories");
+const revalidateQuestionCategories = () =>
+  revalidatePath("/question-categories");
 
-export const createQuestionCategoryAction = async (input: NewQuestionCategoryParams) => {
+export const createQuestionCategoryAction = async (
+  input: NewQuestionCategoryParams,
+) => {
   try {
     const payload = insertQuestionCategoryParams.parse(input);
     await createQuestionCategory(payload);
@@ -37,7 +41,9 @@ export const createQuestionCategoryAction = async (input: NewQuestionCategoryPar
   }
 };
 
-export const updateQuestionCategoryAction = async (input: UpdateQuestionCategoryParams) => {
+export const updateQuestionCategoryAction = async (
+  input: UpdateQuestionCategoryParams,
+) => {
   try {
     const payload = updateQuestionCategoryParams.parse(input);
     await updateQuestionCategory(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQuestionCategoryAction = async (input: UpdateQuestionCategory
   }
 };
 
-export const deleteQuestionCategoryAction = async (input: QuestionCategoryId) => {
+export const deleteQuestionCategoryAction = async (
+  input: QuestionCategoryId,
+) => {
   try {
     const payload = questionCategoryIdSchema.parse({ id: input });
     await deleteQuestionCategory(payload.id);

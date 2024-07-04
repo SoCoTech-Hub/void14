@@ -1,19 +1,25 @@
-import { getGenderById, getGenders } from "@/lib/api/genders/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createGender,
+  deleteGender,
+  updateGender,
+} from "../api/genders/mutations";
+import { getGenderById, getGenders } from "../api/genders/queries";
 import {
   genderIdSchema,
   insertGenderParams,
   updateGenderParams,
-} from "@/lib/db/schema/genders";
-import { createGender, deleteGender, updateGender } from "@/lib/api/genders/mutations";
+} from "../db/schema/genders";
+import { publicProcedure, router } from "../server/trpc";
 
 export const gendersRouter = router({
   getGenders: publicProcedure.query(async () => {
     return getGenders();
   }),
-  getGenderById: publicProcedure.input(genderIdSchema).query(async ({ input }) => {
-    return getGenderById(input.id);
-  }),
+  getGenderById: publicProcedure
+    .input(genderIdSchema)
+    .query(async ({ input }) => {
+      return getGenderById(input.id);
+    }),
   createGender: publicProcedure
     .input(insertGenderParams)
     .mutation(async ({ input }) => {

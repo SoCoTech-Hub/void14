@@ -1,19 +1,28 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  JobApplicationsApplicationCategoryId, 
-  NewJobApplicationsApplicationCategoryParams,
-  UpdateJobApplicationsApplicationCategoryParams, 
-  updateJobApplicationsApplicationCategorySchema,
-  insertJobApplicationsApplicationCategorySchema, 
+
+import { db } from "../db/index";
+import {
+  insertJobApplicationsApplicationCategorySchema,
   jobApplicationsApplicationCategories,
-  jobApplicationsApplicationCategoryIdSchema 
-} from "@/lib/db/schema/jobApplicationsApplicationCategories";
+  JobApplicationsApplicationCategoryId,
+  jobApplicationsApplicationCategoryIdSchema,
+  NewJobApplicationsApplicationCategoryParams,
+  UpdateJobApplicationsApplicationCategoryParams,
+  updateJobApplicationsApplicationCategorySchema,
+} from "../db/schema/jobApplicationsApplicationCategories";
 
-export const createJobApplicationsApplicationCategory = async (jobApplicationsApplicationCategory: NewJobApplicationsApplicationCategoryParams) => {
-  const newJobApplicationsApplicationCategory = insertJobApplicationsApplicationCategorySchema.parse(jobApplicationsApplicationCategory);
+export const createJobApplicationsApplicationCategory = async (
+  jobApplicationsApplicationCategory: NewJobApplicationsApplicationCategoryParams,
+) => {
+  const newJobApplicationsApplicationCategory =
+    insertJobApplicationsApplicationCategorySchema.parse(
+      jobApplicationsApplicationCategory,
+    );
   try {
-    const [j] =  await db.insert(jobApplicationsApplicationCategories).values(newJobApplicationsApplicationCategory).returning();
+    const [j] = await db
+      .insert(jobApplicationsApplicationCategories)
+      .values(newJobApplicationsApplicationCategory)
+      .returning();
     return { jobApplicationsApplicationCategory: j };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +31,27 @@ export const createJobApplicationsApplicationCategory = async (jobApplicationsAp
   }
 };
 
-export const updateJobApplicationsApplicationCategory = async (id: JobApplicationsApplicationCategoryId, jobApplicationsApplicationCategory: UpdateJobApplicationsApplicationCategoryParams) => {
-  const { id: jobApplicationsApplicationCategoryId } = jobApplicationsApplicationCategoryIdSchema.parse({ id });
-  const newJobApplicationsApplicationCategory = updateJobApplicationsApplicationCategorySchema.parse(jobApplicationsApplicationCategory);
+export const updateJobApplicationsApplicationCategory = async (
+  id: JobApplicationsApplicationCategoryId,
+  jobApplicationsApplicationCategory: UpdateJobApplicationsApplicationCategoryParams,
+) => {
+  const { id: jobApplicationsApplicationCategoryId } =
+    jobApplicationsApplicationCategoryIdSchema.parse({ id });
+  const newJobApplicationsApplicationCategory =
+    updateJobApplicationsApplicationCategorySchema.parse(
+      jobApplicationsApplicationCategory,
+    );
   try {
-    const [j] =  await db
-     .update(jobApplicationsApplicationCategories)
-     .set(newJobApplicationsApplicationCategory)
-     .where(eq(jobApplicationsApplicationCategories.id, jobApplicationsApplicationCategoryId!))
-     .returning();
+    const [j] = await db
+      .update(jobApplicationsApplicationCategories)
+      .set(newJobApplicationsApplicationCategory)
+      .where(
+        eq(
+          jobApplicationsApplicationCategories.id,
+          jobApplicationsApplicationCategoryId!,
+        ),
+      )
+      .returning();
     return { jobApplicationsApplicationCategory: j };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +60,21 @@ export const updateJobApplicationsApplicationCategory = async (id: JobApplicatio
   }
 };
 
-export const deleteJobApplicationsApplicationCategory = async (id: JobApplicationsApplicationCategoryId) => {
-  const { id: jobApplicationsApplicationCategoryId } = jobApplicationsApplicationCategoryIdSchema.parse({ id });
+export const deleteJobApplicationsApplicationCategory = async (
+  id: JobApplicationsApplicationCategoryId,
+) => {
+  const { id: jobApplicationsApplicationCategoryId } =
+    jobApplicationsApplicationCategoryIdSchema.parse({ id });
   try {
-    const [j] =  await db.delete(jobApplicationsApplicationCategories).where(eq(jobApplicationsApplicationCategories.id, jobApplicationsApplicationCategoryId!))
-    .returning();
+    const [j] = await db
+      .delete(jobApplicationsApplicationCategories)
+      .where(
+        eq(
+          jobApplicationsApplicationCategories.id,
+          jobApplicationsApplicationCategoryId!,
+        ),
+      )
+      .returning();
     return { jobApplicationsApplicationCategory: j };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +82,3 @@ export const deleteJobApplicationsApplicationCategory = async (id: JobApplicatio
     throw { error: message };
   }
 };
-

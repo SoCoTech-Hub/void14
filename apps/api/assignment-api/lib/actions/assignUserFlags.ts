@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAssignUserFlag,
   deleteAssignUserFlag,
   updateAssignUserFlag,
-} from "@/lib/api/assignUserFlags/mutations";
+} from "../api/assignUserFlags/mutations";
 import {
   AssignUserFlagId,
-  NewAssignUserFlagParams,
-  UpdateAssignUserFlagParams,
   assignUserFlagIdSchema,
   insertAssignUserFlagParams,
+  NewAssignUserFlagParams,
+  UpdateAssignUserFlagParams,
   updateAssignUserFlagParams,
-} from "@/lib/db/schema/assignUserFlags";
+} from "../db/schema/assignUserFlags";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateAssignUserFlags = () => revalidatePath("/assign-user-flags");
 
-export const createAssignUserFlagAction = async (input: NewAssignUserFlagParams) => {
+export const createAssignUserFlagAction = async (
+  input: NewAssignUserFlagParams,
+) => {
   try {
     const payload = insertAssignUserFlagParams.parse(input);
     await createAssignUserFlag(payload);
@@ -37,7 +40,9 @@ export const createAssignUserFlagAction = async (input: NewAssignUserFlagParams)
   }
 };
 
-export const updateAssignUserFlagAction = async (input: UpdateAssignUserFlagParams) => {
+export const updateAssignUserFlagAction = async (
+  input: UpdateAssignUserFlagParams,
+) => {
   try {
     const payload = updateAssignUserFlagParams.parse(input);
     await updateAssignUserFlag(payload.id, payload);

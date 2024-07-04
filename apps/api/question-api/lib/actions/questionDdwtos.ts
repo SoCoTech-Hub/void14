@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuestionDdwto,
   deleteQuestionDdwto,
   updateQuestionDdwto,
-} from "@/lib/api/questionDdwtos/mutations";
+} from "../api/questionDdwtos/mutations";
 import {
-  QuestionDdwtoId,
-  NewQuestionDdwtoParams,
-  UpdateQuestionDdwtoParams,
-  questionDdwtoIdSchema,
   insertQuestionDdwtoParams,
+  NewQuestionDdwtoParams,
+  QuestionDdwtoId,
+  questionDdwtoIdSchema,
+  UpdateQuestionDdwtoParams,
   updateQuestionDdwtoParams,
-} from "@/lib/db/schema/questionDdwtos";
+} from "../db/schema/questionDdwtos";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateQuestionDdwtos = () => revalidatePath("/question-ddwtos");
 
-export const createQuestionDdwtoAction = async (input: NewQuestionDdwtoParams) => {
+export const createQuestionDdwtoAction = async (
+  input: NewQuestionDdwtoParams,
+) => {
   try {
     const payload = insertQuestionDdwtoParams.parse(input);
     await createQuestionDdwto(payload);
@@ -37,7 +40,9 @@ export const createQuestionDdwtoAction = async (input: NewQuestionDdwtoParams) =
   }
 };
 
-export const updateQuestionDdwtoAction = async (input: UpdateQuestionDdwtoParams) => {
+export const updateQuestionDdwtoAction = async (
+  input: UpdateQuestionDdwtoParams,
+) => {
   try {
     const payload = updateQuestionDdwtoParams.parse(input);
     await updateQuestionDdwto(payload.id, payload);

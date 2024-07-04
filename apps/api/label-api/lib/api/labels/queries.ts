@@ -1,10 +1,12 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { type LabelId, labelIdSchema, labels } from "@/lib/db/schema/labels";
+
+import type { LabelId } from "../db/schema/labels";
+import { db } from "../db/index";
+import { labelIdSchema, labels } from "../db/schema/labels";
 
 export const getLabels = async () => {
   const rows = await db.select().from(labels);
-  const l = rows
+  const l = rows;
   return { labels: l };
 };
 
@@ -15,5 +17,3 @@ export const getLabelById = async (id: LabelId) => {
   const l = row;
   return { label: l };
 };
-
-

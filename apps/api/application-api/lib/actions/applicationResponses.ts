@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createApplicationResponse,
   deleteApplicationResponse,
   updateApplicationResponse,
-} from "@/lib/api/applicationResponses/mutations";
+} from "../api/applicationResponses/mutations";
 import {
   ApplicationResponseId,
-  NewApplicationResponseParams,
-  UpdateApplicationResponseParams,
   applicationResponseIdSchema,
   insertApplicationResponseParams,
+  NewApplicationResponseParams,
+  UpdateApplicationResponseParams,
   updateApplicationResponseParams,
-} from "@/lib/db/schema/applicationResponses";
+} from "../db/schema/applicationResponses";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateApplicationResponses = () => revalidatePath("/application-responses");
+const revalidateApplicationResponses = () =>
+  revalidatePath("/application-responses");
 
-export const createApplicationResponseAction = async (input: NewApplicationResponseParams) => {
+export const createApplicationResponseAction = async (
+  input: NewApplicationResponseParams,
+) => {
   try {
     const payload = insertApplicationResponseParams.parse(input);
     await createApplicationResponse(payload);
@@ -37,7 +41,9 @@ export const createApplicationResponseAction = async (input: NewApplicationRespo
   }
 };
 
-export const updateApplicationResponseAction = async (input: UpdateApplicationResponseParams) => {
+export const updateApplicationResponseAction = async (
+  input: UpdateApplicationResponseParams,
+) => {
   try {
     const payload = updateApplicationResponseParams.parse(input);
     await updateApplicationResponse(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateApplicationResponseAction = async (input: UpdateApplicationRe
   }
 };
 
-export const deleteApplicationResponseAction = async (input: ApplicationResponseId) => {
+export const deleteApplicationResponseAction = async (
+  input: ApplicationResponseId,
+) => {
   try {
     const payload = applicationResponseIdSchema.parse({ id: input });
     await deleteApplicationResponse(payload.id);

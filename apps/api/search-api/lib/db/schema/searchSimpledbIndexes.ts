@@ -1,4 +1,3 @@
-import { type getSearchSimpledbIndexes } from "@/lib/api/searchSimpledbIndexes/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getSearchSimpledbIndexes } from "../api/searchSimpledbIndexes/queries";
 
 export const searchSimpledbIndexes = pgTable("search_simpledb_indexes", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

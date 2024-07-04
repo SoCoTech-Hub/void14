@@ -1,4 +1,3 @@
-import { type getWorkshopFormComments } from "@/lib/api/workshopFormComments/queries";
 import {
   integer,
   pgTable,
@@ -11,6 +10,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getWorkshopFormComments } from "../api/workshopFormComments/queries";
 import { workshops } from "./workshops";
 
 export const workshopFormComments = pgTable(

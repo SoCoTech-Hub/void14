@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createLicense,
   deleteLicense,
   updateLicense,
-} from "@/lib/api/licenses/mutations";
+} from "../api/licenses/mutations";
 import {
+  insertLicenseParams,
   LicenseId,
+  licenseIdSchema,
   NewLicenseParams,
   UpdateLicenseParams,
-  licenseIdSchema,
-  insertLicenseParams,
   updateLicenseParams,
-} from "@/lib/db/schema/licenses";
+} from "../db/schema/licenses";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

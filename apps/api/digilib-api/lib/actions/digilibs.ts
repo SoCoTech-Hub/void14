@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createDigilib,
   deleteDigilib,
   updateDigilib,
-} from "@/lib/api/digilibs/mutations";
+} from "../api/digilibs/mutations";
 import {
   DigilibId,
-  NewDigilibParams,
-  UpdateDigilibParams,
   digilibIdSchema,
   insertDigilibParams,
+  NewDigilibParams,
+  UpdateDigilibParams,
   updateDigilibParams,
-} from "@/lib/db/schema/digilibs";
+} from "../db/schema/digilibs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

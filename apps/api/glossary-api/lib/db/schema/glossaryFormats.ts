@@ -1,9 +1,10 @@
-import { type getGlossaryFormats } from "@/lib/api/glossaryFormats/queries";
 import { boolean, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getGlossaryFormats } from "../api/glossaryFormats/queries";
 
 export const glossaryFormats = pgTable(
   "glossary_formats",

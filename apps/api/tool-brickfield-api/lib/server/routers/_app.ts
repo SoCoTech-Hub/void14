@@ -1,8 +1,8 @@
-import { router } from '@/lib/server/trpc'
-import { toolCohortRolesRouter } from './toolCohortRoles'
+import { router } from "../server/trpc";
+import { toolCohortRolesRouter } from "./toolCohortRoles";
 
 export const appRouter = router({
-	toolCohortRoles: toolCohortRolesRouter
-})
+  toolCohortRoles: toolCohortRolesRouter,
+});
 
-export type AppRouter = typeof appRouter
+export type AppRouter = typeof appRouter;

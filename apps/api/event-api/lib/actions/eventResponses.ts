@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createEventResponse,
   deleteEventResponse,
   updateEventResponse,
-} from "@/lib/api/eventResponses/mutations";
+} from "../api/eventResponses/mutations";
 import {
   EventResponseId,
-  NewEventResponseParams,
-  UpdateEventResponseParams,
   eventResponseIdSchema,
   insertEventResponseParams,
+  NewEventResponseParams,
+  UpdateEventResponseParams,
   updateEventResponseParams,
-} from "@/lib/db/schema/eventResponses";
+} from "../db/schema/eventResponses";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateEventResponses = () => revalidatePath("/event-responses");
 
-export const createEventResponseAction = async (input: NewEventResponseParams) => {
+export const createEventResponseAction = async (
+  input: NewEventResponseParams,
+) => {
   try {
     const payload = insertEventResponseParams.parse(input);
     await createEventResponse(payload);
@@ -37,7 +40,9 @@ export const createEventResponseAction = async (input: NewEventResponseParams) =
   }
 };
 
-export const updateEventResponseAction = async (input: UpdateEventResponseParams) => {
+export const updateEventResponseAction = async (
+  input: UpdateEventResponseParams,
+) => {
   try {
     const payload = updateEventResponseParams.parse(input);
     await updateEventResponse(payload.id, payload);

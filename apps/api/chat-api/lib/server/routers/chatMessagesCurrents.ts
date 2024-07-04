@@ -1,19 +1,28 @@
-import { getChatMessagesCurrentById, getChatMessagesCurrents } from "@/lib/api/chatMessagesCurrents/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createChatMessagesCurrent,
+  deleteChatMessagesCurrent,
+  updateChatMessagesCurrent,
+} from "../api/chatMessagesCurrents/mutations";
+import {
+  getChatMessagesCurrentById,
+  getChatMessagesCurrents,
+} from "../api/chatMessagesCurrents/queries";
 import {
   chatMessagesCurrentIdSchema,
   insertChatMessagesCurrentParams,
   updateChatMessagesCurrentParams,
-} from "@/lib/db/schema/chatMessagesCurrents";
-import { createChatMessagesCurrent, deleteChatMessagesCurrent, updateChatMessagesCurrent } from "@/lib/api/chatMessagesCurrents/mutations";
+} from "../db/schema/chatMessagesCurrents";
+import { publicProcedure, router } from "../server/trpc";
 
 export const chatMessagesCurrentsRouter = router({
   getChatMessagesCurrents: publicProcedure.query(async () => {
     return getChatMessagesCurrents();
   }),
-  getChatMessagesCurrentById: publicProcedure.input(chatMessagesCurrentIdSchema).query(async ({ input }) => {
-    return getChatMessagesCurrentById(input.id);
-  }),
+  getChatMessagesCurrentById: publicProcedure
+    .input(chatMessagesCurrentIdSchema)
+    .query(async ({ input }) => {
+      return getChatMessagesCurrentById(input.id);
+    }),
   createChatMessagesCurrent: publicProcedure
     .input(insertChatMessagesCurrentParams)
     .mutation(async ({ input }) => {

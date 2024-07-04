@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBursaryResponse,
   deleteBursaryResponse,
   updateBursaryResponse,
-} from "@/lib/api/bursaryResponses/mutations";
+} from "../api/bursaryResponses/mutations";
 import {
   BursaryResponseId,
-  NewBursaryResponseParams,
-  UpdateBursaryResponseParams,
   bursaryResponseIdSchema,
   insertBursaryResponseParams,
+  NewBursaryResponseParams,
+  UpdateBursaryResponseParams,
   updateBursaryResponseParams,
-} from "@/lib/db/schema/bursaryResponses";
+} from "../db/schema/bursaryResponses";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateBursaryResponses = () => revalidatePath("/bursary-responses");
 
-export const createBursaryResponseAction = async (input: NewBursaryResponseParams) => {
+export const createBursaryResponseAction = async (
+  input: NewBursaryResponseParams,
+) => {
   try {
     const payload = insertBursaryResponseParams.parse(input);
     await createBursaryResponse(payload);
@@ -37,7 +40,9 @@ export const createBursaryResponseAction = async (input: NewBursaryResponseParam
   }
 };
 
-export const updateBursaryResponseAction = async (input: UpdateBursaryResponseParams) => {
+export const updateBursaryResponseAction = async (
+  input: UpdateBursaryResponseParams,
+) => {
   try {
     const payload = updateBursaryResponseParams.parse(input);
     await updateBursaryResponse(payload.id, payload);

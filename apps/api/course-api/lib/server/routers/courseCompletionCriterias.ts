@@ -1,19 +1,28 @@
-import { getCourseCompletionCriteriaById, getCourseCompletionCriterias } from "@/lib/api/courseCompletionCriterias/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createCourseCompletionCriteria,
+  deleteCourseCompletionCriteria,
+  updateCourseCompletionCriteria,
+} from "../api/courseCompletionCriterias/mutations";
+import {
+  getCourseCompletionCriteriaById,
+  getCourseCompletionCriterias,
+} from "../api/courseCompletionCriterias/queries";
 import {
   courseCompletionCriteriaIdSchema,
   insertCourseCompletionCriteriaParams,
   updateCourseCompletionCriteriaParams,
-} from "@/lib/db/schema/courseCompletionCriterias";
-import { createCourseCompletionCriteria, deleteCourseCompletionCriteria, updateCourseCompletionCriteria } from "@/lib/api/courseCompletionCriterias/mutations";
+} from "../db/schema/courseCompletionCriterias";
+import { publicProcedure, router } from "../server/trpc";
 
 export const courseCompletionCriteriasRouter = router({
   getCourseCompletionCriterias: publicProcedure.query(async () => {
     return getCourseCompletionCriterias();
   }),
-  getCourseCompletionCriteriaById: publicProcedure.input(courseCompletionCriteriaIdSchema).query(async ({ input }) => {
-    return getCourseCompletionCriteriaById(input.id);
-  }),
+  getCourseCompletionCriteriaById: publicProcedure
+    .input(courseCompletionCriteriaIdSchema)
+    .query(async ({ input }) => {
+      return getCourseCompletionCriteriaById(input.id);
+    }),
   createCourseCompletionCriteria: publicProcedure
     .input(insertCourseCompletionCriteriaParams)
     .mutation(async ({ input }) => {

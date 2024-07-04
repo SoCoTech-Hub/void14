@@ -1,19 +1,28 @@
-import { getToolMonitorHistoryById, getToolMonitorHistories } from "@/lib/api/toolMonitorHistories/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  toolMonitorHistoryIdSchema,
+  createToolMonitorHistory,
+  deleteToolMonitorHistory,
+  updateToolMonitorHistory,
+} from "../api/toolMonitorHistories/mutations";
+import {
+  getToolMonitorHistories,
+  getToolMonitorHistoryById,
+} from "../api/toolMonitorHistories/queries";
+import {
   insertToolMonitorHistoryParams,
+  toolMonitorHistoryIdSchema,
   updateToolMonitorHistoryParams,
-} from "@/lib/db/schema/toolMonitorHistories";
-import { createToolMonitorHistory, deleteToolMonitorHistory, updateToolMonitorHistory } from "@/lib/api/toolMonitorHistories/mutations";
+} from "../db/schema/toolMonitorHistories";
+import { publicProcedure, router } from "../server/trpc";
 
 export const toolMonitorHistoriesRouter = router({
   getToolMonitorHistories: publicProcedure.query(async () => {
     return getToolMonitorHistories();
   }),
-  getToolMonitorHistoryById: publicProcedure.input(toolMonitorHistoryIdSchema).query(async ({ input }) => {
-    return getToolMonitorHistoryById(input.id);
-  }),
+  getToolMonitorHistoryById: publicProcedure
+    .input(toolMonitorHistoryIdSchema)
+    .query(async ({ input }) => {
+      return getToolMonitorHistoryById(input.id);
+    }),
   createToolMonitorHistory: publicProcedure
     .input(insertToolMonitorHistoryParams)
     .mutation(async ({ input }) => {

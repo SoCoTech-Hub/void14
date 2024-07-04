@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createComment,
   deleteComment,
   updateComment,
-} from "@/lib/api/comments/mutations";
+} from "../api/comments/mutations";
 import {
   CommentId,
-  NewCommentParams,
-  UpdateCommentParams,
   commentIdSchema,
   insertCommentParams,
+  NewCommentParams,
+  UpdateCommentParams,
   updateCommentParams,
-} from "@/lib/db/schema/comments";
+} from "../db/schema/comments";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

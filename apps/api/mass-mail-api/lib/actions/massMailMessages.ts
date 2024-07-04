@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMassMailMessage,
   deleteMassMailMessage,
   updateMassMailMessage,
-} from "@/lib/api/massMailMessages/mutations";
+} from "../api/massMailMessages/mutations";
 import {
+  insertMassMailMessageParams,
   MassMailMessageId,
+  massMailMessageIdSchema,
   NewMassMailMessageParams,
   UpdateMassMailMessageParams,
-  massMailMessageIdSchema,
-  insertMassMailMessageParams,
   updateMassMailMessageParams,
-} from "@/lib/db/schema/massMailMessages";
+} from "../db/schema/massMailMessages";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateMassMailMessages = () => revalidatePath("/mass-mail-messages");
 
-export const createMassMailMessageAction = async (input: NewMassMailMessageParams) => {
+export const createMassMailMessageAction = async (
+  input: NewMassMailMessageParams,
+) => {
   try {
     const payload = insertMassMailMessageParams.parse(input);
     await createMassMailMessage(payload);
@@ -37,7 +40,9 @@ export const createMassMailMessageAction = async (input: NewMassMailMessageParam
   }
 };
 
-export const updateMassMailMessageAction = async (input: UpdateMassMailMessageParams) => {
+export const updateMassMailMessageAction = async (
+  input: UpdateMassMailMessageParams,
+) => {
   try {
     const payload = updateMassMailMessageParams.parse(input);
     await updateMassMailMessage(payload.id, payload);

@@ -1,10 +1,11 @@
-import { type getLtiAccessTokens } from "@/lib/api/ltiAccessTokens/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getLtiAccessTokens } from "../api/ltiAccessTokens/queries";
 
 export const ltiAccessTokens = pgTable("lti_access_tokens", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

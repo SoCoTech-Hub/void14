@@ -1,19 +1,28 @@
-import { getRepositoryInstanceById, getRepositoryInstances } from "@/lib/api/repositoryInstances/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  repositoryInstanceIdSchema,
+  createRepositoryInstance,
+  deleteRepositoryInstance,
+  updateRepositoryInstance,
+} from "../api/repositoryInstances/mutations";
+import {
+  getRepositoryInstanceById,
+  getRepositoryInstances,
+} from "../api/repositoryInstances/queries";
+import {
   insertRepositoryInstanceParams,
+  repositoryInstanceIdSchema,
   updateRepositoryInstanceParams,
-} from "@/lib/db/schema/repositoryInstances";
-import { createRepositoryInstance, deleteRepositoryInstance, updateRepositoryInstance } from "@/lib/api/repositoryInstances/mutations";
+} from "../db/schema/repositoryInstances";
+import { publicProcedure, router } from "../server/trpc";
 
 export const repositoryInstancesRouter = router({
   getRepositoryInstances: publicProcedure.query(async () => {
     return getRepositoryInstances();
   }),
-  getRepositoryInstanceById: publicProcedure.input(repositoryInstanceIdSchema).query(async ({ input }) => {
-    return getRepositoryInstanceById(input.id);
-  }),
+  getRepositoryInstanceById: publicProcedure
+    .input(repositoryInstanceIdSchema)
+    .query(async ({ input }) => {
+      return getRepositoryInstanceById(input.id);
+    }),
   createRepositoryInstance: publicProcedure
     .input(insertRepositoryInstanceParams)
     .mutation(async ({ input }) => {

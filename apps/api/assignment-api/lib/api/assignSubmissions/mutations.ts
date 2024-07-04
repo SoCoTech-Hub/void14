@@ -1,21 +1,31 @@
-import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
-import { 
-  AssignSubmissionId, 
-  NewAssignSubmissionParams,
-  UpdateAssignSubmissionParams, 
-  updateAssignSubmissionSchema,
-  insertAssignSubmissionSchema, 
-  assignSubmissions,
-  assignSubmissionIdSchema 
-} from "@/lib/db/schema/assignSubmissions";
+
 import { getUserAuth } from "@soco/auth/utils";
 
-export const createAssignSubmission = async (assignSubmission: NewAssignSubmissionParams) => {
+import { db } from "../db/index";
+import {
+  AssignSubmissionId,
+  assignSubmissionIdSchema,
+  assignSubmissions,
+  insertAssignSubmissionSchema,
+  NewAssignSubmissionParams,
+  UpdateAssignSubmissionParams,
+  updateAssignSubmissionSchema,
+} from "../db/schema/assignSubmissions";
+
+export const createAssignSubmission = async (
+  assignSubmission: NewAssignSubmissionParams,
+) => {
   const { session } = await getUserAuth();
-  const newAssignSubmission = insertAssignSubmissionSchema.parse({ ...assignSubmission, userId: session?.user.id! });
+  const newAssignSubmission = insertAssignSubmissionSchema.parse({
+    ...assignSubmission,
+    userId: session?.user.id!,
+  });
   try {
-    const [a] =  await db.insert(assignSubmissions).values(newAssignSubmission).returning();
+    const [a] = await db
+      .insert(assignSubmissions)
+      .values(newAssignSubmission)
+      .returning();
     return { assignSubmission: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +34,27 @@ export const createAssignSubmission = async (assignSubmission: NewAssignSubmissi
   }
 };
 
-export const updateAssignSubmission = async (id: AssignSubmissionId, assignSubmission: UpdateAssignSubmissionParams) => {
+export const updateAssignSubmission = async (
+  id: AssignSubmissionId,
+  assignSubmission: UpdateAssignSubmissionParams,
+) => {
   const { session } = await getUserAuth();
   const { id: assignSubmissionId } = assignSubmissionIdSchema.parse({ id });
-  const newAssignSubmission = updateAssignSubmissionSchema.parse({ ...assignSubmission, userId: session?.user.id! });
+  const newAssignSubmission = updateAssignSubmissionSchema.parse({
+    ...assignSubmission,
+    userId: session?.user.id!,
+  });
   try {
-    const [a] =  await db
-     .update(assignSubmissions)
-     .set({...newAssignSubmission, updatedAt: new Date() })
-     .where(and(eq(assignSubmissions.id, assignSubmissionId!), eq(assignSubmissions.userId, session?.user.id!)))
-     .returning();
+    const [a] = await db
+      .update(assignSubmissions)
+      .set({ ...newAssignSubmission, updatedAt: new Date() })
+      .where(
+        and(
+          eq(assignSubmissions.id, assignSubmissionId!),
+          eq(assignSubmissions.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { assignSubmission: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +67,15 @@ export const deleteAssignSubmission = async (id: AssignSubmissionId) => {
   const { session } = await getUserAuth();
   const { id: assignSubmissionId } = assignSubmissionIdSchema.parse({ id });
   try {
-    const [a] =  await db.delete(assignSubmissions).where(and(eq(assignSubmissions.id, assignSubmissionId!), eq(assignSubmissions.userId, session?.user.id!)))
-    .returning();
+    const [a] = await db
+      .delete(assignSubmissions)
+      .where(
+        and(
+          eq(assignSubmissions.id, assignSubmissionId!),
+          eq(assignSubmissions.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { assignSubmission: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +83,3 @@ export const deleteAssignSubmission = async (id: AssignSubmissionId) => {
     throw { error: message };
   }
 };
-

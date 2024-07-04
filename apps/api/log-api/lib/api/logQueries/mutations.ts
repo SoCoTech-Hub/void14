@@ -1,19 +1,20 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  LogQueryId, 
-  NewLogQueryParams,
-  UpdateLogQueryParams, 
-  updateLogQuerySchema,
-  insertLogQuerySchema, 
+
+import { db } from "../db/index";
+import {
+  insertLogQuerySchema,
   logQueries,
-  logQueryIdSchema 
-} from "@/lib/db/schema/logQueries";
+  LogQueryId,
+  logQueryIdSchema,
+  NewLogQueryParams,
+  UpdateLogQueryParams,
+  updateLogQuerySchema,
+} from "../db/schema/logQueries";
 
 export const createLogQuery = async (logQuery: NewLogQueryParams) => {
   const newLogQuery = insertLogQuerySchema.parse(logQuery);
   try {
-    const [l] =  await db.insert(logQueries).values(newLogQuery).returning();
+    const [l] = await db.insert(logQueries).values(newLogQuery).returning();
     return { logQuery: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +23,18 @@ export const createLogQuery = async (logQuery: NewLogQueryParams) => {
   }
 };
 
-export const updateLogQuery = async (id: LogQueryId, logQuery: UpdateLogQueryParams) => {
+export const updateLogQuery = async (
+  id: LogQueryId,
+  logQuery: UpdateLogQueryParams,
+) => {
   const { id: logQueryId } = logQueryIdSchema.parse({ id });
   const newLogQuery = updateLogQuerySchema.parse(logQuery);
   try {
-    const [l] =  await db
-     .update(logQueries)
-     .set(newLogQuery)
-     .where(eq(logQueries.id, logQueryId!))
-     .returning();
+    const [l] = await db
+      .update(logQueries)
+      .set(newLogQuery)
+      .where(eq(logQueries.id, logQueryId!))
+      .returning();
     return { logQuery: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +46,10 @@ export const updateLogQuery = async (id: LogQueryId, logQuery: UpdateLogQueryPar
 export const deleteLogQuery = async (id: LogQueryId) => {
   const { id: logQueryId } = logQueryIdSchema.parse({ id });
   try {
-    const [l] =  await db.delete(logQueries).where(eq(logQueries.id, logQueryId!))
-    .returning();
+    const [l] = await db
+      .delete(logQueries)
+      .where(eq(logQueries.id, logQueryId!))
+      .returning();
     return { logQuery: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +57,3 @@ export const deleteLogQuery = async (id: LogQueryId) => {
     throw { error: message };
   }
 };
-

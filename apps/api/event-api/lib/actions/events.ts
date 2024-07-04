@@ -1,19 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import {
-  createEvent,
-  deleteEvent,
-  updateEvent,
-} from "@/lib/api/events/mutations";
+
+import { createEvent, deleteEvent, updateEvent } from "../api/events/mutations";
 import {
   EventId,
-  NewEventParams,
-  UpdateEventParams,
   eventIdSchema,
   insertEventParams,
+  NewEventParams,
+  UpdateEventParams,
   updateEventParams,
-} from "@/lib/db/schema/events";
+} from "../db/schema/events";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

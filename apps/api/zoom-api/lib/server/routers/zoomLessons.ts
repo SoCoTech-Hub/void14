@@ -1,19 +1,25 @@
-import { getZoomLessonById, getZoomLessons } from "@/lib/api/zoomLessons/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  zoomLessonIdSchema,
+  createZoomLesson,
+  deleteZoomLesson,
+  updateZoomLesson,
+} from "../api/zoomLessons/mutations";
+import { getZoomLessonById, getZoomLessons } from "../api/zoomLessons/queries";
+import {
   insertZoomLessonParams,
   updateZoomLessonParams,
-} from "@/lib/db/schema/zoomLessons";
-import { createZoomLesson, deleteZoomLesson, updateZoomLesson } from "@/lib/api/zoomLessons/mutations";
+  zoomLessonIdSchema,
+} from "../db/schema/zoomLessons";
+import { publicProcedure, router } from "../server/trpc";
 
 export const zoomLessonsRouter = router({
   getZoomLessons: publicProcedure.query(async () => {
     return getZoomLessons();
   }),
-  getZoomLessonById: publicProcedure.input(zoomLessonIdSchema).query(async ({ input }) => {
-    return getZoomLessonById(input.id);
-  }),
+  getZoomLessonById: publicProcedure
+    .input(zoomLessonIdSchema)
+    .query(async ({ input }) => {
+      return getZoomLessonById(input.id);
+    }),
   createZoomLesson: publicProcedure
     .input(insertZoomLessonParams)
     .mutation(async ({ input }) => {

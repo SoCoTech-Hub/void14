@@ -1,19 +1,28 @@
-import { getStatsUserWeeklyById, getStatsUserWeeklies } from "@/lib/api/statsUserWeeklies/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  statsUserWeeklyIdSchema,
+  createStatsUserWeekly,
+  deleteStatsUserWeekly,
+  updateStatsUserWeekly,
+} from "../api/statsUserWeeklies/mutations";
+import {
+  getStatsUserWeeklies,
+  getStatsUserWeeklyById,
+} from "../api/statsUserWeeklies/queries";
+import {
   insertStatsUserWeeklyParams,
+  statsUserWeeklyIdSchema,
   updateStatsUserWeeklyParams,
-} from "@/lib/db/schema/statsUserWeeklies";
-import { createStatsUserWeekly, deleteStatsUserWeekly, updateStatsUserWeekly } from "@/lib/api/statsUserWeeklies/mutations";
+} from "../db/schema/statsUserWeeklies";
+import { publicProcedure, router } from "../server/trpc";
 
 export const statsUserWeekliesRouter = router({
   getStatsUserWeeklies: publicProcedure.query(async () => {
     return getStatsUserWeeklies();
   }),
-  getStatsUserWeeklyById: publicProcedure.input(statsUserWeeklyIdSchema).query(async ({ input }) => {
-    return getStatsUserWeeklyById(input.id);
-  }),
+  getStatsUserWeeklyById: publicProcedure
+    .input(statsUserWeeklyIdSchema)
+    .query(async ({ input }) => {
+      return getStatsUserWeeklyById(input.id);
+    }),
   createStatsUserWeekly: publicProcedure
     .input(insertStatsUserWeeklyParams)
     .mutation(async ({ input }) => {

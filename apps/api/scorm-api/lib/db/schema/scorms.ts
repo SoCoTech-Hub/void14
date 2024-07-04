@@ -1,4 +1,3 @@
-import { type getScorms } from "@/lib/api/scorms/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -13,6 +12,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getScorms } from "../api/scorms/queries";
 
 export const scorms = pgTable("scorms", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

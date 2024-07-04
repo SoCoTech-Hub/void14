@@ -1,21 +1,26 @@
-import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
-import { 
-  BadgeId, 
-  NewBadgeParams,
-  UpdateBadgeParams, 
-  updateBadgeSchema,
-  insertBadgeSchema, 
-  badges,
-  badgeIdSchema 
-} from "@/lib/db/schema/badges";
+
 import { getUserAuth } from "@soco/auth/utils";
+
+import { db } from "../db/index";
+import {
+  BadgeId,
+  badgeIdSchema,
+  badges,
+  insertBadgeSchema,
+  NewBadgeParams,
+  UpdateBadgeParams,
+  updateBadgeSchema,
+} from "../db/schema/badges";
 
 export const createBadge = async (badge: NewBadgeParams) => {
   const { session } = await getUserAuth();
-  const newBadge = insertBadgeSchema.parse({ ...badge, userId: session?.user.id! });
+  const newBadge = insertBadgeSchema.parse({
+    ...badge,
+    userId: session?.user.id!,
+  });
   try {
-    const [b] =  await db.insert(badges).values(newBadge).returning();
+    const [b] = await db.insert(badges).values(newBadge).returning();
     return { badge: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -27,13 +32,16 @@ export const createBadge = async (badge: NewBadgeParams) => {
 export const updateBadge = async (id: BadgeId, badge: UpdateBadgeParams) => {
   const { session } = await getUserAuth();
   const { id: badgeId } = badgeIdSchema.parse({ id });
-  const newBadge = updateBadgeSchema.parse({ ...badge, userId: session?.user.id! });
+  const newBadge = updateBadgeSchema.parse({
+    ...badge,
+    userId: session?.user.id!,
+  });
   try {
-    const [b] =  await db
-     .update(badges)
-     .set({...newBadge, updatedAt: new Date() })
-     .where(and(eq(badges.id, badgeId!), eq(badges.userId, session?.user.id!)))
-     .returning();
+    const [b] = await db
+      .update(badges)
+      .set({ ...newBadge, updatedAt: new Date() })
+      .where(and(eq(badges.id, badgeId!), eq(badges.userId, session?.user.id!)))
+      .returning();
     return { badge: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +54,10 @@ export const deleteBadge = async (id: BadgeId) => {
   const { session } = await getUserAuth();
   const { id: badgeId } = badgeIdSchema.parse({ id });
   try {
-    const [b] =  await db.delete(badges).where(and(eq(badges.id, badgeId!), eq(badges.userId, session?.user.id!)))
-    .returning();
+    const [b] = await db
+      .delete(badges)
+      .where(and(eq(badges.id, badgeId!), eq(badges.userId, session?.user.id!)))
+      .returning();
     return { badge: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +65,3 @@ export const deleteBadge = async (id: BadgeId) => {
     throw { error: message };
   }
 };
-

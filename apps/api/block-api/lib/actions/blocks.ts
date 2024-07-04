@@ -1,19 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import {
-  createBlock,
-  deleteBlock,
-  updateBlock,
-} from "@/lib/api/blocks/mutations";
+
+import { createBlock, deleteBlock, updateBlock } from "../api/blocks/mutations";
 import {
   BlockId,
-  NewBlockParams,
-  UpdateBlockParams,
   blockIdSchema,
   insertBlockParams,
+  NewBlockParams,
+  UpdateBlockParams,
   updateBlockParams,
-} from "@/lib/db/schema/blocks";
+} from "../db/schema/blocks";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

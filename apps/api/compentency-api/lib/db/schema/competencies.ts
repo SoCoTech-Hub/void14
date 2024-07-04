@@ -1,4 +1,3 @@
-import { type getCompetencies } from "@/lib/api/competencies/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -13,6 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getCompetencies } from "../api/competencies/queries";
 import { competencyFrameworks } from "./competencyFrameworks";
 
 export const competencies = pgTable(

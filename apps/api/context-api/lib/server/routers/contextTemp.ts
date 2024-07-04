@@ -1,19 +1,25 @@
-import { getContextTempById, getContextTemp } from "@/lib/api/contextTemp/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createContextTemp,
+  deleteContextTemp,
+  updateContextTemp,
+} from "../api/contextTemp/mutations";
+import { getContextTemp, getContextTempById } from "../api/contextTemp/queries";
 import {
   contextTempIdSchema,
   insertContextTempParams,
   updateContextTempParams,
-} from "@/lib/db/schema/contextTemp";
-import { createContextTemp, deleteContextTemp, updateContextTemp } from "@/lib/api/contextTemp/mutations";
+} from "../db/schema/contextTemp";
+import { publicProcedure, router } from "../server/trpc";
 
 export const contextTempRouter = router({
   getContextTemp: publicProcedure.query(async () => {
     return getContextTemp();
   }),
-  getContextTempById: publicProcedure.input(contextTempIdSchema).query(async ({ input }) => {
-    return getContextTempById(input.id);
-  }),
+  getContextTempById: publicProcedure
+    .input(contextTempIdSchema)
+    .query(async ({ input }) => {
+      return getContextTempById(input.id);
+    }),
   createContextTemp: publicProcedure
     .input(insertContextTempParams)
     .mutation(async ({ input }) => {

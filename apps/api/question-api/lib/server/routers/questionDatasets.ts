@@ -1,19 +1,28 @@
-import { getQuestionDatasetById, getQuestionDatasets } from "@/lib/api/questionDatasets/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  questionDatasetIdSchema,
+  createQuestionDataset,
+  deleteQuestionDataset,
+  updateQuestionDataset,
+} from "../api/questionDatasets/mutations";
+import {
+  getQuestionDatasetById,
+  getQuestionDatasets,
+} from "../api/questionDatasets/queries";
+import {
   insertQuestionDatasetParams,
+  questionDatasetIdSchema,
   updateQuestionDatasetParams,
-} from "@/lib/db/schema/questionDatasets";
-import { createQuestionDataset, deleteQuestionDataset, updateQuestionDataset } from "@/lib/api/questionDatasets/mutations";
+} from "../db/schema/questionDatasets";
+import { publicProcedure, router } from "../server/trpc";
 
 export const questionDatasetsRouter = router({
   getQuestionDatasets: publicProcedure.query(async () => {
     return getQuestionDatasets();
   }),
-  getQuestionDatasetById: publicProcedure.input(questionDatasetIdSchema).query(async ({ input }) => {
-    return getQuestionDatasetById(input.id);
-  }),
+  getQuestionDatasetById: publicProcedure
+    .input(questionDatasetIdSchema)
+    .query(async ({ input }) => {
+      return getQuestionDatasetById(input.id);
+    }),
   createQuestionDataset: publicProcedure
     .input(insertQuestionDatasetParams)
     .mutation(async ({ input }) => {

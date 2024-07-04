@@ -1,9 +1,10 @@
-import { type getUserInfoCategories } from "@/lib/api/userInfoCategories/queries";
 import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getUserInfoCategories } from "../api/userInfoCategories/queries";
 
 export const userInfoCategories = pgTable("user_info_categories", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

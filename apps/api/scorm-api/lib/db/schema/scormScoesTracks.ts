@@ -1,4 +1,3 @@
-import { type getScormScoesTracks } from "@/lib/api/scormScoesTracks/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -12,6 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getScormScoesTracks } from "../api/scormScoesTracks/queries";
 import { scorms } from "./scorms";
 import { scormScoes } from "./scormScoes";
 

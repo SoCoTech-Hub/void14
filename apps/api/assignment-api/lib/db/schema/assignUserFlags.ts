@@ -1,4 +1,3 @@
-import { type getAssignUserFlags } from "@/lib/api/assignUserFlags/queries";
 import {
   boolean,
   pgTable,
@@ -11,6 +10,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getAssignUserFlags } from "../api/assignUserFlags/queries";
 import { assignments } from "./assignments";
 
 export const assignUserFlags = pgTable(

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createForumQueue,
   deleteForumQueue,
   updateForumQueue,
-} from "@/lib/api/forumQueues/mutations";
+} from "../api/forumQueues/mutations";
 import {
   ForumQueueId,
-  NewForumQueueParams,
-  UpdateForumQueueParams,
   forumQueueIdSchema,
   insertForumQueueParams,
+  NewForumQueueParams,
+  UpdateForumQueueParams,
   updateForumQueueParams,
-} from "@/lib/db/schema/forumQueues";
+} from "../db/schema/forumQueues";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

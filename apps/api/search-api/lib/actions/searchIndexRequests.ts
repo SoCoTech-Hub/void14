@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createSearchIndexRequest,
   deleteSearchIndexRequest,
   updateSearchIndexRequest,
-} from "@/lib/api/searchIndexRequests/mutations";
+} from "../api/searchIndexRequests/mutations";
 import {
-  SearchIndexRequestId,
-  NewSearchIndexRequestParams,
-  UpdateSearchIndexRequestParams,
-  searchIndexRequestIdSchema,
   insertSearchIndexRequestParams,
+  NewSearchIndexRequestParams,
+  SearchIndexRequestId,
+  searchIndexRequestIdSchema,
+  UpdateSearchIndexRequestParams,
   updateSearchIndexRequestParams,
-} from "@/lib/db/schema/searchIndexRequests";
+} from "../db/schema/searchIndexRequests";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateSearchIndexRequests = () => revalidatePath("/search-index-requests");
+const revalidateSearchIndexRequests = () =>
+  revalidatePath("/search-index-requests");
 
-export const createSearchIndexRequestAction = async (input: NewSearchIndexRequestParams) => {
+export const createSearchIndexRequestAction = async (
+  input: NewSearchIndexRequestParams,
+) => {
   try {
     const payload = insertSearchIndexRequestParams.parse(input);
     await createSearchIndexRequest(payload);
@@ -37,7 +41,9 @@ export const createSearchIndexRequestAction = async (input: NewSearchIndexReques
   }
 };
 
-export const updateSearchIndexRequestAction = async (input: UpdateSearchIndexRequestParams) => {
+export const updateSearchIndexRequestAction = async (
+  input: UpdateSearchIndexRequestParams,
+) => {
   try {
     const payload = updateSearchIndexRequestParams.parse(input);
     await updateSearchIndexRequest(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateSearchIndexRequestAction = async (input: UpdateSearchIndexReq
   }
 };
 
-export const deleteSearchIndexRequestAction = async (input: SearchIndexRequestId) => {
+export const deleteSearchIndexRequestAction = async (
+  input: SearchIndexRequestId,
+) => {
   try {
     const payload = searchIndexRequestIdSchema.parse({ id: input });
     await deleteSearchIndexRequest(payload.id);

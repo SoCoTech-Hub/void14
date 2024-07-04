@@ -1,9 +1,10 @@
-import { type getMnetRemoteRpcs } from "@/lib/api/mnetRemoteRpc/queries";
 import { boolean, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getMnetRemoteRpcs } from "../api/mnetRemoteRpc/queries";
 
 export const mnetRemoteRpc = pgTable(
   "mnet_remote_rpc",

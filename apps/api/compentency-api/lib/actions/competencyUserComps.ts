@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCompetencyUserComp,
   deleteCompetencyUserComp,
   updateCompetencyUserComp,
-} from "@/lib/api/competencyUserComps/mutations";
+} from "../api/competencyUserComps/mutations";
 import {
   CompetencyUserCompId,
-  NewCompetencyUserCompParams,
-  UpdateCompetencyUserCompParams,
   competencyUserCompIdSchema,
   insertCompetencyUserCompParams,
+  NewCompetencyUserCompParams,
+  UpdateCompetencyUserCompParams,
   updateCompetencyUserCompParams,
-} from "@/lib/db/schema/competencyUserComps";
+} from "../db/schema/competencyUserComps";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateCompetencyUserComps = () => revalidatePath("/competency-user-comps");
+const revalidateCompetencyUserComps = () =>
+  revalidatePath("/competency-user-comps");
 
-export const createCompetencyUserCompAction = async (input: NewCompetencyUserCompParams) => {
+export const createCompetencyUserCompAction = async (
+  input: NewCompetencyUserCompParams,
+) => {
   try {
     const payload = insertCompetencyUserCompParams.parse(input);
     await createCompetencyUserComp(payload);
@@ -37,7 +41,9 @@ export const createCompetencyUserCompAction = async (input: NewCompetencyUserCom
   }
 };
 
-export const updateCompetencyUserCompAction = async (input: UpdateCompetencyUserCompParams) => {
+export const updateCompetencyUserCompAction = async (
+  input: UpdateCompetencyUserCompParams,
+) => {
   try {
     const payload = updateCompetencyUserCompParams.parse(input);
     await updateCompetencyUserComp(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateCompetencyUserCompAction = async (input: UpdateCompetencyUser
   }
 };
 
-export const deleteCompetencyUserCompAction = async (input: CompetencyUserCompId) => {
+export const deleteCompetencyUserCompAction = async (
+  input: CompetencyUserCompId,
+) => {
   try {
     const payload = competencyUserCompIdSchema.parse({ id: input });
     await deleteCompetencyUserComp(payload.id);

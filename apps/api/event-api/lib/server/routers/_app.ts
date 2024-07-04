@@ -1,11 +1,11 @@
+import { router } from "../server/trpc";
 import { computersRouter } from "./computers";
-import { router } from "@/lib/server/trpc";
-import { eventsRouter } from "./events";
 import { eventResponsesRouter } from "./eventResponses";
-import { eventSubscriptionsRouter } from "./eventSubscriptions";
+import { eventsRouter } from "./events";
 import { eventsHandlersRouter } from "./eventsHandlers";
-import { eventsQueuesRouter } from "./eventsQueues";
 import { eventsQueueHandlersRouter } from "./eventsQueueHandlers";
+import { eventsQueuesRouter } from "./eventsQueues";
+import { eventSubscriptionsRouter } from "./eventSubscriptions";
 
 export const appRouter = router({
   computers: computersRouter,

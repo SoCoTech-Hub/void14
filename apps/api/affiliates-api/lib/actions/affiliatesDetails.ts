@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAffiliatesDetail,
   deleteAffiliatesDetail,
   updateAffiliatesDetail,
-} from "@/lib/api/affiliatesDetails/mutations";
+} from "../api/affiliatesDetails/mutations";
 import {
   AffiliatesDetailId,
-  NewAffiliatesDetailParams,
-  UpdateAffiliatesDetailParams,
   affiliatesDetailIdSchema,
   insertAffiliatesDetailParams,
+  NewAffiliatesDetailParams,
+  UpdateAffiliatesDetailParams,
   updateAffiliatesDetailParams,
-} from "@/lib/db/schema/affiliatesDetails";
+} from "../db/schema/affiliatesDetails";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateAffiliatesDetails = () => revalidatePath("/affiliates-details");
 
-export const createAffiliatesDetailAction = async (input: NewAffiliatesDetailParams) => {
+export const createAffiliatesDetailAction = async (
+  input: NewAffiliatesDetailParams,
+) => {
   try {
     const payload = insertAffiliatesDetailParams.parse(input);
     await createAffiliatesDetail(payload);
@@ -37,7 +40,9 @@ export const createAffiliatesDetailAction = async (input: NewAffiliatesDetailPar
   }
 };
 
-export const updateAffiliatesDetailAction = async (input: UpdateAffiliatesDetailParams) => {
+export const updateAffiliatesDetailAction = async (
+  input: UpdateAffiliatesDetailParams,
+) => {
   try {
     const payload = updateAffiliatesDetailParams.parse(input);
     await updateAffiliatesDetail(payload.id, payload);
@@ -47,7 +52,9 @@ export const updateAffiliatesDetailAction = async (input: UpdateAffiliatesDetail
   }
 };
 
-export const deleteAffiliatesDetailAction = async (input: AffiliatesDetailId) => {
+export const deleteAffiliatesDetailAction = async (
+  input: AffiliatesDetailId,
+) => {
   try {
     const payload = affiliatesDetailIdSchema.parse({ id: input });
     await deleteAffiliatesDetail(payload.id);

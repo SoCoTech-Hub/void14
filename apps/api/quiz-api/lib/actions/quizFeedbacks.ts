@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuizFeedback,
   deleteQuizFeedback,
   updateQuizFeedback,
-} from "@/lib/api/quizFeedbacks/mutations";
+} from "../api/quizFeedbacks/mutations";
 import {
-  QuizFeedbackId,
-  NewQuizFeedbackParams,
-  UpdateQuizFeedbackParams,
-  quizFeedbackIdSchema,
   insertQuizFeedbackParams,
+  NewQuizFeedbackParams,
+  QuizFeedbackId,
+  quizFeedbackIdSchema,
+  UpdateQuizFeedbackParams,
   updateQuizFeedbackParams,
-} from "@/lib/db/schema/quizFeedbacks";
+} from "../db/schema/quizFeedbacks";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateQuizFeedbacks = () => revalidatePath("/quiz-feedbacks");
 
-export const createQuizFeedbackAction = async (input: NewQuizFeedbackParams) => {
+export const createQuizFeedbackAction = async (
+  input: NewQuizFeedbackParams,
+) => {
   try {
     const payload = insertQuizFeedbackParams.parse(input);
     await createQuizFeedback(payload);
@@ -37,7 +40,9 @@ export const createQuizFeedbackAction = async (input: NewQuizFeedbackParams) => 
   }
 };
 
-export const updateQuizFeedbackAction = async (input: UpdateQuizFeedbackParams) => {
+export const updateQuizFeedbackAction = async (
+  input: UpdateQuizFeedbackParams,
+) => {
   try {
     const payload = updateQuizFeedbackParams.parse(input);
     await updateQuizFeedback(payload.id, payload);

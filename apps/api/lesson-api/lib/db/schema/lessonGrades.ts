@@ -1,4 +1,3 @@
-import { type getLessonGrades } from "@/lib/api/lessonGrades/queries";
 import {
   boolean,
   pgTable,
@@ -11,6 +10,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getLessonGrades } from "../api/lessonGrades/queries";
 import { lessons } from "./lessons";
 
 export const lessonGrades = pgTable("lesson_grades", {

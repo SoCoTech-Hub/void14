@@ -1,19 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
+import { createPost, deletePost, updatePost } from "../api/posts/mutations";
 import {
-  createPost,
-  deletePost,
-  updatePost,
-} from "@/lib/api/posts/mutations";
-import {
-  PostId,
-  NewPostParams,
-  UpdatePostParams,
-  postIdSchema,
   insertPostParams,
+  NewPostParams,
+  PostId,
+  postIdSchema,
+  UpdatePostParams,
   updatePostParams,
-} from "@/lib/db/schema/posts";
+} from "../db/schema/posts";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

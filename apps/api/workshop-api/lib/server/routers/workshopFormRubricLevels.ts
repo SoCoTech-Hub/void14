@@ -1,19 +1,28 @@
-import { getWorkshopFormRubricLevelById, getWorkshopFormRubricLevels } from "@/lib/api/workshopFormRubricLevels/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  workshopFormRubricLevelIdSchema,
+  createWorkshopFormRubricLevel,
+  deleteWorkshopFormRubricLevel,
+  updateWorkshopFormRubricLevel,
+} from "../api/workshopFormRubricLevels/mutations";
+import {
+  getWorkshopFormRubricLevelById,
+  getWorkshopFormRubricLevels,
+} from "../api/workshopFormRubricLevels/queries";
+import {
   insertWorkshopFormRubricLevelParams,
   updateWorkshopFormRubricLevelParams,
-} from "@/lib/db/schema/workshopFormRubricLevels";
-import { createWorkshopFormRubricLevel, deleteWorkshopFormRubricLevel, updateWorkshopFormRubricLevel } from "@/lib/api/workshopFormRubricLevels/mutations";
+  workshopFormRubricLevelIdSchema,
+} from "../db/schema/workshopFormRubricLevels";
+import { publicProcedure, router } from "../server/trpc";
 
 export const workshopFormRubricLevelsRouter = router({
   getWorkshopFormRubricLevels: publicProcedure.query(async () => {
     return getWorkshopFormRubricLevels();
   }),
-  getWorkshopFormRubricLevelById: publicProcedure.input(workshopFormRubricLevelIdSchema).query(async ({ input }) => {
-    return getWorkshopFormRubricLevelById(input.id);
-  }),
+  getWorkshopFormRubricLevelById: publicProcedure
+    .input(workshopFormRubricLevelIdSchema)
+    .query(async ({ input }) => {
+      return getWorkshopFormRubricLevelById(input.id);
+    }),
   createWorkshopFormRubricLevel: publicProcedure
     .input(insertWorkshopFormRubricLevelParams)
     .mutation(async ({ input }) => {

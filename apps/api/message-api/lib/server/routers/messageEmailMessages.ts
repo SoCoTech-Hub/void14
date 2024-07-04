@@ -1,19 +1,28 @@
-import { getMessageEmailMessageById, getMessageEmailMessages } from "@/lib/api/messageEmailMessages/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  messageEmailMessageIdSchema,
+  createMessageEmailMessage,
+  deleteMessageEmailMessage,
+  updateMessageEmailMessage,
+} from "../api/messageEmailMessages/mutations";
+import {
+  getMessageEmailMessageById,
+  getMessageEmailMessages,
+} from "../api/messageEmailMessages/queries";
+import {
   insertMessageEmailMessageParams,
+  messageEmailMessageIdSchema,
   updateMessageEmailMessageParams,
-} from "@/lib/db/schema/messageEmailMessages";
-import { createMessageEmailMessage, deleteMessageEmailMessage, updateMessageEmailMessage } from "@/lib/api/messageEmailMessages/mutations";
+} from "../db/schema/messageEmailMessages";
+import { publicProcedure, router } from "../server/trpc";
 
 export const messageEmailMessagesRouter = router({
   getMessageEmailMessages: publicProcedure.query(async () => {
     return getMessageEmailMessages();
   }),
-  getMessageEmailMessageById: publicProcedure.input(messageEmailMessageIdSchema).query(async ({ input }) => {
-    return getMessageEmailMessageById(input.id);
-  }),
+  getMessageEmailMessageById: publicProcedure
+    .input(messageEmailMessageIdSchema)
+    .query(async ({ input }) => {
+      return getMessageEmailMessageById(input.id);
+    }),
   createMessageEmailMessage: publicProcedure
     .input(insertMessageEmailMessageParams)
     .mutation(async ({ input }) => {

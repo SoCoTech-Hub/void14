@@ -1,4 +1,3 @@
-import { type getAssignOverrides } from "@/lib/api/assignOverrides/queries";
 import {
   integer,
   pgTable,
@@ -11,6 +10,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getAssignOverrides } from "../api/assignOverrides/queries";
 import { assigns } from "./assigns";
 
 export const assignOverrides = pgTable(

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createLtiTypesConfig,
   deleteLtiTypesConfig,
   updateLtiTypesConfig,
-} from "@/lib/api/ltiTypesConfigs/mutations";
+} from "../api/ltiTypesConfigs/mutations";
 import {
+  insertLtiTypesConfigParams,
   LtiTypesConfigId,
+  ltiTypesConfigIdSchema,
   NewLtiTypesConfigParams,
   UpdateLtiTypesConfigParams,
-  ltiTypesConfigIdSchema,
-  insertLtiTypesConfigParams,
   updateLtiTypesConfigParams,
-} from "@/lib/db/schema/ltiTypesConfigs";
+} from "../db/schema/ltiTypesConfigs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateLtiTypesConfigs = () => revalidatePath("/lti-types-configs");
 
-export const createLtiTypesConfigAction = async (input: NewLtiTypesConfigParams) => {
+export const createLtiTypesConfigAction = async (
+  input: NewLtiTypesConfigParams,
+) => {
   try {
     const payload = insertLtiTypesConfigParams.parse(input);
     await createLtiTypesConfig(payload);
@@ -37,7 +40,9 @@ export const createLtiTypesConfigAction = async (input: NewLtiTypesConfigParams)
   }
 };
 
-export const updateLtiTypesConfigAction = async (input: UpdateLtiTypesConfigParams) => {
+export const updateLtiTypesConfigAction = async (
+  input: UpdateLtiTypesConfigParams,
+) => {
   try {
     const payload = updateLtiTypesConfigParams.parse(input);
     await updateLtiTypesConfig(payload.id, payload);

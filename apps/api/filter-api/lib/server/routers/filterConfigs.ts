@@ -1,19 +1,28 @@
-import { getFilterConfigById, getFilterConfigs } from "@/lib/api/filterConfigs/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createFilterConfig,
+  deleteFilterConfig,
+  updateFilterConfig,
+} from "../api/filterConfigs/mutations";
+import {
+  getFilterConfigById,
+  getFilterConfigs,
+} from "../api/filterConfigs/queries";
 import {
   filterConfigIdSchema,
   insertFilterConfigParams,
   updateFilterConfigParams,
-} from "@/lib/db/schema/filterConfigs";
-import { createFilterConfig, deleteFilterConfig, updateFilterConfig } from "@/lib/api/filterConfigs/mutations";
+} from "../db/schema/filterConfigs";
+import { publicProcedure, router } from "../server/trpc";
 
 export const filterConfigsRouter = router({
   getFilterConfigs: publicProcedure.query(async () => {
     return getFilterConfigs();
   }),
-  getFilterConfigById: publicProcedure.input(filterConfigIdSchema).query(async ({ input }) => {
-    return getFilterConfigById(input.id);
-  }),
+  getFilterConfigById: publicProcedure
+    .input(filterConfigIdSchema)
+    .query(async ({ input }) => {
+      return getFilterConfigById(input.id);
+    }),
   createFilterConfig: publicProcedure
     .input(insertFilterConfigParams)
     .mutation(async ({ input }) => {

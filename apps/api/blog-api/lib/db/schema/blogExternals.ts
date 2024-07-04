@@ -1,4 +1,3 @@
-import { type getBlogExternals } from "@/lib/api/blogExternals/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getBlogExternals } from "../api/blogExternals/queries";
 
 export const blogExternals = pgTable("blog_externals", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

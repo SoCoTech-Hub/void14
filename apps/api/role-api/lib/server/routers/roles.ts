@@ -1,11 +1,11 @@
-import { getRoleById, getRoles } from "@/lib/api/roles/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import { createRole, deleteRole, updateRole } from "../api/roles/mutations";
+import { getRoleById, getRoles } from "../api/roles/queries";
 import {
-  roleIdSchema,
   insertRoleParams,
+  roleIdSchema,
   updateRoleParams,
-} from "@/lib/db/schema/roles";
-import { createRole, deleteRole, updateRole } from "@/lib/api/roles/mutations";
+} from "../db/schema/roles";
+import { publicProcedure, router } from "../server/trpc";
 
 export const rolesRouter = router({
   getRoles: publicProcedure.query(async () => {

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAssignSubmission,
   deleteAssignSubmission,
   updateAssignSubmission,
-} from "@/lib/api/assignSubmissions/mutations";
+} from "../api/assignSubmissions/mutations";
 import {
   AssignSubmissionId,
-  NewAssignSubmissionParams,
-  UpdateAssignSubmissionParams,
   assignSubmissionIdSchema,
   insertAssignSubmissionParams,
+  NewAssignSubmissionParams,
+  UpdateAssignSubmissionParams,
   updateAssignSubmissionParams,
-} from "@/lib/db/schema/assignSubmissions";
+} from "../db/schema/assignSubmissions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateAssignSubmissions = () => revalidatePath("/assign-submissions");
 
-export const createAssignSubmissionAction = async (input: NewAssignSubmissionParams) => {
+export const createAssignSubmissionAction = async (
+  input: NewAssignSubmissionParams,
+) => {
   try {
     const payload = insertAssignSubmissionParams.parse(input);
     await createAssignSubmission(payload);
@@ -37,7 +40,9 @@ export const createAssignSubmissionAction = async (input: NewAssignSubmissionPar
   }
 };
 
-export const updateAssignSubmissionAction = async (input: UpdateAssignSubmissionParams) => {
+export const updateAssignSubmissionAction = async (
+  input: UpdateAssignSubmissionParams,
+) => {
   try {
     const payload = updateAssignSubmissionParams.parse(input);
     await updateAssignSubmission(payload.id, payload);
@@ -47,7 +52,9 @@ export const updateAssignSubmissionAction = async (input: UpdateAssignSubmission
   }
 };
 
-export const deleteAssignSubmissionAction = async (input: AssignSubmissionId) => {
+export const deleteAssignSubmissionAction = async (
+  input: AssignSubmissionId,
+) => {
   try {
     const payload = assignSubmissionIdSchema.parse({ id: input });
     await deleteAssignSubmission(payload.id);

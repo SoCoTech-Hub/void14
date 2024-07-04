@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBursary,
   deleteBursary,
   updateBursary,
-} from "@/lib/api/bursaries/mutations";
+} from "../api/bursaries/mutations";
 import {
   BursaryId,
-  NewBursaryParams,
-  UpdateBursaryParams,
   bursaryIdSchema,
   insertBursaryParams,
+  NewBursaryParams,
+  UpdateBursaryParams,
   updateBursaryParams,
-} from "@/lib/db/schema/bursaries";
+} from "../db/schema/bursaries";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

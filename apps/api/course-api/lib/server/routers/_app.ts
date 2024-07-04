@@ -1,7 +1,7 @@
+import { router } from "../server/trpc";
 import { computersRouter } from "./computers";
-import { router } from "@/lib/server/trpc";
 import { courseCategoriesRouter } from "./courseCategories";
-import { coursesRouter } from "./courses";
+import { courseCompletionAggrMethdsRouter } from "./courseCompletionAggrMethds";
 import { courseCompletionCritComplsRouter } from "./courseCompletionCritCompls";
 import { courseCompletionCriteriasRouter } from "./courseCompletionCriterias";
 import { courseCompletionDefaultsRouter } from "./courseCompletionDefaults";
@@ -11,8 +11,8 @@ import { courseModulesRouter } from "./courseModules";
 import { courseModulesCompletionsRouter } from "./courseModulesCompletions";
 import { coursePublishesRouter } from "./coursePublishes";
 import { courseRequestsRouter } from "./courseRequests";
+import { coursesRouter } from "./courses";
 import { courseSectionsRouter } from "./courseSections";
-import { courseCompletionAggrMethdsRouter } from "./courseCompletionAggrMethds";
 
 export const appRouter = router({
   computers: computersRouter,

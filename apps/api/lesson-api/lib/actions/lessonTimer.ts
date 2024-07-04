@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createLessonTimer,
   deleteLessonTimer,
   updateLessonTimer,
-} from "@/lib/api/lessonTimer/mutations";
+} from "../api/lessonTimer/mutations";
 import {
+  insertLessonTimerParams,
   LessonTimerId,
+  lessonTimerIdSchema,
   NewLessonTimerParams,
   UpdateLessonTimerParams,
-  lessonTimerIdSchema,
-  insertLessonTimerParams,
   updateLessonTimerParams,
-} from "@/lib/db/schema/lessonTimer";
+} from "../db/schema/lessonTimer";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createLessonTimerAction = async (input: NewLessonTimerParams) => {
   }
 };
 
-export const updateLessonTimerAction = async (input: UpdateLessonTimerParams) => {
+export const updateLessonTimerAction = async (
+  input: UpdateLessonTimerParams,
+) => {
   try {
     const payload = updateLessonTimerParams.parse(input);
     await updateLessonTimer(payload.id, payload);

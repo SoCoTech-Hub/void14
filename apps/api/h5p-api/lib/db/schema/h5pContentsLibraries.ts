@@ -1,9 +1,10 @@
-import { type getH5pContentsLibraries } from "@/lib/api/h5pContentsLibraries/queries";
 import { boolean, integer, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getH5pContentsLibraries } from "../api/h5pContentsLibraries/queries";
 
 export const h5pContentsLibraries = pgTable("h5p_contents_libraries", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

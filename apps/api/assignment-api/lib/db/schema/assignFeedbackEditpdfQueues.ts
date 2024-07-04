@@ -1,9 +1,10 @@
-import { type getAssignFeedbackEditpdfQueues } from "@/lib/api/assignFeedbackEditpdfQueues/queries";
 import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getAssignFeedbackEditpdfQueues } from "../api/assignFeedbackEditpdfQueues/queries";
 
 export const assignFeedbackEditpdfQueues = pgTable(
   "assign_feedback_editpdf_queues",

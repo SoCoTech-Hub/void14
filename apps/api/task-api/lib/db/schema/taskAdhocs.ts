@@ -1,4 +1,3 @@
-import { type getTaskAdhocs } from "@/lib/api/taskAdhocs/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getTaskAdhocs } from "../api/taskAdhocs/queries";
 
 export const taskAdhocs = pgTable("task_adhocs", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

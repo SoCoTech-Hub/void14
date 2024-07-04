@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createTagArea,
   deleteTagArea,
   updateTagArea,
-} from "@/lib/api/tagAreas/mutations";
+} from "../api/tagAreas/mutations";
 import {
-  TagAreaId,
-  NewTagAreaParams,
-  UpdateTagAreaParams,
-  tagAreaIdSchema,
   insertTagAreaParams,
+  NewTagAreaParams,
+  TagAreaId,
+  tagAreaIdSchema,
+  UpdateTagAreaParams,
   updateTagAreaParams,
-} from "@/lib/db/schema/tagAreas";
+} from "../db/schema/tagAreas";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

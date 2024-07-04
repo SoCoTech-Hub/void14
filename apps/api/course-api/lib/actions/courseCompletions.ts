@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCourseCompletion,
   deleteCourseCompletion,
   updateCourseCompletion,
-} from "@/lib/api/courseCompletions/mutations";
+} from "../api/courseCompletions/mutations";
 import {
   CourseCompletionId,
-  NewCourseCompletionParams,
-  UpdateCourseCompletionParams,
   courseCompletionIdSchema,
   insertCourseCompletionParams,
+  NewCourseCompletionParams,
+  UpdateCourseCompletionParams,
   updateCourseCompletionParams,
-} from "@/lib/db/schema/courseCompletions";
+} from "../db/schema/courseCompletions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateCourseCompletions = () => revalidatePath("/course-completions");
 
-export const createCourseCompletionAction = async (input: NewCourseCompletionParams) => {
+export const createCourseCompletionAction = async (
+  input: NewCourseCompletionParams,
+) => {
   try {
     const payload = insertCourseCompletionParams.parse(input);
     await createCourseCompletion(payload);
@@ -37,7 +40,9 @@ export const createCourseCompletionAction = async (input: NewCourseCompletionPar
   }
 };
 
-export const updateCourseCompletionAction = async (input: UpdateCourseCompletionParams) => {
+export const updateCourseCompletionAction = async (
+  input: UpdateCourseCompletionParams,
+) => {
   try {
     const payload = updateCourseCompletionParams.parse(input);
     await updateCourseCompletion(payload.id, payload);
@@ -47,7 +52,9 @@ export const updateCourseCompletionAction = async (input: UpdateCourseCompletion
   }
 };
 
-export const deleteCourseCompletionAction = async (input: CourseCompletionId) => {
+export const deleteCourseCompletionAction = async (
+  input: CourseCompletionId,
+) => {
   try {
     const payload = courseCompletionIdSchema.parse({ id: input });
     await deleteCourseCompletion(payload.id);

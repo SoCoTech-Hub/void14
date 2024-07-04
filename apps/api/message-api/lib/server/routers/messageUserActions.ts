@@ -1,19 +1,28 @@
-import { getMessageUserActionById, getMessageUserActions } from "@/lib/api/messageUserActions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  messageUserActionIdSchema,
+  createMessageUserAction,
+  deleteMessageUserAction,
+  updateMessageUserAction,
+} from "../api/messageUserActions/mutations";
+import {
+  getMessageUserActionById,
+  getMessageUserActions,
+} from "../api/messageUserActions/queries";
+import {
   insertMessageUserActionParams,
+  messageUserActionIdSchema,
   updateMessageUserActionParams,
-} from "@/lib/db/schema/messageUserActions";
-import { createMessageUserAction, deleteMessageUserAction, updateMessageUserAction } from "@/lib/api/messageUserActions/mutations";
+} from "../db/schema/messageUserActions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const messageUserActionsRouter = router({
   getMessageUserActions: publicProcedure.query(async () => {
     return getMessageUserActions();
   }),
-  getMessageUserActionById: publicProcedure.input(messageUserActionIdSchema).query(async ({ input }) => {
-    return getMessageUserActionById(input.id);
-  }),
+  getMessageUserActionById: publicProcedure
+    .input(messageUserActionIdSchema)
+    .query(async ({ input }) => {
+      return getMessageUserActionById(input.id);
+    }),
   createMessageUserAction: publicProcedure
     .input(insertMessageUserActionParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createScormScoesTrack,
   deleteScormScoesTrack,
   updateScormScoesTrack,
-} from "@/lib/api/scormScoesTracks/mutations";
+} from "../api/scormScoesTracks/mutations";
 import {
-  ScormScoesTrackId,
-  NewScormScoesTrackParams,
-  UpdateScormScoesTrackParams,
-  scormScoesTrackIdSchema,
   insertScormScoesTrackParams,
+  NewScormScoesTrackParams,
+  ScormScoesTrackId,
+  scormScoesTrackIdSchema,
+  UpdateScormScoesTrackParams,
   updateScormScoesTrackParams,
-} from "@/lib/db/schema/scormScoesTracks";
+} from "../db/schema/scormScoesTracks";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateScormScoesTracks = () => revalidatePath("/scorm-scoes-tracks");
 
-export const createScormScoesTrackAction = async (input: NewScormScoesTrackParams) => {
+export const createScormScoesTrackAction = async (
+  input: NewScormScoesTrackParams,
+) => {
   try {
     const payload = insertScormScoesTrackParams.parse(input);
     await createScormScoesTrack(payload);
@@ -37,7 +40,9 @@ export const createScormScoesTrackAction = async (input: NewScormScoesTrackParam
   }
 };
 
-export const updateScormScoesTrackAction = async (input: UpdateScormScoesTrackParams) => {
+export const updateScormScoesTrackAction = async (
+  input: UpdateScormScoesTrackParams,
+) => {
   try {
     const payload = updateScormScoesTrackParams.parse(input);
     await updateScormScoesTrack(payload.id, payload);

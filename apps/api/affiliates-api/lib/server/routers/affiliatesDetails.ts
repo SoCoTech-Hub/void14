@@ -1,19 +1,28 @@
-import { getAffiliatesDetailById, getAffiliatesDetails } from "@/lib/api/affiliatesDetails/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createAffiliatesDetail,
+  deleteAffiliatesDetail,
+  updateAffiliatesDetail,
+} from "../api/affiliatesDetails/mutations";
+import {
+  getAffiliatesDetailById,
+  getAffiliatesDetails,
+} from "../api/affiliatesDetails/queries";
 import {
   affiliatesDetailIdSchema,
   insertAffiliatesDetailParams,
   updateAffiliatesDetailParams,
-} from "@/lib/db/schema/affiliatesDetails";
-import { createAffiliatesDetail, deleteAffiliatesDetail, updateAffiliatesDetail } from "@/lib/api/affiliatesDetails/mutations";
+} from "../db/schema/affiliatesDetails";
+import { publicProcedure, router } from "../server/trpc";
 
 export const affiliatesDetailsRouter = router({
   getAffiliatesDetails: publicProcedure.query(async () => {
     return getAffiliatesDetails();
   }),
-  getAffiliatesDetailById: publicProcedure.input(affiliatesDetailIdSchema).query(async ({ input }) => {
-    return getAffiliatesDetailById(input.id);
-  }),
+  getAffiliatesDetailById: publicProcedure
+    .input(affiliatesDetailIdSchema)
+    .query(async ({ input }) => {
+      return getAffiliatesDetailById(input.id);
+    }),
   createAffiliatesDetail: publicProcedure
     .input(insertAffiliatesDetailParams)
     .mutation(async ({ input }) => {

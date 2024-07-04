@@ -1,4 +1,3 @@
-import { type getQuestionAttempts } from "@/lib/api/questionAttempts/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -15,6 +14,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getQuestionAttempts } from "../api/questionAttempts/queries";
 import { questions } from "./questions";
 import { questionUsages } from "./questionUsages";
 

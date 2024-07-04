@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuestionVersion,
   deleteQuestionVersion,
   updateQuestionVersion,
-} from "@/lib/api/questionVersions/mutations";
+} from "../api/questionVersions/mutations";
 import {
-  QuestionVersionId,
-  NewQuestionVersionParams,
-  UpdateQuestionVersionParams,
-  questionVersionIdSchema,
   insertQuestionVersionParams,
+  NewQuestionVersionParams,
+  QuestionVersionId,
+  questionVersionIdSchema,
+  UpdateQuestionVersionParams,
   updateQuestionVersionParams,
-} from "@/lib/db/schema/questionVersions";
+} from "../db/schema/questionVersions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateQuestionVersions = () => revalidatePath("/question-versions");
 
-export const createQuestionVersionAction = async (input: NewQuestionVersionParams) => {
+export const createQuestionVersionAction = async (
+  input: NewQuestionVersionParams,
+) => {
   try {
     const payload = insertQuestionVersionParams.parse(input);
     await createQuestionVersion(payload);
@@ -37,7 +40,9 @@ export const createQuestionVersionAction = async (input: NewQuestionVersionParam
   }
 };
 
-export const updateQuestionVersionAction = async (input: UpdateQuestionVersionParams) => {
+export const updateQuestionVersionAction = async (
+  input: UpdateQuestionVersionParams,
+) => {
   try {
     const payload = updateQuestionVersionParams.parse(input);
     await updateQuestionVersion(payload.id, payload);

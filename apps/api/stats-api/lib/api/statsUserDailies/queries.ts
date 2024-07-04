@@ -1,22 +1,37 @@
-import { db } from "@/lib/db/index";
-import { eq, and } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
+
 import { getUserAuth } from "@soco/auth/utils";
-import { type StatsUserDailyId, statsUserDailyIdSchema, statsUserDailies } from "@/lib/db/schema/statsUserDailies";
+
+import type { StatsUserDailyId } from "../db/schema/statsUserDailies";
+import { db } from "../db/index";
+import {
+  statsUserDailies,
+  statsUserDailyIdSchema,
+} from "../db/schema/statsUserDailies";
 
 export const getStatsUserDailies = async () => {
   const { session } = await getUserAuth();
-  const rows = await db.select().from(statsUserDailies).where(eq(statsUserDailies.userId, session?.user.id!));
-  const s = rows
+  const rows = await db
+    .select()
+    .from(statsUserDailies)
+    .where(eq(statsUserDailies.userId, session?.user.id!));
+  const s = rows;
   return { statsUserDailies: s };
 };
 
 export const getStatsUserDailyById = async (id: StatsUserDailyId) => {
   const { session } = await getUserAuth();
   const { id: statsUserDailyId } = statsUserDailyIdSchema.parse({ id });
-  const [row] = await db.select().from(statsUserDailies).where(and(eq(statsUserDailies.id, statsUserDailyId), eq(statsUserDailies.userId, session?.user.id!)));
+  const [row] = await db
+    .select()
+    .from(statsUserDailies)
+    .where(
+      and(
+        eq(statsUserDailies.id, statsUserDailyId),
+        eq(statsUserDailies.userId, session?.user.id!),
+      ),
+    );
   if (row === undefined) return {};
   const s = row;
   return { statsUserDaily: s };
 };
-
-

@@ -1,19 +1,28 @@
-import { getEnrolLtiToolById, getEnrolLtiTools } from "@/lib/api/enrolLtiTools/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createEnrolLtiTool,
+  deleteEnrolLtiTool,
+  updateEnrolLtiTool,
+} from "../api/enrolLtiTools/mutations";
+import {
+  getEnrolLtiToolById,
+  getEnrolLtiTools,
+} from "../api/enrolLtiTools/queries";
 import {
   enrolLtiToolIdSchema,
   insertEnrolLtiToolParams,
   updateEnrolLtiToolParams,
-} from "@/lib/db/schema/enrolLtiTools";
-import { createEnrolLtiTool, deleteEnrolLtiTool, updateEnrolLtiTool } from "@/lib/api/enrolLtiTools/mutations";
+} from "../db/schema/enrolLtiTools";
+import { publicProcedure, router } from "../server/trpc";
 
 export const enrolLtiToolsRouter = router({
   getEnrolLtiTools: publicProcedure.query(async () => {
     return getEnrolLtiTools();
   }),
-  getEnrolLtiToolById: publicProcedure.input(enrolLtiToolIdSchema).query(async ({ input }) => {
-    return getEnrolLtiToolById(input.id);
-  }),
+  getEnrolLtiToolById: publicProcedure
+    .input(enrolLtiToolIdSchema)
+    .query(async ({ input }) => {
+      return getEnrolLtiToolById(input.id);
+    }),
   createEnrolLtiTool: publicProcedure
     .input(insertEnrolLtiToolParams)
     .mutation(async ({ input }) => {

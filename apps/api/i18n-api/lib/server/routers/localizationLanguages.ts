@@ -1,19 +1,28 @@
-import { getLocalizationLanguageById, getLocalizationLanguages } from "@/lib/api/localizationLanguages/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  localizationLanguageIdSchema,
+  createLocalizationLanguage,
+  deleteLocalizationLanguage,
+  updateLocalizationLanguage,
+} from "../api/localizationLanguages/mutations";
+import {
+  getLocalizationLanguageById,
+  getLocalizationLanguages,
+} from "../api/localizationLanguages/queries";
+import {
   insertLocalizationLanguageParams,
+  localizationLanguageIdSchema,
   updateLocalizationLanguageParams,
-} from "@/lib/db/schema/localizationLanguages";
-import { createLocalizationLanguage, deleteLocalizationLanguage, updateLocalizationLanguage } from "@/lib/api/localizationLanguages/mutations";
+} from "../db/schema/localizationLanguages";
+import { publicProcedure, router } from "../server/trpc";
 
 export const localizationLanguagesRouter = router({
   getLocalizationLanguages: publicProcedure.query(async () => {
     return getLocalizationLanguages();
   }),
-  getLocalizationLanguageById: publicProcedure.input(localizationLanguageIdSchema).query(async ({ input }) => {
-    return getLocalizationLanguageById(input.id);
-  }),
+  getLocalizationLanguageById: publicProcedure
+    .input(localizationLanguageIdSchema)
+    .query(async ({ input }) => {
+      return getLocalizationLanguageById(input.id);
+    }),
   createLocalizationLanguage: publicProcedure
     .input(insertLocalizationLanguageParams)
     .mutation(async ({ input }) => {

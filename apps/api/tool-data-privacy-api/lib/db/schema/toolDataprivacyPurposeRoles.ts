@@ -1,4 +1,3 @@
-import { type getToolDataprivacyPurposeRoles } from "@/lib/api/toolDataprivacyPurposeRoles/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -12,6 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getToolDataprivacyPurposeRoles } from "../api/toolDataprivacyPurposeRoles/queries";
 import { toolDataprivacyPurposes } from "./toolDataprivacyPurposes";
 
 export const toolDataprivacyPurposeRoles = pgTable(

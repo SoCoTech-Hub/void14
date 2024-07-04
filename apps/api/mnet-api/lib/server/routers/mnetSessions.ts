@@ -1,19 +1,28 @@
-import { getMnetSessionById, getMnetSessions } from "@/lib/api/mnetSessions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  mnetSessionIdSchema,
+  createMnetSession,
+  deleteMnetSession,
+  updateMnetSession,
+} from "../api/mnetSessions/mutations";
+import {
+  getMnetSessionById,
+  getMnetSessions,
+} from "../api/mnetSessions/queries";
+import {
   insertMnetSessionParams,
+  mnetSessionIdSchema,
   updateMnetSessionParams,
-} from "@/lib/db/schema/mnetSessions";
-import { createMnetSession, deleteMnetSession, updateMnetSession } from "@/lib/api/mnetSessions/mutations";
+} from "../db/schema/mnetSessions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const mnetSessionsRouter = router({
   getMnetSessions: publicProcedure.query(async () => {
     return getMnetSessions();
   }),
-  getMnetSessionById: publicProcedure.input(mnetSessionIdSchema).query(async ({ input }) => {
-    return getMnetSessionById(input.id);
-  }),
+  getMnetSessionById: publicProcedure
+    .input(mnetSessionIdSchema)
+    .query(async ({ input }) => {
+      return getMnetSessionById(input.id);
+    }),
   createMnetSession: publicProcedure
     .input(insertMnetSessionParams)
     .mutation(async ({ input }) => {

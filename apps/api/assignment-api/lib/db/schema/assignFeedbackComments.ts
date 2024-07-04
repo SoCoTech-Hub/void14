@@ -1,4 +1,3 @@
-import { type getAssignFeedbackComments } from "@/lib/api/assignFeedbackComments/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -13,6 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getAssignFeedbackComments } from "../api/assignFeedbackComments/queries";
 import { assignments } from "./assignments";
 
 export const assignFeedbackComments = pgTable(

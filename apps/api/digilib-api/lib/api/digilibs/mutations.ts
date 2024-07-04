@@ -1,19 +1,20 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  DigilibId, 
-  NewDigilibParams,
-  UpdateDigilibParams, 
-  updateDigilibSchema,
-  insertDigilibSchema, 
+
+import { db } from "../db/index";
+import {
+  DigilibId,
+  digilibIdSchema,
   digilibs,
-  digilibIdSchema 
-} from "@/lib/db/schema/digilibs";
+  insertDigilibSchema,
+  NewDigilibParams,
+  UpdateDigilibParams,
+  updateDigilibSchema,
+} from "../db/schema/digilibs";
 
 export const createDigilib = async (digilib: NewDigilibParams) => {
   const newDigilib = insertDigilibSchema.parse(digilib);
   try {
-    const [d] =  await db.insert(digilibs).values(newDigilib).returning();
+    const [d] = await db.insert(digilibs).values(newDigilib).returning();
     return { digilib: d };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +23,18 @@ export const createDigilib = async (digilib: NewDigilibParams) => {
   }
 };
 
-export const updateDigilib = async (id: DigilibId, digilib: UpdateDigilibParams) => {
+export const updateDigilib = async (
+  id: DigilibId,
+  digilib: UpdateDigilibParams,
+) => {
   const { id: digilibId } = digilibIdSchema.parse({ id });
   const newDigilib = updateDigilibSchema.parse(digilib);
   try {
-    const [d] =  await db
-     .update(digilibs)
-     .set({...newDigilib, updatedAt: new Date() })
-     .where(eq(digilibs.id, digilibId!))
-     .returning();
+    const [d] = await db
+      .update(digilibs)
+      .set({ ...newDigilib, updatedAt: new Date() })
+      .where(eq(digilibs.id, digilibId!))
+      .returning();
     return { digilib: d };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +46,10 @@ export const updateDigilib = async (id: DigilibId, digilib: UpdateDigilibParams)
 export const deleteDigilib = async (id: DigilibId) => {
   const { id: digilibId } = digilibIdSchema.parse({ id });
   try {
-    const [d] =  await db.delete(digilibs).where(eq(digilibs.id, digilibId!))
-    .returning();
+    const [d] = await db
+      .delete(digilibs)
+      .where(eq(digilibs.id, digilibId!))
+      .returning();
     return { digilib: d };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +57,3 @@ export const deleteDigilib = async (id: DigilibId) => {
     throw { error: message };
   }
 };
-

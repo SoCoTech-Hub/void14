@@ -1,19 +1,28 @@
-import { getAssignFeedbackEditpdfCmntById, getAssignFeedbackEditpdfCmnts } from "@/lib/api/assignFeedbackEditpdfCmnts/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createAssignFeedbackEditpdfCmnt,
+  deleteAssignFeedbackEditpdfCmnt,
+  updateAssignFeedbackEditpdfCmnt,
+} from "../api/assignFeedbackEditpdfCmnts/mutations";
+import {
+  getAssignFeedbackEditpdfCmntById,
+  getAssignFeedbackEditpdfCmnts,
+} from "../api/assignFeedbackEditpdfCmnts/queries";
 import {
   assignFeedbackEditpdfCmntIdSchema,
   insertAssignFeedbackEditpdfCmntParams,
   updateAssignFeedbackEditpdfCmntParams,
-} from "@/lib/db/schema/assignFeedbackEditpdfCmnts";
-import { createAssignFeedbackEditpdfCmnt, deleteAssignFeedbackEditpdfCmnt, updateAssignFeedbackEditpdfCmnt } from "@/lib/api/assignFeedbackEditpdfCmnts/mutations";
+} from "../db/schema/assignFeedbackEditpdfCmnts";
+import { publicProcedure, router } from "../server/trpc";
 
 export const assignFeedbackEditpdfCmntsRouter = router({
   getAssignFeedbackEditpdfCmnts: publicProcedure.query(async () => {
     return getAssignFeedbackEditpdfCmnts();
   }),
-  getAssignFeedbackEditpdfCmntById: publicProcedure.input(assignFeedbackEditpdfCmntIdSchema).query(async ({ input }) => {
-    return getAssignFeedbackEditpdfCmntById(input.id);
-  }),
+  getAssignFeedbackEditpdfCmntById: publicProcedure
+    .input(assignFeedbackEditpdfCmntIdSchema)
+    .query(async ({ input }) => {
+      return getAssignFeedbackEditpdfCmntById(input.id);
+    }),
   createAssignFeedbackEditpdfCmnt: publicProcedure
     .input(insertAssignFeedbackEditpdfCmntParams)
     .mutation(async ({ input }) => {

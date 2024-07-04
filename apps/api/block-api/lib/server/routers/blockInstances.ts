@@ -1,19 +1,28 @@
-import { getBlockInstanceById, getBlockInstances } from "@/lib/api/blockInstances/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createBlockInstance,
+  deleteBlockInstance,
+  updateBlockInstance,
+} from "../api/blockInstances/mutations";
+import {
+  getBlockInstanceById,
+  getBlockInstances,
+} from "../api/blockInstances/queries";
 import {
   blockInstanceIdSchema,
   insertBlockInstanceParams,
   updateBlockInstanceParams,
-} from "@/lib/db/schema/blockInstances";
-import { createBlockInstance, deleteBlockInstance, updateBlockInstance } from "@/lib/api/blockInstances/mutations";
+} from "../db/schema/blockInstances";
+import { publicProcedure, router } from "../server/trpc";
 
 export const blockInstancesRouter = router({
   getBlockInstances: publicProcedure.query(async () => {
     return getBlockInstances();
   }),
-  getBlockInstanceById: publicProcedure.input(blockInstanceIdSchema).query(async ({ input }) => {
-    return getBlockInstanceById(input.id);
-  }),
+  getBlockInstanceById: publicProcedure
+    .input(blockInstanceIdSchema)
+    .query(async ({ input }) => {
+      return getBlockInstanceById(input.id);
+    }),
   createBlockInstance: publicProcedure
     .input(insertBlockInstanceParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCourseModule,
   deleteCourseModule,
   updateCourseModule,
-} from "@/lib/api/courseModules/mutations";
+} from "../api/courseModules/mutations";
 import {
   CourseModuleId,
-  NewCourseModuleParams,
-  UpdateCourseModuleParams,
   courseModuleIdSchema,
   insertCourseModuleParams,
+  NewCourseModuleParams,
+  UpdateCourseModuleParams,
   updateCourseModuleParams,
-} from "@/lib/db/schema/courseModules";
+} from "../db/schema/courseModules";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateCourseModules = () => revalidatePath("/course-modules");
 
-export const createCourseModuleAction = async (input: NewCourseModuleParams) => {
+export const createCourseModuleAction = async (
+  input: NewCourseModuleParams,
+) => {
   try {
     const payload = insertCourseModuleParams.parse(input);
     await createCourseModule(payload);
@@ -37,7 +40,9 @@ export const createCourseModuleAction = async (input: NewCourseModuleParams) => 
   }
 };
 
-export const updateCourseModuleAction = async (input: UpdateCourseModuleParams) => {
+export const updateCourseModuleAction = async (
+  input: UpdateCourseModuleParams,
+) => {
   try {
     const payload = updateCourseModuleParams.parse(input);
     await updateCourseModule(payload.id, payload);

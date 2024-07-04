@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createForumGrade,
   deleteForumGrade,
   updateForumGrade,
-} from "@/lib/api/forumGrades/mutations";
+} from "../api/forumGrades/mutations";
 import {
   ForumGradeId,
-  NewForumGradeParams,
-  UpdateForumGradeParams,
   forumGradeIdSchema,
   insertForumGradeParams,
+  NewForumGradeParams,
+  UpdateForumGradeParams,
   updateForumGradeParams,
-} from "@/lib/db/schema/forumGrades";
+} from "../db/schema/forumGrades";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

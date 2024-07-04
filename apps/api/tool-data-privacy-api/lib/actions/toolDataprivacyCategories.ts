@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createToolDataprivacyCategory,
   deleteToolDataprivacyCategory,
   updateToolDataprivacyCategory,
-} from "@/lib/api/toolDataprivacyCategories/mutations";
+} from "../api/toolDataprivacyCategories/mutations";
 import {
-  ToolDataprivacyCategoryId,
-  NewToolDataprivacyCategoryParams,
-  UpdateToolDataprivacyCategoryParams,
-  toolDataprivacyCategoryIdSchema,
   insertToolDataprivacyCategoryParams,
+  NewToolDataprivacyCategoryParams,
+  ToolDataprivacyCategoryId,
+  toolDataprivacyCategoryIdSchema,
+  UpdateToolDataprivacyCategoryParams,
   updateToolDataprivacyCategoryParams,
-} from "@/lib/db/schema/toolDataprivacyCategories";
+} from "../db/schema/toolDataprivacyCategories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateToolDataprivacyCategories = () => revalidatePath("/tool-dataprivacy-categories");
+const revalidateToolDataprivacyCategories = () =>
+  revalidatePath("/tool-dataprivacy-categories");
 
-export const createToolDataprivacyCategoryAction = async (input: NewToolDataprivacyCategoryParams) => {
+export const createToolDataprivacyCategoryAction = async (
+  input: NewToolDataprivacyCategoryParams,
+) => {
   try {
     const payload = insertToolDataprivacyCategoryParams.parse(input);
     await createToolDataprivacyCategory(payload);
@@ -37,7 +41,9 @@ export const createToolDataprivacyCategoryAction = async (input: NewToolDatapriv
   }
 };
 
-export const updateToolDataprivacyCategoryAction = async (input: UpdateToolDataprivacyCategoryParams) => {
+export const updateToolDataprivacyCategoryAction = async (
+  input: UpdateToolDataprivacyCategoryParams,
+) => {
   try {
     const payload = updateToolDataprivacyCategoryParams.parse(input);
     await updateToolDataprivacyCategory(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateToolDataprivacyCategoryAction = async (input: UpdateToolDatap
   }
 };
 
-export const deleteToolDataprivacyCategoryAction = async (input: ToolDataprivacyCategoryId) => {
+export const deleteToolDataprivacyCategoryAction = async (
+  input: ToolDataprivacyCategoryId,
+) => {
   try {
     const payload = toolDataprivacyCategoryIdSchema.parse({ id: input });
     await deleteToolDataprivacyCategory(payload.id);

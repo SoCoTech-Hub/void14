@@ -1,4 +1,3 @@
-import { type getFiles } from "@/lib/api/files/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -13,6 +12,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getFiles } from "../api/files/queries";
 
 export const files = pgTable(
   "files",

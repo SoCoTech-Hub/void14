@@ -1,10 +1,10 @@
-import { type getSurveyAnalysiss } from "@/lib/api/surveyAnalysiss/queries";
 import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getSurveyAnalysiss } from "../api/surveyAnalysiss/queries";
 import { surveys } from "./surveys";
 
 export const surveyAnalysiss = pgTable("survey_analysiss", {

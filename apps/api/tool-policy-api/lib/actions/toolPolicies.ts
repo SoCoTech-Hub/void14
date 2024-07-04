@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createToolPolicy,
   deleteToolPolicy,
   updateToolPolicy,
-} from "@/lib/api/toolPolicies/mutations";
+} from "../api/toolPolicies/mutations";
 import {
-  ToolPolicyId,
-  NewToolPolicyParams,
-  UpdateToolPolicyParams,
-  toolPolicyIdSchema,
   insertToolPolicyParams,
+  NewToolPolicyParams,
+  ToolPolicyId,
+  toolPolicyIdSchema,
+  UpdateToolPolicyParams,
   updateToolPolicyParams,
-} from "@/lib/db/schema/toolPolicies";
+} from "../db/schema/toolPolicies";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

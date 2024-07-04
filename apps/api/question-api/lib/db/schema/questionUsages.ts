@@ -1,9 +1,10 @@
-import { type getQuestionUsages } from "@/lib/api/questionUsages/queries";
 import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getQuestionUsages } from "../api/questionUsages/queries";
 
 export const questionUsages = pgTable(
   "question_usages",

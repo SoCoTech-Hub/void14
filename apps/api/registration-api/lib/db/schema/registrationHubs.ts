@@ -1,4 +1,3 @@
-import { type getRegistrationHubs } from "@/lib/api/registrationHubs/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getRegistrationHubs } from "../api/registrationHubs/queries";
 
 export const registrationHubs = pgTable(
   "registration_hubs",

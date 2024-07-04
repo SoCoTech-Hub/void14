@@ -1,19 +1,21 @@
-import { getEventById, getEvents } from "@/lib/api/events/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import { createEvent, deleteEvent, updateEvent } from "../api/events/mutations";
+import { getEventById, getEvents } from "../api/events/queries";
 import {
   eventIdSchema,
   insertEventParams,
   updateEventParams,
-} from "@/lib/db/schema/events";
-import { createEvent, deleteEvent, updateEvent } from "@/lib/api/events/mutations";
+} from "../db/schema/events";
+import { publicProcedure, router } from "../server/trpc";
 
 export const eventsRouter = router({
   getEvents: publicProcedure.query(async () => {
     return getEvents();
   }),
-  getEventById: publicProcedure.input(eventIdSchema).query(async ({ input }) => {
-    return getEventById(input.id);
-  }),
+  getEventById: publicProcedure
+    .input(eventIdSchema)
+    .query(async ({ input }) => {
+      return getEventById(input.id);
+    }),
   createEvent: publicProcedure
     .input(insertEventParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuestionDatasetItem,
   deleteQuestionDatasetItem,
   updateQuestionDatasetItem,
-} from "@/lib/api/questionDatasetItems/mutations";
+} from "../api/questionDatasetItems/mutations";
 import {
-  QuestionDatasetItemId,
-  NewQuestionDatasetItemParams,
-  UpdateQuestionDatasetItemParams,
-  questionDatasetItemIdSchema,
   insertQuestionDatasetItemParams,
+  NewQuestionDatasetItemParams,
+  QuestionDatasetItemId,
+  questionDatasetItemIdSchema,
+  UpdateQuestionDatasetItemParams,
   updateQuestionDatasetItemParams,
-} from "@/lib/db/schema/questionDatasetItems";
+} from "../db/schema/questionDatasetItems";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQuestionDatasetItems = () => revalidatePath("/question-dataset-items");
+const revalidateQuestionDatasetItems = () =>
+  revalidatePath("/question-dataset-items");
 
-export const createQuestionDatasetItemAction = async (input: NewQuestionDatasetItemParams) => {
+export const createQuestionDatasetItemAction = async (
+  input: NewQuestionDatasetItemParams,
+) => {
   try {
     const payload = insertQuestionDatasetItemParams.parse(input);
     await createQuestionDatasetItem(payload);
@@ -37,7 +41,9 @@ export const createQuestionDatasetItemAction = async (input: NewQuestionDatasetI
   }
 };
 
-export const updateQuestionDatasetItemAction = async (input: UpdateQuestionDatasetItemParams) => {
+export const updateQuestionDatasetItemAction = async (
+  input: UpdateQuestionDatasetItemParams,
+) => {
   try {
     const payload = updateQuestionDatasetItemParams.parse(input);
     await updateQuestionDatasetItem(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQuestionDatasetItemAction = async (input: UpdateQuestionDatas
   }
 };
 
-export const deleteQuestionDatasetItemAction = async (input: QuestionDatasetItemId) => {
+export const deleteQuestionDatasetItemAction = async (
+  input: QuestionDatasetItemId,
+) => {
   try {
     const payload = questionDatasetItemIdSchema.parse({ id: input });
     await deleteQuestionDatasetItem(payload.id);

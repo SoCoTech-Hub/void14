@@ -1,10 +1,10 @@
-import { router } from '@/lib/server/trpc'
-import { toolCustomLangsRouter } from './toolCustomLangs'
-import { toolCustomLangComponentsRouter } from './toolCustomLangComponents'
+import { router } from "../server/trpc";
+import { toolCustomLangComponentsRouter } from "./toolCustomLangComponents";
+import { toolCustomLangsRouter } from "./toolCustomLangs";
 
 export const appRouter = router({
-	toolCustomLangs: toolCustomLangsRouter,
-	toolCustomLangComponents: toolCustomLangComponentsRouter
-})
+  toolCustomLangs: toolCustomLangsRouter,
+  toolCustomLangComponents: toolCustomLangComponentsRouter,
+});
 
-export type AppRouter = typeof appRouter
+export type AppRouter = typeof appRouter;

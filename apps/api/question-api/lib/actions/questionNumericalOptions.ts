@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuestionNumericalOption,
   deleteQuestionNumericalOption,
   updateQuestionNumericalOption,
-} from "@/lib/api/questionNumericalOptions/mutations";
+} from "../api/questionNumericalOptions/mutations";
 import {
-  QuestionNumericalOptionId,
-  NewQuestionNumericalOptionParams,
-  UpdateQuestionNumericalOptionParams,
-  questionNumericalOptionIdSchema,
   insertQuestionNumericalOptionParams,
+  NewQuestionNumericalOptionParams,
+  QuestionNumericalOptionId,
+  questionNumericalOptionIdSchema,
+  UpdateQuestionNumericalOptionParams,
   updateQuestionNumericalOptionParams,
-} from "@/lib/db/schema/questionNumericalOptions";
+} from "../db/schema/questionNumericalOptions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQuestionNumericalOptions = () => revalidatePath("/question-numerical-options");
+const revalidateQuestionNumericalOptions = () =>
+  revalidatePath("/question-numerical-options");
 
-export const createQuestionNumericalOptionAction = async (input: NewQuestionNumericalOptionParams) => {
+export const createQuestionNumericalOptionAction = async (
+  input: NewQuestionNumericalOptionParams,
+) => {
   try {
     const payload = insertQuestionNumericalOptionParams.parse(input);
     await createQuestionNumericalOption(payload);
@@ -37,7 +41,9 @@ export const createQuestionNumericalOptionAction = async (input: NewQuestionNume
   }
 };
 
-export const updateQuestionNumericalOptionAction = async (input: UpdateQuestionNumericalOptionParams) => {
+export const updateQuestionNumericalOptionAction = async (
+  input: UpdateQuestionNumericalOptionParams,
+) => {
   try {
     const payload = updateQuestionNumericalOptionParams.parse(input);
     await updateQuestionNumericalOption(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQuestionNumericalOptionAction = async (input: UpdateQuestionN
   }
 };
 
-export const deleteQuestionNumericalOptionAction = async (input: QuestionNumericalOptionId) => {
+export const deleteQuestionNumericalOptionAction = async (
+  input: QuestionNumericalOptionId,
+) => {
   try {
     const payload = questionNumericalOptionIdSchema.parse({ id: input });
     await deleteQuestionNumericalOption(payload.id);

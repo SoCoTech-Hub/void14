@@ -1,19 +1,28 @@
-import { getUserEnrolmentById, getUserEnrolments } from "@/lib/api/userEnrolments/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  userEnrolmentIdSchema,
+  createUserEnrolment,
+  deleteUserEnrolment,
+  updateUserEnrolment,
+} from "../api/userEnrolments/mutations";
+import {
+  getUserEnrolmentById,
+  getUserEnrolments,
+} from "../api/userEnrolments/queries";
+import {
   insertUserEnrolmentParams,
   updateUserEnrolmentParams,
-} from "@/lib/db/schema/userEnrolments";
-import { createUserEnrolment, deleteUserEnrolment, updateUserEnrolment } from "@/lib/api/userEnrolments/mutations";
+  userEnrolmentIdSchema,
+} from "../db/schema/userEnrolments";
+import { publicProcedure, router } from "../server/trpc";
 
 export const userEnrolmentsRouter = router({
   getUserEnrolments: publicProcedure.query(async () => {
     return getUserEnrolments();
   }),
-  getUserEnrolmentById: publicProcedure.input(userEnrolmentIdSchema).query(async ({ input }) => {
-    return getUserEnrolmentById(input.id);
-  }),
+  getUserEnrolmentById: publicProcedure
+    .input(userEnrolmentIdSchema)
+    .query(async ({ input }) => {
+      return getUserEnrolmentById(input.id);
+    }),
   createUserEnrolment: publicProcedure
     .input(insertUserEnrolmentParams)
     .mutation(async ({ input }) => {

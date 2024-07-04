@@ -1,5 +1,5 @@
+import { router } from "../server/trpc";
 import { computersRouter } from "./computers";
-import { router } from "@/lib/server/trpc";
 import { universitiesRouter } from "./universities";
 
 export const appRouter = router({

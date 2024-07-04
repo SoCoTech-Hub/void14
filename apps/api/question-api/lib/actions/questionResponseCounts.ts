@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuestionResponseCount,
   deleteQuestionResponseCount,
   updateQuestionResponseCount,
-} from "@/lib/api/questionResponseCounts/mutations";
+} from "../api/questionResponseCounts/mutations";
 import {
-  QuestionResponseCountId,
-  NewQuestionResponseCountParams,
-  UpdateQuestionResponseCountParams,
-  questionResponseCountIdSchema,
   insertQuestionResponseCountParams,
+  NewQuestionResponseCountParams,
+  QuestionResponseCountId,
+  questionResponseCountIdSchema,
+  UpdateQuestionResponseCountParams,
   updateQuestionResponseCountParams,
-} from "@/lib/db/schema/questionResponseCounts";
+} from "../db/schema/questionResponseCounts";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQuestionResponseCounts = () => revalidatePath("/question-response-counts");
+const revalidateQuestionResponseCounts = () =>
+  revalidatePath("/question-response-counts");
 
-export const createQuestionResponseCountAction = async (input: NewQuestionResponseCountParams) => {
+export const createQuestionResponseCountAction = async (
+  input: NewQuestionResponseCountParams,
+) => {
   try {
     const payload = insertQuestionResponseCountParams.parse(input);
     await createQuestionResponseCount(payload);
@@ -37,7 +41,9 @@ export const createQuestionResponseCountAction = async (input: NewQuestionRespon
   }
 };
 
-export const updateQuestionResponseCountAction = async (input: UpdateQuestionResponseCountParams) => {
+export const updateQuestionResponseCountAction = async (
+  input: UpdateQuestionResponseCountParams,
+) => {
   try {
     const payload = updateQuestionResponseCountParams.parse(input);
     await updateQuestionResponseCount(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQuestionResponseCountAction = async (input: UpdateQuestionRes
   }
 };
 
-export const deleteQuestionResponseCountAction = async (input: QuestionResponseCountId) => {
+export const deleteQuestionResponseCountAction = async (
+  input: QuestionResponseCountId,
+) => {
   try {
     const payload = questionResponseCountIdSchema.parse({ id: input });
     await deleteQuestionResponseCount(payload.id);

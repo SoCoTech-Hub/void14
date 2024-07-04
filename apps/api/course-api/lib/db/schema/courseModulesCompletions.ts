@@ -1,4 +1,3 @@
-import { type getCourseModulesCompletions } from "@/lib/api/courseModulesCompletions/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getCourseModulesCompletions } from "../api/courseModulesCompletions/queries";
 
 export const courseModulesCompletions = pgTable(
   "course_modules_completions",

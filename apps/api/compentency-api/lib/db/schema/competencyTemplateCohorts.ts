@@ -1,4 +1,3 @@
-import { type getCompetencyTemplateCohorts } from "@/lib/api/competencyTemplateCohorts/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -6,6 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getCompetencyTemplateCohorts } from "../api/competencyTemplateCohorts/queries";
 import { competencyTemplates } from "./competencyTemplates";
 
 export const competencyTemplateCohorts = pgTable(

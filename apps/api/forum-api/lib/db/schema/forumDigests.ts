@@ -1,9 +1,10 @@
-import { type getForumDigests } from "@/lib/api/forumDigests/queries";
 import { boolean, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getForumDigests } from "../api/forumDigests/queries";
 
 export const forumDigests = pgTable("forum_digests", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

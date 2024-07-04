@@ -1,4 +1,3 @@
-import { type getCompetencyPlanComps } from "@/lib/api/competencyPlanComps/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -12,6 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getCompetencyPlanComps } from "../api/competencyPlanComps/queries";
 import { competencies } from "./competencies";
 import { competencyPlans } from "./competencyPlans";
 

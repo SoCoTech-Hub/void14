@@ -1,19 +1,28 @@
-import { getBadgeBackpackById, getBadgeBackpacks } from "@/lib/api/badgeBackpacks/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createBadgeBackpack,
+  deleteBadgeBackpack,
+  updateBadgeBackpack,
+} from "../api/badgeBackpacks/mutations";
+import {
+  getBadgeBackpackById,
+  getBadgeBackpacks,
+} from "../api/badgeBackpacks/queries";
 import {
   badgeBackpackIdSchema,
   insertBadgeBackpackParams,
   updateBadgeBackpackParams,
-} from "@/lib/db/schema/badgeBackpacks";
-import { createBadgeBackpack, deleteBadgeBackpack, updateBadgeBackpack } from "@/lib/api/badgeBackpacks/mutations";
+} from "../db/schema/badgeBackpacks";
+import { publicProcedure, router } from "../server/trpc";
 
 export const badgeBackpacksRouter = router({
   getBadgeBackpacks: publicProcedure.query(async () => {
     return getBadgeBackpacks();
   }),
-  getBadgeBackpackById: publicProcedure.input(badgeBackpackIdSchema).query(async ({ input }) => {
-    return getBadgeBackpackById(input.id);
-  }),
+  getBadgeBackpackById: publicProcedure
+    .input(badgeBackpackIdSchema)
+    .query(async ({ input }) => {
+      return getBadgeBackpackById(input.id);
+    }),
   createBadgeBackpack: publicProcedure
     .input(insertBadgeBackpackParams)
     .mutation(async ({ input }) => {

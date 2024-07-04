@@ -1,19 +1,28 @@
-import { getWorkshopFormNumErrorMapById, getWorkshopFormNumErrorMaps } from "@/lib/api/workshopFormNumErrorMaps/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  workshopFormNumErrorMapIdSchema,
+  createWorkshopFormNumErrorMap,
+  deleteWorkshopFormNumErrorMap,
+  updateWorkshopFormNumErrorMap,
+} from "../api/workshopFormNumErrorMaps/mutations";
+import {
+  getWorkshopFormNumErrorMapById,
+  getWorkshopFormNumErrorMaps,
+} from "../api/workshopFormNumErrorMaps/queries";
+import {
   insertWorkshopFormNumErrorMapParams,
   updateWorkshopFormNumErrorMapParams,
-} from "@/lib/db/schema/workshopFormNumErrorMaps";
-import { createWorkshopFormNumErrorMap, deleteWorkshopFormNumErrorMap, updateWorkshopFormNumErrorMap } from "@/lib/api/workshopFormNumErrorMaps/mutations";
+  workshopFormNumErrorMapIdSchema,
+} from "../db/schema/workshopFormNumErrorMaps";
+import { publicProcedure, router } from "../server/trpc";
 
 export const workshopFormNumErrorMapsRouter = router({
   getWorkshopFormNumErrorMaps: publicProcedure.query(async () => {
     return getWorkshopFormNumErrorMaps();
   }),
-  getWorkshopFormNumErrorMapById: publicProcedure.input(workshopFormNumErrorMapIdSchema).query(async ({ input }) => {
-    return getWorkshopFormNumErrorMapById(input.id);
-  }),
+  getWorkshopFormNumErrorMapById: publicProcedure
+    .input(workshopFormNumErrorMapIdSchema)
+    .query(async ({ input }) => {
+      return getWorkshopFormNumErrorMapById(input.id);
+    }),
   createWorkshopFormNumErrorMap: publicProcedure
     .input(insertWorkshopFormNumErrorMapParams)
     .mutation(async ({ input }) => {

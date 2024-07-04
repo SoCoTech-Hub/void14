@@ -1,10 +1,11 @@
-import { type getConfigLogs } from "@/lib/api/configLogs/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getConfigLogs } from "../api/configLogs/queries";
 
 export const configLogs = pgTable("config_logs", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

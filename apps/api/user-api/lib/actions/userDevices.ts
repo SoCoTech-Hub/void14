@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createUserDevice,
   deleteUserDevice,
   updateUserDevice,
-} from "@/lib/api/userDevices/mutations";
+} from "../api/userDevices/mutations";
 import {
-  UserDeviceId,
+  insertUserDeviceParams,
   NewUserDeviceParams,
   UpdateUserDeviceParams,
-  userDeviceIdSchema,
-  insertUserDeviceParams,
   updateUserDeviceParams,
-} from "@/lib/db/schema/userDevices";
+  UserDeviceId,
+  userDeviceIdSchema,
+} from "../db/schema/userDevices";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

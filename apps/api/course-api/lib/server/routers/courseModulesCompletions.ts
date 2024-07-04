@@ -1,19 +1,28 @@
-import { getCourseModulesCompletionById, getCourseModulesCompletions } from "@/lib/api/courseModulesCompletions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createCourseModulesCompletion,
+  deleteCourseModulesCompletion,
+  updateCourseModulesCompletion,
+} from "../api/courseModulesCompletions/mutations";
+import {
+  getCourseModulesCompletionById,
+  getCourseModulesCompletions,
+} from "../api/courseModulesCompletions/queries";
 import {
   courseModulesCompletionIdSchema,
   insertCourseModulesCompletionParams,
   updateCourseModulesCompletionParams,
-} from "@/lib/db/schema/courseModulesCompletions";
-import { createCourseModulesCompletion, deleteCourseModulesCompletion, updateCourseModulesCompletion } from "@/lib/api/courseModulesCompletions/mutations";
+} from "../db/schema/courseModulesCompletions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const courseModulesCompletionsRouter = router({
   getCourseModulesCompletions: publicProcedure.query(async () => {
     return getCourseModulesCompletions();
   }),
-  getCourseModulesCompletionById: publicProcedure.input(courseModulesCompletionIdSchema).query(async ({ input }) => {
-    return getCourseModulesCompletionById(input.id);
-  }),
+  getCourseModulesCompletionById: publicProcedure
+    .input(courseModulesCompletionIdSchema)
+    .query(async ({ input }) => {
+      return getCourseModulesCompletionById(input.id);
+    }),
   createCourseModulesCompletion: publicProcedure
     .input(insertCourseModulesCompletionParams)
     .mutation(async ({ input }) => {

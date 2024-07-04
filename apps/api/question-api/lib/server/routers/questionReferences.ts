@@ -1,19 +1,28 @@
-import { getQuestionReferenceById, getQuestionReferences } from "@/lib/api/questionReferences/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  questionReferenceIdSchema,
+  createQuestionReference,
+  deleteQuestionReference,
+  updateQuestionReference,
+} from "../api/questionReferences/mutations";
+import {
+  getQuestionReferenceById,
+  getQuestionReferences,
+} from "../api/questionReferences/queries";
+import {
   insertQuestionReferenceParams,
+  questionReferenceIdSchema,
   updateQuestionReferenceParams,
-} from "@/lib/db/schema/questionReferences";
-import { createQuestionReference, deleteQuestionReference, updateQuestionReference } from "@/lib/api/questionReferences/mutations";
+} from "../db/schema/questionReferences";
+import { publicProcedure, router } from "../server/trpc";
 
 export const questionReferencesRouter = router({
   getQuestionReferences: publicProcedure.query(async () => {
     return getQuestionReferences();
   }),
-  getQuestionReferenceById: publicProcedure.input(questionReferenceIdSchema).query(async ({ input }) => {
-    return getQuestionReferenceById(input.id);
-  }),
+  getQuestionReferenceById: publicProcedure
+    .input(questionReferenceIdSchema)
+    .query(async ({ input }) => {
+      return getQuestionReferenceById(input.id);
+    }),
   createQuestionReference: publicProcedure
     .input(insertQuestionReferenceParams)
     .mutation(async ({ input }) => {

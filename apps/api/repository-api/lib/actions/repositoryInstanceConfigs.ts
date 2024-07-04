@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createRepositoryInstanceConfig,
   deleteRepositoryInstanceConfig,
   updateRepositoryInstanceConfig,
-} from "@/lib/api/repositoryInstanceConfigs/mutations";
+} from "../api/repositoryInstanceConfigs/mutations";
 import {
-  RepositoryInstanceConfigId,
-  NewRepositoryInstanceConfigParams,
-  UpdateRepositoryInstanceConfigParams,
-  repositoryInstanceConfigIdSchema,
   insertRepositoryInstanceConfigParams,
+  NewRepositoryInstanceConfigParams,
+  RepositoryInstanceConfigId,
+  repositoryInstanceConfigIdSchema,
+  UpdateRepositoryInstanceConfigParams,
   updateRepositoryInstanceConfigParams,
-} from "@/lib/db/schema/repositoryInstanceConfigs";
+} from "../db/schema/repositoryInstanceConfigs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateRepositoryInstanceConfigs = () => revalidatePath("/repository-instance-configs");
+const revalidateRepositoryInstanceConfigs = () =>
+  revalidatePath("/repository-instance-configs");
 
-export const createRepositoryInstanceConfigAction = async (input: NewRepositoryInstanceConfigParams) => {
+export const createRepositoryInstanceConfigAction = async (
+  input: NewRepositoryInstanceConfigParams,
+) => {
   try {
     const payload = insertRepositoryInstanceConfigParams.parse(input);
     await createRepositoryInstanceConfig(payload);
@@ -37,7 +41,9 @@ export const createRepositoryInstanceConfigAction = async (input: NewRepositoryI
   }
 };
 
-export const updateRepositoryInstanceConfigAction = async (input: UpdateRepositoryInstanceConfigParams) => {
+export const updateRepositoryInstanceConfigAction = async (
+  input: UpdateRepositoryInstanceConfigParams,
+) => {
   try {
     const payload = updateRepositoryInstanceConfigParams.parse(input);
     await updateRepositoryInstanceConfig(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateRepositoryInstanceConfigAction = async (input: UpdateReposito
   }
 };
 
-export const deleteRepositoryInstanceConfigAction = async (input: RepositoryInstanceConfigId) => {
+export const deleteRepositoryInstanceConfigAction = async (
+  input: RepositoryInstanceConfigId,
+) => {
   try {
     const payload = repositoryInstanceConfigIdSchema.parse({ id: input });
     await deleteRepositoryInstanceConfig(payload.id);

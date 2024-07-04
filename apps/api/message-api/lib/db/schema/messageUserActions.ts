@@ -1,10 +1,11 @@
-import { type getMessageUserActions } from "@/lib/api/messageUserActions/queries";
 import { sql } from "drizzle-orm";
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getMessageUserActions } from "../api/messageUserActions/queries";
 
 export const messageUserActions = pgTable("message_user_actions", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

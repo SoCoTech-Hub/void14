@@ -1,19 +1,28 @@
-import { getCountryOrganizationById, getCountryOrganizations } from "@/lib/api/countryOrganizations/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createCountryOrganization,
+  deleteCountryOrganization,
+  updateCountryOrganization,
+} from "../api/countryOrganizations/mutations";
+import {
+  getCountryOrganizationById,
+  getCountryOrganizations,
+} from "../api/countryOrganizations/queries";
 import {
   countryOrganizationIdSchema,
   insertCountryOrganizationParams,
   updateCountryOrganizationParams,
-} from "@/lib/db/schema/countryOrganizations";
-import { createCountryOrganization, deleteCountryOrganization, updateCountryOrganization } from "@/lib/api/countryOrganizations/mutations";
+} from "../db/schema/countryOrganizations";
+import { publicProcedure, router } from "../server/trpc";
 
 export const countryOrganizationsRouter = router({
   getCountryOrganizations: publicProcedure.query(async () => {
     return getCountryOrganizations();
   }),
-  getCountryOrganizationById: publicProcedure.input(countryOrganizationIdSchema).query(async ({ input }) => {
-    return getCountryOrganizationById(input.id);
-  }),
+  getCountryOrganizationById: publicProcedure
+    .input(countryOrganizationIdSchema)
+    .query(async ({ input }) => {
+      return getCountryOrganizationById(input.id);
+    }),
   createCountryOrganization: publicProcedure
     .input(insertCountryOrganizationParams)
     .mutation(async ({ input }) => {

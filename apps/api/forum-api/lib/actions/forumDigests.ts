@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createForumDigest,
   deleteForumDigest,
   updateForumDigest,
-} from "@/lib/api/forumDigests/mutations";
+} from "../api/forumDigests/mutations";
 import {
   ForumDigestId,
-  NewForumDigestParams,
-  UpdateForumDigestParams,
   forumDigestIdSchema,
   insertForumDigestParams,
+  NewForumDigestParams,
+  UpdateForumDigestParams,
   updateForumDigestParams,
-} from "@/lib/db/schema/forumDigests";
+} from "../db/schema/forumDigests";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createForumDigestAction = async (input: NewForumDigestParams) => {
   }
 };
 
-export const updateForumDigestAction = async (input: UpdateForumDigestParams) => {
+export const updateForumDigestAction = async (
+  input: UpdateForumDigestParams,
+) => {
   try {
     const payload = updateForumDigestParams.parse(input);
     await updateForumDigest(payload.id, payload);

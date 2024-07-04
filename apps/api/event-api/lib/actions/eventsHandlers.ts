@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createEventsHandler,
   deleteEventsHandler,
   updateEventsHandler,
-} from "@/lib/api/eventsHandlers/mutations";
+} from "../api/eventsHandlers/mutations";
 import {
   EventsHandlerId,
-  NewEventsHandlerParams,
-  UpdateEventsHandlerParams,
   eventsHandlerIdSchema,
   insertEventsHandlerParams,
+  NewEventsHandlerParams,
+  UpdateEventsHandlerParams,
   updateEventsHandlerParams,
-} from "@/lib/db/schema/eventsHandlers";
+} from "../db/schema/eventsHandlers";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateEventsHandlers = () => revalidatePath("/events-handlers");
 
-export const createEventsHandlerAction = async (input: NewEventsHandlerParams) => {
+export const createEventsHandlerAction = async (
+  input: NewEventsHandlerParams,
+) => {
   try {
     const payload = insertEventsHandlerParams.parse(input);
     await createEventsHandler(payload);
@@ -37,7 +40,9 @@ export const createEventsHandlerAction = async (input: NewEventsHandlerParams) =
   }
 };
 
-export const updateEventsHandlerAction = async (input: UpdateEventsHandlerParams) => {
+export const updateEventsHandlerAction = async (
+  input: UpdateEventsHandlerParams,
+) => {
   try {
     const payload = updateEventsHandlerParams.parse(input);
     await updateEventsHandler(payload.id, payload);

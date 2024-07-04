@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createInmailResponse,
   deleteInmailResponse,
   updateInmailResponse,
-} from "@/lib/api/inmailResponses/mutations";
+} from "../api/inmailResponses/mutations";
 import {
   InmailResponseId,
-  NewInmailResponseParams,
-  UpdateInmailResponseParams,
   inmailResponseIdSchema,
   insertInmailResponseParams,
+  NewInmailResponseParams,
+  UpdateInmailResponseParams,
   updateInmailResponseParams,
-} from "@/lib/db/schema/inmailResponses";
+} from "../db/schema/inmailResponses";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateInmailResponses = () => revalidatePath("/inmail-responses");
 
-export const createInmailResponseAction = async (input: NewInmailResponseParams) => {
+export const createInmailResponseAction = async (
+  input: NewInmailResponseParams,
+) => {
   try {
     const payload = insertInmailResponseParams.parse(input);
     await createInmailResponse(payload);
@@ -37,7 +40,9 @@ export const createInmailResponseAction = async (input: NewInmailResponseParams)
   }
 };
 
-export const updateInmailResponseAction = async (input: UpdateInmailResponseParams) => {
+export const updateInmailResponseAction = async (
+  input: UpdateInmailResponseParams,
+) => {
   try {
     const payload = updateInmailResponseParams.parse(input);
     await updateInmailResponse(payload.id, payload);

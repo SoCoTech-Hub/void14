@@ -1,19 +1,25 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  FeedbackItemId, 
-  NewFeedbackItemParams,
-  UpdateFeedbackItemParams, 
-  updateFeedbackItemSchema,
-  insertFeedbackItemSchema, 
-  feedbackItems,
-  feedbackItemIdSchema 
-} from "@/lib/db/schema/feedbackItems";
 
-export const createFeedbackItem = async (feedbackItem: NewFeedbackItemParams) => {
+import { db } from "../db/index";
+import {
+  FeedbackItemId,
+  feedbackItemIdSchema,
+  feedbackItems,
+  insertFeedbackItemSchema,
+  NewFeedbackItemParams,
+  UpdateFeedbackItemParams,
+  updateFeedbackItemSchema,
+} from "../db/schema/feedbackItems";
+
+export const createFeedbackItem = async (
+  feedbackItem: NewFeedbackItemParams,
+) => {
   const newFeedbackItem = insertFeedbackItemSchema.parse(feedbackItem);
   try {
-    const [f] =  await db.insert(feedbackItems).values(newFeedbackItem).returning();
+    const [f] = await db
+      .insert(feedbackItems)
+      .values(newFeedbackItem)
+      .returning();
     return { feedbackItem: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +28,18 @@ export const createFeedbackItem = async (feedbackItem: NewFeedbackItemParams) =>
   }
 };
 
-export const updateFeedbackItem = async (id: FeedbackItemId, feedbackItem: UpdateFeedbackItemParams) => {
+export const updateFeedbackItem = async (
+  id: FeedbackItemId,
+  feedbackItem: UpdateFeedbackItemParams,
+) => {
   const { id: feedbackItemId } = feedbackItemIdSchema.parse({ id });
   const newFeedbackItem = updateFeedbackItemSchema.parse(feedbackItem);
   try {
-    const [f] =  await db
-     .update(feedbackItems)
-     .set(newFeedbackItem)
-     .where(eq(feedbackItems.id, feedbackItemId!))
-     .returning();
+    const [f] = await db
+      .update(feedbackItems)
+      .set(newFeedbackItem)
+      .where(eq(feedbackItems.id, feedbackItemId!))
+      .returning();
     return { feedbackItem: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +51,10 @@ export const updateFeedbackItem = async (id: FeedbackItemId, feedbackItem: Updat
 export const deleteFeedbackItem = async (id: FeedbackItemId) => {
   const { id: feedbackItemId } = feedbackItemIdSchema.parse({ id });
   try {
-    const [f] =  await db.delete(feedbackItems).where(eq(feedbackItems.id, feedbackItemId!))
-    .returning();
+    const [f] = await db
+      .delete(feedbackItems)
+      .where(eq(feedbackItems.id, feedbackItemId!))
+      .returning();
     return { feedbackItem: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +62,3 @@ export const deleteFeedbackItem = async (id: FeedbackItemId) => {
     throw { error: message };
   }
 };
-

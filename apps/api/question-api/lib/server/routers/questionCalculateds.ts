@@ -1,19 +1,28 @@
-import { getQuestionCalculatedById, getQuestionCalculateds } from "@/lib/api/questionCalculateds/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  questionCalculatedIdSchema,
+  createQuestionCalculated,
+  deleteQuestionCalculated,
+  updateQuestionCalculated,
+} from "../api/questionCalculateds/mutations";
+import {
+  getQuestionCalculatedById,
+  getQuestionCalculateds,
+} from "../api/questionCalculateds/queries";
+import {
   insertQuestionCalculatedParams,
+  questionCalculatedIdSchema,
   updateQuestionCalculatedParams,
-} from "@/lib/db/schema/questionCalculateds";
-import { createQuestionCalculated, deleteQuestionCalculated, updateQuestionCalculated } from "@/lib/api/questionCalculateds/mutations";
+} from "../db/schema/questionCalculateds";
+import { publicProcedure, router } from "../server/trpc";
 
 export const questionCalculatedsRouter = router({
   getQuestionCalculateds: publicProcedure.query(async () => {
     return getQuestionCalculateds();
   }),
-  getQuestionCalculatedById: publicProcedure.input(questionCalculatedIdSchema).query(async ({ input }) => {
-    return getQuestionCalculatedById(input.id);
-  }),
+  getQuestionCalculatedById: publicProcedure
+    .input(questionCalculatedIdSchema)
+    .query(async ({ input }) => {
+      return getQuestionCalculatedById(input.id);
+    }),
   createQuestionCalculated: publicProcedure
     .input(insertQuestionCalculatedParams)
     .mutation(async ({ input }) => {

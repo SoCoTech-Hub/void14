@@ -1,19 +1,25 @@
-import { getContentById, getContents } from "@/lib/api/contents/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createContent,
+  deleteContent,
+  updateContent,
+} from "../api/contents/mutations";
+import { getContentById, getContents } from "../api/contents/queries";
 import {
   contentIdSchema,
   insertContentParams,
   updateContentParams,
-} from "@/lib/db/schema/contents";
-import { createContent, deleteContent, updateContent } from "@/lib/api/contents/mutations";
+} from "../db/schema/contents";
+import { publicProcedure, router } from "../server/trpc";
 
 export const contentsRouter = router({
   getContents: publicProcedure.query(async () => {
     return getContents();
   }),
-  getContentById: publicProcedure.input(contentIdSchema).query(async ({ input }) => {
-    return getContentById(input.id);
-  }),
+  getContentById: publicProcedure
+    .input(contentIdSchema)
+    .query(async ({ input }) => {
+      return getContentById(input.id);
+    }),
   createContent: publicProcedure
     .input(insertContentParams)
     .mutation(async ({ input }) => {

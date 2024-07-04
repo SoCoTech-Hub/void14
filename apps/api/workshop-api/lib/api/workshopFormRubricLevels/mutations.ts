@@ -1,19 +1,27 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  WorkshopFormRubricLevelId, 
+
+import { db } from "../db/index";
+import {
+  insertWorkshopFormRubricLevelSchema,
   NewWorkshopFormRubricLevelParams,
-  UpdateWorkshopFormRubricLevelParams, 
+  UpdateWorkshopFormRubricLevelParams,
   updateWorkshopFormRubricLevelSchema,
-  insertWorkshopFormRubricLevelSchema, 
+  WorkshopFormRubricLevelId,
+  workshopFormRubricLevelIdSchema,
   workshopFormRubricLevels,
-  workshopFormRubricLevelIdSchema 
-} from "@/lib/db/schema/workshopFormRubricLevels";
+} from "../db/schema/workshopFormRubricLevels";
 
-export const createWorkshopFormRubricLevel = async (workshopFormRubricLevel: NewWorkshopFormRubricLevelParams) => {
-  const newWorkshopFormRubricLevel = insertWorkshopFormRubricLevelSchema.parse(workshopFormRubricLevel);
+export const createWorkshopFormRubricLevel = async (
+  workshopFormRubricLevel: NewWorkshopFormRubricLevelParams,
+) => {
+  const newWorkshopFormRubricLevel = insertWorkshopFormRubricLevelSchema.parse(
+    workshopFormRubricLevel,
+  );
   try {
-    const [w] =  await db.insert(workshopFormRubricLevels).values(newWorkshopFormRubricLevel).returning();
+    const [w] = await db
+      .insert(workshopFormRubricLevels)
+      .values(newWorkshopFormRubricLevel)
+      .returning();
     return { workshopFormRubricLevel: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,21 @@ export const createWorkshopFormRubricLevel = async (workshopFormRubricLevel: New
   }
 };
 
-export const updateWorkshopFormRubricLevel = async (id: WorkshopFormRubricLevelId, workshopFormRubricLevel: UpdateWorkshopFormRubricLevelParams) => {
-  const { id: workshopFormRubricLevelId } = workshopFormRubricLevelIdSchema.parse({ id });
-  const newWorkshopFormRubricLevel = updateWorkshopFormRubricLevelSchema.parse(workshopFormRubricLevel);
+export const updateWorkshopFormRubricLevel = async (
+  id: WorkshopFormRubricLevelId,
+  workshopFormRubricLevel: UpdateWorkshopFormRubricLevelParams,
+) => {
+  const { id: workshopFormRubricLevelId } =
+    workshopFormRubricLevelIdSchema.parse({ id });
+  const newWorkshopFormRubricLevel = updateWorkshopFormRubricLevelSchema.parse(
+    workshopFormRubricLevel,
+  );
   try {
-    const [w] =  await db
-     .update(workshopFormRubricLevels)
-     .set(newWorkshopFormRubricLevel)
-     .where(eq(workshopFormRubricLevels.id, workshopFormRubricLevelId!))
-     .returning();
+    const [w] = await db
+      .update(workshopFormRubricLevels)
+      .set(newWorkshopFormRubricLevel)
+      .where(eq(workshopFormRubricLevels.id, workshopFormRubricLevelId!))
+      .returning();
     return { workshopFormRubricLevel: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +53,16 @@ export const updateWorkshopFormRubricLevel = async (id: WorkshopFormRubricLevelI
   }
 };
 
-export const deleteWorkshopFormRubricLevel = async (id: WorkshopFormRubricLevelId) => {
-  const { id: workshopFormRubricLevelId } = workshopFormRubricLevelIdSchema.parse({ id });
+export const deleteWorkshopFormRubricLevel = async (
+  id: WorkshopFormRubricLevelId,
+) => {
+  const { id: workshopFormRubricLevelId } =
+    workshopFormRubricLevelIdSchema.parse({ id });
   try {
-    const [w] =  await db.delete(workshopFormRubricLevels).where(eq(workshopFormRubricLevels.id, workshopFormRubricLevelId!))
-    .returning();
+    const [w] = await db
+      .delete(workshopFormRubricLevels)
+      .where(eq(workshopFormRubricLevels.id, workshopFormRubricLevelId!))
+      .returning();
     return { workshopFormRubricLevel: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +70,3 @@ export const deleteWorkshopFormRubricLevel = async (id: WorkshopFormRubricLevelI
     throw { error: message };
   }
 };
-

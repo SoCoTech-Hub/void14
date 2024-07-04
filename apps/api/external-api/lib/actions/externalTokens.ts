@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createExternalToken,
   deleteExternalToken,
   updateExternalToken,
-} from "@/lib/api/externalTokens/mutations";
+} from "../api/externalTokens/mutations";
 import {
   ExternalTokenId,
-  NewExternalTokenParams,
-  UpdateExternalTokenParams,
   externalTokenIdSchema,
   insertExternalTokenParams,
+  NewExternalTokenParams,
+  UpdateExternalTokenParams,
   updateExternalTokenParams,
-} from "@/lib/db/schema/externalTokens";
+} from "../db/schema/externalTokens";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateExternalTokens = () => revalidatePath("/external-tokens");
 
-export const createExternalTokenAction = async (input: NewExternalTokenParams) => {
+export const createExternalTokenAction = async (
+  input: NewExternalTokenParams,
+) => {
   try {
     const payload = insertExternalTokenParams.parse(input);
     await createExternalToken(payload);
@@ -37,7 +40,9 @@ export const createExternalTokenAction = async (input: NewExternalTokenParams) =
   }
 };
 
-export const updateExternalTokenAction = async (input: UpdateExternalTokenParams) => {
+export const updateExternalTokenAction = async (
+  input: UpdateExternalTokenParams,
+) => {
   try {
     const payload = updateExternalTokenParams.parse(input);
     await updateExternalToken(payload.id, payload);

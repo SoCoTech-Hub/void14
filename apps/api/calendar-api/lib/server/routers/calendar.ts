@@ -1,19 +1,25 @@
-import { getCalendarById, getCalendar } from "@/lib/api/calendar/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createCalendar,
+  deleteCalendar,
+  updateCalendar,
+} from "../api/calendar/mutations";
+import { getCalendar, getCalendarById } from "../api/calendar/queries";
 import {
   calendarIdSchema,
   insertCalendarParams,
   updateCalendarParams,
-} from "@/lib/db/schema/calendar";
-import { createCalendar, deleteCalendar, updateCalendar } from "@/lib/api/calendar/mutations";
+} from "../db/schema/calendar";
+import { publicProcedure, router } from "../server/trpc";
 
 export const calendarRouter = router({
   getCalendar: publicProcedure.query(async () => {
     return getCalendar();
   }),
-  getCalendarById: publicProcedure.input(calendarIdSchema).query(async ({ input }) => {
-    return getCalendarById(input.id);
-  }),
+  getCalendarById: publicProcedure
+    .input(calendarIdSchema)
+    .query(async ({ input }) => {
+      return getCalendarById(input.id);
+    }),
   createCalendar: publicProcedure
     .input(insertCalendarParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBlogComment,
   deleteBlogComment,
   updateBlogComment,
-} from "@/lib/api/blogComments/mutations";
+} from "../api/blogComments/mutations";
 import {
   BlogCommentId,
-  NewBlogCommentParams,
-  UpdateBlogCommentParams,
   blogCommentIdSchema,
   insertBlogCommentParams,
+  NewBlogCommentParams,
+  UpdateBlogCommentParams,
   updateBlogCommentParams,
-} from "@/lib/db/schema/blogComments";
+} from "../db/schema/blogComments";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createBlogCommentAction = async (input: NewBlogCommentParams) => {
   }
 };
 
-export const updateBlogCommentAction = async (input: UpdateBlogCommentParams) => {
+export const updateBlogCommentAction = async (
+  input: UpdateBlogCommentParams,
+) => {
   try {
     const payload = updateBlogCommentParams.parse(input);
     await updateBlogComment(payload.id, payload);

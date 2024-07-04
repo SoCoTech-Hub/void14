@@ -1,19 +1,28 @@
-import { getBlogExternalById, getBlogExternals } from "@/lib/api/blogExternals/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createBlogExternal,
+  deleteBlogExternal,
+  updateBlogExternal,
+} from "../api/blogExternals/mutations";
+import {
+  getBlogExternalById,
+  getBlogExternals,
+} from "../api/blogExternals/queries";
 import {
   blogExternalIdSchema,
   insertBlogExternalParams,
   updateBlogExternalParams,
-} from "@/lib/db/schema/blogExternals";
-import { createBlogExternal, deleteBlogExternal, updateBlogExternal } from "@/lib/api/blogExternals/mutations";
+} from "../db/schema/blogExternals";
+import { publicProcedure, router } from "../server/trpc";
 
 export const blogExternalsRouter = router({
   getBlogExternals: publicProcedure.query(async () => {
     return getBlogExternals();
   }),
-  getBlogExternalById: publicProcedure.input(blogExternalIdSchema).query(async ({ input }) => {
-    return getBlogExternalById(input.id);
-  }),
+  getBlogExternalById: publicProcedure
+    .input(blogExternalIdSchema)
+    .query(async ({ input }) => {
+      return getBlogExternalById(input.id);
+    }),
   createBlogExternal: publicProcedure
     .input(insertBlogExternalParams)
     .mutation(async ({ input }) => {

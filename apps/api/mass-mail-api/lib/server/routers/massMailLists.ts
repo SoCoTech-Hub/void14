@@ -1,19 +1,28 @@
-import { getMassMailListById, getMassMailLists } from "@/lib/api/massMailLists/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  massMailListIdSchema,
+  createMassMailList,
+  deleteMassMailList,
+  updateMassMailList,
+} from "../api/massMailLists/mutations";
+import {
+  getMassMailListById,
+  getMassMailLists,
+} from "../api/massMailLists/queries";
+import {
   insertMassMailListParams,
+  massMailListIdSchema,
   updateMassMailListParams,
-} from "@/lib/db/schema/massMailLists";
-import { createMassMailList, deleteMassMailList, updateMassMailList } from "@/lib/api/massMailLists/mutations";
+} from "../db/schema/massMailLists";
+import { publicProcedure, router } from "../server/trpc";
 
 export const massMailListsRouter = router({
   getMassMailLists: publicProcedure.query(async () => {
     return getMassMailLists();
   }),
-  getMassMailListById: publicProcedure.input(massMailListIdSchema).query(async ({ input }) => {
-    return getMassMailListById(input.id);
-  }),
+  getMassMailListById: publicProcedure
+    .input(massMailListIdSchema)
+    .query(async ({ input }) => {
+      return getMassMailListById(input.id);
+    }),
   createMassMailList: publicProcedure
     .input(insertMassMailListParams)
     .mutation(async ({ input }) => {

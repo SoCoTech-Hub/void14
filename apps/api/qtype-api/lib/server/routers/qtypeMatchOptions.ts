@@ -1,19 +1,28 @@
-import { getQtypeMatchOptionById, getQtypeMatchOptions } from "@/lib/api/qtypeMatchOptions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  qtypeMatchOptionIdSchema,
+  createQtypeMatchOption,
+  deleteQtypeMatchOption,
+  updateQtypeMatchOption,
+} from "../api/qtypeMatchOptions/mutations";
+import {
+  getQtypeMatchOptionById,
+  getQtypeMatchOptions,
+} from "../api/qtypeMatchOptions/queries";
+import {
   insertQtypeMatchOptionParams,
+  qtypeMatchOptionIdSchema,
   updateQtypeMatchOptionParams,
-} from "@/lib/db/schema/qtypeMatchOptions";
-import { createQtypeMatchOption, deleteQtypeMatchOption, updateQtypeMatchOption } from "@/lib/api/qtypeMatchOptions/mutations";
+} from "../db/schema/qtypeMatchOptions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const qtypeMatchOptionsRouter = router({
   getQtypeMatchOptions: publicProcedure.query(async () => {
     return getQtypeMatchOptions();
   }),
-  getQtypeMatchOptionById: publicProcedure.input(qtypeMatchOptionIdSchema).query(async ({ input }) => {
-    return getQtypeMatchOptionById(input.id);
-  }),
+  getQtypeMatchOptionById: publicProcedure
+    .input(qtypeMatchOptionIdSchema)
+    .query(async ({ input }) => {
+      return getQtypeMatchOptionById(input.id);
+    }),
   createQtypeMatchOption: publicProcedure
     .input(insertQtypeMatchOptionParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createH5pContentsLibrary,
   deleteH5pContentsLibrary,
   updateH5pContentsLibrary,
-} from "@/lib/api/h5pContentsLibraries/mutations";
+} from "../api/h5pContentsLibraries/mutations";
 import {
   H5pContentsLibraryId,
-  NewH5pContentsLibraryParams,
-  UpdateH5pContentsLibraryParams,
   h5pContentsLibraryIdSchema,
   insertH5pContentsLibraryParams,
+  NewH5pContentsLibraryParams,
+  UpdateH5pContentsLibraryParams,
   updateH5pContentsLibraryParams,
-} from "@/lib/db/schema/h5pContentsLibraries";
+} from "../db/schema/h5pContentsLibraries";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateH5pContentsLibraries = () => revalidatePath("/h5p-contents-libraries");
+const revalidateH5pContentsLibraries = () =>
+  revalidatePath("/h5p-contents-libraries");
 
-export const createH5pContentsLibraryAction = async (input: NewH5pContentsLibraryParams) => {
+export const createH5pContentsLibraryAction = async (
+  input: NewH5pContentsLibraryParams,
+) => {
   try {
     const payload = insertH5pContentsLibraryParams.parse(input);
     await createH5pContentsLibrary(payload);
@@ -37,7 +41,9 @@ export const createH5pContentsLibraryAction = async (input: NewH5pContentsLibrar
   }
 };
 
-export const updateH5pContentsLibraryAction = async (input: UpdateH5pContentsLibraryParams) => {
+export const updateH5pContentsLibraryAction = async (
+  input: UpdateH5pContentsLibraryParams,
+) => {
   try {
     const payload = updateH5pContentsLibraryParams.parse(input);
     await updateH5pContentsLibrary(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateH5pContentsLibraryAction = async (input: UpdateH5pContentsLib
   }
 };
 
-export const deleteH5pContentsLibraryAction = async (input: H5pContentsLibraryId) => {
+export const deleteH5pContentsLibraryAction = async (
+  input: H5pContentsLibraryId,
+) => {
   try {
     const payload = h5pContentsLibraryIdSchema.parse({ id: input });
     await deleteH5pContentsLibrary(payload.id);

@@ -1,9 +1,10 @@
-import { type getFeedbackTemplates } from "@/lib/api/feedbackTemplates/queries";
 import { boolean, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getFeedbackTemplates } from "../api/feedbackTemplates/queries";
 
 export const feedbackTemplates = pgTable("feedback_templates", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

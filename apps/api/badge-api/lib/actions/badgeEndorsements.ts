@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBadgeEndorsement,
   deleteBadgeEndorsement,
   updateBadgeEndorsement,
-} from "@/lib/api/badgeEndorsements/mutations";
+} from "../api/badgeEndorsements/mutations";
 import {
   BadgeEndorsementId,
-  NewBadgeEndorsementParams,
-  UpdateBadgeEndorsementParams,
   badgeEndorsementIdSchema,
   insertBadgeEndorsementParams,
+  NewBadgeEndorsementParams,
+  UpdateBadgeEndorsementParams,
   updateBadgeEndorsementParams,
-} from "@/lib/db/schema/badgeEndorsements";
+} from "../db/schema/badgeEndorsements";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateBadgeEndorsements = () => revalidatePath("/badge-endorsements");
 
-export const createBadgeEndorsementAction = async (input: NewBadgeEndorsementParams) => {
+export const createBadgeEndorsementAction = async (
+  input: NewBadgeEndorsementParams,
+) => {
   try {
     const payload = insertBadgeEndorsementParams.parse(input);
     await createBadgeEndorsement(payload);
@@ -37,7 +40,9 @@ export const createBadgeEndorsementAction = async (input: NewBadgeEndorsementPar
   }
 };
 
-export const updateBadgeEndorsementAction = async (input: UpdateBadgeEndorsementParams) => {
+export const updateBadgeEndorsementAction = async (
+  input: UpdateBadgeEndorsementParams,
+) => {
   try {
     const payload = updateBadgeEndorsementParams.parse(input);
     await updateBadgeEndorsement(payload.id, payload);
@@ -47,7 +52,9 @@ export const updateBadgeEndorsementAction = async (input: UpdateBadgeEndorsement
   }
 };
 
-export const deleteBadgeEndorsementAction = async (input: BadgeEndorsementId) => {
+export const deleteBadgeEndorsementAction = async (
+  input: BadgeEndorsementId,
+) => {
   try {
     const payload = badgeEndorsementIdSchema.parse({ id: input });
     await deleteBadgeEndorsement(payload.id);

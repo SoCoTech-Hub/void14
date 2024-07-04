@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createProvince,
   deleteProvince,
   updateProvince,
-} from "@/lib/api/provinces/mutations";
+} from "../api/provinces/mutations";
 import {
-  ProvinceId,
-  NewProvinceParams,
-  UpdateProvinceParams,
-  provinceIdSchema,
   insertProvinceParams,
+  NewProvinceParams,
+  ProvinceId,
+  provinceIdSchema,
+  UpdateProvinceParams,
   updateProvinceParams,
-} from "@/lib/db/schema/provinces";
+} from "../db/schema/provinces";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

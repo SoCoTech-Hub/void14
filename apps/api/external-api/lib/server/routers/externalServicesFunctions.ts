@@ -1,19 +1,28 @@
-import { getExternalServicesFunctionById, getExternalServicesFunctions } from "@/lib/api/externalServicesFunctions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createExternalServicesFunction,
+  deleteExternalServicesFunction,
+  updateExternalServicesFunction,
+} from "../api/externalServicesFunctions/mutations";
+import {
+  getExternalServicesFunctionById,
+  getExternalServicesFunctions,
+} from "../api/externalServicesFunctions/queries";
 import {
   externalServicesFunctionIdSchema,
   insertExternalServicesFunctionParams,
   updateExternalServicesFunctionParams,
-} from "@/lib/db/schema/externalServicesFunctions";
-import { createExternalServicesFunction, deleteExternalServicesFunction, updateExternalServicesFunction } from "@/lib/api/externalServicesFunctions/mutations";
+} from "../db/schema/externalServicesFunctions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const externalServicesFunctionsRouter = router({
   getExternalServicesFunctions: publicProcedure.query(async () => {
     return getExternalServicesFunctions();
   }),
-  getExternalServicesFunctionById: publicProcedure.input(externalServicesFunctionIdSchema).query(async ({ input }) => {
-    return getExternalServicesFunctionById(input.id);
-  }),
+  getExternalServicesFunctionById: publicProcedure
+    .input(externalServicesFunctionIdSchema)
+    .query(async ({ input }) => {
+      return getExternalServicesFunctionById(input.id);
+    }),
   createExternalServicesFunction: publicProcedure
     .input(insertExternalServicesFunctionParams)
     .mutation(async ({ input }) => {

@@ -1,9 +1,10 @@
-import { type getEventsHandlers } from "@/lib/api/eventsHandlers/queries";
 import { boolean, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getEventsHandlers } from "../api/eventsHandlers/queries";
 
 export const eventsHandlers = pgTable("events_handlers", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

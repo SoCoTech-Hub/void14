@@ -1,10 +1,10 @@
-import { type getLessonBranches } from "@/lib/api/lessonBranches/queries";
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getLessonBranches } from "../api/lessonBranches/queries";
 import { lessonPages } from "./lessonPages";
 import { lessons } from "./lessons";
 

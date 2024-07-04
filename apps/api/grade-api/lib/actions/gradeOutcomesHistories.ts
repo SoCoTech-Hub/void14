@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGradeOutcomesHistory,
   deleteGradeOutcomesHistory,
   updateGradeOutcomesHistory,
-} from "@/lib/api/gradeOutcomesHistories/mutations";
+} from "../api/gradeOutcomesHistories/mutations";
 import {
   GradeOutcomesHistoryId,
-  NewGradeOutcomesHistoryParams,
-  UpdateGradeOutcomesHistoryParams,
   gradeOutcomesHistoryIdSchema,
   insertGradeOutcomesHistoryParams,
+  NewGradeOutcomesHistoryParams,
+  UpdateGradeOutcomesHistoryParams,
   updateGradeOutcomesHistoryParams,
-} from "@/lib/db/schema/gradeOutcomesHistories";
+} from "../db/schema/gradeOutcomesHistories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateGradeOutcomesHistories = () => revalidatePath("/grade-outcomes-histories");
+const revalidateGradeOutcomesHistories = () =>
+  revalidatePath("/grade-outcomes-histories");
 
-export const createGradeOutcomesHistoryAction = async (input: NewGradeOutcomesHistoryParams) => {
+export const createGradeOutcomesHistoryAction = async (
+  input: NewGradeOutcomesHistoryParams,
+) => {
   try {
     const payload = insertGradeOutcomesHistoryParams.parse(input);
     await createGradeOutcomesHistory(payload);
@@ -37,7 +41,9 @@ export const createGradeOutcomesHistoryAction = async (input: NewGradeOutcomesHi
   }
 };
 
-export const updateGradeOutcomesHistoryAction = async (input: UpdateGradeOutcomesHistoryParams) => {
+export const updateGradeOutcomesHistoryAction = async (
+  input: UpdateGradeOutcomesHistoryParams,
+) => {
   try {
     const payload = updateGradeOutcomesHistoryParams.parse(input);
     await updateGradeOutcomesHistory(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateGradeOutcomesHistoryAction = async (input: UpdateGradeOutcome
   }
 };
 
-export const deleteGradeOutcomesHistoryAction = async (input: GradeOutcomesHistoryId) => {
+export const deleteGradeOutcomesHistoryAction = async (
+  input: GradeOutcomesHistoryId,
+) => {
   try {
     const payload = gradeOutcomesHistoryIdSchema.parse({ id: input });
     await deleteGradeOutcomesHistory(payload.id);

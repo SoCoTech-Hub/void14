@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createWikiLock,
   deleteWikiLock,
   updateWikiLock,
-} from "@/lib/api/wikiLocks/mutations";
+} from "../api/wikiLocks/mutations";
 import {
-  WikiLockId,
+  insertWikiLockParams,
   NewWikiLockParams,
   UpdateWikiLockParams,
-  wikiLockIdSchema,
-  insertWikiLockParams,
   updateWikiLockParams,
-} from "@/lib/db/schema/wikiLocks";
+  WikiLockId,
+  wikiLockIdSchema,
+} from "../db/schema/wikiLocks";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

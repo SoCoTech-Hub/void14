@@ -1,9 +1,10 @@
-import { type getBadgeExternalBackpacks } from "@/lib/api/badgeExternalBackpacks/queries";
 import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getBadgeExternalBackpacks } from "../api/badgeExternalBackpacks/queries";
 
 export const badgeExternalBackpacks = pgTable("badge_external_backpacks", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createThemeComponent,
   deleteThemeComponent,
   updateThemeComponent,
-} from "@/lib/api/themeComponents/mutations";
+} from "../api/themeComponents/mutations";
 import {
-  ThemeComponentId,
-  NewThemeComponentParams,
-  UpdateThemeComponentParams,
-  themeComponentIdSchema,
   insertThemeComponentParams,
+  NewThemeComponentParams,
+  ThemeComponentId,
+  themeComponentIdSchema,
+  UpdateThemeComponentParams,
   updateThemeComponentParams,
-} from "@/lib/db/schema/themeComponents";
+} from "../db/schema/themeComponents";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateThemeComponents = () => revalidatePath("/theme-components");
 
-export const createThemeComponentAction = async (input: NewThemeComponentParams) => {
+export const createThemeComponentAction = async (
+  input: NewThemeComponentParams,
+) => {
   try {
     const payload = insertThemeComponentParams.parse(input);
     await createThemeComponent(payload);
@@ -37,7 +40,9 @@ export const createThemeComponentAction = async (input: NewThemeComponentParams)
   }
 };
 
-export const updateThemeComponentAction = async (input: UpdateThemeComponentParams) => {
+export const updateThemeComponentAction = async (
+  input: UpdateThemeComponentParams,
+) => {
   try {
     const payload = updateThemeComponentParams.parse(input);
     await updateThemeComponent(payload.id, payload);

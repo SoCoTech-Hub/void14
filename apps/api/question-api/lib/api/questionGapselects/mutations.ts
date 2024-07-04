@@ -1,19 +1,26 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  QuestionGapselectId, 
-  NewQuestionGapselectParams,
-  UpdateQuestionGapselectParams, 
-  updateQuestionGapselectSchema,
-  insertQuestionGapselectSchema, 
-  questionGapselects,
-  questionGapselectIdSchema 
-} from "@/lib/db/schema/questionGapselects";
 
-export const createQuestionGapselect = async (questionGapselect: NewQuestionGapselectParams) => {
-  const newQuestionGapselect = insertQuestionGapselectSchema.parse(questionGapselect);
+import { db } from "../db/index";
+import {
+  insertQuestionGapselectSchema,
+  NewQuestionGapselectParams,
+  QuestionGapselectId,
+  questionGapselectIdSchema,
+  questionGapselects,
+  UpdateQuestionGapselectParams,
+  updateQuestionGapselectSchema,
+} from "../db/schema/questionGapselects";
+
+export const createQuestionGapselect = async (
+  questionGapselect: NewQuestionGapselectParams,
+) => {
+  const newQuestionGapselect =
+    insertQuestionGapselectSchema.parse(questionGapselect);
   try {
-    const [q] =  await db.insert(questionGapselects).values(newQuestionGapselect).returning();
+    const [q] = await db
+      .insert(questionGapselects)
+      .values(newQuestionGapselect)
+      .returning();
     return { questionGapselect: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,19 @@ export const createQuestionGapselect = async (questionGapselect: NewQuestionGaps
   }
 };
 
-export const updateQuestionGapselect = async (id: QuestionGapselectId, questionGapselect: UpdateQuestionGapselectParams) => {
+export const updateQuestionGapselect = async (
+  id: QuestionGapselectId,
+  questionGapselect: UpdateQuestionGapselectParams,
+) => {
   const { id: questionGapselectId } = questionGapselectIdSchema.parse({ id });
-  const newQuestionGapselect = updateQuestionGapselectSchema.parse(questionGapselect);
+  const newQuestionGapselect =
+    updateQuestionGapselectSchema.parse(questionGapselect);
   try {
-    const [q] =  await db
-     .update(questionGapselects)
-     .set(newQuestionGapselect)
-     .where(eq(questionGapselects.id, questionGapselectId!))
-     .returning();
+    const [q] = await db
+      .update(questionGapselects)
+      .set(newQuestionGapselect)
+      .where(eq(questionGapselects.id, questionGapselectId!))
+      .returning();
     return { questionGapselect: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +53,10 @@ export const updateQuestionGapselect = async (id: QuestionGapselectId, questionG
 export const deleteQuestionGapselect = async (id: QuestionGapselectId) => {
   const { id: questionGapselectId } = questionGapselectIdSchema.parse({ id });
   try {
-    const [q] =  await db.delete(questionGapselects).where(eq(questionGapselects.id, questionGapselectId!))
-    .returning();
+    const [q] = await db
+      .delete(questionGapselects)
+      .where(eq(questionGapselects.id, questionGapselectId!))
+      .returning();
     return { questionGapselect: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +64,3 @@ export const deleteQuestionGapselect = async (id: QuestionGapselectId) => {
     throw { error: message };
   }
 };
-

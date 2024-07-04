@@ -1,10 +1,11 @@
-import { type getMessageinboundDatakeys } from "@/lib/api/messageinboundDatakeys/queries";
 import { sql } from "drizzle-orm";
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getMessageinboundDatakeys } from "../api/messageinboundDatakeys/queries";
 
 export const messageinboundDatakeys = pgTable("messageinbound_datakeys", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

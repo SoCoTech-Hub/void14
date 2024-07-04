@@ -1,19 +1,28 @@
-import { getSearchIndexRequestById, getSearchIndexRequests } from "@/lib/api/searchIndexRequests/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  searchIndexRequestIdSchema,
+  createSearchIndexRequest,
+  deleteSearchIndexRequest,
+  updateSearchIndexRequest,
+} from "../api/searchIndexRequests/mutations";
+import {
+  getSearchIndexRequestById,
+  getSearchIndexRequests,
+} from "../api/searchIndexRequests/queries";
+import {
   insertSearchIndexRequestParams,
+  searchIndexRequestIdSchema,
   updateSearchIndexRequestParams,
-} from "@/lib/db/schema/searchIndexRequests";
-import { createSearchIndexRequest, deleteSearchIndexRequest, updateSearchIndexRequest } from "@/lib/api/searchIndexRequests/mutations";
+} from "../db/schema/searchIndexRequests";
+import { publicProcedure, router } from "../server/trpc";
 
 export const searchIndexRequestsRouter = router({
   getSearchIndexRequests: publicProcedure.query(async () => {
     return getSearchIndexRequests();
   }),
-  getSearchIndexRequestById: publicProcedure.input(searchIndexRequestIdSchema).query(async ({ input }) => {
-    return getSearchIndexRequestById(input.id);
-  }),
+  getSearchIndexRequestById: publicProcedure
+    .input(searchIndexRequestIdSchema)
+    .query(async ({ input }) => {
+      return getSearchIndexRequestById(input.id);
+    }),
   createSearchIndexRequest: publicProcedure
     .input(insertSearchIndexRequestParams)
     .mutation(async ({ input }) => {

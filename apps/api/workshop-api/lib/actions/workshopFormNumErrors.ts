@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createWorkshopFormNumError,
   deleteWorkshopFormNumError,
   updateWorkshopFormNumError,
-} from "@/lib/api/workshopFormNumErrors/mutations";
+} from "../api/workshopFormNumErrors/mutations";
 import {
-  WorkshopFormNumErrorId,
+  insertWorkshopFormNumErrorParams,
   NewWorkshopFormNumErrorParams,
   UpdateWorkshopFormNumErrorParams,
-  workshopFormNumErrorIdSchema,
-  insertWorkshopFormNumErrorParams,
   updateWorkshopFormNumErrorParams,
-} from "@/lib/db/schema/workshopFormNumErrors";
+  WorkshopFormNumErrorId,
+  workshopFormNumErrorIdSchema,
+} from "../db/schema/workshopFormNumErrors";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateWorkshopFormNumErrors = () => revalidatePath("/workshop-form-num-errors");
+const revalidateWorkshopFormNumErrors = () =>
+  revalidatePath("/workshop-form-num-errors");
 
-export const createWorkshopFormNumErrorAction = async (input: NewWorkshopFormNumErrorParams) => {
+export const createWorkshopFormNumErrorAction = async (
+  input: NewWorkshopFormNumErrorParams,
+) => {
   try {
     const payload = insertWorkshopFormNumErrorParams.parse(input);
     await createWorkshopFormNumError(payload);
@@ -37,7 +41,9 @@ export const createWorkshopFormNumErrorAction = async (input: NewWorkshopFormNum
   }
 };
 
-export const updateWorkshopFormNumErrorAction = async (input: UpdateWorkshopFormNumErrorParams) => {
+export const updateWorkshopFormNumErrorAction = async (
+  input: UpdateWorkshopFormNumErrorParams,
+) => {
   try {
     const payload = updateWorkshopFormNumErrorParams.parse(input);
     await updateWorkshopFormNumError(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateWorkshopFormNumErrorAction = async (input: UpdateWorkshopForm
   }
 };
 
-export const deleteWorkshopFormNumErrorAction = async (input: WorkshopFormNumErrorId) => {
+export const deleteWorkshopFormNumErrorAction = async (
+  input: WorkshopFormNumErrorId,
+) => {
   try {
     const payload = workshopFormNumErrorIdSchema.parse({ id: input });
     await deleteWorkshopFormNumError(payload.id);

@@ -1,4 +1,3 @@
-import { type getPayments } from "@/lib/api/payments/queries";
 import { sql } from "drizzle-orm";
 import {
   pgTable,
@@ -12,6 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getPayments } from "../api/payments/queries";
 import { paymentAccounts } from "./paymentAccounts";
 
 export const payments = pgTable(

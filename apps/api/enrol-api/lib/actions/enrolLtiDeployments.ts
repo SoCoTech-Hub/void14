@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createEnrolLtiDeployment,
   deleteEnrolLtiDeployment,
   updateEnrolLtiDeployment,
-} from "@/lib/api/enrolLtiDeployments/mutations";
+} from "../api/enrolLtiDeployments/mutations";
 import {
   EnrolLtiDeploymentId,
-  NewEnrolLtiDeploymentParams,
-  UpdateEnrolLtiDeploymentParams,
   enrolLtiDeploymentIdSchema,
   insertEnrolLtiDeploymentParams,
+  NewEnrolLtiDeploymentParams,
+  UpdateEnrolLtiDeploymentParams,
   updateEnrolLtiDeploymentParams,
-} from "@/lib/db/schema/enrolLtiDeployments";
+} from "../db/schema/enrolLtiDeployments";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateEnrolLtiDeployments = () => revalidatePath("/enrol-lti-deployments");
+const revalidateEnrolLtiDeployments = () =>
+  revalidatePath("/enrol-lti-deployments");
 
-export const createEnrolLtiDeploymentAction = async (input: NewEnrolLtiDeploymentParams) => {
+export const createEnrolLtiDeploymentAction = async (
+  input: NewEnrolLtiDeploymentParams,
+) => {
   try {
     const payload = insertEnrolLtiDeploymentParams.parse(input);
     await createEnrolLtiDeployment(payload);
@@ -37,7 +41,9 @@ export const createEnrolLtiDeploymentAction = async (input: NewEnrolLtiDeploymen
   }
 };
 
-export const updateEnrolLtiDeploymentAction = async (input: UpdateEnrolLtiDeploymentParams) => {
+export const updateEnrolLtiDeploymentAction = async (
+  input: UpdateEnrolLtiDeploymentParams,
+) => {
   try {
     const payload = updateEnrolLtiDeploymentParams.parse(input);
     await updateEnrolLtiDeployment(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateEnrolLtiDeploymentAction = async (input: UpdateEnrolLtiDeploy
   }
 };
 
-export const deleteEnrolLtiDeploymentAction = async (input: EnrolLtiDeploymentId) => {
+export const deleteEnrolLtiDeploymentAction = async (
+  input: EnrolLtiDeploymentId,
+) => {
   try {
     const payload = enrolLtiDeploymentIdSchema.parse({ id: input });
     await deleteEnrolLtiDeployment(payload.id);

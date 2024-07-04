@@ -1,19 +1,25 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  BadgeRelatedId, 
-  NewBadgeRelatedParams,
-  UpdateBadgeRelatedParams, 
-  updateBadgeRelatedSchema,
-  insertBadgeRelatedSchema, 
-  badgeRelateds,
-  badgeRelatedIdSchema 
-} from "@/lib/db/schema/badgeRelateds";
 
-export const createBadgeRelated = async (badgeRelated: NewBadgeRelatedParams) => {
+import { db } from "../db/index";
+import {
+  BadgeRelatedId,
+  badgeRelatedIdSchema,
+  badgeRelateds,
+  insertBadgeRelatedSchema,
+  NewBadgeRelatedParams,
+  UpdateBadgeRelatedParams,
+  updateBadgeRelatedSchema,
+} from "../db/schema/badgeRelateds";
+
+export const createBadgeRelated = async (
+  badgeRelated: NewBadgeRelatedParams,
+) => {
   const newBadgeRelated = insertBadgeRelatedSchema.parse(badgeRelated);
   try {
-    const [b] =  await db.insert(badgeRelateds).values(newBadgeRelated).returning();
+    const [b] = await db
+      .insert(badgeRelateds)
+      .values(newBadgeRelated)
+      .returning();
     return { badgeRelated: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +28,18 @@ export const createBadgeRelated = async (badgeRelated: NewBadgeRelatedParams) =>
   }
 };
 
-export const updateBadgeRelated = async (id: BadgeRelatedId, badgeRelated: UpdateBadgeRelatedParams) => {
+export const updateBadgeRelated = async (
+  id: BadgeRelatedId,
+  badgeRelated: UpdateBadgeRelatedParams,
+) => {
   const { id: badgeRelatedId } = badgeRelatedIdSchema.parse({ id });
   const newBadgeRelated = updateBadgeRelatedSchema.parse(badgeRelated);
   try {
-    const [b] =  await db
-     .update(badgeRelateds)
-     .set(newBadgeRelated)
-     .where(eq(badgeRelateds.id, badgeRelatedId!))
-     .returning();
+    const [b] = await db
+      .update(badgeRelateds)
+      .set(newBadgeRelated)
+      .where(eq(badgeRelateds.id, badgeRelatedId!))
+      .returning();
     return { badgeRelated: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +51,10 @@ export const updateBadgeRelated = async (id: BadgeRelatedId, badgeRelated: Updat
 export const deleteBadgeRelated = async (id: BadgeRelatedId) => {
   const { id: badgeRelatedId } = badgeRelatedIdSchema.parse({ id });
   try {
-    const [b] =  await db.delete(badgeRelateds).where(eq(badgeRelateds.id, badgeRelatedId!))
-    .returning();
+    const [b] = await db
+      .delete(badgeRelateds)
+      .where(eq(badgeRelateds.id, badgeRelatedId!))
+      .returning();
     return { badgeRelated: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +62,3 @@ export const deleteBadgeRelated = async (id: BadgeRelatedId) => {
     throw { error: message };
   }
 };
-

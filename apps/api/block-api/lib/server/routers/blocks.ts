@@ -1,19 +1,21 @@
-import { getBlockById, getBlocks } from "@/lib/api/blocks/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import { createBlock, deleteBlock, updateBlock } from "../api/blocks/mutations";
+import { getBlockById, getBlocks } from "../api/blocks/queries";
 import {
   blockIdSchema,
   insertBlockParams,
   updateBlockParams,
-} from "@/lib/db/schema/blocks";
-import { createBlock, deleteBlock, updateBlock } from "@/lib/api/blocks/mutations";
+} from "../db/schema/blocks";
+import { publicProcedure, router } from "../server/trpc";
 
 export const blocksRouter = router({
   getBlocks: publicProcedure.query(async () => {
     return getBlocks();
   }),
-  getBlockById: publicProcedure.input(blockIdSchema).query(async ({ input }) => {
-    return getBlockById(input.id);
-  }),
+  getBlockById: publicProcedure
+    .input(blockIdSchema)
+    .query(async ({ input }) => {
+      return getBlockById(input.id);
+    }),
   createBlock: publicProcedure
     .input(insertBlockParams)
     .mutation(async ({ input }) => {

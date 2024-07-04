@@ -1,19 +1,28 @@
-import { getBadgeExternalById, getBadgeExternals } from "@/lib/api/badgeExternals/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createBadgeExternal,
+  deleteBadgeExternal,
+  updateBadgeExternal,
+} from "../api/badgeExternals/mutations";
+import {
+  getBadgeExternalById,
+  getBadgeExternals,
+} from "../api/badgeExternals/queries";
 import {
   badgeExternalIdSchema,
   insertBadgeExternalParams,
   updateBadgeExternalParams,
-} from "@/lib/db/schema/badgeExternals";
-import { createBadgeExternal, deleteBadgeExternal, updateBadgeExternal } from "@/lib/api/badgeExternals/mutations";
+} from "../db/schema/badgeExternals";
+import { publicProcedure, router } from "../server/trpc";
 
 export const badgeExternalsRouter = router({
   getBadgeExternals: publicProcedure.query(async () => {
     return getBadgeExternals();
   }),
-  getBadgeExternalById: publicProcedure.input(badgeExternalIdSchema).query(async ({ input }) => {
-    return getBadgeExternalById(input.id);
-  }),
+  getBadgeExternalById: publicProcedure
+    .input(badgeExternalIdSchema)
+    .query(async ({ input }) => {
+      return getBadgeExternalById(input.id);
+    }),
   createBadgeExternal: publicProcedure
     .input(insertBadgeExternalParams)
     .mutation(async ({ input }) => {

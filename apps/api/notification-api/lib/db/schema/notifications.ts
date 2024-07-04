@@ -1,4 +1,3 @@
-import { type getNotifications } from "@/lib/api/notifications/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getNotifications } from "../api/notifications/queries";
 
 export const notifications = pgTable(
   "notifications",

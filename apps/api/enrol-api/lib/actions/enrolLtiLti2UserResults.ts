@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createEnrolLtiLti2UserResult,
   deleteEnrolLtiLti2UserResult,
   updateEnrolLtiLti2UserResult,
-} from "@/lib/api/enrolLtiLti2UserResults/mutations";
+} from "../api/enrolLtiLti2UserResults/mutations";
 import {
   EnrolLtiLti2UserResultId,
-  NewEnrolLtiLti2UserResultParams,
-  UpdateEnrolLtiLti2UserResultParams,
   enrolLtiLti2UserResultIdSchema,
   insertEnrolLtiLti2UserResultParams,
+  NewEnrolLtiLti2UserResultParams,
+  UpdateEnrolLtiLti2UserResultParams,
   updateEnrolLtiLti2UserResultParams,
-} from "@/lib/db/schema/enrolLtiLti2UserResults";
+} from "../db/schema/enrolLtiLti2UserResults";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateEnrolLtiLti2UserResults = () => revalidatePath("/enrol-lti-lti2-user-results");
+const revalidateEnrolLtiLti2UserResults = () =>
+  revalidatePath("/enrol-lti-lti2-user-results");
 
-export const createEnrolLtiLti2UserResultAction = async (input: NewEnrolLtiLti2UserResultParams) => {
+export const createEnrolLtiLti2UserResultAction = async (
+  input: NewEnrolLtiLti2UserResultParams,
+) => {
   try {
     const payload = insertEnrolLtiLti2UserResultParams.parse(input);
     await createEnrolLtiLti2UserResult(payload);
@@ -37,7 +41,9 @@ export const createEnrolLtiLti2UserResultAction = async (input: NewEnrolLtiLti2U
   }
 };
 
-export const updateEnrolLtiLti2UserResultAction = async (input: UpdateEnrolLtiLti2UserResultParams) => {
+export const updateEnrolLtiLti2UserResultAction = async (
+  input: UpdateEnrolLtiLti2UserResultParams,
+) => {
   try {
     const payload = updateEnrolLtiLti2UserResultParams.parse(input);
     await updateEnrolLtiLti2UserResult(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateEnrolLtiLti2UserResultAction = async (input: UpdateEnrolLtiLt
   }
 };
 
-export const deleteEnrolLtiLti2UserResultAction = async (input: EnrolLtiLti2UserResultId) => {
+export const deleteEnrolLtiLti2UserResultAction = async (
+  input: EnrolLtiLti2UserResultId,
+) => {
   try {
     const payload = enrolLtiLti2UserResultIdSchema.parse({ id: input });
     await deleteEnrolLtiLti2UserResult(payload.id);

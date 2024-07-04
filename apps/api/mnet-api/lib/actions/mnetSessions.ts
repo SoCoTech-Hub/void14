@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMnetSession,
   deleteMnetSession,
   updateMnetSession,
-} from "@/lib/api/mnetSessions/mutations";
+} from "../api/mnetSessions/mutations";
 import {
+  insertMnetSessionParams,
   MnetSessionId,
+  mnetSessionIdSchema,
   NewMnetSessionParams,
   UpdateMnetSessionParams,
-  mnetSessionIdSchema,
-  insertMnetSessionParams,
   updateMnetSessionParams,
-} from "@/lib/db/schema/mnetSessions";
+} from "../db/schema/mnetSessions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createMnetSessionAction = async (input: NewMnetSessionParams) => {
   }
 };
 
-export const updateMnetSessionAction = async (input: UpdateMnetSessionParams) => {
+export const updateMnetSessionAction = async (
+  input: UpdateMnetSessionParams,
+) => {
   try {
     const payload = updateMnetSessionParams.parse(input);
     await updateMnetSession(payload.id, payload);

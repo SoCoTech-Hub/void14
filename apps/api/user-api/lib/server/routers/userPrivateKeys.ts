@@ -1,19 +1,28 @@
-import { getUserPrivateKeyById, getUserPrivateKeys } from "@/lib/api/userPrivateKeys/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  userPrivateKeyIdSchema,
+  createUserPrivateKey,
+  deleteUserPrivateKey,
+  updateUserPrivateKey,
+} from "../api/userPrivateKeys/mutations";
+import {
+  getUserPrivateKeyById,
+  getUserPrivateKeys,
+} from "../api/userPrivateKeys/queries";
+import {
   insertUserPrivateKeyParams,
   updateUserPrivateKeyParams,
-} from "@/lib/db/schema/userPrivateKeys";
-import { createUserPrivateKey, deleteUserPrivateKey, updateUserPrivateKey } from "@/lib/api/userPrivateKeys/mutations";
+  userPrivateKeyIdSchema,
+} from "../db/schema/userPrivateKeys";
+import { publicProcedure, router } from "../server/trpc";
 
 export const userPrivateKeysRouter = router({
   getUserPrivateKeys: publicProcedure.query(async () => {
     return getUserPrivateKeys();
   }),
-  getUserPrivateKeyById: publicProcedure.input(userPrivateKeyIdSchema).query(async ({ input }) => {
-    return getUserPrivateKeyById(input.id);
-  }),
+  getUserPrivateKeyById: publicProcedure
+    .input(userPrivateKeyIdSchema)
+    .query(async ({ input }) => {
+      return getUserPrivateKeyById(input.id);
+    }),
   createUserPrivateKey: publicProcedure
     .input(insertUserPrivateKeyParams)
     .mutation(async ({ input }) => {

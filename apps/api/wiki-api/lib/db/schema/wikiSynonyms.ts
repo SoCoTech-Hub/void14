@@ -1,10 +1,10 @@
-import { type getWikiSynonyms } from "@/lib/api/wikiSynonyms/queries";
 import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getWikiSynonyms } from "../api/wikiSynonyms/queries";
 import { wikiPages } from "./wikiPages";
 import { wikiSubwikis } from "./wikiSubwikis";
 

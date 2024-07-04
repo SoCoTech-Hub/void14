@@ -1,4 +1,3 @@
-import { type getBigBlueButtonBnLogs } from "@/lib/api/bigBlueButtonBnLogs/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -13,6 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getBigBlueButtonBnLogs } from "../api/bigBlueButtonBnLogs/queries";
 import { bigBlueButtonBns } from "./bigBlueButtonBns";
 
 export const bigBlueButtonBnLogs = pgTable(

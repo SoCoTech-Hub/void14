@@ -1,10 +1,10 @@
-import { db } from "@/lib/db/index";
+import { db } from "../db/index";
 import { eq } from "drizzle-orm";
-import { type WikiLinkId, wikiLinkIdSchema, wikiLinks } from "@/lib/db/schema/wikiLinks";
-import { wikiPages } from "@/lib/db/schema/wikiPages";
-import { wikiPages } from "@/lib/db/schema/wikiPages";
-import { wikiPages } from "@/lib/db/schema/wikiPages";
-import { wikiPages } from "@/lib/db/schema/wikiPages";
+import { type WikiLinkId, wikiLinkIdSchema, wikiLinks } from "../db/schema/wikiLinks";
+import { wikiPages } from "../db/schema/wikiPages";
+import { wikiPages } from "../db/schema/wikiPages";
+import { wikiPages } from "../db/schema/wikiPages";
+import { wikiPages } from "../db/schema/wikiPages";
 
 export const getWikiLinks = async () => {
   const rows = await db.select({ wikiLink: wikiLinks, wikiPage: wikiPages, wikiPage: wikiPages, wikiPage: wikiPages, wikiPage: wikiPages }).from(wikiLinks).leftJoin(wikiPages, eq(wikiLinks.wikiPageId, wikiPages.id)).leftJoin(wikiPages, eq(wikiLinks.wikiPageId, wikiPages.id)).leftJoin(wikiPages, eq(wikiLinks.wikiPageId, wikiPages.id)).leftJoin(wikiPages, eq(wikiLinks.wikiPageId, wikiPages.id));

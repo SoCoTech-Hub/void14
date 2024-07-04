@@ -1,19 +1,28 @@
-import { getWorkshopEvalBestSettingById, getWorkshopEvalBestSettings } from "@/lib/api/workshopEvalBestSettings/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  workshopEvalBestSettingIdSchema,
+  createWorkshopEvalBestSetting,
+  deleteWorkshopEvalBestSetting,
+  updateWorkshopEvalBestSetting,
+} from "../api/workshopEvalBestSettings/mutations";
+import {
+  getWorkshopEvalBestSettingById,
+  getWorkshopEvalBestSettings,
+} from "../api/workshopEvalBestSettings/queries";
+import {
   insertWorkshopEvalBestSettingParams,
   updateWorkshopEvalBestSettingParams,
-} from "@/lib/db/schema/workshopEvalBestSettings";
-import { createWorkshopEvalBestSetting, deleteWorkshopEvalBestSetting, updateWorkshopEvalBestSetting } from "@/lib/api/workshopEvalBestSettings/mutations";
+  workshopEvalBestSettingIdSchema,
+} from "../db/schema/workshopEvalBestSettings";
+import { publicProcedure, router } from "../server/trpc";
 
 export const workshopEvalBestSettingsRouter = router({
   getWorkshopEvalBestSettings: publicProcedure.query(async () => {
     return getWorkshopEvalBestSettings();
   }),
-  getWorkshopEvalBestSettingById: publicProcedure.input(workshopEvalBestSettingIdSchema).query(async ({ input }) => {
-    return getWorkshopEvalBestSettingById(input.id);
-  }),
+  getWorkshopEvalBestSettingById: publicProcedure
+    .input(workshopEvalBestSettingIdSchema)
+    .query(async ({ input }) => {
+      return getWorkshopEvalBestSettingById(input.id);
+    }),
   createWorkshopEvalBestSetting: publicProcedure
     .input(insertWorkshopEvalBestSettingParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,25 @@
-import { getForumReadById, getForumReads } from "@/lib/api/forumReads/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createForumRead,
+  deleteForumRead,
+  updateForumRead,
+} from "../api/forumReads/mutations";
+import { getForumReadById, getForumReads } from "../api/forumReads/queries";
 import {
   forumReadIdSchema,
   insertForumReadParams,
   updateForumReadParams,
-} from "@/lib/db/schema/forumReads";
-import { createForumRead, deleteForumRead, updateForumRead } from "@/lib/api/forumReads/mutations";
+} from "../db/schema/forumReads";
+import { publicProcedure, router } from "../server/trpc";
 
 export const forumReadsRouter = router({
   getForumReads: publicProcedure.query(async () => {
     return getForumReads();
   }),
-  getForumReadById: publicProcedure.input(forumReadIdSchema).query(async ({ input }) => {
-    return getForumReadById(input.id);
-  }),
+  getForumReadById: publicProcedure
+    .input(forumReadIdSchema)
+    .query(async ({ input }) => {
+      return getForumReadById(input.id);
+    }),
   createForumRead: publicProcedure
     .input(insertForumReadParams)
     .mutation(async ({ input }) => {

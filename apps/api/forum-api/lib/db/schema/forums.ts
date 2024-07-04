@@ -1,4 +1,3 @@
-import { type getForums } from "@/lib/api/forums/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -13,6 +12,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getForums } from "../api/forums/queries";
 
 export const forums = pgTable("forums", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

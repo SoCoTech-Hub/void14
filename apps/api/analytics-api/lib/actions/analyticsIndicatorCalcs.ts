@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAnalyticsIndicatorCalc,
   deleteAnalyticsIndicatorCalc,
   updateAnalyticsIndicatorCalc,
-} from "@/lib/api/analyticsIndicatorCalcs/mutations";
+} from "../api/analyticsIndicatorCalcs/mutations";
 import {
   AnalyticsIndicatorCalcId,
-  NewAnalyticsIndicatorCalcParams,
-  UpdateAnalyticsIndicatorCalcParams,
   analyticsIndicatorCalcIdSchema,
   insertAnalyticsIndicatorCalcParams,
+  NewAnalyticsIndicatorCalcParams,
+  UpdateAnalyticsIndicatorCalcParams,
   updateAnalyticsIndicatorCalcParams,
-} from "@/lib/db/schema/analyticsIndicatorCalcs";
+} from "../db/schema/analyticsIndicatorCalcs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateAnalyticsIndicatorCalcs = () => revalidatePath("/analytics-indicator-calcs");
+const revalidateAnalyticsIndicatorCalcs = () =>
+  revalidatePath("/analytics-indicator-calcs");
 
-export const createAnalyticsIndicatorCalcAction = async (input: NewAnalyticsIndicatorCalcParams) => {
+export const createAnalyticsIndicatorCalcAction = async (
+  input: NewAnalyticsIndicatorCalcParams,
+) => {
   try {
     const payload = insertAnalyticsIndicatorCalcParams.parse(input);
     await createAnalyticsIndicatorCalc(payload);
@@ -37,7 +41,9 @@ export const createAnalyticsIndicatorCalcAction = async (input: NewAnalyticsIndi
   }
 };
 
-export const updateAnalyticsIndicatorCalcAction = async (input: UpdateAnalyticsIndicatorCalcParams) => {
+export const updateAnalyticsIndicatorCalcAction = async (
+  input: UpdateAnalyticsIndicatorCalcParams,
+) => {
   try {
     const payload = updateAnalyticsIndicatorCalcParams.parse(input);
     await updateAnalyticsIndicatorCalc(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateAnalyticsIndicatorCalcAction = async (input: UpdateAnalyticsI
   }
 };
 
-export const deleteAnalyticsIndicatorCalcAction = async (input: AnalyticsIndicatorCalcId) => {
+export const deleteAnalyticsIndicatorCalcAction = async (
+  input: AnalyticsIndicatorCalcId,
+) => {
   try {
     const payload = analyticsIndicatorCalcIdSchema.parse({ id: input });
     await deleteAnalyticsIndicatorCalc(payload.id);

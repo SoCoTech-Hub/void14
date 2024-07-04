@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createToolCustomLangComponent,
   deleteToolCustomLangComponent,
   updateToolCustomLangComponent,
-} from "@/lib/api/toolCustomLangComponents/mutations";
+} from "../api/toolCustomLangComponents/mutations";
 import {
-  ToolCustomLangComponentId,
-  NewToolCustomLangComponentParams,
-  UpdateToolCustomLangComponentParams,
-  toolCustomLangComponentIdSchema,
   insertToolCustomLangComponentParams,
+  NewToolCustomLangComponentParams,
+  ToolCustomLangComponentId,
+  toolCustomLangComponentIdSchema,
+  UpdateToolCustomLangComponentParams,
   updateToolCustomLangComponentParams,
-} from "@/lib/db/schema/toolCustomLangComponents";
+} from "../db/schema/toolCustomLangComponents";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateToolCustomLangComponents = () => revalidatePath("/tool-custom-lang-components");
+const revalidateToolCustomLangComponents = () =>
+  revalidatePath("/tool-custom-lang-components");
 
-export const createToolCustomLangComponentAction = async (input: NewToolCustomLangComponentParams) => {
+export const createToolCustomLangComponentAction = async (
+  input: NewToolCustomLangComponentParams,
+) => {
   try {
     const payload = insertToolCustomLangComponentParams.parse(input);
     await createToolCustomLangComponent(payload);
@@ -37,7 +41,9 @@ export const createToolCustomLangComponentAction = async (input: NewToolCustomLa
   }
 };
 
-export const updateToolCustomLangComponentAction = async (input: UpdateToolCustomLangComponentParams) => {
+export const updateToolCustomLangComponentAction = async (
+  input: UpdateToolCustomLangComponentParams,
+) => {
   try {
     const payload = updateToolCustomLangComponentParams.parse(input);
     await updateToolCustomLangComponent(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateToolCustomLangComponentAction = async (input: UpdateToolCusto
   }
 };
 
-export const deleteToolCustomLangComponentAction = async (input: ToolCustomLangComponentId) => {
+export const deleteToolCustomLangComponentAction = async (
+  input: ToolCustomLangComponentId,
+) => {
   try {
     const payload = toolCustomLangComponentIdSchema.parse({ id: input });
     await deleteToolCustomLangComponent(payload.id);

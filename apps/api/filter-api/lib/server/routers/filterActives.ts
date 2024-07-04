@@ -1,19 +1,28 @@
-import { getFilterActiveById, getFilterActives } from "@/lib/api/filterActives/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createFilterActive,
+  deleteFilterActive,
+  updateFilterActive,
+} from "../api/filterActives/mutations";
+import {
+  getFilterActiveById,
+  getFilterActives,
+} from "../api/filterActives/queries";
 import {
   filterActiveIdSchema,
   insertFilterActiveParams,
   updateFilterActiveParams,
-} from "@/lib/db/schema/filterActives";
-import { createFilterActive, deleteFilterActive, updateFilterActive } from "@/lib/api/filterActives/mutations";
+} from "../db/schema/filterActives";
+import { publicProcedure, router } from "../server/trpc";
 
 export const filterActivesRouter = router({
   getFilterActives: publicProcedure.query(async () => {
     return getFilterActives();
   }),
-  getFilterActiveById: publicProcedure.input(filterActiveIdSchema).query(async ({ input }) => {
-    return getFilterActiveById(input.id);
-  }),
+  getFilterActiveById: publicProcedure
+    .input(filterActiveIdSchema)
+    .query(async ({ input }) => {
+      return getFilterActiveById(input.id);
+    }),
   createFilterActive: publicProcedure
     .input(insertFilterActiveParams)
     .mutation(async ({ input }) => {

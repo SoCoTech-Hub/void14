@@ -1,9 +1,10 @@
-import { type getLocalizationLanguages } from "@/lib/api/localizationLanguages/queries";
 import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getLocalizationLanguages } from "../api/localizationLanguages/queries";
 
 export const localizationLanguages = pgTable(
   "localization_languages",

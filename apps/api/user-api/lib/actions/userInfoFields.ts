@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createUserInfoField,
   deleteUserInfoField,
   updateUserInfoField,
-} from "@/lib/api/userInfoFields/mutations";
+} from "../api/userInfoFields/mutations";
 import {
-  UserInfoFieldId,
+  insertUserInfoFieldParams,
   NewUserInfoFieldParams,
   UpdateUserInfoFieldParams,
-  userInfoFieldIdSchema,
-  insertUserInfoFieldParams,
   updateUserInfoFieldParams,
-} from "@/lib/db/schema/userInfoFields";
+  UserInfoFieldId,
+  userInfoFieldIdSchema,
+} from "../db/schema/userInfoFields";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateUserInfoFields = () => revalidatePath("/user-info-fields");
 
-export const createUserInfoFieldAction = async (input: NewUserInfoFieldParams) => {
+export const createUserInfoFieldAction = async (
+  input: NewUserInfoFieldParams,
+) => {
   try {
     const payload = insertUserInfoFieldParams.parse(input);
     await createUserInfoField(payload);
@@ -37,7 +40,9 @@ export const createUserInfoFieldAction = async (input: NewUserInfoFieldParams) =
   }
 };
 
-export const updateUserInfoFieldAction = async (input: UpdateUserInfoFieldParams) => {
+export const updateUserInfoFieldAction = async (
+  input: UpdateUserInfoFieldParams,
+) => {
   try {
     const payload = updateUserInfoFieldParams.parse(input);
     await updateUserInfoField(payload.id, payload);

@@ -1,19 +1,26 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  QtypeRandomsamatchOptionId, 
+
+import { db } from "../db/index";
+import {
+  insertQtypeRandomsamatchOptionSchema,
   NewQtypeRandomsamatchOptionParams,
-  UpdateQtypeRandomsamatchOptionParams, 
-  updateQtypeRandomsamatchOptionSchema,
-  insertQtypeRandomsamatchOptionSchema, 
+  QtypeRandomsamatchOptionId,
+  qtypeRandomsamatchOptionIdSchema,
   qtypeRandomsamatchOptions,
-  qtypeRandomsamatchOptionIdSchema 
-} from "@/lib/db/schema/qtypeRandomsamatchOptions";
+  UpdateQtypeRandomsamatchOptionParams,
+  updateQtypeRandomsamatchOptionSchema,
+} from "../db/schema/qtypeRandomsamatchOptions";
 
-export const createQtypeRandomsamatchOption = async (qtypeRandomsamatchOption: NewQtypeRandomsamatchOptionParams) => {
-  const newQtypeRandomsamatchOption = insertQtypeRandomsamatchOptionSchema.parse(qtypeRandomsamatchOption);
+export const createQtypeRandomsamatchOption = async (
+  qtypeRandomsamatchOption: NewQtypeRandomsamatchOptionParams,
+) => {
+  const newQtypeRandomsamatchOption =
+    insertQtypeRandomsamatchOptionSchema.parse(qtypeRandomsamatchOption);
   try {
-    const [q] =  await db.insert(qtypeRandomsamatchOptions).values(newQtypeRandomsamatchOption).returning();
+    const [q] = await db
+      .insert(qtypeRandomsamatchOptions)
+      .values(newQtypeRandomsamatchOption)
+      .returning();
     return { qtypeRandomsamatchOption: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,20 @@ export const createQtypeRandomsamatchOption = async (qtypeRandomsamatchOption: N
   }
 };
 
-export const updateQtypeRandomsamatchOption = async (id: QtypeRandomsamatchOptionId, qtypeRandomsamatchOption: UpdateQtypeRandomsamatchOptionParams) => {
-  const { id: qtypeRandomsamatchOptionId } = qtypeRandomsamatchOptionIdSchema.parse({ id });
-  const newQtypeRandomsamatchOption = updateQtypeRandomsamatchOptionSchema.parse(qtypeRandomsamatchOption);
+export const updateQtypeRandomsamatchOption = async (
+  id: QtypeRandomsamatchOptionId,
+  qtypeRandomsamatchOption: UpdateQtypeRandomsamatchOptionParams,
+) => {
+  const { id: qtypeRandomsamatchOptionId } =
+    qtypeRandomsamatchOptionIdSchema.parse({ id });
+  const newQtypeRandomsamatchOption =
+    updateQtypeRandomsamatchOptionSchema.parse(qtypeRandomsamatchOption);
   try {
-    const [q] =  await db
-     .update(qtypeRandomsamatchOptions)
-     .set(newQtypeRandomsamatchOption)
-     .where(eq(qtypeRandomsamatchOptions.id, qtypeRandomsamatchOptionId!))
-     .returning();
+    const [q] = await db
+      .update(qtypeRandomsamatchOptions)
+      .set(newQtypeRandomsamatchOption)
+      .where(eq(qtypeRandomsamatchOptions.id, qtypeRandomsamatchOptionId!))
+      .returning();
     return { qtypeRandomsamatchOption: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +51,16 @@ export const updateQtypeRandomsamatchOption = async (id: QtypeRandomsamatchOptio
   }
 };
 
-export const deleteQtypeRandomsamatchOption = async (id: QtypeRandomsamatchOptionId) => {
-  const { id: qtypeRandomsamatchOptionId } = qtypeRandomsamatchOptionIdSchema.parse({ id });
+export const deleteQtypeRandomsamatchOption = async (
+  id: QtypeRandomsamatchOptionId,
+) => {
+  const { id: qtypeRandomsamatchOptionId } =
+    qtypeRandomsamatchOptionIdSchema.parse({ id });
   try {
-    const [q] =  await db.delete(qtypeRandomsamatchOptions).where(eq(qtypeRandomsamatchOptions.id, qtypeRandomsamatchOptionId!))
-    .returning();
+    const [q] = await db
+      .delete(qtypeRandomsamatchOptions)
+      .where(eq(qtypeRandomsamatchOptions.id, qtypeRandomsamatchOptionId!))
+      .returning();
     return { qtypeRandomsamatchOption: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +68,3 @@ export const deleteQtypeRandomsamatchOption = async (id: QtypeRandomsamatchOptio
     throw { error: message };
   }
 };
-

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAssignFeedbackComment,
   deleteAssignFeedbackComment,
   updateAssignFeedbackComment,
-} from "@/lib/api/assignFeedbackComments/mutations";
+} from "../api/assignFeedbackComments/mutations";
 import {
   AssignFeedbackCommentId,
-  NewAssignFeedbackCommentParams,
-  UpdateAssignFeedbackCommentParams,
   assignFeedbackCommentIdSchema,
   insertAssignFeedbackCommentParams,
+  NewAssignFeedbackCommentParams,
+  UpdateAssignFeedbackCommentParams,
   updateAssignFeedbackCommentParams,
-} from "@/lib/db/schema/assignFeedbackComments";
+} from "../db/schema/assignFeedbackComments";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateAssignFeedbackComments = () => revalidatePath("/assign-feedback-comments");
+const revalidateAssignFeedbackComments = () =>
+  revalidatePath("/assign-feedback-comments");
 
-export const createAssignFeedbackCommentAction = async (input: NewAssignFeedbackCommentParams) => {
+export const createAssignFeedbackCommentAction = async (
+  input: NewAssignFeedbackCommentParams,
+) => {
   try {
     const payload = insertAssignFeedbackCommentParams.parse(input);
     await createAssignFeedbackComment(payload);
@@ -37,7 +41,9 @@ export const createAssignFeedbackCommentAction = async (input: NewAssignFeedback
   }
 };
 
-export const updateAssignFeedbackCommentAction = async (input: UpdateAssignFeedbackCommentParams) => {
+export const updateAssignFeedbackCommentAction = async (
+  input: UpdateAssignFeedbackCommentParams,
+) => {
   try {
     const payload = updateAssignFeedbackCommentParams.parse(input);
     await updateAssignFeedbackComment(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateAssignFeedbackCommentAction = async (input: UpdateAssignFeedb
   }
 };
 
-export const deleteAssignFeedbackCommentAction = async (input: AssignFeedbackCommentId) => {
+export const deleteAssignFeedbackCommentAction = async (
+  input: AssignFeedbackCommentId,
+) => {
   try {
     const payload = assignFeedbackCommentIdSchema.parse({ id: input });
     await deleteAssignFeedbackComment(payload.id);

@@ -1,19 +1,28 @@
-import { getSocialShareById, getSocialShares } from "@/lib/api/socialShares/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  socialShareIdSchema,
+  createSocialShare,
+  deleteSocialShare,
+  updateSocialShare,
+} from "../api/socialShares/mutations";
+import {
+  getSocialShareById,
+  getSocialShares,
+} from "../api/socialShares/queries";
+import {
   insertSocialShareParams,
+  socialShareIdSchema,
   updateSocialShareParams,
-} from "@/lib/db/schema/socialShares";
-import { createSocialShare, deleteSocialShare, updateSocialShare } from "@/lib/api/socialShares/mutations";
+} from "../db/schema/socialShares";
+import { publicProcedure, router } from "../server/trpc";
 
 export const socialSharesRouter = router({
   getSocialShares: publicProcedure.query(async () => {
     return getSocialShares();
   }),
-  getSocialShareById: publicProcedure.input(socialShareIdSchema).query(async ({ input }) => {
-    return getSocialShareById(input.id);
-  }),
+  getSocialShareById: publicProcedure
+    .input(socialShareIdSchema)
+    .query(async ({ input }) => {
+      return getSocialShareById(input.id);
+    }),
   createSocialShare: publicProcedure
     .input(insertSocialShareParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createSticker,
   deleteSticker,
   updateSticker,
-} from "@/lib/api/stickers/mutations";
+} from "../api/stickers/mutations";
 import {
-  StickerId,
-  NewStickerParams,
-  UpdateStickerParams,
-  stickerIdSchema,
   insertStickerParams,
+  NewStickerParams,
+  StickerId,
+  stickerIdSchema,
+  UpdateStickerParams,
   updateStickerParams,
-} from "@/lib/db/schema/stickers";
+} from "../db/schema/stickers";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

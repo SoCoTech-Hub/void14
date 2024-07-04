@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createStatsDaily,
   deleteStatsDaily,
   updateStatsDaily,
-} from "@/lib/api/statsDailies/mutations";
+} from "../api/statsDailies/mutations";
 import {
-  StatsDailyId,
-  NewStatsDailyParams,
-  UpdateStatsDailyParams,
-  statsDailyIdSchema,
   insertStatsDailyParams,
+  NewStatsDailyParams,
+  StatsDailyId,
+  statsDailyIdSchema,
+  UpdateStatsDailyParams,
   updateStatsDailyParams,
-} from "@/lib/db/schema/statsDailies";
+} from "../db/schema/statsDailies";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

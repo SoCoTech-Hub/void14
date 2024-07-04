@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAssignPluginConfig,
   deleteAssignPluginConfig,
   updateAssignPluginConfig,
-} from "@/lib/api/assignPluginConfigs/mutations";
+} from "../api/assignPluginConfigs/mutations";
 import {
   AssignPluginConfigId,
-  NewAssignPluginConfigParams,
-  UpdateAssignPluginConfigParams,
   assignPluginConfigIdSchema,
   insertAssignPluginConfigParams,
+  NewAssignPluginConfigParams,
+  UpdateAssignPluginConfigParams,
   updateAssignPluginConfigParams,
-} from "@/lib/db/schema/assignPluginConfigs";
+} from "../db/schema/assignPluginConfigs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateAssignPluginConfigs = () => revalidatePath("/assign-plugin-configs");
+const revalidateAssignPluginConfigs = () =>
+  revalidatePath("/assign-plugin-configs");
 
-export const createAssignPluginConfigAction = async (input: NewAssignPluginConfigParams) => {
+export const createAssignPluginConfigAction = async (
+  input: NewAssignPluginConfigParams,
+) => {
   try {
     const payload = insertAssignPluginConfigParams.parse(input);
     await createAssignPluginConfig(payload);
@@ -37,7 +41,9 @@ export const createAssignPluginConfigAction = async (input: NewAssignPluginConfi
   }
 };
 
-export const updateAssignPluginConfigAction = async (input: UpdateAssignPluginConfigParams) => {
+export const updateAssignPluginConfigAction = async (
+  input: UpdateAssignPluginConfigParams,
+) => {
   try {
     const payload = updateAssignPluginConfigParams.parse(input);
     await updateAssignPluginConfig(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateAssignPluginConfigAction = async (input: UpdateAssignPluginCo
   }
 };
 
-export const deleteAssignPluginConfigAction = async (input: AssignPluginConfigId) => {
+export const deleteAssignPluginConfigAction = async (
+  input: AssignPluginConfigId,
+) => {
   try {
     const payload = assignPluginConfigIdSchema.parse({ id: input });
     await deleteAssignPluginConfig(payload.id);

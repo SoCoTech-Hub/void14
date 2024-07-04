@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createFaqFaqsCategory,
   deleteFaqFaqsCategory,
   updateFaqFaqsCategory,
-} from "@/lib/api/faqFaqsCategories/mutations";
+} from "../api/faqFaqsCategories/mutations";
 import {
   FaqFaqsCategoryId,
-  NewFaqFaqsCategoryParams,
-  UpdateFaqFaqsCategoryParams,
   faqFaqsCategoryIdSchema,
   insertFaqFaqsCategoryParams,
+  NewFaqFaqsCategoryParams,
+  UpdateFaqFaqsCategoryParams,
   updateFaqFaqsCategoryParams,
-} from "@/lib/db/schema/faqFaqsCategories";
+} from "../db/schema/faqFaqsCategories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateFaqFaqsCategories = () => revalidatePath("/faq-faqs-categories");
+const revalidateFaqFaqsCategories = () =>
+  revalidatePath("/faq-faqs-categories");
 
-export const createFaqFaqsCategoryAction = async (input: NewFaqFaqsCategoryParams) => {
+export const createFaqFaqsCategoryAction = async (
+  input: NewFaqFaqsCategoryParams,
+) => {
   try {
     const payload = insertFaqFaqsCategoryParams.parse(input);
     await createFaqFaqsCategory(payload);
@@ -37,7 +41,9 @@ export const createFaqFaqsCategoryAction = async (input: NewFaqFaqsCategoryParam
   }
 };
 
-export const updateFaqFaqsCategoryAction = async (input: UpdateFaqFaqsCategoryParams) => {
+export const updateFaqFaqsCategoryAction = async (
+  input: UpdateFaqFaqsCategoryParams,
+) => {
   try {
     const payload = updateFaqFaqsCategoryParams.parse(input);
     await updateFaqFaqsCategory(payload.id, payload);

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createWorkshopAggregation,
   deleteWorkshopAggregation,
   updateWorkshopAggregation,
-} from "@/lib/api/workshopAggregations/mutations";
+} from "../api/workshopAggregations/mutations";
 import {
-  WorkshopAggregationId,
+  insertWorkshopAggregationParams,
   NewWorkshopAggregationParams,
   UpdateWorkshopAggregationParams,
-  workshopAggregationIdSchema,
-  insertWorkshopAggregationParams,
   updateWorkshopAggregationParams,
-} from "@/lib/db/schema/workshopAggregations";
+  WorkshopAggregationId,
+  workshopAggregationIdSchema,
+} from "../db/schema/workshopAggregations";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateWorkshopAggregations = () => revalidatePath("/workshop-aggregations");
+const revalidateWorkshopAggregations = () =>
+  revalidatePath("/workshop-aggregations");
 
-export const createWorkshopAggregationAction = async (input: NewWorkshopAggregationParams) => {
+export const createWorkshopAggregationAction = async (
+  input: NewWorkshopAggregationParams,
+) => {
   try {
     const payload = insertWorkshopAggregationParams.parse(input);
     await createWorkshopAggregation(payload);
@@ -37,7 +41,9 @@ export const createWorkshopAggregationAction = async (input: NewWorkshopAggregat
   }
 };
 
-export const updateWorkshopAggregationAction = async (input: UpdateWorkshopAggregationParams) => {
+export const updateWorkshopAggregationAction = async (
+  input: UpdateWorkshopAggregationParams,
+) => {
   try {
     const payload = updateWorkshopAggregationParams.parse(input);
     await updateWorkshopAggregation(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateWorkshopAggregationAction = async (input: UpdateWorkshopAggre
   }
 };
 
-export const deleteWorkshopAggregationAction = async (input: WorkshopAggregationId) => {
+export const deleteWorkshopAggregationAction = async (
+  input: WorkshopAggregationId,
+) => {
   try {
     const payload = workshopAggregationIdSchema.parse({ id: input });
     await deleteWorkshopAggregation(payload.id);

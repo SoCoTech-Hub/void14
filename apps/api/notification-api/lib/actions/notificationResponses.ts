@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createNotificationResponse,
   deleteNotificationResponse,
   updateNotificationResponse,
-} from "@/lib/api/notificationResponses/mutations";
+} from "../api/notificationResponses/mutations";
 import {
-  NotificationResponseId,
-  NewNotificationResponseParams,
-  UpdateNotificationResponseParams,
-  notificationResponseIdSchema,
   insertNotificationResponseParams,
+  NewNotificationResponseParams,
+  NotificationResponseId,
+  notificationResponseIdSchema,
+  UpdateNotificationResponseParams,
   updateNotificationResponseParams,
-} from "@/lib/db/schema/notificationResponses";
+} from "../db/schema/notificationResponses";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateNotificationResponses = () => revalidatePath("/notification-responses");
+const revalidateNotificationResponses = () =>
+  revalidatePath("/notification-responses");
 
-export const createNotificationResponseAction = async (input: NewNotificationResponseParams) => {
+export const createNotificationResponseAction = async (
+  input: NewNotificationResponseParams,
+) => {
   try {
     const payload = insertNotificationResponseParams.parse(input);
     await createNotificationResponse(payload);
@@ -37,7 +41,9 @@ export const createNotificationResponseAction = async (input: NewNotificationRes
   }
 };
 
-export const updateNotificationResponseAction = async (input: UpdateNotificationResponseParams) => {
+export const updateNotificationResponseAction = async (
+  input: UpdateNotificationResponseParams,
+) => {
   try {
     const payload = updateNotificationResponseParams.parse(input);
     await updateNotificationResponse(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateNotificationResponseAction = async (input: UpdateNotification
   }
 };
 
-export const deleteNotificationResponseAction = async (input: NotificationResponseId) => {
+export const deleteNotificationResponseAction = async (
+  input: NotificationResponseId,
+) => {
   try {
     const payload = notificationResponseIdSchema.parse({ id: input });
     await deleteNotificationResponse(payload.id);

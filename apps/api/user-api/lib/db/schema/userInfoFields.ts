@@ -1,9 +1,10 @@
-import { type getUserInfoFields } from "@/lib/api/userInfoFields/queries";
 import { boolean, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getUserInfoFields } from "../api/userInfoFields/queries";
 
 export const userInfoFields = pgTable(
   "user_info_fields",

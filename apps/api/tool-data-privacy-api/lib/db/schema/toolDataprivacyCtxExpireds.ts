@@ -1,4 +1,3 @@
-import { type getToolDataprivacyCtxExpireds } from "@/lib/api/toolDataprivacyCtxExpireds/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -12,6 +11,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getToolDataprivacyCtxExpireds } from "../api/toolDataprivacyCtxExpireds/queries";
 
 export const toolDataprivacyCtxExpireds = pgTable(
   "tool_dataprivacy_ctx_expireds",

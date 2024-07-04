@@ -1,19 +1,28 @@
-import { getCustomFieldCategoryById, getCustomFieldCategories } from "@/lib/api/customFieldCategories/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createCustomFieldCategory,
+  deleteCustomFieldCategory,
+  updateCustomFieldCategory,
+} from "../api/customFieldCategories/mutations";
+import {
+  getCustomFieldCategories,
+  getCustomFieldCategoryById,
+} from "../api/customFieldCategories/queries";
 import {
   customFieldCategoryIdSchema,
   insertCustomFieldCategoryParams,
   updateCustomFieldCategoryParams,
-} from "@/lib/db/schema/customFieldCategories";
-import { createCustomFieldCategory, deleteCustomFieldCategory, updateCustomFieldCategory } from "@/lib/api/customFieldCategories/mutations";
+} from "../db/schema/customFieldCategories";
+import { publicProcedure, router } from "../server/trpc";
 
 export const customFieldCategoriesRouter = router({
   getCustomFieldCategories: publicProcedure.query(async () => {
     return getCustomFieldCategories();
   }),
-  getCustomFieldCategoryById: publicProcedure.input(customFieldCategoryIdSchema).query(async ({ input }) => {
-    return getCustomFieldCategoryById(input.id);
-  }),
+  getCustomFieldCategoryById: publicProcedure
+    .input(customFieldCategoryIdSchema)
+    .query(async ({ input }) => {
+      return getCustomFieldCategoryById(input.id);
+    }),
   createCustomFieldCategory: publicProcedure
     .input(insertCustomFieldCategoryParams)
     .mutation(async ({ input }) => {

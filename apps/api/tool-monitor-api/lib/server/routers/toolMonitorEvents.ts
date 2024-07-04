@@ -1,19 +1,28 @@
-import { getToolMonitorEventById, getToolMonitorEvents } from "@/lib/api/toolMonitorEvents/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  toolMonitorEventIdSchema,
+  createToolMonitorEvent,
+  deleteToolMonitorEvent,
+  updateToolMonitorEvent,
+} from "../api/toolMonitorEvents/mutations";
+import {
+  getToolMonitorEventById,
+  getToolMonitorEvents,
+} from "../api/toolMonitorEvents/queries";
+import {
   insertToolMonitorEventParams,
+  toolMonitorEventIdSchema,
   updateToolMonitorEventParams,
-} from "@/lib/db/schema/toolMonitorEvents";
-import { createToolMonitorEvent, deleteToolMonitorEvent, updateToolMonitorEvent } from "@/lib/api/toolMonitorEvents/mutations";
+} from "../db/schema/toolMonitorEvents";
+import { publicProcedure, router } from "../server/trpc";
 
 export const toolMonitorEventsRouter = router({
   getToolMonitorEvents: publicProcedure.query(async () => {
     return getToolMonitorEvents();
   }),
-  getToolMonitorEventById: publicProcedure.input(toolMonitorEventIdSchema).query(async ({ input }) => {
-    return getToolMonitorEventById(input.id);
-  }),
+  getToolMonitorEventById: publicProcedure
+    .input(toolMonitorEventIdSchema)
+    .query(async ({ input }) => {
+      return getToolMonitorEventById(input.id);
+    }),
   createToolMonitorEvent: publicProcedure
     .input(insertToolMonitorEventParams)
     .mutation(async ({ input }) => {

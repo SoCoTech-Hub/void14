@@ -1,19 +1,28 @@
-import { getMessageUsersBlockedById, getMessageUsersBlockeds } from "@/lib/api/messageUsersBlockeds/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  messageUsersBlockedIdSchema,
+  createMessageUsersBlocked,
+  deleteMessageUsersBlocked,
+  updateMessageUsersBlocked,
+} from "../api/messageUsersBlockeds/mutations";
+import {
+  getMessageUsersBlockedById,
+  getMessageUsersBlockeds,
+} from "../api/messageUsersBlockeds/queries";
+import {
   insertMessageUsersBlockedParams,
+  messageUsersBlockedIdSchema,
   updateMessageUsersBlockedParams,
-} from "@/lib/db/schema/messageUsersBlockeds";
-import { createMessageUsersBlocked, deleteMessageUsersBlocked, updateMessageUsersBlocked } from "@/lib/api/messageUsersBlockeds/mutations";
+} from "../db/schema/messageUsersBlockeds";
+import { publicProcedure, router } from "../server/trpc";
 
 export const messageUsersBlockedsRouter = router({
   getMessageUsersBlockeds: publicProcedure.query(async () => {
     return getMessageUsersBlockeds();
   }),
-  getMessageUsersBlockedById: publicProcedure.input(messageUsersBlockedIdSchema).query(async ({ input }) => {
-    return getMessageUsersBlockedById(input.id);
-  }),
+  getMessageUsersBlockedById: publicProcedure
+    .input(messageUsersBlockedIdSchema)
+    .query(async ({ input }) => {
+      return getMessageUsersBlockedById(input.id);
+    }),
   createMessageUsersBlocked: publicProcedure
     .input(insertMessageUsersBlockedParams)
     .mutation(async ({ input }) => {

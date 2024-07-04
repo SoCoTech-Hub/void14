@@ -1,19 +1,28 @@
-import { getAssignFeedbackCommentById, getAssignFeedbackComments } from "@/lib/api/assignFeedbackComments/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createAssignFeedbackComment,
+  deleteAssignFeedbackComment,
+  updateAssignFeedbackComment,
+} from "../api/assignFeedbackComments/mutations";
+import {
+  getAssignFeedbackCommentById,
+  getAssignFeedbackComments,
+} from "../api/assignFeedbackComments/queries";
 import {
   assignFeedbackCommentIdSchema,
   insertAssignFeedbackCommentParams,
   updateAssignFeedbackCommentParams,
-} from "@/lib/db/schema/assignFeedbackComments";
-import { createAssignFeedbackComment, deleteAssignFeedbackComment, updateAssignFeedbackComment } from "@/lib/api/assignFeedbackComments/mutations";
+} from "../db/schema/assignFeedbackComments";
+import { publicProcedure, router } from "../server/trpc";
 
 export const assignFeedbackCommentsRouter = router({
   getAssignFeedbackComments: publicProcedure.query(async () => {
     return getAssignFeedbackComments();
   }),
-  getAssignFeedbackCommentById: publicProcedure.input(assignFeedbackCommentIdSchema).query(async ({ input }) => {
-    return getAssignFeedbackCommentById(input.id);
-  }),
+  getAssignFeedbackCommentById: publicProcedure
+    .input(assignFeedbackCommentIdSchema)
+    .query(async ({ input }) => {
+      return getAssignFeedbackCommentById(input.id);
+    }),
   createAssignFeedbackComment: publicProcedure
     .input(insertAssignFeedbackCommentParams)
     .mutation(async ({ input }) => {

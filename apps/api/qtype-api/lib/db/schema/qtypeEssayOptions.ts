@@ -1,4 +1,3 @@
-import { type getQtypeEssayOptions } from "@/lib/api/qtypeEssayOptions/queries";
 import {
   boolean,
   integer,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getQtypeEssayOptions } from "../api/qtypeEssayOptions/queries";
 
 export const qtypeEssayOptions = pgTable(
   "qtype_essay_options",

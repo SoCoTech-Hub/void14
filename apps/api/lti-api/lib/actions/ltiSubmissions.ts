@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createLtiSubmission,
   deleteLtiSubmission,
   updateLtiSubmission,
-} from "@/lib/api/ltiSubmissions/mutations";
+} from "../api/ltiSubmissions/mutations";
 import {
+  insertLtiSubmissionParams,
   LtiSubmissionId,
+  ltiSubmissionIdSchema,
   NewLtiSubmissionParams,
   UpdateLtiSubmissionParams,
-  ltiSubmissionIdSchema,
-  insertLtiSubmissionParams,
   updateLtiSubmissionParams,
-} from "@/lib/db/schema/ltiSubmissions";
+} from "../db/schema/ltiSubmissions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateLtiSubmissions = () => revalidatePath("/lti-submissions");
 
-export const createLtiSubmissionAction = async (input: NewLtiSubmissionParams) => {
+export const createLtiSubmissionAction = async (
+  input: NewLtiSubmissionParams,
+) => {
   try {
     const payload = insertLtiSubmissionParams.parse(input);
     await createLtiSubmission(payload);
@@ -37,7 +40,9 @@ export const createLtiSubmissionAction = async (input: NewLtiSubmissionParams) =
   }
 };
 
-export const updateLtiSubmissionAction = async (input: UpdateLtiSubmissionParams) => {
+export const updateLtiSubmissionAction = async (
+  input: UpdateLtiSubmissionParams,
+) => {
   try {
     const payload = updateLtiSubmissionParams.parse(input);
     await updateLtiSubmission(payload.id, payload);

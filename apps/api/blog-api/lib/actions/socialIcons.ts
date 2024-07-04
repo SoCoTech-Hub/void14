@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createSocialIcon,
   deleteSocialIcon,
   updateSocialIcon,
-} from "@/lib/api/socialIcons/mutations";
+} from "../api/socialIcons/mutations";
 import {
-  SocialIconId,
-  NewSocialIconParams,
-  UpdateSocialIconParams,
-  socialIconIdSchema,
   insertSocialIconParams,
+  NewSocialIconParams,
+  SocialIconId,
+  socialIconIdSchema,
+  UpdateSocialIconParams,
   updateSocialIconParams,
-} from "@/lib/db/schema/socialIcons";
+} from "../db/schema/socialIcons";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

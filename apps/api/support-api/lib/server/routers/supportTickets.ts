@@ -1,19 +1,28 @@
-import { getSupportTicketById, getSupportTickets } from "@/lib/api/supportTickets/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  supportTicketIdSchema,
+  createSupportTicket,
+  deleteSupportTicket,
+  updateSupportTicket,
+} from "../api/supportTickets/mutations";
+import {
+  getSupportTicketById,
+  getSupportTickets,
+} from "../api/supportTickets/queries";
+import {
   insertSupportTicketParams,
+  supportTicketIdSchema,
   updateSupportTicketParams,
-} from "@/lib/db/schema/supportTickets";
-import { createSupportTicket, deleteSupportTicket, updateSupportTicket } from "@/lib/api/supportTickets/mutations";
+} from "../db/schema/supportTickets";
+import { publicProcedure, router } from "../server/trpc";
 
 export const supportTicketsRouter = router({
   getSupportTickets: publicProcedure.query(async () => {
     return getSupportTickets();
   }),
-  getSupportTicketById: publicProcedure.input(supportTicketIdSchema).query(async ({ input }) => {
-    return getSupportTicketById(input.id);
-  }),
+  getSupportTicketById: publicProcedure
+    .input(supportTicketIdSchema)
+    .query(async ({ input }) => {
+      return getSupportTicketById(input.id);
+    }),
   createSupportTicket: publicProcedure
     .input(insertSupportTicketParams)
     .mutation(async ({ input }) => {

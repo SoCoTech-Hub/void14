@@ -1,19 +1,28 @@
-import { getMnetServiceEnrolEnrolmentById, getMnetServiceEnrolEnrolments } from "@/lib/api/mnetServiceEnrolEnrolments/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  mnetServiceEnrolEnrolmentIdSchema,
+  createMnetServiceEnrolEnrolment,
+  deleteMnetServiceEnrolEnrolment,
+  updateMnetServiceEnrolEnrolment,
+} from "../api/mnetServiceEnrolEnrolments/mutations";
+import {
+  getMnetServiceEnrolEnrolmentById,
+  getMnetServiceEnrolEnrolments,
+} from "../api/mnetServiceEnrolEnrolments/queries";
+import {
   insertMnetServiceEnrolEnrolmentParams,
+  mnetServiceEnrolEnrolmentIdSchema,
   updateMnetServiceEnrolEnrolmentParams,
-} from "@/lib/db/schema/mnetServiceEnrolEnrolments";
-import { createMnetServiceEnrolEnrolment, deleteMnetServiceEnrolEnrolment, updateMnetServiceEnrolEnrolment } from "@/lib/api/mnetServiceEnrolEnrolments/mutations";
+} from "../db/schema/mnetServiceEnrolEnrolments";
+import { publicProcedure, router } from "../server/trpc";
 
 export const mnetServiceEnrolEnrolmentsRouter = router({
   getMnetServiceEnrolEnrolments: publicProcedure.query(async () => {
     return getMnetServiceEnrolEnrolments();
   }),
-  getMnetServiceEnrolEnrolmentById: publicProcedure.input(mnetServiceEnrolEnrolmentIdSchema).query(async ({ input }) => {
-    return getMnetServiceEnrolEnrolmentById(input.id);
-  }),
+  getMnetServiceEnrolEnrolmentById: publicProcedure
+    .input(mnetServiceEnrolEnrolmentIdSchema)
+    .query(async ({ input }) => {
+      return getMnetServiceEnrolEnrolmentById(input.id);
+    }),
   createMnetServiceEnrolEnrolment: publicProcedure
     .input(insertMnetServiceEnrolEnrolmentParams)
     .mutation(async ({ input }) => {

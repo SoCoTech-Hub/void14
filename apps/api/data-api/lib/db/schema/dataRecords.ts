@@ -1,4 +1,3 @@
-import { type getDataRecords } from "@/lib/api/dataRecords/queries";
 import { sql } from "drizzle-orm";
 import { boolean, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -6,6 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getDataRecords } from "../api/dataRecords/queries";
 import { datas } from "./datas";
 
 export const dataRecords = pgTable("data_records", {

@@ -1,9 +1,10 @@
-import { type getLtiserviceGradebookservices } from "@/lib/api/ltiserviceGradebookservices/queries";
 import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getLtiserviceGradebookservices } from "../api/ltiserviceGradebookservices/queries";
 
 export const ltiserviceGradebookservices = pgTable(
   "ltiservice_gradebookservices",

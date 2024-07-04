@@ -1,19 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import {
-  createField,
-  deleteField,
-  updateField,
-} from "@/lib/api/fields/mutations";
+
+import { createField, deleteField, updateField } from "../api/fields/mutations";
 import {
   FieldId,
-  NewFieldParams,
-  UpdateFieldParams,
   fieldIdSchema,
   insertFieldParams,
+  NewFieldParams,
+  UpdateFieldParams,
   updateFieldParams,
-} from "@/lib/db/schema/fields";
+} from "../db/schema/fields";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBadgeManualAward,
   deleteBadgeManualAward,
   updateBadgeManualAward,
-} from "@/lib/api/badgeManualAwards/mutations";
+} from "../api/badgeManualAwards/mutations";
 import {
   BadgeManualAwardId,
-  NewBadgeManualAwardParams,
-  UpdateBadgeManualAwardParams,
   badgeManualAwardIdSchema,
   insertBadgeManualAwardParams,
+  NewBadgeManualAwardParams,
+  UpdateBadgeManualAwardParams,
   updateBadgeManualAwardParams,
-} from "@/lib/db/schema/badgeManualAwards";
+} from "../db/schema/badgeManualAwards";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateBadgeManualAwards = () => revalidatePath("/badge-manual-awards");
+const revalidateBadgeManualAwards = () =>
+  revalidatePath("/badge-manual-awards");
 
-export const createBadgeManualAwardAction = async (input: NewBadgeManualAwardParams) => {
+export const createBadgeManualAwardAction = async (
+  input: NewBadgeManualAwardParams,
+) => {
   try {
     const payload = insertBadgeManualAwardParams.parse(input);
     await createBadgeManualAward(payload);
@@ -37,7 +41,9 @@ export const createBadgeManualAwardAction = async (input: NewBadgeManualAwardPar
   }
 };
 
-export const updateBadgeManualAwardAction = async (input: UpdateBadgeManualAwardParams) => {
+export const updateBadgeManualAwardAction = async (
+  input: UpdateBadgeManualAwardParams,
+) => {
   try {
     const payload = updateBadgeManualAwardParams.parse(input);
     await updateBadgeManualAward(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateBadgeManualAwardAction = async (input: UpdateBadgeManualAward
   }
 };
 
-export const deleteBadgeManualAwardAction = async (input: BadgeManualAwardId) => {
+export const deleteBadgeManualAwardAction = async (
+  input: BadgeManualAwardId,
+) => {
   try {
     const payload = badgeManualAwardIdSchema.parse({ id: input });
     await deleteBadgeManualAward(payload.id);

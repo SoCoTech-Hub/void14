@@ -1,41 +1,41 @@
 import {
-	getAdminPresetItAById,
-	getAdminPresetItAs
-} from '@/lib/api/adminPresetItAs/queries'
-import { publicProcedure, router } from '@/lib/server/trpc'
+  createAdminPresetItA,
+  deleteAdminPresetItA,
+  updateAdminPresetItA,
+} from "../api/adminPresetItAs/mutations";
 import {
-	adminPresetItAIdSchema,
-	insertAdminPresetItAParams,
-	updateAdminPresetItAParams
-} from '@/lib/db/schema/adminPresetItAs'
+  getAdminPresetItAById,
+  getAdminPresetItAs,
+} from "../api/adminPresetItAs/queries";
 import {
-	createAdminPresetItA,
-	deleteAdminPresetItA,
-	updateAdminPresetItA
-} from '@/lib/api/adminPresetItAs/mutations'
+  adminPresetItAIdSchema,
+  insertAdminPresetItAParams,
+  updateAdminPresetItAParams,
+} from "../db/schema/adminPresetItAs";
+import { publicProcedure, router } from "../server/trpc";
 
 export const adminPresetItAsRouter = router({
-	getAdminPresetItAs: publicProcedure.query(async () => {
-		return getAdminPresetItAs()
-	}),
-	getAdminPresetItAById: publicProcedure
-		.input(adminPresetItAIdSchema)
-		.query(async ({ input }) => {
-			return getAdminPresetItAById(input.id)
-		}),
-	createAdminPresetItA: publicProcedure
-		.input(insertAdminPresetItAParams)
-		.mutation(async ({ input }) => {
-			return createAdminPresetItA(input)
-		}),
-	updateAdminPresetItA: publicProcedure
-		.input(updateAdminPresetItAParams)
-		.mutation(async ({ input }) => {
-			return updateAdminPresetItA(input.id, input)
-		}),
-	deleteAdminPresetItA: publicProcedure
-		.input(adminPresetItAIdSchema)
-		.mutation(async ({ input }) => {
-			return deleteAdminPresetItA(input.id)
-		})
-})
+  getAdminPresetItAs: publicProcedure.query(async () => {
+    return getAdminPresetItAs();
+  }),
+  getAdminPresetItAById: publicProcedure
+    .input(adminPresetItAIdSchema)
+    .query(async ({ input }) => {
+      return getAdminPresetItAById(input.id);
+    }),
+  createAdminPresetItA: publicProcedure
+    .input(insertAdminPresetItAParams)
+    .mutation(async ({ input }) => {
+      return createAdminPresetItA(input);
+    }),
+  updateAdminPresetItA: publicProcedure
+    .input(updateAdminPresetItAParams)
+    .mutation(async ({ input }) => {
+      return updateAdminPresetItA(input.id, input);
+    }),
+  deleteAdminPresetItA: publicProcedure
+    .input(adminPresetItAIdSchema)
+    .mutation(async ({ input }) => {
+      return deleteAdminPresetItA(input.id);
+    }),
+});

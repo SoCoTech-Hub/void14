@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createLtiserviceGradebookservice,
   deleteLtiserviceGradebookservice,
   updateLtiserviceGradebookservice,
-} from "@/lib/api/ltiserviceGradebookservices/mutations";
+} from "../api/ltiserviceGradebookservices/mutations";
 import {
+  insertLtiserviceGradebookserviceParams,
   LtiserviceGradebookserviceId,
+  ltiserviceGradebookserviceIdSchema,
   NewLtiserviceGradebookserviceParams,
   UpdateLtiserviceGradebookserviceParams,
-  ltiserviceGradebookserviceIdSchema,
-  insertLtiserviceGradebookserviceParams,
   updateLtiserviceGradebookserviceParams,
-} from "@/lib/db/schema/ltiserviceGradebookservices";
+} from "../db/schema/ltiserviceGradebookservices";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateLtiserviceGradebookservices = () => revalidatePath("/ltiservice-gradebookservices");
+const revalidateLtiserviceGradebookservices = () =>
+  revalidatePath("/ltiservice-gradebookservices");
 
-export const createLtiserviceGradebookserviceAction = async (input: NewLtiserviceGradebookserviceParams) => {
+export const createLtiserviceGradebookserviceAction = async (
+  input: NewLtiserviceGradebookserviceParams,
+) => {
   try {
     const payload = insertLtiserviceGradebookserviceParams.parse(input);
     await createLtiserviceGradebookservice(payload);
@@ -37,7 +41,9 @@ export const createLtiserviceGradebookserviceAction = async (input: NewLtiservic
   }
 };
 
-export const updateLtiserviceGradebookserviceAction = async (input: UpdateLtiserviceGradebookserviceParams) => {
+export const updateLtiserviceGradebookserviceAction = async (
+  input: UpdateLtiserviceGradebookserviceParams,
+) => {
   try {
     const payload = updateLtiserviceGradebookserviceParams.parse(input);
     await updateLtiserviceGradebookservice(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateLtiserviceGradebookserviceAction = async (input: UpdateLtiser
   }
 };
 
-export const deleteLtiserviceGradebookserviceAction = async (input: LtiserviceGradebookserviceId) => {
+export const deleteLtiserviceGradebookserviceAction = async (
+  input: LtiserviceGradebookserviceId,
+) => {
   try {
     const payload = ltiserviceGradebookserviceIdSchema.parse({ id: input });
     await deleteLtiserviceGradebookservice(payload.id);

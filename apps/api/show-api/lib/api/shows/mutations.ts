@@ -1,19 +1,20 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  ShowId, 
+
+import { db } from "../db/index";
+import {
+  insertShowSchema,
   NewShowParams,
-  UpdateShowParams, 
-  updateShowSchema,
-  insertShowSchema, 
+  ShowId,
+  showIdSchema,
   shows,
-  showIdSchema 
-} from "@/lib/db/schema/shows";
+  UpdateShowParams,
+  updateShowSchema,
+} from "../db/schema/shows";
 
 export const createShow = async (show: NewShowParams) => {
   const newShow = insertShowSchema.parse(show);
   try {
-    const [s] =  await db.insert(shows).values(newShow).returning();
+    const [s] = await db.insert(shows).values(newShow).returning();
     return { show: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -26,11 +27,11 @@ export const updateShow = async (id: ShowId, show: UpdateShowParams) => {
   const { id: showId } = showIdSchema.parse({ id });
   const newShow = updateShowSchema.parse(show);
   try {
-    const [s] =  await db
-     .update(shows)
-     .set({...newShow, updatedAt: new Date() })
-     .where(eq(shows.id, showId!))
-     .returning();
+    const [s] = await db
+      .update(shows)
+      .set({ ...newShow, updatedAt: new Date() })
+      .where(eq(shows.id, showId!))
+      .returning();
     return { show: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +43,7 @@ export const updateShow = async (id: ShowId, show: UpdateShowParams) => {
 export const deleteShow = async (id: ShowId) => {
   const { id: showId } = showIdSchema.parse({ id });
   try {
-    const [s] =  await db.delete(shows).where(eq(shows.id, showId!))
-    .returning();
+    const [s] = await db.delete(shows).where(eq(shows.id, showId!)).returning();
     return { show: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +51,3 @@ export const deleteShow = async (id: ShowId) => {
     throw { error: message };
   }
 };
-

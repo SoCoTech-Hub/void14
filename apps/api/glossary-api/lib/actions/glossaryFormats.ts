@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGlossaryFormat,
   deleteGlossaryFormat,
   updateGlossaryFormat,
-} from "@/lib/api/glossaryFormats/mutations";
+} from "../api/glossaryFormats/mutations";
 import {
   GlossaryFormatId,
-  NewGlossaryFormatParams,
-  UpdateGlossaryFormatParams,
   glossaryFormatIdSchema,
   insertGlossaryFormatParams,
+  NewGlossaryFormatParams,
+  UpdateGlossaryFormatParams,
   updateGlossaryFormatParams,
-} from "@/lib/db/schema/glossaryFormats";
+} from "../db/schema/glossaryFormats";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateGlossaryFormats = () => revalidatePath("/glossary-formats");
 
-export const createGlossaryFormatAction = async (input: NewGlossaryFormatParams) => {
+export const createGlossaryFormatAction = async (
+  input: NewGlossaryFormatParams,
+) => {
   try {
     const payload = insertGlossaryFormatParams.parse(input);
     await createGlossaryFormat(payload);
@@ -37,7 +40,9 @@ export const createGlossaryFormatAction = async (input: NewGlossaryFormatParams)
   }
 };
 
-export const updateGlossaryFormatAction = async (input: UpdateGlossaryFormatParams) => {
+export const updateGlossaryFormatAction = async (
+  input: UpdateGlossaryFormatParams,
+) => {
   try {
     const payload = updateGlossaryFormatParams.parse(input);
     await updateGlossaryFormat(payload.id, payload);

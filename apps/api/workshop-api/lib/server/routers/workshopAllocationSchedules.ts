@@ -1,19 +1,28 @@
-import { getWorkshopAllocationScheduleById, getWorkshopAllocationSchedules } from "@/lib/api/workshopAllocationSchedules/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  workshopAllocationScheduleIdSchema,
+  createWorkshopAllocationSchedule,
+  deleteWorkshopAllocationSchedule,
+  updateWorkshopAllocationSchedule,
+} from "../api/workshopAllocationSchedules/mutations";
+import {
+  getWorkshopAllocationScheduleById,
+  getWorkshopAllocationSchedules,
+} from "../api/workshopAllocationSchedules/queries";
+import {
   insertWorkshopAllocationScheduleParams,
   updateWorkshopAllocationScheduleParams,
-} from "@/lib/db/schema/workshopAllocationSchedules";
-import { createWorkshopAllocationSchedule, deleteWorkshopAllocationSchedule, updateWorkshopAllocationSchedule } from "@/lib/api/workshopAllocationSchedules/mutations";
+  workshopAllocationScheduleIdSchema,
+} from "../db/schema/workshopAllocationSchedules";
+import { publicProcedure, router } from "../server/trpc";
 
 export const workshopAllocationSchedulesRouter = router({
   getWorkshopAllocationSchedules: publicProcedure.query(async () => {
     return getWorkshopAllocationSchedules();
   }),
-  getWorkshopAllocationScheduleById: publicProcedure.input(workshopAllocationScheduleIdSchema).query(async ({ input }) => {
-    return getWorkshopAllocationScheduleById(input.id);
-  }),
+  getWorkshopAllocationScheduleById: publicProcedure
+    .input(workshopAllocationScheduleIdSchema)
+    .query(async ({ input }) => {
+      return getWorkshopAllocationScheduleById(input.id);
+    }),
   createWorkshopAllocationSchedule: publicProcedure
     .input(insertWorkshopAllocationScheduleParams)
     .mutation(async ({ input }) => {

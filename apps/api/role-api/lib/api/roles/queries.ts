@@ -1,10 +1,12 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { type RoleId, roleIdSchema, roles } from "@/lib/db/schema/roles";
+
+import type { RoleId } from "../db/schema/roles";
+import { db } from "../db/index";
+import { roleIdSchema, roles } from "../db/schema/roles";
 
 export const getRoles = async () => {
   const rows = await db.select().from(roles);
-  const r = rows
+  const r = rows;
   return { roles: r };
 };
 
@@ -15,5 +17,3 @@ export const getRoleById = async (id: RoleId) => {
   const r = row;
   return { role: r };
 };
-
-

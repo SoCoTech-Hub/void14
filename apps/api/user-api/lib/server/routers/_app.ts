@@ -1,6 +1,5 @@
+import { router } from "../server/trpc";
 import { computersRouter } from "./computers";
-import { router } from "@/lib/server/trpc";
-import { usersRouter } from "./users";
 import { userDevicesRouter } from "./userDevices";
 import { userEnrolmentsRouter } from "./userEnrolments";
 import { userInfoCategoriesRouter } from "./userInfoCategories";
@@ -11,6 +10,7 @@ import { userPasswordHistoriesRouter } from "./userPasswordHistories";
 import { userPasswordResetsRouter } from "./userPasswordResets";
 import { userPreferencesRouter } from "./userPreferences";
 import { userPrivateKeysRouter } from "./userPrivateKeys";
+import { usersRouter } from "./users";
 
 export const appRouter = router({
   computers: computersRouter,

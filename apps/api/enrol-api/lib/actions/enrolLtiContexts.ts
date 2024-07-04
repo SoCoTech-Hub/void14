@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createEnrolLtiContext,
   deleteEnrolLtiContext,
   updateEnrolLtiContext,
-} from "@/lib/api/enrolLtiContexts/mutations";
+} from "../api/enrolLtiContexts/mutations";
 import {
   EnrolLtiContextId,
-  NewEnrolLtiContextParams,
-  UpdateEnrolLtiContextParams,
   enrolLtiContextIdSchema,
   insertEnrolLtiContextParams,
+  NewEnrolLtiContextParams,
+  UpdateEnrolLtiContextParams,
   updateEnrolLtiContextParams,
-} from "@/lib/db/schema/enrolLtiContexts";
+} from "../db/schema/enrolLtiContexts";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateEnrolLtiContexts = () => revalidatePath("/enrol-lti-contexts");
 
-export const createEnrolLtiContextAction = async (input: NewEnrolLtiContextParams) => {
+export const createEnrolLtiContextAction = async (
+  input: NewEnrolLtiContextParams,
+) => {
   try {
     const payload = insertEnrolLtiContextParams.parse(input);
     await createEnrolLtiContext(payload);
@@ -37,7 +40,9 @@ export const createEnrolLtiContextAction = async (input: NewEnrolLtiContextParam
   }
 };
 
-export const updateEnrolLtiContextAction = async (input: UpdateEnrolLtiContextParams) => {
+export const updateEnrolLtiContextAction = async (
+  input: UpdateEnrolLtiContextParams,
+) => {
   try {
     const payload = updateEnrolLtiContextParams.parse(input);
     await updateEnrolLtiContext(payload.id, payload);

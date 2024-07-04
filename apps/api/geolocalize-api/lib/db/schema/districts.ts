@@ -1,10 +1,10 @@
-import { type getDistricts } from "@/lib/api/districts/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getDistricts } from "../api/districts/queries";
 import { provinces } from "./provinces";
 
 export const districts = pgTable("districts", {

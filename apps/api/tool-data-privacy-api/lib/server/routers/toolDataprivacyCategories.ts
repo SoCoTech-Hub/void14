@@ -1,19 +1,28 @@
-import { getToolDataprivacyCategoryById, getToolDataprivacyCategories } from "@/lib/api/toolDataprivacyCategories/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  toolDataprivacyCategoryIdSchema,
+  createToolDataprivacyCategory,
+  deleteToolDataprivacyCategory,
+  updateToolDataprivacyCategory,
+} from "../api/toolDataprivacyCategories/mutations";
+import {
+  getToolDataprivacyCategories,
+  getToolDataprivacyCategoryById,
+} from "../api/toolDataprivacyCategories/queries";
+import {
   insertToolDataprivacyCategoryParams,
+  toolDataprivacyCategoryIdSchema,
   updateToolDataprivacyCategoryParams,
-} from "@/lib/db/schema/toolDataprivacyCategories";
-import { createToolDataprivacyCategory, deleteToolDataprivacyCategory, updateToolDataprivacyCategory } from "@/lib/api/toolDataprivacyCategories/mutations";
+} from "../db/schema/toolDataprivacyCategories";
+import { publicProcedure, router } from "../server/trpc";
 
 export const toolDataprivacyCategoriesRouter = router({
   getToolDataprivacyCategories: publicProcedure.query(async () => {
     return getToolDataprivacyCategories();
   }),
-  getToolDataprivacyCategoryById: publicProcedure.input(toolDataprivacyCategoryIdSchema).query(async ({ input }) => {
-    return getToolDataprivacyCategoryById(input.id);
-  }),
+  getToolDataprivacyCategoryById: publicProcedure
+    .input(toolDataprivacyCategoryIdSchema)
+    .query(async ({ input }) => {
+      return getToolDataprivacyCategoryById(input.id);
+    }),
   createToolDataprivacyCategory: publicProcedure
     .input(insertToolDataprivacyCategoryParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,28 @@
-import { getToolDataprivacyCtxLevelById, getToolDataprivacyCtxLevels } from "@/lib/api/toolDataprivacyCtxLevels/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  toolDataprivacyCtxLevelIdSchema,
+  createToolDataprivacyCtxLevel,
+  deleteToolDataprivacyCtxLevel,
+  updateToolDataprivacyCtxLevel,
+} from "../api/toolDataprivacyCtxLevels/mutations";
+import {
+  getToolDataprivacyCtxLevelById,
+  getToolDataprivacyCtxLevels,
+} from "../api/toolDataprivacyCtxLevels/queries";
+import {
   insertToolDataprivacyCtxLevelParams,
+  toolDataprivacyCtxLevelIdSchema,
   updateToolDataprivacyCtxLevelParams,
-} from "@/lib/db/schema/toolDataprivacyCtxLevels";
-import { createToolDataprivacyCtxLevel, deleteToolDataprivacyCtxLevel, updateToolDataprivacyCtxLevel } from "@/lib/api/toolDataprivacyCtxLevels/mutations";
+} from "../db/schema/toolDataprivacyCtxLevels";
+import { publicProcedure, router } from "../server/trpc";
 
 export const toolDataprivacyCtxLevelsRouter = router({
   getToolDataprivacyCtxLevels: publicProcedure.query(async () => {
     return getToolDataprivacyCtxLevels();
   }),
-  getToolDataprivacyCtxLevelById: publicProcedure.input(toolDataprivacyCtxLevelIdSchema).query(async ({ input }) => {
-    return getToolDataprivacyCtxLevelById(input.id);
-  }),
+  getToolDataprivacyCtxLevelById: publicProcedure
+    .input(toolDataprivacyCtxLevelIdSchema)
+    .query(async ({ input }) => {
+      return getToolDataprivacyCtxLevelById(input.id);
+    }),
   createToolDataprivacyCtxLevel: publicProcedure
     .input(insertToolDataprivacyCtxLevelParams)
     .mutation(async ({ input }) => {

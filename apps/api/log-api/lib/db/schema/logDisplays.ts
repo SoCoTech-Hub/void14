@@ -1,9 +1,10 @@
-import { type getLogDisplays } from "@/lib/api/logDisplays/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getLogDisplays } from "../api/logDisplays/queries";
 
 export const logDisplays = pgTable("log_displays", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

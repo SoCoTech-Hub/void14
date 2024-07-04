@@ -1,19 +1,28 @@
-import { getMessagePopupById, getMessagePopups } from "@/lib/api/messagePopups/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  messagePopupIdSchema,
+  createMessagePopup,
+  deleteMessagePopup,
+  updateMessagePopup,
+} from "../api/messagePopups/mutations";
+import {
+  getMessagePopupById,
+  getMessagePopups,
+} from "../api/messagePopups/queries";
+import {
   insertMessagePopupParams,
+  messagePopupIdSchema,
   updateMessagePopupParams,
-} from "@/lib/db/schema/messagePopups";
-import { createMessagePopup, deleteMessagePopup, updateMessagePopup } from "@/lib/api/messagePopups/mutations";
+} from "../db/schema/messagePopups";
+import { publicProcedure, router } from "../server/trpc";
 
 export const messagePopupsRouter = router({
   getMessagePopups: publicProcedure.query(async () => {
     return getMessagePopups();
   }),
-  getMessagePopupById: publicProcedure.input(messagePopupIdSchema).query(async ({ input }) => {
-    return getMessagePopupById(input.id);
-  }),
+  getMessagePopupById: publicProcedure
+    .input(messagePopupIdSchema)
+    .query(async ({ input }) => {
+      return getMessagePopupById(input.id);
+    }),
   createMessagePopup: publicProcedure
     .input(insertMessagePopupParams)
     .mutation(async ({ input }) => {

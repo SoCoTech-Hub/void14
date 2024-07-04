@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createRoleAllowOverride,
   deleteRoleAllowOverride,
   updateRoleAllowOverride,
-} from "@/lib/api/roleAllowOverrides/mutations";
+} from "../api/roleAllowOverrides/mutations";
 import {
-  RoleAllowOverrideId,
-  NewRoleAllowOverrideParams,
-  UpdateRoleAllowOverrideParams,
-  roleAllowOverrideIdSchema,
   insertRoleAllowOverrideParams,
+  NewRoleAllowOverrideParams,
+  RoleAllowOverrideId,
+  roleAllowOverrideIdSchema,
+  UpdateRoleAllowOverrideParams,
   updateRoleAllowOverrideParams,
-} from "@/lib/db/schema/roleAllowOverrides";
+} from "../db/schema/roleAllowOverrides";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateRoleAllowOverrides = () => revalidatePath("/role-allow-overrides");
+const revalidateRoleAllowOverrides = () =>
+  revalidatePath("/role-allow-overrides");
 
-export const createRoleAllowOverrideAction = async (input: NewRoleAllowOverrideParams) => {
+export const createRoleAllowOverrideAction = async (
+  input: NewRoleAllowOverrideParams,
+) => {
   try {
     const payload = insertRoleAllowOverrideParams.parse(input);
     await createRoleAllowOverride(payload);
@@ -37,7 +41,9 @@ export const createRoleAllowOverrideAction = async (input: NewRoleAllowOverrideP
   }
 };
 
-export const updateRoleAllowOverrideAction = async (input: UpdateRoleAllowOverrideParams) => {
+export const updateRoleAllowOverrideAction = async (
+  input: UpdateRoleAllowOverrideParams,
+) => {
   try {
     const payload = updateRoleAllowOverrideParams.parse(input);
     await updateRoleAllowOverride(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateRoleAllowOverrideAction = async (input: UpdateRoleAllowOverri
   }
 };
 
-export const deleteRoleAllowOverrideAction = async (input: RoleAllowOverrideId) => {
+export const deleteRoleAllowOverrideAction = async (
+  input: RoleAllowOverrideId,
+) => {
   try {
     const payload = roleAllowOverrideIdSchema.parse({ id: input });
     await deleteRoleAllowOverride(payload.id);

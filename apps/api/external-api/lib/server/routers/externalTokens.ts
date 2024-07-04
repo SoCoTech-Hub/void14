@@ -1,19 +1,28 @@
-import { getExternalTokenById, getExternalTokens } from "@/lib/api/externalTokens/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createExternalToken,
+  deleteExternalToken,
+  updateExternalToken,
+} from "../api/externalTokens/mutations";
+import {
+  getExternalTokenById,
+  getExternalTokens,
+} from "../api/externalTokens/queries";
 import {
   externalTokenIdSchema,
   insertExternalTokenParams,
   updateExternalTokenParams,
-} from "@/lib/db/schema/externalTokens";
-import { createExternalToken, deleteExternalToken, updateExternalToken } from "@/lib/api/externalTokens/mutations";
+} from "../db/schema/externalTokens";
+import { publicProcedure, router } from "../server/trpc";
 
 export const externalTokensRouter = router({
   getExternalTokens: publicProcedure.query(async () => {
     return getExternalTokens();
   }),
-  getExternalTokenById: publicProcedure.input(externalTokenIdSchema).query(async ({ input }) => {
-    return getExternalTokenById(input.id);
-  }),
+  getExternalTokenById: publicProcedure
+    .input(externalTokenIdSchema)
+    .query(async ({ input }) => {
+      return getExternalTokenById(input.id);
+    }),
   createExternalToken: publicProcedure
     .input(insertExternalTokenParams)
     .mutation(async ({ input }) => {

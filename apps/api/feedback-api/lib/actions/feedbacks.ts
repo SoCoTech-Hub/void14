@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createFeedback,
   deleteFeedback,
   updateFeedback,
-} from "@/lib/api/feedbacks/mutations";
+} from "../api/feedbacks/mutations";
 import {
   FeedbackId,
-  NewFeedbackParams,
-  UpdateFeedbackParams,
   feedbackIdSchema,
   insertFeedbackParams,
+  NewFeedbackParams,
+  UpdateFeedbackParams,
   updateFeedbackParams,
-} from "@/lib/db/schema/feedbacks";
+} from "../db/schema/feedbacks";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

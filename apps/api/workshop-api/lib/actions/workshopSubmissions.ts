@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createWorkshopSubmission,
   deleteWorkshopSubmission,
   updateWorkshopSubmission,
-} from "@/lib/api/workshopSubmissions/mutations";
+} from "../api/workshopSubmissions/mutations";
 import {
-  WorkshopSubmissionId,
+  insertWorkshopSubmissionParams,
   NewWorkshopSubmissionParams,
   UpdateWorkshopSubmissionParams,
-  workshopSubmissionIdSchema,
-  insertWorkshopSubmissionParams,
   updateWorkshopSubmissionParams,
-} from "@/lib/db/schema/workshopSubmissions";
+  WorkshopSubmissionId,
+  workshopSubmissionIdSchema,
+} from "../db/schema/workshopSubmissions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateWorkshopSubmissions = () => revalidatePath("/workshop-submissions");
+const revalidateWorkshopSubmissions = () =>
+  revalidatePath("/workshop-submissions");
 
-export const createWorkshopSubmissionAction = async (input: NewWorkshopSubmissionParams) => {
+export const createWorkshopSubmissionAction = async (
+  input: NewWorkshopSubmissionParams,
+) => {
   try {
     const payload = insertWorkshopSubmissionParams.parse(input);
     await createWorkshopSubmission(payload);
@@ -37,7 +41,9 @@ export const createWorkshopSubmissionAction = async (input: NewWorkshopSubmissio
   }
 };
 
-export const updateWorkshopSubmissionAction = async (input: UpdateWorkshopSubmissionParams) => {
+export const updateWorkshopSubmissionAction = async (
+  input: UpdateWorkshopSubmissionParams,
+) => {
   try {
     const payload = updateWorkshopSubmissionParams.parse(input);
     await updateWorkshopSubmission(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateWorkshopSubmissionAction = async (input: UpdateWorkshopSubmis
   }
 };
 
-export const deleteWorkshopSubmissionAction = async (input: WorkshopSubmissionId) => {
+export const deleteWorkshopSubmissionAction = async (
+  input: WorkshopSubmissionId,
+) => {
   try {
     const payload = workshopSubmissionIdSchema.parse({ id: input });
     await deleteWorkshopSubmission(payload.id);

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createSupportComment,
   deleteSupportComment,
   updateSupportComment,
-} from "@/lib/api/supportComments/mutations";
+} from "../api/supportComments/mutations";
 import {
-  SupportCommentId,
-  NewSupportCommentParams,
-  UpdateSupportCommentParams,
-  supportCommentIdSchema,
   insertSupportCommentParams,
+  NewSupportCommentParams,
+  SupportCommentId,
+  supportCommentIdSchema,
+  UpdateSupportCommentParams,
   updateSupportCommentParams,
-} from "@/lib/db/schema/supportComments";
+} from "../db/schema/supportComments";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateSupportComments = () => revalidatePath("/support-comments");
 
-export const createSupportCommentAction = async (input: NewSupportCommentParams) => {
+export const createSupportCommentAction = async (
+  input: NewSupportCommentParams,
+) => {
   try {
     const payload = insertSupportCommentParams.parse(input);
     await createSupportComment(payload);
@@ -37,7 +40,9 @@ export const createSupportCommentAction = async (input: NewSupportCommentParams)
   }
 };
 
-export const updateSupportCommentAction = async (input: UpdateSupportCommentParams) => {
+export const updateSupportCommentAction = async (
+  input: UpdateSupportCommentParams,
+) => {
   try {
     const payload = updateSupportCommentParams.parse(input);
     await updateSupportComment(payload.id, payload);

@@ -1,11 +1,11 @@
-import { getBlogById, getBlogs } from "@/lib/api/blogs/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import { createBlog, deleteBlog, updateBlog } from "../api/blogs/mutations";
+import { getBlogById, getBlogs } from "../api/blogs/queries";
 import {
   blogIdSchema,
   insertBlogParams,
   updateBlogParams,
-} from "@/lib/db/schema/blogs";
-import { createBlog, deleteBlog, updateBlog } from "@/lib/api/blogs/mutations";
+} from "../db/schema/blogs";
+import { publicProcedure, router } from "../server/trpc";
 
 export const blogsRouter = router({
   getBlogs: publicProcedure.query(async () => {

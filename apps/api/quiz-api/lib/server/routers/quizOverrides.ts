@@ -1,19 +1,28 @@
-import { getQuizOverrideById, getQuizOverrides } from "@/lib/api/quizOverrides/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  quizOverrideIdSchema,
+  createQuizOverride,
+  deleteQuizOverride,
+  updateQuizOverride,
+} from "../api/quizOverrides/mutations";
+import {
+  getQuizOverrideById,
+  getQuizOverrides,
+} from "../api/quizOverrides/queries";
+import {
   insertQuizOverrideParams,
+  quizOverrideIdSchema,
   updateQuizOverrideParams,
-} from "@/lib/db/schema/quizOverrides";
-import { createQuizOverride, deleteQuizOverride, updateQuizOverride } from "@/lib/api/quizOverrides/mutations";
+} from "../db/schema/quizOverrides";
+import { publicProcedure, router } from "../server/trpc";
 
 export const quizOverridesRouter = router({
   getQuizOverrides: publicProcedure.query(async () => {
     return getQuizOverrides();
   }),
-  getQuizOverrideById: publicProcedure.input(quizOverrideIdSchema).query(async ({ input }) => {
-    return getQuizOverrideById(input.id);
-  }),
+  getQuizOverrideById: publicProcedure
+    .input(quizOverrideIdSchema)
+    .query(async ({ input }) => {
+      return getQuizOverrideById(input.id);
+    }),
   createQuizOverride: publicProcedure
     .input(insertQuizOverrideParams)
     .mutation(async ({ input }) => {

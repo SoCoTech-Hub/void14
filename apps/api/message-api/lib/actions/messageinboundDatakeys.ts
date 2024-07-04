@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMessageinboundDatakey,
   deleteMessageinboundDatakey,
   updateMessageinboundDatakey,
-} from "@/lib/api/messageinboundDatakeys/mutations";
+} from "../api/messageinboundDatakeys/mutations";
 import {
+  insertMessageinboundDatakeyParams,
   MessageinboundDatakeyId,
+  messageinboundDatakeyIdSchema,
   NewMessageinboundDatakeyParams,
   UpdateMessageinboundDatakeyParams,
-  messageinboundDatakeyIdSchema,
-  insertMessageinboundDatakeyParams,
   updateMessageinboundDatakeyParams,
-} from "@/lib/db/schema/messageinboundDatakeys";
+} from "../db/schema/messageinboundDatakeys";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateMessageinboundDatakeys = () => revalidatePath("/messageinbound-datakeys");
+const revalidateMessageinboundDatakeys = () =>
+  revalidatePath("/messageinbound-datakeys");
 
-export const createMessageinboundDatakeyAction = async (input: NewMessageinboundDatakeyParams) => {
+export const createMessageinboundDatakeyAction = async (
+  input: NewMessageinboundDatakeyParams,
+) => {
   try {
     const payload = insertMessageinboundDatakeyParams.parse(input);
     await createMessageinboundDatakey(payload);
@@ -37,7 +41,9 @@ export const createMessageinboundDatakeyAction = async (input: NewMessageinbound
   }
 };
 
-export const updateMessageinboundDatakeyAction = async (input: UpdateMessageinboundDatakeyParams) => {
+export const updateMessageinboundDatakeyAction = async (
+  input: UpdateMessageinboundDatakeyParams,
+) => {
   try {
     const payload = updateMessageinboundDatakeyParams.parse(input);
     await updateMessageinboundDatakey(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateMessageinboundDatakeyAction = async (input: UpdateMessageinbo
   }
 };
 
-export const deleteMessageinboundDatakeyAction = async (input: MessageinboundDatakeyId) => {
+export const deleteMessageinboundDatakeyAction = async (
+  input: MessageinboundDatakeyId,
+) => {
   try {
     const payload = messageinboundDatakeyIdSchema.parse({ id: input });
     await deleteMessageinboundDatakey(payload.id);

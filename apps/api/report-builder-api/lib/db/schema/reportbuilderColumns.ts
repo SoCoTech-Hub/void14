@@ -1,4 +1,3 @@
-import { type getReportbuilderColumns } from "@/lib/api/reportbuilderColumns/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -12,6 +11,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getReportbuilderColumns } from "../api/reportbuilderColumns/queries";
 
 export const reportbuilderColumns = pgTable(
   "reportbuilder_columns",

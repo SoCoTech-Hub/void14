@@ -1,4 +1,3 @@
-import { type getMassMailMessages } from "@/lib/api/massMailMessages/queries";
 import { sql } from "drizzle-orm";
 import {
   pgTable,
@@ -12,6 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getMassMailMessages } from "../api/massMailMessages/queries";
 import { massMailLists } from "./massMailLists";
 
 export const massMailMessages = pgTable(

@@ -1,10 +1,11 @@
-import { type getCompetencyCourseCompSettings } from "@/lib/api/competencyCourseCompSettings/queries";
 import { sql } from "drizzle-orm";
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getCompetencyCourseCompSettings } from "../api/competencyCourseCompSettings/queries";
 
 export const competencyCourseCompSettings = pgTable(
   "competency_course_comp_settings",

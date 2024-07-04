@@ -1,19 +1,25 @@
-import { getNextOfKinById, getNextOfKins } from "@/lib/api/nextOfKins/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  nextOfKinIdSchema,
+  createNextOfKin,
+  deleteNextOfKin,
+  updateNextOfKin,
+} from "../api/nextOfKins/mutations";
+import { getNextOfKinById, getNextOfKins } from "../api/nextOfKins/queries";
+import {
   insertNextOfKinParams,
+  nextOfKinIdSchema,
   updateNextOfKinParams,
-} from "@/lib/db/schema/nextOfKins";
-import { createNextOfKin, deleteNextOfKin, updateNextOfKin } from "@/lib/api/nextOfKins/mutations";
+} from "../db/schema/nextOfKins";
+import { publicProcedure, router } from "../server/trpc";
 
 export const nextOfKinsRouter = router({
   getNextOfKins: publicProcedure.query(async () => {
     return getNextOfKins();
   }),
-  getNextOfKinById: publicProcedure.input(nextOfKinIdSchema).query(async ({ input }) => {
-    return getNextOfKinById(input.id);
-  }),
+  getNextOfKinById: publicProcedure
+    .input(nextOfKinIdSchema)
+    .query(async ({ input }) => {
+      return getNextOfKinById(input.id);
+    }),
   createNextOfKin: publicProcedure
     .input(insertNextOfKinParams)
     .mutation(async ({ input }) => {

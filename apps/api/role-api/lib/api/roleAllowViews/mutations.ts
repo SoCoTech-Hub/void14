@@ -1,19 +1,25 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  RoleAllowViewId, 
-  NewRoleAllowViewParams,
-  UpdateRoleAllowViewParams, 
-  updateRoleAllowViewSchema,
-  insertRoleAllowViewSchema, 
-  roleAllowViews,
-  roleAllowViewIdSchema 
-} from "@/lib/db/schema/roleAllowViews";
 
-export const createRoleAllowView = async (roleAllowView: NewRoleAllowViewParams) => {
+import { db } from "../db/index";
+import {
+  insertRoleAllowViewSchema,
+  NewRoleAllowViewParams,
+  RoleAllowViewId,
+  roleAllowViewIdSchema,
+  roleAllowViews,
+  UpdateRoleAllowViewParams,
+  updateRoleAllowViewSchema,
+} from "../db/schema/roleAllowViews";
+
+export const createRoleAllowView = async (
+  roleAllowView: NewRoleAllowViewParams,
+) => {
   const newRoleAllowView = insertRoleAllowViewSchema.parse(roleAllowView);
   try {
-    const [r] =  await db.insert(roleAllowViews).values(newRoleAllowView).returning();
+    const [r] = await db
+      .insert(roleAllowViews)
+      .values(newRoleAllowView)
+      .returning();
     return { roleAllowView: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +28,18 @@ export const createRoleAllowView = async (roleAllowView: NewRoleAllowViewParams)
   }
 };
 
-export const updateRoleAllowView = async (id: RoleAllowViewId, roleAllowView: UpdateRoleAllowViewParams) => {
+export const updateRoleAllowView = async (
+  id: RoleAllowViewId,
+  roleAllowView: UpdateRoleAllowViewParams,
+) => {
   const { id: roleAllowViewId } = roleAllowViewIdSchema.parse({ id });
   const newRoleAllowView = updateRoleAllowViewSchema.parse(roleAllowView);
   try {
-    const [r] =  await db
-     .update(roleAllowViews)
-     .set(newRoleAllowView)
-     .where(eq(roleAllowViews.id, roleAllowViewId!))
-     .returning();
+    const [r] = await db
+      .update(roleAllowViews)
+      .set(newRoleAllowView)
+      .where(eq(roleAllowViews.id, roleAllowViewId!))
+      .returning();
     return { roleAllowView: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +51,10 @@ export const updateRoleAllowView = async (id: RoleAllowViewId, roleAllowView: Up
 export const deleteRoleAllowView = async (id: RoleAllowViewId) => {
   const { id: roleAllowViewId } = roleAllowViewIdSchema.parse({ id });
   try {
-    const [r] =  await db.delete(roleAllowViews).where(eq(roleAllowViews.id, roleAllowViewId!))
-    .returning();
+    const [r] = await db
+      .delete(roleAllowViews)
+      .where(eq(roleAllowViews.id, roleAllowViewId!))
+      .returning();
     return { roleAllowView: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +62,3 @@ export const deleteRoleAllowView = async (id: RoleAllowViewId) => {
     throw { error: message };
   }
 };
-

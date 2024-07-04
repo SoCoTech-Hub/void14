@@ -1,21 +1,26 @@
-import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
-import { 
-  DataRecordId, 
-  NewDataRecordParams,
-  UpdateDataRecordParams, 
-  updateDataRecordSchema,
-  insertDataRecordSchema, 
-  dataRecords,
-  dataRecordIdSchema 
-} from "@/lib/db/schema/dataRecords";
+
 import { getUserAuth } from "@soco/auth/utils";
+
+import { db } from "../db/index";
+import {
+  DataRecordId,
+  dataRecordIdSchema,
+  dataRecords,
+  insertDataRecordSchema,
+  NewDataRecordParams,
+  UpdateDataRecordParams,
+  updateDataRecordSchema,
+} from "../db/schema/dataRecords";
 
 export const createDataRecord = async (dataRecord: NewDataRecordParams) => {
   const { session } = await getUserAuth();
-  const newDataRecord = insertDataRecordSchema.parse({ ...dataRecord, userId: session?.user.id! });
+  const newDataRecord = insertDataRecordSchema.parse({
+    ...dataRecord,
+    userId: session?.user.id!,
+  });
   try {
-    const [d] =  await db.insert(dataRecords).values(newDataRecord).returning();
+    const [d] = await db.insert(dataRecords).values(newDataRecord).returning();
     return { dataRecord: d };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +29,27 @@ export const createDataRecord = async (dataRecord: NewDataRecordParams) => {
   }
 };
 
-export const updateDataRecord = async (id: DataRecordId, dataRecord: UpdateDataRecordParams) => {
+export const updateDataRecord = async (
+  id: DataRecordId,
+  dataRecord: UpdateDataRecordParams,
+) => {
   const { session } = await getUserAuth();
   const { id: dataRecordId } = dataRecordIdSchema.parse({ id });
-  const newDataRecord = updateDataRecordSchema.parse({ ...dataRecord, userId: session?.user.id! });
+  const newDataRecord = updateDataRecordSchema.parse({
+    ...dataRecord,
+    userId: session?.user.id!,
+  });
   try {
-    const [d] =  await db
-     .update(dataRecords)
-     .set({...newDataRecord, updatedAt: new Date() })
-     .where(and(eq(dataRecords.id, dataRecordId!), eq(dataRecords.userId, session?.user.id!)))
-     .returning();
+    const [d] = await db
+      .update(dataRecords)
+      .set({ ...newDataRecord, updatedAt: new Date() })
+      .where(
+        and(
+          eq(dataRecords.id, dataRecordId!),
+          eq(dataRecords.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { dataRecord: d };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +62,15 @@ export const deleteDataRecord = async (id: DataRecordId) => {
   const { session } = await getUserAuth();
   const { id: dataRecordId } = dataRecordIdSchema.parse({ id });
   try {
-    const [d] =  await db.delete(dataRecords).where(and(eq(dataRecords.id, dataRecordId!), eq(dataRecords.userId, session?.user.id!)))
-    .returning();
+    const [d] = await db
+      .delete(dataRecords)
+      .where(
+        and(
+          eq(dataRecords.id, dataRecordId!),
+          eq(dataRecords.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { dataRecord: d };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +78,3 @@ export const deleteDataRecord = async (id: DataRecordId) => {
     throw { error: message };
   }
 };
-

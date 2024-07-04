@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQtypeDdmarkerDrop,
   deleteQtypeDdmarkerDrop,
   updateQtypeDdmarkerDrop,
-} from "@/lib/api/qtypeDdmarkerDrops/mutations";
+} from "../api/qtypeDdmarkerDrops/mutations";
 import {
-  QtypeDdmarkerDropId,
-  NewQtypeDdmarkerDropParams,
-  UpdateQtypeDdmarkerDropParams,
-  qtypeDdmarkerDropIdSchema,
   insertQtypeDdmarkerDropParams,
+  NewQtypeDdmarkerDropParams,
+  QtypeDdmarkerDropId,
+  qtypeDdmarkerDropIdSchema,
+  UpdateQtypeDdmarkerDropParams,
   updateQtypeDdmarkerDropParams,
-} from "@/lib/db/schema/qtypeDdmarkerDrops";
+} from "../db/schema/qtypeDdmarkerDrops";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQtypeDdmarkerDrops = () => revalidatePath("/qtype-ddmarker-drops");
+const revalidateQtypeDdmarkerDrops = () =>
+  revalidatePath("/qtype-ddmarker-drops");
 
-export const createQtypeDdmarkerDropAction = async (input: NewQtypeDdmarkerDropParams) => {
+export const createQtypeDdmarkerDropAction = async (
+  input: NewQtypeDdmarkerDropParams,
+) => {
   try {
     const payload = insertQtypeDdmarkerDropParams.parse(input);
     await createQtypeDdmarkerDrop(payload);
@@ -37,7 +41,9 @@ export const createQtypeDdmarkerDropAction = async (input: NewQtypeDdmarkerDropP
   }
 };
 
-export const updateQtypeDdmarkerDropAction = async (input: UpdateQtypeDdmarkerDropParams) => {
+export const updateQtypeDdmarkerDropAction = async (
+  input: UpdateQtypeDdmarkerDropParams,
+) => {
   try {
     const payload = updateQtypeDdmarkerDropParams.parse(input);
     await updateQtypeDdmarkerDrop(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQtypeDdmarkerDropAction = async (input: UpdateQtypeDdmarkerDr
   }
 };
 
-export const deleteQtypeDdmarkerDropAction = async (input: QtypeDdmarkerDropId) => {
+export const deleteQtypeDdmarkerDropAction = async (
+  input: QtypeDdmarkerDropId,
+) => {
   try {
     const payload = qtypeDdmarkerDropIdSchema.parse({ id: input });
     await deleteQtypeDdmarkerDrop(payload.id);

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createH5pLibrariesCachedasset,
   deleteH5pLibrariesCachedasset,
   updateH5pLibrariesCachedasset,
-} from "@/lib/api/h5pLibrariesCachedassets/mutations";
+} from "../api/h5pLibrariesCachedassets/mutations";
 import {
   H5pLibrariesCachedassetId,
-  NewH5pLibrariesCachedassetParams,
-  UpdateH5pLibrariesCachedassetParams,
   h5pLibrariesCachedassetIdSchema,
   insertH5pLibrariesCachedassetParams,
+  NewH5pLibrariesCachedassetParams,
+  UpdateH5pLibrariesCachedassetParams,
   updateH5pLibrariesCachedassetParams,
-} from "@/lib/db/schema/h5pLibrariesCachedassets";
+} from "../db/schema/h5pLibrariesCachedassets";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateH5pLibrariesCachedassets = () => revalidatePath("/h5p-libraries-cachedassets");
+const revalidateH5pLibrariesCachedassets = () =>
+  revalidatePath("/h5p-libraries-cachedassets");
 
-export const createH5pLibrariesCachedassetAction = async (input: NewH5pLibrariesCachedassetParams) => {
+export const createH5pLibrariesCachedassetAction = async (
+  input: NewH5pLibrariesCachedassetParams,
+) => {
   try {
     const payload = insertH5pLibrariesCachedassetParams.parse(input);
     await createH5pLibrariesCachedasset(payload);
@@ -37,7 +41,9 @@ export const createH5pLibrariesCachedassetAction = async (input: NewH5pLibraries
   }
 };
 
-export const updateH5pLibrariesCachedassetAction = async (input: UpdateH5pLibrariesCachedassetParams) => {
+export const updateH5pLibrariesCachedassetAction = async (
+  input: UpdateH5pLibrariesCachedassetParams,
+) => {
   try {
     const payload = updateH5pLibrariesCachedassetParams.parse(input);
     await updateH5pLibrariesCachedasset(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateH5pLibrariesCachedassetAction = async (input: UpdateH5pLibrar
   }
 };
 
-export const deleteH5pLibrariesCachedassetAction = async (input: H5pLibrariesCachedassetId) => {
+export const deleteH5pLibrariesCachedassetAction = async (
+  input: H5pLibrariesCachedassetId,
+) => {
   try {
     const payload = h5pLibrariesCachedassetIdSchema.parse({ id: input });
     await deleteH5pLibrariesCachedasset(payload.id);

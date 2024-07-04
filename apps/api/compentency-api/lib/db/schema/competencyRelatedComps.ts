@@ -1,4 +1,3 @@
-import { type getCompetencyRelatedComps } from "@/lib/api/competencyRelatedComps/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -6,6 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getCompetencyRelatedComps } from "../api/competencyRelatedComps/queries";
 import { competencies } from "./competencies";
 
 export const competencyRelatedComps = pgTable("competency_related_comps", {

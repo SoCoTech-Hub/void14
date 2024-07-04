@@ -1,4 +1,3 @@
-import { type getAssignSubmissionOnlineTexts } from "@/lib/api/assignSubmissionOnlineTexts/queries";
 import {
   integer,
   pgTable,
@@ -11,6 +10,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getAssignSubmissionOnlineTexts } from "../api/assignSubmissionOnlineTexts/queries";
 import { assignments } from "./assignments";
 
 export const assignSubmissionOnlineTexts = pgTable(

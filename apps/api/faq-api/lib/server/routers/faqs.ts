@@ -1,11 +1,11 @@
-import { getFaqById, getFaqs } from "@/lib/api/faqs/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import { createFaq, deleteFaq, updateFaq } from "../api/faqs/mutations";
+import { getFaqById, getFaqs } from "../api/faqs/queries";
 import {
   faqIdSchema,
   insertFaqParams,
   updateFaqParams,
-} from "@/lib/db/schema/faqs";
-import { createFaq, deleteFaq, updateFaq } from "@/lib/api/faqs/mutations";
+} from "../db/schema/faqs";
+import { publicProcedure, router } from "../server/trpc";
 
 export const faqsRouter = router({
   getFaqs: publicProcedure.query(async () => {
@@ -24,9 +24,7 @@ export const faqsRouter = router({
     .mutation(async ({ input }) => {
       return updateFaq(input.id, input);
     }),
-  deleteFaq: publicProcedure
-    .input(faqIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteFaq(input.id);
-    }),
+  deleteFaq: publicProcedure.input(faqIdSchema).mutation(async ({ input }) => {
+    return deleteFaq(input.id);
+  }),
 });

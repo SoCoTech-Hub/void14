@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCompetencyTemplateCohort,
   deleteCompetencyTemplateCohort,
   updateCompetencyTemplateCohort,
-} from "@/lib/api/competencyTemplateCohorts/mutations";
+} from "../api/competencyTemplateCohorts/mutations";
 import {
   CompetencyTemplateCohortId,
-  NewCompetencyTemplateCohortParams,
-  UpdateCompetencyTemplateCohortParams,
   competencyTemplateCohortIdSchema,
   insertCompetencyTemplateCohortParams,
+  NewCompetencyTemplateCohortParams,
+  UpdateCompetencyTemplateCohortParams,
   updateCompetencyTemplateCohortParams,
-} from "@/lib/db/schema/competencyTemplateCohorts";
+} from "../db/schema/competencyTemplateCohorts";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateCompetencyTemplateCohorts = () => revalidatePath("/competency-template-cohorts");
+const revalidateCompetencyTemplateCohorts = () =>
+  revalidatePath("/competency-template-cohorts");
 
-export const createCompetencyTemplateCohortAction = async (input: NewCompetencyTemplateCohortParams) => {
+export const createCompetencyTemplateCohortAction = async (
+  input: NewCompetencyTemplateCohortParams,
+) => {
   try {
     const payload = insertCompetencyTemplateCohortParams.parse(input);
     await createCompetencyTemplateCohort(payload);
@@ -37,7 +41,9 @@ export const createCompetencyTemplateCohortAction = async (input: NewCompetencyT
   }
 };
 
-export const updateCompetencyTemplateCohortAction = async (input: UpdateCompetencyTemplateCohortParams) => {
+export const updateCompetencyTemplateCohortAction = async (
+  input: UpdateCompetencyTemplateCohortParams,
+) => {
   try {
     const payload = updateCompetencyTemplateCohortParams.parse(input);
     await updateCompetencyTemplateCohort(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateCompetencyTemplateCohortAction = async (input: UpdateCompeten
   }
 };
 
-export const deleteCompetencyTemplateCohortAction = async (input: CompetencyTemplateCohortId) => {
+export const deleteCompetencyTemplateCohortAction = async (
+  input: CompetencyTemplateCohortId,
+) => {
   try {
     const payload = competencyTemplateCohortIdSchema.parse({ id: input });
     await deleteCompetencyTemplateCohort(payload.id);

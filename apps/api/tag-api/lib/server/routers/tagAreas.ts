@@ -1,19 +1,25 @@
-import { getTagAreaById, getTagAreas } from "@/lib/api/tagAreas/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  tagAreaIdSchema,
+  createTagArea,
+  deleteTagArea,
+  updateTagArea,
+} from "../api/tagAreas/mutations";
+import { getTagAreaById, getTagAreas } from "../api/tagAreas/queries";
+import {
   insertTagAreaParams,
+  tagAreaIdSchema,
   updateTagAreaParams,
-} from "@/lib/db/schema/tagAreas";
-import { createTagArea, deleteTagArea, updateTagArea } from "@/lib/api/tagAreas/mutations";
+} from "../db/schema/tagAreas";
+import { publicProcedure, router } from "../server/trpc";
 
 export const tagAreasRouter = router({
   getTagAreas: publicProcedure.query(async () => {
     return getTagAreas();
   }),
-  getTagAreaById: publicProcedure.input(tagAreaIdSchema).query(async ({ input }) => {
-    return getTagAreaById(input.id);
-  }),
+  getTagAreaById: publicProcedure
+    .input(tagAreaIdSchema)
+    .query(async ({ input }) => {
+      return getTagAreaById(input.id);
+    }),
   createTagArea: publicProcedure
     .input(insertTagAreaParams)
     .mutation(async ({ input }) => {

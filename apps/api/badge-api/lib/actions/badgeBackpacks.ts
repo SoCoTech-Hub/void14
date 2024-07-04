@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBadgeBackpack,
   deleteBadgeBackpack,
   updateBadgeBackpack,
-} from "@/lib/api/badgeBackpacks/mutations";
+} from "../api/badgeBackpacks/mutations";
 import {
   BadgeBackpackId,
-  NewBadgeBackpackParams,
-  UpdateBadgeBackpackParams,
   badgeBackpackIdSchema,
   insertBadgeBackpackParams,
+  NewBadgeBackpackParams,
+  UpdateBadgeBackpackParams,
   updateBadgeBackpackParams,
-} from "@/lib/db/schema/badgeBackpacks";
+} from "../db/schema/badgeBackpacks";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateBadgeBackpacks = () => revalidatePath("/badge-backpacks");
 
-export const createBadgeBackpackAction = async (input: NewBadgeBackpackParams) => {
+export const createBadgeBackpackAction = async (
+  input: NewBadgeBackpackParams,
+) => {
   try {
     const payload = insertBadgeBackpackParams.parse(input);
     await createBadgeBackpack(payload);
@@ -37,7 +40,9 @@ export const createBadgeBackpackAction = async (input: NewBadgeBackpackParams) =
   }
 };
 
-export const updateBadgeBackpackAction = async (input: UpdateBadgeBackpackParams) => {
+export const updateBadgeBackpackAction = async (
+  input: UpdateBadgeBackpackParams,
+) => {
   try {
     const payload = updateBadgeBackpackParams.parse(input);
     await updateBadgeBackpack(payload.id, payload);

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createLocalizationTranslation,
   deleteLocalizationTranslation,
   updateLocalizationTranslation,
-} from "@/lib/api/localizationTranslations/mutations";
+} from "../api/localizationTranslations/mutations";
 import {
+  insertLocalizationTranslationParams,
   LocalizationTranslationId,
+  localizationTranslationIdSchema,
   NewLocalizationTranslationParams,
   UpdateLocalizationTranslationParams,
-  localizationTranslationIdSchema,
-  insertLocalizationTranslationParams,
   updateLocalizationTranslationParams,
-} from "@/lib/db/schema/localizationTranslations";
+} from "../db/schema/localizationTranslations";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateLocalizationTranslations = () => revalidatePath("/localization-translations");
+const revalidateLocalizationTranslations = () =>
+  revalidatePath("/localization-translations");
 
-export const createLocalizationTranslationAction = async (input: NewLocalizationTranslationParams) => {
+export const createLocalizationTranslationAction = async (
+  input: NewLocalizationTranslationParams,
+) => {
   try {
     const payload = insertLocalizationTranslationParams.parse(input);
     await createLocalizationTranslation(payload);
@@ -37,7 +41,9 @@ export const createLocalizationTranslationAction = async (input: NewLocalization
   }
 };
 
-export const updateLocalizationTranslationAction = async (input: UpdateLocalizationTranslationParams) => {
+export const updateLocalizationTranslationAction = async (
+  input: UpdateLocalizationTranslationParams,
+) => {
   try {
     const payload = updateLocalizationTranslationParams.parse(input);
     await updateLocalizationTranslation(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateLocalizationTranslationAction = async (input: UpdateLocalizat
   }
 };
 
-export const deleteLocalizationTranslationAction = async (input: LocalizationTranslationId) => {
+export const deleteLocalizationTranslationAction = async (
+  input: LocalizationTranslationId,
+) => {
   try {
     const payload = localizationTranslationIdSchema.parse({ id: input });
     await deleteLocalizationTranslation(payload.id);

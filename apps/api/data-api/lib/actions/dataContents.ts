@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createDataContent,
   deleteDataContent,
   updateDataContent,
-} from "@/lib/api/dataContents/mutations";
+} from "../api/dataContents/mutations";
 import {
   DataContentId,
-  NewDataContentParams,
-  UpdateDataContentParams,
   dataContentIdSchema,
   insertDataContentParams,
+  NewDataContentParams,
+  UpdateDataContentParams,
   updateDataContentParams,
-} from "@/lib/db/schema/dataContents";
+} from "../db/schema/dataContents";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createDataContentAction = async (input: NewDataContentParams) => {
   }
 };
 
-export const updateDataContentAction = async (input: UpdateDataContentParams) => {
+export const updateDataContentAction = async (
+  input: UpdateDataContentParams,
+) => {
   try {
     const payload = updateDataContentParams.parse(input);
     await updateDataContent(payload.id, payload);

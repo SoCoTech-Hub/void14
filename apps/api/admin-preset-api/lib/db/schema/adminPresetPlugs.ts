@@ -1,10 +1,10 @@
-import { type getAdminPresetPlugs } from "@/lib/api/adminPresetPlugs/queries";
 import { boolean, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getAdminPresetPlugs } from "../api/adminPresetPlugs/queries";
 import { adminPresets } from "./adminPresets";
 
 export const adminPresetPlugs = pgTable(

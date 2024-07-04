@@ -1,4 +1,3 @@
-import { type getSurveyAnswers } from "@/lib/api/surveyAnswers/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -6,6 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getSurveyAnswers } from "../api/surveyAnswers/queries";
 import { surveyQuestions } from "./surveyQuestions";
 import { surveys } from "./surveys";
 

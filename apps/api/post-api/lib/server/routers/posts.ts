@@ -1,11 +1,11 @@
-import { getPostById, getPosts } from "@/lib/api/posts/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import { createPost, deletePost, updatePost } from "../api/posts/mutations";
+import { getPostById, getPosts } from "../api/posts/queries";
 import {
-  postIdSchema,
   insertPostParams,
+  postIdSchema,
   updatePostParams,
-} from "@/lib/db/schema/posts";
-import { createPost, deletePost, updatePost } from "@/lib/api/posts/mutations";
+} from "../db/schema/posts";
+import { publicProcedure, router } from "../server/trpc";
 
 export const postsRouter = router({
   getPosts: publicProcedure.query(async () => {

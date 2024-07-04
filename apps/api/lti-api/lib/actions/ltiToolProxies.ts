@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createLtiToolProxy,
   deleteLtiToolProxy,
   updateLtiToolProxy,
-} from "@/lib/api/ltiToolProxies/mutations";
+} from "../api/ltiToolProxies/mutations";
 import {
+  insertLtiToolProxyParams,
   LtiToolProxyId,
+  ltiToolProxyIdSchema,
   NewLtiToolProxyParams,
   UpdateLtiToolProxyParams,
-  ltiToolProxyIdSchema,
-  insertLtiToolProxyParams,
   updateLtiToolProxyParams,
-} from "@/lib/db/schema/ltiToolProxies";
+} from "../db/schema/ltiToolProxies";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateLtiToolProxies = () => revalidatePath("/lti-tool-proxies");
 
-export const createLtiToolProxyAction = async (input: NewLtiToolProxyParams) => {
+export const createLtiToolProxyAction = async (
+  input: NewLtiToolProxyParams,
+) => {
   try {
     const payload = insertLtiToolProxyParams.parse(input);
     await createLtiToolProxy(payload);
@@ -37,7 +40,9 @@ export const createLtiToolProxyAction = async (input: NewLtiToolProxyParams) => 
   }
 };
 
-export const updateLtiToolProxyAction = async (input: UpdateLtiToolProxyParams) => {
+export const updateLtiToolProxyAction = async (
+  input: UpdateLtiToolProxyParams,
+) => {
   try {
     const payload = updateLtiToolProxyParams.parse(input);
     await updateLtiToolProxy(payload.id, payload);

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createForumTrackPref,
   deleteForumTrackPref,
   updateForumTrackPref,
-} from "@/lib/api/forumTrackPrefs/mutations";
+} from "../api/forumTrackPrefs/mutations";
 import {
   ForumTrackPrefId,
-  NewForumTrackPrefParams,
-  UpdateForumTrackPrefParams,
   forumTrackPrefIdSchema,
   insertForumTrackPrefParams,
+  NewForumTrackPrefParams,
+  UpdateForumTrackPrefParams,
   updateForumTrackPrefParams,
-} from "@/lib/db/schema/forumTrackPrefs";
+} from "../db/schema/forumTrackPrefs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateForumTrackPrefs = () => revalidatePath("/forum-track-prefs");
 
-export const createForumTrackPrefAction = async (input: NewForumTrackPrefParams) => {
+export const createForumTrackPrefAction = async (
+  input: NewForumTrackPrefParams,
+) => {
   try {
     const payload = insertForumTrackPrefParams.parse(input);
     await createForumTrackPref(payload);
@@ -37,7 +40,9 @@ export const createForumTrackPrefAction = async (input: NewForumTrackPrefParams)
   }
 };
 
-export const updateForumTrackPrefAction = async (input: UpdateForumTrackPrefParams) => {
+export const updateForumTrackPrefAction = async (
+  input: UpdateForumTrackPrefParams,
+) => {
   try {
     const payload = updateForumTrackPrefParams.parse(input);
     await updateForumTrackPref(payload.id, payload);

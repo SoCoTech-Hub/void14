@@ -1,19 +1,26 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  ToolUserToursTourId, 
-  NewToolUserToursTourParams,
-  UpdateToolUserToursTourParams, 
-  updateToolUserToursTourSchema,
-  insertToolUserToursTourSchema, 
-  toolUserToursTours,
-  toolUserToursTourIdSchema 
-} from "@/lib/db/schema/toolUserToursTours";
 
-export const createToolUserToursTour = async (toolUserToursTour: NewToolUserToursTourParams) => {
-  const newToolUserToursTour = insertToolUserToursTourSchema.parse(toolUserToursTour);
+import { db } from "../db/index";
+import {
+  insertToolUserToursTourSchema,
+  NewToolUserToursTourParams,
+  ToolUserToursTourId,
+  toolUserToursTourIdSchema,
+  toolUserToursTours,
+  UpdateToolUserToursTourParams,
+  updateToolUserToursTourSchema,
+} from "../db/schema/toolUserToursTours";
+
+export const createToolUserToursTour = async (
+  toolUserToursTour: NewToolUserToursTourParams,
+) => {
+  const newToolUserToursTour =
+    insertToolUserToursTourSchema.parse(toolUserToursTour);
   try {
-    const [t] =  await db.insert(toolUserToursTours).values(newToolUserToursTour).returning();
+    const [t] = await db
+      .insert(toolUserToursTours)
+      .values(newToolUserToursTour)
+      .returning();
     return { toolUserToursTour: t };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,19 @@ export const createToolUserToursTour = async (toolUserToursTour: NewToolUserTour
   }
 };
 
-export const updateToolUserToursTour = async (id: ToolUserToursTourId, toolUserToursTour: UpdateToolUserToursTourParams) => {
+export const updateToolUserToursTour = async (
+  id: ToolUserToursTourId,
+  toolUserToursTour: UpdateToolUserToursTourParams,
+) => {
   const { id: toolUserToursTourId } = toolUserToursTourIdSchema.parse({ id });
-  const newToolUserToursTour = updateToolUserToursTourSchema.parse(toolUserToursTour);
+  const newToolUserToursTour =
+    updateToolUserToursTourSchema.parse(toolUserToursTour);
   try {
-    const [t] =  await db
-     .update(toolUserToursTours)
-     .set(newToolUserToursTour)
-     .where(eq(toolUserToursTours.id, toolUserToursTourId!))
-     .returning();
+    const [t] = await db
+      .update(toolUserToursTours)
+      .set(newToolUserToursTour)
+      .where(eq(toolUserToursTours.id, toolUserToursTourId!))
+      .returning();
     return { toolUserToursTour: t };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +53,10 @@ export const updateToolUserToursTour = async (id: ToolUserToursTourId, toolUserT
 export const deleteToolUserToursTour = async (id: ToolUserToursTourId) => {
   const { id: toolUserToursTourId } = toolUserToursTourIdSchema.parse({ id });
   try {
-    const [t] =  await db.delete(toolUserToursTours).where(eq(toolUserToursTours.id, toolUserToursTourId!))
-    .returning();
+    const [t] = await db
+      .delete(toolUserToursTours)
+      .where(eq(toolUserToursTours.id, toolUserToursTourId!))
+      .returning();
     return { toolUserToursTour: t };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +64,3 @@ export const deleteToolUserToursTour = async (id: ToolUserToursTourId) => {
     throw { error: message };
   }
 };
-

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCourseCompletionAggrMethd,
   deleteCourseCompletionAggrMethd,
   updateCourseCompletionAggrMethd,
-} from "@/lib/api/courseCompletionAggrMethds/mutations";
+} from "../api/courseCompletionAggrMethds/mutations";
 import {
   CourseCompletionAggrMethdId,
-  NewCourseCompletionAggrMethdParams,
-  UpdateCourseCompletionAggrMethdParams,
   courseCompletionAggrMethdIdSchema,
   insertCourseCompletionAggrMethdParams,
+  NewCourseCompletionAggrMethdParams,
+  UpdateCourseCompletionAggrMethdParams,
   updateCourseCompletionAggrMethdParams,
-} from "@/lib/db/schema/courseCompletionAggrMethds";
+} from "../db/schema/courseCompletionAggrMethds";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateCourseCompletionAggrMethds = () => revalidatePath("/course-completion-aggr-methds");
+const revalidateCourseCompletionAggrMethds = () =>
+  revalidatePath("/course-completion-aggr-methds");
 
-export const createCourseCompletionAggrMethdAction = async (input: NewCourseCompletionAggrMethdParams) => {
+export const createCourseCompletionAggrMethdAction = async (
+  input: NewCourseCompletionAggrMethdParams,
+) => {
   try {
     const payload = insertCourseCompletionAggrMethdParams.parse(input);
     await createCourseCompletionAggrMethd(payload);
@@ -37,7 +41,9 @@ export const createCourseCompletionAggrMethdAction = async (input: NewCourseComp
   }
 };
 
-export const updateCourseCompletionAggrMethdAction = async (input: UpdateCourseCompletionAggrMethdParams) => {
+export const updateCourseCompletionAggrMethdAction = async (
+  input: UpdateCourseCompletionAggrMethdParams,
+) => {
   try {
     const payload = updateCourseCompletionAggrMethdParams.parse(input);
     await updateCourseCompletionAggrMethd(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateCourseCompletionAggrMethdAction = async (input: UpdateCourseC
   }
 };
 
-export const deleteCourseCompletionAggrMethdAction = async (input: CourseCompletionAggrMethdId) => {
+export const deleteCourseCompletionAggrMethdAction = async (
+  input: CourseCompletionAggrMethdId,
+) => {
   try {
     const payload = courseCompletionAggrMethdIdSchema.parse({ id: input });
     await deleteCourseCompletionAggrMethd(payload.id);

@@ -1,19 +1,25 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  SupportStatusId, 
-  NewSupportStatusParams,
-  UpdateSupportStatusParams, 
-  updateSupportStatusSchema,
-  insertSupportStatusSchema, 
-  supportStatuses,
-  supportStatusIdSchema 
-} from "@/lib/db/schema/supportStatuses";
 
-export const createSupportStatus = async (supportStatus: NewSupportStatusParams) => {
+import { db } from "../db/index";
+import {
+  insertSupportStatusSchema,
+  NewSupportStatusParams,
+  supportStatuses,
+  SupportStatusId,
+  supportStatusIdSchema,
+  UpdateSupportStatusParams,
+  updateSupportStatusSchema,
+} from "../db/schema/supportStatuses";
+
+export const createSupportStatus = async (
+  supportStatus: NewSupportStatusParams,
+) => {
   const newSupportStatus = insertSupportStatusSchema.parse(supportStatus);
   try {
-    const [s] =  await db.insert(supportStatuses).values(newSupportStatus).returning();
+    const [s] = await db
+      .insert(supportStatuses)
+      .values(newSupportStatus)
+      .returning();
     return { supportStatus: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +28,18 @@ export const createSupportStatus = async (supportStatus: NewSupportStatusParams)
   }
 };
 
-export const updateSupportStatus = async (id: SupportStatusId, supportStatus: UpdateSupportStatusParams) => {
+export const updateSupportStatus = async (
+  id: SupportStatusId,
+  supportStatus: UpdateSupportStatusParams,
+) => {
   const { id: supportStatusId } = supportStatusIdSchema.parse({ id });
   const newSupportStatus = updateSupportStatusSchema.parse(supportStatus);
   try {
-    const [s] =  await db
-     .update(supportStatuses)
-     .set(newSupportStatus)
-     .where(eq(supportStatuses.id, supportStatusId!))
-     .returning();
+    const [s] = await db
+      .update(supportStatuses)
+      .set(newSupportStatus)
+      .where(eq(supportStatuses.id, supportStatusId!))
+      .returning();
     return { supportStatus: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +51,10 @@ export const updateSupportStatus = async (id: SupportStatusId, supportStatus: Up
 export const deleteSupportStatus = async (id: SupportStatusId) => {
   const { id: supportStatusId } = supportStatusIdSchema.parse({ id });
   try {
-    const [s] =  await db.delete(supportStatuses).where(eq(supportStatuses.id, supportStatusId!))
-    .returning();
+    const [s] = await db
+      .delete(supportStatuses)
+      .where(eq(supportStatuses.id, supportStatusId!))
+      .returning();
     return { supportStatus: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +62,3 @@ export const deleteSupportStatus = async (id: SupportStatusId) => {
     throw { error: message };
   }
 };
-

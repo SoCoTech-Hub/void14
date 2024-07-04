@@ -1,4 +1,3 @@
-import { type getReportbuilderSchedules } from "@/lib/api/reportbuilderSchedules/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -13,6 +12,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getReportbuilderSchedules } from "../api/reportbuilderSchedules/queries";
 
 export const reportbuilderSchedules = pgTable(
   "reportbuilder_schedules",

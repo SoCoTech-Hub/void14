@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createSubjectCategory,
   deleteSubjectCategory,
   updateSubjectCategory,
-} from "@/lib/api/subjectCategories/mutations";
+} from "../api/subjectCategories/mutations";
 import {
-  SubjectCategoryId,
-  NewSubjectCategoryParams,
-  UpdateSubjectCategoryParams,
-  subjectCategoryIdSchema,
   insertSubjectCategoryParams,
+  NewSubjectCategoryParams,
+  SubjectCategoryId,
+  subjectCategoryIdSchema,
+  UpdateSubjectCategoryParams,
   updateSubjectCategoryParams,
-} from "@/lib/db/schema/subjectCategories";
+} from "../db/schema/subjectCategories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateSubjectCategories = () => revalidatePath("/subject-categories");
 
-export const createSubjectCategoryAction = async (input: NewSubjectCategoryParams) => {
+export const createSubjectCategoryAction = async (
+  input: NewSubjectCategoryParams,
+) => {
   try {
     const payload = insertSubjectCategoryParams.parse(input);
     await createSubjectCategory(payload);
@@ -37,7 +40,9 @@ export const createSubjectCategoryAction = async (input: NewSubjectCategoryParam
   }
 };
 
-export const updateSubjectCategoryAction = async (input: UpdateSubjectCategoryParams) => {
+export const updateSubjectCategoryAction = async (
+  input: UpdateSubjectCategoryParams,
+) => {
   try {
     const payload = updateSubjectCategoryParams.parse(input);
     await updateSubjectCategory(payload.id, payload);

@@ -1,10 +1,10 @@
-import { type getSocials } from "@/lib/api/socials/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getSocials } from "../api/socials/queries";
 import { socialEmojis } from "./socialEmojis";
 
 export const socials = pgTable("socials", {

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createUserPasswordReset,
   deleteUserPasswordReset,
   updateUserPasswordReset,
-} from "@/lib/api/userPasswordResets/mutations";
+} from "../api/userPasswordResets/mutations";
 import {
-  UserPasswordResetId,
+  insertUserPasswordResetParams,
   NewUserPasswordResetParams,
   UpdateUserPasswordResetParams,
-  userPasswordResetIdSchema,
-  insertUserPasswordResetParams,
   updateUserPasswordResetParams,
-} from "@/lib/db/schema/userPasswordResets";
+  UserPasswordResetId,
+  userPasswordResetIdSchema,
+} from "../db/schema/userPasswordResets";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateUserPasswordResets = () => revalidatePath("/user-password-resets");
+const revalidateUserPasswordResets = () =>
+  revalidatePath("/user-password-resets");
 
-export const createUserPasswordResetAction = async (input: NewUserPasswordResetParams) => {
+export const createUserPasswordResetAction = async (
+  input: NewUserPasswordResetParams,
+) => {
   try {
     const payload = insertUserPasswordResetParams.parse(input);
     await createUserPasswordReset(payload);
@@ -37,7 +41,9 @@ export const createUserPasswordResetAction = async (input: NewUserPasswordResetP
   }
 };
 
-export const updateUserPasswordResetAction = async (input: UpdateUserPasswordResetParams) => {
+export const updateUserPasswordResetAction = async (
+  input: UpdateUserPasswordResetParams,
+) => {
   try {
     const payload = updateUserPasswordResetParams.parse(input);
     await updateUserPasswordReset(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateUserPasswordResetAction = async (input: UpdateUserPasswordRes
   }
 };
 
-export const deleteUserPasswordResetAction = async (input: UserPasswordResetId) => {
+export const deleteUserPasswordResetAction = async (
+  input: UserPasswordResetId,
+) => {
   try {
     const payload = userPasswordResetIdSchema.parse({ id: input });
     await deleteUserPasswordReset(payload.id);

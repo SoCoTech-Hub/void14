@@ -1,19 +1,27 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  MnetServiceEnrolCourseId, 
-  NewMnetServiceEnrolCourseParams,
-  UpdateMnetServiceEnrolCourseParams, 
-  updateMnetServiceEnrolCourseSchema,
-  insertMnetServiceEnrolCourseSchema, 
+
+import { db } from "../db/index";
+import {
+  insertMnetServiceEnrolCourseSchema,
+  MnetServiceEnrolCourseId,
+  mnetServiceEnrolCourseIdSchema,
   mnetServiceEnrolCourses,
-  mnetServiceEnrolCourseIdSchema 
-} from "@/lib/db/schema/mnetServiceEnrolCourses";
+  NewMnetServiceEnrolCourseParams,
+  UpdateMnetServiceEnrolCourseParams,
+  updateMnetServiceEnrolCourseSchema,
+} from "../db/schema/mnetServiceEnrolCourses";
 
-export const createMnetServiceEnrolCourse = async (mnetServiceEnrolCourse: NewMnetServiceEnrolCourseParams) => {
-  const newMnetServiceEnrolCourse = insertMnetServiceEnrolCourseSchema.parse(mnetServiceEnrolCourse);
+export const createMnetServiceEnrolCourse = async (
+  mnetServiceEnrolCourse: NewMnetServiceEnrolCourseParams,
+) => {
+  const newMnetServiceEnrolCourse = insertMnetServiceEnrolCourseSchema.parse(
+    mnetServiceEnrolCourse,
+  );
   try {
-    const [m] =  await db.insert(mnetServiceEnrolCourses).values(newMnetServiceEnrolCourse).returning();
+    const [m] = await db
+      .insert(mnetServiceEnrolCourses)
+      .values(newMnetServiceEnrolCourse)
+      .returning();
     return { mnetServiceEnrolCourse: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,22 @@ export const createMnetServiceEnrolCourse = async (mnetServiceEnrolCourse: NewMn
   }
 };
 
-export const updateMnetServiceEnrolCourse = async (id: MnetServiceEnrolCourseId, mnetServiceEnrolCourse: UpdateMnetServiceEnrolCourseParams) => {
-  const { id: mnetServiceEnrolCourseId } = mnetServiceEnrolCourseIdSchema.parse({ id });
-  const newMnetServiceEnrolCourse = updateMnetServiceEnrolCourseSchema.parse(mnetServiceEnrolCourse);
+export const updateMnetServiceEnrolCourse = async (
+  id: MnetServiceEnrolCourseId,
+  mnetServiceEnrolCourse: UpdateMnetServiceEnrolCourseParams,
+) => {
+  const { id: mnetServiceEnrolCourseId } = mnetServiceEnrolCourseIdSchema.parse(
+    { id },
+  );
+  const newMnetServiceEnrolCourse = updateMnetServiceEnrolCourseSchema.parse(
+    mnetServiceEnrolCourse,
+  );
   try {
-    const [m] =  await db
-     .update(mnetServiceEnrolCourses)
-     .set(newMnetServiceEnrolCourse)
-     .where(eq(mnetServiceEnrolCourses.id, mnetServiceEnrolCourseId!))
-     .returning();
+    const [m] = await db
+      .update(mnetServiceEnrolCourses)
+      .set(newMnetServiceEnrolCourse)
+      .where(eq(mnetServiceEnrolCourses.id, mnetServiceEnrolCourseId!))
+      .returning();
     return { mnetServiceEnrolCourse: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +54,17 @@ export const updateMnetServiceEnrolCourse = async (id: MnetServiceEnrolCourseId,
   }
 };
 
-export const deleteMnetServiceEnrolCourse = async (id: MnetServiceEnrolCourseId) => {
-  const { id: mnetServiceEnrolCourseId } = mnetServiceEnrolCourseIdSchema.parse({ id });
+export const deleteMnetServiceEnrolCourse = async (
+  id: MnetServiceEnrolCourseId,
+) => {
+  const { id: mnetServiceEnrolCourseId } = mnetServiceEnrolCourseIdSchema.parse(
+    { id },
+  );
   try {
-    const [m] =  await db.delete(mnetServiceEnrolCourses).where(eq(mnetServiceEnrolCourses.id, mnetServiceEnrolCourseId!))
-    .returning();
+    const [m] = await db
+      .delete(mnetServiceEnrolCourses)
+      .where(eq(mnetServiceEnrolCourses.id, mnetServiceEnrolCourseId!))
+      .returning();
     return { mnetServiceEnrolCourse: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +72,3 @@ export const deleteMnetServiceEnrolCourse = async (id: MnetServiceEnrolCourseId)
     throw { error: message };
   }
 };
-

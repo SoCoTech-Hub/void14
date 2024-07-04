@@ -1,19 +1,26 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  RepositoryInstanceConfigId, 
+
+import { db } from "../db/index";
+import {
+  insertRepositoryInstanceConfigSchema,
   NewRepositoryInstanceConfigParams,
-  UpdateRepositoryInstanceConfigParams, 
-  updateRepositoryInstanceConfigSchema,
-  insertRepositoryInstanceConfigSchema, 
+  RepositoryInstanceConfigId,
+  repositoryInstanceConfigIdSchema,
   repositoryInstanceConfigs,
-  repositoryInstanceConfigIdSchema 
-} from "@/lib/db/schema/repositoryInstanceConfigs";
+  UpdateRepositoryInstanceConfigParams,
+  updateRepositoryInstanceConfigSchema,
+} from "../db/schema/repositoryInstanceConfigs";
 
-export const createRepositoryInstanceConfig = async (repositoryInstanceConfig: NewRepositoryInstanceConfigParams) => {
-  const newRepositoryInstanceConfig = insertRepositoryInstanceConfigSchema.parse(repositoryInstanceConfig);
+export const createRepositoryInstanceConfig = async (
+  repositoryInstanceConfig: NewRepositoryInstanceConfigParams,
+) => {
+  const newRepositoryInstanceConfig =
+    insertRepositoryInstanceConfigSchema.parse(repositoryInstanceConfig);
   try {
-    const [r] =  await db.insert(repositoryInstanceConfigs).values(newRepositoryInstanceConfig).returning();
+    const [r] = await db
+      .insert(repositoryInstanceConfigs)
+      .values(newRepositoryInstanceConfig)
+      .returning();
     return { repositoryInstanceConfig: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,20 @@ export const createRepositoryInstanceConfig = async (repositoryInstanceConfig: N
   }
 };
 
-export const updateRepositoryInstanceConfig = async (id: RepositoryInstanceConfigId, repositoryInstanceConfig: UpdateRepositoryInstanceConfigParams) => {
-  const { id: repositoryInstanceConfigId } = repositoryInstanceConfigIdSchema.parse({ id });
-  const newRepositoryInstanceConfig = updateRepositoryInstanceConfigSchema.parse(repositoryInstanceConfig);
+export const updateRepositoryInstanceConfig = async (
+  id: RepositoryInstanceConfigId,
+  repositoryInstanceConfig: UpdateRepositoryInstanceConfigParams,
+) => {
+  const { id: repositoryInstanceConfigId } =
+    repositoryInstanceConfigIdSchema.parse({ id });
+  const newRepositoryInstanceConfig =
+    updateRepositoryInstanceConfigSchema.parse(repositoryInstanceConfig);
   try {
-    const [r] =  await db
-     .update(repositoryInstanceConfigs)
-     .set(newRepositoryInstanceConfig)
-     .where(eq(repositoryInstanceConfigs.id, repositoryInstanceConfigId!))
-     .returning();
+    const [r] = await db
+      .update(repositoryInstanceConfigs)
+      .set(newRepositoryInstanceConfig)
+      .where(eq(repositoryInstanceConfigs.id, repositoryInstanceConfigId!))
+      .returning();
     return { repositoryInstanceConfig: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +51,16 @@ export const updateRepositoryInstanceConfig = async (id: RepositoryInstanceConfi
   }
 };
 
-export const deleteRepositoryInstanceConfig = async (id: RepositoryInstanceConfigId) => {
-  const { id: repositoryInstanceConfigId } = repositoryInstanceConfigIdSchema.parse({ id });
+export const deleteRepositoryInstanceConfig = async (
+  id: RepositoryInstanceConfigId,
+) => {
+  const { id: repositoryInstanceConfigId } =
+    repositoryInstanceConfigIdSchema.parse({ id });
   try {
-    const [r] =  await db.delete(repositoryInstanceConfigs).where(eq(repositoryInstanceConfigs.id, repositoryInstanceConfigId!))
-    .returning();
+    const [r] = await db
+      .delete(repositoryInstanceConfigs)
+      .where(eq(repositoryInstanceConfigs.id, repositoryInstanceConfigId!))
+      .returning();
     return { repositoryInstanceConfig: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +68,3 @@ export const deleteRepositoryInstanceConfig = async (id: RepositoryInstanceConfi
     throw { error: message };
   }
 };
-

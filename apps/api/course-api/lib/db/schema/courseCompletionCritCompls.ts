@@ -1,4 +1,3 @@
-import { type getCourseCompletionCritCompls } from "@/lib/api/courseCompletionCritCompls/queries";
 import {
   pgTable,
   real,
@@ -11,6 +10,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getCourseCompletionCritCompls } from "../api/courseCompletionCritCompls/queries";
 import { courses } from "./courses";
 
 export const courseCompletionCritCompls = pgTable(

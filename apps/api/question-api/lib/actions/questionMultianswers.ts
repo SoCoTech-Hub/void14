@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuestionMultianswer,
   deleteQuestionMultianswer,
   updateQuestionMultianswer,
-} from "@/lib/api/questionMultianswers/mutations";
+} from "../api/questionMultianswers/mutations";
 import {
-  QuestionMultianswerId,
-  NewQuestionMultianswerParams,
-  UpdateQuestionMultianswerParams,
-  questionMultianswerIdSchema,
   insertQuestionMultianswerParams,
+  NewQuestionMultianswerParams,
+  QuestionMultianswerId,
+  questionMultianswerIdSchema,
+  UpdateQuestionMultianswerParams,
   updateQuestionMultianswerParams,
-} from "@/lib/db/schema/questionMultianswers";
+} from "../db/schema/questionMultianswers";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQuestionMultianswers = () => revalidatePath("/question-multianswers");
+const revalidateQuestionMultianswers = () =>
+  revalidatePath("/question-multianswers");
 
-export const createQuestionMultianswerAction = async (input: NewQuestionMultianswerParams) => {
+export const createQuestionMultianswerAction = async (
+  input: NewQuestionMultianswerParams,
+) => {
   try {
     const payload = insertQuestionMultianswerParams.parse(input);
     await createQuestionMultianswer(payload);
@@ -37,7 +41,9 @@ export const createQuestionMultianswerAction = async (input: NewQuestionMultians
   }
 };
 
-export const updateQuestionMultianswerAction = async (input: UpdateQuestionMultianswerParams) => {
+export const updateQuestionMultianswerAction = async (
+  input: UpdateQuestionMultianswerParams,
+) => {
   try {
     const payload = updateQuestionMultianswerParams.parse(input);
     await updateQuestionMultianswer(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQuestionMultianswerAction = async (input: UpdateQuestionMulti
   }
 };
 
-export const deleteQuestionMultianswerAction = async (input: QuestionMultianswerId) => {
+export const deleteQuestionMultianswerAction = async (
+  input: QuestionMultianswerId,
+) => {
   try {
     const payload = questionMultianswerIdSchema.parse({ id: input });
     await deleteQuestionMultianswer(payload.id);

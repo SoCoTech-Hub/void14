@@ -1,11 +1,11 @@
-import { getFileById, getFiles } from "@/lib/api/files/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import { createFile, deleteFile, updateFile } from "../api/files/mutations";
+import { getFileById, getFiles } from "../api/files/queries";
 import {
   fileIdSchema,
   insertFileParams,
   updateFileParams,
-} from "@/lib/db/schema/files";
-import { createFile, deleteFile, updateFile } from "@/lib/api/files/mutations";
+} from "../db/schema/files";
+import { publicProcedure, router } from "../server/trpc";
 
 export const filesRouter = router({
   getFiles: publicProcedure.query(async () => {

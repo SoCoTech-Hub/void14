@@ -1,19 +1,28 @@
-import { getScormSeqRollupRuleById, getScormSeqRollupRules } from "@/lib/api/scormSeqRollupRules/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  scormSeqRollupRuleIdSchema,
+  createScormSeqRollupRule,
+  deleteScormSeqRollupRule,
+  updateScormSeqRollupRule,
+} from "../api/scormSeqRollupRules/mutations";
+import {
+  getScormSeqRollupRuleById,
+  getScormSeqRollupRules,
+} from "../api/scormSeqRollupRules/queries";
+import {
   insertScormSeqRollupRuleParams,
+  scormSeqRollupRuleIdSchema,
   updateScormSeqRollupRuleParams,
-} from "@/lib/db/schema/scormSeqRollupRules";
-import { createScormSeqRollupRule, deleteScormSeqRollupRule, updateScormSeqRollupRule } from "@/lib/api/scormSeqRollupRules/mutations";
+} from "../db/schema/scormSeqRollupRules";
+import { publicProcedure, router } from "../server/trpc";
 
 export const scormSeqRollupRulesRouter = router({
   getScormSeqRollupRules: publicProcedure.query(async () => {
     return getScormSeqRollupRules();
   }),
-  getScormSeqRollupRuleById: publicProcedure.input(scormSeqRollupRuleIdSchema).query(async ({ input }) => {
-    return getScormSeqRollupRuleById(input.id);
-  }),
+  getScormSeqRollupRuleById: publicProcedure
+    .input(scormSeqRollupRuleIdSchema)
+    .query(async ({ input }) => {
+      return getScormSeqRollupRuleById(input.id);
+    }),
   createScormSeqRollupRule: publicProcedure
     .input(insertScormSeqRollupRuleParams)
     .mutation(async ({ input }) => {

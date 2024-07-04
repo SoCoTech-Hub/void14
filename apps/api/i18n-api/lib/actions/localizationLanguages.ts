@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createLocalizationLanguage,
   deleteLocalizationLanguage,
   updateLocalizationLanguage,
-} from "@/lib/api/localizationLanguages/mutations";
+} from "../api/localizationLanguages/mutations";
 import {
+  insertLocalizationLanguageParams,
   LocalizationLanguageId,
+  localizationLanguageIdSchema,
   NewLocalizationLanguageParams,
   UpdateLocalizationLanguageParams,
-  localizationLanguageIdSchema,
-  insertLocalizationLanguageParams,
   updateLocalizationLanguageParams,
-} from "@/lib/db/schema/localizationLanguages";
+} from "../db/schema/localizationLanguages";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateLocalizationLanguages = () => revalidatePath("/localization-languages");
+const revalidateLocalizationLanguages = () =>
+  revalidatePath("/localization-languages");
 
-export const createLocalizationLanguageAction = async (input: NewLocalizationLanguageParams) => {
+export const createLocalizationLanguageAction = async (
+  input: NewLocalizationLanguageParams,
+) => {
   try {
     const payload = insertLocalizationLanguageParams.parse(input);
     await createLocalizationLanguage(payload);
@@ -37,7 +41,9 @@ export const createLocalizationLanguageAction = async (input: NewLocalizationLan
   }
 };
 
-export const updateLocalizationLanguageAction = async (input: UpdateLocalizationLanguageParams) => {
+export const updateLocalizationLanguageAction = async (
+  input: UpdateLocalizationLanguageParams,
+) => {
   try {
     const payload = updateLocalizationLanguageParams.parse(input);
     await updateLocalizationLanguage(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateLocalizationLanguageAction = async (input: UpdateLocalization
   }
 };
 
-export const deleteLocalizationLanguageAction = async (input: LocalizationLanguageId) => {
+export const deleteLocalizationLanguageAction = async (
+  input: LocalizationLanguageId,
+) => {
   try {
     const payload = localizationLanguageIdSchema.parse({ id: input });
     await deleteLocalizationLanguage(payload.id);

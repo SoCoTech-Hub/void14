@@ -1,19 +1,23 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  GradingAreaId, 
-  NewGradingAreaParams,
-  UpdateGradingAreaParams, 
-  updateGradingAreaSchema,
-  insertGradingAreaSchema, 
+
+import { db } from "../db/index";
+import {
+  GradingAreaId,
+  gradingAreaIdSchema,
   gradingAreas,
-  gradingAreaIdSchema 
-} from "@/lib/db/schema/gradingAreas";
+  insertGradingAreaSchema,
+  NewGradingAreaParams,
+  UpdateGradingAreaParams,
+  updateGradingAreaSchema,
+} from "../db/schema/gradingAreas";
 
 export const createGradingArea = async (gradingArea: NewGradingAreaParams) => {
   const newGradingArea = insertGradingAreaSchema.parse(gradingArea);
   try {
-    const [g] =  await db.insert(gradingAreas).values(newGradingArea).returning();
+    const [g] = await db
+      .insert(gradingAreas)
+      .values(newGradingArea)
+      .returning();
     return { gradingArea: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +26,18 @@ export const createGradingArea = async (gradingArea: NewGradingAreaParams) => {
   }
 };
 
-export const updateGradingArea = async (id: GradingAreaId, gradingArea: UpdateGradingAreaParams) => {
+export const updateGradingArea = async (
+  id: GradingAreaId,
+  gradingArea: UpdateGradingAreaParams,
+) => {
   const { id: gradingAreaId } = gradingAreaIdSchema.parse({ id });
   const newGradingArea = updateGradingAreaSchema.parse(gradingArea);
   try {
-    const [g] =  await db
-     .update(gradingAreas)
-     .set(newGradingArea)
-     .where(eq(gradingAreas.id, gradingAreaId!))
-     .returning();
+    const [g] = await db
+      .update(gradingAreas)
+      .set(newGradingArea)
+      .where(eq(gradingAreas.id, gradingAreaId!))
+      .returning();
     return { gradingArea: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +49,10 @@ export const updateGradingArea = async (id: GradingAreaId, gradingArea: UpdateGr
 export const deleteGradingArea = async (id: GradingAreaId) => {
   const { id: gradingAreaId } = gradingAreaIdSchema.parse({ id });
   try {
-    const [g] =  await db.delete(gradingAreas).where(eq(gradingAreas.id, gradingAreaId!))
-    .returning();
+    const [g] = await db
+      .delete(gradingAreas)
+      .where(eq(gradingAreas.id, gradingAreaId!))
+      .returning();
     return { gradingArea: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +60,3 @@ export const deleteGradingArea = async (id: GradingAreaId) => {
     throw { error: message };
   }
 };
-

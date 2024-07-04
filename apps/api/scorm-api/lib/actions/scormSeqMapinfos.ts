@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createScormSeqMapinfo,
   deleteScormSeqMapinfo,
   updateScormSeqMapinfo,
-} from "@/lib/api/scormSeqMapinfos/mutations";
+} from "../api/scormSeqMapinfos/mutations";
 import {
-  ScormSeqMapinfoId,
-  NewScormSeqMapinfoParams,
-  UpdateScormSeqMapinfoParams,
-  scormSeqMapinfoIdSchema,
   insertScormSeqMapinfoParams,
+  NewScormSeqMapinfoParams,
+  ScormSeqMapinfoId,
+  scormSeqMapinfoIdSchema,
+  UpdateScormSeqMapinfoParams,
   updateScormSeqMapinfoParams,
-} from "@/lib/db/schema/scormSeqMapinfos";
+} from "../db/schema/scormSeqMapinfos";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateScormSeqMapinfos = () => revalidatePath("/scorm-seq-mapinfos");
 
-export const createScormSeqMapinfoAction = async (input: NewScormSeqMapinfoParams) => {
+export const createScormSeqMapinfoAction = async (
+  input: NewScormSeqMapinfoParams,
+) => {
   try {
     const payload = insertScormSeqMapinfoParams.parse(input);
     await createScormSeqMapinfo(payload);
@@ -37,7 +40,9 @@ export const createScormSeqMapinfoAction = async (input: NewScormSeqMapinfoParam
   }
 };
 
-export const updateScormSeqMapinfoAction = async (input: UpdateScormSeqMapinfoParams) => {
+export const updateScormSeqMapinfoAction = async (
+  input: UpdateScormSeqMapinfoParams,
+) => {
   try {
     const payload = updateScormSeqMapinfoParams.parse(input);
     await updateScormSeqMapinfo(payload.id, payload);

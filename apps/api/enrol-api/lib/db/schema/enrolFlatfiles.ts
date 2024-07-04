@@ -1,10 +1,11 @@
-import { type getEnrolFlatfiles } from "@/lib/api/enrolFlatfiles/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getEnrolFlatfiles } from "../api/enrolFlatfiles/queries";
 
 export const enrolFlatfiles = pgTable("enrol_flatfiles", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

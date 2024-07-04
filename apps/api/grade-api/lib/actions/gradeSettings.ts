@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGradeSetting,
   deleteGradeSetting,
   updateGradeSetting,
-} from "@/lib/api/gradeSettings/mutations";
+} from "../api/gradeSettings/mutations";
 import {
   GradeSettingId,
-  NewGradeSettingParams,
-  UpdateGradeSettingParams,
   gradeSettingIdSchema,
   insertGradeSettingParams,
+  NewGradeSettingParams,
+  UpdateGradeSettingParams,
   updateGradeSettingParams,
-} from "@/lib/db/schema/gradeSettings";
+} from "../db/schema/gradeSettings";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateGradeSettings = () => revalidatePath("/grade-settings");
 
-export const createGradeSettingAction = async (input: NewGradeSettingParams) => {
+export const createGradeSettingAction = async (
+  input: NewGradeSettingParams,
+) => {
   try {
     const payload = insertGradeSettingParams.parse(input);
     await createGradeSetting(payload);
@@ -37,7 +40,9 @@ export const createGradeSettingAction = async (input: NewGradeSettingParams) => 
   }
 };
 
-export const updateGradeSettingAction = async (input: UpdateGradeSettingParams) => {
+export const updateGradeSettingAction = async (
+  input: UpdateGradeSettingParams,
+) => {
   try {
     const payload = updateGradeSettingParams.parse(input);
     await updateGradeSetting(payload.id, payload);

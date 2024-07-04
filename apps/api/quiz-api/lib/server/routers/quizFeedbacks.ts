@@ -1,19 +1,28 @@
-import { getQuizFeedbackById, getQuizFeedbacks } from "@/lib/api/quizFeedbacks/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  quizFeedbackIdSchema,
+  createQuizFeedback,
+  deleteQuizFeedback,
+  updateQuizFeedback,
+} from "../api/quizFeedbacks/mutations";
+import {
+  getQuizFeedbackById,
+  getQuizFeedbacks,
+} from "../api/quizFeedbacks/queries";
+import {
   insertQuizFeedbackParams,
+  quizFeedbackIdSchema,
   updateQuizFeedbackParams,
-} from "@/lib/db/schema/quizFeedbacks";
-import { createQuizFeedback, deleteQuizFeedback, updateQuizFeedback } from "@/lib/api/quizFeedbacks/mutations";
+} from "../db/schema/quizFeedbacks";
+import { publicProcedure, router } from "../server/trpc";
 
 export const quizFeedbacksRouter = router({
   getQuizFeedbacks: publicProcedure.query(async () => {
     return getQuizFeedbacks();
   }),
-  getQuizFeedbackById: publicProcedure.input(quizFeedbackIdSchema).query(async ({ input }) => {
-    return getQuizFeedbackById(input.id);
-  }),
+  getQuizFeedbackById: publicProcedure
+    .input(quizFeedbackIdSchema)
+    .query(async ({ input }) => {
+      return getQuizFeedbackById(input.id);
+    }),
   createQuizFeedback: publicProcedure
     .input(insertQuizFeedbackParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBackupCourse,
   deleteBackupCourse,
   updateBackupCourse,
-} from "@/lib/api/backupCourses/mutations";
+} from "../api/backupCourses/mutations";
 import {
   BackupCourseId,
-  NewBackupCourseParams,
-  UpdateBackupCourseParams,
   backupCourseIdSchema,
   insertBackupCourseParams,
+  NewBackupCourseParams,
+  UpdateBackupCourseParams,
   updateBackupCourseParams,
-} from "@/lib/db/schema/backupCourses";
+} from "../db/schema/backupCourses";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateBackupCourses = () => revalidatePath("/backup-courses");
 
-export const createBackupCourseAction = async (input: NewBackupCourseParams) => {
+export const createBackupCourseAction = async (
+  input: NewBackupCourseParams,
+) => {
   try {
     const payload = insertBackupCourseParams.parse(input);
     await createBackupCourse(payload);
@@ -37,7 +40,9 @@ export const createBackupCourseAction = async (input: NewBackupCourseParams) => 
   }
 };
 
-export const updateBackupCourseAction = async (input: UpdateBackupCourseParams) => {
+export const updateBackupCourseAction = async (
+  input: UpdateBackupCourseParams,
+) => {
   try {
     const payload = updateBackupCourseParams.parse(input);
     await updateBackupCourse(payload.id, payload);

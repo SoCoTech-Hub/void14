@@ -1,4 +1,3 @@
-import { type getCohorts } from "@/lib/api/cohorts/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -12,6 +11,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getCohorts } from "../api/cohorts/queries";
 
 export const cohorts = pgTable("cohorts", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

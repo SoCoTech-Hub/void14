@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBookChapter,
   deleteBookChapter,
   updateBookChapter,
-} from "@/lib/api/bookChapters/mutations";
+} from "../api/bookChapters/mutations";
 import {
   BookChapterId,
-  NewBookChapterParams,
-  UpdateBookChapterParams,
   bookChapterIdSchema,
   insertBookChapterParams,
+  NewBookChapterParams,
+  UpdateBookChapterParams,
   updateBookChapterParams,
-} from "@/lib/db/schema/bookChapters";
+} from "../db/schema/bookChapters";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createBookChapterAction = async (input: NewBookChapterParams) => {
   }
 };
 
-export const updateBookChapterAction = async (input: UpdateBookChapterParams) => {
+export const updateBookChapterAction = async (
+  input: UpdateBookChapterParams,
+) => {
   try {
     const payload = updateBookChapterParams.parse(input);
     await updateBookChapter(payload.id, payload);

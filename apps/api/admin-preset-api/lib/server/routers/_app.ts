@@ -1,13 +1,13 @@
-import { computersRouter } from "./computers";
-import { router } from "@/lib/server/trpc";
-import { adminPresetsRouter } from "./adminPresets";
-import { adminPresetsAppsRouter } from "./adminPresetsApps";
-import { adminpresetsAppItsRouter } from "./adminpresetsAppIts";
-import { adminpresetsAppItAsRouter } from "./adminpresetsAppItAs";
+import { router } from "../server/trpc";
 import { adminPresetAppPlugsRouter } from "./adminPresetAppPlugs";
-import { adminPresetItsRouter } from "./adminPresetIts";
 import { adminPresetItAsRouter } from "./adminPresetItAs";
+import { adminPresetItsRouter } from "./adminPresetIts";
 import { adminPresetPlugsRouter } from "./adminPresetPlugs";
+import { adminPresetsRouter } from "./adminPresets";
+import { adminpresetsAppItAsRouter } from "./adminpresetsAppItAs";
+import { adminpresetsAppItsRouter } from "./adminpresetsAppIts";
+import { adminPresetsAppsRouter } from "./adminPresetsApps";
+import { computersRouter } from "./computers";
 
 export const appRouter = router({
   computers: computersRouter,

@@ -1,4 +1,3 @@
-import { type getBlockPositions } from "@/lib/api/blockPositions/queries";
 import {
   boolean,
   integer,
@@ -11,6 +10,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getBlockPositions } from "../api/blockPositions/queries";
 import { blockInstances } from "./blockInstances";
 
 export const blockPositions = pgTable(

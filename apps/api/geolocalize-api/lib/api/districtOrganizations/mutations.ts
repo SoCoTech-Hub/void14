@@ -1,19 +1,26 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  DistrictOrganizationId, 
-  NewDistrictOrganizationParams,
-  UpdateDistrictOrganizationParams, 
-  updateDistrictOrganizationSchema,
-  insertDistrictOrganizationSchema, 
+
+import { db } from "../db/index";
+import {
+  DistrictOrganizationId,
+  districtOrganizationIdSchema,
   districtOrganizations,
-  districtOrganizationIdSchema 
-} from "@/lib/db/schema/districtOrganizations";
+  insertDistrictOrganizationSchema,
+  NewDistrictOrganizationParams,
+  UpdateDistrictOrganizationParams,
+  updateDistrictOrganizationSchema,
+} from "../db/schema/districtOrganizations";
 
-export const createDistrictOrganization = async (districtOrganization: NewDistrictOrganizationParams) => {
-  const newDistrictOrganization = insertDistrictOrganizationSchema.parse(districtOrganization);
+export const createDistrictOrganization = async (
+  districtOrganization: NewDistrictOrganizationParams,
+) => {
+  const newDistrictOrganization =
+    insertDistrictOrganizationSchema.parse(districtOrganization);
   try {
-    const [d] =  await db.insert(districtOrganizations).values(newDistrictOrganization).returning();
+    const [d] = await db
+      .insert(districtOrganizations)
+      .values(newDistrictOrganization)
+      .returning();
     return { districtOrganization: d };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,21 @@ export const createDistrictOrganization = async (districtOrganization: NewDistri
   }
 };
 
-export const updateDistrictOrganization = async (id: DistrictOrganizationId, districtOrganization: UpdateDistrictOrganizationParams) => {
-  const { id: districtOrganizationId } = districtOrganizationIdSchema.parse({ id });
-  const newDistrictOrganization = updateDistrictOrganizationSchema.parse(districtOrganization);
+export const updateDistrictOrganization = async (
+  id: DistrictOrganizationId,
+  districtOrganization: UpdateDistrictOrganizationParams,
+) => {
+  const { id: districtOrganizationId } = districtOrganizationIdSchema.parse({
+    id,
+  });
+  const newDistrictOrganization =
+    updateDistrictOrganizationSchema.parse(districtOrganization);
   try {
-    const [d] =  await db
-     .update(districtOrganizations)
-     .set(newDistrictOrganization)
-     .where(eq(districtOrganizations.id, districtOrganizationId!))
-     .returning();
+    const [d] = await db
+      .update(districtOrganizations)
+      .set(newDistrictOrganization)
+      .where(eq(districtOrganizations.id, districtOrganizationId!))
+      .returning();
     return { districtOrganization: d };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +52,17 @@ export const updateDistrictOrganization = async (id: DistrictOrganizationId, dis
   }
 };
 
-export const deleteDistrictOrganization = async (id: DistrictOrganizationId) => {
-  const { id: districtOrganizationId } = districtOrganizationIdSchema.parse({ id });
+export const deleteDistrictOrganization = async (
+  id: DistrictOrganizationId,
+) => {
+  const { id: districtOrganizationId } = districtOrganizationIdSchema.parse({
+    id,
+  });
   try {
-    const [d] =  await db.delete(districtOrganizations).where(eq(districtOrganizations.id, districtOrganizationId!))
-    .returning();
+    const [d] = await db
+      .delete(districtOrganizations)
+      .where(eq(districtOrganizations.id, districtOrganizationId!))
+      .returning();
     return { districtOrganization: d };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +70,3 @@ export const deleteDistrictOrganization = async (id: DistrictOrganizationId) => 
     throw { error: message };
   }
 };
-

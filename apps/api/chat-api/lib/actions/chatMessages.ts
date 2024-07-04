@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createChatMessage,
   deleteChatMessage,
   updateChatMessage,
-} from "@/lib/api/chatMessages/mutations";
+} from "../api/chatMessages/mutations";
 import {
   ChatMessageId,
-  NewChatMessageParams,
-  UpdateChatMessageParams,
   chatMessageIdSchema,
   insertChatMessageParams,
+  NewChatMessageParams,
+  UpdateChatMessageParams,
   updateChatMessageParams,
-} from "@/lib/db/schema/chatMessages";
+} from "../db/schema/chatMessages";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createChatMessageAction = async (input: NewChatMessageParams) => {
   }
 };
 
-export const updateChatMessageAction = async (input: UpdateChatMessageParams) => {
+export const updateChatMessageAction = async (
+  input: UpdateChatMessageParams,
+) => {
   try {
     const payload = updateChatMessageParams.parse(input);
     await updateChatMessage(payload.id, payload);

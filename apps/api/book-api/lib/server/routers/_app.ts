@@ -1,7 +1,7 @@
-import { computersRouter } from "./computers";
-import { router } from "@/lib/server/trpc";
-import { booksRouter } from "./books";
+import { router } from "../server/trpc";
 import { bookChaptersRouter } from "./bookChapters";
+import { booksRouter } from "./books";
+import { computersRouter } from "./computers";
 
 export const appRouter = router({
   computers: computersRouter,

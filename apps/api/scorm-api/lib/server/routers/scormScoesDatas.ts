@@ -1,19 +1,28 @@
-import { getScormScoesDataById, getScormScoesDatas } from "@/lib/api/scormScoesDatas/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  scormScoesDataIdSchema,
+  createScormScoesData,
+  deleteScormScoesData,
+  updateScormScoesData,
+} from "../api/scormScoesDatas/mutations";
+import {
+  getScormScoesDataById,
+  getScormScoesDatas,
+} from "../api/scormScoesDatas/queries";
+import {
   insertScormScoesDataParams,
+  scormScoesDataIdSchema,
   updateScormScoesDataParams,
-} from "@/lib/db/schema/scormScoesDatas";
-import { createScormScoesData, deleteScormScoesData, updateScormScoesData } from "@/lib/api/scormScoesDatas/mutations";
+} from "../db/schema/scormScoesDatas";
+import { publicProcedure, router } from "../server/trpc";
 
 export const scormScoesDatasRouter = router({
   getScormScoesDatas: publicProcedure.query(async () => {
     return getScormScoesDatas();
   }),
-  getScormScoesDataById: publicProcedure.input(scormScoesDataIdSchema).query(async ({ input }) => {
-    return getScormScoesDataById(input.id);
-  }),
+  getScormScoesDataById: publicProcedure
+    .input(scormScoesDataIdSchema)
+    .query(async ({ input }) => {
+      return getScormScoesDataById(input.id);
+    }),
   createScormScoesData: publicProcedure
     .input(insertScormScoesDataParams)
     .mutation(async ({ input }) => {

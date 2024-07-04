@@ -1,10 +1,10 @@
-import { type getAffiliatesTransactions } from "@/lib/api/affiliatesTransactions/queries";
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getAffiliatesTransactions } from "../api/affiliatesTransactions/queries";
 import { affiliates } from "./affiliates";
 import { affiliatesStatuses } from "./affiliatesStatuses";
 

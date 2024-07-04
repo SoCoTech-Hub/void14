@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createToolUserToursStep,
   deleteToolUserToursStep,
   updateToolUserToursStep,
-} from "@/lib/api/toolUserToursSteps/mutations";
+} from "../api/toolUserToursSteps/mutations";
 import {
-  ToolUserToursStepId,
-  NewToolUserToursStepParams,
-  UpdateToolUserToursStepParams,
-  toolUserToursStepIdSchema,
   insertToolUserToursStepParams,
+  NewToolUserToursStepParams,
+  ToolUserToursStepId,
+  toolUserToursStepIdSchema,
+  UpdateToolUserToursStepParams,
   updateToolUserToursStepParams,
-} from "@/lib/db/schema/toolUserToursSteps";
+} from "../db/schema/toolUserToursSteps";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateToolUserToursSteps = () => revalidatePath("/tool-user-tours-steps");
+const revalidateToolUserToursSteps = () =>
+  revalidatePath("/tool-user-tours-steps");
 
-export const createToolUserToursStepAction = async (input: NewToolUserToursStepParams) => {
+export const createToolUserToursStepAction = async (
+  input: NewToolUserToursStepParams,
+) => {
   try {
     const payload = insertToolUserToursStepParams.parse(input);
     await createToolUserToursStep(payload);
@@ -37,7 +41,9 @@ export const createToolUserToursStepAction = async (input: NewToolUserToursStepP
   }
 };
 
-export const updateToolUserToursStepAction = async (input: UpdateToolUserToursStepParams) => {
+export const updateToolUserToursStepAction = async (
+  input: UpdateToolUserToursStepParams,
+) => {
   try {
     const payload = updateToolUserToursStepParams.parse(input);
     await updateToolUserToursStep(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateToolUserToursStepAction = async (input: UpdateToolUserToursSt
   }
 };
 
-export const deleteToolUserToursStepAction = async (input: ToolUserToursStepId) => {
+export const deleteToolUserToursStepAction = async (
+  input: ToolUserToursStepId,
+) => {
   try {
     const payload = toolUserToursStepIdSchema.parse({ id: input });
     await deleteToolUserToursStep(payload.id);

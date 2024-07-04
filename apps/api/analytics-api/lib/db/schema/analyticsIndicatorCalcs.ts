@@ -1,10 +1,11 @@
-import { type getAnalyticsIndicatorCalcs } from "@/lib/api/analyticsIndicatorCalcs/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, real, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getAnalyticsIndicatorCalcs } from "../api/analyticsIndicatorCalcs/queries";
 
 export const analyticsIndicatorCalcs = pgTable("analytics_indicator_calcs", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

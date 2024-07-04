@@ -1,4 +1,3 @@
-import { type getCompetencyFrameworks } from "@/lib/api/competencyFrameworks/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -12,6 +11,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getCompetencyFrameworks } from "../api/competencyFrameworks/queries";
 
 export const competencyFrameworks = pgTable("competency_frameworks", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

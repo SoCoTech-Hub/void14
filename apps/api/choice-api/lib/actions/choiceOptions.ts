@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createChoiceOption,
   deleteChoiceOption,
   updateChoiceOption,
-} from "@/lib/api/choiceOptions/mutations";
+} from "../api/choiceOptions/mutations";
 import {
   ChoiceOptionId,
-  NewChoiceOptionParams,
-  UpdateChoiceOptionParams,
   choiceOptionIdSchema,
   insertChoiceOptionParams,
+  NewChoiceOptionParams,
+  UpdateChoiceOptionParams,
   updateChoiceOptionParams,
-} from "@/lib/db/schema/choiceOptions";
+} from "../db/schema/choiceOptions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateChoiceOptions = () => revalidatePath("/choice-options");
 
-export const createChoiceOptionAction = async (input: NewChoiceOptionParams) => {
+export const createChoiceOptionAction = async (
+  input: NewChoiceOptionParams,
+) => {
   try {
     const payload = insertChoiceOptionParams.parse(input);
     await createChoiceOption(payload);
@@ -37,7 +40,9 @@ export const createChoiceOptionAction = async (input: NewChoiceOptionParams) => 
   }
 };
 
-export const updateChoiceOptionAction = async (input: UpdateChoiceOptionParams) => {
+export const updateChoiceOptionAction = async (
+  input: UpdateChoiceOptionParams,
+) => {
   try {
     const payload = updateChoiceOptionParams.parse(input);
     await updateChoiceOption(payload.id, payload);

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createForumDiscussion,
   deleteForumDiscussion,
   updateForumDiscussion,
-} from "@/lib/api/forumDiscussions/mutations";
+} from "../api/forumDiscussions/mutations";
 import {
   ForumDiscussionId,
-  NewForumDiscussionParams,
-  UpdateForumDiscussionParams,
   forumDiscussionIdSchema,
   insertForumDiscussionParams,
+  NewForumDiscussionParams,
+  UpdateForumDiscussionParams,
   updateForumDiscussionParams,
-} from "@/lib/db/schema/forumDiscussions";
+} from "../db/schema/forumDiscussions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateForumDiscussions = () => revalidatePath("/forum-discussions");
 
-export const createForumDiscussionAction = async (input: NewForumDiscussionParams) => {
+export const createForumDiscussionAction = async (
+  input: NewForumDiscussionParams,
+) => {
   try {
     const payload = insertForumDiscussionParams.parse(input);
     await createForumDiscussion(payload);
@@ -37,7 +40,9 @@ export const createForumDiscussionAction = async (input: NewForumDiscussionParam
   }
 };
 
-export const updateForumDiscussionAction = async (input: UpdateForumDiscussionParams) => {
+export const updateForumDiscussionAction = async (
+  input: UpdateForumDiscussionParams,
+) => {
   try {
     const payload = updateForumDiscussionParams.parse(input);
     await updateForumDiscussion(payload.id, payload);

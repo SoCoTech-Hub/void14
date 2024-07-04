@@ -1,4 +1,3 @@
-import { type getWorkshopFormNumErrors } from "@/lib/api/workshopFormNumErrors/queries";
 import {
   integer,
   pgTable,
@@ -11,6 +10,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getWorkshopFormNumErrors } from "../api/workshopFormNumErrors/queries";
 import { workshops } from "./workshops";
 
 export const workshopFormNumErrors = pgTable(

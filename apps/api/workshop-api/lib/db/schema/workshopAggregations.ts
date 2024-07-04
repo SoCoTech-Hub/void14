@@ -1,4 +1,3 @@
-import { type getWorkshopAggregations } from "@/lib/api/workshopAggregations/queries";
 import { sql } from "drizzle-orm";
 import {
   pgTable,
@@ -12,6 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getWorkshopAggregations } from "../api/workshopAggregations/queries";
 import { workshops } from "./workshops";
 
 export const workshopAggregations = pgTable(

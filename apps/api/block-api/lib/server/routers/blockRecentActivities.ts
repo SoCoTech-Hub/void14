@@ -1,19 +1,28 @@
-import { getBlockRecentActivityById, getBlockRecentActivities } from "@/lib/api/blockRecentActivities/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createBlockRecentActivity,
+  deleteBlockRecentActivity,
+  updateBlockRecentActivity,
+} from "../api/blockRecentActivities/mutations";
+import {
+  getBlockRecentActivities,
+  getBlockRecentActivityById,
+} from "../api/blockRecentActivities/queries";
 import {
   blockRecentActivityIdSchema,
   insertBlockRecentActivityParams,
   updateBlockRecentActivityParams,
-} from "@/lib/db/schema/blockRecentActivities";
-import { createBlockRecentActivity, deleteBlockRecentActivity, updateBlockRecentActivity } from "@/lib/api/blockRecentActivities/mutations";
+} from "../db/schema/blockRecentActivities";
+import { publicProcedure, router } from "../server/trpc";
 
 export const blockRecentActivitiesRouter = router({
   getBlockRecentActivities: publicProcedure.query(async () => {
     return getBlockRecentActivities();
   }),
-  getBlockRecentActivityById: publicProcedure.input(blockRecentActivityIdSchema).query(async ({ input }) => {
-    return getBlockRecentActivityById(input.id);
-  }),
+  getBlockRecentActivityById: publicProcedure
+    .input(blockRecentActivityIdSchema)
+    .query(async ({ input }) => {
+      return getBlockRecentActivityById(input.id);
+    }),
   createBlockRecentActivity: publicProcedure
     .input(insertBlockRecentActivityParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMnetRemoteRpc,
   deleteMnetRemoteRpc,
   updateMnetRemoteRpc,
-} from "@/lib/api/mnetRemoteRpc/mutations";
+} from "../api/mnetRemoteRpc/mutations";
 import {
+  insertMnetRemoteRpcParams,
   MnetRemoteRpcId,
+  mnetRemoteRpcIdSchema,
   NewMnetRemoteRpcParams,
   UpdateMnetRemoteRpcParams,
-  mnetRemoteRpcIdSchema,
-  insertMnetRemoteRpcParams,
   updateMnetRemoteRpcParams,
-} from "@/lib/db/schema/mnetRemoteRpc";
+} from "../db/schema/mnetRemoteRpc";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateMnetRemoteRpcs = () => revalidatePath("/mnet-remote-rpc");
 
-export const createMnetRemoteRpcAction = async (input: NewMnetRemoteRpcParams) => {
+export const createMnetRemoteRpcAction = async (
+  input: NewMnetRemoteRpcParams,
+) => {
   try {
     const payload = insertMnetRemoteRpcParams.parse(input);
     await createMnetRemoteRpc(payload);
@@ -37,7 +40,9 @@ export const createMnetRemoteRpcAction = async (input: NewMnetRemoteRpcParams) =
   }
 };
 
-export const updateMnetRemoteRpcAction = async (input: UpdateMnetRemoteRpcParams) => {
+export const updateMnetRemoteRpcAction = async (
+  input: UpdateMnetRemoteRpcParams,
+) => {
   try {
     const payload = updateMnetRemoteRpcParams.parse(input);
     await updateMnetRemoteRpc(payload.id, payload);

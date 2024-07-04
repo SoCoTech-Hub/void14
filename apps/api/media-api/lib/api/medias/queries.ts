@@ -1,10 +1,12 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { type MediaId, mediaIdSchema, medias } from "@/lib/db/schema/medias";
+
+import type { MediaId } from "../db/schema/medias";
+import { db } from "../db/index";
+import { mediaIdSchema, medias } from "../db/schema/medias";
 
 export const getMedias = async () => {
   const rows = await db.select().from(medias);
-  const m = rows
+  const m = rows;
   return { medias: m };
 };
 
@@ -15,5 +17,3 @@ export const getMediaById = async (id: MediaId) => {
   const m = row;
   return { media: m };
 };
-
-

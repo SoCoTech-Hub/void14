@@ -1,19 +1,28 @@
-import { getBlockRssClientById, getBlockRssClients } from "@/lib/api/blockRssClients/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createBlockRssClient,
+  deleteBlockRssClient,
+  updateBlockRssClient,
+} from "../api/blockRssClients/mutations";
+import {
+  getBlockRssClientById,
+  getBlockRssClients,
+} from "../api/blockRssClients/queries";
 import {
   blockRssClientIdSchema,
   insertBlockRssClientParams,
   updateBlockRssClientParams,
-} from "@/lib/db/schema/blockRssClients";
-import { createBlockRssClient, deleteBlockRssClient, updateBlockRssClient } from "@/lib/api/blockRssClients/mutations";
+} from "../db/schema/blockRssClients";
+import { publicProcedure, router } from "../server/trpc";
 
 export const blockRssClientsRouter = router({
   getBlockRssClients: publicProcedure.query(async () => {
     return getBlockRssClients();
   }),
-  getBlockRssClientById: publicProcedure.input(blockRssClientIdSchema).query(async ({ input }) => {
-    return getBlockRssClientById(input.id);
-  }),
+  getBlockRssClientById: publicProcedure
+    .input(blockRssClientIdSchema)
+    .query(async ({ input }) => {
+      return getBlockRssClientById(input.id);
+    }),
   createBlockRssClient: publicProcedure
     .input(insertBlockRssClientParams)
     .mutation(async ({ input }) => {

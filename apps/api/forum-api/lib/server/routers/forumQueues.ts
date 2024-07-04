@@ -1,19 +1,25 @@
-import { getForumQueueById, getForumQueues } from "@/lib/api/forumQueues/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createForumQueue,
+  deleteForumQueue,
+  updateForumQueue,
+} from "../api/forumQueues/mutations";
+import { getForumQueueById, getForumQueues } from "../api/forumQueues/queries";
 import {
   forumQueueIdSchema,
   insertForumQueueParams,
   updateForumQueueParams,
-} from "@/lib/db/schema/forumQueues";
-import { createForumQueue, deleteForumQueue, updateForumQueue } from "@/lib/api/forumQueues/mutations";
+} from "../db/schema/forumQueues";
+import { publicProcedure, router } from "../server/trpc";
 
 export const forumQueuesRouter = router({
   getForumQueues: publicProcedure.query(async () => {
     return getForumQueues();
   }),
-  getForumQueueById: publicProcedure.input(forumQueueIdSchema).query(async ({ input }) => {
-    return getForumQueueById(input.id);
-  }),
+  getForumQueueById: publicProcedure
+    .input(forumQueueIdSchema)
+    .query(async ({ input }) => {
+      return getForumQueueById(input.id);
+    }),
   createForumQueue: publicProcedure
     .input(insertForumQueueParams)
     .mutation(async ({ input }) => {

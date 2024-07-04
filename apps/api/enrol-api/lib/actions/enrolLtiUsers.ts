@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createEnrolLtiUser,
   deleteEnrolLtiUser,
   updateEnrolLtiUser,
-} from "@/lib/api/enrolLtiUsers/mutations";
+} from "../api/enrolLtiUsers/mutations";
 import {
   EnrolLtiUserId,
-  NewEnrolLtiUserParams,
-  UpdateEnrolLtiUserParams,
   enrolLtiUserIdSchema,
   insertEnrolLtiUserParams,
+  NewEnrolLtiUserParams,
+  UpdateEnrolLtiUserParams,
   updateEnrolLtiUserParams,
-} from "@/lib/db/schema/enrolLtiUsers";
+} from "../db/schema/enrolLtiUsers";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateEnrolLtiUsers = () => revalidatePath("/enrol-lti-users");
 
-export const createEnrolLtiUserAction = async (input: NewEnrolLtiUserParams) => {
+export const createEnrolLtiUserAction = async (
+  input: NewEnrolLtiUserParams,
+) => {
   try {
     const payload = insertEnrolLtiUserParams.parse(input);
     await createEnrolLtiUser(payload);
@@ -37,7 +40,9 @@ export const createEnrolLtiUserAction = async (input: NewEnrolLtiUserParams) => 
   }
 };
 
-export const updateEnrolLtiUserAction = async (input: UpdateEnrolLtiUserParams) => {
+export const updateEnrolLtiUserAction = async (
+  input: UpdateEnrolLtiUserParams,
+) => {
   try {
     const payload = updateEnrolLtiUserParams.parse(input);
     await updateEnrolLtiUser(payload.id, payload);

@@ -1,19 +1,28 @@
-import { getPaymentGatewayById, getPaymentGateways } from "@/lib/api/paymentGateways/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  paymentGatewayIdSchema,
+  createPaymentGateway,
+  deletePaymentGateway,
+  updatePaymentGateway,
+} from "../api/paymentGateways/mutations";
+import {
+  getPaymentGatewayById,
+  getPaymentGateways,
+} from "../api/paymentGateways/queries";
+import {
   insertPaymentGatewayParams,
+  paymentGatewayIdSchema,
   updatePaymentGatewayParams,
-} from "@/lib/db/schema/paymentGateways";
-import { createPaymentGateway, deletePaymentGateway, updatePaymentGateway } from "@/lib/api/paymentGateways/mutations";
+} from "../db/schema/paymentGateways";
+import { publicProcedure, router } from "../server/trpc";
 
 export const paymentGatewaysRouter = router({
   getPaymentGateways: publicProcedure.query(async () => {
     return getPaymentGateways();
   }),
-  getPaymentGatewayById: publicProcedure.input(paymentGatewayIdSchema).query(async ({ input }) => {
-    return getPaymentGatewayById(input.id);
-  }),
+  getPaymentGatewayById: publicProcedure
+    .input(paymentGatewayIdSchema)
+    .query(async ({ input }) => {
+      return getPaymentGatewayById(input.id);
+    }),
   createPaymentGateway: publicProcedure
     .input(insertPaymentGatewayParams)
     .mutation(async ({ input }) => {

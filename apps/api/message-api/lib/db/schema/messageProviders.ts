@@ -1,9 +1,10 @@
-import { type getMessageProviders } from "@/lib/api/messageProviders/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getMessageProviders } from "../api/messageProviders/queries";
 
 export const messageProviders = pgTable("message_providers", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

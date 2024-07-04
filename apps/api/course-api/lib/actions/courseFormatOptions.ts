@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCourseFormatOption,
   deleteCourseFormatOption,
   updateCourseFormatOption,
-} from "@/lib/api/courseFormatOptions/mutations";
+} from "../api/courseFormatOptions/mutations";
 import {
   CourseFormatOptionId,
-  NewCourseFormatOptionParams,
-  UpdateCourseFormatOptionParams,
   courseFormatOptionIdSchema,
   insertCourseFormatOptionParams,
+  NewCourseFormatOptionParams,
+  UpdateCourseFormatOptionParams,
   updateCourseFormatOptionParams,
-} from "@/lib/db/schema/courseFormatOptions";
+} from "../db/schema/courseFormatOptions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateCourseFormatOptions = () => revalidatePath("/course-format-options");
+const revalidateCourseFormatOptions = () =>
+  revalidatePath("/course-format-options");
 
-export const createCourseFormatOptionAction = async (input: NewCourseFormatOptionParams) => {
+export const createCourseFormatOptionAction = async (
+  input: NewCourseFormatOptionParams,
+) => {
   try {
     const payload = insertCourseFormatOptionParams.parse(input);
     await createCourseFormatOption(payload);
@@ -37,7 +41,9 @@ export const createCourseFormatOptionAction = async (input: NewCourseFormatOptio
   }
 };
 
-export const updateCourseFormatOptionAction = async (input: UpdateCourseFormatOptionParams) => {
+export const updateCourseFormatOptionAction = async (
+  input: UpdateCourseFormatOptionParams,
+) => {
   try {
     const payload = updateCourseFormatOptionParams.parse(input);
     await updateCourseFormatOption(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateCourseFormatOptionAction = async (input: UpdateCourseFormatOp
   }
 };
 
-export const deleteCourseFormatOptionAction = async (input: CourseFormatOptionId) => {
+export const deleteCourseFormatOptionAction = async (
+  input: CourseFormatOptionId,
+) => {
   try {
     const payload = courseFormatOptionIdSchema.parse({ id: input });
     await deleteCourseFormatOption(payload.id);

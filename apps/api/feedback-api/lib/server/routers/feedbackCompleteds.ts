@@ -1,19 +1,28 @@
-import { getFeedbackCompletedById, getFeedbackCompleteds } from "@/lib/api/feedbackCompleteds/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createFeedbackCompleted,
+  deleteFeedbackCompleted,
+  updateFeedbackCompleted,
+} from "../api/feedbackCompleteds/mutations";
+import {
+  getFeedbackCompletedById,
+  getFeedbackCompleteds,
+} from "../api/feedbackCompleteds/queries";
 import {
   feedbackCompletedIdSchema,
   insertFeedbackCompletedParams,
   updateFeedbackCompletedParams,
-} from "@/lib/db/schema/feedbackCompleteds";
-import { createFeedbackCompleted, deleteFeedbackCompleted, updateFeedbackCompleted } from "@/lib/api/feedbackCompleteds/mutations";
+} from "../db/schema/feedbackCompleteds";
+import { publicProcedure, router } from "../server/trpc";
 
 export const feedbackCompletedsRouter = router({
   getFeedbackCompleteds: publicProcedure.query(async () => {
     return getFeedbackCompleteds();
   }),
-  getFeedbackCompletedById: publicProcedure.input(feedbackCompletedIdSchema).query(async ({ input }) => {
-    return getFeedbackCompletedById(input.id);
-  }),
+  getFeedbackCompletedById: publicProcedure
+    .input(feedbackCompletedIdSchema)
+    .query(async ({ input }) => {
+      return getFeedbackCompletedById(input.id);
+    }),
   createFeedbackCompleted: publicProcedure
     .input(insertFeedbackCompletedParams)
     .mutation(async ({ input }) => {

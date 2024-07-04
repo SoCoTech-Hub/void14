@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createLogDisplay,
   deleteLogDisplay,
   updateLogDisplay,
-} from "@/lib/api/logDisplays/mutations";
+} from "../api/logDisplays/mutations";
 import {
+  insertLogDisplayParams,
   LogDisplayId,
+  logDisplayIdSchema,
   NewLogDisplayParams,
   UpdateLogDisplayParams,
-  logDisplayIdSchema,
-  insertLogDisplayParams,
   updateLogDisplayParams,
-} from "@/lib/db/schema/logDisplays";
+} from "../db/schema/logDisplays";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

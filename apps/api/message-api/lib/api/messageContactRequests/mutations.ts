@@ -1,21 +1,31 @@
-import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
-import { 
-  MessageContactRequestId, 
-  NewMessageContactRequestParams,
-  UpdateMessageContactRequestParams, 
-  updateMessageContactRequestSchema,
-  insertMessageContactRequestSchema, 
-  messageContactRequests,
-  messageContactRequestIdSchema 
-} from "@/lib/db/schema/messageContactRequests";
+
 import { getUserAuth } from "@soco/auth/utils";
 
-export const createMessageContactRequest = async (messageContactRequest: NewMessageContactRequestParams) => {
+import { db } from "../db/index";
+import {
+  insertMessageContactRequestSchema,
+  MessageContactRequestId,
+  messageContactRequestIdSchema,
+  messageContactRequests,
+  NewMessageContactRequestParams,
+  UpdateMessageContactRequestParams,
+  updateMessageContactRequestSchema,
+} from "../db/schema/messageContactRequests";
+
+export const createMessageContactRequest = async (
+  messageContactRequest: NewMessageContactRequestParams,
+) => {
   const { session } = await getUserAuth();
-  const newMessageContactRequest = insertMessageContactRequestSchema.parse({ ...messageContactRequest, userId: session?.user.id! });
+  const newMessageContactRequest = insertMessageContactRequestSchema.parse({
+    ...messageContactRequest,
+    userId: session?.user.id!,
+  });
   try {
-    const [m] =  await db.insert(messageContactRequests).values(newMessageContactRequest).returning();
+    const [m] = await db
+      .insert(messageContactRequests)
+      .values(newMessageContactRequest)
+      .returning();
     return { messageContactRequest: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +34,29 @@ export const createMessageContactRequest = async (messageContactRequest: NewMess
   }
 };
 
-export const updateMessageContactRequest = async (id: MessageContactRequestId, messageContactRequest: UpdateMessageContactRequestParams) => {
+export const updateMessageContactRequest = async (
+  id: MessageContactRequestId,
+  messageContactRequest: UpdateMessageContactRequestParams,
+) => {
   const { session } = await getUserAuth();
-  const { id: messageContactRequestId } = messageContactRequestIdSchema.parse({ id });
-  const newMessageContactRequest = updateMessageContactRequestSchema.parse({ ...messageContactRequest, userId: session?.user.id! });
+  const { id: messageContactRequestId } = messageContactRequestIdSchema.parse({
+    id,
+  });
+  const newMessageContactRequest = updateMessageContactRequestSchema.parse({
+    ...messageContactRequest,
+    userId: session?.user.id!,
+  });
   try {
-    const [m] =  await db
-     .update(messageContactRequests)
-     .set({...newMessageContactRequest, updatedAt: new Date() })
-     .where(and(eq(messageContactRequests.id, messageContactRequestId!), eq(messageContactRequests.userId, session?.user.id!)))
-     .returning();
+    const [m] = await db
+      .update(messageContactRequests)
+      .set({ ...newMessageContactRequest, updatedAt: new Date() })
+      .where(
+        and(
+          eq(messageContactRequests.id, messageContactRequestId!),
+          eq(messageContactRequests.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { messageContactRequest: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,12 +65,23 @@ export const updateMessageContactRequest = async (id: MessageContactRequestId, m
   }
 };
 
-export const deleteMessageContactRequest = async (id: MessageContactRequestId) => {
+export const deleteMessageContactRequest = async (
+  id: MessageContactRequestId,
+) => {
   const { session } = await getUserAuth();
-  const { id: messageContactRequestId } = messageContactRequestIdSchema.parse({ id });
+  const { id: messageContactRequestId } = messageContactRequestIdSchema.parse({
+    id,
+  });
   try {
-    const [m] =  await db.delete(messageContactRequests).where(and(eq(messageContactRequests.id, messageContactRequestId!), eq(messageContactRequests.userId, session?.user.id!)))
-    .returning();
+    const [m] = await db
+      .delete(messageContactRequests)
+      .where(
+        and(
+          eq(messageContactRequests.id, messageContactRequestId!),
+          eq(messageContactRequests.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { messageContactRequest: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +89,3 @@ export const deleteMessageContactRequest = async (id: MessageContactRequestId) =
     throw { error: message };
   }
 };
-

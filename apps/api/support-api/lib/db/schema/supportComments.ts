@@ -1,10 +1,10 @@
-import { type getSupportComments } from "@/lib/api/supportComments/queries";
 import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getSupportComments } from "../api/supportComments/queries";
 import { supportTickets } from "./supportTickets";
 
 export const supportComments = pgTable("support_comments", {

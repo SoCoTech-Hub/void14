@@ -1,4 +1,3 @@
-import { type getH5ps } from "@/lib/api/h5ps/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getH5ps } from "../api/h5ps/queries";
 
 export const h5ps = pgTable("h5ps", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

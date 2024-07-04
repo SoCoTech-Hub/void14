@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createFileConversion,
   deleteFileConversion,
   updateFileConversion,
-} from "@/lib/api/fileConversions/mutations";
+} from "../api/fileConversions/mutations";
 import {
   FileConversionId,
-  NewFileConversionParams,
-  UpdateFileConversionParams,
   fileConversionIdSchema,
   insertFileConversionParams,
+  NewFileConversionParams,
+  UpdateFileConversionParams,
   updateFileConversionParams,
-} from "@/lib/db/schema/fileConversions";
+} from "../db/schema/fileConversions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateFileConversions = () => revalidatePath("/file-conversions");
 
-export const createFileConversionAction = async (input: NewFileConversionParams) => {
+export const createFileConversionAction = async (
+  input: NewFileConversionParams,
+) => {
   try {
     const payload = insertFileConversionParams.parse(input);
     await createFileConversion(payload);
@@ -37,7 +40,9 @@ export const createFileConversionAction = async (input: NewFileConversionParams)
   }
 };
 
-export const updateFileConversionAction = async (input: UpdateFileConversionParams) => {
+export const updateFileConversionAction = async (
+  input: UpdateFileConversionParams,
+) => {
   try {
     const payload = updateFileConversionParams.parse(input);
     await updateFileConversion(payload.id, payload);

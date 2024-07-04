@@ -1,4 +1,3 @@
-import { type getBlockRecentActivities } from "@/lib/api/blockRecentActivities/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getBlockRecentActivities } from "../api/blockRecentActivities/queries";
 
 export const blockRecentActivities = pgTable(
   "block_recent_activities",

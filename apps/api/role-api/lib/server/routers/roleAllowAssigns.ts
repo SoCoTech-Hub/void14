@@ -1,19 +1,28 @@
-import { getRoleAllowAssignById, getRoleAllowAssigns } from "@/lib/api/roleAllowAssigns/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  roleAllowAssignIdSchema,
+  createRoleAllowAssign,
+  deleteRoleAllowAssign,
+  updateRoleAllowAssign,
+} from "../api/roleAllowAssigns/mutations";
+import {
+  getRoleAllowAssignById,
+  getRoleAllowAssigns,
+} from "../api/roleAllowAssigns/queries";
+import {
   insertRoleAllowAssignParams,
+  roleAllowAssignIdSchema,
   updateRoleAllowAssignParams,
-} from "@/lib/db/schema/roleAllowAssigns";
-import { createRoleAllowAssign, deleteRoleAllowAssign, updateRoleAllowAssign } from "@/lib/api/roleAllowAssigns/mutations";
+} from "../db/schema/roleAllowAssigns";
+import { publicProcedure, router } from "../server/trpc";
 
 export const roleAllowAssignsRouter = router({
   getRoleAllowAssigns: publicProcedure.query(async () => {
     return getRoleAllowAssigns();
   }),
-  getRoleAllowAssignById: publicProcedure.input(roleAllowAssignIdSchema).query(async ({ input }) => {
-    return getRoleAllowAssignById(input.id);
-  }),
+  getRoleAllowAssignById: publicProcedure
+    .input(roleAllowAssignIdSchema)
+    .query(async ({ input }) => {
+      return getRoleAllowAssignById(input.id);
+    }),
   createRoleAllowAssign: publicProcedure
     .input(insertRoleAllowAssignParams)
     .mutation(async ({ input }) => {

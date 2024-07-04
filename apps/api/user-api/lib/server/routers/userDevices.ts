@@ -1,19 +1,25 @@
-import { getUserDeviceById, getUserDevices } from "@/lib/api/userDevices/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  userDeviceIdSchema,
+  createUserDevice,
+  deleteUserDevice,
+  updateUserDevice,
+} from "../api/userDevices/mutations";
+import { getUserDeviceById, getUserDevices } from "../api/userDevices/queries";
+import {
   insertUserDeviceParams,
   updateUserDeviceParams,
-} from "@/lib/db/schema/userDevices";
-import { createUserDevice, deleteUserDevice, updateUserDevice } from "@/lib/api/userDevices/mutations";
+  userDeviceIdSchema,
+} from "../db/schema/userDevices";
+import { publicProcedure, router } from "../server/trpc";
 
 export const userDevicesRouter = router({
   getUserDevices: publicProcedure.query(async () => {
     return getUserDevices();
   }),
-  getUserDeviceById: publicProcedure.input(userDeviceIdSchema).query(async ({ input }) => {
-    return getUserDeviceById(input.id);
-  }),
+  getUserDeviceById: publicProcedure
+    .input(userDeviceIdSchema)
+    .query(async ({ input }) => {
+      return getUserDeviceById(input.id);
+    }),
   createUserDevice: publicProcedure
     .input(insertUserDeviceParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,25 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  TaskScheduleId, 
-  NewTaskScheduleParams,
-  UpdateTaskScheduleParams, 
-  updateTaskScheduleSchema,
-  insertTaskScheduleSchema, 
-  taskSchedules,
-  taskScheduleIdSchema 
-} from "@/lib/db/schema/taskSchedules";
 
-export const createTaskSchedule = async (taskSchedule: NewTaskScheduleParams) => {
+import { db } from "../db/index";
+import {
+  insertTaskScheduleSchema,
+  NewTaskScheduleParams,
+  TaskScheduleId,
+  taskScheduleIdSchema,
+  taskSchedules,
+  UpdateTaskScheduleParams,
+  updateTaskScheduleSchema,
+} from "../db/schema/taskSchedules";
+
+export const createTaskSchedule = async (
+  taskSchedule: NewTaskScheduleParams,
+) => {
   const newTaskSchedule = insertTaskScheduleSchema.parse(taskSchedule);
   try {
-    const [t] =  await db.insert(taskSchedules).values(newTaskSchedule).returning();
+    const [t] = await db
+      .insert(taskSchedules)
+      .values(newTaskSchedule)
+      .returning();
     return { taskSchedule: t };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +28,18 @@ export const createTaskSchedule = async (taskSchedule: NewTaskScheduleParams) =>
   }
 };
 
-export const updateTaskSchedule = async (id: TaskScheduleId, taskSchedule: UpdateTaskScheduleParams) => {
+export const updateTaskSchedule = async (
+  id: TaskScheduleId,
+  taskSchedule: UpdateTaskScheduleParams,
+) => {
   const { id: taskScheduleId } = taskScheduleIdSchema.parse({ id });
   const newTaskSchedule = updateTaskScheduleSchema.parse(taskSchedule);
   try {
-    const [t] =  await db
-     .update(taskSchedules)
-     .set(newTaskSchedule)
-     .where(eq(taskSchedules.id, taskScheduleId!))
-     .returning();
+    const [t] = await db
+      .update(taskSchedules)
+      .set(newTaskSchedule)
+      .where(eq(taskSchedules.id, taskScheduleId!))
+      .returning();
     return { taskSchedule: t };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +51,10 @@ export const updateTaskSchedule = async (id: TaskScheduleId, taskSchedule: Updat
 export const deleteTaskSchedule = async (id: TaskScheduleId) => {
   const { id: taskScheduleId } = taskScheduleIdSchema.parse({ id });
   try {
-    const [t] =  await db.delete(taskSchedules).where(eq(taskSchedules.id, taskScheduleId!))
-    .returning();
+    const [t] = await db
+      .delete(taskSchedules)
+      .where(eq(taskSchedules.id, taskScheduleId!))
+      .returning();
     return { taskSchedule: t };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +62,3 @@ export const deleteTaskSchedule = async (id: TaskScheduleId) => {
     throw { error: message };
   }
 };
-

@@ -1,4 +1,3 @@
-import { type getRepositoryInstances } from "@/lib/api/repositoryInstances/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getRepositoryInstances } from "../api/repositoryInstances/queries";
 
 export const repositoryInstances = pgTable(
   "repository_instances",

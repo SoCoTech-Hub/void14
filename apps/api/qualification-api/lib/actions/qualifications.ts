@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQualification,
   deleteQualification,
   updateQualification,
-} from "@/lib/api/qualifications/mutations";
+} from "../api/qualifications/mutations";
 import {
-  QualificationId,
-  NewQualificationParams,
-  UpdateQualificationParams,
-  qualificationIdSchema,
   insertQualificationParams,
+  NewQualificationParams,
+  QualificationId,
+  qualificationIdSchema,
+  UpdateQualificationParams,
   updateQualificationParams,
-} from "@/lib/db/schema/qualifications";
+} from "../db/schema/qualifications";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateQualifications = () => revalidatePath("/qualifications");
 
-export const createQualificationAction = async (input: NewQualificationParams) => {
+export const createQualificationAction = async (
+  input: NewQualificationParams,
+) => {
   try {
     const payload = insertQualificationParams.parse(input);
     await createQualification(payload);
@@ -37,7 +40,9 @@ export const createQualificationAction = async (input: NewQualificationParams) =
   }
 };
 
-export const updateQualificationAction = async (input: UpdateQualificationParams) => {
+export const updateQualificationAction = async (
+  input: UpdateQualificationParams,
+) => {
   try {
     const payload = updateQualificationParams.parse(input);
     await updateQualification(payload.id, payload);

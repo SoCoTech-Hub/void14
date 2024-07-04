@@ -1,4 +1,3 @@
-import { type getQtypeDdmarkers } from "@/lib/api/qtypeDdmarkers/queries";
 import {
   boolean,
   integer,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getQtypeDdmarkers } from "../api/qtypeDdmarkers/queries";
 
 export const qtypeDdmarkers = pgTable(
   "qtype_ddmarkers",

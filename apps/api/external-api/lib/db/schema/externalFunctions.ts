@@ -1,9 +1,10 @@
-import { type getExternalFunctions } from "@/lib/api/externalFunctions/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getExternalFunctions } from "../api/externalFunctions/queries";
 
 export const externalFunctions = pgTable("external_functions", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

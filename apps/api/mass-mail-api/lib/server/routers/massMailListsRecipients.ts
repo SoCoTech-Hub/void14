@@ -1,19 +1,28 @@
-import { getMassMailListsRecipientById, getMassMailListsRecipients } from "@/lib/api/massMailListsRecipients/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  massMailListsRecipientIdSchema,
+  createMassMailListsRecipient,
+  deleteMassMailListsRecipient,
+  updateMassMailListsRecipient,
+} from "../api/massMailListsRecipients/mutations";
+import {
+  getMassMailListsRecipientById,
+  getMassMailListsRecipients,
+} from "../api/massMailListsRecipients/queries";
+import {
   insertMassMailListsRecipientParams,
+  massMailListsRecipientIdSchema,
   updateMassMailListsRecipientParams,
-} from "@/lib/db/schema/massMailListsRecipients";
-import { createMassMailListsRecipient, deleteMassMailListsRecipient, updateMassMailListsRecipient } from "@/lib/api/massMailListsRecipients/mutations";
+} from "../db/schema/massMailListsRecipients";
+import { publicProcedure, router } from "../server/trpc";
 
 export const massMailListsRecipientsRouter = router({
   getMassMailListsRecipients: publicProcedure.query(async () => {
     return getMassMailListsRecipients();
   }),
-  getMassMailListsRecipientById: publicProcedure.input(massMailListsRecipientIdSchema).query(async ({ input }) => {
-    return getMassMailListsRecipientById(input.id);
-  }),
+  getMassMailListsRecipientById: publicProcedure
+    .input(massMailListsRecipientIdSchema)
+    .query(async ({ input }) => {
+      return getMassMailListsRecipientById(input.id);
+    }),
   createMassMailListsRecipient: publicProcedure
     .input(insertMassMailListsRecipientParams)
     .mutation(async ({ input }) => {

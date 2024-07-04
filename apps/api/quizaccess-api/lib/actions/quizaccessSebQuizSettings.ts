@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuizaccessSebQuizSetting,
   deleteQuizaccessSebQuizSetting,
   updateQuizaccessSebQuizSetting,
-} from "@/lib/api/quizaccessSebQuizSettings/mutations";
+} from "../api/quizaccessSebQuizSettings/mutations";
 import {
-  QuizaccessSebQuizSettingId,
-  NewQuizaccessSebQuizSettingParams,
-  UpdateQuizaccessSebQuizSettingParams,
-  quizaccessSebQuizSettingIdSchema,
   insertQuizaccessSebQuizSettingParams,
+  NewQuizaccessSebQuizSettingParams,
+  QuizaccessSebQuizSettingId,
+  quizaccessSebQuizSettingIdSchema,
+  UpdateQuizaccessSebQuizSettingParams,
   updateQuizaccessSebQuizSettingParams,
-} from "@/lib/db/schema/quizaccessSebQuizSettings";
+} from "../db/schema/quizaccessSebQuizSettings";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQuizaccessSebQuizSettings = () => revalidatePath("/quizaccess-seb-quiz-settings");
+const revalidateQuizaccessSebQuizSettings = () =>
+  revalidatePath("/quizaccess-seb-quiz-settings");
 
-export const createQuizaccessSebQuizSettingAction = async (input: NewQuizaccessSebQuizSettingParams) => {
+export const createQuizaccessSebQuizSettingAction = async (
+  input: NewQuizaccessSebQuizSettingParams,
+) => {
   try {
     const payload = insertQuizaccessSebQuizSettingParams.parse(input);
     await createQuizaccessSebQuizSetting(payload);
@@ -37,7 +41,9 @@ export const createQuizaccessSebQuizSettingAction = async (input: NewQuizaccessS
   }
 };
 
-export const updateQuizaccessSebQuizSettingAction = async (input: UpdateQuizaccessSebQuizSettingParams) => {
+export const updateQuizaccessSebQuizSettingAction = async (
+  input: UpdateQuizaccessSebQuizSettingParams,
+) => {
   try {
     const payload = updateQuizaccessSebQuizSettingParams.parse(input);
     await updateQuizaccessSebQuizSetting(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQuizaccessSebQuizSettingAction = async (input: UpdateQuizacce
   }
 };
 
-export const deleteQuizaccessSebQuizSettingAction = async (input: QuizaccessSebQuizSettingId) => {
+export const deleteQuizaccessSebQuizSettingAction = async (
+  input: QuizaccessSebQuizSettingId,
+) => {
   try {
     const payload = quizaccessSebQuizSettingIdSchema.parse({ id: input });
     await deleteQuizaccessSebQuizSetting(payload.id);

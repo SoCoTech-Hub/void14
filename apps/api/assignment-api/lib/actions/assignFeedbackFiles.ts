@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAssignFeedbackFile,
   deleteAssignFeedbackFile,
   updateAssignFeedbackFile,
-} from "@/lib/api/assignFeedbackFiles/mutations";
+} from "../api/assignFeedbackFiles/mutations";
 import {
   AssignFeedbackFileId,
-  NewAssignFeedbackFileParams,
-  UpdateAssignFeedbackFileParams,
   assignFeedbackFileIdSchema,
   insertAssignFeedbackFileParams,
+  NewAssignFeedbackFileParams,
+  UpdateAssignFeedbackFileParams,
   updateAssignFeedbackFileParams,
-} from "@/lib/db/schema/assignFeedbackFiles";
+} from "../db/schema/assignFeedbackFiles";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateAssignFeedbackFiles = () => revalidatePath("/assign-feedback-files");
+const revalidateAssignFeedbackFiles = () =>
+  revalidatePath("/assign-feedback-files");
 
-export const createAssignFeedbackFileAction = async (input: NewAssignFeedbackFileParams) => {
+export const createAssignFeedbackFileAction = async (
+  input: NewAssignFeedbackFileParams,
+) => {
   try {
     const payload = insertAssignFeedbackFileParams.parse(input);
     await createAssignFeedbackFile(payload);
@@ -37,7 +41,9 @@ export const createAssignFeedbackFileAction = async (input: NewAssignFeedbackFil
   }
 };
 
-export const updateAssignFeedbackFileAction = async (input: UpdateAssignFeedbackFileParams) => {
+export const updateAssignFeedbackFileAction = async (
+  input: UpdateAssignFeedbackFileParams,
+) => {
   try {
     const payload = updateAssignFeedbackFileParams.parse(input);
     await updateAssignFeedbackFile(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateAssignFeedbackFileAction = async (input: UpdateAssignFeedback
   }
 };
 
-export const deleteAssignFeedbackFileAction = async (input: AssignFeedbackFileId) => {
+export const deleteAssignFeedbackFileAction = async (
+  input: AssignFeedbackFileId,
+) => {
   try {
     const payload = assignFeedbackFileIdSchema.parse({ id: input });
     await deleteAssignFeedbackFile(payload.id);

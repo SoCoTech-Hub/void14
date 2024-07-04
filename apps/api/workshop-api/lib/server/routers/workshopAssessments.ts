@@ -1,19 +1,28 @@
-import { getWorkshopAssessmentById, getWorkshopAssessments } from "@/lib/api/workshopAssessments/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  workshopAssessmentIdSchema,
+  createWorkshopAssessment,
+  deleteWorkshopAssessment,
+  updateWorkshopAssessment,
+} from "../api/workshopAssessments/mutations";
+import {
+  getWorkshopAssessmentById,
+  getWorkshopAssessments,
+} from "../api/workshopAssessments/queries";
+import {
   insertWorkshopAssessmentParams,
   updateWorkshopAssessmentParams,
-} from "@/lib/db/schema/workshopAssessments";
-import { createWorkshopAssessment, deleteWorkshopAssessment, updateWorkshopAssessment } from "@/lib/api/workshopAssessments/mutations";
+  workshopAssessmentIdSchema,
+} from "../db/schema/workshopAssessments";
+import { publicProcedure, router } from "../server/trpc";
 
 export const workshopAssessmentsRouter = router({
   getWorkshopAssessments: publicProcedure.query(async () => {
     return getWorkshopAssessments();
   }),
-  getWorkshopAssessmentById: publicProcedure.input(workshopAssessmentIdSchema).query(async ({ input }) => {
-    return getWorkshopAssessmentById(input.id);
-  }),
+  getWorkshopAssessmentById: publicProcedure
+    .input(workshopAssessmentIdSchema)
+    .query(async ({ input }) => {
+      return getWorkshopAssessmentById(input.id);
+    }),
   createWorkshopAssessment: publicProcedure
     .input(insertWorkshopAssessmentParams)
     .mutation(async ({ input }) => {

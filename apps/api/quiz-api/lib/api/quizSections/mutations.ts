@@ -1,19 +1,23 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  QuizSectionId, 
+
+import { db } from "../db/index";
+import {
+  insertQuizSectionSchema,
   NewQuizSectionParams,
-  UpdateQuizSectionParams, 
-  updateQuizSectionSchema,
-  insertQuizSectionSchema, 
+  QuizSectionId,
+  quizSectionIdSchema,
   quizSections,
-  quizSectionIdSchema 
-} from "@/lib/db/schema/quizSections";
+  UpdateQuizSectionParams,
+  updateQuizSectionSchema,
+} from "../db/schema/quizSections";
 
 export const createQuizSection = async (quizSection: NewQuizSectionParams) => {
   const newQuizSection = insertQuizSectionSchema.parse(quizSection);
   try {
-    const [q] =  await db.insert(quizSections).values(newQuizSection).returning();
+    const [q] = await db
+      .insert(quizSections)
+      .values(newQuizSection)
+      .returning();
     return { quizSection: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +26,18 @@ export const createQuizSection = async (quizSection: NewQuizSectionParams) => {
   }
 };
 
-export const updateQuizSection = async (id: QuizSectionId, quizSection: UpdateQuizSectionParams) => {
+export const updateQuizSection = async (
+  id: QuizSectionId,
+  quizSection: UpdateQuizSectionParams,
+) => {
   const { id: quizSectionId } = quizSectionIdSchema.parse({ id });
   const newQuizSection = updateQuizSectionSchema.parse(quizSection);
   try {
-    const [q] =  await db
-     .update(quizSections)
-     .set(newQuizSection)
-     .where(eq(quizSections.id, quizSectionId!))
-     .returning();
+    const [q] = await db
+      .update(quizSections)
+      .set(newQuizSection)
+      .where(eq(quizSections.id, quizSectionId!))
+      .returning();
     return { quizSection: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +49,10 @@ export const updateQuizSection = async (id: QuizSectionId, quizSection: UpdateQu
 export const deleteQuizSection = async (id: QuizSectionId) => {
   const { id: quizSectionId } = quizSectionIdSchema.parse({ id });
   try {
-    const [q] =  await db.delete(quizSections).where(eq(quizSections.id, quizSectionId!))
-    .returning();
+    const [q] = await db
+      .delete(quizSections)
+      .where(eq(quizSections.id, quizSectionId!))
+      .returning();
     return { quizSection: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +60,3 @@ export const deleteQuizSection = async (id: QuizSectionId) => {
     throw { error: message };
   }
 };
-

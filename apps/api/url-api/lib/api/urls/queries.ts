@@ -1,10 +1,12 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { type UrlId, urlIdSchema, urls } from "@/lib/db/schema/urls";
+
+import type { UrlId } from "../db/schema/urls";
+import { db } from "../db/index";
+import { urlIdSchema, urls } from "../db/schema/urls";
 
 export const getUrls = async () => {
   const rows = await db.select().from(urls);
-  const u = rows
+  const u = rows;
   return { urls: u };
 };
 
@@ -15,5 +17,3 @@ export const getUrlById = async (id: UrlId) => {
   const u = row;
   return { url: u };
 };
-
-

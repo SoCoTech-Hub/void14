@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuizOverride,
   deleteQuizOverride,
   updateQuizOverride,
-} from "@/lib/api/quizOverrides/mutations";
+} from "../api/quizOverrides/mutations";
 import {
-  QuizOverrideId,
-  NewQuizOverrideParams,
-  UpdateQuizOverrideParams,
-  quizOverrideIdSchema,
   insertQuizOverrideParams,
+  NewQuizOverrideParams,
+  QuizOverrideId,
+  quizOverrideIdSchema,
+  UpdateQuizOverrideParams,
   updateQuizOverrideParams,
-} from "@/lib/db/schema/quizOverrides";
+} from "../db/schema/quizOverrides";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateQuizOverrides = () => revalidatePath("/quiz-overrides");
 
-export const createQuizOverrideAction = async (input: NewQuizOverrideParams) => {
+export const createQuizOverrideAction = async (
+  input: NewQuizOverrideParams,
+) => {
   try {
     const payload = insertQuizOverrideParams.parse(input);
     await createQuizOverride(payload);
@@ -37,7 +40,9 @@ export const createQuizOverrideAction = async (input: NewQuizOverrideParams) => 
   }
 };
 
-export const updateQuizOverrideAction = async (input: UpdateQuizOverrideParams) => {
+export const updateQuizOverrideAction = async (
+  input: UpdateQuizOverrideParams,
+) => {
   try {
     const payload = updateQuizOverrideParams.parse(input);
     await updateQuizOverride(payload.id, payload);

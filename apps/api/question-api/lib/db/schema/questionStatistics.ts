@@ -1,4 +1,3 @@
-import { type getQuestionStatistics } from "@/lib/api/questionStatistics/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -15,6 +14,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getQuestionStatistics } from "../api/questionStatistics/queries";
 import { questions } from "./questions";
 
 export const questionStatistics = pgTable(

@@ -1,19 +1,28 @@
-import { getEnrolPaypalById, getEnrolPaypals } from "@/lib/api/enrolPaypals/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createEnrolPaypal,
+  deleteEnrolPaypal,
+  updateEnrolPaypal,
+} from "../api/enrolPaypals/mutations";
+import {
+  getEnrolPaypalById,
+  getEnrolPaypals,
+} from "../api/enrolPaypals/queries";
 import {
   enrolPaypalIdSchema,
   insertEnrolPaypalParams,
   updateEnrolPaypalParams,
-} from "@/lib/db/schema/enrolPaypals";
-import { createEnrolPaypal, deleteEnrolPaypal, updateEnrolPaypal } from "@/lib/api/enrolPaypals/mutations";
+} from "../db/schema/enrolPaypals";
+import { publicProcedure, router } from "../server/trpc";
 
 export const enrolPaypalsRouter = router({
   getEnrolPaypals: publicProcedure.query(async () => {
     return getEnrolPaypals();
   }),
-  getEnrolPaypalById: publicProcedure.input(enrolPaypalIdSchema).query(async ({ input }) => {
-    return getEnrolPaypalById(input.id);
-  }),
+  getEnrolPaypalById: publicProcedure
+    .input(enrolPaypalIdSchema)
+    .query(async ({ input }) => {
+      return getEnrolPaypalById(input.id);
+    }),
   createEnrolPaypal: publicProcedure
     .input(insertEnrolPaypalParams)
     .mutation(async ({ input }) => {

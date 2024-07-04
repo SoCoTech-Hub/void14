@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGradingformRubricLevel,
   deleteGradingformRubricLevel,
   updateGradingformRubricLevel,
-} from "@/lib/api/gradingformRubricLevels/mutations";
+} from "../api/gradingformRubricLevels/mutations";
 import {
   GradingformRubricLevelId,
-  NewGradingformRubricLevelParams,
-  UpdateGradingformRubricLevelParams,
   gradingformRubricLevelIdSchema,
   insertGradingformRubricLevelParams,
+  NewGradingformRubricLevelParams,
+  UpdateGradingformRubricLevelParams,
   updateGradingformRubricLevelParams,
-} from "@/lib/db/schema/gradingformRubricLevels";
+} from "../db/schema/gradingformRubricLevels";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateGradingformRubricLevels = () => revalidatePath("/gradingform-rubric-levels");
+const revalidateGradingformRubricLevels = () =>
+  revalidatePath("/gradingform-rubric-levels");
 
-export const createGradingformRubricLevelAction = async (input: NewGradingformRubricLevelParams) => {
+export const createGradingformRubricLevelAction = async (
+  input: NewGradingformRubricLevelParams,
+) => {
   try {
     const payload = insertGradingformRubricLevelParams.parse(input);
     await createGradingformRubricLevel(payload);
@@ -37,7 +41,9 @@ export const createGradingformRubricLevelAction = async (input: NewGradingformRu
   }
 };
 
-export const updateGradingformRubricLevelAction = async (input: UpdateGradingformRubricLevelParams) => {
+export const updateGradingformRubricLevelAction = async (
+  input: UpdateGradingformRubricLevelParams,
+) => {
   try {
     const payload = updateGradingformRubricLevelParams.parse(input);
     await updateGradingformRubricLevel(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateGradingformRubricLevelAction = async (input: UpdateGradingfor
   }
 };
 
-export const deleteGradingformRubricLevelAction = async (input: GradingformRubricLevelId) => {
+export const deleteGradingformRubricLevelAction = async (
+  input: GradingformRubricLevelId,
+) => {
   try {
     const payload = gradingformRubricLevelIdSchema.parse({ id: input });
     await deleteGradingformRubricLevel(payload.id);

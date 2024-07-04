@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createToolMonitorRule,
   deleteToolMonitorRule,
   updateToolMonitorRule,
-} from "@/lib/api/toolMonitorRules/mutations";
+} from "../api/toolMonitorRules/mutations";
 import {
-  ToolMonitorRuleId,
-  NewToolMonitorRuleParams,
-  UpdateToolMonitorRuleParams,
-  toolMonitorRuleIdSchema,
   insertToolMonitorRuleParams,
+  NewToolMonitorRuleParams,
+  ToolMonitorRuleId,
+  toolMonitorRuleIdSchema,
+  UpdateToolMonitorRuleParams,
   updateToolMonitorRuleParams,
-} from "@/lib/db/schema/toolMonitorRules";
+} from "../db/schema/toolMonitorRules";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateToolMonitorRules = () => revalidatePath("/tool-monitor-rules");
 
-export const createToolMonitorRuleAction = async (input: NewToolMonitorRuleParams) => {
+export const createToolMonitorRuleAction = async (
+  input: NewToolMonitorRuleParams,
+) => {
   try {
     const payload = insertToolMonitorRuleParams.parse(input);
     await createToolMonitorRule(payload);
@@ -37,7 +40,9 @@ export const createToolMonitorRuleAction = async (input: NewToolMonitorRuleParam
   }
 };
 
-export const updateToolMonitorRuleAction = async (input: UpdateToolMonitorRuleParams) => {
+export const updateToolMonitorRuleAction = async (
+  input: UpdateToolMonitorRuleParams,
+) => {
   try {
     const payload = updateToolMonitorRuleParams.parse(input);
     await updateToolMonitorRule(payload.id, payload);

@@ -1,9 +1,10 @@
-import { type getToolCustomLangComponents } from "@/lib/api/toolCustomLangComponents/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getToolCustomLangComponents } from "../api/toolCustomLangComponents/queries";
 
 export const toolCustomLangComponents = pgTable("tool_custom_lang_components", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

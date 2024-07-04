@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBlockRecentActivity,
   deleteBlockRecentActivity,
   updateBlockRecentActivity,
-} from "@/lib/api/blockRecentActivities/mutations";
+} from "../api/blockRecentActivities/mutations";
 import {
   BlockRecentActivityId,
-  NewBlockRecentActivityParams,
-  UpdateBlockRecentActivityParams,
   blockRecentActivityIdSchema,
   insertBlockRecentActivityParams,
+  NewBlockRecentActivityParams,
+  UpdateBlockRecentActivityParams,
   updateBlockRecentActivityParams,
-} from "@/lib/db/schema/blockRecentActivities";
+} from "../db/schema/blockRecentActivities";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateBlockRecentActivities = () => revalidatePath("/block-recent-activities");
+const revalidateBlockRecentActivities = () =>
+  revalidatePath("/block-recent-activities");
 
-export const createBlockRecentActivityAction = async (input: NewBlockRecentActivityParams) => {
+export const createBlockRecentActivityAction = async (
+  input: NewBlockRecentActivityParams,
+) => {
   try {
     const payload = insertBlockRecentActivityParams.parse(input);
     await createBlockRecentActivity(payload);
@@ -37,7 +41,9 @@ export const createBlockRecentActivityAction = async (input: NewBlockRecentActiv
   }
 };
 
-export const updateBlockRecentActivityAction = async (input: UpdateBlockRecentActivityParams) => {
+export const updateBlockRecentActivityAction = async (
+  input: UpdateBlockRecentActivityParams,
+) => {
   try {
     const payload = updateBlockRecentActivityParams.parse(input);
     await updateBlockRecentActivity(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateBlockRecentActivityAction = async (input: UpdateBlockRecentAc
   }
 };
 
-export const deleteBlockRecentActivityAction = async (input: BlockRecentActivityId) => {
+export const deleteBlockRecentActivityAction = async (
+  input: BlockRecentActivityId,
+) => {
   try {
     const payload = blockRecentActivityIdSchema.parse({ id: input });
     await deleteBlockRecentActivity(payload.id);

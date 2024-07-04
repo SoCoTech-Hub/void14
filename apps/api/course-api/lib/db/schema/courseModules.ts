@@ -1,4 +1,3 @@
-import { type getCourseModules } from "@/lib/api/courseModules/queries";
 import {
   boolean,
   integer,
@@ -13,6 +12,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getCourseModules } from "../api/courseModules/queries";
 import { courses } from "./courses";
 
 export const courseModules = pgTable(

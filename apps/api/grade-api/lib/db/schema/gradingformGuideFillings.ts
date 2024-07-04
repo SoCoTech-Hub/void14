@@ -1,9 +1,10 @@
-import { type getGradingformGuideFillings } from "@/lib/api/gradingformGuideFillings/queries";
 import { integer, pgTable, real, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getGradingformGuideFillings } from "../api/gradingformGuideFillings/queries";
 
 export const gradingformGuideFillings = pgTable("gradingform_guide_fillings", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

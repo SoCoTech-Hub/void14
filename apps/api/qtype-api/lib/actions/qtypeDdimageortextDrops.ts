@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQtypeDdimageortextDrop,
   deleteQtypeDdimageortextDrop,
   updateQtypeDdimageortextDrop,
-} from "@/lib/api/qtypeDdimageortextDrops/mutations";
+} from "../api/qtypeDdimageortextDrops/mutations";
 import {
-  QtypeDdimageortextDropId,
-  NewQtypeDdimageortextDropParams,
-  UpdateQtypeDdimageortextDropParams,
-  qtypeDdimageortextDropIdSchema,
   insertQtypeDdimageortextDropParams,
+  NewQtypeDdimageortextDropParams,
+  QtypeDdimageortextDropId,
+  qtypeDdimageortextDropIdSchema,
+  UpdateQtypeDdimageortextDropParams,
   updateQtypeDdimageortextDropParams,
-} from "@/lib/db/schema/qtypeDdimageortextDrops";
+} from "../db/schema/qtypeDdimageortextDrops";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQtypeDdimageortextDrops = () => revalidatePath("/qtype-ddimageortext-drops");
+const revalidateQtypeDdimageortextDrops = () =>
+  revalidatePath("/qtype-ddimageortext-drops");
 
-export const createQtypeDdimageortextDropAction = async (input: NewQtypeDdimageortextDropParams) => {
+export const createQtypeDdimageortextDropAction = async (
+  input: NewQtypeDdimageortextDropParams,
+) => {
   try {
     const payload = insertQtypeDdimageortextDropParams.parse(input);
     await createQtypeDdimageortextDrop(payload);
@@ -37,7 +41,9 @@ export const createQtypeDdimageortextDropAction = async (input: NewQtypeDdimageo
   }
 };
 
-export const updateQtypeDdimageortextDropAction = async (input: UpdateQtypeDdimageortextDropParams) => {
+export const updateQtypeDdimageortextDropAction = async (
+  input: UpdateQtypeDdimageortextDropParams,
+) => {
   try {
     const payload = updateQtypeDdimageortextDropParams.parse(input);
     await updateQtypeDdimageortextDrop(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQtypeDdimageortextDropAction = async (input: UpdateQtypeDdima
   }
 };
 
-export const deleteQtypeDdimageortextDropAction = async (input: QtypeDdimageortextDropId) => {
+export const deleteQtypeDdimageortextDropAction = async (
+  input: QtypeDdimageortextDropId,
+) => {
   try {
     const payload = qtypeDdimageortextDropIdSchema.parse({ id: input });
     await deleteQtypeDdimageortextDrop(payload.id);

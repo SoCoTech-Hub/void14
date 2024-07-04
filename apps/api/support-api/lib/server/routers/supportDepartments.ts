@@ -1,19 +1,28 @@
-import { getSupportDepartmentById, getSupportDepartments } from "@/lib/api/supportDepartments/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  supportDepartmentIdSchema,
+  createSupportDepartment,
+  deleteSupportDepartment,
+  updateSupportDepartment,
+} from "../api/supportDepartments/mutations";
+import {
+  getSupportDepartmentById,
+  getSupportDepartments,
+} from "../api/supportDepartments/queries";
+import {
   insertSupportDepartmentParams,
+  supportDepartmentIdSchema,
   updateSupportDepartmentParams,
-} from "@/lib/db/schema/supportDepartments";
-import { createSupportDepartment, deleteSupportDepartment, updateSupportDepartment } from "@/lib/api/supportDepartments/mutations";
+} from "../db/schema/supportDepartments";
+import { publicProcedure, router } from "../server/trpc";
 
 export const supportDepartmentsRouter = router({
   getSupportDepartments: publicProcedure.query(async () => {
     return getSupportDepartments();
   }),
-  getSupportDepartmentById: publicProcedure.input(supportDepartmentIdSchema).query(async ({ input }) => {
-    return getSupportDepartmentById(input.id);
-  }),
+  getSupportDepartmentById: publicProcedure
+    .input(supportDepartmentIdSchema)
+    .query(async ({ input }) => {
+      return getSupportDepartmentById(input.id);
+    }),
   createSupportDepartment: publicProcedure
     .input(insertSupportDepartmentParams)
     .mutation(async ({ input }) => {

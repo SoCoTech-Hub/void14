@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGroupsMember,
   deleteGroupsMember,
   updateGroupsMember,
-} from "@/lib/api/groupsMembers/mutations";
+} from "../api/groupsMembers/mutations";
 import {
   GroupsMemberId,
-  NewGroupsMemberParams,
-  UpdateGroupsMemberParams,
   groupsMemberIdSchema,
   insertGroupsMemberParams,
+  NewGroupsMemberParams,
+  UpdateGroupsMemberParams,
   updateGroupsMemberParams,
-} from "@/lib/db/schema/groupsMembers";
+} from "../db/schema/groupsMembers";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateGroupsMembers = () => revalidatePath("/groups-members");
 
-export const createGroupsMemberAction = async (input: NewGroupsMemberParams) => {
+export const createGroupsMemberAction = async (
+  input: NewGroupsMemberParams,
+) => {
   try {
     const payload = insertGroupsMemberParams.parse(input);
     await createGroupsMember(payload);
@@ -37,7 +40,9 @@ export const createGroupsMemberAction = async (input: NewGroupsMemberParams) => 
   }
 };
 
-export const updateGroupsMemberAction = async (input: UpdateGroupsMemberParams) => {
+export const updateGroupsMemberAction = async (
+  input: UpdateGroupsMemberParams,
+) => {
   try {
     const payload = updateGroupsMemberParams.parse(input);
     await updateGroupsMember(payload.id, payload);

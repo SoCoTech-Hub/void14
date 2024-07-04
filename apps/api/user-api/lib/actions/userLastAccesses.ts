@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createUserLastAccess,
   deleteUserLastAccess,
   updateUserLastAccess,
-} from "@/lib/api/userLastAccesses/mutations";
+} from "../api/userLastAccesses/mutations";
 import {
-  UserLastAccessId,
+  insertUserLastAccessParams,
   NewUserLastAccessParams,
   UpdateUserLastAccessParams,
-  userLastAccessIdSchema,
-  insertUserLastAccessParams,
   updateUserLastAccessParams,
-} from "@/lib/db/schema/userLastAccesses";
+  UserLastAccessId,
+  userLastAccessIdSchema,
+} from "../db/schema/userLastAccesses";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateUserLastAccesses = () => revalidatePath("/user-last-accesses");
 
-export const createUserLastAccessAction = async (input: NewUserLastAccessParams) => {
+export const createUserLastAccessAction = async (
+  input: NewUserLastAccessParams,
+) => {
   try {
     const payload = insertUserLastAccessParams.parse(input);
     await createUserLastAccess(payload);
@@ -37,7 +40,9 @@ export const createUserLastAccessAction = async (input: NewUserLastAccessParams)
   }
 };
 
-export const updateUserLastAccessAction = async (input: UpdateUserLastAccessParams) => {
+export const updateUserLastAccessAction = async (
+  input: UpdateUserLastAccessParams,
+) => {
   try {
     const payload = updateUserLastAccessParams.parse(input);
     await updateUserLastAccess(payload.id, payload);

@@ -1,19 +1,27 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  EnrolLtiToolConsumerMapId, 
-  NewEnrolLtiToolConsumerMapParams,
-  UpdateEnrolLtiToolConsumerMapParams, 
-  updateEnrolLtiToolConsumerMapSchema,
-  insertEnrolLtiToolConsumerMapSchema, 
+
+import { db } from "../db/index";
+import {
+  EnrolLtiToolConsumerMapId,
+  enrolLtiToolConsumerMapIdSchema,
   enrolLtiToolConsumerMaps,
-  enrolLtiToolConsumerMapIdSchema 
-} from "@/lib/db/schema/enrolLtiToolConsumerMaps";
+  insertEnrolLtiToolConsumerMapSchema,
+  NewEnrolLtiToolConsumerMapParams,
+  UpdateEnrolLtiToolConsumerMapParams,
+  updateEnrolLtiToolConsumerMapSchema,
+} from "../db/schema/enrolLtiToolConsumerMaps";
 
-export const createEnrolLtiToolConsumerMap = async (enrolLtiToolConsumerMap: NewEnrolLtiToolConsumerMapParams) => {
-  const newEnrolLtiToolConsumerMap = insertEnrolLtiToolConsumerMapSchema.parse(enrolLtiToolConsumerMap);
+export const createEnrolLtiToolConsumerMap = async (
+  enrolLtiToolConsumerMap: NewEnrolLtiToolConsumerMapParams,
+) => {
+  const newEnrolLtiToolConsumerMap = insertEnrolLtiToolConsumerMapSchema.parse(
+    enrolLtiToolConsumerMap,
+  );
   try {
-    const [e] =  await db.insert(enrolLtiToolConsumerMaps).values(newEnrolLtiToolConsumerMap).returning();
+    const [e] = await db
+      .insert(enrolLtiToolConsumerMaps)
+      .values(newEnrolLtiToolConsumerMap)
+      .returning();
     return { enrolLtiToolConsumerMap: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,21 @@ export const createEnrolLtiToolConsumerMap = async (enrolLtiToolConsumerMap: New
   }
 };
 
-export const updateEnrolLtiToolConsumerMap = async (id: EnrolLtiToolConsumerMapId, enrolLtiToolConsumerMap: UpdateEnrolLtiToolConsumerMapParams) => {
-  const { id: enrolLtiToolConsumerMapId } = enrolLtiToolConsumerMapIdSchema.parse({ id });
-  const newEnrolLtiToolConsumerMap = updateEnrolLtiToolConsumerMapSchema.parse(enrolLtiToolConsumerMap);
+export const updateEnrolLtiToolConsumerMap = async (
+  id: EnrolLtiToolConsumerMapId,
+  enrolLtiToolConsumerMap: UpdateEnrolLtiToolConsumerMapParams,
+) => {
+  const { id: enrolLtiToolConsumerMapId } =
+    enrolLtiToolConsumerMapIdSchema.parse({ id });
+  const newEnrolLtiToolConsumerMap = updateEnrolLtiToolConsumerMapSchema.parse(
+    enrolLtiToolConsumerMap,
+  );
   try {
-    const [e] =  await db
-     .update(enrolLtiToolConsumerMaps)
-     .set(newEnrolLtiToolConsumerMap)
-     .where(eq(enrolLtiToolConsumerMaps.id, enrolLtiToolConsumerMapId!))
-     .returning();
+    const [e] = await db
+      .update(enrolLtiToolConsumerMaps)
+      .set(newEnrolLtiToolConsumerMap)
+      .where(eq(enrolLtiToolConsumerMaps.id, enrolLtiToolConsumerMapId!))
+      .returning();
     return { enrolLtiToolConsumerMap: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +53,16 @@ export const updateEnrolLtiToolConsumerMap = async (id: EnrolLtiToolConsumerMapI
   }
 };
 
-export const deleteEnrolLtiToolConsumerMap = async (id: EnrolLtiToolConsumerMapId) => {
-  const { id: enrolLtiToolConsumerMapId } = enrolLtiToolConsumerMapIdSchema.parse({ id });
+export const deleteEnrolLtiToolConsumerMap = async (
+  id: EnrolLtiToolConsumerMapId,
+) => {
+  const { id: enrolLtiToolConsumerMapId } =
+    enrolLtiToolConsumerMapIdSchema.parse({ id });
   try {
-    const [e] =  await db.delete(enrolLtiToolConsumerMaps).where(eq(enrolLtiToolConsumerMaps.id, enrolLtiToolConsumerMapId!))
-    .returning();
+    const [e] = await db
+      .delete(enrolLtiToolConsumerMaps)
+      .where(eq(enrolLtiToolConsumerMaps.id, enrolLtiToolConsumerMapId!))
+      .returning();
     return { enrolLtiToolConsumerMap: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +70,3 @@ export const deleteEnrolLtiToolConsumerMap = async (id: EnrolLtiToolConsumerMapI
     throw { error: message };
   }
 };
-

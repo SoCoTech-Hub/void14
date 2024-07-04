@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createLessonGrade,
   deleteLessonGrade,
   updateLessonGrade,
-} from "@/lib/api/lessonGrades/mutations";
+} from "../api/lessonGrades/mutations";
 import {
+  insertLessonGradeParams,
   LessonGradeId,
+  lessonGradeIdSchema,
   NewLessonGradeParams,
   UpdateLessonGradeParams,
-  lessonGradeIdSchema,
-  insertLessonGradeParams,
   updateLessonGradeParams,
-} from "@/lib/db/schema/lessonGrades";
+} from "../db/schema/lessonGrades";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createLessonGradeAction = async (input: NewLessonGradeParams) => {
   }
 };
 
-export const updateLessonGradeAction = async (input: UpdateLessonGradeParams) => {
+export const updateLessonGradeAction = async (
+  input: UpdateLessonGradeParams,
+) => {
   try {
     const payload = updateLessonGradeParams.parse(input);
     await updateLessonGrade(payload.id, payload);

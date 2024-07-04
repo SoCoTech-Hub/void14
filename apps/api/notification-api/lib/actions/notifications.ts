@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createNotification,
   deleteNotification,
   updateNotification,
-} from "@/lib/api/notifications/mutations";
+} from "../api/notifications/mutations";
 import {
-  NotificationId,
-  NewNotificationParams,
-  UpdateNotificationParams,
-  notificationIdSchema,
   insertNotificationParams,
+  NewNotificationParams,
+  NotificationId,
+  notificationIdSchema,
+  UpdateNotificationParams,
   updateNotificationParams,
-} from "@/lib/db/schema/notifications";
+} from "../db/schema/notifications";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateNotifications = () => revalidatePath("/notifications");
 
-export const createNotificationAction = async (input: NewNotificationParams) => {
+export const createNotificationAction = async (
+  input: NewNotificationParams,
+) => {
   try {
     const payload = insertNotificationParams.parse(input);
     await createNotification(payload);
@@ -37,7 +40,9 @@ export const createNotificationAction = async (input: NewNotificationParams) => 
   }
 };
 
-export const updateNotificationAction = async (input: UpdateNotificationParams) => {
+export const updateNotificationAction = async (
+  input: UpdateNotificationParams,
+) => {
   try {
     const payload = updateNotificationParams.parse(input);
     await updateNotification(payload.id, payload);

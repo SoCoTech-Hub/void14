@@ -1,19 +1,20 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  WikiId, 
+
+import { db } from "../db/index";
+import {
+  insertWikiSchema,
   NewWikiParams,
-  UpdateWikiParams, 
+  UpdateWikiParams,
   updateWikiSchema,
-  insertWikiSchema, 
+  WikiId,
+  wikiIdSchema,
   wikis,
-  wikiIdSchema 
-} from "@/lib/db/schema/wikis";
+} from "../db/schema/wikis";
 
 export const createWiki = async (wiki: NewWikiParams) => {
   const newWiki = insertWikiSchema.parse(wiki);
   try {
-    const [w] =  await db.insert(wikis).values(newWiki).returning();
+    const [w] = await db.insert(wikis).values(newWiki).returning();
     return { wiki: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -26,11 +27,11 @@ export const updateWiki = async (id: WikiId, wiki: UpdateWikiParams) => {
   const { id: wikiId } = wikiIdSchema.parse({ id });
   const newWiki = updateWikiSchema.parse(wiki);
   try {
-    const [w] =  await db
-     .update(wikis)
-     .set({...newWiki, updatedAt: new Date() })
-     .where(eq(wikis.id, wikiId!))
-     .returning();
+    const [w] = await db
+      .update(wikis)
+      .set({ ...newWiki, updatedAt: new Date() })
+      .where(eq(wikis.id, wikiId!))
+      .returning();
     return { wiki: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +43,7 @@ export const updateWiki = async (id: WikiId, wiki: UpdateWikiParams) => {
 export const deleteWiki = async (id: WikiId) => {
   const { id: wikiId } = wikiIdSchema.parse({ id });
   try {
-    const [w] =  await db.delete(wikis).where(eq(wikis.id, wikiId!))
-    .returning();
+    const [w] = await db.delete(wikis).where(eq(wikis.id, wikiId!)).returning();
     return { wiki: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +51,3 @@ export const deleteWiki = async (id: WikiId) => {
     throw { error: message };
   }
 };
-

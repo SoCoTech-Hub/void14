@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createEnrolLtiLti2Nonce,
   deleteEnrolLtiLti2Nonce,
   updateEnrolLtiLti2Nonce,
-} from "@/lib/api/enrolLtiLti2Nonces/mutations";
+} from "../api/enrolLtiLti2Nonces/mutations";
 import {
   EnrolLtiLti2NonceId,
-  NewEnrolLtiLti2NonceParams,
-  UpdateEnrolLtiLti2NonceParams,
   enrolLtiLti2NonceIdSchema,
   insertEnrolLtiLti2NonceParams,
+  NewEnrolLtiLti2NonceParams,
+  UpdateEnrolLtiLti2NonceParams,
   updateEnrolLtiLti2NonceParams,
-} from "@/lib/db/schema/enrolLtiLti2Nonces";
+} from "../db/schema/enrolLtiLti2Nonces";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateEnrolLtiLti2Nonces = () => revalidatePath("/enrol-lti-lti2-nonces");
+const revalidateEnrolLtiLti2Nonces = () =>
+  revalidatePath("/enrol-lti-lti2-nonces");
 
-export const createEnrolLtiLti2NonceAction = async (input: NewEnrolLtiLti2NonceParams) => {
+export const createEnrolLtiLti2NonceAction = async (
+  input: NewEnrolLtiLti2NonceParams,
+) => {
   try {
     const payload = insertEnrolLtiLti2NonceParams.parse(input);
     await createEnrolLtiLti2Nonce(payload);
@@ -37,7 +41,9 @@ export const createEnrolLtiLti2NonceAction = async (input: NewEnrolLtiLti2NonceP
   }
 };
 
-export const updateEnrolLtiLti2NonceAction = async (input: UpdateEnrolLtiLti2NonceParams) => {
+export const updateEnrolLtiLti2NonceAction = async (
+  input: UpdateEnrolLtiLti2NonceParams,
+) => {
   try {
     const payload = updateEnrolLtiLti2NonceParams.parse(input);
     await updateEnrolLtiLti2Nonce(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateEnrolLtiLti2NonceAction = async (input: UpdateEnrolLtiLti2Non
   }
 };
 
-export const deleteEnrolLtiLti2NonceAction = async (input: EnrolLtiLti2NonceId) => {
+export const deleteEnrolLtiLti2NonceAction = async (
+  input: EnrolLtiLti2NonceId,
+) => {
   try {
     const payload = enrolLtiLti2NonceIdSchema.parse({ id: input });
     await deleteEnrolLtiLti2Nonce(payload.id);

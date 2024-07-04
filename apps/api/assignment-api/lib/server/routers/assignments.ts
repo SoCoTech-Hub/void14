@@ -1,19 +1,25 @@
-import { getAssignmentById, getAssignments } from "@/lib/api/assignments/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createAssignment,
+  deleteAssignment,
+  updateAssignment,
+} from "../api/assignments/mutations";
+import { getAssignmentById, getAssignments } from "../api/assignments/queries";
 import {
   assignmentIdSchema,
   insertAssignmentParams,
   updateAssignmentParams,
-} from "@/lib/db/schema/assignments";
-import { createAssignment, deleteAssignment, updateAssignment } from "@/lib/api/assignments/mutations";
+} from "../db/schema/assignments";
+import { publicProcedure, router } from "../server/trpc";
 
 export const assignmentsRouter = router({
   getAssignments: publicProcedure.query(async () => {
     return getAssignments();
   }),
-  getAssignmentById: publicProcedure.input(assignmentIdSchema).query(async ({ input }) => {
-    return getAssignmentById(input.id);
-  }),
+  getAssignmentById: publicProcedure
+    .input(assignmentIdSchema)
+    .query(async ({ input }) => {
+      return getAssignmentById(input.id);
+    }),
   createAssignment: publicProcedure
     .input(insertAssignmentParams)
     .mutation(async ({ input }) => {

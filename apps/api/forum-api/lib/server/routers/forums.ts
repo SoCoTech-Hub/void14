@@ -1,19 +1,21 @@
-import { getForumById, getForums } from "@/lib/api/forums/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import { createForum, deleteForum, updateForum } from "../api/forums/mutations";
+import { getForumById, getForums } from "../api/forums/queries";
 import {
   forumIdSchema,
   insertForumParams,
   updateForumParams,
-} from "@/lib/db/schema/forums";
-import { createForum, deleteForum, updateForum } from "@/lib/api/forums/mutations";
+} from "../db/schema/forums";
+import { publicProcedure, router } from "../server/trpc";
 
 export const forumsRouter = router({
   getForums: publicProcedure.query(async () => {
     return getForums();
   }),
-  getForumById: publicProcedure.input(forumIdSchema).query(async ({ input }) => {
-    return getForumById(input.id);
-  }),
+  getForumById: publicProcedure
+    .input(forumIdSchema)
+    .query(async ({ input }) => {
+      return getForumById(input.id);
+    }),
   createForum: publicProcedure
     .input(insertForumParams)
     .mutation(async ({ input }) => {

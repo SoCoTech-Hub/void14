@@ -1,19 +1,28 @@
-import { getFeedbackTemplateById, getFeedbackTemplates } from "@/lib/api/feedbackTemplates/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createFeedbackTemplate,
+  deleteFeedbackTemplate,
+  updateFeedbackTemplate,
+} from "../api/feedbackTemplates/mutations";
+import {
+  getFeedbackTemplateById,
+  getFeedbackTemplates,
+} from "../api/feedbackTemplates/queries";
 import {
   feedbackTemplateIdSchema,
   insertFeedbackTemplateParams,
   updateFeedbackTemplateParams,
-} from "@/lib/db/schema/feedbackTemplates";
-import { createFeedbackTemplate, deleteFeedbackTemplate, updateFeedbackTemplate } from "@/lib/api/feedbackTemplates/mutations";
+} from "../db/schema/feedbackTemplates";
+import { publicProcedure, router } from "../server/trpc";
 
 export const feedbackTemplatesRouter = router({
   getFeedbackTemplates: publicProcedure.query(async () => {
     return getFeedbackTemplates();
   }),
-  getFeedbackTemplateById: publicProcedure.input(feedbackTemplateIdSchema).query(async ({ input }) => {
-    return getFeedbackTemplateById(input.id);
-  }),
+  getFeedbackTemplateById: publicProcedure
+    .input(feedbackTemplateIdSchema)
+    .query(async ({ input }) => {
+      return getFeedbackTemplateById(input.id);
+    }),
   createFeedbackTemplate: publicProcedure
     .input(insertFeedbackTemplateParams)
     .mutation(async ({ input }) => {

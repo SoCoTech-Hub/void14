@@ -1,4 +1,3 @@
-import { type getGradingformGuideComments } from "@/lib/api/gradingformGuideComments/queries";
 import {
   integer,
   pgTable,
@@ -10,6 +9,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getGradingformGuideComments } from "../api/gradingformGuideComments/queries";
 
 export const gradingformGuideComments = pgTable(
   "gradingform_guide_comments",

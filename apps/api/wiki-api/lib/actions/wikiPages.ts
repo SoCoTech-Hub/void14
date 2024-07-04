@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createWikiPage,
   deleteWikiPage,
   updateWikiPage,
-} from "@/lib/api/wikiPages/mutations";
+} from "../api/wikiPages/mutations";
 import {
-  WikiPageId,
+  insertWikiPageParams,
   NewWikiPageParams,
   UpdateWikiPageParams,
-  wikiPageIdSchema,
-  insertWikiPageParams,
   updateWikiPageParams,
-} from "@/lib/db/schema/wikiPages";
+  WikiPageId,
+  wikiPageIdSchema,
+} from "../db/schema/wikiPages";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createPaygwPaypal,
   deletePaygwPaypal,
   updatePaygwPaypal,
-} from "@/lib/api/paygwPaypals/mutations";
+} from "../api/paygwPaypals/mutations";
 import {
-  PaygwPaypalId,
-  NewPaygwPaypalParams,
-  UpdatePaygwPaypalParams,
-  paygwPaypalIdSchema,
   insertPaygwPaypalParams,
+  NewPaygwPaypalParams,
+  PaygwPaypalId,
+  paygwPaypalIdSchema,
+  UpdatePaygwPaypalParams,
   updatePaygwPaypalParams,
-} from "@/lib/db/schema/paygwPaypals";
+} from "../db/schema/paygwPaypals";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createPaygwPaypalAction = async (input: NewPaygwPaypalParams) => {
   }
 };
 
-export const updatePaygwPaypalAction = async (input: UpdatePaygwPaypalParams) => {
+export const updatePaygwPaypalAction = async (
+  input: UpdatePaygwPaypalParams,
+) => {
   try {
     const payload = updatePaygwPaypalParams.parse(input);
     await updatePaygwPaypal(payload.id, payload);

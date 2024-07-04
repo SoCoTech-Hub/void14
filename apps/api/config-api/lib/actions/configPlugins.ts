@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createConfigPlugin,
   deleteConfigPlugin,
   updateConfigPlugin,
-} from "@/lib/api/configPlugins/mutations";
+} from "../api/configPlugins/mutations";
 import {
   ConfigPluginId,
-  NewConfigPluginParams,
-  UpdateConfigPluginParams,
   configPluginIdSchema,
   insertConfigPluginParams,
+  NewConfigPluginParams,
+  UpdateConfigPluginParams,
   updateConfigPluginParams,
-} from "@/lib/db/schema/configPlugins";
+} from "../db/schema/configPlugins";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateConfigPlugins = () => revalidatePath("/config-plugins");
 
-export const createConfigPluginAction = async (input: NewConfigPluginParams) => {
+export const createConfigPluginAction = async (
+  input: NewConfigPluginParams,
+) => {
   try {
     const payload = insertConfigPluginParams.parse(input);
     await createConfigPlugin(payload);
@@ -37,7 +40,9 @@ export const createConfigPluginAction = async (input: NewConfigPluginParams) => 
   }
 };
 
-export const updateConfigPluginAction = async (input: UpdateConfigPluginParams) => {
+export const updateConfigPluginAction = async (
+  input: UpdateConfigPluginParams,
+) => {
   try {
     const payload = updateConfigPluginParams.parse(input);
     await updateConfigPlugin(payload.id, payload);

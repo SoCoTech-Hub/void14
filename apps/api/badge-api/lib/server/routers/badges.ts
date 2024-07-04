@@ -1,19 +1,21 @@
-import { getBadgeById, getBadges } from "@/lib/api/badges/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import { createBadge, deleteBadge, updateBadge } from "../api/badges/mutations";
+import { getBadgeById, getBadges } from "../api/badges/queries";
 import {
   badgeIdSchema,
   insertBadgeParams,
   updateBadgeParams,
-} from "@/lib/db/schema/badges";
-import { createBadge, deleteBadge, updateBadge } from "@/lib/api/badges/mutations";
+} from "../db/schema/badges";
+import { publicProcedure, router } from "../server/trpc";
 
 export const badgesRouter = router({
   getBadges: publicProcedure.query(async () => {
     return getBadges();
   }),
-  getBadgeById: publicProcedure.input(badgeIdSchema).query(async ({ input }) => {
-    return getBadgeById(input.id);
-  }),
+  getBadgeById: publicProcedure
+    .input(badgeIdSchema)
+    .query(async ({ input }) => {
+      return getBadgeById(input.id);
+    }),
   createBadge: publicProcedure
     .input(insertBadgeParams)
     .mutation(async ({ input }) => {

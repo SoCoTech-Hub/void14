@@ -1,19 +1,28 @@
-import { getQuestionCalculatedOptionById, getQuestionCalculatedOptions } from "@/lib/api/questionCalculatedOptions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  questionCalculatedOptionIdSchema,
+  createQuestionCalculatedOption,
+  deleteQuestionCalculatedOption,
+  updateQuestionCalculatedOption,
+} from "../api/questionCalculatedOptions/mutations";
+import {
+  getQuestionCalculatedOptionById,
+  getQuestionCalculatedOptions,
+} from "../api/questionCalculatedOptions/queries";
+import {
   insertQuestionCalculatedOptionParams,
+  questionCalculatedOptionIdSchema,
   updateQuestionCalculatedOptionParams,
-} from "@/lib/db/schema/questionCalculatedOptions";
-import { createQuestionCalculatedOption, deleteQuestionCalculatedOption, updateQuestionCalculatedOption } from "@/lib/api/questionCalculatedOptions/mutations";
+} from "../db/schema/questionCalculatedOptions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const questionCalculatedOptionsRouter = router({
   getQuestionCalculatedOptions: publicProcedure.query(async () => {
     return getQuestionCalculatedOptions();
   }),
-  getQuestionCalculatedOptionById: publicProcedure.input(questionCalculatedOptionIdSchema).query(async ({ input }) => {
-    return getQuestionCalculatedOptionById(input.id);
-  }),
+  getQuestionCalculatedOptionById: publicProcedure
+    .input(questionCalculatedOptionIdSchema)
+    .query(async ({ input }) => {
+      return getQuestionCalculatedOptionById(input.id);
+    }),
   createQuestionCalculatedOption: publicProcedure
     .input(insertQuestionCalculatedOptionParams)
     .mutation(async ({ input }) => {

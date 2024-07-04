@@ -1,4 +1,3 @@
-import { type getQtypeDdimageortextDrags } from "@/lib/api/qtypeDdimageortextDrags/queries";
 import {
   boolean,
   integer,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getQtypeDdimageortextDrags } from "../api/qtypeDdimageortextDrags/queries";
 
 export const qtypeDdimageortextDrags = pgTable(
   "qtype_ddimageortext_drags",

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGlossaryEntriesCategory,
   deleteGlossaryEntriesCategory,
   updateGlossaryEntriesCategory,
-} from "@/lib/api/glossaryEntriesCategories/mutations";
+} from "../api/glossaryEntriesCategories/mutations";
 import {
   GlossaryEntriesCategoryId,
-  NewGlossaryEntriesCategoryParams,
-  UpdateGlossaryEntriesCategoryParams,
   glossaryEntriesCategoryIdSchema,
   insertGlossaryEntriesCategoryParams,
+  NewGlossaryEntriesCategoryParams,
+  UpdateGlossaryEntriesCategoryParams,
   updateGlossaryEntriesCategoryParams,
-} from "@/lib/db/schema/glossaryEntriesCategories";
+} from "../db/schema/glossaryEntriesCategories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateGlossaryEntriesCategories = () => revalidatePath("/glossary-entries-categories");
+const revalidateGlossaryEntriesCategories = () =>
+  revalidatePath("/glossary-entries-categories");
 
-export const createGlossaryEntriesCategoryAction = async (input: NewGlossaryEntriesCategoryParams) => {
+export const createGlossaryEntriesCategoryAction = async (
+  input: NewGlossaryEntriesCategoryParams,
+) => {
   try {
     const payload = insertGlossaryEntriesCategoryParams.parse(input);
     await createGlossaryEntriesCategory(payload);
@@ -37,7 +41,9 @@ export const createGlossaryEntriesCategoryAction = async (input: NewGlossaryEntr
   }
 };
 
-export const updateGlossaryEntriesCategoryAction = async (input: UpdateGlossaryEntriesCategoryParams) => {
+export const updateGlossaryEntriesCategoryAction = async (
+  input: UpdateGlossaryEntriesCategoryParams,
+) => {
   try {
     const payload = updateGlossaryEntriesCategoryParams.parse(input);
     await updateGlossaryEntriesCategory(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateGlossaryEntriesCategoryAction = async (input: UpdateGlossaryE
   }
 };
 
-export const deleteGlossaryEntriesCategoryAction = async (input: GlossaryEntriesCategoryId) => {
+export const deleteGlossaryEntriesCategoryAction = async (
+  input: GlossaryEntriesCategoryId,
+) => {
   try {
     const payload = glossaryEntriesCategoryIdSchema.parse({ id: input });
     await deleteGlossaryEntriesCategory(payload.id);

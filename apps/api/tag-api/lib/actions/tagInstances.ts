@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createTagInstance,
   deleteTagInstance,
   updateTagInstance,
-} from "@/lib/api/tagInstances/mutations";
+} from "../api/tagInstances/mutations";
 import {
-  TagInstanceId,
-  NewTagInstanceParams,
-  UpdateTagInstanceParams,
-  tagInstanceIdSchema,
   insertTagInstanceParams,
+  NewTagInstanceParams,
+  TagInstanceId,
+  tagInstanceIdSchema,
+  UpdateTagInstanceParams,
   updateTagInstanceParams,
-} from "@/lib/db/schema/tagInstances";
+} from "../db/schema/tagInstances";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createTagInstanceAction = async (input: NewTagInstanceParams) => {
   }
 };
 
-export const updateTagInstanceAction = async (input: UpdateTagInstanceParams) => {
+export const updateTagInstanceAction = async (
+  input: UpdateTagInstanceParams,
+) => {
   try {
     const payload = updateTagInstanceParams.parse(input);
     await updateTagInstance(payload.id, payload);

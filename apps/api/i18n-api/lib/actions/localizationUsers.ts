@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createLocalizationUser,
   deleteLocalizationUser,
   updateLocalizationUser,
-} from "@/lib/api/localizationUsers/mutations";
+} from "../api/localizationUsers/mutations";
 import {
+  insertLocalizationUserParams,
   LocalizationUserId,
+  localizationUserIdSchema,
   NewLocalizationUserParams,
   UpdateLocalizationUserParams,
-  localizationUserIdSchema,
-  insertLocalizationUserParams,
   updateLocalizationUserParams,
-} from "@/lib/db/schema/localizationUsers";
+} from "../db/schema/localizationUsers";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateLocalizationUsers = () => revalidatePath("/localization-users");
 
-export const createLocalizationUserAction = async (input: NewLocalizationUserParams) => {
+export const createLocalizationUserAction = async (
+  input: NewLocalizationUserParams,
+) => {
   try {
     const payload = insertLocalizationUserParams.parse(input);
     await createLocalizationUser(payload);
@@ -37,7 +40,9 @@ export const createLocalizationUserAction = async (input: NewLocalizationUserPar
   }
 };
 
-export const updateLocalizationUserAction = async (input: UpdateLocalizationUserParams) => {
+export const updateLocalizationUserAction = async (
+  input: UpdateLocalizationUserParams,
+) => {
   try {
     const payload = updateLocalizationUserParams.parse(input);
     await updateLocalizationUser(payload.id, payload);
@@ -47,7 +52,9 @@ export const updateLocalizationUserAction = async (input: UpdateLocalizationUser
   }
 };
 
-export const deleteLocalizationUserAction = async (input: LocalizationUserId) => {
+export const deleteLocalizationUserAction = async (
+  input: LocalizationUserId,
+) => {
   try {
     const payload = localizationUserIdSchema.parse({ id: input });
     await deleteLocalizationUser(payload.id);

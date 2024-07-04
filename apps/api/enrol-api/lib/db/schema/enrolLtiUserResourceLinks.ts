@@ -1,10 +1,10 @@
-import { type getEnrolLtiUserResourceLinks } from "@/lib/api/enrolLtiUserResourceLinks/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getEnrolLtiUserResourceLinks } from "../api/enrolLtiUserResourceLinks/queries";
 import { enrolLtiResourceLinks } from "./enrolLtiResourceLinks";
 import { enrolLtiUsers } from "./enrolLtiUsers";
 

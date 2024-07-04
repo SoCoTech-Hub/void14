@@ -1,4 +1,3 @@
-import { type getLogstoreStandardLogs } from "@/lib/api/logstoreStandardLogs/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -12,6 +11,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getLogstoreStandardLogs } from "../api/logstoreStandardLogs/queries";
 
 export const logstoreStandardLogs = pgTable("logstore_standard_logs", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

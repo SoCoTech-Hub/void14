@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAnalyticsPrediction,
   deleteAnalyticsPrediction,
   updateAnalyticsPrediction,
-} from "@/lib/api/analyticsPredictions/mutations";
+} from "../api/analyticsPredictions/mutations";
 import {
   AnalyticsPredictionId,
-  NewAnalyticsPredictionParams,
-  UpdateAnalyticsPredictionParams,
   analyticsPredictionIdSchema,
   insertAnalyticsPredictionParams,
+  NewAnalyticsPredictionParams,
+  UpdateAnalyticsPredictionParams,
   updateAnalyticsPredictionParams,
-} from "@/lib/db/schema/analyticsPredictions";
+} from "../db/schema/analyticsPredictions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateAnalyticsPredictions = () => revalidatePath("/analytics-predictions");
+const revalidateAnalyticsPredictions = () =>
+  revalidatePath("/analytics-predictions");
 
-export const createAnalyticsPredictionAction = async (input: NewAnalyticsPredictionParams) => {
+export const createAnalyticsPredictionAction = async (
+  input: NewAnalyticsPredictionParams,
+) => {
   try {
     const payload = insertAnalyticsPredictionParams.parse(input);
     await createAnalyticsPrediction(payload);
@@ -37,7 +41,9 @@ export const createAnalyticsPredictionAction = async (input: NewAnalyticsPredict
   }
 };
 
-export const updateAnalyticsPredictionAction = async (input: UpdateAnalyticsPredictionParams) => {
+export const updateAnalyticsPredictionAction = async (
+  input: UpdateAnalyticsPredictionParams,
+) => {
   try {
     const payload = updateAnalyticsPredictionParams.parse(input);
     await updateAnalyticsPrediction(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateAnalyticsPredictionAction = async (input: UpdateAnalyticsPred
   }
 };
 
-export const deleteAnalyticsPredictionAction = async (input: AnalyticsPredictionId) => {
+export const deleteAnalyticsPredictionAction = async (
+  input: AnalyticsPredictionId,
+) => {
   try {
     const payload = analyticsPredictionIdSchema.parse({ id: input });
     await deleteAnalyticsPrediction(payload.id);

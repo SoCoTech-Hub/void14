@@ -1,19 +1,28 @@
-import { getWorkshopGradeById, getWorkshopGrades } from "@/lib/api/workshopGrades/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  workshopGradeIdSchema,
+  createWorkshopGrade,
+  deleteWorkshopGrade,
+  updateWorkshopGrade,
+} from "../api/workshopGrades/mutations";
+import {
+  getWorkshopGradeById,
+  getWorkshopGrades,
+} from "../api/workshopGrades/queries";
+import {
   insertWorkshopGradeParams,
   updateWorkshopGradeParams,
-} from "@/lib/db/schema/workshopGrades";
-import { createWorkshopGrade, deleteWorkshopGrade, updateWorkshopGrade } from "@/lib/api/workshopGrades/mutations";
+  workshopGradeIdSchema,
+} from "../db/schema/workshopGrades";
+import { publicProcedure, router } from "../server/trpc";
 
 export const workshopGradesRouter = router({
   getWorkshopGrades: publicProcedure.query(async () => {
     return getWorkshopGrades();
   }),
-  getWorkshopGradeById: publicProcedure.input(workshopGradeIdSchema).query(async ({ input }) => {
-    return getWorkshopGradeById(input.id);
-  }),
+  getWorkshopGradeById: publicProcedure
+    .input(workshopGradeIdSchema)
+    .query(async ({ input }) => {
+      return getWorkshopGradeById(input.id);
+    }),
   createWorkshopGrade: publicProcedure
     .input(insertWorkshopGradeParams)
     .mutation(async ({ input }) => {

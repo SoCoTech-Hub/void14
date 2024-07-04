@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createLockDb,
   deleteLockDb,
   updateLockDb,
-} from "@/lib/api/lockDbs/mutations";
+} from "../api/lockDbs/mutations";
 import {
+  insertLockDbParams,
   LockDbId,
+  lockDbIdSchema,
   NewLockDbParams,
   UpdateLockDbParams,
-  lockDbIdSchema,
-  insertLockDbParams,
   updateLockDbParams,
-} from "@/lib/db/schema/lockDbs";
+} from "../db/schema/lockDbs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

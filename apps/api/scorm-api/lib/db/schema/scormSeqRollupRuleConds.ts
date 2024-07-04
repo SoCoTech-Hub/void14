@@ -1,10 +1,10 @@
-import { type getScormSeqRollupRuleConds } from "@/lib/api/scormSeqRollupRuleConds/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getScormSeqRollupRuleConds } from "../api/scormSeqRollupRuleConds/queries";
 import { scormScoes } from "./scormScoes";
 import { scormSeqRollupRules } from "./scormSeqRollupRules";
 

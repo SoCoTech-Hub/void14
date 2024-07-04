@@ -1,4 +1,3 @@
-import { type getQtypeMatchOptions } from "@/lib/api/qtypeMatchOptions/queries";
 import {
   boolean,
   integer,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getQtypeMatchOptions } from "../api/qtypeMatchOptions/queries";
 
 export const qtypeMatchOptions = pgTable(
   "qtype_match_options",

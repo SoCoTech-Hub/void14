@@ -1,4 +1,3 @@
-import { type getScales } from "@/lib/api/scales/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getScales } from "../api/scales/queries";
 
 export const scales = pgTable("scales", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

@@ -1,9 +1,10 @@
-import { type getZooms } from "@/lib/api/zooms/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getZooms } from "../api/zooms/queries";
 
 export const zooms = pgTable("zooms", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

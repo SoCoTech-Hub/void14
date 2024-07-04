@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createToolDataprivacyPurposeRole,
   deleteToolDataprivacyPurposeRole,
   updateToolDataprivacyPurposeRole,
-} from "@/lib/api/toolDataprivacyPurposeRoles/mutations";
+} from "../api/toolDataprivacyPurposeRoles/mutations";
 import {
-  ToolDataprivacyPurposeRoleId,
-  NewToolDataprivacyPurposeRoleParams,
-  UpdateToolDataprivacyPurposeRoleParams,
-  toolDataprivacyPurposeRoleIdSchema,
   insertToolDataprivacyPurposeRoleParams,
+  NewToolDataprivacyPurposeRoleParams,
+  ToolDataprivacyPurposeRoleId,
+  toolDataprivacyPurposeRoleIdSchema,
+  UpdateToolDataprivacyPurposeRoleParams,
   updateToolDataprivacyPurposeRoleParams,
-} from "@/lib/db/schema/toolDataprivacyPurposeRoles";
+} from "../db/schema/toolDataprivacyPurposeRoles";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateToolDataprivacyPurposeRoles = () => revalidatePath("/tool-dataprivacy-purpose-roles");
+const revalidateToolDataprivacyPurposeRoles = () =>
+  revalidatePath("/tool-dataprivacy-purpose-roles");
 
-export const createToolDataprivacyPurposeRoleAction = async (input: NewToolDataprivacyPurposeRoleParams) => {
+export const createToolDataprivacyPurposeRoleAction = async (
+  input: NewToolDataprivacyPurposeRoleParams,
+) => {
   try {
     const payload = insertToolDataprivacyPurposeRoleParams.parse(input);
     await createToolDataprivacyPurposeRole(payload);
@@ -37,7 +41,9 @@ export const createToolDataprivacyPurposeRoleAction = async (input: NewToolDatap
   }
 };
 
-export const updateToolDataprivacyPurposeRoleAction = async (input: UpdateToolDataprivacyPurposeRoleParams) => {
+export const updateToolDataprivacyPurposeRoleAction = async (
+  input: UpdateToolDataprivacyPurposeRoleParams,
+) => {
   try {
     const payload = updateToolDataprivacyPurposeRoleParams.parse(input);
     await updateToolDataprivacyPurposeRole(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateToolDataprivacyPurposeRoleAction = async (input: UpdateToolDa
   }
 };
 
-export const deleteToolDataprivacyPurposeRoleAction = async (input: ToolDataprivacyPurposeRoleId) => {
+export const deleteToolDataprivacyPurposeRoleAction = async (
+  input: ToolDataprivacyPurposeRoleId,
+) => {
   try {
     const payload = toolDataprivacyPurposeRoleIdSchema.parse({ id: input });
     await deleteToolDataprivacyPurposeRole(payload.id);

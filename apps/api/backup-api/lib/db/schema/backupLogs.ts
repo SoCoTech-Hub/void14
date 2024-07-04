@@ -1,4 +1,3 @@
-import { type getBackupLogs } from "@/lib/api/backupLogs/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -13,6 +12,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getBackupLogs } from "../api/backupLogs/queries";
 
 export const backupLogs = pgTable(
   "backup_logs",

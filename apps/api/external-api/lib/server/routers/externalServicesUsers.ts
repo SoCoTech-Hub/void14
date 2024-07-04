@@ -1,19 +1,28 @@
-import { getExternalServicesUserById, getExternalServicesUsers } from "@/lib/api/externalServicesUsers/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createExternalServicesUser,
+  deleteExternalServicesUser,
+  updateExternalServicesUser,
+} from "../api/externalServicesUsers/mutations";
+import {
+  getExternalServicesUserById,
+  getExternalServicesUsers,
+} from "../api/externalServicesUsers/queries";
 import {
   externalServicesUserIdSchema,
   insertExternalServicesUserParams,
   updateExternalServicesUserParams,
-} from "@/lib/db/schema/externalServicesUsers";
-import { createExternalServicesUser, deleteExternalServicesUser, updateExternalServicesUser } from "@/lib/api/externalServicesUsers/mutations";
+} from "../db/schema/externalServicesUsers";
+import { publicProcedure, router } from "../server/trpc";
 
 export const externalServicesUsersRouter = router({
   getExternalServicesUsers: publicProcedure.query(async () => {
     return getExternalServicesUsers();
   }),
-  getExternalServicesUserById: publicProcedure.input(externalServicesUserIdSchema).query(async ({ input }) => {
-    return getExternalServicesUserById(input.id);
-  }),
+  getExternalServicesUserById: publicProcedure
+    .input(externalServicesUserIdSchema)
+    .query(async ({ input }) => {
+      return getExternalServicesUserById(input.id);
+    }),
   createExternalServicesUser: publicProcedure
     .input(insertExternalServicesUserParams)
     .mutation(async ({ input }) => {

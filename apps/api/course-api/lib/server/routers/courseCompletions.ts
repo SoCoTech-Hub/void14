@@ -1,19 +1,28 @@
-import { getCourseCompletionById, getCourseCompletions } from "@/lib/api/courseCompletions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createCourseCompletion,
+  deleteCourseCompletion,
+  updateCourseCompletion,
+} from "../api/courseCompletions/mutations";
+import {
+  getCourseCompletionById,
+  getCourseCompletions,
+} from "../api/courseCompletions/queries";
 import {
   courseCompletionIdSchema,
   insertCourseCompletionParams,
   updateCourseCompletionParams,
-} from "@/lib/db/schema/courseCompletions";
-import { createCourseCompletion, deleteCourseCompletion, updateCourseCompletion } from "@/lib/api/courseCompletions/mutations";
+} from "../db/schema/courseCompletions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const courseCompletionsRouter = router({
   getCourseCompletions: publicProcedure.query(async () => {
     return getCourseCompletions();
   }),
-  getCourseCompletionById: publicProcedure.input(courseCompletionIdSchema).query(async ({ input }) => {
-    return getCourseCompletionById(input.id);
-  }),
+  getCourseCompletionById: publicProcedure
+    .input(courseCompletionIdSchema)
+    .query(async ({ input }) => {
+      return getCourseCompletionById(input.id);
+    }),
   createCourseCompletion: publicProcedure
     .input(insertCourseCompletionParams)
     .mutation(async ({ input }) => {

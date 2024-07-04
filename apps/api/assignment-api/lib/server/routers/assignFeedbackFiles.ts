@@ -1,19 +1,28 @@
-import { getAssignFeedbackFileById, getAssignFeedbackFiles } from "@/lib/api/assignFeedbackFiles/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createAssignFeedbackFile,
+  deleteAssignFeedbackFile,
+  updateAssignFeedbackFile,
+} from "../api/assignFeedbackFiles/mutations";
+import {
+  getAssignFeedbackFileById,
+  getAssignFeedbackFiles,
+} from "../api/assignFeedbackFiles/queries";
 import {
   assignFeedbackFileIdSchema,
   insertAssignFeedbackFileParams,
   updateAssignFeedbackFileParams,
-} from "@/lib/db/schema/assignFeedbackFiles";
-import { createAssignFeedbackFile, deleteAssignFeedbackFile, updateAssignFeedbackFile } from "@/lib/api/assignFeedbackFiles/mutations";
+} from "../db/schema/assignFeedbackFiles";
+import { publicProcedure, router } from "../server/trpc";
 
 export const assignFeedbackFilesRouter = router({
   getAssignFeedbackFiles: publicProcedure.query(async () => {
     return getAssignFeedbackFiles();
   }),
-  getAssignFeedbackFileById: publicProcedure.input(assignFeedbackFileIdSchema).query(async ({ input }) => {
-    return getAssignFeedbackFileById(input.id);
-  }),
+  getAssignFeedbackFileById: publicProcedure
+    .input(assignFeedbackFileIdSchema)
+    .query(async ({ input }) => {
+      return getAssignFeedbackFileById(input.id);
+    }),
   createAssignFeedbackFile: publicProcedure
     .input(insertAssignFeedbackFileParams)
     .mutation(async ({ input }) => {

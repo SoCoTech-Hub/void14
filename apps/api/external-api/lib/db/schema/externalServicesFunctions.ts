@@ -1,9 +1,10 @@
-import { type getExternalServicesFunctions } from "@/lib/api/externalServicesFunctions/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getExternalServicesFunctions } from "../api/externalServicesFunctions/queries";
 
 export const externalServicesFunctions = pgTable(
   "external_services_functions",

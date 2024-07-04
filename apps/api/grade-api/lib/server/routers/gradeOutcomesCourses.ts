@@ -1,19 +1,28 @@
-import { getGradeOutcomesCourseById, getGradeOutcomesCourses } from "@/lib/api/gradeOutcomesCourses/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createGradeOutcomesCourse,
+  deleteGradeOutcomesCourse,
+  updateGradeOutcomesCourse,
+} from "../api/gradeOutcomesCourses/mutations";
+import {
+  getGradeOutcomesCourseById,
+  getGradeOutcomesCourses,
+} from "../api/gradeOutcomesCourses/queries";
 import {
   gradeOutcomesCourseIdSchema,
   insertGradeOutcomesCourseParams,
   updateGradeOutcomesCourseParams,
-} from "@/lib/db/schema/gradeOutcomesCourses";
-import { createGradeOutcomesCourse, deleteGradeOutcomesCourse, updateGradeOutcomesCourse } from "@/lib/api/gradeOutcomesCourses/mutations";
+} from "../db/schema/gradeOutcomesCourses";
+import { publicProcedure, router } from "../server/trpc";
 
 export const gradeOutcomesCoursesRouter = router({
   getGradeOutcomesCourses: publicProcedure.query(async () => {
     return getGradeOutcomesCourses();
   }),
-  getGradeOutcomesCourseById: publicProcedure.input(gradeOutcomesCourseIdSchema).query(async ({ input }) => {
-    return getGradeOutcomesCourseById(input.id);
-  }),
+  getGradeOutcomesCourseById: publicProcedure
+    .input(gradeOutcomesCourseIdSchema)
+    .query(async ({ input }) => {
+      return getGradeOutcomesCourseById(input.id);
+    }),
   createGradeOutcomesCourse: publicProcedure
     .input(insertGradeOutcomesCourseParams)
     .mutation(async ({ input }) => {

@@ -1,9 +1,10 @@
-import { type getUserPreferences } from "@/lib/api/userPreferences/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getUserPreferences } from "../api/userPreferences/queries";
 
 export const userPreferences = pgTable("user_preferences", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

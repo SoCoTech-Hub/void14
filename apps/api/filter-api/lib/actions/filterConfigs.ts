@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createFilterConfig,
   deleteFilterConfig,
   updateFilterConfig,
-} from "@/lib/api/filterConfigs/mutations";
+} from "../api/filterConfigs/mutations";
 import {
   FilterConfigId,
-  NewFilterConfigParams,
-  UpdateFilterConfigParams,
   filterConfigIdSchema,
   insertFilterConfigParams,
+  NewFilterConfigParams,
+  UpdateFilterConfigParams,
   updateFilterConfigParams,
-} from "@/lib/db/schema/filterConfigs";
+} from "../db/schema/filterConfigs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateFilterConfigs = () => revalidatePath("/filter-configs");
 
-export const createFilterConfigAction = async (input: NewFilterConfigParams) => {
+export const createFilterConfigAction = async (
+  input: NewFilterConfigParams,
+) => {
   try {
     const payload = insertFilterConfigParams.parse(input);
     await createFilterConfig(payload);
@@ -37,7 +40,9 @@ export const createFilterConfigAction = async (input: NewFilterConfigParams) => 
   }
 };
 
-export const updateFilterConfigAction = async (input: UpdateFilterConfigParams) => {
+export const updateFilterConfigAction = async (
+  input: UpdateFilterConfigParams,
+) => {
   try {
     const payload = updateFilterConfigParams.parse(input);
     await updateFilterConfig(payload.id, payload);

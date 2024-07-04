@@ -1,4 +1,3 @@
-import { type getQuizaccessSebTemplates } from "@/lib/api/quizaccessSebTemplates/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -13,6 +12,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getQuizaccessSebTemplates } from "../api/quizaccessSebTemplates/queries";
 
 export const quizaccessSebTemplates = pgTable(
   "quizaccess_seb_templates",

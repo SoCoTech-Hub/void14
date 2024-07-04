@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBadgeCriteriaParam,
   deleteBadgeCriteriaParam,
   updateBadgeCriteriaParam,
-} from "@/lib/api/badgeCriteriaParams/mutations";
+} from "../api/badgeCriteriaParams/mutations";
 import {
   BadgeCriteriaParamId,
-  NewBadgeCriteriaParamParams,
-  UpdateBadgeCriteriaParamParams,
   badgeCriteriaParamIdSchema,
   insertBadgeCriteriaParamParams,
+  NewBadgeCriteriaParamParams,
+  UpdateBadgeCriteriaParamParams,
   updateBadgeCriteriaParamParams,
-} from "@/lib/db/schema/badgeCriteriaParams";
+} from "../db/schema/badgeCriteriaParams";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateBadgeCriteriaParams = () => revalidatePath("/badge-criteria-params");
+const revalidateBadgeCriteriaParams = () =>
+  revalidatePath("/badge-criteria-params");
 
-export const createBadgeCriteriaParamAction = async (input: NewBadgeCriteriaParamParams) => {
+export const createBadgeCriteriaParamAction = async (
+  input: NewBadgeCriteriaParamParams,
+) => {
   try {
     const payload = insertBadgeCriteriaParamParams.parse(input);
     await createBadgeCriteriaParam(payload);
@@ -37,7 +41,9 @@ export const createBadgeCriteriaParamAction = async (input: NewBadgeCriteriaPara
   }
 };
 
-export const updateBadgeCriteriaParamAction = async (input: UpdateBadgeCriteriaParamParams) => {
+export const updateBadgeCriteriaParamAction = async (
+  input: UpdateBadgeCriteriaParamParams,
+) => {
   try {
     const payload = updateBadgeCriteriaParamParams.parse(input);
     await updateBadgeCriteriaParam(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateBadgeCriteriaParamAction = async (input: UpdateBadgeCriteriaP
   }
 };
 
-export const deleteBadgeCriteriaParamAction = async (input: BadgeCriteriaParamId) => {
+export const deleteBadgeCriteriaParamAction = async (
+  input: BadgeCriteriaParamId,
+) => {
   try {
     const payload = badgeCriteriaParamIdSchema.parse({ id: input });
     await deleteBadgeCriteriaParam(payload.id);

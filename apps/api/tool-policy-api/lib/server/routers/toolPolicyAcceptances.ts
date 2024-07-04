@@ -1,19 +1,28 @@
-import { getToolPolicyAcceptanceById, getToolPolicyAcceptances } from "@/lib/api/toolPolicyAcceptances/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  toolPolicyAcceptanceIdSchema,
+  createToolPolicyAcceptance,
+  deleteToolPolicyAcceptance,
+  updateToolPolicyAcceptance,
+} from "../api/toolPolicyAcceptances/mutations";
+import {
+  getToolPolicyAcceptanceById,
+  getToolPolicyAcceptances,
+} from "../api/toolPolicyAcceptances/queries";
+import {
   insertToolPolicyAcceptanceParams,
+  toolPolicyAcceptanceIdSchema,
   updateToolPolicyAcceptanceParams,
-} from "@/lib/db/schema/toolPolicyAcceptances";
-import { createToolPolicyAcceptance, deleteToolPolicyAcceptance, updateToolPolicyAcceptance } from "@/lib/api/toolPolicyAcceptances/mutations";
+} from "../db/schema/toolPolicyAcceptances";
+import { publicProcedure, router } from "../server/trpc";
 
 export const toolPolicyAcceptancesRouter = router({
   getToolPolicyAcceptances: publicProcedure.query(async () => {
     return getToolPolicyAcceptances();
   }),
-  getToolPolicyAcceptanceById: publicProcedure.input(toolPolicyAcceptanceIdSchema).query(async ({ input }) => {
-    return getToolPolicyAcceptanceById(input.id);
-  }),
+  getToolPolicyAcceptanceById: publicProcedure
+    .input(toolPolicyAcceptanceIdSchema)
+    .query(async ({ input }) => {
+      return getToolPolicyAcceptanceById(input.id);
+    }),
   createToolPolicyAcceptance: publicProcedure
     .input(insertToolPolicyAcceptanceParams)
     .mutation(async ({ input }) => {

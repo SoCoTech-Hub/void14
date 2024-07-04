@@ -1,19 +1,28 @@
-import { getBursaryResponseById, getBursaryResponses } from "@/lib/api/bursaryResponses/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createBursaryResponse,
+  deleteBursaryResponse,
+  updateBursaryResponse,
+} from "../api/bursaryResponses/mutations";
+import {
+  getBursaryResponseById,
+  getBursaryResponses,
+} from "../api/bursaryResponses/queries";
 import {
   bursaryResponseIdSchema,
   insertBursaryResponseParams,
   updateBursaryResponseParams,
-} from "@/lib/db/schema/bursaryResponses";
-import { createBursaryResponse, deleteBursaryResponse, updateBursaryResponse } from "@/lib/api/bursaryResponses/mutations";
+} from "../db/schema/bursaryResponses";
+import { publicProcedure, router } from "../server/trpc";
 
 export const bursaryResponsesRouter = router({
   getBursaryResponses: publicProcedure.query(async () => {
     return getBursaryResponses();
   }),
-  getBursaryResponseById: publicProcedure.input(bursaryResponseIdSchema).query(async ({ input }) => {
-    return getBursaryResponseById(input.id);
-  }),
+  getBursaryResponseById: publicProcedure
+    .input(bursaryResponseIdSchema)
+    .query(async ({ input }) => {
+      return getBursaryResponseById(input.id);
+    }),
   createBursaryResponse: publicProcedure
     .input(insertBursaryResponseParams)
     .mutation(async ({ input }) => {

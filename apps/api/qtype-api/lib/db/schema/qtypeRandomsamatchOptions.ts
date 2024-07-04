@@ -1,4 +1,3 @@
-import { type getQtypeRandomsamatchOptions } from "@/lib/api/qtypeRandomsamatchOptions/queries";
 import {
   boolean,
   integer,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getQtypeRandomsamatchOptions } from "../api/qtypeRandomsamatchOptions/queries";
 
 export const qtypeRandomsamatchOptions = pgTable(
   "qtype_randomsamatch_options",

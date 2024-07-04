@@ -1,4 +1,3 @@
-import { type getOauth2RefreshTokens } from "@/lib/api/oauth2RefreshTokens/queries";
 import { sql } from "drizzle-orm";
 import {
   pgTable,
@@ -12,6 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getOauth2RefreshTokens } from "../api/oauth2RefreshTokens/queries";
 import { oauth2Issuers } from "./oauth2Issuers";
 
 export const oauth2RefreshTokens = pgTable(

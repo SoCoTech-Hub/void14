@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCohortMember,
   deleteCohortMember,
   updateCohortMember,
-} from "@/lib/api/cohortMembers/mutations";
+} from "../api/cohortMembers/mutations";
 import {
   CohortMemberId,
-  NewCohortMemberParams,
-  UpdateCohortMemberParams,
   cohortMemberIdSchema,
   insertCohortMemberParams,
+  NewCohortMemberParams,
+  UpdateCohortMemberParams,
   updateCohortMemberParams,
-} from "@/lib/db/schema/cohortMembers";
+} from "../db/schema/cohortMembers";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateCohortMembers = () => revalidatePath("/cohort-members");
 
-export const createCohortMemberAction = async (input: NewCohortMemberParams) => {
+export const createCohortMemberAction = async (
+  input: NewCohortMemberParams,
+) => {
   try {
     const payload = insertCohortMemberParams.parse(input);
     await createCohortMember(payload);
@@ -37,7 +40,9 @@ export const createCohortMemberAction = async (input: NewCohortMemberParams) => 
   }
 };
 
-export const updateCohortMemberAction = async (input: UpdateCohortMemberParams) => {
+export const updateCohortMemberAction = async (
+  input: UpdateCohortMemberParams,
+) => {
   try {
     const payload = updateCohortMemberParams.parse(input);
     await updateCohortMember(payload.id, payload);

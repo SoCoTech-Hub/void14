@@ -1,4 +1,3 @@
-import { type getCompetencyTemplates } from "@/lib/api/competencyTemplates/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -12,6 +11,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getCompetencyTemplates } from "../api/competencyTemplates/queries";
 
 export const competencyTemplates = pgTable("competency_templates", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

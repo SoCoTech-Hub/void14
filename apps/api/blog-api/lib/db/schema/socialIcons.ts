@@ -1,9 +1,10 @@
-import type { getSocialIcons } from "@/lib/api/socialIcons/queries";
 import type { z } from "zod";
 import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 
 import { nanoid } from "@soco/utils";
+
+import type { getSocialIcons } from "../api/socialIcons/queries";
 
 export const socialIcons = pgTable(
   "social_icons",

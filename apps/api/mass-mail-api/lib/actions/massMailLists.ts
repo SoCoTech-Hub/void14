@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMassMailList,
   deleteMassMailList,
   updateMassMailList,
-} from "@/lib/api/massMailLists/mutations";
+} from "../api/massMailLists/mutations";
 import {
+  insertMassMailListParams,
   MassMailListId,
+  massMailListIdSchema,
   NewMassMailListParams,
   UpdateMassMailListParams,
-  massMailListIdSchema,
-  insertMassMailListParams,
   updateMassMailListParams,
-} from "@/lib/db/schema/massMailLists";
+} from "../db/schema/massMailLists";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateMassMailLists = () => revalidatePath("/mass-mail-lists");
 
-export const createMassMailListAction = async (input: NewMassMailListParams) => {
+export const createMassMailListAction = async (
+  input: NewMassMailListParams,
+) => {
   try {
     const payload = insertMassMailListParams.parse(input);
     await createMassMailList(payload);
@@ -37,7 +40,9 @@ export const createMassMailListAction = async (input: NewMassMailListParams) => 
   }
 };
 
-export const updateMassMailListAction = async (input: UpdateMassMailListParams) => {
+export const updateMassMailListAction = async (
+  input: UpdateMassMailListParams,
+) => {
   try {
     const payload = updateMassMailListParams.parse(input);
     await updateMassMailList(payload.id, payload);

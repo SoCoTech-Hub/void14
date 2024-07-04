@@ -1,9 +1,10 @@
-import { type getFeedbackValuetmps } from "@/lib/api/feedbackValuetmps/queries";
 import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getFeedbackValuetmps } from "../api/feedbackValuetmps/queries";
 
 export const feedbackValuetmps = pgTable("feedback_valuetmps", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

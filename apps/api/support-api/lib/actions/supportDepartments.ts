@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createSupportDepartment,
   deleteSupportDepartment,
   updateSupportDepartment,
-} from "@/lib/api/supportDepartments/mutations";
+} from "../api/supportDepartments/mutations";
 import {
-  SupportDepartmentId,
-  NewSupportDepartmentParams,
-  UpdateSupportDepartmentParams,
-  supportDepartmentIdSchema,
   insertSupportDepartmentParams,
+  NewSupportDepartmentParams,
+  SupportDepartmentId,
+  supportDepartmentIdSchema,
+  UpdateSupportDepartmentParams,
   updateSupportDepartmentParams,
-} from "@/lib/db/schema/supportDepartments";
+} from "../db/schema/supportDepartments";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateSupportDepartments = () => revalidatePath("/support-departments");
+const revalidateSupportDepartments = () =>
+  revalidatePath("/support-departments");
 
-export const createSupportDepartmentAction = async (input: NewSupportDepartmentParams) => {
+export const createSupportDepartmentAction = async (
+  input: NewSupportDepartmentParams,
+) => {
   try {
     const payload = insertSupportDepartmentParams.parse(input);
     await createSupportDepartment(payload);
@@ -37,7 +41,9 @@ export const createSupportDepartmentAction = async (input: NewSupportDepartmentP
   }
 };
 
-export const updateSupportDepartmentAction = async (input: UpdateSupportDepartmentParams) => {
+export const updateSupportDepartmentAction = async (
+  input: UpdateSupportDepartmentParams,
+) => {
   try {
     const payload = updateSupportDepartmentParams.parse(input);
     await updateSupportDepartment(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateSupportDepartmentAction = async (input: UpdateSupportDepartme
   }
 };
 
-export const deleteSupportDepartmentAction = async (input: SupportDepartmentId) => {
+export const deleteSupportDepartmentAction = async (
+  input: SupportDepartmentId,
+) => {
   try {
     const payload = supportDepartmentIdSchema.parse({ id: input });
     await deleteSupportDepartment(payload.id);

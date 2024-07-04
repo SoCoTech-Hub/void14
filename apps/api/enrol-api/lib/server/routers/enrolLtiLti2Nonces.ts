@@ -1,19 +1,28 @@
-import { getEnrolLtiLti2NonceById, getEnrolLtiLti2Nonces } from "@/lib/api/enrolLtiLti2Nonces/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createEnrolLtiLti2Nonce,
+  deleteEnrolLtiLti2Nonce,
+  updateEnrolLtiLti2Nonce,
+} from "../api/enrolLtiLti2Nonces/mutations";
+import {
+  getEnrolLtiLti2NonceById,
+  getEnrolLtiLti2Nonces,
+} from "../api/enrolLtiLti2Nonces/queries";
 import {
   enrolLtiLti2NonceIdSchema,
   insertEnrolLtiLti2NonceParams,
   updateEnrolLtiLti2NonceParams,
-} from "@/lib/db/schema/enrolLtiLti2Nonces";
-import { createEnrolLtiLti2Nonce, deleteEnrolLtiLti2Nonce, updateEnrolLtiLti2Nonce } from "@/lib/api/enrolLtiLti2Nonces/mutations";
+} from "../db/schema/enrolLtiLti2Nonces";
+import { publicProcedure, router } from "../server/trpc";
 
 export const enrolLtiLti2NoncesRouter = router({
   getEnrolLtiLti2Nonces: publicProcedure.query(async () => {
     return getEnrolLtiLti2Nonces();
   }),
-  getEnrolLtiLti2NonceById: publicProcedure.input(enrolLtiLti2NonceIdSchema).query(async ({ input }) => {
-    return getEnrolLtiLti2NonceById(input.id);
-  }),
+  getEnrolLtiLti2NonceById: publicProcedure
+    .input(enrolLtiLti2NonceIdSchema)
+    .query(async ({ input }) => {
+      return getEnrolLtiLti2NonceById(input.id);
+    }),
   createEnrolLtiLti2Nonce: publicProcedure
     .input(insertEnrolLtiLti2NonceParams)
     .mutation(async ({ input }) => {

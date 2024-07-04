@@ -1,4 +1,3 @@
-import { type getMnetServiceEnrolCourses } from "@/lib/api/mnetServiceEnrolCourses/queries";
 import {
   integer,
   pgTable,
@@ -11,6 +10,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getMnetServiceEnrolCourses } from "../api/mnetServiceEnrolCourses/queries";
 import { mnetHosts } from "./mnetHosts";
 
 export const mnetServiceEnrolCourses = pgTable(

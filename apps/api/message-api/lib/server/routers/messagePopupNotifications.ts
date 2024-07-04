@@ -1,19 +1,28 @@
-import { getMessagePopupNotificationById, getMessagePopupNotifications } from "@/lib/api/messagePopupNotifications/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  messagePopupNotificationIdSchema,
+  createMessagePopupNotification,
+  deleteMessagePopupNotification,
+  updateMessagePopupNotification,
+} from "../api/messagePopupNotifications/mutations";
+import {
+  getMessagePopupNotificationById,
+  getMessagePopupNotifications,
+} from "../api/messagePopupNotifications/queries";
+import {
   insertMessagePopupNotificationParams,
+  messagePopupNotificationIdSchema,
   updateMessagePopupNotificationParams,
-} from "@/lib/db/schema/messagePopupNotifications";
-import { createMessagePopupNotification, deleteMessagePopupNotification, updateMessagePopupNotification } from "@/lib/api/messagePopupNotifications/mutations";
+} from "../db/schema/messagePopupNotifications";
+import { publicProcedure, router } from "../server/trpc";
 
 export const messagePopupNotificationsRouter = router({
   getMessagePopupNotifications: publicProcedure.query(async () => {
     return getMessagePopupNotifications();
   }),
-  getMessagePopupNotificationById: publicProcedure.input(messagePopupNotificationIdSchema).query(async ({ input }) => {
-    return getMessagePopupNotificationById(input.id);
-  }),
+  getMessagePopupNotificationById: publicProcedure
+    .input(messagePopupNotificationIdSchema)
+    .query(async ({ input }) => {
+      return getMessagePopupNotificationById(input.id);
+    }),
   createMessagePopupNotification: publicProcedure
     .input(insertMessagePopupNotificationParams)
     .mutation(async ({ input }) => {

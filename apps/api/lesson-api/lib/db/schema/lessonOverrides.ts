@@ -1,10 +1,10 @@
-import { type getLessonOverrides } from "@/lib/api/lessonOverrides/queries";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getLessonOverrides } from "../api/lessonOverrides/queries";
 import { lessons } from "./lessons";
 
 export const lessonOverrides = pgTable("lesson_overrides", {

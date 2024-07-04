@@ -1,4 +1,3 @@
-import { type getBursaryResponses } from "@/lib/api/bursaryResponses/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -6,6 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getBursaryResponses } from "../api/bursaryResponses/queries";
 import { bursaries } from "./bursaries";
 
 export const bursaryResponses = pgTable("bursary_responses", {

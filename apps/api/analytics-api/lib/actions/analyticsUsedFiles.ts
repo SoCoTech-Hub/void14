@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAnalyticsUsedFile,
   deleteAnalyticsUsedFile,
   updateAnalyticsUsedFile,
-} from "@/lib/api/analyticsUsedFiles/mutations";
+} from "../api/analyticsUsedFiles/mutations";
 import {
   AnalyticsUsedFileId,
-  NewAnalyticsUsedFileParams,
-  UpdateAnalyticsUsedFileParams,
   analyticsUsedFileIdSchema,
   insertAnalyticsUsedFileParams,
+  NewAnalyticsUsedFileParams,
+  UpdateAnalyticsUsedFileParams,
   updateAnalyticsUsedFileParams,
-} from "@/lib/db/schema/analyticsUsedFiles";
+} from "../db/schema/analyticsUsedFiles";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateAnalyticsUsedFiles = () => revalidatePath("/analytics-used-files");
+const revalidateAnalyticsUsedFiles = () =>
+  revalidatePath("/analytics-used-files");
 
-export const createAnalyticsUsedFileAction = async (input: NewAnalyticsUsedFileParams) => {
+export const createAnalyticsUsedFileAction = async (
+  input: NewAnalyticsUsedFileParams,
+) => {
   try {
     const payload = insertAnalyticsUsedFileParams.parse(input);
     await createAnalyticsUsedFile(payload);
@@ -37,7 +41,9 @@ export const createAnalyticsUsedFileAction = async (input: NewAnalyticsUsedFileP
   }
 };
 
-export const updateAnalyticsUsedFileAction = async (input: UpdateAnalyticsUsedFileParams) => {
+export const updateAnalyticsUsedFileAction = async (
+  input: UpdateAnalyticsUsedFileParams,
+) => {
   try {
     const payload = updateAnalyticsUsedFileParams.parse(input);
     await updateAnalyticsUsedFile(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateAnalyticsUsedFileAction = async (input: UpdateAnalyticsUsedFi
   }
 };
 
-export const deleteAnalyticsUsedFileAction = async (input: AnalyticsUsedFileId) => {
+export const deleteAnalyticsUsedFileAction = async (
+  input: AnalyticsUsedFileId,
+) => {
   try {
     const payload = analyticsUsedFileIdSchema.parse({ id: input });
     await deleteAnalyticsUsedFile(payload.id);

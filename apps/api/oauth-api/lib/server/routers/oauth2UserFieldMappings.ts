@@ -1,19 +1,28 @@
-import { getOauth2UserFieldMappingById, getOauth2UserFieldMappings } from "@/lib/api/oauth2UserFieldMappings/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  oauth2UserFieldMappingIdSchema,
+  createOauth2UserFieldMapping,
+  deleteOauth2UserFieldMapping,
+  updateOauth2UserFieldMapping,
+} from "../api/oauth2UserFieldMappings/mutations";
+import {
+  getOauth2UserFieldMappingById,
+  getOauth2UserFieldMappings,
+} from "../api/oauth2UserFieldMappings/queries";
+import {
   insertOauth2UserFieldMappingParams,
+  oauth2UserFieldMappingIdSchema,
   updateOauth2UserFieldMappingParams,
-} from "@/lib/db/schema/oauth2UserFieldMappings";
-import { createOauth2UserFieldMapping, deleteOauth2UserFieldMapping, updateOauth2UserFieldMapping } from "@/lib/api/oauth2UserFieldMappings/mutations";
+} from "../db/schema/oauth2UserFieldMappings";
+import { publicProcedure, router } from "../server/trpc";
 
 export const oauth2UserFieldMappingsRouter = router({
   getOauth2UserFieldMappings: publicProcedure.query(async () => {
     return getOauth2UserFieldMappings();
   }),
-  getOauth2UserFieldMappingById: publicProcedure.input(oauth2UserFieldMappingIdSchema).query(async ({ input }) => {
-    return getOauth2UserFieldMappingById(input.id);
-  }),
+  getOauth2UserFieldMappingById: publicProcedure
+    .input(oauth2UserFieldMappingIdSchema)
+    .query(async ({ input }) => {
+      return getOauth2UserFieldMappingById(input.id);
+    }),
   createOauth2UserFieldMapping: publicProcedure
     .input(insertOauth2UserFieldMappingParams)
     .mutation(async ({ input }) => {

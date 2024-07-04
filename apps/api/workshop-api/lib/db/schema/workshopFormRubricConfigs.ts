@@ -1,10 +1,10 @@
-import { type getWorkshopFormRubricConfigs } from "@/lib/api/workshopFormRubricConfigs/queries";
 import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getWorkshopFormRubricConfigs } from "../api/workshopFormRubricConfigs/queries";
 import { workshops } from "./workshops";
 
 export const workshopFormRubricConfigs = pgTable(

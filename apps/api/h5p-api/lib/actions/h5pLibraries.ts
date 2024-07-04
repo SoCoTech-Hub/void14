@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createH5pLibrary,
   deleteH5pLibrary,
   updateH5pLibrary,
-} from "@/lib/api/h5pLibraries/mutations";
+} from "../api/h5pLibraries/mutations";
 import {
   H5pLibraryId,
-  NewH5pLibraryParams,
-  UpdateH5pLibraryParams,
   h5pLibraryIdSchema,
   insertH5pLibraryParams,
+  NewH5pLibraryParams,
+  UpdateH5pLibraryParams,
   updateH5pLibraryParams,
-} from "@/lib/db/schema/h5pLibraries";
+} from "../db/schema/h5pLibraries";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

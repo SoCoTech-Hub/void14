@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAssignGrade,
   deleteAssignGrade,
   updateAssignGrade,
-} from "@/lib/api/assignGrades/mutations";
+} from "../api/assignGrades/mutations";
 import {
   AssignGradeId,
-  NewAssignGradeParams,
-  UpdateAssignGradeParams,
   assignGradeIdSchema,
   insertAssignGradeParams,
+  NewAssignGradeParams,
+  UpdateAssignGradeParams,
   updateAssignGradeParams,
-} from "@/lib/db/schema/assignGrades";
+} from "../db/schema/assignGrades";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createAssignGradeAction = async (input: NewAssignGradeParams) => {
   }
 };
 
-export const updateAssignGradeAction = async (input: UpdateAssignGradeParams) => {
+export const updateAssignGradeAction = async (
+  input: UpdateAssignGradeParams,
+) => {
   try {
     const payload = updateAssignGradeParams.parse(input);
     await updateAssignGrade(payload.id, payload);

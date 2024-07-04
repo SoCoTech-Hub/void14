@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createScormSeqObjective,
   deleteScormSeqObjective,
   updateScormSeqObjective,
-} from "@/lib/api/scormSeqObjectives/mutations";
+} from "../api/scormSeqObjectives/mutations";
 import {
-  ScormSeqObjectiveId,
-  NewScormSeqObjectiveParams,
-  UpdateScormSeqObjectiveParams,
-  scormSeqObjectiveIdSchema,
   insertScormSeqObjectiveParams,
+  NewScormSeqObjectiveParams,
+  ScormSeqObjectiveId,
+  scormSeqObjectiveIdSchema,
+  UpdateScormSeqObjectiveParams,
   updateScormSeqObjectiveParams,
-} from "@/lib/db/schema/scormSeqObjectives";
+} from "../db/schema/scormSeqObjectives";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateScormSeqObjectives = () => revalidatePath("/scorm-seq-objectives");
+const revalidateScormSeqObjectives = () =>
+  revalidatePath("/scorm-seq-objectives");
 
-export const createScormSeqObjectiveAction = async (input: NewScormSeqObjectiveParams) => {
+export const createScormSeqObjectiveAction = async (
+  input: NewScormSeqObjectiveParams,
+) => {
   try {
     const payload = insertScormSeqObjectiveParams.parse(input);
     await createScormSeqObjective(payload);
@@ -37,7 +41,9 @@ export const createScormSeqObjectiveAction = async (input: NewScormSeqObjectiveP
   }
 };
 
-export const updateScormSeqObjectiveAction = async (input: UpdateScormSeqObjectiveParams) => {
+export const updateScormSeqObjectiveAction = async (
+  input: UpdateScormSeqObjectiveParams,
+) => {
   try {
     const payload = updateScormSeqObjectiveParams.parse(input);
     await updateScormSeqObjective(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateScormSeqObjectiveAction = async (input: UpdateScormSeqObjecti
   }
 };
 
-export const deleteScormSeqObjectiveAction = async (input: ScormSeqObjectiveId) => {
+export const deleteScormSeqObjectiveAction = async (
+  input: ScormSeqObjectiveId,
+) => {
   try {
     const payload = scormSeqObjectiveIdSchema.parse({ id: input });
     await deleteScormSeqObjective(payload.id);

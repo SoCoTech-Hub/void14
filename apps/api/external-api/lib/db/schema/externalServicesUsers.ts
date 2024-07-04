@@ -1,10 +1,11 @@
-import { type getExternalServicesUsers } from "@/lib/api/externalServicesUsers/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getExternalServicesUsers } from "../api/externalServicesUsers/queries";
 
 export const externalServicesUsers = pgTable("external_services_users", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

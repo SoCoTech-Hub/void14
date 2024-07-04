@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createExternalFunction,
   deleteExternalFunction,
   updateExternalFunction,
-} from "@/lib/api/externalFunctions/mutations";
+} from "../api/externalFunctions/mutations";
 import {
   ExternalFunctionId,
-  NewExternalFunctionParams,
-  UpdateExternalFunctionParams,
   externalFunctionIdSchema,
   insertExternalFunctionParams,
+  NewExternalFunctionParams,
+  UpdateExternalFunctionParams,
   updateExternalFunctionParams,
-} from "@/lib/db/schema/externalFunctions";
+} from "../db/schema/externalFunctions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateExternalFunctions = () => revalidatePath("/external-functions");
 
-export const createExternalFunctionAction = async (input: NewExternalFunctionParams) => {
+export const createExternalFunctionAction = async (
+  input: NewExternalFunctionParams,
+) => {
   try {
     const payload = insertExternalFunctionParams.parse(input);
     await createExternalFunction(payload);
@@ -37,7 +40,9 @@ export const createExternalFunctionAction = async (input: NewExternalFunctionPar
   }
 };
 
-export const updateExternalFunctionAction = async (input: UpdateExternalFunctionParams) => {
+export const updateExternalFunctionAction = async (
+  input: UpdateExternalFunctionParams,
+) => {
   try {
     const payload = updateExternalFunctionParams.parse(input);
     await updateExternalFunction(payload.id, payload);
@@ -47,7 +52,9 @@ export const updateExternalFunctionAction = async (input: UpdateExternalFunction
   }
 };
 
-export const deleteExternalFunctionAction = async (input: ExternalFunctionId) => {
+export const deleteExternalFunctionAction = async (
+  input: ExternalFunctionId,
+) => {
   try {
     const payload = externalFunctionIdSchema.parse({ id: input });
     await deleteExternalFunction(payload.id);

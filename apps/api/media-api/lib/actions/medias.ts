@@ -1,19 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
+import { createMedia, deleteMedia, updateMedia } from "../api/medias/mutations";
 import {
-  createMedia,
-  deleteMedia,
-  updateMedia,
-} from "@/lib/api/medias/mutations";
-import {
+  insertMediaParams,
   MediaId,
+  mediaIdSchema,
   NewMediaParams,
   UpdateMediaParams,
-  mediaIdSchema,
-  insertMediaParams,
   updateMediaParams,
-} from "@/lib/db/schema/medias";
+} from "../db/schema/medias";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

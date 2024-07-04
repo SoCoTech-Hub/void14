@@ -1,9 +1,10 @@
-import { type getMessageinboundHandlers } from "@/lib/api/messageinboundHandlers/queries";
 import { boolean, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getMessageinboundHandlers } from "../api/messageinboundHandlers/queries";
 
 export const messageinboundHandlers = pgTable("messageinbound_handlers", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

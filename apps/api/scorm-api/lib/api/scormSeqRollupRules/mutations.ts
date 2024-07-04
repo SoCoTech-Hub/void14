@@ -1,19 +1,26 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  ScormSeqRollupRuleId, 
-  NewScormSeqRollupRuleParams,
-  UpdateScormSeqRollupRuleParams, 
-  updateScormSeqRollupRuleSchema,
-  insertScormSeqRollupRuleSchema, 
-  scormSeqRollupRules,
-  scormSeqRollupRuleIdSchema 
-} from "@/lib/db/schema/scormSeqRollupRules";
 
-export const createScormSeqRollupRule = async (scormSeqRollupRule: NewScormSeqRollupRuleParams) => {
-  const newScormSeqRollupRule = insertScormSeqRollupRuleSchema.parse(scormSeqRollupRule);
+import { db } from "../db/index";
+import {
+  insertScormSeqRollupRuleSchema,
+  NewScormSeqRollupRuleParams,
+  ScormSeqRollupRuleId,
+  scormSeqRollupRuleIdSchema,
+  scormSeqRollupRules,
+  UpdateScormSeqRollupRuleParams,
+  updateScormSeqRollupRuleSchema,
+} from "../db/schema/scormSeqRollupRules";
+
+export const createScormSeqRollupRule = async (
+  scormSeqRollupRule: NewScormSeqRollupRuleParams,
+) => {
+  const newScormSeqRollupRule =
+    insertScormSeqRollupRuleSchema.parse(scormSeqRollupRule);
   try {
-    const [s] =  await db.insert(scormSeqRollupRules).values(newScormSeqRollupRule).returning();
+    const [s] = await db
+      .insert(scormSeqRollupRules)
+      .values(newScormSeqRollupRule)
+      .returning();
     return { scormSeqRollupRule: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,19 @@ export const createScormSeqRollupRule = async (scormSeqRollupRule: NewScormSeqRo
   }
 };
 
-export const updateScormSeqRollupRule = async (id: ScormSeqRollupRuleId, scormSeqRollupRule: UpdateScormSeqRollupRuleParams) => {
+export const updateScormSeqRollupRule = async (
+  id: ScormSeqRollupRuleId,
+  scormSeqRollupRule: UpdateScormSeqRollupRuleParams,
+) => {
   const { id: scormSeqRollupRuleId } = scormSeqRollupRuleIdSchema.parse({ id });
-  const newScormSeqRollupRule = updateScormSeqRollupRuleSchema.parse(scormSeqRollupRule);
+  const newScormSeqRollupRule =
+    updateScormSeqRollupRuleSchema.parse(scormSeqRollupRule);
   try {
-    const [s] =  await db
-     .update(scormSeqRollupRules)
-     .set(newScormSeqRollupRule)
-     .where(eq(scormSeqRollupRules.id, scormSeqRollupRuleId!))
-     .returning();
+    const [s] = await db
+      .update(scormSeqRollupRules)
+      .set(newScormSeqRollupRule)
+      .where(eq(scormSeqRollupRules.id, scormSeqRollupRuleId!))
+      .returning();
     return { scormSeqRollupRule: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +53,10 @@ export const updateScormSeqRollupRule = async (id: ScormSeqRollupRuleId, scormSe
 export const deleteScormSeqRollupRule = async (id: ScormSeqRollupRuleId) => {
   const { id: scormSeqRollupRuleId } = scormSeqRollupRuleIdSchema.parse({ id });
   try {
-    const [s] =  await db.delete(scormSeqRollupRules).where(eq(scormSeqRollupRules.id, scormSeqRollupRuleId!))
-    .returning();
+    const [s] = await db
+      .delete(scormSeqRollupRules)
+      .where(eq(scormSeqRollupRules.id, scormSeqRollupRuleId!))
+      .returning();
     return { scormSeqRollupRule: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +64,3 @@ export const deleteScormSeqRollupRule = async (id: ScormSeqRollupRuleId) => {
     throw { error: message };
   }
 };
-

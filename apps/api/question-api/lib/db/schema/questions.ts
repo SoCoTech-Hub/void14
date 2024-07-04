@@ -1,4 +1,3 @@
-import { type getQuestions } from "@/lib/api/questions/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -13,6 +12,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getQuestions } from "../api/questions/queries";
 
 export const questions = pgTable(
   "questions",

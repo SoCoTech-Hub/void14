@@ -1,19 +1,28 @@
-import { getSurveyQuestionById, getSurveyQuestions } from "@/lib/api/surveyQuestions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  surveyQuestionIdSchema,
+  createSurveyQuestion,
+  deleteSurveyQuestion,
+  updateSurveyQuestion,
+} from "../api/surveyQuestions/mutations";
+import {
+  getSurveyQuestionById,
+  getSurveyQuestions,
+} from "../api/surveyQuestions/queries";
+import {
   insertSurveyQuestionParams,
+  surveyQuestionIdSchema,
   updateSurveyQuestionParams,
-} from "@/lib/db/schema/surveyQuestions";
-import { createSurveyQuestion, deleteSurveyQuestion, updateSurveyQuestion } from "@/lib/api/surveyQuestions/mutations";
+} from "../db/schema/surveyQuestions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const surveyQuestionsRouter = router({
   getSurveyQuestions: publicProcedure.query(async () => {
     return getSurveyQuestions();
   }),
-  getSurveyQuestionById: publicProcedure.input(surveyQuestionIdSchema).query(async ({ input }) => {
-    return getSurveyQuestionById(input.id);
-  }),
+  getSurveyQuestionById: publicProcedure
+    .input(surveyQuestionIdSchema)
+    .query(async ({ input }) => {
+      return getSurveyQuestionById(input.id);
+    }),
   createSurveyQuestion: publicProcedure
     .input(insertSurveyQuestionParams)
     .mutation(async ({ input }) => {

@@ -1,4 +1,3 @@
-import { type getLicenses } from "@/lib/api/licenses/queries";
 import {
   boolean,
   integer,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getLicenses } from "../api/licenses/queries";
 
 export const licenses = pgTable(
   "licenses",

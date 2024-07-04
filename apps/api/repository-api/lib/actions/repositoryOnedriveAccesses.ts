@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createRepositoryOnedriveAccess,
   deleteRepositoryOnedriveAccess,
   updateRepositoryOnedriveAccess,
-} from "@/lib/api/repositoryOnedriveAccesses/mutations";
+} from "../api/repositoryOnedriveAccesses/mutations";
 import {
-  RepositoryOnedriveAccessId,
-  NewRepositoryOnedriveAccessParams,
-  UpdateRepositoryOnedriveAccessParams,
-  repositoryOnedriveAccessIdSchema,
   insertRepositoryOnedriveAccessParams,
+  NewRepositoryOnedriveAccessParams,
+  RepositoryOnedriveAccessId,
+  repositoryOnedriveAccessIdSchema,
+  UpdateRepositoryOnedriveAccessParams,
   updateRepositoryOnedriveAccessParams,
-} from "@/lib/db/schema/repositoryOnedriveAccesses";
+} from "../db/schema/repositoryOnedriveAccesses";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateRepositoryOnedriveAccesses = () => revalidatePath("/repository-onedrive-accesses");
+const revalidateRepositoryOnedriveAccesses = () =>
+  revalidatePath("/repository-onedrive-accesses");
 
-export const createRepositoryOnedriveAccessAction = async (input: NewRepositoryOnedriveAccessParams) => {
+export const createRepositoryOnedriveAccessAction = async (
+  input: NewRepositoryOnedriveAccessParams,
+) => {
   try {
     const payload = insertRepositoryOnedriveAccessParams.parse(input);
     await createRepositoryOnedriveAccess(payload);
@@ -37,7 +41,9 @@ export const createRepositoryOnedriveAccessAction = async (input: NewRepositoryO
   }
 };
 
-export const updateRepositoryOnedriveAccessAction = async (input: UpdateRepositoryOnedriveAccessParams) => {
+export const updateRepositoryOnedriveAccessAction = async (
+  input: UpdateRepositoryOnedriveAccessParams,
+) => {
   try {
     const payload = updateRepositoryOnedriveAccessParams.parse(input);
     await updateRepositoryOnedriveAccess(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateRepositoryOnedriveAccessAction = async (input: UpdateReposito
   }
 };
 
-export const deleteRepositoryOnedriveAccessAction = async (input: RepositoryOnedriveAccessId) => {
+export const deleteRepositoryOnedriveAccessAction = async (
+  input: RepositoryOnedriveAccessId,
+) => {
   try {
     const payload = repositoryOnedriveAccessIdSchema.parse({ id: input });
     await deleteRepositoryOnedriveAccess(payload.id);

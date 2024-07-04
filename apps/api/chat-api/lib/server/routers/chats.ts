@@ -1,11 +1,11 @@
-import { getChatById, getChats } from "@/lib/api/chats/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import { createChat, deleteChat, updateChat } from "../api/chats/mutations";
+import { getChatById, getChats } from "../api/chats/queries";
 import {
   chatIdSchema,
   insertChatParams,
   updateChatParams,
-} from "@/lib/db/schema/chats";
-import { createChat, deleteChat, updateChat } from "@/lib/api/chats/mutations";
+} from "../db/schema/chats";
+import { publicProcedure, router } from "../server/trpc";
 
 export const chatsRouter = router({
   getChats: publicProcedure.query(async () => {

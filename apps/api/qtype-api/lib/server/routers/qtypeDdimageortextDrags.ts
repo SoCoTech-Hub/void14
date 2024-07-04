@@ -1,19 +1,28 @@
-import { getQtypeDdimageortextDragById, getQtypeDdimageortextDrags } from "@/lib/api/qtypeDdimageortextDrags/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  qtypeDdimageortextDragIdSchema,
+  createQtypeDdimageortextDrag,
+  deleteQtypeDdimageortextDrag,
+  updateQtypeDdimageortextDrag,
+} from "../api/qtypeDdimageortextDrags/mutations";
+import {
+  getQtypeDdimageortextDragById,
+  getQtypeDdimageortextDrags,
+} from "../api/qtypeDdimageortextDrags/queries";
+import {
   insertQtypeDdimageortextDragParams,
+  qtypeDdimageortextDragIdSchema,
   updateQtypeDdimageortextDragParams,
-} from "@/lib/db/schema/qtypeDdimageortextDrags";
-import { createQtypeDdimageortextDrag, deleteQtypeDdimageortextDrag, updateQtypeDdimageortextDrag } from "@/lib/api/qtypeDdimageortextDrags/mutations";
+} from "../db/schema/qtypeDdimageortextDrags";
+import { publicProcedure, router } from "../server/trpc";
 
 export const qtypeDdimageortextDragsRouter = router({
   getQtypeDdimageortextDrags: publicProcedure.query(async () => {
     return getQtypeDdimageortextDrags();
   }),
-  getQtypeDdimageortextDragById: publicProcedure.input(qtypeDdimageortextDragIdSchema).query(async ({ input }) => {
-    return getQtypeDdimageortextDragById(input.id);
-  }),
+  getQtypeDdimageortextDragById: publicProcedure
+    .input(qtypeDdimageortextDragIdSchema)
+    .query(async ({ input }) => {
+      return getQtypeDdimageortextDragById(input.id);
+    }),
   createQtypeDdimageortextDrag: publicProcedure
     .input(insertQtypeDdimageortextDragParams)
     .mutation(async ({ input }) => {

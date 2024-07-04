@@ -1,19 +1,28 @@
-import { getCourseCategoryById, getCourseCategories } from "@/lib/api/courseCategories/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createCourseCategory,
+  deleteCourseCategory,
+  updateCourseCategory,
+} from "../api/courseCategories/mutations";
+import {
+  getCourseCategories,
+  getCourseCategoryById,
+} from "../api/courseCategories/queries";
 import {
   courseCategoryIdSchema,
   insertCourseCategoryParams,
   updateCourseCategoryParams,
-} from "@/lib/db/schema/courseCategories";
-import { createCourseCategory, deleteCourseCategory, updateCourseCategory } from "@/lib/api/courseCategories/mutations";
+} from "../db/schema/courseCategories";
+import { publicProcedure, router } from "../server/trpc";
 
 export const courseCategoriesRouter = router({
   getCourseCategories: publicProcedure.query(async () => {
     return getCourseCategories();
   }),
-  getCourseCategoryById: publicProcedure.input(courseCategoryIdSchema).query(async ({ input }) => {
-    return getCourseCategoryById(input.id);
-  }),
+  getCourseCategoryById: publicProcedure
+    .input(courseCategoryIdSchema)
+    .query(async ({ input }) => {
+      return getCourseCategoryById(input.id);
+    }),
   createCourseCategory: publicProcedure
     .input(insertCourseCategoryParams)
     .mutation(async ({ input }) => {

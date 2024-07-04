@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGlossaryCategory,
   deleteGlossaryCategory,
   updateGlossaryCategory,
-} from "@/lib/api/glossaryCategories/mutations";
+} from "../api/glossaryCategories/mutations";
 import {
   GlossaryCategoryId,
-  NewGlossaryCategoryParams,
-  UpdateGlossaryCategoryParams,
   glossaryCategoryIdSchema,
   insertGlossaryCategoryParams,
+  NewGlossaryCategoryParams,
+  UpdateGlossaryCategoryParams,
   updateGlossaryCategoryParams,
-} from "@/lib/db/schema/glossaryCategories";
+} from "../db/schema/glossaryCategories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateGlossaryCategories = () => revalidatePath("/glossary-categories");
+const revalidateGlossaryCategories = () =>
+  revalidatePath("/glossary-categories");
 
-export const createGlossaryCategoryAction = async (input: NewGlossaryCategoryParams) => {
+export const createGlossaryCategoryAction = async (
+  input: NewGlossaryCategoryParams,
+) => {
   try {
     const payload = insertGlossaryCategoryParams.parse(input);
     await createGlossaryCategory(payload);
@@ -37,7 +41,9 @@ export const createGlossaryCategoryAction = async (input: NewGlossaryCategoryPar
   }
 };
 
-export const updateGlossaryCategoryAction = async (input: UpdateGlossaryCategoryParams) => {
+export const updateGlossaryCategoryAction = async (
+  input: UpdateGlossaryCategoryParams,
+) => {
   try {
     const payload = updateGlossaryCategoryParams.parse(input);
     await updateGlossaryCategory(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateGlossaryCategoryAction = async (input: UpdateGlossaryCategory
   }
 };
 
-export const deleteGlossaryCategoryAction = async (input: GlossaryCategoryId) => {
+export const deleteGlossaryCategoryAction = async (
+  input: GlossaryCategoryId,
+) => {
   try {
     const payload = glossaryCategoryIdSchema.parse({ id: input });
     await deleteGlossaryCategory(payload.id);

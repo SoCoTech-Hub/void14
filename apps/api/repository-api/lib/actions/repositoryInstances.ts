@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createRepositoryInstance,
   deleteRepositoryInstance,
   updateRepositoryInstance,
-} from "@/lib/api/repositoryInstances/mutations";
+} from "../api/repositoryInstances/mutations";
 import {
-  RepositoryInstanceId,
-  NewRepositoryInstanceParams,
-  UpdateRepositoryInstanceParams,
-  repositoryInstanceIdSchema,
   insertRepositoryInstanceParams,
+  NewRepositoryInstanceParams,
+  RepositoryInstanceId,
+  repositoryInstanceIdSchema,
+  UpdateRepositoryInstanceParams,
   updateRepositoryInstanceParams,
-} from "@/lib/db/schema/repositoryInstances";
+} from "../db/schema/repositoryInstances";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateRepositoryInstances = () => revalidatePath("/repository-instances");
+const revalidateRepositoryInstances = () =>
+  revalidatePath("/repository-instances");
 
-export const createRepositoryInstanceAction = async (input: NewRepositoryInstanceParams) => {
+export const createRepositoryInstanceAction = async (
+  input: NewRepositoryInstanceParams,
+) => {
   try {
     const payload = insertRepositoryInstanceParams.parse(input);
     await createRepositoryInstance(payload);
@@ -37,7 +41,9 @@ export const createRepositoryInstanceAction = async (input: NewRepositoryInstanc
   }
 };
 
-export const updateRepositoryInstanceAction = async (input: UpdateRepositoryInstanceParams) => {
+export const updateRepositoryInstanceAction = async (
+  input: UpdateRepositoryInstanceParams,
+) => {
   try {
     const payload = updateRepositoryInstanceParams.parse(input);
     await updateRepositoryInstance(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateRepositoryInstanceAction = async (input: UpdateRepositoryInst
   }
 };
 
-export const deleteRepositoryInstanceAction = async (input: RepositoryInstanceId) => {
+export const deleteRepositoryInstanceAction = async (
+  input: RepositoryInstanceId,
+) => {
   try {
     const payload = repositoryInstanceIdSchema.parse({ id: input });
     await deleteRepositoryInstance(payload.id);

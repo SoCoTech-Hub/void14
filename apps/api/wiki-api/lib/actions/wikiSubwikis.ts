@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createWikiSubwiki,
   deleteWikiSubwiki,
   updateWikiSubwiki,
-} from "@/lib/api/wikiSubwikis/mutations";
+} from "../api/wikiSubwikis/mutations";
 import {
-  WikiSubwikiId,
+  insertWikiSubwikiParams,
   NewWikiSubwikiParams,
   UpdateWikiSubwikiParams,
-  wikiSubwikiIdSchema,
-  insertWikiSubwikiParams,
   updateWikiSubwikiParams,
-} from "@/lib/db/schema/wikiSubwikis";
+  WikiSubwikiId,
+  wikiSubwikiIdSchema,
+} from "../db/schema/wikiSubwikis";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createWikiSubwikiAction = async (input: NewWikiSubwikiParams) => {
   }
 };
 
-export const updateWikiSubwikiAction = async (input: UpdateWikiSubwikiParams) => {
+export const updateWikiSubwikiAction = async (
+  input: UpdateWikiSubwikiParams,
+) => {
   try {
     const payload = updateWikiSubwikiParams.parse(input);
     await updateWikiSubwiki(payload.id, payload);

@@ -1,19 +1,28 @@
-import { getUniversityById, getUniversities } from "@/lib/api/universities/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  universityIdSchema,
+  createUniversity,
+  deleteUniversity,
+  updateUniversity,
+} from "../api/universities/mutations";
+import {
+  getUniversities,
+  getUniversityById,
+} from "../api/universities/queries";
+import {
   insertUniversityParams,
+  universityIdSchema,
   updateUniversityParams,
-} from "@/lib/db/schema/universities";
-import { createUniversity, deleteUniversity, updateUniversity } from "@/lib/api/universities/mutations";
+} from "../db/schema/universities";
+import { publicProcedure, router } from "../server/trpc";
 
 export const universitiesRouter = router({
   getUniversities: publicProcedure.query(async () => {
     return getUniversities();
   }),
-  getUniversityById: publicProcedure.input(universityIdSchema).query(async ({ input }) => {
-    return getUniversityById(input.id);
-  }),
+  getUniversityById: publicProcedure
+    .input(universityIdSchema)
+    .query(async ({ input }) => {
+      return getUniversityById(input.id);
+    }),
   createUniversity: publicProcedure
     .input(insertUniversityParams)
     .mutation(async ({ input }) => {

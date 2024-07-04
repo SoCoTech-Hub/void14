@@ -1,4 +1,3 @@
-import { type getCourseCompletionDefaults } from "@/lib/api/courseCompletionDefaults/queries";
 import {
   boolean,
   pgTable,
@@ -12,6 +11,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getCourseCompletionDefaults } from "../api/courseCompletionDefaults/queries";
 import { courses } from "./courses";
 
 export const courseCompletionDefaults = pgTable(

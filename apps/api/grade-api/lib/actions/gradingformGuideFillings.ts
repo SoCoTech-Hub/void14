@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGradingformGuideFilling,
   deleteGradingformGuideFilling,
   updateGradingformGuideFilling,
-} from "@/lib/api/gradingformGuideFillings/mutations";
+} from "../api/gradingformGuideFillings/mutations";
 import {
   GradingformGuideFillingId,
-  NewGradingformGuideFillingParams,
-  UpdateGradingformGuideFillingParams,
   gradingformGuideFillingIdSchema,
   insertGradingformGuideFillingParams,
+  NewGradingformGuideFillingParams,
+  UpdateGradingformGuideFillingParams,
   updateGradingformGuideFillingParams,
-} from "@/lib/db/schema/gradingformGuideFillings";
+} from "../db/schema/gradingformGuideFillings";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateGradingformGuideFillings = () => revalidatePath("/gradingform-guide-fillings");
+const revalidateGradingformGuideFillings = () =>
+  revalidatePath("/gradingform-guide-fillings");
 
-export const createGradingformGuideFillingAction = async (input: NewGradingformGuideFillingParams) => {
+export const createGradingformGuideFillingAction = async (
+  input: NewGradingformGuideFillingParams,
+) => {
   try {
     const payload = insertGradingformGuideFillingParams.parse(input);
     await createGradingformGuideFilling(payload);
@@ -37,7 +41,9 @@ export const createGradingformGuideFillingAction = async (input: NewGradingformG
   }
 };
 
-export const updateGradingformGuideFillingAction = async (input: UpdateGradingformGuideFillingParams) => {
+export const updateGradingformGuideFillingAction = async (
+  input: UpdateGradingformGuideFillingParams,
+) => {
   try {
     const payload = updateGradingformGuideFillingParams.parse(input);
     await updateGradingformGuideFilling(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateGradingformGuideFillingAction = async (input: UpdateGradingfo
   }
 };
 
-export const deleteGradingformGuideFillingAction = async (input: GradingformGuideFillingId) => {
+export const deleteGradingformGuideFillingAction = async (
+  input: GradingformGuideFillingId,
+) => {
   try {
     const payload = gradingformGuideFillingIdSchema.parse({ id: input });
     await deleteGradingformGuideFilling(payload.id);

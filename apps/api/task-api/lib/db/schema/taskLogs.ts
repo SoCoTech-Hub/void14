@@ -1,4 +1,3 @@
-import { type getTaskLogs } from "@/lib/api/taskLogs/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -12,6 +11,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getTaskLogs } from "../api/taskLogs/queries";
 
 export const taskLogs = pgTable("task_logs", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

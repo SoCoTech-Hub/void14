@@ -1,19 +1,25 @@
-import { getRoleNameById, getRoleNames } from "@/lib/api/roleNames/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  roleNameIdSchema,
+  createRoleName,
+  deleteRoleName,
+  updateRoleName,
+} from "../api/roleNames/mutations";
+import { getRoleNameById, getRoleNames } from "../api/roleNames/queries";
+import {
   insertRoleNameParams,
+  roleNameIdSchema,
   updateRoleNameParams,
-} from "@/lib/db/schema/roleNames";
-import { createRoleName, deleteRoleName, updateRoleName } from "@/lib/api/roleNames/mutations";
+} from "../db/schema/roleNames";
+import { publicProcedure, router } from "../server/trpc";
 
 export const roleNamesRouter = router({
   getRoleNames: publicProcedure.query(async () => {
     return getRoleNames();
   }),
-  getRoleNameById: publicProcedure.input(roleNameIdSchema).query(async ({ input }) => {
-    return getRoleNameById(input.id);
-  }),
+  getRoleNameById: publicProcedure
+    .input(roleNameIdSchema)
+    .query(async ({ input }) => {
+      return getRoleNameById(input.id);
+    }),
   createRoleName: publicProcedure
     .input(insertRoleNameParams)
     .mutation(async ({ input }) => {

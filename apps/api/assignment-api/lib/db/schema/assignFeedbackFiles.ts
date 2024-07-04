@@ -1,10 +1,10 @@
-import { type getAssignFeedbackFiles } from "@/lib/api/assignFeedbackFiles/queries";
 import { integer, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getAssignFeedbackFiles } from "../api/assignFeedbackFiles/queries";
 import { assignments } from "./assignments";
 
 export const assignFeedbackFiles = pgTable(

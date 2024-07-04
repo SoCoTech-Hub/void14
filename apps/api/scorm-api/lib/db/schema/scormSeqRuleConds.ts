@@ -1,10 +1,10 @@
-import { type getScormSeqRuleConds } from "@/lib/api/scormSeqRuleConds/queries";
 import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getScormSeqRuleConds } from "../api/scormSeqRuleConds/queries";
 import { scormScoes } from "./scormScoes";
 
 export const scormSeqRuleConds = pgTable("scorm_seq_rule_conds", {

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCoursePublish,
   deleteCoursePublish,
   updateCoursePublish,
-} from "@/lib/api/coursePublishes/mutations";
+} from "../api/coursePublishes/mutations";
 import {
   CoursePublishId,
-  NewCoursePublishParams,
-  UpdateCoursePublishParams,
   coursePublishIdSchema,
   insertCoursePublishParams,
+  NewCoursePublishParams,
+  UpdateCoursePublishParams,
   updateCoursePublishParams,
-} from "@/lib/db/schema/coursePublishes";
+} from "../db/schema/coursePublishes";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateCoursePublishes = () => revalidatePath("/course-publishes");
 
-export const createCoursePublishAction = async (input: NewCoursePublishParams) => {
+export const createCoursePublishAction = async (
+  input: NewCoursePublishParams,
+) => {
   try {
     const payload = insertCoursePublishParams.parse(input);
     await createCoursePublish(payload);
@@ -37,7 +40,9 @@ export const createCoursePublishAction = async (input: NewCoursePublishParams) =
   }
 };
 
-export const updateCoursePublishAction = async (input: UpdateCoursePublishParams) => {
+export const updateCoursePublishAction = async (
+  input: UpdateCoursePublishParams,
+) => {
   try {
     const payload = updateCoursePublishParams.parse(input);
     await updateCoursePublish(payload.id, payload);

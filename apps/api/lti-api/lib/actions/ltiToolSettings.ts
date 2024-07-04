@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createLtiToolSetting,
   deleteLtiToolSetting,
   updateLtiToolSetting,
-} from "@/lib/api/ltiToolSettings/mutations";
+} from "../api/ltiToolSettings/mutations";
 import {
+  insertLtiToolSettingParams,
   LtiToolSettingId,
+  ltiToolSettingIdSchema,
   NewLtiToolSettingParams,
   UpdateLtiToolSettingParams,
-  ltiToolSettingIdSchema,
-  insertLtiToolSettingParams,
   updateLtiToolSettingParams,
-} from "@/lib/db/schema/ltiToolSettings";
+} from "../db/schema/ltiToolSettings";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateLtiToolSettings = () => revalidatePath("/lti-tool-settings");
 
-export const createLtiToolSettingAction = async (input: NewLtiToolSettingParams) => {
+export const createLtiToolSettingAction = async (
+  input: NewLtiToolSettingParams,
+) => {
   try {
     const payload = insertLtiToolSettingParams.parse(input);
     await createLtiToolSetting(payload);
@@ -37,7 +40,9 @@ export const createLtiToolSettingAction = async (input: NewLtiToolSettingParams)
   }
 };
 
-export const updateLtiToolSettingAction = async (input: UpdateLtiToolSettingParams) => {
+export const updateLtiToolSettingAction = async (
+  input: UpdateLtiToolSettingParams,
+) => {
   try {
     const payload = updateLtiToolSettingParams.parse(input);
     await updateLtiToolSetting(payload.id, payload);

@@ -1,4 +1,3 @@
-import { type getUrls } from "@/lib/api/urls/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -12,6 +11,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getUrls } from "../api/urls/queries";
 
 export const urls = pgTable(
   "urls",

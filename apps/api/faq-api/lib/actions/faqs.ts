@@ -1,19 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import {
-  createFaq,
-  deleteFaq,
-  updateFaq,
-} from "@/lib/api/faqs/mutations";
+
+import { createFaq, deleteFaq, updateFaq } from "../api/faqs/mutations";
 import {
   FaqId,
-  NewFaqParams,
-  UpdateFaqParams,
   faqIdSchema,
   insertFaqParams,
+  NewFaqParams,
+  UpdateFaqParams,
   updateFaqParams,
-} from "@/lib/db/schema/faqs";
+} from "../db/schema/faqs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

@@ -1,9 +1,10 @@
-import { type getSubjectCategories } from "@/lib/api/subjectCategories/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getSubjectCategories } from "../api/subjectCategories/queries";
 
 export const subjectCategories = pgTable("subject_categories", {
   id: varchar("id", { length: 191 })

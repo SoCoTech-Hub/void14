@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBadgeBackpackOauth2,
   deleteBadgeBackpackOauth2,
   updateBadgeBackpackOauth2,
-} from "@/lib/api/badgeBackpackOauth2s/mutations";
+} from "../api/badgeBackpackOauth2s/mutations";
 import {
   BadgeBackpackOauth2Id,
-  NewBadgeBackpackOauth2Params,
-  UpdateBadgeBackpackOauth2Params,
   badgeBackpackOauth2IdSchema,
   insertBadgeBackpackOauth2Params,
+  NewBadgeBackpackOauth2Params,
+  UpdateBadgeBackpackOauth2Params,
   updateBadgeBackpackOauth2Params,
-} from "@/lib/db/schema/badgeBackpackOauth2s";
+} from "../db/schema/badgeBackpackOauth2s";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateBadgeBackpackOauth2s = () => revalidatePath("/badge-backpack-oauth2s");
+const revalidateBadgeBackpackOauth2s = () =>
+  revalidatePath("/badge-backpack-oauth2s");
 
-export const createBadgeBackpackOauth2Action = async (input: NewBadgeBackpackOauth2Params) => {
+export const createBadgeBackpackOauth2Action = async (
+  input: NewBadgeBackpackOauth2Params,
+) => {
   try {
     const payload = insertBadgeBackpackOauth2Params.parse(input);
     await createBadgeBackpackOauth2(payload);
@@ -37,7 +41,9 @@ export const createBadgeBackpackOauth2Action = async (input: NewBadgeBackpackOau
   }
 };
 
-export const updateBadgeBackpackOauth2Action = async (input: UpdateBadgeBackpackOauth2Params) => {
+export const updateBadgeBackpackOauth2Action = async (
+  input: UpdateBadgeBackpackOauth2Params,
+) => {
   try {
     const payload = updateBadgeBackpackOauth2Params.parse(input);
     await updateBadgeBackpackOauth2(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateBadgeBackpackOauth2Action = async (input: UpdateBadgeBackpack
   }
 };
 
-export const deleteBadgeBackpackOauth2Action = async (input: BadgeBackpackOauth2Id) => {
+export const deleteBadgeBackpackOauth2Action = async (
+  input: BadgeBackpackOauth2Id,
+) => {
   try {
     const payload = badgeBackpackOauth2IdSchema.parse({ id: input });
     await deleteBadgeBackpackOauth2(payload.id);

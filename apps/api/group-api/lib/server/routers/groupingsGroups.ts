@@ -1,19 +1,28 @@
-import { getGroupingsGroupById, getGroupingsGroups } from "@/lib/api/groupingsGroups/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createGroupingsGroup,
+  deleteGroupingsGroup,
+  updateGroupingsGroup,
+} from "../api/groupingsGroups/mutations";
+import {
+  getGroupingsGroupById,
+  getGroupingsGroups,
+} from "../api/groupingsGroups/queries";
 import {
   groupingsGroupIdSchema,
   insertGroupingsGroupParams,
   updateGroupingsGroupParams,
-} from "@/lib/db/schema/groupingsGroups";
-import { createGroupingsGroup, deleteGroupingsGroup, updateGroupingsGroup } from "@/lib/api/groupingsGroups/mutations";
+} from "../db/schema/groupingsGroups";
+import { publicProcedure, router } from "../server/trpc";
 
 export const groupingsGroupsRouter = router({
   getGroupingsGroups: publicProcedure.query(async () => {
     return getGroupingsGroups();
   }),
-  getGroupingsGroupById: publicProcedure.input(groupingsGroupIdSchema).query(async ({ input }) => {
-    return getGroupingsGroupById(input.id);
-  }),
+  getGroupingsGroupById: publicProcedure
+    .input(groupingsGroupIdSchema)
+    .query(async ({ input }) => {
+      return getGroupingsGroupById(input.id);
+    }),
   createGroupingsGroup: publicProcedure
     .input(insertGroupingsGroupParams)
     .mutation(async ({ input }) => {

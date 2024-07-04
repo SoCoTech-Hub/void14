@@ -1,19 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import {
-  createEnrol,
-  deleteEnrol,
-  updateEnrol,
-} from "@/lib/api/enrols/mutations";
+
+import { createEnrol, deleteEnrol, updateEnrol } from "../api/enrols/mutations";
 import {
   EnrolId,
-  NewEnrolParams,
-  UpdateEnrolParams,
   enrolIdSchema,
   insertEnrolParams,
+  NewEnrolParams,
+  UpdateEnrolParams,
   updateEnrolParams,
-} from "@/lib/db/schema/enrols";
+} from "../db/schema/enrols";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

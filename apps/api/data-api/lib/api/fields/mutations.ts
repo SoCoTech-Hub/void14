@@ -1,19 +1,20 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  FieldId, 
-  NewFieldParams,
-  UpdateFieldParams, 
-  updateFieldSchema,
-  insertFieldSchema, 
+
+import { db } from "../db/index";
+import {
+  FieldId,
+  fieldIdSchema,
   fields,
-  fieldIdSchema 
-} from "@/lib/db/schema/fields";
+  insertFieldSchema,
+  NewFieldParams,
+  UpdateFieldParams,
+  updateFieldSchema,
+} from "../db/schema/fields";
 
 export const createField = async (field: NewFieldParams) => {
   const newField = insertFieldSchema.parse(field);
   try {
-    const [f] =  await db.insert(fields).values(newField).returning();
+    const [f] = await db.insert(fields).values(newField).returning();
     return { field: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -26,11 +27,11 @@ export const updateField = async (id: FieldId, field: UpdateFieldParams) => {
   const { id: fieldId } = fieldIdSchema.parse({ id });
   const newField = updateFieldSchema.parse(field);
   try {
-    const [f] =  await db
-     .update(fields)
-     .set(newField)
-     .where(eq(fields.id, fieldId!))
-     .returning();
+    const [f] = await db
+      .update(fields)
+      .set(newField)
+      .where(eq(fields.id, fieldId!))
+      .returning();
     return { field: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +43,10 @@ export const updateField = async (id: FieldId, field: UpdateFieldParams) => {
 export const deleteField = async (id: FieldId) => {
   const { id: fieldId } = fieldIdSchema.parse({ id });
   try {
-    const [f] =  await db.delete(fields).where(eq(fields.id, fieldId!))
-    .returning();
+    const [f] = await db
+      .delete(fields)
+      .where(eq(fields.id, fieldId!))
+      .returning();
     return { field: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +54,3 @@ export const deleteField = async (id: FieldId) => {
     throw { error: message };
   }
 };
-

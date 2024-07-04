@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createFilesReference,
   deleteFilesReference,
   updateFilesReference,
-} from "@/lib/api/filesReferences/mutations";
+} from "../api/filesReferences/mutations";
 import {
   FilesReferenceId,
-  NewFilesReferenceParams,
-  UpdateFilesReferenceParams,
   filesReferenceIdSchema,
   insertFilesReferenceParams,
+  NewFilesReferenceParams,
+  UpdateFilesReferenceParams,
   updateFilesReferenceParams,
-} from "@/lib/db/schema/filesReferences";
+} from "../db/schema/filesReferences";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateFilesReferences = () => revalidatePath("/files-references");
 
-export const createFilesReferenceAction = async (input: NewFilesReferenceParams) => {
+export const createFilesReferenceAction = async (
+  input: NewFilesReferenceParams,
+) => {
   try {
     const payload = insertFilesReferenceParams.parse(input);
     await createFilesReference(payload);
@@ -37,7 +40,9 @@ export const createFilesReferenceAction = async (input: NewFilesReferenceParams)
   }
 };
 
-export const updateFilesReferenceAction = async (input: UpdateFilesReferenceParams) => {
+export const updateFilesReferenceAction = async (
+  input: UpdateFilesReferenceParams,
+) => {
   try {
     const payload = updateFilesReferenceParams.parse(input);
     await updateFilesReference(payload.id, payload);

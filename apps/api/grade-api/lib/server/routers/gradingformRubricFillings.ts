@@ -1,19 +1,28 @@
-import { getGradingformRubricFillingById, getGradingformRubricFillings } from "@/lib/api/gradingformRubricFillings/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createGradingformRubricFilling,
+  deleteGradingformRubricFilling,
+  updateGradingformRubricFilling,
+} from "../api/gradingformRubricFillings/mutations";
+import {
+  getGradingformRubricFillingById,
+  getGradingformRubricFillings,
+} from "../api/gradingformRubricFillings/queries";
 import {
   gradingformRubricFillingIdSchema,
   insertGradingformRubricFillingParams,
   updateGradingformRubricFillingParams,
-} from "@/lib/db/schema/gradingformRubricFillings";
-import { createGradingformRubricFilling, deleteGradingformRubricFilling, updateGradingformRubricFilling } from "@/lib/api/gradingformRubricFillings/mutations";
+} from "../db/schema/gradingformRubricFillings";
+import { publicProcedure, router } from "../server/trpc";
 
 export const gradingformRubricFillingsRouter = router({
   getGradingformRubricFillings: publicProcedure.query(async () => {
     return getGradingformRubricFillings();
   }),
-  getGradingformRubricFillingById: publicProcedure.input(gradingformRubricFillingIdSchema).query(async ({ input }) => {
-    return getGradingformRubricFillingById(input.id);
-  }),
+  getGradingformRubricFillingById: publicProcedure
+    .input(gradingformRubricFillingIdSchema)
+    .query(async ({ input }) => {
+      return getGradingformRubricFillingById(input.id);
+    }),
   createGradingformRubricFilling: publicProcedure
     .input(insertGradingformRubricFillingParams)
     .mutation(async ({ input }) => {

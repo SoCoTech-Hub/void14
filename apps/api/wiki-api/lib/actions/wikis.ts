@@ -1,19 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
+import { createWiki, deleteWiki, updateWiki } from "../api/wikis/mutations";
 import {
-  createWiki,
-  deleteWiki,
-  updateWiki,
-} from "@/lib/api/wikis/mutations";
-import {
-  WikiId,
+  insertWikiParams,
   NewWikiParams,
   UpdateWikiParams,
-  wikiIdSchema,
-  insertWikiParams,
   updateWikiParams,
-} from "@/lib/db/schema/wikis";
+  WikiId,
+  wikiIdSchema,
+} from "../db/schema/wikis";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

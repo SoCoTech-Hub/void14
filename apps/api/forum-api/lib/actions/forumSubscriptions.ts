@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createForumSubscription,
   deleteForumSubscription,
   updateForumSubscription,
-} from "@/lib/api/forumSubscriptions/mutations";
+} from "../api/forumSubscriptions/mutations";
 import {
   ForumSubscriptionId,
-  NewForumSubscriptionParams,
-  UpdateForumSubscriptionParams,
   forumSubscriptionIdSchema,
   insertForumSubscriptionParams,
+  NewForumSubscriptionParams,
+  UpdateForumSubscriptionParams,
   updateForumSubscriptionParams,
-} from "@/lib/db/schema/forumSubscriptions";
+} from "../db/schema/forumSubscriptions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateForumSubscriptions = () => revalidatePath("/forum-subscriptions");
+const revalidateForumSubscriptions = () =>
+  revalidatePath("/forum-subscriptions");
 
-export const createForumSubscriptionAction = async (input: NewForumSubscriptionParams) => {
+export const createForumSubscriptionAction = async (
+  input: NewForumSubscriptionParams,
+) => {
   try {
     const payload = insertForumSubscriptionParams.parse(input);
     await createForumSubscription(payload);
@@ -37,7 +41,9 @@ export const createForumSubscriptionAction = async (input: NewForumSubscriptionP
   }
 };
 
-export const updateForumSubscriptionAction = async (input: UpdateForumSubscriptionParams) => {
+export const updateForumSubscriptionAction = async (
+  input: UpdateForumSubscriptionParams,
+) => {
   try {
     const payload = updateForumSubscriptionParams.parse(input);
     await updateForumSubscription(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateForumSubscriptionAction = async (input: UpdateForumSubscripti
   }
 };
 
-export const deleteForumSubscriptionAction = async (input: ForumSubscriptionId) => {
+export const deleteForumSubscriptionAction = async (
+  input: ForumSubscriptionId,
+) => {
   try {
     const payload = forumSubscriptionIdSchema.parse({ id: input });
     await deleteForumSubscription(payload.id);

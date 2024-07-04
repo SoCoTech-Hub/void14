@@ -1,4 +1,3 @@
-import { type getCustomFieldCategories } from "@/lib/api/customFieldCategories/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -12,6 +11,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getCustomFieldCategories } from "../api/customFieldCategories/queries";
 
 export const customFieldCategories = pgTable(
   "custom_field_categories",

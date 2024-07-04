@@ -1,19 +1,26 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  FeedbackValuetmpId, 
-  NewFeedbackValuetmpParams,
-  UpdateFeedbackValuetmpParams, 
-  updateFeedbackValuetmpSchema,
-  insertFeedbackValuetmpSchema, 
-  feedbackValuetmps,
-  feedbackValuetmpIdSchema 
-} from "@/lib/db/schema/feedbackValuetmps";
 
-export const createFeedbackValuetmp = async (feedbackValuetmp: NewFeedbackValuetmpParams) => {
-  const newFeedbackValuetmp = insertFeedbackValuetmpSchema.parse(feedbackValuetmp);
+import { db } from "../db/index";
+import {
+  FeedbackValuetmpId,
+  feedbackValuetmpIdSchema,
+  feedbackValuetmps,
+  insertFeedbackValuetmpSchema,
+  NewFeedbackValuetmpParams,
+  UpdateFeedbackValuetmpParams,
+  updateFeedbackValuetmpSchema,
+} from "../db/schema/feedbackValuetmps";
+
+export const createFeedbackValuetmp = async (
+  feedbackValuetmp: NewFeedbackValuetmpParams,
+) => {
+  const newFeedbackValuetmp =
+    insertFeedbackValuetmpSchema.parse(feedbackValuetmp);
   try {
-    const [f] =  await db.insert(feedbackValuetmps).values(newFeedbackValuetmp).returning();
+    const [f] = await db
+      .insert(feedbackValuetmps)
+      .values(newFeedbackValuetmp)
+      .returning();
     return { feedbackValuetmp: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,19 @@ export const createFeedbackValuetmp = async (feedbackValuetmp: NewFeedbackValuet
   }
 };
 
-export const updateFeedbackValuetmp = async (id: FeedbackValuetmpId, feedbackValuetmp: UpdateFeedbackValuetmpParams) => {
+export const updateFeedbackValuetmp = async (
+  id: FeedbackValuetmpId,
+  feedbackValuetmp: UpdateFeedbackValuetmpParams,
+) => {
   const { id: feedbackValuetmpId } = feedbackValuetmpIdSchema.parse({ id });
-  const newFeedbackValuetmp = updateFeedbackValuetmpSchema.parse(feedbackValuetmp);
+  const newFeedbackValuetmp =
+    updateFeedbackValuetmpSchema.parse(feedbackValuetmp);
   try {
-    const [f] =  await db
-     .update(feedbackValuetmps)
-     .set(newFeedbackValuetmp)
-     .where(eq(feedbackValuetmps.id, feedbackValuetmpId!))
-     .returning();
+    const [f] = await db
+      .update(feedbackValuetmps)
+      .set(newFeedbackValuetmp)
+      .where(eq(feedbackValuetmps.id, feedbackValuetmpId!))
+      .returning();
     return { feedbackValuetmp: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +53,10 @@ export const updateFeedbackValuetmp = async (id: FeedbackValuetmpId, feedbackVal
 export const deleteFeedbackValuetmp = async (id: FeedbackValuetmpId) => {
   const { id: feedbackValuetmpId } = feedbackValuetmpIdSchema.parse({ id });
   try {
-    const [f] =  await db.delete(feedbackValuetmps).where(eq(feedbackValuetmps.id, feedbackValuetmpId!))
-    .returning();
+    const [f] = await db
+      .delete(feedbackValuetmps)
+      .where(eq(feedbackValuetmps.id, feedbackValuetmpId!))
+      .returning();
     return { feedbackValuetmp: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +64,3 @@ export const deleteFeedbackValuetmp = async (id: FeedbackValuetmpId) => {
     throw { error: message };
   }
 };
-

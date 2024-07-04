@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBursaryCategory,
   deleteBursaryCategory,
   updateBursaryCategory,
-} from "@/lib/api/bursaryCategories/mutations";
+} from "../api/bursaryCategories/mutations";
 import {
   BursaryCategoryId,
-  NewBursaryCategoryParams,
-  UpdateBursaryCategoryParams,
   bursaryCategoryIdSchema,
   insertBursaryCategoryParams,
+  NewBursaryCategoryParams,
+  UpdateBursaryCategoryParams,
   updateBursaryCategoryParams,
-} from "@/lib/db/schema/bursaryCategories";
+} from "../db/schema/bursaryCategories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateBursaryCategories = () => revalidatePath("/bursary-categories");
 
-export const createBursaryCategoryAction = async (input: NewBursaryCategoryParams) => {
+export const createBursaryCategoryAction = async (
+  input: NewBursaryCategoryParams,
+) => {
   try {
     const payload = insertBursaryCategoryParams.parse(input);
     await createBursaryCategory(payload);
@@ -37,7 +40,9 @@ export const createBursaryCategoryAction = async (input: NewBursaryCategoryParam
   }
 };
 
-export const updateBursaryCategoryAction = async (input: UpdateBursaryCategoryParams) => {
+export const updateBursaryCategoryAction = async (
+  input: UpdateBursaryCategoryParams,
+) => {
   try {
     const payload = updateBursaryCategoryParams.parse(input);
     await updateBursaryCategory(payload.id, payload);

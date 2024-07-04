@@ -1,4 +1,3 @@
-import { type getReportbuilderFilters } from "@/lib/api/reportbuilderFilters/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -12,6 +11,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getReportbuilderFilters } from "../api/reportbuilderFilters/queries";
 
 export const reportbuilderFilters = pgTable(
   "reportbuilder_filters",

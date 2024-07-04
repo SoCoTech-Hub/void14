@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMnetLog,
   deleteMnetLog,
   updateMnetLog,
-} from "@/lib/api/mnetLogs/mutations";
+} from "../api/mnetLogs/mutations";
 import {
+  insertMnetLogParams,
   MnetLogId,
+  mnetLogIdSchema,
   NewMnetLogParams,
   UpdateMnetLogParams,
-  mnetLogIdSchema,
-  insertMnetLogParams,
   updateMnetLogParams,
-} from "@/lib/db/schema/mnetLogs";
+} from "../db/schema/mnetLogs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

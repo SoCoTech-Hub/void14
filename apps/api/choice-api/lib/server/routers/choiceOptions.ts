@@ -1,19 +1,28 @@
-import { getChoiceOptionById, getChoiceOptions } from "@/lib/api/choiceOptions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createChoiceOption,
+  deleteChoiceOption,
+  updateChoiceOption,
+} from "../api/choiceOptions/mutations";
+import {
+  getChoiceOptionById,
+  getChoiceOptions,
+} from "../api/choiceOptions/queries";
 import {
   choiceOptionIdSchema,
   insertChoiceOptionParams,
   updateChoiceOptionParams,
-} from "@/lib/db/schema/choiceOptions";
-import { createChoiceOption, deleteChoiceOption, updateChoiceOption } from "@/lib/api/choiceOptions/mutations";
+} from "../db/schema/choiceOptions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const choiceOptionsRouter = router({
   getChoiceOptions: publicProcedure.query(async () => {
     return getChoiceOptions();
   }),
-  getChoiceOptionById: publicProcedure.input(choiceOptionIdSchema).query(async ({ input }) => {
-    return getChoiceOptionById(input.id);
-  }),
+  getChoiceOptionById: publicProcedure
+    .input(choiceOptionIdSchema)
+    .query(async ({ input }) => {
+      return getChoiceOptionById(input.id);
+    }),
   createChoiceOption: publicProcedure
     .input(insertChoiceOptionParams)
     .mutation(async ({ input }) => {

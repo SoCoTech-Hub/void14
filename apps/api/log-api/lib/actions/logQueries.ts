@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createLogQuery,
   deleteLogQuery,
   updateLogQuery,
-} from "@/lib/api/logQueries/mutations";
+} from "../api/logQueries/mutations";
 import {
+  insertLogQueryParams,
   LogQueryId,
+  logQueryIdSchema,
   NewLogQueryParams,
   UpdateLogQueryParams,
-  logQueryIdSchema,
-  insertLogQueryParams,
   updateLogQueryParams,
-} from "@/lib/db/schema/logQueries";
+} from "../db/schema/logQueries";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

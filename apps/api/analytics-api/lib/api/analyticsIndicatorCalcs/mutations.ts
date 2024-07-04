@@ -1,19 +1,27 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  AnalyticsIndicatorCalcId, 
-  NewAnalyticsIndicatorCalcParams,
-  UpdateAnalyticsIndicatorCalcParams, 
-  updateAnalyticsIndicatorCalcSchema,
-  insertAnalyticsIndicatorCalcSchema, 
+
+import { db } from "../db/index";
+import {
+  AnalyticsIndicatorCalcId,
+  analyticsIndicatorCalcIdSchema,
   analyticsIndicatorCalcs,
-  analyticsIndicatorCalcIdSchema 
-} from "@/lib/db/schema/analyticsIndicatorCalcs";
+  insertAnalyticsIndicatorCalcSchema,
+  NewAnalyticsIndicatorCalcParams,
+  UpdateAnalyticsIndicatorCalcParams,
+  updateAnalyticsIndicatorCalcSchema,
+} from "../db/schema/analyticsIndicatorCalcs";
 
-export const createAnalyticsIndicatorCalc = async (analyticsIndicatorCalc: NewAnalyticsIndicatorCalcParams) => {
-  const newAnalyticsIndicatorCalc = insertAnalyticsIndicatorCalcSchema.parse(analyticsIndicatorCalc);
+export const createAnalyticsIndicatorCalc = async (
+  analyticsIndicatorCalc: NewAnalyticsIndicatorCalcParams,
+) => {
+  const newAnalyticsIndicatorCalc = insertAnalyticsIndicatorCalcSchema.parse(
+    analyticsIndicatorCalc,
+  );
   try {
-    const [a] =  await db.insert(analyticsIndicatorCalcs).values(newAnalyticsIndicatorCalc).returning();
+    const [a] = await db
+      .insert(analyticsIndicatorCalcs)
+      .values(newAnalyticsIndicatorCalc)
+      .returning();
     return { analyticsIndicatorCalc: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,22 @@ export const createAnalyticsIndicatorCalc = async (analyticsIndicatorCalc: NewAn
   }
 };
 
-export const updateAnalyticsIndicatorCalc = async (id: AnalyticsIndicatorCalcId, analyticsIndicatorCalc: UpdateAnalyticsIndicatorCalcParams) => {
-  const { id: analyticsIndicatorCalcId } = analyticsIndicatorCalcIdSchema.parse({ id });
-  const newAnalyticsIndicatorCalc = updateAnalyticsIndicatorCalcSchema.parse(analyticsIndicatorCalc);
+export const updateAnalyticsIndicatorCalc = async (
+  id: AnalyticsIndicatorCalcId,
+  analyticsIndicatorCalc: UpdateAnalyticsIndicatorCalcParams,
+) => {
+  const { id: analyticsIndicatorCalcId } = analyticsIndicatorCalcIdSchema.parse(
+    { id },
+  );
+  const newAnalyticsIndicatorCalc = updateAnalyticsIndicatorCalcSchema.parse(
+    analyticsIndicatorCalc,
+  );
   try {
-    const [a] =  await db
-     .update(analyticsIndicatorCalcs)
-     .set({...newAnalyticsIndicatorCalc, updatedAt: new Date() })
-     .where(eq(analyticsIndicatorCalcs.id, analyticsIndicatorCalcId!))
-     .returning();
+    const [a] = await db
+      .update(analyticsIndicatorCalcs)
+      .set({ ...newAnalyticsIndicatorCalc, updatedAt: new Date() })
+      .where(eq(analyticsIndicatorCalcs.id, analyticsIndicatorCalcId!))
+      .returning();
     return { analyticsIndicatorCalc: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +54,17 @@ export const updateAnalyticsIndicatorCalc = async (id: AnalyticsIndicatorCalcId,
   }
 };
 
-export const deleteAnalyticsIndicatorCalc = async (id: AnalyticsIndicatorCalcId) => {
-  const { id: analyticsIndicatorCalcId } = analyticsIndicatorCalcIdSchema.parse({ id });
+export const deleteAnalyticsIndicatorCalc = async (
+  id: AnalyticsIndicatorCalcId,
+) => {
+  const { id: analyticsIndicatorCalcId } = analyticsIndicatorCalcIdSchema.parse(
+    { id },
+  );
   try {
-    const [a] =  await db.delete(analyticsIndicatorCalcs).where(eq(analyticsIndicatorCalcs.id, analyticsIndicatorCalcId!))
-    .returning();
+    const [a] = await db
+      .delete(analyticsIndicatorCalcs)
+      .where(eq(analyticsIndicatorCalcs.id, analyticsIndicatorCalcId!))
+      .returning();
     return { analyticsIndicatorCalc: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +72,3 @@ export const deleteAnalyticsIndicatorCalc = async (id: AnalyticsIndicatorCalcId)
     throw { error: message };
   }
 };
-

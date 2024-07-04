@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGradingDefinition,
   deleteGradingDefinition,
   updateGradingDefinition,
-} from "@/lib/api/gradingDefinitions/mutations";
+} from "../api/gradingDefinitions/mutations";
 import {
   GradingDefinitionId,
-  NewGradingDefinitionParams,
-  UpdateGradingDefinitionParams,
   gradingDefinitionIdSchema,
   insertGradingDefinitionParams,
+  NewGradingDefinitionParams,
+  UpdateGradingDefinitionParams,
   updateGradingDefinitionParams,
-} from "@/lib/db/schema/gradingDefinitions";
+} from "../db/schema/gradingDefinitions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateGradingDefinitions = () => revalidatePath("/grading-definitions");
+const revalidateGradingDefinitions = () =>
+  revalidatePath("/grading-definitions");
 
-export const createGradingDefinitionAction = async (input: NewGradingDefinitionParams) => {
+export const createGradingDefinitionAction = async (
+  input: NewGradingDefinitionParams,
+) => {
   try {
     const payload = insertGradingDefinitionParams.parse(input);
     await createGradingDefinition(payload);
@@ -37,7 +41,9 @@ export const createGradingDefinitionAction = async (input: NewGradingDefinitionP
   }
 };
 
-export const updateGradingDefinitionAction = async (input: UpdateGradingDefinitionParams) => {
+export const updateGradingDefinitionAction = async (
+  input: UpdateGradingDefinitionParams,
+) => {
   try {
     const payload = updateGradingDefinitionParams.parse(input);
     await updateGradingDefinition(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateGradingDefinitionAction = async (input: UpdateGradingDefiniti
   }
 };
 
-export const deleteGradingDefinitionAction = async (input: GradingDefinitionId) => {
+export const deleteGradingDefinitionAction = async (
+  input: GradingDefinitionId,
+) => {
   try {
     const payload = gradingDefinitionIdSchema.parse({ id: input });
     await deleteGradingDefinition(payload.id);

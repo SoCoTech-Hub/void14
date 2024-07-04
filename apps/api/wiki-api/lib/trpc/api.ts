@@ -1,23 +1,21 @@
 import "server-only";
 
-  //  import { getUserAuth } from "@soco/auth/utils";
-import { appRouter } from "@/lib/server/routers/_app";
-import { env } from "@/lib/env.mjs";
-import { createTRPCContext } from "./context";
-
+import { cache } from "react";
+import { cookies } from "next/headers";
 import {
   createTRPCProxyClient,
   loggerLink,
   TRPCClientError,
 } from "@trpc/client";
 import { callProcedure } from "@trpc/server";
-import { type TRPCErrorResponse } from "@trpc/server/rpc";
 import { observable } from "@trpc/server/observable";
-
-import { cache } from "react";
-import { cookies } from "next/headers";
-
+import { type TRPCErrorResponse } from "@trpc/server/rpc";
 import SuperJSON from "superjson";
+
+import { env } from "../env.mjs";
+//  import { getUserAuth } from "@soco/auth/utils";
+import { appRouter } from "../server/routers/_app";
+import { createTRPCContext } from "./context";
 
 const createContext = cache(() => {
   return createTRPCContext({

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createFavourite,
   deleteFavourite,
   updateFavourite,
-} from "@/lib/api/favourites/mutations";
+} from "../api/favourites/mutations";
 import {
   FavouriteId,
-  NewFavouriteParams,
-  UpdateFavouriteParams,
   favouriteIdSchema,
   insertFavouriteParams,
+  NewFavouriteParams,
+  UpdateFavouriteParams,
   updateFavouriteParams,
-} from "@/lib/db/schema/favourites";
+} from "../db/schema/favourites";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

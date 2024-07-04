@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createFeedbackCompletedtmp,
   deleteFeedbackCompletedtmp,
   updateFeedbackCompletedtmp,
-} from "@/lib/api/feedbackCompletedtmps/mutations";
+} from "../api/feedbackCompletedtmps/mutations";
 import {
   FeedbackCompletedtmpId,
-  NewFeedbackCompletedtmpParams,
-  UpdateFeedbackCompletedtmpParams,
   feedbackCompletedtmpIdSchema,
   insertFeedbackCompletedtmpParams,
+  NewFeedbackCompletedtmpParams,
+  UpdateFeedbackCompletedtmpParams,
   updateFeedbackCompletedtmpParams,
-} from "@/lib/db/schema/feedbackCompletedtmps";
+} from "../db/schema/feedbackCompletedtmps";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateFeedbackCompletedtmps = () => revalidatePath("/feedback-completedtmps");
+const revalidateFeedbackCompletedtmps = () =>
+  revalidatePath("/feedback-completedtmps");
 
-export const createFeedbackCompletedtmpAction = async (input: NewFeedbackCompletedtmpParams) => {
+export const createFeedbackCompletedtmpAction = async (
+  input: NewFeedbackCompletedtmpParams,
+) => {
   try {
     const payload = insertFeedbackCompletedtmpParams.parse(input);
     await createFeedbackCompletedtmp(payload);
@@ -37,7 +41,9 @@ export const createFeedbackCompletedtmpAction = async (input: NewFeedbackComplet
   }
 };
 
-export const updateFeedbackCompletedtmpAction = async (input: UpdateFeedbackCompletedtmpParams) => {
+export const updateFeedbackCompletedtmpAction = async (
+  input: UpdateFeedbackCompletedtmpParams,
+) => {
   try {
     const payload = updateFeedbackCompletedtmpParams.parse(input);
     await updateFeedbackCompletedtmp(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateFeedbackCompletedtmpAction = async (input: UpdateFeedbackComp
   }
 };
 
-export const deleteFeedbackCompletedtmpAction = async (input: FeedbackCompletedtmpId) => {
+export const deleteFeedbackCompletedtmpAction = async (
+  input: FeedbackCompletedtmpId,
+) => {
   try {
     const payload = feedbackCompletedtmpIdSchema.parse({ id: input });
     await deleteFeedbackCompletedtmp(payload.id);

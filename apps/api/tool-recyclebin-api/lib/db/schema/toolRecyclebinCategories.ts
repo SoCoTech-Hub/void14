@@ -1,10 +1,11 @@
-import { type getToolRecyclebinCategories } from "@/lib/api/toolRecyclebinCategories/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getToolRecyclebinCategories } from "../api/toolRecyclebinCategories/queries";
 
 export const toolRecyclebinCategories = pgTable(
   "tool_recyclebin_categories",

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createH5pactivity,
   deleteH5pactivity,
   updateH5pactivity,
-} from "@/lib/api/h5pactivities/mutations";
+} from "../api/h5pactivities/mutations";
 import {
   H5pactivityId,
-  NewH5pactivityParams,
-  UpdateH5pactivityParams,
   h5pactivityIdSchema,
   insertH5pactivityParams,
+  NewH5pactivityParams,
+  UpdateH5pactivityParams,
   updateH5pactivityParams,
-} from "@/lib/db/schema/h5pactivities";
+} from "../db/schema/h5pactivities";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createH5pactivityAction = async (input: NewH5pactivityParams) => {
   }
 };
 
-export const updateH5pactivityAction = async (input: UpdateH5pactivityParams) => {
+export const updateH5pactivityAction = async (
+  input: UpdateH5pactivityParams,
+) => {
   try {
     const payload = updateH5pactivityParams.parse(input);
     await updateH5pactivity(payload.id, payload);

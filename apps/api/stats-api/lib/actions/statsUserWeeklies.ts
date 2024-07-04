@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createStatsUserWeekly,
   deleteStatsUserWeekly,
   updateStatsUserWeekly,
-} from "@/lib/api/statsUserWeeklies/mutations";
+} from "../api/statsUserWeeklies/mutations";
 import {
-  StatsUserWeeklyId,
-  NewStatsUserWeeklyParams,
-  UpdateStatsUserWeeklyParams,
-  statsUserWeeklyIdSchema,
   insertStatsUserWeeklyParams,
+  NewStatsUserWeeklyParams,
+  StatsUserWeeklyId,
+  statsUserWeeklyIdSchema,
+  UpdateStatsUserWeeklyParams,
   updateStatsUserWeeklyParams,
-} from "@/lib/db/schema/statsUserWeeklies";
+} from "../db/schema/statsUserWeeklies";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateStatsUserWeeklies = () => revalidatePath("/stats-user-weeklies");
+const revalidateStatsUserWeeklies = () =>
+  revalidatePath("/stats-user-weeklies");
 
-export const createStatsUserWeeklyAction = async (input: NewStatsUserWeeklyParams) => {
+export const createStatsUserWeeklyAction = async (
+  input: NewStatsUserWeeklyParams,
+) => {
   try {
     const payload = insertStatsUserWeeklyParams.parse(input);
     await createStatsUserWeekly(payload);
@@ -37,7 +41,9 @@ export const createStatsUserWeeklyAction = async (input: NewStatsUserWeeklyParam
   }
 };
 
-export const updateStatsUserWeeklyAction = async (input: UpdateStatsUserWeeklyParams) => {
+export const updateStatsUserWeeklyAction = async (
+  input: UpdateStatsUserWeeklyParams,
+) => {
   try {
     const payload = updateStatsUserWeeklyParams.parse(input);
     await updateStatsUserWeekly(payload.id, payload);

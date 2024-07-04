@@ -1,19 +1,25 @@
-import { getConfigById, getConfigs } from "@/lib/api/configs/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createConfig,
+  deleteConfig,
+  updateConfig,
+} from "../api/configs/mutations";
+import { getConfigById, getConfigs } from "../api/configs/queries";
 import {
   configIdSchema,
   insertConfigParams,
   updateConfigParams,
-} from "@/lib/db/schema/configs";
-import { createConfig, deleteConfig, updateConfig } from "@/lib/api/configs/mutations";
+} from "../db/schema/configs";
+import { publicProcedure, router } from "../server/trpc";
 
 export const configsRouter = router({
   getConfigs: publicProcedure.query(async () => {
     return getConfigs();
   }),
-  getConfigById: publicProcedure.input(configIdSchema).query(async ({ input }) => {
-    return getConfigById(input.id);
-  }),
+  getConfigById: publicProcedure
+    .input(configIdSchema)
+    .query(async ({ input }) => {
+      return getConfigById(input.id);
+    }),
   createConfig: publicProcedure
     .input(insertConfigParams)
     .mutation(async ({ input }) => {

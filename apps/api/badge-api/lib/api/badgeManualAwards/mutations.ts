@@ -1,19 +1,26 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  BadgeManualAwardId, 
-  NewBadgeManualAwardParams,
-  UpdateBadgeManualAwardParams, 
-  updateBadgeManualAwardSchema,
-  insertBadgeManualAwardSchema, 
-  badgeManualAwards,
-  badgeManualAwardIdSchema 
-} from "@/lib/db/schema/badgeManualAwards";
 
-export const createBadgeManualAward = async (badgeManualAward: NewBadgeManualAwardParams) => {
-  const newBadgeManualAward = insertBadgeManualAwardSchema.parse(badgeManualAward);
+import { db } from "../db/index";
+import {
+  BadgeManualAwardId,
+  badgeManualAwardIdSchema,
+  badgeManualAwards,
+  insertBadgeManualAwardSchema,
+  NewBadgeManualAwardParams,
+  UpdateBadgeManualAwardParams,
+  updateBadgeManualAwardSchema,
+} from "../db/schema/badgeManualAwards";
+
+export const createBadgeManualAward = async (
+  badgeManualAward: NewBadgeManualAwardParams,
+) => {
+  const newBadgeManualAward =
+    insertBadgeManualAwardSchema.parse(badgeManualAward);
   try {
-    const [b] =  await db.insert(badgeManualAwards).values(newBadgeManualAward).returning();
+    const [b] = await db
+      .insert(badgeManualAwards)
+      .values(newBadgeManualAward)
+      .returning();
     return { badgeManualAward: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,19 @@ export const createBadgeManualAward = async (badgeManualAward: NewBadgeManualAwa
   }
 };
 
-export const updateBadgeManualAward = async (id: BadgeManualAwardId, badgeManualAward: UpdateBadgeManualAwardParams) => {
+export const updateBadgeManualAward = async (
+  id: BadgeManualAwardId,
+  badgeManualAward: UpdateBadgeManualAwardParams,
+) => {
   const { id: badgeManualAwardId } = badgeManualAwardIdSchema.parse({ id });
-  const newBadgeManualAward = updateBadgeManualAwardSchema.parse(badgeManualAward);
+  const newBadgeManualAward =
+    updateBadgeManualAwardSchema.parse(badgeManualAward);
   try {
-    const [b] =  await db
-     .update(badgeManualAwards)
-     .set(newBadgeManualAward)
-     .where(eq(badgeManualAwards.id, badgeManualAwardId!))
-     .returning();
+    const [b] = await db
+      .update(badgeManualAwards)
+      .set(newBadgeManualAward)
+      .where(eq(badgeManualAwards.id, badgeManualAwardId!))
+      .returning();
     return { badgeManualAward: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +53,10 @@ export const updateBadgeManualAward = async (id: BadgeManualAwardId, badgeManual
 export const deleteBadgeManualAward = async (id: BadgeManualAwardId) => {
   const { id: badgeManualAwardId } = badgeManualAwardIdSchema.parse({ id });
   try {
-    const [b] =  await db.delete(badgeManualAwards).where(eq(badgeManualAwards.id, badgeManualAwardId!))
-    .returning();
+    const [b] = await db
+      .delete(badgeManualAwards)
+      .where(eq(badgeManualAwards.id, badgeManualAwardId!))
+      .returning();
     return { badgeManualAward: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +64,3 @@ export const deleteBadgeManualAward = async (id: BadgeManualAwardId) => {
     throw { error: message };
   }
 };
-

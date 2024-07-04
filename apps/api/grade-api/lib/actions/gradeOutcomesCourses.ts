@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGradeOutcomesCourse,
   deleteGradeOutcomesCourse,
   updateGradeOutcomesCourse,
-} from "@/lib/api/gradeOutcomesCourses/mutations";
+} from "../api/gradeOutcomesCourses/mutations";
 import {
   GradeOutcomesCourseId,
-  NewGradeOutcomesCourseParams,
-  UpdateGradeOutcomesCourseParams,
   gradeOutcomesCourseIdSchema,
   insertGradeOutcomesCourseParams,
+  NewGradeOutcomesCourseParams,
+  UpdateGradeOutcomesCourseParams,
   updateGradeOutcomesCourseParams,
-} from "@/lib/db/schema/gradeOutcomesCourses";
+} from "../db/schema/gradeOutcomesCourses";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateGradeOutcomesCourses = () => revalidatePath("/grade-outcomes-courses");
+const revalidateGradeOutcomesCourses = () =>
+  revalidatePath("/grade-outcomes-courses");
 
-export const createGradeOutcomesCourseAction = async (input: NewGradeOutcomesCourseParams) => {
+export const createGradeOutcomesCourseAction = async (
+  input: NewGradeOutcomesCourseParams,
+) => {
   try {
     const payload = insertGradeOutcomesCourseParams.parse(input);
     await createGradeOutcomesCourse(payload);
@@ -37,7 +41,9 @@ export const createGradeOutcomesCourseAction = async (input: NewGradeOutcomesCou
   }
 };
 
-export const updateGradeOutcomesCourseAction = async (input: UpdateGradeOutcomesCourseParams) => {
+export const updateGradeOutcomesCourseAction = async (
+  input: UpdateGradeOutcomesCourseParams,
+) => {
   try {
     const payload = updateGradeOutcomesCourseParams.parse(input);
     await updateGradeOutcomesCourse(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateGradeOutcomesCourseAction = async (input: UpdateGradeOutcomes
   }
 };
 
-export const deleteGradeOutcomesCourseAction = async (input: GradeOutcomesCourseId) => {
+export const deleteGradeOutcomesCourseAction = async (
+  input: GradeOutcomesCourseId,
+) => {
   try {
     const payload = gradeOutcomesCourseIdSchema.parse({ id: input });
     await deleteGradeOutcomesCourse(payload.id);

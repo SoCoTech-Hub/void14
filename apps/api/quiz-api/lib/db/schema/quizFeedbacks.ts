@@ -1,4 +1,3 @@
-import { type getQuizFeedbacks } from "@/lib/api/quizFeedbacks/queries";
 import {
   integer,
   pgTable,
@@ -12,6 +11,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getQuizFeedbacks } from "../api/quizFeedbacks/queries";
 import { quizes } from "./quizes";
 
 export const quizFeedbacks = pgTable(

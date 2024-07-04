@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createExternalServicesFunction,
   deleteExternalServicesFunction,
   updateExternalServicesFunction,
-} from "@/lib/api/externalServicesFunctions/mutations";
+} from "../api/externalServicesFunctions/mutations";
 import {
   ExternalServicesFunctionId,
-  NewExternalServicesFunctionParams,
-  UpdateExternalServicesFunctionParams,
   externalServicesFunctionIdSchema,
   insertExternalServicesFunctionParams,
+  NewExternalServicesFunctionParams,
+  UpdateExternalServicesFunctionParams,
   updateExternalServicesFunctionParams,
-} from "@/lib/db/schema/externalServicesFunctions";
+} from "../db/schema/externalServicesFunctions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateExternalServicesFunctions = () => revalidatePath("/external-services-functions");
+const revalidateExternalServicesFunctions = () =>
+  revalidatePath("/external-services-functions");
 
-export const createExternalServicesFunctionAction = async (input: NewExternalServicesFunctionParams) => {
+export const createExternalServicesFunctionAction = async (
+  input: NewExternalServicesFunctionParams,
+) => {
   try {
     const payload = insertExternalServicesFunctionParams.parse(input);
     await createExternalServicesFunction(payload);
@@ -37,7 +41,9 @@ export const createExternalServicesFunctionAction = async (input: NewExternalSer
   }
 };
 
-export const updateExternalServicesFunctionAction = async (input: UpdateExternalServicesFunctionParams) => {
+export const updateExternalServicesFunctionAction = async (
+  input: UpdateExternalServicesFunctionParams,
+) => {
   try {
     const payload = updateExternalServicesFunctionParams.parse(input);
     await updateExternalServicesFunction(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateExternalServicesFunctionAction = async (input: UpdateExternal
   }
 };
 
-export const deleteExternalServicesFunctionAction = async (input: ExternalServicesFunctionId) => {
+export const deleteExternalServicesFunctionAction = async (
+  input: ExternalServicesFunctionId,
+) => {
   try {
     const payload = externalServicesFunctionIdSchema.parse({ id: input });
     await deleteExternalServicesFunction(payload.id);

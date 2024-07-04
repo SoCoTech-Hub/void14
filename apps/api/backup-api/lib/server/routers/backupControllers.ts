@@ -1,19 +1,28 @@
-import { getBackupControllerById, getBackupControllers } from "@/lib/api/backupControllers/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createBackupController,
+  deleteBackupController,
+  updateBackupController,
+} from "../api/backupControllers/mutations";
+import {
+  getBackupControllerById,
+  getBackupControllers,
+} from "../api/backupControllers/queries";
 import {
   backupControllerIdSchema,
   insertBackupControllerParams,
   updateBackupControllerParams,
-} from "@/lib/db/schema/backupControllers";
-import { createBackupController, deleteBackupController, updateBackupController } from "@/lib/api/backupControllers/mutations";
+} from "../db/schema/backupControllers";
+import { publicProcedure, router } from "../server/trpc";
 
 export const backupControllersRouter = router({
   getBackupControllers: publicProcedure.query(async () => {
     return getBackupControllers();
   }),
-  getBackupControllerById: publicProcedure.input(backupControllerIdSchema).query(async ({ input }) => {
-    return getBackupControllerById(input.id);
-  }),
+  getBackupControllerById: publicProcedure
+    .input(backupControllerIdSchema)
+    .query(async ({ input }) => {
+      return getBackupControllerById(input.id);
+    }),
   createBackupController: publicProcedure
     .input(insertBackupControllerParams)
     .mutation(async ({ input }) => {

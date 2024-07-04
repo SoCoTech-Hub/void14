@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createFolder,
   deleteFolder,
   updateFolder,
-} from "@/lib/api/folders/mutations";
+} from "../api/folders/mutations";
 import {
   FolderId,
-  NewFolderParams,
-  UpdateFolderParams,
   folderIdSchema,
   insertFolderParams,
+  NewFolderParams,
+  UpdateFolderParams,
   updateFolderParams,
-} from "@/lib/db/schema/folders";
+} from "../db/schema/folders";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

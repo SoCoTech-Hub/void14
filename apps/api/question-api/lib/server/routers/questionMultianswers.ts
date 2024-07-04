@@ -1,19 +1,28 @@
-import { getQuestionMultianswerById, getQuestionMultianswers } from "@/lib/api/questionMultianswers/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  questionMultianswerIdSchema,
+  createQuestionMultianswer,
+  deleteQuestionMultianswer,
+  updateQuestionMultianswer,
+} from "../api/questionMultianswers/mutations";
+import {
+  getQuestionMultianswerById,
+  getQuestionMultianswers,
+} from "../api/questionMultianswers/queries";
+import {
   insertQuestionMultianswerParams,
+  questionMultianswerIdSchema,
   updateQuestionMultianswerParams,
-} from "@/lib/db/schema/questionMultianswers";
-import { createQuestionMultianswer, deleteQuestionMultianswer, updateQuestionMultianswer } from "@/lib/api/questionMultianswers/mutations";
+} from "../db/schema/questionMultianswers";
+import { publicProcedure, router } from "../server/trpc";
 
 export const questionMultianswersRouter = router({
   getQuestionMultianswers: publicProcedure.query(async () => {
     return getQuestionMultianswers();
   }),
-  getQuestionMultianswerById: publicProcedure.input(questionMultianswerIdSchema).query(async ({ input }) => {
-    return getQuestionMultianswerById(input.id);
-  }),
+  getQuestionMultianswerById: publicProcedure
+    .input(questionMultianswerIdSchema)
+    .query(async ({ input }) => {
+      return getQuestionMultianswerById(input.id);
+    }),
   createQuestionMultianswer: publicProcedure
     .input(insertQuestionMultianswerParams)
     .mutation(async ({ input }) => {

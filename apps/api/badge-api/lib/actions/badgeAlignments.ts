@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBadgeAlignment,
   deleteBadgeAlignment,
   updateBadgeAlignment,
-} from "@/lib/api/badgeAlignments/mutations";
+} from "../api/badgeAlignments/mutations";
 import {
   BadgeAlignmentId,
-  NewBadgeAlignmentParams,
-  UpdateBadgeAlignmentParams,
   badgeAlignmentIdSchema,
   insertBadgeAlignmentParams,
+  NewBadgeAlignmentParams,
+  UpdateBadgeAlignmentParams,
   updateBadgeAlignmentParams,
-} from "@/lib/db/schema/badgeAlignments";
+} from "../db/schema/badgeAlignments";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateBadgeAlignments = () => revalidatePath("/badge-alignments");
 
-export const createBadgeAlignmentAction = async (input: NewBadgeAlignmentParams) => {
+export const createBadgeAlignmentAction = async (
+  input: NewBadgeAlignmentParams,
+) => {
   try {
     const payload = insertBadgeAlignmentParams.parse(input);
     await createBadgeAlignment(payload);
@@ -37,7 +40,9 @@ export const createBadgeAlignmentAction = async (input: NewBadgeAlignmentParams)
   }
 };
 
-export const updateBadgeAlignmentAction = async (input: UpdateBadgeAlignmentParams) => {
+export const updateBadgeAlignmentAction = async (
+  input: UpdateBadgeAlignmentParams,
+) => {
   try {
     const payload = updateBadgeAlignmentParams.parse(input);
     await updateBadgeAlignment(payload.id, payload);

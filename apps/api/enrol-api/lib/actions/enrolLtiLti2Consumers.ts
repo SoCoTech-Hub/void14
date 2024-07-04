@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createEnrolLtiLti2Consumer,
   deleteEnrolLtiLti2Consumer,
   updateEnrolLtiLti2Consumer,
-} from "@/lib/api/enrolLtiLti2Consumers/mutations";
+} from "../api/enrolLtiLti2Consumers/mutations";
 import {
   EnrolLtiLti2ConsumerId,
-  NewEnrolLtiLti2ConsumerParams,
-  UpdateEnrolLtiLti2ConsumerParams,
   enrolLtiLti2ConsumerIdSchema,
   insertEnrolLtiLti2ConsumerParams,
+  NewEnrolLtiLti2ConsumerParams,
+  UpdateEnrolLtiLti2ConsumerParams,
   updateEnrolLtiLti2ConsumerParams,
-} from "@/lib/db/schema/enrolLtiLti2Consumers";
+} from "../db/schema/enrolLtiLti2Consumers";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateEnrolLtiLti2Consumers = () => revalidatePath("/enrol-lti-lti2-consumers");
+const revalidateEnrolLtiLti2Consumers = () =>
+  revalidatePath("/enrol-lti-lti2-consumers");
 
-export const createEnrolLtiLti2ConsumerAction = async (input: NewEnrolLtiLti2ConsumerParams) => {
+export const createEnrolLtiLti2ConsumerAction = async (
+  input: NewEnrolLtiLti2ConsumerParams,
+) => {
   try {
     const payload = insertEnrolLtiLti2ConsumerParams.parse(input);
     await createEnrolLtiLti2Consumer(payload);
@@ -37,7 +41,9 @@ export const createEnrolLtiLti2ConsumerAction = async (input: NewEnrolLtiLti2Con
   }
 };
 
-export const updateEnrolLtiLti2ConsumerAction = async (input: UpdateEnrolLtiLti2ConsumerParams) => {
+export const updateEnrolLtiLti2ConsumerAction = async (
+  input: UpdateEnrolLtiLti2ConsumerParams,
+) => {
   try {
     const payload = updateEnrolLtiLti2ConsumerParams.parse(input);
     await updateEnrolLtiLti2Consumer(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateEnrolLtiLti2ConsumerAction = async (input: UpdateEnrolLtiLti2
   }
 };
 
-export const deleteEnrolLtiLti2ConsumerAction = async (input: EnrolLtiLti2ConsumerId) => {
+export const deleteEnrolLtiLti2ConsumerAction = async (
+  input: EnrolLtiLti2ConsumerId,
+) => {
   try {
     const payload = enrolLtiLti2ConsumerIdSchema.parse({ id: input });
     await deleteEnrolLtiLti2Consumer(payload.id);

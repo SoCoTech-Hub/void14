@@ -1,4 +1,3 @@
-import { type getEventResponses } from "@/lib/api/eventResponses/queries";
 import { sql } from "drizzle-orm";
 import {
   pgTable,
@@ -12,6 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getEventResponses } from "../api/eventResponses/queries";
 import { events } from "./events";
 
 export const eventResponses = pgTable(

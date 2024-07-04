@@ -1,10 +1,11 @@
-import { type getFavourites } from "@/lib/api/favourites/queries";
 import { sql } from "drizzle-orm";
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getFavourites } from "../api/favourites/queries";
 
 export const favourites = pgTable("favourites", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

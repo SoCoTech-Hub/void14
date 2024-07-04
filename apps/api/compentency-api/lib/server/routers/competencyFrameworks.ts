@@ -1,19 +1,28 @@
-import { getCompetencyFrameworkById, getCompetencyFrameworks } from "@/lib/api/competencyFrameworks/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createCompetencyFramework,
+  deleteCompetencyFramework,
+  updateCompetencyFramework,
+} from "../api/competencyFrameworks/mutations";
+import {
+  getCompetencyFrameworkById,
+  getCompetencyFrameworks,
+} from "../api/competencyFrameworks/queries";
 import {
   competencyFrameworkIdSchema,
   insertCompetencyFrameworkParams,
   updateCompetencyFrameworkParams,
-} from "@/lib/db/schema/competencyFrameworks";
-import { createCompetencyFramework, deleteCompetencyFramework, updateCompetencyFramework } from "@/lib/api/competencyFrameworks/mutations";
+} from "../db/schema/competencyFrameworks";
+import { publicProcedure, router } from "../server/trpc";
 
 export const competencyFrameworksRouter = router({
   getCompetencyFrameworks: publicProcedure.query(async () => {
     return getCompetencyFrameworks();
   }),
-  getCompetencyFrameworkById: publicProcedure.input(competencyFrameworkIdSchema).query(async ({ input }) => {
-    return getCompetencyFrameworkById(input.id);
-  }),
+  getCompetencyFrameworkById: publicProcedure
+    .input(competencyFrameworkIdSchema)
+    .query(async ({ input }) => {
+      return getCompetencyFrameworkById(input.id);
+    }),
   createCompetencyFramework: publicProcedure
     .input(insertCompetencyFrameworkParams)
     .mutation(async ({ input }) => {

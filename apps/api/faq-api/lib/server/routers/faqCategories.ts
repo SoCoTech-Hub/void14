@@ -1,19 +1,28 @@
-import { getFaqCategoryById, getFaqCategories } from "@/lib/api/faqCategories/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createFaqCategory,
+  deleteFaqCategory,
+  updateFaqCategory,
+} from "../api/faqCategories/mutations";
+import {
+  getFaqCategories,
+  getFaqCategoryById,
+} from "../api/faqCategories/queries";
 import {
   faqCategoryIdSchema,
   insertFaqCategoryParams,
   updateFaqCategoryParams,
-} from "@/lib/db/schema/faqCategories";
-import { createFaqCategory, deleteFaqCategory, updateFaqCategory } from "@/lib/api/faqCategories/mutations";
+} from "../db/schema/faqCategories";
+import { publicProcedure, router } from "../server/trpc";
 
 export const faqCategoriesRouter = router({
   getFaqCategories: publicProcedure.query(async () => {
     return getFaqCategories();
   }),
-  getFaqCategoryById: publicProcedure.input(faqCategoryIdSchema).query(async ({ input }) => {
-    return getFaqCategoryById(input.id);
-  }),
+  getFaqCategoryById: publicProcedure
+    .input(faqCategoryIdSchema)
+    .query(async ({ input }) => {
+      return getFaqCategoryById(input.id);
+    }),
   createFaqCategory: publicProcedure
     .input(insertFaqCategoryParams)
     .mutation(async ({ input }) => {

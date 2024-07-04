@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGradeImportNewitem,
   deleteGradeImportNewitem,
   updateGradeImportNewitem,
-} from "@/lib/api/gradeImportNewitems/mutations";
+} from "../api/gradeImportNewitems/mutations";
 import {
   GradeImportNewitemId,
-  NewGradeImportNewitemParams,
-  UpdateGradeImportNewitemParams,
   gradeImportNewitemIdSchema,
   insertGradeImportNewitemParams,
+  NewGradeImportNewitemParams,
+  UpdateGradeImportNewitemParams,
   updateGradeImportNewitemParams,
-} from "@/lib/db/schema/gradeImportNewitems";
+} from "../db/schema/gradeImportNewitems";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateGradeImportNewitems = () => revalidatePath("/grade-import-newitems");
+const revalidateGradeImportNewitems = () =>
+  revalidatePath("/grade-import-newitems");
 
-export const createGradeImportNewitemAction = async (input: NewGradeImportNewitemParams) => {
+export const createGradeImportNewitemAction = async (
+  input: NewGradeImportNewitemParams,
+) => {
   try {
     const payload = insertGradeImportNewitemParams.parse(input);
     await createGradeImportNewitem(payload);
@@ -37,7 +41,9 @@ export const createGradeImportNewitemAction = async (input: NewGradeImportNewite
   }
 };
 
-export const updateGradeImportNewitemAction = async (input: UpdateGradeImportNewitemParams) => {
+export const updateGradeImportNewitemAction = async (
+  input: UpdateGradeImportNewitemParams,
+) => {
   try {
     const payload = updateGradeImportNewitemParams.parse(input);
     await updateGradeImportNewitem(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateGradeImportNewitemAction = async (input: UpdateGradeImportNew
   }
 };
 
-export const deleteGradeImportNewitemAction = async (input: GradeImportNewitemId) => {
+export const deleteGradeImportNewitemAction = async (
+  input: GradeImportNewitemId,
+) => {
   try {
     const payload = gradeImportNewitemIdSchema.parse({ id: input });
     await deleteGradeImportNewitem(payload.id);

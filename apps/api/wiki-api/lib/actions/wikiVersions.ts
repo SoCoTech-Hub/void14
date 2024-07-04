@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createWikiVersion,
   deleteWikiVersion,
   updateWikiVersion,
-} from "@/lib/api/wikiVersions/mutations";
+} from "../api/wikiVersions/mutations";
 import {
-  WikiVersionId,
+  insertWikiVersionParams,
   NewWikiVersionParams,
   UpdateWikiVersionParams,
-  wikiVersionIdSchema,
-  insertWikiVersionParams,
   updateWikiVersionParams,
-} from "@/lib/db/schema/wikiVersions";
+  WikiVersionId,
+  wikiVersionIdSchema,
+} from "../db/schema/wikiVersions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createWikiVersionAction = async (input: NewWikiVersionParams) => {
   }
 };
 
-export const updateWikiVersionAction = async (input: UpdateWikiVersionParams) => {
+export const updateWikiVersionAction = async (
+  input: UpdateWikiVersionParams,
+) => {
   try {
     const payload = updateWikiVersionParams.parse(input);
     await updateWikiVersion(payload.id, payload);

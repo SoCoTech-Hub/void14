@@ -1,19 +1,25 @@
-import { getAddressById, getAddresses } from "@/lib/api/addresses/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createAddress,
+  deleteAddress,
+  updateAddress,
+} from "../api/addresses/mutations";
+import { getAddressById, getAddresses } from "../api/addresses/queries";
 import {
   addressIdSchema,
   insertAddressParams,
   updateAddressParams,
-} from "@/lib/db/schema/addresses";
-import { createAddress, deleteAddress, updateAddress } from "@/lib/api/addresses/mutations";
+} from "../db/schema/addresses";
+import { publicProcedure, router } from "../server/trpc";
 
 export const addressesRouter = router({
   getAddresses: publicProcedure.query(async () => {
     return getAddresses();
   }),
-  getAddressById: publicProcedure.input(addressIdSchema).query(async ({ input }) => {
-    return getAddressById(input.id);
-  }),
+  getAddressById: publicProcedure
+    .input(addressIdSchema)
+    .query(async ({ input }) => {
+      return getAddressById(input.id);
+    }),
   createAddress: publicProcedure
     .input(insertAddressParams)
     .mutation(async ({ input }) => {

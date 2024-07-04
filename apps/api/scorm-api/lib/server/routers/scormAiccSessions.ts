@@ -1,19 +1,28 @@
-import { getScormAiccSessionById, getScormAiccSessions } from "@/lib/api/scormAiccSessions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  scormAiccSessionIdSchema,
+  createScormAiccSession,
+  deleteScormAiccSession,
+  updateScormAiccSession,
+} from "../api/scormAiccSessions/mutations";
+import {
+  getScormAiccSessionById,
+  getScormAiccSessions,
+} from "../api/scormAiccSessions/queries";
+import {
   insertScormAiccSessionParams,
+  scormAiccSessionIdSchema,
   updateScormAiccSessionParams,
-} from "@/lib/db/schema/scormAiccSessions";
-import { createScormAiccSession, deleteScormAiccSession, updateScormAiccSession } from "@/lib/api/scormAiccSessions/mutations";
+} from "../db/schema/scormAiccSessions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const scormAiccSessionsRouter = router({
   getScormAiccSessions: publicProcedure.query(async () => {
     return getScormAiccSessions();
   }),
-  getScormAiccSessionById: publicProcedure.input(scormAiccSessionIdSchema).query(async ({ input }) => {
-    return getScormAiccSessionById(input.id);
-  }),
+  getScormAiccSessionById: publicProcedure
+    .input(scormAiccSessionIdSchema)
+    .query(async ({ input }) => {
+      return getScormAiccSessionById(input.id);
+    }),
   createScormAiccSession: publicProcedure
     .input(insertScormAiccSessionParams)
     .mutation(async ({ input }) => {

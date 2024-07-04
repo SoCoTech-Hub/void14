@@ -1,9 +1,9 @@
+import { router } from "../server/trpc";
 import { computersRouter } from "./computers";
-import { router } from "@/lib/server/trpc";
-import { wikisRouter } from "./wikis";
-import { wikiPagesRouter } from "./wikiPages";
 import { wikiLinksRouter } from "./wikiLinks";
 import { wikiLocksRouter } from "./wikiLocks";
+import { wikiPagesRouter } from "./wikiPages";
+import { wikisRouter } from "./wikis";
 import { wikiSubwikisRouter } from "./wikiSubwikis";
 import { wikiSynonymsRouter } from "./wikiSynonyms";
 import { wikiVersionsRouter } from "./wikiVersions";

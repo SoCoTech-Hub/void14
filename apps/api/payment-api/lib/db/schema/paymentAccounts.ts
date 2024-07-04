@@ -1,4 +1,3 @@
-import { type getPaymentAccounts } from "@/lib/api/paymentAccounts/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getPaymentAccounts } from "../api/paymentAccounts/queries";
 
 export const paymentAccounts = pgTable(
   "payment_accounts",

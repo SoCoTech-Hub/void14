@@ -1,19 +1,28 @@
-import { getWorkshopFormCommentById, getWorkshopFormComments } from "@/lib/api/workshopFormComments/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  workshopFormCommentIdSchema,
+  createWorkshopFormComment,
+  deleteWorkshopFormComment,
+  updateWorkshopFormComment,
+} from "../api/workshopFormComments/mutations";
+import {
+  getWorkshopFormCommentById,
+  getWorkshopFormComments,
+} from "../api/workshopFormComments/queries";
+import {
   insertWorkshopFormCommentParams,
   updateWorkshopFormCommentParams,
-} from "@/lib/db/schema/workshopFormComments";
-import { createWorkshopFormComment, deleteWorkshopFormComment, updateWorkshopFormComment } from "@/lib/api/workshopFormComments/mutations";
+  workshopFormCommentIdSchema,
+} from "../db/schema/workshopFormComments";
+import { publicProcedure, router } from "../server/trpc";
 
 export const workshopFormCommentsRouter = router({
   getWorkshopFormComments: publicProcedure.query(async () => {
     return getWorkshopFormComments();
   }),
-  getWorkshopFormCommentById: publicProcedure.input(workshopFormCommentIdSchema).query(async ({ input }) => {
-    return getWorkshopFormCommentById(input.id);
-  }),
+  getWorkshopFormCommentById: publicProcedure
+    .input(workshopFormCommentIdSchema)
+    .query(async ({ input }) => {
+      return getWorkshopFormCommentById(input.id);
+    }),
   createWorkshopFormComment: publicProcedure
     .input(insertWorkshopFormCommentParams)
     .mutation(async ({ input }) => {

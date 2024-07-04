@@ -1,4 +1,3 @@
-import { type getQuestionGapselects } from "@/lib/api/questionGapselects/queries";
 import {
   boolean,
   integer,
@@ -12,6 +11,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getQuestionGapselects } from "../api/questionGapselects/queries";
 import { questions } from "./questions";
 
 export const questionGapselects = pgTable(

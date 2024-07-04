@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createFeedbackSitecourseMap,
   deleteFeedbackSitecourseMap,
   updateFeedbackSitecourseMap,
-} from "@/lib/api/feedbackSitecourseMaps/mutations";
+} from "../api/feedbackSitecourseMaps/mutations";
 import {
   FeedbackSitecourseMapId,
-  NewFeedbackSitecourseMapParams,
-  UpdateFeedbackSitecourseMapParams,
   feedbackSitecourseMapIdSchema,
   insertFeedbackSitecourseMapParams,
+  NewFeedbackSitecourseMapParams,
+  UpdateFeedbackSitecourseMapParams,
   updateFeedbackSitecourseMapParams,
-} from "@/lib/db/schema/feedbackSitecourseMaps";
+} from "../db/schema/feedbackSitecourseMaps";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateFeedbackSitecourseMaps = () => revalidatePath("/feedback-sitecourse-maps");
+const revalidateFeedbackSitecourseMaps = () =>
+  revalidatePath("/feedback-sitecourse-maps");
 
-export const createFeedbackSitecourseMapAction = async (input: NewFeedbackSitecourseMapParams) => {
+export const createFeedbackSitecourseMapAction = async (
+  input: NewFeedbackSitecourseMapParams,
+) => {
   try {
     const payload = insertFeedbackSitecourseMapParams.parse(input);
     await createFeedbackSitecourseMap(payload);
@@ -37,7 +41,9 @@ export const createFeedbackSitecourseMapAction = async (input: NewFeedbackSiteco
   }
 };
 
-export const updateFeedbackSitecourseMapAction = async (input: UpdateFeedbackSitecourseMapParams) => {
+export const updateFeedbackSitecourseMapAction = async (
+  input: UpdateFeedbackSitecourseMapParams,
+) => {
   try {
     const payload = updateFeedbackSitecourseMapParams.parse(input);
     await updateFeedbackSitecourseMap(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateFeedbackSitecourseMapAction = async (input: UpdateFeedbackSit
   }
 };
 
-export const deleteFeedbackSitecourseMapAction = async (input: FeedbackSitecourseMapId) => {
+export const deleteFeedbackSitecourseMapAction = async (
+  input: FeedbackSitecourseMapId,
+) => {
   try {
     const payload = feedbackSitecourseMapIdSchema.parse({ id: input });
     await deleteFeedbackSitecourseMap(payload.id);

@@ -4,7 +4,7 @@ import { z } from 'zod'
 import { scormSeqObjectives } from './scormSeqObjectives'
 import { scormScoes } from './scormScoes'
 import { scormSeqObjectives } from './scormSeqObjectives'
-import { type getScormSeqMapinfos } from '@/lib/api/scormSeqMapinfos/queries'
+import { type getScormSeqMapinfos } from '../api/scormSeqMapinfos/queries'
 
 import { nanoid } from '@soco/utils'
 

@@ -1,19 +1,28 @@
-import { getQuestionResponseCountById, getQuestionResponseCounts } from "@/lib/api/questionResponseCounts/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  questionResponseCountIdSchema,
+  createQuestionResponseCount,
+  deleteQuestionResponseCount,
+  updateQuestionResponseCount,
+} from "../api/questionResponseCounts/mutations";
+import {
+  getQuestionResponseCountById,
+  getQuestionResponseCounts,
+} from "../api/questionResponseCounts/queries";
+import {
   insertQuestionResponseCountParams,
+  questionResponseCountIdSchema,
   updateQuestionResponseCountParams,
-} from "@/lib/db/schema/questionResponseCounts";
-import { createQuestionResponseCount, deleteQuestionResponseCount, updateQuestionResponseCount } from "@/lib/api/questionResponseCounts/mutations";
+} from "../db/schema/questionResponseCounts";
+import { publicProcedure, router } from "../server/trpc";
 
 export const questionResponseCountsRouter = router({
   getQuestionResponseCounts: publicProcedure.query(async () => {
     return getQuestionResponseCounts();
   }),
-  getQuestionResponseCountById: publicProcedure.input(questionResponseCountIdSchema).query(async ({ input }) => {
-    return getQuestionResponseCountById(input.id);
-  }),
+  getQuestionResponseCountById: publicProcedure
+    .input(questionResponseCountIdSchema)
+    .query(async ({ input }) => {
+      return getQuestionResponseCountById(input.id);
+    }),
   createQuestionResponseCount: publicProcedure
     .input(insertQuestionResponseCountParams)
     .mutation(async ({ input }) => {

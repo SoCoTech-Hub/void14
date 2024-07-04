@@ -1,19 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
-import {
-  createImscp,
-  deleteImscp,
-  updateImscp,
-} from "@/lib/api/imscps/mutations";
+
+import { createImscp, deleteImscp, updateImscp } from "../api/imscps/mutations";
 import {
   ImscpId,
-  NewImscpParams,
-  UpdateImscpParams,
   imscpIdSchema,
   insertImscpParams,
+  NewImscpParams,
+  UpdateImscpParams,
   updateImscpParams,
-} from "@/lib/db/schema/imscps";
+} from "../db/schema/imscps";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

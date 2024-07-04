@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createSession,
   deleteSession,
   updateSession,
-} from "@/lib/api/sessions/mutations";
+} from "../api/sessions/mutations";
 import {
-  SessionId,
-  NewSessionParams,
-  UpdateSessionParams,
-  sessionIdSchema,
   insertSessionParams,
+  NewSessionParams,
+  SessionId,
+  sessionIdSchema,
+  UpdateSessionParams,
   updateSessionParams,
-} from "@/lib/db/schema/sessions";
+} from "../db/schema/sessions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

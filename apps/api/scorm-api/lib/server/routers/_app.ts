@@ -1,4 +1,4 @@
-import { router } from '@/lib/server/trpc'
+import { router } from '../server/trpc'
 import { scormsRouter } from './scorms'
 import { scormScoesRouter } from "./scormScoes";
 import { scormAiccSessionsRouter } from "./scormAiccSessions";

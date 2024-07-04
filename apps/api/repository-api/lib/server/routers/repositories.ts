@@ -1,19 +1,28 @@
-import { getRepositoryById, getRepositories } from "@/lib/api/repositories/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  repositoryIdSchema,
+  createRepository,
+  deleteRepository,
+  updateRepository,
+} from "../api/repositories/mutations";
+import {
+  getRepositories,
+  getRepositoryById,
+} from "../api/repositories/queries";
+import {
   insertRepositoryParams,
+  repositoryIdSchema,
   updateRepositoryParams,
-} from "@/lib/db/schema/repositories";
-import { createRepository, deleteRepository, updateRepository } from "@/lib/api/repositories/mutations";
+} from "../db/schema/repositories";
+import { publicProcedure, router } from "../server/trpc";
 
 export const repositoriesRouter = router({
   getRepositories: publicProcedure.query(async () => {
     return getRepositories();
   }),
-  getRepositoryById: publicProcedure.input(repositoryIdSchema).query(async ({ input }) => {
-    return getRepositoryById(input.id);
-  }),
+  getRepositoryById: publicProcedure
+    .input(repositoryIdSchema)
+    .query(async ({ input }) => {
+      return getRepositoryById(input.id);
+    }),
   createRepository: publicProcedure
     .input(insertRepositoryParams)
     .mutation(async ({ input }) => {

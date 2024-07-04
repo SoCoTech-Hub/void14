@@ -1,4 +1,3 @@
-import { type getPosts } from "@/lib/api/posts/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -12,6 +11,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getPosts } from "../api/posts/queries";
 
 export const posts = pgTable(
   "posts",

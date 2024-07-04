@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCompetencyUserEvidence,
   deleteCompetencyUserEvidence,
   updateCompetencyUserEvidence,
-} from "@/lib/api/competencyUserEvidences/mutations";
+} from "../api/competencyUserEvidences/mutations";
 import {
   CompetencyUserEvidenceId,
-  NewCompetencyUserEvidenceParams,
-  UpdateCompetencyUserEvidenceParams,
   competencyUserEvidenceIdSchema,
   insertCompetencyUserEvidenceParams,
+  NewCompetencyUserEvidenceParams,
+  UpdateCompetencyUserEvidenceParams,
   updateCompetencyUserEvidenceParams,
-} from "@/lib/db/schema/competencyUserEvidences";
+} from "../db/schema/competencyUserEvidences";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateCompetencyUserEvidences = () => revalidatePath("/competency-user-evidences");
+const revalidateCompetencyUserEvidences = () =>
+  revalidatePath("/competency-user-evidences");
 
-export const createCompetencyUserEvidenceAction = async (input: NewCompetencyUserEvidenceParams) => {
+export const createCompetencyUserEvidenceAction = async (
+  input: NewCompetencyUserEvidenceParams,
+) => {
   try {
     const payload = insertCompetencyUserEvidenceParams.parse(input);
     await createCompetencyUserEvidence(payload);
@@ -37,7 +41,9 @@ export const createCompetencyUserEvidenceAction = async (input: NewCompetencyUse
   }
 };
 
-export const updateCompetencyUserEvidenceAction = async (input: UpdateCompetencyUserEvidenceParams) => {
+export const updateCompetencyUserEvidenceAction = async (
+  input: UpdateCompetencyUserEvidenceParams,
+) => {
   try {
     const payload = updateCompetencyUserEvidenceParams.parse(input);
     await updateCompetencyUserEvidence(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateCompetencyUserEvidenceAction = async (input: UpdateCompetency
   }
 };
 
-export const deleteCompetencyUserEvidenceAction = async (input: CompetencyUserEvidenceId) => {
+export const deleteCompetencyUserEvidenceAction = async (
+  input: CompetencyUserEvidenceId,
+) => {
   try {
     const payload = competencyUserEvidenceIdSchema.parse({ id: input });
     await deleteCompetencyUserEvidence(payload.id);

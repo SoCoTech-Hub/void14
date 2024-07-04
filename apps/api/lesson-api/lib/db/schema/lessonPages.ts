@@ -1,4 +1,3 @@
-import { type getLessonPages } from "@/lib/api/lessonPages/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getLessonPages } from "../api/lessonPages/queries";
 
 export const lessonPages = pgTable("lesson_pages", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

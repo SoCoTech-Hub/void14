@@ -1,19 +1,28 @@
-import { getCompetencyUserEvidenceCompById, getCompetencyUserEvidenceComps } from "@/lib/api/competencyUserEvidenceComps/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createCompetencyUserEvidenceComp,
+  deleteCompetencyUserEvidenceComp,
+  updateCompetencyUserEvidenceComp,
+} from "../api/competencyUserEvidenceComps/mutations";
+import {
+  getCompetencyUserEvidenceCompById,
+  getCompetencyUserEvidenceComps,
+} from "../api/competencyUserEvidenceComps/queries";
 import {
   competencyUserEvidenceCompIdSchema,
   insertCompetencyUserEvidenceCompParams,
   updateCompetencyUserEvidenceCompParams,
-} from "@/lib/db/schema/competencyUserEvidenceComps";
-import { createCompetencyUserEvidenceComp, deleteCompetencyUserEvidenceComp, updateCompetencyUserEvidenceComp } from "@/lib/api/competencyUserEvidenceComps/mutations";
+} from "../db/schema/competencyUserEvidenceComps";
+import { publicProcedure, router } from "../server/trpc";
 
 export const competencyUserEvidenceCompsRouter = router({
   getCompetencyUserEvidenceComps: publicProcedure.query(async () => {
     return getCompetencyUserEvidenceComps();
   }),
-  getCompetencyUserEvidenceCompById: publicProcedure.input(competencyUserEvidenceCompIdSchema).query(async ({ input }) => {
-    return getCompetencyUserEvidenceCompById(input.id);
-  }),
+  getCompetencyUserEvidenceCompById: publicProcedure
+    .input(competencyUserEvidenceCompIdSchema)
+    .query(async ({ input }) => {
+      return getCompetencyUserEvidenceCompById(input.id);
+    }),
   createCompetencyUserEvidenceComp: publicProcedure
     .input(insertCompetencyUserEvidenceCompParams)
     .mutation(async ({ input }) => {

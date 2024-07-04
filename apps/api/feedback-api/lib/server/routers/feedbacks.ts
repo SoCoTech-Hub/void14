@@ -1,19 +1,25 @@
-import { getFeedbackById, getFeedbacks } from "@/lib/api/feedbacks/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createFeedback,
+  deleteFeedback,
+  updateFeedback,
+} from "../api/feedbacks/mutations";
+import { getFeedbackById, getFeedbacks } from "../api/feedbacks/queries";
 import {
   feedbackIdSchema,
   insertFeedbackParams,
   updateFeedbackParams,
-} from "@/lib/db/schema/feedbacks";
-import { createFeedback, deleteFeedback, updateFeedback } from "@/lib/api/feedbacks/mutations";
+} from "../db/schema/feedbacks";
+import { publicProcedure, router } from "../server/trpc";
 
 export const feedbacksRouter = router({
   getFeedbacks: publicProcedure.query(async () => {
     return getFeedbacks();
   }),
-  getFeedbackById: publicProcedure.input(feedbackIdSchema).query(async ({ input }) => {
-    return getFeedbackById(input.id);
-  }),
+  getFeedbackById: publicProcedure
+    .input(feedbackIdSchema)
+    .query(async ({ input }) => {
+      return getFeedbackById(input.id);
+    }),
   createFeedback: publicProcedure
     .input(insertFeedbackParams)
     .mutation(async ({ input }) => {

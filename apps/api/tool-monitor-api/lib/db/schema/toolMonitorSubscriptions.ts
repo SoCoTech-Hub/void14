@@ -1,4 +1,3 @@
-import { type getToolMonitorSubscriptions } from "@/lib/api/toolMonitorSubscriptions/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -6,6 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getToolMonitorSubscriptions } from "../api/toolMonitorSubscriptions/queries";
 import { toolMonitorRules } from "./toolMonitorRules";
 
 export const toolMonitorSubscriptions = pgTable("tool_monitor_subscriptions", {

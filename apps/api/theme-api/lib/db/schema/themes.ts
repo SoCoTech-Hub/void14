@@ -1,10 +1,11 @@
-import { type getThemes } from "@/lib/api/themes/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getThemes } from "../api/themes/queries";
 
 export const themes = pgTable(
   "themes",

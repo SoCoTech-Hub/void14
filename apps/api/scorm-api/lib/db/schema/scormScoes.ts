@@ -1,10 +1,10 @@
-import { type getScormScoes } from "@/lib/api/scormScoes/queries";
 import { integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getScormScoes } from "../api/scormScoes/queries";
 import { scorms } from "./scorms";
 
 export const scormScoes = pgTable("scorm_scoes", {

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createSurveyQuestion,
   deleteSurveyQuestion,
   updateSurveyQuestion,
-} from "@/lib/api/surveyQuestions/mutations";
+} from "../api/surveyQuestions/mutations";
 import {
-  SurveyQuestionId,
-  NewSurveyQuestionParams,
-  UpdateSurveyQuestionParams,
-  surveyQuestionIdSchema,
   insertSurveyQuestionParams,
+  NewSurveyQuestionParams,
+  SurveyQuestionId,
+  surveyQuestionIdSchema,
+  UpdateSurveyQuestionParams,
   updateSurveyQuestionParams,
-} from "@/lib/db/schema/surveyQuestions";
+} from "../db/schema/surveyQuestions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateSurveyQuestions = () => revalidatePath("/survey-questions");
 
-export const createSurveyQuestionAction = async (input: NewSurveyQuestionParams) => {
+export const createSurveyQuestionAction = async (
+  input: NewSurveyQuestionParams,
+) => {
   try {
     const payload = insertSurveyQuestionParams.parse(input);
     await createSurveyQuestion(payload);
@@ -37,7 +40,9 @@ export const createSurveyQuestionAction = async (input: NewSurveyQuestionParams)
   }
 };
 
-export const updateSurveyQuestionAction = async (input: UpdateSurveyQuestionParams) => {
+export const updateSurveyQuestionAction = async (
+  input: UpdateSurveyQuestionParams,
+) => {
   try {
     const payload = updateSurveyQuestionParams.parse(input);
     await updateSurveyQuestion(payload.id, payload);

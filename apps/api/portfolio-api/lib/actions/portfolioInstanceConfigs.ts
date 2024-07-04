@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createPortfolioInstanceConfig,
   deletePortfolioInstanceConfig,
   updatePortfolioInstanceConfig,
-} from "@/lib/api/portfolioInstanceConfigs/mutations";
+} from "../api/portfolioInstanceConfigs/mutations";
 import {
-  PortfolioInstanceConfigId,
-  NewPortfolioInstanceConfigParams,
-  UpdatePortfolioInstanceConfigParams,
-  portfolioInstanceConfigIdSchema,
   insertPortfolioInstanceConfigParams,
+  NewPortfolioInstanceConfigParams,
+  PortfolioInstanceConfigId,
+  portfolioInstanceConfigIdSchema,
+  UpdatePortfolioInstanceConfigParams,
   updatePortfolioInstanceConfigParams,
-} from "@/lib/db/schema/portfolioInstanceConfigs";
+} from "../db/schema/portfolioInstanceConfigs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidatePortfolioInstanceConfigs = () => revalidatePath("/portfolio-instance-configs");
+const revalidatePortfolioInstanceConfigs = () =>
+  revalidatePath("/portfolio-instance-configs");
 
-export const createPortfolioInstanceConfigAction = async (input: NewPortfolioInstanceConfigParams) => {
+export const createPortfolioInstanceConfigAction = async (
+  input: NewPortfolioInstanceConfigParams,
+) => {
   try {
     const payload = insertPortfolioInstanceConfigParams.parse(input);
     await createPortfolioInstanceConfig(payload);
@@ -37,7 +41,9 @@ export const createPortfolioInstanceConfigAction = async (input: NewPortfolioIns
   }
 };
 
-export const updatePortfolioInstanceConfigAction = async (input: UpdatePortfolioInstanceConfigParams) => {
+export const updatePortfolioInstanceConfigAction = async (
+  input: UpdatePortfolioInstanceConfigParams,
+) => {
   try {
     const payload = updatePortfolioInstanceConfigParams.parse(input);
     await updatePortfolioInstanceConfig(payload.id, payload);
@@ -47,7 +53,9 @@ export const updatePortfolioInstanceConfigAction = async (input: UpdatePortfolio
   }
 };
 
-export const deletePortfolioInstanceConfigAction = async (input: PortfolioInstanceConfigId) => {
+export const deletePortfolioInstanceConfigAction = async (
+  input: PortfolioInstanceConfigId,
+) => {
   try {
     const payload = portfolioInstanceConfigIdSchema.parse({ id: input });
     await deletePortfolioInstanceConfig(payload.id);

@@ -1,4 +1,3 @@
-import { type getQtypeDdmarkerDrops } from "@/lib/api/qtypeDdmarkerDrops/queries";
 import {
   integer,
   pgTable,
@@ -10,6 +9,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getQtypeDdmarkerDrops } from "../api/qtypeDdmarkerDrops/queries";
 
 export const qtypeDdmarkerDrops = pgTable(
   "qtype_ddmarker_drops",

@@ -1,19 +1,28 @@
-import { getCompetencyPlanCompById, getCompetencyPlanComps } from "@/lib/api/competencyPlanComps/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createCompetencyPlanComp,
+  deleteCompetencyPlanComp,
+  updateCompetencyPlanComp,
+} from "../api/competencyPlanComps/mutations";
+import {
+  getCompetencyPlanCompById,
+  getCompetencyPlanComps,
+} from "../api/competencyPlanComps/queries";
 import {
   competencyPlanCompIdSchema,
   insertCompetencyPlanCompParams,
   updateCompetencyPlanCompParams,
-} from "@/lib/db/schema/competencyPlanComps";
-import { createCompetencyPlanComp, deleteCompetencyPlanComp, updateCompetencyPlanComp } from "@/lib/api/competencyPlanComps/mutations";
+} from "../db/schema/competencyPlanComps";
+import { publicProcedure, router } from "../server/trpc";
 
 export const competencyPlanCompsRouter = router({
   getCompetencyPlanComps: publicProcedure.query(async () => {
     return getCompetencyPlanComps();
   }),
-  getCompetencyPlanCompById: publicProcedure.input(competencyPlanCompIdSchema).query(async ({ input }) => {
-    return getCompetencyPlanCompById(input.id);
-  }),
+  getCompetencyPlanCompById: publicProcedure
+    .input(competencyPlanCompIdSchema)
+    .query(async ({ input }) => {
+      return getCompetencyPlanCompById(input.id);
+    }),
   createCompetencyPlanComp: publicProcedure
     .input(insertCompetencyPlanCompParams)
     .mutation(async ({ input }) => {

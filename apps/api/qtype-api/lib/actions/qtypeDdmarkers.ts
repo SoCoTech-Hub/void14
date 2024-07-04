@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQtypeDdmarker,
   deleteQtypeDdmarker,
   updateQtypeDdmarker,
-} from "@/lib/api/qtypeDdmarkers/mutations";
+} from "../api/qtypeDdmarkers/mutations";
 import {
-  QtypeDdmarkerId,
-  NewQtypeDdmarkerParams,
-  UpdateQtypeDdmarkerParams,
-  qtypeDdmarkerIdSchema,
   insertQtypeDdmarkerParams,
+  NewQtypeDdmarkerParams,
+  QtypeDdmarkerId,
+  qtypeDdmarkerIdSchema,
+  UpdateQtypeDdmarkerParams,
   updateQtypeDdmarkerParams,
-} from "@/lib/db/schema/qtypeDdmarkers";
+} from "../db/schema/qtypeDdmarkers";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateQtypeDdmarkers = () => revalidatePath("/qtype-ddmarkers");
 
-export const createQtypeDdmarkerAction = async (input: NewQtypeDdmarkerParams) => {
+export const createQtypeDdmarkerAction = async (
+  input: NewQtypeDdmarkerParams,
+) => {
   try {
     const payload = insertQtypeDdmarkerParams.parse(input);
     await createQtypeDdmarker(payload);
@@ -37,7 +40,9 @@ export const createQtypeDdmarkerAction = async (input: NewQtypeDdmarkerParams) =
   }
 };
 
-export const updateQtypeDdmarkerAction = async (input: UpdateQtypeDdmarkerParams) => {
+export const updateQtypeDdmarkerAction = async (
+  input: UpdateQtypeDdmarkerParams,
+) => {
   try {
     const payload = updateQtypeDdmarkerParams.parse(input);
     await updateQtypeDdmarker(payload.id, payload);

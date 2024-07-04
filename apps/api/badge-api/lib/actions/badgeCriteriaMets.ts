@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBadgeCriteriaMet,
   deleteBadgeCriteriaMet,
   updateBadgeCriteriaMet,
-} from "@/lib/api/badgeCriteriaMets/mutations";
+} from "../api/badgeCriteriaMets/mutations";
 import {
   BadgeCriteriaMetId,
-  NewBadgeCriteriaMetParams,
-  UpdateBadgeCriteriaMetParams,
   badgeCriteriaMetIdSchema,
   insertBadgeCriteriaMetParams,
+  NewBadgeCriteriaMetParams,
+  UpdateBadgeCriteriaMetParams,
   updateBadgeCriteriaMetParams,
-} from "@/lib/db/schema/badgeCriteriaMets";
+} from "../db/schema/badgeCriteriaMets";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateBadgeCriteriaMets = () => revalidatePath("/badge-criteria-mets");
+const revalidateBadgeCriteriaMets = () =>
+  revalidatePath("/badge-criteria-mets");
 
-export const createBadgeCriteriaMetAction = async (input: NewBadgeCriteriaMetParams) => {
+export const createBadgeCriteriaMetAction = async (
+  input: NewBadgeCriteriaMetParams,
+) => {
   try {
     const payload = insertBadgeCriteriaMetParams.parse(input);
     await createBadgeCriteriaMet(payload);
@@ -37,7 +41,9 @@ export const createBadgeCriteriaMetAction = async (input: NewBadgeCriteriaMetPar
   }
 };
 
-export const updateBadgeCriteriaMetAction = async (input: UpdateBadgeCriteriaMetParams) => {
+export const updateBadgeCriteriaMetAction = async (
+  input: UpdateBadgeCriteriaMetParams,
+) => {
   try {
     const payload = updateBadgeCriteriaMetParams.parse(input);
     await updateBadgeCriteriaMet(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateBadgeCriteriaMetAction = async (input: UpdateBadgeCriteriaMet
   }
 };
 
-export const deleteBadgeCriteriaMetAction = async (input: BadgeCriteriaMetId) => {
+export const deleteBadgeCriteriaMetAction = async (
+  input: BadgeCriteriaMetId,
+) => {
   try {
     const payload = badgeCriteriaMetIdSchema.parse({ id: input });
     await deleteBadgeCriteriaMet(payload.id);

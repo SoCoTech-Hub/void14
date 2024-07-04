@@ -1,4 +1,3 @@
-import { type getBooks } from "@/lib/api/books/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -12,6 +11,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getBooks } from "../api/books/queries";
 
 export const books = pgTable("books", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

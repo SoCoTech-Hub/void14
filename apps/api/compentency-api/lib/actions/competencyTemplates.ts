@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCompetencyTemplate,
   deleteCompetencyTemplate,
   updateCompetencyTemplate,
-} from "@/lib/api/competencyTemplates/mutations";
+} from "../api/competencyTemplates/mutations";
 import {
   CompetencyTemplateId,
-  NewCompetencyTemplateParams,
-  UpdateCompetencyTemplateParams,
   competencyTemplateIdSchema,
   insertCompetencyTemplateParams,
+  NewCompetencyTemplateParams,
+  UpdateCompetencyTemplateParams,
   updateCompetencyTemplateParams,
-} from "@/lib/db/schema/competencyTemplates";
+} from "../db/schema/competencyTemplates";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateCompetencyTemplates = () => revalidatePath("/competency-templates");
+const revalidateCompetencyTemplates = () =>
+  revalidatePath("/competency-templates");
 
-export const createCompetencyTemplateAction = async (input: NewCompetencyTemplateParams) => {
+export const createCompetencyTemplateAction = async (
+  input: NewCompetencyTemplateParams,
+) => {
   try {
     const payload = insertCompetencyTemplateParams.parse(input);
     await createCompetencyTemplate(payload);
@@ -37,7 +41,9 @@ export const createCompetencyTemplateAction = async (input: NewCompetencyTemplat
   }
 };
 
-export const updateCompetencyTemplateAction = async (input: UpdateCompetencyTemplateParams) => {
+export const updateCompetencyTemplateAction = async (
+  input: UpdateCompetencyTemplateParams,
+) => {
   try {
     const payload = updateCompetencyTemplateParams.parse(input);
     await updateCompetencyTemplate(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateCompetencyTemplateAction = async (input: UpdateCompetencyTemp
   }
 };
 
-export const deleteCompetencyTemplateAction = async (input: CompetencyTemplateId) => {
+export const deleteCompetencyTemplateAction = async (
+  input: CompetencyTemplateId,
+) => {
   try {
     const payload = competencyTemplateIdSchema.parse({ id: input });
     await deleteCompetencyTemplate(payload.id);

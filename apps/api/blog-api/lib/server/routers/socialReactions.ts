@@ -1,19 +1,28 @@
-import { getSocialReactionById, getSocialReactions } from "@/lib/api/socialReactions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  socialReactionIdSchema,
+  createSocialReaction,
+  deleteSocialReaction,
+  updateSocialReaction,
+} from "../api/socialReactions/mutations";
+import {
+  getSocialReactionById,
+  getSocialReactions,
+} from "../api/socialReactions/queries";
+import {
   insertSocialReactionParams,
+  socialReactionIdSchema,
   updateSocialReactionParams,
-} from "@/lib/db/schema/socialReactions";
-import { createSocialReaction, deleteSocialReaction, updateSocialReaction } from "@/lib/api/socialReactions/mutations";
+} from "../db/schema/socialReactions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const socialReactionsRouter = router({
   getSocialReactions: publicProcedure.query(async () => {
     return getSocialReactions();
   }),
-  getSocialReactionById: publicProcedure.input(socialReactionIdSchema).query(async ({ input }) => {
-    return getSocialReactionById(input.id);
-  }),
+  getSocialReactionById: publicProcedure
+    .input(socialReactionIdSchema)
+    .query(async ({ input }) => {
+      return getSocialReactionById(input.id);
+    }),
   createSocialReaction: publicProcedure
     .input(insertSocialReactionParams)
     .mutation(async ({ input }) => {

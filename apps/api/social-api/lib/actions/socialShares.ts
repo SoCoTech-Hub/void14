@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createSocialShare,
   deleteSocialShare,
   updateSocialShare,
-} from "@/lib/api/socialShares/mutations";
+} from "../api/socialShares/mutations";
 import {
-  SocialShareId,
-  NewSocialShareParams,
-  UpdateSocialShareParams,
-  socialShareIdSchema,
   insertSocialShareParams,
+  NewSocialShareParams,
+  SocialShareId,
+  socialShareIdSchema,
+  UpdateSocialShareParams,
   updateSocialShareParams,
-} from "@/lib/db/schema/socialShares";
+} from "../db/schema/socialShares";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createSocialShareAction = async (input: NewSocialShareParams) => {
   }
 };
 
-export const updateSocialShareAction = async (input: UpdateSocialShareParams) => {
+export const updateSocialShareAction = async (
+  input: UpdateSocialShareParams,
+) => {
   try {
     const payload = updateSocialShareParams.parse(input);
     await updateSocialShare(payload.id, payload);

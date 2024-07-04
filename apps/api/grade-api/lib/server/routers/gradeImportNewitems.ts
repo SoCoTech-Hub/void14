@@ -1,19 +1,28 @@
-import { getGradeImportNewitemById, getGradeImportNewitems } from "@/lib/api/gradeImportNewitems/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createGradeImportNewitem,
+  deleteGradeImportNewitem,
+  updateGradeImportNewitem,
+} from "../api/gradeImportNewitems/mutations";
+import {
+  getGradeImportNewitemById,
+  getGradeImportNewitems,
+} from "../api/gradeImportNewitems/queries";
 import {
   gradeImportNewitemIdSchema,
   insertGradeImportNewitemParams,
   updateGradeImportNewitemParams,
-} from "@/lib/db/schema/gradeImportNewitems";
-import { createGradeImportNewitem, deleteGradeImportNewitem, updateGradeImportNewitem } from "@/lib/api/gradeImportNewitems/mutations";
+} from "../db/schema/gradeImportNewitems";
+import { publicProcedure, router } from "../server/trpc";
 
 export const gradeImportNewitemsRouter = router({
   getGradeImportNewitems: publicProcedure.query(async () => {
     return getGradeImportNewitems();
   }),
-  getGradeImportNewitemById: publicProcedure.input(gradeImportNewitemIdSchema).query(async ({ input }) => {
-    return getGradeImportNewitemById(input.id);
-  }),
+  getGradeImportNewitemById: publicProcedure
+    .input(gradeImportNewitemIdSchema)
+    .query(async ({ input }) => {
+      return getGradeImportNewitemById(input.id);
+    }),
   createGradeImportNewitem: publicProcedure
     .input(insertGradeImportNewitemParams)
     .mutation(async ({ input }) => {

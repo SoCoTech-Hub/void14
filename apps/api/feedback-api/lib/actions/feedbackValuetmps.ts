@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createFeedbackValuetmp,
   deleteFeedbackValuetmp,
   updateFeedbackValuetmp,
-} from "@/lib/api/feedbackValuetmps/mutations";
+} from "../api/feedbackValuetmps/mutations";
 import {
   FeedbackValuetmpId,
-  NewFeedbackValuetmpParams,
-  UpdateFeedbackValuetmpParams,
   feedbackValuetmpIdSchema,
   insertFeedbackValuetmpParams,
+  NewFeedbackValuetmpParams,
+  UpdateFeedbackValuetmpParams,
   updateFeedbackValuetmpParams,
-} from "@/lib/db/schema/feedbackValuetmps";
+} from "../db/schema/feedbackValuetmps";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateFeedbackValuetmps = () => revalidatePath("/feedback-valuetmps");
 
-export const createFeedbackValuetmpAction = async (input: NewFeedbackValuetmpParams) => {
+export const createFeedbackValuetmpAction = async (
+  input: NewFeedbackValuetmpParams,
+) => {
   try {
     const payload = insertFeedbackValuetmpParams.parse(input);
     await createFeedbackValuetmp(payload);
@@ -37,7 +40,9 @@ export const createFeedbackValuetmpAction = async (input: NewFeedbackValuetmpPar
   }
 };
 
-export const updateFeedbackValuetmpAction = async (input: UpdateFeedbackValuetmpParams) => {
+export const updateFeedbackValuetmpAction = async (
+  input: UpdateFeedbackValuetmpParams,
+) => {
   try {
     const payload = updateFeedbackValuetmpParams.parse(input);
     await updateFeedbackValuetmp(payload.id, payload);
@@ -47,7 +52,9 @@ export const updateFeedbackValuetmpAction = async (input: UpdateFeedbackValuetmp
   }
 };
 
-export const deleteFeedbackValuetmpAction = async (input: FeedbackValuetmpId) => {
+export const deleteFeedbackValuetmpAction = async (
+  input: FeedbackValuetmpId,
+) => {
   try {
     const payload = feedbackValuetmpIdSchema.parse({ id: input });
     await deleteFeedbackValuetmp(payload.id);

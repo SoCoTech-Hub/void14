@@ -1,10 +1,10 @@
-import { type getCourseCompletionAggrMethds } from "@/lib/api/courseCompletionAggrMethds/queries";
 import { boolean, integer, pgTable, real, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getCourseCompletionAggrMethds } from "../api/courseCompletionAggrMethds/queries";
 import { courses } from "./courses";
 
 export const courseCompletionAggrMethds = pgTable(

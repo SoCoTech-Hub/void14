@@ -1,10 +1,10 @@
-import { type getRoleContextLevels } from "@/lib/api/roleContextLevels/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getRoleContextLevels } from "../api/roleContextLevels/queries";
 import { roles } from "./roles";
 
 export const roleContextLevels = pgTable("role_context_levels", {

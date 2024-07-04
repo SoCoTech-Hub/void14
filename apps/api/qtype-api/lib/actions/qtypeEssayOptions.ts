@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQtypeEssayOption,
   deleteQtypeEssayOption,
   updateQtypeEssayOption,
-} from "@/lib/api/qtypeEssayOptions/mutations";
+} from "../api/qtypeEssayOptions/mutations";
 import {
-  QtypeEssayOptionId,
-  NewQtypeEssayOptionParams,
-  UpdateQtypeEssayOptionParams,
-  qtypeEssayOptionIdSchema,
   insertQtypeEssayOptionParams,
+  NewQtypeEssayOptionParams,
+  QtypeEssayOptionId,
+  qtypeEssayOptionIdSchema,
+  UpdateQtypeEssayOptionParams,
   updateQtypeEssayOptionParams,
-} from "@/lib/db/schema/qtypeEssayOptions";
+} from "../db/schema/qtypeEssayOptions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQtypeEssayOptions = () => revalidatePath("/qtype-essay-options");
+const revalidateQtypeEssayOptions = () =>
+  revalidatePath("/qtype-essay-options");
 
-export const createQtypeEssayOptionAction = async (input: NewQtypeEssayOptionParams) => {
+export const createQtypeEssayOptionAction = async (
+  input: NewQtypeEssayOptionParams,
+) => {
   try {
     const payload = insertQtypeEssayOptionParams.parse(input);
     await createQtypeEssayOption(payload);
@@ -37,7 +41,9 @@ export const createQtypeEssayOptionAction = async (input: NewQtypeEssayOptionPar
   }
 };
 
-export const updateQtypeEssayOptionAction = async (input: UpdateQtypeEssayOptionParams) => {
+export const updateQtypeEssayOptionAction = async (
+  input: UpdateQtypeEssayOptionParams,
+) => {
   try {
     const payload = updateQtypeEssayOptionParams.parse(input);
     await updateQtypeEssayOption(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQtypeEssayOptionAction = async (input: UpdateQtypeEssayOption
   }
 };
 
-export const deleteQtypeEssayOptionAction = async (input: QtypeEssayOptionId) => {
+export const deleteQtypeEssayOptionAction = async (
+  input: QtypeEssayOptionId,
+) => {
   try {
     const payload = qtypeEssayOptionIdSchema.parse({ id: input });
     await deleteQtypeEssayOption(payload.id);

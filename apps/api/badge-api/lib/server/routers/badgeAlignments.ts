@@ -1,19 +1,28 @@
-import { getBadgeAlignmentById, getBadgeAlignments } from "@/lib/api/badgeAlignments/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createBadgeAlignment,
+  deleteBadgeAlignment,
+  updateBadgeAlignment,
+} from "../api/badgeAlignments/mutations";
+import {
+  getBadgeAlignmentById,
+  getBadgeAlignments,
+} from "../api/badgeAlignments/queries";
 import {
   badgeAlignmentIdSchema,
   insertBadgeAlignmentParams,
   updateBadgeAlignmentParams,
-} from "@/lib/db/schema/badgeAlignments";
-import { createBadgeAlignment, deleteBadgeAlignment, updateBadgeAlignment } from "@/lib/api/badgeAlignments/mutations";
+} from "../db/schema/badgeAlignments";
+import { publicProcedure, router } from "../server/trpc";
 
 export const badgeAlignmentsRouter = router({
   getBadgeAlignments: publicProcedure.query(async () => {
     return getBadgeAlignments();
   }),
-  getBadgeAlignmentById: publicProcedure.input(badgeAlignmentIdSchema).query(async ({ input }) => {
-    return getBadgeAlignmentById(input.id);
-  }),
+  getBadgeAlignmentById: publicProcedure
+    .input(badgeAlignmentIdSchema)
+    .query(async ({ input }) => {
+      return getBadgeAlignmentById(input.id);
+    }),
   createBadgeAlignment: publicProcedure
     .input(insertBadgeAlignmentParams)
     .mutation(async ({ input }) => {

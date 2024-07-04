@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createUserInfoCategory,
   deleteUserInfoCategory,
   updateUserInfoCategory,
-} from "@/lib/api/userInfoCategories/mutations";
+} from "../api/userInfoCategories/mutations";
 import {
-  UserInfoCategoryId,
+  insertUserInfoCategoryParams,
   NewUserInfoCategoryParams,
   UpdateUserInfoCategoryParams,
-  userInfoCategoryIdSchema,
-  insertUserInfoCategoryParams,
   updateUserInfoCategoryParams,
-} from "@/lib/db/schema/userInfoCategories";
+  UserInfoCategoryId,
+  userInfoCategoryIdSchema,
+} from "../db/schema/userInfoCategories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateUserInfoCategories = () => revalidatePath("/user-info-categories");
+const revalidateUserInfoCategories = () =>
+  revalidatePath("/user-info-categories");
 
-export const createUserInfoCategoryAction = async (input: NewUserInfoCategoryParams) => {
+export const createUserInfoCategoryAction = async (
+  input: NewUserInfoCategoryParams,
+) => {
   try {
     const payload = insertUserInfoCategoryParams.parse(input);
     await createUserInfoCategory(payload);
@@ -37,7 +41,9 @@ export const createUserInfoCategoryAction = async (input: NewUserInfoCategoryPar
   }
 };
 
-export const updateUserInfoCategoryAction = async (input: UpdateUserInfoCategoryParams) => {
+export const updateUserInfoCategoryAction = async (
+  input: UpdateUserInfoCategoryParams,
+) => {
   try {
     const payload = updateUserInfoCategoryParams.parse(input);
     await updateUserInfoCategory(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateUserInfoCategoryAction = async (input: UpdateUserInfoCategory
   }
 };
 
-export const deleteUserInfoCategoryAction = async (input: UserInfoCategoryId) => {
+export const deleteUserInfoCategoryAction = async (
+  input: UserInfoCategoryId,
+) => {
   try {
     const payload = userInfoCategoryIdSchema.parse({ id: input });
     await deleteUserInfoCategory(payload.id);

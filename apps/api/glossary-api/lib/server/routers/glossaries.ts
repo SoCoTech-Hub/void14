@@ -1,19 +1,25 @@
-import { getGlossaryById, getGlossaries } from "@/lib/api/glossaries/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createGlossary,
+  deleteGlossary,
+  updateGlossary,
+} from "../api/glossaries/mutations";
+import { getGlossaries, getGlossaryById } from "../api/glossaries/queries";
 import {
   glossaryIdSchema,
   insertGlossaryParams,
   updateGlossaryParams,
-} from "@/lib/db/schema/glossaries";
-import { createGlossary, deleteGlossary, updateGlossary } from "@/lib/api/glossaries/mutations";
+} from "../db/schema/glossaries";
+import { publicProcedure, router } from "../server/trpc";
 
 export const glossariesRouter = router({
   getGlossaries: publicProcedure.query(async () => {
     return getGlossaries();
   }),
-  getGlossaryById: publicProcedure.input(glossaryIdSchema).query(async ({ input }) => {
-    return getGlossaryById(input.id);
-  }),
+  getGlossaryById: publicProcedure
+    .input(glossaryIdSchema)
+    .query(async ({ input }) => {
+      return getGlossaryById(input.id);
+    }),
   createGlossary: publicProcedure
     .input(insertGlossaryParams)
     .mutation(async ({ input }) => {

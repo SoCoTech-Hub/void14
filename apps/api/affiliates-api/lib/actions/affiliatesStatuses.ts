@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAffiliatesStatus,
   deleteAffiliatesStatus,
   updateAffiliatesStatus,
-} from "@/lib/api/affiliatesStatuses/mutations";
+} from "../api/affiliatesStatuses/mutations";
 import {
   AffiliatesStatusId,
-  NewAffiliatesStatusParams,
-  UpdateAffiliatesStatusParams,
   affiliatesStatusIdSchema,
   insertAffiliatesStatusParams,
+  NewAffiliatesStatusParams,
+  UpdateAffiliatesStatusParams,
   updateAffiliatesStatusParams,
-} from "@/lib/db/schema/affiliatesStatuses";
+} from "../db/schema/affiliatesStatuses";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateAffiliatesStatuses = () => revalidatePath("/affiliates-statuses");
+const revalidateAffiliatesStatuses = () =>
+  revalidatePath("/affiliates-statuses");
 
-export const createAffiliatesStatusAction = async (input: NewAffiliatesStatusParams) => {
+export const createAffiliatesStatusAction = async (
+  input: NewAffiliatesStatusParams,
+) => {
   try {
     const payload = insertAffiliatesStatusParams.parse(input);
     await createAffiliatesStatus(payload);
@@ -37,7 +41,9 @@ export const createAffiliatesStatusAction = async (input: NewAffiliatesStatusPar
   }
 };
 
-export const updateAffiliatesStatusAction = async (input: UpdateAffiliatesStatusParams) => {
+export const updateAffiliatesStatusAction = async (
+  input: UpdateAffiliatesStatusParams,
+) => {
   try {
     const payload = updateAffiliatesStatusParams.parse(input);
     await updateAffiliatesStatus(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateAffiliatesStatusAction = async (input: UpdateAffiliatesStatus
   }
 };
 
-export const deleteAffiliatesStatusAction = async (input: AffiliatesStatusId) => {
+export const deleteAffiliatesStatusAction = async (
+  input: AffiliatesStatusId,
+) => {
   try {
     const payload = affiliatesStatusIdSchema.parse({ id: input });
     await deleteAffiliatesStatus(payload.id);

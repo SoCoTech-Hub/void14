@@ -1,21 +1,29 @@
-import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
-import { 
-  ZoomMeetingId, 
-  NewZoomMeetingParams,
-  UpdateZoomMeetingParams, 
-  updateZoomMeetingSchema,
-  insertZoomMeetingSchema, 
-  zoomMeetings,
-  zoomMeetingIdSchema 
-} from "@/lib/db/schema/zoomMeetings";
+
 import { getUserAuth } from "@soco/auth/utils";
+
+import { db } from "../db/index";
+import {
+  insertZoomMeetingSchema,
+  NewZoomMeetingParams,
+  UpdateZoomMeetingParams,
+  updateZoomMeetingSchema,
+  ZoomMeetingId,
+  zoomMeetingIdSchema,
+  zoomMeetings,
+} from "../db/schema/zoomMeetings";
 
 export const createZoomMeeting = async (zoomMeeting: NewZoomMeetingParams) => {
   const { session } = await getUserAuth();
-  const newZoomMeeting = insertZoomMeetingSchema.parse({ ...zoomMeeting, userId: session?.user.id! });
+  const newZoomMeeting = insertZoomMeetingSchema.parse({
+    ...zoomMeeting,
+    userId: session?.user.id!,
+  });
   try {
-    const [z] =  await db.insert(zoomMeetings).values(newZoomMeeting).returning();
+    const [z] = await db
+      .insert(zoomMeetings)
+      .values(newZoomMeeting)
+      .returning();
     return { zoomMeeting: z };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +32,27 @@ export const createZoomMeeting = async (zoomMeeting: NewZoomMeetingParams) => {
   }
 };
 
-export const updateZoomMeeting = async (id: ZoomMeetingId, zoomMeeting: UpdateZoomMeetingParams) => {
+export const updateZoomMeeting = async (
+  id: ZoomMeetingId,
+  zoomMeeting: UpdateZoomMeetingParams,
+) => {
   const { session } = await getUserAuth();
   const { id: zoomMeetingId } = zoomMeetingIdSchema.parse({ id });
-  const newZoomMeeting = updateZoomMeetingSchema.parse({ ...zoomMeeting, userId: session?.user.id! });
+  const newZoomMeeting = updateZoomMeetingSchema.parse({
+    ...zoomMeeting,
+    userId: session?.user.id!,
+  });
   try {
-    const [z] =  await db
-     .update(zoomMeetings)
-     .set(newZoomMeeting)
-     .where(and(eq(zoomMeetings.id, zoomMeetingId!), eq(zoomMeetings.userId, session?.user.id!)))
-     .returning();
+    const [z] = await db
+      .update(zoomMeetings)
+      .set(newZoomMeeting)
+      .where(
+        and(
+          eq(zoomMeetings.id, zoomMeetingId!),
+          eq(zoomMeetings.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { zoomMeeting: z };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +65,15 @@ export const deleteZoomMeeting = async (id: ZoomMeetingId) => {
   const { session } = await getUserAuth();
   const { id: zoomMeetingId } = zoomMeetingIdSchema.parse({ id });
   try {
-    const [z] =  await db.delete(zoomMeetings).where(and(eq(zoomMeetings.id, zoomMeetingId!), eq(zoomMeetings.userId, session?.user.id!)))
-    .returning();
+    const [z] = await db
+      .delete(zoomMeetings)
+      .where(
+        and(
+          eq(zoomMeetings.id, zoomMeetingId!),
+          eq(zoomMeetings.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { zoomMeeting: z };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +81,3 @@ export const deleteZoomMeeting = async (id: ZoomMeetingId) => {
     throw { error: message };
   }
 };
-

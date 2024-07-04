@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQtypeMatchOption,
   deleteQtypeMatchOption,
   updateQtypeMatchOption,
-} from "@/lib/api/qtypeMatchOptions/mutations";
+} from "../api/qtypeMatchOptions/mutations";
 import {
-  QtypeMatchOptionId,
-  NewQtypeMatchOptionParams,
-  UpdateQtypeMatchOptionParams,
-  qtypeMatchOptionIdSchema,
   insertQtypeMatchOptionParams,
+  NewQtypeMatchOptionParams,
+  QtypeMatchOptionId,
+  qtypeMatchOptionIdSchema,
+  UpdateQtypeMatchOptionParams,
   updateQtypeMatchOptionParams,
-} from "@/lib/db/schema/qtypeMatchOptions";
+} from "../db/schema/qtypeMatchOptions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQtypeMatchOptions = () => revalidatePath("/qtype-match-options");
+const revalidateQtypeMatchOptions = () =>
+  revalidatePath("/qtype-match-options");
 
-export const createQtypeMatchOptionAction = async (input: NewQtypeMatchOptionParams) => {
+export const createQtypeMatchOptionAction = async (
+  input: NewQtypeMatchOptionParams,
+) => {
   try {
     const payload = insertQtypeMatchOptionParams.parse(input);
     await createQtypeMatchOption(payload);
@@ -37,7 +41,9 @@ export const createQtypeMatchOptionAction = async (input: NewQtypeMatchOptionPar
   }
 };
 
-export const updateQtypeMatchOptionAction = async (input: UpdateQtypeMatchOptionParams) => {
+export const updateQtypeMatchOptionAction = async (
+  input: UpdateQtypeMatchOptionParams,
+) => {
   try {
     const payload = updateQtypeMatchOptionParams.parse(input);
     await updateQtypeMatchOption(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQtypeMatchOptionAction = async (input: UpdateQtypeMatchOption
   }
 };
 
-export const deleteQtypeMatchOptionAction = async (input: QtypeMatchOptionId) => {
+export const deleteQtypeMatchOptionAction = async (
+  input: QtypeMatchOptionId,
+) => {
   try {
     const payload = qtypeMatchOptionIdSchema.parse({ id: input });
     await deleteQtypeMatchOption(payload.id);

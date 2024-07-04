@@ -1,4 +1,3 @@
-import { type getBadges } from "@/lib/api/badges/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -12,6 +11,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getBadges } from "../api/badges/queries";
 
 export const badges = pgTable("badges", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

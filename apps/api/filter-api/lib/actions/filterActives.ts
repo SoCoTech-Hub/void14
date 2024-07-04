@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createFilterActive,
   deleteFilterActive,
   updateFilterActive,
-} from "@/lib/api/filterActives/mutations";
+} from "../api/filterActives/mutations";
 import {
   FilterActiveId,
-  NewFilterActiveParams,
-  UpdateFilterActiveParams,
   filterActiveIdSchema,
   insertFilterActiveParams,
+  NewFilterActiveParams,
+  UpdateFilterActiveParams,
   updateFilterActiveParams,
-} from "@/lib/db/schema/filterActives";
+} from "../db/schema/filterActives";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateFilterActives = () => revalidatePath("/filter-actives");
 
-export const createFilterActiveAction = async (input: NewFilterActiveParams) => {
+export const createFilterActiveAction = async (
+  input: NewFilterActiveParams,
+) => {
   try {
     const payload = insertFilterActiveParams.parse(input);
     await createFilterActive(payload);
@@ -37,7 +40,9 @@ export const createFilterActiveAction = async (input: NewFilterActiveParams) => 
   }
 };
 
-export const updateFilterActiveAction = async (input: UpdateFilterActiveParams) => {
+export const updateFilterActiveAction = async (
+  input: UpdateFilterActiveParams,
+) => {
   try {
     const payload = updateFilterActiveParams.parse(input);
     await updateFilterActive(payload.id, payload);

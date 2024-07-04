@@ -1,19 +1,20 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  ResourceId, 
+
+import { db } from "../db/index";
+import {
+  insertResourceSchema,
   NewResourceParams,
-  UpdateResourceParams, 
-  updateResourceSchema,
-  insertResourceSchema, 
+  ResourceId,
+  resourceIdSchema,
   resources,
-  resourceIdSchema 
-} from "@/lib/db/schema/resources";
+  UpdateResourceParams,
+  updateResourceSchema,
+} from "../db/schema/resources";
 
 export const createResource = async (resource: NewResourceParams) => {
   const newResource = insertResourceSchema.parse(resource);
   try {
-    const [r] =  await db.insert(resources).values(newResource).returning();
+    const [r] = await db.insert(resources).values(newResource).returning();
     return { resource: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +23,18 @@ export const createResource = async (resource: NewResourceParams) => {
   }
 };
 
-export const updateResource = async (id: ResourceId, resource: UpdateResourceParams) => {
+export const updateResource = async (
+  id: ResourceId,
+  resource: UpdateResourceParams,
+) => {
   const { id: resourceId } = resourceIdSchema.parse({ id });
   const newResource = updateResourceSchema.parse(resource);
   try {
-    const [r] =  await db
-     .update(resources)
-     .set({...newResource, updatedAt: new Date() })
-     .where(eq(resources.id, resourceId!))
-     .returning();
+    const [r] = await db
+      .update(resources)
+      .set({ ...newResource, updatedAt: new Date() })
+      .where(eq(resources.id, resourceId!))
+      .returning();
     return { resource: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +46,10 @@ export const updateResource = async (id: ResourceId, resource: UpdateResourcePar
 export const deleteResource = async (id: ResourceId) => {
   const { id: resourceId } = resourceIdSchema.parse({ id });
   try {
-    const [r] =  await db.delete(resources).where(eq(resources.id, resourceId!))
-    .returning();
+    const [r] = await db
+      .delete(resources)
+      .where(eq(resources.id, resourceId!))
+      .returning();
     return { resource: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +57,3 @@ export const deleteResource = async (id: ResourceId) => {
     throw { error: message };
   }
 };
-

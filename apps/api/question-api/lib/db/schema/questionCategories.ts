@@ -1,4 +1,3 @@
-import { type getQuestionCategories } from "@/lib/api/questionCategories/queries";
 import {
   integer,
   pgTable,
@@ -10,6 +9,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getQuestionCategories } from "../api/questionCategories/queries";
 
 export const questionCategories = pgTable(
   "question_categories",

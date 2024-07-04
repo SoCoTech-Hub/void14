@@ -1,19 +1,28 @@
-import { getBadgeExternalIdentifierById, getBadgeExternalIdentifiers } from "@/lib/api/badgeExternalIdentifiers/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createBadgeExternalIdentifier,
+  deleteBadgeExternalIdentifier,
+  updateBadgeExternalIdentifier,
+} from "../api/badgeExternalIdentifiers/mutations";
+import {
+  getBadgeExternalIdentifierById,
+  getBadgeExternalIdentifiers,
+} from "../api/badgeExternalIdentifiers/queries";
 import {
   badgeExternalIdentifierIdSchema,
   insertBadgeExternalIdentifierParams,
   updateBadgeExternalIdentifierParams,
-} from "@/lib/db/schema/badgeExternalIdentifiers";
-import { createBadgeExternalIdentifier, deleteBadgeExternalIdentifier, updateBadgeExternalIdentifier } from "@/lib/api/badgeExternalIdentifiers/mutations";
+} from "../db/schema/badgeExternalIdentifiers";
+import { publicProcedure, router } from "../server/trpc";
 
 export const badgeExternalIdentifiersRouter = router({
   getBadgeExternalIdentifiers: publicProcedure.query(async () => {
     return getBadgeExternalIdentifiers();
   }),
-  getBadgeExternalIdentifierById: publicProcedure.input(badgeExternalIdentifierIdSchema).query(async ({ input }) => {
-    return getBadgeExternalIdentifierById(input.id);
-  }),
+  getBadgeExternalIdentifierById: publicProcedure
+    .input(badgeExternalIdentifierIdSchema)
+    .query(async ({ input }) => {
+      return getBadgeExternalIdentifierById(input.id);
+    }),
   createBadgeExternalIdentifier: publicProcedure
     .input(insertBadgeExternalIdentifierParams)
     .mutation(async ({ input }) => {

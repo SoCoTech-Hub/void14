@@ -1,19 +1,25 @@
-import { getQuizReportById, getQuizReports } from "@/lib/api/quizReports/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  quizReportIdSchema,
+  createQuizReport,
+  deleteQuizReport,
+  updateQuizReport,
+} from "../api/quizReports/mutations";
+import { getQuizReportById, getQuizReports } from "../api/quizReports/queries";
+import {
   insertQuizReportParams,
+  quizReportIdSchema,
   updateQuizReportParams,
-} from "@/lib/db/schema/quizReports";
-import { createQuizReport, deleteQuizReport, updateQuizReport } from "@/lib/api/quizReports/mutations";
+} from "../db/schema/quizReports";
+import { publicProcedure, router } from "../server/trpc";
 
 export const quizReportsRouter = router({
   getQuizReports: publicProcedure.query(async () => {
     return getQuizReports();
   }),
-  getQuizReportById: publicProcedure.input(quizReportIdSchema).query(async ({ input }) => {
-    return getQuizReportById(input.id);
-  }),
+  getQuizReportById: publicProcedure
+    .input(quizReportIdSchema)
+    .query(async ({ input }) => {
+      return getQuizReportById(input.id);
+    }),
   createQuizReport: publicProcedure
     .input(insertQuizReportParams)
     .mutation(async ({ input }) => {

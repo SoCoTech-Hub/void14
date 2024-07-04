@@ -1,19 +1,28 @@
-import { getLogstoreStandardLogById, getLogstoreStandardLogs } from "@/lib/api/logstoreStandardLogs/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  logstoreStandardLogIdSchema,
+  createLogstoreStandardLog,
+  deleteLogstoreStandardLog,
+  updateLogstoreStandardLog,
+} from "../api/logstoreStandardLogs/mutations";
+import {
+  getLogstoreStandardLogById,
+  getLogstoreStandardLogs,
+} from "../api/logstoreStandardLogs/queries";
+import {
   insertLogstoreStandardLogParams,
+  logstoreStandardLogIdSchema,
   updateLogstoreStandardLogParams,
-} from "@/lib/db/schema/logstoreStandardLogs";
-import { createLogstoreStandardLog, deleteLogstoreStandardLog, updateLogstoreStandardLog } from "@/lib/api/logstoreStandardLogs/mutations";
+} from "../db/schema/logstoreStandardLogs";
+import { publicProcedure, router } from "../server/trpc";
 
 export const logstoreStandardLogsRouter = router({
   getLogstoreStandardLogs: publicProcedure.query(async () => {
     return getLogstoreStandardLogs();
   }),
-  getLogstoreStandardLogById: publicProcedure.input(logstoreStandardLogIdSchema).query(async ({ input }) => {
-    return getLogstoreStandardLogById(input.id);
-  }),
+  getLogstoreStandardLogById: publicProcedure
+    .input(logstoreStandardLogIdSchema)
+    .query(async ({ input }) => {
+      return getLogstoreStandardLogById(input.id);
+    }),
   createLogstoreStandardLog: publicProcedure
     .input(insertLogstoreStandardLogParams)
     .mutation(async ({ input }) => {

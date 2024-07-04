@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBigBlueButtonBnRecording,
   deleteBigBlueButtonBnRecording,
   updateBigBlueButtonBnRecording,
-} from "@/lib/api/bigBlueButtonBnRecordings/mutations";
+} from "../api/bigBlueButtonBnRecordings/mutations";
 import {
   BigBlueButtonBnRecordingId,
-  NewBigBlueButtonBnRecordingParams,
-  UpdateBigBlueButtonBnRecordingParams,
   bigBlueButtonBnRecordingIdSchema,
   insertBigBlueButtonBnRecordingParams,
+  NewBigBlueButtonBnRecordingParams,
+  UpdateBigBlueButtonBnRecordingParams,
   updateBigBlueButtonBnRecordingParams,
-} from "@/lib/db/schema/bigBlueButtonBnRecordings";
+} from "../db/schema/bigBlueButtonBnRecordings";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateBigBlueButtonBnRecordings = () => revalidatePath("/big-blue-button-bn-recordings");
+const revalidateBigBlueButtonBnRecordings = () =>
+  revalidatePath("/big-blue-button-bn-recordings");
 
-export const createBigBlueButtonBnRecordingAction = async (input: NewBigBlueButtonBnRecordingParams) => {
+export const createBigBlueButtonBnRecordingAction = async (
+  input: NewBigBlueButtonBnRecordingParams,
+) => {
   try {
     const payload = insertBigBlueButtonBnRecordingParams.parse(input);
     await createBigBlueButtonBnRecording(payload);
@@ -37,7 +41,9 @@ export const createBigBlueButtonBnRecordingAction = async (input: NewBigBlueButt
   }
 };
 
-export const updateBigBlueButtonBnRecordingAction = async (input: UpdateBigBlueButtonBnRecordingParams) => {
+export const updateBigBlueButtonBnRecordingAction = async (
+  input: UpdateBigBlueButtonBnRecordingParams,
+) => {
   try {
     const payload = updateBigBlueButtonBnRecordingParams.parse(input);
     await updateBigBlueButtonBnRecording(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateBigBlueButtonBnRecordingAction = async (input: UpdateBigBlueB
   }
 };
 
-export const deleteBigBlueButtonBnRecordingAction = async (input: BigBlueButtonBnRecordingId) => {
+export const deleteBigBlueButtonBnRecordingAction = async (
+  input: BigBlueButtonBnRecordingId,
+) => {
   try {
     const payload = bigBlueButtonBnRecordingIdSchema.parse({ id: input });
     await deleteBigBlueButtonBnRecording(payload.id);

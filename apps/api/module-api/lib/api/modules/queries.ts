@@ -1,10 +1,12 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { type ModuleId, moduleIdSchema, modules } from "@/lib/db/schema/modules";
+
+import type { ModuleId } from "../db/schema/modules";
+import { db } from "../db/index";
+import { moduleIdSchema, modules } from "../db/schema/modules";
 
 export const getModules = async () => {
   const rows = await db.select().from(modules);
-  const m = rows
+  const m = rows;
   return { modules: m };
 };
 
@@ -15,5 +17,3 @@ export const getModuleById = async (id: ModuleId) => {
   const m = row;
   return { module: m };
 };
-
-

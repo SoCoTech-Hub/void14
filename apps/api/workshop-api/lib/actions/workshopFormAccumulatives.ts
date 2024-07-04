@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createWorkshopFormAccumulative,
   deleteWorkshopFormAccumulative,
   updateWorkshopFormAccumulative,
-} from "@/lib/api/workshopFormAccumulatives/mutations";
+} from "../api/workshopFormAccumulatives/mutations";
 import {
-  WorkshopFormAccumulativeId,
+  insertWorkshopFormAccumulativeParams,
   NewWorkshopFormAccumulativeParams,
   UpdateWorkshopFormAccumulativeParams,
-  workshopFormAccumulativeIdSchema,
-  insertWorkshopFormAccumulativeParams,
   updateWorkshopFormAccumulativeParams,
-} from "@/lib/db/schema/workshopFormAccumulatives";
+  WorkshopFormAccumulativeId,
+  workshopFormAccumulativeIdSchema,
+} from "../db/schema/workshopFormAccumulatives";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateWorkshopFormAccumulatives = () => revalidatePath("/workshop-form-accumulatives");
+const revalidateWorkshopFormAccumulatives = () =>
+  revalidatePath("/workshop-form-accumulatives");
 
-export const createWorkshopFormAccumulativeAction = async (input: NewWorkshopFormAccumulativeParams) => {
+export const createWorkshopFormAccumulativeAction = async (
+  input: NewWorkshopFormAccumulativeParams,
+) => {
   try {
     const payload = insertWorkshopFormAccumulativeParams.parse(input);
     await createWorkshopFormAccumulative(payload);
@@ -37,7 +41,9 @@ export const createWorkshopFormAccumulativeAction = async (input: NewWorkshopFor
   }
 };
 
-export const updateWorkshopFormAccumulativeAction = async (input: UpdateWorkshopFormAccumulativeParams) => {
+export const updateWorkshopFormAccumulativeAction = async (
+  input: UpdateWorkshopFormAccumulativeParams,
+) => {
   try {
     const payload = updateWorkshopFormAccumulativeParams.parse(input);
     await updateWorkshopFormAccumulative(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateWorkshopFormAccumulativeAction = async (input: UpdateWorkshop
   }
 };
 
-export const deleteWorkshopFormAccumulativeAction = async (input: WorkshopFormAccumulativeId) => {
+export const deleteWorkshopFormAccumulativeAction = async (
+  input: WorkshopFormAccumulativeId,
+) => {
   try {
     const payload = workshopFormAccumulativeIdSchema.parse({ id: input });
     await deleteWorkshopFormAccumulative(payload.id);

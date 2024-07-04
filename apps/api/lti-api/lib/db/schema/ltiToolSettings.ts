@@ -1,10 +1,11 @@
-import { type getLtiToolSettings } from "@/lib/api/ltiToolSettings/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getLtiToolSettings } from "../api/ltiToolSettings/queries";
 
 export const ltiToolSettings = pgTable("lti_tool_settings", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

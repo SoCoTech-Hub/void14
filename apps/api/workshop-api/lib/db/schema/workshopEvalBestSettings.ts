@@ -1,10 +1,10 @@
-import { type getWorkshopEvalBestSettings } from "@/lib/api/workshopEvalBestSettings/queries";
 import { integer, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getWorkshopEvalBestSettings } from "../api/workshopEvalBestSettings/queries";
 import { workshops } from "./workshops";
 
 export const workshopEvalBestSettings = pgTable(

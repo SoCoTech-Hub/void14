@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQtypeDdimageortext,
   deleteQtypeDdimageortext,
   updateQtypeDdimageortext,
-} from "@/lib/api/qtypeDdimageortexts/mutations";
+} from "../api/qtypeDdimageortexts/mutations";
 import {
-  QtypeDdimageortextId,
-  NewQtypeDdimageortextParams,
-  UpdateQtypeDdimageortextParams,
-  qtypeDdimageortextIdSchema,
   insertQtypeDdimageortextParams,
+  NewQtypeDdimageortextParams,
+  QtypeDdimageortextId,
+  qtypeDdimageortextIdSchema,
+  UpdateQtypeDdimageortextParams,
   updateQtypeDdimageortextParams,
-} from "@/lib/db/schema/qtypeDdimageortexts";
+} from "../db/schema/qtypeDdimageortexts";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQtypeDdimageortexts = () => revalidatePath("/qtype-ddimageortexts");
+const revalidateQtypeDdimageortexts = () =>
+  revalidatePath("/qtype-ddimageortexts");
 
-export const createQtypeDdimageortextAction = async (input: NewQtypeDdimageortextParams) => {
+export const createQtypeDdimageortextAction = async (
+  input: NewQtypeDdimageortextParams,
+) => {
   try {
     const payload = insertQtypeDdimageortextParams.parse(input);
     await createQtypeDdimageortext(payload);
@@ -37,7 +41,9 @@ export const createQtypeDdimageortextAction = async (input: NewQtypeDdimageortex
   }
 };
 
-export const updateQtypeDdimageortextAction = async (input: UpdateQtypeDdimageortextParams) => {
+export const updateQtypeDdimageortextAction = async (
+  input: UpdateQtypeDdimageortextParams,
+) => {
   try {
     const payload = updateQtypeDdimageortextParams.parse(input);
     await updateQtypeDdimageortext(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQtypeDdimageortextAction = async (input: UpdateQtypeDdimageor
   }
 };
 
-export const deleteQtypeDdimageortextAction = async (input: QtypeDdimageortextId) => {
+export const deleteQtypeDdimageortextAction = async (
+  input: QtypeDdimageortextId,
+) => {
   try {
     const payload = qtypeDdimageortextIdSchema.parse({ id: input });
     await deleteQtypeDdimageortext(payload.id);

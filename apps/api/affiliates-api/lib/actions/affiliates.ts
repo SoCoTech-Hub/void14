@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAffiliate,
   deleteAffiliate,
   updateAffiliate,
-} from "@/lib/api/affiliates/mutations";
+} from "../api/affiliates/mutations";
 import {
   AffiliateId,
-  NewAffiliateParams,
-  UpdateAffiliateParams,
   affiliateIdSchema,
   insertAffiliateParams,
+  NewAffiliateParams,
+  UpdateAffiliateParams,
   updateAffiliateParams,
-} from "@/lib/db/schema/affiliates";
+} from "../db/schema/affiliates";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

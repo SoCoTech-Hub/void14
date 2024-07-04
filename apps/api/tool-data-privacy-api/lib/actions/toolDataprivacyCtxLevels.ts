@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createToolDataprivacyCtxLevel,
   deleteToolDataprivacyCtxLevel,
   updateToolDataprivacyCtxLevel,
-} from "@/lib/api/toolDataprivacyCtxLevels/mutations";
+} from "../api/toolDataprivacyCtxLevels/mutations";
 import {
-  ToolDataprivacyCtxLevelId,
-  NewToolDataprivacyCtxLevelParams,
-  UpdateToolDataprivacyCtxLevelParams,
-  toolDataprivacyCtxLevelIdSchema,
   insertToolDataprivacyCtxLevelParams,
+  NewToolDataprivacyCtxLevelParams,
+  ToolDataprivacyCtxLevelId,
+  toolDataprivacyCtxLevelIdSchema,
+  UpdateToolDataprivacyCtxLevelParams,
   updateToolDataprivacyCtxLevelParams,
-} from "@/lib/db/schema/toolDataprivacyCtxLevels";
+} from "../db/schema/toolDataprivacyCtxLevels";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateToolDataprivacyCtxLevels = () => revalidatePath("/tool-dataprivacy-ctx-levels");
+const revalidateToolDataprivacyCtxLevels = () =>
+  revalidatePath("/tool-dataprivacy-ctx-levels");
 
-export const createToolDataprivacyCtxLevelAction = async (input: NewToolDataprivacyCtxLevelParams) => {
+export const createToolDataprivacyCtxLevelAction = async (
+  input: NewToolDataprivacyCtxLevelParams,
+) => {
   try {
     const payload = insertToolDataprivacyCtxLevelParams.parse(input);
     await createToolDataprivacyCtxLevel(payload);
@@ -37,7 +41,9 @@ export const createToolDataprivacyCtxLevelAction = async (input: NewToolDatapriv
   }
 };
 
-export const updateToolDataprivacyCtxLevelAction = async (input: UpdateToolDataprivacyCtxLevelParams) => {
+export const updateToolDataprivacyCtxLevelAction = async (
+  input: UpdateToolDataprivacyCtxLevelParams,
+) => {
   try {
     const payload = updateToolDataprivacyCtxLevelParams.parse(input);
     await updateToolDataprivacyCtxLevel(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateToolDataprivacyCtxLevelAction = async (input: UpdateToolDatap
   }
 };
 
-export const deleteToolDataprivacyCtxLevelAction = async (input: ToolDataprivacyCtxLevelId) => {
+export const deleteToolDataprivacyCtxLevelAction = async (
+  input: ToolDataprivacyCtxLevelId,
+) => {
   try {
     const payload = toolDataprivacyCtxLevelIdSchema.parse({ id: input });
     await deleteToolDataprivacyCtxLevel(payload.id);

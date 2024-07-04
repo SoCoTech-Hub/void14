@@ -1,19 +1,28 @@
-import { getAnalyticsPredictionActionById, getAnalyticsPredictionActions } from "@/lib/api/analyticsPredictionActions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createAnalyticsPredictionAction,
+  deleteAnalyticsPredictionAction,
+  updateAnalyticsPredictionAction,
+} from "../api/analyticsPredictionActions/mutations";
+import {
+  getAnalyticsPredictionActionById,
+  getAnalyticsPredictionActions,
+} from "../api/analyticsPredictionActions/queries";
 import {
   analyticsPredictionActionIdSchema,
   insertAnalyticsPredictionActionParams,
   updateAnalyticsPredictionActionParams,
-} from "@/lib/db/schema/analyticsPredictionActions";
-import { createAnalyticsPredictionAction, deleteAnalyticsPredictionAction, updateAnalyticsPredictionAction } from "@/lib/api/analyticsPredictionActions/mutations";
+} from "../db/schema/analyticsPredictionActions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const analyticsPredictionActionsRouter = router({
   getAnalyticsPredictionActions: publicProcedure.query(async () => {
     return getAnalyticsPredictionActions();
   }),
-  getAnalyticsPredictionActionById: publicProcedure.input(analyticsPredictionActionIdSchema).query(async ({ input }) => {
-    return getAnalyticsPredictionActionById(input.id);
-  }),
+  getAnalyticsPredictionActionById: publicProcedure
+    .input(analyticsPredictionActionIdSchema)
+    .query(async ({ input }) => {
+      return getAnalyticsPredictionActionById(input.id);
+    }),
   createAnalyticsPredictionAction: publicProcedure
     .input(insertAnalyticsPredictionActionParams)
     .mutation(async ({ input }) => {

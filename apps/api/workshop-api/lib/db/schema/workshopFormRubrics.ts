@@ -1,4 +1,3 @@
-import { type getWorkshopFormRubrics } from "@/lib/api/workshopFormRubrics/queries";
 import {
   integer,
   pgTable,
@@ -11,6 +10,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getWorkshopFormRubrics } from "../api/workshopFormRubrics/queries";
 import { workshops } from "./workshops";
 
 export const workshopFormRubrics = pgTable(

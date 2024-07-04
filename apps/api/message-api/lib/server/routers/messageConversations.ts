@@ -1,19 +1,28 @@
-import { getMessageConversationById, getMessageConversations } from "@/lib/api/messageConversations/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  messageConversationIdSchema,
+  createMessageConversation,
+  deleteMessageConversation,
+  updateMessageConversation,
+} from "../api/messageConversations/mutations";
+import {
+  getMessageConversationById,
+  getMessageConversations,
+} from "../api/messageConversations/queries";
+import {
   insertMessageConversationParams,
+  messageConversationIdSchema,
   updateMessageConversationParams,
-} from "@/lib/db/schema/messageConversations";
-import { createMessageConversation, deleteMessageConversation, updateMessageConversation } from "@/lib/api/messageConversations/mutations";
+} from "../db/schema/messageConversations";
+import { publicProcedure, router } from "../server/trpc";
 
 export const messageConversationsRouter = router({
   getMessageConversations: publicProcedure.query(async () => {
     return getMessageConversations();
   }),
-  getMessageConversationById: publicProcedure.input(messageConversationIdSchema).query(async ({ input }) => {
-    return getMessageConversationById(input.id);
-  }),
+  getMessageConversationById: publicProcedure
+    .input(messageConversationIdSchema)
+    .query(async ({ input }) => {
+      return getMessageConversationById(input.id);
+    }),
   createMessageConversation: publicProcedure
     .input(insertMessageConversationParams)
     .mutation(async ({ input }) => {

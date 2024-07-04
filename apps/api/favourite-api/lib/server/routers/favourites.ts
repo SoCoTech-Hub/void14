@@ -1,19 +1,25 @@
-import { getFavouriteById, getFavourites } from "@/lib/api/favourites/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createFavourite,
+  deleteFavourite,
+  updateFavourite,
+} from "../api/favourites/mutations";
+import { getFavouriteById, getFavourites } from "../api/favourites/queries";
 import {
   favouriteIdSchema,
   insertFavouriteParams,
   updateFavouriteParams,
-} from "@/lib/db/schema/favourites";
-import { createFavourite, deleteFavourite, updateFavourite } from "@/lib/api/favourites/mutations";
+} from "../db/schema/favourites";
+import { publicProcedure, router } from "../server/trpc";
 
 export const favouritesRouter = router({
   getFavourites: publicProcedure.query(async () => {
     return getFavourites();
   }),
-  getFavouriteById: publicProcedure.input(favouriteIdSchema).query(async ({ input }) => {
-    return getFavouriteById(input.id);
-  }),
+  getFavouriteById: publicProcedure
+    .input(favouriteIdSchema)
+    .query(async ({ input }) => {
+      return getFavouriteById(input.id);
+    }),
   createFavourite: publicProcedure
     .input(insertFavouriteParams)
     .mutation(async ({ input }) => {

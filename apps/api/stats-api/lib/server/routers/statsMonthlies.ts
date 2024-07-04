@@ -1,19 +1,28 @@
-import { getStatsMonthlyById, getStatsMonthlies } from "@/lib/api/statsMonthlies/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  statsMonthlyIdSchema,
+  createStatsMonthly,
+  deleteStatsMonthly,
+  updateStatsMonthly,
+} from "../api/statsMonthlies/mutations";
+import {
+  getStatsMonthlies,
+  getStatsMonthlyById,
+} from "../api/statsMonthlies/queries";
+import {
   insertStatsMonthlyParams,
+  statsMonthlyIdSchema,
   updateStatsMonthlyParams,
-} from "@/lib/db/schema/statsMonthlies";
-import { createStatsMonthly, deleteStatsMonthly, updateStatsMonthly } from "@/lib/api/statsMonthlies/mutations";
+} from "../db/schema/statsMonthlies";
+import { publicProcedure, router } from "../server/trpc";
 
 export const statsMonthliesRouter = router({
   getStatsMonthlies: publicProcedure.query(async () => {
     return getStatsMonthlies();
   }),
-  getStatsMonthlyById: publicProcedure.input(statsMonthlyIdSchema).query(async ({ input }) => {
-    return getStatsMonthlyById(input.id);
-  }),
+  getStatsMonthlyById: publicProcedure
+    .input(statsMonthlyIdSchema)
+    .query(async ({ input }) => {
+      return getStatsMonthlyById(input.id);
+    }),
   createStatsMonthly: publicProcedure
     .input(insertStatsMonthlyParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,25 @@
-import { getResourceById, getResources } from "@/lib/api/resources/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  resourceIdSchema,
+  createResource,
+  deleteResource,
+  updateResource,
+} from "../api/resources/mutations";
+import { getResourceById, getResources } from "../api/resources/queries";
+import {
   insertResourceParams,
+  resourceIdSchema,
   updateResourceParams,
-} from "@/lib/db/schema/resources";
-import { createResource, deleteResource, updateResource } from "@/lib/api/resources/mutations";
+} from "../db/schema/resources";
+import { publicProcedure, router } from "../server/trpc";
 
 export const resourcesRouter = router({
   getResources: publicProcedure.query(async () => {
     return getResources();
   }),
-  getResourceById: publicProcedure.input(resourceIdSchema).query(async ({ input }) => {
-    return getResourceById(input.id);
-  }),
+  getResourceById: publicProcedure
+    .input(resourceIdSchema)
+    .query(async ({ input }) => {
+      return getResourceById(input.id);
+    }),
   createResource: publicProcedure
     .input(insertResourceParams)
     .mutation(async ({ input }) => {

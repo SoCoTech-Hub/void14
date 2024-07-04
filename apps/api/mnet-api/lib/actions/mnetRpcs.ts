@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMnetRpc,
   deleteMnetRpc,
   updateMnetRpc,
-} from "@/lib/api/mnetRpcs/mutations";
+} from "../api/mnetRpcs/mutations";
 import {
+  insertMnetRpcParams,
   MnetRpcId,
+  mnetRpcIdSchema,
   NewMnetRpcParams,
   UpdateMnetRpcParams,
-  mnetRpcIdSchema,
-  insertMnetRpcParams,
   updateMnetRpcParams,
-} from "@/lib/db/schema/mnetRpcs";
+} from "../db/schema/mnetRpcs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

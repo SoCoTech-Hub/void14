@@ -1,19 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
+import { createLti, deleteLti, updateLti } from "../api/ltis/mutations";
 import {
-  createLti,
-  deleteLti,
-  updateLti,
-} from "@/lib/api/ltis/mutations";
-import {
+  insertLtiParams,
   LtiId,
+  ltiIdSchema,
   NewLtiParams,
   UpdateLtiParams,
-  ltiIdSchema,
-  insertLtiParams,
   updateLtiParams,
-} from "@/lib/db/schema/ltis";
+} from "../db/schema/ltis";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

@@ -1,19 +1,28 @@
-import { getForumDigestById, getForumDigests } from "@/lib/api/forumDigests/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createForumDigest,
+  deleteForumDigest,
+  updateForumDigest,
+} from "../api/forumDigests/mutations";
+import {
+  getForumDigestById,
+  getForumDigests,
+} from "../api/forumDigests/queries";
 import {
   forumDigestIdSchema,
   insertForumDigestParams,
   updateForumDigestParams,
-} from "@/lib/db/schema/forumDigests";
-import { createForumDigest, deleteForumDigest, updateForumDigest } from "@/lib/api/forumDigests/mutations";
+} from "../db/schema/forumDigests";
+import { publicProcedure, router } from "../server/trpc";
 
 export const forumDigestsRouter = router({
   getForumDigests: publicProcedure.query(async () => {
     return getForumDigests();
   }),
-  getForumDigestById: publicProcedure.input(forumDigestIdSchema).query(async ({ input }) => {
-    return getForumDigestById(input.id);
-  }),
+  getForumDigestById: publicProcedure
+    .input(forumDigestIdSchema)
+    .query(async ({ input }) => {
+      return getForumDigestById(input.id);
+    }),
   createForumDigest: publicProcedure
     .input(insertForumDigestParams)
     .mutation(async ({ input }) => {

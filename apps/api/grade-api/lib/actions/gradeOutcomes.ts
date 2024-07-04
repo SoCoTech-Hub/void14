@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGradeOutcome,
   deleteGradeOutcome,
   updateGradeOutcome,
-} from "@/lib/api/gradeOutcomes/mutations";
+} from "../api/gradeOutcomes/mutations";
 import {
   GradeOutcomeId,
-  NewGradeOutcomeParams,
-  UpdateGradeOutcomeParams,
   gradeOutcomeIdSchema,
   insertGradeOutcomeParams,
+  NewGradeOutcomeParams,
+  UpdateGradeOutcomeParams,
   updateGradeOutcomeParams,
-} from "@/lib/db/schema/gradeOutcomes";
+} from "../db/schema/gradeOutcomes";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateGradeOutcomes = () => revalidatePath("/grade-outcomes");
 
-export const createGradeOutcomeAction = async (input: NewGradeOutcomeParams) => {
+export const createGradeOutcomeAction = async (
+  input: NewGradeOutcomeParams,
+) => {
   try {
     const payload = insertGradeOutcomeParams.parse(input);
     await createGradeOutcome(payload);
@@ -37,7 +40,9 @@ export const createGradeOutcomeAction = async (input: NewGradeOutcomeParams) => 
   }
 };
 
-export const updateGradeOutcomeAction = async (input: UpdateGradeOutcomeParams) => {
+export const updateGradeOutcomeAction = async (
+  input: UpdateGradeOutcomeParams,
+) => {
   try {
     const payload = updateGradeOutcomeParams.parse(input);
     await updateGradeOutcome(payload.id, payload);

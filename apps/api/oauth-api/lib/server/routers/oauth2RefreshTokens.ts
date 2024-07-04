@@ -1,19 +1,28 @@
-import { getOauth2RefreshTokenById, getOauth2RefreshTokens } from "@/lib/api/oauth2RefreshTokens/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  oauth2RefreshTokenIdSchema,
+  createOauth2RefreshToken,
+  deleteOauth2RefreshToken,
+  updateOauth2RefreshToken,
+} from "../api/oauth2RefreshTokens/mutations";
+import {
+  getOauth2RefreshTokenById,
+  getOauth2RefreshTokens,
+} from "../api/oauth2RefreshTokens/queries";
+import {
   insertOauth2RefreshTokenParams,
+  oauth2RefreshTokenIdSchema,
   updateOauth2RefreshTokenParams,
-} from "@/lib/db/schema/oauth2RefreshTokens";
-import { createOauth2RefreshToken, deleteOauth2RefreshToken, updateOauth2RefreshToken } from "@/lib/api/oauth2RefreshTokens/mutations";
+} from "../db/schema/oauth2RefreshTokens";
+import { publicProcedure, router } from "../server/trpc";
 
 export const oauth2RefreshTokensRouter = router({
   getOauth2RefreshTokens: publicProcedure.query(async () => {
     return getOauth2RefreshTokens();
   }),
-  getOauth2RefreshTokenById: publicProcedure.input(oauth2RefreshTokenIdSchema).query(async ({ input }) => {
-    return getOauth2RefreshTokenById(input.id);
-  }),
+  getOauth2RefreshTokenById: publicProcedure
+    .input(oauth2RefreshTokenIdSchema)
+    .query(async ({ input }) => {
+      return getOauth2RefreshTokenById(input.id);
+    }),
   createOauth2RefreshToken: publicProcedure
     .input(insertOauth2RefreshTokenParams)
     .mutation(async ({ input }) => {

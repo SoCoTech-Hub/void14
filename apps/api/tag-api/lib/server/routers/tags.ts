@@ -1,11 +1,11 @@
-import { getTagById, getTags } from "@/lib/api/tags/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import { createTag, deleteTag, updateTag } from "../api/tags/mutations";
+import { getTagById, getTags } from "../api/tags/queries";
 import {
-  tagIdSchema,
   insertTagParams,
+  tagIdSchema,
   updateTagParams,
-} from "@/lib/db/schema/tags";
-import { createTag, deleteTag, updateTag } from "@/lib/api/tags/mutations";
+} from "../db/schema/tags";
+import { publicProcedure, router } from "../server/trpc";
 
 export const tagsRouter = router({
   getTags: publicProcedure.query(async () => {
@@ -24,9 +24,7 @@ export const tagsRouter = router({
     .mutation(async ({ input }) => {
       return updateTag(input.id, input);
     }),
-  deleteTag: publicProcedure
-    .input(tagIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteTag(input.id);
-    }),
+  deleteTag: publicProcedure.input(tagIdSchema).mutation(async ({ input }) => {
+    return deleteTag(input.id);
+  }),
 });

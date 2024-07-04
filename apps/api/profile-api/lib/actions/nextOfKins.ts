@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createNextOfKin,
   deleteNextOfKin,
   updateNextOfKin,
-} from "@/lib/api/nextOfKins/mutations";
+} from "../api/nextOfKins/mutations";
 import {
-  NextOfKinId,
-  NewNextOfKinParams,
-  UpdateNextOfKinParams,
-  nextOfKinIdSchema,
   insertNextOfKinParams,
+  NewNextOfKinParams,
+  NextOfKinId,
+  nextOfKinIdSchema,
+  UpdateNextOfKinParams,
   updateNextOfKinParams,
-} from "@/lib/db/schema/nextOfKins";
+} from "../db/schema/nextOfKins";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

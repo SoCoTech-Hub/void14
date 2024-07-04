@@ -1,19 +1,28 @@
-import { getQtypeMultichoiceOptionById, getQtypeMultichoiceOptions } from "@/lib/api/qtypeMultichoiceOptions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  qtypeMultichoiceOptionIdSchema,
+  createQtypeMultichoiceOption,
+  deleteQtypeMultichoiceOption,
+  updateQtypeMultichoiceOption,
+} from "../api/qtypeMultichoiceOptions/mutations";
+import {
+  getQtypeMultichoiceOptionById,
+  getQtypeMultichoiceOptions,
+} from "../api/qtypeMultichoiceOptions/queries";
+import {
   insertQtypeMultichoiceOptionParams,
+  qtypeMultichoiceOptionIdSchema,
   updateQtypeMultichoiceOptionParams,
-} from "@/lib/db/schema/qtypeMultichoiceOptions";
-import { createQtypeMultichoiceOption, deleteQtypeMultichoiceOption, updateQtypeMultichoiceOption } from "@/lib/api/qtypeMultichoiceOptions/mutations";
+} from "../db/schema/qtypeMultichoiceOptions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const qtypeMultichoiceOptionsRouter = router({
   getQtypeMultichoiceOptions: publicProcedure.query(async () => {
     return getQtypeMultichoiceOptions();
   }),
-  getQtypeMultichoiceOptionById: publicProcedure.input(qtypeMultichoiceOptionIdSchema).query(async ({ input }) => {
-    return getQtypeMultichoiceOptionById(input.id);
-  }),
+  getQtypeMultichoiceOptionById: publicProcedure
+    .input(qtypeMultichoiceOptionIdSchema)
+    .query(async ({ input }) => {
+      return getQtypeMultichoiceOptionById(input.id);
+    }),
   createQtypeMultichoiceOption: publicProcedure
     .input(insertQtypeMultichoiceOptionParams)
     .mutation(async ({ input }) => {

@@ -1,9 +1,10 @@
-import { type getAffiliatesStatuses } from "@/lib/api/affiliatesStatuses/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getAffiliatesStatuses } from "../api/affiliatesStatuses/queries";
 
 export const affiliatesStatuses = pgTable("affiliates_statuses", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

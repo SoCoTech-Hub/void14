@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createRating,
   deleteRating,
   updateRating,
-} from "@/lib/api/ratings/mutations";
+} from "../api/ratings/mutations";
 import {
-  RatingId,
-  NewRatingParams,
-  UpdateRatingParams,
-  ratingIdSchema,
   insertRatingParams,
+  NewRatingParams,
+  RatingId,
+  ratingIdSchema,
+  UpdateRatingParams,
   updateRatingParams,
-} from "@/lib/db/schema/ratings";
+} from "../db/schema/ratings";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createToolPolicyVersion,
   deleteToolPolicyVersion,
   updateToolPolicyVersion,
-} from "@/lib/api/toolPolicyVersions/mutations";
+} from "../api/toolPolicyVersions/mutations";
 import {
-  ToolPolicyVersionId,
-  NewToolPolicyVersionParams,
-  UpdateToolPolicyVersionParams,
-  toolPolicyVersionIdSchema,
   insertToolPolicyVersionParams,
+  NewToolPolicyVersionParams,
+  ToolPolicyVersionId,
+  toolPolicyVersionIdSchema,
+  UpdateToolPolicyVersionParams,
   updateToolPolicyVersionParams,
-} from "@/lib/db/schema/toolPolicyVersions";
+} from "../db/schema/toolPolicyVersions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateToolPolicyVersions = () => revalidatePath("/tool-policy-versions");
+const revalidateToolPolicyVersions = () =>
+  revalidatePath("/tool-policy-versions");
 
-export const createToolPolicyVersionAction = async (input: NewToolPolicyVersionParams) => {
+export const createToolPolicyVersionAction = async (
+  input: NewToolPolicyVersionParams,
+) => {
   try {
     const payload = insertToolPolicyVersionParams.parse(input);
     await createToolPolicyVersion(payload);
@@ -37,7 +41,9 @@ export const createToolPolicyVersionAction = async (input: NewToolPolicyVersionP
   }
 };
 
-export const updateToolPolicyVersionAction = async (input: UpdateToolPolicyVersionParams) => {
+export const updateToolPolicyVersionAction = async (
+  input: UpdateToolPolicyVersionParams,
+) => {
   try {
     const payload = updateToolPolicyVersionParams.parse(input);
     await updateToolPolicyVersion(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateToolPolicyVersionAction = async (input: UpdateToolPolicyVersi
   }
 };
 
-export const deleteToolPolicyVersionAction = async (input: ToolPolicyVersionId) => {
+export const deleteToolPolicyVersionAction = async (
+  input: ToolPolicyVersionId,
+) => {
   try {
     const payload = toolPolicyVersionIdSchema.parse({ id: input });
     await deleteToolPolicyVersion(payload.id);

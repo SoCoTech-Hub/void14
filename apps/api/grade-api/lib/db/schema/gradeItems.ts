@@ -1,4 +1,3 @@
-import { type getGradeItems } from "@/lib/api/gradeItems/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -14,6 +13,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getGradeItems } from "../api/gradeItems/queries";
 
 export const gradeItems = pgTable(
   "grade_items",

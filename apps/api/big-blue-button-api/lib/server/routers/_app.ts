@@ -1,8 +1,8 @@
-import { computersRouter } from "./computers";
-import { router } from "@/lib/server/trpc";
-import { bigBlueButtonBnsRouter } from "./bigBlueButtonBns";
+import { router } from "../server/trpc";
 import { bigBlueButtonBnLogsRouter } from "./bigBlueButtonBnLogs";
 import { bigBlueButtonBnRecordingsRouter } from "./bigBlueButtonBnRecordings";
+import { bigBlueButtonBnsRouter } from "./bigBlueButtonBns";
+import { computersRouter } from "./computers";
 
 export const appRouter = router({
   computers: computersRouter,

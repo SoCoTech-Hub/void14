@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createFeedbackTemplate,
   deleteFeedbackTemplate,
   updateFeedbackTemplate,
-} from "@/lib/api/feedbackTemplates/mutations";
+} from "../api/feedbackTemplates/mutations";
 import {
   FeedbackTemplateId,
-  NewFeedbackTemplateParams,
-  UpdateFeedbackTemplateParams,
   feedbackTemplateIdSchema,
   insertFeedbackTemplateParams,
+  NewFeedbackTemplateParams,
+  UpdateFeedbackTemplateParams,
   updateFeedbackTemplateParams,
-} from "@/lib/db/schema/feedbackTemplates";
+} from "../db/schema/feedbackTemplates";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateFeedbackTemplates = () => revalidatePath("/feedback-templates");
 
-export const createFeedbackTemplateAction = async (input: NewFeedbackTemplateParams) => {
+export const createFeedbackTemplateAction = async (
+  input: NewFeedbackTemplateParams,
+) => {
   try {
     const payload = insertFeedbackTemplateParams.parse(input);
     await createFeedbackTemplate(payload);
@@ -37,7 +40,9 @@ export const createFeedbackTemplateAction = async (input: NewFeedbackTemplatePar
   }
 };
 
-export const updateFeedbackTemplateAction = async (input: UpdateFeedbackTemplateParams) => {
+export const updateFeedbackTemplateAction = async (
+  input: UpdateFeedbackTemplateParams,
+) => {
   try {
     const payload = updateFeedbackTemplateParams.parse(input);
     await updateFeedbackTemplate(payload.id, payload);
@@ -47,7 +52,9 @@ export const updateFeedbackTemplateAction = async (input: UpdateFeedbackTemplate
   }
 };
 
-export const deleteFeedbackTemplateAction = async (input: FeedbackTemplateId) => {
+export const deleteFeedbackTemplateAction = async (
+  input: FeedbackTemplateId,
+) => {
   try {
     const payload = feedbackTemplateIdSchema.parse({ id: input });
     await deleteFeedbackTemplate(payload.id);

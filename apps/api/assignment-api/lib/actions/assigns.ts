@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAssign,
   deleteAssign,
   updateAssign,
-} from "@/lib/api/assigns/mutations";
+} from "../api/assigns/mutations";
 import {
   AssignId,
-  NewAssignParams,
-  UpdateAssignParams,
   assignIdSchema,
   insertAssignParams,
+  NewAssignParams,
+  UpdateAssignParams,
   updateAssignParams,
-} from "@/lib/db/schema/assigns";
+} from "../db/schema/assigns";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

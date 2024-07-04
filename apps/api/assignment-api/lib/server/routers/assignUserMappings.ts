@@ -1,19 +1,28 @@
-import { getAssignUserMappingById, getAssignUserMappings } from "@/lib/api/assignUserMappings/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createAssignUserMapping,
+  deleteAssignUserMapping,
+  updateAssignUserMapping,
+} from "../api/assignUserMappings/mutations";
+import {
+  getAssignUserMappingById,
+  getAssignUserMappings,
+} from "../api/assignUserMappings/queries";
 import {
   assignUserMappingIdSchema,
   insertAssignUserMappingParams,
   updateAssignUserMappingParams,
-} from "@/lib/db/schema/assignUserMappings";
-import { createAssignUserMapping, deleteAssignUserMapping, updateAssignUserMapping } from "@/lib/api/assignUserMappings/mutations";
+} from "../db/schema/assignUserMappings";
+import { publicProcedure, router } from "../server/trpc";
 
 export const assignUserMappingsRouter = router({
   getAssignUserMappings: publicProcedure.query(async () => {
     return getAssignUserMappings();
   }),
-  getAssignUserMappingById: publicProcedure.input(assignUserMappingIdSchema).query(async ({ input }) => {
-    return getAssignUserMappingById(input.id);
-  }),
+  getAssignUserMappingById: publicProcedure
+    .input(assignUserMappingIdSchema)
+    .query(async ({ input }) => {
+      return getAssignUserMappingById(input.id);
+    }),
   createAssignUserMapping: publicProcedure
     .input(insertAssignUserMappingParams)
     .mutation(async ({ input }) => {

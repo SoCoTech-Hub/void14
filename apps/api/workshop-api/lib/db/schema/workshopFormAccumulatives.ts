@@ -1,4 +1,3 @@
-import { type getWorkshopFormAccumulatives } from "@/lib/api/workshopFormAccumulatives/queries";
 import {
   integer,
   pgTable,
@@ -11,6 +10,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getWorkshopFormAccumulatives } from "../api/workshopFormAccumulatives/queries";
 import { workshops } from "./workshops";
 
 export const workshopFormAccumulatives = pgTable(

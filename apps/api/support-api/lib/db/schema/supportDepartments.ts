@@ -1,9 +1,10 @@
-import { type getSupportDepartments } from "@/lib/api/supportDepartments/queries";
 import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getSupportDepartments } from "../api/supportDepartments/queries";
 
 export const supportDepartments = pgTable("support_departments", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

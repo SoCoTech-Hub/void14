@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCourseModulesCompletion,
   deleteCourseModulesCompletion,
   updateCourseModulesCompletion,
-} from "@/lib/api/courseModulesCompletions/mutations";
+} from "../api/courseModulesCompletions/mutations";
 import {
   CourseModulesCompletionId,
-  NewCourseModulesCompletionParams,
-  UpdateCourseModulesCompletionParams,
   courseModulesCompletionIdSchema,
   insertCourseModulesCompletionParams,
+  NewCourseModulesCompletionParams,
+  UpdateCourseModulesCompletionParams,
   updateCourseModulesCompletionParams,
-} from "@/lib/db/schema/courseModulesCompletions";
+} from "../db/schema/courseModulesCompletions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateCourseModulesCompletions = () => revalidatePath("/course-modules-completions");
+const revalidateCourseModulesCompletions = () =>
+  revalidatePath("/course-modules-completions");
 
-export const createCourseModulesCompletionAction = async (input: NewCourseModulesCompletionParams) => {
+export const createCourseModulesCompletionAction = async (
+  input: NewCourseModulesCompletionParams,
+) => {
   try {
     const payload = insertCourseModulesCompletionParams.parse(input);
     await createCourseModulesCompletion(payload);
@@ -37,7 +41,9 @@ export const createCourseModulesCompletionAction = async (input: NewCourseModule
   }
 };
 
-export const updateCourseModulesCompletionAction = async (input: UpdateCourseModulesCompletionParams) => {
+export const updateCourseModulesCompletionAction = async (
+  input: UpdateCourseModulesCompletionParams,
+) => {
   try {
     const payload = updateCourseModulesCompletionParams.parse(input);
     await updateCourseModulesCompletion(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateCourseModulesCompletionAction = async (input: UpdateCourseMod
   }
 };
 
-export const deleteCourseModulesCompletionAction = async (input: CourseModulesCompletionId) => {
+export const deleteCourseModulesCompletionAction = async (
+  input: CourseModulesCompletionId,
+) => {
   try {
     const payload = courseModulesCompletionIdSchema.parse({ id: input });
     await deleteCourseModulesCompletion(payload.id);

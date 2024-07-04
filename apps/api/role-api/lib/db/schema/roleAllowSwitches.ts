@@ -1,10 +1,10 @@
-import { type getRoleAllowSwitches } from "@/lib/api/roleAllowSwitches/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getRoleAllowSwitches } from "../api/roleAllowSwitches/queries";
 import { roles } from "./roles";
 
 export const roleAllowSwitches = pgTable("role_allow_switches", {

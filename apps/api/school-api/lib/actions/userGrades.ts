@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createUserGrade,
   deleteUserGrade,
   updateUserGrade,
-} from "@/lib/api/userGrades/mutations";
+} from "../api/userGrades/mutations";
 import {
-  UserGradeId,
+  insertUserGradeParams,
   NewUserGradeParams,
   UpdateUserGradeParams,
-  userGradeIdSchema,
-  insertUserGradeParams,
   updateUserGradeParams,
-} from "@/lib/db/schema/userGrades";
+  UserGradeId,
+  userGradeIdSchema,
+} from "../db/schema/userGrades";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

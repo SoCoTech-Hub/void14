@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createStatsUserDaily,
   deleteStatsUserDaily,
   updateStatsUserDaily,
-} from "@/lib/api/statsUserDailies/mutations";
+} from "../api/statsUserDailies/mutations";
 import {
-  StatsUserDailyId,
-  NewStatsUserDailyParams,
-  UpdateStatsUserDailyParams,
-  statsUserDailyIdSchema,
   insertStatsUserDailyParams,
+  NewStatsUserDailyParams,
+  StatsUserDailyId,
+  statsUserDailyIdSchema,
+  UpdateStatsUserDailyParams,
   updateStatsUserDailyParams,
-} from "@/lib/db/schema/statsUserDailies";
+} from "../db/schema/statsUserDailies";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateStatsUserDailies = () => revalidatePath("/stats-user-dailies");
 
-export const createStatsUserDailyAction = async (input: NewStatsUserDailyParams) => {
+export const createStatsUserDailyAction = async (
+  input: NewStatsUserDailyParams,
+) => {
   try {
     const payload = insertStatsUserDailyParams.parse(input);
     await createStatsUserDaily(payload);
@@ -37,7 +40,9 @@ export const createStatsUserDailyAction = async (input: NewStatsUserDailyParams)
   }
 };
 
-export const updateStatsUserDailyAction = async (input: UpdateStatsUserDailyParams) => {
+export const updateStatsUserDailyAction = async (
+  input: UpdateStatsUserDailyParams,
+) => {
   try {
     const payload = updateStatsUserDailyParams.parse(input);
     await updateStatsUserDaily(payload.id, payload);

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMnetServiceEnrolCourse,
   deleteMnetServiceEnrolCourse,
   updateMnetServiceEnrolCourse,
-} from "@/lib/api/mnetServiceEnrolCourses/mutations";
+} from "../api/mnetServiceEnrolCourses/mutations";
 import {
+  insertMnetServiceEnrolCourseParams,
   MnetServiceEnrolCourseId,
+  mnetServiceEnrolCourseIdSchema,
   NewMnetServiceEnrolCourseParams,
   UpdateMnetServiceEnrolCourseParams,
-  mnetServiceEnrolCourseIdSchema,
-  insertMnetServiceEnrolCourseParams,
   updateMnetServiceEnrolCourseParams,
-} from "@/lib/db/schema/mnetServiceEnrolCourses";
+} from "../db/schema/mnetServiceEnrolCourses";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateMnetServiceEnrolCourses = () => revalidatePath("/mnet-service-enrol-courses");
+const revalidateMnetServiceEnrolCourses = () =>
+  revalidatePath("/mnet-service-enrol-courses");
 
-export const createMnetServiceEnrolCourseAction = async (input: NewMnetServiceEnrolCourseParams) => {
+export const createMnetServiceEnrolCourseAction = async (
+  input: NewMnetServiceEnrolCourseParams,
+) => {
   try {
     const payload = insertMnetServiceEnrolCourseParams.parse(input);
     await createMnetServiceEnrolCourse(payload);
@@ -37,7 +41,9 @@ export const createMnetServiceEnrolCourseAction = async (input: NewMnetServiceEn
   }
 };
 
-export const updateMnetServiceEnrolCourseAction = async (input: UpdateMnetServiceEnrolCourseParams) => {
+export const updateMnetServiceEnrolCourseAction = async (
+  input: UpdateMnetServiceEnrolCourseParams,
+) => {
   try {
     const payload = updateMnetServiceEnrolCourseParams.parse(input);
     await updateMnetServiceEnrolCourse(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateMnetServiceEnrolCourseAction = async (input: UpdateMnetServic
   }
 };
 
-export const deleteMnetServiceEnrolCourseAction = async (input: MnetServiceEnrolCourseId) => {
+export const deleteMnetServiceEnrolCourseAction = async (
+  input: MnetServiceEnrolCourseId,
+) => {
   try {
     const payload = mnetServiceEnrolCourseIdSchema.parse({ id: input });
     await deleteMnetServiceEnrolCourse(payload.id);

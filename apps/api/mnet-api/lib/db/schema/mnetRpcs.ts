@@ -1,4 +1,3 @@
-import { type getMnetRpcs } from "@/lib/api/mnetRpcs/queries";
 import {
   boolean,
   pgTable,
@@ -10,6 +9,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getMnetRpcs } from "../api/mnetRpcs/queries";
 
 export const mnetRpcs = pgTable(
   "mnet_rpcs",

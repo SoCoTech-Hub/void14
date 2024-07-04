@@ -1,19 +1,28 @@
-import { getCompetencyCourseCompById, getCompetencyCourseComps } from "@/lib/api/competencyCourseComps/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createCompetencyCourseComp,
+  deleteCompetencyCourseComp,
+  updateCompetencyCourseComp,
+} from "../api/competencyCourseComps/mutations";
+import {
+  getCompetencyCourseCompById,
+  getCompetencyCourseComps,
+} from "../api/competencyCourseComps/queries";
 import {
   competencyCourseCompIdSchema,
   insertCompetencyCourseCompParams,
   updateCompetencyCourseCompParams,
-} from "@/lib/db/schema/competencyCourseComps";
-import { createCompetencyCourseComp, deleteCompetencyCourseComp, updateCompetencyCourseComp } from "@/lib/api/competencyCourseComps/mutations";
+} from "../db/schema/competencyCourseComps";
+import { publicProcedure, router } from "../server/trpc";
 
 export const competencyCourseCompsRouter = router({
   getCompetencyCourseComps: publicProcedure.query(async () => {
     return getCompetencyCourseComps();
   }),
-  getCompetencyCourseCompById: publicProcedure.input(competencyCourseCompIdSchema).query(async ({ input }) => {
-    return getCompetencyCourseCompById(input.id);
-  }),
+  getCompetencyCourseCompById: publicProcedure
+    .input(competencyCourseCompIdSchema)
+    .query(async ({ input }) => {
+      return getCompetencyCourseCompById(input.id);
+    }),
   createCompetencyCourseComp: publicProcedure
     .input(insertCompetencyCourseCompParams)
     .mutation(async ({ input }) => {

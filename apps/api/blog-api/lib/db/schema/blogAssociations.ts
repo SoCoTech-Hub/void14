@@ -1,10 +1,10 @@
-import type { getBlogAssociations } from "@/lib/api/blogAssociations/queries";
 import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import type { getBlogAssociations } from "../api/blogAssociations/queries";
 import { blogExternals } from "./blogExternals";
 
 export const blogAssociations = pgTable(

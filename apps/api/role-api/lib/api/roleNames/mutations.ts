@@ -1,19 +1,20 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  RoleNameId, 
+
+import { db } from "../db/index";
+import {
+  insertRoleNameSchema,
   NewRoleNameParams,
-  UpdateRoleNameParams, 
-  updateRoleNameSchema,
-  insertRoleNameSchema, 
+  RoleNameId,
+  roleNameIdSchema,
   roleNames,
-  roleNameIdSchema 
-} from "@/lib/db/schema/roleNames";
+  UpdateRoleNameParams,
+  updateRoleNameSchema,
+} from "../db/schema/roleNames";
 
 export const createRoleName = async (roleName: NewRoleNameParams) => {
   const newRoleName = insertRoleNameSchema.parse(roleName);
   try {
-    const [r] =  await db.insert(roleNames).values(newRoleName).returning();
+    const [r] = await db.insert(roleNames).values(newRoleName).returning();
     return { roleName: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +23,18 @@ export const createRoleName = async (roleName: NewRoleNameParams) => {
   }
 };
 
-export const updateRoleName = async (id: RoleNameId, roleName: UpdateRoleNameParams) => {
+export const updateRoleName = async (
+  id: RoleNameId,
+  roleName: UpdateRoleNameParams,
+) => {
   const { id: roleNameId } = roleNameIdSchema.parse({ id });
   const newRoleName = updateRoleNameSchema.parse(roleName);
   try {
-    const [r] =  await db
-     .update(roleNames)
-     .set(newRoleName)
-     .where(eq(roleNames.id, roleNameId!))
-     .returning();
+    const [r] = await db
+      .update(roleNames)
+      .set(newRoleName)
+      .where(eq(roleNames.id, roleNameId!))
+      .returning();
     return { roleName: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +46,10 @@ export const updateRoleName = async (id: RoleNameId, roleName: UpdateRoleNamePar
 export const deleteRoleName = async (id: RoleNameId) => {
   const { id: roleNameId } = roleNameIdSchema.parse({ id });
   try {
-    const [r] =  await db.delete(roleNames).where(eq(roleNames.id, roleNameId!))
-    .returning();
+    const [r] = await db
+      .delete(roleNames)
+      .where(eq(roleNames.id, roleNameId!))
+      .returning();
     return { roleName: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +57,3 @@ export const deleteRoleName = async (id: RoleNameId) => {
     throw { error: message };
   }
 };
-

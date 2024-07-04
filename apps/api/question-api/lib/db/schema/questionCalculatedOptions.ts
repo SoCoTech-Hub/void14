@@ -1,4 +1,3 @@
-import { type getQuestionCalculatedOptions } from "@/lib/api/questionCalculatedOptions/queries";
 import {
   boolean,
   integer,
@@ -12,6 +11,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getQuestionCalculatedOptions } from "../api/questionCalculatedOptions/queries";
 import { questions } from "./questions";
 
 export const questionCalculatedOptions = pgTable(

@@ -1,19 +1,28 @@
-import { getBigBlueButtonBnRecordingById, getBigBlueButtonBnRecordings } from "@/lib/api/bigBlueButtonBnRecordings/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createBigBlueButtonBnRecording,
+  deleteBigBlueButtonBnRecording,
+  updateBigBlueButtonBnRecording,
+} from "../api/bigBlueButtonBnRecordings/mutations";
+import {
+  getBigBlueButtonBnRecordingById,
+  getBigBlueButtonBnRecordings,
+} from "../api/bigBlueButtonBnRecordings/queries";
 import {
   bigBlueButtonBnRecordingIdSchema,
   insertBigBlueButtonBnRecordingParams,
   updateBigBlueButtonBnRecordingParams,
-} from "@/lib/db/schema/bigBlueButtonBnRecordings";
-import { createBigBlueButtonBnRecording, deleteBigBlueButtonBnRecording, updateBigBlueButtonBnRecording } from "@/lib/api/bigBlueButtonBnRecordings/mutations";
+} from "../db/schema/bigBlueButtonBnRecordings";
+import { publicProcedure, router } from "../server/trpc";
 
 export const bigBlueButtonBnRecordingsRouter = router({
   getBigBlueButtonBnRecordings: publicProcedure.query(async () => {
     return getBigBlueButtonBnRecordings();
   }),
-  getBigBlueButtonBnRecordingById: publicProcedure.input(bigBlueButtonBnRecordingIdSchema).query(async ({ input }) => {
-    return getBigBlueButtonBnRecordingById(input.id);
-  }),
+  getBigBlueButtonBnRecordingById: publicProcedure
+    .input(bigBlueButtonBnRecordingIdSchema)
+    .query(async ({ input }) => {
+      return getBigBlueButtonBnRecordingById(input.id);
+    }),
   createBigBlueButtonBnRecording: publicProcedure
     .input(insertBigBlueButtonBnRecordingParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,28 @@
-import { getCourseFormatOptionById, getCourseFormatOptions } from "@/lib/api/courseFormatOptions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createCourseFormatOption,
+  deleteCourseFormatOption,
+  updateCourseFormatOption,
+} from "../api/courseFormatOptions/mutations";
+import {
+  getCourseFormatOptionById,
+  getCourseFormatOptions,
+} from "../api/courseFormatOptions/queries";
 import {
   courseFormatOptionIdSchema,
   insertCourseFormatOptionParams,
   updateCourseFormatOptionParams,
-} from "@/lib/db/schema/courseFormatOptions";
-import { createCourseFormatOption, deleteCourseFormatOption, updateCourseFormatOption } from "@/lib/api/courseFormatOptions/mutations";
+} from "../db/schema/courseFormatOptions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const courseFormatOptionsRouter = router({
   getCourseFormatOptions: publicProcedure.query(async () => {
     return getCourseFormatOptions();
   }),
-  getCourseFormatOptionById: publicProcedure.input(courseFormatOptionIdSchema).query(async ({ input }) => {
-    return getCourseFormatOptionById(input.id);
-  }),
+  getCourseFormatOptionById: publicProcedure
+    .input(courseFormatOptionIdSchema)
+    .query(async ({ input }) => {
+      return getCourseFormatOptionById(input.id);
+    }),
   createCourseFormatOption: publicProcedure
     .input(insertCourseFormatOptionParams)
     .mutation(async ({ input }) => {

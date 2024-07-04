@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createEnrolLtiUserResourceLink,
   deleteEnrolLtiUserResourceLink,
   updateEnrolLtiUserResourceLink,
-} from "@/lib/api/enrolLtiUserResourceLinks/mutations";
+} from "../api/enrolLtiUserResourceLinks/mutations";
 import {
   EnrolLtiUserResourceLinkId,
-  NewEnrolLtiUserResourceLinkParams,
-  UpdateEnrolLtiUserResourceLinkParams,
   enrolLtiUserResourceLinkIdSchema,
   insertEnrolLtiUserResourceLinkParams,
+  NewEnrolLtiUserResourceLinkParams,
+  UpdateEnrolLtiUserResourceLinkParams,
   updateEnrolLtiUserResourceLinkParams,
-} from "@/lib/db/schema/enrolLtiUserResourceLinks";
+} from "../db/schema/enrolLtiUserResourceLinks";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateEnrolLtiUserResourceLinks = () => revalidatePath("/enrol-lti-user-resource-links");
+const revalidateEnrolLtiUserResourceLinks = () =>
+  revalidatePath("/enrol-lti-user-resource-links");
 
-export const createEnrolLtiUserResourceLinkAction = async (input: NewEnrolLtiUserResourceLinkParams) => {
+export const createEnrolLtiUserResourceLinkAction = async (
+  input: NewEnrolLtiUserResourceLinkParams,
+) => {
   try {
     const payload = insertEnrolLtiUserResourceLinkParams.parse(input);
     await createEnrolLtiUserResourceLink(payload);
@@ -37,7 +41,9 @@ export const createEnrolLtiUserResourceLinkAction = async (input: NewEnrolLtiUse
   }
 };
 
-export const updateEnrolLtiUserResourceLinkAction = async (input: UpdateEnrolLtiUserResourceLinkParams) => {
+export const updateEnrolLtiUserResourceLinkAction = async (
+  input: UpdateEnrolLtiUserResourceLinkParams,
+) => {
   try {
     const payload = updateEnrolLtiUserResourceLinkParams.parse(input);
     await updateEnrolLtiUserResourceLink(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateEnrolLtiUserResourceLinkAction = async (input: UpdateEnrolLti
   }
 };
 
-export const deleteEnrolLtiUserResourceLinkAction = async (input: EnrolLtiUserResourceLinkId) => {
+export const deleteEnrolLtiUserResourceLinkAction = async (
+  input: EnrolLtiUserResourceLinkId,
+) => {
   try {
     const payload = enrolLtiUserResourceLinkIdSchema.parse({ id: input });
     await deleteEnrolLtiUserResourceLink(payload.id);

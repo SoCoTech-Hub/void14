@@ -1,10 +1,12 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { type AssignId, assignIdSchema, assigns } from "@/lib/db/schema/assigns";
+
+import type { AssignId } from "../db/schema/assigns";
+import { db } from "../db/index";
+import { assignIdSchema, assigns } from "../db/schema/assigns";
 
 export const getAssigns = async () => {
   const rows = await db.select().from(assigns);
-  const a = rows
+  const a = rows;
   return { assigns: a };
 };
 
@@ -15,5 +17,3 @@ export const getAssignById = async (id: AssignId) => {
   const a = row;
   return { assign: a };
 };
-
-

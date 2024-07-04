@@ -1,19 +1,28 @@
-import { getOrganizationById, getOrganizations } from "@/lib/api/organizations/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  organizationIdSchema,
+  createOrganization,
+  deleteOrganization,
+  updateOrganization,
+} from "../api/organizations/mutations";
+import {
+  getOrganizationById,
+  getOrganizations,
+} from "../api/organizations/queries";
+import {
   insertOrganizationParams,
+  organizationIdSchema,
   updateOrganizationParams,
-} from "@/lib/db/schema/organizations";
-import { createOrganization, deleteOrganization, updateOrganization } from "@/lib/api/organizations/mutations";
+} from "../db/schema/organizations";
+import { publicProcedure, router } from "../server/trpc";
 
 export const organizationsRouter = router({
   getOrganizations: publicProcedure.query(async () => {
     return getOrganizations();
   }),
-  getOrganizationById: publicProcedure.input(organizationIdSchema).query(async ({ input }) => {
-    return getOrganizationById(input.id);
-  }),
+  getOrganizationById: publicProcedure
+    .input(organizationIdSchema)
+    .query(async ({ input }) => {
+      return getOrganizationById(input.id);
+    }),
   createOrganization: publicProcedure
     .input(insertOrganizationParams)
     .mutation(async ({ input }) => {

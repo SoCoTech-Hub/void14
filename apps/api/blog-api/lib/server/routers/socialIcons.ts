@@ -1,19 +1,25 @@
-import { getSocialIconById, getSocialIcons } from "@/lib/api/socialIcons/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  socialIconIdSchema,
+  createSocialIcon,
+  deleteSocialIcon,
+  updateSocialIcon,
+} from "../api/socialIcons/mutations";
+import { getSocialIconById, getSocialIcons } from "../api/socialIcons/queries";
+import {
   insertSocialIconParams,
+  socialIconIdSchema,
   updateSocialIconParams,
-} from "@/lib/db/schema/socialIcons";
-import { createSocialIcon, deleteSocialIcon, updateSocialIcon } from "@/lib/api/socialIcons/mutations";
+} from "../db/schema/socialIcons";
+import { publicProcedure, router } from "../server/trpc";
 
 export const socialIconsRouter = router({
   getSocialIcons: publicProcedure.query(async () => {
     return getSocialIcons();
   }),
-  getSocialIconById: publicProcedure.input(socialIconIdSchema).query(async ({ input }) => {
-    return getSocialIconById(input.id);
-  }),
+  getSocialIconById: publicProcedure
+    .input(socialIconIdSchema)
+    .query(async ({ input }) => {
+      return getSocialIconById(input.id);
+    }),
   createSocialIcon: publicProcedure
     .input(insertSocialIconParams)
     .mutation(async ({ input }) => {

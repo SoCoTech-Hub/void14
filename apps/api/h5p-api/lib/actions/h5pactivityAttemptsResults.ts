@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createH5pactivityAttemptsResult,
   deleteH5pactivityAttemptsResult,
   updateH5pactivityAttemptsResult,
-} from "@/lib/api/h5pactivityAttemptsResults/mutations";
+} from "../api/h5pactivityAttemptsResults/mutations";
 import {
   H5pactivityAttemptsResultId,
-  NewH5pactivityAttemptsResultParams,
-  UpdateH5pactivityAttemptsResultParams,
   h5pactivityAttemptsResultIdSchema,
   insertH5pactivityAttemptsResultParams,
+  NewH5pactivityAttemptsResultParams,
+  UpdateH5pactivityAttemptsResultParams,
   updateH5pactivityAttemptsResultParams,
-} from "@/lib/db/schema/h5pactivityAttemptsResults";
+} from "../db/schema/h5pactivityAttemptsResults";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateH5pactivityAttemptsResults = () => revalidatePath("/h5pactivity-attempts-results");
+const revalidateH5pactivityAttemptsResults = () =>
+  revalidatePath("/h5pactivity-attempts-results");
 
-export const createH5pactivityAttemptsResultAction = async (input: NewH5pactivityAttemptsResultParams) => {
+export const createH5pactivityAttemptsResultAction = async (
+  input: NewH5pactivityAttemptsResultParams,
+) => {
   try {
     const payload = insertH5pactivityAttemptsResultParams.parse(input);
     await createH5pactivityAttemptsResult(payload);
@@ -37,7 +41,9 @@ export const createH5pactivityAttemptsResultAction = async (input: NewH5pactivit
   }
 };
 
-export const updateH5pactivityAttemptsResultAction = async (input: UpdateH5pactivityAttemptsResultParams) => {
+export const updateH5pactivityAttemptsResultAction = async (
+  input: UpdateH5pactivityAttemptsResultParams,
+) => {
   try {
     const payload = updateH5pactivityAttemptsResultParams.parse(input);
     await updateH5pactivityAttemptsResult(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateH5pactivityAttemptsResultAction = async (input: UpdateH5pacti
   }
 };
 
-export const deleteH5pactivityAttemptsResultAction = async (input: H5pactivityAttemptsResultId) => {
+export const deleteH5pactivityAttemptsResultAction = async (
+  input: H5pactivityAttemptsResultId,
+) => {
   try {
     const payload = h5pactivityAttemptsResultIdSchema.parse({ id: input });
     await deleteH5pactivityAttemptsResult(payload.id);

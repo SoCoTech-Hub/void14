@@ -1,19 +1,28 @@
-import { getQuestionGapselectById, getQuestionGapselects } from "@/lib/api/questionGapselects/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  questionGapselectIdSchema,
+  createQuestionGapselect,
+  deleteQuestionGapselect,
+  updateQuestionGapselect,
+} from "../api/questionGapselects/mutations";
+import {
+  getQuestionGapselectById,
+  getQuestionGapselects,
+} from "../api/questionGapselects/queries";
+import {
   insertQuestionGapselectParams,
+  questionGapselectIdSchema,
   updateQuestionGapselectParams,
-} from "@/lib/db/schema/questionGapselects";
-import { createQuestionGapselect, deleteQuestionGapselect, updateQuestionGapselect } from "@/lib/api/questionGapselects/mutations";
+} from "../db/schema/questionGapselects";
+import { publicProcedure, router } from "../server/trpc";
 
 export const questionGapselectsRouter = router({
   getQuestionGapselects: publicProcedure.query(async () => {
     return getQuestionGapselects();
   }),
-  getQuestionGapselectById: publicProcedure.input(questionGapselectIdSchema).query(async ({ input }) => {
-    return getQuestionGapselectById(input.id);
-  }),
+  getQuestionGapselectById: publicProcedure
+    .input(questionGapselectIdSchema)
+    .query(async ({ input }) => {
+      return getQuestionGapselectById(input.id);
+    }),
   createQuestionGapselect: publicProcedure
     .input(insertQuestionGapselectParams)
     .mutation(async ({ input }) => {

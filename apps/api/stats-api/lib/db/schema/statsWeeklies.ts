@@ -1,9 +1,10 @@
-import { type getStatsWeeklies } from "@/lib/api/statsWeeklies/queries";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getStatsWeeklies } from "../api/statsWeeklies/queries";
 
 export const statsWeeklies = pgTable("stats_weeklies", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

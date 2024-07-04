@@ -1,19 +1,28 @@
-import { getLocalizationFieldById, getLocalizationFields } from "@/lib/api/localizationFields/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  localizationFieldIdSchema,
+  createLocalizationField,
+  deleteLocalizationField,
+  updateLocalizationField,
+} from "../api/localizationFields/mutations";
+import {
+  getLocalizationFieldById,
+  getLocalizationFields,
+} from "../api/localizationFields/queries";
+import {
   insertLocalizationFieldParams,
+  localizationFieldIdSchema,
   updateLocalizationFieldParams,
-} from "@/lib/db/schema/localizationFields";
-import { createLocalizationField, deleteLocalizationField, updateLocalizationField } from "@/lib/api/localizationFields/mutations";
+} from "../db/schema/localizationFields";
+import { publicProcedure, router } from "../server/trpc";
 
 export const localizationFieldsRouter = router({
   getLocalizationFields: publicProcedure.query(async () => {
     return getLocalizationFields();
   }),
-  getLocalizationFieldById: publicProcedure.input(localizationFieldIdSchema).query(async ({ input }) => {
-    return getLocalizationFieldById(input.id);
-  }),
+  getLocalizationFieldById: publicProcedure
+    .input(localizationFieldIdSchema)
+    .query(async ({ input }) => {
+      return getLocalizationFieldById(input.id);
+    }),
   createLocalizationField: publicProcedure
     .input(insertLocalizationFieldParams)
     .mutation(async ({ input }) => {

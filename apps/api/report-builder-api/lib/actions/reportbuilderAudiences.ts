@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createReportbuilderAudience,
   deleteReportbuilderAudience,
   updateReportbuilderAudience,
-} from "@/lib/api/reportbuilderAudiences/mutations";
+} from "../api/reportbuilderAudiences/mutations";
 import {
-  ReportbuilderAudienceId,
-  NewReportbuilderAudienceParams,
-  UpdateReportbuilderAudienceParams,
-  reportbuilderAudienceIdSchema,
   insertReportbuilderAudienceParams,
+  NewReportbuilderAudienceParams,
+  ReportbuilderAudienceId,
+  reportbuilderAudienceIdSchema,
+  UpdateReportbuilderAudienceParams,
   updateReportbuilderAudienceParams,
-} from "@/lib/db/schema/reportbuilderAudiences";
+} from "../db/schema/reportbuilderAudiences";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateReportbuilderAudiences = () => revalidatePath("/reportbuilder-audiences");
+const revalidateReportbuilderAudiences = () =>
+  revalidatePath("/reportbuilder-audiences");
 
-export const createReportbuilderAudienceAction = async (input: NewReportbuilderAudienceParams) => {
+export const createReportbuilderAudienceAction = async (
+  input: NewReportbuilderAudienceParams,
+) => {
   try {
     const payload = insertReportbuilderAudienceParams.parse(input);
     await createReportbuilderAudience(payload);
@@ -37,7 +41,9 @@ export const createReportbuilderAudienceAction = async (input: NewReportbuilderA
   }
 };
 
-export const updateReportbuilderAudienceAction = async (input: UpdateReportbuilderAudienceParams) => {
+export const updateReportbuilderAudienceAction = async (
+  input: UpdateReportbuilderAudienceParams,
+) => {
   try {
     const payload = updateReportbuilderAudienceParams.parse(input);
     await updateReportbuilderAudience(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateReportbuilderAudienceAction = async (input: UpdateReportbuild
   }
 };
 
-export const deleteReportbuilderAudienceAction = async (input: ReportbuilderAudienceId) => {
+export const deleteReportbuilderAudienceAction = async (
+  input: ReportbuilderAudienceId,
+) => {
   try {
     const payload = reportbuilderAudienceIdSchema.parse({ id: input });
     await deleteReportbuilderAudience(payload.id);

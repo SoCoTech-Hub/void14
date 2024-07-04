@@ -1,19 +1,25 @@
-import { getCommentById, getComments } from "@/lib/api/comments/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createComment,
+  deleteComment,
+  updateComment,
+} from "../api/comments/mutations";
+import { getCommentById, getComments } from "../api/comments/queries";
 import {
   commentIdSchema,
   insertCommentParams,
   updateCommentParams,
-} from "@/lib/db/schema/comments";
-import { createComment, deleteComment, updateComment } from "@/lib/api/comments/mutations";
+} from "../db/schema/comments";
+import { publicProcedure, router } from "../server/trpc";
 
 export const commentsRouter = router({
   getComments: publicProcedure.query(async () => {
     return getComments();
   }),
-  getCommentById: publicProcedure.input(commentIdSchema).query(async ({ input }) => {
-    return getCommentById(input.id);
-  }),
+  getCommentById: publicProcedure
+    .input(commentIdSchema)
+    .query(async ({ input }) => {
+      return getCommentById(input.id);
+    }),
   createComment: publicProcedure
     .input(insertCommentParams)
     .mutation(async ({ input }) => {

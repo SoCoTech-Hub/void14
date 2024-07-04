@@ -1,19 +1,25 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  QuestionAnswerId, 
-  NewQuestionAnswerParams,
-  UpdateQuestionAnswerParams, 
-  updateQuestionAnswerSchema,
-  insertQuestionAnswerSchema, 
-  questionAnswers,
-  questionAnswerIdSchema 
-} from "@/lib/db/schema/questionAnswers";
 
-export const createQuestionAnswer = async (questionAnswer: NewQuestionAnswerParams) => {
+import { db } from "../db/index";
+import {
+  insertQuestionAnswerSchema,
+  NewQuestionAnswerParams,
+  QuestionAnswerId,
+  questionAnswerIdSchema,
+  questionAnswers,
+  UpdateQuestionAnswerParams,
+  updateQuestionAnswerSchema,
+} from "../db/schema/questionAnswers";
+
+export const createQuestionAnswer = async (
+  questionAnswer: NewQuestionAnswerParams,
+) => {
   const newQuestionAnswer = insertQuestionAnswerSchema.parse(questionAnswer);
   try {
-    const [q] =  await db.insert(questionAnswers).values(newQuestionAnswer).returning();
+    const [q] = await db
+      .insert(questionAnswers)
+      .values(newQuestionAnswer)
+      .returning();
     return { questionAnswer: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +28,18 @@ export const createQuestionAnswer = async (questionAnswer: NewQuestionAnswerPara
   }
 };
 
-export const updateQuestionAnswer = async (id: QuestionAnswerId, questionAnswer: UpdateQuestionAnswerParams) => {
+export const updateQuestionAnswer = async (
+  id: QuestionAnswerId,
+  questionAnswer: UpdateQuestionAnswerParams,
+) => {
   const { id: questionAnswerId } = questionAnswerIdSchema.parse({ id });
   const newQuestionAnswer = updateQuestionAnswerSchema.parse(questionAnswer);
   try {
-    const [q] =  await db
-     .update(questionAnswers)
-     .set(newQuestionAnswer)
-     .where(eq(questionAnswers.id, questionAnswerId!))
-     .returning();
+    const [q] = await db
+      .update(questionAnswers)
+      .set(newQuestionAnswer)
+      .where(eq(questionAnswers.id, questionAnswerId!))
+      .returning();
     return { questionAnswer: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +51,10 @@ export const updateQuestionAnswer = async (id: QuestionAnswerId, questionAnswer:
 export const deleteQuestionAnswer = async (id: QuestionAnswerId) => {
   const { id: questionAnswerId } = questionAnswerIdSchema.parse({ id });
   try {
-    const [q] =  await db.delete(questionAnswers).where(eq(questionAnswers.id, questionAnswerId!))
-    .returning();
+    const [q] = await db
+      .delete(questionAnswers)
+      .where(eq(questionAnswers.id, questionAnswerId!))
+      .returning();
     return { questionAnswer: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +62,3 @@ export const deleteQuestionAnswer = async (id: QuestionAnswerId) => {
     throw { error: message };
   }
 };
-

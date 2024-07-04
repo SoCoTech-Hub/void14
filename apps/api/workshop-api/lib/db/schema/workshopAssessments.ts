@@ -1,4 +1,3 @@
-import { type getWorkshopAssessments } from "@/lib/api/workshopAssessments/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -13,6 +12,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getWorkshopAssessments } from "../api/workshopAssessments/queries";
 
 export const workshopAssessments = pgTable(
   "workshop_assessments",

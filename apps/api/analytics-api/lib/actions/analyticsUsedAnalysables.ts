@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAnalyticsUsedAnalysable,
   deleteAnalyticsUsedAnalysable,
   updateAnalyticsUsedAnalysable,
-} from "@/lib/api/analyticsUsedAnalysables/mutations";
+} from "../api/analyticsUsedAnalysables/mutations";
 import {
   AnalyticsUsedAnalysableId,
-  NewAnalyticsUsedAnalysableParams,
-  UpdateAnalyticsUsedAnalysableParams,
   analyticsUsedAnalysableIdSchema,
   insertAnalyticsUsedAnalysableParams,
+  NewAnalyticsUsedAnalysableParams,
+  UpdateAnalyticsUsedAnalysableParams,
   updateAnalyticsUsedAnalysableParams,
-} from "@/lib/db/schema/analyticsUsedAnalysables";
+} from "../db/schema/analyticsUsedAnalysables";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateAnalyticsUsedAnalysables = () => revalidatePath("/analytics-used-analysables");
+const revalidateAnalyticsUsedAnalysables = () =>
+  revalidatePath("/analytics-used-analysables");
 
-export const createAnalyticsUsedAnalysableAction = async (input: NewAnalyticsUsedAnalysableParams) => {
+export const createAnalyticsUsedAnalysableAction = async (
+  input: NewAnalyticsUsedAnalysableParams,
+) => {
   try {
     const payload = insertAnalyticsUsedAnalysableParams.parse(input);
     await createAnalyticsUsedAnalysable(payload);
@@ -37,7 +41,9 @@ export const createAnalyticsUsedAnalysableAction = async (input: NewAnalyticsUse
   }
 };
 
-export const updateAnalyticsUsedAnalysableAction = async (input: UpdateAnalyticsUsedAnalysableParams) => {
+export const updateAnalyticsUsedAnalysableAction = async (
+  input: UpdateAnalyticsUsedAnalysableParams,
+) => {
   try {
     const payload = updateAnalyticsUsedAnalysableParams.parse(input);
     await updateAnalyticsUsedAnalysable(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateAnalyticsUsedAnalysableAction = async (input: UpdateAnalytics
   }
 };
 
-export const deleteAnalyticsUsedAnalysableAction = async (input: AnalyticsUsedAnalysableId) => {
+export const deleteAnalyticsUsedAnalysableAction = async (
+  input: AnalyticsUsedAnalysableId,
+) => {
   try {
     const payload = analyticsUsedAnalysableIdSchema.parse({ id: input });
     await deleteAnalyticsUsedAnalysable(payload.id);

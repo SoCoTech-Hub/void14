@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createSupportTopic,
   deleteSupportTopic,
   updateSupportTopic,
-} from "@/lib/api/supportTopics/mutations";
+} from "../api/supportTopics/mutations";
 import {
-  SupportTopicId,
-  NewSupportTopicParams,
-  UpdateSupportTopicParams,
-  supportTopicIdSchema,
   insertSupportTopicParams,
+  NewSupportTopicParams,
+  SupportTopicId,
+  supportTopicIdSchema,
+  UpdateSupportTopicParams,
   updateSupportTopicParams,
-} from "@/lib/db/schema/supportTopics";
+} from "../db/schema/supportTopics";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateSupportTopics = () => revalidatePath("/support-topics");
 
-export const createSupportTopicAction = async (input: NewSupportTopicParams) => {
+export const createSupportTopicAction = async (
+  input: NewSupportTopicParams,
+) => {
   try {
     const payload = insertSupportTopicParams.parse(input);
     await createSupportTopic(payload);
@@ -37,7 +40,9 @@ export const createSupportTopicAction = async (input: NewSupportTopicParams) => 
   }
 };
 
-export const updateSupportTopicAction = async (input: UpdateSupportTopicParams) => {
+export const updateSupportTopicAction = async (
+  input: UpdateSupportTopicParams,
+) => {
   try {
     const payload = updateSupportTopicParams.parse(input);
     await updateSupportTopic(payload.id, payload);

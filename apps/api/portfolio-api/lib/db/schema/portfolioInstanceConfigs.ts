@@ -1,10 +1,10 @@
-import { type getPortfolioInstanceConfigs } from "@/lib/api/portfolioInstanceConfigs/queries";
 import { pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getPortfolioInstanceConfigs } from "../api/portfolioInstanceConfigs/queries";
 import { portfolioInstances } from "./portfolioInstances";
 
 export const portfolioInstanceConfigs = pgTable(

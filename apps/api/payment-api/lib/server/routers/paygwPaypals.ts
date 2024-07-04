@@ -1,19 +1,28 @@
-import { getPaygwPaypalById, getPaygwPaypals } from "@/lib/api/paygwPaypals/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  paygwPaypalIdSchema,
+  createPaygwPaypal,
+  deletePaygwPaypal,
+  updatePaygwPaypal,
+} from "../api/paygwPaypals/mutations";
+import {
+  getPaygwPaypalById,
+  getPaygwPaypals,
+} from "../api/paygwPaypals/queries";
+import {
   insertPaygwPaypalParams,
+  paygwPaypalIdSchema,
   updatePaygwPaypalParams,
-} from "@/lib/db/schema/paygwPaypals";
-import { createPaygwPaypal, deletePaygwPaypal, updatePaygwPaypal } from "@/lib/api/paygwPaypals/mutations";
+} from "../db/schema/paygwPaypals";
+import { publicProcedure, router } from "../server/trpc";
 
 export const paygwPaypalsRouter = router({
   getPaygwPaypals: publicProcedure.query(async () => {
     return getPaygwPaypals();
   }),
-  getPaygwPaypalById: publicProcedure.input(paygwPaypalIdSchema).query(async ({ input }) => {
-    return getPaygwPaypalById(input.id);
-  }),
+  getPaygwPaypalById: publicProcedure
+    .input(paygwPaypalIdSchema)
+    .query(async ({ input }) => {
+      return getPaygwPaypalById(input.id);
+    }),
   createPaygwPaypal: publicProcedure
     .input(insertPaygwPaypalParams)
     .mutation(async ({ input }) => {

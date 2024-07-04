@@ -1,10 +1,11 @@
-import { type getEventsQueues } from "@/lib/api/eventsQueues/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getEventsQueues } from "../api/eventsQueues/queries";
 
 export const eventsQueues = pgTable("events_queues", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

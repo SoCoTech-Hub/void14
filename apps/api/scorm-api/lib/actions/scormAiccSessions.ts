@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createScormAiccSession,
   deleteScormAiccSession,
   updateScormAiccSession,
-} from "@/lib/api/scormAiccSessions/mutations";
+} from "../api/scormAiccSessions/mutations";
 import {
-  ScormAiccSessionId,
-  NewScormAiccSessionParams,
-  UpdateScormAiccSessionParams,
-  scormAiccSessionIdSchema,
   insertScormAiccSessionParams,
+  NewScormAiccSessionParams,
+  ScormAiccSessionId,
+  scormAiccSessionIdSchema,
+  UpdateScormAiccSessionParams,
   updateScormAiccSessionParams,
-} from "@/lib/db/schema/scormAiccSessions";
+} from "../db/schema/scormAiccSessions";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateScormAiccSessions = () => revalidatePath("/scorm-aicc-sessions");
+const revalidateScormAiccSessions = () =>
+  revalidatePath("/scorm-aicc-sessions");
 
-export const createScormAiccSessionAction = async (input: NewScormAiccSessionParams) => {
+export const createScormAiccSessionAction = async (
+  input: NewScormAiccSessionParams,
+) => {
   try {
     const payload = insertScormAiccSessionParams.parse(input);
     await createScormAiccSession(payload);
@@ -37,7 +41,9 @@ export const createScormAiccSessionAction = async (input: NewScormAiccSessionPar
   }
 };
 
-export const updateScormAiccSessionAction = async (input: UpdateScormAiccSessionParams) => {
+export const updateScormAiccSessionAction = async (
+  input: UpdateScormAiccSessionParams,
+) => {
   try {
     const payload = updateScormAiccSessionParams.parse(input);
     await updateScormAiccSession(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateScormAiccSessionAction = async (input: UpdateScormAiccSession
   }
 };
 
-export const deleteScormAiccSessionAction = async (input: ScormAiccSessionId) => {
+export const deleteScormAiccSessionAction = async (
+  input: ScormAiccSessionId,
+) => {
   try {
     const payload = scormAiccSessionIdSchema.parse({ id: input });
     await deleteScormAiccSession(payload.id);

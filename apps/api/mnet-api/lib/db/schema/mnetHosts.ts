@@ -1,4 +1,3 @@
-import { type getMnetHosts } from "@/lib/api/mnetHosts/queries";
 import {
   boolean,
   integer,
@@ -12,6 +11,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getMnetHosts } from "../api/mnetHosts/queries";
 import { mnetApplications } from "./mnetApplications";
 
 export const mnetHosts = pgTable(

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createPaymentAccount,
   deletePaymentAccount,
   updatePaymentAccount,
-} from "@/lib/api/paymentAccounts/mutations";
+} from "../api/paymentAccounts/mutations";
 import {
-  PaymentAccountId,
-  NewPaymentAccountParams,
-  UpdatePaymentAccountParams,
-  paymentAccountIdSchema,
   insertPaymentAccountParams,
+  NewPaymentAccountParams,
+  PaymentAccountId,
+  paymentAccountIdSchema,
+  UpdatePaymentAccountParams,
   updatePaymentAccountParams,
-} from "@/lib/db/schema/paymentAccounts";
+} from "../db/schema/paymentAccounts";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidatePaymentAccounts = () => revalidatePath("/payment-accounts");
 
-export const createPaymentAccountAction = async (input: NewPaymentAccountParams) => {
+export const createPaymentAccountAction = async (
+  input: NewPaymentAccountParams,
+) => {
   try {
     const payload = insertPaymentAccountParams.parse(input);
     await createPaymentAccount(payload);
@@ -37,7 +40,9 @@ export const createPaymentAccountAction = async (input: NewPaymentAccountParams)
   }
 };
 
-export const updatePaymentAccountAction = async (input: UpdatePaymentAccountParams) => {
+export const updatePaymentAccountAction = async (
+  input: UpdatePaymentAccountParams,
+) => {
   try {
     const payload = updatePaymentAccountParams.parse(input);
     await updatePaymentAccount(payload.id, payload);

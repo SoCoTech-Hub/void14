@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuizOverviewRegrade,
   deleteQuizOverviewRegrade,
   updateQuizOverviewRegrade,
-} from "@/lib/api/quizOverviewRegrades/mutations";
+} from "../api/quizOverviewRegrades/mutations";
 import {
-  QuizOverviewRegradeId,
-  NewQuizOverviewRegradeParams,
-  UpdateQuizOverviewRegradeParams,
-  quizOverviewRegradeIdSchema,
   insertQuizOverviewRegradeParams,
+  NewQuizOverviewRegradeParams,
+  QuizOverviewRegradeId,
+  quizOverviewRegradeIdSchema,
+  UpdateQuizOverviewRegradeParams,
   updateQuizOverviewRegradeParams,
-} from "@/lib/db/schema/quizOverviewRegrades";
+} from "../db/schema/quizOverviewRegrades";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQuizOverviewRegrades = () => revalidatePath("/quiz-overview-regrades");
+const revalidateQuizOverviewRegrades = () =>
+  revalidatePath("/quiz-overview-regrades");
 
-export const createQuizOverviewRegradeAction = async (input: NewQuizOverviewRegradeParams) => {
+export const createQuizOverviewRegradeAction = async (
+  input: NewQuizOverviewRegradeParams,
+) => {
   try {
     const payload = insertQuizOverviewRegradeParams.parse(input);
     await createQuizOverviewRegrade(payload);
@@ -37,7 +41,9 @@ export const createQuizOverviewRegradeAction = async (input: NewQuizOverviewRegr
   }
 };
 
-export const updateQuizOverviewRegradeAction = async (input: UpdateQuizOverviewRegradeParams) => {
+export const updateQuizOverviewRegradeAction = async (
+  input: UpdateQuizOverviewRegradeParams,
+) => {
   try {
     const payload = updateQuizOverviewRegradeParams.parse(input);
     await updateQuizOverviewRegrade(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQuizOverviewRegradeAction = async (input: UpdateQuizOverviewR
   }
 };
 
-export const deleteQuizOverviewRegradeAction = async (input: QuizOverviewRegradeId) => {
+export const deleteQuizOverviewRegradeAction = async (
+  input: QuizOverviewRegradeId,
+) => {
   try {
     const payload = quizOverviewRegradeIdSchema.parse({ id: input });
     await deleteQuizOverviewRegrade(payload.id);

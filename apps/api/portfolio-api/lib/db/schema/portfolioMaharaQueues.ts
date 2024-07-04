@@ -1,10 +1,10 @@
-import { type getPortfolioMaharaQueues } from "@/lib/api/portfolioMaharaQueues/queries";
 import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getPortfolioMaharaQueues } from "../api/portfolioMaharaQueues/queries";
 import { portfolioTempdatas } from "./portfolioTempdatas";
 
 export const portfolioMaharaQueues = pgTable(

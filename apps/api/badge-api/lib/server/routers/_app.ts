@@ -1,19 +1,19 @@
-import { computersRouter } from "./computers";
-import { router } from "@/lib/server/trpc";
-import { badgesRouter } from "./badges";
+import { router } from "../server/trpc";
 import { badgeAlignmentsRouter } from "./badgeAlignments";
-import { badgeBackpacksRouter } from "./badgeBackpacks";
 import { badgeBackpackOauth2sRouter } from "./badgeBackpackOauth2s";
-import { badgeCriteriasRouter } from "./badgeCriterias";
+import { badgeBackpacksRouter } from "./badgeBackpacks";
 import { badgeCriteriaMetsRouter } from "./badgeCriteriaMets";
 import { badgeCriteriaParamsRouter } from "./badgeCriteriaParams";
+import { badgeCriteriasRouter } from "./badgeCriterias";
 import { badgeEndorsementsRouter } from "./badgeEndorsements";
-import { badgeExternalsRouter } from "./badgeExternals";
 import { badgeExternalBackpacksRouter } from "./badgeExternalBackpacks";
 import { badgeExternalIdentifiersRouter } from "./badgeExternalIdentifiers";
+import { badgeExternalsRouter } from "./badgeExternals";
 import { badgeIssuesRouter } from "./badgeIssues";
 import { badgeManualAwardsRouter } from "./badgeManualAwards";
 import { badgeRelatedsRouter } from "./badgeRelateds";
+import { badgesRouter } from "./badges";
+import { computersRouter } from "./computers";
 
 export const appRouter = router({
   computers: computersRouter,

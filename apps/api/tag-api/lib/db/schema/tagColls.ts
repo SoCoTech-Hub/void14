@@ -1,9 +1,10 @@
-import { type getTagColls } from "@/lib/api/tagColls/queries";
 import { boolean, integer, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getTagColls } from "../api/tagColls/queries";
 
 export const tagColls = pgTable("tag_colls", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

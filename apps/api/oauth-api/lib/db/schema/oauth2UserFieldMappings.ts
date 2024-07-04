@@ -1,4 +1,3 @@
-import { type getOauth2UserFieldMappings } from "@/lib/api/oauth2UserFieldMappings/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -6,6 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getOauth2UserFieldMappings } from "../api/oauth2UserFieldMappings/queries";
 import { oauth2Issuers } from "./oauth2Issuers";
 
 export const oauth2UserFieldMappings = pgTable(

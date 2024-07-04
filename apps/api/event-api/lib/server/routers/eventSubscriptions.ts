@@ -1,19 +1,28 @@
-import { getEventSubscriptionById, getEventSubscriptions } from "@/lib/api/eventSubscriptions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createEventSubscription,
+  deleteEventSubscription,
+  updateEventSubscription,
+} from "../api/eventSubscriptions/mutations";
+import {
+  getEventSubscriptionById,
+  getEventSubscriptions,
+} from "../api/eventSubscriptions/queries";
 import {
   eventSubscriptionIdSchema,
   insertEventSubscriptionParams,
   updateEventSubscriptionParams,
-} from "@/lib/db/schema/eventSubscriptions";
-import { createEventSubscription, deleteEventSubscription, updateEventSubscription } from "@/lib/api/eventSubscriptions/mutations";
+} from "../db/schema/eventSubscriptions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const eventSubscriptionsRouter = router({
   getEventSubscriptions: publicProcedure.query(async () => {
     return getEventSubscriptions();
   }),
-  getEventSubscriptionById: publicProcedure.input(eventSubscriptionIdSchema).query(async ({ input }) => {
-    return getEventSubscriptionById(input.id);
-  }),
+  getEventSubscriptionById: publicProcedure
+    .input(eventSubscriptionIdSchema)
+    .query(async ({ input }) => {
+      return getEventSubscriptionById(input.id);
+    }),
   createEventSubscription: publicProcedure
     .input(insertEventSubscriptionParams)
     .mutation(async ({ input }) => {

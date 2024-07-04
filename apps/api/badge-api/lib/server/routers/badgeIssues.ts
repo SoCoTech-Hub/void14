@@ -1,19 +1,25 @@
-import { getBadgeIssueById, getBadgeIssues } from "@/lib/api/badgeIssues/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createBadgeIssue,
+  deleteBadgeIssue,
+  updateBadgeIssue,
+} from "../api/badgeIssues/mutations";
+import { getBadgeIssueById, getBadgeIssues } from "../api/badgeIssues/queries";
 import {
   badgeIssueIdSchema,
   insertBadgeIssueParams,
   updateBadgeIssueParams,
-} from "@/lib/db/schema/badgeIssues";
-import { createBadgeIssue, deleteBadgeIssue, updateBadgeIssue } from "@/lib/api/badgeIssues/mutations";
+} from "../db/schema/badgeIssues";
+import { publicProcedure, router } from "../server/trpc";
 
 export const badgeIssuesRouter = router({
   getBadgeIssues: publicProcedure.query(async () => {
     return getBadgeIssues();
   }),
-  getBadgeIssueById: publicProcedure.input(badgeIssueIdSchema).query(async ({ input }) => {
-    return getBadgeIssueById(input.id);
-  }),
+  getBadgeIssueById: publicProcedure
+    .input(badgeIssueIdSchema)
+    .query(async ({ input }) => {
+      return getBadgeIssueById(input.id);
+    }),
   createBadgeIssue: publicProcedure
     .input(insertBadgeIssueParams)
     .mutation(async ({ input }) => {

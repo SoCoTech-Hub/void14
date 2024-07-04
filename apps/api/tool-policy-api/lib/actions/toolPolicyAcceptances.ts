@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createToolPolicyAcceptance,
   deleteToolPolicyAcceptance,
   updateToolPolicyAcceptance,
-} from "@/lib/api/toolPolicyAcceptances/mutations";
+} from "../api/toolPolicyAcceptances/mutations";
 import {
-  ToolPolicyAcceptanceId,
-  NewToolPolicyAcceptanceParams,
-  UpdateToolPolicyAcceptanceParams,
-  toolPolicyAcceptanceIdSchema,
   insertToolPolicyAcceptanceParams,
+  NewToolPolicyAcceptanceParams,
+  ToolPolicyAcceptanceId,
+  toolPolicyAcceptanceIdSchema,
+  UpdateToolPolicyAcceptanceParams,
   updateToolPolicyAcceptanceParams,
-} from "@/lib/db/schema/toolPolicyAcceptances";
+} from "../db/schema/toolPolicyAcceptances";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateToolPolicyAcceptances = () => revalidatePath("/tool-policy-acceptances");
+const revalidateToolPolicyAcceptances = () =>
+  revalidatePath("/tool-policy-acceptances");
 
-export const createToolPolicyAcceptanceAction = async (input: NewToolPolicyAcceptanceParams) => {
+export const createToolPolicyAcceptanceAction = async (
+  input: NewToolPolicyAcceptanceParams,
+) => {
   try {
     const payload = insertToolPolicyAcceptanceParams.parse(input);
     await createToolPolicyAcceptance(payload);
@@ -37,7 +41,9 @@ export const createToolPolicyAcceptanceAction = async (input: NewToolPolicyAccep
   }
 };
 
-export const updateToolPolicyAcceptanceAction = async (input: UpdateToolPolicyAcceptanceParams) => {
+export const updateToolPolicyAcceptanceAction = async (
+  input: UpdateToolPolicyAcceptanceParams,
+) => {
   try {
     const payload = updateToolPolicyAcceptanceParams.parse(input);
     await updateToolPolicyAcceptance(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateToolPolicyAcceptanceAction = async (input: UpdateToolPolicyAc
   }
 };
 
-export const deleteToolPolicyAcceptanceAction = async (input: ToolPolicyAcceptanceId) => {
+export const deleteToolPolicyAcceptanceAction = async (
+  input: ToolPolicyAcceptanceId,
+) => {
   try {
     const payload = toolPolicyAcceptanceIdSchema.parse({ id: input });
     await deleteToolPolicyAcceptance(payload.id);

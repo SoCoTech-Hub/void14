@@ -1,19 +1,27 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  GradingformRubricLevelId, 
-  NewGradingformRubricLevelParams,
-  UpdateGradingformRubricLevelParams, 
-  updateGradingformRubricLevelSchema,
-  insertGradingformRubricLevelSchema, 
+
+import { db } from "../db/index";
+import {
+  GradingformRubricLevelId,
+  gradingformRubricLevelIdSchema,
   gradingformRubricLevels,
-  gradingformRubricLevelIdSchema 
-} from "@/lib/db/schema/gradingformRubricLevels";
+  insertGradingformRubricLevelSchema,
+  NewGradingformRubricLevelParams,
+  UpdateGradingformRubricLevelParams,
+  updateGradingformRubricLevelSchema,
+} from "../db/schema/gradingformRubricLevels";
 
-export const createGradingformRubricLevel = async (gradingformRubricLevel: NewGradingformRubricLevelParams) => {
-  const newGradingformRubricLevel = insertGradingformRubricLevelSchema.parse(gradingformRubricLevel);
+export const createGradingformRubricLevel = async (
+  gradingformRubricLevel: NewGradingformRubricLevelParams,
+) => {
+  const newGradingformRubricLevel = insertGradingformRubricLevelSchema.parse(
+    gradingformRubricLevel,
+  );
   try {
-    const [g] =  await db.insert(gradingformRubricLevels).values(newGradingformRubricLevel).returning();
+    const [g] = await db
+      .insert(gradingformRubricLevels)
+      .values(newGradingformRubricLevel)
+      .returning();
     return { gradingformRubricLevel: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,22 @@ export const createGradingformRubricLevel = async (gradingformRubricLevel: NewGr
   }
 };
 
-export const updateGradingformRubricLevel = async (id: GradingformRubricLevelId, gradingformRubricLevel: UpdateGradingformRubricLevelParams) => {
-  const { id: gradingformRubricLevelId } = gradingformRubricLevelIdSchema.parse({ id });
-  const newGradingformRubricLevel = updateGradingformRubricLevelSchema.parse(gradingformRubricLevel);
+export const updateGradingformRubricLevel = async (
+  id: GradingformRubricLevelId,
+  gradingformRubricLevel: UpdateGradingformRubricLevelParams,
+) => {
+  const { id: gradingformRubricLevelId } = gradingformRubricLevelIdSchema.parse(
+    { id },
+  );
+  const newGradingformRubricLevel = updateGradingformRubricLevelSchema.parse(
+    gradingformRubricLevel,
+  );
   try {
-    const [g] =  await db
-     .update(gradingformRubricLevels)
-     .set(newGradingformRubricLevel)
-     .where(eq(gradingformRubricLevels.id, gradingformRubricLevelId!))
-     .returning();
+    const [g] = await db
+      .update(gradingformRubricLevels)
+      .set(newGradingformRubricLevel)
+      .where(eq(gradingformRubricLevels.id, gradingformRubricLevelId!))
+      .returning();
     return { gradingformRubricLevel: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +54,17 @@ export const updateGradingformRubricLevel = async (id: GradingformRubricLevelId,
   }
 };
 
-export const deleteGradingformRubricLevel = async (id: GradingformRubricLevelId) => {
-  const { id: gradingformRubricLevelId } = gradingformRubricLevelIdSchema.parse({ id });
+export const deleteGradingformRubricLevel = async (
+  id: GradingformRubricLevelId,
+) => {
+  const { id: gradingformRubricLevelId } = gradingformRubricLevelIdSchema.parse(
+    { id },
+  );
   try {
-    const [g] =  await db.delete(gradingformRubricLevels).where(eq(gradingformRubricLevels.id, gradingformRubricLevelId!))
-    .returning();
+    const [g] = await db
+      .delete(gradingformRubricLevels)
+      .where(eq(gradingformRubricLevels.id, gradingformRubricLevelId!))
+      .returning();
     return { gradingformRubricLevel: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +72,3 @@ export const deleteGradingformRubricLevel = async (id: GradingformRubricLevelId)
     throw { error: message };
   }
 };
-

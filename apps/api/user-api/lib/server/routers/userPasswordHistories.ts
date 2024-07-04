@@ -1,19 +1,28 @@
-import { getUserPasswordHistoryById, getUserPasswordHistories } from "@/lib/api/userPasswordHistories/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  userPasswordHistoryIdSchema,
+  createUserPasswordHistory,
+  deleteUserPasswordHistory,
+  updateUserPasswordHistory,
+} from "../api/userPasswordHistories/mutations";
+import {
+  getUserPasswordHistories,
+  getUserPasswordHistoryById,
+} from "../api/userPasswordHistories/queries";
+import {
   insertUserPasswordHistoryParams,
   updateUserPasswordHistoryParams,
-} from "@/lib/db/schema/userPasswordHistories";
-import { createUserPasswordHistory, deleteUserPasswordHistory, updateUserPasswordHistory } from "@/lib/api/userPasswordHistories/mutations";
+  userPasswordHistoryIdSchema,
+} from "../db/schema/userPasswordHistories";
+import { publicProcedure, router } from "../server/trpc";
 
 export const userPasswordHistoriesRouter = router({
   getUserPasswordHistories: publicProcedure.query(async () => {
     return getUserPasswordHistories();
   }),
-  getUserPasswordHistoryById: publicProcedure.input(userPasswordHistoryIdSchema).query(async ({ input }) => {
-    return getUserPasswordHistoryById(input.id);
-  }),
+  getUserPasswordHistoryById: publicProcedure
+    .input(userPasswordHistoryIdSchema)
+    .query(async ({ input }) => {
+      return getUserPasswordHistoryById(input.id);
+    }),
   createUserPasswordHistory: publicProcedure
     .input(insertUserPasswordHistoryParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,28 @@
-import { getCourseSectionById, getCourseSections } from "@/lib/api/courseSections/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createCourseSection,
+  deleteCourseSection,
+  updateCourseSection,
+} from "../api/courseSections/mutations";
+import {
+  getCourseSectionById,
+  getCourseSections,
+} from "../api/courseSections/queries";
 import {
   courseSectionIdSchema,
   insertCourseSectionParams,
   updateCourseSectionParams,
-} from "@/lib/db/schema/courseSections";
-import { createCourseSection, deleteCourseSection, updateCourseSection } from "@/lib/api/courseSections/mutations";
+} from "../db/schema/courseSections";
+import { publicProcedure, router } from "../server/trpc";
 
 export const courseSectionsRouter = router({
   getCourseSections: publicProcedure.query(async () => {
     return getCourseSections();
   }),
-  getCourseSectionById: publicProcedure.input(courseSectionIdSchema).query(async ({ input }) => {
-    return getCourseSectionById(input.id);
-  }),
+  getCourseSectionById: publicProcedure
+    .input(courseSectionIdSchema)
+    .query(async ({ input }) => {
+      return getCourseSectionById(input.id);
+    }),
   createCourseSection: publicProcedure
     .input(insertCourseSectionParams)
     .mutation(async ({ input }) => {

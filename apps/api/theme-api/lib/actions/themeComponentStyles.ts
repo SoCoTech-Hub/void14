@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createThemeComponentStyle,
   deleteThemeComponentStyle,
   updateThemeComponentStyle,
-} from "@/lib/api/themeComponentStyles/mutations";
+} from "../api/themeComponentStyles/mutations";
 import {
-  ThemeComponentStyleId,
-  NewThemeComponentStyleParams,
-  UpdateThemeComponentStyleParams,
-  themeComponentStyleIdSchema,
   insertThemeComponentStyleParams,
+  NewThemeComponentStyleParams,
+  ThemeComponentStyleId,
+  themeComponentStyleIdSchema,
+  UpdateThemeComponentStyleParams,
   updateThemeComponentStyleParams,
-} from "@/lib/db/schema/themeComponentStyles";
+} from "../db/schema/themeComponentStyles";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateThemeComponentStyles = () => revalidatePath("/theme-component-styles");
+const revalidateThemeComponentStyles = () =>
+  revalidatePath("/theme-component-styles");
 
-export const createThemeComponentStyleAction = async (input: NewThemeComponentStyleParams) => {
+export const createThemeComponentStyleAction = async (
+  input: NewThemeComponentStyleParams,
+) => {
   try {
     const payload = insertThemeComponentStyleParams.parse(input);
     await createThemeComponentStyle(payload);
@@ -37,7 +41,9 @@ export const createThemeComponentStyleAction = async (input: NewThemeComponentSt
   }
 };
 
-export const updateThemeComponentStyleAction = async (input: UpdateThemeComponentStyleParams) => {
+export const updateThemeComponentStyleAction = async (
+  input: UpdateThemeComponentStyleParams,
+) => {
   try {
     const payload = updateThemeComponentStyleParams.parse(input);
     await updateThemeComponentStyle(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateThemeComponentStyleAction = async (input: UpdateThemeComponen
   }
 };
 
-export const deleteThemeComponentStyleAction = async (input: ThemeComponentStyleId) => {
+export const deleteThemeComponentStyleAction = async (
+  input: ThemeComponentStyleId,
+) => {
   try {
     const payload = themeComponentStyleIdSchema.parse({ id: input });
     await deleteThemeComponentStyle(payload.id);

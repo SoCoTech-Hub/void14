@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createScormSeqRuleCond,
   deleteScormSeqRuleCond,
   updateScormSeqRuleCond,
-} from "@/lib/api/scormSeqRuleConds/mutations";
+} from "../api/scormSeqRuleConds/mutations";
 import {
-  ScormSeqRuleCondId,
-  NewScormSeqRuleCondParams,
-  UpdateScormSeqRuleCondParams,
-  scormSeqRuleCondIdSchema,
   insertScormSeqRuleCondParams,
+  NewScormSeqRuleCondParams,
+  ScormSeqRuleCondId,
+  scormSeqRuleCondIdSchema,
+  UpdateScormSeqRuleCondParams,
   updateScormSeqRuleCondParams,
-} from "@/lib/db/schema/scormSeqRuleConds";
+} from "../db/schema/scormSeqRuleConds";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateScormSeqRuleConds = () => revalidatePath("/scorm-seq-rule-conds");
+const revalidateScormSeqRuleConds = () =>
+  revalidatePath("/scorm-seq-rule-conds");
 
-export const createScormSeqRuleCondAction = async (input: NewScormSeqRuleCondParams) => {
+export const createScormSeqRuleCondAction = async (
+  input: NewScormSeqRuleCondParams,
+) => {
   try {
     const payload = insertScormSeqRuleCondParams.parse(input);
     await createScormSeqRuleCond(payload);
@@ -37,7 +41,9 @@ export const createScormSeqRuleCondAction = async (input: NewScormSeqRuleCondPar
   }
 };
 
-export const updateScormSeqRuleCondAction = async (input: UpdateScormSeqRuleCondParams) => {
+export const updateScormSeqRuleCondAction = async (
+  input: UpdateScormSeqRuleCondParams,
+) => {
   try {
     const payload = updateScormSeqRuleCondParams.parse(input);
     await updateScormSeqRuleCond(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateScormSeqRuleCondAction = async (input: UpdateScormSeqRuleCond
   }
 };
 
-export const deleteScormSeqRuleCondAction = async (input: ScormSeqRuleCondId) => {
+export const deleteScormSeqRuleCondAction = async (
+  input: ScormSeqRuleCondId,
+) => {
   try {
     const payload = scormSeqRuleCondIdSchema.parse({ id: input });
     await deleteScormSeqRuleCond(payload.id);

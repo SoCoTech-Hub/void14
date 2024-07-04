@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createUserPrivateKey,
   deleteUserPrivateKey,
   updateUserPrivateKey,
-} from "@/lib/api/userPrivateKeys/mutations";
+} from "../api/userPrivateKeys/mutations";
 import {
-  UserPrivateKeyId,
+  insertUserPrivateKeyParams,
   NewUserPrivateKeyParams,
   UpdateUserPrivateKeyParams,
-  userPrivateKeyIdSchema,
-  insertUserPrivateKeyParams,
   updateUserPrivateKeyParams,
-} from "@/lib/db/schema/userPrivateKeys";
+  UserPrivateKeyId,
+  userPrivateKeyIdSchema,
+} from "../db/schema/userPrivateKeys";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateUserPrivateKeys = () => revalidatePath("/user-private-keys");
 
-export const createUserPrivateKeyAction = async (input: NewUserPrivateKeyParams) => {
+export const createUserPrivateKeyAction = async (
+  input: NewUserPrivateKeyParams,
+) => {
   try {
     const payload = insertUserPrivateKeyParams.parse(input);
     await createUserPrivateKey(payload);
@@ -37,7 +40,9 @@ export const createUserPrivateKeyAction = async (input: NewUserPrivateKeyParams)
   }
 };
 
-export const updateUserPrivateKeyAction = async (input: UpdateUserPrivateKeyParams) => {
+export const updateUserPrivateKeyAction = async (
+  input: UpdateUserPrivateKeyParams,
+) => {
   try {
     const payload = updateUserPrivateKeyParams.parse(input);
     await updateUserPrivateKey(payload.id, payload);

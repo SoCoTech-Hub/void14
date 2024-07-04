@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuestionTruefalse,
   deleteQuestionTruefalse,
   updateQuestionTruefalse,
-} from "@/lib/api/questionTruefalse/mutations";
+} from "../api/questionTruefalse/mutations";
 import {
-  QuestionTruefalseId,
-  NewQuestionTruefalseParams,
-  UpdateQuestionTruefalseParams,
-  questionTruefalseIdSchema,
   insertQuestionTruefalseParams,
+  NewQuestionTruefalseParams,
+  QuestionTruefalseId,
+  questionTruefalseIdSchema,
+  UpdateQuestionTruefalseParams,
   updateQuestionTruefalseParams,
-} from "@/lib/db/schema/questionTruefalse";
+} from "../db/schema/questionTruefalse";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQuestionTruefalses = () => revalidatePath("/question-truefalse");
+const revalidateQuestionTruefalses = () =>
+  revalidatePath("/question-truefalse");
 
-export const createQuestionTruefalseAction = async (input: NewQuestionTruefalseParams) => {
+export const createQuestionTruefalseAction = async (
+  input: NewQuestionTruefalseParams,
+) => {
   try {
     const payload = insertQuestionTruefalseParams.parse(input);
     await createQuestionTruefalse(payload);
@@ -37,7 +41,9 @@ export const createQuestionTruefalseAction = async (input: NewQuestionTruefalseP
   }
 };
 
-export const updateQuestionTruefalseAction = async (input: UpdateQuestionTruefalseParams) => {
+export const updateQuestionTruefalseAction = async (
+  input: UpdateQuestionTruefalseParams,
+) => {
   try {
     const payload = updateQuestionTruefalseParams.parse(input);
     await updateQuestionTruefalse(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQuestionTruefalseAction = async (input: UpdateQuestionTruefal
   }
 };
 
-export const deleteQuestionTruefalseAction = async (input: QuestionTruefalseId) => {
+export const deleteQuestionTruefalseAction = async (
+  input: QuestionTruefalseId,
+) => {
   try {
     const payload = questionTruefalseIdSchema.parse({ id: input });
     await deleteQuestionTruefalse(payload.id);

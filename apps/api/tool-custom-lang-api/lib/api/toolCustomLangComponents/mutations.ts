@@ -1,19 +1,27 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  ToolCustomLangComponentId, 
+
+import { db } from "../db/index";
+import {
+  insertToolCustomLangComponentSchema,
   NewToolCustomLangComponentParams,
-  UpdateToolCustomLangComponentParams, 
-  updateToolCustomLangComponentSchema,
-  insertToolCustomLangComponentSchema, 
+  ToolCustomLangComponentId,
+  toolCustomLangComponentIdSchema,
   toolCustomLangComponents,
-  toolCustomLangComponentIdSchema 
-} from "@/lib/db/schema/toolCustomLangComponents";
+  UpdateToolCustomLangComponentParams,
+  updateToolCustomLangComponentSchema,
+} from "../db/schema/toolCustomLangComponents";
 
-export const createToolCustomLangComponent = async (toolCustomLangComponent: NewToolCustomLangComponentParams) => {
-  const newToolCustomLangComponent = insertToolCustomLangComponentSchema.parse(toolCustomLangComponent);
+export const createToolCustomLangComponent = async (
+  toolCustomLangComponent: NewToolCustomLangComponentParams,
+) => {
+  const newToolCustomLangComponent = insertToolCustomLangComponentSchema.parse(
+    toolCustomLangComponent,
+  );
   try {
-    const [t] =  await db.insert(toolCustomLangComponents).values(newToolCustomLangComponent).returning();
+    const [t] = await db
+      .insert(toolCustomLangComponents)
+      .values(newToolCustomLangComponent)
+      .returning();
     return { toolCustomLangComponent: t };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,21 @@ export const createToolCustomLangComponent = async (toolCustomLangComponent: New
   }
 };
 
-export const updateToolCustomLangComponent = async (id: ToolCustomLangComponentId, toolCustomLangComponent: UpdateToolCustomLangComponentParams) => {
-  const { id: toolCustomLangComponentId } = toolCustomLangComponentIdSchema.parse({ id });
-  const newToolCustomLangComponent = updateToolCustomLangComponentSchema.parse(toolCustomLangComponent);
+export const updateToolCustomLangComponent = async (
+  id: ToolCustomLangComponentId,
+  toolCustomLangComponent: UpdateToolCustomLangComponentParams,
+) => {
+  const { id: toolCustomLangComponentId } =
+    toolCustomLangComponentIdSchema.parse({ id });
+  const newToolCustomLangComponent = updateToolCustomLangComponentSchema.parse(
+    toolCustomLangComponent,
+  );
   try {
-    const [t] =  await db
-     .update(toolCustomLangComponents)
-     .set(newToolCustomLangComponent)
-     .where(eq(toolCustomLangComponents.id, toolCustomLangComponentId!))
-     .returning();
+    const [t] = await db
+      .update(toolCustomLangComponents)
+      .set(newToolCustomLangComponent)
+      .where(eq(toolCustomLangComponents.id, toolCustomLangComponentId!))
+      .returning();
     return { toolCustomLangComponent: t };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +53,16 @@ export const updateToolCustomLangComponent = async (id: ToolCustomLangComponentI
   }
 };
 
-export const deleteToolCustomLangComponent = async (id: ToolCustomLangComponentId) => {
-  const { id: toolCustomLangComponentId } = toolCustomLangComponentIdSchema.parse({ id });
+export const deleteToolCustomLangComponent = async (
+  id: ToolCustomLangComponentId,
+) => {
+  const { id: toolCustomLangComponentId } =
+    toolCustomLangComponentIdSchema.parse({ id });
   try {
-    const [t] =  await db.delete(toolCustomLangComponents).where(eq(toolCustomLangComponents.id, toolCustomLangComponentId!))
-    .returning();
+    const [t] = await db
+      .delete(toolCustomLangComponents)
+      .where(eq(toolCustomLangComponents.id, toolCustomLangComponentId!))
+      .returning();
     return { toolCustomLangComponent: t };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +70,3 @@ export const deleteToolCustomLangComponent = async (id: ToolCustomLangComponentI
     throw { error: message };
   }
 };
-

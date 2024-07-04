@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createPortfolioTempdata,
   deletePortfolioTempdata,
   updatePortfolioTempdata,
-} from "@/lib/api/portfolioTempdatas/mutations";
+} from "../api/portfolioTempdatas/mutations";
 import {
-  PortfolioTempdataId,
-  NewPortfolioTempdataParams,
-  UpdatePortfolioTempdataParams,
-  portfolioTempdataIdSchema,
   insertPortfolioTempdataParams,
+  NewPortfolioTempdataParams,
+  PortfolioTempdataId,
+  portfolioTempdataIdSchema,
+  UpdatePortfolioTempdataParams,
   updatePortfolioTempdataParams,
-} from "@/lib/db/schema/portfolioTempdatas";
+} from "../db/schema/portfolioTempdatas";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidatePortfolioTempdatas = () => revalidatePath("/portfolio-tempdatas");
+const revalidatePortfolioTempdatas = () =>
+  revalidatePath("/portfolio-tempdatas");
 
-export const createPortfolioTempdataAction = async (input: NewPortfolioTempdataParams) => {
+export const createPortfolioTempdataAction = async (
+  input: NewPortfolioTempdataParams,
+) => {
   try {
     const payload = insertPortfolioTempdataParams.parse(input);
     await createPortfolioTempdata(payload);
@@ -37,7 +41,9 @@ export const createPortfolioTempdataAction = async (input: NewPortfolioTempdataP
   }
 };
 
-export const updatePortfolioTempdataAction = async (input: UpdatePortfolioTempdataParams) => {
+export const updatePortfolioTempdataAction = async (
+  input: UpdatePortfolioTempdataParams,
+) => {
   try {
     const payload = updatePortfolioTempdataParams.parse(input);
     await updatePortfolioTempdata(payload.id, payload);
@@ -47,7 +53,9 @@ export const updatePortfolioTempdataAction = async (input: UpdatePortfolioTempda
   }
 };
 
-export const deletePortfolioTempdataAction = async (input: PortfolioTempdataId) => {
+export const deletePortfolioTempdataAction = async (
+  input: PortfolioTempdataId,
+) => {
   try {
     const payload = portfolioTempdataIdSchema.parse({ id: input });
     await deletePortfolioTempdata(payload.id);

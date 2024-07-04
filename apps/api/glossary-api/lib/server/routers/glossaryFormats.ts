@@ -1,19 +1,28 @@
-import { getGlossaryFormatById, getGlossaryFormats } from "@/lib/api/glossaryFormats/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createGlossaryFormat,
+  deleteGlossaryFormat,
+  updateGlossaryFormat,
+} from "../api/glossaryFormats/mutations";
+import {
+  getGlossaryFormatById,
+  getGlossaryFormats,
+} from "../api/glossaryFormats/queries";
 import {
   glossaryFormatIdSchema,
   insertGlossaryFormatParams,
   updateGlossaryFormatParams,
-} from "@/lib/db/schema/glossaryFormats";
-import { createGlossaryFormat, deleteGlossaryFormat, updateGlossaryFormat } from "@/lib/api/glossaryFormats/mutations";
+} from "../db/schema/glossaryFormats";
+import { publicProcedure, router } from "../server/trpc";
 
 export const glossaryFormatsRouter = router({
   getGlossaryFormats: publicProcedure.query(async () => {
     return getGlossaryFormats();
   }),
-  getGlossaryFormatById: publicProcedure.input(glossaryFormatIdSchema).query(async ({ input }) => {
-    return getGlossaryFormatById(input.id);
-  }),
+  getGlossaryFormatById: publicProcedure
+    .input(glossaryFormatIdSchema)
+    .query(async ({ input }) => {
+      return getGlossaryFormatById(input.id);
+    }),
   createGlossaryFormat: publicProcedure
     .input(insertGlossaryFormatParams)
     .mutation(async ({ input }) => {

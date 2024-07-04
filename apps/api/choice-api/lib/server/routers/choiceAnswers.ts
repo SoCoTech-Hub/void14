@@ -1,19 +1,28 @@
-import { getChoiceAnswerById, getChoiceAnswers } from "@/lib/api/choiceAnswers/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createChoiceAnswer,
+  deleteChoiceAnswer,
+  updateChoiceAnswer,
+} from "../api/choiceAnswers/mutations";
+import {
+  getChoiceAnswerById,
+  getChoiceAnswers,
+} from "../api/choiceAnswers/queries";
 import {
   choiceAnswerIdSchema,
   insertChoiceAnswerParams,
   updateChoiceAnswerParams,
-} from "@/lib/db/schema/choiceAnswers";
-import { createChoiceAnswer, deleteChoiceAnswer, updateChoiceAnswer } from "@/lib/api/choiceAnswers/mutations";
+} from "../db/schema/choiceAnswers";
+import { publicProcedure, router } from "../server/trpc";
 
 export const choiceAnswersRouter = router({
   getChoiceAnswers: publicProcedure.query(async () => {
     return getChoiceAnswers();
   }),
-  getChoiceAnswerById: publicProcedure.input(choiceAnswerIdSchema).query(async ({ input }) => {
-    return getChoiceAnswerById(input.id);
-  }),
+  getChoiceAnswerById: publicProcedure
+    .input(choiceAnswerIdSchema)
+    .query(async ({ input }) => {
+      return getChoiceAnswerById(input.id);
+    }),
   createChoiceAnswer: publicProcedure
     .input(insertChoiceAnswerParams)
     .mutation(async ({ input }) => {

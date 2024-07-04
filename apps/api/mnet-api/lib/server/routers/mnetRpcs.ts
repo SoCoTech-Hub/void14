@@ -1,19 +1,25 @@
-import { getMnetRpcById, getMnetRpcs } from "@/lib/api/mnetRpcs/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  mnetRpcIdSchema,
+  createMnetRpc,
+  deleteMnetRpc,
+  updateMnetRpc,
+} from "../api/mnetRpcs/mutations";
+import { getMnetRpcById, getMnetRpcs } from "../api/mnetRpcs/queries";
+import {
   insertMnetRpcParams,
+  mnetRpcIdSchema,
   updateMnetRpcParams,
-} from "@/lib/db/schema/mnetRpcs";
-import { createMnetRpc, deleteMnetRpc, updateMnetRpc } from "@/lib/api/mnetRpcs/mutations";
+} from "../db/schema/mnetRpcs";
+import { publicProcedure, router } from "../server/trpc";
 
 export const mnetRpcsRouter = router({
   getMnetRpcs: publicProcedure.query(async () => {
     return getMnetRpcs();
   }),
-  getMnetRpcById: publicProcedure.input(mnetRpcIdSchema).query(async ({ input }) => {
-    return getMnetRpcById(input.id);
-  }),
+  getMnetRpcById: publicProcedure
+    .input(mnetRpcIdSchema)
+    .query(async ({ input }) => {
+      return getMnetRpcById(input.id);
+    }),
   createMnetRpc: publicProcedure
     .input(insertMnetRpcParams)
     .mutation(async ({ input }) => {

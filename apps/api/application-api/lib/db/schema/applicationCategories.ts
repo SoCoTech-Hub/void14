@@ -1,9 +1,10 @@
-import { type getApplicationCategories } from "@/lib/api/applicationCategories/queries";
 import { pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getApplicationCategories } from "../api/applicationCategories/queries";
 
 export const applicationCategories = pgTable(
   "application_categories",

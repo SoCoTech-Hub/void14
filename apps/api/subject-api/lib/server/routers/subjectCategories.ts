@@ -1,19 +1,28 @@
-import { getSubjectCategoryById, getSubjectCategories } from "@/lib/api/subjectCategories/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  subjectCategoryIdSchema,
+  createSubjectCategory,
+  deleteSubjectCategory,
+  updateSubjectCategory,
+} from "../api/subjectCategories/mutations";
+import {
+  getSubjectCategories,
+  getSubjectCategoryById,
+} from "../api/subjectCategories/queries";
+import {
   insertSubjectCategoryParams,
+  subjectCategoryIdSchema,
   updateSubjectCategoryParams,
-} from "@/lib/db/schema/subjectCategories";
-import { createSubjectCategory, deleteSubjectCategory, updateSubjectCategory } from "@/lib/api/subjectCategories/mutations";
+} from "../db/schema/subjectCategories";
+import { publicProcedure, router } from "../server/trpc";
 
 export const subjectCategoriesRouter = router({
   getSubjectCategories: publicProcedure.query(async () => {
     return getSubjectCategories();
   }),
-  getSubjectCategoryById: publicProcedure.input(subjectCategoryIdSchema).query(async ({ input }) => {
-    return getSubjectCategoryById(input.id);
-  }),
+  getSubjectCategoryById: publicProcedure
+    .input(subjectCategoryIdSchema)
+    .query(async ({ input }) => {
+      return getSubjectCategoryById(input.id);
+    }),
   createSubjectCategory: publicProcedure
     .input(insertSubjectCategoryParams)
     .mutation(async ({ input }) => {

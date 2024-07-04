@@ -1,5 +1,5 @@
+import { router } from "../server/trpc";
 import { computersRouter } from "./computers";
-import { router } from "@/lib/server/trpc";
 import { glossariesRouter } from "./glossaries";
 import { glossaryAliasesRouter } from "./glossaryAliases";
 import { glossaryCategoriesRouter } from "./glossaryCategories";

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createApplicationCategory,
   deleteApplicationCategory,
   updateApplicationCategory,
-} from "@/lib/api/applicationCategories/mutations";
+} from "../api/applicationCategories/mutations";
 import {
   ApplicationCategoryId,
-  NewApplicationCategoryParams,
-  UpdateApplicationCategoryParams,
   applicationCategoryIdSchema,
   insertApplicationCategoryParams,
+  NewApplicationCategoryParams,
+  UpdateApplicationCategoryParams,
   updateApplicationCategoryParams,
-} from "@/lib/db/schema/applicationCategories";
+} from "../db/schema/applicationCategories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateApplicationCategories = () => revalidatePath("/application-categories");
+const revalidateApplicationCategories = () =>
+  revalidatePath("/application-categories");
 
-export const createApplicationCategoryAction = async (input: NewApplicationCategoryParams) => {
+export const createApplicationCategoryAction = async (
+  input: NewApplicationCategoryParams,
+) => {
   try {
     const payload = insertApplicationCategoryParams.parse(input);
     await createApplicationCategory(payload);
@@ -37,7 +41,9 @@ export const createApplicationCategoryAction = async (input: NewApplicationCateg
   }
 };
 
-export const updateApplicationCategoryAction = async (input: UpdateApplicationCategoryParams) => {
+export const updateApplicationCategoryAction = async (
+  input: UpdateApplicationCategoryParams,
+) => {
   try {
     const payload = updateApplicationCategoryParams.parse(input);
     await updateApplicationCategory(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateApplicationCategoryAction = async (input: UpdateApplicationCa
   }
 };
 
-export const deleteApplicationCategoryAction = async (input: ApplicationCategoryId) => {
+export const deleteApplicationCategoryAction = async (
+  input: ApplicationCategoryId,
+) => {
   try {
     const payload = applicationCategoryIdSchema.parse({ id: input });
     await deleteApplicationCategory(payload.id);

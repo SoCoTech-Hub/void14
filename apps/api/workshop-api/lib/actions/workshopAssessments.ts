@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createWorkshopAssessment,
   deleteWorkshopAssessment,
   updateWorkshopAssessment,
-} from "@/lib/api/workshopAssessments/mutations";
+} from "../api/workshopAssessments/mutations";
 import {
-  WorkshopAssessmentId,
+  insertWorkshopAssessmentParams,
   NewWorkshopAssessmentParams,
   UpdateWorkshopAssessmentParams,
-  workshopAssessmentIdSchema,
-  insertWorkshopAssessmentParams,
   updateWorkshopAssessmentParams,
-} from "@/lib/db/schema/workshopAssessments";
+  WorkshopAssessmentId,
+  workshopAssessmentIdSchema,
+} from "../db/schema/workshopAssessments";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateWorkshopAssessments = () => revalidatePath("/workshop-assessments");
+const revalidateWorkshopAssessments = () =>
+  revalidatePath("/workshop-assessments");
 
-export const createWorkshopAssessmentAction = async (input: NewWorkshopAssessmentParams) => {
+export const createWorkshopAssessmentAction = async (
+  input: NewWorkshopAssessmentParams,
+) => {
   try {
     const payload = insertWorkshopAssessmentParams.parse(input);
     await createWorkshopAssessment(payload);
@@ -37,7 +41,9 @@ export const createWorkshopAssessmentAction = async (input: NewWorkshopAssessmen
   }
 };
 
-export const updateWorkshopAssessmentAction = async (input: UpdateWorkshopAssessmentParams) => {
+export const updateWorkshopAssessmentAction = async (
+  input: UpdateWorkshopAssessmentParams,
+) => {
   try {
     const payload = updateWorkshopAssessmentParams.parse(input);
     await updateWorkshopAssessment(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateWorkshopAssessmentAction = async (input: UpdateWorkshopAssess
   }
 };
 
-export const deleteWorkshopAssessmentAction = async (input: WorkshopAssessmentId) => {
+export const deleteWorkshopAssessmentAction = async (
+  input: WorkshopAssessmentId,
+) => {
   try {
     const payload = workshopAssessmentIdSchema.parse({ id: input });
     await deleteWorkshopAssessment(payload.id);

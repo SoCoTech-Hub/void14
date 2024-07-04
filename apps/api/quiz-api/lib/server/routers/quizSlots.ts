@@ -1,19 +1,25 @@
-import { getQuizSlotById, getQuizSlots } from "@/lib/api/quizSlots/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  quizSlotIdSchema,
+  createQuizSlot,
+  deleteQuizSlot,
+  updateQuizSlot,
+} from "../api/quizSlots/mutations";
+import { getQuizSlotById, getQuizSlots } from "../api/quizSlots/queries";
+import {
   insertQuizSlotParams,
+  quizSlotIdSchema,
   updateQuizSlotParams,
-} from "@/lib/db/schema/quizSlots";
-import { createQuizSlot, deleteQuizSlot, updateQuizSlot } from "@/lib/api/quizSlots/mutations";
+} from "../db/schema/quizSlots";
+import { publicProcedure, router } from "../server/trpc";
 
 export const quizSlotsRouter = router({
   getQuizSlots: publicProcedure.query(async () => {
     return getQuizSlots();
   }),
-  getQuizSlotById: publicProcedure.input(quizSlotIdSchema).query(async ({ input }) => {
-    return getQuizSlotById(input.id);
-  }),
+  getQuizSlotById: publicProcedure
+    .input(quizSlotIdSchema)
+    .query(async ({ input }) => {
+      return getQuizSlotById(input.id);
+    }),
   createQuizSlot: publicProcedure
     .input(insertQuizSlotParams)
     .mutation(async ({ input }) => {

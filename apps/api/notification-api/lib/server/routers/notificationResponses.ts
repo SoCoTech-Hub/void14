@@ -1,19 +1,28 @@
-import { getNotificationResponseById, getNotificationResponses } from "@/lib/api/notificationResponses/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  notificationResponseIdSchema,
+  createNotificationResponse,
+  deleteNotificationResponse,
+  updateNotificationResponse,
+} from "../api/notificationResponses/mutations";
+import {
+  getNotificationResponseById,
+  getNotificationResponses,
+} from "../api/notificationResponses/queries";
+import {
   insertNotificationResponseParams,
+  notificationResponseIdSchema,
   updateNotificationResponseParams,
-} from "@/lib/db/schema/notificationResponses";
-import { createNotificationResponse, deleteNotificationResponse, updateNotificationResponse } from "@/lib/api/notificationResponses/mutations";
+} from "../db/schema/notificationResponses";
+import { publicProcedure, router } from "../server/trpc";
 
 export const notificationResponsesRouter = router({
   getNotificationResponses: publicProcedure.query(async () => {
     return getNotificationResponses();
   }),
-  getNotificationResponseById: publicProcedure.input(notificationResponseIdSchema).query(async ({ input }) => {
-    return getNotificationResponseById(input.id);
-  }),
+  getNotificationResponseById: publicProcedure
+    .input(notificationResponseIdSchema)
+    .query(async ({ input }) => {
+      return getNotificationResponseById(input.id);
+    }),
   createNotificationResponse: publicProcedure
     .input(insertNotificationResponseParams)
     .mutation(async ({ input }) => {

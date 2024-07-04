@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMessageContactRequest,
   deleteMessageContactRequest,
   updateMessageContactRequest,
-} from "@/lib/api/messageContactRequests/mutations";
+} from "../api/messageContactRequests/mutations";
 import {
+  insertMessageContactRequestParams,
   MessageContactRequestId,
+  messageContactRequestIdSchema,
   NewMessageContactRequestParams,
   UpdateMessageContactRequestParams,
-  messageContactRequestIdSchema,
-  insertMessageContactRequestParams,
   updateMessageContactRequestParams,
-} from "@/lib/db/schema/messageContactRequests";
+} from "../db/schema/messageContactRequests";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateMessageContactRequests = () => revalidatePath("/message-contact-requests");
+const revalidateMessageContactRequests = () =>
+  revalidatePath("/message-contact-requests");
 
-export const createMessageContactRequestAction = async (input: NewMessageContactRequestParams) => {
+export const createMessageContactRequestAction = async (
+  input: NewMessageContactRequestParams,
+) => {
   try {
     const payload = insertMessageContactRequestParams.parse(input);
     await createMessageContactRequest(payload);
@@ -37,7 +41,9 @@ export const createMessageContactRequestAction = async (input: NewMessageContact
   }
 };
 
-export const updateMessageContactRequestAction = async (input: UpdateMessageContactRequestParams) => {
+export const updateMessageContactRequestAction = async (
+  input: UpdateMessageContactRequestParams,
+) => {
   try {
     const payload = updateMessageContactRequestParams.parse(input);
     await updateMessageContactRequest(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateMessageContactRequestAction = async (input: UpdateMessageCont
   }
 };
 
-export const deleteMessageContactRequestAction = async (input: MessageContactRequestId) => {
+export const deleteMessageContactRequestAction = async (
+  input: MessageContactRequestId,
+) => {
   try {
     const payload = messageContactRequestIdSchema.parse({ id: input });
     await deleteMessageContactRequest(payload.id);

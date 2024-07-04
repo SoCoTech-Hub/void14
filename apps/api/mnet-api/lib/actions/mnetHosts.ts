@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createMnetHost,
   deleteMnetHost,
   updateMnetHost,
-} from "@/lib/api/mnetHosts/mutations";
+} from "../api/mnetHosts/mutations";
 import {
+  insertMnetHostParams,
   MnetHostId,
+  mnetHostIdSchema,
   NewMnetHostParams,
   UpdateMnetHostParams,
-  mnetHostIdSchema,
-  insertMnetHostParams,
   updateMnetHostParams,
-} from "@/lib/db/schema/mnetHosts";
+} from "../db/schema/mnetHosts";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

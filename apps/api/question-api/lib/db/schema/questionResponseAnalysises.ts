@@ -1,4 +1,3 @@
-import { type getQuestionResponseAnalysises } from "@/lib/api/questionResponseAnalysises/queries";
 import { sql } from "drizzle-orm";
 import {
   pgTable,
@@ -13,6 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getQuestionResponseAnalysises } from "../api/questionResponseAnalysises/queries";
 import { questions } from "./questions";
 
 export const questionResponseAnalysises = pgTable(

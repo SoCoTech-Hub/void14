@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createToolCustomLang,
   deleteToolCustomLang,
   updateToolCustomLang,
-} from "@/lib/api/toolCustomLangs/mutations";
+} from "../api/toolCustomLangs/mutations";
 import {
-  ToolCustomLangId,
-  NewToolCustomLangParams,
-  UpdateToolCustomLangParams,
-  toolCustomLangIdSchema,
   insertToolCustomLangParams,
+  NewToolCustomLangParams,
+  ToolCustomLangId,
+  toolCustomLangIdSchema,
+  UpdateToolCustomLangParams,
   updateToolCustomLangParams,
-} from "@/lib/db/schema/toolCustomLangs";
+} from "../db/schema/toolCustomLangs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateToolCustomLangs = () => revalidatePath("/tool-custom-langs");
 
-export const createToolCustomLangAction = async (input: NewToolCustomLangParams) => {
+export const createToolCustomLangAction = async (
+  input: NewToolCustomLangParams,
+) => {
   try {
     const payload = insertToolCustomLangParams.parse(input);
     await createToolCustomLang(payload);
@@ -37,7 +40,9 @@ export const createToolCustomLangAction = async (input: NewToolCustomLangParams)
   }
 };
 
-export const updateToolCustomLangAction = async (input: UpdateToolCustomLangParams) => {
+export const updateToolCustomLangAction = async (
+  input: UpdateToolCustomLangParams,
+) => {
   try {
     const payload = updateToolCustomLangParams.parse(input);
     await updateToolCustomLang(payload.id, payload);

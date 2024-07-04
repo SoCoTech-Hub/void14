@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createInmail,
   deleteInmail,
   updateInmail,
-} from "@/lib/api/inmails/mutations";
+} from "../api/inmails/mutations";
 import {
   InmailId,
-  NewInmailParams,
-  UpdateInmailParams,
   inmailIdSchema,
   insertInmailParams,
+  NewInmailParams,
+  UpdateInmailParams,
   updateInmailParams,
-} from "@/lib/db/schema/inmails";
+} from "../db/schema/inmails";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

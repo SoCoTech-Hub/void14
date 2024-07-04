@@ -1,19 +1,28 @@
-import { getGlossaryEntriesCategoryById, getGlossaryEntriesCategories } from "@/lib/api/glossaryEntriesCategories/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createGlossaryEntriesCategory,
+  deleteGlossaryEntriesCategory,
+  updateGlossaryEntriesCategory,
+} from "../api/glossaryEntriesCategories/mutations";
+import {
+  getGlossaryEntriesCategories,
+  getGlossaryEntriesCategoryById,
+} from "../api/glossaryEntriesCategories/queries";
 import {
   glossaryEntriesCategoryIdSchema,
   insertGlossaryEntriesCategoryParams,
   updateGlossaryEntriesCategoryParams,
-} from "@/lib/db/schema/glossaryEntriesCategories";
-import { createGlossaryEntriesCategory, deleteGlossaryEntriesCategory, updateGlossaryEntriesCategory } from "@/lib/api/glossaryEntriesCategories/mutations";
+} from "../db/schema/glossaryEntriesCategories";
+import { publicProcedure, router } from "../server/trpc";
 
 export const glossaryEntriesCategoriesRouter = router({
   getGlossaryEntriesCategories: publicProcedure.query(async () => {
     return getGlossaryEntriesCategories();
   }),
-  getGlossaryEntriesCategoryById: publicProcedure.input(glossaryEntriesCategoryIdSchema).query(async ({ input }) => {
-    return getGlossaryEntriesCategoryById(input.id);
-  }),
+  getGlossaryEntriesCategoryById: publicProcedure
+    .input(glossaryEntriesCategoryIdSchema)
+    .query(async ({ input }) => {
+      return getGlossaryEntriesCategoryById(input.id);
+    }),
   createGlossaryEntriesCategory: publicProcedure
     .input(insertGlossaryEntriesCategoryParams)
     .mutation(async ({ input }) => {

@@ -1,10 +1,11 @@
-import { type getInfectedFiles } from "@/lib/api/infectedFiles/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getInfectedFiles } from "../api/infectedFiles/queries";
 
 export const infectedFiles = pgTable("infected_files", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

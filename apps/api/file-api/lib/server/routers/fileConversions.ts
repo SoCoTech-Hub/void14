@@ -1,19 +1,28 @@
-import { getFileConversionById, getFileConversions } from "@/lib/api/fileConversions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createFileConversion,
+  deleteFileConversion,
+  updateFileConversion,
+} from "../api/fileConversions/mutations";
+import {
+  getFileConversionById,
+  getFileConversions,
+} from "../api/fileConversions/queries";
 import {
   fileConversionIdSchema,
   insertFileConversionParams,
   updateFileConversionParams,
-} from "@/lib/db/schema/fileConversions";
-import { createFileConversion, deleteFileConversion, updateFileConversion } from "@/lib/api/fileConversions/mutations";
+} from "../db/schema/fileConversions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const fileConversionsRouter = router({
   getFileConversions: publicProcedure.query(async () => {
     return getFileConversions();
   }),
-  getFileConversionById: publicProcedure.input(fileConversionIdSchema).query(async ({ input }) => {
-    return getFileConversionById(input.id);
-  }),
+  getFileConversionById: publicProcedure
+    .input(fileConversionIdSchema)
+    .query(async ({ input }) => {
+      return getFileConversionById(input.id);
+    }),
   createFileConversion: publicProcedure
     .input(insertFileConversionParams)
     .mutation(async ({ input }) => {

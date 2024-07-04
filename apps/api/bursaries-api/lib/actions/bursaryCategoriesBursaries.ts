@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBursaryCategoriesBursary,
   deleteBursaryCategoriesBursary,
   updateBursaryCategoriesBursary,
-} from "@/lib/api/bursaryCategoriesBursaries/mutations";
+} from "../api/bursaryCategoriesBursaries/mutations";
 import {
   BursaryCategoriesBursaryId,
-  NewBursaryCategoriesBursaryParams,
-  UpdateBursaryCategoriesBursaryParams,
   bursaryCategoriesBursaryIdSchema,
   insertBursaryCategoriesBursaryParams,
+  NewBursaryCategoriesBursaryParams,
+  UpdateBursaryCategoriesBursaryParams,
   updateBursaryCategoriesBursaryParams,
-} from "@/lib/db/schema/bursaryCategoriesBursaries";
+} from "../db/schema/bursaryCategoriesBursaries";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateBursaryCategoriesBursaries = () => revalidatePath("/bursary-categories-bursaries");
+const revalidateBursaryCategoriesBursaries = () =>
+  revalidatePath("/bursary-categories-bursaries");
 
-export const createBursaryCategoriesBursaryAction = async (input: NewBursaryCategoriesBursaryParams) => {
+export const createBursaryCategoriesBursaryAction = async (
+  input: NewBursaryCategoriesBursaryParams,
+) => {
   try {
     const payload = insertBursaryCategoriesBursaryParams.parse(input);
     await createBursaryCategoriesBursary(payload);
@@ -37,7 +41,9 @@ export const createBursaryCategoriesBursaryAction = async (input: NewBursaryCate
   }
 };
 
-export const updateBursaryCategoriesBursaryAction = async (input: UpdateBursaryCategoriesBursaryParams) => {
+export const updateBursaryCategoriesBursaryAction = async (
+  input: UpdateBursaryCategoriesBursaryParams,
+) => {
   try {
     const payload = updateBursaryCategoriesBursaryParams.parse(input);
     await updateBursaryCategoriesBursary(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateBursaryCategoriesBursaryAction = async (input: UpdateBursaryC
   }
 };
 
-export const deleteBursaryCategoriesBursaryAction = async (input: BursaryCategoriesBursaryId) => {
+export const deleteBursaryCategoriesBursaryAction = async (
+  input: BursaryCategoriesBursaryId,
+) => {
   try {
     const payload = bursaryCategoriesBursaryIdSchema.parse({ id: input });
     await deleteBursaryCategoriesBursary(payload.id);

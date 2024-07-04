@@ -1,10 +1,11 @@
-import { type getEnrolLtiLti2UserResults } from "@/lib/api/enrolLtiLti2UserResults/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getEnrolLtiLti2UserResults } from "../api/enrolLtiLti2UserResults/queries";
 
 export const enrolLtiLti2UserResults = pgTable("enrol_lti_lti2_user_results", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

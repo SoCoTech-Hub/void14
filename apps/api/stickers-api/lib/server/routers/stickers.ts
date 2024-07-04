@@ -1,19 +1,25 @@
-import { getStickerById, getStickers } from "@/lib/api/stickers/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  stickerIdSchema,
+  createSticker,
+  deleteSticker,
+  updateSticker,
+} from "../api/stickers/mutations";
+import { getStickerById, getStickers } from "../api/stickers/queries";
+import {
   insertStickerParams,
+  stickerIdSchema,
   updateStickerParams,
-} from "@/lib/db/schema/stickers";
-import { createSticker, deleteSticker, updateSticker } from "@/lib/api/stickers/mutations";
+} from "../db/schema/stickers";
+import { publicProcedure, router } from "../server/trpc";
 
 export const stickersRouter = router({
   getStickers: publicProcedure.query(async () => {
     return getStickers();
   }),
-  getStickerById: publicProcedure.input(stickerIdSchema).query(async ({ input }) => {
-    return getStickerById(input.id);
-  }),
+  getStickerById: publicProcedure
+    .input(stickerIdSchema)
+    .query(async ({ input }) => {
+      return getStickerById(input.id);
+    }),
   createSticker: publicProcedure
     .input(insertStickerParams)
     .mutation(async ({ input }) => {

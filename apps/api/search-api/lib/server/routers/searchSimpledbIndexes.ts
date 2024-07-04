@@ -1,19 +1,28 @@
-import { getSearchSimpledbIndexById, getSearchSimpledbIndexes } from "@/lib/api/searchSimpledbIndexes/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  searchSimpledbIndexIdSchema,
+  createSearchSimpledbIndex,
+  deleteSearchSimpledbIndex,
+  updateSearchSimpledbIndex,
+} from "../api/searchSimpledbIndexes/mutations";
+import {
+  getSearchSimpledbIndexById,
+  getSearchSimpledbIndexes,
+} from "../api/searchSimpledbIndexes/queries";
+import {
   insertSearchSimpledbIndexParams,
+  searchSimpledbIndexIdSchema,
   updateSearchSimpledbIndexParams,
-} from "@/lib/db/schema/searchSimpledbIndexes";
-import { createSearchSimpledbIndex, deleteSearchSimpledbIndex, updateSearchSimpledbIndex } from "@/lib/api/searchSimpledbIndexes/mutations";
+} from "../db/schema/searchSimpledbIndexes";
+import { publicProcedure, router } from "../server/trpc";
 
 export const searchSimpledbIndexesRouter = router({
   getSearchSimpledbIndexes: publicProcedure.query(async () => {
     return getSearchSimpledbIndexes();
   }),
-  getSearchSimpledbIndexById: publicProcedure.input(searchSimpledbIndexIdSchema).query(async ({ input }) => {
-    return getSearchSimpledbIndexById(input.id);
-  }),
+  getSearchSimpledbIndexById: publicProcedure
+    .input(searchSimpledbIndexIdSchema)
+    .query(async ({ input }) => {
+      return getSearchSimpledbIndexById(input.id);
+    }),
   createSearchSimpledbIndex: publicProcedure
     .input(insertSearchSimpledbIndexParams)
     .mutation(async ({ input }) => {

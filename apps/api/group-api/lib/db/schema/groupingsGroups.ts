@@ -1,10 +1,10 @@
-import { type getGroupingsGroups } from "@/lib/api/groupingsGroups/queries";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getGroupingsGroups } from "../api/groupingsGroups/queries";
 import { groupings } from "./groupings";
 import { groups } from "./groups";
 

@@ -1,4 +1,3 @@
-import { type getEnrolLtiTools } from "@/lib/api/enrolLtiTools/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -12,6 +11,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getEnrolLtiTools } from "../api/enrolLtiTools/queries";
 
 export const enrolLtiTools = pgTable("enrol_lti_tools", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGlossary,
   deleteGlossary,
   updateGlossary,
-} from "@/lib/api/glossaries/mutations";
+} from "../api/glossaries/mutations";
 import {
   GlossaryId,
-  NewGlossaryParams,
-  UpdateGlossaryParams,
   glossaryIdSchema,
   insertGlossaryParams,
+  NewGlossaryParams,
+  UpdateGlossaryParams,
   updateGlossaryParams,
-} from "@/lib/db/schema/glossaries";
+} from "../db/schema/glossaries";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

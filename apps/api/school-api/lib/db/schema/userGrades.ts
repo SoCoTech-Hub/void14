@@ -1,10 +1,10 @@
-import { type getUserGrades } from "@/lib/api/userGrades/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getUserGrades } from "../api/userGrades/queries";
 import { grades } from "./grades";
 
 export const userGrades = pgTable("user_grades", {

@@ -1,19 +1,28 @@
-import { getQuestionHintById, getQuestionHints } from "@/lib/api/questionHints/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  questionHintIdSchema,
+  createQuestionHint,
+  deleteQuestionHint,
+  updateQuestionHint,
+} from "../api/questionHints/mutations";
+import {
+  getQuestionHintById,
+  getQuestionHints,
+} from "../api/questionHints/queries";
+import {
   insertQuestionHintParams,
+  questionHintIdSchema,
   updateQuestionHintParams,
-} from "@/lib/db/schema/questionHints";
-import { createQuestionHint, deleteQuestionHint, updateQuestionHint } from "@/lib/api/questionHints/mutations";
+} from "../db/schema/questionHints";
+import { publicProcedure, router } from "../server/trpc";
 
 export const questionHintsRouter = router({
   getQuestionHints: publicProcedure.query(async () => {
     return getQuestionHints();
   }),
-  getQuestionHintById: publicProcedure.input(questionHintIdSchema).query(async ({ input }) => {
-    return getQuestionHintById(input.id);
-  }),
+  getQuestionHintById: publicProcedure
+    .input(questionHintIdSchema)
+    .query(async ({ input }) => {
+      return getQuestionHintById(input.id);
+    }),
   createQuestionHint: publicProcedure
     .input(insertQuestionHintParams)
     .mutation(async ({ input }) => {

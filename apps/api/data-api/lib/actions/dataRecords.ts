@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createDataRecord,
   deleteDataRecord,
   updateDataRecord,
-} from "@/lib/api/dataRecords/mutations";
+} from "../api/dataRecords/mutations";
 import {
   DataRecordId,
-  NewDataRecordParams,
-  UpdateDataRecordParams,
   dataRecordIdSchema,
   insertDataRecordParams,
+  NewDataRecordParams,
+  UpdateDataRecordParams,
   updateDataRecordParams,
-} from "@/lib/db/schema/dataRecords";
+} from "../db/schema/dataRecords";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

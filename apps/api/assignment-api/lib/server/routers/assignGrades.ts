@@ -1,19 +1,28 @@
-import { getAssignGradeById, getAssignGrades } from "@/lib/api/assignGrades/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createAssignGrade,
+  deleteAssignGrade,
+  updateAssignGrade,
+} from "../api/assignGrades/mutations";
+import {
+  getAssignGradeById,
+  getAssignGrades,
+} from "../api/assignGrades/queries";
 import {
   assignGradeIdSchema,
   insertAssignGradeParams,
   updateAssignGradeParams,
-} from "@/lib/db/schema/assignGrades";
-import { createAssignGrade, deleteAssignGrade, updateAssignGrade } from "@/lib/api/assignGrades/mutations";
+} from "../db/schema/assignGrades";
+import { publicProcedure, router } from "../server/trpc";
 
 export const assignGradesRouter = router({
   getAssignGrades: publicProcedure.query(async () => {
     return getAssignGrades();
   }),
-  getAssignGradeById: publicProcedure.input(assignGradeIdSchema).query(async ({ input }) => {
-    return getAssignGradeById(input.id);
-  }),
+  getAssignGradeById: publicProcedure
+    .input(assignGradeIdSchema)
+    .query(async ({ input }) => {
+      return getAssignGradeById(input.id);
+    }),
   createAssignGrade: publicProcedure
     .input(insertAssignGradeParams)
     .mutation(async ({ input }) => {

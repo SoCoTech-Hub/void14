@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createEnrolLtiLti2ShareKey,
   deleteEnrolLtiLti2ShareKey,
   updateEnrolLtiLti2ShareKey,
-} from "@/lib/api/enrolLtiLti2ShareKeys/mutations";
+} from "../api/enrolLtiLti2ShareKeys/mutations";
 import {
   EnrolLtiLti2ShareKeyId,
-  NewEnrolLtiLti2ShareKeyParams,
-  UpdateEnrolLtiLti2ShareKeyParams,
   enrolLtiLti2ShareKeyIdSchema,
   insertEnrolLtiLti2ShareKeyParams,
+  NewEnrolLtiLti2ShareKeyParams,
+  UpdateEnrolLtiLti2ShareKeyParams,
   updateEnrolLtiLti2ShareKeyParams,
-} from "@/lib/db/schema/enrolLtiLti2ShareKeys";
+} from "../db/schema/enrolLtiLti2ShareKeys";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateEnrolLtiLti2ShareKeys = () => revalidatePath("/enrol-lti-lti2-share-keys");
+const revalidateEnrolLtiLti2ShareKeys = () =>
+  revalidatePath("/enrol-lti-lti2-share-keys");
 
-export const createEnrolLtiLti2ShareKeyAction = async (input: NewEnrolLtiLti2ShareKeyParams) => {
+export const createEnrolLtiLti2ShareKeyAction = async (
+  input: NewEnrolLtiLti2ShareKeyParams,
+) => {
   try {
     const payload = insertEnrolLtiLti2ShareKeyParams.parse(input);
     await createEnrolLtiLti2ShareKey(payload);
@@ -37,7 +41,9 @@ export const createEnrolLtiLti2ShareKeyAction = async (input: NewEnrolLtiLti2Sha
   }
 };
 
-export const updateEnrolLtiLti2ShareKeyAction = async (input: UpdateEnrolLtiLti2ShareKeyParams) => {
+export const updateEnrolLtiLti2ShareKeyAction = async (
+  input: UpdateEnrolLtiLti2ShareKeyParams,
+) => {
   try {
     const payload = updateEnrolLtiLti2ShareKeyParams.parse(input);
     await updateEnrolLtiLti2ShareKey(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateEnrolLtiLti2ShareKeyAction = async (input: UpdateEnrolLtiLti2
   }
 };
 
-export const deleteEnrolLtiLti2ShareKeyAction = async (input: EnrolLtiLti2ShareKeyId) => {
+export const deleteEnrolLtiLti2ShareKeyAction = async (
+  input: EnrolLtiLti2ShareKeyId,
+) => {
   try {
     const payload = enrolLtiLti2ShareKeyIdSchema.parse({ id: input });
     await deleteEnrolLtiLti2ShareKey(payload.id);

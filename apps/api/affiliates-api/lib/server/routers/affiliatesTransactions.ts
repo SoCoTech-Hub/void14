@@ -1,19 +1,28 @@
-import { getAffiliatesTransactionById, getAffiliatesTransactions } from "@/lib/api/affiliatesTransactions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createAffiliatesTransaction,
+  deleteAffiliatesTransaction,
+  updateAffiliatesTransaction,
+} from "../api/affiliatesTransactions/mutations";
+import {
+  getAffiliatesTransactionById,
+  getAffiliatesTransactions,
+} from "../api/affiliatesTransactions/queries";
 import {
   affiliatesTransactionIdSchema,
   insertAffiliatesTransactionParams,
   updateAffiliatesTransactionParams,
-} from "@/lib/db/schema/affiliatesTransactions";
-import { createAffiliatesTransaction, deleteAffiliatesTransaction, updateAffiliatesTransaction } from "@/lib/api/affiliatesTransactions/mutations";
+} from "../db/schema/affiliatesTransactions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const affiliatesTransactionsRouter = router({
   getAffiliatesTransactions: publicProcedure.query(async () => {
     return getAffiliatesTransactions();
   }),
-  getAffiliatesTransactionById: publicProcedure.input(affiliatesTransactionIdSchema).query(async ({ input }) => {
-    return getAffiliatesTransactionById(input.id);
-  }),
+  getAffiliatesTransactionById: publicProcedure
+    .input(affiliatesTransactionIdSchema)
+    .query(async ({ input }) => {
+      return getAffiliatesTransactionById(input.id);
+    }),
   createAffiliatesTransaction: publicProcedure
     .input(insertAffiliatesTransactionParams)
     .mutation(async ({ input }) => {

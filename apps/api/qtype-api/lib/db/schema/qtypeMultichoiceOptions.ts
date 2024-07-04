@@ -1,4 +1,3 @@
-import { type getQtypeMultichoiceOptions } from "@/lib/api/qtypeMultichoiceOptions/queries";
 import {
   boolean,
   integer,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getQtypeMultichoiceOptions } from "../api/qtypeMultichoiceOptions/queries";
 
 export const qtypeMultichoiceOptions = pgTable(
   "qtype_multichoice_options",

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createChoice,
   deleteChoice,
   updateChoice,
-} from "@/lib/api/choices/mutations";
+} from "../api/choices/mutations";
 import {
   ChoiceId,
-  NewChoiceParams,
-  UpdateChoiceParams,
   choiceIdSchema,
   insertChoiceParams,
+  NewChoiceParams,
+  UpdateChoiceParams,
   updateChoiceParams,
-} from "@/lib/db/schema/choices";
+} from "../db/schema/choices";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

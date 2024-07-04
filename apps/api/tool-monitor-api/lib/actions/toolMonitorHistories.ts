@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createToolMonitorHistory,
   deleteToolMonitorHistory,
   updateToolMonitorHistory,
-} from "@/lib/api/toolMonitorHistories/mutations";
+} from "../api/toolMonitorHistories/mutations";
 import {
-  ToolMonitorHistoryId,
-  NewToolMonitorHistoryParams,
-  UpdateToolMonitorHistoryParams,
-  toolMonitorHistoryIdSchema,
   insertToolMonitorHistoryParams,
+  NewToolMonitorHistoryParams,
+  ToolMonitorHistoryId,
+  toolMonitorHistoryIdSchema,
+  UpdateToolMonitorHistoryParams,
   updateToolMonitorHistoryParams,
-} from "@/lib/db/schema/toolMonitorHistories";
+} from "../db/schema/toolMonitorHistories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateToolMonitorHistories = () => revalidatePath("/tool-monitor-histories");
+const revalidateToolMonitorHistories = () =>
+  revalidatePath("/tool-monitor-histories");
 
-export const createToolMonitorHistoryAction = async (input: NewToolMonitorHistoryParams) => {
+export const createToolMonitorHistoryAction = async (
+  input: NewToolMonitorHistoryParams,
+) => {
   try {
     const payload = insertToolMonitorHistoryParams.parse(input);
     await createToolMonitorHistory(payload);
@@ -37,7 +41,9 @@ export const createToolMonitorHistoryAction = async (input: NewToolMonitorHistor
   }
 };
 
-export const updateToolMonitorHistoryAction = async (input: UpdateToolMonitorHistoryParams) => {
+export const updateToolMonitorHistoryAction = async (
+  input: UpdateToolMonitorHistoryParams,
+) => {
   try {
     const payload = updateToolMonitorHistoryParams.parse(input);
     await updateToolMonitorHistory(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateToolMonitorHistoryAction = async (input: UpdateToolMonitorHis
   }
 };
 
-export const deleteToolMonitorHistoryAction = async (input: ToolMonitorHistoryId) => {
+export const deleteToolMonitorHistoryAction = async (
+  input: ToolMonitorHistoryId,
+) => {
   try {
     const payload = toolMonitorHistoryIdSchema.parse({ id: input });
     await deleteToolMonitorHistory(payload.id);

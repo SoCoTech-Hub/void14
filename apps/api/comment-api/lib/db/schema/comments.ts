@@ -1,10 +1,11 @@
-import { type getComments } from "@/lib/api/comments/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getComments } from "../api/comments/queries";
 
 export const comments = pgTable("comments", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

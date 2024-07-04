@@ -1,19 +1,28 @@
-import { getMessageProviderById, getMessageProviders } from "@/lib/api/messageProviders/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  messageProviderIdSchema,
+  createMessageProvider,
+  deleteMessageProvider,
+  updateMessageProvider,
+} from "../api/messageProviders/mutations";
+import {
+  getMessageProviderById,
+  getMessageProviders,
+} from "../api/messageProviders/queries";
+import {
   insertMessageProviderParams,
+  messageProviderIdSchema,
   updateMessageProviderParams,
-} from "@/lib/db/schema/messageProviders";
-import { createMessageProvider, deleteMessageProvider, updateMessageProvider } from "@/lib/api/messageProviders/mutations";
+} from "../db/schema/messageProviders";
+import { publicProcedure, router } from "../server/trpc";
 
 export const messageProvidersRouter = router({
   getMessageProviders: publicProcedure.query(async () => {
     return getMessageProviders();
   }),
-  getMessageProviderById: publicProcedure.input(messageProviderIdSchema).query(async ({ input }) => {
-    return getMessageProviderById(input.id);
-  }),
+  getMessageProviderById: publicProcedure
+    .input(messageProviderIdSchema)
+    .query(async ({ input }) => {
+      return getMessageProviderById(input.id);
+    }),
   createMessageProvider: publicProcedure
     .input(insertMessageProviderParams)
     .mutation(async ({ input }) => {

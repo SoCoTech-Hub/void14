@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGradeImportValue,
   deleteGradeImportValue,
   updateGradeImportValue,
-} from "@/lib/api/gradeImportValues/mutations";
+} from "../api/gradeImportValues/mutations";
 import {
   GradeImportValueId,
-  NewGradeImportValueParams,
-  UpdateGradeImportValueParams,
   gradeImportValueIdSchema,
   insertGradeImportValueParams,
+  NewGradeImportValueParams,
+  UpdateGradeImportValueParams,
   updateGradeImportValueParams,
-} from "@/lib/db/schema/gradeImportValues";
+} from "../db/schema/gradeImportValues";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateGradeImportValues = () => revalidatePath("/grade-import-values");
+const revalidateGradeImportValues = () =>
+  revalidatePath("/grade-import-values");
 
-export const createGradeImportValueAction = async (input: NewGradeImportValueParams) => {
+export const createGradeImportValueAction = async (
+  input: NewGradeImportValueParams,
+) => {
   try {
     const payload = insertGradeImportValueParams.parse(input);
     await createGradeImportValue(payload);
@@ -37,7 +41,9 @@ export const createGradeImportValueAction = async (input: NewGradeImportValuePar
   }
 };
 
-export const updateGradeImportValueAction = async (input: UpdateGradeImportValueParams) => {
+export const updateGradeImportValueAction = async (
+  input: UpdateGradeImportValueParams,
+) => {
   try {
     const payload = updateGradeImportValueParams.parse(input);
     await updateGradeImportValue(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateGradeImportValueAction = async (input: UpdateGradeImportValue
   }
 };
 
-export const deleteGradeImportValueAction = async (input: GradeImportValueId) => {
+export const deleteGradeImportValueAction = async (
+  input: GradeImportValueId,
+) => {
   try {
     const payload = gradeImportValueIdSchema.parse({ id: input });
     await deleteGradeImportValue(payload.id);

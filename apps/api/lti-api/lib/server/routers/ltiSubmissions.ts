@@ -1,19 +1,28 @@
-import { getLtiSubmissionById, getLtiSubmissions } from "@/lib/api/ltiSubmissions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  ltiSubmissionIdSchema,
+  createLtiSubmission,
+  deleteLtiSubmission,
+  updateLtiSubmission,
+} from "../api/ltiSubmissions/mutations";
+import {
+  getLtiSubmissionById,
+  getLtiSubmissions,
+} from "../api/ltiSubmissions/queries";
+import {
   insertLtiSubmissionParams,
+  ltiSubmissionIdSchema,
   updateLtiSubmissionParams,
-} from "@/lib/db/schema/ltiSubmissions";
-import { createLtiSubmission, deleteLtiSubmission, updateLtiSubmission } from "@/lib/api/ltiSubmissions/mutations";
+} from "../db/schema/ltiSubmissions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const ltiSubmissionsRouter = router({
   getLtiSubmissions: publicProcedure.query(async () => {
     return getLtiSubmissions();
   }),
-  getLtiSubmissionById: publicProcedure.input(ltiSubmissionIdSchema).query(async ({ input }) => {
-    return getLtiSubmissionById(input.id);
-  }),
+  getLtiSubmissionById: publicProcedure
+    .input(ltiSubmissionIdSchema)
+    .query(async ({ input }) => {
+      return getLtiSubmissionById(input.id);
+    }),
   createLtiSubmission: publicProcedure
     .input(insertLtiSubmissionParams)
     .mutation(async ({ input }) => {

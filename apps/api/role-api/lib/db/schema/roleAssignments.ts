@@ -1,4 +1,3 @@
-import { type getRoleAssignments } from "@/lib/api/roleAssignments/queries";
 import { sql } from "drizzle-orm";
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -6,6 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getRoleAssignments } from "../api/roleAssignments/queries";
 import { roles } from "./roles";
 
 export const roleAssignments = pgTable("role_assignments", {

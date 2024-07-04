@@ -1,19 +1,28 @@
-import { getRoleCapabilityById, getRoleCapabilities } from "@/lib/api/roleCapabilities/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  roleCapabilityIdSchema,
+  createRoleCapability,
+  deleteRoleCapability,
+  updateRoleCapability,
+} from "../api/roleCapabilities/mutations";
+import {
+  getRoleCapabilities,
+  getRoleCapabilityById,
+} from "../api/roleCapabilities/queries";
+import {
   insertRoleCapabilityParams,
+  roleCapabilityIdSchema,
   updateRoleCapabilityParams,
-} from "@/lib/db/schema/roleCapabilities";
-import { createRoleCapability, deleteRoleCapability, updateRoleCapability } from "@/lib/api/roleCapabilities/mutations";
+} from "../db/schema/roleCapabilities";
+import { publicProcedure, router } from "../server/trpc";
 
 export const roleCapabilitiesRouter = router({
   getRoleCapabilities: publicProcedure.query(async () => {
     return getRoleCapabilities();
   }),
-  getRoleCapabilityById: publicProcedure.input(roleCapabilityIdSchema).query(async ({ input }) => {
-    return getRoleCapabilityById(input.id);
-  }),
+  getRoleCapabilityById: publicProcedure
+    .input(roleCapabilityIdSchema)
+    .query(async ({ input }) => {
+      return getRoleCapabilityById(input.id);
+    }),
   createRoleCapability: publicProcedure
     .input(insertRoleCapabilityParams)
     .mutation(async ({ input }) => {

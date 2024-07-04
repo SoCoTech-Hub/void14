@@ -1,4 +1,3 @@
-import { type getBadgeCriterias } from "@/lib/api/badgeCriterias/queries";
 import {
   boolean,
   integer,
@@ -12,6 +11,7 @@ import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getBadgeCriterias } from "../api/badgeCriterias/queries";
 import { badges } from "./badges";
 
 export const badgeCriterias = pgTable(

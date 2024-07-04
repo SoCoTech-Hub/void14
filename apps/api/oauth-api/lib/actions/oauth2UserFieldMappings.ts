@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createOauth2UserFieldMapping,
   deleteOauth2UserFieldMapping,
   updateOauth2UserFieldMapping,
-} from "@/lib/api/oauth2UserFieldMappings/mutations";
+} from "../api/oauth2UserFieldMappings/mutations";
 import {
-  Oauth2UserFieldMappingId,
-  NewOauth2UserFieldMappingParams,
-  UpdateOauth2UserFieldMappingParams,
-  oauth2UserFieldMappingIdSchema,
   insertOauth2UserFieldMappingParams,
+  NewOauth2UserFieldMappingParams,
+  Oauth2UserFieldMappingId,
+  oauth2UserFieldMappingIdSchema,
+  UpdateOauth2UserFieldMappingParams,
   updateOauth2UserFieldMappingParams,
-} from "@/lib/db/schema/oauth2UserFieldMappings";
+} from "../db/schema/oauth2UserFieldMappings";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateOauth2UserFieldMappings = () => revalidatePath("/oauth2-user-field-mappings");
+const revalidateOauth2UserFieldMappings = () =>
+  revalidatePath("/oauth2-user-field-mappings");
 
-export const createOauth2UserFieldMappingAction = async (input: NewOauth2UserFieldMappingParams) => {
+export const createOauth2UserFieldMappingAction = async (
+  input: NewOauth2UserFieldMappingParams,
+) => {
   try {
     const payload = insertOauth2UserFieldMappingParams.parse(input);
     await createOauth2UserFieldMapping(payload);
@@ -37,7 +41,9 @@ export const createOauth2UserFieldMappingAction = async (input: NewOauth2UserFie
   }
 };
 
-export const updateOauth2UserFieldMappingAction = async (input: UpdateOauth2UserFieldMappingParams) => {
+export const updateOauth2UserFieldMappingAction = async (
+  input: UpdateOauth2UserFieldMappingParams,
+) => {
   try {
     const payload = updateOauth2UserFieldMappingParams.parse(input);
     await updateOauth2UserFieldMapping(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateOauth2UserFieldMappingAction = async (input: UpdateOauth2User
   }
 };
 
-export const deleteOauth2UserFieldMappingAction = async (input: Oauth2UserFieldMappingId) => {
+export const deleteOauth2UserFieldMappingAction = async (
+  input: Oauth2UserFieldMappingId,
+) => {
   try {
     const payload = oauth2UserFieldMappingIdSchema.parse({ id: input });
     await deleteOauth2UserFieldMapping(payload.id);

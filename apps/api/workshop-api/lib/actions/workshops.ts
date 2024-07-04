@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createWorkshop,
   deleteWorkshop,
   updateWorkshop,
-} from "@/lib/api/workshops/mutations";
+} from "../api/workshops/mutations";
 import {
-  WorkshopId,
+  insertWorkshopParams,
   NewWorkshopParams,
   UpdateWorkshopParams,
-  workshopIdSchema,
-  insertWorkshopParams,
   updateWorkshopParams,
-} from "@/lib/db/schema/workshops";
+  WorkshopId,
+  workshopIdSchema,
+} from "../db/schema/workshops";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

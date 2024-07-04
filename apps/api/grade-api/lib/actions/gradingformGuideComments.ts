@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGradingformGuideComment,
   deleteGradingformGuideComment,
   updateGradingformGuideComment,
-} from "@/lib/api/gradingformGuideComments/mutations";
+} from "../api/gradingformGuideComments/mutations";
 import {
   GradingformGuideCommentId,
-  NewGradingformGuideCommentParams,
-  UpdateGradingformGuideCommentParams,
   gradingformGuideCommentIdSchema,
   insertGradingformGuideCommentParams,
+  NewGradingformGuideCommentParams,
+  UpdateGradingformGuideCommentParams,
   updateGradingformGuideCommentParams,
-} from "@/lib/db/schema/gradingformGuideComments";
+} from "../db/schema/gradingformGuideComments";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateGradingformGuideComments = () => revalidatePath("/gradingform-guide-comments");
+const revalidateGradingformGuideComments = () =>
+  revalidatePath("/gradingform-guide-comments");
 
-export const createGradingformGuideCommentAction = async (input: NewGradingformGuideCommentParams) => {
+export const createGradingformGuideCommentAction = async (
+  input: NewGradingformGuideCommentParams,
+) => {
   try {
     const payload = insertGradingformGuideCommentParams.parse(input);
     await createGradingformGuideComment(payload);
@@ -37,7 +41,9 @@ export const createGradingformGuideCommentAction = async (input: NewGradingformG
   }
 };
 
-export const updateGradingformGuideCommentAction = async (input: UpdateGradingformGuideCommentParams) => {
+export const updateGradingformGuideCommentAction = async (
+  input: UpdateGradingformGuideCommentParams,
+) => {
   try {
     const payload = updateGradingformGuideCommentParams.parse(input);
     await updateGradingformGuideComment(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateGradingformGuideCommentAction = async (input: UpdateGradingfo
   }
 };
 
-export const deleteGradingformGuideCommentAction = async (input: GradingformGuideCommentId) => {
+export const deleteGradingformGuideCommentAction = async (
+  input: GradingformGuideCommentId,
+) => {
   try {
     const payload = gradingformGuideCommentIdSchema.parse({ id: input });
     await deleteGradingformGuideComment(payload.id);

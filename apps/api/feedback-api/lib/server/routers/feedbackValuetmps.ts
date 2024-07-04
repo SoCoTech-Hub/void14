@@ -1,19 +1,28 @@
-import { getFeedbackValuetmpById, getFeedbackValuetmps } from "@/lib/api/feedbackValuetmps/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createFeedbackValuetmp,
+  deleteFeedbackValuetmp,
+  updateFeedbackValuetmp,
+} from "../api/feedbackValuetmps/mutations";
+import {
+  getFeedbackValuetmpById,
+  getFeedbackValuetmps,
+} from "../api/feedbackValuetmps/queries";
 import {
   feedbackValuetmpIdSchema,
   insertFeedbackValuetmpParams,
   updateFeedbackValuetmpParams,
-} from "@/lib/db/schema/feedbackValuetmps";
-import { createFeedbackValuetmp, deleteFeedbackValuetmp, updateFeedbackValuetmp } from "@/lib/api/feedbackValuetmps/mutations";
+} from "../db/schema/feedbackValuetmps";
+import { publicProcedure, router } from "../server/trpc";
 
 export const feedbackValuetmpsRouter = router({
   getFeedbackValuetmps: publicProcedure.query(async () => {
     return getFeedbackValuetmps();
   }),
-  getFeedbackValuetmpById: publicProcedure.input(feedbackValuetmpIdSchema).query(async ({ input }) => {
-    return getFeedbackValuetmpById(input.id);
-  }),
+  getFeedbackValuetmpById: publicProcedure
+    .input(feedbackValuetmpIdSchema)
+    .query(async ({ input }) => {
+      return getFeedbackValuetmpById(input.id);
+    }),
   createFeedbackValuetmp: publicProcedure
     .input(insertFeedbackValuetmpParams)
     .mutation(async ({ input }) => {

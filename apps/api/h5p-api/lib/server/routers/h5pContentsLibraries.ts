@@ -1,19 +1,28 @@
-import { getH5pContentsLibraryById, getH5pContentsLibraries } from "@/lib/api/h5pContentsLibraries/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createH5pContentsLibrary,
+  deleteH5pContentsLibrary,
+  updateH5pContentsLibrary,
+} from "../api/h5pContentsLibraries/mutations";
+import {
+  getH5pContentsLibraries,
+  getH5pContentsLibraryById,
+} from "../api/h5pContentsLibraries/queries";
 import {
   h5pContentsLibraryIdSchema,
   insertH5pContentsLibraryParams,
   updateH5pContentsLibraryParams,
-} from "@/lib/db/schema/h5pContentsLibraries";
-import { createH5pContentsLibrary, deleteH5pContentsLibrary, updateH5pContentsLibrary } from "@/lib/api/h5pContentsLibraries/mutations";
+} from "../db/schema/h5pContentsLibraries";
+import { publicProcedure, router } from "../server/trpc";
 
 export const h5pContentsLibrariesRouter = router({
   getH5pContentsLibraries: publicProcedure.query(async () => {
     return getH5pContentsLibraries();
   }),
-  getH5pContentsLibraryById: publicProcedure.input(h5pContentsLibraryIdSchema).query(async ({ input }) => {
-    return getH5pContentsLibraryById(input.id);
-  }),
+  getH5pContentsLibraryById: publicProcedure
+    .input(h5pContentsLibraryIdSchema)
+    .query(async ({ input }) => {
+      return getH5pContentsLibraryById(input.id);
+    }),
   createH5pContentsLibrary: publicProcedure
     .input(insertH5pContentsLibraryParams)
     .mutation(async ({ input }) => {

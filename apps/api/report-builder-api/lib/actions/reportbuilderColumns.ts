@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createReportbuilderColumn,
   deleteReportbuilderColumn,
   updateReportbuilderColumn,
-} from "@/lib/api/reportbuilderColumns/mutations";
+} from "../api/reportbuilderColumns/mutations";
 import {
-  ReportbuilderColumnId,
-  NewReportbuilderColumnParams,
-  UpdateReportbuilderColumnParams,
-  reportbuilderColumnIdSchema,
   insertReportbuilderColumnParams,
+  NewReportbuilderColumnParams,
+  ReportbuilderColumnId,
+  reportbuilderColumnIdSchema,
+  UpdateReportbuilderColumnParams,
   updateReportbuilderColumnParams,
-} from "@/lib/db/schema/reportbuilderColumns";
+} from "../db/schema/reportbuilderColumns";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateReportbuilderColumns = () => revalidatePath("/reportbuilder-columns");
+const revalidateReportbuilderColumns = () =>
+  revalidatePath("/reportbuilder-columns");
 
-export const createReportbuilderColumnAction = async (input: NewReportbuilderColumnParams) => {
+export const createReportbuilderColumnAction = async (
+  input: NewReportbuilderColumnParams,
+) => {
   try {
     const payload = insertReportbuilderColumnParams.parse(input);
     await createReportbuilderColumn(payload);
@@ -37,7 +41,9 @@ export const createReportbuilderColumnAction = async (input: NewReportbuilderCol
   }
 };
 
-export const updateReportbuilderColumnAction = async (input: UpdateReportbuilderColumnParams) => {
+export const updateReportbuilderColumnAction = async (
+  input: UpdateReportbuilderColumnParams,
+) => {
   try {
     const payload = updateReportbuilderColumnParams.parse(input);
     await updateReportbuilderColumn(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateReportbuilderColumnAction = async (input: UpdateReportbuilder
   }
 };
 
-export const deleteReportbuilderColumnAction = async (input: ReportbuilderColumnId) => {
+export const deleteReportbuilderColumnAction = async (
+  input: ReportbuilderColumnId,
+) => {
   try {
     const payload = reportbuilderColumnIdSchema.parse({ id: input });
     await deleteReportbuilderColumn(payload.id);

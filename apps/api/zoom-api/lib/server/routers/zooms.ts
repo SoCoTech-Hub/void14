@@ -1,11 +1,11 @@
-import { getZoomById, getZooms } from "@/lib/api/zooms/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import { createZoom, deleteZoom, updateZoom } from "../api/zooms/mutations";
+import { getZoomById, getZooms } from "../api/zooms/queries";
 import {
-  zoomIdSchema,
   insertZoomParams,
   updateZoomParams,
-} from "@/lib/db/schema/zooms";
-import { createZoom, deleteZoom, updateZoom } from "@/lib/api/zooms/mutations";
+  zoomIdSchema,
+} from "../db/schema/zooms";
+import { publicProcedure, router } from "../server/trpc";
 
 export const zoomsRouter = router({
   getZooms: publicProcedure.query(async () => {

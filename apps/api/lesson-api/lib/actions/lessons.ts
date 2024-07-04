@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createLesson,
   deleteLesson,
   updateLesson,
-} from "@/lib/api/lessons/mutations";
+} from "../api/lessons/mutations";
 import {
+  insertLessonParams,
   LessonId,
+  lessonIdSchema,
   NewLessonParams,
   UpdateLessonParams,
-  lessonIdSchema,
-  insertLessonParams,
   updateLessonParams,
-} from "@/lib/db/schema/lessons";
+} from "../db/schema/lessons";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

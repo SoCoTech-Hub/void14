@@ -1,4 +1,3 @@
-import { type getFileConversions } from "@/lib/api/fileConversions/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getFileConversions } from "../api/fileConversions/queries";
 
 export const fileConversions = pgTable("file_conversions", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

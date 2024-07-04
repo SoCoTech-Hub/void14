@@ -1,10 +1,11 @@
-import { type getRepositoryOnedriveAccesses } from "@/lib/api/repositoryOnedriveAccesses/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getRepositoryOnedriveAccesses } from "../api/repositoryOnedriveAccesses/queries";
 
 export const repositoryOnedriveAccesses = pgTable(
   "repository_onedrive_accesses",

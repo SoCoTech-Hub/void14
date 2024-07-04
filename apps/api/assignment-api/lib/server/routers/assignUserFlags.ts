@@ -1,19 +1,28 @@
-import { getAssignUserFlagById, getAssignUserFlags } from "@/lib/api/assignUserFlags/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createAssignUserFlag,
+  deleteAssignUserFlag,
+  updateAssignUserFlag,
+} from "../api/assignUserFlags/mutations";
+import {
+  getAssignUserFlagById,
+  getAssignUserFlags,
+} from "../api/assignUserFlags/queries";
 import {
   assignUserFlagIdSchema,
   insertAssignUserFlagParams,
   updateAssignUserFlagParams,
-} from "@/lib/db/schema/assignUserFlags";
-import { createAssignUserFlag, deleteAssignUserFlag, updateAssignUserFlag } from "@/lib/api/assignUserFlags/mutations";
+} from "../db/schema/assignUserFlags";
+import { publicProcedure, router } from "../server/trpc";
 
 export const assignUserFlagsRouter = router({
   getAssignUserFlags: publicProcedure.query(async () => {
     return getAssignUserFlags();
   }),
-  getAssignUserFlagById: publicProcedure.input(assignUserFlagIdSchema).query(async ({ input }) => {
-    return getAssignUserFlagById(input.id);
-  }),
+  getAssignUserFlagById: publicProcedure
+    .input(assignUserFlagIdSchema)
+    .query(async ({ input }) => {
+      return getAssignUserFlagById(input.id);
+    }),
   createAssignUserFlag: publicProcedure
     .input(insertAssignUserFlagParams)
     .mutation(async ({ input }) => {

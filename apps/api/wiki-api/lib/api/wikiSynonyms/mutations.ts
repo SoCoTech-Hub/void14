@@ -1,19 +1,23 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  WikiSynonymId, 
+
+import { db } from "../db/index";
+import {
+  insertWikiSynonymSchema,
   NewWikiSynonymParams,
-  UpdateWikiSynonymParams, 
+  UpdateWikiSynonymParams,
   updateWikiSynonymSchema,
-  insertWikiSynonymSchema, 
+  WikiSynonymId,
+  wikiSynonymIdSchema,
   wikiSynonyms,
-  wikiSynonymIdSchema 
-} from "@/lib/db/schema/wikiSynonyms";
+} from "../db/schema/wikiSynonyms";
 
 export const createWikiSynonym = async (wikiSynonym: NewWikiSynonymParams) => {
   const newWikiSynonym = insertWikiSynonymSchema.parse(wikiSynonym);
   try {
-    const [w] =  await db.insert(wikiSynonyms).values(newWikiSynonym).returning();
+    const [w] = await db
+      .insert(wikiSynonyms)
+      .values(newWikiSynonym)
+      .returning();
     return { wikiSynonym: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +26,18 @@ export const createWikiSynonym = async (wikiSynonym: NewWikiSynonymParams) => {
   }
 };
 
-export const updateWikiSynonym = async (id: WikiSynonymId, wikiSynonym: UpdateWikiSynonymParams) => {
+export const updateWikiSynonym = async (
+  id: WikiSynonymId,
+  wikiSynonym: UpdateWikiSynonymParams,
+) => {
   const { id: wikiSynonymId } = wikiSynonymIdSchema.parse({ id });
   const newWikiSynonym = updateWikiSynonymSchema.parse(wikiSynonym);
   try {
-    const [w] =  await db
-     .update(wikiSynonyms)
-     .set(newWikiSynonym)
-     .where(eq(wikiSynonyms.id, wikiSynonymId!))
-     .returning();
+    const [w] = await db
+      .update(wikiSynonyms)
+      .set(newWikiSynonym)
+      .where(eq(wikiSynonyms.id, wikiSynonymId!))
+      .returning();
     return { wikiSynonym: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +49,10 @@ export const updateWikiSynonym = async (id: WikiSynonymId, wikiSynonym: UpdateWi
 export const deleteWikiSynonym = async (id: WikiSynonymId) => {
   const { id: wikiSynonymId } = wikiSynonymIdSchema.parse({ id });
   try {
-    const [w] =  await db.delete(wikiSynonyms).where(eq(wikiSynonyms.id, wikiSynonymId!))
-    .returning();
+    const [w] = await db
+      .delete(wikiSynonyms)
+      .where(eq(wikiSynonyms.id, wikiSynonymId!))
+      .returning();
     return { wikiSynonym: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +60,3 @@ export const deleteWikiSynonym = async (id: WikiSynonymId) => {
     throw { error: message };
   }
 };
-

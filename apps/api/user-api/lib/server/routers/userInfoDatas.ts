@@ -1,19 +1,28 @@
-import { getUserInfoDataById, getUserInfoDatas } from "@/lib/api/userInfoDatas/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  userInfoDataIdSchema,
+  createUserInfoData,
+  deleteUserInfoData,
+  updateUserInfoData,
+} from "../api/userInfoDatas/mutations";
+import {
+  getUserInfoDataById,
+  getUserInfoDatas,
+} from "../api/userInfoDatas/queries";
+import {
   insertUserInfoDataParams,
   updateUserInfoDataParams,
-} from "@/lib/db/schema/userInfoDatas";
-import { createUserInfoData, deleteUserInfoData, updateUserInfoData } from "@/lib/api/userInfoDatas/mutations";
+  userInfoDataIdSchema,
+} from "../db/schema/userInfoDatas";
+import { publicProcedure, router } from "../server/trpc";
 
 export const userInfoDatasRouter = router({
   getUserInfoDatas: publicProcedure.query(async () => {
     return getUserInfoDatas();
   }),
-  getUserInfoDataById: publicProcedure.input(userInfoDataIdSchema).query(async ({ input }) => {
-    return getUserInfoDataById(input.id);
-  }),
+  getUserInfoDataById: publicProcedure
+    .input(userInfoDataIdSchema)
+    .query(async ({ input }) => {
+      return getUserInfoDataById(input.id);
+    }),
   createUserInfoData: publicProcedure
     .input(insertUserInfoDataParams)
     .mutation(async ({ input }) => {

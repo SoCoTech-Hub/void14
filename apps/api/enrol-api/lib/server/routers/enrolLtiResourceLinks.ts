@@ -1,19 +1,28 @@
-import { getEnrolLtiResourceLinkById, getEnrolLtiResourceLinks } from "@/lib/api/enrolLtiResourceLinks/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createEnrolLtiResourceLink,
+  deleteEnrolLtiResourceLink,
+  updateEnrolLtiResourceLink,
+} from "../api/enrolLtiResourceLinks/mutations";
+import {
+  getEnrolLtiResourceLinkById,
+  getEnrolLtiResourceLinks,
+} from "../api/enrolLtiResourceLinks/queries";
 import {
   enrolLtiResourceLinkIdSchema,
   insertEnrolLtiResourceLinkParams,
   updateEnrolLtiResourceLinkParams,
-} from "@/lib/db/schema/enrolLtiResourceLinks";
-import { createEnrolLtiResourceLink, deleteEnrolLtiResourceLink, updateEnrolLtiResourceLink } from "@/lib/api/enrolLtiResourceLinks/mutations";
+} from "../db/schema/enrolLtiResourceLinks";
+import { publicProcedure, router } from "../server/trpc";
 
 export const enrolLtiResourceLinksRouter = router({
   getEnrolLtiResourceLinks: publicProcedure.query(async () => {
     return getEnrolLtiResourceLinks();
   }),
-  getEnrolLtiResourceLinkById: publicProcedure.input(enrolLtiResourceLinkIdSchema).query(async ({ input }) => {
-    return getEnrolLtiResourceLinkById(input.id);
-  }),
+  getEnrolLtiResourceLinkById: publicProcedure
+    .input(enrolLtiResourceLinkIdSchema)
+    .query(async ({ input }) => {
+      return getEnrolLtiResourceLinkById(input.id);
+    }),
   createEnrolLtiResourceLink: publicProcedure
     .input(insertEnrolLtiResourceLinkParams)
     .mutation(async ({ input }) => {

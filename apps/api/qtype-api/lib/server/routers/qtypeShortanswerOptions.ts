@@ -1,19 +1,28 @@
-import { getQtypeShortanswerOptionById, getQtypeShortanswerOptions } from "@/lib/api/qtypeShortanswerOptions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  qtypeShortanswerOptionIdSchema,
+  createQtypeShortanswerOption,
+  deleteQtypeShortanswerOption,
+  updateQtypeShortanswerOption,
+} from "../api/qtypeShortanswerOptions/mutations";
+import {
+  getQtypeShortanswerOptionById,
+  getQtypeShortanswerOptions,
+} from "../api/qtypeShortanswerOptions/queries";
+import {
   insertQtypeShortanswerOptionParams,
+  qtypeShortanswerOptionIdSchema,
   updateQtypeShortanswerOptionParams,
-} from "@/lib/db/schema/qtypeShortanswerOptions";
-import { createQtypeShortanswerOption, deleteQtypeShortanswerOption, updateQtypeShortanswerOption } from "@/lib/api/qtypeShortanswerOptions/mutations";
+} from "../db/schema/qtypeShortanswerOptions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const qtypeShortanswerOptionsRouter = router({
   getQtypeShortanswerOptions: publicProcedure.query(async () => {
     return getQtypeShortanswerOptions();
   }),
-  getQtypeShortanswerOptionById: publicProcedure.input(qtypeShortanswerOptionIdSchema).query(async ({ input }) => {
-    return getQtypeShortanswerOptionById(input.id);
-  }),
+  getQtypeShortanswerOptionById: publicProcedure
+    .input(qtypeShortanswerOptionIdSchema)
+    .query(async ({ input }) => {
+      return getQtypeShortanswerOptionById(input.id);
+    }),
   createQtypeShortanswerOption: publicProcedure
     .input(insertQtypeShortanswerOptionParams)
     .mutation(async ({ input }) => {

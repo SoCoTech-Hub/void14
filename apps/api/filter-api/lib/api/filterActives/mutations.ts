@@ -1,19 +1,25 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  FilterActiveId, 
-  NewFilterActiveParams,
-  UpdateFilterActiveParams, 
-  updateFilterActiveSchema,
-  insertFilterActiveSchema, 
-  filterActives,
-  filterActiveIdSchema 
-} from "@/lib/db/schema/filterActives";
 
-export const createFilterActive = async (filterActive: NewFilterActiveParams) => {
+import { db } from "../db/index";
+import {
+  FilterActiveId,
+  filterActiveIdSchema,
+  filterActives,
+  insertFilterActiveSchema,
+  NewFilterActiveParams,
+  UpdateFilterActiveParams,
+  updateFilterActiveSchema,
+} from "../db/schema/filterActives";
+
+export const createFilterActive = async (
+  filterActive: NewFilterActiveParams,
+) => {
   const newFilterActive = insertFilterActiveSchema.parse(filterActive);
   try {
-    const [f] =  await db.insert(filterActives).values(newFilterActive).returning();
+    const [f] = await db
+      .insert(filterActives)
+      .values(newFilterActive)
+      .returning();
     return { filterActive: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +28,18 @@ export const createFilterActive = async (filterActive: NewFilterActiveParams) =>
   }
 };
 
-export const updateFilterActive = async (id: FilterActiveId, filterActive: UpdateFilterActiveParams) => {
+export const updateFilterActive = async (
+  id: FilterActiveId,
+  filterActive: UpdateFilterActiveParams,
+) => {
   const { id: filterActiveId } = filterActiveIdSchema.parse({ id });
   const newFilterActive = updateFilterActiveSchema.parse(filterActive);
   try {
-    const [f] =  await db
-     .update(filterActives)
-     .set(newFilterActive)
-     .where(eq(filterActives.id, filterActiveId!))
-     .returning();
+    const [f] = await db
+      .update(filterActives)
+      .set(newFilterActive)
+      .where(eq(filterActives.id, filterActiveId!))
+      .returning();
     return { filterActive: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +51,10 @@ export const updateFilterActive = async (id: FilterActiveId, filterActive: Updat
 export const deleteFilterActive = async (id: FilterActiveId) => {
   const { id: filterActiveId } = filterActiveIdSchema.parse({ id });
   try {
-    const [f] =  await db.delete(filterActives).where(eq(filterActives.id, filterActiveId!))
-    .returning();
+    const [f] = await db
+      .delete(filterActives)
+      .where(eq(filterActives.id, filterActiveId!))
+      .returning();
     return { filterActive: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +62,3 @@ export const deleteFilterActive = async (id: FilterActiveId) => {
     throw { error: message };
   }
 };
-

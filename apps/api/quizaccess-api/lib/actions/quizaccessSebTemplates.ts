@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createQuizaccessSebTemplate,
   deleteQuizaccessSebTemplate,
   updateQuizaccessSebTemplate,
-} from "@/lib/api/quizaccessSebTemplates/mutations";
+} from "../api/quizaccessSebTemplates/mutations";
 import {
-  QuizaccessSebTemplateId,
-  NewQuizaccessSebTemplateParams,
-  UpdateQuizaccessSebTemplateParams,
-  quizaccessSebTemplateIdSchema,
   insertQuizaccessSebTemplateParams,
+  NewQuizaccessSebTemplateParams,
+  QuizaccessSebTemplateId,
+  quizaccessSebTemplateIdSchema,
+  UpdateQuizaccessSebTemplateParams,
   updateQuizaccessSebTemplateParams,
-} from "@/lib/db/schema/quizaccessSebTemplates";
+} from "../db/schema/quizaccessSebTemplates";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateQuizaccessSebTemplates = () => revalidatePath("/quizaccess-seb-templates");
+const revalidateQuizaccessSebTemplates = () =>
+  revalidatePath("/quizaccess-seb-templates");
 
-export const createQuizaccessSebTemplateAction = async (input: NewQuizaccessSebTemplateParams) => {
+export const createQuizaccessSebTemplateAction = async (
+  input: NewQuizaccessSebTemplateParams,
+) => {
   try {
     const payload = insertQuizaccessSebTemplateParams.parse(input);
     await createQuizaccessSebTemplate(payload);
@@ -37,7 +41,9 @@ export const createQuizaccessSebTemplateAction = async (input: NewQuizaccessSebT
   }
 };
 
-export const updateQuizaccessSebTemplateAction = async (input: UpdateQuizaccessSebTemplateParams) => {
+export const updateQuizaccessSebTemplateAction = async (
+  input: UpdateQuizaccessSebTemplateParams,
+) => {
   try {
     const payload = updateQuizaccessSebTemplateParams.parse(input);
     await updateQuizaccessSebTemplate(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateQuizaccessSebTemplateAction = async (input: UpdateQuizaccessS
   }
 };
 
-export const deleteQuizaccessSebTemplateAction = async (input: QuizaccessSebTemplateId) => {
+export const deleteQuizaccessSebTemplateAction = async (
+  input: QuizaccessSebTemplateId,
+) => {
   try {
     const payload = quizaccessSebTemplateIdSchema.parse({ id: input });
     await deleteQuizaccessSebTemplate(payload.id);

@@ -1,19 +1,26 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  QtypeDdmarkerDropId, 
-  NewQtypeDdmarkerDropParams,
-  UpdateQtypeDdmarkerDropParams, 
-  updateQtypeDdmarkerDropSchema,
-  insertQtypeDdmarkerDropSchema, 
-  qtypeDdmarkerDrops,
-  qtypeDdmarkerDropIdSchema 
-} from "@/lib/db/schema/qtypeDdmarkerDrops";
 
-export const createQtypeDdmarkerDrop = async (qtypeDdmarkerDrop: NewQtypeDdmarkerDropParams) => {
-  const newQtypeDdmarkerDrop = insertQtypeDdmarkerDropSchema.parse(qtypeDdmarkerDrop);
+import { db } from "../db/index";
+import {
+  insertQtypeDdmarkerDropSchema,
+  NewQtypeDdmarkerDropParams,
+  QtypeDdmarkerDropId,
+  qtypeDdmarkerDropIdSchema,
+  qtypeDdmarkerDrops,
+  UpdateQtypeDdmarkerDropParams,
+  updateQtypeDdmarkerDropSchema,
+} from "../db/schema/qtypeDdmarkerDrops";
+
+export const createQtypeDdmarkerDrop = async (
+  qtypeDdmarkerDrop: NewQtypeDdmarkerDropParams,
+) => {
+  const newQtypeDdmarkerDrop =
+    insertQtypeDdmarkerDropSchema.parse(qtypeDdmarkerDrop);
   try {
-    const [q] =  await db.insert(qtypeDdmarkerDrops).values(newQtypeDdmarkerDrop).returning();
+    const [q] = await db
+      .insert(qtypeDdmarkerDrops)
+      .values(newQtypeDdmarkerDrop)
+      .returning();
     return { qtypeDdmarkerDrop: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,19 @@ export const createQtypeDdmarkerDrop = async (qtypeDdmarkerDrop: NewQtypeDdmarke
   }
 };
 
-export const updateQtypeDdmarkerDrop = async (id: QtypeDdmarkerDropId, qtypeDdmarkerDrop: UpdateQtypeDdmarkerDropParams) => {
+export const updateQtypeDdmarkerDrop = async (
+  id: QtypeDdmarkerDropId,
+  qtypeDdmarkerDrop: UpdateQtypeDdmarkerDropParams,
+) => {
   const { id: qtypeDdmarkerDropId } = qtypeDdmarkerDropIdSchema.parse({ id });
-  const newQtypeDdmarkerDrop = updateQtypeDdmarkerDropSchema.parse(qtypeDdmarkerDrop);
+  const newQtypeDdmarkerDrop =
+    updateQtypeDdmarkerDropSchema.parse(qtypeDdmarkerDrop);
   try {
-    const [q] =  await db
-     .update(qtypeDdmarkerDrops)
-     .set(newQtypeDdmarkerDrop)
-     .where(eq(qtypeDdmarkerDrops.id, qtypeDdmarkerDropId!))
-     .returning();
+    const [q] = await db
+      .update(qtypeDdmarkerDrops)
+      .set(newQtypeDdmarkerDrop)
+      .where(eq(qtypeDdmarkerDrops.id, qtypeDdmarkerDropId!))
+      .returning();
     return { qtypeDdmarkerDrop: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +53,10 @@ export const updateQtypeDdmarkerDrop = async (id: QtypeDdmarkerDropId, qtypeDdma
 export const deleteQtypeDdmarkerDrop = async (id: QtypeDdmarkerDropId) => {
   const { id: qtypeDdmarkerDropId } = qtypeDdmarkerDropIdSchema.parse({ id });
   try {
-    const [q] =  await db.delete(qtypeDdmarkerDrops).where(eq(qtypeDdmarkerDrops.id, qtypeDdmarkerDropId!))
-    .returning();
+    const [q] = await db
+      .delete(qtypeDdmarkerDrops)
+      .where(eq(qtypeDdmarkerDrops.id, qtypeDdmarkerDropId!))
+      .returning();
     return { qtypeDdmarkerDrop: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +64,3 @@ export const deleteQtypeDdmarkerDrop = async (id: QtypeDdmarkerDropId) => {
     throw { error: message };
   }
 };
-

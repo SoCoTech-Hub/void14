@@ -1,4 +1,3 @@
-import { type getAdminPresets } from "@/lib/api/adminPresets/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getAdminPresets } from "../api/adminPresets/queries";
 
 export const adminPresets = pgTable("admin_presets", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

@@ -1,10 +1,10 @@
-import { type getAssignSubmissionFiles } from "@/lib/api/assignSubmissionFiles/queries";
 import { integer, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getAssignSubmissionFiles } from "../api/assignSubmissionFiles/queries";
 import { assignments } from "./assignments";
 
 export const assignSubmissionFiles = pgTable(

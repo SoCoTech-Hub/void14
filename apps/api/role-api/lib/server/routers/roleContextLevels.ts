@@ -1,19 +1,28 @@
-import { getRoleContextLevelById, getRoleContextLevels } from "@/lib/api/roleContextLevels/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  roleContextLevelIdSchema,
+  createRoleContextLevel,
+  deleteRoleContextLevel,
+  updateRoleContextLevel,
+} from "../api/roleContextLevels/mutations";
+import {
+  getRoleContextLevelById,
+  getRoleContextLevels,
+} from "../api/roleContextLevels/queries";
+import {
   insertRoleContextLevelParams,
+  roleContextLevelIdSchema,
   updateRoleContextLevelParams,
-} from "@/lib/db/schema/roleContextLevels";
-import { createRoleContextLevel, deleteRoleContextLevel, updateRoleContextLevel } from "@/lib/api/roleContextLevels/mutations";
+} from "../db/schema/roleContextLevels";
+import { publicProcedure, router } from "../server/trpc";
 
 export const roleContextLevelsRouter = router({
   getRoleContextLevels: publicProcedure.query(async () => {
     return getRoleContextLevels();
   }),
-  getRoleContextLevelById: publicProcedure.input(roleContextLevelIdSchema).query(async ({ input }) => {
-    return getRoleContextLevelById(input.id);
-  }),
+  getRoleContextLevelById: publicProcedure
+    .input(roleContextLevelIdSchema)
+    .query(async ({ input }) => {
+      return getRoleContextLevelById(input.id);
+    }),
   createRoleContextLevel: publicProcedure
     .input(insertRoleContextLevelParams)
     .mutation(async ({ input }) => {

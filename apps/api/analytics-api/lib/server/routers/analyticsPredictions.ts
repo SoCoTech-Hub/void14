@@ -1,19 +1,28 @@
-import { getAnalyticsPredictionById, getAnalyticsPredictions } from "@/lib/api/analyticsPredictions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createAnalyticsPrediction,
+  deleteAnalyticsPrediction,
+  updateAnalyticsPrediction,
+} from "../api/analyticsPredictions/mutations";
+import {
+  getAnalyticsPredictionById,
+  getAnalyticsPredictions,
+} from "../api/analyticsPredictions/queries";
 import {
   analyticsPredictionIdSchema,
   insertAnalyticsPredictionParams,
   updateAnalyticsPredictionParams,
-} from "@/lib/db/schema/analyticsPredictions";
-import { createAnalyticsPrediction, deleteAnalyticsPrediction, updateAnalyticsPrediction } from "@/lib/api/analyticsPredictions/mutations";
+} from "../db/schema/analyticsPredictions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const analyticsPredictionsRouter = router({
   getAnalyticsPredictions: publicProcedure.query(async () => {
     return getAnalyticsPredictions();
   }),
-  getAnalyticsPredictionById: publicProcedure.input(analyticsPredictionIdSchema).query(async ({ input }) => {
-    return getAnalyticsPredictionById(input.id);
-  }),
+  getAnalyticsPredictionById: publicProcedure
+    .input(analyticsPredictionIdSchema)
+    .query(async ({ input }) => {
+      return getAnalyticsPredictionById(input.id);
+    }),
   createAnalyticsPrediction: publicProcedure
     .input(insertAnalyticsPredictionParams)
     .mutation(async ({ input }) => {

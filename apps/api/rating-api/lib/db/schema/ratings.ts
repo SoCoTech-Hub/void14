@@ -1,4 +1,3 @@
-import { type getRatings } from "@/lib/api/ratings/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getRatings } from "../api/ratings/queries";
 
 export const ratings = pgTable(
   "ratings",

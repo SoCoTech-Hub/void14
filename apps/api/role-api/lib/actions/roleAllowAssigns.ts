@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createRoleAllowAssign,
   deleteRoleAllowAssign,
   updateRoleAllowAssign,
-} from "@/lib/api/roleAllowAssigns/mutations";
+} from "../api/roleAllowAssigns/mutations";
 import {
-  RoleAllowAssignId,
-  NewRoleAllowAssignParams,
-  UpdateRoleAllowAssignParams,
-  roleAllowAssignIdSchema,
   insertRoleAllowAssignParams,
+  NewRoleAllowAssignParams,
+  RoleAllowAssignId,
+  roleAllowAssignIdSchema,
+  UpdateRoleAllowAssignParams,
   updateRoleAllowAssignParams,
-} from "@/lib/db/schema/roleAllowAssigns";
+} from "../db/schema/roleAllowAssigns";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateRoleAllowAssigns = () => revalidatePath("/role-allow-assigns");
 
-export const createRoleAllowAssignAction = async (input: NewRoleAllowAssignParams) => {
+export const createRoleAllowAssignAction = async (
+  input: NewRoleAllowAssignParams,
+) => {
   try {
     const payload = insertRoleAllowAssignParams.parse(input);
     await createRoleAllowAssign(payload);
@@ -37,7 +40,9 @@ export const createRoleAllowAssignAction = async (input: NewRoleAllowAssignParam
   }
 };
 
-export const updateRoleAllowAssignAction = async (input: UpdateRoleAllowAssignParams) => {
+export const updateRoleAllowAssignAction = async (
+  input: UpdateRoleAllowAssignParams,
+) => {
   try {
     const payload = updateRoleAllowAssignParams.parse(input);
     await updateRoleAllowAssign(payload.id, payload);

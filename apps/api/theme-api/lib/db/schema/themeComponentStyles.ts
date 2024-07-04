@@ -1,4 +1,3 @@
-import { type getThemeComponentStyles } from "@/lib/api/themeComponentStyles/queries";
 import { sql } from "drizzle-orm";
 import {
   pgTable,
@@ -12,6 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getThemeComponentStyles } from "../api/themeComponentStyles/queries";
 import { themeComponents } from "./themeComponents";
 import { themes } from "./themes";
 

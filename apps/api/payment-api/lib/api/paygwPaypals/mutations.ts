@@ -1,19 +1,23 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  PaygwPaypalId, 
+
+import { db } from "../db/index";
+import {
+  insertPaygwPaypalSchema,
   NewPaygwPaypalParams,
-  UpdatePaygwPaypalParams, 
-  updatePaygwPaypalSchema,
-  insertPaygwPaypalSchema, 
+  PaygwPaypalId,
+  paygwPaypalIdSchema,
   paygwPaypals,
-  paygwPaypalIdSchema 
-} from "@/lib/db/schema/paygwPaypals";
+  UpdatePaygwPaypalParams,
+  updatePaygwPaypalSchema,
+} from "../db/schema/paygwPaypals";
 
 export const createPaygwPaypal = async (paygwPaypal: NewPaygwPaypalParams) => {
   const newPaygwPaypal = insertPaygwPaypalSchema.parse(paygwPaypal);
   try {
-    const [p] =  await db.insert(paygwPaypals).values(newPaygwPaypal).returning();
+    const [p] = await db
+      .insert(paygwPaypals)
+      .values(newPaygwPaypal)
+      .returning();
     return { paygwPaypal: p };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +26,18 @@ export const createPaygwPaypal = async (paygwPaypal: NewPaygwPaypalParams) => {
   }
 };
 
-export const updatePaygwPaypal = async (id: PaygwPaypalId, paygwPaypal: UpdatePaygwPaypalParams) => {
+export const updatePaygwPaypal = async (
+  id: PaygwPaypalId,
+  paygwPaypal: UpdatePaygwPaypalParams,
+) => {
   const { id: paygwPaypalId } = paygwPaypalIdSchema.parse({ id });
   const newPaygwPaypal = updatePaygwPaypalSchema.parse(paygwPaypal);
   try {
-    const [p] =  await db
-     .update(paygwPaypals)
-     .set(newPaygwPaypal)
-     .where(eq(paygwPaypals.id, paygwPaypalId!))
-     .returning();
+    const [p] = await db
+      .update(paygwPaypals)
+      .set(newPaygwPaypal)
+      .where(eq(paygwPaypals.id, paygwPaypalId!))
+      .returning();
     return { paygwPaypal: p };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +49,10 @@ export const updatePaygwPaypal = async (id: PaygwPaypalId, paygwPaypal: UpdatePa
 export const deletePaygwPaypal = async (id: PaygwPaypalId) => {
   const { id: paygwPaypalId } = paygwPaypalIdSchema.parse({ id });
   try {
-    const [p] =  await db.delete(paygwPaypals).where(eq(paygwPaypals.id, paygwPaypalId!))
-    .returning();
+    const [p] = await db
+      .delete(paygwPaypals)
+      .where(eq(paygwPaypals.id, paygwPaypalId!))
+      .returning();
     return { paygwPaypal: p };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +60,3 @@ export const deletePaygwPaypal = async (id: PaygwPaypalId) => {
     throw { error: message };
   }
 };
-

@@ -1,19 +1,28 @@
-import { getEnrolFlatfileById, getEnrolFlatfiles } from "@/lib/api/enrolFlatfiles/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createEnrolFlatfile,
+  deleteEnrolFlatfile,
+  updateEnrolFlatfile,
+} from "../api/enrolFlatfiles/mutations";
+import {
+  getEnrolFlatfileById,
+  getEnrolFlatfiles,
+} from "../api/enrolFlatfiles/queries";
 import {
   enrolFlatfileIdSchema,
   insertEnrolFlatfileParams,
   updateEnrolFlatfileParams,
-} from "@/lib/db/schema/enrolFlatfiles";
-import { createEnrolFlatfile, deleteEnrolFlatfile, updateEnrolFlatfile } from "@/lib/api/enrolFlatfiles/mutations";
+} from "../db/schema/enrolFlatfiles";
+import { publicProcedure, router } from "../server/trpc";
 
 export const enrolFlatfilesRouter = router({
   getEnrolFlatfiles: publicProcedure.query(async () => {
     return getEnrolFlatfiles();
   }),
-  getEnrolFlatfileById: publicProcedure.input(enrolFlatfileIdSchema).query(async ({ input }) => {
-    return getEnrolFlatfileById(input.id);
-  }),
+  getEnrolFlatfileById: publicProcedure
+    .input(enrolFlatfileIdSchema)
+    .query(async ({ input }) => {
+      return getEnrolFlatfileById(input.id);
+    }),
   createEnrolFlatfile: publicProcedure
     .input(insertEnrolFlatfileParams)
     .mutation(async ({ input }) => {

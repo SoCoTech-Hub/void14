@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCourseSection,
   deleteCourseSection,
   updateCourseSection,
-} from "@/lib/api/courseSections/mutations";
+} from "../api/courseSections/mutations";
 import {
   CourseSectionId,
-  NewCourseSectionParams,
-  UpdateCourseSectionParams,
   courseSectionIdSchema,
   insertCourseSectionParams,
+  NewCourseSectionParams,
+  UpdateCourseSectionParams,
   updateCourseSectionParams,
-} from "@/lib/db/schema/courseSections";
+} from "../db/schema/courseSections";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateCourseSections = () => revalidatePath("/course-sections");
 
-export const createCourseSectionAction = async (input: NewCourseSectionParams) => {
+export const createCourseSectionAction = async (
+  input: NewCourseSectionParams,
+) => {
   try {
     const payload = insertCourseSectionParams.parse(input);
     await createCourseSection(payload);
@@ -37,7 +40,9 @@ export const createCourseSectionAction = async (input: NewCourseSectionParams) =
   }
 };
 
-export const updateCourseSectionAction = async (input: UpdateCourseSectionParams) => {
+export const updateCourseSectionAction = async (
+  input: UpdateCourseSectionParams,
+) => {
   try {
     const payload = updateCourseSectionParams.parse(input);
     await updateCourseSection(payload.id, payload);

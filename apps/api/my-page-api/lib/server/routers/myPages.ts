@@ -1,19 +1,25 @@
-import { getMyPageById, getMyPages } from "@/lib/api/myPages/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  myPageIdSchema,
+  createMyPage,
+  deleteMyPage,
+  updateMyPage,
+} from "../api/myPages/mutations";
+import { getMyPageById, getMyPages } from "../api/myPages/queries";
+import {
   insertMyPageParams,
+  myPageIdSchema,
   updateMyPageParams,
-} from "@/lib/db/schema/myPages";
-import { createMyPage, deleteMyPage, updateMyPage } from "@/lib/api/myPages/mutations";
+} from "../db/schema/myPages";
+import { publicProcedure, router } from "../server/trpc";
 
 export const myPagesRouter = router({
   getMyPages: publicProcedure.query(async () => {
     return getMyPages();
   }),
-  getMyPageById: publicProcedure.input(myPageIdSchema).query(async ({ input }) => {
-    return getMyPageById(input.id);
-  }),
+  getMyPageById: publicProcedure
+    .input(myPageIdSchema)
+    .query(async ({ input }) => {
+      return getMyPageById(input.id);
+    }),
   createMyPage: publicProcedure
     .input(insertMyPageParams)
     .mutation(async ({ input }) => {

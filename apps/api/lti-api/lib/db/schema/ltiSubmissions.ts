@@ -1,4 +1,3 @@
-import { type getLtiSubmissions } from "@/lib/api/ltiSubmissions/queries";
 import {
   integer,
   pgTable,
@@ -10,6 +9,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getLtiSubmissions } from "../api/ltiSubmissions/queries";
 
 export const ltiSubmissions = pgTable("lti_submissions", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createWikiLink,
   deleteWikiLink,
   updateWikiLink,
-} from "@/lib/api/wikiLinks/mutations";
+} from "../api/wikiLinks/mutations";
 import {
-  WikiLinkId,
+  insertWikiLinkParams,
   NewWikiLinkParams,
   UpdateWikiLinkParams,
-  wikiLinkIdSchema,
-  insertWikiLinkParams,
   updateWikiLinkParams,
-} from "@/lib/db/schema/wikiLinks";
+  WikiLinkId,
+  wikiLinkIdSchema,
+} from "../db/schema/wikiLinks";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

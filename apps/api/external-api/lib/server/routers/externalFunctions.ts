@@ -1,19 +1,28 @@
-import { getExternalFunctionById, getExternalFunctions } from "@/lib/api/externalFunctions/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import {
+  createExternalFunction,
+  deleteExternalFunction,
+  updateExternalFunction,
+} from "../api/externalFunctions/mutations";
+import {
+  getExternalFunctionById,
+  getExternalFunctions,
+} from "../api/externalFunctions/queries";
 import {
   externalFunctionIdSchema,
   insertExternalFunctionParams,
   updateExternalFunctionParams,
-} from "@/lib/db/schema/externalFunctions";
-import { createExternalFunction, deleteExternalFunction, updateExternalFunction } from "@/lib/api/externalFunctions/mutations";
+} from "../db/schema/externalFunctions";
+import { publicProcedure, router } from "../server/trpc";
 
 export const externalFunctionsRouter = router({
   getExternalFunctions: publicProcedure.query(async () => {
     return getExternalFunctions();
   }),
-  getExternalFunctionById: publicProcedure.input(externalFunctionIdSchema).query(async ({ input }) => {
-    return getExternalFunctionById(input.id);
-  }),
+  getExternalFunctionById: publicProcedure
+    .input(externalFunctionIdSchema)
+    .query(async ({ input }) => {
+      return getExternalFunctionById(input.id);
+    }),
   createExternalFunction: publicProcedure
     .input(insertExternalFunctionParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,21 @@
-import { getEnrolById, getEnrols } from "@/lib/api/enrols/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import { createEnrol, deleteEnrol, updateEnrol } from "../api/enrols/mutations";
+import { getEnrolById, getEnrols } from "../api/enrols/queries";
 import {
   enrolIdSchema,
   insertEnrolParams,
   updateEnrolParams,
-} from "@/lib/db/schema/enrols";
-import { createEnrol, deleteEnrol, updateEnrol } from "@/lib/api/enrols/mutations";
+} from "../db/schema/enrols";
+import { publicProcedure, router } from "../server/trpc";
 
 export const enrolsRouter = router({
   getEnrols: publicProcedure.query(async () => {
     return getEnrols();
   }),
-  getEnrolById: publicProcedure.input(enrolIdSchema).query(async ({ input }) => {
-    return getEnrolById(input.id);
-  }),
+  getEnrolById: publicProcedure
+    .input(enrolIdSchema)
+    .query(async ({ input }) => {
+      return getEnrolById(input.id);
+    }),
   createEnrol: publicProcedure
     .input(insertEnrolParams)
     .mutation(async ({ input }) => {

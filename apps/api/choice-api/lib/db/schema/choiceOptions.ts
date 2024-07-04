@@ -1,4 +1,3 @@
-import { type getChoiceOptions } from "@/lib/api/choiceOptions/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -12,6 +11,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getChoiceOptions } from "../api/choiceOptions/queries";
 import { choices } from "./choices";
 
 export const choiceOptions = pgTable("choice_options", {

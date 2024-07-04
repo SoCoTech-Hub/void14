@@ -1,19 +1,28 @@
-import { getProvinceOrganizationById, getProvinceOrganizations } from "@/lib/api/provinceOrganizations/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  provinceOrganizationIdSchema,
+  createProvinceOrganization,
+  deleteProvinceOrganization,
+  updateProvinceOrganization,
+} from "../api/provinceOrganizations/mutations";
+import {
+  getProvinceOrganizationById,
+  getProvinceOrganizations,
+} from "../api/provinceOrganizations/queries";
+import {
   insertProvinceOrganizationParams,
+  provinceOrganizationIdSchema,
   updateProvinceOrganizationParams,
-} from "@/lib/db/schema/provinceOrganizations";
-import { createProvinceOrganization, deleteProvinceOrganization, updateProvinceOrganization } from "@/lib/api/provinceOrganizations/mutations";
+} from "../db/schema/provinceOrganizations";
+import { publicProcedure, router } from "../server/trpc";
 
 export const provinceOrganizationsRouter = router({
   getProvinceOrganizations: publicProcedure.query(async () => {
     return getProvinceOrganizations();
   }),
-  getProvinceOrganizationById: publicProcedure.input(provinceOrganizationIdSchema).query(async ({ input }) => {
-    return getProvinceOrganizationById(input.id);
-  }),
+  getProvinceOrganizationById: publicProcedure
+    .input(provinceOrganizationIdSchema)
+    .query(async ({ input }) => {
+      return getProvinceOrganizationById(input.id);
+    }),
   createProvinceOrganization: publicProcedure
     .input(insertProvinceOrganizationParams)
     .mutation(async ({ input }) => {

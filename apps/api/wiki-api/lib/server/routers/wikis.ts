@@ -1,11 +1,11 @@
-import { getWikiById, getWikis } from "@/lib/api/wikis/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
+import { createWiki, deleteWiki, updateWiki } from "../api/wikis/mutations";
+import { getWikiById, getWikis } from "../api/wikis/queries";
 import {
-  wikiIdSchema,
   insertWikiParams,
   updateWikiParams,
-} from "@/lib/db/schema/wikis";
-import { createWiki, deleteWiki, updateWiki } from "@/lib/api/wikis/mutations";
+  wikiIdSchema,
+} from "../db/schema/wikis";
+import { publicProcedure, router } from "../server/trpc";
 
 export const wikisRouter = router({
   getWikis: publicProcedure.query(async () => {

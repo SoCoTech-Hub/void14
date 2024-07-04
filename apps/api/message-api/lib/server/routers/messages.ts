@@ -1,19 +1,25 @@
-import { getMessageById, getMessages } from "@/lib/api/messages/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  messageIdSchema,
+  createMessage,
+  deleteMessage,
+  updateMessage,
+} from "../api/messages/mutations";
+import { getMessageById, getMessages } from "../api/messages/queries";
+import {
   insertMessageParams,
+  messageIdSchema,
   updateMessageParams,
-} from "@/lib/db/schema/messages";
-import { createMessage, deleteMessage, updateMessage } from "@/lib/api/messages/mutations";
+} from "../db/schema/messages";
+import { publicProcedure, router } from "../server/trpc";
 
 export const messagesRouter = router({
   getMessages: publicProcedure.query(async () => {
     return getMessages();
   }),
-  getMessageById: publicProcedure.input(messageIdSchema).query(async ({ input }) => {
-    return getMessageById(input.id);
-  }),
+  getMessageById: publicProcedure
+    .input(messageIdSchema)
+    .query(async ({ input }) => {
+      return getMessageById(input.id);
+    }),
   createMessage: publicProcedure
     .input(insertMessageParams)
     .mutation(async ({ input }) => {

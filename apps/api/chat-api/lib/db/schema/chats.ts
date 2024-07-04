@@ -1,4 +1,3 @@
-import { type getChats } from "@/lib/api/chats/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -12,6 +11,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getChats } from "../api/chats/queries";
 
 export const chats = pgTable(
   "chats",

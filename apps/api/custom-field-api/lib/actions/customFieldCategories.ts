@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCustomFieldCategory,
   deleteCustomFieldCategory,
   updateCustomFieldCategory,
-} from "@/lib/api/customFieldCategories/mutations";
+} from "../api/customFieldCategories/mutations";
 import {
   CustomFieldCategoryId,
-  NewCustomFieldCategoryParams,
-  UpdateCustomFieldCategoryParams,
   customFieldCategoryIdSchema,
   insertCustomFieldCategoryParams,
+  NewCustomFieldCategoryParams,
+  UpdateCustomFieldCategoryParams,
   updateCustomFieldCategoryParams,
-} from "@/lib/db/schema/customFieldCategories";
+} from "../db/schema/customFieldCategories";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateCustomFieldCategories = () => revalidatePath("/custom-field-categories");
+const revalidateCustomFieldCategories = () =>
+  revalidatePath("/custom-field-categories");
 
-export const createCustomFieldCategoryAction = async (input: NewCustomFieldCategoryParams) => {
+export const createCustomFieldCategoryAction = async (
+  input: NewCustomFieldCategoryParams,
+) => {
   try {
     const payload = insertCustomFieldCategoryParams.parse(input);
     await createCustomFieldCategory(payload);
@@ -37,7 +41,9 @@ export const createCustomFieldCategoryAction = async (input: NewCustomFieldCateg
   }
 };
 
-export const updateCustomFieldCategoryAction = async (input: UpdateCustomFieldCategoryParams) => {
+export const updateCustomFieldCategoryAction = async (
+  input: UpdateCustomFieldCategoryParams,
+) => {
   try {
     const payload = updateCustomFieldCategoryParams.parse(input);
     await updateCustomFieldCategory(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateCustomFieldCategoryAction = async (input: UpdateCustomFieldCa
   }
 };
 
-export const deleteCustomFieldCategoryAction = async (input: CustomFieldCategoryId) => {
+export const deleteCustomFieldCategoryAction = async (
+  input: CustomFieldCategoryId,
+) => {
   try {
     const payload = customFieldCategoryIdSchema.parse({ id: input });
     await deleteCustomFieldCategory(payload.id);

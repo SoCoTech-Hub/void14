@@ -1,10 +1,10 @@
-import { type getBursaryCategoriesBursaries } from "@/lib/api/bursaryCategoriesBursaries/queries";
 import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
+import { type getBursaryCategoriesBursaries } from "../api/bursaryCategoriesBursaries/queries";
 import { bursaries } from "./bursaries";
 import { bursaryCategories } from "./bursaryCategories";
 

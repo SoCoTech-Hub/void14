@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createUserInfoData,
   deleteUserInfoData,
   updateUserInfoData,
-} from "@/lib/api/userInfoDatas/mutations";
+} from "../api/userInfoDatas/mutations";
 import {
-  UserInfoDataId,
+  insertUserInfoDataParams,
   NewUserInfoDataParams,
   UpdateUserInfoDataParams,
-  userInfoDataIdSchema,
-  insertUserInfoDataParams,
   updateUserInfoDataParams,
-} from "@/lib/db/schema/userInfoDatas";
+  UserInfoDataId,
+  userInfoDataIdSchema,
+} from "../db/schema/userInfoDatas";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateUserInfoDatas = () => revalidatePath("/user-info-datas");
 
-export const createUserInfoDataAction = async (input: NewUserInfoDataParams) => {
+export const createUserInfoDataAction = async (
+  input: NewUserInfoDataParams,
+) => {
   try {
     const payload = insertUserInfoDataParams.parse(input);
     await createUserInfoData(payload);
@@ -37,7 +40,9 @@ export const createUserInfoDataAction = async (input: NewUserInfoDataParams) => 
   }
 };
 
-export const updateUserInfoDataAction = async (input: UpdateUserInfoDataParams) => {
+export const updateUserInfoDataAction = async (
+  input: UpdateUserInfoDataParams,
+) => {
   try {
     const payload = updateUserInfoDataParams.parse(input);
     await updateUserInfoData(payload.id, payload);

@@ -1,19 +1,26 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  ProvinceOrganizationId, 
+
+import { db } from "../db/index";
+import {
+  insertProvinceOrganizationSchema,
   NewProvinceOrganizationParams,
-  UpdateProvinceOrganizationParams, 
-  updateProvinceOrganizationSchema,
-  insertProvinceOrganizationSchema, 
+  ProvinceOrganizationId,
+  provinceOrganizationIdSchema,
   provinceOrganizations,
-  provinceOrganizationIdSchema 
-} from "@/lib/db/schema/provinceOrganizations";
+  UpdateProvinceOrganizationParams,
+  updateProvinceOrganizationSchema,
+} from "../db/schema/provinceOrganizations";
 
-export const createProvinceOrganization = async (provinceOrganization: NewProvinceOrganizationParams) => {
-  const newProvinceOrganization = insertProvinceOrganizationSchema.parse(provinceOrganization);
+export const createProvinceOrganization = async (
+  provinceOrganization: NewProvinceOrganizationParams,
+) => {
+  const newProvinceOrganization =
+    insertProvinceOrganizationSchema.parse(provinceOrganization);
   try {
-    const [p] =  await db.insert(provinceOrganizations).values(newProvinceOrganization).returning();
+    const [p] = await db
+      .insert(provinceOrganizations)
+      .values(newProvinceOrganization)
+      .returning();
     return { provinceOrganization: p };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,21 @@ export const createProvinceOrganization = async (provinceOrganization: NewProvin
   }
 };
 
-export const updateProvinceOrganization = async (id: ProvinceOrganizationId, provinceOrganization: UpdateProvinceOrganizationParams) => {
-  const { id: provinceOrganizationId } = provinceOrganizationIdSchema.parse({ id });
-  const newProvinceOrganization = updateProvinceOrganizationSchema.parse(provinceOrganization);
+export const updateProvinceOrganization = async (
+  id: ProvinceOrganizationId,
+  provinceOrganization: UpdateProvinceOrganizationParams,
+) => {
+  const { id: provinceOrganizationId } = provinceOrganizationIdSchema.parse({
+    id,
+  });
+  const newProvinceOrganization =
+    updateProvinceOrganizationSchema.parse(provinceOrganization);
   try {
-    const [p] =  await db
-     .update(provinceOrganizations)
-     .set(newProvinceOrganization)
-     .where(eq(provinceOrganizations.id, provinceOrganizationId!))
-     .returning();
+    const [p] = await db
+      .update(provinceOrganizations)
+      .set(newProvinceOrganization)
+      .where(eq(provinceOrganizations.id, provinceOrganizationId!))
+      .returning();
     return { provinceOrganization: p };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +52,17 @@ export const updateProvinceOrganization = async (id: ProvinceOrganizationId, pro
   }
 };
 
-export const deleteProvinceOrganization = async (id: ProvinceOrganizationId) => {
-  const { id: provinceOrganizationId } = provinceOrganizationIdSchema.parse({ id });
+export const deleteProvinceOrganization = async (
+  id: ProvinceOrganizationId,
+) => {
+  const { id: provinceOrganizationId } = provinceOrganizationIdSchema.parse({
+    id,
+  });
   try {
-    const [p] =  await db.delete(provinceOrganizations).where(eq(provinceOrganizations.id, provinceOrganizationId!))
-    .returning();
+    const [p] = await db
+      .delete(provinceOrganizations)
+      .where(eq(provinceOrganizations.id, provinceOrganizationId!))
+      .returning();
     return { provinceOrganization: p };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +70,3 @@ export const deleteProvinceOrganization = async (id: ProvinceOrganizationId) => 
     throw { error: message };
   }
 };
-

@@ -1,9 +1,10 @@
-import { type getGlossaryAliases } from "@/lib/api/glossaryAliases/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getGlossaryAliases } from "../api/glossaryAliases/queries";
 
 export const glossaryAliases = pgTable("glossary_aliases", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),

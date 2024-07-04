@@ -1,10 +1,12 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { type PageId, pageIdSchema, pages } from "@/lib/db/schema/pages";
+
+import type { PageId } from "../db/schema/pages";
+import { db } from "../db/index";
+import { pageIdSchema, pages } from "../db/schema/pages";
 
 export const getPages = async () => {
   const rows = await db.select().from(pages);
-  const p = rows
+  const p = rows;
   return { pages: p };
 };
 
@@ -15,5 +17,3 @@ export const getPageById = async (id: PageId) => {
   const p = row;
   return { page: p };
 };
-
-

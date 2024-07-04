@@ -1,9 +1,10 @@
-import { type getEnrolLtiToolConsumerMaps } from "@/lib/api/enrolLtiToolConsumerMaps/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
+
+import { type getEnrolLtiToolConsumerMaps } from "../api/enrolLtiToolConsumerMaps/queries";
 
 export const enrolLtiToolConsumerMaps = pgTable(
   "enrol_lti_tool_consumer_maps",

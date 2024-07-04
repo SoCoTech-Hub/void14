@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createGradeLetter,
   deleteGradeLetter,
   updateGradeLetter,
-} from "@/lib/api/gradeLetters/mutations";
+} from "../api/gradeLetters/mutations";
 import {
   GradeLetterId,
-  NewGradeLetterParams,
-  UpdateGradeLetterParams,
   gradeLetterIdSchema,
   insertGradeLetterParams,
+  NewGradeLetterParams,
+  UpdateGradeLetterParams,
   updateGradeLetterParams,
-} from "@/lib/db/schema/gradeLetters";
+} from "../db/schema/gradeLetters";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createGradeLetterAction = async (input: NewGradeLetterParams) => {
   }
 };
 
-export const updateGradeLetterAction = async (input: UpdateGradeLetterParams) => {
+export const updateGradeLetterAction = async (
+  input: UpdateGradeLetterParams,
+) => {
   try {
     const payload = updateGradeLetterParams.parse(input);
     await updateGradeLetter(payload.id, payload);

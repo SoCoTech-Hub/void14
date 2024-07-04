@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createBlogAssociation,
   deleteBlogAssociation,
   updateBlogAssociation,
-} from "@/lib/api/blogAssociations/mutations";
+} from "../api/blogAssociations/mutations";
 import {
   BlogAssociationId,
-  NewBlogAssociationParams,
-  UpdateBlogAssociationParams,
   blogAssociationIdSchema,
   insertBlogAssociationParams,
+  NewBlogAssociationParams,
+  UpdateBlogAssociationParams,
   updateBlogAssociationParams,
-} from "@/lib/db/schema/blogAssociations";
+} from "../db/schema/blogAssociations";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateBlogAssociations = () => revalidatePath("/blog-associations");
 
-export const createBlogAssociationAction = async (input: NewBlogAssociationParams) => {
+export const createBlogAssociationAction = async (
+  input: NewBlogAssociationParams,
+) => {
   try {
     const payload = insertBlogAssociationParams.parse(input);
     await createBlogAssociation(payload);
@@ -37,7 +40,9 @@ export const createBlogAssociationAction = async (input: NewBlogAssociationParam
   }
 };
 
-export const updateBlogAssociationAction = async (input: UpdateBlogAssociationParams) => {
+export const updateBlogAssociationAction = async (
+  input: UpdateBlogAssociationParams,
+) => {
   try {
     const payload = updateBlogAssociationParams.parse(input);
     await updateBlogAssociation(payload.id, payload);

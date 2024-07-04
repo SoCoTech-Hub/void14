@@ -1,19 +1,16 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
+import { createZoom, deleteZoom, updateZoom } from "../api/zooms/mutations";
 import {
-  createZoom,
-  deleteZoom,
-  updateZoom,
-} from "@/lib/api/zooms/mutations";
-import {
-  ZoomId,
+  insertZoomParams,
   NewZoomParams,
   UpdateZoomParams,
-  zoomIdSchema,
-  insertZoomParams,
   updateZoomParams,
-} from "@/lib/db/schema/zooms";
+  ZoomId,
+  zoomIdSchema,
+} from "../db/schema/zooms";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";

@@ -1,4 +1,3 @@
-import { type getCompetencyUserEvidenceComps } from "@/lib/api/competencyUserEvidenceComps/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -6,6 +5,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
+import { type getCompetencyUserEvidenceComps } from "../api/competencyUserEvidenceComps/queries";
 import { competencies } from "./competencies";
 import { competencyUserEvidences } from "./competencyUserEvidences";
 

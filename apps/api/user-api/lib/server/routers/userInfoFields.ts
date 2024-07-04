@@ -1,19 +1,28 @@
-import { getUserInfoFieldById, getUserInfoFields } from "@/lib/api/userInfoFields/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  userInfoFieldIdSchema,
+  createUserInfoField,
+  deleteUserInfoField,
+  updateUserInfoField,
+} from "../api/userInfoFields/mutations";
+import {
+  getUserInfoFieldById,
+  getUserInfoFields,
+} from "../api/userInfoFields/queries";
+import {
   insertUserInfoFieldParams,
   updateUserInfoFieldParams,
-} from "@/lib/db/schema/userInfoFields";
-import { createUserInfoField, deleteUserInfoField, updateUserInfoField } from "@/lib/api/userInfoFields/mutations";
+  userInfoFieldIdSchema,
+} from "../db/schema/userInfoFields";
+import { publicProcedure, router } from "../server/trpc";
 
 export const userInfoFieldsRouter = router({
   getUserInfoFields: publicProcedure.query(async () => {
     return getUserInfoFields();
   }),
-  getUserInfoFieldById: publicProcedure.input(userInfoFieldIdSchema).query(async ({ input }) => {
-    return getUserInfoFieldById(input.id);
-  }),
+  getUserInfoFieldById: publicProcedure
+    .input(userInfoFieldIdSchema)
+    .query(async ({ input }) => {
+      return getUserInfoFieldById(input.id);
+    }),
   createUserInfoField: publicProcedure
     .input(insertUserInfoFieldParams)
     .mutation(async ({ input }) => {

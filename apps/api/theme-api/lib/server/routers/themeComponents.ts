@@ -1,19 +1,28 @@
-import { getThemeComponentById, getThemeComponents } from "@/lib/api/themeComponents/queries";
-import { publicProcedure, router } from "@/lib/server/trpc";
 import {
-  themeComponentIdSchema,
+  createThemeComponent,
+  deleteThemeComponent,
+  updateThemeComponent,
+} from "../api/themeComponents/mutations";
+import {
+  getThemeComponentById,
+  getThemeComponents,
+} from "../api/themeComponents/queries";
+import {
   insertThemeComponentParams,
+  themeComponentIdSchema,
   updateThemeComponentParams,
-} from "@/lib/db/schema/themeComponents";
-import { createThemeComponent, deleteThemeComponent, updateThemeComponent } from "@/lib/api/themeComponents/mutations";
+} from "../db/schema/themeComponents";
+import { publicProcedure, router } from "../server/trpc";
 
 export const themeComponentsRouter = router({
   getThemeComponents: publicProcedure.query(async () => {
     return getThemeComponents();
   }),
-  getThemeComponentById: publicProcedure.input(themeComponentIdSchema).query(async ({ input }) => {
-    return getThemeComponentById(input.id);
-  }),
+  getThemeComponentById: publicProcedure
+    .input(themeComponentIdSchema)
+    .query(async ({ input }) => {
+      return getThemeComponentById(input.id);
+    }),
   createThemeComponent: publicProcedure
     .input(insertThemeComponentParams)
     .mutation(async ({ input }) => {

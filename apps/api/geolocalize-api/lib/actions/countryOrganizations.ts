@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createCountryOrganization,
   deleteCountryOrganization,
   updateCountryOrganization,
-} from "@/lib/api/countryOrganizations/mutations";
+} from "../api/countryOrganizations/mutations";
 import {
   CountryOrganizationId,
-  NewCountryOrganizationParams,
-  UpdateCountryOrganizationParams,
   countryOrganizationIdSchema,
   insertCountryOrganizationParams,
+  NewCountryOrganizationParams,
+  UpdateCountryOrganizationParams,
   updateCountryOrganizationParams,
-} from "@/lib/db/schema/countryOrganizations";
+} from "../db/schema/countryOrganizations";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateCountryOrganizations = () => revalidatePath("/country-organizations");
+const revalidateCountryOrganizations = () =>
+  revalidatePath("/country-organizations");
 
-export const createCountryOrganizationAction = async (input: NewCountryOrganizationParams) => {
+export const createCountryOrganizationAction = async (
+  input: NewCountryOrganizationParams,
+) => {
   try {
     const payload = insertCountryOrganizationParams.parse(input);
     await createCountryOrganization(payload);
@@ -37,7 +41,9 @@ export const createCountryOrganizationAction = async (input: NewCountryOrganizat
   }
 };
 
-export const updateCountryOrganizationAction = async (input: UpdateCountryOrganizationParams) => {
+export const updateCountryOrganizationAction = async (
+  input: UpdateCountryOrganizationParams,
+) => {
   try {
     const payload = updateCountryOrganizationParams.parse(input);
     await updateCountryOrganization(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateCountryOrganizationAction = async (input: UpdateCountryOrgani
   }
 };
 
-export const deleteCountryOrganizationAction = async (input: CountryOrganizationId) => {
+export const deleteCountryOrganizationAction = async (
+  input: CountryOrganizationId,
+) => {
   try {
     const payload = countryOrganizationIdSchema.parse({ id: input });
     await deleteCountryOrganization(payload.id);

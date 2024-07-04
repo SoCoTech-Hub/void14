@@ -1,4 +1,3 @@
-import { type getGroupings } from "@/lib/api/groupings/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -11,6 +10,8 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
+
+import { type getGroupings } from "../api/groupings/queries";
 
 export const groupings = pgTable("groupings", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
