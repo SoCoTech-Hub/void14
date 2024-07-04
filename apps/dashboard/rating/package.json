@@ -54,7 +54,7 @@
     "@types/react-dom": "^18",
     "dotenv": "^16.4.5",
     "drizzle-kit": "^0.22.7",
-    "eslint": "^9.4.0",
+    "eslint": "^8",
     "@soco/eslint-config": "workspace:*",
     "pg": "^8.12.0",
     "postcss": "^8",
