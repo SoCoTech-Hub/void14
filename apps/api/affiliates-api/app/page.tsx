@@ -3,6 +3,7 @@
  * @see https://v0.dev/t/PmwTvNfrVgf
  * Documentation: https://v0.dev/docs#integrating-generated-code-into-your-nextjs-app
  */
+import React from "react";
 import Link from "next/link";
 
 export default function LandingPage() {
@@ -11,22 +12,8 @@ export default function LandingPage() {
       <header className="flex h-14 items-center px-4 lg:px-6">
         <Link className="flex items-center justify-center" href="#">
           <MountainIcon className="h-6 w-6" />
-          <span className="sr-only">Acme Inc</span>
+          <span className="sr-only">SocoTech</span>
         </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link
-            className="text-sm font-medium underline-offset-4 hover:underline"
-            href="#features"
-          >
-            Features
-          </Link>
-          <Link
-            className="text-sm font-medium underline-offset-4 hover:underline"
-            href="/sign-in"
-          >
-            Sign In
-          </Link>
-        </nav>
       </header>
       <main className="flex-1">
         <section className="w-full py-6 sm:py-12 md:py-24 lg:py-32 xl:py-48">
@@ -36,7 +23,7 @@ export default function LandingPage() {
               <div className="flex flex-col justify-center space-y-4">
                 <div className="space-y-2">
                   <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                    The complete platform <br />
+                    The complete API <br />
                     for building the Web
                   </h1>
                   <p className="max-w-[600px] text-neutral-500 md:text-xl dark:text-neutral-400">
@@ -44,20 +31,6 @@ export default function LandingPage() {
                     innovating. Securely build, deploy, and scale the best web
                     experiences.
                   </p>
-                </div>
-                <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                  <Link
-                    className="inline-flex h-10 items-center justify-center rounded-md bg-neutral-900 px-8 text-sm font-medium text-neutral-50 shadow transition-colors hover:bg-neutral-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-neutral-50 dark:text-neutral-900 dark:hover:bg-neutral-50/90 dark:focus-visible:ring-neutral-300"
-                    href="#"
-                  >
-                    Get Started
-                  </Link>
-                  <Link
-                    className="inline-flex h-10 items-center justify-center rounded-md border border-neutral-200 bg-white px-8 text-sm font-medium shadow-sm transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-800 dark:bg-neutral-950 dark:hover:bg-neutral-800 dark:hover:text-neutral-50 dark:focus-visible:ring-neutral-300"
-                    href="#"
-                  >
-                    Contact Sales
-                  </Link>
                 </div>
               </div>
             </div>
@@ -115,69 +88,31 @@ export default function LandingPage() {
             </div>
           </div>
         </section>
-
-        <section className="w-full border-t py-12 md:py-24 lg:py-32">
-          <div className="container px-4 md:px-6">
-            <div className="flex flex-col items-center justify-center space-y-4 text-center">
-              <div className="space-y-2">
-                <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">
-                  Sign Up for Updates
-                </h2>
-                <p className="max-w-[600px] text-neutral-500 md:text-xl dark:text-neutral-400">
-                  Stay updated with the latest product news and updates.
-                </p>
-              </div>
-              <div className="w-full max-w-sm space-y-2">
-                <form className="flex flex-col space-y-2 sm:flex-row sm:space-x-2 sm:space-y-0">
-                  <input
-                    className="border-border max-w-lg flex-1 rounded-md border px-4 py-2 "
-                    placeholder="Enter your email"
-                    type="email"
-                  />
-                  <button
-                    type="submit"
-                    className="inline-flex h-10 items-center justify-center rounded-md bg-neutral-900 px-4 text-sm font-medium text-neutral-50 shadow transition-colors hover:bg-neutral-900/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-neutral-950 disabled:pointer-events-none disabled:opacity-50 dark:bg-neutral-50 dark:text-neutral-900 dark:hover:bg-neutral-50/90 dark:focus-visible:ring-neutral-300"
-                  >
-                    Sign Up
-                  </button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
       <footer className="flex w-full shrink-0 flex-col items-center gap-2 border-t px-4 py-6 sm:flex-row md:px-6">
         <p className="text-xs text-neutral-500 dark:text-neutral-400">
-          © 2024 Acme Inc. All rights reserved.
+          © 2024 SocoTech. All rights reserved.
         </p>
-        <nav className="flex gap-4 sm:ml-auto sm:gap-6">
-          <Link className="text-xs underline-offset-4 hover:underline" href="#">
-            Terms of Service
-          </Link>
-          <Link className="text-xs underline-offset-4 hover:underline" href="#">
-            Privacy
-          </Link>
-        </nav>
       </footer>
     </div>
   );
 }
 
-function MountainIcon(props: any) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
-    </svg>
-  );
-}
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+const MountainIcon = (props: any) => (
+  <svg
+    {...props}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <title>MountainIcon</title>
+    <path d="m8 3 4 8 5-5 5 15H2L8 3z" />
+  </svg>
+);
