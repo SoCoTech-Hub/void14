@@ -4,7 +4,7 @@ import { z } from 'zod'
 import { adminPresetsApps } from './adminPresetsApps'
 import type { getAdminPresetAppPlugs } from '@/lib/api/adminPresetAppPlugs/queries'
 
-import { nanoid } from '@/lib/utils'
+import { nanoid } from '@soco/utils'
 
 export const adminPresetAppPlugs = pgTable(
 	'admin_preset_app_plugs',

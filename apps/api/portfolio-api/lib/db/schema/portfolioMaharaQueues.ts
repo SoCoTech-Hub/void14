@@ -1,68 +1,69 @@
-import { varchar, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
-import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
-import { z } from 'zod'
-import { portfolioTempdatas } from './portfolioTempdatas'
-import { type getPortfolioMaharaQueues } from '@/lib/api/portfolioMaharaQueues/queries'
+import { type getPortfolioMaharaQueues } from "@/lib/api/portfolioMaharaQueues/queries";
+import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { z } from "zod";
 
-import { nanoid } from '@/lib/utils'
+import { nanoid } from "@soco/utils";
+
+import { portfolioTempdatas } from "./portfolioTempdatas";
 
 export const portfolioMaharaQueues = pgTable(
-	'portfolio_mahara_queues',
-	{
-		organizationId: varchar('organization_id', { length: 191 }).notNull(),
-		id: varchar('id', { length: 191 })
-			.primaryKey()
-			.$defaultFn(() => nanoid()),
-		token: varchar('token', { length: 256 }).notNull(),
-		portfolioTempdataId: varchar('portfolio_tempdata_id', { length: 256 })
-			.references(() => portfolioTempdatas.id, { onDelete: 'cascade' })
-			.notNull()
-	},
-	(portfolioMaharaQueues) => {
-		return {
-			portfolioTempdataIdIndex: uniqueIndex(
-				'portfolio_mahara_queues_portfolio_tempdata_id_idx'
-			).on(portfolioMaharaQueues.portfolioTempdataId)
-		}
-	}
-)
+  "portfolio_mahara_queues",
+  {
+    organizationId: varchar("organization_id", { length: 191 }).notNull(),
+    id: varchar("id", { length: 191 })
+      .primaryKey()
+      .$defaultFn(() => nanoid()),
+    token: varchar("token", { length: 256 }).notNull(),
+    portfolioTempdataId: varchar("portfolio_tempdata_id", { length: 256 })
+      .references(() => portfolioTempdatas.id, { onDelete: "cascade" })
+      .notNull(),
+  },
+  (portfolioMaharaQueues) => {
+    return {
+      portfolioTempdataIdIndex: uniqueIndex(
+        "portfolio_mahara_queues_portfolio_tempdata_id_idx",
+      ).on(portfolioMaharaQueues.portfolioTempdataId),
+    };
+  },
+);
 
 // Schema for portfolioMaharaQueues - used to validate API requests
-const baseSchema = createSelectSchema(portfolioMaharaQueues)
+const baseSchema = createSelectSchema(portfolioMaharaQueues);
 
 export const insertPortfolioMaharaQueueSchema = createInsertSchema(
-	portfolioMaharaQueues
-)
+  portfolioMaharaQueues,
+);
 export const insertPortfolioMaharaQueueParams = baseSchema
-	.extend({
-		portfolioTempdataId: z.coerce.string().min(1)
-	})
-	.omit({
-		id: true
-	})
+  .extend({
+    portfolioTempdataId: z.coerce.string().min(1),
+  })
+  .omit({
+    id: true,
+  });
 
-export const updatePortfolioMaharaQueueSchema = baseSchema
+export const updatePortfolioMaharaQueueSchema = baseSchema;
 export const updatePortfolioMaharaQueueParams = baseSchema.extend({
-	portfolioTempdataId: z.coerce.string().min(1)
-})
-export const portfolioMaharaQueueIdSchema = baseSchema.pick({ id: true })
+  portfolioTempdataId: z.coerce.string().min(1),
+});
+export const portfolioMaharaQueueIdSchema = baseSchema.pick({ id: true });
 
 // Types for portfolioMaharaQueues - used to type API request params and within Components
-export type PortfolioMaharaQueue = typeof portfolioMaharaQueues.$inferSelect
+export type PortfolioMaharaQueue = typeof portfolioMaharaQueues.$inferSelect;
 export type NewPortfolioMaharaQueue = z.infer<
-	typeof insertPortfolioMaharaQueueSchema
->
+  typeof insertPortfolioMaharaQueueSchema
+>;
 export type NewPortfolioMaharaQueueParams = z.infer<
-	typeof insertPortfolioMaharaQueueParams
->
+  typeof insertPortfolioMaharaQueueParams
+>;
 export type UpdatePortfolioMaharaQueueParams = z.infer<
-	typeof updatePortfolioMaharaQueueParams
->
+  typeof updatePortfolioMaharaQueueParams
+>;
 export type PortfolioMaharaQueueId = z.infer<
-	typeof portfolioMaharaQueueIdSchema
->['id']
+  typeof portfolioMaharaQueueIdSchema
+>["id"];
 
 // this type infers the return from getPortfolioMaharaQueues() - meaning it will include any joins
 export type CompletePortfolioMaharaQueue = Awaited<
-	ReturnType<typeof getPortfolioMaharaQueues>
->['portfolioMaharaQueues'][number]
+  ReturnType<typeof getPortfolioMaharaQueues>
+>["portfolioMaharaQueues"][number];

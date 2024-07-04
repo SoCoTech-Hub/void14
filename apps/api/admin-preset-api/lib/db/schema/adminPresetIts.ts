@@ -4,7 +4,7 @@ import { z } from 'zod'
 import { adminPresetsApps } from './adminPresetsApps'
 import { type getAdminPresetIts } from '@/lib/api/adminPresetIts/queries'
 
-import { nanoid } from '@/lib/utils'
+import { nanoid } from '@soco/utils'
 
 export const adminPresetIts = pgTable(
 	'admin_preset_its',

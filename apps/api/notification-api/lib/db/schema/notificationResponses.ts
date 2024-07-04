@@ -1,69 +1,70 @@
-import { boolean, varchar, pgTable } from 'drizzle-orm/pg-core'
-import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
-import { z } from 'zod'
-import { notifications } from './notifications'
-import { type getNotificationResponses } from '@/lib/api/notificationResponses/queries'
+import { type getNotificationResponses } from "@/lib/api/notificationResponses/queries";
+import { boolean, pgTable, varchar } from "drizzle-orm/pg-core";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { z } from "zod";
 
-import { nanoid } from '@/lib/utils'
+import { nanoid } from "@soco/utils";
 
-export const notificationResponses = pgTable('notification_responses', {
-	organizationId: varchar('organization_id', { length: 191 }).notNull(),
-	id: varchar('id', { length: 191 })
-		.primaryKey()
-		.$defaultFn(() => nanoid()),
-	read: boolean('read'),
-	new: boolean('new'),
-	notificationId: varchar('notification_id', { length: 256 })
-		.references(() => notifications.id, { onDelete: 'cascade' })
-		.notNull(),
-	userId: varchar('user_id', { length: 256 }).notNull()
-})
+import { notifications } from "./notifications";
+
+export const notificationResponses = pgTable("notification_responses", {
+  organizationId: varchar("organization_id", { length: 191 }).notNull(),
+  id: varchar("id", { length: 191 })
+    .primaryKey()
+    .$defaultFn(() => nanoid()),
+  read: boolean("read"),
+  new: boolean("new"),
+  notificationId: varchar("notification_id", { length: 256 })
+    .references(() => notifications.id, { onDelete: "cascade" })
+    .notNull(),
+  userId: varchar("user_id", { length: 256 }).notNull(),
+});
 
 // Schema for notificationResponses - used to validate API requests
-const baseSchema = createSelectSchema(notificationResponses)
+const baseSchema = createSelectSchema(notificationResponses);
 
 export const insertNotificationResponseSchema = createInsertSchema(
-	notificationResponses
-)
+  notificationResponses,
+);
 export const insertNotificationResponseParams = baseSchema
-	.extend({
-		read: z.coerce.boolean(),
-		new: z.coerce.boolean(),
-		notificationId: z.coerce.string().min(1)
-	})
-	.omit({
-		id: true,
-		userId: true
-	})
+  .extend({
+    read: z.coerce.boolean(),
+    new: z.coerce.boolean(),
+    notificationId: z.coerce.string().min(1),
+  })
+  .omit({
+    id: true,
+    userId: true,
+  });
 
-export const updateNotificationResponseSchema = baseSchema
+export const updateNotificationResponseSchema = baseSchema;
 export const updateNotificationResponseParams = baseSchema
-	.extend({
-		read: z.coerce.boolean(),
-		new: z.coerce.boolean(),
-		notificationId: z.coerce.string().min(1)
-	})
-	.omit({
-		userId: true
-	})
-export const notificationResponseIdSchema = baseSchema.pick({ id: true })
+  .extend({
+    read: z.coerce.boolean(),
+    new: z.coerce.boolean(),
+    notificationId: z.coerce.string().min(1),
+  })
+  .omit({
+    userId: true,
+  });
+export const notificationResponseIdSchema = baseSchema.pick({ id: true });
 
 // Types for notificationResponses - used to type API request params and within Components
-export type NotificationResponse = typeof notificationResponses.$inferSelect
+export type NotificationResponse = typeof notificationResponses.$inferSelect;
 export type NewNotificationResponse = z.infer<
-	typeof insertNotificationResponseSchema
->
+  typeof insertNotificationResponseSchema
+>;
 export type NewNotificationResponseParams = z.infer<
-	typeof insertNotificationResponseParams
->
+  typeof insertNotificationResponseParams
+>;
 export type UpdateNotificationResponseParams = z.infer<
-	typeof updateNotificationResponseParams
->
+  typeof updateNotificationResponseParams
+>;
 export type NotificationResponseId = z.infer<
-	typeof notificationResponseIdSchema
->['id']
+  typeof notificationResponseIdSchema
+>["id"];
 
 // this type infers the return from getNotificationResponses() - meaning it will include any joins
 export type CompleteNotificationResponse = Awaited<
-	ReturnType<typeof getNotificationResponses>
->['notificationResponses'][number]
+  ReturnType<typeof getNotificationResponses>
+>["notificationResponses"][number];

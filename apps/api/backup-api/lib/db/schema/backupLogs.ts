@@ -1,74 +1,73 @@
-import { sql } from 'drizzle-orm'
+import { type getBackupLogs } from "@/lib/api/backupLogs/queries";
+import { sql } from "drizzle-orm";
 import {
-	varchar,
-	integer,
-	text,
-	boolean,
-	timestamp,
-	pgTable,
-	uniqueIndex
-} from 'drizzle-orm/pg-core'
-import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
-import { z } from 'zod'
+  boolean,
+  integer,
+  pgTable,
+  text,
+  timestamp,
+  uniqueIndex,
+  varchar,
+} from "drizzle-orm/pg-core";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { z } from "zod";
 
-import { type getBackupLogs } from '@/lib/api/backupLogs/queries'
-
-import { nanoid, timestamps } from '@/lib/utils'
+import { nanoid, timestamps } from "@soco/utils";
 
 export const backupLogs = pgTable(
-	'backup_logs',
-	{
-		organizationId: varchar('organization_id', { length: 191 }).notNull(),
-		id: varchar('id', { length: 191 })
-			.primaryKey()
-			.$defaultFn(() => nanoid()),
-		backupId: varchar('backup_id', { length: 256 }),
-		logLevel: integer('log_level'),
-		message: text('message'),
+  "backup_logs",
+  {
+    organizationId: varchar("organization_id", { length: 191 }).notNull(),
+    id: varchar("id", { length: 191 })
+      .primaryKey()
+      .$defaultFn(() => nanoid()),
+    backupId: varchar("backup_id", { length: 256 }),
+    logLevel: integer("log_level"),
+    message: text("message"),
 
-		createdAt: timestamp('created_at')
-			.notNull()
-			.default(sql`now()`),
-		updatedAt: timestamp('updated_at')
-			.notNull()
-			.default(sql`now()`)
-	},
-	(backupLogs) => {
-		return {
-			backupIdIndex: uniqueIndex('bl_backup_id_idx').on(backupLogs.backupId)
-		}
-	}
-)
+    createdAt: timestamp("created_at")
+      .notNull()
+      .default(sql`now()`),
+    updatedAt: timestamp("updated_at")
+      .notNull()
+      .default(sql`now()`),
+  },
+  (backupLogs) => {
+    return {
+      backupIdIndex: uniqueIndex("bl_backup_id_idx").on(backupLogs.backupId),
+    };
+  },
+);
 
 // Schema for backupLogs - used to validate API requests
-const baseSchema = createSelectSchema(backupLogs).omit(timestamps)
+const baseSchema = createSelectSchema(backupLogs).omit(timestamps);
 
 export const insertBackupLogSchema =
-	createInsertSchema(backupLogs).omit(timestamps)
+  createInsertSchema(backupLogs).omit(timestamps);
 export const insertBackupLogParams = baseSchema
-	.extend({
-		logLevel: z.coerce.number(),
-		delete: z.coerce.boolean()
-	})
-	.omit({
-		id: true
-	})
+  .extend({
+    logLevel: z.coerce.number(),
+    delete: z.coerce.boolean(),
+  })
+  .omit({
+    id: true,
+  });
 
-export const updateBackupLogSchema = baseSchema
+export const updateBackupLogSchema = baseSchema;
 export const updateBackupLogParams = baseSchema.extend({
-	logLevel: z.coerce.number(),
-	delete: z.coerce.boolean()
-})
-export const backupLogIdSchema = baseSchema.pick({ id: true })
+  logLevel: z.coerce.number(),
+  delete: z.coerce.boolean(),
+});
+export const backupLogIdSchema = baseSchema.pick({ id: true });
 
 // Types for backupLogs - used to type API request params and within Components
-export type BackupLog = typeof backupLogs.$inferSelect
-export type NewBackupLog = z.infer<typeof insertBackupLogSchema>
-export type NewBackupLogParams = z.infer<typeof insertBackupLogParams>
-export type UpdateBackupLogParams = z.infer<typeof updateBackupLogParams>
-export type BackupLogId = z.infer<typeof backupLogIdSchema>['id']
+export type BackupLog = typeof backupLogs.$inferSelect;
+export type NewBackupLog = z.infer<typeof insertBackupLogSchema>;
+export type NewBackupLogParams = z.infer<typeof insertBackupLogParams>;
+export type UpdateBackupLogParams = z.infer<typeof updateBackupLogParams>;
+export type BackupLogId = z.infer<typeof backupLogIdSchema>["id"];
 
 // this type infers the return from getBackupLogs() - meaning it will include any joins
 export type CompleteBackupLog = Awaited<
-	ReturnType<typeof getBackupLogs>
->['backupLogs'][number]
+  ReturnType<typeof getBackupLogs>
+>["backupLogs"][number];

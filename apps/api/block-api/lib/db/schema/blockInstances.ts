@@ -1,75 +1,74 @@
-import { sql } from 'drizzle-orm'
+import { type getBlockInstances } from "@/lib/api/blockInstances/queries";
+import { sql } from "drizzle-orm";
 import {
-	varchar,
-	text,
-	integer,
-	boolean,
-	timestamp,
-	pgTable
-} from 'drizzle-orm/pg-core'
-import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
-import { z } from 'zod'
+  boolean,
+  integer,
+  pgTable,
+  text,
+  timestamp,
+  varchar,
+} from "drizzle-orm/pg-core";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { z } from "zod";
 
-import { type getBlockInstances } from '@/lib/api/blockInstances/queries'
+import { nanoid, timestamps } from "@soco/utils";
 
-import { nanoid, timestamps } from '@/lib/utils'
+export const blockInstances = pgTable("block_instances", {
+  organizationId: varchar("organization_id", { length: 191 }).notNull(),
+  id: varchar("id", { length: 191 })
+    .primaryKey()
+    .$defaultFn(() => nanoid()),
+  blockName: varchar("block_name", { length: 256 }),
+  configData: text("config_data"),
+  defaultRegion: varchar("default_region", { length: 256 }),
+  defaultWeight: integer("default_weight"),
+  pageTypePattern: varchar("page_type_pattern", { length: 256 }),
+  parentContextId: varchar("parent_context_id", { length: 256 }),
+  requiredByTheme: boolean("required_by_theme"),
+  showInSubContexts: boolean("show_in_sub_contexts"),
+  subPagePattern: varchar("sub_page_pattern", { length: 256 }),
 
-export const blockInstances = pgTable('block_instances', {
-	organizationId: varchar('organization_id', { length: 191 }).notNull(),
-	id: varchar('id', { length: 191 })
-		.primaryKey()
-		.$defaultFn(() => nanoid()),
-	blockName: varchar('block_name', { length: 256 }),
-	configData: text('config_data'),
-	defaultRegion: varchar('default_region', { length: 256 }),
-	defaultWeight: integer('default_weight'),
-	pageTypePattern: varchar('page_type_pattern', { length: 256 }),
-	parentContextId: varchar('parent_context_id', { length: 256 }),
-	requiredByTheme: boolean('required_by_theme'),
-	showInSubContexts: boolean('show_in_sub_contexts'),
-	subPagePattern: varchar('sub_page_pattern', { length: 256 }),
-
-	createdAt: timestamp('created_at')
-		.notNull()
-		.default(sql`now()`),
-	updatedAt: timestamp('updated_at')
-		.notNull()
-		.default(sql`now()`)
-})
+  createdAt: timestamp("created_at")
+    .notNull()
+    .default(sql`now()`),
+  updatedAt: timestamp("updated_at")
+    .notNull()
+    .default(sql`now()`),
+});
 
 // Schema for blockInstances - used to validate API requests
-const baseSchema = createSelectSchema(blockInstances).omit(timestamps)
+const baseSchema = createSelectSchema(blockInstances).omit(timestamps);
 
 export const insertBlockInstanceSchema =
-	createInsertSchema(blockInstances).omit(timestamps)
+  createInsertSchema(blockInstances).omit(timestamps);
 export const insertBlockInstanceParams = baseSchema
-	.extend({
-		defaultWeight: z.coerce.number(),
-		requiredByTheme: z.coerce.boolean(),
-		showInSubContexts: z.coerce.boolean()
-	})
-	.omit({
-		id: true
-	})
+  .extend({
+    defaultWeight: z.coerce.number(),
+    requiredByTheme: z.coerce.boolean(),
+    showInSubContexts: z.coerce.boolean(),
+  })
+  .omit({
+    id: true,
+  });
 
-export const updateBlockInstanceSchema = baseSchema
+export const updateBlockInstanceSchema = baseSchema;
 export const updateBlockInstanceParams = baseSchema.extend({
-	defaultWeight: z.coerce.number(),
-	requiredByTheme: z.coerce.boolean(),
-	showInSubContexts: z.coerce.boolean()
-})
-export const blockInstanceIdSchema = baseSchema.pick({ id: true })
+  defaultWeight: z.coerce.number(),
+  requiredByTheme: z.coerce.boolean(),
+  showInSubContexts: z.coerce.boolean(),
+});
+export const blockInstanceIdSchema = baseSchema.pick({ id: true });
 
 // Types for blockInstances - used to type API request params and within Components
-export type BlockInstance = typeof blockInstances.$inferSelect
-export type NewBlockInstance = z.infer<typeof insertBlockInstanceSchema>
-export type NewBlockInstanceParams = z.infer<typeof insertBlockInstanceParams>
+export type BlockInstance = typeof blockInstances.$inferSelect;
+export type NewBlockInstance = z.infer<typeof insertBlockInstanceSchema>;
+export type NewBlockInstanceParams = z.infer<typeof insertBlockInstanceParams>;
 export type UpdateBlockInstanceParams = z.infer<
-	typeof updateBlockInstanceParams
->
-export type BlockInstanceId = z.infer<typeof blockInstanceIdSchema>['id']
+  typeof updateBlockInstanceParams
+>;
+export type BlockInstanceId = z.infer<typeof blockInstanceIdSchema>["id"];
 
 // this type infers the return from getBlockInstances() - meaning it will include any joins
 export type CompleteBlockInstance = Awaited<
-	ReturnType<typeof getBlockInstances>
->['blockInstances'][number]
+  ReturnType<typeof getBlockInstances>
+>["blockInstances"][number];

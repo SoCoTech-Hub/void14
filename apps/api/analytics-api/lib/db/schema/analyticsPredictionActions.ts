@@ -1,79 +1,78 @@
-import { sql } from 'drizzle-orm'
-import { varchar, timestamp, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
-import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
-import { z } from 'zod'
+import { type getAnalyticsPredictionActions } from "@/lib/api/analyticsPredictionActions/queries";
+import { sql } from "drizzle-orm";
+import { pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { z } from "zod";
 
-import { type getAnalyticsPredictionActions } from '@/lib/api/analyticsPredictionActions/queries'
-
-import { nanoid, timestamps } from '@/lib/utils'
+import { nanoid, timestamps } from "@soco/utils";
 
 export const analyticsPredictionActions = pgTable(
-	'analytics_prediction_actions',
-	{
-		organizationId: varchar('organization_id', { length: 191 }).notNull(),
-		id: varchar('id', { length: 191 })
-			.primaryKey()
-			.$defaultFn(() => nanoid()),
-		actionName: varchar('action_name', { length: 256 }),
-		predictionId: varchar('prediction_id', { length: 256 }),
-		userId: varchar('user_id', { length: 256 }).notNull(),
+  "analytics_prediction_actions",
+  {
+    organizationId: varchar("organization_id", { length: 191 }).notNull(),
+    id: varchar("id", { length: 191 })
+      .primaryKey()
+      .$defaultFn(() => nanoid()),
+    actionName: varchar("action_name", { length: 256 }),
+    predictionId: varchar("prediction_id", { length: 256 }),
+    userId: varchar("user_id", { length: 256 }).notNull(),
 
-		createdAt: timestamp('created_at')
-			.notNull()
-			.default(sql`now()`),
-		updatedAt: timestamp('updated_at')
-			.notNull()
-			.default(sql`now()`)
-	},
-	(analyticsPredictionActions) => {
-		return {
-			predictionIdIndex: uniqueIndex('prediction_id_idx').on(
-				analyticsPredictionActions.predictionId
-			)
-		}
-	}
-)
+    createdAt: timestamp("created_at")
+      .notNull()
+      .default(sql`now()`),
+    updatedAt: timestamp("updated_at")
+      .notNull()
+      .default(sql`now()`),
+  },
+  (analyticsPredictionActions) => {
+    return {
+      predictionIdIndex: uniqueIndex("prediction_id_idx").on(
+        analyticsPredictionActions.predictionId,
+      ),
+    };
+  },
+);
 
 // Schema for analyticsPredictionActions - used to validate API requests
 const baseSchema = createSelectSchema(analyticsPredictionActions).omit(
-	timestamps
-)
+  timestamps,
+);
 
 export const insertAnalyticsPredictionActionSchema = createInsertSchema(
-	analyticsPredictionActions
-).omit(timestamps)
+  analyticsPredictionActions,
+).omit(timestamps);
 export const insertAnalyticsPredictionActionParams = baseSchema
-	.extend({})
-	.omit({
-		id: true,
-		userId: true
-	})
+  .extend({})
+  .omit({
+    id: true,
+    userId: true,
+  });
 
-export const updateAnalyticsPredictionActionSchema = baseSchema
+export const updateAnalyticsPredictionActionSchema = baseSchema;
 export const updateAnalyticsPredictionActionParams = baseSchema
-	.extend({})
-	.omit({
-		userId: true
-	})
-export const analyticsPredictionActionIdSchema = baseSchema.pick({ id: true })
+  .extend({})
+  .omit({
+    userId: true,
+  });
+export const analyticsPredictionActionIdSchema = baseSchema.pick({ id: true });
 
 // Types for analyticsPredictionActions - used to type API request params and within Components
 export type AnalyticsPredictionAction =
-	typeof analyticsPredictionActions.$inferSelect
+  typeof analyticsPredictionActions.$inferSelect;
 export type NewAnalyticsPredictionAction = z.infer<
-	typeof insertAnalyticsPredictionActionSchema
->
+  typeof insertAnalyticsPredictionActionSchema
+>;
 export type NewAnalyticsPredictionActionParams = z.infer<
-	typeof insertAnalyticsPredictionActionParams
->
+  typeof insertAnalyticsPredictionActionParams
+>;
 export type UpdateAnalyticsPredictionActionParams = z.infer<
-	typeof updateAnalyticsPredictionActionParams
->
+  typeof updateAnalyticsPredictionActionParams
+>;
 export type AnalyticsPredictionActionId = z.infer<
-	typeof analyticsPredictionActionIdSchema
->['id']
+  typeof analyticsPredictionActionIdSchema
+>["id"];
 
 // this type infers the return from getAnalyticsPredictionActions() - meaning it will include any joins
 export type CompleteAnalyticsPredictionAction = Awaited<
-	ReturnType<typeof getAnalyticsPredictionActions>
->['analyticsPredictionActions'][number]
+  ReturnType<typeof getAnalyticsPredictionActions>
+>["analyticsPredictionActions"][number];

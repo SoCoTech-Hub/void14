@@ -1,81 +1,82 @@
+import { type getAssignSubmissionOnlineTexts } from "@/lib/api/assignSubmissionOnlineTexts/queries";
 import {
-	varchar,
-	integer,
-	text,
-	pgTable,
-	uniqueIndex
-} from 'drizzle-orm/pg-core'
-import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
-import { z } from 'zod'
-import { assignments } from './assignments'
-import { type getAssignSubmissionOnlineTexts } from '@/lib/api/assignSubmissionOnlineTexts/queries'
+  integer,
+  pgTable,
+  text,
+  uniqueIndex,
+  varchar,
+} from "drizzle-orm/pg-core";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { z } from "zod";
 
-import { nanoid } from '@/lib/utils'
+import { nanoid } from "@soco/utils";
+
+import { assignments } from "./assignments";
 
 export const assignSubmissionOnlineTexts = pgTable(
-	'assign_submission_online_texts',
-	{
-		organizationId: varchar('organization_id', { length: 191 }).notNull(),
-		id: varchar('id', { length: 191 })
-			.primaryKey()
-			.$defaultFn(() => nanoid()),
-		assignmentId: varchar('assignment_id', { length: 256 })
-			.references(() => assignments.id)
-			.notNull(),
-		onlineFormat: integer('online_format'),
-		onlineText: text('online_text'),
-		submission: integer('submission')
-	},
-	(assignSubmissionOnlineTexts) => {
-		return {
-			assignmentIdIndex: uniqueIndex('asot_assignment_id_idx').on(
-				assignSubmissionOnlineTexts.assignmentId
-			)
-		}
-	}
-)
+  "assign_submission_online_texts",
+  {
+    organizationId: varchar("organization_id", { length: 191 }).notNull(),
+    id: varchar("id", { length: 191 })
+      .primaryKey()
+      .$defaultFn(() => nanoid()),
+    assignmentId: varchar("assignment_id", { length: 256 })
+      .references(() => assignments.id)
+      .notNull(),
+    onlineFormat: integer("online_format"),
+    onlineText: text("online_text"),
+    submission: integer("submission"),
+  },
+  (assignSubmissionOnlineTexts) => {
+    return {
+      assignmentIdIndex: uniqueIndex("asot_assignment_id_idx").on(
+        assignSubmissionOnlineTexts.assignmentId,
+      ),
+    };
+  },
+);
 
 // Schema for assignSubmissionOnlineTexts - used to validate API requests
-const baseSchema = createSelectSchema(assignSubmissionOnlineTexts)
+const baseSchema = createSelectSchema(assignSubmissionOnlineTexts);
 
 export const insertAssignSubmissionOnlineTextSchema = createInsertSchema(
-	assignSubmissionOnlineTexts
-)
+  assignSubmissionOnlineTexts,
+);
 export const insertAssignSubmissionOnlineTextParams = baseSchema
-	.extend({
-		assignmentId: z.coerce.string().min(1),
-		onlineFormat: z.coerce.number(),
-		submission: z.coerce.number()
-	})
-	.omit({
-		id: true
-	})
+  .extend({
+    assignmentId: z.coerce.string().min(1),
+    onlineFormat: z.coerce.number(),
+    submission: z.coerce.number(),
+  })
+  .omit({
+    id: true,
+  });
 
-export const updateAssignSubmissionOnlineTextSchema = baseSchema
+export const updateAssignSubmissionOnlineTextSchema = baseSchema;
 export const updateAssignSubmissionOnlineTextParams = baseSchema.extend({
-	assignmentId: z.coerce.string().min(1),
-	onlineFormat: z.coerce.number(),
-	submission: z.coerce.number()
-})
-export const assignSubmissionOnlineTextIdSchema = baseSchema.pick({ id: true })
+  assignmentId: z.coerce.string().min(1),
+  onlineFormat: z.coerce.number(),
+  submission: z.coerce.number(),
+});
+export const assignSubmissionOnlineTextIdSchema = baseSchema.pick({ id: true });
 
 // Types for assignSubmissionOnlineTexts - used to type API request params and within Components
 export type AssignSubmissionOnlineText =
-	typeof assignSubmissionOnlineTexts.$inferSelect
+  typeof assignSubmissionOnlineTexts.$inferSelect;
 export type NewAssignSubmissionOnlineText = z.infer<
-	typeof insertAssignSubmissionOnlineTextSchema
->
+  typeof insertAssignSubmissionOnlineTextSchema
+>;
 export type NewAssignSubmissionOnlineTextParams = z.infer<
-	typeof insertAssignSubmissionOnlineTextParams
->
+  typeof insertAssignSubmissionOnlineTextParams
+>;
 export type UpdateAssignSubmissionOnlineTextParams = z.infer<
-	typeof updateAssignSubmissionOnlineTextParams
->
+  typeof updateAssignSubmissionOnlineTextParams
+>;
 export type AssignSubmissionOnlineTextId = z.infer<
-	typeof assignSubmissionOnlineTextIdSchema
->['id']
+  typeof assignSubmissionOnlineTextIdSchema
+>["id"];
 
 // this type infers the return from getAssignSubmissionOnlineTexts() - meaning it will include any joins
 export type CompleteAssignSubmissionOnlineText = Awaited<
-	ReturnType<typeof getAssignSubmissionOnlineTexts>
->['assignSubmissionOnlineTexts'][number]
+  ReturnType<typeof getAssignSubmissionOnlineTexts>
+>["assignSubmissionOnlineTexts"][number];

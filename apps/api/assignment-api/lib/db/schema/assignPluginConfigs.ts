@@ -1,70 +1,71 @@
-import { varchar, text, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
-import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
-import { z } from 'zod'
-import { assignments } from './assignments'
-import { type getAssignPluginConfigs } from '@/lib/api/assignPluginConfigs/queries'
+import { type getAssignPluginConfigs } from "@/lib/api/assignPluginConfigs/queries";
+import { pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { z } from "zod";
 
-import { nanoid } from '@/lib/utils'
+import { nanoid } from "@soco/utils";
+
+import { assignments } from "./assignments";
 
 export const assignPluginConfigs = pgTable(
-	'assign_plugin_configs',
-	{
-		organizationId: varchar('organization_id', { length: 191 }).notNull(),
-		id: varchar('id', { length: 191 })
-			.primaryKey()
-			.$defaultFn(() => nanoid()),
-		assignmentId: varchar('assignment_id', { length: 256 })
-			.references(() => assignments.id)
-			.notNull(),
-		name: varchar('name', { length: 256 }),
-		plugin: varchar('plugin', { length: 256 }),
-		subType: varchar('sub_type', { length: 256 }),
-		value: text('value')
-	},
-	(assignPluginConfigs) => {
-		return {
-			assignmentIdIndex: uniqueIndex('apc_assignment_id_idx').on(
-				assignPluginConfigs.assignmentId
-			)
-		}
-	}
-)
+  "assign_plugin_configs",
+  {
+    organizationId: varchar("organization_id", { length: 191 }).notNull(),
+    id: varchar("id", { length: 191 })
+      .primaryKey()
+      .$defaultFn(() => nanoid()),
+    assignmentId: varchar("assignment_id", { length: 256 })
+      .references(() => assignments.id)
+      .notNull(),
+    name: varchar("name", { length: 256 }),
+    plugin: varchar("plugin", { length: 256 }),
+    subType: varchar("sub_type", { length: 256 }),
+    value: text("value"),
+  },
+  (assignPluginConfigs) => {
+    return {
+      assignmentIdIndex: uniqueIndex("apc_assignment_id_idx").on(
+        assignPluginConfigs.assignmentId,
+      ),
+    };
+  },
+);
 
 // Schema for assignPluginConfigs - used to validate API requests
-const baseSchema = createSelectSchema(assignPluginConfigs)
+const baseSchema = createSelectSchema(assignPluginConfigs);
 
 export const insertAssignPluginConfigSchema =
-	createInsertSchema(assignPluginConfigs)
+  createInsertSchema(assignPluginConfigs);
 export const insertAssignPluginConfigParams = baseSchema
-	.extend({
-		assignmentId: z.coerce.string().min(1)
-	})
-	.omit({
-		id: true
-	})
+  .extend({
+    assignmentId: z.coerce.string().min(1),
+  })
+  .omit({
+    id: true,
+  });
 
-export const updateAssignPluginConfigSchema = baseSchema
+export const updateAssignPluginConfigSchema = baseSchema;
 export const updateAssignPluginConfigParams = baseSchema.extend({
-	assignmentId: z.coerce.string().min(1)
-})
-export const assignPluginConfigIdSchema = baseSchema.pick({ id: true })
+  assignmentId: z.coerce.string().min(1),
+});
+export const assignPluginConfigIdSchema = baseSchema.pick({ id: true });
 
 // Types for assignPluginConfigs - used to type API request params and within Components
-export type AssignPluginConfig = typeof assignPluginConfigs.$inferSelect
+export type AssignPluginConfig = typeof assignPluginConfigs.$inferSelect;
 export type NewAssignPluginConfig = z.infer<
-	typeof insertAssignPluginConfigSchema
->
+  typeof insertAssignPluginConfigSchema
+>;
 export type NewAssignPluginConfigParams = z.infer<
-	typeof insertAssignPluginConfigParams
->
+  typeof insertAssignPluginConfigParams
+>;
 export type UpdateAssignPluginConfigParams = z.infer<
-	typeof updateAssignPluginConfigParams
->
+  typeof updateAssignPluginConfigParams
+>;
 export type AssignPluginConfigId = z.infer<
-	typeof assignPluginConfigIdSchema
->['id']
+  typeof assignPluginConfigIdSchema
+>["id"];
 
 // this type infers the return from getAssignPluginConfigs() - meaning it will include any joins
 export type CompleteAssignPluginConfig = Awaited<
-	ReturnType<typeof getAssignPluginConfigs>
->['assignPluginConfigs'][number]
+  ReturnType<typeof getAssignPluginConfigs>
+>["assignPluginConfigs"][number];

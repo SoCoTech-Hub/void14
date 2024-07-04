@@ -1,67 +1,66 @@
-import { varchar, text, integer, pgTable } from 'drizzle-orm/pg-core'
-import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
-import { z } from 'zod'
+import { type getAssignFeedbackEditpdfQuicks } from "@/lib/api/assignFeedbackEditpdfQuicks/queries";
+import { integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { z } from "zod";
 
-import { type getAssignFeedbackEditpdfQuicks } from '@/lib/api/assignFeedbackEditpdfQuicks/queries'
-
-import { nanoid } from '@/lib/utils'
+import { nanoid } from "@soco/utils";
 
 export const assignFeedbackEditpdfQuicks = pgTable(
-	'assign_feedback_editpdf_quicks',
-	{
-		organizationId: varchar('organization_id', { length: 191 }).notNull(),
-		id: varchar('id', { length: 191 })
-			.primaryKey()
-			.$defaultFn(() => nanoid()),
-		color: varchar('color', { length: 256 }),
-		rawText: text('raw_text'),
-		width: integer('width'),
-		userId: varchar('user_id', { length: 256 }).notNull()
-	}
-)
+  "assign_feedback_editpdf_quicks",
+  {
+    organizationId: varchar("organization_id", { length: 191 }).notNull(),
+    id: varchar("id", { length: 191 })
+      .primaryKey()
+      .$defaultFn(() => nanoid()),
+    color: varchar("color", { length: 256 }),
+    rawText: text("raw_text"),
+    width: integer("width"),
+    userId: varchar("user_id", { length: 256 }).notNull(),
+  },
+);
 
 // Schema for assignFeedbackEditpdfQuicks - used to validate API requests
-const baseSchema = createSelectSchema(assignFeedbackEditpdfQuicks)
+const baseSchema = createSelectSchema(assignFeedbackEditpdfQuicks);
 
 export const insertAssignFeedbackEditpdfQuickSchema = createInsertSchema(
-	assignFeedbackEditpdfQuicks
-)
+  assignFeedbackEditpdfQuicks,
+);
 export const insertAssignFeedbackEditpdfQuickParams = baseSchema
-	.extend({
-		width: z.coerce.number()
-	})
-	.omit({
-		id: true,
-		userId: true
-	})
+  .extend({
+    width: z.coerce.number(),
+  })
+  .omit({
+    id: true,
+    userId: true,
+  });
 
-export const updateAssignFeedbackEditpdfQuickSchema = baseSchema
+export const updateAssignFeedbackEditpdfQuickSchema = baseSchema;
 export const updateAssignFeedbackEditpdfQuickParams = baseSchema
-	.extend({
-		width: z.coerce.number()
-	})
-	.omit({
-		userId: true
-	})
-export const assignFeedbackEditpdfQuickIdSchema = baseSchema.pick({ id: true })
+  .extend({
+    width: z.coerce.number(),
+  })
+  .omit({
+    userId: true,
+  });
+export const assignFeedbackEditpdfQuickIdSchema = baseSchema.pick({ id: true });
 
 // Types for assignFeedbackEditpdfQuicks - used to type API request params and within Components
 export type AssignFeedbackEditpdfQuick =
-	typeof assignFeedbackEditpdfQuicks.$inferSelect
+  typeof assignFeedbackEditpdfQuicks.$inferSelect;
 export type NewAssignFeedbackEditpdfQuick = z.infer<
-	typeof insertAssignFeedbackEditpdfQuickSchema
->
+  typeof insertAssignFeedbackEditpdfQuickSchema
+>;
 export type NewAssignFeedbackEditpdfQuickParams = z.infer<
-	typeof insertAssignFeedbackEditpdfQuickParams
->
+  typeof insertAssignFeedbackEditpdfQuickParams
+>;
 export type UpdateAssignFeedbackEditpdfQuickParams = z.infer<
-	typeof updateAssignFeedbackEditpdfQuickParams
->
+  typeof updateAssignFeedbackEditpdfQuickParams
+>;
 export type AssignFeedbackEditpdfQuickId = z.infer<
-	typeof assignFeedbackEditpdfQuickIdSchema
->['id']
+  typeof assignFeedbackEditpdfQuickIdSchema
+>["id"];
 
 // this type infers the return from getAssignFeedbackEditpdfQuicks() - meaning it will include any joins
 export type CompleteAssignFeedbackEditpdfQuick = Awaited<
-	ReturnType<typeof getAssignFeedbackEditpdfQuicks>
->['assignFeedbackEditpdfQuicks'][number]
+  ReturnType<typeof getAssignFeedbackEditpdfQuicks>
+>["assignFeedbackEditpdfQuicks"][number];

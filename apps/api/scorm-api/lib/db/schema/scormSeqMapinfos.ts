@@ -6,7 +6,7 @@ import { scormScoes } from './scormScoes'
 import { scormSeqObjectives } from './scormSeqObjectives'
 import { type getScormSeqMapinfos } from '@/lib/api/scormSeqMapinfos/queries'
 
-import { nanoid } from '@/lib/utils'
+import { nanoid } from '@soco/utils'
 
 export const scormSeqMapinfos = pgTable('scorm_seq_mapinfos', {
 	organizationId: varchar('organization_id', { length: 191 }).notNull(),

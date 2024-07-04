@@ -1,70 +1,71 @@
-import { varchar, text, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
-import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
-import { z } from 'zod'
-import { portfolioInstances } from './portfolioInstances'
-import { type getPortfolioInstanceConfigs } from '@/lib/api/portfolioInstanceConfigs/queries'
+import { type getPortfolioInstanceConfigs } from "@/lib/api/portfolioInstanceConfigs/queries";
+import { pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { z } from "zod";
 
-import { nanoid } from '@/lib/utils'
+import { nanoid } from "@soco/utils";
+
+import { portfolioInstances } from "./portfolioInstances";
 
 export const portfolioInstanceConfigs = pgTable(
-	'portfolio_instance_configs',
-	{
-		organizationId: varchar('organization_id', { length: 191 }).notNull(),
-		id: varchar('id', { length: 191 })
-			.primaryKey()
-			.$defaultFn(() => nanoid()),
-		portfolioInstanceId: varchar('portfolio_instance_id', { length: 256 })
-			.references(() => portfolioInstances.id, { onDelete: 'cascade' })
-			.notNull(),
-		name: varchar('name', { length: 256 }).notNull(),
-		value: text('value')
-	},
-	(portfolioInstanceConfigs) => {
-		return {
-			portfolioInstanceIdIndex: uniqueIndex(
-				'portfolio_instance_configs_portfolio_instance_id_idx'
-			).on(portfolioInstanceConfigs.portfolioInstanceId)
-		}
-	}
-)
+  "portfolio_instance_configs",
+  {
+    organizationId: varchar("organization_id", { length: 191 }).notNull(),
+    id: varchar("id", { length: 191 })
+      .primaryKey()
+      .$defaultFn(() => nanoid()),
+    portfolioInstanceId: varchar("portfolio_instance_id", { length: 256 })
+      .references(() => portfolioInstances.id, { onDelete: "cascade" })
+      .notNull(),
+    name: varchar("name", { length: 256 }).notNull(),
+    value: text("value"),
+  },
+  (portfolioInstanceConfigs) => {
+    return {
+      portfolioInstanceIdIndex: uniqueIndex(
+        "portfolio_instance_configs_portfolio_instance_id_idx",
+      ).on(portfolioInstanceConfigs.portfolioInstanceId),
+    };
+  },
+);
 
 // Schema for portfolioInstanceConfigs - used to validate API requests
-const baseSchema = createSelectSchema(portfolioInstanceConfigs)
+const baseSchema = createSelectSchema(portfolioInstanceConfigs);
 
 export const insertPortfolioInstanceConfigSchema = createInsertSchema(
-	portfolioInstanceConfigs
-)
+  portfolioInstanceConfigs,
+);
 export const insertPortfolioInstanceConfigParams = baseSchema
-	.extend({
-		portfolioInstanceId: z.coerce.string().min(1)
-	})
-	.omit({
-		id: true
-	})
+  .extend({
+    portfolioInstanceId: z.coerce.string().min(1),
+  })
+  .omit({
+    id: true,
+  });
 
-export const updatePortfolioInstanceConfigSchema = baseSchema
+export const updatePortfolioInstanceConfigSchema = baseSchema;
 export const updatePortfolioInstanceConfigParams = baseSchema.extend({
-	portfolioInstanceId: z.coerce.string().min(1)
-})
-export const portfolioInstanceConfigIdSchema = baseSchema.pick({ id: true })
+  portfolioInstanceId: z.coerce.string().min(1),
+});
+export const portfolioInstanceConfigIdSchema = baseSchema.pick({ id: true });
 
 // Types for portfolioInstanceConfigs - used to type API request params and within Components
 export type PortfolioInstanceConfig =
-	typeof portfolioInstanceConfigs.$inferSelect
+  typeof portfolioInstanceConfigs.$inferSelect;
 export type NewPortfolioInstanceConfig = z.infer<
-	typeof insertPortfolioInstanceConfigSchema
->
+  typeof insertPortfolioInstanceConfigSchema
+>;
 export type NewPortfolioInstanceConfigParams = z.infer<
-	typeof insertPortfolioInstanceConfigParams
->
+  typeof insertPortfolioInstanceConfigParams
+>;
 export type UpdatePortfolioInstanceConfigParams = z.infer<
-	typeof updatePortfolioInstanceConfigParams
->
+  typeof updatePortfolioInstanceConfigParams
+>;
 export type PortfolioInstanceConfigId = z.infer<
-	typeof portfolioInstanceConfigIdSchema
->['id']
+  typeof portfolioInstanceConfigIdSchema
+>["id"];
 
 // this type infers the return from getPortfolioInstanceConfigs() - meaning it will include any joins
 export type CompletePortfolioInstanceConfig = Awaited<
-	ReturnType<typeof getPortfolioInstanceConfigs>
->['portfolioInstanceConfigs'][number]
+  ReturnType<typeof getPortfolioInstanceConfigs>
+>["portfolioInstanceConfigs"][number];

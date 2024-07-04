@@ -1,93 +1,94 @@
-import { sql } from 'drizzle-orm'
+import { type getBigBlueButtonBnLogs } from "@/lib/api/bigBlueButtonBnLogs/queries";
+import { sql } from "drizzle-orm";
 import {
-	varchar,
-	text,
-	boolean,
-	timestamp,
-	pgTable,
-	uniqueIndex
-} from 'drizzle-orm/pg-core'
-import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
-import { z } from 'zod'
-import { bigBlueButtonBns } from './bigBlueButtonBns'
-import { type getBigBlueButtonBnLogs } from '@/lib/api/bigBlueButtonBnLogs/queries'
+  boolean,
+  pgTable,
+  text,
+  timestamp,
+  uniqueIndex,
+  varchar,
+} from "drizzle-orm/pg-core";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { z } from "zod";
 
-import { nanoid, timestamps } from '@/lib/utils'
+import { nanoid, timestamps } from "@soco/utils";
+
+import { bigBlueButtonBns } from "./bigBlueButtonBns";
 
 export const bigBlueButtonBnLogs = pgTable(
-	'big_blue_button_bn_logs',
-	{
-		organizationId: varchar('organization_id', { length: 191 }).notNull(),
-		id: varchar('id', { length: 191 })
-			.primaryKey()
-			.$defaultFn(() => nanoid()),
-		bigBlueButtonBnId: varchar('big_blue_button_bn_id', { length: 256 })
-			.references(() => bigBlueButtonBns.id)
-			.notNull(),
-		courseId: varchar('course_id', { length: 256 }),
-		log: varchar('log', { length: 256 }),
-		meetingId: varchar('meeting_id', { length: 256 }),
-		meta: text('meta'),
-		userId: varchar('user_id', { length: 256 }).notNull(),
+  "big_blue_button_bn_logs",
+  {
+    organizationId: varchar("organization_id", { length: 191 }).notNull(),
+    id: varchar("id", { length: 191 })
+      .primaryKey()
+      .$defaultFn(() => nanoid()),
+    bigBlueButtonBnId: varchar("big_blue_button_bn_id", { length: 256 })
+      .references(() => bigBlueButtonBns.id)
+      .notNull(),
+    courseId: varchar("course_id", { length: 256 }),
+    log: varchar("log", { length: 256 }),
+    meetingId: varchar("meeting_id", { length: 256 }),
+    meta: text("meta"),
+    userId: varchar("user_id", { length: 256 }).notNull(),
 
-		createdAt: timestamp('created_at')
-			.notNull()
-			.default(sql`now()`),
-		updatedAt: timestamp('updated_at')
-			.notNull()
-			.default(sql`now()`)
-	},
-	(bigBlueButtonBnLogs) => {
-		return {
-			courseIdIndex: uniqueIndex('bl_course_id_idx').on(
-				bigBlueButtonBnLogs.courseId
-			)
-		}
-	}
-)
+    createdAt: timestamp("created_at")
+      .notNull()
+      .default(sql`now()`),
+    updatedAt: timestamp("updated_at")
+      .notNull()
+      .default(sql`now()`),
+  },
+  (bigBlueButtonBnLogs) => {
+    return {
+      courseIdIndex: uniqueIndex("bl_course_id_idx").on(
+        bigBlueButtonBnLogs.courseId,
+      ),
+    };
+  },
+);
 
 // Schema for bigBlueButtonBnLogs - used to validate API requests
-const baseSchema = createSelectSchema(bigBlueButtonBnLogs).omit(timestamps)
+const baseSchema = createSelectSchema(bigBlueButtonBnLogs).omit(timestamps);
 
 export const insertBigBlueButtonBnLogSchema =
-	createInsertSchema(bigBlueButtonBnLogs).omit(timestamps)
+  createInsertSchema(bigBlueButtonBnLogs).omit(timestamps);
 export const insertBigBlueButtonBnLogParams = baseSchema
-	.extend({
-		bigBlueButtonBnId: z.coerce.string().min(1),
-		delete: z.coerce.boolean()
-	})
-	.omit({
-		id: true,
-		userId: true
-	})
+  .extend({
+    bigBlueButtonBnId: z.coerce.string().min(1),
+    delete: z.coerce.boolean(),
+  })
+  .omit({
+    id: true,
+    userId: true,
+  });
 
-export const updateBigBlueButtonBnLogSchema = baseSchema
+export const updateBigBlueButtonBnLogSchema = baseSchema;
 export const updateBigBlueButtonBnLogParams = baseSchema
-	.extend({
-		bigBlueButtonBnId: z.coerce.string().min(1),
-		delete: z.coerce.boolean()
-	})
-	.omit({
-		userId: true
-	})
-export const bigBlueButtonBnLogIdSchema = baseSchema.pick({ id: true })
+  .extend({
+    bigBlueButtonBnId: z.coerce.string().min(1),
+    delete: z.coerce.boolean(),
+  })
+  .omit({
+    userId: true,
+  });
+export const bigBlueButtonBnLogIdSchema = baseSchema.pick({ id: true });
 
 // Types for bigBlueButtonBnLogs - used to type API request params and within Components
-export type BigBlueButtonBnLog = typeof bigBlueButtonBnLogs.$inferSelect
+export type BigBlueButtonBnLog = typeof bigBlueButtonBnLogs.$inferSelect;
 export type NewBigBlueButtonBnLog = z.infer<
-	typeof insertBigBlueButtonBnLogSchema
->
+  typeof insertBigBlueButtonBnLogSchema
+>;
 export type NewBigBlueButtonBnLogParams = z.infer<
-	typeof insertBigBlueButtonBnLogParams
->
+  typeof insertBigBlueButtonBnLogParams
+>;
 export type UpdateBigBlueButtonBnLogParams = z.infer<
-	typeof updateBigBlueButtonBnLogParams
->
+  typeof updateBigBlueButtonBnLogParams
+>;
 export type BigBlueButtonBnLogId = z.infer<
-	typeof bigBlueButtonBnLogIdSchema
->['id']
+  typeof bigBlueButtonBnLogIdSchema
+>["id"];
 
 // this type infers the return from getBigBlueButtonBnLogs() - meaning it will include any joins
 export type CompleteBigBlueButtonBnLog = Awaited<
-	ReturnType<typeof getBigBlueButtonBnLogs>
->['bigBlueButtonBnLogs'][number]
+  ReturnType<typeof getBigBlueButtonBnLogs>
+>["bigBlueButtonBnLogs"][number];

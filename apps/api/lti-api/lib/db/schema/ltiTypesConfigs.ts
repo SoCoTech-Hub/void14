@@ -1,43 +1,44 @@
-import { varchar, text, pgTable } from 'drizzle-orm/pg-core'
-import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
-import { z } from 'zod'
+import { type getLtiTypesConfigs } from "@/lib/api/ltiTypesConfigs/queries";
+import { pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { z } from "zod";
 
-import { type getLtiTypesConfigs } from '@/lib/api/ltiTypesConfigs/queries'
+import { nanoid } from "@soco/utils";
 
-import { nanoid } from '@/lib/utils'
-
-export const ltiTypesConfigs = pgTable('lti_types_configs', {
-	organizationId: varchar('organization_id', { length: 191 }).notNull(),
-	id: varchar('id', { length: 191 })
-		.primaryKey()
-		.$defaultFn(() => nanoid()),
-	name: varchar('name', { length: 256 }),
-	typeId: varchar('type_id', { length: 256 }),
-	value: text('value')
-})
+export const ltiTypesConfigs = pgTable("lti_types_configs", {
+  organizationId: varchar("organization_id", { length: 191 }).notNull(),
+  id: varchar("id", { length: 191 })
+    .primaryKey()
+    .$defaultFn(() => nanoid()),
+  name: varchar("name", { length: 256 }),
+  typeId: varchar("type_id", { length: 256 }),
+  value: text("value"),
+});
 
 // Schema for ltiTypesConfigs - used to validate API requests
-const baseSchema = createSelectSchema(ltiTypesConfigs)
+const baseSchema = createSelectSchema(ltiTypesConfigs);
 
-export const insertLtiTypesConfigSchema = createInsertSchema(ltiTypesConfigs)
+export const insertLtiTypesConfigSchema = createInsertSchema(ltiTypesConfigs);
 export const insertLtiTypesConfigParams = baseSchema.extend({}).omit({
-	id: true
-})
+  id: true,
+});
 
-export const updateLtiTypesConfigSchema = baseSchema
-export const updateLtiTypesConfigParams = baseSchema.extend({})
-export const ltiTypesConfigIdSchema = baseSchema.pick({ id: true })
+export const updateLtiTypesConfigSchema = baseSchema;
+export const updateLtiTypesConfigParams = baseSchema.extend({});
+export const ltiTypesConfigIdSchema = baseSchema.pick({ id: true });
 
 // Types for ltiTypesConfigs - used to type API request params and within Components
-export type LtiTypesConfig = typeof ltiTypesConfigs.$inferSelect
-export type NewLtiTypesConfig = z.infer<typeof insertLtiTypesConfigSchema>
-export type NewLtiTypesConfigParams = z.infer<typeof insertLtiTypesConfigParams>
+export type LtiTypesConfig = typeof ltiTypesConfigs.$inferSelect;
+export type NewLtiTypesConfig = z.infer<typeof insertLtiTypesConfigSchema>;
+export type NewLtiTypesConfigParams = z.infer<
+  typeof insertLtiTypesConfigParams
+>;
 export type UpdateLtiTypesConfigParams = z.infer<
-	typeof updateLtiTypesConfigParams
->
-export type LtiTypesConfigId = z.infer<typeof ltiTypesConfigIdSchema>['id']
+  typeof updateLtiTypesConfigParams
+>;
+export type LtiTypesConfigId = z.infer<typeof ltiTypesConfigIdSchema>["id"];
 
 // this type infers the return from getLtiTypesConfigs() - meaning it will include any joins
 export type CompleteLtiTypesConfig = Awaited<
-	ReturnType<typeof getLtiTypesConfigs>
->['ltiTypesConfigs'][number]
+  ReturnType<typeof getLtiTypesConfigs>
+>["ltiTypesConfigs"][number];

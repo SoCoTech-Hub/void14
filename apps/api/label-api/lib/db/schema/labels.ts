@@ -1,56 +1,61 @@
-import { sql } from 'drizzle-orm'
-import { varchar, text, integer, timestamp, pgTable } from 'drizzle-orm/pg-core'
-import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
-import { z } from 'zod'
+import { type getLabels } from "@/lib/api/labels/queries";
+import { sql } from "drizzle-orm";
+import {
+  integer,
+  pgTable,
+  text,
+  timestamp,
+  varchar,
+} from "drizzle-orm/pg-core";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { z } from "zod";
 
-import { type getLabels } from '@/lib/api/labels/queries'
+import { nanoid, timestamps } from "@soco/utils";
 
-import { nanoid, timestamps } from '@/lib/utils'
+export const labels = pgTable("labels", {
+  organizationId: varchar("organization_id", { length: 191 }).notNull(),
+  id: varchar("id", { length: 191 })
+    .primaryKey()
+    .$defaultFn(() => nanoid()),
+  course: varchar("course", { length: 256 }),
+  intro: text("intro"),
+  introFormat: integer("intro_format"),
+  name: varchar("name", { length: 256 }),
 
-export const labels = pgTable('labels', {
-	organizationId: varchar('organization_id', { length: 191 }).notNull(),
-	id: varchar('id', { length: 191 })
-		.primaryKey()
-		.$defaultFn(() => nanoid()),
-	course: varchar('course', { length: 256 }),
-	intro: text('intro'),
-	introFormat: integer('intro_format'),
-	name: varchar('name', { length: 256 }),
-
-	createdAt: timestamp('created_at')
-		.notNull()
-		.default(sql`now()`),
-	updatedAt: timestamp('updated_at')
-		.notNull()
-		.default(sql`now()`)
-})
+  createdAt: timestamp("created_at")
+    .notNull()
+    .default(sql`now()`),
+  updatedAt: timestamp("updated_at")
+    .notNull()
+    .default(sql`now()`),
+});
 
 // Schema for labels - used to validate API requests
-const baseSchema = createSelectSchema(labels).omit(timestamps)
+const baseSchema = createSelectSchema(labels).omit(timestamps);
 
-export const insertLabelSchema = createInsertSchema(labels).omit(timestamps)
+export const insertLabelSchema = createInsertSchema(labels).omit(timestamps);
 export const insertLabelParams = baseSchema
-	.extend({
-		introFormat: z.coerce.number()
-	})
-	.omit({
-		id: true
-	})
+  .extend({
+    introFormat: z.coerce.number(),
+  })
+  .omit({
+    id: true,
+  });
 
-export const updateLabelSchema = baseSchema
+export const updateLabelSchema = baseSchema;
 export const updateLabelParams = baseSchema.extend({
-	introFormat: z.coerce.number()
-})
-export const labelIdSchema = baseSchema.pick({ id: true })
+  introFormat: z.coerce.number(),
+});
+export const labelIdSchema = baseSchema.pick({ id: true });
 
 // Types for labels - used to type API request params and within Components
-export type Label = typeof labels.$inferSelect
-export type NewLabel = z.infer<typeof insertLabelSchema>
-export type NewLabelParams = z.infer<typeof insertLabelParams>
-export type UpdateLabelParams = z.infer<typeof updateLabelParams>
-export type LabelId = z.infer<typeof labelIdSchema>['id']
+export type Label = typeof labels.$inferSelect;
+export type NewLabel = z.infer<typeof insertLabelSchema>;
+export type NewLabelParams = z.infer<typeof insertLabelParams>;
+export type UpdateLabelParams = z.infer<typeof updateLabelParams>;
+export type LabelId = z.infer<typeof labelIdSchema>["id"];
 
 // this type infers the return from getLabels() - meaning it will include any joins
 export type CompleteLabel = Awaited<
-	ReturnType<typeof getLabels>
->['labels'][number]
+  ReturnType<typeof getLabels>
+>["labels"][number];

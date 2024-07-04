@@ -5,7 +5,7 @@ import { roles } from './roles'
 import { roles } from './roles'
 import { type getRoleAllowAssigns } from '@/lib/api/roleAllowAssigns/queries'
 
-import { nanoid } from '@/lib/utils'
+import { nanoid } from '@soco/utils'
 
 export const roleAllowAssigns = pgTable('role_allow_assigns', {
 	organizationId: varchar('organization_id', { length: 191 }).notNull(),

@@ -1,89 +1,90 @@
+import { type getCourseCompletionCritCompls } from "@/lib/api/courseCompletionCritCompls/queries";
 import {
-	varchar,
-	timestamp,
-	real,
-	pgTable,
-	uniqueIndex
-} from 'drizzle-orm/pg-core'
-import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
-import { z } from 'zod'
-import { courses } from './courses'
-import { type getCourseCompletionCritCompls } from '@/lib/api/courseCompletionCritCompls/queries'
+  pgTable,
+  real,
+  timestamp,
+  uniqueIndex,
+  varchar,
+} from "drizzle-orm/pg-core";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { z } from "zod";
 
-import { nanoid } from '@/lib/utils'
+import { nanoid } from "@soco/utils";
+
+import { courses } from "./courses";
 
 export const courseCompletionCritCompls = pgTable(
-	'course_completion_crit_compls',
-	{
-		organizationId: varchar('organization_id', { length: 191 }).notNull(),
-		id: varchar('id', { length: 191 })
-			.primaryKey()
-			.$defaultFn(() => nanoid()),
-		courseId: varchar('course_id', { length: 256 })
-			.references(() => courses.id)
-			.notNull(),
-		timeCompleted: timestamp('time_completed'),
-		timeUnenrolled: timestamp('time_unenrolled'),
-		gradeFinal: real('grade_final'),
-		userId: varchar('user_id', { length: 256 }).notNull()
-	},
-	(courseCompletionCritCompls) => {
-		return {
-			courseIdIndex: uniqueIndex(
-				'course_completion_crit_compls_course_id_idx'
-			).on(courseCompletionCritCompls.courseId)
-		}
-	}
-)
+  "course_completion_crit_compls",
+  {
+    organizationId: varchar("organization_id", { length: 191 }).notNull(),
+    id: varchar("id", { length: 191 })
+      .primaryKey()
+      .$defaultFn(() => nanoid()),
+    courseId: varchar("course_id", { length: 256 })
+      .references(() => courses.id)
+      .notNull(),
+    timeCompleted: timestamp("time_completed"),
+    timeUnenrolled: timestamp("time_unenrolled"),
+    gradeFinal: real("grade_final"),
+    userId: varchar("user_id", { length: 256 }).notNull(),
+  },
+  (courseCompletionCritCompls) => {
+    return {
+      courseIdIndex: uniqueIndex(
+        "course_completion_crit_compls_course_id_idx",
+      ).on(courseCompletionCritCompls.courseId),
+    };
+  },
+);
 
 // Schema for courseCompletionCritCompls - used to validate API requests
-const baseSchema = createSelectSchema(courseCompletionCritCompls)
+const baseSchema = createSelectSchema(courseCompletionCritCompls);
 
 export const insertCourseCompletionCritComplSchema = createInsertSchema(
-	courseCompletionCritCompls
-)
+  courseCompletionCritCompls,
+);
 export const insertCourseCompletionCritComplParams = baseSchema
-	.extend({
-		courseId: z.coerce.string().min(1),
-		timeCompleted: z.coerce.string().min(1),
-		timeUnenrolled: z.coerce.string().min(1),
-		gradeFinal: z.coerce.number()
-	})
-	.omit({
-		id: true,
-		userId: true
-	})
+  .extend({
+    courseId: z.coerce.string().min(1),
+    timeCompleted: z.coerce.string().min(1),
+    timeUnenrolled: z.coerce.string().min(1),
+    gradeFinal: z.coerce.number(),
+  })
+  .omit({
+    id: true,
+    userId: true,
+  });
 
-export const updateCourseCompletionCritComplSchema = baseSchema
+export const updateCourseCompletionCritComplSchema = baseSchema;
 export const updateCourseCompletionCritComplParams = baseSchema
-	.extend({
-		courseId: z.coerce.string().min(1),
-		timeCompleted: z.coerce.string().min(1),
-		timeUnenrolled: z.coerce.string().min(1),
-		gradeFinal: z.coerce.number()
-	})
-	.omit({
-		userId: true
-	})
-export const courseCompletionCritComplIdSchema = baseSchema.pick({ id: true })
+  .extend({
+    courseId: z.coerce.string().min(1),
+    timeCompleted: z.coerce.string().min(1),
+    timeUnenrolled: z.coerce.string().min(1),
+    gradeFinal: z.coerce.number(),
+  })
+  .omit({
+    userId: true,
+  });
+export const courseCompletionCritComplIdSchema = baseSchema.pick({ id: true });
 
 // Types for courseCompletionCritCompls - used to type API request params and within Components
 export type CourseCompletionCritCompl =
-	typeof courseCompletionCritCompls.$inferSelect
+  typeof courseCompletionCritCompls.$inferSelect;
 export type NewCourseCompletionCritCompl = z.infer<
-	typeof insertCourseCompletionCritComplSchema
->
+  typeof insertCourseCompletionCritComplSchema
+>;
 export type NewCourseCompletionCritComplParams = z.infer<
-	typeof insertCourseCompletionCritComplParams
->
+  typeof insertCourseCompletionCritComplParams
+>;
 export type UpdateCourseCompletionCritComplParams = z.infer<
-	typeof updateCourseCompletionCritComplParams
->
+  typeof updateCourseCompletionCritComplParams
+>;
 export type CourseCompletionCritComplId = z.infer<
-	typeof courseCompletionCritComplIdSchema
->['id']
+  typeof courseCompletionCritComplIdSchema
+>["id"];
 
 // this type infers the return from getCourseCompletionCritCompls() - meaning it will include any joins
 export type CompleteCourseCompletionCritCompl = Awaited<
-	ReturnType<typeof getCourseCompletionCritCompls>
->['courseCompletionCritCompls'][number]
+  ReturnType<typeof getCourseCompletionCritCompls>
+>["courseCompletionCritCompls"][number];
