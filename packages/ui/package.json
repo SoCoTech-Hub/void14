@@ -1,12 +1,68 @@
 {
-  "name": "@soco/ui",
-  "version": "0.1.0",
+  "name": "@soco/validators",
   "private": true,
+  "version": "0.1.0",
   "type": "module",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./src/index.ts"
+    },
+    "./avatar": {
+      "types": "./dist/avatar.d.tsx",
+      "default": "./src/avatar.tsx"
+    },
+    "./button": {
+      "types": "./dist/button.d.tsx",
+      "default": "./src/button.tsx"
+    },
+    "./calendar": {
+      "types": "./dist/calendar.d.tsx",
+      "default": "./src/calendar.tsx"
+    },
+    "./card": {
+      "types": "./dist/card.d.tsx",
+      "default": "./src/card.tsx"
+    },
+    "./checkbox": {
+      "types": "./dist/checkbox.d.tsx",
+      "default": "./src/checkbox.tsx"
+    },
+    "./dialog": {
+      "types": "./dist/dialog.d.tsx",
+      "default": "./src/dialog.tsx"
+    },
+    "./dropdown-menu": {
+      "types": "./dist/dropdown-menu.d.tsx",
+      "default": "./src/dropdown-menu.tsx"
+    },
+    "./form": {
+      "types": "./dist/form.d.tsx",
+      "default": "./src/form.tsx"
+    },
+    "./input": {
+      "types": "./dist/input.d.tsx",
+      "default": "./src/input.tsx"
+    },
+    "./label": {
+      "types": "./dist/label.d.tsx",
+      "default": "./src/label.tsx"
+    },
+    "./popover": {
+      "types": "./dist/popover.d.tsx",
+      "default": "./src/popover.tsx"
+    },
+    "./select": {
+      "types": "./dist/select.d.tsx",
+      "default": "./src/select.tsx"
+    },
+    "./sonner": {
+      "types": "./dist/sonner.d.tsx",
+      "default": "./src/sonner.tsx"
+    },
+    "./ThemeToggle": {
+      "types": "./dist/ThemeToggle.d.tsx",
+      "default": "./src/ThemeToggle.tsx"
     }
   },
   "license": "MIT",
@@ -19,9 +75,19 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
-    "@soco/validators": "workspace:*",
-    "@trpc/server": "10.45.2",
-    "superjson": "^2.2.1",
+    "@radix-ui/react-avatar": "^1.0.4",
+    "@radix-ui/react-checkbox": "^1.0.4",
+    "@radix-ui/react-dialog": "^1.0.5",
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-popover": "^1.0.7",
+    "@radix-ui/react-select": "^2.0.0",
+    "@radix-ui/react-slot": "^1.0.2",
+    "@soco/utils": "workspace:*",
+    "react": "^18",
+    "react-day-picker": "^8.10.0",
+    "react-dom": "^18",
+    "react-hook-form": "^7.51.5",
     "zod": "^3.23.8"
   },
   "devDependencies": {
