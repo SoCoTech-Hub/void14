@@ -1,66 +1,66 @@
-import { NextResponse } from 'next/server'
-import { revalidatePath } from 'next/cache'
-import { z } from 'zod'
+import { revalidatePath } from "next/cache";
+import { NextResponse } from "next/server";
+import { z } from "zod";
 
 import {
-	createCohort,
-	deleteCohort,
-	updateCohort
-} from '@/lib/api/cohorts/mutations'
+  createCohort,
+  deleteCohort,
+  updateCohort,
+} from "../../../lib/api/cohorts/mutations";
 import {
-	cohortIdSchema,
-	insertCohortParams,
-	updateCohortParams
-} from '@/lib/db/schema/cohorts'
+  cohortIdSchema,
+  insertCohortParams,
+  updateCohortParams,
+} from "../../../lib/db/schema/cohorts";
 
 export async function POST(req: Request) {
-	try {
-		const validatedData = insertCohortParams.parse(await req.json())
-		const { cohort } = await createCohort(validatedData)
+  try {
+    const validatedData = insertCohortParams.parse(await req.json());
+    const { cohort } = await createCohort(validatedData);
 
-		revalidatePath('/cohorts') // optional - assumes you will have named route same as entity
+    revalidatePath("/cohorts"); // optional - assumes you will have named route same as entity
 
-		return NextResponse.json(cohort, { status: 201 })
-	} catch (err) {
-		if (err instanceof z.ZodError) {
-			return NextResponse.json({ error: err.issues }, { status: 400 })
-		}
-		return NextResponse.json({ error: err }, { status: 500 })
-	}
+    return NextResponse.json(cohort, { status: 201 });
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      return NextResponse.json({ error: err.issues }, { status: 400 });
+    }
+    return NextResponse.json({ error: err }, { status: 500 });
+  }
 }
 
 export async function PUT(req: Request) {
-	try {
-		const { searchParams } = new URL(req.url)
-		const id = searchParams.get('id')
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
 
-		const validatedData = updateCohortParams.parse(await req.json())
-		const validatedParams = cohortIdSchema.parse({ id })
+    const validatedData = updateCohortParams.parse(await req.json());
+    const validatedParams = cohortIdSchema.parse({ id });
 
-		const { cohort } = await updateCohort(validatedParams.id, validatedData)
+    const { cohort } = await updateCohort(validatedParams.id, validatedData);
 
-		return NextResponse.json(cohort, { status: 200 })
-	} catch (err) {
-		if (err instanceof z.ZodError) {
-			return NextResponse.json({ error: err.issues }, { status: 400 })
-		}
-		return NextResponse.json(err, { status: 500 })
-	}
+    return NextResponse.json(cohort, { status: 200 });
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      return NextResponse.json({ error: err.issues }, { status: 400 });
+    }
+    return NextResponse.json(err, { status: 500 });
+  }
 }
 
 export async function DELETE(req: Request) {
-	try {
-		const { searchParams } = new URL(req.url)
-		const id = searchParams.get('id')
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
 
-		const validatedParams = cohortIdSchema.parse({ id })
-		const { cohort } = await deleteCohort(validatedParams.id)
+    const validatedParams = cohortIdSchema.parse({ id });
+    const { cohort } = await deleteCohort(validatedParams.id);
 
-		return NextResponse.json(cohort, { status: 200 })
-	} catch (err) {
-		if (err instanceof z.ZodError) {
-			return NextResponse.json({ error: err.issues }, { status: 400 })
-		}
-		return NextResponse.json(err, { status: 500 })
-	}
+    return NextResponse.json(cohort, { status: 200 });
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      return NextResponse.json({ error: err.issues }, { status: 400 });
+    }
+    return NextResponse.json(err, { status: 500 });
+  }
 }

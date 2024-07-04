@@ -1,69 +1,69 @@
-import { NextResponse } from 'next/server'
-import { revalidatePath } from 'next/cache'
-import { z } from 'zod'
+import { revalidatePath } from "next/cache";
+import { NextResponse } from "next/server";
+import { z } from "zod";
 
 import {
-	createSurveyAnalysiss,
-	deleteSurveyAnalysiss,
-	updateSurveyAnalysiss
-} from '@/lib/api/surveyAnalysiss/mutations'
+  createSurveyAnalysiss,
+  deleteSurveyAnalysiss,
+  updateSurveyAnalysiss,
+} from "../../../lib/api/surveyAnalysiss/mutations";
 import {
-	surveyAnalysissIdSchema,
-	insertSurveyAnalysissParams,
-	updateSurveyAnalysissParams
-} from '@/lib/db/schema/surveyAnalysiss'
+  insertSurveyAnalysissParams,
+  surveyAnalysissIdSchema,
+  updateSurveyAnalysissParams,
+} from "../../../lib/db/schema/surveyAnalysiss";
 
 export async function POST(req: Request) {
-	try {
-		const validatedData = insertSurveyAnalysissParams.parse(await req.json())
-		const { surveyAnalysiss } = await createSurveyAnalysiss(validatedData)
+  try {
+    const validatedData = insertSurveyAnalysissParams.parse(await req.json());
+    const { surveyAnalysiss } = await createSurveyAnalysiss(validatedData);
 
-		revalidatePath('/surveyAnalysiss') // optional - assumes you will have named route same as entity
+    revalidatePath("/surveyAnalysiss"); // optional - assumes you will have named route same as entity
 
-		return NextResponse.json(surveyAnalysiss, { status: 201 })
-	} catch (err) {
-		if (err instanceof z.ZodError) {
-			return NextResponse.json({ error: err.issues }, { status: 400 })
-		}
-		return NextResponse.json({ error: err }, { status: 500 })
-	}
+    return NextResponse.json(surveyAnalysiss, { status: 201 });
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      return NextResponse.json({ error: err.issues }, { status: 400 });
+    }
+    return NextResponse.json({ error: err }, { status: 500 });
+  }
 }
 
 export async function PUT(req: Request) {
-	try {
-		const { searchParams } = new URL(req.url)
-		const id = searchParams.get('id')
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
 
-		const validatedData = updateSurveyAnalysissParams.parse(await req.json())
-		const validatedParams = surveyAnalysissIdSchema.parse({ id })
+    const validatedData = updateSurveyAnalysissParams.parse(await req.json());
+    const validatedParams = surveyAnalysissIdSchema.parse({ id });
 
-		const { surveyAnalysiss } = await updateSurveyAnalysiss(
-			validatedParams.id,
-			validatedData
-		)
+    const { surveyAnalysiss } = await updateSurveyAnalysiss(
+      validatedParams.id,
+      validatedData,
+    );
 
-		return NextResponse.json(surveyAnalysiss, { status: 200 })
-	} catch (err) {
-		if (err instanceof z.ZodError) {
-			return NextResponse.json({ error: err.issues }, { status: 400 })
-		}
-		return NextResponse.json(err, { status: 500 })
-	}
+    return NextResponse.json(surveyAnalysiss, { status: 200 });
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      return NextResponse.json({ error: err.issues }, { status: 400 });
+    }
+    return NextResponse.json(err, { status: 500 });
+  }
 }
 
 export async function DELETE(req: Request) {
-	try {
-		const { searchParams } = new URL(req.url)
-		const id = searchParams.get('id')
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
 
-		const validatedParams = surveyAnalysissIdSchema.parse({ id })
-		const { surveyAnalysiss } = await deleteSurveyAnalysiss(validatedParams.id)
+    const validatedParams = surveyAnalysissIdSchema.parse({ id });
+    const { surveyAnalysiss } = await deleteSurveyAnalysiss(validatedParams.id);
 
-		return NextResponse.json(surveyAnalysiss, { status: 200 })
-	} catch (err) {
-		if (err instanceof z.ZodError) {
-			return NextResponse.json({ error: err.issues }, { status: 400 })
-		}
-		return NextResponse.json(err, { status: 500 })
-	}
+    return NextResponse.json(surveyAnalysiss, { status: 200 });
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      return NextResponse.json({ error: err.issues }, { status: 400 });
+    }
+    return NextResponse.json(err, { status: 500 });
+  }
 }
