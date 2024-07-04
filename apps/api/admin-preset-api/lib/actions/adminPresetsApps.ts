@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAdminPresetsApp,
   deleteAdminPresetsApp,
   updateAdminPresetsApp,
-} from "@/lib/api/adminPresetsApps/mutations";
+} from "../api/adminPresetsApps/mutations";
 import {
   AdminPresetsAppId,
-  NewAdminPresetsAppParams,
-  UpdateAdminPresetsAppParams,
   adminPresetsAppIdSchema,
   insertAdminPresetsAppParams,
+  NewAdminPresetsAppParams,
+  UpdateAdminPresetsAppParams,
   updateAdminPresetsAppParams,
-} from "@/lib/db/schema/adminPresetsApps";
+} from "../db/schema/adminPresetsApps";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateAdminPresetsApps = () => revalidatePath("/admin-presets-apps");
 
-export const createAdminPresetsAppAction = async (input: NewAdminPresetsAppParams) => {
+export const createAdminPresetsAppAction = async (
+  input: NewAdminPresetsAppParams,
+) => {
   try {
     const payload = insertAdminPresetsAppParams.parse(input);
     await createAdminPresetsApp(payload);
@@ -37,7 +40,9 @@ export const createAdminPresetsAppAction = async (input: NewAdminPresetsAppParam
   }
 };
 
-export const updateAdminPresetsAppAction = async (input: UpdateAdminPresetsAppParams) => {
+export const updateAdminPresetsAppAction = async (
+  input: UpdateAdminPresetsAppParams,
+) => {
   try {
     const payload = updateAdminPresetsAppParams.parse(input);
     await updateAdminPresetsApp(payload.id, payload);

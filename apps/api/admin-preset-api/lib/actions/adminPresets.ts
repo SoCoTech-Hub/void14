@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAdminPreset,
   deleteAdminPreset,
   updateAdminPreset,
-} from "@/lib/api/adminPresets/mutations";
+} from "../api/adminPresets/mutations";
 import {
   AdminPresetId,
-  NewAdminPresetParams,
-  UpdateAdminPresetParams,
   adminPresetIdSchema,
   insertAdminPresetParams,
+  NewAdminPresetParams,
+  UpdateAdminPresetParams,
   updateAdminPresetParams,
-} from "@/lib/db/schema/adminPresets";
+} from "../db/schema/adminPresets";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -37,7 +38,9 @@ export const createAdminPresetAction = async (input: NewAdminPresetParams) => {
   }
 };
 
-export const updateAdminPresetAction = async (input: UpdateAdminPresetParams) => {
+export const updateAdminPresetAction = async (
+  input: UpdateAdminPresetParams,
+) => {
   try {
     const payload = updateAdminPresetParams.parse(input);
     await updateAdminPreset(payload.id, payload);

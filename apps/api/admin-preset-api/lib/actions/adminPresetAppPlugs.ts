@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAdminPresetAppPlug,
   deleteAdminPresetAppPlug,
   updateAdminPresetAppPlug,
-} from "@/lib/api/adminPresetAppPlugs/mutations";
+} from "../api/adminPresetAppPlugs/mutations";
 import {
   AdminPresetAppPlugId,
-  NewAdminPresetAppPlugParams,
-  UpdateAdminPresetAppPlugParams,
   adminPresetAppPlugIdSchema,
   insertAdminPresetAppPlugParams,
+  NewAdminPresetAppPlugParams,
+  UpdateAdminPresetAppPlugParams,
   updateAdminPresetAppPlugParams,
-} from "@/lib/db/schema/adminPresetAppPlugs";
+} from "../db/schema/adminPresetAppPlugs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateAdminPresetAppPlugs = () => revalidatePath("/admin-preset-app-plugs");
+const revalidateAdminPresetAppPlugs = () =>
+  revalidatePath("/admin-preset-app-plugs");
 
-export const createAdminPresetAppPlugAction = async (input: NewAdminPresetAppPlugParams) => {
+export const createAdminPresetAppPlugAction = async (
+  input: NewAdminPresetAppPlugParams,
+) => {
   try {
     const payload = insertAdminPresetAppPlugParams.parse(input);
     await createAdminPresetAppPlug(payload);
@@ -37,7 +41,9 @@ export const createAdminPresetAppPlugAction = async (input: NewAdminPresetAppPlu
   }
 };
 
-export const updateAdminPresetAppPlugAction = async (input: UpdateAdminPresetAppPlugParams) => {
+export const updateAdminPresetAppPlugAction = async (
+  input: UpdateAdminPresetAppPlugParams,
+) => {
   try {
     const payload = updateAdminPresetAppPlugParams.parse(input);
     await updateAdminPresetAppPlug(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateAdminPresetAppPlugAction = async (input: UpdateAdminPresetApp
   }
 };
 
-export const deleteAdminPresetAppPlugAction = async (input: AdminPresetAppPlugId) => {
+export const deleteAdminPresetAppPlugAction = async (
+  input: AdminPresetAppPlugId,
+) => {
   try {
     const payload = adminPresetAppPlugIdSchema.parse({ id: input });
     await deleteAdminPresetAppPlug(payload.id);

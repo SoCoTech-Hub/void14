@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAdminPresetIt,
   deleteAdminPresetIt,
   updateAdminPresetIt,
-} from "@/lib/api/adminPresetIts/mutations";
+} from "../api/adminPresetIts/mutations";
 import {
   AdminPresetItId,
-  NewAdminPresetItParams,
-  UpdateAdminPresetItParams,
   adminPresetItIdSchema,
   insertAdminPresetItParams,
+  NewAdminPresetItParams,
+  UpdateAdminPresetItParams,
   updateAdminPresetItParams,
-} from "@/lib/db/schema/adminPresetIts";
+} from "../db/schema/adminPresetIts";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateAdminPresetIts = () => revalidatePath("/admin-preset-its");
 
-export const createAdminPresetItAction = async (input: NewAdminPresetItParams) => {
+export const createAdminPresetItAction = async (
+  input: NewAdminPresetItParams,
+) => {
   try {
     const payload = insertAdminPresetItParams.parse(input);
     await createAdminPresetIt(payload);
@@ -37,7 +40,9 @@ export const createAdminPresetItAction = async (input: NewAdminPresetItParams) =
   }
 };
 
-export const updateAdminPresetItAction = async (input: UpdateAdminPresetItParams) => {
+export const updateAdminPresetItAction = async (
+  input: UpdateAdminPresetItParams,
+) => {
   try {
     const payload = updateAdminPresetItParams.parse(input);
     await updateAdminPresetIt(payload.id, payload);

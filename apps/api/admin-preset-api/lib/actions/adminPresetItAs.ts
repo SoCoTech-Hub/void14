@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAdminPresetItA,
   deleteAdminPresetItA,
   updateAdminPresetItA,
-} from "@/lib/api/adminPresetItAs/mutations";
+} from "../api/adminPresetItAs/mutations";
 import {
   AdminPresetItAId,
-  NewAdminPresetItAParams,
-  UpdateAdminPresetItAParams,
   adminPresetItAIdSchema,
   insertAdminPresetItAParams,
+  NewAdminPresetItAParams,
+  UpdateAdminPresetItAParams,
   updateAdminPresetItAParams,
-} from "@/lib/db/schema/adminPresetItAs";
+} from "../db/schema/adminPresetItAs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateAdminPresetItAs = () => revalidatePath("/admin-preset-it-as");
 
-export const createAdminPresetItAAction = async (input: NewAdminPresetItAParams) => {
+export const createAdminPresetItAAction = async (
+  input: NewAdminPresetItAParams,
+) => {
   try {
     const payload = insertAdminPresetItAParams.parse(input);
     await createAdminPresetItA(payload);
@@ -37,7 +40,9 @@ export const createAdminPresetItAAction = async (input: NewAdminPresetItAParams)
   }
 };
 
-export const updateAdminPresetItAAction = async (input: UpdateAdminPresetItAParams) => {
+export const updateAdminPresetItAAction = async (
+  input: UpdateAdminPresetItAParams,
+) => {
   try {
     const payload = updateAdminPresetItAParams.parse(input);
     await updateAdminPresetItA(payload.id, payload);

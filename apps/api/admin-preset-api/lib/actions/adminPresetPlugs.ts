@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAdminPresetPlug,
   deleteAdminPresetPlug,
   updateAdminPresetPlug,
-} from "@/lib/api/adminPresetPlugs/mutations";
+} from "../api/adminPresetPlugs/mutations";
 import {
   AdminPresetPlugId,
-  NewAdminPresetPlugParams,
-  UpdateAdminPresetPlugParams,
   adminPresetPlugIdSchema,
   insertAdminPresetPlugParams,
+  NewAdminPresetPlugParams,
+  UpdateAdminPresetPlugParams,
   updateAdminPresetPlugParams,
-} from "@/lib/db/schema/adminPresetPlugs";
+} from "../db/schema/adminPresetPlugs";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -27,7 +28,9 @@ const handleErrors = (e: unknown) => {
 
 const revalidateAdminPresetPlugs = () => revalidatePath("/admin-preset-plugs");
 
-export const createAdminPresetPlugAction = async (input: NewAdminPresetPlugParams) => {
+export const createAdminPresetPlugAction = async (
+  input: NewAdminPresetPlugParams,
+) => {
   try {
     const payload = insertAdminPresetPlugParams.parse(input);
     await createAdminPresetPlug(payload);
@@ -37,7 +40,9 @@ export const createAdminPresetPlugAction = async (input: NewAdminPresetPlugParam
   }
 };
 
-export const updateAdminPresetPlugAction = async (input: UpdateAdminPresetPlugParams) => {
+export const updateAdminPresetPlugAction = async (
+  input: UpdateAdminPresetPlugParams,
+) => {
   try {
     const payload = updateAdminPresetPlugParams.parse(input);
     await updateAdminPresetPlug(payload.id, payload);

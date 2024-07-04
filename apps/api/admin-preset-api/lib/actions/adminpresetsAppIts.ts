@@ -1,19 +1,20 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
 import {
   createAdminpresetsAppIt,
   deleteAdminpresetsAppIt,
   updateAdminpresetsAppIt,
-} from "@/lib/api/adminpresetsAppIts/mutations";
+} from "../api/adminpresetsAppIts/mutations";
 import {
   AdminpresetsAppItId,
-  NewAdminpresetsAppItParams,
-  UpdateAdminpresetsAppItParams,
   adminpresetsAppItIdSchema,
   insertAdminpresetsAppItParams,
+  NewAdminpresetsAppItParams,
+  UpdateAdminpresetsAppItParams,
   updateAdminpresetsAppItParams,
-} from "@/lib/db/schema/adminpresetsAppIts";
+} from "../db/schema/adminpresetsAppIts";
 
 const handleErrors = (e: unknown) => {
   const errMsg = "Error, please try again.";
@@ -25,9 +26,12 @@ const handleErrors = (e: unknown) => {
   return errMsg;
 };
 
-const revalidateAdminpresetsAppIts = () => revalidatePath("/adminpresets-app-its");
+const revalidateAdminpresetsAppIts = () =>
+  revalidatePath("/adminpresets-app-its");
 
-export const createAdminpresetsAppItAction = async (input: NewAdminpresetsAppItParams) => {
+export const createAdminpresetsAppItAction = async (
+  input: NewAdminpresetsAppItParams,
+) => {
   try {
     const payload = insertAdminpresetsAppItParams.parse(input);
     await createAdminpresetsAppIt(payload);
@@ -37,7 +41,9 @@ export const createAdminpresetsAppItAction = async (input: NewAdminpresetsAppItP
   }
 };
 
-export const updateAdminpresetsAppItAction = async (input: UpdateAdminpresetsAppItParams) => {
+export const updateAdminpresetsAppItAction = async (
+  input: UpdateAdminpresetsAppItParams,
+) => {
   try {
     const payload = updateAdminpresetsAppItParams.parse(input);
     await updateAdminpresetsAppIt(payload.id, payload);
@@ -47,7 +53,9 @@ export const updateAdminpresetsAppItAction = async (input: UpdateAdminpresetsApp
   }
 };
 
-export const deleteAdminpresetsAppItAction = async (input: AdminpresetsAppItId) => {
+export const deleteAdminpresetsAppItAction = async (
+  input: AdminpresetsAppItId,
+) => {
   try {
     const payload = adminpresetsAppItIdSchema.parse({ id: input });
     await deleteAdminpresetsAppIt(payload.id);

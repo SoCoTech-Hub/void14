@@ -1,21 +1,30 @@
-import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
-import { 
-  AdminPresetsAppId, 
-  NewAdminPresetsAppParams,
-  UpdateAdminPresetsAppParams, 
-  updateAdminPresetsAppSchema,
-  insertAdminPresetsAppSchema, 
-  adminPresetsApps,
-  adminPresetsAppIdSchema 
-} from "@/lib/db/schema/adminPresetsApps";
-import { getUserAuth } from "@/lib/auth/utils";
 
-export const createAdminPresetsApp = async (adminPresetsApp: NewAdminPresetsAppParams) => {
+import { getUserAuth } from "../../auth/utils";
+import { db } from "../../db/index";
+import {
+  AdminPresetsAppId,
+  adminPresetsAppIdSchema,
+  adminPresetsApps,
+  insertAdminPresetsAppSchema,
+  NewAdminPresetsAppParams,
+  UpdateAdminPresetsAppParams,
+  updateAdminPresetsAppSchema,
+} from "../../db/schema/adminPresetsApps";
+
+export const createAdminPresetsApp = async (
+  adminPresetsApp: NewAdminPresetsAppParams,
+) => {
   const { session } = await getUserAuth();
-  const newAdminPresetsApp = insertAdminPresetsAppSchema.parse({ ...adminPresetsApp, userId: session?.user.id! });
+  const newAdminPresetsApp = insertAdminPresetsAppSchema.parse({
+    ...adminPresetsApp,
+    userId: session?.user.id!,
+  });
   try {
-    const [a] =  await db.insert(adminPresetsApps).values(newAdminPresetsApp).returning();
+    const [a] = await db
+      .insert(adminPresetsApps)
+      .values(newAdminPresetsApp)
+      .returning();
     return { adminPresetsApp: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +33,27 @@ export const createAdminPresetsApp = async (adminPresetsApp: NewAdminPresetsAppP
   }
 };
 
-export const updateAdminPresetsApp = async (id: AdminPresetsAppId, adminPresetsApp: UpdateAdminPresetsAppParams) => {
+export const updateAdminPresetsApp = async (
+  id: AdminPresetsAppId,
+  adminPresetsApp: UpdateAdminPresetsAppParams,
+) => {
   const { session } = await getUserAuth();
   const { id: adminPresetsAppId } = adminPresetsAppIdSchema.parse({ id });
-  const newAdminPresetsApp = updateAdminPresetsAppSchema.parse({ ...adminPresetsApp, userId: session?.user.id! });
+  const newAdminPresetsApp = updateAdminPresetsAppSchema.parse({
+    ...adminPresetsApp,
+    userId: session?.user.id!,
+  });
   try {
-    const [a] =  await db
-     .update(adminPresetsApps)
-     .set({...newAdminPresetsApp, updatedAt: new Date() })
-     .where(and(eq(adminPresetsApps.id, adminPresetsAppId!), eq(adminPresetsApps.userId, session?.user.id!)))
-     .returning();
+    const [a] = await db
+      .update(adminPresetsApps)
+      .set({ ...newAdminPresetsApp, updatedAt: new Date() })
+      .where(
+        and(
+          eq(adminPresetsApps.id, adminPresetsAppId!),
+          eq(adminPresetsApps.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { adminPresetsApp: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +66,15 @@ export const deleteAdminPresetsApp = async (id: AdminPresetsAppId) => {
   const { session } = await getUserAuth();
   const { id: adminPresetsAppId } = adminPresetsAppIdSchema.parse({ id });
   try {
-    const [a] =  await db.delete(adminPresetsApps).where(and(eq(adminPresetsApps.id, adminPresetsAppId!), eq(adminPresetsApps.userId, session?.user.id!)))
-    .returning();
+    const [a] = await db
+      .delete(adminPresetsApps)
+      .where(
+        and(
+          eq(adminPresetsApps.id, adminPresetsAppId!),
+          eq(adminPresetsApps.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { adminPresetsApp: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +82,3 @@ export const deleteAdminPresetsApp = async (id: AdminPresetsAppId) => {
     throw { error: message };
   }
 };
-

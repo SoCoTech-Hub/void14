@@ -1,19 +1,25 @@
-import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
-import { 
-  AdminPresetItId, 
-  NewAdminPresetItParams,
-  UpdateAdminPresetItParams, 
-  updateAdminPresetItSchema,
-  insertAdminPresetItSchema, 
-  adminPresetIts,
-  adminPresetItIdSchema 
-} from "@/lib/db/schema/adminPresetIts";
 
-export const createAdminPresetIt = async (adminPresetIt: NewAdminPresetItParams) => {
+import { db } from "../../db/index";
+import {
+  AdminPresetItId,
+  adminPresetItIdSchema,
+  adminPresetIts,
+  insertAdminPresetItSchema,
+  NewAdminPresetItParams,
+  UpdateAdminPresetItParams,
+  updateAdminPresetItSchema,
+} from "../../db/schema/adminPresetIts";
+
+export const createAdminPresetIt = async (
+  adminPresetIt: NewAdminPresetItParams,
+) => {
   const newAdminPresetIt = insertAdminPresetItSchema.parse(adminPresetIt);
   try {
-    const [a] =  await db.insert(adminPresetIts).values(newAdminPresetIt).returning();
+    const [a] = await db
+      .insert(adminPresetIts)
+      .values(newAdminPresetIt)
+      .returning();
     return { adminPresetIt: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +28,18 @@ export const createAdminPresetIt = async (adminPresetIt: NewAdminPresetItParams)
   }
 };
 
-export const updateAdminPresetIt = async (id: AdminPresetItId, adminPresetIt: UpdateAdminPresetItParams) => {
+export const updateAdminPresetIt = async (
+  id: AdminPresetItId,
+  adminPresetIt: UpdateAdminPresetItParams,
+) => {
   const { id: adminPresetItId } = adminPresetItIdSchema.parse({ id });
   const newAdminPresetIt = updateAdminPresetItSchema.parse(adminPresetIt);
   try {
-    const [a] =  await db
-     .update(adminPresetIts)
-     .set(newAdminPresetIt)
-     .where(eq(adminPresetIts.id, adminPresetItId!))
-     .returning();
+    const [a] = await db
+      .update(adminPresetIts)
+      .set(newAdminPresetIt)
+      .where(eq(adminPresetIts.id, adminPresetItId!))
+      .returning();
     return { adminPresetIt: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +51,10 @@ export const updateAdminPresetIt = async (id: AdminPresetItId, adminPresetIt: Up
 export const deleteAdminPresetIt = async (id: AdminPresetItId) => {
   const { id: adminPresetItId } = adminPresetItIdSchema.parse({ id });
   try {
-    const [a] =  await db.delete(adminPresetIts).where(eq(adminPresetIts.id, adminPresetItId!))
-    .returning();
+    const [a] = await db
+      .delete(adminPresetIts)
+      .where(eq(adminPresetIts.id, adminPresetItId!))
+      .returning();
     return { adminPresetIt: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +62,3 @@ export const deleteAdminPresetIt = async (id: AdminPresetItId) => {
     throw { error: message };
   }
 };
-
