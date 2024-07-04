@@ -1,62 +1,66 @@
-import { NextResponse } from 'next/server'
-import { revalidatePath } from 'next/cache'
-import { z } from 'zod'
+import { revalidatePath } from "next/cache";
+import { NextResponse } from "next/server";
+import { z } from "zod";
 
-import { createZoom, deleteZoom, updateZoom } from '@/lib/api/zooms/mutations'
 import {
-	zoomIdSchema,
-	insertZoomParams,
-	updateZoomParams
-} from '@/lib/db/schema/zooms'
+  createZoom,
+  deleteZoom,
+  updateZoom,
+} from "../../../lib/api/zooms/mutations";
+import {
+  insertZoomParams,
+  updateZoomParams,
+  zoomIdSchema,
+} from "../../../lib/db/schema/zooms";
 
 export async function POST(req: Request) {
-	try {
-		const validatedData = insertZoomParams.parse(await req.json())
-		const { zoom } = await createZoom(validatedData)
+  try {
+    const validatedData = insertZoomParams.parse(await req.json());
+    const { zoom } = await createZoom(validatedData);
 
-		revalidatePath('/zooms') // optional - assumes you will have named route same as entity
+    revalidatePath("/zooms"); // optional - assumes you will have named route same as entity
 
-		return NextResponse.json(zoom, { status: 201 })
-	} catch (err) {
-		if (err instanceof z.ZodError) {
-			return NextResponse.json({ error: err.issues }, { status: 400 })
-		}
-		return NextResponse.json({ error: err }, { status: 500 })
-	}
+    return NextResponse.json(zoom, { status: 201 });
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      return NextResponse.json({ error: err.issues }, { status: 400 });
+    }
+    return NextResponse.json({ error: err }, { status: 500 });
+  }
 }
 
 export async function PUT(req: Request) {
-	try {
-		const { searchParams } = new URL(req.url)
-		const id = searchParams.get('id')
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
 
-		const validatedData = updateZoomParams.parse(await req.json())
-		const validatedParams = zoomIdSchema.parse({ id })
+    const validatedData = updateZoomParams.parse(await req.json());
+    const validatedParams = zoomIdSchema.parse({ id });
 
-		const { zoom } = await updateZoom(validatedParams.id, validatedData)
+    const { zoom } = await updateZoom(validatedParams.id, validatedData);
 
-		return NextResponse.json(zoom, { status: 200 })
-	} catch (err) {
-		if (err instanceof z.ZodError) {
-			return NextResponse.json({ error: err.issues }, { status: 400 })
-		}
-		return NextResponse.json(err, { status: 500 })
-	}
+    return NextResponse.json(zoom, { status: 200 });
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      return NextResponse.json({ error: err.issues }, { status: 400 });
+    }
+    return NextResponse.json(err, { status: 500 });
+  }
 }
 
 export async function DELETE(req: Request) {
-	try {
-		const { searchParams } = new URL(req.url)
-		const id = searchParams.get('id')
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
 
-		const validatedParams = zoomIdSchema.parse({ id })
-		const { zoom } = await deleteZoom(validatedParams.id)
+    const validatedParams = zoomIdSchema.parse({ id });
+    const { zoom } = await deleteZoom(validatedParams.id);
 
-		return NextResponse.json(zoom, { status: 200 })
-	} catch (err) {
-		if (err instanceof z.ZodError) {
-			return NextResponse.json({ error: err.issues }, { status: 400 })
-		}
-		return NextResponse.json(err, { status: 500 })
-	}
+    return NextResponse.json(zoom, { status: 200 });
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      return NextResponse.json({ error: err.issues }, { status: 400 });
+    }
+    return NextResponse.json(err, { status: 500 });
+  }
 }

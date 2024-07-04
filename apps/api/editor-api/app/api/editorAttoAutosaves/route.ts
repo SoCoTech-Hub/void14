@@ -1,71 +1,76 @@
-import { NextResponse } from 'next/server'
-import { revalidatePath } from 'next/cache'
-import { z } from 'zod'
+import { revalidatePath } from "next/cache";
+import { NextResponse } from "next/server";
+import { z } from "zod";
 
 import {
-	createEditorAttoAutosave,
-	deleteEditorAttoAutosave,
-	updateEditorAttoAutosave
-} from '@/lib/api/editorAttoAutosaves/mutations'
+  createEditorAttoAutosave,
+  deleteEditorAttoAutosave,
+  updateEditorAttoAutosave,
+} from "../../../lib/api/editorAttoAutosaves/mutations";
 import {
-	editorAttoAutosaveIdSchema,
-	insertEditorAttoAutosaveParams,
-	updateEditorAttoAutosaveParams
-} from '@/lib/db/schema/editorAttoAutosaves'
+  editorAttoAutosaveIdSchema,
+  insertEditorAttoAutosaveParams,
+  updateEditorAttoAutosaveParams,
+} from "../../../lib/db/schema/editorAttoAutosaves";
 
 export async function POST(req: Request) {
-	try {
-		const validatedData = insertEditorAttoAutosaveParams.parse(await req.json())
-		const { editorAttoAutosave } = await createEditorAttoAutosave(validatedData)
+  try {
+    const validatedData = insertEditorAttoAutosaveParams.parse(
+      await req.json(),
+    );
+    const { editorAttoAutosave } =
+      await createEditorAttoAutosave(validatedData);
 
-		revalidatePath('/editorAttoAutosaves') // optional - assumes you will have named route same as entity
+    revalidatePath("/editorAttoAutosaves"); // optional - assumes you will have named route same as entity
 
-		return NextResponse.json(editorAttoAutosave, { status: 201 })
-	} catch (err) {
-		if (err instanceof z.ZodError) {
-			return NextResponse.json({ error: err.issues }, { status: 400 })
-		}
-		return NextResponse.json({ error: err }, { status: 500 })
-	}
+    return NextResponse.json(editorAttoAutosave, { status: 201 });
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      return NextResponse.json({ error: err.issues }, { status: 400 });
+    }
+    return NextResponse.json({ error: err }, { status: 500 });
+  }
 }
 
 export async function PUT(req: Request) {
-	try {
-		const { searchParams } = new URL(req.url)
-		const id = searchParams.get('id')
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
 
-		const validatedData = updateEditorAttoAutosaveParams.parse(await req.json())
-		const validatedParams = editorAttoAutosaveIdSchema.parse({ id })
+    const validatedData = updateEditorAttoAutosaveParams.parse(
+      await req.json(),
+    );
+    const validatedParams = editorAttoAutosaveIdSchema.parse({ id });
 
-		const { editorAttoAutosave } = await updateEditorAttoAutosave(
-			validatedParams.id,
-			validatedData
-		)
+    const { editorAttoAutosave } = await updateEditorAttoAutosave(
+      validatedParams.id,
+      validatedData,
+    );
 
-		return NextResponse.json(editorAttoAutosave, { status: 200 })
-	} catch (err) {
-		if (err instanceof z.ZodError) {
-			return NextResponse.json({ error: err.issues }, { status: 400 })
-		}
-		return NextResponse.json(err, { status: 500 })
-	}
+    return NextResponse.json(editorAttoAutosave, { status: 200 });
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      return NextResponse.json({ error: err.issues }, { status: 400 });
+    }
+    return NextResponse.json(err, { status: 500 });
+  }
 }
 
 export async function DELETE(req: Request) {
-	try {
-		const { searchParams } = new URL(req.url)
-		const id = searchParams.get('id')
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
 
-		const validatedParams = editorAttoAutosaveIdSchema.parse({ id })
-		const { editorAttoAutosave } = await deleteEditorAttoAutosave(
-			validatedParams.id
-		)
+    const validatedParams = editorAttoAutosaveIdSchema.parse({ id });
+    const { editorAttoAutosave } = await deleteEditorAttoAutosave(
+      validatedParams.id,
+    );
 
-		return NextResponse.json(editorAttoAutosave, { status: 200 })
-	} catch (err) {
-		if (err instanceof z.ZodError) {
-			return NextResponse.json({ error: err.issues }, { status: 400 })
-		}
-		return NextResponse.json(err, { status: 500 })
-	}
+    return NextResponse.json(editorAttoAutosave, { status: 200 });
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      return NextResponse.json({ error: err.issues }, { status: 400 });
+    }
+    return NextResponse.json(err, { status: 500 });
+  }
 }

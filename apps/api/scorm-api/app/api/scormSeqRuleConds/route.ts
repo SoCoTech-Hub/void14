@@ -1,71 +1,71 @@
-import { NextResponse } from 'next/server'
-import { revalidatePath } from 'next/cache'
-import { z } from 'zod'
+import { revalidatePath } from "next/cache";
+import { NextResponse } from "next/server";
+import { z } from "zod";
 
 import {
-	createScormSeqRuleCond,
-	deleteScormSeqRuleCond,
-	updateScormSeqRuleCond
-} from '@/lib/api/scormSeqRuleConds/mutations'
+  createScormSeqRuleCond,
+  deleteScormSeqRuleCond,
+  updateScormSeqRuleCond,
+} from "../../../lib/api/scormSeqRuleConds/mutations";
 import {
-	scormSeqRuleCondIdSchema,
-	insertScormSeqRuleCondParams,
-	updateScormSeqRuleCondParams
-} from '@/lib/db/schema/scormSeqRuleConds'
+  insertScormSeqRuleCondParams,
+  scormSeqRuleCondIdSchema,
+  updateScormSeqRuleCondParams,
+} from "../../../lib/db/schema/scormSeqRuleConds";
 
 export async function POST(req: Request) {
-	try {
-		const validatedData = insertScormSeqRuleCondParams.parse(await req.json())
-		const { scormSeqRuleCond } = await createScormSeqRuleCond(validatedData)
+  try {
+    const validatedData = insertScormSeqRuleCondParams.parse(await req.json());
+    const { scormSeqRuleCond } = await createScormSeqRuleCond(validatedData);
 
-		revalidatePath('/scormSeqRuleConds') // optional - assumes you will have named route same as entity
+    revalidatePath("/scormSeqRuleConds"); // optional - assumes you will have named route same as entity
 
-		return NextResponse.json(scormSeqRuleCond, { status: 201 })
-	} catch (err) {
-		if (err instanceof z.ZodError) {
-			return NextResponse.json({ error: err.issues }, { status: 400 })
-		}
-		return NextResponse.json({ error: err }, { status: 500 })
-	}
+    return NextResponse.json(scormSeqRuleCond, { status: 201 });
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      return NextResponse.json({ error: err.issues }, { status: 400 });
+    }
+    return NextResponse.json({ error: err }, { status: 500 });
+  }
 }
 
 export async function PUT(req: Request) {
-	try {
-		const { searchParams } = new URL(req.url)
-		const id = searchParams.get('id')
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
 
-		const validatedData = updateScormSeqRuleCondParams.parse(await req.json())
-		const validatedParams = scormSeqRuleCondIdSchema.parse({ id })
+    const validatedData = updateScormSeqRuleCondParams.parse(await req.json());
+    const validatedParams = scormSeqRuleCondIdSchema.parse({ id });
 
-		const { scormSeqRuleCond } = await updateScormSeqRuleCond(
-			validatedParams.id,
-			validatedData
-		)
+    const { scormSeqRuleCond } = await updateScormSeqRuleCond(
+      validatedParams.id,
+      validatedData,
+    );
 
-		return NextResponse.json(scormSeqRuleCond, { status: 200 })
-	} catch (err) {
-		if (err instanceof z.ZodError) {
-			return NextResponse.json({ error: err.issues }, { status: 400 })
-		}
-		return NextResponse.json(err, { status: 500 })
-	}
+    return NextResponse.json(scormSeqRuleCond, { status: 200 });
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      return NextResponse.json({ error: err.issues }, { status: 400 });
+    }
+    return NextResponse.json(err, { status: 500 });
+  }
 }
 
 export async function DELETE(req: Request) {
-	try {
-		const { searchParams } = new URL(req.url)
-		const id = searchParams.get('id')
+  try {
+    const { searchParams } = new URL(req.url);
+    const id = searchParams.get("id");
 
-		const validatedParams = scormSeqRuleCondIdSchema.parse({ id })
-		const { scormSeqRuleCond } = await deleteScormSeqRuleCond(
-			validatedParams.id
-		)
+    const validatedParams = scormSeqRuleCondIdSchema.parse({ id });
+    const { scormSeqRuleCond } = await deleteScormSeqRuleCond(
+      validatedParams.id,
+    );
 
-		return NextResponse.json(scormSeqRuleCond, { status: 200 })
-	} catch (err) {
-		if (err instanceof z.ZodError) {
-			return NextResponse.json({ error: err.issues }, { status: 400 })
-		}
-		return NextResponse.json(err, { status: 500 })
-	}
+    return NextResponse.json(scormSeqRuleCond, { status: 200 });
+  } catch (err) {
+    if (err instanceof z.ZodError) {
+      return NextResponse.json({ error: err.issues }, { status: 400 });
+    }
+    return NextResponse.json(err, { status: 500 });
+  }
 }

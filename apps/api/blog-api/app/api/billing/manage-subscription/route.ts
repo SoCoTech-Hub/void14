@@ -1,6 +1,6 @@
-import { stripe } from "@/lib/stripe/index";
-
 import { absoluteUrl } from "@soco/utils";
+
+import { stripe } from "../../../lib/stripe/index";
 
 interface ManageStripeSubscriptionActionProps {
   isSubscribed: boolean;
