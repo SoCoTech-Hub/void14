@@ -9,7 +9,7 @@ import {
   addresses,
   addressIdSchema 
 } from "@/lib/db/schema/addresses";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createAddress = async (address: NewAddressParams) => {
   const { session } = await getUserAuth();

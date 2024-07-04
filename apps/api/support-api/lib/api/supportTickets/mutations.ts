@@ -9,7 +9,7 @@ import {
   supportTickets,
   supportTicketIdSchema 
 } from "@/lib/db/schema/supportTickets";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createSupportTicket = async (supportTicket: NewSupportTicketParams) => {
   const { session } = await getUserAuth();

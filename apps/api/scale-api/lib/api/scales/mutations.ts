@@ -9,7 +9,7 @@ import {
   scales,
   scaleIdSchema 
 } from "@/lib/db/schema/scales";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createScale = async (scale: NewScaleParams) => {
   const { session } = await getUserAuth();

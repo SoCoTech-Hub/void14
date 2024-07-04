@@ -9,7 +9,7 @@ import {
   ltiSubmissions,
   ltiSubmissionIdSchema 
 } from "@/lib/db/schema/ltiSubmissions";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createLtiSubmission = async (ltiSubmission: NewLtiSubmissionParams) => {
   const { session } = await getUserAuth();

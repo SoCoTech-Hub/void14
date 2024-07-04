@@ -9,7 +9,7 @@ import {
   mnetSessions,
   mnetSessionIdSchema 
 } from "@/lib/db/schema/mnetSessions";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createMnetSession = async (mnetSession: NewMnetSessionParams) => {
   const { session } = await getUserAuth();

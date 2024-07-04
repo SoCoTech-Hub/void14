@@ -9,7 +9,7 @@ import {
   groupsMembers,
   groupsMemberIdSchema 
 } from "@/lib/db/schema/groupsMembers";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createGroupsMember = async (groupsMember: NewGroupsMemberParams) => {
   const { session } = await getUserAuth();

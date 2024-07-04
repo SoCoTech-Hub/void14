@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type ToolDataprivacyRequestId, toolDataprivacyRequestIdSchema, toolDataprivacyRequests } from "@/lib/db/schema/toolDataprivacyRequests";
 
 export const getToolDataprivacyRequests = async () => {

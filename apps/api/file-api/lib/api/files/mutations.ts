@@ -9,7 +9,7 @@ import {
   files,
   fileIdSchema 
 } from "@/lib/db/schema/files";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createFile = async (file: NewFileParams) => {
   const { session } = await getUserAuth();

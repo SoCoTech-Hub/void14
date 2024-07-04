@@ -9,7 +9,7 @@ import {
   supportComments,
   supportCommentIdSchema 
 } from "@/lib/db/schema/supportComments";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createSupportComment = async (supportComment: NewSupportCommentParams) => {
   const { session } = await getUserAuth();

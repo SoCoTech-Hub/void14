@@ -9,7 +9,7 @@ import {
   oauth2Issuers,
   oauth2IssuerIdSchema 
 } from "@/lib/db/schema/oauth2Issuers";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createOauth2Issuer = async (oauth2Issuer: NewOauth2IssuerParams) => {
   const { session } = await getUserAuth();

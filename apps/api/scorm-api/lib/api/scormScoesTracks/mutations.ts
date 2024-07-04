@@ -9,7 +9,7 @@ import {
   scormScoesTracks,
   scormScoesTrackIdSchema 
 } from "@/lib/db/schema/scormScoesTracks";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createScormScoesTrack = async (scormScoesTrack: NewScormScoesTrackParams) => {
   const { session } = await getUserAuth();

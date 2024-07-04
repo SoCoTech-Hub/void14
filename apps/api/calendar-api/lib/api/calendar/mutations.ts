@@ -9,7 +9,7 @@ import {
   calendar,
   calendarIdSchema 
 } from "@/lib/db/schema/calendar";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createCalendar = async (calendar: NewCalendarParams) => {
   const { session } = await getUserAuth();

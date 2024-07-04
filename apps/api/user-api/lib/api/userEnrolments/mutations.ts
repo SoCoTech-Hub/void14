@@ -9,7 +9,7 @@ import {
   userEnrolments,
   userEnrolmentIdSchema 
 } from "@/lib/db/schema/userEnrolments";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createUserEnrolment = async (userEnrolment: NewUserEnrolmentParams) => {
   const { session } = await getUserAuth();

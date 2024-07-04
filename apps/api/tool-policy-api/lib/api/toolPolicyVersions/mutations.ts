@@ -9,7 +9,7 @@ import {
   toolPolicyVersions,
   toolPolicyVersionIdSchema 
 } from "@/lib/db/schema/toolPolicyVersions";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createToolPolicyVersion = async (toolPolicyVersion: NewToolPolicyVersionParams) => {
   const { session } = await getUserAuth();

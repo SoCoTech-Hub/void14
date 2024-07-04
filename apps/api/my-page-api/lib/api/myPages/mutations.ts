@@ -9,7 +9,7 @@ import {
   myPages,
   myPageIdSchema 
 } from "@/lib/db/schema/myPages";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createMyPage = async (myPage: NewMyPageParams) => {
   const { session } = await getUserAuth();

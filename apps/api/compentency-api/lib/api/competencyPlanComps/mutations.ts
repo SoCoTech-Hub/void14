@@ -9,7 +9,7 @@ import {
   competencyPlanComps,
   competencyPlanCompIdSchema 
 } from "@/lib/db/schema/competencyPlanComps";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createCompetencyPlanComp = async (competencyPlanComp: NewCompetencyPlanCompParams) => {
   const { session } = await getUserAuth();

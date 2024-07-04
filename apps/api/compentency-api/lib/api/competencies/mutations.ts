@@ -9,7 +9,7 @@ import {
   competencies,
   competencyIdSchema 
 } from "@/lib/db/schema/competencies";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createCompetency = async (competency: NewCompetencyParams) => {
   const { session } = await getUserAuth();

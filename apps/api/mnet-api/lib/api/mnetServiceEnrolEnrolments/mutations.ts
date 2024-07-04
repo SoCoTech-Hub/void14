@@ -9,7 +9,7 @@ import {
   mnetServiceEnrolEnrolments,
   mnetServiceEnrolEnrolmentIdSchema 
 } from "@/lib/db/schema/mnetServiceEnrolEnrolments";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createMnetServiceEnrolEnrolment = async (mnetServiceEnrolEnrolment: NewMnetServiceEnrolEnrolmentParams) => {
   const { session } = await getUserAuth();

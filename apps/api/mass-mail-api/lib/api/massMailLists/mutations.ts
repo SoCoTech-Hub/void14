@@ -9,7 +9,7 @@ import {
   massMailLists,
   massMailListIdSchema 
 } from "@/lib/db/schema/massMailLists";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createMassMailList = async (massMailList: NewMassMailListParams) => {
   const { session } = await getUserAuth();

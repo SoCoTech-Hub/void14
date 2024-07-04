@@ -9,7 +9,7 @@ import {
   workshopSubmissions,
   workshopSubmissionIdSchema 
 } from "@/lib/db/schema/workshopSubmissions";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createWorkshopSubmission = async (workshopSubmission: NewWorkshopSubmissionParams) => {
   const { session } = await getUserAuth();

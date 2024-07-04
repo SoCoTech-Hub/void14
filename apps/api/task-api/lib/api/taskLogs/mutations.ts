@@ -9,7 +9,7 @@ import {
   taskLogs,
   taskLogIdSchema 
 } from "@/lib/db/schema/taskLogs";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createTaskLog = async (taskLog: NewTaskLogParams) => {
   const { session } = await getUserAuth();

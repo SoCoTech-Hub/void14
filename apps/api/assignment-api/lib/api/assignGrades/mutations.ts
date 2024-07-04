@@ -9,7 +9,7 @@ import {
   assignGrades,
   assignGradeIdSchema 
 } from "@/lib/db/schema/assignGrades";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createAssignGrade = async (assignGrade: NewAssignGradeParams) => {
   const { session } = await getUserAuth();

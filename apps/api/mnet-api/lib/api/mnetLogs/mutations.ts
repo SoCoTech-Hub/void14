@@ -9,7 +9,7 @@ import {
   mnetLogs,
   mnetLogIdSchema 
 } from "@/lib/db/schema/mnetLogs";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createMnetLog = async (mnetLog: NewMnetLogParams) => {
   const { session } = await getUserAuth();

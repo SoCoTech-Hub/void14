@@ -9,7 +9,7 @@ import {
   forumDigests,
   forumDigestIdSchema 
 } from "@/lib/db/schema/forumDigests";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createForumDigest = async (forumDigest: NewForumDigestParams) => {
   const { session } = await getUserAuth();

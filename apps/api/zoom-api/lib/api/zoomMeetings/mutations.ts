@@ -9,7 +9,7 @@ import {
   zoomMeetings,
   zoomMeetingIdSchema 
 } from "@/lib/db/schema/zoomMeetings";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createZoomMeeting = async (zoomMeeting: NewZoomMeetingParams) => {
   const { session } = await getUserAuth();

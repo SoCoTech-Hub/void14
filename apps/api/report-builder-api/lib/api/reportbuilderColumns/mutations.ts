@@ -9,7 +9,7 @@ import {
   reportbuilderColumns,
   reportbuilderColumnIdSchema 
 } from "@/lib/db/schema/reportbuilderColumns";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createReportbuilderColumn = async (reportbuilderColumn: NewReportbuilderColumnParams) => {
   const { session } = await getUserAuth();

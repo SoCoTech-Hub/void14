@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type BadgeBackpackOauth2Id, badgeBackpackOauth2IdSchema, badgeBackpackOauth2s } from "@/lib/db/schema/badgeBackpackOauth2s";
 
 export const getBadgeBackpackOauth2s = async () => {

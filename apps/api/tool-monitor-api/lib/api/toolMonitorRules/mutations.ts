@@ -9,7 +9,7 @@ import {
   toolMonitorRules,
   toolMonitorRuleIdSchema 
 } from "@/lib/db/schema/toolMonitorRules";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createToolMonitorRule = async (toolMonitorRule: NewToolMonitorRuleParams) => {
   const { session } = await getUserAuth();

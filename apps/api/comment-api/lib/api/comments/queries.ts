@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type CommentId, commentIdSchema, comments } from "@/lib/db/schema/comments";
 
 export const getComments = async () => {

@@ -9,7 +9,7 @@ import {
   courseRequests,
   courseRequestIdSchema 
 } from "@/lib/db/schema/courseRequests";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createCourseRequest = async (courseRequest: NewCourseRequestParams) => {
   const { session } = await getUserAuth();

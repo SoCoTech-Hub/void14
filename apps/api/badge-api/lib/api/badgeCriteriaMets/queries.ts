@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type BadgeCriteriaMetId, badgeCriteriaMetIdSchema, badgeCriteriaMets } from "@/lib/db/schema/badgeCriteriaMets";
 import { badgeCriterias } from "@/lib/db/schema/badgeCriterias";
 

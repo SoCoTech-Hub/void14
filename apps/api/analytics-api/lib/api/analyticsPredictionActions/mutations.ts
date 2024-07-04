@@ -9,7 +9,7 @@ import {
   analyticsPredictionActions,
   analyticsPredictionActionIdSchema 
 } from "@/lib/db/schema/analyticsPredictionActions";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createAnalyticsPredictionAction = async (analyticsPredictionAction: NewAnalyticsPredictionActionParams) => {
   const { session } = await getUserAuth();

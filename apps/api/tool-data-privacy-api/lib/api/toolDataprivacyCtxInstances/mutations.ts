@@ -9,7 +9,7 @@ import {
   toolDataprivacyCtxInstances,
   toolDataprivacyCtxInstanceIdSchema 
 } from "@/lib/db/schema/toolDataprivacyCtxInstances";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createToolDataprivacyCtxInstance = async (toolDataprivacyCtxInstance: NewToolDataprivacyCtxInstanceParams) => {
   const { session } = await getUserAuth();

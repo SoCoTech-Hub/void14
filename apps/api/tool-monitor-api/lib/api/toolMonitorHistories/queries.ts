@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type ToolMonitorHistoryId, toolMonitorHistoryIdSchema, toolMonitorHistories } from "@/lib/db/schema/toolMonitorHistories";
 
 export const getToolMonitorHistories = async () => {

@@ -9,7 +9,7 @@ import {
   badgeBackpackOauth2s,
   badgeBackpackOauth2IdSchema 
 } from "@/lib/db/schema/badgeBackpackOauth2s";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createBadgeBackpackOauth2 = async (badgeBackpackOauth2: NewBadgeBackpackOauth2Params) => {
   const { session } = await getUserAuth();

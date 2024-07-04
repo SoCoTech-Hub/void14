@@ -9,7 +9,7 @@ import {
   notes,
   noteIdSchema 
 } from "@/lib/db/schema/notes";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createNote = async (note: NewNoteParams) => {
   const { session } = await getUserAuth();

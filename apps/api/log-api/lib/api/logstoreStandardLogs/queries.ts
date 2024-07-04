@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type LogstoreStandardLogId, logstoreStandardLogIdSchema, logstoreStandardLogs } from "@/lib/db/schema/logstoreStandardLogs";
 
 export const getLogstoreStandardLogs = async () => {

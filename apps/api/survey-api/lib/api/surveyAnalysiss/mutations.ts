@@ -9,7 +9,7 @@ import {
   surveyAnalysiss,
   surveyAnalysissIdSchema 
 } from "@/lib/db/schema/surveyAnalysiss";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createSurveyAnalysiss = async (surveyAnalysiss: NewSurveyAnalysissParams) => {
   const { session } = await getUserAuth();

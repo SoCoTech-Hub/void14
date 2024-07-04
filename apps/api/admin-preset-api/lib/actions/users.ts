@@ -13,7 +13,7 @@ import {
   getUserAuth,
   setAuthCookie,
   validateAuthFormData,
-} from "../auth/utils";
+} from "@soco/auth/utils";
 import { db } from "../db/index";
 import { updateUserSchema, users } from "../db/schema/auth";
 

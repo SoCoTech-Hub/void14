@@ -9,7 +9,7 @@ import {
   blogComments,
   blogCommentIdSchema 
 } from "@/lib/db/schema/blogComments";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createBlogComment = async (blogComment: NewBlogCommentParams) => {
   const { session } = await getUserAuth();

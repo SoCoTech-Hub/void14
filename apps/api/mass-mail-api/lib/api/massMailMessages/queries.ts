@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type MassMailMessageId, massMailMessageIdSchema, massMailMessages } from "@/lib/db/schema/massMailMessages";
 import { massMailLists } from "@/lib/db/schema/massMailLists";
 

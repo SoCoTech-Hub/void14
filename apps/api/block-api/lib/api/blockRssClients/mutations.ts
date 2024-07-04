@@ -9,7 +9,7 @@ import {
   blockRssClients,
   blockRssClientIdSchema 
 } from "@/lib/db/schema/blockRssClients";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createBlockRssClient = async (blockRssClient: NewBlockRssClientParams) => {
   const { session } = await getUserAuth();

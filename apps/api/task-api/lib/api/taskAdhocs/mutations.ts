@@ -9,7 +9,7 @@ import {
   taskAdhocs,
   taskAdhocIdSchema 
 } from "@/lib/db/schema/taskAdhocs";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createTaskAdhoc = async (taskAdhoc: NewTaskAdhocParams) => {
   const { session } = await getUserAuth();

@@ -1,5 +1,5 @@
 import { db } from '@/lib/db/index'
-import { getUserAuth } from '@/lib/auth/utils'
+import { getUserAuth } from '@soco/auth/utils'
 
 export async function createTRPCContext(opts: { headers: Headers }) {
 	const { session } = await getUserAuth()

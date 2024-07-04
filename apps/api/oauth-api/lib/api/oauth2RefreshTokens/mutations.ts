@@ -9,7 +9,7 @@ import {
   oauth2RefreshTokens,
   oauth2RefreshTokenIdSchema 
 } from "@/lib/db/schema/oauth2RefreshTokens";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createOauth2RefreshToken = async (oauth2RefreshToken: NewOauth2RefreshTokenParams) => {
   const { session } = await getUserAuth();

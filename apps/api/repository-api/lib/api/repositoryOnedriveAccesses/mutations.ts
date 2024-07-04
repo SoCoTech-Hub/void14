@@ -9,7 +9,7 @@ import {
   repositoryOnedriveAccesses,
   repositoryOnedriveAccessIdSchema 
 } from "@/lib/db/schema/repositoryOnedriveAccesses";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createRepositoryOnedriveAccess = async (repositoryOnedriveAccess: NewRepositoryOnedriveAccessParams) => {
   const { session } = await getUserAuth();

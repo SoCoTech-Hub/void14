@@ -9,7 +9,7 @@ import {
   fileConversions,
   fileConversionIdSchema 
 } from "@/lib/db/schema/fileConversions";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createFileConversion = async (fileConversion: NewFileConversionParams) => {
   const { session } = await getUserAuth();

@@ -9,7 +9,7 @@ import {
   jobApplications,
   jobApplicationIdSchema 
 } from "@/lib/db/schema/jobApplications";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createJobApplication = async (jobApplication: NewJobApplicationParams) => {
   const { session } = await getUserAuth();

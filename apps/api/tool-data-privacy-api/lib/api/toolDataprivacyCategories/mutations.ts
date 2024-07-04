@@ -9,7 +9,7 @@ import {
   toolDataprivacyCategories,
   toolDataprivacyCategoryIdSchema 
 } from "@/lib/db/schema/toolDataprivacyCategories";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createToolDataprivacyCategory = async (toolDataprivacyCategory: NewToolDataprivacyCategoryParams) => {
   const { session } = await getUserAuth();

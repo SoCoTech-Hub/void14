@@ -9,7 +9,7 @@ import {
   userInfoDatas,
   userInfoDataIdSchema 
 } from "@/lib/db/schema/userInfoDatas";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createUserInfoData = async (userInfoData: NewUserInfoDataParams) => {
   const { session } = await getUserAuth();

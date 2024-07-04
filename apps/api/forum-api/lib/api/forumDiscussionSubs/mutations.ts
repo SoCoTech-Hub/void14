@@ -9,7 +9,7 @@ import {
   forumDiscussionSubs,
   forumDiscussionSubIdSchema 
 } from "@/lib/db/schema/forumDiscussionSubs";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createForumDiscussionSub = async (forumDiscussionSub: NewForumDiscussionSubParams) => {
   const { session } = await getUserAuth();

@@ -9,7 +9,7 @@ import {
   assignFeedbackEditpdfQuicks,
   assignFeedbackEditpdfQuickIdSchema 
 } from "@/lib/db/schema/assignFeedbackEditpdfQuicks";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createAssignFeedbackEditpdfQuick = async (assignFeedbackEditpdfQuick: NewAssignFeedbackEditpdfQuickParams) => {
   const { session } = await getUserAuth();

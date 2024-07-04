@@ -9,7 +9,7 @@ import {
   forumGrades,
   forumGradeIdSchema 
 } from "@/lib/db/schema/forumGrades";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createForumGrade = async (forumGrade: NewForumGradeParams) => {
   const { session } = await getUserAuth();

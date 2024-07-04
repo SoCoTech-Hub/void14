@@ -9,7 +9,7 @@ import {
   questionBankEntries,
   questionBankEntryIdSchema 
 } from "@/lib/db/schema/questionBankEntries";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createQuestionBankEntry = async (questionBankEntry: NewQuestionBankEntryParams) => {
   const { session } = await getUserAuth();

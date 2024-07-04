@@ -9,7 +9,7 @@ import {
   wikiPages,
   wikiPageIdSchema 
 } from "@/lib/db/schema/wikiPages";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createWikiPage = async (wikiPage: NewWikiPageParams) => {
   const { session } = await getUserAuth();

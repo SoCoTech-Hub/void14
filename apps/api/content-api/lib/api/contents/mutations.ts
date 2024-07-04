@@ -9,7 +9,7 @@ import {
   contents,
   contentIdSchema 
 } from "@/lib/db/schema/contents";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createContent = async (content: NewContentParams) => {
   const { session } = await getUserAuth();

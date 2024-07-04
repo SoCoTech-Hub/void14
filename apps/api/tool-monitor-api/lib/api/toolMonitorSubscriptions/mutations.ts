@@ -9,7 +9,7 @@ import {
   toolMonitorSubscriptions,
   toolMonitorSubscriptionIdSchema 
 } from "@/lib/db/schema/toolMonitorSubscriptions";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createToolMonitorSubscription = async (toolMonitorSubscription: NewToolMonitorSubscriptionParams) => {
   const { session } = await getUserAuth();

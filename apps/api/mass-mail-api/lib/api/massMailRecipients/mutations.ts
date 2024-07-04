@@ -9,7 +9,7 @@ import {
 	massMailRecipients,
 	massMailRecipientIdSchema
 } from '@/lib/db/schema/massMailRecipients'
-import { getUserAuth } from '@/lib/auth/utils'
+import { getUserAuth } from '@soco/auth/utils'
 
 export const createMassMailRecipient = async (
 	massMailRecipient: NewMassMailRecipientParams

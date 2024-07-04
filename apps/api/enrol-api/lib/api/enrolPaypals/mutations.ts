@@ -9,7 +9,7 @@ import {
   enrolPaypals,
   enrolPaypalIdSchema 
 } from "@/lib/db/schema/enrolPaypals";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createEnrolPaypal = async (enrolPaypal: NewEnrolPaypalParams) => {
   const { session } = await getUserAuth();

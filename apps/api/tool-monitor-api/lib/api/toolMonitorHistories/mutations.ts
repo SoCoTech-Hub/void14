@@ -9,7 +9,7 @@ import {
   toolMonitorHistories,
   toolMonitorHistoryIdSchema 
 } from "@/lib/db/schema/toolMonitorHistories";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createToolMonitorHistory = async (toolMonitorHistory: NewToolMonitorHistoryParams) => {
   const { session } = await getUserAuth();

@@ -9,7 +9,7 @@ import {
   userDevices,
   userDeviceIdSchema 
 } from "@/lib/db/schema/userDevices";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createUserDevice = async (userDevice: NewUserDeviceParams) => {
   const { session } = await getUserAuth();

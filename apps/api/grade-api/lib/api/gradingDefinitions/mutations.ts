@@ -9,7 +9,7 @@ import {
   gradingDefinitions,
   gradingDefinitionIdSchema 
 } from "@/lib/db/schema/gradingDefinitions";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createGradingDefinition = async (gradingDefinition: NewGradingDefinitionParams) => {
   const { session } = await getUserAuth();

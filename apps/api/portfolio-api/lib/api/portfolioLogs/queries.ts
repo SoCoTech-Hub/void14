@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type PortfolioLogId, portfolioLogIdSchema, portfolioLogs } from "@/lib/db/schema/portfolioLogs";
 import { portfolioInstances } from "@/lib/db/schema/portfolioInstances";
 import { portfolioTempdatas } from "@/lib/db/schema/portfolioTempdatas";

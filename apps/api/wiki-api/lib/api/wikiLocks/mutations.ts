@@ -9,7 +9,7 @@ import {
   wikiLocks,
   wikiLockIdSchema 
 } from "@/lib/db/schema/wikiLocks";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createWikiLock = async (wikiLock: NewWikiLockParams) => {
   const { session } = await getUserAuth();

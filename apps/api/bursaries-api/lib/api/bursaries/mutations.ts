@@ -9,7 +9,7 @@ import {
   bursaries,
   bursaryIdSchema 
 } from "@/lib/db/schema/bursaries";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createBursary = async (bursary: NewBursaryParams) => {
   const { session } = await getUserAuth();

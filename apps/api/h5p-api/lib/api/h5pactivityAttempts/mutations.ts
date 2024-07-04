@@ -9,7 +9,7 @@ import {
   h5pactivityAttempts,
   h5pactivityAttemptIdSchema 
 } from "@/lib/db/schema/h5pactivityAttempts";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createH5pactivityAttempt = async (h5pactivityAttempt: NewH5pactivityAttemptParams) => {
   const { session } = await getUserAuth();

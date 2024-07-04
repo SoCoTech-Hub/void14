@@ -9,7 +9,7 @@ import {
   messageContacts,
   messageContactIdSchema 
 } from "@/lib/db/schema/messageContacts";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createMessageContact = async (messageContact: NewMessageContactParams) => {
   const { session } = await getUserAuth();

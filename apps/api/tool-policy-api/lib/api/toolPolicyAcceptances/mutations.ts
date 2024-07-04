@@ -9,7 +9,7 @@ import {
   toolPolicyAcceptances,
   toolPolicyAcceptanceIdSchema 
 } from "@/lib/db/schema/toolPolicyAcceptances";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createToolPolicyAcceptance = async (toolPolicyAcceptance: NewToolPolicyAcceptanceParams) => {
   const { session } = await getUserAuth();

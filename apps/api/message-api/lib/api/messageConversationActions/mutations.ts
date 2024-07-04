@@ -9,7 +9,7 @@ import {
   messageConversationActions,
   messageConversationActionIdSchema 
 } from "@/lib/db/schema/messageConversationActions";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createMessageConversationAction = async (messageConversationAction: NewMessageConversationActionParams) => {
   const { session } = await getUserAuth();

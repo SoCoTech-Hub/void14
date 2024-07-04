@@ -9,7 +9,7 @@ import {
   scormAiccSessions,
   scormAiccSessionIdSchema 
 } from "@/lib/db/schema/scormAiccSessions";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createScormAiccSession = async (scormAiccSession: NewScormAiccSessionParams) => {
   const { session } = await getUserAuth();

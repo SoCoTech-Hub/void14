@@ -9,7 +9,7 @@ import {
   themes,
   themeIdSchema 
 } from "@/lib/db/schema/themes";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createTheme = async (theme: NewThemeParams) => {
   const { session } = await getUserAuth();

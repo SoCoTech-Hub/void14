@@ -9,7 +9,7 @@ import {
   forumTrackPrefs,
   forumTrackPrefIdSchema 
 } from "@/lib/db/schema/forumTrackPrefs";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createForumTrackPref = async (forumTrackPref: NewForumTrackPrefParams) => {
   const { session } = await getUserAuth();

@@ -9,7 +9,7 @@ import {
   userPreferences,
   userPreferenceIdSchema 
 } from "@/lib/db/schema/userPreferences";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createUserPreference = async (userPreference: NewUserPreferenceParams) => {
   const { session } = await getUserAuth();

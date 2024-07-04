@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type ExternalServicesUserId, externalServicesUserIdSchema, externalServicesUsers } from "@/lib/db/schema/externalServicesUsers";
 
 export const getExternalServicesUsers = async () => {

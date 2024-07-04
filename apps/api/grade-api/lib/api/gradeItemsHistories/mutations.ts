@@ -9,7 +9,7 @@ import {
   gradeItemsHistories,
   gradeItemsHistoryIdSchema 
 } from "@/lib/db/schema/gradeItemsHistories";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createGradeItemsHistory = async (gradeItemsHistory: NewGradeItemsHistoryParams) => {
   const { session } = await getUserAuth();

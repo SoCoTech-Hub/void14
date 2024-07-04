@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type WikiVersionId, wikiVersionIdSchema, wikiVersions } from "@/lib/db/schema/wikiVersions";
 import { wikiPages } from "@/lib/db/schema/wikiPages";
 

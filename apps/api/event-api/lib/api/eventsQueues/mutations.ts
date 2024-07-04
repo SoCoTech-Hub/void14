@@ -9,7 +9,7 @@ import {
   eventsQueues,
   eventsQueueIdSchema 
 } from "@/lib/db/schema/eventsQueues";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createEventsQueue = async (eventsQueue: NewEventsQueueParams) => {
   const { session } = await getUserAuth();

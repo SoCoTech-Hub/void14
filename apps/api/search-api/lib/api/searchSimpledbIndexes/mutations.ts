@@ -9,7 +9,7 @@ import {
   searchSimpledbIndexes,
   searchSimpledbIndexIdSchema 
 } from "@/lib/db/schema/searchSimpledbIndexes";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createSearchSimpledbIndex = async (searchSimpledbIndex: NewSearchSimpledbIndexParams) => {
   const { session } = await getUserAuth();

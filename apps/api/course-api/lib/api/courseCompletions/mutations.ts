@@ -9,7 +9,7 @@ import {
   courseCompletions,
   courseCompletionIdSchema 
 } from "@/lib/db/schema/courseCompletions";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createCourseCompletion = async (courseCompletion: NewCourseCompletionParams) => {
   const { session } = await getUserAuth();

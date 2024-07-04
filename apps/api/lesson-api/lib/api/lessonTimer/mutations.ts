@@ -9,7 +9,7 @@ import {
   lessonTimer,
   lessonTimerIdSchema 
 } from "@/lib/db/schema/lessonTimer";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createLessonTimer = async (lessonTimer: NewLessonTimerParams) => {
   const { session } = await getUserAuth();

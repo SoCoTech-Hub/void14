@@ -9,7 +9,7 @@ import {
   statsUserWeeklies,
   statsUserWeeklyIdSchema 
 } from "@/lib/db/schema/statsUserWeeklies";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createStatsUserWeekly = async (statsUserWeekly: NewStatsUserWeeklyParams) => {
   const { session } = await getUserAuth();

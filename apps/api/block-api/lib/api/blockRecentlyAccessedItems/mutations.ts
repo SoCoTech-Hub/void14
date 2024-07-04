@@ -9,7 +9,7 @@ import {
   blockRecentlyAccessedItems,
   blockRecentlyAccessedItemIdSchema 
 } from "@/lib/db/schema/blockRecentlyAccessedItems";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createBlockRecentlyAccessedItem = async (blockRecentlyAccessedItem: NewBlockRecentlyAccessedItemParams) => {
   const { session } = await getUserAuth();

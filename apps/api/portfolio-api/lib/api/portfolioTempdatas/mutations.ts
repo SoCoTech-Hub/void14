@@ -9,7 +9,7 @@ import {
   portfolioTempdatas,
   portfolioTempdataIdSchema 
 } from "@/lib/db/schema/portfolioTempdatas";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createPortfolioTempdata = async (portfolioTempdata: NewPortfolioTempdataParams) => {
   const { session } = await getUserAuth();

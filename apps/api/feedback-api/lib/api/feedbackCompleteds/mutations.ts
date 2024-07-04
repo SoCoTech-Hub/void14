@@ -9,7 +9,7 @@ import {
   feedbackCompleteds,
   feedbackCompletedIdSchema 
 } from "@/lib/db/schema/feedbackCompleteds";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createFeedbackCompleted = async (feedbackCompleted: NewFeedbackCompletedParams) => {
   const { session } = await getUserAuth();

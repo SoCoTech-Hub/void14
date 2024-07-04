@@ -9,7 +9,7 @@ import {
   assignmentSubmissions,
   assignmentSubmissionIdSchema 
 } from "@/lib/db/schema/assignmentSubmissions";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createAssignmentSubmission = async (assignmentSubmission: NewAssignmentSubmissionParams) => {
   const { session } = await getUserAuth();

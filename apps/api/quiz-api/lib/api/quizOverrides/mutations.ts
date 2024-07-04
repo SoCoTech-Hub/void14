@@ -9,7 +9,7 @@ import {
   quizOverrides,
   quizOverrideIdSchema 
 } from "@/lib/db/schema/quizOverrides";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createQuizOverride = async (quizOverride: NewQuizOverrideParams) => {
   const { session } = await getUserAuth();

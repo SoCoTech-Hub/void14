@@ -9,7 +9,7 @@ import {
   assignUserFlags,
   assignUserFlagIdSchema 
 } from "@/lib/db/schema/assignUserFlags";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createAssignUserFlag = async (assignUserFlag: NewAssignUserFlagParams) => {
   const { session } = await getUserAuth();

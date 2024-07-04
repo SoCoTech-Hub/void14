@@ -9,7 +9,7 @@ import {
   workshopGrades,
   workshopGradeIdSchema 
 } from "@/lib/db/schema/workshopGrades";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createWorkshopGrade = async (workshopGrade: NewWorkshopGradeParams) => {
   const { session } = await getUserAuth();

@@ -9,7 +9,7 @@ import {
   messageReads,
   messageReadIdSchema 
 } from "@/lib/db/schema/messageReads";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createMessageRead = async (messageRead: NewMessageReadParams) => {
   const { session } = await getUserAuth();

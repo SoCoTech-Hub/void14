@@ -9,7 +9,7 @@ import {
   themeComponentStyles,
   themeComponentStyleIdSchema 
 } from "@/lib/db/schema/themeComponentStyles";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createThemeComponentStyle = async (themeComponentStyle: NewThemeComponentStyleParams) => {
   const { session } = await getUserAuth();

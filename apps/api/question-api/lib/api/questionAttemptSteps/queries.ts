@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type QuestionAttemptStepId, questionAttemptStepIdSchema, questionAttemptSteps } from "@/lib/db/schema/questionAttemptSteps";
 import { questionAttempts } from "@/lib/db/schema/questionAttempts";
 

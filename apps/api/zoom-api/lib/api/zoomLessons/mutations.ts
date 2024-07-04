@@ -9,7 +9,7 @@ import {
   zoomLessons,
   zoomLessonIdSchema 
 } from "@/lib/db/schema/zoomLessons";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createZoomLesson = async (zoomLesson: NewZoomLessonParams) => {
   const { session } = await getUserAuth();

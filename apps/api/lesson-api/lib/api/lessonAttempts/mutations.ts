@@ -9,7 +9,7 @@ import {
   lessonAttempts,
   lessonAttemptIdSchema 
 } from "@/lib/db/schema/lessonAttempts";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createLessonAttempt = async (lessonAttempt: NewLessonAttemptParams) => {
   const { session } = await getUserAuth();

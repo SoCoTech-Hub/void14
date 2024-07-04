@@ -9,7 +9,7 @@ import {
   eventResponses,
   eventResponseIdSchema 
 } from "@/lib/db/schema/eventResponses";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createEventResponse = async (eventResponse: NewEventResponseParams) => {
   const { session } = await getUserAuth();

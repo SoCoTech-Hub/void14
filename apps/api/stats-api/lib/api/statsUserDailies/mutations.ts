@@ -9,7 +9,7 @@ import {
   statsUserDailies,
   statsUserDailyIdSchema 
 } from "@/lib/db/schema/statsUserDailies";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createStatsUserDaily = async (statsUserDaily: NewStatsUserDailyParams) => {
   const { session } = await getUserAuth();

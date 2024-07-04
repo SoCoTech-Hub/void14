@@ -9,7 +9,7 @@ import {
   notificationResponses,
   notificationResponseIdSchema 
 } from "@/lib/db/schema/notificationResponses";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createNotificationResponse = async (notificationResponse: NewNotificationResponseParams) => {
   const { session } = await getUserAuth();

@@ -9,7 +9,7 @@ import {
   quizAttempts,
   quizAttemptIdSchema 
 } from "@/lib/db/schema/quizAttempts";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createQuizAttempt = async (quizAttempt: NewQuizAttemptParams) => {
   const { session } = await getUserAuth();

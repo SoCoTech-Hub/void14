@@ -9,7 +9,7 @@ import {
   gradeImportValues,
   gradeImportValueIdSchema 
 } from "@/lib/db/schema/gradeImportValues";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createGradeImportValue = async (gradeImportValue: NewGradeImportValueParams) => {
   const { session } = await getUserAuth();

@@ -9,7 +9,7 @@ import {
   favourites,
   favouriteIdSchema 
 } from "@/lib/db/schema/favourites";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createFavourite = async (favourite: NewFavouriteParams) => {
   const { session } = await getUserAuth();

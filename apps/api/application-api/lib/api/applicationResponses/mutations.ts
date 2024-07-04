@@ -9,7 +9,7 @@ import {
   applicationResponses,
   applicationResponseIdSchema 
 } from "@/lib/db/schema/applicationResponses";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createApplicationResponse = async (applicationResponse: NewApplicationResponseParams) => {
   const { session } = await getUserAuth();

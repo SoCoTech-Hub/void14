@@ -9,7 +9,7 @@ import {
   userLastAccesses,
   userLastAccessIdSchema 
 } from "@/lib/db/schema/userLastAccesses";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createUserLastAccess = async (userLastAccess: NewUserLastAccessParams) => {
   const { session } = await getUserAuth();

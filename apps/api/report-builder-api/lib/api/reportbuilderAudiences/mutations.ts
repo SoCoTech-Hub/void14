@@ -9,7 +9,7 @@ import {
   reportbuilderAudiences,
   reportbuilderAudienceIdSchema 
 } from "@/lib/db/schema/reportbuilderAudiences";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createReportbuilderAudience = async (reportbuilderAudience: NewReportbuilderAudienceParams) => {
   const { session } = await getUserAuth();

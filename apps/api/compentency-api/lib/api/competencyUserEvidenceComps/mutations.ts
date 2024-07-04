@@ -9,7 +9,7 @@ import {
   competencyUserEvidenceComps,
   competencyUserEvidenceCompIdSchema 
 } from "@/lib/db/schema/competencyUserEvidenceComps";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createCompetencyUserEvidenceComp = async (competencyUserEvidenceComp: NewCompetencyUserEvidenceCompParams) => {
   const { session } = await getUserAuth();

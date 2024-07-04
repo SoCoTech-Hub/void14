@@ -9,7 +9,7 @@ import {
   dataRecords,
   dataRecordIdSchema 
 } from "@/lib/db/schema/dataRecords";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createDataRecord = async (dataRecord: NewDataRecordParams) => {
   const { session } = await getUserAuth();

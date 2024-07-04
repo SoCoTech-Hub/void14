@@ -9,7 +9,7 @@ import {
   ratings,
   ratingIdSchema 
 } from "@/lib/db/schema/ratings";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createRating = async (rating: NewRatingParams) => {
   const { session } = await getUserAuth();

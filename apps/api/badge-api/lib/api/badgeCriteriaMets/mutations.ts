@@ -9,7 +9,7 @@ import {
   badgeCriteriaMets,
   badgeCriteriaMetIdSchema 
 } from "@/lib/db/schema/badgeCriteriaMets";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createBadgeCriteriaMet = async (badgeCriteriaMet: NewBadgeCriteriaMetParams) => {
   const { session } = await getUserAuth();

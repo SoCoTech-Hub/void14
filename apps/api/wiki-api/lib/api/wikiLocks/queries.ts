@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type WikiLockId, wikiLockIdSchema, wikiLocks } from "@/lib/db/schema/wikiLocks";
 import { wikiPages } from "@/lib/db/schema/wikiPages";
 

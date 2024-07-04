@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type SupportTicketId, supportTicketIdSchema, supportTickets } from "@/lib/db/schema/supportTickets";
 import { supportDepartments } from "@/lib/db/schema/supportDepartments";
 import { supportTopics } from "@/lib/db/schema/supportTopics";

@@ -9,7 +9,7 @@ import {
   oauth2UserFieldMappings,
   oauth2UserFieldMappingIdSchema 
 } from "@/lib/db/schema/oauth2UserFieldMappings";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createOauth2UserFieldMapping = async (oauth2UserFieldMapping: NewOauth2UserFieldMappingParams) => {
   const { session } = await getUserAuth();

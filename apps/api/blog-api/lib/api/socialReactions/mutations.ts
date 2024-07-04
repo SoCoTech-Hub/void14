@@ -9,7 +9,7 @@ import {
   socialReactions,
   socialReactionIdSchema 
 } from "@/lib/db/schema/socialReactions";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createSocialReaction = async (socialReaction: NewSocialReactionParams) => {
   const { session } = await getUserAuth();

@@ -9,7 +9,7 @@ import {
   blockRecentActivities,
   blockRecentActivityIdSchema 
 } from "@/lib/db/schema/blockRecentActivities";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createBlockRecentActivity = async (blockRecentActivity: NewBlockRecentActivityParams) => {
   const { session } = await getUserAuth();

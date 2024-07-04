@@ -9,7 +9,7 @@ import {
   tagInstances,
   tagInstanceIdSchema 
 } from "@/lib/db/schema/tagInstances";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createTagInstance = async (tagInstance: NewTagInstanceParams) => {
   const { session } = await getUserAuth();

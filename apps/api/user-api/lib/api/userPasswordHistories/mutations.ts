@@ -9,7 +9,7 @@ import {
   userPasswordHistories,
   userPasswordHistoryIdSchema 
 } from "@/lib/db/schema/userPasswordHistories";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createUserPasswordHistory = async (userPasswordHistory: NewUserPasswordHistoryParams) => {
   const { session } = await getUserAuth();

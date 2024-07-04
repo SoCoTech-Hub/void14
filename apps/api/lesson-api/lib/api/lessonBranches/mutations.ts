@@ -9,7 +9,7 @@ import {
   lessonBranches,
   lessonBranchIdSchema 
 } from "@/lib/db/schema/lessonBranches";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createLessonBranch = async (lessonBranch: NewLessonBranchParams) => {
   const { session } = await getUserAuth();

@@ -9,7 +9,7 @@ import {
   assignUserMappings,
   assignUserMappingIdSchema 
 } from "@/lib/db/schema/assignUserMappings";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createAssignUserMapping = async (assignUserMapping: NewAssignUserMappingParams) => {
   const { session } = await getUserAuth();

@@ -9,7 +9,7 @@ import {
   configLogs,
   configLogIdSchema 
 } from "@/lib/db/schema/configLogs";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createConfigLog = async (configLog: NewConfigLogParams) => {
   const { session } = await getUserAuth();

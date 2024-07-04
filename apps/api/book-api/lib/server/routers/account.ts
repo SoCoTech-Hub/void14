@@ -1,4 +1,4 @@
-import { getUserAuth } from '@/lib/auth/utils'
+import { getUserAuth } from '@soco/auth/utils'
 import { publicProcedure, router } from '@/lib/server/trpc'
 export const accountRouter = router({
 	getUser: publicProcedure.query(async () => {

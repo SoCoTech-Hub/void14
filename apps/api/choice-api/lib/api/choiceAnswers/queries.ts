@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type ChoiceAnswerId, choiceAnswerIdSchema, choiceAnswers } from "@/lib/db/schema/choiceAnswers";
 import { choiceOptions } from "@/lib/db/schema/choiceOptions";
 import { choices } from "@/lib/db/schema/choices";

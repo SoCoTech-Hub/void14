@@ -9,7 +9,7 @@ import {
   infectedFiles,
   infectedFileIdSchema 
 } from "@/lib/db/schema/infectedFiles";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createInfectedFile = async (infectedFile: NewInfectedFileParams) => {
   const { session } = await getUserAuth();

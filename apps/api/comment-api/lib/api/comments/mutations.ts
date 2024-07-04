@@ -9,7 +9,7 @@ import {
   comments,
   commentIdSchema 
 } from "@/lib/db/schema/comments";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createComment = async (comment: NewCommentParams) => {
   const { session } = await getUserAuth();

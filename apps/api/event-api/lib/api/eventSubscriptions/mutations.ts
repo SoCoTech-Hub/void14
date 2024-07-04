@@ -9,7 +9,7 @@ import {
   eventSubscriptions,
   eventSubscriptionIdSchema 
 } from "@/lib/db/schema/eventSubscriptions";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createEventSubscription = async (eventSubscription: NewEventSubscriptionParams) => {
   const { session } = await getUserAuth();

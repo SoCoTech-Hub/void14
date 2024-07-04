@@ -9,7 +9,7 @@ import {
   questionAttemptSteps,
   questionAttemptStepIdSchema 
 } from "@/lib/db/schema/questionAttemptSteps";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createQuestionAttemptStep = async (questionAttemptStep: NewQuestionAttemptStepParams) => {
   const { session } = await getUserAuth();

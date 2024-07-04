@@ -9,7 +9,7 @@ import {
   userPrivateKeys,
   userPrivateKeyIdSchema 
 } from "@/lib/db/schema/userPrivateKeys";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createUserPrivateKey = async (userPrivateKey: NewUserPrivateKeyParams) => {
   const { session } = await getUserAuth();

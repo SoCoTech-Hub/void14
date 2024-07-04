@@ -9,7 +9,7 @@ import {
   userSchools,
   userSchoolIdSchema 
 } from "@/lib/db/schema/userSchools";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createUserSchool = async (userSchool: NewUserSchoolParams) => {
   const { session } = await getUserAuth();

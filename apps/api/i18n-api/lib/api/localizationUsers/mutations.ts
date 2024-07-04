@@ -9,7 +9,7 @@ import {
   localizationUsers,
   localizationUserIdSchema 
 } from "@/lib/db/schema/localizationUsers";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createLocalizationUser = async (localizationUser: NewLocalizationUserParams) => {
   const { session } = await getUserAuth();

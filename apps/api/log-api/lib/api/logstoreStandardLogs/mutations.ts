@@ -9,7 +9,7 @@ import {
   logstoreStandardLogs,
   logstoreStandardLogIdSchema 
 } from "@/lib/db/schema/logstoreStandardLogs";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createLogstoreStandardLog = async (logstoreStandardLog: NewLogstoreStandardLogParams) => {
   const { session } = await getUserAuth();

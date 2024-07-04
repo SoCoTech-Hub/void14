@@ -9,7 +9,7 @@ import {
   messageinboundMessagelists,
   messageinboundMessagelistIdSchema 
 } from "@/lib/db/schema/messageinboundMessagelists";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createMessageinboundMessagelist = async (messageinboundMessagelist: NewMessageinboundMessagelistParams) => {
   const { session } = await getUserAuth();

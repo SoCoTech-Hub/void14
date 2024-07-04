@@ -9,7 +9,7 @@ import {
   bigBlueButtonBnLogs,
   bigBlueButtonBnLogIdSchema 
 } from "@/lib/db/schema/bigBlueButtonBnLogs";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createBigBlueButtonBnLog = async (bigBlueButtonBnLog: NewBigBlueButtonBnLogParams) => {
   const { session } = await getUserAuth();

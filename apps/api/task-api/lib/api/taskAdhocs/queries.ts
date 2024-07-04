@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type TaskAdhocId, taskAdhocIdSchema, taskAdhocs } from "@/lib/db/schema/taskAdhocs";
 
 export const getTaskAdhocs = async () => {

@@ -9,7 +9,7 @@ import {
   forumPosts,
   forumPostIdSchema 
 } from "@/lib/db/schema/forumPosts";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createForumPost = async (forumPost: NewForumPostParams) => {
   const { session } = await getUserAuth();

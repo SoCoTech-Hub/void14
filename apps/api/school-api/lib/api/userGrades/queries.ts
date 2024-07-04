@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type UserGradeId, userGradeIdSchema, userGrades } from "@/lib/db/schema/userGrades";
 import { grades } from "@/lib/db/schema/grades";
 

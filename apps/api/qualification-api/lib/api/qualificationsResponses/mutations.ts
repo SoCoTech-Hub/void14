@@ -9,7 +9,7 @@ import {
   qualificationsResponses,
   qualificationsResponseIdSchema 
 } from "@/lib/db/schema/qualificationsResponses";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createQualificationsResponse = async (qualificationsResponse: NewQualificationsResponseParams) => {
   const { session } = await getUserAuth();

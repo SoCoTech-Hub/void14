@@ -9,7 +9,7 @@ import {
   affiliates,
   affiliateIdSchema 
 } from "@/lib/db/schema/affiliates";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createAffiliate = async (affiliate: NewAffiliateParams) => {
   const { session } = await getUserAuth();

@@ -9,7 +9,7 @@ import {
   portfolioLogs,
   portfolioLogIdSchema 
 } from "@/lib/db/schema/portfolioLogs";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createPortfolioLog = async (portfolioLog: NewPortfolioLogParams) => {
   const { session } = await getUserAuth();

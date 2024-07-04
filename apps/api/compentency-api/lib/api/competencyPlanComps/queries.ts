@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type CompetencyPlanCompId, competencyPlanCompIdSchema, competencyPlanComps } from "@/lib/db/schema/competencyPlanComps";
 import { competencies } from "@/lib/db/schema/competencies";
 import { competencyPlans } from "@/lib/db/schema/competencyPlans";

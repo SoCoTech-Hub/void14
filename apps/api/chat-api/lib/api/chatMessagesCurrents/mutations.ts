@@ -9,7 +9,7 @@ import {
   chatMessagesCurrents,
   chatMessagesCurrentIdSchema 
 } from "@/lib/db/schema/chatMessagesCurrents";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createChatMessagesCurrent = async (chatMessagesCurrent: NewChatMessagesCurrentParams) => {
   const { session } = await getUserAuth();

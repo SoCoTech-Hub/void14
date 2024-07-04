@@ -9,7 +9,7 @@ import {
   externalServicesUsers,
   externalServicesUserIdSchema 
 } from "@/lib/db/schema/externalServicesUsers";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createExternalServicesUser = async (externalServicesUser: NewExternalServicesUserParams) => {
   const { session } = await getUserAuth();

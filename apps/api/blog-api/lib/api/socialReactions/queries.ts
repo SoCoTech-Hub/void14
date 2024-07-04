@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type SocialReactionId, socialReactionIdSchema, socialReactions } from "@/lib/db/schema/socialReactions";
 import { blogs } from "@/lib/db/schema/blogs";
 import { socialIcons } from "@/lib/db/schema/socialIcons";

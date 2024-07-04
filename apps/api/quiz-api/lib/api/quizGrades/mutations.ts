@@ -9,7 +9,7 @@ import {
   quizGrades,
   quizGradeIdSchema 
 } from "@/lib/db/schema/quizGrades";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createQuizGrade = async (quizGrade: NewQuizGradeParams) => {
   const { session } = await getUserAuth();

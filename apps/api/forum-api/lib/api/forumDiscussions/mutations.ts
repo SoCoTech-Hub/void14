@@ -9,7 +9,7 @@ import {
   forumDiscussions,
   forumDiscussionIdSchema 
 } from "@/lib/db/schema/forumDiscussions";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createForumDiscussion = async (forumDiscussion: NewForumDiscussionParams) => {
   const { session } = await getUserAuth();

@@ -9,7 +9,7 @@ import {
   profiles,
   profileIdSchema 
 } from "@/lib/db/schema/profiles";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createProfile = async (profile: NewProfileParams) => {
   const { session } = await getUserAuth();

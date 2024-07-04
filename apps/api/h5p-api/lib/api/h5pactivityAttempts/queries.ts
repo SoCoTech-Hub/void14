@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type H5pactivityAttemptId, h5pactivityAttemptIdSchema, h5pactivityAttempts } from "@/lib/db/schema/h5pactivityAttempts";
 
 export const getH5pactivityAttempts = async () => {

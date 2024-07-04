@@ -9,7 +9,7 @@ import {
   repositoryInstances,
   repositoryInstanceIdSchema 
 } from "@/lib/db/schema/repositoryInstances";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createRepositoryInstance = async (repositoryInstance: NewRepositoryInstanceParams) => {
   const { session } = await getUserAuth();

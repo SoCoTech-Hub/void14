@@ -9,7 +9,7 @@ import {
   workshopAggregations,
   workshopAggregationIdSchema 
 } from "@/lib/db/schema/workshopAggregations";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createWorkshopAggregation = async (workshopAggregation: NewWorkshopAggregationParams) => {
   const { session } = await getUserAuth();

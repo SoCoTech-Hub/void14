@@ -1,4 +1,4 @@
-import { getUserAuth } from '@/lib/auth/utils'
+import { getUserAuth } from '@soco/auth/utils'
 import { db } from '@/lib/db/index'
 import { users } from '@/lib/db/schema/auth'
 import { eq } from 'drizzle-orm'

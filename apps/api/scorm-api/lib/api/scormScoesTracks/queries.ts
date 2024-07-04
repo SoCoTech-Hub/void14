@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type ScormScoesTrackId, scormScoesTrackIdSchema, scormScoesTracks } from "@/lib/db/schema/scormScoesTracks";
 import { scormScoes } from "@/lib/db/schema/scormScoes";
 import { scorms } from "@/lib/db/schema/scorms";

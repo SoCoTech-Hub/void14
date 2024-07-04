@@ -9,7 +9,7 @@ import {
   toolDataprivacyRequests,
   toolDataprivacyRequestIdSchema 
 } from "@/lib/db/schema/toolDataprivacyRequests";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createToolDataprivacyRequest = async (toolDataprivacyRequest: NewToolDataprivacyRequestParams) => {
   const { session } = await getUserAuth();

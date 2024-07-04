@@ -9,7 +9,7 @@ import {
   oauth2AccessTokens,
   oauth2AccessTokenIdSchema 
 } from "@/lib/db/schema/oauth2AccessTokens";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createOauth2AccessToken = async (oauth2AccessToken: NewOauth2AccessTokenParams) => {
   const { session } = await getUserAuth();

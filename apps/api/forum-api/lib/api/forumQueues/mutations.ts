@@ -9,7 +9,7 @@ import {
   forumQueues,
   forumQueueIdSchema 
 } from "@/lib/db/schema/forumQueues";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createForumQueue = async (forumQueue: NewForumQueueParams) => {
   const { session } = await getUserAuth();

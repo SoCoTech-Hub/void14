@@ -9,7 +9,7 @@ import {
   toolDataprivacyPurposeRoles,
   toolDataprivacyPurposeRoleIdSchema 
 } from "@/lib/db/schema/toolDataprivacyPurposeRoles";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createToolDataprivacyPurposeRole = async (toolDataprivacyPurposeRole: NewToolDataprivacyPurposeRoleParams) => {
   const { session } = await getUserAuth();

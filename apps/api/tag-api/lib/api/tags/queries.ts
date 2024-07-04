@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type TagId, tagIdSchema, tags } from "@/lib/db/schema/tags";
 import { tagColls } from "@/lib/db/schema/tagColls";
 

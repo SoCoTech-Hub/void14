@@ -9,7 +9,7 @@ import {
   bigBlueButtonBnRecordings,
   bigBlueButtonBnRecordingIdSchema 
 } from "@/lib/db/schema/bigBlueButtonBnRecordings";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createBigBlueButtonBnRecording = async (bigBlueButtonBnRecording: NewBigBlueButtonBnRecordingParams) => {
   const { session } = await getUserAuth();

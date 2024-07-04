@@ -9,7 +9,7 @@ import {
   userPasswordResets,
   userPasswordResetIdSchema 
 } from "@/lib/db/schema/userPasswordResets";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createUserPasswordReset = async (userPasswordReset: NewUserPasswordResetParams) => {
   const { session } = await getUserAuth();

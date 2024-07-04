@@ -9,7 +9,7 @@ import {
   posts,
   postIdSchema 
 } from "@/lib/db/schema/posts";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createPost = async (post: NewPostParams) => {
   const { session } = await getUserAuth();

@@ -9,7 +9,7 @@ import {
   backupControllers,
   backupControllerIdSchema 
 } from "@/lib/db/schema/backupControllers";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createBackupController = async (backupController: NewBackupControllerParams) => {
   const { session } = await getUserAuth();

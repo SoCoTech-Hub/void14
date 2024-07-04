@@ -9,7 +9,7 @@ import {
   choiceAnswers,
   choiceAnswerIdSchema 
 } from "@/lib/db/schema/choiceAnswers";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createChoiceAnswer = async (choiceAnswer: NewChoiceAnswerParams) => {
   const { session } = await getUserAuth();

@@ -9,7 +9,7 @@ import {
   messageUsersBlockeds,
   messageUsersBlockedIdSchema 
 } from "@/lib/db/schema/messageUsersBlockeds";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createMessageUsersBlocked = async (messageUsersBlocked: NewMessageUsersBlockedParams) => {
   const { session } = await getUserAuth();

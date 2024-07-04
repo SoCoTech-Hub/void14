@@ -9,7 +9,7 @@ import {
   roleAssignments,
   roleAssignmentIdSchema 
 } from "@/lib/db/schema/roleAssignments";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createRoleAssignment = async (roleAssignment: NewRoleAssignmentParams) => {
   const { session } = await getUserAuth();

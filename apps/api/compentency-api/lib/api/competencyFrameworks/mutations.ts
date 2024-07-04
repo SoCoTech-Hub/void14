@@ -9,7 +9,7 @@ import {
   competencyFrameworks,
   competencyFrameworkIdSchema 
 } from "@/lib/db/schema/competencyFrameworks";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createCompetencyFramework = async (competencyFramework: NewCompetencyFrameworkParams) => {
   const { session } = await getUserAuth();

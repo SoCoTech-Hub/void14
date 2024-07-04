@@ -9,7 +9,7 @@ import {
   chatUsers,
   chatUserIdSchema 
 } from "@/lib/db/schema/chatUsers";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createChatUser = async (chatUser: NewChatUserParams) => {
   const { session } = await getUserAuth();

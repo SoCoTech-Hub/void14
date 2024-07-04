@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type ZoomMeetingId, zoomMeetingIdSchema, zoomMeetings } from "@/lib/db/schema/zoomMeetings";
 import { zooms } from "@/lib/db/schema/zooms";
 

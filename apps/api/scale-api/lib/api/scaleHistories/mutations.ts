@@ -9,7 +9,7 @@ import {
   scaleHistories,
   scaleHistoryIdSchema 
 } from "@/lib/db/schema/scaleHistories";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createScaleHistory = async (scaleHistory: NewScaleHistoryParams) => {
   const { session } = await getUserAuth();

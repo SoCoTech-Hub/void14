@@ -9,7 +9,7 @@ import {
   nextOfKins,
   nextOfKinIdSchema 
 } from "@/lib/db/schema/nextOfKins";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createNextOfKin = async (nextOfKin: NewNextOfKinParams) => {
   const { session } = await getUserAuth();

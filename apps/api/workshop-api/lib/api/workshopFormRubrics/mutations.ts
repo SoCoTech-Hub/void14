@@ -9,7 +9,7 @@ import {
   workshopFormRubrics,
   workshopFormRubricIdSchema 
 } from "@/lib/db/schema/workshopFormRubrics";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createWorkshopFormRubric = async (workshopFormRubric: NewWorkshopFormRubricParams) => {
   const { session } = await getUserAuth();

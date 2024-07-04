@@ -9,7 +9,7 @@ import {
   oauth2SystemAccounts,
   oauth2SystemAccountIdSchema 
 } from "@/lib/db/schema/oauth2SystemAccounts";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createOauth2SystemAccount = async (oauth2SystemAccount: NewOauth2SystemAccountParams) => {
   const { session } = await getUserAuth();

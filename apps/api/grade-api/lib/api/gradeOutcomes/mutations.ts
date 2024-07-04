@@ -9,7 +9,7 @@ import {
   gradeOutcomes,
   gradeOutcomeIdSchema 
 } from "@/lib/db/schema/gradeOutcomes";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createGradeOutcome = async (gradeOutcome: NewGradeOutcomeParams) => {
   const { session } = await getUserAuth();

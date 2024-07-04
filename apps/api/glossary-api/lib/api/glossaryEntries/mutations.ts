@@ -9,7 +9,7 @@ import {
   glossaryEntries,
   glossaryEntryIdSchema 
 } from "@/lib/db/schema/glossaryEntries";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createGlossaryEntry = async (glossaryEntry: NewGlossaryEntryParams) => {
   const { session } = await getUserAuth();

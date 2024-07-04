@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type RoleCapabilityId, roleCapabilityIdSchema, roleCapabilities } from "@/lib/db/schema/roleCapabilities";
 import { roles } from "@/lib/db/schema/roles";
 

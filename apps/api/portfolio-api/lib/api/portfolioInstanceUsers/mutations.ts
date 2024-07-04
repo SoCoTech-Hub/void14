@@ -9,7 +9,7 @@ import {
   portfolioInstanceUsers,
   portfolioInstanceUserIdSchema 
 } from "@/lib/db/schema/portfolioInstanceUsers";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createPortfolioInstanceUser = async (portfolioInstanceUser: NewPortfolioInstanceUserParams) => {
   const { session } = await getUserAuth();

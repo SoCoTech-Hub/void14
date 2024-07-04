@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type Oauth2IssuerId, oauth2IssuerIdSchema, oauth2Issuers } from "@/lib/db/schema/oauth2Issuers";
 
 export const getOauth2Issuers = async () => {

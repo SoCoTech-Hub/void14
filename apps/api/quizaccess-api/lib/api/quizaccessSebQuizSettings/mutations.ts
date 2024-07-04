@@ -9,7 +9,7 @@ import {
   quizaccessSebQuizSettings,
   quizaccessSebQuizSettingIdSchema 
 } from "@/lib/db/schema/quizaccessSebQuizSettings";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createQuizaccessSebQuizSetting = async (quizaccessSebQuizSetting: NewQuizaccessSebQuizSettingParams) => {
   const { session } = await getUserAuth();

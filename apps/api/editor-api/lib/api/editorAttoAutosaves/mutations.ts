@@ -9,7 +9,7 @@ import {
   editorAttoAutosaves,
   editorAttoAutosaveIdSchema 
 } from "@/lib/db/schema/editorAttoAutosaves";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createEditorAttoAutosave = async (editorAttoAutosave: NewEditorAttoAutosaveParams) => {
   const { session } = await getUserAuth();

@@ -9,7 +9,7 @@ import {
   wikiSubwikis,
   wikiSubwikiIdSchema 
 } from "@/lib/db/schema/wikiSubwikis";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createWikiSubwiki = async (wikiSubwiki: NewWikiSubwikiParams) => {
   const { session } = await getUserAuth();

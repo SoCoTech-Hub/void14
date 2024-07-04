@@ -9,7 +9,7 @@ import {
   analyticsModels,
   analyticsModelIdSchema 
 } from "@/lib/db/schema/analyticsModels";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createAnalyticsModel = async (analyticsModel: NewAnalyticsModelParams) => {
   const { session } = await getUserAuth();

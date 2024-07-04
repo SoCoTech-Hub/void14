@@ -9,7 +9,7 @@ import {
   supportDepartments,
   supportDepartmentIdSchema 
 } from "@/lib/db/schema/supportDepartments";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createSupportDepartment = async (supportDepartment: NewSupportDepartmentParams) => {
   const { session } = await getUserAuth();

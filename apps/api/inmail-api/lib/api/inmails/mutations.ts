@@ -9,7 +9,7 @@ import {
   inmails,
   inmailIdSchema 
 } from "@/lib/db/schema/inmails";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createInmail = async (inmail: NewInmailParams) => {
   const { session } = await getUserAuth();

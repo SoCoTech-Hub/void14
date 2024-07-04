@@ -9,7 +9,7 @@ import {
   oauth2Endpoints,
   oauth2EndpointIdSchema 
 } from "@/lib/db/schema/oauth2Endpoints";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createOauth2Endpoint = async (oauth2Endpoint: NewOauth2EndpointParams) => {
   const { session } = await getUserAuth();

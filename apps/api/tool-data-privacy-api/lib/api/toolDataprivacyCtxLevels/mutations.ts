@@ -9,7 +9,7 @@ import {
   toolDataprivacyCtxLevels,
   toolDataprivacyCtxLevelIdSchema 
 } from "@/lib/db/schema/toolDataprivacyCtxLevels";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createToolDataprivacyCtxLevel = async (toolDataprivacyCtxLevel: NewToolDataprivacyCtxLevelParams) => {
   const { session } = await getUserAuth();

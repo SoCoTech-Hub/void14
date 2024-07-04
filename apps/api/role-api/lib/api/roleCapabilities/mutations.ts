@@ -9,7 +9,7 @@ import {
   roleCapabilities,
   roleCapabilityIdSchema 
 } from "@/lib/db/schema/roleCapabilities";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createRoleCapability = async (roleCapability: NewRoleCapabilityParams) => {
   const { session } = await getUserAuth();

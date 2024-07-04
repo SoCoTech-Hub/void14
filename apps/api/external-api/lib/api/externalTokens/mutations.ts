@@ -9,7 +9,7 @@ import {
   externalTokens,
   externalTokenIdSchema 
 } from "@/lib/db/schema/externalTokens";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createExternalToken = async (externalToken: NewExternalTokenParams) => {
   const { session } = await getUserAuth();

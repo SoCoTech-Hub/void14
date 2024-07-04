@@ -9,7 +9,7 @@ import {
   socials,
   socialIdSchema 
 } from "@/lib/db/schema/socials";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createSocial = async (social: NewSocialParams) => {
   const { session } = await getUserAuth();

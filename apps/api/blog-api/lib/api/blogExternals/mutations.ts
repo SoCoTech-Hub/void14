@@ -9,7 +9,7 @@ import {
   blogExternals,
   blogExternalIdSchema 
 } from "@/lib/db/schema/blogExternals";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createBlogExternal = async (blogExternal: NewBlogExternalParams) => {
   const { session } = await getUserAuth();

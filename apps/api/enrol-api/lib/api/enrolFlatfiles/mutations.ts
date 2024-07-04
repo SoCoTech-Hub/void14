@@ -9,7 +9,7 @@ import {
   enrolFlatfiles,
   enrolFlatfileIdSchema 
 } from "@/lib/db/schema/enrolFlatfiles";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createEnrolFlatfile = async (enrolFlatfile: NewEnrolFlatfileParams) => {
   const { session } = await getUserAuth();

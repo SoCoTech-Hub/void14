@@ -9,7 +9,7 @@ import {
   badges,
   badgeIdSchema 
 } from "@/lib/db/schema/badges";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createBadge = async (badge: NewBadgeParams) => {
   const { session } = await getUserAuth();

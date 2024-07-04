@@ -9,7 +9,7 @@ import {
   reportbuilderSchedules,
   reportbuilderScheduleIdSchema 
 } from "@/lib/db/schema/reportbuilderSchedules";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createReportbuilderSchedule = async (reportbuilderSchedule: NewReportbuilderScheduleParams) => {
   const { session } = await getUserAuth();

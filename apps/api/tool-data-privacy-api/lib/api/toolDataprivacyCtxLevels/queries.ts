@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type ToolDataprivacyCtxLevelId, toolDataprivacyCtxLevelIdSchema, toolDataprivacyCtxLevels } from "@/lib/db/schema/toolDataprivacyCtxLevels";
 import { toolDataprivacyCategories } from "@/lib/db/schema/toolDataprivacyCategories";
 import { toolDataprivacyPurposes } from "@/lib/db/schema/toolDataprivacyPurposes";

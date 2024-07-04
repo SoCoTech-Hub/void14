@@ -9,7 +9,7 @@ import {
   assignOverrides,
   assignOverrideIdSchema 
 } from "@/lib/db/schema/assignOverrides";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createAssignOverride = async (assignOverride: NewAssignOverrideParams) => {
   const { session } = await getUserAuth();

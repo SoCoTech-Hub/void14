@@ -9,7 +9,7 @@ import {
   toolDataprivacyCtxExpireds,
   toolDataprivacyCtxExpiredIdSchema 
 } from "@/lib/db/schema/toolDataprivacyCtxExpireds";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createToolDataprivacyCtxExpired = async (toolDataprivacyCtxExpired: NewToolDataprivacyCtxExpiredParams) => {
   const { session } = await getUserAuth();

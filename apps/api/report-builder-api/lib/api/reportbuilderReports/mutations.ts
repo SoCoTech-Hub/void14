@@ -9,7 +9,7 @@ import {
   reportbuilderReports,
   reportbuilderReportIdSchema 
 } from "@/lib/db/schema/reportbuilderReports";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createReportbuilderReport = async (reportbuilderReport: NewReportbuilderReportParams) => {
   const { session } = await getUserAuth();

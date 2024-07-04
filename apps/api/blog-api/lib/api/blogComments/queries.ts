@@ -1,6 +1,6 @@
 import { db } from "@/lib/db/index";
 import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 import { type BlogCommentId, blogCommentIdSchema, blogComments } from "@/lib/db/schema/blogComments";
 import { blogs } from "@/lib/db/schema/blogs";
 

@@ -9,7 +9,7 @@ import {
   wikiVersions,
   wikiVersionIdSchema 
 } from "@/lib/db/schema/wikiVersions";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createWikiVersion = async (wikiVersion: NewWikiVersionParams) => {
   const { session } = await getUserAuth();

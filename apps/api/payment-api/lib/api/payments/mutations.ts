@@ -9,7 +9,7 @@ import {
   payments,
   paymentIdSchema 
 } from "@/lib/db/schema/payments";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createPayment = async (payment: NewPaymentParams) => {
   const { session } = await getUserAuth();

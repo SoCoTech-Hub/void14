@@ -9,7 +9,7 @@ import {
 	analyticsModelLogs,
 	analyticsModelLogIdSchema
 } from '@/lib/db/schema/analyticsModelLogs'
-import { getUserAuth } from '@/lib/auth/utils'
+import { getUserAuth } from '@soco/auth/utils'
 
 export const createAnalyticsModelLog = async (
 	analyticsModelLog: NewAnalyticsModelLogParams

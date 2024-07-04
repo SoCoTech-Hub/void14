@@ -9,7 +9,7 @@ import {
   forumSubscriptions,
   forumSubscriptionIdSchema 
 } from "@/lib/db/schema/forumSubscriptions";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createForumSubscription = async (forumSubscription: NewForumSubscriptionParams) => {
   const { session } = await getUserAuth();

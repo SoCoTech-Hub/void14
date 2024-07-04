@@ -9,7 +9,7 @@ import {
   competencyTemplateCohorts,
   competencyTemplateCohortIdSchema 
 } from "@/lib/db/schema/competencyTemplateCohorts";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createCompetencyTemplateCohort = async (competencyTemplateCohort: NewCompetencyTemplateCohortParams) => {
   const { session } = await getUserAuth();

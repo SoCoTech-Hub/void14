@@ -9,7 +9,7 @@ import {
   messageEmailMessages,
   messageEmailMessageIdSchema 
 } from "@/lib/db/schema/messageEmailMessages";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createMessageEmailMessage = async (messageEmailMessage: NewMessageEmailMessageParams) => {
   const { session } = await getUserAuth();

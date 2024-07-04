@@ -9,7 +9,7 @@ import {
   lessonGrades,
   lessonGradeIdSchema 
 } from "@/lib/db/schema/lessonGrades";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createLessonGrade = async (lessonGrade: NewLessonGradeParams) => {
   const { session } = await getUserAuth();

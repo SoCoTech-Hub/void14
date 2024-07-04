@@ -9,7 +9,7 @@ import {
   forumReads,
   forumReadIdSchema 
 } from "@/lib/db/schema/forumReads";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createForumRead = async (forumRead: NewForumReadParams) => {
   const { session } = await getUserAuth();

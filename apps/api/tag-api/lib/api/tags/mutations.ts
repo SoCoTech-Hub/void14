@@ -9,7 +9,7 @@ import {
   tags,
   tagIdSchema 
 } from "@/lib/db/schema/tags";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth/utils";
 
 export const createTag = async (tag: NewTagParams) => {
   const { session } = await getUserAuth();
