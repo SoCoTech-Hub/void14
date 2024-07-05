@@ -6,7 +6,7 @@ import type { UsernameAndPassword } from "../db/schema/auth";
 import { authenticationSchema } from "../db/schema/auth";
 import { validateRequest } from "./lucia";
 
-export type AuthSession = {
+export interface AuthSession {
   session: {
     user: {
       id: string;
@@ -15,7 +15,7 @@ export type AuthSession = {
       username?: string;
     };
   } | null;
-};
+}
 export const getUserAuth = async (): Promise<AuthSession> => {
   const { session, user } = await validateRequest();
   if (!session) return { session: null };
@@ -44,7 +44,7 @@ export const setAuthCookie = (cookie: Cookie) => {
 
 const getErrorMessage = (errors: any): string => {
   if (errors.email) return "Invalid Email";
-  if (errors.password) return "Invalid Password - " + errors.password[0];
+  if (errors.password) return `Invalid Password - ${errors.password[0]}`;
   return ""; // return a default error message or an empty string
 };
 
