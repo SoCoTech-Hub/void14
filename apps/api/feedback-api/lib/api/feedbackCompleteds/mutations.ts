@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   FeedbackCompletedId,
   feedbackCompletedIdSchema,
@@ -11,7 +11,7 @@ import {
   NewFeedbackCompletedParams,
   UpdateFeedbackCompletedParams,
   updateFeedbackCompletedSchema,
-} from "../db/schema/feedbackCompleteds";
+} from "../../db/schema/feedbackCompleteds";
 
 export const createFeedbackCompleted = async (
   feedbackCompleted: NewFeedbackCompletedParams,

@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { MessageContactId } from "../db/schema/messageContacts";
-import { db } from "../db/index";
+import type { MessageContactId } from "../../db/schema/messageContacts";
+import { db } from "../../db/index";
 import {
   messageContactIdSchema,
   messageContacts,
-} from "../db/schema/messageContacts";
+} from "../../db/schema/messageContacts";
 
 export const getMessageContacts = async () => {
   const { session } = await getUserAuth();

@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { ExternalServicesFunctionId } from "../db/schema/externalServicesFunctions";
-import { db } from "../db/index";
+import type { ExternalServicesFunctionId } from "../../db/schema/externalServicesFunctions";
+import { db } from "../../db/index";
 import {
   externalServicesFunctionIdSchema,
   externalServicesFunctions,
-} from "../db/schema/externalServicesFunctions";
+} from "../../db/schema/externalServicesFunctions";
 
 export const getExternalServicesFunctions = async () => {
   const rows = await db.select().from(externalServicesFunctions);

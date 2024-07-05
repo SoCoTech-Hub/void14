@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   CustomFieldDataId,
   customFieldDataIdSchema,
@@ -9,7 +9,7 @@ import {
   NewCustomFieldDataParams,
   UpdateCustomFieldDataParams,
   updateCustomFieldDataSchema,
-} from "../db/schema/customFieldDatas";
+} from "../../db/schema/customFieldDatas";
 
 export const createCustomFieldData = async (
   customFieldData: NewCustomFieldDataParams,

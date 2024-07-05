@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { FeedbackCompletedtmpId } from "../db/schema/feedbackCompletedtmps";
-import { db } from "../db/index";
+import type { FeedbackCompletedtmpId } from "../../db/schema/feedbackCompletedtmps";
+import { db } from "../../db/index";
 import {
   feedbackCompletedtmpIdSchema,
   feedbackCompletedtmps,
-} from "../db/schema/feedbackCompletedtmps";
+} from "../../db/schema/feedbackCompletedtmps";
 
 export const getFeedbackCompletedtmps = async () => {
   const { session } = await getUserAuth();

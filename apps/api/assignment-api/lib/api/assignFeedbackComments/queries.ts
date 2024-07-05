@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { AssignFeedbackCommentId } from "../db/schema/assignFeedbackComments";
-import { db } from "../db/index";
+import type { AssignFeedbackCommentId } from "../../db/schema/assignFeedbackComments";
+import { db } from "../../db/index";
 import {
   assignFeedbackCommentIdSchema,
   assignFeedbackComments,
-} from "../db/schema/assignFeedbackComments";
-import { assignments } from "../db/schema/assignments";
+} from "../../db/schema/assignFeedbackComments";
+import { assignments } from "../../db/schema/assignments";
 
 export const getAssignFeedbackComments = async () => {
   const rows = await db

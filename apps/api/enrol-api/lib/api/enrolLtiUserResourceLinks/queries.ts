@@ -1,13 +1,13 @@
 import { eq } from "drizzle-orm";
 
-import type { EnrolLtiUserResourceLinkId } from "../db/schema/enrolLtiUserResourceLinks";
-import { db } from "../db/index";
-import { enrolLtiResourceLinks } from "../db/schema/enrolLtiResourceLinks";
+import type { EnrolLtiUserResourceLinkId } from "../../db/schema/enrolLtiUserResourceLinks";
+import { db } from "../../db/index";
+import { enrolLtiResourceLinks } from "../../db/schema/enrolLtiResourceLinks";
 import {
   enrolLtiUserResourceLinkIdSchema,
   enrolLtiUserResourceLinks,
-} from "../db/schema/enrolLtiUserResourceLinks";
-import { enrolLtiUsers } from "../db/schema/enrolLtiUsers";
+} from "../../db/schema/enrolLtiUserResourceLinks";
+import { enrolLtiUsers } from "../../db/schema/enrolLtiUsers";
 
 export const getEnrolLtiUserResourceLinks = async () => {
   const rows = await db

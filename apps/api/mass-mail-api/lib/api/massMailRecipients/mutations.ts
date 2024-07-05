@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertMassMailRecipientSchema,
   MassMailRecipientId,
@@ -11,7 +11,7 @@ import {
   NewMassMailRecipientParams,
   UpdateMassMailRecipientParams,
   updateMassMailRecipientSchema,
-} from "../db/schema/massMailRecipients";
+} from "../../db/schema/massMailRecipients";
 
 export const createMassMailRecipient = async (
   massMailRecipient: NewMassMailRecipientParams,

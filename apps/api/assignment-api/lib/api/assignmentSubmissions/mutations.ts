@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   AssignmentSubmissionId,
   assignmentSubmissionIdSchema,
@@ -11,7 +11,7 @@ import {
   NewAssignmentSubmissionParams,
   UpdateAssignmentSubmissionParams,
   updateAssignmentSubmissionSchema,
-} from "../db/schema/assignmentSubmissions";
+} from "../../db/schema/assignmentSubmissions";
 
 export const createAssignmentSubmission = async (
   assignmentSubmission: NewAssignmentSubmissionParams,

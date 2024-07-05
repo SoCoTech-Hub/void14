@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   BlockPositionId,
   blockPositionIdSchema,
@@ -9,7 +9,7 @@ import {
   NewBlockPositionParams,
   UpdateBlockPositionParams,
   updateBlockPositionSchema,
-} from "../db/schema/blockPositions";
+} from "../../db/schema/blockPositions";
 
 export const createBlockPosition = async (
   blockPosition: NewBlockPositionParams,

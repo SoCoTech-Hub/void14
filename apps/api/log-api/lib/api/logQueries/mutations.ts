@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertLogQuerySchema,
   logQueries,
@@ -9,7 +9,7 @@ import {
   NewLogQueryParams,
   UpdateLogQueryParams,
   updateLogQuerySchema,
-} from "../db/schema/logQueries";
+} from "../../db/schema/logQueries";
 
 export const createLogQuery = async (logQuery: NewLogQueryParams) => {
   const newLogQuery = insertLogQuerySchema.parse(logQuery);

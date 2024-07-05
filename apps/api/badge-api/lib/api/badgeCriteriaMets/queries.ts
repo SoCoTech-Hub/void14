@@ -2,13 +2,13 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { BadgeCriteriaMetId } from "../db/schema/badgeCriteriaMets";
-import { db } from "../db/index";
+import type { BadgeCriteriaMetId } from "../../db/schema/badgeCriteriaMets";
+import { db } from "../../db/index";
 import {
   badgeCriteriaMetIdSchema,
   badgeCriteriaMets,
-} from "../db/schema/badgeCriteriaMets";
-import { badgeCriterias } from "../db/schema/badgeCriterias";
+} from "../../db/schema/badgeCriteriaMets";
+import { badgeCriterias } from "../../db/schema/badgeCriterias";
 
 export const getBadgeCriteriaMets = async () => {
   const { session } = await getUserAuth();

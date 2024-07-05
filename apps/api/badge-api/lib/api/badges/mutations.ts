@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   BadgeId,
   badgeIdSchema,
@@ -11,7 +11,7 @@ import {
   NewBadgeParams,
   UpdateBadgeParams,
   updateBadgeSchema,
-} from "../db/schema/badges";
+} from "../../db/schema/badges";
 
 export const createBadge = async (badge: NewBadgeParams) => {
   const { session } = await getUserAuth();

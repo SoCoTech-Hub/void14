@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { BadgeCriteriaParamId } from "../db/schema/badgeCriteriaParams";
-import { db } from "../db/index";
+import type { BadgeCriteriaParamId } from "../../db/schema/badgeCriteriaParams";
+import { db } from "../../db/index";
 import {
   badgeCriteriaParamIdSchema,
   badgeCriteriaParams,
-} from "../db/schema/badgeCriteriaParams";
-import { badgeCriterias } from "../db/schema/badgeCriterias";
+} from "../../db/schema/badgeCriteriaParams";
+import { badgeCriterias } from "../../db/schema/badgeCriterias";
 
 export const getBadgeCriteriaParams = async () => {
   const rows = await db

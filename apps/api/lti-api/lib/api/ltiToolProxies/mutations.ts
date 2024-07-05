@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertLtiToolProxySchema,
   ltiToolProxies,
@@ -9,7 +9,7 @@ import {
   NewLtiToolProxyParams,
   UpdateLtiToolProxyParams,
   updateLtiToolProxySchema,
-} from "../db/schema/ltiToolProxies";
+} from "../../db/schema/ltiToolProxies";
 
 export const createLtiToolProxy = async (
   ltiToolProxy: NewLtiToolProxyParams,

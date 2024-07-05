@@ -2,10 +2,10 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { ChatUserId } from "../db/schema/chatUsers";
-import { db } from "../db/index";
-import { chats } from "../db/schema/chats";
-import { chatUserIdSchema, chatUsers } from "../db/schema/chatUsers";
+import type { ChatUserId } from "../../db/schema/chatUsers";
+import { db } from "../../db/index";
+import { chats } from "../../db/schema/chats";
+import { chatUserIdSchema, chatUsers } from "../../db/schema/chatUsers";
 
 export const getChatUsers = async () => {
   const { session } = await getUserAuth();

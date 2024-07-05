@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   gradeCategories,
   GradeCategoryId,
@@ -9,7 +9,7 @@ import {
   NewGradeCategoryParams,
   UpdateGradeCategoryParams,
   updateGradeCategorySchema,
-} from "../db/schema/gradeCategories";
+} from "../../db/schema/gradeCategories";
 
 export const createGradeCategory = async (
   gradeCategory: NewGradeCategoryParams,

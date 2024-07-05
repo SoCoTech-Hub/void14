@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   FeedbackItemId,
   feedbackItemIdSchema,
@@ -9,7 +9,7 @@ import {
   NewFeedbackItemParams,
   UpdateFeedbackItemParams,
   updateFeedbackItemSchema,
-} from "../db/schema/feedbackItems";
+} from "../../db/schema/feedbackItems";
 
 export const createFeedbackItem = async (
   feedbackItem: NewFeedbackItemParams,

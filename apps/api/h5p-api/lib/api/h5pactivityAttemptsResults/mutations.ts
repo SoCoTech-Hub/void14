@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   H5pactivityAttemptsResultId,
   h5pactivityAttemptsResultIdSchema,
@@ -9,7 +9,7 @@ import {
   NewH5pactivityAttemptsResultParams,
   UpdateH5pactivityAttemptsResultParams,
   updateH5pactivityAttemptsResultSchema,
-} from "../db/schema/h5pactivityAttemptsResults";
+} from "../../db/schema/h5pactivityAttemptsResults";
 
 export const createH5pactivityAttemptsResult = async (
   h5pactivityAttemptsResult: NewH5pactivityAttemptsResultParams,

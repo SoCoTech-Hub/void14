@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { InfectedFileId } from "../db/schema/infectedFiles";
-import { db } from "../db/index";
+import type { InfectedFileId } from "../../db/schema/infectedFiles";
+import { db } from "../../db/index";
 import {
   infectedFileIdSchema,
   infectedFiles,
-} from "../db/schema/infectedFiles";
+} from "../../db/schema/infectedFiles";
 
 export const getInfectedFiles = async () => {
   const { session } = await getUserAuth();

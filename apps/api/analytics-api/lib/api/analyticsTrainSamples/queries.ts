@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { AnalyticsTrainSampleId } from "../db/schema/analyticsTrainSamples";
-import { db } from "../db/index";
+import type { AnalyticsTrainSampleId } from "../../db/schema/analyticsTrainSamples";
+import { db } from "../../db/index";
 import {
   analyticsTrainSampleIdSchema,
   analyticsTrainSamples,
-} from "../db/schema/analyticsTrainSamples";
+} from "../../db/schema/analyticsTrainSamples";
 
 export const getAnalyticsTrainSamples = async () => {
   const rows = await db.select().from(analyticsTrainSamples);

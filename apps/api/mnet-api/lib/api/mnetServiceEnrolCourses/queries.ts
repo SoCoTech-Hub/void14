@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { MnetServiceEnrolCourseId } from "../db/schema/mnetServiceEnrolCourses";
-import { db } from "../db/index";
-import { mnetHosts } from "../db/schema/mnetHosts";
+import type { MnetServiceEnrolCourseId } from "../../db/schema/mnetServiceEnrolCourses";
+import { db } from "../../db/index";
+import { mnetHosts } from "../../db/schema/mnetHosts";
 import {
   mnetServiceEnrolCourseIdSchema,
   mnetServiceEnrolCourses,
-} from "../db/schema/mnetServiceEnrolCourses";
+} from "../../db/schema/mnetServiceEnrolCourses";
 
 export const getMnetServiceEnrolCourses = async () => {
   const rows = await db

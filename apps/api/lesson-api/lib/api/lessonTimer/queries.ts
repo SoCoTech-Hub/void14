@@ -2,10 +2,10 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { LessonTimerId } from "../db/schema/lessonTimer";
-import { db } from "../db/index";
-import { lessons } from "../db/schema/lessons";
-import { lessonTimer, lessonTimerIdSchema } from "../db/schema/lessonTimer";
+import type { LessonTimerId } from "../../db/schema/lessonTimer";
+import { db } from "../../db/index";
+import { lessons } from "../../db/schema/lessons";
+import { lessonTimer, lessonTimerIdSchema } from "../../db/schema/lessonTimer";
 
 export const getLessonTimers = async () => {
   const { session } = await getUserAuth();

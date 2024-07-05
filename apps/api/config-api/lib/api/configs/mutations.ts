@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   ConfigId,
   configIdSchema,
@@ -9,7 +9,7 @@ import {
   NewConfigParams,
   UpdateConfigParams,
   updateConfigSchema,
-} from "../db/schema/configs";
+} from "../../db/schema/configs";
 
 export const createConfig = async (config: NewConfigParams) => {
   const newConfig = insertConfigSchema.parse(config);

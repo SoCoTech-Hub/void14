@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   CourseCompletionId,
   courseCompletionIdSchema,
@@ -11,7 +11,7 @@ import {
   NewCourseCompletionParams,
   UpdateCourseCompletionParams,
   updateCourseCompletionSchema,
-} from "../db/schema/courseCompletions";
+} from "../../db/schema/courseCompletions";
 
 export const createCourseCompletion = async (
   courseCompletion: NewCourseCompletionParams,

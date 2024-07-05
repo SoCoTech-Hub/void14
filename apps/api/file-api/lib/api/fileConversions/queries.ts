@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { FileConversionId } from "../db/schema/fileConversions";
-import { db } from "../db/index";
+import type { FileConversionId } from "../../db/schema/fileConversions";
+import { db } from "../../db/index";
 import {
   fileConversionIdSchema,
   fileConversions,
-} from "../db/schema/fileConversions";
+} from "../../db/schema/fileConversions";
 
 export const getFileConversions = async () => {
   const { session } = await getUserAuth();

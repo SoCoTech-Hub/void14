@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { FolderId } from "../db/schema/folders";
-import { db } from "../db/index";
-import { folderIdSchema, folders } from "../db/schema/folders";
+import type { FolderId } from "../../db/schema/folders";
+import { db } from "../../db/index";
+import { folderIdSchema, folders } from "../../db/schema/folders";
 
 export const getFolders = async () => {
   const rows = await db.select().from(folders);

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   FolderId,
   folderIdSchema,
@@ -9,7 +9,7 @@ import {
   NewFolderParams,
   UpdateFolderParams,
   updateFolderSchema,
-} from "../db/schema/folders";
+} from "../../db/schema/folders";
 
 export const createFolder = async (folder: NewFolderParams) => {
   const newFolder = insertFolderSchema.parse(folder);

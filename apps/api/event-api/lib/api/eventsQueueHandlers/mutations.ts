@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   EventsQueueHandlerId,
   eventsQueueHandlerIdSchema,
@@ -9,7 +9,7 @@ import {
   NewEventsQueueHandlerParams,
   UpdateEventsQueueHandlerParams,
   updateEventsQueueHandlerSchema,
-} from "../db/schema/eventsQueueHandlers";
+} from "../../db/schema/eventsQueueHandlers";
 
 export const createEventsQueueHandler = async (
   eventsQueueHandler: NewEventsQueueHandlerParams,

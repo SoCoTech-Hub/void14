@@ -2,9 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { EnrolPaypalId } from "../db/schema/enrolPaypals";
-import { db } from "../db/index";
-import { enrolPaypalIdSchema, enrolPaypals } from "../db/schema/enrolPaypals";
+import type { EnrolPaypalId } from "../../db/schema/enrolPaypals";
+import { db } from "../../db/index";
+import {
+  enrolPaypalIdSchema,
+  enrolPaypals,
+} from "../../db/schema/enrolPaypals";
 
 export const getEnrolPaypals = async () => {
   const { session } = await getUserAuth();

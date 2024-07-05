@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertOauth2UserFieldMappingSchema,
   NewOauth2UserFieldMappingParams,
@@ -11,7 +11,7 @@ import {
   oauth2UserFieldMappings,
   UpdateOauth2UserFieldMappingParams,
   updateOauth2UserFieldMappingSchema,
-} from "../db/schema/oauth2UserFieldMappings";
+} from "../../db/schema/oauth2UserFieldMappings";
 
 export const createOauth2UserFieldMapping = async (
   oauth2UserFieldMapping: NewOauth2UserFieldMappingParams,

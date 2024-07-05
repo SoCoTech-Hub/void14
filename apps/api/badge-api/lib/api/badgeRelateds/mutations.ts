@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   BadgeRelatedId,
   badgeRelatedIdSchema,
@@ -9,7 +9,7 @@ import {
   NewBadgeRelatedParams,
   UpdateBadgeRelatedParams,
   updateBadgeRelatedSchema,
-} from "../db/schema/badgeRelateds";
+} from "../../db/schema/badgeRelateds";
 
 export const createBadgeRelated = async (
   badgeRelated: NewBadgeRelatedParams,

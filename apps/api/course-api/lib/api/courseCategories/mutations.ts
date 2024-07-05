@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   courseCategories,
   CourseCategoryId,
@@ -9,7 +9,7 @@ import {
   NewCourseCategoryParams,
   UpdateCourseCategoryParams,
   updateCourseCategorySchema,
-} from "../db/schema/courseCategories";
+} from "../../db/schema/courseCategories";
 
 export const createCourseCategory = async (
   courseCategory: NewCourseCategoryParams,

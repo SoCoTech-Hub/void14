@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   ChatMessageId,
   chatMessageIdSchema,
@@ -11,7 +11,7 @@ import {
   NewChatMessageParams,
   UpdateChatMessageParams,
   updateChatMessageSchema,
-} from "../db/schema/chatMessages";
+} from "../../db/schema/chatMessages";
 
 export const createChatMessage = async (chatMessage: NewChatMessageParams) => {
   const { session } = await getUserAuth();

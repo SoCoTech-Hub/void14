@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   AssignUserMappingId,
   assignUserMappingIdSchema,
@@ -11,7 +11,7 @@ import {
   NewAssignUserMappingParams,
   UpdateAssignUserMappingParams,
   updateAssignUserMappingSchema,
-} from "../db/schema/assignUserMappings";
+} from "../../db/schema/assignUserMappings";
 
 export const createAssignUserMapping = async (
   assignUserMapping: NewAssignUserMappingParams,

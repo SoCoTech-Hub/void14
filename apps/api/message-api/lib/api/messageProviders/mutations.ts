@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertMessageProviderSchema,
   MessageProviderId,
@@ -9,7 +9,7 @@ import {
   NewMessageProviderParams,
   UpdateMessageProviderParams,
   updateMessageProviderSchema,
-} from "../db/schema/messageProviders";
+} from "../../db/schema/messageProviders";
 
 export const createMessageProvider = async (
   messageProvider: NewMessageProviderParams,

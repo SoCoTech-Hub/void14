@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { LtiToolProxyId } from "../db/schema/ltiToolProxies";
-import { db } from "../db/index";
+import type { LtiToolProxyId } from "../../db/schema/ltiToolProxies";
+import { db } from "../../db/index";
 import {
   ltiToolProxies,
   ltiToolProxyIdSchema,
-} from "../db/schema/ltiToolProxies";
+} from "../../db/schema/ltiToolProxies";
 
 export const getLtiToolProxies = async () => {
   const rows = await db.select().from(ltiToolProxies);

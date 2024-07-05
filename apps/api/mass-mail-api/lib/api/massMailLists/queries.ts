@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { MassMailListId } from "../db/schema/massMailLists";
-import { db } from "../db/index";
+import type { MassMailListId } from "../../db/schema/massMailLists";
+import { db } from "../../db/index";
 import {
   massMailListIdSchema,
   massMailLists,
-} from "../db/schema/massMailLists";
+} from "../../db/schema/massMailLists";
 
 export const getMassMailLists = async () => {
   const { session } = await getUserAuth();

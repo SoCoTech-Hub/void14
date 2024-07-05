@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   EnrolFlatfileId,
   enrolFlatfileIdSchema,
@@ -11,7 +11,7 @@ import {
   NewEnrolFlatfileParams,
   UpdateEnrolFlatfileParams,
   updateEnrolFlatfileSchema,
-} from "../db/schema/enrolFlatfiles";
+} from "../../db/schema/enrolFlatfiles";
 
 export const createEnrolFlatfile = async (
   enrolFlatfile: NewEnrolFlatfileParams,

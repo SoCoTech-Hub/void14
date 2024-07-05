@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertLessonGradeSchema,
   LessonGradeId,
@@ -11,7 +11,7 @@ import {
   NewLessonGradeParams,
   UpdateLessonGradeParams,
   updateLessonGradeSchema,
-} from "../db/schema/lessonGrades";
+} from "../../db/schema/lessonGrades";
 
 export const createLessonGrade = async (lessonGrade: NewLessonGradeParams) => {
   const { session } = await getUserAuth();

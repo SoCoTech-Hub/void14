@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertNotificationSchema,
   NewNotificationParams,
@@ -11,7 +11,7 @@ import {
   notifications,
   UpdateNotificationParams,
   updateNotificationSchema,
-} from "../db/schema/notifications";
+} from "../../db/schema/notifications";
 
 export const createNotification = async (
   notification: NewNotificationParams,

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertMnetHostSchema,
   MnetHostId,
@@ -9,7 +9,7 @@ import {
   NewMnetHostParams,
   UpdateMnetHostParams,
   updateMnetHostSchema,
-} from "../db/schema/mnetHosts";
+} from "../../db/schema/mnetHosts";
 
 export const createMnetHost = async (mnetHost: NewMnetHostParams) => {
   const newMnetHost = insertMnetHostSchema.parse(mnetHost);

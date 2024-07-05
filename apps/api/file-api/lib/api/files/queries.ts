@@ -2,9 +2,9 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { FileId } from "../db/schema/files";
-import { db } from "../db/index";
-import { fileIdSchema, files } from "../db/schema/files";
+import type { FileId } from "../../db/schema/files";
+import { db } from "../../db/index";
+import { fileIdSchema, files } from "../../db/schema/files";
 
 export const getFiles = async () => {
   const { session } = await getUserAuth();

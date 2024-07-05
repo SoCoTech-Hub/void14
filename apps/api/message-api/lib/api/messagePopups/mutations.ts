@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertMessagePopupSchema,
   MessagePopupId,
@@ -9,7 +9,7 @@ import {
   NewMessagePopupParams,
   UpdateMessagePopupParams,
   updateMessagePopupSchema,
-} from "../db/schema/messagePopups";
+} from "../../db/schema/messagePopups";
 
 export const createMessagePopup = async (
   messagePopup: NewMessagePopupParams,

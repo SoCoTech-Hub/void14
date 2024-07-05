@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { AssignSubmissionFileId } from "../db/schema/assignSubmissionFiles";
-import { db } from "../db/index";
-import { assignments } from "../db/schema/assignments";
+import type { AssignSubmissionFileId } from "../../db/schema/assignSubmissionFiles";
+import { db } from "../../db/index";
+import { assignments } from "../../db/schema/assignments";
 import {
   assignSubmissionFileIdSchema,
   assignSubmissionFiles,
-} from "../db/schema/assignSubmissionFiles";
+} from "../../db/schema/assignSubmissionFiles";
 
 export const getAssignSubmissionFiles = async () => {
   const rows = await db

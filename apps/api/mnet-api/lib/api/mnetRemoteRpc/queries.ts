@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { MnetRemoteRpcId } from "../db/schema/mnetRemoteRpc";
-import { db } from "../db/index";
+import type { MnetRemoteRpcId } from "../../db/schema/mnetRemoteRpc";
+import { db } from "../../db/index";
 import {
   mnetRemoteRpc,
   mnetRemoteRpcIdSchema,
-} from "../db/schema/mnetRemoteRpc";
+} from "../../db/schema/mnetRemoteRpc";
 
 export const getMnetRemoteRpcs = async () => {
   const rows = await db.select().from(mnetRemoteRpc);

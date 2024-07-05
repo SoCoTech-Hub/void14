@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   ForumTrackPrefId,
   forumTrackPrefIdSchema,
@@ -11,7 +11,7 @@ import {
   NewForumTrackPrefParams,
   UpdateForumTrackPrefParams,
   updateForumTrackPrefSchema,
-} from "../db/schema/forumTrackPrefs";
+} from "../../db/schema/forumTrackPrefs";
 
 export const createForumTrackPref = async (
   forumTrackPref: NewForumTrackPrefParams,

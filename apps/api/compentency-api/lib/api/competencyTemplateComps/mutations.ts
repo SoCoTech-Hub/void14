@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   CompetencyTemplateCompId,
   competencyTemplateCompIdSchema,
@@ -11,7 +11,7 @@ import {
   NewCompetencyTemplateCompParams,
   UpdateCompetencyTemplateCompParams,
   updateCompetencyTemplateCompSchema,
-} from "../db/schema/competencyTemplateComps";
+} from "../../db/schema/competencyTemplateComps";
 
 export const createCompetencyTemplateComp = async (
   competencyTemplateComp: NewCompetencyTemplateCompParams,

@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   bursaries,
   BursaryId,
@@ -11,7 +11,7 @@ import {
   NewBursaryParams,
   UpdateBursaryParams,
   updateBursarySchema,
-} from "../db/schema/bursaries";
+} from "../../db/schema/bursaries";
 
 export const createBursary = async (bursary: NewBursaryParams) => {
   const { session } = await getUserAuth();

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   glossaryAliases,
   GlossaryAliasId,
@@ -9,7 +9,7 @@ import {
   NewGlossaryAliasParams,
   UpdateGlossaryAliasParams,
   updateGlossaryAliasSchema,
-} from "../db/schema/glossaryAliases";
+} from "../../db/schema/glossaryAliases";
 
 export const createGlossaryAlias = async (
   glossaryAlias: NewGlossaryAliasParams,

@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { BadgeExternalIdentifierId } from "../db/schema/badgeExternalIdentifiers";
-import { db } from "../db/index";
-import { badgeBackpacks } from "../db/schema/badgeBackpacks";
+import type { BadgeExternalIdentifierId } from "../../db/schema/badgeExternalIdentifiers";
+import { db } from "../../db/index";
+import { badgeBackpacks } from "../../db/schema/badgeBackpacks";
 import {
   badgeExternalIdentifierIdSchema,
   badgeExternalIdentifiers,
-} from "../db/schema/badgeExternalIdentifiers";
+} from "../../db/schema/badgeExternalIdentifiers";
 
 export const getBadgeExternalIdentifiers = async () => {
   const rows = await db

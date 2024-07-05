@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   InfectedFileId,
   infectedFileIdSchema,
@@ -11,7 +11,7 @@ import {
   NewInfectedFileParams,
   UpdateInfectedFileParams,
   updateInfectedFileSchema,
-} from "../db/schema/infectedFiles";
+} from "../../db/schema/infectedFiles";
 
 export const createInfectedFile = async (
   infectedFile: NewInfectedFileParams,

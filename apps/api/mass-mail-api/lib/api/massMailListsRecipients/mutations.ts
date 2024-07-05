@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertMassMailListsRecipientSchema,
   MassMailListsRecipientId,
@@ -9,7 +9,7 @@ import {
   NewMassMailListsRecipientParams,
   UpdateMassMailListsRecipientParams,
   updateMassMailListsRecipientSchema,
-} from "../db/schema/massMailListsRecipients";
+} from "../../db/schema/massMailListsRecipients";
 
 export const createMassMailListsRecipient = async (
   massMailListsRecipient: NewMassMailListsRecipientParams,

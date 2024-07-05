@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { AnalyticsUsedFileId } from "../db/schema/analyticsUsedFiles";
-import { db } from "../db/index";
+import type { AnalyticsUsedFileId } from "../../db/schema/analyticsUsedFiles";
+import { db } from "../../db/index";
 import {
   analyticsUsedFileIdSchema,
   analyticsUsedFiles,
-} from "../db/schema/analyticsUsedFiles";
+} from "../../db/schema/analyticsUsedFiles";
 
 export const getAnalyticsUsedFiles = async () => {
   const rows = await db.select().from(analyticsUsedFiles);

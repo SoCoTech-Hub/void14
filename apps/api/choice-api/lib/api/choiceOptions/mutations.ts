@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   ChoiceOptionId,
   choiceOptionIdSchema,
@@ -9,7 +9,7 @@ import {
   NewChoiceOptionParams,
   UpdateChoiceOptionParams,
   updateChoiceOptionSchema,
-} from "../db/schema/choiceOptions";
+} from "../../db/schema/choiceOptions";
 
 export const createChoiceOption = async (
   choiceOption: NewChoiceOptionParams,

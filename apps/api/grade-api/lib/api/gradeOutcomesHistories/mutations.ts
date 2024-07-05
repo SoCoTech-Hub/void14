@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   gradeOutcomesHistories,
   GradeOutcomesHistoryId,
@@ -11,7 +11,7 @@ import {
   NewGradeOutcomesHistoryParams,
   UpdateGradeOutcomesHistoryParams,
   updateGradeOutcomesHistorySchema,
-} from "../db/schema/gradeOutcomesHistories";
+} from "../../db/schema/gradeOutcomesHistories";
 
 export const createGradeOutcomesHistory = async (
   gradeOutcomesHistory: NewGradeOutcomesHistoryParams,

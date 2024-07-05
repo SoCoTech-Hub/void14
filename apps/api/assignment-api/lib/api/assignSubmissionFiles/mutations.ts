@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   AssignSubmissionFileId,
   assignSubmissionFileIdSchema,
@@ -9,7 +9,7 @@ import {
   NewAssignSubmissionFileParams,
   UpdateAssignSubmissionFileParams,
   updateAssignSubmissionFileSchema,
-} from "../db/schema/assignSubmissionFiles";
+} from "../../db/schema/assignSubmissionFiles";
 
 export const createAssignSubmissionFile = async (
   assignSubmissionFile: NewAssignSubmissionFileParams,

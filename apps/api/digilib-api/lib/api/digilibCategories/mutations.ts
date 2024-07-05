@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   digilibCategories,
   DigilibCategoryId,
@@ -9,7 +9,7 @@ import {
   NewDigilibCategoryParams,
   UpdateDigilibCategoryParams,
   updateDigilibCategorySchema,
-} from "../db/schema/digilibCategories";
+} from "../../db/schema/digilibCategories";
 
 export const createDigilibCategory = async (
   digilibCategory: NewDigilibCategoryParams,

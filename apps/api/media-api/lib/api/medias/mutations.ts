@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertMediaSchema,
   MediaId,
@@ -9,7 +9,7 @@ import {
   NewMediaParams,
   UpdateMediaParams,
   updateMediaSchema,
-} from "../db/schema/medias";
+} from "../../db/schema/medias";
 
 export const createMedia = async (media: NewMediaParams) => {
   const newMedia = insertMediaSchema.parse(media);

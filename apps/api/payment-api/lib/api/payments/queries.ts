@@ -2,10 +2,10 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { PaymentId } from "../db/schema/payments";
-import { db } from "../db/index";
-import { paymentAccounts } from "../db/schema/paymentAccounts";
-import { paymentIdSchema, payments } from "../db/schema/payments";
+import type { PaymentId } from "../../db/schema/payments";
+import { db } from "../../db/index";
+import { paymentAccounts } from "../../db/schema/paymentAccounts";
+import { paymentIdSchema, payments } from "../../db/schema/payments";
 
 export const getPayments = async () => {
   const { session } = await getUserAuth();

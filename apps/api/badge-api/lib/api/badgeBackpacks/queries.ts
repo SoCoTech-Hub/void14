@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { BadgeBackpackId } from "../db/schema/badgeBackpacks";
-import { db } from "../db/index";
+import type { BadgeBackpackId } from "../../db/schema/badgeBackpacks";
+import { db } from "../../db/index";
 import {
   badgeBackpackIdSchema,
   badgeBackpacks,
-} from "../db/schema/badgeBackpacks";
+} from "../../db/schema/badgeBackpacks";
 
 export const getBadgeBackpacks = async () => {
   const { session } = await getUserAuth();

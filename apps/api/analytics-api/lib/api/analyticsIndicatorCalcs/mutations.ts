@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   AnalyticsIndicatorCalcId,
   analyticsIndicatorCalcIdSchema,
@@ -9,7 +9,7 @@ import {
   NewAnalyticsIndicatorCalcParams,
   UpdateAnalyticsIndicatorCalcParams,
   updateAnalyticsIndicatorCalcSchema,
-} from "../db/schema/analyticsIndicatorCalcs";
+} from "../../db/schema/analyticsIndicatorCalcs";
 
 export const createAnalyticsIndicatorCalc = async (
   analyticsIndicatorCalc: NewAnalyticsIndicatorCalcParams,

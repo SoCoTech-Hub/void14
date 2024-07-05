@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   InmailId,
   inmailIdSchema,
@@ -11,7 +11,7 @@ import {
   NewInmailParams,
   UpdateInmailParams,
   updateInmailSchema,
-} from "../db/schema/inmails";
+} from "../../db/schema/inmails";
 
 export const createInmail = async (inmail: NewInmailParams) => {
   const { session } = await getUserAuth();

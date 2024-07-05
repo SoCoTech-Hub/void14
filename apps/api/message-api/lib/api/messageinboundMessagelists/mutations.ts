@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertMessageinboundMessagelistSchema,
   MessageinboundMessagelistId,
@@ -11,7 +11,7 @@ import {
   NewMessageinboundMessagelistParams,
   UpdateMessageinboundMessagelistParams,
   updateMessageinboundMessagelistSchema,
-} from "../db/schema/messageinboundMessagelists";
+} from "../../db/schema/messageinboundMessagelists";
 
 export const createMessageinboundMessagelist = async (
   messageinboundMessagelist: NewMessageinboundMessagelistParams,

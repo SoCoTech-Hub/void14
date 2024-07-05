@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { MessageConversationId } from "../db/schema/messageConversations";
-import { db } from "../db/index";
+import type { MessageConversationId } from "../../db/schema/messageConversations";
+import { db } from "../../db/index";
 import {
   messageConversationIdSchema,
   messageConversations,
-} from "../db/schema/messageConversations";
+} from "../../db/schema/messageConversations";
 
 export const getMessageConversations = async () => {
   const rows = await db.select().from(messageConversations);

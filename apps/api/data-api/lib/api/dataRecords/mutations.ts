@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   DataRecordId,
   dataRecordIdSchema,
@@ -11,7 +11,7 @@ import {
   NewDataRecordParams,
   UpdateDataRecordParams,
   updateDataRecordSchema,
-} from "../db/schema/dataRecords";
+} from "../../db/schema/dataRecords";
 
 export const createDataRecord = async (dataRecord: NewDataRecordParams) => {
   const { session } = await getUserAuth();

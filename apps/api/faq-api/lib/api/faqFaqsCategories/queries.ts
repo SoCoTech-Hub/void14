@@ -1,13 +1,13 @@
 import { eq } from "drizzle-orm";
 
-import type { FaqFaqsCategoryId } from "../db/schema/faqFaqsCategories";
-import { db } from "../db/index";
-import { faqCategories } from "../db/schema/faqCategories";
+import type { FaqFaqsCategoryId } from "../../db/schema/faqFaqsCategories";
+import { db } from "../../db/index";
+import { faqCategories } from "../../db/schema/faqCategories";
 import {
   faqFaqsCategories,
   faqFaqsCategoryIdSchema,
-} from "../db/schema/faqFaqsCategories";
-import { faqs } from "../db/schema/faqs";
+} from "../../db/schema/faqFaqsCategories";
+import { faqs } from "../../db/schema/faqs";
 
 export const getFaqFaqsCategories = async () => {
   const rows = await db

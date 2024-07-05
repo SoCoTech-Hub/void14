@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   ChoiceAnswerId,
   choiceAnswerIdSchema,
@@ -11,7 +11,7 @@ import {
   NewChoiceAnswerParams,
   UpdateChoiceAnswerParams,
   updateChoiceAnswerSchema,
-} from "../db/schema/choiceAnswers";
+} from "../../db/schema/choiceAnswers";
 
 export const createChoiceAnswer = async (
   choiceAnswer: NewChoiceAnswerParams,

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   ContextId,
   contextIdSchema,
@@ -9,7 +9,7 @@ import {
   NewContextParams,
   UpdateContextParams,
   updateContextSchema,
-} from "../db/schema/contexts";
+} from "../../db/schema/contexts";
 
 export const createContext = async (context: NewContextParams) => {
   const newContext = insertContextSchema.parse(context);

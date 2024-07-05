@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { CountryOrganizationId } from "../db/schema/countryOrganizations";
-import { db } from "../db/index";
-import { countries } from "../db/schema/countries";
+import type { CountryOrganizationId } from "../../db/schema/countryOrganizations";
+import { db } from "../../db/index";
+import { countries } from "../../db/schema/countries";
 import {
   countryOrganizationIdSchema,
   countryOrganizations,
-} from "../db/schema/countryOrganizations";
+} from "../../db/schema/countryOrganizations";
 
 export const getCountryOrganizations = async () => {
   const rows = await db

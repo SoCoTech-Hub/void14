@@ -2,10 +2,13 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { BlogCommentId } from "../db/schema/blogComments";
-import { db } from "../db/index";
-import { blogCommentIdSchema, blogComments } from "../db/schema/blogComments";
-import { blogs } from "../db/schema/blogs";
+import type { BlogCommentId } from "../../db/schema/blogComments";
+import { db } from "../../db/index";
+import {
+  blogCommentIdSchema,
+  blogComments,
+} from "../../db/schema/blogComments";
+import { blogs } from "../../db/schema/blogs";
 
 export const getBlogComments = async () => {
   const { session } = await getUserAuth();

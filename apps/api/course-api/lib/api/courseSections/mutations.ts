@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   CourseSectionId,
   courseSectionIdSchema,
@@ -9,7 +9,7 @@ import {
   NewCourseSectionParams,
   UpdateCourseSectionParams,
   updateCourseSectionSchema,
-} from "../db/schema/courseSections";
+} from "../../db/schema/courseSections";
 
 export const createCourseSection = async (
   courseSection: NewCourseSectionParams,

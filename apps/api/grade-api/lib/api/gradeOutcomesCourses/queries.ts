@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { GradeOutcomesCourseId } from "../db/schema/gradeOutcomesCourses";
-import { db } from "../db/index";
-import { gradeOutcomes } from "../db/schema/gradeOutcomes";
+import type { GradeOutcomesCourseId } from "../../db/schema/gradeOutcomesCourses";
+import { db } from "../../db/index";
+import { gradeOutcomes } from "../../db/schema/gradeOutcomes";
 import {
   gradeOutcomesCourseIdSchema,
   gradeOutcomesCourses,
-} from "../db/schema/gradeOutcomesCourses";
+} from "../../db/schema/gradeOutcomesCourses";
 
 export const getGradeOutcomesCourses = async () => {
   const rows = await db

@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertMessageContactSchema,
   MessageContactId,
@@ -11,7 +11,7 @@ import {
   NewMessageContactParams,
   UpdateMessageContactParams,
   updateMessageContactSchema,
-} from "../db/schema/messageContacts";
+} from "../../db/schema/messageContacts";
 
 export const createMessageContact = async (
   messageContact: NewMessageContactParams,

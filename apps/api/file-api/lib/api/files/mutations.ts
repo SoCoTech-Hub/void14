@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   FileId,
   fileIdSchema,
@@ -11,7 +11,7 @@ import {
   NewFileParams,
   UpdateFileParams,
   updateFileSchema,
-} from "../db/schema/files";
+} from "../../db/schema/files";
 
 export const createFile = async (file: NewFileParams) => {
   const { session } = await getUserAuth();

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertLtiserviceGradebookserviceSchema,
   LtiserviceGradebookserviceId,
@@ -9,7 +9,7 @@ import {
   NewLtiserviceGradebookserviceParams,
   UpdateLtiserviceGradebookserviceParams,
   updateLtiserviceGradebookserviceSchema,
-} from "../db/schema/ltiserviceGradebookservices";
+} from "../../db/schema/ltiserviceGradebookservices";
 
 export const createLtiserviceGradebookservice = async (
   ltiserviceGradebookservice: NewLtiserviceGradebookserviceParams,

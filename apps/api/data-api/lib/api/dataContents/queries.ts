@@ -1,10 +1,13 @@
 import { eq } from "drizzle-orm";
 
-import type { DataContentId } from "../db/schema/dataContents";
-import { db } from "../db/index";
-import { dataContentIdSchema, dataContents } from "../db/schema/dataContents";
-import { dataRecords } from "../db/schema/dataRecords";
-import { fields } from "../db/schema/fields";
+import type { DataContentId } from "../../db/schema/dataContents";
+import { db } from "../../db/index";
+import {
+  dataContentIdSchema,
+  dataContents,
+} from "../../db/schema/dataContents";
+import { dataRecords } from "../../db/schema/dataRecords";
+import { fields } from "../../db/schema/fields";
 
 export const getDataContents = async () => {
   const rows = await db

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   CourseFormatOptionId,
   courseFormatOptionIdSchema,
@@ -9,7 +9,7 @@ import {
   NewCourseFormatOptionParams,
   UpdateCourseFormatOptionParams,
   updateCourseFormatOptionSchema,
-} from "../db/schema/courseFormatOptions";
+} from "../../db/schema/courseFormatOptions";
 
 export const createCourseFormatOption = async (
   courseFormatOption: NewCourseFormatOptionParams,

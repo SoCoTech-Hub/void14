@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { EditorAttoAutosaveId } from "../db/schema/editorAttoAutosaves";
-import { db } from "../db/index";
+import type { EditorAttoAutosaveId } from "../../db/schema/editorAttoAutosaves";
+import { db } from "../../db/index";
 import {
   editorAttoAutosaveIdSchema,
   editorAttoAutosaves,
-} from "../db/schema/editorAttoAutosaves";
+} from "../../db/schema/editorAttoAutosaves";
 
 export const getEditorAttoAutosaves = async () => {
   const { session } = await getUserAuth();

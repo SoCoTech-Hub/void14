@@ -2,13 +2,13 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { LocalizationUserId } from "../db/schema/localizationUsers";
-import { db } from "../db/index";
-import { localizationLanguages } from "../db/schema/localizationLanguages";
+import type { LocalizationUserId } from "../../db/schema/localizationUsers";
+import { db } from "../../db/index";
+import { localizationLanguages } from "../../db/schema/localizationLanguages";
 import {
   localizationUserIdSchema,
   localizationUsers,
-} from "../db/schema/localizationUsers";
+} from "../../db/schema/localizationUsers";
 
 export const getLocalizationUsers = async () => {
   const { session } = await getUserAuth();

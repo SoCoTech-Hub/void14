@@ -2,10 +2,10 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { MnetLogId } from "../db/schema/mnetLogs";
-import { db } from "../db/index";
-import { mnetHosts } from "../db/schema/mnetHosts";
-import { mnetLogIdSchema, mnetLogs } from "../db/schema/mnetLogs";
+import type { MnetLogId } from "../../db/schema/mnetLogs";
+import { db } from "../../db/index";
+import { mnetHosts } from "../../db/schema/mnetHosts";
+import { mnetLogIdSchema, mnetLogs } from "../../db/schema/mnetLogs";
 
 export const getMnetLogs = async () => {
   const { session } = await getUserAuth();

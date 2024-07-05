@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { BackupLogId } from "../db/schema/backupLogs";
-import { db } from "../db/index";
-import { backupLogIdSchema, backupLogs } from "../db/schema/backupLogs";
+import type { BackupLogId } from "../../db/schema/backupLogs";
+import { db } from "../../db/index";
+import { backupLogIdSchema, backupLogs } from "../../db/schema/backupLogs";
 
 export const getBackupLogs = async () => {
   const rows = await db.select().from(backupLogs);

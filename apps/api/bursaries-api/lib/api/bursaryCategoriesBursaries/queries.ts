@@ -1,13 +1,13 @@
 import { eq } from "drizzle-orm";
 
-import type { BursaryCategoriesBursaryId } from "../db/schema/bursaryCategoriesBursaries";
-import { db } from "../db/index";
-import { bursaries } from "../db/schema/bursaries";
-import { bursaryCategories } from "../db/schema/bursaryCategories";
+import type { BursaryCategoriesBursaryId } from "../../db/schema/bursaryCategoriesBursaries";
+import { db } from "../../db/index";
+import { bursaries } from "../../db/schema/bursaries";
+import { bursaryCategories } from "../../db/schema/bursaryCategories";
 import {
   bursaryCategoriesBursaries,
   bursaryCategoriesBursaryIdSchema,
-} from "../db/schema/bursaryCategoriesBursaries";
+} from "../../db/schema/bursaryCategoriesBursaries";
 
 export const getBursaryCategoriesBursaries = async () => {
   const rows = await db

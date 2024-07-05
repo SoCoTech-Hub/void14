@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { MessageProcessorId } from "../db/schema/messageProcessors";
-import { db } from "../db/index";
+import type { MessageProcessorId } from "../../db/schema/messageProcessors";
+import { db } from "../../db/index";
 import {
   messageProcessorIdSchema,
   messageProcessors,
-} from "../db/schema/messageProcessors";
+} from "../../db/schema/messageProcessors";
 
 export const getMessageProcessors = async () => {
   const rows = await db.select().from(messageProcessors);

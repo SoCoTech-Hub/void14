@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { MessageConversationMemberId } from "../db/schema/messageConversationMembers";
-import { db } from "../db/index";
+import type { MessageConversationMemberId } from "../../db/schema/messageConversationMembers";
+import { db } from "../../db/index";
 import {
   messageConversationMemberIdSchema,
   messageConversationMembers,
-} from "../db/schema/messageConversationMembers";
+} from "../../db/schema/messageConversationMembers";
 
 export const getMessageConversationMembers = async () => {
   const { session } = await getUserAuth();

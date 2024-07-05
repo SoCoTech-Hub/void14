@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertMnetSsoAccessControlSchema,
   MnetSsoAccessControlId,
@@ -9,7 +9,7 @@ import {
   NewMnetSsoAccessControlParams,
   UpdateMnetSsoAccessControlParams,
   updateMnetSsoAccessControlSchema,
-} from "../db/schema/mnetSsoAccessControls";
+} from "../../db/schema/mnetSsoAccessControls";
 
 export const createMnetSsoAccessControl = async (
   mnetSsoAccessControl: NewMnetSsoAccessControlParams,

@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   ExternalTokenId,
   externalTokenIdSchema,
@@ -11,7 +11,7 @@ import {
   NewExternalTokenParams,
   UpdateExternalTokenParams,
   updateExternalTokenSchema,
-} from "../db/schema/externalTokens";
+} from "../../db/schema/externalTokens";
 
 export const createExternalToken = async (
   externalToken: NewExternalTokenParams,

@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { H5pactivityAttemptId } from "../db/schema/h5pactivityAttempts";
-import { db } from "../db/index";
+import type { H5pactivityAttemptId } from "../../db/schema/h5pactivityAttempts";
+import { db } from "../../db/index";
 import {
   h5pactivityAttemptIdSchema,
   h5pactivityAttempts,
-} from "../db/schema/h5pactivityAttempts";
+} from "../../db/schema/h5pactivityAttempts";
 
 export const getH5pactivityAttempts = async () => {
   const { session } = await getUserAuth();

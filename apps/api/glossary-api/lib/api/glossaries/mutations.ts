@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   glossaries,
   GlossaryId,
@@ -9,7 +9,7 @@ import {
   NewGlossaryParams,
   UpdateGlossaryParams,
   updateGlossarySchema,
-} from "../db/schema/glossaries";
+} from "../../db/schema/glossaries";
 
 export const createGlossary = async (glossary: NewGlossaryParams) => {
   const newGlossary = insertGlossarySchema.parse(glossary);

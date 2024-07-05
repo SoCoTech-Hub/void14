@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertLtiSchema,
   LtiId,
@@ -9,7 +9,7 @@ import {
   NewLtiParams,
   UpdateLtiParams,
   updateLtiSchema,
-} from "../db/schema/ltis";
+} from "../../db/schema/ltis";
 
 export const createLti = async (lti: NewLtiParams) => {
   const newLti = insertLtiSchema.parse(lti);

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertMnetRpcSchema,
   MnetRpcId,
@@ -9,7 +9,7 @@ import {
   NewMnetRpcParams,
   UpdateMnetRpcParams,
   updateMnetRpcSchema,
-} from "../db/schema/mnetRpcs";
+} from "../../db/schema/mnetRpcs";
 
 export const createMnetRpc = async (mnetRpc: NewMnetRpcParams) => {
   const newMnetRpc = insertMnetRpcSchema.parse(mnetRpc);

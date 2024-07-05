@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   GradingAreaId,
   gradingAreaIdSchema,
@@ -9,7 +9,7 @@ import {
   NewGradingAreaParams,
   UpdateGradingAreaParams,
   updateGradingAreaSchema,
-} from "../db/schema/gradingAreas";
+} from "../../db/schema/gradingAreas";
 
 export const createGradingArea = async (gradingArea: NewGradingAreaParams) => {
   const newGradingArea = insertGradingAreaSchema.parse(gradingArea);

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertProvinceSchema,
   NewProvinceParams,
@@ -9,7 +9,7 @@ import {
   provinces,
   UpdateProvinceParams,
   updateProvinceSchema,
-} from "../db/schema/provinces";
+} from "../../db/schema/provinces";
 
 export const createProvince = async (province: NewProvinceParams) => {
   const newProvince = insertProvinceSchema.parse(province);

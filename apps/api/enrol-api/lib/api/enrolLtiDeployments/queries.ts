@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { EnrolLtiDeploymentId } from "../db/schema/enrolLtiDeployments";
-import { db } from "../db/index";
+import type { EnrolLtiDeploymentId } from "../../db/schema/enrolLtiDeployments";
+import { db } from "../../db/index";
 import {
   enrolLtiDeploymentIdSchema,
   enrolLtiDeployments,
-} from "../db/schema/enrolLtiDeployments";
+} from "../../db/schema/enrolLtiDeployments";
 
 export const getEnrolLtiDeployments = async () => {
   const rows = await db.select().from(enrolLtiDeployments);

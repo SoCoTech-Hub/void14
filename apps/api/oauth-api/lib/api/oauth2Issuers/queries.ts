@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { Oauth2IssuerId } from "../db/schema/oauth2Issuers";
-import { db } from "../db/index";
+import type { Oauth2IssuerId } from "../../db/schema/oauth2Issuers";
+import { db } from "../../db/index";
 import {
   oauth2IssuerIdSchema,
   oauth2Issuers,
-} from "../db/schema/oauth2Issuers";
+} from "../../db/schema/oauth2Issuers";
 
 export const getOauth2Issuers = async () => {
   const { session } = await getUserAuth();

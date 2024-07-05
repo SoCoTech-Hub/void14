@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   EnrolLtiLti2ConsumerId,
   enrolLtiLti2ConsumerIdSchema,
@@ -9,7 +9,7 @@ import {
   NewEnrolLtiLti2ConsumerParams,
   UpdateEnrolLtiLti2ConsumerParams,
   updateEnrolLtiLti2ConsumerSchema,
-} from "../db/schema/enrolLtiLti2Consumers";
+} from "../../db/schema/enrolLtiLti2Consumers";
 
 export const createEnrolLtiLti2Consumer = async (
   enrolLtiLti2Consumer: NewEnrolLtiLti2ConsumerParams,

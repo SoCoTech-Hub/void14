@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { BlockRssClientId } from "../db/schema/blockRssClients";
-import { db } from "../db/index";
+import type { BlockRssClientId } from "../../db/schema/blockRssClients";
+import { db } from "../../db/index";
 import {
   blockRssClientIdSchema,
   blockRssClients,
-} from "../db/schema/blockRssClients";
+} from "../../db/schema/blockRssClients";
 
 export const getBlockRssClients = async () => {
   const { session } = await getUserAuth();

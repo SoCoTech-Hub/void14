@@ -2,9 +2,9 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { GradeGradeId } from "../db/schema/gradeGrades";
-import { db } from "../db/index";
-import { gradeGradeIdSchema, gradeGrades } from "../db/schema/gradeGrades";
+import type { GradeGradeId } from "../../db/schema/gradeGrades";
+import { db } from "../../db/index";
+import { gradeGradeIdSchema, gradeGrades } from "../../db/schema/gradeGrades";
 
 export const getGradeGrades = async () => {
   const { session } = await getUserAuth();

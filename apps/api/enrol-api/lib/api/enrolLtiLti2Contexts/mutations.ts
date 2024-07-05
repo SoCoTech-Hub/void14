@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   EnrolLtiLti2ContextId,
   enrolLtiLti2ContextIdSchema,
@@ -9,7 +9,7 @@ import {
   NewEnrolLtiLti2ContextParams,
   UpdateEnrolLtiLti2ContextParams,
   updateEnrolLtiLti2ContextSchema,
-} from "../db/schema/enrolLtiLti2Contexts";
+} from "../../db/schema/enrolLtiLti2Contexts";
 
 export const createEnrolLtiLti2Context = async (
   enrolLtiLti2Context: NewEnrolLtiLti2ContextParams,

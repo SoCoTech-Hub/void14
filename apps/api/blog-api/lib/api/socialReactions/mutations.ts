@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertSocialReactionSchema,
   NewSocialReactionParams,
@@ -11,7 +11,7 @@ import {
   socialReactions,
   UpdateSocialReactionParams,
   updateSocialReactionSchema,
-} from "../db/schema/socialReactions";
+} from "../../db/schema/socialReactions";
 
 export const createSocialReaction = async (
   socialReaction: NewSocialReactionParams,

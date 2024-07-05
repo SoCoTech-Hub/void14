@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertLtiTypeSchema,
   LtiTypeId,
@@ -9,7 +9,7 @@ import {
   NewLtiTypeParams,
   UpdateLtiTypeParams,
   updateLtiTypeSchema,
-} from "../db/schema/ltiTypes";
+} from "../../db/schema/ltiTypes";
 
 export const createLtiType = async (ltiType: NewLtiTypeParams) => {
   const newLtiType = insertLtiTypeSchema.parse(ltiType);

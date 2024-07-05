@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { CoursePublishId } from "../db/schema/coursePublishes";
-import { db } from "../db/index";
+import type { CoursePublishId } from "../../db/schema/coursePublishes";
+import { db } from "../../db/index";
 import {
   coursePublishes,
   coursePublishIdSchema,
-} from "../db/schema/coursePublishes";
-import { courses } from "../db/schema/courses";
+} from "../../db/schema/coursePublishes";
+import { courses } from "../../db/schema/courses";
 
 export const getCoursePublishes = async () => {
   const rows = await db

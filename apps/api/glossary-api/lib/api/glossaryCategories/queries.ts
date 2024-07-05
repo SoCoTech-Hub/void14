@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { GlossaryCategoryId } from "../db/schema/glossaryCategories";
-import { db } from "../db/index";
-import { glossaries } from "../db/schema/glossaries";
+import type { GlossaryCategoryId } from "../../db/schema/glossaryCategories";
+import { db } from "../../db/index";
+import { glossaries } from "../../db/schema/glossaries";
 import {
   glossaryCategories,
   glossaryCategoryIdSchema,
-} from "../db/schema/glossaryCategories";
+} from "../../db/schema/glossaryCategories";
 
 export const getGlossaryCategories = async () => {
   const rows = await db

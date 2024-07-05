@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   EnrolLtiDeploymentId,
   enrolLtiDeploymentIdSchema,
@@ -9,7 +9,7 @@ import {
   NewEnrolLtiDeploymentParams,
   UpdateEnrolLtiDeploymentParams,
   updateEnrolLtiDeploymentSchema,
-} from "../db/schema/enrolLtiDeployments";
+} from "../../db/schema/enrolLtiDeployments";
 
 export const createEnrolLtiDeployment = async (
   enrolLtiDeployment: NewEnrolLtiDeploymentParams,

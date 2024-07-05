@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertLessonSchema,
   LessonId,
@@ -9,7 +9,7 @@ import {
   NewLessonParams,
   UpdateLessonParams,
   updateLessonSchema,
-} from "../db/schema/lessons";
+} from "../../db/schema/lessons";
 
 export const createLesson = async (lesson: NewLessonParams) => {
   const newLesson = insertLessonSchema.parse(lesson);

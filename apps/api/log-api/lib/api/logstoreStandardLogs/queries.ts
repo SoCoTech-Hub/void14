@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { LogstoreStandardLogId } from "../db/schema/logstoreStandardLogs";
-import { db } from "../db/index";
+import type { LogstoreStandardLogId } from "../../db/schema/logstoreStandardLogs";
+import { db } from "../../db/index";
 import {
   logstoreStandardLogIdSchema,
   logstoreStandardLogs,
-} from "../db/schema/logstoreStandardLogs";
+} from "../../db/schema/logstoreStandardLogs";
 
 export const getLogstoreStandardLogs = async () => {
   const { session } = await getUserAuth();

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   DigilibId,
   digilibIdSchema,
@@ -9,7 +9,7 @@ import {
   NewDigilibParams,
   UpdateDigilibParams,
   updateDigilibSchema,
-} from "../db/schema/digilibs";
+} from "../../db/schema/digilibs";
 
 export const createDigilib = async (digilib: NewDigilibParams) => {
   const newDigilib = insertDigilibSchema.parse(digilib);

@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { BlockRecentActivityId } from "../db/schema/blockRecentActivities";
-import { db } from "../db/index";
+import type { BlockRecentActivityId } from "../../db/schema/blockRecentActivities";
+import { db } from "../../db/index";
 import {
   blockRecentActivities,
   blockRecentActivityIdSchema,
-} from "../db/schema/blockRecentActivities";
+} from "../../db/schema/blockRecentActivities";
 
 export const getBlockRecentActivities = async () => {
   const { session } = await getUserAuth();

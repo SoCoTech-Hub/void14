@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   calendar,
   CalendarId,
@@ -11,7 +11,7 @@ import {
   NewCalendarParams,
   UpdateCalendarParams,
   updateCalendarSchema,
-} from "../db/schema/calendar";
+} from "../../db/schema/calendar";
 
 export const createCalendar = async (calendar: NewCalendarParams) => {
   const { session } = await getUserAuth();

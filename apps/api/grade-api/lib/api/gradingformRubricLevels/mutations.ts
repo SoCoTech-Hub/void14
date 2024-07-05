@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   GradingformRubricLevelId,
   gradingformRubricLevelIdSchema,
@@ -9,7 +9,7 @@ import {
   NewGradingformRubricLevelParams,
   UpdateGradingformRubricLevelParams,
   updateGradingformRubricLevelSchema,
-} from "../db/schema/gradingformRubricLevels";
+} from "../../db/schema/gradingformRubricLevels";
 
 export const createGradingformRubricLevel = async (
   gradingformRubricLevel: NewGradingformRubricLevelParams,

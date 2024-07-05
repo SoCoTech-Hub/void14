@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { EnrolLtiLti2ResourceLinkId } from "../db/schema/enrolLtiLti2ResourceLinks";
-import { db } from "../db/index";
+import type { EnrolLtiLti2ResourceLinkId } from "../../db/schema/enrolLtiLti2ResourceLinks";
+import { db } from "../../db/index";
 import {
   enrolLtiLti2ResourceLinkIdSchema,
   enrolLtiLti2ResourceLinks,
-} from "../db/schema/enrolLtiLti2ResourceLinks";
+} from "../../db/schema/enrolLtiLti2ResourceLinks";
 
 export const getEnrolLtiLti2ResourceLinks = async () => {
   const rows = await db.select().from(enrolLtiLti2ResourceLinks);

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   DistrictId,
   districtIdSchema,
@@ -9,7 +9,7 @@ import {
   NewDistrictParams,
   UpdateDistrictParams,
   updateDistrictSchema,
-} from "../db/schema/districts";
+} from "../../db/schema/districts";
 
 export const createDistrict = async (district: NewDistrictParams) => {
   const newDistrict = insertDistrictSchema.parse(district);

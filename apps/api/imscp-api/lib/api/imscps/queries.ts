@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { ImscpId } from "../db/schema/imscps";
-import { db } from "../db/index";
-import { imscpIdSchema, imscps } from "../db/schema/imscps";
+import type { ImscpId } from "../../db/schema/imscps";
+import { db } from "../../db/index";
+import { imscpIdSchema, imscps } from "../../db/schema/imscps";
 
 export const getImscps = async () => {
   const rows = await db.select().from(imscps);

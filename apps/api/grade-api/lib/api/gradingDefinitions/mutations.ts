@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   GradingDefinitionId,
   gradingDefinitionIdSchema,
@@ -11,7 +11,7 @@ import {
   NewGradingDefinitionParams,
   UpdateGradingDefinitionParams,
   updateGradingDefinitionSchema,
-} from "../db/schema/gradingDefinitions";
+} from "../../db/schema/gradingDefinitions";
 
 export const createGradingDefinition = async (
   gradingDefinition: NewGradingDefinitionParams,

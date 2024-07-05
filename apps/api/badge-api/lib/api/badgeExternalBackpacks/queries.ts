@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { BadgeExternalBackpackId } from "../db/schema/badgeExternalBackpacks";
-import { db } from "../db/index";
+import type { BadgeExternalBackpackId } from "../../db/schema/badgeExternalBackpacks";
+import { db } from "../../db/index";
 import {
   badgeExternalBackpackIdSchema,
   badgeExternalBackpacks,
-} from "../db/schema/badgeExternalBackpacks";
+} from "../../db/schema/badgeExternalBackpacks";
 
 export const getBadgeExternalBackpacks = async () => {
   const rows = await db.select().from(badgeExternalBackpacks);

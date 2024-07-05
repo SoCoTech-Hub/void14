@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertMessageinboundDatakeySchema,
   MessageinboundDatakeyId,
@@ -9,7 +9,7 @@ import {
   NewMessageinboundDatakeyParams,
   UpdateMessageinboundDatakeyParams,
   updateMessageinboundDatakeySchema,
-} from "../db/schema/messageinboundDatakeys";
+} from "../../db/schema/messageinboundDatakeys";
 
 export const createMessageinboundDatakey = async (
   messageinboundDatakey: NewMessageinboundDatakeyParams,

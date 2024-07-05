@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { H5pLibraryId } from "../db/schema/h5pLibraries";
-import { db } from "../db/index";
-import { h5pLibraries, h5pLibraryIdSchema } from "../db/schema/h5pLibraries";
+import type { H5pLibraryId } from "../../db/schema/h5pLibraries";
+import { db } from "../../db/index";
+import { h5pLibraries, h5pLibraryIdSchema } from "../../db/schema/h5pLibraries";
 
 export const getH5pLibraries = async () => {
   const rows = await db.select().from(h5pLibraries);

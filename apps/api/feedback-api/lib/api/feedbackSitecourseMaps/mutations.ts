@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   FeedbackSitecourseMapId,
   feedbackSitecourseMapIdSchema,
@@ -9,7 +9,7 @@ import {
   NewFeedbackSitecourseMapParams,
   UpdateFeedbackSitecourseMapParams,
   updateFeedbackSitecourseMapSchema,
-} from "../db/schema/feedbackSitecourseMaps";
+} from "../../db/schema/feedbackSitecourseMaps";
 
 export const createFeedbackSitecourseMap = async (
   feedbackSitecourseMap: NewFeedbackSitecourseMapParams,

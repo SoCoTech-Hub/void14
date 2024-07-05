@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   BadgeCriteriaMetId,
   badgeCriteriaMetIdSchema,
@@ -11,7 +11,7 @@ import {
   NewBadgeCriteriaMetParams,
   UpdateBadgeCriteriaMetParams,
   updateBadgeCriteriaMetSchema,
-} from "../db/schema/badgeCriteriaMets";
+} from "../../db/schema/badgeCriteriaMets";
 
 export const createBadgeCriteriaMet = async (
   badgeCriteriaMet: NewBadgeCriteriaMetParams,

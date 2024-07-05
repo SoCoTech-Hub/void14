@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   BlockRssClientId,
   blockRssClientIdSchema,
@@ -11,7 +11,7 @@ import {
   NewBlockRssClientParams,
   UpdateBlockRssClientParams,
   updateBlockRssClientSchema,
-} from "../db/schema/blockRssClients";
+} from "../../db/schema/blockRssClients";
 
 export const createBlockRssClient = async (
   blockRssClient: NewBlockRssClientParams,

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   EnrolLtiLti2ToolProxyId,
   enrolLtiLti2ToolProxyIdSchema,
@@ -9,7 +9,7 @@ import {
   NewEnrolLtiLti2ToolProxyParams,
   UpdateEnrolLtiLti2ToolProxyParams,
   updateEnrolLtiLti2ToolProxySchema,
-} from "../db/schema/enrolLtiLti2ToolProxys";
+} from "../../db/schema/enrolLtiLti2ToolProxys";
 
 export const createEnrolLtiLti2ToolProxy = async (
   enrolLtiLti2ToolProxy: NewEnrolLtiLti2ToolProxyParams,

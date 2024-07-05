@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertLogDisplaySchema,
   LogDisplayId,
@@ -9,7 +9,7 @@ import {
   NewLogDisplayParams,
   UpdateLogDisplayParams,
   updateLogDisplaySchema,
-} from "../db/schema/logDisplays";
+} from "../../db/schema/logDisplays";
 
 export const createLogDisplay = async (logDisplay: NewLogDisplayParams) => {
   const newLogDisplay = insertLogDisplaySchema.parse(logDisplay);

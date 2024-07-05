@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { CustomFieldCategoryId } from "../db/schema/customFieldCategories";
-import { db } from "../db/index";
+import type { CustomFieldCategoryId } from "../../db/schema/customFieldCategories";
+import { db } from "../../db/index";
 import {
   customFieldCategories,
   customFieldCategoryIdSchema,
-} from "../db/schema/customFieldCategories";
+} from "../../db/schema/customFieldCategories";
 
 export const getCustomFieldCategories = async () => {
   const rows = await db.select().from(customFieldCategories);

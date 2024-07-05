@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   CompetencyRelatedCompId,
   competencyRelatedCompIdSchema,
@@ -11,7 +11,7 @@ import {
   NewCompetencyRelatedCompParams,
   UpdateCompetencyRelatedCompParams,
   updateCompetencyRelatedCompSchema,
-} from "../db/schema/competencyRelatedComps";
+} from "../../db/schema/competencyRelatedComps";
 
 export const createCompetencyRelatedComp = async (
   competencyRelatedComp: NewCompetencyRelatedCompParams,

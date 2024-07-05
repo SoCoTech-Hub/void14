@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertPaymentSchema,
   NewPaymentParams,
@@ -11,7 +11,7 @@ import {
   payments,
   UpdatePaymentParams,
   updatePaymentSchema,
-} from "../db/schema/payments";
+} from "../../db/schema/payments";
 
 export const createPayment = async (payment: NewPaymentParams) => {
   const { session } = await getUserAuth();

@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { LockDbId } from "../db/schema/lockDbs";
-import { db } from "../db/index";
-import { lockDbIdSchema, lockDbs } from "../db/schema/lockDbs";
+import type { LockDbId } from "../../db/schema/lockDbs";
+import { db } from "../../db/index";
+import { lockDbIdSchema, lockDbs } from "../../db/schema/lockDbs";
 
 export const getLockDbs = async () => {
   const rows = await db.select().from(lockDbs);

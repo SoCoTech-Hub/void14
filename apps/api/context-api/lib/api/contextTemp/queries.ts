@@ -1,9 +1,9 @@
 import { eq } from "drizzle-orm";
 
-import type { ContextTempId } from "../db/schema/contextTemp";
-import { db } from "../db/index";
-import { contexts } from "../db/schema/contexts";
-import { contextTemp, contextTempIdSchema } from "../db/schema/contextTemp";
+import type { ContextTempId } from "../../db/schema/contextTemp";
+import { db } from "../../db/index";
+import { contexts } from "../../db/schema/contexts";
+import { contextTemp, contextTempIdSchema } from "../../db/schema/contextTemp";
 
 export const getContextTemps = async () => {
   const rows = await db

@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { LogDisplayId } from "../db/schema/logDisplays";
-import { db } from "../db/index";
-import { logDisplayIdSchema, logDisplays } from "../db/schema/logDisplays";
+import type { LogDisplayId } from "../../db/schema/logDisplays";
+import { db } from "../../db/index";
+import { logDisplayIdSchema, logDisplays } from "../../db/schema/logDisplays";
 
 export const getLogDisplays = async () => {
   const rows = await db.select().from(logDisplays);

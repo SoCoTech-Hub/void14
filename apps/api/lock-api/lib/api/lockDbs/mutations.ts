@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertLockDbSchema,
   LockDbId,
@@ -9,7 +9,7 @@ import {
   NewLockDbParams,
   UpdateLockDbParams,
   updateLockDbSchema,
-} from "../db/schema/lockDbs";
+} from "../../db/schema/lockDbs";
 
 export const createLockDb = async (lockDb: NewLockDbParams) => {
   const newLockDb = insertLockDbSchema.parse(lockDb);

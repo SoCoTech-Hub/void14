@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertLtiAccessTokenSchema,
   LtiAccessTokenId,
@@ -9,7 +9,7 @@ import {
   NewLtiAccessTokenParams,
   UpdateLtiAccessTokenParams,
   updateLtiAccessTokenSchema,
-} from "../db/schema/ltiAccessTokens";
+} from "../../db/schema/ltiAccessTokens";
 
 export const createLtiAccessToken = async (
   ltiAccessToken: NewLtiAccessTokenParams,

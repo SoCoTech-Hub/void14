@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { BadgeRelatedId } from "../db/schema/badgeRelateds";
-import { db } from "../db/index";
+import type { BadgeRelatedId } from "../../db/schema/badgeRelateds";
+import { db } from "../../db/index";
 import {
   badgeRelatedIdSchema,
   badgeRelateds,
-} from "../db/schema/badgeRelateds";
-import { badges } from "../db/schema/badges";
+} from "../../db/schema/badgeRelateds";
+import { badges } from "../../db/schema/badges";
 
 export const getBadgeRelateds = async () => {
   const rows = await db

@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   ForumReadId,
   forumReadIdSchema,
@@ -11,7 +11,7 @@ import {
   NewForumReadParams,
   UpdateForumReadParams,
   updateForumReadSchema,
-} from "../db/schema/forumReads";
+} from "../../db/schema/forumReads";
 
 export const createForumRead = async (forumRead: NewForumReadParams) => {
   const { session } = await getUserAuth();

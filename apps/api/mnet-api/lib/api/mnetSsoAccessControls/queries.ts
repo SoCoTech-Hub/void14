@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { MnetSsoAccessControlId } from "../db/schema/mnetSsoAccessControls";
-import { db } from "../db/index";
-import { mnetHosts } from "../db/schema/mnetHosts";
+import type { MnetSsoAccessControlId } from "../../db/schema/mnetSsoAccessControls";
+import { db } from "../../db/index";
+import { mnetHosts } from "../../db/schema/mnetHosts";
 import {
   mnetSsoAccessControlIdSchema,
   mnetSsoAccessControls,
-} from "../db/schema/mnetSsoAccessControls";
+} from "../../db/schema/mnetSsoAccessControls";
 
 export const getMnetSsoAccessControls = async () => {
   const rows = await db

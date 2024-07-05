@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   BlogAssociationId,
   blogAssociationIdSchema,
@@ -9,7 +9,7 @@ import {
   NewBlogAssociationParams,
   UpdateBlogAssociationParams,
   updateBlogAssociationSchema,
-} from "../db/schema/blogAssociations";
+} from "../../db/schema/blogAssociations";
 
 export const createBlogAssociation = async (
   blogAssociation: NewBlogAssociationParams,

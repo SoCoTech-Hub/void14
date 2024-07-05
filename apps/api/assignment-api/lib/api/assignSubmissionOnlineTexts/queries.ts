@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { AssignSubmissionOnlineTextId } from "../db/schema/assignSubmissionOnlineTexts";
-import { db } from "../db/index";
-import { assignments } from "../db/schema/assignments";
+import type { AssignSubmissionOnlineTextId } from "../../db/schema/assignSubmissionOnlineTexts";
+import { db } from "../../db/index";
+import { assignments } from "../../db/schema/assignments";
 import {
   assignSubmissionOnlineTextIdSchema,
   assignSubmissionOnlineTexts,
-} from "../db/schema/assignSubmissionOnlineTexts";
+} from "../../db/schema/assignSubmissionOnlineTexts";
 
 export const getAssignSubmissionOnlineTexts = async () => {
   const rows = await db

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertLabelSchema,
   LabelId,
@@ -9,7 +9,7 @@ import {
   NewLabelParams,
   UpdateLabelParams,
   updateLabelSchema,
-} from "../db/schema/labels";
+} from "../../db/schema/labels";
 
 export const createLabel = async (label: NewLabelParams) => {
   const newLabel = insertLabelSchema.parse(label);

@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { BigBlueButtonBnId } from "../db/schema/bigBlueButtonBns";
-import { db } from "../db/index";
+import type { BigBlueButtonBnId } from "../../db/schema/bigBlueButtonBns";
+import { db } from "../../db/index";
 import {
   bigBlueButtonBnIdSchema,
   bigBlueButtonBns,
-} from "../db/schema/bigBlueButtonBns";
+} from "../../db/schema/bigBlueButtonBns";
 
 export const getBigBlueButtonBns = async () => {
   const rows = await db.select().from(bigBlueButtonBns);

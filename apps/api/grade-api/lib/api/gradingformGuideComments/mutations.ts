@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   GradingformGuideCommentId,
   gradingformGuideCommentIdSchema,
@@ -9,7 +9,7 @@ import {
   NewGradingformGuideCommentParams,
   UpdateGradingformGuideCommentParams,
   updateGradingformGuideCommentSchema,
-} from "../db/schema/gradingformGuideComments";
+} from "../../db/schema/gradingformGuideComments";
 
 export const createGradingformGuideComment = async (
   gradingformGuideComment: NewGradingformGuideCommentParams,

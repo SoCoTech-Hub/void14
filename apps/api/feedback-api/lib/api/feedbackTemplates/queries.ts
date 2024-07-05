@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { FeedbackTemplateId } from "../db/schema/feedbackTemplates";
-import { db } from "../db/index";
+import type { FeedbackTemplateId } from "../../db/schema/feedbackTemplates";
+import { db } from "../../db/index";
 import {
   feedbackTemplateIdSchema,
   feedbackTemplates,
-} from "../db/schema/feedbackTemplates";
+} from "../../db/schema/feedbackTemplates";
 
 export const getFeedbackTemplates = async () => {
   const rows = await db.select().from(feedbackTemplates);

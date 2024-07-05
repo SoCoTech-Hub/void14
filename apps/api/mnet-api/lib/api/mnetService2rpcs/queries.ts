@@ -1,13 +1,13 @@
 import { eq } from "drizzle-orm";
 
-import type { MnetService2rpcId } from "../db/schema/mnetService2rpcs";
-import { db } from "../db/index";
-import { mnetRpcs } from "../db/schema/mnetRpcs";
+import type { MnetService2rpcId } from "../../db/schema/mnetService2rpcs";
+import { db } from "../../db/index";
+import { mnetRpcs } from "../../db/schema/mnetRpcs";
 import {
   mnetService2rpcIdSchema,
   mnetService2rpcs,
-} from "../db/schema/mnetService2rpcs";
-import { mnetServices } from "../db/schema/mnetServices";
+} from "../../db/schema/mnetService2rpcs";
+import { mnetServices } from "../../db/schema/mnetServices";
 
 export const getMnetService2rpcs = async () => {
   const rows = await db

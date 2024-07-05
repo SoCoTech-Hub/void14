@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { LtiserviceGradebookserviceId } from "../db/schema/ltiserviceGradebookservices";
-import { db } from "../db/index";
+import type { LtiserviceGradebookserviceId } from "../../db/schema/ltiserviceGradebookservices";
+import { db } from "../../db/index";
 import {
   ltiserviceGradebookserviceIdSchema,
   ltiserviceGradebookservices,
-} from "../db/schema/ltiserviceGradebookservices";
+} from "../../db/schema/ltiserviceGradebookservices";
 
 export const getLtiserviceGradebookservices = async () => {
   const rows = await db.select().from(ltiserviceGradebookservices);

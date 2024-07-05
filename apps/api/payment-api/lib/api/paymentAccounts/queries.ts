@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { PaymentAccountId } from "../db/schema/paymentAccounts";
-import { db } from "../db/index";
+import type { PaymentAccountId } from "../../db/schema/paymentAccounts";
+import { db } from "../../db/index";
 import {
   paymentAccountIdSchema,
   paymentAccounts,
-} from "../db/schema/paymentAccounts";
+} from "../../db/schema/paymentAccounts";
 
 export const getPaymentAccounts = async () => {
   const rows = await db.select().from(paymentAccounts);

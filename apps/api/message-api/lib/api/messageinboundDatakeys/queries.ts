@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { MessageinboundDatakeyId } from "../db/schema/messageinboundDatakeys";
-import { db } from "../db/index";
+import type { MessageinboundDatakeyId } from "../../db/schema/messageinboundDatakeys";
+import { db } from "../../db/index";
 import {
   messageinboundDatakeyIdSchema,
   messageinboundDatakeys,
-} from "../db/schema/messageinboundDatakeys";
+} from "../../db/schema/messageinboundDatakeys";
 
 export const getMessageinboundDatakeys = async () => {
   const rows = await db.select().from(messageinboundDatakeys);

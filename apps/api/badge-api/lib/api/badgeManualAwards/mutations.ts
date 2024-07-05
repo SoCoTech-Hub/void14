@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   BadgeManualAwardId,
   badgeManualAwardIdSchema,
@@ -9,7 +9,7 @@ import {
   NewBadgeManualAwardParams,
   UpdateBadgeManualAwardParams,
   updateBadgeManualAwardSchema,
-} from "../db/schema/badgeManualAwards";
+} from "../../db/schema/badgeManualAwards";
 
 export const createBadgeManualAward = async (
   badgeManualAward: NewBadgeManualAwardParams,

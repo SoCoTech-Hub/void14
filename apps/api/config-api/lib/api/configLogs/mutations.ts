@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   ConfigLogId,
   configLogIdSchema,
@@ -11,7 +11,7 @@ import {
   NewConfigLogParams,
   UpdateConfigLogParams,
   updateConfigLogSchema,
-} from "../db/schema/configLogs";
+} from "../../db/schema/configLogs";
 
 export const createConfigLog = async (configLog: NewConfigLogParams) => {
   const { session } = await getUserAuth();

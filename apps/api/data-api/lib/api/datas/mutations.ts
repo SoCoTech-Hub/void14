@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   DataId,
   dataIdSchema,
@@ -9,7 +9,7 @@ import {
   NewDataParams,
   UpdateDataParams,
   updateDataSchema,
-} from "../db/schema/datas";
+} from "../../db/schema/datas";
 
 export const createData = async (data: NewDataParams) => {
   const newData = insertDataSchema.parse(data);

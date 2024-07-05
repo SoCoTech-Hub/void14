@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   FileConversionId,
   fileConversionIdSchema,
@@ -11,7 +11,7 @@ import {
   NewFileConversionParams,
   UpdateFileConversionParams,
   updateFileConversionSchema,
-} from "../db/schema/fileConversions";
+} from "../../db/schema/fileConversions";
 
 export const createFileConversion = async (
   fileConversion: NewFileConversionParams,

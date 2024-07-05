@@ -2,9 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { EventsQueueId } from "../db/schema/eventsQueues";
-import { db } from "../db/index";
-import { eventsQueueIdSchema, eventsQueues } from "../db/schema/eventsQueues";
+import type { EventsQueueId } from "../../db/schema/eventsQueues";
+import { db } from "../../db/index";
+import {
+  eventsQueueIdSchema,
+  eventsQueues,
+} from "../../db/schema/eventsQueues";
 
 export const getEventsQueues = async () => {
   const { session } = await getUserAuth();

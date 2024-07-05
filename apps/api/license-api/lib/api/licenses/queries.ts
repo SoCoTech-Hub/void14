@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { LicenseId } from "../db/schema/licenses";
-import { db } from "../db/index";
-import { licenseIdSchema, licenses } from "../db/schema/licenses";
+import type { LicenseId } from "../../db/schema/licenses";
+import { db } from "../../db/index";
+import { licenseIdSchema, licenses } from "../../db/schema/licenses";
 
 export const getLicenses = async () => {
   const rows = await db.select().from(licenses);

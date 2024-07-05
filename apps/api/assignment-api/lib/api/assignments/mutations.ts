@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   AssignmentId,
   assignmentIdSchema,
@@ -9,7 +9,7 @@ import {
   NewAssignmentParams,
   UpdateAssignmentParams,
   updateAssignmentSchema,
-} from "../db/schema/assignments";
+} from "../../db/schema/assignments";
 
 export const createAssignment = async (assignment: NewAssignmentParams) => {
   const newAssignment = insertAssignmentSchema.parse(assignment);

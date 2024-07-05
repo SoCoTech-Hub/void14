@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   BigBlueButtonBnLogId,
   bigBlueButtonBnLogIdSchema,
@@ -11,7 +11,7 @@ import {
   NewBigBlueButtonBnLogParams,
   UpdateBigBlueButtonBnLogParams,
   updateBigBlueButtonBnLogSchema,
-} from "../db/schema/bigBlueButtonBnLogs";
+} from "../../db/schema/bigBlueButtonBnLogs";
 
 export const createBigBlueButtonBnLog = async (
   bigBlueButtonBnLog: NewBigBlueButtonBnLogParams,

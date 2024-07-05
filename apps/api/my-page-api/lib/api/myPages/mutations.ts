@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertMyPageSchema,
   MyPageId,
@@ -11,7 +11,7 @@ import {
   NewMyPageParams,
   UpdateMyPageParams,
   updateMyPageSchema,
-} from "../db/schema/myPages";
+} from "../../db/schema/myPages";
 
 export const createMyPage = async (myPage: NewMyPageParams) => {
   const { session } = await getUserAuth();

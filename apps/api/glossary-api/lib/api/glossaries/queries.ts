@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { GlossaryId } from "../db/schema/glossaries";
-import { db } from "../db/index";
-import { glossaries, glossaryIdSchema } from "../db/schema/glossaries";
+import type { GlossaryId } from "../../db/schema/glossaries";
+import { db } from "../../db/index";
+import { glossaries, glossaryIdSchema } from "../../db/schema/glossaries";
 
 export const getGlossaries = async () => {
   const rows = await db.select().from(glossaries);

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertLicenseSchema,
   LicenseId,
@@ -9,7 +9,7 @@ import {
   NewLicenseParams,
   UpdateLicenseParams,
   updateLicenseSchema,
-} from "../db/schema/licenses";
+} from "../../db/schema/licenses";
 
 export const createLicense = async (license: NewLicenseParams) => {
   const newLicense = insertLicenseSchema.parse(license);

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   CourseCompletionAggrMethdId,
   courseCompletionAggrMethdIdSchema,
@@ -9,7 +9,7 @@ import {
   NewCourseCompletionAggrMethdParams,
   UpdateCourseCompletionAggrMethdParams,
   updateCourseCompletionAggrMethdSchema,
-} from "../db/schema/courseCompletionAggrMethds";
+} from "../../db/schema/courseCompletionAggrMethds";
 
 export const createCourseCompletionAggrMethd = async (
   courseCompletionAggrMethd: NewCourseCompletionAggrMethdParams,

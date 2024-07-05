@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { MnetHostId } from "../db/schema/mnetHosts";
-import { db } from "../db/index";
-import { mnetHostIdSchema, mnetHosts } from "../db/schema/mnetHosts";
+import type { MnetHostId } from "../../db/schema/mnetHosts";
+import { db } from "../../db/index";
+import { mnetHostIdSchema, mnetHosts } from "../../db/schema/mnetHosts";
 
 export const getMnetHosts = async () => {
   const rows = await db.select().from(mnetHosts);

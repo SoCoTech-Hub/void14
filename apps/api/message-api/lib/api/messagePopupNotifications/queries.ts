@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { MessagePopupNotificationId } from "../db/schema/messagePopupNotifications";
-import { db } from "../db/index";
+import type { MessagePopupNotificationId } from "../../db/schema/messagePopupNotifications";
+import { db } from "../../db/index";
 import {
   messagePopupNotificationIdSchema,
   messagePopupNotifications,
-} from "../db/schema/messagePopupNotifications";
+} from "../../db/schema/messagePopupNotifications";
 
 export const getMessagePopupNotifications = async () => {
   const rows = await db.select().from(messagePopupNotifications);

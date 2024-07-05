@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertLocalizationUserSchema,
   LocalizationUserId,
@@ -11,7 +11,7 @@ import {
   NewLocalizationUserParams,
   UpdateLocalizationUserParams,
   updateLocalizationUserSchema,
-} from "../db/schema/localizationUsers";
+} from "../../db/schema/localizationUsers";
 
 export const createLocalizationUser = async (
   localizationUser: NewLocalizationUserParams,

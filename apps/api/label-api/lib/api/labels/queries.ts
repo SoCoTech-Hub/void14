@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { LabelId } from "../db/schema/labels";
-import { db } from "../db/index";
-import { labelIdSchema, labels } from "../db/schema/labels";
+import type { LabelId } from "../../db/schema/labels";
+import { db } from "../../db/index";
+import { labelIdSchema, labels } from "../../db/schema/labels";
 
 export const getLabels = async () => {
   const rows = await db.select().from(labels);

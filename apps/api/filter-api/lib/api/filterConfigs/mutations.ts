@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   FilterConfigId,
   filterConfigIdSchema,
@@ -9,7 +9,7 @@ import {
   NewFilterConfigParams,
   UpdateFilterConfigParams,
   updateFilterConfigSchema,
-} from "../db/schema/filterConfigs";
+} from "../../db/schema/filterConfigs";
 
 export const createFilterConfig = async (
   filterConfig: NewFilterConfigParams,

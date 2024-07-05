@@ -2,13 +2,13 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { BigBlueButtonBnLogId } from "../db/schema/bigBlueButtonBnLogs";
-import { db } from "../db/index";
+import type { BigBlueButtonBnLogId } from "../../db/schema/bigBlueButtonBnLogs";
+import { db } from "../../db/index";
 import {
   bigBlueButtonBnLogIdSchema,
   bigBlueButtonBnLogs,
-} from "../db/schema/bigBlueButtonBnLogs";
-import { bigBlueButtonBns } from "../db/schema/bigBlueButtonBns";
+} from "../../db/schema/bigBlueButtonBnLogs";
+import { bigBlueButtonBns } from "../../db/schema/bigBlueButtonBns";
 
 export const getBigBlueButtonBnLogs = async () => {
   const { session } = await getUserAuth();

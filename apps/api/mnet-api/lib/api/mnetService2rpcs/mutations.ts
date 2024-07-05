@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertMnetService2rpcSchema,
   MnetService2rpcId,
@@ -9,7 +9,7 @@ import {
   NewMnetService2rpcParams,
   UpdateMnetService2rpcParams,
   updateMnetService2rpcSchema,
-} from "../db/schema/mnetService2rpcs";
+} from "../../db/schema/mnetService2rpcs";
 
 export const createMnetService2rpc = async (
   mnetService2rpc: NewMnetService2rpcParams,

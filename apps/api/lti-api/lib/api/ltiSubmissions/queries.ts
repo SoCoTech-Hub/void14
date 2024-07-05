@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { LtiSubmissionId } from "../db/schema/ltiSubmissions";
-import { db } from "../db/index";
+import type { LtiSubmissionId } from "../../db/schema/ltiSubmissions";
+import { db } from "../../db/index";
 import {
   ltiSubmissionIdSchema,
   ltiSubmissions,
-} from "../db/schema/ltiSubmissions";
+} from "../../db/schema/ltiSubmissions";
 
 export const getLtiSubmissions = async () => {
   const { session } = await getUserAuth();

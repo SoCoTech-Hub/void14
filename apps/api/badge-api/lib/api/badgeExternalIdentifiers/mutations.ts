@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   BadgeExternalIdentifierId,
   badgeExternalIdentifierIdSchema,
@@ -9,7 +9,7 @@ import {
   NewBadgeExternalIdentifierParams,
   UpdateBadgeExternalIdentifierParams,
   updateBadgeExternalIdentifierSchema,
-} from "../db/schema/badgeExternalIdentifiers";
+} from "../../db/schema/badgeExternalIdentifiers";
 
 export const createBadgeExternalIdentifier = async (
   badgeExternalIdentifier: NewBadgeExternalIdentifierParams,

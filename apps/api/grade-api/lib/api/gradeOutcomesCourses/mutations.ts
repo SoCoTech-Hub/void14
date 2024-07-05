@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   GradeOutcomesCourseId,
   gradeOutcomesCourseIdSchema,
@@ -9,7 +9,7 @@ import {
   NewGradeOutcomesCourseParams,
   UpdateGradeOutcomesCourseParams,
   updateGradeOutcomesCourseSchema,
-} from "../db/schema/gradeOutcomesCourses";
+} from "../../db/schema/gradeOutcomesCourses";
 
 export const createGradeOutcomesCourse = async (
   gradeOutcomesCourse: NewGradeOutcomesCourseParams,

@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   EnrolLtiUserId,
   enrolLtiUserIdSchema,
@@ -11,7 +11,7 @@ import {
   NewEnrolLtiUserParams,
   UpdateEnrolLtiUserParams,
   updateEnrolLtiUserSchema,
-} from "../db/schema/enrolLtiUsers";
+} from "../../db/schema/enrolLtiUsers";
 
 export const createEnrolLtiUser = async (
   enrolLtiUser: NewEnrolLtiUserParams,

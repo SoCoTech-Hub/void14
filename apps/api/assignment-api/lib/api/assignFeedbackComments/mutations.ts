@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   AssignFeedbackCommentId,
   assignFeedbackCommentIdSchema,
@@ -9,7 +9,7 @@ import {
   NewAssignFeedbackCommentParams,
   UpdateAssignFeedbackCommentParams,
   updateAssignFeedbackCommentSchema,
-} from "../db/schema/assignFeedbackComments";
+} from "../../db/schema/assignFeedbackComments";
 
 export const createAssignFeedbackComment = async (
   assignFeedbackComment: NewAssignFeedbackCommentParams,

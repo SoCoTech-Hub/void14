@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertOauth2SystemAccountSchema,
   NewOauth2SystemAccountParams,
@@ -11,7 +11,7 @@ import {
   oauth2SystemAccounts,
   UpdateOauth2SystemAccountParams,
   updateOauth2SystemAccountSchema,
-} from "../db/schema/oauth2SystemAccounts";
+} from "../../db/schema/oauth2SystemAccounts";
 
 export const createOauth2SystemAccount = async (
   oauth2SystemAccount: NewOauth2SystemAccountParams,

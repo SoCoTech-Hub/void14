@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertMnetLogSchema,
   MnetLogId,
@@ -11,7 +11,7 @@ import {
   NewMnetLogParams,
   UpdateMnetLogParams,
   updateMnetLogSchema,
-} from "../db/schema/mnetLogs";
+} from "../../db/schema/mnetLogs";
 
 export const createMnetLog = async (mnetLog: NewMnetLogParams) => {
   const { session } = await getUserAuth();

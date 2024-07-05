@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   GlossaryFormatId,
   glossaryFormatIdSchema,
@@ -9,7 +9,7 @@ import {
   NewGlossaryFormatParams,
   UpdateGlossaryFormatParams,
   updateGlossaryFormatSchema,
-} from "../db/schema/glossaryFormats";
+} from "../../db/schema/glossaryFormats";
 
 export const createGlossaryFormat = async (
   glossaryFormat: NewGlossaryFormatParams,

@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { DistrictOrganizationId } from "../db/schema/districtOrganizations";
-import { db } from "../db/index";
+import type { DistrictOrganizationId } from "../../db/schema/districtOrganizations";
+import { db } from "../../db/index";
 import {
   districtOrganizationIdSchema,
   districtOrganizations,
-} from "../db/schema/districtOrganizations";
-import { districts } from "../db/schema/districts";
+} from "../../db/schema/districtOrganizations";
+import { districts } from "../../db/schema/districts";
 
 export const getDistrictOrganizations = async () => {
   const rows = await db

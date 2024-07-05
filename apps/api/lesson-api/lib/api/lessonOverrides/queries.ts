@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { LessonOverrideId } from "../db/schema/lessonOverrides";
-import { db } from "../db/index";
+import type { LessonOverrideId } from "../../db/schema/lessonOverrides";
+import { db } from "../../db/index";
 import {
   lessonOverrideIdSchema,
   lessonOverrides,
-} from "../db/schema/lessonOverrides";
-import { lessons } from "../db/schema/lessons";
+} from "../../db/schema/lessonOverrides";
+import { lessons } from "../../db/schema/lessons";
 
 export const getLessonOverrides = async () => {
   const rows = await db

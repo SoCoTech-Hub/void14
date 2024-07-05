@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   ForumGradeId,
   forumGradeIdSchema,
@@ -11,7 +11,7 @@ import {
   NewForumGradeParams,
   UpdateForumGradeParams,
   updateForumGradeSchema,
-} from "../db/schema/forumGrades";
+} from "../../db/schema/forumGrades";
 
 export const createForumGrade = async (forumGrade: NewForumGradeParams) => {
   const { session } = await getUserAuth();

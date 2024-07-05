@@ -2,13 +2,13 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { BursaryResponseId } from "../db/schema/bursaryResponses";
-import { db } from "../db/index";
-import { bursaries } from "../db/schema/bursaries";
+import type { BursaryResponseId } from "../../db/schema/bursaryResponses";
+import { db } from "../../db/index";
+import { bursaries } from "../../db/schema/bursaries";
 import {
   bursaryResponseIdSchema,
   bursaryResponses,
-} from "../db/schema/bursaryResponses";
+} from "../../db/schema/bursaryResponses";
 
 export const getBursaryResponses = async () => {
   const { session } = await getUserAuth();

@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertLessonTimerSchema,
   lessonTimer,
@@ -11,7 +11,7 @@ import {
   NewLessonTimerParams,
   UpdateLessonTimerParams,
   updateLessonTimerSchema,
-} from "../db/schema/lessonTimer";
+} from "../../db/schema/lessonTimer";
 
 export const createLessonTimer = async (lessonTimer: NewLessonTimerParams) => {
   const { session } = await getUserAuth();

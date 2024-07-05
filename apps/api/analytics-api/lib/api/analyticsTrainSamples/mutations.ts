@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   AnalyticsTrainSampleId,
   analyticsTrainSampleIdSchema,
@@ -9,7 +9,7 @@ import {
   NewAnalyticsTrainSampleParams,
   UpdateAnalyticsTrainSampleParams,
   updateAnalyticsTrainSampleSchema,
-} from "../db/schema/analyticsTrainSamples";
+} from "../../db/schema/analyticsTrainSamples";
 
 export const createAnalyticsTrainSample = async (
   analyticsTrainSample: NewAnalyticsTrainSampleParams,

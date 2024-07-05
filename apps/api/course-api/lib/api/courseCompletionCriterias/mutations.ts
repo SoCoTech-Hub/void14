@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   CourseCompletionCriteriaId,
   courseCompletionCriteriaIdSchema,
@@ -9,7 +9,7 @@ import {
   NewCourseCompletionCriteriaParams,
   UpdateCourseCompletionCriteriaParams,
   updateCourseCompletionCriteriaSchema,
-} from "../db/schema/courseCompletionCriterias";
+} from "../../db/schema/courseCompletionCriterias";
 
 export const createCourseCompletionCriteria = async (
   courseCompletionCriteria: NewCourseCompletionCriteriaParams,

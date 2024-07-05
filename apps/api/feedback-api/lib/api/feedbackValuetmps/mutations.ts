@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   FeedbackValuetmpId,
   feedbackValuetmpIdSchema,
@@ -9,7 +9,7 @@ import {
   NewFeedbackValuetmpParams,
   UpdateFeedbackValuetmpParams,
   updateFeedbackValuetmpSchema,
-} from "../db/schema/feedbackValuetmps";
+} from "../../db/schema/feedbackValuetmps";
 
 export const createFeedbackValuetmp = async (
   feedbackValuetmp: NewFeedbackValuetmpParams,

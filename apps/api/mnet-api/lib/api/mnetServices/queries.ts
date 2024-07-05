@@ -1,8 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { MnetServiceId } from "../db/schema/mnetServices";
-import { db } from "../db/index";
-import { mnetServiceIdSchema, mnetServices } from "../db/schema/mnetServices";
+import type { MnetServiceId } from "../../db/schema/mnetServices";
+import { db } from "../../db/index";
+import {
+  mnetServiceIdSchema,
+  mnetServices,
+} from "../../db/schema/mnetServices";
 
 export const getMnetServices = async () => {
   const rows = await db.select().from(mnetServices);

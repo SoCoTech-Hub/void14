@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   BackupLogId,
   backupLogIdSchema,
@@ -9,7 +9,7 @@ import {
   NewBackupLogParams,
   UpdateBackupLogParams,
   updateBackupLogSchema,
-} from "../db/schema/backupLogs";
+} from "../../db/schema/backupLogs";
 
 export const createBackupLog = async (backupLog: NewBackupLogParams) => {
   const newBackupLog = insertBackupLogSchema.parse(backupLog);

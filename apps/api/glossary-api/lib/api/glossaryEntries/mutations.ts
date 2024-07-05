@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   glossaryEntries,
   GlossaryEntryId,
@@ -11,7 +11,7 @@ import {
   NewGlossaryEntryParams,
   UpdateGlossaryEntryParams,
   updateGlossaryEntrySchema,
-} from "../db/schema/glossaryEntries";
+} from "../../db/schema/glossaryEntries";
 
 export const createGlossaryEntry = async (
   glossaryEntry: NewGlossaryEntryParams,

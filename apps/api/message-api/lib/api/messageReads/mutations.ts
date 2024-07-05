@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertMessageReadSchema,
   MessageReadId,
@@ -11,7 +11,7 @@ import {
   NewMessageReadParams,
   UpdateMessageReadParams,
   updateMessageReadSchema,
-} from "../db/schema/messageReads";
+} from "../../db/schema/messageReads";
 
 export const createMessageRead = async (messageRead: NewMessageReadParams) => {
   const { session } = await getUserAuth();

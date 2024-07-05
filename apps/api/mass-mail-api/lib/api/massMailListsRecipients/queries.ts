@@ -1,13 +1,13 @@
 import { eq } from "drizzle-orm";
 
-import type { MassMailListsRecipientId } from "../db/schema/massMailListsRecipients";
-import { db } from "../db/index";
-import { massMailLists } from "../db/schema/massMailLists";
+import type { MassMailListsRecipientId } from "../../db/schema/massMailListsRecipients";
+import { db } from "../../db/index";
+import { massMailLists } from "../../db/schema/massMailLists";
 import {
   massMailListsRecipientIdSchema,
   massMailListsRecipients,
-} from "../db/schema/massMailListsRecipients";
-import { massMailRecipients } from "../db/schema/massMailRecipients";
+} from "../../db/schema/massMailListsRecipients";
+import { massMailRecipients } from "../../db/schema/massMailRecipients";
 
 export const getMassMailListsRecipients = async () => {
   const rows = await db

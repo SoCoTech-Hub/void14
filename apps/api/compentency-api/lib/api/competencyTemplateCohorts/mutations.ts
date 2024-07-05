@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   CompetencyTemplateCohortId,
   competencyTemplateCohortIdSchema,
@@ -11,7 +11,7 @@ import {
   NewCompetencyTemplateCohortParams,
   UpdateCompetencyTemplateCohortParams,
   updateCompetencyTemplateCohortSchema,
-} from "../db/schema/competencyTemplateCohorts";
+} from "../../db/schema/competencyTemplateCohorts";
 
 export const createCompetencyTemplateCohort = async (
   competencyTemplateCohort: NewCompetencyTemplateCohortParams,

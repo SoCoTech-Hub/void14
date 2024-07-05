@@ -2,13 +2,13 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { InmailResponseId } from "../db/schema/inmailResponses";
-import { db } from "../db/index";
+import type { InmailResponseId } from "../../db/schema/inmailResponses";
+import { db } from "../../db/index";
 import {
   inmailResponseIdSchema,
   inmailResponses,
-} from "../db/schema/inmailResponses";
-import { inmails } from "../db/schema/inmails";
+} from "../../db/schema/inmailResponses";
+import { inmails } from "../../db/schema/inmails";
 
 export const getInmailResponses = async () => {
   const { session } = await getUserAuth();

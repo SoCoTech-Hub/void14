@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { GradingformRubricLevelId } from "../db/schema/gradingformRubricLevels";
-import { db } from "../db/index";
+import type { GradingformRubricLevelId } from "../../db/schema/gradingformRubricLevels";
+import { db } from "../../db/index";
 import {
   gradingformRubricLevelIdSchema,
   gradingformRubricLevels,
-} from "../db/schema/gradingformRubricLevels";
+} from "../../db/schema/gradingformRubricLevels";
 
 export const getGradingformRubricLevels = async () => {
   const rows = await db.select().from(gradingformRubricLevels);

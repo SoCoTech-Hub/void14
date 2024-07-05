@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   AnalyticsPredictSampleId,
   analyticsPredictSampleIdSchema,
@@ -9,7 +9,7 @@ import {
   NewAnalyticsPredictSampleParams,
   UpdateAnalyticsPredictSampleParams,
   updateAnalyticsPredictSampleSchema,
-} from "../db/schema/analyticsPredictSamples";
+} from "../../db/schema/analyticsPredictSamples";
 
 export const createAnalyticsPredictSample = async (
   analyticsPredictSample: NewAnalyticsPredictSampleParams,

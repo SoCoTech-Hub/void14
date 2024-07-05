@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   EnrolLtiToolId,
   enrolLtiToolIdSchema,
@@ -9,7 +9,7 @@ import {
   NewEnrolLtiToolParams,
   UpdateEnrolLtiToolParams,
   updateEnrolLtiToolSchema,
-} from "../db/schema/enrolLtiTools";
+} from "../../db/schema/enrolLtiTools";
 
 export const createEnrolLtiTool = async (
   enrolLtiTool: NewEnrolLtiToolParams,

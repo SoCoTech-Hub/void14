@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { H5pLibraryDependencyId } from "../db/schema/h5pLibraryDependencies";
-import { db } from "../db/index";
-import { h5pLibraries } from "../db/schema/h5pLibraries";
+import type { H5pLibraryDependencyId } from "../../db/schema/h5pLibraryDependencies";
+import { db } from "../../db/index";
+import { h5pLibraries } from "../../db/schema/h5pLibraries";
 import {
   h5pLibraryDependencies,
   h5pLibraryDependencyIdSchema,
-} from "../db/schema/h5pLibraryDependencies";
+} from "../../db/schema/h5pLibraryDependencies";
 
 export const getH5pLibraryDependencies = async () => {
   const rows = await db

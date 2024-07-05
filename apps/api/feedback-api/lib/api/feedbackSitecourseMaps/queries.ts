@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { FeedbackSitecourseMapId } from "../db/schema/feedbackSitecourseMaps";
-import { db } from "../db/index";
-import { feedbacks } from "../db/schema/feedbacks";
+import type { FeedbackSitecourseMapId } from "../../db/schema/feedbackSitecourseMaps";
+import { db } from "../../db/index";
+import { feedbacks } from "../../db/schema/feedbacks";
 import {
   feedbackSitecourseMapIdSchema,
   feedbackSitecourseMaps,
-} from "../db/schema/feedbackSitecourseMaps";
+} from "../../db/schema/feedbackSitecourseMaps";
 
 export const getFeedbackSitecourseMaps = async () => {
   const rows = await db

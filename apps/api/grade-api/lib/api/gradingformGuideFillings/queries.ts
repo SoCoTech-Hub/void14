@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { GradingformGuideFillingId } from "../db/schema/gradingformGuideFillings";
-import { db } from "../db/index";
+import type { GradingformGuideFillingId } from "../../db/schema/gradingformGuideFillings";
+import { db } from "../../db/index";
 import {
   gradingformGuideFillingIdSchema,
   gradingformGuideFillings,
-} from "../db/schema/gradingformGuideFillings";
+} from "../../db/schema/gradingformGuideFillings";
 
 export const getGradingformGuideFillings = async () => {
   const rows = await db.select().from(gradingformGuideFillings);

@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   InmailResponseId,
   inmailResponseIdSchema,
@@ -11,7 +11,7 @@ import {
   NewInmailResponseParams,
   UpdateInmailResponseParams,
   updateInmailResponseSchema,
-} from "../db/schema/inmailResponses";
+} from "../../db/schema/inmailResponses";
 
 export const createInmailResponse = async (
   inmailResponse: NewInmailResponseParams,

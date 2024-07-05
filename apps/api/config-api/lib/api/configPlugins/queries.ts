@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { ConfigPluginId } from "../db/schema/configPlugins";
-import { db } from "../db/index";
+import type { ConfigPluginId } from "../../db/schema/configPlugins";
+import { db } from "../../db/index";
 import {
   configPluginIdSchema,
   configPlugins,
-} from "../db/schema/configPlugins";
+} from "../../db/schema/configPlugins";
 
 export const getConfigPlugins = async () => {
   const rows = await db.select().from(configPlugins);

@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { LtiAccessTokenId } from "../db/schema/ltiAccessTokens";
-import { db } from "../db/index";
+import type { LtiAccessTokenId } from "../../db/schema/ltiAccessTokens";
+import { db } from "../../db/index";
 import {
   ltiAccessTokenIdSchema,
   ltiAccessTokens,
-} from "../db/schema/ltiAccessTokens";
+} from "../../db/schema/ltiAccessTokens";
 
 export const getLtiAccessTokens = async () => {
   const rows = await db.select().from(ltiAccessTokens);

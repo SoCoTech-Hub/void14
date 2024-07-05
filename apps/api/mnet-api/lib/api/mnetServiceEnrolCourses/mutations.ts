@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertMnetServiceEnrolCourseSchema,
   MnetServiceEnrolCourseId,
@@ -9,7 +9,7 @@ import {
   NewMnetServiceEnrolCourseParams,
   UpdateMnetServiceEnrolCourseParams,
   updateMnetServiceEnrolCourseSchema,
-} from "../db/schema/mnetServiceEnrolCourses";
+} from "../../db/schema/mnetServiceEnrolCourses";
 
 export const createMnetServiceEnrolCourse = async (
   mnetServiceEnrolCourse: NewMnetServiceEnrolCourseParams,

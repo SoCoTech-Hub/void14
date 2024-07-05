@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   AssignFeedbackEditpdfAnnotId,
   assignFeedbackEditpdfAnnotIdSchema,
@@ -9,7 +9,7 @@ import {
   NewAssignFeedbackEditpdfAnnotParams,
   UpdateAssignFeedbackEditpdfAnnotParams,
   updateAssignFeedbackEditpdfAnnotSchema,
-} from "../db/schema/assignFeedbackEditpdfAnnots";
+} from "../../db/schema/assignFeedbackEditpdfAnnots";
 
 export const createAssignFeedbackEditpdfAnnot = async (
   assignFeedbackEditpdfAnnot: NewAssignFeedbackEditpdfAnnotParams,

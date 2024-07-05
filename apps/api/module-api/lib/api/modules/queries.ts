@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { ModuleId } from "../db/schema/modules";
-import { db } from "../db/index";
-import { moduleIdSchema, modules } from "../db/schema/modules";
+import type { ModuleId } from "../../db/schema/modules";
+import { db } from "../../db/index";
+import { moduleIdSchema, modules } from "../../db/schema/modules";
 
 export const getModules = async () => {
   const rows = await db.select().from(modules);

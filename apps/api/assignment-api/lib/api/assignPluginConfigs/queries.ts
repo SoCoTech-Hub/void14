@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { AssignPluginConfigId } from "../db/schema/assignPluginConfigs";
-import { db } from "../db/index";
-import { assignments } from "../db/schema/assignments";
+import type { AssignPluginConfigId } from "../../db/schema/assignPluginConfigs";
+import { db } from "../../db/index";
+import { assignments } from "../../db/schema/assignments";
 import {
   assignPluginConfigIdSchema,
   assignPluginConfigs,
-} from "../db/schema/assignPluginConfigs";
+} from "../../db/schema/assignPluginConfigs";
 
 export const getAssignPluginConfigs = async () => {
   const rows = await db

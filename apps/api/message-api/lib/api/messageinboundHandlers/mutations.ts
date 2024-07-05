@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertMessageinboundHandlerSchema,
   MessageinboundHandlerId,
@@ -9,7 +9,7 @@ import {
   NewMessageinboundHandlerParams,
   UpdateMessageinboundHandlerParams,
   updateMessageinboundHandlerSchema,
-} from "../db/schema/messageinboundHandlers";
+} from "../../db/schema/messageinboundHandlers";
 
 export const createMessageinboundHandler = async (
   messageinboundHandler: NewMessageinboundHandlerParams,

@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   H5pactivityAttemptId,
   h5pactivityAttemptIdSchema,
@@ -11,7 +11,7 @@ import {
   NewH5pactivityAttemptParams,
   UpdateH5pactivityAttemptParams,
   updateH5pactivityAttemptSchema,
-} from "../db/schema/h5pactivityAttempts";
+} from "../../db/schema/h5pactivityAttempts";
 
 export const createH5pactivityAttempt = async (
   h5pactivityAttempt: NewH5pactivityAttemptParams,

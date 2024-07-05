@@ -2,9 +2,9 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { BursaryId } from "../db/schema/bursaries";
-import { db } from "../db/index";
-import { bursaries, bursaryIdSchema } from "../db/schema/bursaries";
+import type { BursaryId } from "../../db/schema/bursaries";
+import { db } from "../../db/index";
+import { bursaries, bursaryIdSchema } from "../../db/schema/bursaries";
 
 export const getBursaries = async () => {
   const { session } = await getUserAuth();

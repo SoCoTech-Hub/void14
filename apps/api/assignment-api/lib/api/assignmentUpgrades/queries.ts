@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { AssignmentUpgradeId } from "../db/schema/assignmentUpgrades";
-import { db } from "../db/index";
+import type { AssignmentUpgradeId } from "../../db/schema/assignmentUpgrades";
+import { db } from "../../db/index";
 import {
   assignmentUpgradeIdSchema,
   assignmentUpgrades,
-} from "../db/schema/assignmentUpgrades";
+} from "../../db/schema/assignmentUpgrades";
 
 export const getAssignmentUpgrades = async () => {
   const rows = await db.select().from(assignmentUpgrades);

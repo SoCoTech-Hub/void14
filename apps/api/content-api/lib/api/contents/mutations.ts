@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   ContentId,
   contentIdSchema,
@@ -11,7 +11,7 @@ import {
   NewContentParams,
   UpdateContentParams,
   updateContentSchema,
-} from "../db/schema/contents";
+} from "../../db/schema/contents";
 
 export const createContent = async (content: NewContentParams) => {
   const { session } = await getUserAuth();

@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { DigilibCategoryId } from "../db/schema/digilibCategories";
-import { db } from "../db/index";
+import type { DigilibCategoryId } from "../../db/schema/digilibCategories";
+import { db } from "../../db/index";
 import {
   digilibCategories,
   digilibCategoryIdSchema,
-} from "../db/schema/digilibCategories";
+} from "../../db/schema/digilibCategories";
 
 export const getDigilibCategories = async () => {
   const rows = await db.select().from(digilibCategories);

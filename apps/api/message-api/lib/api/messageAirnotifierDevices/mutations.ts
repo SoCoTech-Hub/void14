@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertMessageAirnotifierDeviceSchema,
   MessageAirnotifierDeviceId,
@@ -9,7 +9,7 @@ import {
   NewMessageAirnotifierDeviceParams,
   UpdateMessageAirnotifierDeviceParams,
   updateMessageAirnotifierDeviceSchema,
-} from "../db/schema/messageAirnotifierDevices";
+} from "../../db/schema/messageAirnotifierDevices";
 
 export const createMessageAirnotifierDevice = async (
   messageAirnotifierDevice: NewMessageAirnotifierDeviceParams,

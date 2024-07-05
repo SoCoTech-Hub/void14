@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   AnalyticsUsedFileId,
   analyticsUsedFileIdSchema,
@@ -9,7 +9,7 @@ import {
   NewAnalyticsUsedFileParams,
   UpdateAnalyticsUsedFileParams,
   updateAnalyticsUsedFileSchema,
-} from "../db/schema/analyticsUsedFiles";
+} from "../../db/schema/analyticsUsedFiles";
 
 export const createAnalyticsUsedFile = async (
   analyticsUsedFile: NewAnalyticsUsedFileParams,

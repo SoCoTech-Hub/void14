@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   GroupsMemberId,
   groupsMemberIdSchema,
@@ -11,7 +11,7 @@ import {
   NewGroupsMemberParams,
   UpdateGroupsMemberParams,
   updateGroupsMemberSchema,
-} from "../db/schema/groupsMembers";
+} from "../../db/schema/groupsMembers";
 
 export const createGroupsMember = async (
   groupsMember: NewGroupsMemberParams,

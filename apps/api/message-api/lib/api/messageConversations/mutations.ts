@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertMessageConversationSchema,
   MessageConversationId,
@@ -9,7 +9,7 @@ import {
   NewMessageConversationParams,
   UpdateMessageConversationParams,
   updateMessageConversationSchema,
-} from "../db/schema/messageConversations";
+} from "../../db/schema/messageConversations";
 
 export const createMessageConversation = async (
   messageConversation: NewMessageConversationParams,

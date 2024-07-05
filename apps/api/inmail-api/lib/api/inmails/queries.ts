@@ -2,9 +2,9 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { InmailId } from "../db/schema/inmails";
-import { db } from "../db/index";
-import { inmailIdSchema, inmails } from "../db/schema/inmails";
+import type { InmailId } from "../../db/schema/inmails";
+import { db } from "../../db/index";
+import { inmailIdSchema, inmails } from "../../db/schema/inmails";
 
 export const getInmails = async () => {
   const { session } = await getUserAuth();

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   ImscpId,
   imscpIdSchema,
@@ -9,7 +9,7 @@ import {
   NewImscpParams,
   UpdateImscpParams,
   updateImscpSchema,
-} from "../db/schema/imscps";
+} from "../../db/schema/imscps";
 
 export const createImscp = async (imscp: NewImscpParams) => {
   const newImscp = insertImscpSchema.parse(imscp);

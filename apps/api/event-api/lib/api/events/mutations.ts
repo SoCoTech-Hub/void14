@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   EventId,
   eventIdSchema,
@@ -11,7 +11,7 @@ import {
   NewEventParams,
   UpdateEventParams,
   updateEventSchema,
-} from "../db/schema/events";
+} from "../../db/schema/events";
 
 export const createEvent = async (event: NewEventParams) => {
   const { session } = await getUserAuth();

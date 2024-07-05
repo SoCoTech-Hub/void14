@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { AnalyticsPredictionActionId } from "../db/schema/analyticsPredictionActions";
-import { db } from "../db/index";
+import type { AnalyticsPredictionActionId } from "../../db/schema/analyticsPredictionActions";
+import { db } from "../../db/index";
 import {
   analyticsPredictionActionIdSchema,
   analyticsPredictionActions,
-} from "../db/schema/analyticsPredictionActions";
+} from "../../db/schema/analyticsPredictionActions";
 
 export const getAnalyticsPredictionActions = async () => {
   const { session } = await getUserAuth();

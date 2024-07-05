@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   CohortId,
   cohortIdSchema,
@@ -9,7 +9,7 @@ import {
   NewCohortParams,
   UpdateCohortParams,
   updateCohortSchema,
-} from "../db/schema/cohorts";
+} from "../../db/schema/cohorts";
 
 export const createCohort = async (cohort: NewCohortParams) => {
   const newCohort = insertCohortSchema.parse(cohort);

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   bursaryCategories,
   BursaryCategoryId,
@@ -9,7 +9,7 @@ import {
   NewBursaryCategoryParams,
   UpdateBursaryCategoryParams,
   updateBursaryCategorySchema,
-} from "../db/schema/bursaryCategories";
+} from "../../db/schema/bursaryCategories";
 
 export const createBursaryCategory = async (
   bursaryCategory: NewBursaryCategoryParams,

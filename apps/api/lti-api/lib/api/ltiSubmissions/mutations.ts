@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertLtiSubmissionSchema,
   LtiSubmissionId,
@@ -11,7 +11,7 @@ import {
   NewLtiSubmissionParams,
   UpdateLtiSubmissionParams,
   updateLtiSubmissionSchema,
-} from "../db/schema/ltiSubmissions";
+} from "../../db/schema/ltiSubmissions";
 
 export const createLtiSubmission = async (
   ltiSubmission: NewLtiSubmissionParams,

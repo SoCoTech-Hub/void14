@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   FilesReferenceId,
   filesReferenceIdSchema,
@@ -9,7 +9,7 @@ import {
   NewFilesReferenceParams,
   UpdateFilesReferenceParams,
   updateFilesReferenceSchema,
-} from "../db/schema/filesReferences";
+} from "../../db/schema/filesReferences";
 
 export const createFilesReference = async (
   filesReference: NewFilesReferenceParams,

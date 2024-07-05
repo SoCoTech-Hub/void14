@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   ChatId,
   chatIdSchema,
@@ -9,7 +9,7 @@ import {
   NewChatParams,
   UpdateChatParams,
   updateChatSchema,
-} from "../db/schema/chats";
+} from "../../db/schema/chats";
 
 export const createChat = async (chat: NewChatParams) => {
   const newChat = insertChatSchema.parse(chat);

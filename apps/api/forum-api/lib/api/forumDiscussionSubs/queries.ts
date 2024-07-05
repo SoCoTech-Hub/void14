@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { ForumDiscussionSubId } from "../db/schema/forumDiscussionSubs";
-import { db } from "../db/index";
+import type { ForumDiscussionSubId } from "../../db/schema/forumDiscussionSubs";
+import { db } from "../../db/index";
 import {
   forumDiscussionSubIdSchema,
   forumDiscussionSubs,
-} from "../db/schema/forumDiscussionSubs";
+} from "../../db/schema/forumDiscussionSubs";
 
 export const getForumDiscussionSubs = async () => {
   const { session } = await getUserAuth();

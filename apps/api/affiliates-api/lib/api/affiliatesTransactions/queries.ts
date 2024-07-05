@@ -1,13 +1,13 @@
 import { eq } from "drizzle-orm";
 
-import type { AffiliatesTransactionId } from "../db/schema/affiliatesTransactions";
-import { db } from "../db/index";
-import { affiliates } from "../db/schema/affiliates";
-import { affiliatesStatuses } from "../db/schema/affiliatesStatuses";
+import type { AffiliatesTransactionId } from "../../db/schema/affiliatesTransactions";
+import { db } from "../../db/index";
+import { affiliates } from "../../db/schema/affiliates";
+import { affiliatesStatuses } from "../../db/schema/affiliatesStatuses";
 import {
   affiliatesTransactionIdSchema,
   affiliatesTransactions,
-} from "../db/schema/affiliatesTransactions";
+} from "../../db/schema/affiliatesTransactions";
 
 export const getAffiliatesTransactions = async () => {
   const rows = await db

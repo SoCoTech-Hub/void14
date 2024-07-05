@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   ForumDiscussionId,
   forumDiscussionIdSchema,
@@ -11,7 +11,7 @@ import {
   NewForumDiscussionParams,
   UpdateForumDiscussionParams,
   updateForumDiscussionSchema,
-} from "../db/schema/forumDiscussions";
+} from "../../db/schema/forumDiscussions";
 
 export const createForumDiscussion = async (
   forumDiscussion: NewForumDiscussionParams,

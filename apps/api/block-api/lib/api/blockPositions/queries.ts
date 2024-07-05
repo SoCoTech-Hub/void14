@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { BlockPositionId } from "../db/schema/blockPositions";
-import { db } from "../db/index";
-import { blockInstances } from "../db/schema/blockInstances";
+import type { BlockPositionId } from "../../db/schema/blockPositions";
+import { db } from "../../db/index";
+import { blockInstances } from "../../db/schema/blockInstances";
 import {
   blockPositionIdSchema,
   blockPositions,
-} from "../db/schema/blockPositions";
+} from "../../db/schema/blockPositions";
 
 export const getBlockPositions = async () => {
   const rows = await db

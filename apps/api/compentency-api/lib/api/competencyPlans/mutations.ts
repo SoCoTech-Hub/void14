@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   CompetencyPlanId,
   competencyPlanIdSchema,
@@ -11,7 +11,7 @@ import {
   NewCompetencyPlanParams,
   UpdateCompetencyPlanParams,
   updateCompetencyPlanSchema,
-} from "../db/schema/competencyPlans";
+} from "../../db/schema/competencyPlans";
 
 export const createCompetencyPlan = async (
   competencyPlan: NewCompetencyPlanParams,

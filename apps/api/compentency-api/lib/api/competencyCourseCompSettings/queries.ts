@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { CompetencyCourseCompSettingId } from "../db/schema/competencyCourseCompSettings";
-import { db } from "../db/index";
+import type { CompetencyCourseCompSettingId } from "../../db/schema/competencyCourseCompSettings";
+import { db } from "../../db/index";
 import {
   competencyCourseCompSettingIdSchema,
   competencyCourseCompSettings,
-} from "../db/schema/competencyCourseCompSettings";
+} from "../../db/schema/competencyCourseCompSettings";
 
 export const getCompetencyCourseCompSettings = async () => {
   const { session } = await getUserAuth();

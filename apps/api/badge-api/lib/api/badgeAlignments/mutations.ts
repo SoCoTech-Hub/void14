@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   BadgeAlignmentId,
   badgeAlignmentIdSchema,
@@ -9,7 +9,7 @@ import {
   NewBadgeAlignmentParams,
   UpdateBadgeAlignmentParams,
   updateBadgeAlignmentSchema,
-} from "../db/schema/badgeAlignments";
+} from "../../db/schema/badgeAlignments";
 
 export const createBadgeAlignment = async (
   badgeAlignment: NewBadgeAlignmentParams,

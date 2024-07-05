@@ -2,13 +2,13 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { AssignUserMappingId } from "../db/schema/assignUserMappings";
-import { db } from "../db/index";
-import { assignments } from "../db/schema/assignments";
+import type { AssignUserMappingId } from "../../db/schema/assignUserMappings";
+import { db } from "../../db/index";
+import { assignments } from "../../db/schema/assignments";
 import {
   assignUserMappingIdSchema,
   assignUserMappings,
-} from "../db/schema/assignUserMappings";
+} from "../../db/schema/assignUserMappings";
 
 export const getAssignUserMappings = async () => {
   const { session } = await getUserAuth();

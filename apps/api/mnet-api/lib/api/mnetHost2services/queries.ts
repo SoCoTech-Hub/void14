@@ -1,13 +1,13 @@
 import { eq } from "drizzle-orm";
 
-import type { MnetHost2serviceId } from "../db/schema/mnetHost2services";
-import { db } from "../db/index";
+import type { MnetHost2serviceId } from "../../db/schema/mnetHost2services";
+import { db } from "../../db/index";
 import {
   mnetHost2serviceIdSchema,
   mnetHost2services,
-} from "../db/schema/mnetHost2services";
-import { mnetHosts } from "../db/schema/mnetHosts";
-import { mnetServices } from "../db/schema/mnetServices";
+} from "../../db/schema/mnetHost2services";
+import { mnetHosts } from "../../db/schema/mnetHosts";
+import { mnetServices } from "../../db/schema/mnetServices";
 
 export const getMnetHost2services = async () => {
   const rows = await db

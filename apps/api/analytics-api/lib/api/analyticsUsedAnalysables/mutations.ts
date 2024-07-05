@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   AnalyticsUsedAnalysableId,
   analyticsUsedAnalysableIdSchema,
@@ -9,7 +9,7 @@ import {
   NewAnalyticsUsedAnalysableParams,
   UpdateAnalyticsUsedAnalysableParams,
   updateAnalyticsUsedAnalysableSchema,
-} from "../db/schema/analyticsUsedAnalysables";
+} from "../../db/schema/analyticsUsedAnalysables";
 
 export const createAnalyticsUsedAnalysable = async (
   analyticsUsedAnalysable: NewAnalyticsUsedAnalysableParams,

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertLessonOverrideSchema,
   LessonOverrideId,
@@ -9,7 +9,7 @@ import {
   NewLessonOverrideParams,
   UpdateLessonOverrideParams,
   updateLessonOverrideSchema,
-} from "../db/schema/lessonOverrides";
+} from "../../db/schema/lessonOverrides";
 
 export const createLessonOverride = async (
   lessonOverride: NewLessonOverrideParams,

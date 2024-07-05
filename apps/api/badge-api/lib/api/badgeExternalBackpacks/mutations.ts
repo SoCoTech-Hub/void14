@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   BadgeExternalBackpackId,
   badgeExternalBackpackIdSchema,
@@ -9,7 +9,7 @@ import {
   NewBadgeExternalBackpackParams,
   UpdateBadgeExternalBackpackParams,
   updateBadgeExternalBackpackSchema,
-} from "../db/schema/badgeExternalBackpacks";
+} from "../../db/schema/badgeExternalBackpacks";
 
 export const createBadgeExternalBackpack = async (
   badgeExternalBackpack: NewBadgeExternalBackpackParams,

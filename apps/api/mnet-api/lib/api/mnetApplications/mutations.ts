@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertMnetApplicationSchema,
   MnetApplicationId,
@@ -9,7 +9,7 @@ import {
   NewMnetApplicationParams,
   UpdateMnetApplicationParams,
   updateMnetApplicationSchema,
-} from "../db/schema/mnetApplications";
+} from "../../db/schema/mnetApplications";
 
 export const createMnetApplication = async (
   mnetApplication: NewMnetApplicationParams,

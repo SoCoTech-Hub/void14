@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   AnalyticsModelLogId,
   analyticsModelLogIdSchema,
@@ -11,7 +11,7 @@ import {
   NewAnalyticsModelLogParams,
   UpdateAnalyticsModelLogParams,
   updateAnalyticsModelLogSchema,
-} from "../db/schema/analyticsModelLogs";
+} from "../../db/schema/analyticsModelLogs";
 
 export const createAnalyticsModelLog = async (
   analyticsModelLog: NewAnalyticsModelLogParams,

@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   CohortMemberId,
   cohortMemberIdSchema,
@@ -11,7 +11,7 @@ import {
   NewCohortMemberParams,
   UpdateCohortMemberParams,
   updateCohortMemberSchema,
-} from "../db/schema/cohortMembers";
+} from "../../db/schema/cohortMembers";
 
 export const createCohortMember = async (
   cohortMember: NewCohortMemberParams,

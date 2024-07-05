@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   customFieldCategories,
   CustomFieldCategoryId,
@@ -9,7 +9,7 @@ import {
   NewCustomFieldCategoryParams,
   UpdateCustomFieldCategoryParams,
   updateCustomFieldCategorySchema,
-} from "../db/schema/customFieldCategories";
+} from "../../db/schema/customFieldCategories";
 
 export const createCustomFieldCategory = async (
   customFieldCategory: NewCustomFieldCategoryParams,

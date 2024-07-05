@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   ExternalFunctionId,
   externalFunctionIdSchema,
@@ -9,7 +9,7 @@ import {
   NewExternalFunctionParams,
   UpdateExternalFunctionParams,
   updateExternalFunctionSchema,
-} from "../db/schema/externalFunctions";
+} from "../../db/schema/externalFunctions";
 
 export const createExternalFunction = async (
   externalFunction: NewExternalFunctionParams,

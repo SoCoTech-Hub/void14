@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertOauth2IssuerSchema,
   NewOauth2IssuerParams,
@@ -11,7 +11,7 @@ import {
   oauth2Issuers,
   UpdateOauth2IssuerParams,
   updateOauth2IssuerSchema,
-} from "../db/schema/oauth2Issuers";
+} from "../../db/schema/oauth2Issuers";
 
 export const createOauth2Issuer = async (
   oauth2Issuer: NewOauth2IssuerParams,

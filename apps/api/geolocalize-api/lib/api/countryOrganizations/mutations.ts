@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   CountryOrganizationId,
   countryOrganizationIdSchema,
@@ -9,7 +9,7 @@ import {
   NewCountryOrganizationParams,
   UpdateCountryOrganizationParams,
   updateCountryOrganizationSchema,
-} from "../db/schema/countryOrganizations";
+} from "../../db/schema/countryOrganizations";
 
 export const createCountryOrganization = async (
   countryOrganization: NewCountryOrganizationParams,

@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertMessageUsersBlockedSchema,
   MessageUsersBlockedId,
@@ -11,7 +11,7 @@ import {
   NewMessageUsersBlockedParams,
   UpdateMessageUsersBlockedParams,
   updateMessageUsersBlockedSchema,
-} from "../db/schema/messageUsersBlockeds";
+} from "../../db/schema/messageUsersBlockeds";
 
 export const createMessageUsersBlocked = async (
   messageUsersBlocked: NewMessageUsersBlockedParams,

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertLtiToolSettingSchema,
   LtiToolSettingId,
@@ -9,7 +9,7 @@ import {
   NewLtiToolSettingParams,
   UpdateLtiToolSettingParams,
   updateLtiToolSettingSchema,
-} from "../db/schema/ltiToolSettings";
+} from "../../db/schema/ltiToolSettings";
 
 export const createLtiToolSetting = async (
   ltiToolSetting: NewLtiToolSettingParams,

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   AssignmentUpgradeId,
   assignmentUpgradeIdSchema,
@@ -9,7 +9,7 @@ import {
   NewAssignmentUpgradeParams,
   UpdateAssignmentUpgradeParams,
   updateAssignmentUpgradeSchema,
-} from "../db/schema/assignmentUpgrades";
+} from "../../db/schema/assignmentUpgrades";
 
 export const createAssignmentUpgrade = async (
   assignmentUpgrade: NewAssignmentUpgradeParams,

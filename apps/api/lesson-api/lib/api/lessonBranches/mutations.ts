@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertLessonBranchSchema,
   lessonBranches,
@@ -11,7 +11,7 @@ import {
   NewLessonBranchParams,
   UpdateLessonBranchParams,
   updateLessonBranchSchema,
-} from "../db/schema/lessonBranches";
+} from "../../db/schema/lessonBranches";
 
 export const createLessonBranch = async (
   lessonBranch: NewLessonBranchParams,

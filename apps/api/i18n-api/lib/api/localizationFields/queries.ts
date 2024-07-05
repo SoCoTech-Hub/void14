@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { LocalizationFieldId } from "../db/schema/localizationFields";
-import { db } from "../db/index";
+import type { LocalizationFieldId } from "../../db/schema/localizationFields";
+import { db } from "../../db/index";
 import {
   localizationFieldIdSchema,
   localizationFields,
-} from "../db/schema/localizationFields";
+} from "../../db/schema/localizationFields";
 
 export const getLocalizationFields = async () => {
   const rows = await db.select().from(localizationFields);

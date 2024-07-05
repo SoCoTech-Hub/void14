@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { FilterConfigId } from "../db/schema/filterConfigs";
-import { db } from "../db/index";
+import type { FilterConfigId } from "../../db/schema/filterConfigs";
+import { db } from "../../db/index";
 import {
   filterConfigIdSchema,
   filterConfigs,
-} from "../db/schema/filterConfigs";
+} from "../../db/schema/filterConfigs";
 
 export const getFilterConfigs = async () => {
   const rows = await db.select().from(filterConfigs);

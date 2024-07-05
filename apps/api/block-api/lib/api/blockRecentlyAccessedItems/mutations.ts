@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   BlockRecentlyAccessedItemId,
   blockRecentlyAccessedItemIdSchema,
@@ -11,7 +11,7 @@ import {
   NewBlockRecentlyAccessedItemParams,
   UpdateBlockRecentlyAccessedItemParams,
   updateBlockRecentlyAccessedItemSchema,
-} from "../db/schema/blockRecentlyAccessedItems";
+} from "../../db/schema/blockRecentlyAccessedItems";
 
 export const createBlockRecentlyAccessedItem = async (
   blockRecentlyAccessedItem: NewBlockRecentlyAccessedItemParams,

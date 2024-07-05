@@ -1,9 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { BookChapterId } from "../db/schema/bookChapters";
-import { db } from "../db/index";
-import { bookChapterIdSchema, bookChapters } from "../db/schema/bookChapters";
-import { books } from "../db/schema/books";
+import type { BookChapterId } from "../../db/schema/bookChapters";
+import { db } from "../../db/index";
+import {
+  bookChapterIdSchema,
+  bookChapters,
+} from "../../db/schema/bookChapters";
+import { books } from "../../db/schema/books";
 
 export const getBookChapters = async () => {
   const rows = await db

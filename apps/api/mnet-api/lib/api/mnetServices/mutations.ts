@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertMnetServiceSchema,
   MnetServiceId,
@@ -9,7 +9,7 @@ import {
   NewMnetServiceParams,
   UpdateMnetServiceParams,
   updateMnetServiceSchema,
-} from "../db/schema/mnetServices";
+} from "../../db/schema/mnetServices";
 
 export const createMnetService = async (mnetService: NewMnetServiceParams) => {
   const newMnetService = insertMnetServiceSchema.parse(mnetService);

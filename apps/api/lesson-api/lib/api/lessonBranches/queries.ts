@@ -2,14 +2,14 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { LessonBranchId } from "../db/schema/lessonBranches";
-import { db } from "../db/index";
+import type { LessonBranchId } from "../../db/schema/lessonBranches";
+import { db } from "../../db/index";
 import {
   lessonBranches,
   lessonBranchIdSchema,
-} from "../db/schema/lessonBranches";
-import { lessonPages } from "../db/schema/lessonPages";
-import { lessons } from "../db/schema/lessons";
+} from "../../db/schema/lessonBranches";
+import { lessonPages } from "../../db/schema/lessonPages";
+import { lessons } from "../../db/schema/lessons";
 
 export const getLessonBranches = async () => {
   const { session } = await getUserAuth();

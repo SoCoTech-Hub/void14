@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertLocalizationFieldSchema,
   LocalizationFieldId,
@@ -9,7 +9,7 @@ import {
   NewLocalizationFieldParams,
   UpdateLocalizationFieldParams,
   updateLocalizationFieldSchema,
-} from "../db/schema/localizationFields";
+} from "../../db/schema/localizationFields";
 
 export const createLocalizationField = async (
   localizationField: NewLocalizationFieldParams,

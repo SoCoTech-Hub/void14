@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { H5pactivityAttemptsResultId } from "../db/schema/h5pactivityAttemptsResults";
-import { db } from "../db/index";
+import type { H5pactivityAttemptsResultId } from "../../db/schema/h5pactivityAttemptsResults";
+import { db } from "../../db/index";
 import {
   h5pactivityAttemptsResultIdSchema,
   h5pactivityAttemptsResults,
-} from "../db/schema/h5pactivityAttemptsResults";
+} from "../../db/schema/h5pactivityAttemptsResults";
 
 export const getH5pactivityAttemptsResults = async () => {
   const rows = await db.select().from(h5pactivityAttemptsResults);

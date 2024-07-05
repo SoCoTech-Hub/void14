@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   BadgeBackpackOauth2Id,
   badgeBackpackOauth2IdSchema,
@@ -11,7 +11,7 @@ import {
   NewBadgeBackpackOauth2Params,
   UpdateBadgeBackpackOauth2Params,
   updateBadgeBackpackOauth2Schema,
-} from "../db/schema/badgeBackpackOauth2s";
+} from "../../db/schema/badgeBackpackOauth2s";
 
 export const createBadgeBackpackOauth2 = async (
   badgeBackpackOauth2: NewBadgeBackpackOauth2Params,

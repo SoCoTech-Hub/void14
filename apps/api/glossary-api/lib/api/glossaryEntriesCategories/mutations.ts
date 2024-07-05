@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   glossaryEntriesCategories,
   GlossaryEntriesCategoryId,
@@ -9,7 +9,7 @@ import {
   NewGlossaryEntriesCategoryParams,
   UpdateGlossaryEntriesCategoryParams,
   updateGlossaryEntriesCategorySchema,
-} from "../db/schema/glossaryEntriesCategories";
+} from "../../db/schema/glossaryEntriesCategories";
 
 export const createGlossaryEntriesCategory = async (
   glossaryEntriesCategory: NewGlossaryEntriesCategoryParams,

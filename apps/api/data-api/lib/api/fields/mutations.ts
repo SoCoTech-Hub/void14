@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   FieldId,
   fieldIdSchema,
@@ -9,7 +9,7 @@ import {
   NewFieldParams,
   UpdateFieldParams,
   updateFieldSchema,
-} from "../db/schema/fields";
+} from "../../db/schema/fields";
 
 export const createField = async (field: NewFieldParams) => {
   const newField = insertFieldSchema.parse(field);

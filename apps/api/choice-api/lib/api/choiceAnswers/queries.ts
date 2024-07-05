@@ -2,14 +2,14 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { ChoiceAnswerId } from "../db/schema/choiceAnswers";
-import { db } from "../db/index";
+import type { ChoiceAnswerId } from "../../db/schema/choiceAnswers";
+import { db } from "../../db/index";
 import {
   choiceAnswerIdSchema,
   choiceAnswers,
-} from "../db/schema/choiceAnswers";
-import { choiceOptions } from "../db/schema/choiceOptions";
-import { choices } from "../db/schema/choices";
+} from "../../db/schema/choiceAnswers";
+import { choiceOptions } from "../../db/schema/choiceOptions";
+import { choices } from "../../db/schema/choices";
 
 export const getChoiceAnswers = async () => {
   const { session } = await getUserAuth();

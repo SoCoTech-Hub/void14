@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   H5pLibrariesCachedassetId,
   h5pLibrariesCachedassetIdSchema,
@@ -9,7 +9,7 @@ import {
   NewH5pLibrariesCachedassetParams,
   UpdateH5pLibrariesCachedassetParams,
   updateH5pLibrariesCachedassetSchema,
-} from "../db/schema/h5pLibrariesCachedassets";
+} from "../../db/schema/h5pLibrariesCachedassets";
 
 export const createH5pLibrariesCachedasset = async (
   h5pLibrariesCachedasset: NewH5pLibrariesCachedassetParams,

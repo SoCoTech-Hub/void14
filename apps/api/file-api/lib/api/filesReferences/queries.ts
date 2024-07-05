@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { FilesReferenceId } from "../db/schema/filesReferences";
-import { db } from "../db/index";
+import type { FilesReferenceId } from "../../db/schema/filesReferences";
+import { db } from "../../db/index";
 import {
   filesReferenceIdSchema,
   filesReferences,
-} from "../db/schema/filesReferences";
+} from "../../db/schema/filesReferences";
 
 export const getFilesReferences = async () => {
   const rows = await db.select().from(filesReferences);

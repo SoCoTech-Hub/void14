@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   GradeLetterId,
   gradeLetterIdSchema,
@@ -9,7 +9,7 @@ import {
   NewGradeLetterParams,
   UpdateGradeLetterParams,
   updateGradeLetterSchema,
-} from "../db/schema/gradeLetters";
+} from "../../db/schema/gradeLetters";
 
 export const createGradeLetter = async (gradeLetter: NewGradeLetterParams) => {
   const newGradeLetter = insertGradeLetterSchema.parse(gradeLetter);

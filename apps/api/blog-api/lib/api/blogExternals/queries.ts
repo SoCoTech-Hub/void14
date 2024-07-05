@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { BlogExternalId } from "../db/schema/blogExternals";
-import { db } from "../db/index";
+import type { BlogExternalId } from "../../db/schema/blogExternals";
+import { db } from "../../db/index";
 import {
   blogExternalIdSchema,
   blogExternals,
-} from "../db/schema/blogExternals";
+} from "../../db/schema/blogExternals";
 
 export const getBlogExternals = async () => {
   const { session } = await getUserAuth();

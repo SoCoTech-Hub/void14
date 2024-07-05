@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertMnetServiceEnrolEnrolmentSchema,
   MnetServiceEnrolEnrolmentId,
@@ -11,7 +11,7 @@ import {
   NewMnetServiceEnrolEnrolmentParams,
   UpdateMnetServiceEnrolEnrolmentParams,
   updateMnetServiceEnrolEnrolmentSchema,
-} from "../db/schema/mnetServiceEnrolEnrolments";
+} from "../../db/schema/mnetServiceEnrolEnrolments";
 
 export const createMnetServiceEnrolEnrolment = async (
   mnetServiceEnrolEnrolment: NewMnetServiceEnrolEnrolmentParams,

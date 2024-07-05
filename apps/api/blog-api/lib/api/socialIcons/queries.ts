@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { SocialIconId } from "../db/schema/socialIcons";
-import { db } from "../db/index";
-import { socialIconIdSchema, socialIcons } from "../db/schema/socialIcons";
+import type { SocialIconId } from "../../db/schema/socialIcons";
+import { db } from "../../db/index";
+import { socialIconIdSchema, socialIcons } from "../../db/schema/socialIcons";
 
 export const getSocialIcons = async () => {
   const rows = await db.select().from(socialIcons);

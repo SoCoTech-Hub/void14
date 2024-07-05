@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   BackupControllerId,
   backupControllerIdSchema,
@@ -11,7 +11,7 @@ import {
   NewBackupControllerParams,
   UpdateBackupControllerParams,
   updateBackupControllerSchema,
-} from "../db/schema/backupControllers";
+} from "../../db/schema/backupControllers";
 
 export const createBackupController = async (
   backupController: NewBackupControllerParams,

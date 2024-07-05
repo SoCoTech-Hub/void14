@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   BlogCommentId,
   blogCommentIdSchema,
@@ -11,7 +11,7 @@ import {
   NewBlogCommentParams,
   UpdateBlogCommentParams,
   updateBlogCommentSchema,
-} from "../db/schema/blogComments";
+} from "../../db/schema/blogComments";
 
 export const createBlogComment = async (blogComment: NewBlogCommentParams) => {
   const { session } = await getUserAuth();

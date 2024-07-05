@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   FavouriteId,
   favouriteIdSchema,
@@ -11,7 +11,7 @@ import {
   NewFavouriteParams,
   UpdateFavouriteParams,
   updateFavouriteSchema,
-} from "../db/schema/favourites";
+} from "../../db/schema/favourites";
 
 export const createFavourite = async (favourite: NewFavouriteParams) => {
   const { session } = await getUserAuth();

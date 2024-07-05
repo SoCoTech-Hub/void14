@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { ExternalTokenId } from "../db/schema/externalTokens";
-import { db } from "../db/index";
+import type { ExternalTokenId } from "../../db/schema/externalTokens";
+import { db } from "../../db/index";
 import {
   externalTokenIdSchema,
   externalTokens,
-} from "../db/schema/externalTokens";
+} from "../../db/schema/externalTokens";
 
 export const getExternalTokens = async () => {
   const { session } = await getUserAuth();

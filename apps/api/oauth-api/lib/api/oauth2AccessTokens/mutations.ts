@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertOauth2AccessTokenSchema,
   NewOauth2AccessTokenParams,
@@ -11,7 +11,7 @@ import {
   oauth2AccessTokens,
   UpdateOauth2AccessTokenParams,
   updateOauth2AccessTokenSchema,
-} from "../db/schema/oauth2AccessTokens";
+} from "../../db/schema/oauth2AccessTokens";
 
 export const createOauth2AccessToken = async (
   oauth2AccessToken: NewOauth2AccessTokenParams,

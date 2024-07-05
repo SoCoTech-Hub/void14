@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertPaymentGatewaySchema,
   NewPaymentGatewayParams,
@@ -9,7 +9,7 @@ import {
   paymentGateways,
   UpdatePaymentGatewayParams,
   updatePaymentGatewaySchema,
-} from "../db/schema/paymentGateways";
+} from "../../db/schema/paymentGateways";
 
 export const createPaymentGateway = async (
   paymentGateway: NewPaymentGatewayParams,

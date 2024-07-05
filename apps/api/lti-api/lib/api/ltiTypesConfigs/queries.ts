@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { LtiTypesConfigId } from "../db/schema/ltiTypesConfigs";
-import { db } from "../db/index";
+import type { LtiTypesConfigId } from "../../db/schema/ltiTypesConfigs";
+import { db } from "../../db/index";
 import {
   ltiTypesConfigIdSchema,
   ltiTypesConfigs,
-} from "../db/schema/ltiTypesConfigs";
+} from "../../db/schema/ltiTypesConfigs";
 
 export const getLtiTypesConfigs = async () => {
   const rows = await db.select().from(ltiTypesConfigs);

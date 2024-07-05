@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { NotificationId } from "../db/schema/notifications";
-import { db } from "../db/index";
+import type { NotificationId } from "../../db/schema/notifications";
+import { db } from "../../db/index";
 import {
   notificationIdSchema,
   notifications,
-} from "../db/schema/notifications";
+} from "../../db/schema/notifications";
 
 export const getNotifications = async () => {
   const { session } = await getUserAuth();

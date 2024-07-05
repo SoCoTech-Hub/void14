@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   AssignUserFlagId,
   assignUserFlagIdSchema,
@@ -11,7 +11,7 @@ import {
   NewAssignUserFlagParams,
   UpdateAssignUserFlagParams,
   updateAssignUserFlagSchema,
-} from "../db/schema/assignUserFlags";
+} from "../../db/schema/assignUserFlags";
 
 export const createAssignUserFlag = async (
   assignUserFlag: NewAssignUserFlagParams,

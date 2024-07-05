@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { BlockId } from "../db/schema/blocks";
-import { db } from "../db/index";
-import { blockIdSchema, blocks } from "../db/schema/blocks";
+import type { BlockId } from "../../db/schema/blocks";
+import { db } from "../../db/index";
+import { blockIdSchema, blocks } from "../../db/schema/blocks";
 
 export const getBlocks = async () => {
   const rows = await db.select().from(blocks);

@@ -1,9 +1,9 @@
 import { eq } from "drizzle-orm";
 
-import type { DigilibId } from "../db/schema/digilibs";
-import { db } from "../db/index";
-import { digilibCategories } from "../db/schema/digilibCategories";
-import { digilibIdSchema, digilibs } from "../db/schema/digilibs";
+import type { DigilibId } from "../../db/schema/digilibs";
+import { db } from "../../db/index";
+import { digilibCategories } from "../../db/schema/digilibCategories";
+import { digilibIdSchema, digilibs } from "../../db/schema/digilibs";
 
 export const getDigilibs = async () => {
   const rows = await db

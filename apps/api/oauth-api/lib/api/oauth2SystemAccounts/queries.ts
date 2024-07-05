@@ -2,13 +2,13 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { Oauth2SystemAccountId } from "../db/schema/oauth2SystemAccounts";
-import { db } from "../db/index";
-import { oauth2issuers } from "../db/schema/oauth2Issuers";
+import type { Oauth2SystemAccountId } from "../../db/schema/oauth2SystemAccounts";
+import { db } from "../../db/index";
+import { oauth2issuers } from "../../db/schema/oauth2Issuers";
 import {
   oauth2SystemAccountIdSchema,
   oauth2SystemAccounts,
-} from "../db/schema/oauth2SystemAccounts";
+} from "../../db/schema/oauth2SystemAccounts";
 
 export const getOauth2SystemAccounts = async () => {
   const { session } = await getUserAuth();

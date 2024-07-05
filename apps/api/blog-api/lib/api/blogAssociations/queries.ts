@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { BlogAssociationId } from "../db/schema/blogAssociations";
-import { db } from "../db/index";
+import type { BlogAssociationId } from "../../db/schema/blogAssociations";
+import { db } from "../../db/index";
 import {
   blogAssociationIdSchema,
   blogAssociations,
-} from "../db/schema/blogAssociations";
-import { blogExternals } from "../db/schema/blogExternals";
+} from "../../db/schema/blogAssociations";
+import { blogExternals } from "../../db/schema/blogExternals";
 
 export const getBlogAssociations = async () => {
   const rows = await db

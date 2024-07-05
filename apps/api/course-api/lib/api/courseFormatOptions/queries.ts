@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { CourseFormatOptionId } from "../db/schema/courseFormatOptions";
-import { db } from "../db/index";
+import type { CourseFormatOptionId } from "../../db/schema/courseFormatOptions";
+import { db } from "../../db/index";
 import {
   courseFormatOptionIdSchema,
   courseFormatOptions,
-} from "../db/schema/courseFormatOptions";
-import { courses } from "../db/schema/courses";
+} from "../../db/schema/courseFormatOptions";
+import { courses } from "../../db/schema/courses";
 
 export const getCourseFormatOptions = async () => {
   const rows = await db

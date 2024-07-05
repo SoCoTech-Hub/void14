@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertMessageUserActionSchema,
   MessageUserActionId,
@@ -11,7 +11,7 @@ import {
   NewMessageUserActionParams,
   UpdateMessageUserActionParams,
   updateMessageUserActionSchema,
-} from "../db/schema/messageUserActions";
+} from "../../db/schema/messageUserActions";
 
 export const createMessageUserAction = async (
   messageUserAction: NewMessageUserActionParams,

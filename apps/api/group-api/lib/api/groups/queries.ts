@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { GroupId } from "../db/schema/groups";
-import { db } from "../db/index";
-import { groupIdSchema, groups } from "../db/schema/groups";
+import type { GroupId } from "../../db/schema/groups";
+import { db } from "../../db/index";
+import { groupIdSchema, groups } from "../../db/schema/groups";
 
 export const getGroups = async () => {
   const rows = await db.select().from(groups);

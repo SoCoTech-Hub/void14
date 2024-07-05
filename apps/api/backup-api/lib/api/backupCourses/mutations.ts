@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   BackupCourseId,
   backupCourseIdSchema,
@@ -9,7 +9,7 @@ import {
   NewBackupCourseParams,
   UpdateBackupCourseParams,
   updateBackupCourseSchema,
-} from "../db/schema/backupCourses";
+} from "../../db/schema/backupCourses";
 
 export const createBackupCourse = async (
   backupCourse: NewBackupCourseParams,

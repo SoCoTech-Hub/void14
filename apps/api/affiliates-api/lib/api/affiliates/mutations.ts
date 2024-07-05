@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   AffiliateId,
   affiliateIdSchema,
@@ -11,7 +11,7 @@ import {
   NewAffiliateParams,
   UpdateAffiliateParams,
   updateAffiliateSchema,
-} from "../db/schema/affiliates";
+} from "../../db/schema/affiliates";
 
 export const createAffiliate = async (affiliate: NewAffiliateParams) => {
   const { session } = await getUserAuth();

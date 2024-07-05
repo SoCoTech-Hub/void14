@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { ProvinceOrganizationId } from "../db/schema/provinceOrganizations";
-import { db } from "../db/index";
+import type { ProvinceOrganizationId } from "../../db/schema/provinceOrganizations";
+import { db } from "../../db/index";
 import {
   provinceOrganizationIdSchema,
   provinceOrganizations,
-} from "../db/schema/provinceOrganizations";
-import { provinces } from "../db/schema/provinces";
+} from "../../db/schema/provinceOrganizations";
+import { provinces } from "../../db/schema/provinces";
 
 export const getProvinceOrganizations = async () => {
   const rows = await db

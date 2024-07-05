@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertLogstoreStandardLogSchema,
   LogstoreStandardLogId,
@@ -11,7 +11,7 @@ import {
   NewLogstoreStandardLogParams,
   UpdateLogstoreStandardLogParams,
   updateLogstoreStandardLogSchema,
-} from "../db/schema/logstoreStandardLogs";
+} from "../../db/schema/logstoreStandardLogs";
 
 export const createLogstoreStandardLog = async (
   logstoreStandardLog: NewLogstoreStandardLogParams,

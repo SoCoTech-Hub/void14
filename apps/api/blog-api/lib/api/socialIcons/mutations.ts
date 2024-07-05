@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertSocialIconSchema,
   NewSocialIconParams,
@@ -9,7 +9,7 @@ import {
   socialIcons,
   UpdateSocialIconParams,
   updateSocialIconSchema,
-} from "../db/schema/socialIcons";
+} from "../../db/schema/socialIcons";
 
 export const createSocialIcon = async (socialIcon: NewSocialIconParams) => {
   const newSocialIcon = insertSocialIconSchema.parse(socialIcon);

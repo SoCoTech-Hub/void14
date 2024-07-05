@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertModuleSchema,
   ModuleId,
@@ -9,7 +9,7 @@ import {
   NewModuleParams,
   UpdateModuleParams,
   updateModuleSchema,
-} from "../db/schema/modules";
+} from "../../db/schema/modules";
 
 export const createModule = async (module: NewModuleParams) => {
   const newModule = insertModuleSchema.parse(module);

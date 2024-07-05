@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { EnrolFlatfileId } from "../db/schema/enrolFlatfiles";
-import { db } from "../db/index";
+import type { EnrolFlatfileId } from "../../db/schema/enrolFlatfiles";
+import { db } from "../../db/index";
 import {
   enrolFlatfileIdSchema,
   enrolFlatfiles,
-} from "../db/schema/enrolFlatfiles";
+} from "../../db/schema/enrolFlatfiles";
 
 export const getEnrolFlatfiles = async () => {
   const { session } = await getUserAuth();

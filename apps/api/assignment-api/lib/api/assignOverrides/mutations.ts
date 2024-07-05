@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   AssignOverrideId,
   assignOverrideIdSchema,
@@ -11,7 +11,7 @@ import {
   NewAssignOverrideParams,
   UpdateAssignOverrideParams,
   updateAssignOverrideSchema,
-} from "../db/schema/assignOverrides";
+} from "../../db/schema/assignOverrides";
 
 export const createAssignOverride = async (
   assignOverride: NewAssignOverrideParams,

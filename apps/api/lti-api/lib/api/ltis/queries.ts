@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { LtiId } from "../db/schema/ltis";
-import { db } from "../db/index";
-import { ltiIdSchema, ltis } from "../db/schema/ltis";
+import type { LtiId } from "../../db/schema/ltis";
+import { db } from "../../db/index";
+import { ltiIdSchema, ltis } from "../../db/schema/ltis";
 
 export const getLtis = async () => {
   const rows = await db.select().from(ltis);

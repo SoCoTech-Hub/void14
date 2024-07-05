@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { ConfigId } from "../db/schema/configs";
-import { db } from "../db/index";
-import { configIdSchema, configs } from "../db/schema/configs";
+import type { ConfigId } from "../../db/schema/configs";
+import { db } from "../../db/index";
+import { configIdSchema, configs } from "../../db/schema/configs";
 
 export const getConfigs = async () => {
   const rows = await db.select().from(configs);

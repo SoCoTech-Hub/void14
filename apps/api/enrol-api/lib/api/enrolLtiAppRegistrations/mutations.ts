@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   EnrolLtiAppRegistrationId,
   enrolLtiAppRegistrationIdSchema,
@@ -9,7 +9,7 @@ import {
   NewEnrolLtiAppRegistrationParams,
   UpdateEnrolLtiAppRegistrationParams,
   updateEnrolLtiAppRegistrationSchema,
-} from "../db/schema/enrolLtiAppRegistrations";
+} from "../../db/schema/enrolLtiAppRegistrations";
 
 export const createEnrolLtiAppRegistration = async (
   enrolLtiAppRegistration: NewEnrolLtiAppRegistrationParams,

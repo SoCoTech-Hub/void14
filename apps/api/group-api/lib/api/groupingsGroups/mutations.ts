@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   GroupingsGroupId,
   groupingsGroupIdSchema,
@@ -9,7 +9,7 @@ import {
   NewGroupingsGroupParams,
   UpdateGroupingsGroupParams,
   updateGroupingsGroupSchema,
-} from "../db/schema/groupingsGroups";
+} from "../../db/schema/groupingsGroups";
 
 export const createGroupingsGroup = async (
   groupingsGroup: NewGroupingsGroupParams,

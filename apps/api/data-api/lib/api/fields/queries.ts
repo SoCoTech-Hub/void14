@@ -1,9 +1,9 @@
 import { eq } from "drizzle-orm";
 
-import type { FieldId } from "../db/schema/fields";
-import { db } from "../db/index";
-import { datas } from "../db/schema/datas";
-import { fieldIdSchema, fields } from "../db/schema/fields";
+import type { FieldId } from "../../db/schema/fields";
+import { db } from "../../db/index";
+import { datas } from "../../db/schema/datas";
+import { fieldIdSchema, fields } from "../../db/schema/fields";
 
 export const getFields = async () => {
   const rows = await db

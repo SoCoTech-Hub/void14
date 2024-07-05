@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertLocalizationLanguageSchema,
   LocalizationLanguageId,
@@ -9,7 +9,7 @@ import {
   NewLocalizationLanguageParams,
   UpdateLocalizationLanguageParams,
   updateLocalizationLanguageSchema,
-} from "../db/schema/localizationLanguages";
+} from "../../db/schema/localizationLanguages";
 
 export const createLocalizationLanguage = async (
   localizationLanguage: NewLocalizationLanguageParams,

@@ -2,13 +2,13 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { ForumTrackPrefId } from "../db/schema/forumTrackPrefs";
-import { db } from "../db/index";
-import { forums } from "../db/schema/forums";
+import type { ForumTrackPrefId } from "../../db/schema/forumTrackPrefs";
+import { db } from "../../db/index";
+import { forums } from "../../db/schema/forums";
 import {
   forumTrackPrefIdSchema,
   forumTrackPrefs,
-} from "../db/schema/forumTrackPrefs";
+} from "../../db/schema/forumTrackPrefs";
 
 export const getForumTrackPrefs = async () => {
   const { session } = await getUserAuth();

@@ -2,13 +2,13 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { MnetServiceEnrolEnrolmentId } from "../db/schema/mnetServiceEnrolEnrolments";
-import { db } from "../db/index";
-import { mnetHosts } from "../db/schema/mnetHosts";
+import type { MnetServiceEnrolEnrolmentId } from "../../db/schema/mnetServiceEnrolEnrolments";
+import { db } from "../../db/index";
+import { mnetHosts } from "../../db/schema/mnetHosts";
 import {
   mnetServiceEnrolEnrolmentIdSchema,
   mnetServiceEnrolEnrolments,
-} from "../db/schema/mnetServiceEnrolEnrolments";
+} from "../../db/schema/mnetServiceEnrolEnrolments";
 
 export const getMnetServiceEnrolEnrolments = async () => {
   const { session } = await getUserAuth();

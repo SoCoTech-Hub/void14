@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { EnrolLtiLti2ShareKeyId } from "../db/schema/enrolLtiLti2ShareKeys";
-import { db } from "../db/index";
+import type { EnrolLtiLti2ShareKeyId } from "../../db/schema/enrolLtiLti2ShareKeys";
+import { db } from "../../db/index";
 import {
   enrolLtiLti2ShareKeyIdSchema,
   enrolLtiLti2ShareKeys,
-} from "../db/schema/enrolLtiLti2ShareKeys";
+} from "../../db/schema/enrolLtiLti2ShareKeys";
 
 export const getEnrolLtiLti2ShareKeys = async () => {
   const rows = await db.select().from(enrolLtiLti2ShareKeys);

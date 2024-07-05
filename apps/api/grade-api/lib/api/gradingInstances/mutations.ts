@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   GradingInstanceId,
   gradingInstanceIdSchema,
@@ -9,7 +9,7 @@ import {
   NewGradingInstanceParams,
   UpdateGradingInstanceParams,
   updateGradingInstanceSchema,
-} from "../db/schema/gradingInstances";
+} from "../../db/schema/gradingInstances";
 
 export const createGradingInstance = async (
   gradingInstance: NewGradingInstanceParams,

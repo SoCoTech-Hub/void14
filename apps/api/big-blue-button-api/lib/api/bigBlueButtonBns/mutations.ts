@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   BigBlueButtonBnId,
   bigBlueButtonBnIdSchema,
@@ -9,7 +9,7 @@ import {
   NewBigBlueButtonBnParams,
   UpdateBigBlueButtonBnParams,
   updateBigBlueButtonBnSchema,
-} from "../db/schema/bigBlueButtonBns";
+} from "../../db/schema/bigBlueButtonBns";
 
 export const createBigBlueButtonBn = async (
   bigBlueButtonBn: NewBigBlueButtonBnParams,

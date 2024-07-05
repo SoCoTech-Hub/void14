@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { ChoiceOptionId } from "../db/schema/choiceOptions";
-import { db } from "../db/index";
+import type { ChoiceOptionId } from "../../db/schema/choiceOptions";
+import { db } from "../../db/index";
 import {
   choiceOptionIdSchema,
   choiceOptions,
-} from "../db/schema/choiceOptions";
-import { choices } from "../db/schema/choices";
+} from "../../db/schema/choiceOptions";
+import { choices } from "../../db/schema/choices";
 
 export const getChoiceOptions = async () => {
   const rows = await db

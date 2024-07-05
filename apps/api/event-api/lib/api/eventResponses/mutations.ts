@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   EventResponseId,
   eventResponseIdSchema,
@@ -11,7 +11,7 @@ import {
   NewEventResponseParams,
   UpdateEventResponseParams,
   updateEventResponseSchema,
-} from "../db/schema/eventResponses";
+} from "../../db/schema/eventResponses";
 
 export const createEventResponse = async (
   eventResponse: NewEventResponseParams,

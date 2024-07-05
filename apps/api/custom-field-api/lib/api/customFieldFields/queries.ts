@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { CustomFieldFieldId } from "../db/schema/customFieldFields";
-import { db } from "../db/index";
-import { customFieldCategories } from "../db/schema/customFieldCategories";
+import type { CustomFieldFieldId } from "../../db/schema/customFieldFields";
+import { db } from "../../db/index";
+import { customFieldCategories } from "../../db/schema/customFieldCategories";
 import {
   customFieldFieldIdSchema,
   customFieldFields,
-} from "../db/schema/customFieldFields";
+} from "../../db/schema/customFieldFields";
 
 export const getCustomFieldFields = async () => {
   const rows = await db

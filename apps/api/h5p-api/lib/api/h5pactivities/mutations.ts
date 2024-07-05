@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   h5pactivities,
   H5pactivityId,
@@ -9,7 +9,7 @@ import {
   NewH5pactivityParams,
   UpdateH5pactivityParams,
   updateH5pactivitySchema,
-} from "../db/schema/h5pactivities";
+} from "../../db/schema/h5pactivities";
 
 export const createH5pactivity = async (h5pactivity: NewH5pactivityParams) => {
   const newH5pactivity = insertH5pactivitySchema.parse(h5pactivity);

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   ForumId,
   forumIdSchema,
@@ -9,7 +9,7 @@ import {
   NewForumParams,
   UpdateForumParams,
   updateForumSchema,
-} from "../db/schema/forums";
+} from "../../db/schema/forums";
 
 export const createForum = async (forum: NewForumParams) => {
   const newForum = insertForumSchema.parse(forum);

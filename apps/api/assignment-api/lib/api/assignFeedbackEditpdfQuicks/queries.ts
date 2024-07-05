@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { AssignFeedbackEditpdfQuickId } from "../db/schema/assignFeedbackEditpdfQuicks";
-import { db } from "../db/index";
+import type { AssignFeedbackEditpdfQuickId } from "../../db/schema/assignFeedbackEditpdfQuicks";
+import { db } from "../../db/index";
 import {
   assignFeedbackEditpdfQuickIdSchema,
   assignFeedbackEditpdfQuicks,
-} from "../db/schema/assignFeedbackEditpdfQuicks";
+} from "../../db/schema/assignFeedbackEditpdfQuicks";
 
 export const getAssignFeedbackEditpdfQuicks = async () => {
   const { session } = await getUserAuth();

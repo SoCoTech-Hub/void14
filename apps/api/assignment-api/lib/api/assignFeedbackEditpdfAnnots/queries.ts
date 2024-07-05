@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { AssignFeedbackEditpdfAnnotId } from "../db/schema/assignFeedbackEditpdfAnnots";
-import { db } from "../db/index";
+import type { AssignFeedbackEditpdfAnnotId } from "../../db/schema/assignFeedbackEditpdfAnnots";
+import { db } from "../../db/index";
 import {
   assignFeedbackEditpdfAnnotIdSchema,
   assignFeedbackEditpdfAnnots,
-} from "../db/schema/assignFeedbackEditpdfAnnots";
+} from "../../db/schema/assignFeedbackEditpdfAnnots";
 
 export const getAssignFeedbackEditpdfAnnots = async () => {
   const rows = await db.select().from(assignFeedbackEditpdfAnnots);

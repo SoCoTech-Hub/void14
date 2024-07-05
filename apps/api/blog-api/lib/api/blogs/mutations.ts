@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   BlogId,
   blogIdSchema,
@@ -9,7 +9,7 @@ import {
   NewBlogParams,
   UpdateBlogParams,
   updateBlogSchema,
-} from "../db/schema/blogs";
+} from "../../db/schema/blogs";
 
 export const createBlog = async (blog: NewBlogParams) => {
   const newBlog = insertBlogSchema.parse(blog);

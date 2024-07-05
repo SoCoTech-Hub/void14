@@ -2,9 +2,9 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { ConfigLogId } from "../db/schema/configLogs";
-import { db } from "../db/index";
-import { configLogIdSchema, configLogs } from "../db/schema/configLogs";
+import type { ConfigLogId } from "../../db/schema/configLogs";
+import { db } from "../../db/index";
+import { configLogIdSchema, configLogs } from "../../db/schema/configLogs";
 
 export const getConfigLogs = async () => {
   const { session } = await getUserAuth();

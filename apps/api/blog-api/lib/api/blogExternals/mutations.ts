@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   BlogExternalId,
   blogExternalIdSchema,
@@ -11,7 +11,7 @@ import {
   NewBlogExternalParams,
   UpdateBlogExternalParams,
   updateBlogExternalSchema,
-} from "../db/schema/blogExternals";
+} from "../../db/schema/blogExternals";
 
 export const createBlogExternal = async (
   blogExternal: NewBlogExternalParams,

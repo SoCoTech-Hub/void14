@@ -1,13 +1,13 @@
 import { eq } from "drizzle-orm";
 
-import type { LessonAnswerId } from "../db/schema/lessonAnswers";
-import { db } from "../db/index";
+import type { LessonAnswerId } from "../../db/schema/lessonAnswers";
+import { db } from "../../db/index";
 import {
   lessonAnswerIdSchema,
   lessonAnswers,
-} from "../db/schema/lessonAnswers";
-import { lessonPages } from "../db/schema/lessonPages";
-import { lessons } from "../db/schema/lessons";
+} from "../../db/schema/lessonAnswers";
+import { lessonPages } from "../../db/schema/lessonPages";
+import { lessons } from "../../db/schema/lessons";
 
 export const getLessonAnswers = async () => {
   const rows = await db

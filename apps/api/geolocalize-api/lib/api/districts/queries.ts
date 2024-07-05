@@ -1,9 +1,9 @@
 import { eq } from "drizzle-orm";
 
-import type { DistrictId } from "../db/schema/districts";
-import { db } from "../db/index";
-import { districtIdSchema, districts } from "../db/schema/districts";
-import { provinces } from "../db/schema/provinces";
+import type { DistrictId } from "../../db/schema/districts";
+import { db } from "../../db/index";
+import { districtIdSchema, districts } from "../../db/schema/districts";
+import { provinces } from "../../db/schema/provinces";
 
 export const getDistricts = async () => {
   const rows = await db

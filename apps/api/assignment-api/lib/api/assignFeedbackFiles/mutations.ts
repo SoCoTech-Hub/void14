@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   AssignFeedbackFileId,
   assignFeedbackFileIdSchema,
@@ -9,7 +9,7 @@ import {
   NewAssignFeedbackFileParams,
   UpdateAssignFeedbackFileParams,
   updateAssignFeedbackFileSchema,
-} from "../db/schema/assignFeedbackFiles";
+} from "../../db/schema/assignFeedbackFiles";
 
 export const createAssignFeedbackFile = async (
   assignFeedbackFile: NewAssignFeedbackFileParams,

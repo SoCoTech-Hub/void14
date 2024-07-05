@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   BadgeCriteriaParamId,
   badgeCriteriaParamIdSchema,
@@ -9,7 +9,7 @@ import {
   NewBadgeCriteriaParamParams,
   UpdateBadgeCriteriaParamParams,
   updateBadgeCriteriaParamSchema,
-} from "../db/schema/badgeCriteriaParams";
+} from "../../db/schema/badgeCriteriaParams";
 
 export const createBadgeCriteriaParam = async (
   badgeCriteriaParam: NewBadgeCriteriaParamParams,

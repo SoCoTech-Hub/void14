@@ -2,9 +2,9 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { MyPageId } from "../db/schema/myPages";
-import { db } from "../db/index";
-import { myPageIdSchema, myPages } from "../db/schema/myPages";
+import type { MyPageId } from "../../db/schema/myPages";
+import { db } from "../../db/index";
+import { myPageIdSchema, myPages } from "../../db/schema/myPages";
 
 export const getMyPages = async () => {
   const { session } = await getUserAuth();

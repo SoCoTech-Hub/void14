@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   EnrolLtiToolConsumerMapId,
   enrolLtiToolConsumerMapIdSchema,
@@ -9,7 +9,7 @@ import {
   NewEnrolLtiToolConsumerMapParams,
   UpdateEnrolLtiToolConsumerMapParams,
   updateEnrolLtiToolConsumerMapSchema,
-} from "../db/schema/enrolLtiToolConsumerMaps";
+} from "../../db/schema/enrolLtiToolConsumerMaps";
 
 export const createEnrolLtiToolConsumerMap = async (
   enrolLtiToolConsumerMap: NewEnrolLtiToolConsumerMapParams,

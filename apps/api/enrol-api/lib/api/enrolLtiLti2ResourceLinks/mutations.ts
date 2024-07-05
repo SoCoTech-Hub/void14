@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   EnrolLtiLti2ResourceLinkId,
   enrolLtiLti2ResourceLinkIdSchema,
@@ -9,7 +9,7 @@ import {
   NewEnrolLtiLti2ResourceLinkParams,
   UpdateEnrolLtiLti2ResourceLinkParams,
   updateEnrolLtiLti2ResourceLinkSchema,
-} from "../db/schema/enrolLtiLti2ResourceLinks";
+} from "../../db/schema/enrolLtiLti2ResourceLinks";
 
 export const createEnrolLtiLti2ResourceLink = async (
   enrolLtiLti2ResourceLink: NewEnrolLtiLti2ResourceLinkParams,

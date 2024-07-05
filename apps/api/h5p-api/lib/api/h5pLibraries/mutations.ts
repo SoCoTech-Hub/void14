@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   h5pLibraries,
   H5pLibraryId,
@@ -9,7 +9,7 @@ import {
   NewH5pLibraryParams,
   UpdateH5pLibraryParams,
   updateH5pLibrarySchema,
-} from "../db/schema/h5pLibraries";
+} from "../../db/schema/h5pLibraries";
 
 export const createH5pLibrary = async (h5pLibrary: NewH5pLibraryParams) => {
   const newH5pLibrary = insertH5pLibrarySchema.parse(h5pLibrary);

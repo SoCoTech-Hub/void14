@@ -2,13 +2,13 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { Oauth2RefreshTokenId } from "../db/schema/oauth2RefreshTokens";
-import { db } from "../db/index";
-import { oauth2issuers } from "../db/schema/oauth2Issuers";
+import type { Oauth2RefreshTokenId } from "../../db/schema/oauth2RefreshTokens";
+import { db } from "../../db/index";
+import { oauth2issuers } from "../../db/schema/oauth2Issuers";
 import {
   oauth2RefreshTokenIdSchema,
   oauth2RefreshTokens,
-} from "../db/schema/oauth2RefreshTokens";
+} from "../../db/schema/oauth2RefreshTokens";
 
 export const getOauth2RefreshTokens = async () => {
   const { session } = await getUserAuth();

@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { ContextId } from "../db/schema/contexts";
-import { db } from "../db/index";
-import { contextIdSchema, contexts } from "../db/schema/contexts";
+import type { ContextId } from "../../db/schema/contexts";
+import { db } from "../../db/index";
+import { contextIdSchema, contexts } from "../../db/schema/contexts";
 
 export const getContexts = async () => {
   const rows = await db.select().from(contexts);

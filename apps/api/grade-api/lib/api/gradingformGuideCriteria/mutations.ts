@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   gradingformGuideCriteria,
   GradingformGuideCriterionId,
@@ -9,7 +9,7 @@ import {
   NewGradingformGuideCriterionParams,
   UpdateGradingformGuideCriterionParams,
   updateGradingformGuideCriterionSchema,
-} from "../db/schema/gradingformGuideCriteria";
+} from "../../db/schema/gradingformGuideCriteria";
 
 export const createGradingformGuideCriterion = async (
   gradingformGuideCriterion: NewGradingformGuideCriterionParams,

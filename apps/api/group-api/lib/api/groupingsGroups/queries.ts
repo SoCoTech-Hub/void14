@@ -1,13 +1,13 @@
 import { eq } from "drizzle-orm";
 
-import type { GroupingsGroupId } from "../db/schema/groupingsGroups";
-import { db } from "../db/index";
-import { groupings } from "../db/schema/groupings";
+import type { GroupingsGroupId } from "../../db/schema/groupingsGroups";
+import { db } from "../../db/index";
+import { groupings } from "../../db/schema/groupings";
 import {
   groupingsGroupIdSchema,
   groupingsGroups,
-} from "../db/schema/groupingsGroups";
-import { groups } from "../db/schema/groups";
+} from "../../db/schema/groupingsGroups";
+import { groups } from "../../db/schema/groups";
 
 export const getGroupingsGroups = async () => {
   const rows = await db

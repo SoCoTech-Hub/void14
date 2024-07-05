@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   AffiliatesDetailId,
   affiliatesDetailIdSchema,
@@ -9,7 +9,7 @@ import {
   NewAffiliatesDetailParams,
   UpdateAffiliatesDetailParams,
   updateAffiliatesDetailSchema,
-} from "../db/schema/affiliatesDetails";
+} from "../../db/schema/affiliatesDetails";
 
 export const createAffiliatesDetail = async (
   affiliatesDetail: NewAffiliatesDetailParams,

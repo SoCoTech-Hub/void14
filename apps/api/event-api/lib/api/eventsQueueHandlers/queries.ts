@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { EventsQueueHandlerId } from "../db/schema/eventsQueueHandlers";
-import { db } from "../db/index";
+import type { EventsQueueHandlerId } from "../../db/schema/eventsQueueHandlers";
+import { db } from "../../db/index";
 import {
   eventsQueueHandlerIdSchema,
   eventsQueueHandlers,
-} from "../db/schema/eventsQueueHandlers";
+} from "../../db/schema/eventsQueueHandlers";
 
 export const getEventsQueueHandlers = async () => {
   const rows = await db.select().from(eventsQueueHandlers);

@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { H5pId } from "../db/schema/h5ps";
-import { db } from "../db/index";
-import { h5pIdSchema, h5ps } from "../db/schema/h5ps";
+import type { H5pId } from "../../db/schema/h5ps";
+import { db } from "../../db/index";
+import { h5pIdSchema, h5ps } from "../../db/schema/h5ps";
 
 export const getH5ps = async () => {
   const rows = await db.select().from(h5ps);

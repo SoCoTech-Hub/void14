@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { MnetApplicationId } from "../db/schema/mnetApplications";
-import { db } from "../db/index";
+import type { MnetApplicationId } from "../../db/schema/mnetApplications";
+import { db } from "../../db/index";
 import {
   mnetApplicationIdSchema,
   mnetApplications,
-} from "../db/schema/mnetApplications";
+} from "../../db/schema/mnetApplications";
 
 export const getMnetApplications = async () => {
   const rows = await db.select().from(mnetApplications);

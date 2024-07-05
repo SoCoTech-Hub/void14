@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   faqCategories,
   FaqCategoryId,
@@ -9,7 +9,7 @@ import {
   NewFaqCategoryParams,
   UpdateFaqCategoryParams,
   updateFaqCategorySchema,
-} from "../db/schema/faqCategories";
+} from "../../db/schema/faqCategories";
 
 export const createFaqCategory = async (faqCategory: NewFaqCategoryParams) => {
   const newFaqCategory = insertFaqCategorySchema.parse(faqCategory);

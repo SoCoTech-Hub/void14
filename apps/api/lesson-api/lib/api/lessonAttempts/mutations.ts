@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertLessonAttemptSchema,
   LessonAttemptId,
@@ -11,7 +11,7 @@ import {
   NewLessonAttemptParams,
   UpdateLessonAttemptParams,
   updateLessonAttemptSchema,
-} from "../db/schema/lessonAttempts";
+} from "../../db/schema/lessonAttempts";
 
 export const createLessonAttempt = async (
   lessonAttempt: NewLessonAttemptParams,

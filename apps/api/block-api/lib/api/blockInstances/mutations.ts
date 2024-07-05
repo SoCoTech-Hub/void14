@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   BlockInstanceId,
   blockInstanceIdSchema,
@@ -9,7 +9,7 @@ import {
   NewBlockInstanceParams,
   UpdateBlockInstanceParams,
   updateBlockInstanceSchema,
-} from "../db/schema/blockInstances";
+} from "../../db/schema/blockInstances";
 
 export const createBlockInstance = async (
   blockInstance: NewBlockInstanceParams,

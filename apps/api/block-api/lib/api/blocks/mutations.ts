@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   BlockId,
   blockIdSchema,
@@ -9,7 +9,7 @@ import {
   NewBlockParams,
   UpdateBlockParams,
   updateBlockSchema,
-} from "../db/schema/blocks";
+} from "../../db/schema/blocks";
 
 export const createBlock = async (block: NewBlockParams) => {
   const newBlock = insertBlockSchema.parse(block);

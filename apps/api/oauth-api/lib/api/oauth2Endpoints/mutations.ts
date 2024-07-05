@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertOauth2EndpointSchema,
   NewOauth2EndpointParams,
@@ -11,7 +11,7 @@ import {
   oauth2Endpoints,
   UpdateOauth2EndpointParams,
   updateOauth2EndpointSchema,
-} from "../db/schema/oauth2Endpoints";
+} from "../../db/schema/oauth2Endpoints";
 
 export const createOauth2Endpoint = async (
   oauth2Endpoint: NewOauth2EndpointParams,

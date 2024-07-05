@@ -2,9 +2,9 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { NoteId } from "../db/schema/notes";
-import { db } from "../db/index";
-import { noteIdSchema, notes } from "../db/schema/notes";
+import type { NoteId } from "../../db/schema/notes";
+import { db } from "../../db/index";
+import { noteIdSchema, notes } from "../../db/schema/notes";
 
 export const getNotes = async () => {
   const { session } = await getUserAuth();

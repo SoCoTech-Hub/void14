@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   EditorAttoAutosaveId,
   editorAttoAutosaveIdSchema,
@@ -11,7 +11,7 @@ import {
   NewEditorAttoAutosaveParams,
   UpdateEditorAttoAutosaveParams,
   updateEditorAttoAutosaveSchema,
-} from "../db/schema/editorAttoAutosaves";
+} from "../../db/schema/editorAttoAutosaves";
 
 export const createEditorAttoAutosave = async (
   editorAttoAutosave: NewEditorAttoAutosaveParams,

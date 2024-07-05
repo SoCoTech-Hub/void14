@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   EnrolId,
   enrolIdSchema,
@@ -9,7 +9,7 @@ import {
   NewEnrolParams,
   UpdateEnrolParams,
   updateEnrolSchema,
-} from "../db/schema/enrols";
+} from "../../db/schema/enrols";
 
 export const createEnrol = async (enrol: NewEnrolParams) => {
   const newEnrol = insertEnrolSchema.parse(enrol);

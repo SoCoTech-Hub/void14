@@ -1,13 +1,13 @@
 import { eq } from "drizzle-orm";
 
-import type { LocalizationTranslationId } from "../db/schema/localizationTranslations";
-import { db } from "../db/index";
-import { localizationFields } from "../db/schema/localizationFields";
-import { localizationLanguages } from "../db/schema/localizationLanguages";
+import type { LocalizationTranslationId } from "../../db/schema/localizationTranslations";
+import { db } from "../../db/index";
+import { localizationFields } from "../../db/schema/localizationFields";
+import { localizationLanguages } from "../../db/schema/localizationLanguages";
 import {
   localizationTranslationIdSchema,
   localizationTranslations,
-} from "../db/schema/localizationTranslations";
+} from "../../db/schema/localizationTranslations";
 
 export const getLocalizationTranslations = async () => {
   const rows = await db

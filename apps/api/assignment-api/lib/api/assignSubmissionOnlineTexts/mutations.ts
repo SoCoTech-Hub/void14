@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   AssignSubmissionOnlineTextId,
   assignSubmissionOnlineTextIdSchema,
@@ -9,7 +9,7 @@ import {
   NewAssignSubmissionOnlineTextParams,
   UpdateAssignSubmissionOnlineTextParams,
   updateAssignSubmissionOnlineTextSchema,
-} from "../db/schema/assignSubmissionOnlineTexts";
+} from "../../db/schema/assignSubmissionOnlineTexts";
 
 export const createAssignSubmissionOnlineText = async (
   assignSubmissionOnlineText: NewAssignSubmissionOnlineTextParams,

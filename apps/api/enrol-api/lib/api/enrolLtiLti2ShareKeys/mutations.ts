@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   EnrolLtiLti2ShareKeyId,
   enrolLtiLti2ShareKeyIdSchema,
@@ -9,7 +9,7 @@ import {
   NewEnrolLtiLti2ShareKeyParams,
   UpdateEnrolLtiLti2ShareKeyParams,
   updateEnrolLtiLti2ShareKeySchema,
-} from "../db/schema/enrolLtiLti2ShareKeys";
+} from "../../db/schema/enrolLtiLti2ShareKeys";
 
 export const createEnrolLtiLti2ShareKey = async (
   enrolLtiLti2ShareKey: NewEnrolLtiLti2ShareKeyParams,

@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { MessageAirnotifierDeviceId } from "../db/schema/messageAirnotifierDevices";
-import { db } from "../db/index";
+import type { MessageAirnotifierDeviceId } from "../../db/schema/messageAirnotifierDevices";
+import { db } from "../../db/index";
 import {
   messageAirnotifierDeviceIdSchema,
   messageAirnotifierDevices,
-} from "../db/schema/messageAirnotifierDevices";
+} from "../../db/schema/messageAirnotifierDevices";
 
 export const getMessageAirnotifierDevices = async () => {
   const rows = await db.select().from(messageAirnotifierDevices);

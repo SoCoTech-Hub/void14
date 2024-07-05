@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   AssignFeedbackEditpdfQueueId,
   assignFeedbackEditpdfQueueIdSchema,
@@ -9,7 +9,7 @@ import {
   NewAssignFeedbackEditpdfQueueParams,
   UpdateAssignFeedbackEditpdfQueueParams,
   updateAssignFeedbackEditpdfQueueSchema,
-} from "../db/schema/assignFeedbackEditpdfQueues";
+} from "../../db/schema/assignFeedbackEditpdfQueues";
 
 export const createAssignFeedbackEditpdfQueue = async (
   assignFeedbackEditpdfQueue: NewAssignFeedbackEditpdfQueueParams,
