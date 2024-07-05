@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { StatsDailyId } from "../db/schema/statsDailies";
-import { db } from "../db/index";
-import { statsDailies, statsDailyIdSchema } from "../db/schema/statsDailies";
+import type { StatsDailyId } from "../../db/schema/statsDailies";
+import { db } from "../../db/index";
+import { statsDailies, statsDailyIdSchema } from "../../db/schema/statsDailies";
 
 export const getStatsDailies = async () => {
   const rows = await db.select().from(statsDailies);

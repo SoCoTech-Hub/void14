@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { QtypeMatchSubquestionId } from "../db/schema/qtypeMatchSubquestions";
-import { db } from "../db/index";
+import type { QtypeMatchSubquestionId } from "../../db/schema/qtypeMatchSubquestions";
+import { db } from "../../db/index";
 import {
   qtypeMatchSubquestionIdSchema,
   qtypeMatchSubquestions,
-} from "../db/schema/qtypeMatchSubquestions";
+} from "../../db/schema/qtypeMatchSubquestions";
 
 export const getQtypeMatchSubquestions = async () => {
   const rows = await db.select().from(qtypeMatchSubquestions);

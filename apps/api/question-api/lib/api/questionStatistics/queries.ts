@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { QuestionStatisticId } from "../db/schema/questionStatistics";
-import { db } from "../db/index";
-import { questions } from "../db/schema/questions";
+import type { QuestionStatisticId } from "../../db/schema/questionStatistics";
+import { db } from "../../db/index";
+import { questions } from "../../db/schema/questions";
 import {
   questionStatisticIdSchema,
   questionStatistics,
-} from "../db/schema/questionStatistics";
+} from "../../db/schema/questionStatistics";
 
 export const getQuestionStatistics = async () => {
   const rows = await db

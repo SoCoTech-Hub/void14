@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQuizOverviewRegradeSchema,
   NewQuizOverviewRegradeParams,
@@ -9,7 +9,7 @@ import {
   quizOverviewRegrades,
   UpdateQuizOverviewRegradeParams,
   updateQuizOverviewRegradeSchema,
-} from "../db/schema/quizOverviewRegrades";
+} from "../../db/schema/quizOverviewRegrades";
 
 export const createQuizOverviewRegrade = async (
   quizOverviewRegrade: NewQuizOverviewRegradeParams,

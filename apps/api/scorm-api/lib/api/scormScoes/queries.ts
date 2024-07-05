@@ -1,9 +1,9 @@
 import { eq } from "drizzle-orm";
 
-import type { ScormScoeId } from "../db/schema/scormScoes";
-import { db } from "../db/index";
-import { scorms } from "../db/schema/scorms";
-import { scormScoeIdSchema, scormScoes } from "../db/schema/scormScoes";
+import type { ScormScoeId } from "../../db/schema/scormScoes";
+import { db } from "../../db/index";
+import { scorms } from "../../db/schema/scorms";
+import { scormScoeIdSchema, scormScoes } from "../../db/schema/scormScoes";
 
 export const getScormScoes = async () => {
   const rows = await db

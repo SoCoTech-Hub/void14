@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertTaskScheduleSchema,
   NewTaskScheduleParams,
@@ -9,7 +9,7 @@ import {
   taskSchedules,
   UpdateTaskScheduleParams,
   updateTaskScheduleSchema,
-} from "../db/schema/taskSchedules";
+} from "../../db/schema/taskSchedules";
 
 export const createTaskSchedule = async (
   taskSchedule: NewTaskScheduleParams,

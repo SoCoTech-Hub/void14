@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertStatsUserMonthlySchema,
   NewStatsUserMonthlyParams,
@@ -11,7 +11,7 @@ import {
   statsUserMonthlyIdSchema,
   UpdateStatsUserMonthlyParams,
   updateStatsUserMonthlySchema,
-} from "../db/schema/statsUserMonthlies";
+} from "../../db/schema/statsUserMonthlies";
 
 export const createStatsUserMonthly = async (
   statsUserMonthly: NewStatsUserMonthlyParams,

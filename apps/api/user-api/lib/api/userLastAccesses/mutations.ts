@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertUserLastAccessSchema,
   NewUserLastAccessParams,
@@ -11,7 +11,7 @@ import {
   userLastAccesses,
   UserLastAccessId,
   userLastAccessIdSchema,
-} from "../db/schema/userLastAccesses";
+} from "../../db/schema/userLastAccesses";
 
 export const createUserLastAccess = async (
   userLastAccess: NewUserLastAccessParams,

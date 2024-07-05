@@ -2,9 +2,9 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { PostId } from "../db/schema/posts";
-import { db } from "../db/index";
-import { postIdSchema, posts } from "../db/schema/posts";
+import type { PostId } from "../../db/schema/posts";
+import { db } from "../../db/index";
+import { postIdSchema, posts } from "../../db/schema/posts";
 
 export const getPosts = async () => {
   const { session } = await getUserAuth();

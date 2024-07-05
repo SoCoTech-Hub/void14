@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { TagCorrelationId } from "../db/schema/tagCorrelations";
-import { db } from "../db/index";
+import type { TagCorrelationId } from "../../db/schema/tagCorrelations";
+import { db } from "../../db/index";
 import {
   tagCorrelationIdSchema,
   tagCorrelations,
-} from "../db/schema/tagCorrelations";
-import { tags } from "../db/schema/tags";
+} from "../../db/schema/tagCorrelations";
+import { tags } from "../../db/schema/tags";
 
 export const getTagCorrelations = async () => {
   const rows = await db

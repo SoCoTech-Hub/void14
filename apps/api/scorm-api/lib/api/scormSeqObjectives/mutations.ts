@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertScormSeqObjectiveSchema,
   NewScormSeqObjectiveParams,
@@ -9,7 +9,7 @@ import {
   scormSeqObjectives,
   UpdateScormSeqObjectiveParams,
   updateScormSeqObjectiveSchema,
-} from "../db/schema/scormSeqObjectives";
+} from "../../db/schema/scormSeqObjectives";
 
 export const createScormSeqObjective = async (
   scormSeqObjective: NewScormSeqObjectiveParams,

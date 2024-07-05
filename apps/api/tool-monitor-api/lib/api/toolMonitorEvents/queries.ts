@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { ToolMonitorEventId } from "../db/schema/toolMonitorEvents";
-import { db } from "../db/index";
+import type { ToolMonitorEventId } from "../../db/schema/toolMonitorEvents";
+import { db } from "../../db/index";
 import {
   toolMonitorEventIdSchema,
   toolMonitorEvents,
-} from "../db/schema/toolMonitorEvents";
+} from "../../db/schema/toolMonitorEvents";
 
 export const getToolMonitorEvents = async () => {
   const rows = await db.select().from(toolMonitorEvents);

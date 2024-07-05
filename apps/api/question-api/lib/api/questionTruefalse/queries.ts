@@ -1,13 +1,13 @@
 import { eq } from "drizzle-orm";
 
-import type { QuestionTruefalseId } from "../db/schema/questionTruefalse";
-import { db } from "../db/index";
-import { questionAnswers } from "../db/schema/questionAnswers";
-import { questions } from "../db/schema/questions";
+import type { QuestionTruefalseId } from "../../db/schema/questionTruefalse";
+import { db } from "../../db/index";
+import { questionAnswers } from "../../db/schema/questionAnswers";
+import { questions } from "../../db/schema/questions";
 import {
   questionTruefalse,
   questionTruefalseIdSchema,
-} from "../db/schema/questionTruefalse";
+} from "../../db/schema/questionTruefalse";
 
 export const getQuestionTruefalses = async () => {
   const rows = await db

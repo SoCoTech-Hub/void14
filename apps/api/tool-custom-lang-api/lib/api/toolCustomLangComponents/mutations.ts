@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertToolCustomLangComponentSchema,
   NewToolCustomLangComponentParams,
@@ -9,7 +9,7 @@ import {
   toolCustomLangComponents,
   UpdateToolCustomLangComponentParams,
   updateToolCustomLangComponentSchema,
-} from "../db/schema/toolCustomLangComponents";
+} from "../../db/schema/toolCustomLangComponents";
 
 export const createToolCustomLangComponent = async (
   toolCustomLangComponent: NewToolCustomLangComponentParams,

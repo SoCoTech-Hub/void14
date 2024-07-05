@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertWorkshopEvalBestSettingSchema,
   NewWorkshopEvalBestSettingParams,
@@ -9,7 +9,7 @@ import {
   WorkshopEvalBestSettingId,
   workshopEvalBestSettingIdSchema,
   workshopEvalBestSettings,
-} from "../db/schema/workshopEvalBestSettings";
+} from "../../db/schema/workshopEvalBestSettings";
 
 export const createWorkshopEvalBestSetting = async (
   workshopEvalBestSetting: NewWorkshopEvalBestSettingParams,

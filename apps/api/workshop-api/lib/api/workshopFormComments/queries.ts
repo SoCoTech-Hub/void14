@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { WorkshopFormCommentId } from "../db/schema/workshopFormComments";
-import { db } from "../db/index";
+import type { WorkshopFormCommentId } from "../../db/schema/workshopFormComments";
+import { db } from "../../db/index";
 import {
   workshopFormCommentIdSchema,
   workshopFormComments,
-} from "../db/schema/workshopFormComments";
-import { workshops } from "../db/schema/workshops";
+} from "../../db/schema/workshopFormComments";
+import { workshops } from "../../db/schema/workshops";
 
 export const getWorkshopFormComments = async () => {
   const rows = await db

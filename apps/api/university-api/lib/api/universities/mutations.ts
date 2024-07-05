@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertUniversitySchema,
   NewUniversityParams,
@@ -9,7 +9,7 @@ import {
   universityIdSchema,
   UpdateUniversityParams,
   updateUniversitySchema,
-} from "../db/schema/universities";
+} from "../../db/schema/universities";
 
 export const createUniversity = async (university: NewUniversityParams) => {
   const newUniversity = insertUniversitySchema.parse(university);

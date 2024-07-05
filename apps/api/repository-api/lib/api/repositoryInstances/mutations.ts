@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertRepositoryInstanceSchema,
   NewRepositoryInstanceParams,
@@ -11,7 +11,7 @@ import {
   repositoryInstances,
   UpdateRepositoryInstanceParams,
   updateRepositoryInstanceSchema,
-} from "../db/schema/repositoryInstances";
+} from "../../db/schema/repositoryInstances";
 
 export const createRepositoryInstance = async (
   repositoryInstance: NewRepositoryInstanceParams,

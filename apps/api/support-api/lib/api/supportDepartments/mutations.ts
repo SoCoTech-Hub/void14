@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertSupportDepartmentSchema,
   NewSupportDepartmentParams,
@@ -11,7 +11,7 @@ import {
   supportDepartments,
   UpdateSupportDepartmentParams,
   updateSupportDepartmentSchema,
-} from "../db/schema/supportDepartments";
+} from "../../db/schema/supportDepartments";
 
 export const createSupportDepartment = async (
   supportDepartment: NewSupportDepartmentParams,

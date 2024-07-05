@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertTagCollSchema,
   NewTagCollParams,
@@ -9,7 +9,7 @@ import {
   tagColls,
   UpdateTagCollParams,
   updateTagCollSchema,
-} from "../db/schema/tagColls";
+} from "../../db/schema/tagColls";
 
 export const createTagColl = async (tagColl: NewTagCollParams) => {
   const newTagColl = insertTagCollSchema.parse(tagColl);

@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertScormAiccSessionSchema,
   NewScormAiccSessionParams,
@@ -11,7 +11,7 @@ import {
   scormAiccSessions,
   UpdateScormAiccSessionParams,
   updateScormAiccSessionSchema,
-} from "../db/schema/scormAiccSessions";
+} from "../../db/schema/scormAiccSessions";
 
 export const createScormAiccSession = async (
   scormAiccSession: NewScormAiccSessionParams,

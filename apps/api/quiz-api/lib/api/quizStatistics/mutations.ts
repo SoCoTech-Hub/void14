@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQuizStatisticSchema,
   NewQuizStatisticParams,
@@ -9,7 +9,7 @@ import {
   quizStatistics,
   UpdateQuizStatisticParams,
   updateQuizStatisticSchema,
-} from "../db/schema/quizStatistics";
+} from "../../db/schema/quizStatistics";
 
 export const createQuizStatistic = async (
   quizStatistic: NewQuizStatisticParams,

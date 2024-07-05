@@ -2,9 +2,9 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { RatingId } from "../db/schema/ratings";
-import { db } from "../db/index";
-import { ratingIdSchema, ratings } from "../db/schema/ratings";
+import type { RatingId } from "../../db/schema/ratings";
+import { db } from "../../db/index";
+import { ratingIdSchema, ratings } from "../../db/schema/ratings";
 
 export const getRatings = async () => {
   const { session } = await getUserAuth();

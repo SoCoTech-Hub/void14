@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertRegistrationHubSchema,
   NewRegistrationHubParams,
@@ -9,7 +9,7 @@ import {
   registrationHubs,
   UpdateRegistrationHubParams,
   updateRegistrationHubSchema,
-} from "../db/schema/registrationHubs";
+} from "../../db/schema/registrationHubs";
 
 export const createRegistrationHub = async (
   registrationHub: NewRegistrationHubParams,

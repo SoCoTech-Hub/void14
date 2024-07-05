@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertSupportTicketSchema,
   NewSupportTicketParams,
@@ -11,7 +11,7 @@ import {
   supportTickets,
   UpdateSupportTicketParams,
   updateSupportTicketSchema,
-} from "../db/schema/supportTickets";
+} from "../../db/schema/supportTickets";
 
 export const createSupportTicket = async (
   supportTicket: NewSupportTicketParams,

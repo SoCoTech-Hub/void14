@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { QuizOverviewRegradeId } from "../db/schema/quizOverviewRegrades";
-import { db } from "../db/index";
+import type { QuizOverviewRegradeId } from "../../db/schema/quizOverviewRegrades";
+import { db } from "../../db/index";
 import {
   quizOverviewRegradeIdSchema,
   quizOverviewRegrades,
-} from "../db/schema/quizOverviewRegrades";
+} from "../../db/schema/quizOverviewRegrades";
 
 export const getQuizOverviewRegrades = async () => {
   const rows = await db.select().from(quizOverviewRegrades);

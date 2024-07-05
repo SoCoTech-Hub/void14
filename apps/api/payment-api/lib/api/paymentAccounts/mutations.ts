@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertPaymentAccountSchema,
   NewPaymentAccountParams,
@@ -9,7 +9,7 @@ import {
   paymentAccounts,
   UpdatePaymentAccountParams,
   updatePaymentAccountSchema,
-} from "../db/schema/paymentAccounts";
+} from "../../db/schema/paymentAccounts";
 
 export const createPaymentAccount = async (
   paymentAccount: NewPaymentAccountParams,

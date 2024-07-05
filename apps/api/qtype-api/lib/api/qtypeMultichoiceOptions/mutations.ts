@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQtypeMultichoiceOptionSchema,
   NewQtypeMultichoiceOptionParams,
@@ -9,7 +9,7 @@ import {
   qtypeMultichoiceOptions,
   UpdateQtypeMultichoiceOptionParams,
   updateQtypeMultichoiceOptionSchema,
-} from "../db/schema/qtypeMultichoiceOptions";
+} from "../../db/schema/qtypeMultichoiceOptions";
 
 export const createQtypeMultichoiceOption = async (
   qtypeMultichoiceOption: NewQtypeMultichoiceOptionParams,

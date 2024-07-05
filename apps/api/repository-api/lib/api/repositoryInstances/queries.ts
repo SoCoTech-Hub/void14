@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { RepositoryInstanceId } from "../db/schema/repositoryInstances";
-import { db } from "../db/index";
+import type { RepositoryInstanceId } from "../../db/schema/repositoryInstances";
+import { db } from "../../db/index";
 import {
   repositoryInstanceIdSchema,
   repositoryInstances,
-} from "../db/schema/repositoryInstances";
+} from "../../db/schema/repositoryInstances";
 
 export const getRepositoryInstances = async () => {
   const { session } = await getUserAuth();

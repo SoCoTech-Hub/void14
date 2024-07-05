@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertUserInfoFieldSchema,
   NewUserInfoFieldParams,
@@ -9,7 +9,7 @@ import {
   UserInfoFieldId,
   userInfoFieldIdSchema,
   userInfoFields,
-} from "../db/schema/userInfoFields";
+} from "../../db/schema/userInfoFields";
 
 export const createUserInfoField = async (
   userInfoField: NewUserInfoFieldParams,

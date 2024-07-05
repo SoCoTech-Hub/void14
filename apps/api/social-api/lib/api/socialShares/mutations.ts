@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertSocialShareSchema,
   NewSocialShareParams,
@@ -11,7 +11,7 @@ import {
   socialShares,
   UpdateSocialShareParams,
   updateSocialShareSchema,
-} from "../db/schema/socialShares";
+} from "../../db/schema/socialShares";
 
 export const createSocialShare = async (socialShare: NewSocialShareParams) => {
   const { session } = await getUserAuth();

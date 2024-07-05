@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertRepositorySchema,
   NewRepositoryParams,
@@ -9,7 +9,7 @@ import {
   repositoryIdSchema,
   UpdateRepositoryParams,
   updateRepositorySchema,
-} from "../db/schema/repositories";
+} from "../../db/schema/repositories";
 
 export const createRepository = async (repository: NewRepositoryParams) => {
   const newRepository = insertRepositorySchema.parse(repository);

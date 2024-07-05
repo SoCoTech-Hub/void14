@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { ProfileId } from "../db/schema/profiles";
-import { db } from "../db/index";
-import { addresses } from "../db/schema/addresses";
-import { genders } from "../db/schema/genders";
-import { nextOfKins } from "../db/schema/nextOfKins";
-import { profileIdSchema, profiles } from "../db/schema/profiles";
+import type { ProfileId } from "../../db/schema/profiles";
+import { db } from "../../db/index";
+import { addresses } from "../../db/schema/addresses";
+import { genders } from "../../db/schema/genders";
+import { nextOfKins } from "../../db/schema/nextOfKins";
+import { profileIdSchema, profiles } from "../../db/schema/profiles";
 
 export const getProfiles = async () => {
   const { session } = await getUserAuth();

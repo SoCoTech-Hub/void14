@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { QuestionReferenceId } from "../db/schema/questionReferences";
-import { db } from "../db/index";
-import { questionBankEntries } from "../db/schema/questionBankEntries";
+import type { QuestionReferenceId } from "../../db/schema/questionReferences";
+import { db } from "../../db/index";
+import { questionBankEntries } from "../../db/schema/questionBankEntries";
 import {
   questionReferenceIdSchema,
   questionReferences,
-} from "../db/schema/questionReferences";
+} from "../../db/schema/questionReferences";
 
 export const getQuestionReferences = async () => {
   const rows = await db

@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertReportbuilderFilterSchema,
   NewReportbuilderFilterParams,
@@ -11,7 +11,7 @@ import {
   reportbuilderFilters,
   UpdateReportbuilderFilterParams,
   updateReportbuilderFilterSchema,
-} from "../db/schema/reportbuilderFilters";
+} from "../../db/schema/reportbuilderFilters";
 
 export const createReportbuilderFilter = async (
   reportbuilderFilter: NewReportbuilderFilterParams,

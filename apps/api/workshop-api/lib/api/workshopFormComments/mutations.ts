@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertWorkshopFormCommentSchema,
   NewWorkshopFormCommentParams,
@@ -9,7 +9,7 @@ import {
   WorkshopFormCommentId,
   workshopFormCommentIdSchema,
   workshopFormComments,
-} from "../db/schema/workshopFormComments";
+} from "../../db/schema/workshopFormComments";
 
 export const createWorkshopFormComment = async (
   workshopFormComment: NewWorkshopFormCommentParams,

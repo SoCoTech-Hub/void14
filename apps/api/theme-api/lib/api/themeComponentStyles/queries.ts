@@ -2,14 +2,14 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { ThemeComponentStyleId } from "../db/schema/themeComponentStyles";
-import { db } from "../db/index";
-import { themeComponents } from "../db/schema/themeComponents";
+import type { ThemeComponentStyleId } from "../../db/schema/themeComponentStyles";
+import { db } from "../../db/index";
+import { themeComponents } from "../../db/schema/themeComponents";
 import {
   themeComponentStyleIdSchema,
   themeComponentStyles,
-} from "../db/schema/themeComponentStyles";
-import { themes } from "../db/schema/themes";
+} from "../../db/schema/themeComponentStyles";
+import { themes } from "../../db/schema/themes";
 
 export const getThemeComponentStyles = async () => {
   const { session } = await getUserAuth();

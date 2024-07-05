@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { ToolCustomLangId } from "../db/schema/toolCustomLangs";
-import { db } from "../db/index";
+import type { ToolCustomLangId } from "../../db/schema/toolCustomLangs";
+import { db } from "../../db/index";
 import {
   toolCustomLangIdSchema,
   toolCustomLangs,
-} from "../db/schema/toolCustomLangs";
+} from "../../db/schema/toolCustomLangs";
 
 export const getToolCustomLangs = async () => {
   const rows = await db.select().from(toolCustomLangs);

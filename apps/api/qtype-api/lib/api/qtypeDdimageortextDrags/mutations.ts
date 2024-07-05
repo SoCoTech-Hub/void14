@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQtypeDdimageortextDragSchema,
   NewQtypeDdimageortextDragParams,
@@ -9,7 +9,7 @@ import {
   qtypeDdimageortextDrags,
   UpdateQtypeDdimageortextDragParams,
   updateQtypeDdimageortextDragSchema,
-} from "../db/schema/qtypeDdimageortextDrags";
+} from "../../db/schema/qtypeDdimageortextDrags";
 
 export const createQtypeDdimageortextDrag = async (
   qtypeDdimageortextDrag: NewQtypeDdimageortextDragParams,

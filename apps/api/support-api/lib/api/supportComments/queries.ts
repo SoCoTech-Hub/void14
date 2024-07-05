@@ -2,13 +2,13 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { SupportCommentId } from "../db/schema/supportComments";
-import { db } from "../db/index";
+import type { SupportCommentId } from "../../db/schema/supportComments";
+import { db } from "../../db/index";
 import {
   supportCommentIdSchema,
   supportComments,
-} from "../db/schema/supportComments";
-import { supportTickets } from "../db/schema/supportTickets";
+} from "../../db/schema/supportComments";
+import { supportTickets } from "../../db/schema/supportTickets";
 
 export const getSupportComments = async () => {
   const { session } = await getUserAuth();

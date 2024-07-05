@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertToolPolicyAcceptanceSchema,
   NewToolPolicyAcceptanceParams,
@@ -11,7 +11,7 @@ import {
   toolPolicyAcceptances,
   UpdateToolPolicyAcceptanceParams,
   updateToolPolicyAcceptanceSchema,
-} from "../db/schema/toolPolicyAcceptances";
+} from "../../db/schema/toolPolicyAcceptances";
 
 export const createToolPolicyAcceptance = async (
   toolPolicyAcceptance: NewToolPolicyAcceptanceParams,

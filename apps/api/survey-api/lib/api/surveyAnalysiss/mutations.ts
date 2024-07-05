@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertSurveyAnalysissSchema,
   NewSurveyAnalysissParams,
@@ -11,7 +11,7 @@ import {
   surveyAnalysissIdSchema,
   UpdateSurveyAnalysissParams,
   updateSurveyAnalysissSchema,
-} from "../db/schema/surveyAnalysiss";
+} from "../../db/schema/surveyAnalysiss";
 
 export const createSurveyAnalysiss = async (
   surveyAnalysiss: NewSurveyAnalysissParams,

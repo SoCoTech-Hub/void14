@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertTaskLogSchema,
   NewTaskLogParams,
@@ -11,7 +11,7 @@ import {
   taskLogs,
   UpdateTaskLogParams,
   updateTaskLogSchema,
-} from "../db/schema/taskLogs";
+} from "../../db/schema/taskLogs";
 
 export const createTaskLog = async (taskLog: NewTaskLogParams) => {
   const { session } = await getUserAuth();

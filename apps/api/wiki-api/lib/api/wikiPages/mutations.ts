@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertWikiPageSchema,
   NewWikiPageParams,
@@ -11,7 +11,7 @@ import {
   WikiPageId,
   wikiPageIdSchema,
   wikiPages,
-} from "../db/schema/wikiPages";
+} from "../../db/schema/wikiPages";
 
 export const createWikiPage = async (wikiPage: NewWikiPageParams) => {
   const { session } = await getUserAuth();

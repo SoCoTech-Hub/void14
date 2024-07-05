@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertRepositoryInstanceConfigSchema,
   NewRepositoryInstanceConfigParams,
@@ -9,7 +9,7 @@ import {
   repositoryInstanceConfigs,
   UpdateRepositoryInstanceConfigParams,
   updateRepositoryInstanceConfigSchema,
-} from "../db/schema/repositoryInstanceConfigs";
+} from "../../db/schema/repositoryInstanceConfigs";
 
 export const createRepositoryInstanceConfig = async (
   repositoryInstanceConfig: NewRepositoryInstanceConfigParams,

@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQuizGradeSchema,
   NewQuizGradeParams,
@@ -11,7 +11,7 @@ import {
   quizGrades,
   UpdateQuizGradeParams,
   updateQuizGradeSchema,
-} from "../db/schema/quizGrades";
+} from "../../db/schema/quizGrades";
 
 export const createQuizGrade = async (quizGrade: NewQuizGradeParams) => {
   const { session } = await getUserAuth();

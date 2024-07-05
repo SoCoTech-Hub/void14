@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { ReportbuilderColumnId } from "../db/schema/reportbuilderColumns";
-import { db } from "../db/index";
+import type { ReportbuilderColumnId } from "../../db/schema/reportbuilderColumns";
+import { db } from "../../db/index";
 import {
   reportbuilderColumnIdSchema,
   reportbuilderColumns,
-} from "../db/schema/reportbuilderColumns";
+} from "../../db/schema/reportbuilderColumns";
 
 export const getReportbuilderColumns = async () => {
   const { session } = await getUserAuth();

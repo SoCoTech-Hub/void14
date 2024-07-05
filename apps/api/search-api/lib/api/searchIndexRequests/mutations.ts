@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertSearchIndexRequestSchema,
   NewSearchIndexRequestParams,
@@ -9,7 +9,7 @@ import {
   searchIndexRequests,
   UpdateSearchIndexRequestParams,
   updateSearchIndexRequestSchema,
-} from "../db/schema/searchIndexRequests";
+} from "../../db/schema/searchIndexRequests";
 
 export const createSearchIndexRequest = async (
   searchIndexRequest: NewSearchIndexRequestParams,

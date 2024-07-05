@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { RepositoryId } from "../db/schema/repositories";
-import { db } from "../db/index";
-import { repositories, repositoryIdSchema } from "../db/schema/repositories";
+import type { RepositoryId } from "../../db/schema/repositories";
+import { db } from "../../db/index";
+import { repositories, repositoryIdSchema } from "../../db/schema/repositories";
 
 export const getRepositories = async () => {
   const rows = await db.select().from(repositories);

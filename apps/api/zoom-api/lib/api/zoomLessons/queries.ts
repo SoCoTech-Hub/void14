@@ -2,9 +2,9 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { ZoomLessonId } from "../db/schema/zoomLessons";
-import { db } from "../db/index";
-import { zoomLessonIdSchema, zoomLessons } from "../db/schema/zoomLessons";
+import type { ZoomLessonId } from "../../db/schema/zoomLessons";
+import { db } from "../../db/index";
+import { zoomLessonIdSchema, zoomLessons } from "../../db/schema/zoomLessons";
 
 export const getZoomLessons = async () => {
   const { session } = await getUserAuth();

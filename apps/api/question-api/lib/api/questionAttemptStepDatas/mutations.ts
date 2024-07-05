@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQuestionAttemptStepDataSchema,
   NewQuestionAttemptStepDataParams,
@@ -9,7 +9,7 @@ import {
   questionAttemptStepDatas,
   UpdateQuestionAttemptStepDataParams,
   updateQuestionAttemptStepDataSchema,
-} from "../db/schema/questionAttemptStepDatas";
+} from "../../db/schema/questionAttemptStepDatas";
 
 export const createQuestionAttemptStepData = async (
   questionAttemptStepData: NewQuestionAttemptStepDataParams,

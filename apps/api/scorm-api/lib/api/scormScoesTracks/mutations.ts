@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertScormScoesTrackSchema,
   NewScormScoesTrackParams,
@@ -11,7 +11,7 @@ import {
   scormScoesTracks,
   UpdateScormScoesTrackParams,
   updateScormScoesTrackSchema,
-} from "../db/schema/scormScoesTracks";
+} from "../../db/schema/scormScoesTracks";
 
 export const createScormScoesTrack = async (
   scormScoesTrack: NewScormScoesTrackParams,

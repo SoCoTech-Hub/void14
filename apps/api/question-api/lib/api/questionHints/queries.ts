@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { QuestionHintId } from "../db/schema/questionHints";
-import { db } from "../db/index";
+import type { QuestionHintId } from "../../db/schema/questionHints";
+import { db } from "../../db/index";
 import {
   questionHintIdSchema,
   questionHints,
-} from "../db/schema/questionHints";
-import { questions } from "../db/schema/questions";
+} from "../../db/schema/questionHints";
+import { questions } from "../../db/schema/questions";
 
 export const getQuestionHints = async () => {
   const rows = await db

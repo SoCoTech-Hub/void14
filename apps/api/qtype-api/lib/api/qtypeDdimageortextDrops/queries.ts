@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { QtypeDdimageortextDropId } from "../db/schema/qtypeDdimageortextDrops";
-import { db } from "../db/index";
+import type { QtypeDdimageortextDropId } from "../../db/schema/qtypeDdimageortextDrops";
+import { db } from "../../db/index";
 import {
   qtypeDdimageortextDropIdSchema,
   qtypeDdimageortextDrops,
-} from "../db/schema/qtypeDdimageortextDrops";
+} from "../../db/schema/qtypeDdimageortextDrops";
 
 export const getQtypeDdimageortextDrops = async () => {
   const rows = await db.select().from(qtypeDdimageortextDrops);

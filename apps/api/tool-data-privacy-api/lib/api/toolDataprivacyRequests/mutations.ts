@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertToolDataprivacyRequestSchema,
   NewToolDataprivacyRequestParams,
@@ -11,7 +11,7 @@ import {
   toolDataprivacyRequests,
   UpdateToolDataprivacyRequestParams,
   updateToolDataprivacyRequestSchema,
-} from "../db/schema/toolDataprivacyRequests";
+} from "../../db/schema/toolDataprivacyRequests";
 
 export const createToolDataprivacyRequest = async (
   toolDataprivacyRequest: NewToolDataprivacyRequestParams,

@@ -1,13 +1,13 @@
 import { eq } from "drizzle-orm";
 
-import type { SubjectsSubjectCategoryId } from "../db/schema/subjectsSubjectCategories";
-import { db } from "../db/index";
-import { subjectCategories } from "../db/schema/subjectCategories";
-import { subjects } from "../db/schema/subjects";
+import type { SubjectsSubjectCategoryId } from "../../db/schema/subjectsSubjectCategories";
+import { db } from "../../db/index";
+import { subjectCategories } from "../../db/schema/subjectCategories";
+import { subjects } from "../../db/schema/subjects";
 import {
   subjectsSubjectCategories,
   subjectsSubjectCategoryIdSchema,
-} from "../db/schema/subjectsSubjectCategories";
+} from "../../db/schema/subjectsSubjectCategories";
 
 export const getSubjectsSubjectCategories = async () => {
   const rows = await db

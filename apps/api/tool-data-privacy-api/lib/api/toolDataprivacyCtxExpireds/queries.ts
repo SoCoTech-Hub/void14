@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { ToolDataprivacyCtxExpiredId } from "../db/schema/toolDataprivacyCtxExpireds";
-import { db } from "../db/index";
+import type { ToolDataprivacyCtxExpiredId } from "../../db/schema/toolDataprivacyCtxExpireds";
+import { db } from "../../db/index";
 import {
   toolDataprivacyCtxExpiredIdSchema,
   toolDataprivacyCtxExpireds,
-} from "../db/schema/toolDataprivacyCtxExpireds";
+} from "../../db/schema/toolDataprivacyCtxExpireds";
 
 export const getToolDataprivacyCtxExpireds = async () => {
   const { session } = await getUserAuth();

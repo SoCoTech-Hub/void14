@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertToolDataprivacyCtxLevelSchema,
   NewToolDataprivacyCtxLevelParams,
@@ -11,7 +11,7 @@ import {
   toolDataprivacyCtxLevels,
   UpdateToolDataprivacyCtxLevelParams,
   updateToolDataprivacyCtxLevelSchema,
-} from "../db/schema/toolDataprivacyCtxLevels";
+} from "../../db/schema/toolDataprivacyCtxLevels";
 
 export const createToolDataprivacyCtxLevel = async (
   toolDataprivacyCtxLevel: NewToolDataprivacyCtxLevelParams,

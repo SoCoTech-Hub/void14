@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQuestionNumericalUnitSchema,
   NewQuestionNumericalUnitParams,
@@ -9,7 +9,7 @@ import {
   questionNumericalUnits,
   UpdateQuestionNumericalUnitParams,
   updateQuestionNumericalUnitSchema,
-} from "../db/schema/questionNumericalUnits";
+} from "../../db/schema/questionNumericalUnits";
 
 export const createQuestionNumericalUnit = async (
   questionNumericalUnit: NewQuestionNumericalUnitParams,

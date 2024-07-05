@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertUserPrivateKeySchema,
   NewUserPrivateKeyParams,
@@ -11,7 +11,7 @@ import {
   UserPrivateKeyId,
   userPrivateKeyIdSchema,
   userPrivateKeys,
-} from "../db/schema/userPrivateKeys";
+} from "../../db/schema/userPrivateKeys";
 
 export const createUserPrivateKey = async (
   userPrivateKey: NewUserPrivateKeyParams,

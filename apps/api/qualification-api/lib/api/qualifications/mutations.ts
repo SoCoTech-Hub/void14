@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQualificationSchema,
   NewQualificationParams,
@@ -9,7 +9,7 @@ import {
   qualifications,
   UpdateQualificationParams,
   updateQualificationSchema,
-} from "../db/schema/qualifications";
+} from "../../db/schema/qualifications";
 
 export const createQualification = async (
   qualification: NewQualificationParams,

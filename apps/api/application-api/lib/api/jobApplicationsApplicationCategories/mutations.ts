@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertJobApplicationsApplicationCategorySchema,
   jobApplicationsApplicationCategories,
@@ -9,7 +9,7 @@ import {
   NewJobApplicationsApplicationCategoryParams,
   UpdateJobApplicationsApplicationCategoryParams,
   updateJobApplicationsApplicationCategorySchema,
-} from "../db/schema/jobApplicationsApplicationCategories";
+} from "../../db/schema/jobApplicationsApplicationCategories";
 
 export const createJobApplicationsApplicationCategory = async (
   jobApplicationsApplicationCategory: NewJobApplicationsApplicationCategoryParams,

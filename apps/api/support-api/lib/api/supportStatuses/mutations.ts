@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertSupportStatusSchema,
   NewSupportStatusParams,
@@ -9,7 +9,7 @@ import {
   supportStatusIdSchema,
   UpdateSupportStatusParams,
   updateSupportStatusSchema,
-} from "../db/schema/supportStatuses";
+} from "../../db/schema/supportStatuses";
 
 export const createSupportStatus = async (
   supportStatus: NewSupportStatusParams,

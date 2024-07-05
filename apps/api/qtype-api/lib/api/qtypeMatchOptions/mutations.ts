@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQtypeMatchOptionSchema,
   NewQtypeMatchOptionParams,
@@ -9,7 +9,7 @@ import {
   qtypeMatchOptions,
   UpdateQtypeMatchOptionParams,
   updateQtypeMatchOptionSchema,
-} from "../db/schema/qtypeMatchOptions";
+} from "../../db/schema/qtypeMatchOptions";
 
 export const createQtypeMatchOption = async (
   qtypeMatchOption: NewQtypeMatchOptionParams,

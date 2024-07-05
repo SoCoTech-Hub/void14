@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { ToolRecyclebinCourseId } from "../db/schema/toolRecyclebinCourses";
-import { db } from "../db/index";
+import type { ToolRecyclebinCourseId } from "../../db/schema/toolRecyclebinCourses";
+import { db } from "../../db/index";
 import {
   toolRecyclebinCourseIdSchema,
   toolRecyclebinCourses,
-} from "../db/schema/toolRecyclebinCourses";
+} from "../../db/schema/toolRecyclebinCourses";
 
 export const getToolRecyclebinCourses = async () => {
   const rows = await db.select().from(toolRecyclebinCourses);

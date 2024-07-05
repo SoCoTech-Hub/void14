@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { QuestionSetReferenceId } from "../db/schema/questionSetReferences";
-import { db } from "../db/index";
+import type { QuestionSetReferenceId } from "../../db/schema/questionSetReferences";
+import { db } from "../../db/index";
 import {
   questionSetReferenceIdSchema,
   questionSetReferences,
-} from "../db/schema/questionSetReferences";
+} from "../../db/schema/questionSetReferences";
 
 export const getQuestionSetReferences = async () => {
   const rows = await db.select().from(questionSetReferences);

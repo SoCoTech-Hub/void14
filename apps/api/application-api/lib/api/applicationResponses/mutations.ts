@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   ApplicationResponseId,
   applicationResponseIdSchema,
@@ -11,7 +11,7 @@ import {
   NewApplicationResponseParams,
   UpdateApplicationResponseParams,
   updateApplicationResponseSchema,
-} from "../db/schema/applicationResponses";
+} from "../../db/schema/applicationResponses";
 
 export const createApplicationResponse = async (
   applicationResponse: NewApplicationResponseParams,

@@ -2,9 +2,9 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { WikiPageId } from "../db/schema/wikiPages";
-import { db } from "../db/index";
-import { wikiPageIdSchema, wikiPages } from "../db/schema/wikiPages";
+import type { WikiPageId } from "../../db/schema/wikiPages";
+import { db } from "../../db/index";
+import { wikiPageIdSchema, wikiPages } from "../../db/schema/wikiPages";
 
 export const getWikiPages = async () => {
   const { session } = await getUserAuth();

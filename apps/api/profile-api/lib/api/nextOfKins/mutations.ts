@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertNextOfKinSchema,
   NewNextOfKinParams,
@@ -11,7 +11,7 @@ import {
   nextOfKins,
   UpdateNextOfKinParams,
   updateNextOfKinSchema,
-} from "../db/schema/nextOfKins";
+} from "../../db/schema/nextOfKins";
 
 export const createNextOfKin = async (nextOfKin: NewNextOfKinParams) => {
   const { session } = await getUserAuth();

@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQuestionBankEntrySchema,
   NewQuestionBankEntryParams,
@@ -11,7 +11,7 @@ import {
   questionBankEntryIdSchema,
   UpdateQuestionBankEntryParams,
   updateQuestionBankEntrySchema,
-} from "../db/schema/questionBankEntries";
+} from "../../db/schema/questionBankEntries";
 
 export const createQuestionBankEntry = async (
   questionBankEntry: NewQuestionBankEntryParams,

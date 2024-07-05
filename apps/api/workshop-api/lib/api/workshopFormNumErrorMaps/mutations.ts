@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertWorkshopFormNumErrorMapSchema,
   NewWorkshopFormNumErrorMapParams,
@@ -9,7 +9,7 @@ import {
   WorkshopFormNumErrorMapId,
   workshopFormNumErrorMapIdSchema,
   workshopFormNumErrorMaps,
-} from "../db/schema/workshopFormNumErrorMaps";
+} from "../../db/schema/workshopFormNumErrorMaps";
 
 export const createWorkshopFormNumErrorMap = async (
   workshopFormNumErrorMap: NewWorkshopFormNumErrorMapParams,

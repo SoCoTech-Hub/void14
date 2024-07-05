@@ -2,10 +2,10 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { QuizGradeId } from "../db/schema/quizGrades";
-import { db } from "../db/index";
-import { quizes } from "../db/schema/quizes";
-import { quizGradeIdSchema, quizGrades } from "../db/schema/quizGrades";
+import type { QuizGradeId } from "../../db/schema/quizGrades";
+import { db } from "../../db/index";
+import { quizes } from "../../db/schema/quizes";
+import { quizGradeIdSchema, quizGrades } from "../../db/schema/quizGrades";
 
 export const getQuizGrades = async () => {
   const { session } = await getUserAuth();

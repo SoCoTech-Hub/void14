@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertWorkshopFormRubricConfigSchema,
   NewWorkshopFormRubricConfigParams,
@@ -9,7 +9,7 @@ import {
   WorkshopFormRubricConfigId,
   workshopFormRubricConfigIdSchema,
   workshopFormRubricConfigs,
-} from "../db/schema/workshopFormRubricConfigs";
+} from "../../db/schema/workshopFormRubricConfigs";
 
 export const createWorkshopFormRubricConfig = async (
   workshopFormRubricConfig: NewWorkshopFormRubricConfigParams,

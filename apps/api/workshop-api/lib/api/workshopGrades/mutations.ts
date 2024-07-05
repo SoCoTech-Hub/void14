@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertWorkshopGradeSchema,
   NewWorkshopGradeParams,
@@ -11,7 +11,7 @@ import {
   WorkshopGradeId,
   workshopGradeIdSchema,
   workshopGrades,
-} from "../db/schema/workshopGrades";
+} from "../../db/schema/workshopGrades";
 
 export const createWorkshopGrade = async (
   workshopGrade: NewWorkshopGradeParams,

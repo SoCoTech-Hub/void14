@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQtypeMatchSubquestionSchema,
   NewQtypeMatchSubquestionParams,
@@ -9,7 +9,7 @@ import {
   qtypeMatchSubquestions,
   UpdateQtypeMatchSubquestionParams,
   updateQtypeMatchSubquestionSchema,
-} from "../db/schema/qtypeMatchSubquestions";
+} from "../../db/schema/qtypeMatchSubquestions";
 
 export const createQtypeMatchSubquestion = async (
   qtypeMatchSubquestion: NewQtypeMatchSubquestionParams,

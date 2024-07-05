@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { UserPrivateKeyId } from "../db/schema/userPrivateKeys";
-import { db } from "../db/index";
+import type { UserPrivateKeyId } from "../../db/schema/userPrivateKeys";
+import { db } from "../../db/index";
 import {
   userPrivateKeyIdSchema,
   userPrivateKeys,
-} from "../db/schema/userPrivateKeys";
+} from "../../db/schema/userPrivateKeys";
 
 export const getUserPrivateKeys = async () => {
   const { session } = await getUserAuth();

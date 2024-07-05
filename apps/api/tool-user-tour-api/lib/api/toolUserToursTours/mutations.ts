@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertToolUserToursTourSchema,
   NewToolUserToursTourParams,
@@ -9,7 +9,7 @@ import {
   toolUserToursTours,
   UpdateToolUserToursTourParams,
   updateToolUserToursTourSchema,
-} from "../db/schema/toolUserToursTours";
+} from "../../db/schema/toolUserToursTours";
 
 export const createToolUserToursTour = async (
   toolUserToursTour: NewToolUserToursTourParams,

@@ -1,9 +1,9 @@
 import { eq } from "drizzle-orm";
 
-import type { ShowId } from "../db/schema/shows";
-import { db } from "../db/index";
-import { showIdSchema, shows } from "../db/schema/shows";
-import { showsCategories } from "../db/schema/showsCategories";
+import type { ShowId } from "../../db/schema/shows";
+import { db } from "../../db/index";
+import { showIdSchema, shows } from "../../db/schema/shows";
+import { showsCategories } from "../../db/schema/showsCategories";
 
 export const getShows = async () => {
   const rows = await db

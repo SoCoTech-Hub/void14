@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertWorkshopSubmissionSchema,
   NewWorkshopSubmissionParams,
@@ -11,7 +11,7 @@ import {
   WorkshopSubmissionId,
   workshopSubmissionIdSchema,
   workshopSubmissions,
-} from "../db/schema/workshopSubmissions";
+} from "../../db/schema/workshopSubmissions";
 
 export const createWorkshopSubmission = async (
   workshopSubmission: NewWorkshopSubmissionParams,

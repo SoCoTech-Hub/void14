@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertRoleCapabilitySchema,
   NewRoleCapabilityParams,
@@ -11,7 +11,7 @@ import {
   roleCapabilityIdSchema,
   UpdateRoleCapabilityParams,
   updateRoleCapabilitySchema,
-} from "../db/schema/roleCapabilities";
+} from "../../db/schema/roleCapabilities";
 
 export const createRoleCapability = async (
   roleCapability: NewRoleCapabilityParams,

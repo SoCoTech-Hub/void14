@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQuestionResponseCountSchema,
   NewQuestionResponseCountParams,
@@ -9,7 +9,7 @@ import {
   questionResponseCounts,
   UpdateQuestionResponseCountParams,
   updateQuestionResponseCountSchema,
-} from "../db/schema/questionResponseCounts";
+} from "../../db/schema/questionResponseCounts";
 
 export const createQuestionResponseCount = async (
   questionResponseCount: NewQuestionResponseCountParams,

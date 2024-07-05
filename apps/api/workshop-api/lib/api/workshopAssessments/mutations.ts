@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertWorkshopAssessmentSchema,
   NewWorkshopAssessmentParams,
@@ -9,7 +9,7 @@ import {
   WorkshopAssessmentId,
   workshopAssessmentIdSchema,
   workshopAssessments,
-} from "../db/schema/workshopAssessments";
+} from "../../db/schema/workshopAssessments";
 
 export const createWorkshopAssessment = async (
   workshopAssessment: NewWorkshopAssessmentParams,

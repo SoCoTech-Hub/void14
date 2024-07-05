@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertScormScoesDataSchema,
   NewScormScoesDataParams,
@@ -9,7 +9,7 @@ import {
   scormScoesDatas,
   UpdateScormScoesDataParams,
   updateScormScoesDataSchema,
-} from "../db/schema/scormScoesDatas";
+} from "../../db/schema/scormScoesDatas";
 
 export const createScormScoesData = async (
   scormScoesData: NewScormScoesDataParams,

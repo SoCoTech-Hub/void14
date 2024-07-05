@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { ScormSeqRuleCondId } from "../db/schema/scormSeqRuleConds";
-import { db } from "../db/index";
-import { scormScoes } from "../db/schema/scormScoes";
+import type { ScormSeqRuleCondId } from "../../db/schema/scormSeqRuleConds";
+import { db } from "../../db/index";
+import { scormScoes } from "../../db/schema/scormScoes";
 import {
   scormSeqRuleCondIdSchema,
   scormSeqRuleConds,
-} from "../db/schema/scormSeqRuleConds";
+} from "../../db/schema/scormSeqRuleConds";
 
 export const getScormSeqRuleConds = async () => {
   const rows = await db

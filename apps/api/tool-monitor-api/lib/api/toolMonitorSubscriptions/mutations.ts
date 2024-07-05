@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertToolMonitorSubscriptionSchema,
   NewToolMonitorSubscriptionParams,
@@ -11,7 +11,7 @@ import {
   toolMonitorSubscriptions,
   UpdateToolMonitorSubscriptionParams,
   updateToolMonitorSubscriptionSchema,
-} from "../db/schema/toolMonitorSubscriptions";
+} from "../../db/schema/toolMonitorSubscriptions";
 
 export const createToolMonitorSubscription = async (
   toolMonitorSubscription: NewToolMonitorSubscriptionParams,

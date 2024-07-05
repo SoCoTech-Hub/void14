@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertSupportTopicSchema,
   NewSupportTopicParams,
@@ -9,7 +9,7 @@ import {
   supportTopics,
   UpdateSupportTopicParams,
   updateSupportTopicSchema,
-} from "../db/schema/supportTopics";
+} from "../../db/schema/supportTopics";
 
 export const createSupportTopic = async (
   supportTopic: NewSupportTopicParams,

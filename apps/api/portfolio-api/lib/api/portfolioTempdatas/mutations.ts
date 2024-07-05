@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertPortfolioTempdataSchema,
   NewPortfolioTempdataParams,
@@ -11,7 +11,7 @@ import {
   portfolioTempdatas,
   UpdatePortfolioTempdataParams,
   updatePortfolioTempdataSchema,
-} from "../db/schema/portfolioTempdatas";
+} from "../../db/schema/portfolioTempdatas";
 
 export const createPortfolioTempdata = async (
   portfolioTempdata: NewPortfolioTempdataParams,

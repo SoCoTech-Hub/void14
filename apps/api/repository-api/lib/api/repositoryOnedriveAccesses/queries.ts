@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { RepositoryOnedriveAccessId } from "../db/schema/repositoryOnedriveAccesses";
-import { db } from "../db/index";
+import type { RepositoryOnedriveAccessId } from "../../db/schema/repositoryOnedriveAccesses";
+import { db } from "../../db/index";
 import {
   repositoryOnedriveAccesses,
   repositoryOnedriveAccessIdSchema,
-} from "../db/schema/repositoryOnedriveAccesses";
+} from "../../db/schema/repositoryOnedriveAccesses";
 
 export const getRepositoryOnedriveAccesses = async () => {
   const { session } = await getUserAuth();

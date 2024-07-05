@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   GradeId,
   gradeIdSchema,
@@ -9,7 +9,7 @@ import {
   NewGradeParams,
   UpdateGradeParams,
   updateGradeSchema,
-} from "../db/schema/grades";
+} from "../../db/schema/grades";
 
 export const createGrade = async (grade: NewGradeParams) => {
   const newGrade = insertGradeSchema.parse(grade);

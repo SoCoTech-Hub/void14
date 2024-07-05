@@ -1,9 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { PaygwPaypalId } from "../db/schema/paygwPaypals";
-import { db } from "../db/index";
-import { paygwPaypalIdSchema, paygwPaypals } from "../db/schema/paygwPaypals";
-import { payments } from "../db/schema/payments";
+import type { PaygwPaypalId } from "../../db/schema/paygwPaypals";
+import { db } from "../../db/index";
+import {
+  paygwPaypalIdSchema,
+  paygwPaypals,
+} from "../../db/schema/paygwPaypals";
+import { payments } from "../../db/schema/payments";
 
 export const getPaygwPaypals = async () => {
   const rows = await db

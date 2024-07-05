@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { ToolUserToursTourId } from "../db/schema/toolUserToursTours";
-import { db } from "../db/index";
+import type { ToolUserToursTourId } from "../../db/schema/toolUserToursTours";
+import { db } from "../../db/index";
 import {
   toolUserToursTourIdSchema,
   toolUserToursTours,
-} from "../db/schema/toolUserToursTours";
+} from "../../db/schema/toolUserToursTours";
 
 export const getToolUserToursTours = async () => {
   const rows = await db.select().from(toolUserToursTours);

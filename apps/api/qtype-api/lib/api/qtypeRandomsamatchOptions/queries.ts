@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { QtypeRandomsamatchOptionId } from "../db/schema/qtypeRandomsamatchOptions";
-import { db } from "../db/index";
+import type { QtypeRandomsamatchOptionId } from "../../db/schema/qtypeRandomsamatchOptions";
+import { db } from "../../db/index";
 import {
   qtypeRandomsamatchOptionIdSchema,
   qtypeRandomsamatchOptions,
-} from "../db/schema/qtypeRandomsamatchOptions";
+} from "../../db/schema/qtypeRandomsamatchOptions";
 
 export const getQtypeRandomsamatchOptions = async () => {
   const rows = await db.select().from(qtypeRandomsamatchOptions);

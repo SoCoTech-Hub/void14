@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { SearchSimpledbIndexId } from "../db/schema/searchSimpledbIndexes";
-import { db } from "../db/index";
+import type { SearchSimpledbIndexId } from "../../db/schema/searchSimpledbIndexes";
+import { db } from "../../db/index";
 import {
   searchSimpledbIndexes,
   searchSimpledbIndexIdSchema,
-} from "../db/schema/searchSimpledbIndexes";
+} from "../../db/schema/searchSimpledbIndexes";
 
 export const getSearchSimpledbIndexes = async () => {
   const { session } = await getUserAuth();

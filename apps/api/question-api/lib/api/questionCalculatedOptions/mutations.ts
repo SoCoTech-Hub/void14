@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQuestionCalculatedOptionSchema,
   NewQuestionCalculatedOptionParams,
@@ -9,7 +9,7 @@ import {
   questionCalculatedOptions,
   UpdateQuestionCalculatedOptionParams,
   updateQuestionCalculatedOptionSchema,
-} from "../db/schema/questionCalculatedOptions";
+} from "../../db/schema/questionCalculatedOptions";
 
 export const createQuestionCalculatedOption = async (
   questionCalculatedOption: NewQuestionCalculatedOptionParams,

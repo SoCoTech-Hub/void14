@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQuestionMultianswerSchema,
   NewQuestionMultianswerParams,
@@ -9,7 +9,7 @@ import {
   questionMultianswers,
   UpdateQuestionMultianswerParams,
   updateQuestionMultianswerSchema,
-} from "../db/schema/questionMultianswers";
+} from "../../db/schema/questionMultianswers";
 
 export const createQuestionMultianswer = async (
   questionMultianswer: NewQuestionMultianswerParams,

@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { QuizId } from "../db/schema/quizes";
-import { db } from "../db/index";
-import { quizes, quizIdSchema } from "../db/schema/quizes";
+import type { QuizId } from "../../db/schema/quizes";
+import { db } from "../../db/index";
+import { quizes, quizIdSchema } from "../../db/schema/quizes";
 
 export const getQuizes = async () => {
   const rows = await db.select().from(quizes);

@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertWorkshopAggregationSchema,
   NewWorkshopAggregationParams,
@@ -11,7 +11,7 @@ import {
   WorkshopAggregationId,
   workshopAggregationIdSchema,
   workshopAggregations,
-} from "../db/schema/workshopAggregations";
+} from "../../db/schema/workshopAggregations";
 
 export const createWorkshopAggregation = async (
   workshopAggregation: NewWorkshopAggregationParams,

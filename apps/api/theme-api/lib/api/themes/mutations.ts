@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertThemeSchema,
   NewThemeParams,
@@ -11,7 +11,7 @@ import {
   themes,
   UpdateThemeParams,
   updateThemeSchema,
-} from "../db/schema/themes";
+} from "../../db/schema/themes";
 
 export const createTheme = async (theme: NewThemeParams) => {
   const { session } = await getUserAuth();

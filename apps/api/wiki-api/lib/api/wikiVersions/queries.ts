@@ -2,10 +2,13 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { WikiVersionId } from "../db/schema/wikiVersions";
-import { db } from "../db/index";
-import { wikiPages } from "../db/schema/wikiPages";
-import { wikiVersionIdSchema, wikiVersions } from "../db/schema/wikiVersions";
+import type { WikiVersionId } from "../../db/schema/wikiVersions";
+import { db } from "../../db/index";
+import { wikiPages } from "../../db/schema/wikiPages";
+import {
+  wikiVersionIdSchema,
+  wikiVersions,
+} from "../../db/schema/wikiVersions";
 
 export const getWikiVersions = async () => {
   const { session } = await getUserAuth();

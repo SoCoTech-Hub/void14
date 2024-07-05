@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertToolDataprivacyCtxExpiredSchema,
   NewToolDataprivacyCtxExpiredParams,
@@ -11,7 +11,7 @@ import {
   toolDataprivacyCtxExpireds,
   UpdateToolDataprivacyCtxExpiredParams,
   updateToolDataprivacyCtxExpiredSchema,
-} from "../db/schema/toolDataprivacyCtxExpireds";
+} from "../../db/schema/toolDataprivacyCtxExpireds";
 
 export const createToolDataprivacyCtxExpired = async (
   toolDataprivacyCtxExpired: NewToolDataprivacyCtxExpiredParams,

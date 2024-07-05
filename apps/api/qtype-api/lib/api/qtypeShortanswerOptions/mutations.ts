@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQtypeShortanswerOptionSchema,
   NewQtypeShortanswerOptionParams,
@@ -9,7 +9,7 @@ import {
   qtypeShortanswerOptions,
   UpdateQtypeShortanswerOptionParams,
   updateQtypeShortanswerOptionSchema,
-} from "../db/schema/qtypeShortanswerOptions";
+} from "../../db/schema/qtypeShortanswerOptions";
 
 export const createQtypeShortanswerOption = async (
   qtypeShortanswerOption: NewQtypeShortanswerOptionParams,

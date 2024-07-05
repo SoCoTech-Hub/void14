@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { RepositoryInstanceConfigId } from "../db/schema/repositoryInstanceConfigs";
-import { db } from "../db/index";
+import type { RepositoryInstanceConfigId } from "../../db/schema/repositoryInstanceConfigs";
+import { db } from "../../db/index";
 import {
   repositoryInstanceConfigIdSchema,
   repositoryInstanceConfigs,
-} from "../db/schema/repositoryInstanceConfigs";
-import { repositoryInstances } from "../db/schema/repositoryInstances";
+} from "../../db/schema/repositoryInstanceConfigs";
+import { repositoryInstances } from "../../db/schema/repositoryInstances";
 
 export const getRepositoryInstanceConfigs = async () => {
   const rows = await db

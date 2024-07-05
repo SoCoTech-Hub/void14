@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { QtypeDdmarkerDragId } from "../db/schema/qtypeDdmarkerDrags";
-import { db } from "../db/index";
+import type { QtypeDdmarkerDragId } from "../../db/schema/qtypeDdmarkerDrags";
+import { db } from "../../db/index";
 import {
   qtypeDdmarkerDragIdSchema,
   qtypeDdmarkerDrags,
-} from "../db/schema/qtypeDdmarkerDrags";
+} from "../../db/schema/qtypeDdmarkerDrags";
 
 export const getQtypeDdmarkerDrags = async () => {
   const rows = await db.select().from(qtypeDdmarkerDrags);

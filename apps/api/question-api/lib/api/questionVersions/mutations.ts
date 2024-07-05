@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQuestionVersionSchema,
   NewQuestionVersionParams,
@@ -9,7 +9,7 @@ import {
   questionVersions,
   UpdateQuestionVersionParams,
   updateQuestionVersionSchema,
-} from "../db/schema/questionVersions";
+} from "../../db/schema/questionVersions";
 
 export const createQuestionVersion = async (
   questionVersion: NewQuestionVersionParams,

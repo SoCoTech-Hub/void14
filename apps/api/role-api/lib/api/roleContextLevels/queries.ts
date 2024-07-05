@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { RoleContextLevelId } from "../db/schema/roleContextLevels";
-import { db } from "../db/index";
+import type { RoleContextLevelId } from "../../db/schema/roleContextLevels";
+import { db } from "../../db/index";
 import {
   roleContextLevelIdSchema,
   roleContextLevels,
-} from "../db/schema/roleContextLevels";
-import { roles } from "../db/schema/roles";
+} from "../../db/schema/roleContextLevels";
+import { roles } from "../../db/schema/roles";
 
 export const getRoleContextLevels = async () => {
   const rows = await db

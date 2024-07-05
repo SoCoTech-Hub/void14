@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertWikiLinkSchema,
   NewWikiLinkParams,
@@ -9,7 +9,7 @@ import {
   WikiLinkId,
   wikiLinkIdSchema,
   wikiLinks,
-} from "../db/schema/wikiLinks";
+} from "../../db/schema/wikiLinks";
 
 export const createWikiLink = async (wikiLink: NewWikiLinkParams) => {
   const newWikiLink = insertWikiLinkSchema.parse(wikiLink);

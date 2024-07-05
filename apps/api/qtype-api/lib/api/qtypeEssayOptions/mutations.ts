@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQtypeEssayOptionSchema,
   NewQtypeEssayOptionParams,
@@ -9,7 +9,7 @@ import {
   qtypeEssayOptions,
   UpdateQtypeEssayOptionParams,
   updateQtypeEssayOptionSchema,
-} from "../db/schema/qtypeEssayOptions";
+} from "../../db/schema/qtypeEssayOptions";
 
 export const createQtypeEssayOption = async (
   qtypeEssayOption: NewQtypeEssayOptionParams,

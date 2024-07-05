@@ -1,13 +1,13 @@
 import { eq } from "drizzle-orm";
 
-import type { JobApplicationsApplicationCategoryId } from "../db/schema/jobApplicationsApplicationCategories";
-import { db } from "../db/index";
-import { applicationCategories } from "../db/schema/applicationCategories";
-import { jobApplications } from "../db/schema/jobApplications";
+import type { JobApplicationsApplicationCategoryId } from "../../db/schema/jobApplicationsApplicationCategories";
+import { db } from "../../db/index";
+import { applicationCategories } from "../../db/schema/applicationCategories";
+import { jobApplications } from "../../db/schema/jobApplications";
 import {
   jobApplicationsApplicationCategories,
   jobApplicationsApplicationCategoryIdSchema,
-} from "../db/schema/jobApplicationsApplicationCategories";
+} from "../../db/schema/jobApplicationsApplicationCategories";
 
 export const getJobApplicationsApplicationCategories = async () => {
   const rows = await db

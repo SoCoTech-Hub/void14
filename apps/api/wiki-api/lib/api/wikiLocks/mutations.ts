@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertWikiLockSchema,
   NewWikiLockParams,
@@ -11,7 +11,7 @@ import {
   WikiLockId,
   wikiLockIdSchema,
   wikiLocks,
-} from "../db/schema/wikiLocks";
+} from "../../db/schema/wikiLocks";
 
 export const createWikiLock = async (wikiLock: NewWikiLockParams) => {
   const { session } = await getUserAuth();

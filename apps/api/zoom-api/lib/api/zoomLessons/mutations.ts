@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertZoomLessonSchema,
   NewZoomLessonParams,
@@ -11,7 +11,7 @@ import {
   ZoomLessonId,
   zoomLessonIdSchema,
   zoomLessons,
-} from "../db/schema/zoomLessons";
+} from "../../db/schema/zoomLessons";
 
 export const createZoomLesson = async (zoomLesson: NewZoomLessonParams) => {
   const { session } = await getUserAuth();

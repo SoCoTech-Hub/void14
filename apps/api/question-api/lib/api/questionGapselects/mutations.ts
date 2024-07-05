@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQuestionGapselectSchema,
   NewQuestionGapselectParams,
@@ -9,7 +9,7 @@ import {
   questionGapselects,
   UpdateQuestionGapselectParams,
   updateQuestionGapselectSchema,
-} from "../db/schema/questionGapselects";
+} from "../../db/schema/questionGapselects";
 
 export const createQuestionGapselect = async (
   questionGapselect: NewQuestionGapselectParams,

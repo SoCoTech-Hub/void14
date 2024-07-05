@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQuestionDatasetDefinitionSchema,
   NewQuestionDatasetDefinitionParams,
@@ -9,7 +9,7 @@ import {
   questionDatasetDefinitions,
   UpdateQuestionDatasetDefinitionParams,
   updateQuestionDatasetDefinitionSchema,
-} from "../db/schema/questionDatasetDefinitions";
+} from "../../db/schema/questionDatasetDefinitions";
 
 export const createQuestionDatasetDefinition = async (
   questionDatasetDefinition: NewQuestionDatasetDefinitionParams,

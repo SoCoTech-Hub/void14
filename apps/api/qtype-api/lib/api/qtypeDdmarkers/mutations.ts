@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQtypeDdmarkerSchema,
   NewQtypeDdmarkerParams,
@@ -9,7 +9,7 @@ import {
   qtypeDdmarkers,
   UpdateQtypeDdmarkerParams,
   updateQtypeDdmarkerSchema,
-} from "../db/schema/qtypeDdmarkers";
+} from "../../db/schema/qtypeDdmarkers";
 
 export const createQtypeDdmarker = async (
   qtypeDdmarker: NewQtypeDdmarkerParams,

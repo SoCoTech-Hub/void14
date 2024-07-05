@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { ThemeComponentId } from "../db/schema/themeComponents";
-import { db } from "../db/index";
+import type { ThemeComponentId } from "../../db/schema/themeComponents";
+import { db } from "../../db/index";
 import {
   themeComponentIdSchema,
   themeComponents,
-} from "../db/schema/themeComponents";
+} from "../../db/schema/themeComponents";
 
 export const getThemeComponents = async () => {
   const rows = await db.select().from(themeComponents);

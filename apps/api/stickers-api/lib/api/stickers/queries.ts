@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { StickerId } from "../db/schema/stickers";
-import { db } from "../db/index";
-import { stickerIdSchema, stickers } from "../db/schema/stickers";
+import type { StickerId } from "../../db/schema/stickers";
+import { db } from "../../db/index";
+import { stickerIdSchema, stickers } from "../../db/schema/stickers";
 
 export const getStickers = async () => {
   const rows = await db.select().from(stickers);

@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { ScormScoesDataId } from "../db/schema/scormScoesDatas";
-import { db } from "../db/index";
-import { scormScoes } from "../db/schema/scormScoes";
+import type { ScormScoesDataId } from "../../db/schema/scormScoesDatas";
+import { db } from "../../db/index";
+import { scormScoes } from "../../db/schema/scormScoes";
 import {
   scormScoesDataIdSchema,
   scormScoesDatas,
-} from "../db/schema/scormScoesDatas";
+} from "../../db/schema/scormScoesDatas";
 
 export const getScormScoesDatas = async () => {
   const rows = await db

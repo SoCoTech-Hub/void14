@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertPortfolioMaharaQueueSchema,
   NewPortfolioMaharaQueueParams,
@@ -9,7 +9,7 @@ import {
   portfolioMaharaQueues,
   UpdatePortfolioMaharaQueueParams,
   updatePortfolioMaharaQueueSchema,
-} from "../db/schema/portfolioMaharaQueues";
+} from "../../db/schema/portfolioMaharaQueues";
 
 export const createPortfolioMaharaQueue = async (
   portfolioMaharaQueue: NewPortfolioMaharaQueueParams,

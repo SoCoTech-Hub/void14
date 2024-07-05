@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertToolMonitorHistorySchema,
   NewToolMonitorHistoryParams,
@@ -11,7 +11,7 @@ import {
   toolMonitorHistoryIdSchema,
   UpdateToolMonitorHistoryParams,
   updateToolMonitorHistorySchema,
-} from "../db/schema/toolMonitorHistories";
+} from "../../db/schema/toolMonitorHistories";
 
 export const createToolMonitorHistory = async (
   toolMonitorHistory: NewToolMonitorHistoryParams,

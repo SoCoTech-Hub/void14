@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { QuestionNumericalOptionId } from "../db/schema/questionNumericalOptions";
-import { db } from "../db/index";
+import type { QuestionNumericalOptionId } from "../../db/schema/questionNumericalOptions";
+import { db } from "../../db/index";
 import {
   questionNumericalOptionIdSchema,
   questionNumericalOptions,
-} from "../db/schema/questionNumericalOptions";
-import { questions } from "../db/schema/questions";
+} from "../../db/schema/questionNumericalOptions";
+import { questions } from "../../db/schema/questions";
 
 export const getQuestionNumericalOptions = async () => {
   const rows = await db

@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { RoleId } from "../db/schema/roles";
-import { db } from "../db/index";
-import { roleIdSchema, roles } from "../db/schema/roles";
+import type { RoleId } from "../../db/schema/roles";
+import { db } from "../../db/index";
+import { roleIdSchema, roles } from "../../db/schema/roles";
 
 export const getRoles = async () => {
   const rows = await db.select().from(roles);

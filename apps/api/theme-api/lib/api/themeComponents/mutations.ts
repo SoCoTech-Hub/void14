@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertThemeComponentSchema,
   NewThemeComponentParams,
@@ -9,7 +9,7 @@ import {
   themeComponents,
   UpdateThemeComponentParams,
   updateThemeComponentSchema,
-} from "../db/schema/themeComponents";
+} from "../../db/schema/themeComponents";
 
 export const createThemeComponent = async (
   themeComponent: NewThemeComponentParams,

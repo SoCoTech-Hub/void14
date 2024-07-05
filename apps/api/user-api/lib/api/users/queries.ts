@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { UserId } from "../db/schema/users";
-import { db } from "../db/index";
-import { userIdSchema, users } from "../db/schema/users";
+import type { UserId } from "../../db/schema/users";
+import { db } from "../../db/index";
+import { userIdSchema, users } from "../../db/schema/users";
 
 export const getUsers = async () => {
   const rows = await db.select().from(users);

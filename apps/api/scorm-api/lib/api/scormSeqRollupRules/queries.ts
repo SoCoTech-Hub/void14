@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { ScormSeqRollupRuleId } from "../db/schema/scormSeqRollupRules";
-import { db } from "../db/index";
-import { scormScoes } from "../db/schema/scormScoes";
+import type { ScormSeqRollupRuleId } from "../../db/schema/scormSeqRollupRules";
+import { db } from "../../db/index";
+import { scormScoes } from "../../db/schema/scormScoes";
 import {
   scormSeqRollupRuleIdSchema,
   scormSeqRollupRules,
-} from "../db/schema/scormSeqRollupRules";
+} from "../../db/schema/scormSeqRollupRules";
 
 export const getScormSeqRollupRules = async () => {
   const rows = await db

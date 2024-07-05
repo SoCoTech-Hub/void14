@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { ToolRecyclebinCategoryId } from "../db/schema/toolRecyclebinCategories";
-import { db } from "../db/index";
+import type { ToolRecyclebinCategoryId } from "../../db/schema/toolRecyclebinCategories";
+import { db } from "../../db/index";
 import {
   toolRecyclebinCategories,
   toolRecyclebinCategoryIdSchema,
-} from "../db/schema/toolRecyclebinCategories";
+} from "../../db/schema/toolRecyclebinCategories";
 
 export const getToolRecyclebinCategories = async () => {
   const rows = await db.select().from(toolRecyclebinCategories);

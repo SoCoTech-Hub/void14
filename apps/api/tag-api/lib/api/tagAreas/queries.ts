@@ -1,9 +1,9 @@
 import { eq } from "drizzle-orm";
 
-import type { TagAreaId } from "../db/schema/tagAreas";
-import { db } from "../db/index";
-import { tagAreaIdSchema, tagAreas } from "../db/schema/tagAreas";
-import { tagColls } from "../db/schema/tagColls";
+import type { TagAreaId } from "../../db/schema/tagAreas";
+import { db } from "../../db/index";
+import { tagAreaIdSchema, tagAreas } from "../../db/schema/tagAreas";
+import { tagColls } from "../../db/schema/tagColls";
 
 export const getTagAreas = async () => {
   const rows = await db

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertSubjectSchema,
   NewSubjectParams,
@@ -9,7 +9,7 @@ import {
   subjects,
   UpdateSubjectParams,
   updateSubjectSchema,
-} from "../db/schema/subjects";
+} from "../../db/schema/subjects";
 
 export const createSubject = async (subject: NewSubjectParams) => {
   const newSubject = insertSubjectSchema.parse(subject);

@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { WorkshopFormRubricLevelId } from "../db/schema/workshopFormRubricLevels";
-import { db } from "../db/index";
+import type { WorkshopFormRubricLevelId } from "../../db/schema/workshopFormRubricLevels";
+import { db } from "../../db/index";
 import {
   workshopFormRubricLevelIdSchema,
   workshopFormRubricLevels,
-} from "../db/schema/workshopFormRubricLevels";
+} from "../../db/schema/workshopFormRubricLevels";
 
 export const getWorkshopFormRubricLevels = async () => {
   const rows = await db.select().from(workshopFormRubricLevels);

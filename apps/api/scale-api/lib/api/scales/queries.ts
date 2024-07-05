@@ -2,9 +2,9 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { ScaleId } from "../db/schema/scales";
-import { db } from "../db/index";
-import { scaleIdSchema, scales } from "../db/schema/scales";
+import type { ScaleId } from "../../db/schema/scales";
+import { db } from "../../db/index";
+import { scaleIdSchema, scales } from "../../db/schema/scales";
 
 export const getScales = async () => {
   const { session } = await getUserAuth();

@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertRepositoryOnedriveAccessSchema,
   NewRepositoryOnedriveAccessParams,
@@ -11,7 +11,7 @@ import {
   repositoryOnedriveAccessIdSchema,
   UpdateRepositoryOnedriveAccessParams,
   updateRepositoryOnedriveAccessSchema,
-} from "../db/schema/repositoryOnedriveAccesses";
+} from "../../db/schema/repositoryOnedriveAccesses";
 
 export const createRepositoryOnedriveAccess = async (
   repositoryOnedriveAccess: NewRepositoryOnedriveAccessParams,

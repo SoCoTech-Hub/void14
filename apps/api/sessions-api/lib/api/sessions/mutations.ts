@@ -1,4 +1,4 @@
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import { and, eq } from "drizzle-orm";
 import { 
   SessionId, 
@@ -8,7 +8,7 @@ import {
   insertSessionSchema, 
   sessions,
   sessionIdSchema 
-} from "../db/schema/sessions";
+} from "../../db/schema/sessions";
 import { getUserAuth } from "@soco/auth/utils";
 
 export const createSession = async (session: NewSessionParams) => {

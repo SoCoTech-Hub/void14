@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { WorkshopFormNumErrorMapId } from "../db/schema/workshopFormNumErrorMaps";
-import { db } from "../db/index";
+import type { WorkshopFormNumErrorMapId } from "../../db/schema/workshopFormNumErrorMaps";
+import { db } from "../../db/index";
 import {
   workshopFormNumErrorMapIdSchema,
   workshopFormNumErrorMaps,
-} from "../db/schema/workshopFormNumErrorMaps";
-import { workshops } from "../db/schema/workshops";
+} from "../../db/schema/workshopFormNumErrorMaps";
+import { workshops } from "../../db/schema/workshops";
 
 export const getWorkshopFormNumErrorMaps = async () => {
   const rows = await db

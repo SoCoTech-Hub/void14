@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertResourceOldSchema,
   NewResourceOldParams,
@@ -9,7 +9,7 @@ import {
   resourceOlds,
   UpdateResourceOldParams,
   updateResourceOldSchema,
-} from "../db/schema/resourceOlds";
+} from "../../db/schema/resourceOlds";
 
 export const createResourceOld = async (resourceOld: NewResourceOldParams) => {
   const newResourceOld = insertResourceOldSchema.parse(resourceOld);

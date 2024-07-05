@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertWikiVersionSchema,
   NewWikiVersionParams,
@@ -11,7 +11,7 @@ import {
   WikiVersionId,
   wikiVersionIdSchema,
   wikiVersions,
-} from "../db/schema/wikiVersions";
+} from "../../db/schema/wikiVersions";
 
 export const createWikiVersion = async (wikiVersion: NewWikiVersionParams) => {
   const { session } = await getUserAuth();

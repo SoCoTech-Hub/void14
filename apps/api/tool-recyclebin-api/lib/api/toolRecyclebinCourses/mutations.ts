@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertToolRecyclebinCourseSchema,
   NewToolRecyclebinCourseParams,
@@ -9,7 +9,7 @@ import {
   toolRecyclebinCourses,
   UpdateToolRecyclebinCourseParams,
   updateToolRecyclebinCourseSchema,
-} from "../db/schema/toolRecyclebinCourses";
+} from "../../db/schema/toolRecyclebinCourses";
 
 export const createToolRecyclebinCourse = async (
   toolRecyclebinCourse: NewToolRecyclebinCourseParams,

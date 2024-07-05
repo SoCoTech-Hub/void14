@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { UrlId } from "../db/schema/urls";
-import { db } from "../db/index";
-import { urlIdSchema, urls } from "../db/schema/urls";
+import type { UrlId } from "../../db/schema/urls";
+import { db } from "../../db/index";
+import { urlIdSchema, urls } from "../../db/schema/urls";
 
 export const getUrls = async () => {
   const rows = await db.select().from(urls);

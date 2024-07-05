@@ -1,10 +1,13 @@
 import { eq } from "drizzle-orm";
 
-import type { WikiSynonymId } from "../db/schema/wikiSynonyms";
-import { db } from "../db/index";
-import { wikiPages } from "../db/schema/wikiPages";
-import { wikiSubwikis } from "../db/schema/wikiSubwikis";
-import { wikiSynonymIdSchema, wikiSynonyms } from "../db/schema/wikiSynonyms";
+import type { WikiSynonymId } from "../../db/schema/wikiSynonyms";
+import { db } from "../../db/index";
+import { wikiPages } from "../../db/schema/wikiPages";
+import { wikiSubwikis } from "../../db/schema/wikiSubwikis";
+import {
+  wikiSynonymIdSchema,
+  wikiSynonyms,
+} from "../../db/schema/wikiSynonyms";
 
 export const getWikiSynonyms = async () => {
   const rows = await db

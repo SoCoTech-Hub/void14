@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { UniversityId } from "../db/schema/universities";
-import { db } from "../db/index";
-import { universities, universityIdSchema } from "../db/schema/universities";
+import type { UniversityId } from "../../db/schema/universities";
+import { db } from "../../db/index";
+import { universities, universityIdSchema } from "../../db/schema/universities";
 
 export const getUniversities = async () => {
   const rows = await db.select().from(universities);

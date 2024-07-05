@@ -1,9 +1,9 @@
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import { eq } from "drizzle-orm";
-import { type ScormSeqMapinfoId, scormSeqMapinfoIdSchema, scormSeqMapinfos } from "../db/schema/scormSeqMapinfos";
-import { scormSeqObjectives } from "../db/schema/scormSeqObjectives";
-import { scormScoes } from "../db/schema/scormScoes";
-import { scormSeqObjectives } from "../db/schema/scormSeqObjectives";
+import { type ScormSeqMapinfoId, scormSeqMapinfoIdSchema, scormSeqMapinfos } from "../../db/schema/scormSeqMapinfos";
+import { scormSeqObjectives } from "../../db/schema/scormSeqObjectives";
+import { scormScoes } from "../../db/schema/scormScoes";
+import { scormSeqObjectives } from "../../db/schema/scormSeqObjectives";
 
 export const getScormSeqMapinfos = async () => {
   const rows = await db.select({ scormSeqMapinfo: scormSeqMapinfos, scormSeqObjective: scormSeqObjectives, scormScoe: scormScoes, scormSeqObjective: scormSeqObjectives }).from(scormSeqMapinfos).leftJoin(scormSeqObjectives, eq(scormSeqMapinfos.scormSeqObjectiveId, scormSeqObjectives.id)).leftJoin(scormScoes, eq(scormSeqMapinfos.scormScoeId, scormScoes.id)).leftJoin(scormSeqObjectives, eq(scormSeqMapinfos.scormSeqObjectiveId, scormSeqObjectives.id));

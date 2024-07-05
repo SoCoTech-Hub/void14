@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertRatingSchema,
   NewRatingParams,
@@ -11,7 +11,7 @@ import {
   ratings,
   UpdateRatingParams,
   updateRatingSchema,
-} from "../db/schema/ratings";
+} from "../../db/schema/ratings";
 
 export const createRating = async (rating: NewRatingParams) => {
   const { session } = await getUserAuth();

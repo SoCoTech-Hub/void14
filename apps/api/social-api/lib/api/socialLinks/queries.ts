@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { SocialLinkId } from "../db/schema/socialLinks";
-import { db } from "../db/index";
-import { socialLinkIdSchema, socialLinks } from "../db/schema/socialLinks";
+import type { SocialLinkId } from "../../db/schema/socialLinks";
+import { db } from "../../db/index";
+import { socialLinkIdSchema, socialLinks } from "../../db/schema/socialLinks";
 
 export const getSocialLinks = async () => {
   const rows = await db.select().from(socialLinks);

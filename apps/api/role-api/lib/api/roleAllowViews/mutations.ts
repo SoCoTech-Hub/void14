@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertRoleAllowViewSchema,
   NewRoleAllowViewParams,
@@ -9,7 +9,7 @@ import {
   roleAllowViews,
   UpdateRoleAllowViewParams,
   updateRoleAllowViewSchema,
-} from "../db/schema/roleAllowViews";
+} from "../../db/schema/roleAllowViews";
 
 export const createRoleAllowView = async (
   roleAllowView: NewRoleAllowViewParams,

@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertPortfolioInstanceUserSchema,
   NewPortfolioInstanceUserParams,
@@ -11,7 +11,7 @@ import {
   portfolioInstanceUsers,
   UpdatePortfolioInstanceUserParams,
   updatePortfolioInstanceUserSchema,
-} from "../db/schema/portfolioInstanceUsers";
+} from "../../db/schema/portfolioInstanceUsers";
 
 export const createPortfolioInstanceUser = async (
   portfolioInstanceUser: NewPortfolioInstanceUserParams,

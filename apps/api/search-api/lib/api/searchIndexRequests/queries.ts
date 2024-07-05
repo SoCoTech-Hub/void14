@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { SearchIndexRequestId } from "../db/schema/searchIndexRequests";
-import { db } from "../db/index";
+import type { SearchIndexRequestId } from "../../db/schema/searchIndexRequests";
+import { db } from "../../db/index";
 import {
   searchIndexRequestIdSchema,
   searchIndexRequests,
-} from "../db/schema/searchIndexRequests";
+} from "../../db/schema/searchIndexRequests";
 
 export const getSearchIndexRequests = async () => {
   const rows = await db.select().from(searchIndexRequests);

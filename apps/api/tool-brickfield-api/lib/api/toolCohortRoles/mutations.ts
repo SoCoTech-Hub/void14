@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertToolCohortRoleSchema,
   NewToolCohortRoleParams,
@@ -11,7 +11,7 @@ import {
   toolCohortRoles,
   UpdateToolCohortRoleParams,
   updateToolCohortRoleSchema,
-} from "../db/schema/toolCohortRoles";
+} from "../../db/schema/toolCohortRoles";
 
 export const createToolCohortRole = async (
   toolCohortRole: NewToolCohortRoleParams,

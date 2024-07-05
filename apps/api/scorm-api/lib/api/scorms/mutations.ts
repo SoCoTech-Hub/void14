@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertScormSchema,
   NewScormParams,
@@ -9,7 +9,7 @@ import {
   scorms,
   UpdateScormParams,
   updateScormSchema,
-} from "../db/schema/scorms";
+} from "../../db/schema/scorms";
 
 export const createScorm = async (scorm: NewScormParams) => {
   const newScorm = insertScormSchema.parse(scorm);

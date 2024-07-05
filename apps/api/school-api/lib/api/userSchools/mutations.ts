@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertUserSchoolSchema,
   NewUserSchoolParams,
@@ -11,7 +11,7 @@ import {
   UserSchoolId,
   userSchoolIdSchema,
   userSchools,
-} from "../db/schema/userSchools";
+} from "../../db/schema/userSchools";
 
 export const createUserSchool = async (userSchool: NewUserSchoolParams) => {
   const { session } = await getUserAuth();

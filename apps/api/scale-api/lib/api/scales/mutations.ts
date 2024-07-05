@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertScaleSchema,
   NewScaleParams,
@@ -11,7 +11,7 @@ import {
   scales,
   UpdateScaleParams,
   updateScaleSchema,
-} from "../db/schema/scales";
+} from "../../db/schema/scales";
 
 export const createScale = async (scale: NewScaleParams) => {
   const { session } = await getUserAuth();

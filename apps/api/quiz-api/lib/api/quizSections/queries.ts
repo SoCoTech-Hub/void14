@@ -1,9 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { QuizSectionId } from "../db/schema/quizSections";
-import { db } from "../db/index";
-import { quizes } from "../db/schema/quizes";
-import { quizSectionIdSchema, quizSections } from "../db/schema/quizSections";
+import type { QuizSectionId } from "../../db/schema/quizSections";
+import { db } from "../../db/index";
+import { quizes } from "../../db/schema/quizes";
+import {
+  quizSectionIdSchema,
+  quizSections,
+} from "../../db/schema/quizSections";
 
 export const getQuizSections = async () => {
   const rows = await db

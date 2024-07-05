@@ -2,9 +2,9 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { NextOfKinId } from "../db/schema/nextOfKins";
-import { db } from "../db/index";
-import { nextOfKinIdSchema, nextOfKins } from "../db/schema/nextOfKins";
+import type { NextOfKinId } from "../../db/schema/nextOfKins";
+import { db } from "../../db/index";
+import { nextOfKinIdSchema, nextOfKins } from "../../db/schema/nextOfKins";
 
 export const getNextOfKins = async () => {
   const { session } = await getUserAuth();

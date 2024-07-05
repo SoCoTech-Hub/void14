@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertTagSchema,
   NewTagParams,
@@ -11,7 +11,7 @@ import {
   tags,
   UpdateTagParams,
   updateTagSchema,
-} from "../db/schema/tags";
+} from "../../db/schema/tags";
 
 export const createTag = async (tag: NewTagParams) => {
   const { session } = await getUserAuth();

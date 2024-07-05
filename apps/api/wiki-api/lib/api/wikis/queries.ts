@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { WikiId } from "../db/schema/wikis";
-import { db } from "../db/index";
-import { wikiIdSchema, wikis } from "../db/schema/wikis";
+import type { WikiId } from "../../db/schema/wikis";
+import { db } from "../../db/index";
+import { wikiIdSchema, wikis } from "../../db/schema/wikis";
 
 export const getWikis = async () => {
   const rows = await db.select().from(wikis);

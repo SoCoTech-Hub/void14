@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertSocialLinkSchema,
   NewSocialLinkParams,
@@ -9,7 +9,7 @@ import {
   socialLinks,
   UpdateSocialLinkParams,
   updateSocialLinkSchema,
-} from "../db/schema/socialLinks";
+} from "../../db/schema/socialLinks";
 
 export const createSocialLink = async (socialLink: NewSocialLinkParams) => {
   const newSocialLink = insertSocialLinkSchema.parse(socialLink);

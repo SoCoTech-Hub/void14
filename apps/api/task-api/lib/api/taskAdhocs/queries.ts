@@ -2,9 +2,9 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { TaskAdhocId } from "../db/schema/taskAdhocs";
-import { db } from "../db/index";
-import { taskAdhocIdSchema, taskAdhocs } from "../db/schema/taskAdhocs";
+import type { TaskAdhocId } from "../../db/schema/taskAdhocs";
+import { db } from "../../db/index";
+import { taskAdhocIdSchema, taskAdhocs } from "../../db/schema/taskAdhocs";
 
 export const getTaskAdhocs = async () => {
   const { session } = await getUserAuth();

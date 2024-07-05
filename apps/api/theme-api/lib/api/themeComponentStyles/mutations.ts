@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertThemeComponentStyleSchema,
   NewThemeComponentStyleParams,
@@ -11,7 +11,7 @@ import {
   themeComponentStyles,
   UpdateThemeComponentStyleParams,
   updateThemeComponentStyleSchema,
-} from "../db/schema/themeComponentStyles";
+} from "../../db/schema/themeComponentStyles";
 
 export const createThemeComponentStyle = async (
   themeComponentStyle: NewThemeComponentStyleParams,

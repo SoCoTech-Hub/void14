@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQuizReportSchema,
   NewQuizReportParams,
@@ -9,7 +9,7 @@ import {
   quizReports,
   UpdateQuizReportParams,
   updateQuizReportSchema,
-} from "../db/schema/quizReports";
+} from "../../db/schema/quizReports";
 
 export const createQuizReport = async (quizReport: NewQuizReportParams) => {
   const newQuizReport = insertQuizReportSchema.parse(quizReport);

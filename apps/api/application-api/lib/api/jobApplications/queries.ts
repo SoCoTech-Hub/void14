@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { JobApplicationId } from "../db/schema/jobApplications";
-import { db } from "../db/index";
+import type { JobApplicationId } from "../../db/schema/jobApplications";
+import { db } from "../../db/index";
 import {
   jobApplicationIdSchema,
   jobApplications,
-} from "../db/schema/jobApplications";
+} from "../../db/schema/jobApplications";
 
 export const getJobApplications = async () => {
   const { session } = await getUserAuth();

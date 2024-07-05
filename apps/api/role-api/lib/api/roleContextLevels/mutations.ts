@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertRoleContextLevelSchema,
   NewRoleContextLevelParams,
@@ -9,7 +9,7 @@ import {
   roleContextLevels,
   UpdateRoleContextLevelParams,
   updateRoleContextLevelSchema,
-} from "../db/schema/roleContextLevels";
+} from "../../db/schema/roleContextLevels";
 
 export const createRoleContextLevel = async (
   roleContextLevel: NewRoleContextLevelParams,

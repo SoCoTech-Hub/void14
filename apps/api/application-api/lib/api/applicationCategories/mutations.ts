@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   applicationCategories,
   ApplicationCategoryId,
@@ -9,7 +9,7 @@ import {
   NewApplicationCategoryParams,
   UpdateApplicationCategoryParams,
   updateApplicationCategorySchema,
-} from "../db/schema/applicationCategories";
+} from "../../db/schema/applicationCategories";
 
 export const createApplicationCategory = async (
   applicationCategory: NewApplicationCategoryParams,

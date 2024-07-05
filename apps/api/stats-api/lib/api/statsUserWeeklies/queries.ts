@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { StatsUserWeeklyId } from "../db/schema/statsUserWeeklies";
-import { db } from "../db/index";
+import type { StatsUserWeeklyId } from "../../db/schema/statsUserWeeklies";
+import { db } from "../../db/index";
 import {
   statsUserWeeklies,
   statsUserWeeklyIdSchema,
-} from "../db/schema/statsUserWeeklies";
+} from "../../db/schema/statsUserWeeklies";
 
 export const getStatsUserWeeklies = async () => {
   const { session } = await getUserAuth();

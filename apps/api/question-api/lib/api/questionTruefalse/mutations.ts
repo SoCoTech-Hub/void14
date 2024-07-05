@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQuestionTruefalseSchema,
   NewQuestionTruefalseParams,
@@ -9,7 +9,7 @@ import {
   questionTruefalseIdSchema,
   UpdateQuestionTruefalseParams,
   updateQuestionTruefalseSchema,
-} from "../db/schema/questionTruefalse";
+} from "../../db/schema/questionTruefalse";
 
 export const createQuestionTruefalse = async (
   questionTruefalse: NewQuestionTruefalseParams,

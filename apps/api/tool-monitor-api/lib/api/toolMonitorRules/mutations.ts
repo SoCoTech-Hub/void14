@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertToolMonitorRuleSchema,
   NewToolMonitorRuleParams,
@@ -11,7 +11,7 @@ import {
   toolMonitorRules,
   UpdateToolMonitorRuleParams,
   updateToolMonitorRuleSchema,
-} from "../db/schema/toolMonitorRules";
+} from "../../db/schema/toolMonitorRules";
 
 export const createToolMonitorRule = async (
   toolMonitorRule: NewToolMonitorRuleParams,

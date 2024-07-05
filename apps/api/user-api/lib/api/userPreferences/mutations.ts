@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertUserPreferenceSchema,
   NewUserPreferenceParams,
@@ -11,7 +11,7 @@ import {
   UserPreferenceId,
   userPreferenceIdSchema,
   userPreferences,
-} from "../db/schema/userPreferences";
+} from "../../db/schema/userPreferences";
 
 export const createUserPreference = async (
   userPreference: NewUserPreferenceParams,

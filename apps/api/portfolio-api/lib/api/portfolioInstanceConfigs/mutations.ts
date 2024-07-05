@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertPortfolioInstanceConfigSchema,
   NewPortfolioInstanceConfigParams,
@@ -9,7 +9,7 @@ import {
   portfolioInstanceConfigs,
   UpdatePortfolioInstanceConfigParams,
   updatePortfolioInstanceConfigSchema,
-} from "../db/schema/portfolioInstanceConfigs";
+} from "../../db/schema/portfolioInstanceConfigs";
 
 export const createPortfolioInstanceConfig = async (
   portfolioInstanceConfig: NewPortfolioInstanceConfigParams,

@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertSearchSimpledbIndexSchema,
   NewSearchSimpledbIndexParams,
@@ -11,7 +11,7 @@ import {
   searchSimpledbIndexIdSchema,
   UpdateSearchSimpledbIndexParams,
   updateSearchSimpledbIndexSchema,
-} from "../db/schema/searchSimpledbIndexes";
+} from "../../db/schema/searchSimpledbIndexes";
 
 export const createSearchSimpledbIndex = async (
   searchSimpledbIndex: NewSearchSimpledbIndexParams,

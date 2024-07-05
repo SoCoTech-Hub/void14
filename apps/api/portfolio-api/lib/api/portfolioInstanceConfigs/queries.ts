@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { PortfolioInstanceConfigId } from "../db/schema/portfolioInstanceConfigs";
-import { db } from "../db/index";
+import type { PortfolioInstanceConfigId } from "../../db/schema/portfolioInstanceConfigs";
+import { db } from "../../db/index";
 import {
   portfolioInstanceConfigIdSchema,
   portfolioInstanceConfigs,
-} from "../db/schema/portfolioInstanceConfigs";
-import { portfolioInstances } from "../db/schema/portfolioInstances";
+} from "../../db/schema/portfolioInstanceConfigs";
+import { portfolioInstances } from "../../db/schema/portfolioInstances";
 
 export const getPortfolioInstanceConfigs = async () => {
   const rows = await db

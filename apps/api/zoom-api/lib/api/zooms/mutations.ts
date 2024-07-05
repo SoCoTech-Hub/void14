@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertZoomSchema,
   NewZoomParams,
@@ -9,7 +9,7 @@ import {
   ZoomId,
   zoomIdSchema,
   zooms,
-} from "../db/schema/zooms";
+} from "../../db/schema/zooms";
 
 export const createZoom = async (zoom: NewZoomParams) => {
   const newZoom = insertZoomSchema.parse(zoom);

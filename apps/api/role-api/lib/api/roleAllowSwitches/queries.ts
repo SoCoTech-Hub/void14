@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { RoleAllowSwitchId } from "../db/schema/roleAllowSwitches";
-import { db } from "../db/index";
+import type { RoleAllowSwitchId } from "../../db/schema/roleAllowSwitches";
+import { db } from "../../db/index";
 import {
   roleAllowSwitches,
   roleAllowSwitchIdSchema,
-} from "../db/schema/roleAllowSwitches";
-import { roles } from "../db/schema/roles";
+} from "../../db/schema/roleAllowSwitches";
+import { roles } from "../../db/schema/roles";
 
 export const getRoleAllowSwitches = async () => {
   const rows = await db

@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertJobApplicationSchema,
   JobApplicationId,
@@ -11,7 +11,7 @@ import {
   NewJobApplicationParams,
   UpdateJobApplicationParams,
   updateJobApplicationSchema,
-} from "../db/schema/jobApplications";
+} from "../../db/schema/jobApplications";
 
 export const createJobApplication = async (
   jobApplication: NewJobApplicationParams,

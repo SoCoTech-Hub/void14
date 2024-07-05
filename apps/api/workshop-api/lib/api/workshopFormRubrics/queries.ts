@@ -2,13 +2,13 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { WorkshopFormRubricId } from "../db/schema/workshopFormRubrics";
-import { db } from "../db/index";
+import type { WorkshopFormRubricId } from "../../db/schema/workshopFormRubrics";
+import { db } from "../../db/index";
 import {
   workshopFormRubricIdSchema,
   workshopFormRubrics,
-} from "../db/schema/workshopFormRubrics";
-import { workshops } from "../db/schema/workshops";
+} from "../../db/schema/workshopFormRubrics";
+import { workshops } from "../../db/schema/workshops";
 
 export const getWorkshopFormRubrics = async () => {
   const { session } = await getUserAuth();

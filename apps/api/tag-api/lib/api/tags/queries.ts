@@ -2,10 +2,10 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { TagId } from "../db/schema/tags";
-import { db } from "../db/index";
-import { tagColls } from "../db/schema/tagColls";
-import { tagIdSchema, tags } from "../db/schema/tags";
+import type { TagId } from "../../db/schema/tags";
+import { db } from "../../db/index";
+import { tagColls } from "../../db/schema/tagColls";
+import { tagIdSchema, tags } from "../../db/schema/tags";
 
 export const getTags = async () => {
   const { session } = await getUserAuth();

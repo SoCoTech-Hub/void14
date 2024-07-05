@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { PortfolioInstanceId } from "../db/schema/portfolioInstances";
-import { db } from "../db/index";
+import type { PortfolioInstanceId } from "../../db/schema/portfolioInstances";
+import { db } from "../../db/index";
 import {
   portfolioInstanceIdSchema,
   portfolioInstances,
-} from "../db/schema/portfolioInstances";
+} from "../../db/schema/portfolioInstances";
 
 export const getPortfolioInstances = async () => {
   const rows = await db.select().from(portfolioInstances);

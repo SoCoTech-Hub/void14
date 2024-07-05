@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { ToolCohortRoleId } from "../db/schema/toolCohortRoles";
-import { db } from "../db/index";
+import type { ToolCohortRoleId } from "../../db/schema/toolCohortRoles";
+import { db } from "../../db/index";
 import {
   toolCohortRoleIdSchema,
   toolCohortRoles,
-} from "../db/schema/toolCohortRoles";
+} from "../../db/schema/toolCohortRoles";
 
 export const getToolCohortRoles = async () => {
   const { session } = await getUserAuth();

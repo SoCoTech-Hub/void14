@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertScormSeqRollupRuleSchema,
   NewScormSeqRollupRuleParams,
@@ -9,7 +9,7 @@ import {
   scormSeqRollupRules,
   UpdateScormSeqRollupRuleParams,
   updateScormSeqRollupRuleSchema,
-} from "../db/schema/scormSeqRollupRules";
+} from "../../db/schema/scormSeqRollupRules";
 
 export const createScormSeqRollupRule = async (
   scormSeqRollupRule: NewScormSeqRollupRuleParams,

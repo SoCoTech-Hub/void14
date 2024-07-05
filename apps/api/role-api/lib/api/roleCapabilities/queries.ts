@@ -2,13 +2,13 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { RoleCapabilityId } from "../db/schema/roleCapabilities";
-import { db } from "../db/index";
+import type { RoleCapabilityId } from "../../db/schema/roleCapabilities";
+import { db } from "../../db/index";
 import {
   roleCapabilities,
   roleCapabilityIdSchema,
-} from "../db/schema/roleCapabilities";
-import { roles } from "../db/schema/roles";
+} from "../../db/schema/roleCapabilities";
+import { roles } from "../../db/schema/roles";
 
 export const getRoleCapabilities = async () => {
   const { session } = await getUserAuth();

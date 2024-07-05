@@ -1,8 +1,8 @@
 import { eq } from "drizzle-orm";
 
-import type { ResourceId } from "../db/schema/resources";
-import { db } from "../db/index";
-import { resourceIdSchema, resources } from "../db/schema/resources";
+import type { ResourceId } from "../../db/schema/resources";
+import { db } from "../../db/index";
+import { resourceIdSchema, resources } from "../../db/schema/resources";
 
 export const getResources = async () => {
   const rows = await db.select().from(resources);

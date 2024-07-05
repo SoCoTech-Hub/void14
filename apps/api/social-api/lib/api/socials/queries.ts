@@ -2,10 +2,10 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { SocialId } from "../db/schema/socials";
-import { db } from "../db/index";
-import { socialEmojis } from "../db/schema/socialEmojis";
-import { socialIdSchema, socials } from "../db/schema/socials";
+import type { SocialId } from "../../db/schema/socials";
+import { db } from "../../db/index";
+import { socialEmojis } from "../../db/schema/socialEmojis";
+import { socialIdSchema, socials } from "../../db/schema/socials";
 
 export const getSocials = async () => {
   const { session } = await getUserAuth();

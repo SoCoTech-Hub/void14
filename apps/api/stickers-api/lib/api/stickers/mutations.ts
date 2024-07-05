@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertStickerSchema,
   NewStickerParams,
@@ -9,7 +9,7 @@ import {
   stickers,
   UpdateStickerParams,
   updateStickerSchema,
-} from "../db/schema/stickers";
+} from "../../db/schema/stickers";
 
 export const createSticker = async (sticker: NewStickerParams) => {
   const newSticker = insertStickerSchema.parse(sticker);

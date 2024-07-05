@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { QtypeMultichoiceOptionId } from "../db/schema/qtypeMultichoiceOptions";
-import { db } from "../db/index";
+import type { QtypeMultichoiceOptionId } from "../../db/schema/qtypeMultichoiceOptions";
+import { db } from "../../db/index";
 import {
   qtypeMultichoiceOptionIdSchema,
   qtypeMultichoiceOptions,
-} from "../db/schema/qtypeMultichoiceOptions";
+} from "../../db/schema/qtypeMultichoiceOptions";
 
 export const getQtypeMultichoiceOptions = async () => {
   const rows = await db.select().from(qtypeMultichoiceOptions);

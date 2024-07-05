@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertUserInfoDataSchema,
   NewUserInfoDataParams,
@@ -11,7 +11,7 @@ import {
   UserInfoDataId,
   userInfoDataIdSchema,
   userInfoDatas,
-} from "../db/schema/userInfoDatas";
+} from "../../db/schema/userInfoDatas";
 
 export const createUserInfoData = async (
   userInfoData: NewUserInfoDataParams,

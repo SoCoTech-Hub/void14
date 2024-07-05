@@ -2,10 +2,10 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { WikiLockId } from "../db/schema/wikiLocks";
-import { db } from "../db/index";
-import { wikiLockIdSchema, wikiLocks } from "../db/schema/wikiLocks";
-import { wikiPages } from "../db/schema/wikiPages";
+import type { WikiLockId } from "../../db/schema/wikiLocks";
+import { db } from "../../db/index";
+import { wikiLockIdSchema, wikiLocks } from "../../db/schema/wikiLocks";
+import { wikiPages } from "../../db/schema/wikiPages";
 
 export const getWikiLocks = async () => {
   const { session } = await getUserAuth();

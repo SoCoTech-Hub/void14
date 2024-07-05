@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertWorkshopFormAccumulativeSchema,
   NewWorkshopFormAccumulativeParams,
@@ -9,7 +9,7 @@ import {
   WorkshopFormAccumulativeId,
   workshopFormAccumulativeIdSchema,
   workshopFormAccumulatives,
-} from "../db/schema/workshopFormAccumulatives";
+} from "../../db/schema/workshopFormAccumulatives";
 
 export const createWorkshopFormAccumulative = async (
   workshopFormAccumulative: NewWorkshopFormAccumulativeParams,

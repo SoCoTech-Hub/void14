@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { QuestionMultianswerId } from "../db/schema/questionMultianswers";
-import { db } from "../db/index";
+import type { QuestionMultianswerId } from "../../db/schema/questionMultianswers";
+import { db } from "../../db/index";
 import {
   questionMultianswerIdSchema,
   questionMultianswers,
-} from "../db/schema/questionMultianswers";
-import { questions } from "../db/schema/questions";
+} from "../../db/schema/questionMultianswers";
+import { questions } from "../../db/schema/questions";
 
 export const getQuestionMultianswers = async () => {
   const rows = await db

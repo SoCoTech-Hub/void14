@@ -2,13 +2,13 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { SurveyAnalysissId } from "../db/schema/surveyAnalysiss";
-import { db } from "../db/index";
+import type { SurveyAnalysissId } from "../../db/schema/surveyAnalysiss";
+import { db } from "../../db/index";
 import {
   surveyAnalysiss,
   surveyAnalysissIdSchema,
-} from "../db/schema/surveyAnalysiss";
-import { surveys } from "../db/schema/surveys";
+} from "../../db/schema/surveyAnalysiss";
+import { surveys } from "../../db/schema/surveys";
 
 export const getSurveyAnalysisses = async () => {
   const { session } = await getUserAuth();

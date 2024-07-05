@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertScormSeqMapinfoSchema,
   NewScormSeqMapinfoParams,
@@ -9,7 +9,7 @@ import {
   scormSeqMapinfos,
   UpdateScormSeqMapinfoParams,
   updateScormSeqMapinfoSchema,
-} from "../db/schema/scormSeqMapinfos";
+} from "../../db/schema/scormSeqMapinfos";
 
 export const createScormSeqMapinfo = async (
   scormSeqMapinfo: NewScormSeqMapinfoParams,

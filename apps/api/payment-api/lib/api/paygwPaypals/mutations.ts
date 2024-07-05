@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertPaygwPaypalSchema,
   NewPaygwPaypalParams,
@@ -9,7 +9,7 @@ import {
   paygwPaypals,
   UpdatePaygwPaypalParams,
   updatePaygwPaypalSchema,
-} from "../db/schema/paygwPaypals";
+} from "../../db/schema/paygwPaypals";
 
 export const createPaygwPaypal = async (paygwPaypal: NewPaygwPaypalParams) => {
   const newPaygwPaypal = insertPaygwPaypalSchema.parse(paygwPaypal);

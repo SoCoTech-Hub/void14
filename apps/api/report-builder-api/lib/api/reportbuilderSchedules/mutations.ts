@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertReportbuilderScheduleSchema,
   NewReportbuilderScheduleParams,
@@ -11,7 +11,7 @@ import {
   reportbuilderSchedules,
   UpdateReportbuilderScheduleParams,
   updateReportbuilderScheduleSchema,
-} from "../db/schema/reportbuilderSchedules";
+} from "../../db/schema/reportbuilderSchedules";
 
 export const createReportbuilderSchedule = async (
   reportbuilderSchedule: NewReportbuilderScheduleParams,

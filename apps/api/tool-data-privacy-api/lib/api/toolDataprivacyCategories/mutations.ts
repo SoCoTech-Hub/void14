@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertToolDataprivacyCategorySchema,
   NewToolDataprivacyCategoryParams,
@@ -11,7 +11,7 @@ import {
   toolDataprivacyCategoryIdSchema,
   UpdateToolDataprivacyCategoryParams,
   updateToolDataprivacyCategorySchema,
-} from "../db/schema/toolDataprivacyCategories";
+} from "../../db/schema/toolDataprivacyCategories";
 
 export const createToolDataprivacyCategory = async (
   toolDataprivacyCategory: NewToolDataprivacyCategoryParams,

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQtypeRandomsamatchOptionSchema,
   NewQtypeRandomsamatchOptionParams,
@@ -9,7 +9,7 @@ import {
   qtypeRandomsamatchOptions,
   UpdateQtypeRandomsamatchOptionParams,
   updateQtypeRandomsamatchOptionSchema,
-} from "../db/schema/qtypeRandomsamatchOptions";
+} from "../../db/schema/qtypeRandomsamatchOptions";
 
 export const createQtypeRandomsamatchOption = async (
   qtypeRandomsamatchOption: NewQtypeRandomsamatchOptionParams,

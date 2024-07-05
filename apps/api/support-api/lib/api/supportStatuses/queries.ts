@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { SupportStatusId } from "../db/schema/supportStatuses";
-import { db } from "../db/index";
+import type { SupportStatusId } from "../../db/schema/supportStatuses";
+import { db } from "../../db/index";
 import {
   supportStatuses,
   supportStatusIdSchema,
-} from "../db/schema/supportStatuses";
+} from "../../db/schema/supportStatuses";
 
 export const getSupportStatuses = async () => {
   const rows = await db.select().from(supportStatuses);

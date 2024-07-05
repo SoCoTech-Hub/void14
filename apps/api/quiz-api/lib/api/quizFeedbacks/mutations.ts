@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQuizFeedbackSchema,
   NewQuizFeedbackParams,
@@ -9,7 +9,7 @@ import {
   quizFeedbacks,
   UpdateQuizFeedbackParams,
   updateQuizFeedbackSchema,
-} from "../db/schema/quizFeedbacks";
+} from "../../db/schema/quizFeedbacks";
 
 export const createQuizFeedback = async (
   quizFeedback: NewQuizFeedbackParams,

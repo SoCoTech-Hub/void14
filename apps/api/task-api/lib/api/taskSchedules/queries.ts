@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { TaskScheduleId } from "../db/schema/taskSchedules";
-import { db } from "../db/index";
+import type { TaskScheduleId } from "../../db/schema/taskSchedules";
+import { db } from "../../db/index";
 import {
   taskScheduleIdSchema,
   taskSchedules,
-} from "../db/schema/taskSchedules";
+} from "../../db/schema/taskSchedules";
 
 export const getTaskSchedules = async () => {
   const rows = await db.select().from(taskSchedules);

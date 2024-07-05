@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertScormSeqRuleConditionSchema,
   NewScormSeqRuleConditionParams,
@@ -9,7 +9,7 @@ import {
   scormSeqRuleConditions,
   UpdateScormSeqRuleConditionParams,
   updateScormSeqRuleConditionSchema,
-} from "../db/schema/scormSeqRuleConditions";
+} from "../../db/schema/scormSeqRuleConditions";
 
 export const createScormSeqRuleCondition = async (
   scormSeqRuleCondition: NewScormSeqRuleConditionParams,

@@ -2,10 +2,13 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { WikiSubwikiId } from "../db/schema/wikiSubwikis";
-import { db } from "../db/index";
-import { wikis } from "../db/schema/wikis";
-import { wikiSubwikiIdSchema, wikiSubwikis } from "../db/schema/wikiSubwikis";
+import type { WikiSubwikiId } from "../../db/schema/wikiSubwikis";
+import { db } from "../../db/index";
+import { wikis } from "../../db/schema/wikis";
+import {
+  wikiSubwikiIdSchema,
+  wikiSubwikis,
+} from "../../db/schema/wikiSubwikis";
 
 export const getWikiSubwikis = async () => {
   const { session } = await getUserAuth();

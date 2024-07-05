@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { RoleAllowOverrideId } from "../db/schema/roleAllowOverrides";
-import { db } from "../db/index";
+import type { RoleAllowOverrideId } from "../../db/schema/roleAllowOverrides";
+import { db } from "../../db/index";
 import {
   roleAllowOverrideIdSchema,
   roleAllowOverrides,
-} from "../db/schema/roleAllowOverrides";
-import { roles } from "../db/schema/roles";
+} from "../../db/schema/roleAllowOverrides";
+import { roles } from "../../db/schema/roles";
 
 export const getRoleAllowOverrides = async () => {
   const rows = await db

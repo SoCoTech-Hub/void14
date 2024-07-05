@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertWorkshopFormRubricLevelSchema,
   NewWorkshopFormRubricLevelParams,
@@ -9,7 +9,7 @@ import {
   WorkshopFormRubricLevelId,
   workshopFormRubricLevelIdSchema,
   workshopFormRubricLevels,
-} from "../db/schema/workshopFormRubricLevels";
+} from "../../db/schema/workshopFormRubricLevels";
 
 export const createWorkshopFormRubricLevel = async (
   workshopFormRubricLevel: NewWorkshopFormRubricLevelParams,

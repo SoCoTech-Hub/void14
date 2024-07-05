@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertShowSchema,
   NewShowParams,
@@ -9,7 +9,7 @@ import {
   shows,
   UpdateShowParams,
   updateShowSchema,
-} from "../db/schema/shows";
+} from "../../db/schema/shows";
 
 export const createShow = async (show: NewShowParams) => {
   const newShow = insertShowSchema.parse(show);

@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { PortfolioMaharaQueueId } from "../db/schema/portfolioMaharaQueues";
-import { db } from "../db/index";
+import type { PortfolioMaharaQueueId } from "../../db/schema/portfolioMaharaQueues";
+import { db } from "../../db/index";
 import {
   portfolioMaharaQueueIdSchema,
   portfolioMaharaQueues,
-} from "../db/schema/portfolioMaharaQueues";
-import { portfolioTempdatas } from "../db/schema/portfolioTempdatas";
+} from "../../db/schema/portfolioMaharaQueues";
+import { portfolioTempdatas } from "../../db/schema/portfolioTempdatas";
 
 export const getPortfolioMaharaQueues = async () => {
   const rows = await db

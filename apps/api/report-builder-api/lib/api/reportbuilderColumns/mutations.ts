@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertReportbuilderColumnSchema,
   NewReportbuilderColumnParams,
@@ -11,7 +11,7 @@ import {
   reportbuilderColumns,
   UpdateReportbuilderColumnParams,
   updateReportbuilderColumnSchema,
-} from "../db/schema/reportbuilderColumns";
+} from "../../db/schema/reportbuilderColumns";
 
 export const createReportbuilderColumn = async (
   reportbuilderColumn: NewReportbuilderColumnParams,

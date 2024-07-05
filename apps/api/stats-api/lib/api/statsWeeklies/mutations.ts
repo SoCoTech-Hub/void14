@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertStatsWeeklySchema,
   NewStatsWeeklyParams,
@@ -9,7 +9,7 @@ import {
   statsWeeklyIdSchema,
   UpdateStatsWeeklyParams,
   updateStatsWeeklySchema,
-} from "../db/schema/statsWeeklies";
+} from "../../db/schema/statsWeeklies";
 
 export const createStatsWeekly = async (statsWeekly: NewStatsWeeklyParams) => {
   const newStatsWeekly = insertStatsWeeklySchema.parse(statsWeekly);

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertTagAreaSchema,
   NewTagAreaParams,
@@ -9,7 +9,7 @@ import {
   tagAreas,
   UpdateTagAreaParams,
   updateTagAreaSchema,
-} from "../db/schema/tagAreas";
+} from "../../db/schema/tagAreas";
 
 export const createTagArea = async (tagArea: NewTagAreaParams) => {
   const newTagArea = insertTagAreaSchema.parse(tagArea);

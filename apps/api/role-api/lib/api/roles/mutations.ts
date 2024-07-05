@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertRoleSchema,
   NewRoleParams,
@@ -9,7 +9,7 @@ import {
   roles,
   UpdateRoleParams,
   updateRoleSchema,
-} from "../db/schema/roles";
+} from "../../db/schema/roles";
 
 export const createRole = async (role: NewRoleParams) => {
   const newRole = insertRoleSchema.parse(role);

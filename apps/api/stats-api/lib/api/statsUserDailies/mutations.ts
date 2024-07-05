@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertStatsUserDailySchema,
   NewStatsUserDailyParams,
@@ -11,7 +11,7 @@ import {
   statsUserDailyIdSchema,
   UpdateStatsUserDailyParams,
   updateStatsUserDailySchema,
-} from "../db/schema/statsUserDailies";
+} from "../../db/schema/statsUserDailies";
 
 export const createStatsUserDaily = async (
   statsUserDaily: NewStatsUserDailyParams,

@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertTagCorrelationSchema,
   NewTagCorrelationParams,
@@ -9,7 +9,7 @@ import {
   tagCorrelations,
   UpdateTagCorrelationParams,
   updateTagCorrelationSchema,
-} from "../db/schema/tagCorrelations";
+} from "../../db/schema/tagCorrelations";
 
 export const createTagCorrelation = async (
   tagCorrelation: NewTagCorrelationParams,

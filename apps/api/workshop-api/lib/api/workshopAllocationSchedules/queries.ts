@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { WorkshopAllocationScheduleId } from "../db/schema/workshopAllocationSchedules";
-import { db } from "../db/index";
+import type { WorkshopAllocationScheduleId } from "../../db/schema/workshopAllocationSchedules";
+import { db } from "../../db/index";
 import {
   workshopAllocationScheduleIdSchema,
   workshopAllocationSchedules,
-} from "../db/schema/workshopAllocationSchedules";
-import { workshops } from "../db/schema/workshops";
+} from "../../db/schema/workshopAllocationSchedules";
+import { workshops } from "../../db/schema/workshops";
 
 export const getWorkshopAllocationSchedules = async () => {
   const rows = await db

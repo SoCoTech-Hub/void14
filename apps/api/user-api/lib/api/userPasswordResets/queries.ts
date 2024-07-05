@@ -2,12 +2,12 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { UserPasswordResetId } from "../db/schema/userPasswordResets";
-import { db } from "../db/index";
+import type { UserPasswordResetId } from "../../db/schema/userPasswordResets";
+import { db } from "../../db/index";
 import {
   userPasswordResetIdSchema,
   userPasswordResets,
-} from "../db/schema/userPasswordResets";
+} from "../../db/schema/userPasswordResets";
 
 export const getUserPasswordResets = async () => {
   const { session } = await getUserAuth();

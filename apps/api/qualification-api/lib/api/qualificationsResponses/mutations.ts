@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQualificationsResponseSchema,
   NewQualificationsResponseParams,
@@ -11,7 +11,7 @@ import {
   qualificationsResponses,
   UpdateQualificationsResponseParams,
   updateQualificationsResponseSchema,
-} from "../db/schema/qualificationsResponses";
+} from "../../db/schema/qualificationsResponses";
 
 export const createQualificationsResponse = async (
   qualificationsResponse: NewQualificationsResponseParams,

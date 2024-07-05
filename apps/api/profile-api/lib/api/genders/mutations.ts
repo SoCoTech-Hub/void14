@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   GenderId,
   genderIdSchema,
@@ -9,7 +9,7 @@ import {
   NewGenderParams,
   UpdateGenderParams,
   updateGenderSchema,
-} from "../db/schema/genders";
+} from "../../db/schema/genders";
 
 export const createGender = async (gender: NewGenderParams) => {
   const newGender = insertGenderSchema.parse(gender);

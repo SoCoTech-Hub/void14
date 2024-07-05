@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertToolMonitorEventSchema,
   NewToolMonitorEventParams,
@@ -9,7 +9,7 @@ import {
   toolMonitorEvents,
   UpdateToolMonitorEventParams,
   updateToolMonitorEventSchema,
-} from "../db/schema/toolMonitorEvents";
+} from "../../db/schema/toolMonitorEvents";
 
 export const createToolMonitorEvent = async (
   toolMonitorEvent: NewToolMonitorEventParams,

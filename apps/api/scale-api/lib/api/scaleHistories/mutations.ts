@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertScaleHistorySchema,
   NewScaleHistoryParams,
@@ -11,7 +11,7 @@ import {
   scaleHistoryIdSchema,
   UpdateScaleHistoryParams,
   updateScaleHistorySchema,
-} from "../db/schema/scaleHistories";
+} from "../../db/schema/scaleHistories";
 
 export const createScaleHistory = async (
   scaleHistory: NewScaleHistoryParams,

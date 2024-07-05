@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { WorkshopEvalBestSettingId } from "../db/schema/workshopEvalBestSettings";
-import { db } from "../db/index";
+import type { WorkshopEvalBestSettingId } from "../../db/schema/workshopEvalBestSettings";
+import { db } from "../../db/index";
 import {
   workshopEvalBestSettingIdSchema,
   workshopEvalBestSettings,
-} from "../db/schema/workshopEvalBestSettings";
-import { workshops } from "../db/schema/workshops";
+} from "../../db/schema/workshopEvalBestSettings";
+import { workshops } from "../../db/schema/workshops";
 
 export const getWorkshopEvalBestSettings = async () => {
   const rows = await db

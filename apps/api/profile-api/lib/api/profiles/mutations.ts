@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertProfileSchema,
   NewProfileParams,
@@ -11,7 +11,7 @@ import {
   profiles,
   UpdateProfileParams,
   updateProfileSchema,
-} from "../db/schema/profiles";
+} from "../../db/schema/profiles";
 
 export const createProfile = async (profile: NewProfileParams) => {
   const { session } = await getUserAuth();

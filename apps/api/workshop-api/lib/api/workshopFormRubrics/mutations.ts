@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertWorkshopFormRubricSchema,
   NewWorkshopFormRubricParams,
@@ -11,7 +11,7 @@ import {
   WorkshopFormRubricId,
   workshopFormRubricIdSchema,
   workshopFormRubrics,
-} from "../db/schema/workshopFormRubrics";
+} from "../../db/schema/workshopFormRubrics";
 
 export const createWorkshopFormRubric = async (
   workshopFormRubric: NewWorkshopFormRubricParams,

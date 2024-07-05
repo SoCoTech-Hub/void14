@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQuestionSchema,
   NewQuestionParams,
@@ -11,7 +11,7 @@ import {
   questions,
   UpdateQuestionParams,
   updateQuestionSchema,
-} from "../db/schema/questions";
+} from "../../db/schema/questions";
 
 export const createQuestion = async (question: NewQuestionParams) => {
   const { session } = await getUserAuth();

@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertUserDeviceSchema,
   NewUserDeviceParams,
@@ -11,7 +11,7 @@ import {
   UserDeviceId,
   userDeviceIdSchema,
   userDevices,
-} from "../db/schema/userDevices";
+} from "../../db/schema/userDevices";
 
 export const createUserDevice = async (userDevice: NewUserDeviceParams) => {
   const { session } = await getUserAuth();

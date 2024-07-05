@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertPageSchema,
   NewPageParams,
@@ -9,7 +9,7 @@ import {
   pages,
   UpdatePageParams,
   updatePageSchema,
-} from "../db/schema/pages";
+} from "../../db/schema/pages";
 
 export const createPage = async (page: NewPageParams) => {
   const newPage = insertPageSchema.parse(page);

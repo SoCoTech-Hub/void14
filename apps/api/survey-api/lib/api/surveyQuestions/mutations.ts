@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertSurveyQuestionSchema,
   NewSurveyQuestionParams,
@@ -9,7 +9,7 @@ import {
   surveyQuestions,
   UpdateSurveyQuestionParams,
   updateSurveyQuestionSchema,
-} from "../db/schema/surveyQuestions";
+} from "../../db/schema/surveyQuestions";
 
 export const createSurveyQuestion = async (
   surveyQuestion: NewSurveyQuestionParams,

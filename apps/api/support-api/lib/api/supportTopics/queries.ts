@@ -1,12 +1,12 @@
 import { eq } from "drizzle-orm";
 
-import type { SupportTopicId } from "../db/schema/supportTopics";
-import { db } from "../db/index";
-import { supportDepartments } from "../db/schema/supportDepartments";
+import type { SupportTopicId } from "../../db/schema/supportTopics";
+import { db } from "../../db/index";
+import { supportDepartments } from "../../db/schema/supportDepartments";
 import {
   supportTopicIdSchema,
   supportTopics,
-} from "../db/schema/supportTopics";
+} from "../../db/schema/supportTopics";
 
 export const getSupportTopics = async () => {
   const rows = await db

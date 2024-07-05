@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQuestionHintSchema,
   NewQuestionHintParams,
@@ -9,7 +9,7 @@ import {
   questionHints,
   UpdateQuestionHintParams,
   updateQuestionHintSchema,
-} from "../db/schema/questionHints";
+} from "../../db/schema/questionHints";
 
 export const createQuestionHint = async (
   questionHint: NewQuestionHintParams,

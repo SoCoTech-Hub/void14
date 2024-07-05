@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertUserInfoCategorySchema,
   NewUserInfoCategoryParams,
@@ -9,7 +9,7 @@ import {
   userInfoCategories,
   UserInfoCategoryId,
   userInfoCategoryIdSchema,
-} from "../db/schema/userInfoCategories";
+} from "../../db/schema/userInfoCategories";
 
 export const createUserInfoCategory = async (
   userInfoCategory: NewUserInfoCategoryParams,

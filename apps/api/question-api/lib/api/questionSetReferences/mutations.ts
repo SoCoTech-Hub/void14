@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQuestionSetReferenceSchema,
   NewQuestionSetReferenceParams,
@@ -9,7 +9,7 @@ import {
   questionSetReferences,
   UpdateQuestionSetReferenceParams,
   updateQuestionSetReferenceSchema,
-} from "../db/schema/questionSetReferences";
+} from "../../db/schema/questionSetReferences";
 
 export const createQuestionSetReference = async (
   questionSetReference: NewQuestionSetReferenceParams,

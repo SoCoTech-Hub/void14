@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertToolPolicySchema,
   NewToolPolicyParams,
@@ -9,7 +9,7 @@ import {
   toolPolicyIdSchema,
   UpdateToolPolicyParams,
   updateToolPolicySchema,
-} from "../db/schema/toolPolicies";
+} from "../../db/schema/toolPolicies";
 
 export const createToolPolicy = async (toolPolicy: NewToolPolicyParams) => {
   const newToolPolicy = insertToolPolicySchema.parse(toolPolicy);

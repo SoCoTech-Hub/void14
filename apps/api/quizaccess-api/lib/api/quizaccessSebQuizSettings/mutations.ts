@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQuizaccessSebQuizSettingSchema,
   NewQuizaccessSebQuizSettingParams,
@@ -11,7 +11,7 @@ import {
   quizaccessSebQuizSettings,
   UpdateQuizaccessSebQuizSettingParams,
   updateQuizaccessSebQuizSettingSchema,
-} from "../db/schema/quizaccessSebQuizSettings";
+} from "../../db/schema/quizaccessSebQuizSettings";
 
 export const createQuizaccessSebQuizSetting = async (
   quizaccessSebQuizSetting: NewQuizaccessSebQuizSettingParams,

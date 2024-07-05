@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQuizOverrideSchema,
   NewQuizOverrideParams,
@@ -11,7 +11,7 @@ import {
   quizOverrides,
   UpdateQuizOverrideParams,
   updateQuizOverrideSchema,
-} from "../db/schema/quizOverrides";
+} from "../../db/schema/quizOverrides";
 
 export const createQuizOverride = async (
   quizOverride: NewQuizOverrideParams,

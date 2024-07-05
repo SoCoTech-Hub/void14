@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertRoleAllowOverrideSchema,
   NewRoleAllowOverrideParams,
@@ -9,7 +9,7 @@ import {
   roleAllowOverrides,
   UpdateRoleAllowOverrideParams,
   updateRoleAllowOverrideSchema,
-} from "../db/schema/roleAllowOverrides";
+} from "../../db/schema/roleAllowOverrides";
 
 export const createRoleAllowOverride = async (
   roleAllowOverride: NewRoleAllowOverrideParams,

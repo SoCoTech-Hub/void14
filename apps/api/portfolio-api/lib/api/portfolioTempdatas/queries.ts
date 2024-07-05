@@ -2,13 +2,13 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { PortfolioTempdataId } from "../db/schema/portfolioTempdatas";
-import { db } from "../db/index";
-import { portfolioInstances } from "../db/schema/portfolioInstances";
+import type { PortfolioTempdataId } from "../../db/schema/portfolioTempdatas";
+import { db } from "../../db/index";
+import { portfolioInstances } from "../../db/schema/portfolioInstances";
 import {
   portfolioTempdataIdSchema,
   portfolioTempdatas,
-} from "../db/schema/portfolioTempdatas";
+} from "../../db/schema/portfolioTempdatas";
 
 export const getPortfolioTempdatas = async () => {
   const { session } = await getUserAuth();

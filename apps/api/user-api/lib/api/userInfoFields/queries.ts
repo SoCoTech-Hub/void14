@@ -1,11 +1,11 @@
 import { eq } from "drizzle-orm";
 
-import type { UserInfoFieldId } from "../db/schema/userInfoFields";
-import { db } from "../db/index";
+import type { UserInfoFieldId } from "../../db/schema/userInfoFields";
+import { db } from "../../db/index";
 import {
   userInfoFieldIdSchema,
   userInfoFields,
-} from "../db/schema/userInfoFields";
+} from "../../db/schema/userInfoFields";
 
 export const getUserInfoFields = async () => {
   const rows = await db.select().from(userInfoFields);

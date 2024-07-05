@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertQuestionDatasetItemSchema,
   NewQuestionDatasetItemParams,
@@ -9,7 +9,7 @@ import {
   questionDatasetItems,
   UpdateQuestionDatasetItemParams,
   updateQuestionDatasetItemSchema,
-} from "../db/schema/questionDatasetItems";
+} from "../../db/schema/questionDatasetItems";
 
 export const createQuestionDatasetItem = async (
   questionDatasetItem: NewQuestionDatasetItemParams,

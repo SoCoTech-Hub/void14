@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertSubjectCategorySchema,
   NewSubjectCategoryParams,
@@ -9,7 +9,7 @@ import {
   subjectCategoryIdSchema,
   UpdateSubjectCategoryParams,
   updateSubjectCategorySchema,
-} from "../db/schema/subjectCategories";
+} from "../../db/schema/subjectCategories";
 
 export const createSubjectCategory = async (
   subjectCategory: NewSubjectCategoryParams,

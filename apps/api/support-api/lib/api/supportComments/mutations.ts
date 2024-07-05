@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertSupportCommentSchema,
   NewSupportCommentParams,
@@ -11,7 +11,7 @@ import {
   supportComments,
   UpdateSupportCommentParams,
   updateSupportCommentSchema,
-} from "../db/schema/supportComments";
+} from "../../db/schema/supportComments";
 
 export const createSupportComment = async (
   supportComment: NewSupportCommentParams,

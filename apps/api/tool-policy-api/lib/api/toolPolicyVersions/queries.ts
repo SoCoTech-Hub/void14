@@ -2,13 +2,13 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { ToolPolicyVersionId } from "../db/schema/toolPolicyVersions";
-import { db } from "../db/index";
-import { toolPolicies } from "../db/schema/toolPolicies";
+import type { ToolPolicyVersionId } from "../../db/schema/toolPolicyVersions";
+import { db } from "../../db/index";
+import { toolPolicies } from "../../db/schema/toolPolicies";
 import {
   toolPolicyVersionIdSchema,
   toolPolicyVersions,
-} from "../db/schema/toolPolicyVersions";
+} from "../../db/schema/toolPolicyVersions";
 
 export const getToolPolicyVersions = async () => {
   const { session } = await getUserAuth();

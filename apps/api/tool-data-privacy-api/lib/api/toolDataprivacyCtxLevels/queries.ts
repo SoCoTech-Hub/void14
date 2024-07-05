@@ -2,14 +2,14 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { ToolDataprivacyCtxLevelId } from "../db/schema/toolDataprivacyCtxLevels";
-import { db } from "../db/index";
-import { toolDataprivacyCategories } from "../db/schema/toolDataprivacyCategories";
+import type { ToolDataprivacyCtxLevelId } from "../../db/schema/toolDataprivacyCtxLevels";
+import { db } from "../../db/index";
+import { toolDataprivacyCategories } from "../../db/schema/toolDataprivacyCategories";
 import {
   toolDataprivacyCtxLevelIdSchema,
   toolDataprivacyCtxLevels,
-} from "../db/schema/toolDataprivacyCtxLevels";
-import { toolDataprivacyPurposes } from "../db/schema/toolDataprivacyPurposes";
+} from "../../db/schema/toolDataprivacyCtxLevels";
+import { toolDataprivacyPurposes } from "../../db/schema/toolDataprivacyPurposes";
 
 export const getToolDataprivacyCtxLevels = async () => {
   const { session } = await getUserAuth();

@@ -2,13 +2,13 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { ToolMonitorSubscriptionId } from "../db/schema/toolMonitorSubscriptions";
-import { db } from "../db/index";
-import { toolMonitorRules } from "../db/schema/toolMonitorRules";
+import type { ToolMonitorSubscriptionId } from "../../db/schema/toolMonitorSubscriptions";
+import { db } from "../../db/index";
+import { toolMonitorRules } from "../../db/schema/toolMonitorRules";
 import {
   toolMonitorSubscriptionIdSchema,
   toolMonitorSubscriptions,
-} from "../db/schema/toolMonitorSubscriptions";
+} from "../../db/schema/toolMonitorSubscriptions";
 
 export const getToolMonitorSubscriptions = async () => {
   const { session } = await getUserAuth();

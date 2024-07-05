@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertToolRecyclebinCategorySchema,
   NewToolRecyclebinCategoryParams,
@@ -9,7 +9,7 @@ import {
   toolRecyclebinCategoryIdSchema,
   UpdateToolRecyclebinCategoryParams,
   updateToolRecyclebinCategorySchema,
-} from "../db/schema/toolRecyclebinCategories";
+} from "../../db/schema/toolRecyclebinCategories";
 
 export const createToolRecyclebinCategory = async (
   toolRecyclebinCategory: NewToolRecyclebinCategoryParams,

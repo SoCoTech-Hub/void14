@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertUrlSchema,
   NewUrlParams,
@@ -9,7 +9,7 @@ import {
   UrlId,
   urlIdSchema,
   urls,
-} from "../db/schema/urls";
+} from "../../db/schema/urls";
 
 export const createUrl = async (url: NewUrlParams) => {
   const newUrl = insertUrlSchema.parse(url);

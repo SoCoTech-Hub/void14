@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertWikiSynonymSchema,
   NewWikiSynonymParams,
@@ -9,7 +9,7 @@ import {
   WikiSynonymId,
   wikiSynonymIdSchema,
   wikiSynonyms,
-} from "../db/schema/wikiSynonyms";
+} from "../../db/schema/wikiSynonyms";
 
 export const createWikiSynonym = async (wikiSynonym: NewWikiSynonymParams) => {
   const newWikiSynonym = insertWikiSynonymSchema.parse(wikiSynonym);

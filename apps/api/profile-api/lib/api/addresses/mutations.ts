@@ -2,7 +2,7 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   addresses,
   AddressId,
@@ -11,7 +11,7 @@ import {
   NewAddressParams,
   UpdateAddressParams,
   updateAddressSchema,
-} from "../db/schema/addresses";
+} from "../../db/schema/addresses";
 
 export const createAddress = async (address: NewAddressParams) => {
   const { session } = await getUserAuth();

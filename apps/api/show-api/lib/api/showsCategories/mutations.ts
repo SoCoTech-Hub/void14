@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertShowsCategorySchema,
   NewShowsCategoryParams,
@@ -9,7 +9,7 @@ import {
   showsCategoryIdSchema,
   UpdateShowsCategoryParams,
   updateShowsCategorySchema,
-} from "../db/schema/showsCategories";
+} from "../../db/schema/showsCategories";
 
 export const createShowsCategory = async (
   showsCategory: NewShowsCategoryParams,

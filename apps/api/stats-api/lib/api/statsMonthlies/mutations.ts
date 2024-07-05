@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertStatsMonthlySchema,
   NewStatsMonthlyParams,
@@ -9,7 +9,7 @@ import {
   statsMonthlyIdSchema,
   UpdateStatsMonthlyParams,
   updateStatsMonthlySchema,
-} from "../db/schema/statsMonthlies";
+} from "../../db/schema/statsMonthlies";
 
 export const createStatsMonthly = async (
   statsMonthly: NewStatsMonthlyParams,

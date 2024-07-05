@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import { db } from "../db/index";
+import { db } from "../../db/index";
 import {
   insertRoleAllowSwitchSchema,
   NewRoleAllowSwitchParams,
@@ -9,7 +9,7 @@ import {
   roleAllowSwitchIdSchema,
   UpdateRoleAllowSwitchParams,
   updateRoleAllowSwitchSchema,
-} from "../db/schema/roleAllowSwitches";
+} from "../../db/schema/roleAllowSwitches";
 
 export const createRoleAllowSwitch = async (
   roleAllowSwitch: NewRoleAllowSwitchParams,

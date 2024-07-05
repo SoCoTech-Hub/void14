@@ -2,14 +2,14 @@ import { and, eq } from "drizzle-orm";
 
 import { getUserAuth } from "@soco/auth/utils";
 
-import type { ScormScoesTrackId } from "../db/schema/scormScoesTracks";
-import { db } from "../db/index";
-import { scorms } from "../db/schema/scorms";
-import { scormScoes } from "../db/schema/scormScoes";
+import type { ScormScoesTrackId } from "../../db/schema/scormScoesTracks";
+import { db } from "../../db/index";
+import { scorms } from "../../db/schema/scorms";
+import { scormScoes } from "../../db/schema/scormScoes";
 import {
   scormScoesTrackIdSchema,
   scormScoesTracks,
-} from "../db/schema/scormScoesTracks";
+} from "../../db/schema/scormScoesTracks";
 
 export const getScormScoesTracks = async () => {
   const { session } = await getUserAuth();
