@@ -1,0 +1,131 @@
+{
+  "name": "@soco/assignment-db",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "default": "./src/client.ts"
+    },
+    "./schema": {
+      "types": "./dist/schema.d.ts",
+      "default": "./src/schema.ts"
+    },
+    "./schema/auth": {
+      "types": "./dist/schema/auth.d.ts",
+      "default": "./src/schema/auth.ts"
+    },
+    "./schema/assignFeedbackComments": {
+      "types": "./dist/schema/assignFeedbackComments.d.ts",
+      "default": "./src/schema/assignFeedbackComments.ts"
+    },
+    "./schema/assignFeedbackEditpdfAnnots": {
+      "types": "./dist/schema/assignFeedbackEditpdfAnnots.d.ts",
+      "default": "./src/schema/assignFeedbackEditpdfAnnots.ts"
+    },
+    "./schema/assignFeedbackEditpdfCmnts": {
+      "types": "./dist/schema/assignFeedbackEditpdfCmnts.d.ts",
+      "default": "./src/schema/assignFeedbackEditpdfCmnts.ts"
+    },
+    "./schema/assignFeedbackEditpdfQueues": {
+      "types": "./dist/schema/assignFeedbackEditpdfQueues.d.ts",
+      "default": "./src/schema/assignFeedbackEditpdfQueues.ts"
+    },
+    "./schema/assignFeedbackEditpdfQuicks": {
+      "types": "./dist/schema/assignFeedbackEditpdfQuicks.d.ts",
+      "default": "./src/schema/assignFeedbackEditpdfQuicks.ts"
+    },
+    "./schema/assignFeedbackEditpdfRots": {
+      "types": "./dist/schema/assignFeedbackEditpdfRots.d.ts",
+      "default": "./src/schema/assignFeedbackEditpdfRots.ts"
+    },
+    "./schema/assignFeedbackFiles": {
+      "types": "./dist/schema/assignFeedbackFiles.d.ts",
+      "default": "./src/schema/assignFeedbackFiles.ts"
+    },
+    "./schema/assignGrades": {
+      "types": "./dist/schema/assignGrades.d.ts",
+      "default": "./src/schema/assignGrades.ts"
+    },
+    "./schema/assignments": {
+      "types": "./dist/schema/assignments.d.ts",
+      "default": "./src/schema/assignments.ts"
+    },
+    "./schema/assignmentSubmissions": {
+      "types": "./dist/schema/assignmentSubmissions.d.ts",
+      "default": "./src/schema/assignmentSubmissions.ts"
+    },
+    "./schema/assignmentUpgrades": {
+      "types": "./dist/schema/assignmentUpgrades.d.ts",
+      "default": "./src/schema/assignmentUpgrades.ts"
+    },
+    "./schema/assignOverrides": {
+      "types": "./dist/schema/assignOverrides.d.ts",
+      "default": "./src/schema/assignOverrides.ts"
+    },
+    "./schema/assignPluginConfigs": {
+      "types": "./dist/schema/assignPluginConfigs.d.ts",
+      "default": "./src/schema/assignPluginConfigs.ts"
+    },
+    "./schema/assigns": {
+      "types": "./dist/schema/assigns.d.ts",
+      "default": "./src/schema/assigns.ts"
+    },
+    "./schema/assignSubmissionFiles": {
+      "types": "./dist/schema/assignSubmissionFiles.d.ts",
+      "default": "./src/schema/assignSubmissionFiles.ts"
+    },
+    "./schema/assignSubmissionOnlineTexts": {
+      "types": "./dist/schema/assignSubmissionOnlineTexts.d.ts",
+      "default": "./src/schema/assignSubmissionOnlineTexts.ts"
+    },
+    "./schema/assignSubmissions": {
+      "types": "./dist/schema/assignSubmissions.d.ts",
+      "default": "./src/schema/assignSubmissions.ts"
+    },
+    "./schema/assignUserFlags": {
+      "types": "./dist/schema/assignUserFlags.d.ts",
+      "default": "./src/schema/assignUserFlags.ts"
+    },
+    "./schema/assignUserMappings": {
+      "types": "./dist/schema/assignUserMappings.d.ts",
+      "default": "./src/schema/assignUserMappings.ts"
+    }
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf .turbo node_modules",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "push": "pnpm with-env drizzle-kit push",
+    "studio": "pnpm with-env drizzle-kit studio",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "dependencies": {
+    "@soco/utils": "workspace:*",
+    "@t3-oss/env-core": "^0.10.1",
+    "postgres": "^3.4.4",
+    "drizzle-orm": "^0.31.2",
+    "drizzle-zod": "^0.5.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@soco/eslint-config": "workspace:*",
+    "@soco/prettier-config": "workspace:*",
+    "@soco/tsconfig": "workspace:*",
+    "dotenv-cli": "^7.4.2",
+    "drizzle-kit": "^0.22.7",
+    "eslint": "^8",
+    "prettier": "^3.3.2",
+    "typescript": "^5.4.5"
+  },
+  "prettier": "@soco/prettier-config"
+}

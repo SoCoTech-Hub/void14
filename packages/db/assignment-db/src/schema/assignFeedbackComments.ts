@@ -12,7 +12,6 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-
 import { assignments } from "./assignments";
 
 export const assignFeedbackComments = pgTable(
@@ -81,5 +80,4 @@ export type UpdateAssignFeedbackCommentParams = z.infer<
 export type AssignFeedbackCommentId = z.infer<
   typeof assignFeedbackCommentIdSchema
 >["id"];
-
 
