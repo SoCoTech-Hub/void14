@@ -1,9 +1,9 @@
+
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
-
 
 import { affiliates } from "./affiliates";
 import { affiliatesStatuses } from "./affiliatesStatuses";

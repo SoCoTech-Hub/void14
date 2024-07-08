@@ -12,37 +12,33 @@
       "types": "./dist/client.d.ts",
       "default": "./src/client.ts"
     },
-    "./schema": {
-      "types": "./dist/schema.d.ts",
-      "default": "./src/schema.ts"
-    },
-    "./schema/auth": {
-      "types": "./dist/schema/auth.d.ts",
-      "default": "./src/schema/auth.ts"
-    },
     "./schema/blockInstances": {
       "types": "./dist/schema/blockInstances.d.ts",
       "default": "./src/schema/blockInstances.ts"
-    },
-    "./schema/blockPositions": {
-      "types": "./dist/schema/blockPositions.d.ts",
-      "default": "./src/schema/blockPositions.ts"
     },
     "./schema/blockRecentActivities": {
       "types": "./dist/schema/blockRecentActivities.d.ts",
       "default": "./src/schema/blockRecentActivities.ts"
     },
-    "./schema/blockRecentlyAccessedItems": {
-      "types": "./dist/schema/blockRecentlyAccessedItems.d.ts",
-      "default": "./src/schema/blockRecentlyAccessedItems.ts"
-    },
-    "./schema/blockRssClients": {
-      "types": "./dist/schema/blockRssClients.d.ts",
-      "default": "./src/schema/blockRssClients.ts"
+    "./schema/auth": {
+      "types": "./dist/schema/auth.d.ts",
+      "default": "./src/schema/auth.ts"
     },
     "./schema/blocks": {
       "types": "./dist/schema/blocks.d.ts",
       "default": "./src/schema/blocks.ts"
+    },
+    "./schema/blockRecentlyAccessedItems": {
+      "types": "./dist/schema/blockRecentlyAccessedItems.d.ts",
+      "default": "./src/schema/blockRecentlyAccessedItems.ts"
+    },
+    "./schema/blockPositions": {
+      "types": "./dist/schema/blockPositions.d.ts",
+      "default": "./src/schema/blockPositions.ts"
+    },
+    "./schema/blockRssClients": {
+      "types": "./dist/schema/blockRssClients.d.ts",
+      "default": "./src/schema/blockRssClients.ts"
     }
   },
   "license": "MIT",

@@ -1,6 +1,7 @@
-import type { z } from "zod";
+import { type getUserPreferences } from "@/lib/api/userPreferences/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
 
@@ -39,3 +40,8 @@ export type UpdateUserPreferenceParams = z.infer<
   typeof updateUserPreferenceParams
 >;
 export type UserPreferenceId = z.infer<typeof userPreferenceIdSchema>["id"];
+
+// this type infers the return from getUserPreferences() - meaning it will include any joins
+export type CompleteUserPreference = Awaited<
+  ReturnType<typeof getUserPreferences>
+>["userPreferences"][number];

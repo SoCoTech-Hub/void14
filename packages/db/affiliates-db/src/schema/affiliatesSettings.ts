@@ -1,10 +1,9 @@
+
 import { boolean, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
-
-
 
 export const affiliatesSettings = pgTable("affiliates_settings", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -51,5 +50,4 @@ export type UpdateAffiliatesSettingParams = z.infer<
 export type AffiliatesSettingId = z.infer<
   typeof affiliatesSettingIdSchema
 >["id"];
-
 

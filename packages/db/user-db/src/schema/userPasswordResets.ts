@@ -1,7 +1,8 @@
-import type { z } from "zod";
+import { type getUserPasswordResets } from "@/lib/api/userPasswordResets/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
@@ -51,3 +52,8 @@ export type UpdateUserPasswordResetParams = z.infer<
 export type UserPasswordResetId = z.infer<
   typeof userPasswordResetIdSchema
 >["id"];
+
+// this type infers the return from getUserPasswordResets() - meaning it will include any joins
+export type CompleteUserPasswordReset = Awaited<
+  ReturnType<typeof getUserPasswordResets>
+>["userPasswordResets"][number];

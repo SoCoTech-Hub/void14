@@ -1,0 +1,71 @@
+{
+    "name":  "@soco/user-db",
+    "version":  "0.1.0",
+    "private":  true,
+    "type":  "module",
+    "exports":  {
+                    "./schema/lessonOverrides":  {
+                                                     "types":  "./dist/schema/lessonOverrides.d.ts",
+                                                     "default":  "./src/schema/lessonOverrides.ts"
+                                                 },
+                    "./schema/lessonAnswers":  {
+                                                   "types":  "./dist/schema/lessonAnswers.d.ts",
+                                                   "default":  "./src/schema/lessonAnswers.ts"
+                                               },
+                    "./schema/lessonGrades":  {
+                                                  "types":  "./dist/schema/lessonGrades.d.ts",
+                                                  "default":  "./src/schema/lessonGrades.ts"
+                                              },
+                    "./schema/lessonBranches":  {
+                                                    "types":  "./dist/schema/lessonBranches.d.ts",
+                                                    "default":  "./src/schema/lessonBranches.ts"
+                                                },
+                    "./schema/lessonPages":  {
+                                                 "types":  "./dist/schema/lessonPages.d.ts",
+                                                 "default":  "./src/schema/lessonPages.ts"
+                                             },
+                    "./schema/lessonAttempts":  {
+                                                    "types":  "./dist/schema/lessonAttempts.d.ts",
+                                                    "default":  "./src/schema/lessonAttempts.ts"
+                                                },
+                    "./schema/lessonTimer":  {
+                                                 "types":  "./dist/schema/lessonTimer.d.ts",
+                                                 "default":  "./src/schema/lessonTimer.ts"
+                                             },
+                    "./schema/lessons":  {
+                                             "types":  "./dist/schema/lessons.d.ts",
+                                             "default":  "./src/schema/lessons.ts"
+                                         }
+                },
+    "license":  "MIT",
+    "scripts":  {
+                    "build":  "tsc",
+                    "dev":  "tsc --watch",
+                    "clean":  "rm -rf .turbo node_modules",
+                    "format":  "prettier --check . --ignore-path ../../.gitignore",
+                    "lint":  "eslint",
+                    "push":  "pnpm with-env drizzle-kit push",
+                    "studio":  "pnpm with-env drizzle-kit studio",
+                    "typecheck":  "tsc --noEmit --emitDeclarationOnly false",
+                    "with-env":  "dotenv -e ../../.env --"
+                },
+    "dependencies":  {
+                         "@soco/utils":  "workspace:*",
+                         "@t3-oss/env-core":  "^0.10.1",
+                         "postgres":  "^3.4.4",
+                         "drizzle-orm":  "^0.31.2",
+                         "drizzle-zod":  "^0.5.1",
+                         "zod":  "^3.23.8"
+                     },
+    "devDependencies":  {
+                            "@soco/eslint-config":  "workspace:*",
+                            "@soco/prettier-config":  "workspace:*",
+                            "@soco/tsconfig":  "workspace:*",
+                            "dotenv-cli":  "^7.4.2",
+                            "drizzle-kit":  "^0.22.7",
+                            "eslint":  "^8",
+                            "prettier":  "^3.3.2",
+                            "typescript":  "^5.4.5"
+                        },
+    "prettier":  "@soco/prettier-config"
+}

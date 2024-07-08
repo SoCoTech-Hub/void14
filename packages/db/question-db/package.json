@@ -1,0 +1,147 @@
+{
+    "name":  "@soco/user-db",
+    "version":  "0.1.0",
+    "private":  true,
+    "type":  "module",
+    "exports":  {
+                    "./schema/questionUsages":  {
+                                                    "types":  "./dist/schema/questionUsages.d.ts",
+                                                    "default":  "./src/schema/questionUsages.ts"
+                                                },
+                    "./schema/questions":  {
+                                               "types":  "./dist/schema/questions.d.ts",
+                                               "default":  "./src/schema/questions.ts"
+                                           },
+                    "./schema/questionResponseCounts":  {
+                                                            "types":  "./dist/schema/questionResponseCounts.d.ts",
+                                                            "default":  "./src/schema/questionResponseCounts.ts"
+                                                        },
+                    "./schema/questionAnswers":  {
+                                                     "types":  "./dist/schema/questionAnswers.d.ts",
+                                                     "default":  "./src/schema/questionAnswers.ts"
+                                                 },
+                    "./schema/questionGapselects":  {
+                                                        "types":  "./dist/schema/questionGapselects.d.ts",
+                                                        "default":  "./src/schema/questionGapselects.ts"
+                                                    },
+                    "./schema/questionMultianswers":  {
+                                                          "types":  "./dist/schema/questionMultianswers.d.ts",
+                                                          "default":  "./src/schema/questionMultianswers.ts"
+                                                      },
+                    "./schema/questionCalculateds":  {
+                                                         "types":  "./dist/schema/questionCalculateds.d.ts",
+                                                         "default":  "./src/schema/questionCalculateds.ts"
+                                                     },
+                    "./schema/questionDdwtos":  {
+                                                    "types":  "./dist/schema/questionDdwtos.d.ts",
+                                                    "default":  "./src/schema/questionDdwtos.ts"
+                                                },
+                    "./schema/questionDatasets":  {
+                                                      "types":  "./dist/schema/questionDatasets.d.ts",
+                                                      "default":  "./src/schema/questionDatasets.ts"
+                                                  },
+                    "./schema/questionStatistics":  {
+                                                        "types":  "./dist/schema/questionStatistics.d.ts",
+                                                        "default":  "./src/schema/questionStatistics.ts"
+                                                    },
+                    "./schema/questionNumericalOptions":  {
+                                                              "types":  "./dist/schema/questionNumericalOptions.d.ts",
+                                                              "default":  "./src/schema/questionNumericalOptions.ts"
+                                                          },
+                    "./schema/questionDatasetItems":  {
+                                                          "types":  "./dist/schema/questionDatasetItems.d.ts",
+                                                          "default":  "./src/schema/questionDatasetItems.ts"
+                                                      },
+                    "./schema/questionBankEntries":  {
+                                                         "types":  "./dist/schema/questionBankEntries.d.ts",
+                                                         "default":  "./src/schema/questionBankEntries.ts"
+                                                     },
+                    "./schema/questionSetReferences":  {
+                                                           "types":  "./dist/schema/questionSetReferences.d.ts",
+                                                           "default":  "./src/schema/questionSetReferences.ts"
+                                                       },
+                    "./schema/questionReferences":  {
+                                                        "types":  "./dist/schema/questionReferences.d.ts",
+                                                        "default":  "./src/schema/questionReferences.ts"
+                                                    },
+                    "./schema/questionAttemptSteps":  {
+                                                          "types":  "./dist/schema/questionAttemptSteps.d.ts",
+                                                          "default":  "./src/schema/questionAttemptSteps.ts"
+                                                      },
+                    "./schema/questionCategories":  {
+                                                        "types":  "./dist/schema/questionCategories.d.ts",
+                                                        "default":  "./src/schema/questionCategories.ts"
+                                                    },
+                    "./schema/questionNumericals":  {
+                                                        "types":  "./dist/schema/questionNumericals.d.ts",
+                                                        "default":  "./src/schema/questionNumericals.ts"
+                                                    },
+                    "./schema/questionDatasetDefinitions":  {
+                                                                "types":  "./dist/schema/questionDatasetDefinitions.d.ts",
+                                                                "default":  "./src/schema/questionDatasetDefinitions.ts"
+                                                            },
+                    "./schema/questionTruefalse":  {
+                                                       "types":  "./dist/schema/questionTruefalse.d.ts",
+                                                       "default":  "./src/schema/questionTruefalse.ts"
+                                                   },
+                    "./schema/questionResponseAnalysises":  {
+                                                                "types":  "./dist/schema/questionResponseAnalysises.d.ts",
+                                                                "default":  "./src/schema/questionResponseAnalysises.ts"
+                                                            },
+                    "./schema/questionVersions":  {
+                                                      "types":  "./dist/schema/questionVersions.d.ts",
+                                                      "default":  "./src/schema/questionVersions.ts"
+                                                  },
+                    "./schema/questionHints":  {
+                                                   "types":  "./dist/schema/questionHints.d.ts",
+                                                   "default":  "./src/schema/questionHints.ts"
+                                               },
+                    "./schema/questionAttempts":  {
+                                                      "types":  "./dist/schema/questionAttempts.d.ts",
+                                                      "default":  "./src/schema/questionAttempts.ts"
+                                                  },
+                    "./schema/questionAttemptStepDatas":  {
+                                                              "types":  "./dist/schema/questionAttemptStepDatas.d.ts",
+                                                              "default":  "./src/schema/questionAttemptStepDatas.ts"
+                                                          },
+                    "./schema/questionNumericalUnits":  {
+                                                            "types":  "./dist/schema/questionNumericalUnits.d.ts",
+                                                            "default":  "./src/schema/questionNumericalUnits.ts"
+                                                        },
+                    "./schema/questionCalculatedOptions":  {
+                                                               "types":  "./dist/schema/questionCalculatedOptions.d.ts",
+                                                               "default":  "./src/schema/questionCalculatedOptions.ts"
+                                                           }
+                },
+    "license":  "MIT",
+    "scripts":  {
+                    "build":  "tsc",
+                    "dev":  "tsc --watch",
+                    "clean":  "rm -rf .turbo node_modules",
+                    "format":  "prettier --check . --ignore-path ../../.gitignore",
+                    "lint":  "eslint",
+                    "push":  "pnpm with-env drizzle-kit push",
+                    "studio":  "pnpm with-env drizzle-kit studio",
+                    "typecheck":  "tsc --noEmit --emitDeclarationOnly false",
+                    "with-env":  "dotenv -e ../../.env --"
+                },
+    "dependencies":  {
+                         "@soco/utils":  "workspace:*",
+                         "@t3-oss/env-core":  "^0.10.1",
+                         "postgres":  "^3.4.4",
+                         "drizzle-orm":  "^0.31.2",
+                         "drizzle-zod":  "^0.5.1",
+                         "zod":  "^3.23.8"
+                     },
+    "devDependencies":  {
+                            "@soco/eslint-config":  "workspace:*",
+                            "@soco/prettier-config":  "workspace:*",
+                            "@soco/tsconfig":  "workspace:*",
+                            "dotenv-cli":  "^7.4.2",
+                            "drizzle-kit":  "^0.22.7",
+                            "eslint":  "^8",
+                            "prettier":  "^3.3.2",
+                            "typescript":  "^5.4.5"
+                        },
+    "prettier":  "@soco/prettier-config"
+}

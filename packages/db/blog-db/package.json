@@ -12,41 +12,37 @@
       "types": "./dist/client.d.ts",
       "default": "./src/client.ts"
     },
-    "./schema": {
-      "types": "./dist/schema.d.ts",
-      "default": "./src/schema.ts"
+    "./schema/subscriptions": {
+      "types": "./dist/schema/subscriptions.d.ts",
+      "default": "./src/schema/subscriptions.ts"
     },
     "./schema/auth": {
       "types": "./dist/schema/auth.d.ts",
       "default": "./src/schema/auth.ts"
     },
-    "./schema/blogAssociations": {
-      "types": "./dist/schema/blogAssociations.d.ts",
-      "default": "./src/schema/blogAssociations.ts"
-    },
-    "./schema/blogComments": {
-      "types": "./dist/schema/blogComments.d.ts",
-      "default": "./src/schema/blogComments.ts"
+    "./schema/blogs": {
+      "types": "./dist/schema/blogs.d.ts",
+      "default": "./src/schema/blogs.ts"
     },
     "./schema/blogExternals": {
       "types": "./dist/schema/blogExternals.d.ts",
       "default": "./src/schema/blogExternals.ts"
     },
-    "./schema/blogs": {
-      "types": "./dist/schema/blogs.d.ts",
-      "default": "./src/schema/blogs.ts"
-    },
     "./schema/socialIcons": {
       "types": "./dist/schema/socialIcons.d.ts",
       "default": "./src/schema/socialIcons.ts"
+    },
+    "./schema/blogComments": {
+      "types": "./dist/schema/blogComments.d.ts",
+      "default": "./src/schema/blogComments.ts"
     },
     "./schema/socialReactions": {
       "types": "./dist/schema/socialReactions.d.ts",
       "default": "./src/schema/socialReactions.ts"
     },
-    "./schema/subscriptions": {
-      "types": "./dist/schema/subscriptions.d.ts",
-      "default": "./src/schema/subscriptions.ts"
+    "./schema/blogAssociations": {
+      "types": "./dist/schema/blogAssociations.d.ts",
+      "default": "./src/schema/blogAssociations.ts"
     }
   },
   "license": "MIT",

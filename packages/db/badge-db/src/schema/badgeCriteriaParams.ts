@@ -1,3 +1,4 @@
+
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -51,4 +52,5 @@ export type UpdateBadgeCriteriaParamParams = z.infer<
 export type BadgeCriteriaParamId = z.infer<
   typeof badgeCriteriaParamIdSchema
 >["id"];
+
 

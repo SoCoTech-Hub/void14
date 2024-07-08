@@ -1,3 +1,4 @@
+
 import {
   boolean,
   pgTable,
@@ -77,4 +78,3 @@ export type UpdateAssignUserFlagParams = z.infer<
   typeof updateAssignUserFlagParams
 >;
 export type AssignUserFlagId = z.infer<typeof assignUserFlagIdSchema>["id"];
-

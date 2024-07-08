@@ -1,10 +1,10 @@
+
 import { sql } from "drizzle-orm";
 import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
-
 
 export const jobApplications = pgTable("job_applications", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -51,5 +51,4 @@ export type UpdateJobApplicationParams = z.infer<
   typeof updateJobApplicationParams
 >;
 export type JobApplicationId = z.infer<typeof jobApplicationIdSchema>["id"];
-
 

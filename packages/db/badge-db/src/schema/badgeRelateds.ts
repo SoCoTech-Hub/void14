@@ -1,3 +1,4 @@
+
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -45,4 +46,5 @@ export type NewBadgeRelated = z.infer<typeof insertBadgeRelatedSchema>;
 export type NewBadgeRelatedParams = z.infer<typeof insertBadgeRelatedParams>;
 export type UpdateBadgeRelatedParams = z.infer<typeof updateBadgeRelatedParams>;
 export type BadgeRelatedId = z.infer<typeof badgeRelatedIdSchema>["id"];
+
 

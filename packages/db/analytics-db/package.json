@@ -12,14 +12,6 @@
       "types": "./dist/client.d.ts",
       "default": "./src/client.ts"
     },
-    "./schema": {
-      "types": "./dist/schema.d.ts",
-      "default": "./src/schema.ts"
-    },
-    "./schema/auth": {
-      "types": "./dist/schema/auth.d.ts",
-      "default": "./src/schema/auth.ts"
-    },
     "./schema/analyticsIndicatorCalcs": {
       "types": "./dist/schema/analyticsIndicatorCalcs.d.ts",
       "default": "./src/schema/analyticsIndicatorCalcs.ts"
@@ -36,9 +28,9 @@
       "types": "./dist/schema/analyticsPredictionActions.d.ts",
       "default": "./src/schema/analyticsPredictionActions.ts"
     },
-    "./schema/analyticsPredictions": {
-      "types": "./dist/schema/analyticsPredictions.d.ts",
-      "default": "./src/schema/analyticsPredictions.ts"
+    "./schema/auth": {
+      "types": "./dist/schema/auth.d.ts",
+      "default": "./src/schema/auth.ts"
     },
     "./schema/analyticsPredictSamples": {
       "types": "./dist/schema/analyticsPredictSamples.d.ts",
@@ -48,13 +40,17 @@
       "types": "./dist/schema/analyticsTrainSamples.d.ts",
       "default": "./src/schema/analyticsTrainSamples.ts"
     },
-    "./schema/analyticsUsedAnalysables": {
-      "types": "./dist/schema/analyticsUsedAnalysables.d.ts",
-      "default": "./src/schema/analyticsUsedAnalysables.ts"
-    },
     "./schema/analyticsUsedFiles": {
       "types": "./dist/schema/analyticsUsedFiles.d.ts",
       "default": "./src/schema/analyticsUsedFiles.ts"
+    },
+    "./schema/analyticsPredictions": {
+      "types": "./dist/schema/analyticsPredictions.d.ts",
+      "default": "./src/schema/analyticsPredictions.ts"
+    },
+    "./schema/analyticsUsedAnalysables": {
+      "types": "./dist/schema/analyticsUsedAnalysables.d.ts",
+      "default": "./src/schema/analyticsUsedAnalysables.ts"
     }
   },
   "license": "MIT",

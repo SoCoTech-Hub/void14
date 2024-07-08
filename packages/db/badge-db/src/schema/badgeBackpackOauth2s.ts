@@ -1,3 +1,4 @@
+
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -70,3 +71,5 @@ export type UpdateBadgeBackpackOauth2Params = z.infer<
 export type BadgeBackpackOauth2Id = z.infer<
   typeof badgeBackpackOauth2IdSchema
 >["id"];
+
+

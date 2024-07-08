@@ -1,3 +1,4 @@
+
 import { sql } from "drizzle-orm";
 import {
   pgTable,
@@ -10,8 +11,6 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
-
-
 
 export const analyticsPredictSamples = pgTable(
   "analytics_predict_samples",

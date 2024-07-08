@@ -75,4 +75,3 @@ export type UpdateSocialReactionParams = z.infer<
 >;
 export type SocialReactionId = z.infer<typeof socialReactionIdSchema>["id"];
 
-
