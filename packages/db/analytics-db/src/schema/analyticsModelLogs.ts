@@ -1,3 +1,4 @@
+
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -12,8 +13,6 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
-
-
 
 export const analyticsModelLogs = pgTable(
   "analytics_model_logs",
@@ -89,4 +88,5 @@ export type UpdateAnalyticsModelLogParams = z.infer<
 export type AnalyticsModelLogId = z.infer<
   typeof analyticsModelLogIdSchema
 >["id"];
+
 

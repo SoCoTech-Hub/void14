@@ -1,3 +1,4 @@
+import { type getUserInfoDatas } from "@/lib/api/userInfoDatas/queries";
 import { integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -44,3 +45,8 @@ export type NewUserInfoData = z.infer<typeof insertUserInfoDataSchema>;
 export type NewUserInfoDataParams = z.infer<typeof insertUserInfoDataParams>;
 export type UpdateUserInfoDataParams = z.infer<typeof updateUserInfoDataParams>;
 export type UserInfoDataId = z.infer<typeof userInfoDataIdSchema>["id"];
+
+// this type infers the return from getUserInfoDatas() - meaning it will include any joins
+export type CompleteUserInfoData = Awaited<
+  ReturnType<typeof getUserInfoDatas>
+>["userInfoDatas"][number];

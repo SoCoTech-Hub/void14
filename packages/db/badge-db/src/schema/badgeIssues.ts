@@ -1,3 +1,4 @@
+
 import {
   boolean,
   integer,
@@ -73,4 +74,5 @@ export type NewBadgeIssue = z.infer<typeof insertBadgeIssueSchema>;
 export type NewBadgeIssueParams = z.infer<typeof insertBadgeIssueParams>;
 export type UpdateBadgeIssueParams = z.infer<typeof updateBadgeIssueParams>;
 export type BadgeIssueId = z.infer<typeof badgeIssueIdSchema>["id"];
+
 

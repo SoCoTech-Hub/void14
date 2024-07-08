@@ -1,3 +1,4 @@
+
 import {
   boolean,
   integer,
@@ -65,4 +66,5 @@ export type UpdateBadgeCriteriaParams = z.infer<
   typeof updateBadgeCriteriaParams
 >;
 export type BadgeCriteriaId = z.infer<typeof badgeCriteriaIdSchema>["id"];
+
 

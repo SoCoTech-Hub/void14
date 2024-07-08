@@ -1,8 +1,9 @@
+
 import { integer, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import  {nanoid}  from "@soco/utils";
+import { nanoid } from "@soco/utils";
 
 import { adminPresetsApps } from "./adminPresetsApps";
 
@@ -23,9 +24,9 @@ export const adminPresetAppPlugs = pgTable(
   },
   (adminPresetAppPlugs) => {
     return {
-      adminPresetsAppIdIndex: uniqueIndex(
-        "admin_preset_app_plugs_admin_presets_app_id_idx",
-      ).on(adminPresetAppPlugs.adminPresetsAppId),
+      adminPresetsAppIdIndex: uniqueIndex("admin_presets_app_id_idx").on(
+        adminPresetAppPlugs.adminPresetsAppId,
+      ),
     };
   },
 );

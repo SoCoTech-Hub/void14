@@ -1,3 +1,4 @@
+
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -61,4 +62,5 @@ export type NewBlogExternal = z.infer<typeof insertBlogExternalSchema>;
 export type NewBlogExternalParams = z.infer<typeof insertBlogExternalParams>;
 export type UpdateBlogExternalParams = z.infer<typeof updateBlogExternalParams>;
 export type BlogExternalId = z.infer<typeof blogExternalIdSchema>["id"];
+
 

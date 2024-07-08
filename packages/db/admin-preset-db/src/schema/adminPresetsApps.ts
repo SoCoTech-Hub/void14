@@ -1,10 +1,10 @@
+
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
-
 
 import { adminPresets } from "./adminPresets";
 
@@ -29,9 +29,9 @@ export const adminPresetsApps = pgTable(
   },
   (adminPresetsApps) => {
     return {
-      adminPresetIdIndex: uniqueIndex(
-        "admin_presets_apps_admin_preset_id_idx",
-      ).on(adminPresetsApps.adminPresetId),
+      adminPresetIdIndex: uniqueIndex("admin_preset_id_idx").on(
+        adminPresetsApps.adminPresetId,
+      ),
     };
   },
 );
@@ -72,4 +72,5 @@ export type UpdateAdminPresetsAppParams = z.infer<
   typeof updateAdminPresetsAppParams
 >;
 export type AdminPresetsAppId = z.infer<typeof adminPresetsAppIdSchema>["id"];
+
 

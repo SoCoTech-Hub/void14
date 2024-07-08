@@ -1,3 +1,4 @@
+
 import { boolean, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -22,9 +23,9 @@ export const adminPresetPlugs = pgTable(
   },
   (adminPresetPlugs) => {
     return {
-      adminPresetIdIndex: uniqueIndex(
-        "admin_preset_plugs_admin_preset_id_idx",
-      ).on(adminPresetPlugs.adminPresetId),
+      adminPresetIdIndex: uniqueIndex("admin_preset_id_idx").on(
+        adminPresetPlugs.adminPresetId,
+      ),
     };
   },
 );
@@ -59,5 +60,4 @@ export type UpdateAdminPresetPlugParams = z.infer<
   typeof updateAdminPresetPlugParams
 >;
 export type AdminPresetPlugId = z.infer<typeof adminPresetPlugIdSchema>["id"];
-
 

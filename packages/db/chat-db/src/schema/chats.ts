@@ -1,3 +1,4 @@
+
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -74,4 +75,5 @@ export type NewChat = z.infer<typeof insertChatSchema>;
 export type NewChatParams = z.infer<typeof insertChatParams>;
 export type UpdateChatParams = z.infer<typeof updateChatParams>;
 export type ChatId = z.infer<typeof chatIdSchema>["id"];
+
 

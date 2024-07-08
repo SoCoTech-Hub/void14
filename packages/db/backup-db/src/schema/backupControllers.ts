@@ -1,3 +1,4 @@
+
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -13,8 +14,6 @@ import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
-
-
 
 export const backupControllers = pgTable(
   "backup_controllers",
@@ -101,5 +100,4 @@ export type UpdateBackupControllerParams = z.infer<
   typeof updateBackupControllerParams
 >;
 export type BackupControllerId = z.infer<typeof backupControllerIdSchema>["id"];
-
 

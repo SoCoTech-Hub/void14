@@ -1,3 +1,4 @@
+
 import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -55,3 +56,5 @@ export type UpdateBlogAssociationParams = z.infer<
   typeof updateBlogAssociationParams
 >;
 export type BlogAssociationId = z.infer<typeof blogAssociationIdSchema>["id"];
+
+

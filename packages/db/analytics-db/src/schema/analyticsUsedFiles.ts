@@ -1,10 +1,10 @@
+
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
-
 
 export const analyticsUsedFiles = pgTable(
   "analytics_used_files",
@@ -60,4 +60,5 @@ export type UpdateAnalyticsUsedFileParams = z.infer<
 export type AnalyticsUsedFileId = z.infer<
   typeof analyticsUsedFileIdSchema
 >["id"];
+
 

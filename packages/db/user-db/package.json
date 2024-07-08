@@ -1,95 +1,87 @@
 {
-  "name": "@soco/user-db",
-  "version": "0.1.0",
-  "private": true,
-  "type": "module",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./src/index.ts"
-    },
-    "./client": {
-      "types": "./dist/client.d.ts",
-      "default": "./src/client.ts"
-    },
-    "./schema/auth": {
-      "types": "./dist/schema/auth.d.ts",
-      "default": "./src/schema/auth.ts"
-    },
-    "./schema/userAccount": {
-      "types": "./dist/schema/userAccount.d.ts",
-      "default": "./src/schema/userAccount.ts"
-    },
-    "./schema/userDevices": {
-      "types": "./dist/schema/userDevices.d.ts",
-      "default": "./src/schema/userDevices.ts"
-    },
-    "./schema/userEnrolments": {
-      "types": "./dist/schema/userEnrolments.d.ts",
-      "default": "./src/schema/.ts"
-    },
-    "./schema/userInfoCategories": {
-      "types": "./dist/schema/userInfoCategories.d.ts",
-      "default": "./src/schema/userInfoCategories.ts"
-    },
-    "./schema/userInfoDatas": {
-      "types": "./dist/schema/userInfoDatas.d.ts",
-      "default": "./src/schema/userInfoDatas.ts"
-    },
-    "./schema/userInfoFields": {
-      "types": "./dist/schema/userInfoFields.d.ts",
-      "default": "./src/schema/userInfoFields.ts"
-    },
-    "./schema/userLastAccesses": {
-      "types": "./dist/schema/userLastAccesses.d.ts",
-      "default": "./src/schema/userLastAccesses.ts"
-    },
-    "./schema/userPasswordHistories": {
-      "types": "./dist/schema/userPasswordHistories.d.ts",
-      "default": "./src/schema/userPasswordHistories.ts"
-    },
-    "./schema/userPasswordResets": {
-      "types": "./dist/schema/userPasswordResets.d.ts",
-      "default": "./src/schema/userPasswordResets.ts"
-    },
-    "./schema/userPreferences": {
-      "types": "./dist/schema/userPreferences.d.ts",
-      "default": "./src/schema/userPreferences.ts"
-    },
-    "./schema/userPrivateKeys": {
-      "types": "./dist/schema/userPrivateKeys.d.ts",
-      "default": "./src/schema/userPrivateKeys.ts"
-    }
-  },
-  "license": "MIT",
-  "scripts": {
-    "build": "tsc",
-    "dev": "tsc --watch",
-    "clean": "rm -rf .turbo node_modules",
-    "format": "prettier --check . --ignore-path ../../.gitignore",
-    "lint": "eslint",
-    "push": "pnpm with-env drizzle-kit push",
-    "studio": "pnpm with-env drizzle-kit studio",
-    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-    "with-env": "dotenv -e ../../.env --"
-  },
-  "dependencies": {
-    "@soco/utils": "workspace:*",
-    "@t3-oss/env-core": "^0.10.1",
-    "postgres": "^3.4.4",
-    "drizzle-orm": "^0.31.2",
-    "drizzle-zod": "^0.5.1",
-    "zod": "^3.23.8"
-  },
-  "devDependencies": {
-    "@soco/eslint-config": "workspace:*",
-    "@soco/prettier-config": "workspace:*",
-    "@soco/tsconfig": "workspace:*",
-    "dotenv-cli": "^7.4.2",
-    "drizzle-kit": "^0.22.7",
-    "eslint": "^8",
-    "prettier": "^3.3.2",
-    "typescript": "^5.4.5"
-  },
-  "prettier": "@soco/prettier-config"
+    "name":  "@soco/user-db",
+    "version":  "0.1.0",
+    "private":  true,
+    "type":  "module",
+    "exports":  {
+                    "./schema/userEnrolments":  {
+                                                    "types":  "./dist/schema/userEnrolments.d.ts",
+                                                    "default":  "./src/schema/userEnrolments.ts"
+                                                },
+                    "./schema/userPasswordResets":  {
+                                                        "types":  "./dist/schema/userPasswordResets.d.ts",
+                                                        "default":  "./src/schema/userPasswordResets.ts"
+                                                    },
+                    "./schema/userInfoFields":  {
+                                                    "types":  "./dist/schema/userInfoFields.d.ts",
+                                                    "default":  "./src/schema/userInfoFields.ts"
+                                                },
+                    "./schema/userPasswordHistories":  {
+                                                           "types":  "./dist/schema/userPasswordHistories.d.ts",
+                                                           "default":  "./src/schema/userPasswordHistories.ts"
+                                                       },
+                    "./schema/auth":  {
+                                          "types":  "./dist/schema/auth.d.ts",
+                                          "default":  "./src/schema/auth.ts"
+                                      },
+                    "./schema/users":  {
+                                           "types":  "./dist/schema/users.d.ts",
+                                           "default":  "./src/schema/users.ts"
+                                       },
+                    "./schema/userPrivateKeys":  {
+                                                     "types":  "./dist/schema/userPrivateKeys.d.ts",
+                                                     "default":  "./src/schema/userPrivateKeys.ts"
+                                                 },
+                    "./schema/userDevices":  {
+                                                 "types":  "./dist/schema/userDevices.d.ts",
+                                                 "default":  "./src/schema/userDevices.ts"
+                                             },
+                    "./schema/userPreferences":  {
+                                                     "types":  "./dist/schema/userPreferences.d.ts",
+                                                     "default":  "./src/schema/userPreferences.ts"
+                                                 },
+                    "./schema/userLastAccesses":  {
+                                                      "types":  "./dist/schema/userLastAccesses.d.ts",
+                                                      "default":  "./src/schema/userLastAccesses.ts"
+                                                  },
+                    "./schema/userInfoCategories":  {
+                                                        "types":  "./dist/schema/userInfoCategories.d.ts",
+                                                        "default":  "./src/schema/userInfoCategories.ts"
+                                                    },
+                    "./schema/userInfoDatas":  {
+                                                   "types":  "./dist/schema/userInfoDatas.d.ts",
+                                                   "default":  "./src/schema/userInfoDatas.ts"
+                                               }
+                },
+    "license":  "MIT",
+    "scripts":  {
+                    "build":  "tsc",
+                    "dev":  "tsc --watch",
+                    "clean":  "rm -rf .turbo node_modules",
+                    "format":  "prettier --check . --ignore-path ../../.gitignore",
+                    "lint":  "eslint",
+                    "push":  "pnpm with-env drizzle-kit push",
+                    "studio":  "pnpm with-env drizzle-kit studio",
+                    "typecheck":  "tsc --noEmit --emitDeclarationOnly false",
+                    "with-env":  "dotenv -e ../../.env --"
+                },
+    "dependencies":  {
+                         "@soco/utils":  "workspace:*",
+                         "@t3-oss/env-core":  "^0.10.1",
+                         "postgres":  "^3.4.4",
+                         "drizzle-orm":  "^0.31.2",
+                         "drizzle-zod":  "^0.5.1",
+                         "zod":  "^3.23.8"
+                     },
+    "devDependencies":  {
+                            "@soco/eslint-config":  "workspace:*",
+                            "@soco/prettier-config":  "workspace:*",
+                            "@soco/tsconfig":  "workspace:*",
+                            "dotenv-cli":  "^7.4.2",
+                            "drizzle-kit":  "^0.22.7",
+                            "eslint":  "^8",
+                            "prettier":  "^3.3.2",
+                            "typescript":  "^5.4.5"
+                        },
+    "prettier":  "@soco/prettier-config"
 }

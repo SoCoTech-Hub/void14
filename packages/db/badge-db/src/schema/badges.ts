@@ -1,3 +1,4 @@
+
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -89,4 +90,5 @@ export type NewBadge = z.infer<typeof insertBadgeSchema>;
 export type NewBadgeParams = z.infer<typeof insertBadgeParams>;
 export type UpdateBadgeParams = z.infer<typeof updateBadgeParams>;
 export type BadgeId = z.infer<typeof badgeIdSchema>["id"];
+
 

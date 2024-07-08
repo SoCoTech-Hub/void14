@@ -1,9 +1,9 @@
+
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid } from "@soco/utils";
-
 
 import { adminPresetsApps } from "./adminPresetsApps";
 
