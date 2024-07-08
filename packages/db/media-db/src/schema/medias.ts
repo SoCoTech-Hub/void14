@@ -1,4 +1,3 @@
-import { type getMedias } from "@/lib/api/medias/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -68,7 +67,3 @@ export type NewMediaParams = z.infer<typeof insertMediaParams>;
 export type UpdateMediaParams = z.infer<typeof updateMediaParams>;
 export type MediaId = z.infer<typeof mediaIdSchema>["id"];
 
-// this type infers the return from getMedias() - meaning it will include any joins
-export type CompleteMedia = Awaited<
-  ReturnType<typeof getMedias>
->["medias"][number];

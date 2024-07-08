@@ -1,4 +1,4 @@
-import { type getContextTemp } from "@/lib/api/contextTemp/queries";
+
 import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -48,8 +48,3 @@ export type NewContextTemp = z.infer<typeof insertContextTempSchema>;
 export type NewContextTempParams = z.infer<typeof insertContextTempParams>;
 export type UpdateContextTempParams = z.infer<typeof updateContextTempParams>;
 export type ContextTempId = z.infer<typeof contextTempIdSchema>["id"];
-
-// this type infers the return from getContextTemp() - meaning it will include any joins
-export type CompleteContextTemp = Awaited<
-  ReturnType<typeof getContextTemp>
->["contextTemp"][number];

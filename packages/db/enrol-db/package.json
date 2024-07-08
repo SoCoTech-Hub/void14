@@ -1,111 +1,119 @@
 {
-    "name":  "@soco/user-db",
-    "version":  "0.1.0",
-    "private":  true,
-    "type":  "module",
-    "exports":  {
-                    "./schema/enrolLtiDeployments":  {
-                                                         "types":  "./dist/schema/enrolLtiDeployments.d.ts",
-                                                         "default":  "./src/schema/enrolLtiDeployments.ts"
-                                                     },
-                    "./schema/enrolLtiLti2UserResults":  {
-                                                             "types":  "./dist/schema/enrolLtiLti2UserResults.d.ts",
-                                                             "default":  "./src/schema/enrolLtiLti2UserResults.ts"
-                                                         },
-                    "./schema/enrolPaypals":  {
-                                                  "types":  "./dist/schema/enrolPaypals.d.ts",
-                                                  "default":  "./src/schema/enrolPaypals.ts"
-                                              },
-                    "./schema/enrolLtiAppRegistrations":  {
-                                                              "types":  "./dist/schema/enrolLtiAppRegistrations.d.ts",
-                                                              "default":  "./src/schema/enrolLtiAppRegistrations.ts"
-                                                          },
-                    "./schema/enrolLtiTools":  {
-                                                   "types":  "./dist/schema/enrolLtiTools.d.ts",
-                                                   "default":  "./src/schema/enrolLtiTools.ts"
-                                               },
-                    "./schema/enrolLtiResourceLinks":  {
-                                                           "types":  "./dist/schema/enrolLtiResourceLinks.d.ts",
-                                                           "default":  "./src/schema/enrolLtiResourceLinks.ts"
-                                                       },
-                    "./schema/enrolLtiLti2Nonces":  {
-                                                        "types":  "./dist/schema/enrolLtiLti2Nonces.d.ts",
-                                                        "default":  "./src/schema/enrolLtiLti2Nonces.ts"
-                                                    },
-                    "./schema/enrolLtiLti2Consumers":  {
-                                                           "types":  "./dist/schema/enrolLtiLti2Consumers.d.ts",
-                                                           "default":  "./src/schema/enrolLtiLti2Consumers.ts"
-                                                       },
-                    "./schema/enrolLtiLti2ShareKeys":  {
-                                                           "types":  "./dist/schema/enrolLtiLti2ShareKeys.d.ts",
-                                                           "default":  "./src/schema/enrolLtiLti2ShareKeys.ts"
-                                                       },
-                    "./schema/enrolFlatfiles":  {
-                                                    "types":  "./dist/schema/enrolFlatfiles.d.ts",
-                                                    "default":  "./src/schema/enrolFlatfiles.ts"
-                                                },
-                    "./schema/enrolLtiLti2ToolProxys":  {
-                                                            "types":  "./dist/schema/enrolLtiLti2ToolProxys.d.ts",
-                                                            "default":  "./src/schema/enrolLtiLti2ToolProxys.ts"
-                                                        },
-                    "./schema/enrolLtiUserResourceLinks":  {
-                                                               "types":  "./dist/schema/enrolLtiUserResourceLinks.d.ts",
-                                                               "default":  "./src/schema/enrolLtiUserResourceLinks.ts"
-                                                           },
-                    "./schema/enrolLtiContexts":  {
-                                                      "types":  "./dist/schema/enrolLtiContexts.d.ts",
-                                                      "default":  "./src/schema/enrolLtiContexts.ts"
-                                                  },
-                    "./schema/enrolLtiLti2Contexts":  {
-                                                          "types":  "./dist/schema/enrolLtiLti2Contexts.d.ts",
-                                                          "default":  "./src/schema/enrolLtiLti2Contexts.ts"
-                                                      },
-                    "./schema/enrols":  {
-                                            "types":  "./dist/schema/enrols.d.ts",
-                                            "default":  "./src/schema/enrols.ts"
-                                        },
-                    "./schema/enrolLtiLti2ResourceLinks":  {
-                                                               "types":  "./dist/schema/enrolLtiLti2ResourceLinks.d.ts",
-                                                               "default":  "./src/schema/enrolLtiLti2ResourceLinks.ts"
-                                                           },
-                    "./schema/enrolLtiUsers":  {
-                                                   "types":  "./dist/schema/enrolLtiUsers.d.ts",
-                                                   "default":  "./src/schema/enrolLtiUsers.ts"
-                                               },
-                    "./schema/enrolLtiToolConsumerMaps":  {
-                                                              "types":  "./dist/schema/enrolLtiToolConsumerMaps.d.ts",
-                                                              "default":  "./src/schema/enrolLtiToolConsumerMaps.ts"
-                                                          }
-                },
-    "license":  "MIT",
-    "scripts":  {
-                    "build":  "tsc",
-                    "dev":  "tsc --watch",
-                    "clean":  "rm -rf .turbo node_modules",
-                    "format":  "prettier --check . --ignore-path ../../.gitignore",
-                    "lint":  "eslint",
-                    "push":  "pnpm with-env drizzle-kit push",
-                    "studio":  "pnpm with-env drizzle-kit studio",
-                    "typecheck":  "tsc --noEmit --emitDeclarationOnly false",
-                    "with-env":  "dotenv -e ../../.env --"
-                },
-    "dependencies":  {
-                         "@soco/utils":  "workspace:*",
-                         "@t3-oss/env-core":  "^0.10.1",
-                         "postgres":  "^3.4.4",
-                         "drizzle-orm":  "^0.31.2",
-                         "drizzle-zod":  "^0.5.1",
-                         "zod":  "^3.23.8"
-                     },
-    "devDependencies":  {
-                            "@soco/eslint-config":  "workspace:*",
-                            "@soco/prettier-config":  "workspace:*",
-                            "@soco/tsconfig":  "workspace:*",
-                            "dotenv-cli":  "^7.4.2",
-                            "drizzle-kit":  "^0.22.7",
-                            "eslint":  "^8",
-                            "prettier":  "^3.3.2",
-                            "typescript":  "^5.4.5"
-                        },
-    "prettier":  "@soco/prettier-config"
+  "name": "@soco/enrol-db",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "default": "./src/client.ts"
+    },
+    "./schema/enrolLtiDeployments": {
+      "types": "./dist/schema/enrolLtiDeployments.d.ts",
+      "default": "./src/schema/enrolLtiDeployments.ts"
+    },
+    "./schema/enrolLtiLti2UserResults": {
+      "types": "./dist/schema/enrolLtiLti2UserResults.d.ts",
+      "default": "./src/schema/enrolLtiLti2UserResults.ts"
+    },
+    "./schema/enrolPaypals": {
+      "types": "./dist/schema/enrolPaypals.d.ts",
+      "default": "./src/schema/enrolPaypals.ts"
+    },
+    "./schema/enrolLtiAppRegistrations": {
+      "types": "./dist/schema/enrolLtiAppRegistrations.d.ts",
+      "default": "./src/schema/enrolLtiAppRegistrations.ts"
+    },
+    "./schema/enrolLtiTools": {
+      "types": "./dist/schema/enrolLtiTools.d.ts",
+      "default": "./src/schema/enrolLtiTools.ts"
+    },
+    "./schema/enrolLtiResourceLinks": {
+      "types": "./dist/schema/enrolLtiResourceLinks.d.ts",
+      "default": "./src/schema/enrolLtiResourceLinks.ts"
+    },
+    "./schema/enrolLtiLti2Nonces": {
+      "types": "./dist/schema/enrolLtiLti2Nonces.d.ts",
+      "default": "./src/schema/enrolLtiLti2Nonces.ts"
+    },
+    "./schema/enrolLtiLti2Consumers": {
+      "types": "./dist/schema/enrolLtiLti2Consumers.d.ts",
+      "default": "./src/schema/enrolLtiLti2Consumers.ts"
+    },
+    "./schema/enrolLtiLti2ShareKeys": {
+      "types": "./dist/schema/enrolLtiLti2ShareKeys.d.ts",
+      "default": "./src/schema/enrolLtiLti2ShareKeys.ts"
+    },
+    "./schema/enrolFlatfiles": {
+      "types": "./dist/schema/enrolFlatfiles.d.ts",
+      "default": "./src/schema/enrolFlatfiles.ts"
+    },
+    "./schema/enrolLtiLti2ToolProxys": {
+      "types": "./dist/schema/enrolLtiLti2ToolProxys.d.ts",
+      "default": "./src/schema/enrolLtiLti2ToolProxys.ts"
+    },
+    "./schema/enrolLtiUserResourceLinks": {
+      "types": "./dist/schema/enrolLtiUserResourceLinks.d.ts",
+      "default": "./src/schema/enrolLtiUserResourceLinks.ts"
+    },
+    "./schema/enrolLtiContexts": {
+      "types": "./dist/schema/enrolLtiContexts.d.ts",
+      "default": "./src/schema/enrolLtiContexts.ts"
+    },
+    "./schema/enrolLtiLti2Contexts": {
+      "types": "./dist/schema/enrolLtiLti2Contexts.d.ts",
+      "default": "./src/schema/enrolLtiLti2Contexts.ts"
+    },
+    "./schema/enrols": {
+      "types": "./dist/schema/enrols.d.ts",
+      "default": "./src/schema/enrols.ts"
+    },
+    "./schema/enrolLtiLti2ResourceLinks": {
+      "types": "./dist/schema/enrolLtiLti2ResourceLinks.d.ts",
+      "default": "./src/schema/enrolLtiLti2ResourceLinks.ts"
+    },
+    "./schema/enrolLtiUsers": {
+      "types": "./dist/schema/enrolLtiUsers.d.ts",
+      "default": "./src/schema/enrolLtiUsers.ts"
+    },
+    "./schema/enrolLtiToolConsumerMaps": {
+      "types": "./dist/schema/enrolLtiToolConsumerMaps.d.ts",
+      "default": "./src/schema/enrolLtiToolConsumerMaps.ts"
+    }
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf .turbo node_modules",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "push": "pnpm with-env drizzle-kit push",
+    "studio": "pnpm with-env drizzle-kit studio",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "dependencies": {
+    "@soco/utils": "workspace:*",
+    "@t3-oss/env-core": "^0.10.1",
+    "postgres": "^3.4.4",
+    "drizzle-orm": "^0.31.2",
+    "drizzle-zod": "^0.5.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@soco/eslint-config": "workspace:*",
+    "@soco/prettier-config": "workspace:*",
+    "@soco/tsconfig": "workspace:*",
+    "dotenv-cli": "^7.4.2",
+    "drizzle-kit": "^0.22.7",
+    "eslint": "^8",
+    "prettier": "^3.3.2",
+    "typescript": "^5.4.5"
+  },
+  "prettier": "@soco/prettier-config"
 }

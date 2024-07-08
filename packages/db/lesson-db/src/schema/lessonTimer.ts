@@ -1,4 +1,3 @@
-import { type getLessonTimer } from "@/lib/api/lessonTimer/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -72,7 +71,4 @@ export type NewLessonTimerParams = z.infer<typeof insertLessonTimerParams>;
 export type UpdateLessonTimerParams = z.infer<typeof updateLessonTimerParams>;
 export type LessonTimerId = z.infer<typeof lessonTimerIdSchema>["id"];
 
-// this type infers the return from getLessonTimer() - meaning it will include any joins
-export type CompleteLessonTimer = Awaited<
-  ReturnType<typeof getLessonTimer>
->["lessonTimer"][number];
+

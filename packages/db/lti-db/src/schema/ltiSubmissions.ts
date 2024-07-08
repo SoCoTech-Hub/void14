@@ -1,4 +1,3 @@
-import { type getLtiSubmissions } from "@/lib/api/ltiSubmissions/queries";
 import {
   integer,
   pgTable,
@@ -66,7 +65,3 @@ export type UpdateLtiSubmissionParams = z.infer<
 >;
 export type LtiSubmissionId = z.infer<typeof ltiSubmissionIdSchema>["id"];
 
-// this type infers the return from getLtiSubmissions() - meaning it will include any joins
-export type CompleteLtiSubmission = Awaited<
-  ReturnType<typeof getLtiSubmissions>
->["ltiSubmissions"][number];

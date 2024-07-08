@@ -1,4 +1,3 @@
-import { type getLessonPages } from "@/lib/api/lessonPages/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -70,7 +69,4 @@ export type NewLessonPageParams = z.infer<typeof insertLessonPageParams>;
 export type UpdateLessonPageParams = z.infer<typeof updateLessonPageParams>;
 export type LessonPageId = z.infer<typeof lessonPageIdSchema>["id"];
 
-// this type infers the return from getLessonPages() - meaning it will include any joins
-export type CompleteLessonPage = Awaited<
-  ReturnType<typeof getLessonPages>
->["lessonPages"][number];
+

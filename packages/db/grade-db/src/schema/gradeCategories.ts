@@ -1,4 +1,3 @@
-import { type getGradeCategories } from "@/lib/api/gradeCategories/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -77,7 +76,3 @@ export type UpdateGradeCategoryParams = z.infer<
 >;
 export type GradeCategoryId = z.infer<typeof gradeCategoryIdSchema>["id"];
 
-// this type infers the return from getGradeCategories() - meaning it will include any joins
-export type CompleteGradeCategory = Awaited<
-  ReturnType<typeof getGradeCategories>
->["gradeCategories"][number];

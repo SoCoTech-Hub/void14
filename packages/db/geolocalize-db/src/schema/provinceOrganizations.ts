@@ -1,5 +1,4 @@
-import { type getProvinceOrganizations } from "@/lib/api/provinceOrganizations/queries";
-import { pgTable, varchar } from "drizzle-orm/pg-core";
+import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -62,7 +61,3 @@ export type ProvinceOrganizationId = z.infer<
   typeof provinceOrganizationIdSchema
 >["id"];
 
-// this type infers the return from getProvinceOrganizations() - meaning it will include any joins
-export type CompleteProvinceOrganization = Awaited<
-  ReturnType<typeof getProvinceOrganizations>
->["provinceOrganizations"][number];

@@ -1,4 +1,3 @@
-import { type getLtiAccessTokens } from "@/lib/api/ltiAccessTokens/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -57,7 +56,3 @@ export type UpdateLtiAccessTokenParams = z.infer<
 >;
 export type LtiAccessTokenId = z.infer<typeof ltiAccessTokenIdSchema>["id"];
 
-// this type infers the return from getLtiAccessTokens() - meaning it will include any joins
-export type CompleteLtiAccessToken = Awaited<
-  ReturnType<typeof getLtiAccessTokens>
->["ltiAccessTokens"][number];

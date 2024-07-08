@@ -1,4 +1,4 @@
-import { type getFaqs } from "@/lib/api/faqs/queries";
+
 import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -33,5 +33,4 @@ export type NewFaqParams = z.infer<typeof insertFaqParams>;
 export type UpdateFaqParams = z.infer<typeof updateFaqParams>;
 export type FaqId = z.infer<typeof faqIdSchema>["id"];
 
-// this type infers the return from getFaqs() - meaning it will include any joins
-export type CompleteFaq = Awaited<ReturnType<typeof getFaqs>>["faqs"][number];
+

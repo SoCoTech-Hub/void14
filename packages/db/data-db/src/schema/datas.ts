@@ -1,4 +1,3 @@
-import { type getDatas } from "@/lib/api/datas/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -129,7 +128,4 @@ export type NewDataParams = z.infer<typeof insertDataParams>;
 export type UpdateDataParams = z.infer<typeof updateDataParams>;
 export type DataId = z.infer<typeof dataIdSchema>["id"];
 
-// this type infers the return from getDatas() - meaning it will include any joins
-export type CompleteData = Awaited<
-  ReturnType<typeof getDatas>
->["datas"][number];
+

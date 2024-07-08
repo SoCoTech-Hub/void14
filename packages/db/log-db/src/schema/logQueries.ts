@@ -1,4 +1,3 @@
-import { type getLogQueries } from "@/lib/api/logQueries/queries";
 import {
   integer,
   pgTable,
@@ -58,7 +57,4 @@ export type NewLogQueryParams = z.infer<typeof insertLogQueryParams>;
 export type UpdateLogQueryParams = z.infer<typeof updateLogQueryParams>;
 export type LogQueryId = z.infer<typeof logQueryIdSchema>["id"];
 
-// this type infers the return from getLogQueries() - meaning it will include any joins
-export type CompleteLogQuery = Awaited<
-  ReturnType<typeof getLogQueries>
->["logQueries"][number];
+

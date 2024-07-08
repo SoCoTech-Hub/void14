@@ -1,5 +1,4 @@
-import { type getGlossaryFormats } from "@/lib/api/glossaryFormats/queries";
-import { boolean, pgTable, varchar } from "drizzle-orm/pg-core";
+import { boolean, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -62,7 +61,3 @@ export type UpdateGlossaryFormatParams = z.infer<
 >;
 export type GlossaryFormatId = z.infer<typeof glossaryFormatIdSchema>["id"];
 
-// this type infers the return from getGlossaryFormats() - meaning it will include any joins
-export type CompleteGlossaryFormat = Awaited<
-  ReturnType<typeof getGlossaryFormats>
->["glossaryFormats"][number];

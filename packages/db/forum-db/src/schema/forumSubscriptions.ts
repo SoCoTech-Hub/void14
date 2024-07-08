@@ -1,4 +1,3 @@
-import { type getForumSubscriptions } from "@/lib/api/forumSubscriptions/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -57,7 +56,3 @@ export type ForumSubscriptionId = z.infer<
   typeof forumSubscriptionIdSchema
 >["id"];
 
-// this type infers the return from getForumSubscriptions() - meaning it will include any joins
-export type CompleteForumSubscription = Awaited<
-  ReturnType<typeof getForumSubscriptions>
->["forumSubscriptions"][number];

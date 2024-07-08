@@ -1,4 +1,3 @@
-import { type getEventsQueueHandlers } from "@/lib/api/eventsQueueHandlers/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -64,7 +63,4 @@ export type EventsQueueHandlerId = z.infer<
   typeof eventsQueueHandlerIdSchema
 >["id"];
 
-// this type infers the return from getEventsQueueHandlers() - meaning it will include any joins
-export type CompleteEventsQueueHandler = Awaited<
-  ReturnType<typeof getEventsQueueHandlers>
->["eventsQueueHandlers"][number];
+

@@ -1,4 +1,3 @@
-import { type getInmails } from "@/lib/api/inmails/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -66,7 +65,3 @@ export type NewInmailParams = z.infer<typeof insertInmailParams>;
 export type UpdateInmailParams = z.infer<typeof updateInmailParams>;
 export type InmailId = z.infer<typeof inmailIdSchema>["id"];
 
-// this type infers the return from getInmails() - meaning it will include any joins
-export type CompleteInmail = Awaited<
-  ReturnType<typeof getInmails>
->["inmails"][number];

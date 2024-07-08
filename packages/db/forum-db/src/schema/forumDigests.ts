@@ -1,4 +1,3 @@
-import { type getForumDigests } from "@/lib/api/forumDigests/queries";
 import { boolean, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -45,7 +44,4 @@ export type NewForumDigestParams = z.infer<typeof insertForumDigestParams>;
 export type UpdateForumDigestParams = z.infer<typeof updateForumDigestParams>;
 export type ForumDigestId = z.infer<typeof forumDigestIdSchema>["id"];
 
-// this type infers the return from getForumDigests() - meaning it will include any joins
-export type CompleteForumDigest = Awaited<
-  ReturnType<typeof getForumDigests>
->["forumDigests"][number];
+

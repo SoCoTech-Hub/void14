@@ -1,4 +1,3 @@
-import { type getDataContents } from "@/lib/api/dataContents/queries";
 import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -53,7 +52,3 @@ export type NewDataContentParams = z.infer<typeof insertDataContentParams>;
 export type UpdateDataContentParams = z.infer<typeof updateDataContentParams>;
 export type DataContentId = z.infer<typeof dataContentIdSchema>["id"];
 
-// this type infers the return from getDataContents() - meaning it will include any joins
-export type CompleteDataContent = Awaited<
-  ReturnType<typeof getDataContents>
->["dataContents"][number];

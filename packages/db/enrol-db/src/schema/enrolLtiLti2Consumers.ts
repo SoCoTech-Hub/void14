@@ -1,4 +1,3 @@
-import { type getEnrolLtiLti2Consumers } from "@/lib/api/enrolLtiLti2Consumers/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -86,7 +85,4 @@ export type EnrolLtiLti2ConsumerId = z.infer<
   typeof enrolLtiLti2ConsumerIdSchema
 >["id"];
 
-// this type infers the return from getEnrolLtiLti2Consumers() - meaning it will include any joins
-export type CompleteEnrolLtiLti2Consumer = Awaited<
-  ReturnType<typeof getEnrolLtiLti2Consumers>
->["enrolLtiLti2Consumers"][number];
+

@@ -1,4 +1,3 @@
-import { type getEventSubscriptions } from "@/lib/api/eventSubscriptions/queries";
 import { sql } from "drizzle-orm";
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -67,7 +66,3 @@ export type EventSubscriptionId = z.infer<
   typeof eventSubscriptionIdSchema
 >["id"];
 
-// this type infers the return from getEventSubscriptions() - meaning it will include any joins
-export type CompleteEventSubscription = Awaited<
-  ReturnType<typeof getEventSubscriptions>
->["eventSubscriptions"][number];

@@ -1,4 +1,3 @@
-import { type getFeedbackValuetmps } from "@/lib/api/feedbackValuetmps/queries";
 import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -41,7 +40,4 @@ export type UpdateFeedbackValuetmpParams = z.infer<
 >;
 export type FeedbackValuetmpId = z.infer<typeof feedbackValuetmpIdSchema>["id"];
 
-// this type infers the return from getFeedbackValuetmps() - meaning it will include any joins
-export type CompleteFeedbackValuetmp = Awaited<
-  ReturnType<typeof getFeedbackValuetmps>
->["feedbackValuetmps"][number];
+

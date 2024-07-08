@@ -1,4 +1,3 @@
-import { type getFields } from "@/lib/api/fields/queries";
 import { boolean, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -57,8 +56,3 @@ export type NewField = z.infer<typeof insertFieldSchema>;
 export type NewFieldParams = z.infer<typeof insertFieldParams>;
 export type UpdateFieldParams = z.infer<typeof updateFieldParams>;
 export type FieldId = z.infer<typeof fieldIdSchema>["id"];
-
-// this type infers the return from getFields() - meaning it will include any joins
-export type CompleteField = Awaited<
-  ReturnType<typeof getFields>
->["fields"][number];

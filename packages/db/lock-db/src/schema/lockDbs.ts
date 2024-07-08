@@ -1,4 +1,3 @@
-import { type getLockDbs } from "@/lib/api/lockDbs/queries";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -40,7 +39,3 @@ export type NewLockDbParams = z.infer<typeof insertLockDbParams>;
 export type UpdateLockDbParams = z.infer<typeof updateLockDbParams>;
 export type LockDbId = z.infer<typeof lockDbIdSchema>["id"];
 
-// this type infers the return from getLockDbs() - meaning it will include any joins
-export type CompleteLockDb = Awaited<
-  ReturnType<typeof getLockDbs>
->["lockDbs"][number];

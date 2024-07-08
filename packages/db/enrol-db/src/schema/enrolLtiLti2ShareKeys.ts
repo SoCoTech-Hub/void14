@@ -1,4 +1,3 @@
-import { type getEnrolLtiLti2ShareKeys } from "@/lib/api/enrolLtiLti2ShareKeys/queries";
 import { boolean, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -52,8 +51,3 @@ export type UpdateEnrolLtiLti2ShareKeyParams = z.infer<
 export type EnrolLtiLti2ShareKeyId = z.infer<
   typeof enrolLtiLti2ShareKeyIdSchema
 >["id"];
-
-// this type infers the return from getEnrolLtiLti2ShareKeys() - meaning it will include any joins
-export type CompleteEnrolLtiLti2ShareKey = Awaited<
-  ReturnType<typeof getEnrolLtiLti2ShareKeys>
->["enrolLtiLti2ShareKeys"][number];

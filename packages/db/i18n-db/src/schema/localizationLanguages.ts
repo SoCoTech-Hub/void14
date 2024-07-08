@@ -1,4 +1,3 @@
-import { type getLocalizationLanguages } from "@/lib/api/localizationLanguages/queries";
 import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -52,7 +51,3 @@ export type LocalizationLanguageId = z.infer<
   typeof localizationLanguageIdSchema
 >["id"];
 
-// this type infers the return from getLocalizationLanguages() - meaning it will include any joins
-export type CompleteLocalizationLanguage = Awaited<
-  ReturnType<typeof getLocalizationLanguages>
->["localizationLanguages"][number];

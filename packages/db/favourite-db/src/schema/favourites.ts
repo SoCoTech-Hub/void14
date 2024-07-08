@@ -1,4 +1,4 @@
-import { type getFavourites } from "@/lib/api/favourites/queries";
+
 import { sql } from "drizzle-orm";
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -57,7 +57,4 @@ export type NewFavouriteParams = z.infer<typeof insertFavouriteParams>;
 export type UpdateFavouriteParams = z.infer<typeof updateFavouriteParams>;
 export type FavouriteId = z.infer<typeof favouriteIdSchema>["id"];
 
-// this type infers the return from getFavourites() - meaning it will include any joins
-export type CompleteFavourite = Awaited<
-  ReturnType<typeof getFavourites>
->["favourites"][number];
+

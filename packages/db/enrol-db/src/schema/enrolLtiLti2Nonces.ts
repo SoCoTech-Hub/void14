@@ -1,4 +1,3 @@
-import { type getEnrolLtiLti2Nonces } from "@/lib/api/enrolLtiLti2Nonces/queries";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -49,7 +48,4 @@ export type EnrolLtiLti2NonceId = z.infer<
   typeof enrolLtiLti2NonceIdSchema
 >["id"];
 
-// this type infers the return from getEnrolLtiLti2Nonces() - meaning it will include any joins
-export type CompleteEnrolLtiLti2Nonce = Awaited<
-  ReturnType<typeof getEnrolLtiLti2Nonces>
->["enrolLtiLti2Nonces"][number];
+

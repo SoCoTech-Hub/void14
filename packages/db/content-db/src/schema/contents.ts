@@ -1,4 +1,3 @@
-import { type getContents } from "@/lib/api/contents/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -65,7 +64,3 @@ export type NewContentParams = z.infer<typeof insertContentParams>;
 export type UpdateContentParams = z.infer<typeof updateContentParams>;
 export type ContentId = z.infer<typeof contentIdSchema>["id"];
 
-// this type infers the return from getContents() - meaning it will include any joins
-export type CompleteContent = Awaited<
-  ReturnType<typeof getContents>
->["contents"][number];

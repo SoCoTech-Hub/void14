@@ -1,4 +1,3 @@
-import { type getEventResponses } from "@/lib/api/eventResponses/queries";
 import { sql } from "drizzle-orm";
 import {
   pgTable,
@@ -74,7 +73,3 @@ export type UpdateEventResponseParams = z.infer<
 >;
 export type EventResponseId = z.infer<typeof eventResponseIdSchema>["id"];
 
-// this type infers the return from getEventResponses() - meaning it will include any joins
-export type CompleteEventResponse = Awaited<
-  ReturnType<typeof getEventResponses>
->["eventResponses"][number];

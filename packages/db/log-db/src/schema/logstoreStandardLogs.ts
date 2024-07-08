@@ -1,4 +1,3 @@
-import { type getLogstoreStandardLogs } from "@/lib/api/logstoreStandardLogs/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -89,7 +88,4 @@ export type LogstoreStandardLogId = z.infer<
   typeof logstoreStandardLogIdSchema
 >["id"];
 
-// this type infers the return from getLogstoreStandardLogs() - meaning it will include any joins
-export type CompleteLogstoreStandardLog = Awaited<
-  ReturnType<typeof getLogstoreStandardLogs>
->["logstoreStandardLogs"][number];
+

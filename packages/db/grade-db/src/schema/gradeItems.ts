@@ -1,4 +1,3 @@
-import { type getGradeItems } from "@/lib/api/gradeItems/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -7,6 +6,7 @@ import {
   real,
   text,
   timestamp,
+  uniqueIndex,
   varchar,
 } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -122,7 +122,4 @@ export type NewGradeItemParams = z.infer<typeof insertGradeItemParams>;
 export type UpdateGradeItemParams = z.infer<typeof updateGradeItemParams>;
 export type GradeItemId = z.infer<typeof gradeItemIdSchema>["id"];
 
-// this type infers the return from getGradeItems() - meaning it will include any joins
-export type CompleteGradeItem = Awaited<
-  ReturnType<typeof getGradeItems>
->["gradeItems"][number];
+

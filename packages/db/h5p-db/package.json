@@ -1,71 +1,79 @@
 {
-    "name":  "@soco/user-db",
-    "version":  "0.1.0",
-    "private":  true,
-    "type":  "module",
-    "exports":  {
-                    "./schema/h5pLibraryDependencies":  {
-                                                            "types":  "./dist/schema/h5pLibraryDependencies.d.ts",
-                                                            "default":  "./src/schema/h5pLibraryDependencies.ts"
-                                                        },
-                    "./schema/h5pLibraries":  {
-                                                  "types":  "./dist/schema/h5pLibraries.d.ts",
-                                                  "default":  "./src/schema/h5pLibraries.ts"
-                                              },
-                    "./schema/h5pContentsLibraries":  {
-                                                          "types":  "./dist/schema/h5pContentsLibraries.d.ts",
-                                                          "default":  "./src/schema/h5pContentsLibraries.ts"
-                                                      },
-                    "./schema/h5ps":  {
-                                          "types":  "./dist/schema/h5ps.d.ts",
-                                          "default":  "./src/schema/h5ps.ts"
-                                      },
-                    "./schema/h5pLibrariesCachedassets":  {
-                                                              "types":  "./dist/schema/h5pLibrariesCachedassets.d.ts",
-                                                              "default":  "./src/schema/h5pLibrariesCachedassets.ts"
-                                                          },
-                    "./schema/h5pactivityAttempts":  {
-                                                         "types":  "./dist/schema/h5pactivityAttempts.d.ts",
-                                                         "default":  "./src/schema/h5pactivityAttempts.ts"
-                                                     },
-                    "./schema/h5pactivities":  {
-                                                   "types":  "./dist/schema/h5pactivities.d.ts",
-                                                   "default":  "./src/schema/h5pactivities.ts"
-                                               },
-                    "./schema/h5pactivityAttemptsResults":  {
-                                                                "types":  "./dist/schema/h5pactivityAttemptsResults.d.ts",
-                                                                "default":  "./src/schema/h5pactivityAttemptsResults.ts"
-                                                            }
-                },
-    "license":  "MIT",
-    "scripts":  {
-                    "build":  "tsc",
-                    "dev":  "tsc --watch",
-                    "clean":  "rm -rf .turbo node_modules",
-                    "format":  "prettier --check . --ignore-path ../../.gitignore",
-                    "lint":  "eslint",
-                    "push":  "pnpm with-env drizzle-kit push",
-                    "studio":  "pnpm with-env drizzle-kit studio",
-                    "typecheck":  "tsc --noEmit --emitDeclarationOnly false",
-                    "with-env":  "dotenv -e ../../.env --"
-                },
-    "dependencies":  {
-                         "@soco/utils":  "workspace:*",
-                         "@t3-oss/env-core":  "^0.10.1",
-                         "postgres":  "^3.4.4",
-                         "drizzle-orm":  "^0.31.2",
-                         "drizzle-zod":  "^0.5.1",
-                         "zod":  "^3.23.8"
-                     },
-    "devDependencies":  {
-                            "@soco/eslint-config":  "workspace:*",
-                            "@soco/prettier-config":  "workspace:*",
-                            "@soco/tsconfig":  "workspace:*",
-                            "dotenv-cli":  "^7.4.2",
-                            "drizzle-kit":  "^0.22.7",
-                            "eslint":  "^8",
-                            "prettier":  "^3.3.2",
-                            "typescript":  "^5.4.5"
-                        },
-    "prettier":  "@soco/prettier-config"
+  "name": "@soco/h5p-db",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "default": "./src/client.ts"
+    },
+    "./schema/h5pLibraryDependencies": {
+      "types": "./dist/schema/h5pLibraryDependencies.d.ts",
+      "default": "./src/schema/h5pLibraryDependencies.ts"
+    },
+    "./schema/h5pLibraries": {
+      "types": "./dist/schema/h5pLibraries.d.ts",
+      "default": "./src/schema/h5pLibraries.ts"
+    },
+    "./schema/h5pContentsLibraries": {
+      "types": "./dist/schema/h5pContentsLibraries.d.ts",
+      "default": "./src/schema/h5pContentsLibraries.ts"
+    },
+    "./schema/h5ps": {
+      "types": "./dist/schema/h5ps.d.ts",
+      "default": "./src/schema/h5ps.ts"
+    },
+    "./schema/h5pLibrariesCachedassets": {
+      "types": "./dist/schema/h5pLibrariesCachedassets.d.ts",
+      "default": "./src/schema/h5pLibrariesCachedassets.ts"
+    },
+    "./schema/h5pactivityAttempts": {
+      "types": "./dist/schema/h5pactivityAttempts.d.ts",
+      "default": "./src/schema/h5pactivityAttempts.ts"
+    },
+    "./schema/h5pactivities": {
+      "types": "./dist/schema/h5pactivities.d.ts",
+      "default": "./src/schema/h5pactivities.ts"
+    },
+    "./schema/h5pactivityAttemptsResults": {
+      "types": "./dist/schema/h5pactivityAttemptsResults.d.ts",
+      "default": "./src/schema/h5pactivityAttemptsResults.ts"
+    }
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf .turbo node_modules",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "push": "pnpm with-env drizzle-kit push",
+    "studio": "pnpm with-env drizzle-kit studio",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "dependencies": {
+    "@soco/utils": "workspace:*",
+    "@t3-oss/env-core": "^0.10.1",
+    "postgres": "^3.4.4",
+    "drizzle-orm": "^0.31.2",
+    "drizzle-zod": "^0.5.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@soco/eslint-config": "workspace:*",
+    "@soco/prettier-config": "workspace:*",
+    "@soco/tsconfig": "workspace:*",
+    "dotenv-cli": "^7.4.2",
+    "drizzle-kit": "^0.22.7",
+    "eslint": "^8",
+    "prettier": "^3.3.2",
+    "typescript": "^5.4.5"
+  },
+  "prettier": "@soco/prettier-config"
 }

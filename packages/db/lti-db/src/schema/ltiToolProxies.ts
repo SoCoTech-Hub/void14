@@ -1,4 +1,3 @@
-import { type getLtiToolProxies } from "@/lib/api/ltiToolProxies/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -62,7 +61,4 @@ export type NewLtiToolProxyParams = z.infer<typeof insertLtiToolProxyParams>;
 export type UpdateLtiToolProxyParams = z.infer<typeof updateLtiToolProxyParams>;
 export type LtiToolProxyId = z.infer<typeof ltiToolProxyIdSchema>["id"];
 
-// this type infers the return from getLtiToolProxies() - meaning it will include any joins
-export type CompleteLtiToolProxy = Awaited<
-  ReturnType<typeof getLtiToolProxies>
->["ltiToolProxies"][number];
+

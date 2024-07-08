@@ -1,4 +1,3 @@
-import { type getEnrolLtiResourceLinks } from "@/lib/api/enrolLtiResourceLinks/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -60,7 +59,3 @@ export type EnrolLtiResourceLinkId = z.infer<
   typeof enrolLtiResourceLinkIdSchema
 >["id"];
 
-// this type infers the return from getEnrolLtiResourceLinks() - meaning it will include any joins
-export type CompleteEnrolLtiResourceLink = Awaited<
-  ReturnType<typeof getEnrolLtiResourceLinks>
->["enrolLtiResourceLinks"][number];

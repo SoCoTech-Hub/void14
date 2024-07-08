@@ -1,4 +1,3 @@
-import { type getLtiTypesConfigs } from "@/lib/api/ltiTypesConfigs/queries";
 import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -38,7 +37,4 @@ export type UpdateLtiTypesConfigParams = z.infer<
 >;
 export type LtiTypesConfigId = z.infer<typeof ltiTypesConfigIdSchema>["id"];
 
-// this type infers the return from getLtiTypesConfigs() - meaning it will include any joins
-export type CompleteLtiTypesConfig = Awaited<
-  ReturnType<typeof getLtiTypesConfigs>
->["ltiTypesConfigs"][number];
+

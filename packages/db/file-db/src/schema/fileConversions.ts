@@ -1,4 +1,3 @@
-import { type getFileConversions } from "@/lib/api/fileConversions/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -69,7 +68,3 @@ export type UpdateFileConversionParams = z.infer<
 >;
 export type FileConversionId = z.infer<typeof fileConversionIdSchema>["id"];
 
-// this type infers the return from getFileConversions() - meaning it will include any joins
-export type CompleteFileConversion = Awaited<
-  ReturnType<typeof getFileConversions>
->["fileConversions"][number];

@@ -1,4 +1,3 @@
-import { type getForumDiscussions } from "@/lib/api/forumDiscussions/queries";
 import { sql } from "drizzle-orm";
 import { boolean, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -71,7 +70,3 @@ export type UpdateForumDiscussionParams = z.infer<
 >;
 export type ForumDiscussionId = z.infer<typeof forumDiscussionIdSchema>["id"];
 
-// this type infers the return from getForumDiscussions() - meaning it will include any joins
-export type CompleteForumDiscussion = Awaited<
-  ReturnType<typeof getForumDiscussions>
->["forumDiscussions"][number];

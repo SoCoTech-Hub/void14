@@ -1,4 +1,3 @@
-import { type getForumPosts } from "@/lib/api/forumPosts/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -89,7 +88,3 @@ export type NewForumPostParams = z.infer<typeof insertForumPostParams>;
 export type UpdateForumPostParams = z.infer<typeof updateForumPostParams>;
 export type ForumPostId = z.infer<typeof forumPostIdSchema>["id"];
 
-// this type infers the return from getForumPosts() - meaning it will include any joins
-export type CompleteForumPost = Awaited<
-  ReturnType<typeof getForumPosts>
->["forumPosts"][number];

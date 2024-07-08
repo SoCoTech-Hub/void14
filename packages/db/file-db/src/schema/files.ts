@@ -1,4 +1,3 @@
-import { type getFiles } from "@/lib/api/files/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -6,6 +5,7 @@ import {
   pgTable,
   text,
   timestamp,
+  uniqueIndex,
   varchar,
 } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -86,7 +86,4 @@ export type NewFileParams = z.infer<typeof insertFileParams>;
 export type UpdateFileParams = z.infer<typeof updateFileParams>;
 export type FileId = z.infer<typeof fileIdSchema>["id"];
 
-// this type infers the return from getFiles() - meaning it will include any joins
-export type CompleteFile = Awaited<
-  ReturnType<typeof getFiles>
->["files"][number];
+

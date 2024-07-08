@@ -1,4 +1,3 @@
-import { type getEnrolLtiDeployments } from "@/lib/api/enrolLtiDeployments/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -52,7 +51,3 @@ export type EnrolLtiDeploymentId = z.infer<
   typeof enrolLtiDeploymentIdSchema
 >["id"];
 
-// this type infers the return from getEnrolLtiDeployments() - meaning it will include any joins
-export type CompleteEnrolLtiDeployment = Awaited<
-  ReturnType<typeof getEnrolLtiDeployments>
->["enrolLtiDeployments"][number];

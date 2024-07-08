@@ -1,4 +1,3 @@
-import { type getInfectedFiles } from "@/lib/api/infectedFiles/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -47,7 +46,3 @@ export type NewInfectedFileParams = z.infer<typeof insertInfectedFileParams>;
 export type UpdateInfectedFileParams = z.infer<typeof updateInfectedFileParams>;
 export type InfectedFileId = z.infer<typeof infectedFileIdSchema>["id"];
 
-// this type infers the return from getInfectedFiles() - meaning it will include any joins
-export type CompleteInfectedFile = Awaited<
-  ReturnType<typeof getInfectedFiles>
->["infectedFiles"][number];

@@ -1,4 +1,3 @@
-import { type getGroupsMembers } from "@/lib/api/groupsMembers/queries";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -47,7 +46,3 @@ export type NewGroupsMemberParams = z.infer<typeof insertGroupsMemberParams>;
 export type UpdateGroupsMemberParams = z.infer<typeof updateGroupsMemberParams>;
 export type GroupsMemberId = z.infer<typeof groupsMemberIdSchema>["id"];
 
-// this type infers the return from getGroupsMembers() - meaning it will include any joins
-export type CompleteGroupsMember = Awaited<
-  ReturnType<typeof getGroupsMembers>
->["groupsMembers"][number];

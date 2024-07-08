@@ -1,4 +1,3 @@
-import { type getEnrolLtiUsers } from "@/lib/api/enrolLtiUsers/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, real, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -69,8 +68,3 @@ export type NewEnrolLtiUser = z.infer<typeof insertEnrolLtiUserSchema>;
 export type NewEnrolLtiUserParams = z.infer<typeof insertEnrolLtiUserParams>;
 export type UpdateEnrolLtiUserParams = z.infer<typeof updateEnrolLtiUserParams>;
 export type EnrolLtiUserId = z.infer<typeof enrolLtiUserIdSchema>["id"];
-
-// this type infers the return from getEnrolLtiUsers() - meaning it will include any joins
-export type CompleteEnrolLtiUser = Awaited<
-  ReturnType<typeof getEnrolLtiUsers>
->["enrolLtiUsers"][number];

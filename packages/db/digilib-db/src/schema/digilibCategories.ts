@@ -1,4 +1,3 @@
-import { type getDigilibCategories } from "@/lib/api/digilibCategories/queries";
 import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -41,7 +40,4 @@ export type UpdateDigilibCategoryParams = z.infer<
 >;
 export type DigilibCategoryId = z.infer<typeof digilibCategoryIdSchema>["id"];
 
-// this type infers the return from getDigilibCategories() - meaning it will include any joins
-export type CompleteDigilibCategory = Awaited<
-  ReturnType<typeof getDigilibCategories>
->["digilibCategories"][number];
+

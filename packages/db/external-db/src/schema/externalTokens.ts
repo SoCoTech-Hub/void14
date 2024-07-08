@@ -1,4 +1,3 @@
-import { type getExternalTokens } from "@/lib/api/externalTokens/queries";
 import { sql } from "drizzle-orm";
 import { boolean, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -68,7 +67,3 @@ export type UpdateExternalTokenParams = z.infer<
 >;
 export type ExternalTokenId = z.infer<typeof externalTokenIdSchema>["id"];
 
-// this type infers the return from getExternalTokens() - meaning it will include any joins
-export type CompleteExternalToken = Awaited<
-  ReturnType<typeof getExternalTokens>
->["externalTokens"][number];

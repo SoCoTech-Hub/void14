@@ -1,4 +1,3 @@
-import { type getFeedbackItems } from "@/lib/api/feedbackItems/queries";
 import { boolean, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -53,7 +52,3 @@ export type NewFeedbackItemParams = z.infer<typeof insertFeedbackItemParams>;
 export type UpdateFeedbackItemParams = z.infer<typeof updateFeedbackItemParams>;
 export type FeedbackItemId = z.infer<typeof feedbackItemIdSchema>["id"];
 
-// this type infers the return from getFeedbackItems() - meaning it will include any joins
-export type CompleteFeedbackItem = Awaited<
-  ReturnType<typeof getFeedbackItems>
->["feedbackItems"][number];

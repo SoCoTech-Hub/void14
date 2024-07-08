@@ -1,4 +1,3 @@
-import { type getDigilibs } from "@/lib/api/digilibs/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -81,7 +80,4 @@ export type NewDigilibParams = z.infer<typeof insertDigilibParams>;
 export type UpdateDigilibParams = z.infer<typeof updateDigilibParams>;
 export type DigilibId = z.infer<typeof digilibIdSchema>["id"];
 
-// this type infers the return from getDigilibs() - meaning it will include any joins
-export type CompleteDigilib = Awaited<
-  ReturnType<typeof getDigilibs>
->["digilibs"][number];
+

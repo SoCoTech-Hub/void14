@@ -1,4 +1,3 @@
-import { type getCustomFieldDatas } from "@/lib/api/customFieldDatas/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -69,8 +68,3 @@ export type UpdateCustomFieldDataParams = z.infer<
   typeof updateCustomFieldDataParams
 >;
 export type CustomFieldDataId = z.infer<typeof customFieldDataIdSchema>["id"];
-
-// this type infers the return from getCustomFieldDatas() - meaning it will include any joins
-export type CompleteCustomFieldData = Awaited<
-  ReturnType<typeof getCustomFieldDatas>
->["customFieldDatas"][number];

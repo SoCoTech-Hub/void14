@@ -1,4 +1,3 @@
-import { type getEnrolPaypals } from "@/lib/api/enrolPaypals/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -61,8 +60,3 @@ export type NewEnrolPaypal = z.infer<typeof insertEnrolPaypalSchema>;
 export type NewEnrolPaypalParams = z.infer<typeof insertEnrolPaypalParams>;
 export type UpdateEnrolPaypalParams = z.infer<typeof updateEnrolPaypalParams>;
 export type EnrolPaypalId = z.infer<typeof enrolPaypalIdSchema>["id"];
-
-// this type infers the return from getEnrolPaypals() - meaning it will include any joins
-export type CompleteEnrolPaypal = Awaited<
-  ReturnType<typeof getEnrolPaypals>
->["enrolPaypals"][number];

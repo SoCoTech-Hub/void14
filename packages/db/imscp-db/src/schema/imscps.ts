@@ -1,4 +1,3 @@
-import { type getImscps } from "@/lib/api/imscps/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -62,7 +61,4 @@ export type NewImscpParams = z.infer<typeof insertImscpParams>;
 export type UpdateImscpParams = z.infer<typeof updateImscpParams>;
 export type ImscpId = z.infer<typeof imscpIdSchema>["id"];
 
-// this type infers the return from getImscps() - meaning it will include any joins
-export type CompleteImscp = Awaited<
-  ReturnType<typeof getImscps>
->["imscps"][number];
+

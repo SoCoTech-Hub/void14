@@ -1,127 +1,135 @@
 {
-    "name":  "@soco/user-db",
-    "version":  "0.1.0",
-    "private":  true,
-    "type":  "module",
-    "exports":  {
-                    "./schema/gradeLetters":  {
-                                                  "types":  "./dist/schema/gradeLetters.d.ts",
-                                                  "default":  "./src/schema/gradeLetters.ts"
-                                              },
-                    "./schema/gradeOutcomesHistories":  {
-                                                            "types":  "./dist/schema/gradeOutcomesHistories.d.ts",
-                                                            "default":  "./src/schema/gradeOutcomesHistories.ts"
-                                                        },
-                    "./schema/gradeImportValues":  {
-                                                       "types":  "./dist/schema/gradeImportValues.d.ts",
-                                                       "default":  "./src/schema/gradeImportValues.ts"
-                                                   },
-                    "./schema/gradeCategoriesHistories":  {
-                                                              "types":  "./dist/schema/gradeCategoriesHistories.d.ts",
-                                                              "default":  "./src/schema/gradeCategoriesHistories.ts"
-                                                          },
-                    "./schema/gradingformGuideComments":  {
-                                                              "types":  "./dist/schema/gradingformGuideComments.d.ts",
-                                                              "default":  "./src/schema/gradingformGuideComments.ts"
-                                                          },
-                    "./schema/gradeItemsHistories":  {
-                                                         "types":  "./dist/schema/gradeItemsHistories.d.ts",
-                                                         "default":  "./src/schema/gradeItemsHistories.ts"
-                                                     },
-                    "./schema/gradeGrades":  {
-                                                 "types":  "./dist/schema/gradeGrades.d.ts",
-                                                 "default":  "./src/schema/gradeGrades.ts"
-                                             },
-                    "./schema/gradeGradesHistories":  {
-                                                          "types":  "./dist/schema/gradeGradesHistories.d.ts",
-                                                          "default":  "./src/schema/gradeGradesHistories.ts"
-                                                      },
-                    "./schema/gradeSettings":  {
-                                                   "types":  "./dist/schema/gradeSettings.d.ts",
-                                                   "default":  "./src/schema/gradeSettings.ts"
-                                               },
-                    "./schema/gradeCategories":  {
-                                                     "types":  "./dist/schema/gradeCategories.d.ts",
-                                                     "default":  "./src/schema/gradeCategories.ts"
-                                                 },
-                    "./schema/gradingformGuideCriteria":  {
-                                                              "types":  "./dist/schema/gradingformGuideCriteria.d.ts",
-                                                              "default":  "./src/schema/gradingformGuideCriteria.ts"
-                                                          },
-                    "./schema/gradingformRubricFillings":  {
-                                                               "types":  "./dist/schema/gradingformRubricFillings.d.ts",
-                                                               "default":  "./src/schema/gradingformRubricFillings.ts"
-                                                           },
-                    "./schema/gradeOutcomesCourses":  {
-                                                          "types":  "./dist/schema/gradeOutcomesCourses.d.ts",
-                                                          "default":  "./src/schema/gradeOutcomesCourses.ts"
-                                                      },
-                    "./schema/gradingformRubricLevels":  {
-                                                             "types":  "./dist/schema/gradingformRubricLevels.d.ts",
-                                                             "default":  "./src/schema/gradingformRubricLevels.ts"
-                                                         },
-                    "./schema/gradingAreas":  {
-                                                  "types":  "./dist/schema/gradingAreas.d.ts",
-                                                  "default":  "./src/schema/gradingAreas.ts"
-                                              },
-                    "./schema/gradeImportNewitems":  {
-                                                         "types":  "./dist/schema/gradeImportNewitems.d.ts",
-                                                         "default":  "./src/schema/gradeImportNewitems.ts"
-                                                     },
-                    "./schema/gradeOutcomes":  {
-                                                   "types":  "./dist/schema/gradeOutcomes.d.ts",
-                                                   "default":  "./src/schema/gradeOutcomes.ts"
-                                               },
-                    "./schema/gradingformRubricCriterias":  {
-                                                                "types":  "./dist/schema/gradingformRubricCriterias.d.ts",
-                                                                "default":  "./src/schema/gradingformRubricCriterias.ts"
-                                                            },
-                    "./schema/gradingformGuideFillings":  {
-                                                              "types":  "./dist/schema/gradingformGuideFillings.d.ts",
-                                                              "default":  "./src/schema/gradingformGuideFillings.ts"
-                                                          },
-                    "./schema/gradingInstances":  {
-                                                      "types":  "./dist/schema/gradingInstances.d.ts",
-                                                      "default":  "./src/schema/gradingInstances.ts"
-                                                  },
-                    "./schema/gradingDefinitions":  {
-                                                        "types":  "./dist/schema/gradingDefinitions.d.ts",
-                                                        "default":  "./src/schema/gradingDefinitions.ts"
-                                                    },
-                    "./schema/gradeItems":  {
-                                                "types":  "./dist/schema/gradeItems.d.ts",
-                                                "default":  "./src/schema/gradeItems.ts"
-                                            }
-                },
-    "license":  "MIT",
-    "scripts":  {
-                    "build":  "tsc",
-                    "dev":  "tsc --watch",
-                    "clean":  "rm -rf .turbo node_modules",
-                    "format":  "prettier --check . --ignore-path ../../.gitignore",
-                    "lint":  "eslint",
-                    "push":  "pnpm with-env drizzle-kit push",
-                    "studio":  "pnpm with-env drizzle-kit studio",
-                    "typecheck":  "tsc --noEmit --emitDeclarationOnly false",
-                    "with-env":  "dotenv -e ../../.env --"
-                },
-    "dependencies":  {
-                         "@soco/utils":  "workspace:*",
-                         "@t3-oss/env-core":  "^0.10.1",
-                         "postgres":  "^3.4.4",
-                         "drizzle-orm":  "^0.31.2",
-                         "drizzle-zod":  "^0.5.1",
-                         "zod":  "^3.23.8"
-                     },
-    "devDependencies":  {
-                            "@soco/eslint-config":  "workspace:*",
-                            "@soco/prettier-config":  "workspace:*",
-                            "@soco/tsconfig":  "workspace:*",
-                            "dotenv-cli":  "^7.4.2",
-                            "drizzle-kit":  "^0.22.7",
-                            "eslint":  "^8",
-                            "prettier":  "^3.3.2",
-                            "typescript":  "^5.4.5"
-                        },
-    "prettier":  "@soco/prettier-config"
+  "name": "@soco/grade-db",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "default": "./src/client.ts"
+    },
+    "./schema/gradeLetters": {
+      "types": "./dist/schema/gradeLetters.d.ts",
+      "default": "./src/schema/gradeLetters.ts"
+    },
+    "./schema/gradeOutcomesHistories": {
+      "types": "./dist/schema/gradeOutcomesHistories.d.ts",
+      "default": "./src/schema/gradeOutcomesHistories.ts"
+    },
+    "./schema/gradeImportValues": {
+      "types": "./dist/schema/gradeImportValues.d.ts",
+      "default": "./src/schema/gradeImportValues.ts"
+    },
+    "./schema/gradeCategoriesHistories": {
+      "types": "./dist/schema/gradeCategoriesHistories.d.ts",
+      "default": "./src/schema/gradeCategoriesHistories.ts"
+    },
+    "./schema/gradingformGuideComments": {
+      "types": "./dist/schema/gradingformGuideComments.d.ts",
+      "default": "./src/schema/gradingformGuideComments.ts"
+    },
+    "./schema/gradeItemsHistories": {
+      "types": "./dist/schema/gradeItemsHistories.d.ts",
+      "default": "./src/schema/gradeItemsHistories.ts"
+    },
+    "./schema/gradeGrades": {
+      "types": "./dist/schema/gradeGrades.d.ts",
+      "default": "./src/schema/gradeGrades.ts"
+    },
+    "./schema/gradeGradesHistories": {
+      "types": "./dist/schema/gradeGradesHistories.d.ts",
+      "default": "./src/schema/gradeGradesHistories.ts"
+    },
+    "./schema/gradeSettings": {
+      "types": "./dist/schema/gradeSettings.d.ts",
+      "default": "./src/schema/gradeSettings.ts"
+    },
+    "./schema/gradeCategories": {
+      "types": "./dist/schema/gradeCategories.d.ts",
+      "default": "./src/schema/gradeCategories.ts"
+    },
+    "./schema/gradingformGuideCriteria": {
+      "types": "./dist/schema/gradingformGuideCriteria.d.ts",
+      "default": "./src/schema/gradingformGuideCriteria.ts"
+    },
+    "./schema/gradingformRubricFillings": {
+      "types": "./dist/schema/gradingformRubricFillings.d.ts",
+      "default": "./src/schema/gradingformRubricFillings.ts"
+    },
+    "./schema/gradeOutcomesCourses": {
+      "types": "./dist/schema/gradeOutcomesCourses.d.ts",
+      "default": "./src/schema/gradeOutcomesCourses.ts"
+    },
+    "./schema/gradingformRubricLevels": {
+      "types": "./dist/schema/gradingformRubricLevels.d.ts",
+      "default": "./src/schema/gradingformRubricLevels.ts"
+    },
+    "./schema/gradingAreas": {
+      "types": "./dist/schema/gradingAreas.d.ts",
+      "default": "./src/schema/gradingAreas.ts"
+    },
+    "./schema/gradeImportNewitems": {
+      "types": "./dist/schema/gradeImportNewitems.d.ts",
+      "default": "./src/schema/gradeImportNewitems.ts"
+    },
+    "./schema/gradeOutcomes": {
+      "types": "./dist/schema/gradeOutcomes.d.ts",
+      "default": "./src/schema/gradeOutcomes.ts"
+    },
+    "./schema/gradingformRubricCriterias": {
+      "types": "./dist/schema/gradingformRubricCriterias.d.ts",
+      "default": "./src/schema/gradingformRubricCriterias.ts"
+    },
+    "./schema/gradingformGuideFillings": {
+      "types": "./dist/schema/gradingformGuideFillings.d.ts",
+      "default": "./src/schema/gradingformGuideFillings.ts"
+    },
+    "./schema/gradingInstances": {
+      "types": "./dist/schema/gradingInstances.d.ts",
+      "default": "./src/schema/gradingInstances.ts"
+    },
+    "./schema/gradingDefinitions": {
+      "types": "./dist/schema/gradingDefinitions.d.ts",
+      "default": "./src/schema/gradingDefinitions.ts"
+    },
+    "./schema/gradeItems": {
+      "types": "./dist/schema/gradeItems.d.ts",
+      "default": "./src/schema/gradeItems.ts"
+    }
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf .turbo node_modules",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "push": "pnpm with-env drizzle-kit push",
+    "studio": "pnpm with-env drizzle-kit studio",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "dependencies": {
+    "@soco/utils": "workspace:*",
+    "@t3-oss/env-core": "^0.10.1",
+    "postgres": "^3.4.4",
+    "drizzle-orm": "^0.31.2",
+    "drizzle-zod": "^0.5.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@soco/eslint-config": "workspace:*",
+    "@soco/prettier-config": "workspace:*",
+    "@soco/tsconfig": "workspace:*",
+    "dotenv-cli": "^7.4.2",
+    "drizzle-kit": "^0.22.7",
+    "eslint": "^8",
+    "prettier": "^3.3.2",
+    "typescript": "^5.4.5"
+  },
+  "prettier": "@soco/prettier-config"
 }

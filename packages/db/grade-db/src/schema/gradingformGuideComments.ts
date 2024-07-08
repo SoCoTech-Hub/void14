@@ -1,5 +1,4 @@
-import { type getGradingformGuideComments } from "@/lib/api/gradingformGuideComments/queries";
-import { integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -63,8 +62,3 @@ export type UpdateGradingformGuideCommentParams = z.infer<
 export type GradingformGuideCommentId = z.infer<
   typeof gradingformGuideCommentIdSchema
 >["id"];
-
-// this type infers the return from getGradingformGuideComments() - meaning it will include any joins
-export type CompleteGradingformGuideComment = Awaited<
-  ReturnType<typeof getGradingformGuideComments>
->["gradingformGuideComments"][number];

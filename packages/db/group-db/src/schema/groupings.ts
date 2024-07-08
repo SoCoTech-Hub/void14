@@ -1,4 +1,3 @@
-import { type getGroupings } from "@/lib/api/groupings/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -58,7 +57,3 @@ export type NewGroupingParams = z.infer<typeof insertGroupingParams>;
 export type UpdateGroupingParams = z.infer<typeof updateGroupingParams>;
 export type GroupingId = z.infer<typeof groupingIdSchema>["id"];
 
-// this type infers the return from getGroupings() - meaning it will include any joins
-export type CompleteGrouping = Awaited<
-  ReturnType<typeof getGroupings>
->["groupings"][number];

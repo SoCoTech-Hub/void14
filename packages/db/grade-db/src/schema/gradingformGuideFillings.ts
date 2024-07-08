@@ -1,4 +1,3 @@
-import { type getGradingformGuideFillings } from "@/lib/api/gradingformGuideFillings/queries";
 import { integer, pgTable, real, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -55,7 +54,3 @@ export type GradingformGuideFillingId = z.infer<
   typeof gradingformGuideFillingIdSchema
 >["id"];
 
-// this type infers the return from getGradingformGuideFillings() - meaning it will include any joins
-export type CompleteGradingformGuideFilling = Awaited<
-  ReturnType<typeof getGradingformGuideFillings>
->["gradingformGuideFillings"][number];

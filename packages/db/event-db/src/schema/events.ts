@@ -1,4 +1,3 @@
-import { type getEvents } from "@/lib/api/events/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -92,7 +91,3 @@ export type NewEventParams = z.infer<typeof insertEventParams>;
 export type UpdateEventParams = z.infer<typeof updateEventParams>;
 export type EventId = z.infer<typeof eventIdSchema>["id"];
 
-// this type infers the return from getEvents() - meaning it will include any joins
-export type CompleteEvent = Awaited<
-  ReturnType<typeof getEvents>
->["events"][number];

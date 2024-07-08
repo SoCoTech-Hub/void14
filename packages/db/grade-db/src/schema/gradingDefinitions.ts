@@ -1,4 +1,3 @@
-import { type getGradingDefinitions } from "@/lib/api/gradingDefinitions/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -80,7 +79,3 @@ export type GradingDefinitionId = z.infer<
   typeof gradingDefinitionIdSchema
 >["id"];
 
-// this type infers the return from getGradingDefinitions() - meaning it will include any joins
-export type CompleteGradingDefinition = Awaited<
-  ReturnType<typeof getGradingDefinitions>
->["gradingDefinitions"][number];

@@ -1,4 +1,3 @@
-import { type getDataRecords } from "@/lib/api/dataRecords/queries";
 import { sql } from "drizzle-orm";
 import { boolean, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -61,7 +60,4 @@ export type NewDataRecordParams = z.infer<typeof insertDataRecordParams>;
 export type UpdateDataRecordParams = z.infer<typeof updateDataRecordParams>;
 export type DataRecordId = z.infer<typeof dataRecordIdSchema>["id"];
 
-// this type infers the return from getDataRecords() - meaning it will include any joins
-export type CompleteDataRecord = Awaited<
-  ReturnType<typeof getDataRecords>
->["dataRecords"][number];
+

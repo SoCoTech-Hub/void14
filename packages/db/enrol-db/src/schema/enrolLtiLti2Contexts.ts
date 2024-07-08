@@ -1,4 +1,3 @@
-import { type getEnrolLtiLti2Contexts } from "@/lib/api/enrolLtiLti2Contexts/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -52,7 +51,3 @@ export type EnrolLtiLti2ContextId = z.infer<
   typeof enrolLtiLti2ContextIdSchema
 >["id"];
 
-// this type infers the return from getEnrolLtiLti2Contexts() - meaning it will include any joins
-export type CompleteEnrolLtiLti2Context = Awaited<
-  ReturnType<typeof getEnrolLtiLti2Contexts>
->["enrolLtiLti2Contexts"][number];

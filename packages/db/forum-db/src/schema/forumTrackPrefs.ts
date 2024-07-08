@@ -1,4 +1,3 @@
-import { type getForumTrackPrefs } from "@/lib/api/forumTrackPrefs/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -51,8 +50,3 @@ export type UpdateForumTrackPrefParams = z.infer<
   typeof updateForumTrackPrefParams
 >;
 export type ForumTrackPrefId = z.infer<typeof forumTrackPrefIdSchema>["id"];
-
-// this type infers the return from getForumTrackPrefs() - meaning it will include any joins
-export type CompleteForumTrackPref = Awaited<
-  ReturnType<typeof getForumTrackPrefs>
->["forumTrackPrefs"][number];

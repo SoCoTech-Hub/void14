@@ -1,5 +1,4 @@
-import { type getLicenses } from "@/lib/api/licenses/queries";
-import { boolean, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { boolean, integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -58,7 +57,3 @@ export type NewLicenseParams = z.infer<typeof insertLicenseParams>;
 export type UpdateLicenseParams = z.infer<typeof updateLicenseParams>;
 export type LicenseId = z.infer<typeof licenseIdSchema>["id"];
 
-// this type infers the return from getLicenses() - meaning it will include any joins
-export type CompleteLicense = Awaited<
-  ReturnType<typeof getLicenses>
->["licenses"][number];

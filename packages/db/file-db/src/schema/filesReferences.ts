@@ -1,4 +1,3 @@
-import { type getFilesReferences } from "@/lib/api/filesReferences/queries";
 import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -45,7 +44,3 @@ export type UpdateFilesReferenceParams = z.infer<
 >;
 export type FilesReferenceId = z.infer<typeof filesReferenceIdSchema>["id"];
 
-// this type infers the return from getFilesReferences() - meaning it will include any joins
-export type CompleteFilesReference = Awaited<
-  ReturnType<typeof getFilesReferences>
->["filesReferences"][number];

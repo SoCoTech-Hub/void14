@@ -1,4 +1,3 @@
-import { type getEnrolLtiTools } from "@/lib/api/enrolLtiTools/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -86,8 +85,3 @@ export type NewEnrolLtiTool = z.infer<typeof insertEnrolLtiToolSchema>;
 export type NewEnrolLtiToolParams = z.infer<typeof insertEnrolLtiToolParams>;
 export type UpdateEnrolLtiToolParams = z.infer<typeof updateEnrolLtiToolParams>;
 export type EnrolLtiToolId = z.infer<typeof enrolLtiToolIdSchema>["id"];
-
-// this type infers the return from getEnrolLtiTools() - meaning it will include any joins
-export type CompleteEnrolLtiTool = Awaited<
-  ReturnType<typeof getEnrolLtiTools>
->["enrolLtiTools"][number];

@@ -1,4 +1,3 @@
-import { type getGroupingsGroups } from "@/lib/api/groupingsGroups/queries";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -55,7 +54,4 @@ export type UpdateGroupingsGroupParams = z.infer<
 >;
 export type GroupingsGroupId = z.infer<typeof groupingsGroupIdSchema>["id"];
 
-// this type infers the return from getGroupingsGroups() - meaning it will include any joins
-export type CompleteGroupingsGroup = Awaited<
-  ReturnType<typeof getGroupingsGroups>
->["groupingsGroups"][number];
+

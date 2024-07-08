@@ -1,4 +1,3 @@
-import { type getLtiTypes } from "@/lib/api/ltiTypes/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -70,7 +69,4 @@ export type NewLtiTypeParams = z.infer<typeof insertLtiTypeParams>;
 export type UpdateLtiTypeParams = z.infer<typeof updateLtiTypeParams>;
 export type LtiTypeId = z.infer<typeof ltiTypeIdSchema>["id"];
 
-// this type infers the return from getLtiTypes() - meaning it will include any joins
-export type CompleteLtiType = Awaited<
-  ReturnType<typeof getLtiTypes>
->["ltiTypes"][number];
+

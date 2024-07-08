@@ -1,4 +1,3 @@
-import { type getForumQueues } from "@/lib/api/forumQueues/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -46,7 +45,4 @@ export type NewForumQueueParams = z.infer<typeof insertForumQueueParams>;
 export type UpdateForumQueueParams = z.infer<typeof updateForumQueueParams>;
 export type ForumQueueId = z.infer<typeof forumQueueIdSchema>["id"];
 
-// this type infers the return from getForumQueues() - meaning it will include any joins
-export type CompleteForumQueue = Awaited<
-  ReturnType<typeof getForumQueues>
->["forumQueues"][number];
+

@@ -1,5 +1,4 @@
-import { type getCourseFormatOptions } from "@/lib/api/courseFormatOptions/queries";
-import { pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -65,7 +64,4 @@ export type CourseFormatOptionId = z.infer<
   typeof courseFormatOptionIdSchema
 >["id"];
 
-// this type infers the return from getCourseFormatOptions() - meaning it will include any joins
-export type CompleteCourseFormatOption = Awaited<
-  ReturnType<typeof getCourseFormatOptions>
->["courseFormatOptions"][number];
+

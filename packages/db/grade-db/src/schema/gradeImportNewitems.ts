@@ -1,4 +1,3 @@
-import { type getGradeImportNewitems } from "@/lib/api/gradeImportNewitems/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -43,7 +42,4 @@ export type GradeImportNewitemId = z.infer<
   typeof gradeImportNewitemIdSchema
 >["id"];
 
-// this type infers the return from getGradeImportNewitems() - meaning it will include any joins
-export type CompleteGradeImportNewitem = Awaited<
-  ReturnType<typeof getGradeImportNewitems>
->["gradeImportNewitems"][number];
+

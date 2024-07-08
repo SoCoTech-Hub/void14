@@ -1,4 +1,3 @@
-import { type getForumGrades } from "@/lib/api/forumGrades/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -63,7 +62,4 @@ export type NewForumGradeParams = z.infer<typeof insertForumGradeParams>;
 export type UpdateForumGradeParams = z.infer<typeof updateForumGradeParams>;
 export type ForumGradeId = z.infer<typeof forumGradeIdSchema>["id"];
 
-// this type infers the return from getForumGrades() - meaning it will include any joins
-export type CompleteForumGrade = Awaited<
-  ReturnType<typeof getForumGrades>
->["forumGrades"][number];
+

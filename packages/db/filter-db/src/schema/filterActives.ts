@@ -1,5 +1,5 @@
-import { type getFilterActives } from "@/lib/api/filterActives/queries";
-import { boolean, integer, pgTable, varchar } from "drizzle-orm/pg-core";
+
+import { boolean, integer, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -51,7 +51,4 @@ export type NewFilterActiveParams = z.infer<typeof insertFilterActiveParams>;
 export type UpdateFilterActiveParams = z.infer<typeof updateFilterActiveParams>;
 export type FilterActiveId = z.infer<typeof filterActiveIdSchema>["id"];
 
-// this type infers the return from getFilterActives() - meaning it will include any joins
-export type CompleteFilterActive = Awaited<
-  ReturnType<typeof getFilterActives>
->["filterActives"][number];
+

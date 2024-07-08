@@ -1,4 +1,3 @@
-import { type getForumReads } from "@/lib/api/forumReads/queries";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -50,7 +49,4 @@ export type NewForumReadParams = z.infer<typeof insertForumReadParams>;
 export type UpdateForumReadParams = z.infer<typeof updateForumReadParams>;
 export type ForumReadId = z.infer<typeof forumReadIdSchema>["id"];
 
-// this type infers the return from getForumReads() - meaning it will include any joins
-export type CompleteForumRead = Awaited<
-  ReturnType<typeof getForumReads>
->["forumReads"][number];
+

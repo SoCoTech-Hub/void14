@@ -1,4 +1,3 @@
-import { type getLocalizationFields } from "@/lib/api/localizationFields/queries";
 import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -43,7 +42,4 @@ export type LocalizationFieldId = z.infer<
   typeof localizationFieldIdSchema
 >["id"];
 
-// this type infers the return from getLocalizationFields() - meaning it will include any joins
-export type CompleteLocalizationField = Awaited<
-  ReturnType<typeof getLocalizationFields>
->["localizationFields"][number];
+

@@ -1,71 +1,79 @@
 {
-    "name":  "@soco/user-db",
-    "version":  "0.1.0",
-    "private":  true,
-    "type":  "module",
-    "exports":  {
-                    "./schema/feedbackCompletedtmps":  {
-                                                           "types":  "./dist/schema/feedbackCompletedtmps.d.ts",
-                                                           "default":  "./src/schema/feedbackCompletedtmps.ts"
-                                                       },
-                    "./schema/feedbackValues":  {
-                                                    "types":  "./dist/schema/feedbackValues.d.ts",
-                                                    "default":  "./src/schema/feedbackValues.ts"
-                                                },
-                    "./schema/feedbackValuetmps":  {
-                                                       "types":  "./dist/schema/feedbackValuetmps.d.ts",
-                                                       "default":  "./src/schema/feedbackValuetmps.ts"
-                                                   },
-                    "./schema/feedbackCompleteds":  {
-                                                        "types":  "./dist/schema/feedbackCompleteds.d.ts",
-                                                        "default":  "./src/schema/feedbackCompleteds.ts"
-                                                    },
-                    "./schema/feedbackSitecourseMaps":  {
-                                                            "types":  "./dist/schema/feedbackSitecourseMaps.d.ts",
-                                                            "default":  "./src/schema/feedbackSitecourseMaps.ts"
-                                                        },
-                    "./schema/feedbacks":  {
-                                               "types":  "./dist/schema/feedbacks.d.ts",
-                                               "default":  "./src/schema/feedbacks.ts"
-                                           },
-                    "./schema/feedbackItems":  {
-                                                   "types":  "./dist/schema/feedbackItems.d.ts",
-                                                   "default":  "./src/schema/feedbackItems.ts"
-                                               },
-                    "./schema/feedbackTemplates":  {
-                                                       "types":  "./dist/schema/feedbackTemplates.d.ts",
-                                                       "default":  "./src/schema/feedbackTemplates.ts"
-                                                   }
-                },
-    "license":  "MIT",
-    "scripts":  {
-                    "build":  "tsc",
-                    "dev":  "tsc --watch",
-                    "clean":  "rm -rf .turbo node_modules",
-                    "format":  "prettier --check . --ignore-path ../../.gitignore",
-                    "lint":  "eslint",
-                    "push":  "pnpm with-env drizzle-kit push",
-                    "studio":  "pnpm with-env drizzle-kit studio",
-                    "typecheck":  "tsc --noEmit --emitDeclarationOnly false",
-                    "with-env":  "dotenv -e ../../.env --"
-                },
-    "dependencies":  {
-                         "@soco/utils":  "workspace:*",
-                         "@t3-oss/env-core":  "^0.10.1",
-                         "postgres":  "^3.4.4",
-                         "drizzle-orm":  "^0.31.2",
-                         "drizzle-zod":  "^0.5.1",
-                         "zod":  "^3.23.8"
-                     },
-    "devDependencies":  {
-                            "@soco/eslint-config":  "workspace:*",
-                            "@soco/prettier-config":  "workspace:*",
-                            "@soco/tsconfig":  "workspace:*",
-                            "dotenv-cli":  "^7.4.2",
-                            "drizzle-kit":  "^0.22.7",
-                            "eslint":  "^8",
-                            "prettier":  "^3.3.2",
-                            "typescript":  "^5.4.5"
-                        },
-    "prettier":  "@soco/prettier-config"
+  "name": "@soco/feedback-db",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "default": "./src/client.ts"
+    },
+    "./schema/feedbackCompletedtmps": {
+      "types": "./dist/schema/feedbackCompletedtmps.d.ts",
+      "default": "./src/schema/feedbackCompletedtmps.ts"
+    },
+    "./schema/feedbackValues": {
+      "types": "./dist/schema/feedbackValues.d.ts",
+      "default": "./src/schema/feedbackValues.ts"
+    },
+    "./schema/feedbackValuetmps": {
+      "types": "./dist/schema/feedbackValuetmps.d.ts",
+      "default": "./src/schema/feedbackValuetmps.ts"
+    },
+    "./schema/feedbackCompleteds": {
+      "types": "./dist/schema/feedbackCompleteds.d.ts",
+      "default": "./src/schema/feedbackCompleteds.ts"
+    },
+    "./schema/feedbackSitecourseMaps": {
+      "types": "./dist/schema/feedbackSitecourseMaps.d.ts",
+      "default": "./src/schema/feedbackSitecourseMaps.ts"
+    },
+    "./schema/feedbacks": {
+      "types": "./dist/schema/feedbacks.d.ts",
+      "default": "./src/schema/feedbacks.ts"
+    },
+    "./schema/feedbackItems": {
+      "types": "./dist/schema/feedbackItems.d.ts",
+      "default": "./src/schema/feedbackItems.ts"
+    },
+    "./schema/feedbackTemplates": {
+      "types": "./dist/schema/feedbackTemplates.d.ts",
+      "default": "./src/schema/feedbackTemplates.ts"
+    }
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf .turbo node_modules",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "push": "pnpm with-env drizzle-kit push",
+    "studio": "pnpm with-env drizzle-kit studio",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "dependencies": {
+    "@soco/utils": "workspace:*",
+    "@t3-oss/env-core": "^0.10.1",
+    "postgres": "^3.4.4",
+    "drizzle-orm": "^0.31.2",
+    "drizzle-zod": "^0.5.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@soco/eslint-config": "workspace:*",
+    "@soco/prettier-config": "workspace:*",
+    "@soco/tsconfig": "workspace:*",
+    "dotenv-cli": "^7.4.2",
+    "drizzle-kit": "^0.22.7",
+    "eslint": "^8",
+    "prettier": "^3.3.2",
+    "typescript": "^5.4.5"
+  },
+  "prettier": "@soco/prettier-config"
 }

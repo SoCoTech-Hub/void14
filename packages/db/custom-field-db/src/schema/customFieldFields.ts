@@ -1,10 +1,10 @@
-import { type getCustomFieldFields } from "@/lib/api/customFieldFields/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
   pgTable,
   text,
   timestamp,
+  uniqueIndex,
   varchar,
 } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -81,8 +81,3 @@ export type UpdateCustomFieldFieldParams = z.infer<
   typeof updateCustomFieldFieldParams
 >;
 export type CustomFieldFieldId = z.infer<typeof customFieldFieldIdSchema>["id"];
-
-// this type infers the return from getCustomFieldFields() - meaning it will include any joins
-export type CompleteCustomFieldField = Awaited<
-  ReturnType<typeof getCustomFieldFields>
->["customFieldFields"][number];

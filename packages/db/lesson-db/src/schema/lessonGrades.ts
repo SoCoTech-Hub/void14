@@ -1,4 +1,3 @@
-import { type getLessonGrades } from "@/lib/api/lessonGrades/queries";
 import {
   boolean,
   pgTable,
@@ -63,7 +62,3 @@ export type NewLessonGradeParams = z.infer<typeof insertLessonGradeParams>;
 export type UpdateLessonGradeParams = z.infer<typeof updateLessonGradeParams>;
 export type LessonGradeId = z.infer<typeof lessonGradeIdSchema>["id"];
 
-// this type infers the return from getLessonGrades() - meaning it will include any joins
-export type CompleteLessonGrade = Awaited<
-  ReturnType<typeof getLessonGrades>
->["lessonGrades"][number];

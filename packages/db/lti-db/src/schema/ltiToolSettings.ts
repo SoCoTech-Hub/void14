@@ -1,4 +1,3 @@
-import { type getLtiToolSettings } from "@/lib/api/ltiToolSettings/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -49,7 +48,4 @@ export type UpdateLtiToolSettingParams = z.infer<
 >;
 export type LtiToolSettingId = z.infer<typeof ltiToolSettingIdSchema>["id"];
 
-// this type infers the return from getLtiToolSettings() - meaning it will include any joins
-export type CompleteLtiToolSetting = Awaited<
-  ReturnType<typeof getLtiToolSettings>
->["ltiToolSettings"][number];
+

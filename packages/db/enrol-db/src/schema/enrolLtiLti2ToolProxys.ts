@@ -1,4 +1,3 @@
-import { type getEnrolLtiLti2ToolProxys } from "@/lib/api/enrolLtiLti2ToolProxys/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -52,7 +51,3 @@ export type EnrolLtiLti2ToolProxyId = z.infer<
   typeof enrolLtiLti2ToolProxyIdSchema
 >["id"];
 
-// this type infers the return from getEnrolLtiLti2ToolProxys() - meaning it will include any joins
-export type CompleteEnrolLtiLti2ToolProxy = Awaited<
-  ReturnType<typeof getEnrolLtiLti2ToolProxys>
->["enrolLtiLti2ToolProxys"][number];

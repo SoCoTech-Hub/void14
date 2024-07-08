@@ -1,4 +1,3 @@
-import { type getEnrolFlatfiles } from "@/lib/api/enrolFlatfiles/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -52,7 +51,3 @@ export type UpdateEnrolFlatfileParams = z.infer<
 >;
 export type EnrolFlatfileId = z.infer<typeof enrolFlatfileIdSchema>["id"];
 
-// this type infers the return from getEnrolFlatfiles() - meaning it will include any joins
-export type CompleteEnrolFlatfile = Awaited<
-  ReturnType<typeof getEnrolFlatfiles>
->["enrolFlatfiles"][number];

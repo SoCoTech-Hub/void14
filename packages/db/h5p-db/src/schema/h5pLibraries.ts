@@ -1,4 +1,3 @@
-import { type getH5pLibraries } from "@/lib/api/h5pLibraries/queries";
 import { boolean, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -70,7 +69,3 @@ export type NewH5pLibraryParams = z.infer<typeof insertH5pLibraryParams>;
 export type UpdateH5pLibraryParams = z.infer<typeof updateH5pLibraryParams>;
 export type H5pLibraryId = z.infer<typeof h5pLibraryIdSchema>["id"];
 
-// this type infers the return from getH5pLibraries() - meaning it will include any joins
-export type CompleteH5pLibrary = Awaited<
-  ReturnType<typeof getH5pLibraries>
->["h5pLibraries"][number];

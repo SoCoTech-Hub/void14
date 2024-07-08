@@ -1,4 +1,3 @@
-import { type getEnrolLtiLti2ResourceLinks } from "@/lib/api/enrolLtiLti2ResourceLinks/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -73,7 +72,3 @@ export type EnrolLtiLti2ResourceLinkId = z.infer<
   typeof enrolLtiLti2ResourceLinkIdSchema
 >["id"];
 
-// this type infers the return from getEnrolLtiLti2ResourceLinks() - meaning it will include any joins
-export type CompleteEnrolLtiLti2ResourceLink = Awaited<
-  ReturnType<typeof getEnrolLtiLti2ResourceLinks>
->["enrolLtiLti2ResourceLinks"][number];

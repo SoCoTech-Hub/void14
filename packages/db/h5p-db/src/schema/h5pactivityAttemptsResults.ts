@@ -1,4 +1,3 @@
-import { type getH5pactivityAttemptsResults } from "@/lib/api/h5pactivityAttemptsResults/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -88,7 +87,4 @@ export type H5pactivityAttemptsResultId = z.infer<
   typeof h5pactivityAttemptsResultIdSchema
 >["id"];
 
-// this type infers the return from getH5pactivityAttemptsResults() - meaning it will include any joins
-export type CompleteH5pactivityAttemptsResult = Awaited<
-  ReturnType<typeof getH5pactivityAttemptsResults>
->["h5pactivityAttemptsResults"][number];
+

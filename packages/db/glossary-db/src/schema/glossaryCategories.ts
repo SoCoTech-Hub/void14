@@ -1,4 +1,3 @@
-import { type getGlossaryCategories } from "@/lib/api/glossaryCategories/queries";
 import { boolean, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -51,7 +50,4 @@ export type UpdateGlossaryCategoryParams = z.infer<
 >;
 export type GlossaryCategoryId = z.infer<typeof glossaryCategoryIdSchema>["id"];
 
-// this type infers the return from getGlossaryCategories() - meaning it will include any joins
-export type CompleteGlossaryCategory = Awaited<
-  ReturnType<typeof getGlossaryCategories>
->["glossaryCategories"][number];
+

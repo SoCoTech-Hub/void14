@@ -1,4 +1,3 @@
-import { type getCourses } from "@/lib/api/courses/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -132,7 +131,4 @@ export type NewCourseParams = z.infer<typeof insertCourseParams>;
 export type UpdateCourseParams = z.infer<typeof updateCourseParams>;
 export type CourseId = z.infer<typeof courseIdSchema>["id"];
 
-// this type infers the return from getCourses() - meaning it will include any joins
-export type CompleteCourse = Awaited<
-  ReturnType<typeof getCourses>
->["courses"][number];
+

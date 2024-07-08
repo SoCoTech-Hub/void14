@@ -1,4 +1,3 @@
-import { type getFilterConfigs } from "@/lib/api/filterConfigs/queries";
 import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -35,7 +34,4 @@ export type NewFilterConfigParams = z.infer<typeof insertFilterConfigParams>;
 export type UpdateFilterConfigParams = z.infer<typeof updateFilterConfigParams>;
 export type FilterConfigId = z.infer<typeof filterConfigIdSchema>["id"];
 
-// this type infers the return from getFilterConfigs() - meaning it will include any joins
-export type CompleteFilterConfig = Awaited<
-  ReturnType<typeof getFilterConfigs>
->["filterConfigs"][number];
+

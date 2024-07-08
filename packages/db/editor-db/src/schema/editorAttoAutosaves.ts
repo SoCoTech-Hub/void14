@@ -1,4 +1,3 @@
-import { type getEditorAttoAutosaves } from "@/lib/api/editorAttoAutosaves/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -58,7 +57,3 @@ export type EditorAttoAutosaveId = z.infer<
   typeof editorAttoAutosaveIdSchema
 >["id"];
 
-// this type infers the return from getEditorAttoAutosaves() - meaning it will include any joins
-export type CompleteEditorAttoAutosave = Awaited<
-  ReturnType<typeof getEditorAttoAutosaves>
->["editorAttoAutosaves"][number];

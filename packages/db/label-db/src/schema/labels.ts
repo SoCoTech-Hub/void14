@@ -1,4 +1,3 @@
-import { type getLabels } from "@/lib/api/labels/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -55,7 +54,3 @@ export type NewLabelParams = z.infer<typeof insertLabelParams>;
 export type UpdateLabelParams = z.infer<typeof updateLabelParams>;
 export type LabelId = z.infer<typeof labelIdSchema>["id"];
 
-// this type infers the return from getLabels() - meaning it will include any joins
-export type CompleteLabel = Awaited<
-  ReturnType<typeof getLabels>
->["labels"][number];

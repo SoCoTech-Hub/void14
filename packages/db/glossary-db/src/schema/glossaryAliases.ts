@@ -1,4 +1,3 @@
-import { type getGlossaryAliases } from "@/lib/api/glossaryAliases/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -35,7 +34,4 @@ export type UpdateGlossaryAliasParams = z.infer<
 >;
 export type GlossaryAliasId = z.infer<typeof glossaryAliasIdSchema>["id"];
 
-// this type infers the return from getGlossaryAliases() - meaning it will include any joins
-export type CompleteGlossaryAlias = Awaited<
-  ReturnType<typeof getGlossaryAliases>
->["glossaryAliases"][number];
+

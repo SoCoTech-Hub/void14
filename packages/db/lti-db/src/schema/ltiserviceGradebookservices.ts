@@ -1,4 +1,3 @@
-import { type getLtiserviceGradebookservices } from "@/lib/api/ltiserviceGradebookservices/queries";
 import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -55,7 +54,4 @@ export type LtiserviceGradebookserviceId = z.infer<
   typeof ltiserviceGradebookserviceIdSchema
 >["id"];
 
-// this type infers the return from getLtiserviceGradebookservices() - meaning it will include any joins
-export type CompleteLtiserviceGradebookservice = Awaited<
-  ReturnType<typeof getLtiserviceGradebookservices>
->["ltiserviceGradebookservices"][number];
+

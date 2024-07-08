@@ -1,4 +1,3 @@
-import { type getH5ps } from "@/lib/api/h5ps/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -57,5 +56,4 @@ export type NewH5pParams = z.infer<typeof insertH5pParams>;
 export type UpdateH5pParams = z.infer<typeof updateH5pParams>;
 export type H5pId = z.infer<typeof h5pIdSchema>["id"];
 
-// this type infers the return from getH5ps() - meaning it will include any joins
-export type CompleteH5p = Awaited<ReturnType<typeof getH5ps>>["h5ps"][number];
+

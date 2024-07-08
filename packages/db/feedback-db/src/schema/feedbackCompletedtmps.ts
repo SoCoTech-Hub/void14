@@ -1,4 +1,4 @@
-import { type getFeedbackCompletedtmps } from "@/lib/api/feedbackCompletedtmps/queries";
+
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -74,7 +74,4 @@ export type FeedbackCompletedtmpId = z.infer<
   typeof feedbackCompletedtmpIdSchema
 >["id"];
 
-// this type infers the return from getFeedbackCompletedtmps() - meaning it will include any joins
-export type CompleteFeedbackCompletedtmp = Awaited<
-  ReturnType<typeof getFeedbackCompletedtmps>
->["feedbackCompletedtmps"][number];
+

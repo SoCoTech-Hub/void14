@@ -1,4 +1,3 @@
-import { type getH5pactivities } from "@/lib/api/h5pactivities/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -72,7 +71,3 @@ export type NewH5pactivityParams = z.infer<typeof insertH5pactivityParams>;
 export type UpdateH5pactivityParams = z.infer<typeof updateH5pactivityParams>;
 export type H5pactivityId = z.infer<typeof h5pactivityIdSchema>["id"];
 
-// this type infers the return from getH5pactivities() - meaning it will include any joins
-export type CompleteH5pactivity = Awaited<
-  ReturnType<typeof getH5pactivities>
->["h5pactivities"][number];

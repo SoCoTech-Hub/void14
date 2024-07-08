@@ -1,4 +1,3 @@
-import { type getH5pLibrariesCachedassets } from "@/lib/api/h5pLibrariesCachedassets/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -54,7 +53,4 @@ export type H5pLibrariesCachedassetId = z.infer<
   typeof h5pLibrariesCachedassetIdSchema
 >["id"];
 
-// this type infers the return from getH5pLibrariesCachedassets() - meaning it will include any joins
-export type CompleteH5pLibrariesCachedasset = Awaited<
-  ReturnType<typeof getH5pLibrariesCachedassets>
->["h5pLibrariesCachedassets"][number];
+

@@ -1,4 +1,3 @@
-import { type getEventsQueues } from "@/lib/api/eventsQueues/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -46,7 +45,3 @@ export type NewEventsQueueParams = z.infer<typeof insertEventsQueueParams>;
 export type UpdateEventsQueueParams = z.infer<typeof updateEventsQueueParams>;
 export type EventsQueueId = z.infer<typeof eventsQueueIdSchema>["id"];
 
-// this type infers the return from getEventsQueues() - meaning it will include any joins
-export type CompleteEventsQueue = Awaited<
-  ReturnType<typeof getEventsQueues>
->["eventsQueues"][number];

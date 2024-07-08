@@ -1,4 +1,3 @@
-import { type getInmailResponses } from "@/lib/api/inmailResponses/queries";
 import { boolean, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -73,7 +72,3 @@ export type UpdateInmailResponseParams = z.infer<
 >;
 export type InmailResponseId = z.infer<typeof inmailResponseIdSchema>["id"];
 
-// this type infers the return from getInmailResponses() - meaning it will include any joins
-export type CompleteInmailResponse = Awaited<
-  ReturnType<typeof getInmailResponses>
->["inmailResponses"][number];

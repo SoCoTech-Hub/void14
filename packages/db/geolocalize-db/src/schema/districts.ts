@@ -1,4 +1,3 @@
-import { type getDistricts } from "@/lib/api/districts/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -41,8 +40,3 @@ export type NewDistrict = z.infer<typeof insertDistrictSchema>;
 export type NewDistrictParams = z.infer<typeof insertDistrictParams>;
 export type UpdateDistrictParams = z.infer<typeof updateDistrictParams>;
 export type DistrictId = z.infer<typeof districtIdSchema>["id"];
-
-// this type infers the return from getDistricts() - meaning it will include any joins
-export type CompleteDistrict = Awaited<
-  ReturnType<typeof getDistricts>
->["districts"][number];

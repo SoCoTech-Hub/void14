@@ -1,4 +1,3 @@
-import { type getGradingAreas } from "@/lib/api/gradingAreas/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -35,7 +34,3 @@ export type NewGradingAreaParams = z.infer<typeof insertGradingAreaParams>;
 export type UpdateGradingAreaParams = z.infer<typeof updateGradingAreaParams>;
 export type GradingAreaId = z.infer<typeof gradingAreaIdSchema>["id"];
 
-// this type infers the return from getGradingAreas() - meaning it will include any joins
-export type CompleteGradingArea = Awaited<
-  ReturnType<typeof getGradingAreas>
->["gradingAreas"][number];

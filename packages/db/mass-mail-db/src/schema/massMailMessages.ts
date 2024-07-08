@@ -1,4 +1,3 @@
-import { type getMassMailMessages } from "@/lib/api/massMailMessages/queries";
 import { sql } from "drizzle-orm";
 import {
   pgTable,
@@ -82,7 +81,4 @@ export type UpdateMassMailMessageParams = z.infer<
 >;
 export type MassMailMessageId = z.infer<typeof massMailMessageIdSchema>["id"];
 
-// this type infers the return from getMassMailMessages() - meaning it will include any joins
-export type CompleteMassMailMessage = Awaited<
-  ReturnType<typeof getMassMailMessages>
->["massMailMessages"][number];
+

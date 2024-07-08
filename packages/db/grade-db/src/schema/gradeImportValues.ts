@@ -1,4 +1,3 @@
-import { type getGradeImportValues } from "@/lib/api/gradeImportValues/queries";
 import { boolean, pgTable, real, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -57,7 +56,4 @@ export type UpdateGradeImportValueParams = z.infer<
 >;
 export type GradeImportValueId = z.infer<typeof gradeImportValueIdSchema>["id"];
 
-// this type infers the return from getGradeImportValues() - meaning it will include any joins
-export type CompleteGradeImportValue = Awaited<
-  ReturnType<typeof getGradeImportValues>
->["gradeImportValues"][number];
+

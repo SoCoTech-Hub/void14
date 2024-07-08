@@ -1,4 +1,3 @@
-import { type getFeedbackSitecourseMaps } from "@/lib/api/feedbackSitecourseMaps/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -53,7 +52,3 @@ export type FeedbackSitecourseMapId = z.infer<
   typeof feedbackSitecourseMapIdSchema
 >["id"];
 
-// this type infers the return from getFeedbackSitecourseMaps() - meaning it will include any joins
-export type CompleteFeedbackSitecourseMap = Awaited<
-  ReturnType<typeof getFeedbackSitecourseMaps>
->["feedbackSitecourseMaps"][number];

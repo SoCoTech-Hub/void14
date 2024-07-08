@@ -1,4 +1,4 @@
-import { type getExternalFunctions } from "@/lib/api/externalFunctions/queries";
+
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -42,8 +42,3 @@ export type UpdateExternalFunctionParams = z.infer<
   typeof updateExternalFunctionParams
 >;
 export type ExternalFunctionId = z.infer<typeof externalFunctionIdSchema>["id"];
-
-// this type infers the return from getExternalFunctions() - meaning it will include any joins
-export type CompleteExternalFunction = Awaited<
-  ReturnType<typeof getExternalFunctions>
->["externalFunctions"][number];

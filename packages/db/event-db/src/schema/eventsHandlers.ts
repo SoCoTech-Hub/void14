@@ -1,4 +1,3 @@
-import { type getEventsHandlers } from "@/lib/api/eventsHandlers/queries";
 import { boolean, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -48,7 +47,3 @@ export type UpdateEventsHandlerParams = z.infer<
 >;
 export type EventsHandlerId = z.infer<typeof eventsHandlerIdSchema>["id"];
 
-// this type infers the return from getEventsHandlers() - meaning it will include any joins
-export type CompleteEventsHandler = Awaited<
-  ReturnType<typeof getEventsHandlers>
->["eventsHandlers"][number];

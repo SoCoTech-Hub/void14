@@ -1,4 +1,3 @@
-import { type getFeedbacks } from "@/lib/api/feedbacks/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -88,7 +87,4 @@ export type NewFeedbackParams = z.infer<typeof insertFeedbackParams>;
 export type UpdateFeedbackParams = z.infer<typeof updateFeedbackParams>;
 export type FeedbackId = z.infer<typeof feedbackIdSchema>["id"];
 
-// this type infers the return from getFeedbacks() - meaning it will include any joins
-export type CompleteFeedback = Awaited<
-  ReturnType<typeof getFeedbacks>
->["feedbacks"][number];
+

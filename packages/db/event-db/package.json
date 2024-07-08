@@ -1,9 +1,17 @@
 {
-  "name": "@soco/user-db",
+  "name": "@soco/event-db",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "default": "./src/client.ts"
+    },
     "./schema/eventSubscriptions": {
       "types": "./dist/schema/eventSubscriptions.d.ts",
       "default": "./src/schema/eventSubscriptions.ts"

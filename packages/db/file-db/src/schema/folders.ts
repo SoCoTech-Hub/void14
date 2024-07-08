@@ -1,4 +1,3 @@
-import { type getFolders } from "@/lib/api/folders/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -71,7 +70,3 @@ export type NewFolderParams = z.infer<typeof insertFolderParams>;
 export type UpdateFolderParams = z.infer<typeof updateFolderParams>;
 export type FolderId = z.infer<typeof folderIdSchema>["id"];
 
-// this type infers the return from getFolders() - meaning it will include any joins
-export type CompleteFolder = Awaited<
-  ReturnType<typeof getFolders>
->["folders"][number];

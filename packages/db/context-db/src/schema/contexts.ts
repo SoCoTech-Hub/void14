@@ -1,4 +1,4 @@
-import { type getContexts } from "@/lib/api/contexts/queries";
+
 import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -46,7 +46,4 @@ export type NewContextParams = z.infer<typeof insertContextParams>;
 export type UpdateContextParams = z.infer<typeof updateContextParams>;
 export type ContextId = z.infer<typeof contextIdSchema>["id"];
 
-// this type infers the return from getContexts() - meaning it will include any joins
-export type CompleteContext = Awaited<
-  ReturnType<typeof getContexts>
->["contexts"][number];
+

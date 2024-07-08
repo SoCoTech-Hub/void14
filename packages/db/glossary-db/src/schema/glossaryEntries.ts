@@ -1,4 +1,3 @@
-import { type getGlossaryEntries } from "@/lib/api/glossaryEntries/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -85,7 +84,3 @@ export type UpdateGlossaryEntryParams = z.infer<
 >;
 export type GlossaryEntryId = z.infer<typeof glossaryEntryIdSchema>["id"];
 
-// this type infers the return from getGlossaryEntries() - meaning it will include any joins
-export type CompleteGlossaryEntry = Awaited<
-  ReturnType<typeof getGlossaryEntries>
->["glossaryEntries"][number];

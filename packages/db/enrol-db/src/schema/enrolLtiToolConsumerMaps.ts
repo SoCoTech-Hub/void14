@@ -1,4 +1,3 @@
-import { type getEnrolLtiToolConsumerMaps } from "@/lib/api/enrolLtiToolConsumerMaps/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -47,7 +46,4 @@ export type EnrolLtiToolConsumerMapId = z.infer<
   typeof enrolLtiToolConsumerMapIdSchema
 >["id"];
 
-// this type infers the return from getEnrolLtiToolConsumerMaps() - meaning it will include any joins
-export type CompleteEnrolLtiToolConsumerMap = Awaited<
-  ReturnType<typeof getEnrolLtiToolConsumerMaps>
->["enrolLtiToolConsumerMaps"][number];
+

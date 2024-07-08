@@ -1,6 +1,5 @@
-import { type getCoursePublishes } from "@/lib/api/coursePublishes/queries";
 import { sql } from "drizzle-orm";
-import { boolean, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
+import { boolean, pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -75,7 +74,3 @@ export type UpdateCoursePublishParams = z.infer<
 >;
 export type CoursePublishId = z.infer<typeof coursePublishIdSchema>["id"];
 
-// this type infers the return from getCoursePublishes() - meaning it will include any joins
-export type CompleteCoursePublish = Awaited<
-  ReturnType<typeof getCoursePublishes>
->["coursePublishes"][number];

@@ -1,4 +1,3 @@
-import { type getLessonBranches } from "@/lib/api/lessonBranches/queries";
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -64,7 +63,4 @@ export type NewLessonBranchParams = z.infer<typeof insertLessonBranchParams>;
 export type UpdateLessonBranchParams = z.infer<typeof updateLessonBranchParams>;
 export type LessonBranchId = z.infer<typeof lessonBranchIdSchema>["id"];
 
-// this type infers the return from getLessonBranches() - meaning it will include any joins
-export type CompleteLessonBranch = Awaited<
-  ReturnType<typeof getLessonBranches>
->["lessonBranches"][number];
+

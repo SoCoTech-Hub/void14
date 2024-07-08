@@ -1,4 +1,3 @@
-import { type getMassMailLists } from "@/lib/api/massMailLists/queries";
 import { sql } from "drizzle-orm";
 import { boolean, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -54,7 +53,3 @@ export type NewMassMailListParams = z.infer<typeof insertMassMailListParams>;
 export type UpdateMassMailListParams = z.infer<typeof updateMassMailListParams>;
 export type MassMailListId = z.infer<typeof massMailListIdSchema>["id"];
 
-// this type infers the return from getMassMailLists() - meaning it will include any joins
-export type CompleteMassMailList = Awaited<
-  ReturnType<typeof getMassMailLists>
->["massMailLists"][number];

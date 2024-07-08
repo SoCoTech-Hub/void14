@@ -1,4 +1,3 @@
-import { type getLogDisplays } from "@/lib/api/logDisplays/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -36,7 +35,4 @@ export type NewLogDisplayParams = z.infer<typeof insertLogDisplayParams>;
 export type UpdateLogDisplayParams = z.infer<typeof updateLogDisplayParams>;
 export type LogDisplayId = z.infer<typeof logDisplayIdSchema>["id"];
 
-// this type infers the return from getLogDisplays() - meaning it will include any joins
-export type CompleteLogDisplay = Awaited<
-  ReturnType<typeof getLogDisplays>
->["logDisplays"][number];
+
