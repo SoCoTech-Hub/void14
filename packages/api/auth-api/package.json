@@ -1,5 +1,5 @@
 {
-  "name": "@soco/[packageName]",
+  "name": "@soco/auth-api",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -20,9 +20,9 @@
   },
   "dependencies": {
     "@soco/auth-service": "workspace:*",
-    "@soco/[packageName]-db": "workspace:*",
+    "@soco/auth-db": "workspace:*",
     "@soco/validators": "workspace:*",
-    "@trpc/server": "10.45.2",
+    "@trpc/server": "11.0.0-rc.441",
     "superjson": "2.2.1",
     "zod": "^3.23.8"
   },
@@ -30,9 +30,9 @@
     "@soco/eslint-config": "workspace:*",
     "@soco/prettier-config": "workspace:*",
     "@soco/tsconfig": "workspace:*",
-    "eslint": "^8",
-    "prettier": "^3.3.1",
-    "typescript": "^5.4.5"
+    "eslint": "^9.6.0",
+    "prettier": "^3.3.2",
+    "typescript": "^5.5.3"
   },
   "prettier": "@soco/prettier-config"
 }
