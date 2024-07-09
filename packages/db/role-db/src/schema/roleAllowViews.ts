@@ -1,4 +1,3 @@
-import { type getRoleAllowViews } from "@/lib/api/roleAllowViews/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -49,7 +48,3 @@ export type UpdateRoleAllowViewParams = z.infer<
 >;
 export type RoleAllowViewId = z.infer<typeof roleAllowViewIdSchema>["id"];
 
-// this type infers the return from getRoleAllowViews() - meaning it will include any joins
-export type CompleteRoleAllowView = Awaited<
-  ReturnType<typeof getRoleAllowViews>
->["roleAllowViews"][number];

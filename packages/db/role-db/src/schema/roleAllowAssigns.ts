@@ -2,8 +2,6 @@ import { varchar, pgTable } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { roles } from './roles'
-import { roles } from './roles'
-import { type getRoleAllowAssigns } from '@/lib/api/roleAllowAssigns/queries'
 
 import { nanoid } from '@soco/utils'
 
@@ -51,7 +49,3 @@ export type UpdateRoleAllowAssignParams = z.infer<
 >
 export type RoleAllowAssignId = z.infer<typeof roleAllowAssignIdSchema>['id']
 
-// this type infers the return from getRoleAllowAssigns() - meaning it will include any joins
-export type CompleteRoleAllowAssign = Awaited<
-	ReturnType<typeof getRoleAllowAssigns>
->['roleAllowAssigns'][number]

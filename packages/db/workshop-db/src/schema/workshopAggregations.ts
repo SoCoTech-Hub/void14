@@ -1,4 +1,4 @@
-import { type getWorkshopAggregations } from "@/lib/api/workshopAggregations/queries";
+
 import { sql } from "drizzle-orm";
 import {
   pgTable,
@@ -84,7 +84,4 @@ export type WorkshopAggregationId = z.infer<
   typeof workshopAggregationIdSchema
 >["id"];
 
-// this type infers the return from getWorkshopAggregations() - meaning it will include any joins
-export type CompleteWorkshopAggregation = Awaited<
-  ReturnType<typeof getWorkshopAggregations>
->["workshopAggregations"][number];
+

@@ -1,4 +1,3 @@
-import { type getResourceOlds } from "@/lib/api/resourceOlds/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -69,7 +68,3 @@ export type NewResourceOldParams = z.infer<typeof insertResourceOldParams>;
 export type UpdateResourceOldParams = z.infer<typeof updateResourceOldParams>;
 export type ResourceOldId = z.infer<typeof resourceOldIdSchema>["id"];
 
-// this type infers the return from getResourceOlds() - meaning it will include any joins
-export type CompleteResourceOld = Awaited<
-  ReturnType<typeof getResourceOlds>
->["resourceOlds"][number];

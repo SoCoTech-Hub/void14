@@ -1,5 +1,4 @@
-import { type getQuestionHints } from "@/lib/api/questionHints/queries";
-import { boolean, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { boolean, integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -63,7 +62,3 @@ export type NewQuestionHintParams = z.infer<typeof insertQuestionHintParams>;
 export type UpdateQuestionHintParams = z.infer<typeof updateQuestionHintParams>;
 export type QuestionHintId = z.infer<typeof questionHintIdSchema>["id"];
 
-// this type infers the return from getQuestionHints() - meaning it will include any joins
-export type CompleteQuestionHint = Awaited<
-  ReturnType<typeof getQuestionHints>
->["questionHints"][number];

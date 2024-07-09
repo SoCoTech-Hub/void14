@@ -1,4 +1,3 @@
-import { type getRoleAssignments } from "@/lib/api/roleAssignments/queries";
 import { sql } from "drizzle-orm";
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -67,8 +66,3 @@ export type UpdateRoleAssignmentParams = z.infer<
   typeof updateRoleAssignmentParams
 >;
 export type RoleAssignmentId = z.infer<typeof roleAssignmentIdSchema>["id"];
-
-// this type infers the return from getRoleAssignments() - meaning it will include any joins
-export type CompleteRoleAssignment = Awaited<
-  ReturnType<typeof getRoleAssignments>
->["roleAssignments"][number];

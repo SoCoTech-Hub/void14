@@ -1,4 +1,3 @@
-import { type getTaskLogs } from "@/lib/api/taskLogs/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -74,7 +73,3 @@ export type NewTaskLogParams = z.infer<typeof insertTaskLogParams>;
 export type UpdateTaskLogParams = z.infer<typeof updateTaskLogParams>;
 export type TaskLogId = z.infer<typeof taskLogIdSchema>["id"];
 
-// this type infers the return from getTaskLogs() - meaning it will include any joins
-export type CompleteTaskLog = Awaited<
-  ReturnType<typeof getTaskLogs>
->["taskLogs"][number];

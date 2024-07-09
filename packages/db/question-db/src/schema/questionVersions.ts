@@ -1,5 +1,4 @@
-import { type getQuestionVersions } from "@/lib/api/questionVersions/queries";
-import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
+import { integer, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -66,7 +65,3 @@ export type UpdateQuestionVersionParams = z.infer<
 >;
 export type QuestionVersionId = z.infer<typeof questionVersionIdSchema>["id"];
 
-// this type infers the return from getQuestionVersions() - meaning it will include any joins
-export type CompleteQuestionVersion = Awaited<
-  ReturnType<typeof getQuestionVersions>
->["questionVersions"][number];

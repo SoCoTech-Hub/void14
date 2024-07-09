@@ -1,5 +1,4 @@
-import { type getPaygwPaypals } from "@/lib/api/paygwPaypals/queries";
-import { pgTable, varchar } from "drizzle-orm/pg-core";
+import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -51,7 +50,4 @@ export type NewPaygwPaypalParams = z.infer<typeof insertPaygwPaypalParams>;
 export type UpdatePaygwPaypalParams = z.infer<typeof updatePaygwPaypalParams>;
 export type PaygwPaypalId = z.infer<typeof paygwPaypalIdSchema>["id"];
 
-// this type infers the return from getPaygwPaypals() - meaning it will include any joins
-export type CompletePaygwPaypal = Awaited<
-  ReturnType<typeof getPaygwPaypals>
->["paygwPaypals"][number];
+

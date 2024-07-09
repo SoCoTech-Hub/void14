@@ -1,4 +1,3 @@
-import { type getGenders } from "@/lib/api/genders/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -33,7 +32,3 @@ export type NewGenderParams = z.infer<typeof insertGenderParams>;
 export type UpdateGenderParams = z.infer<typeof updateGenderParams>;
 export type GenderId = z.infer<typeof genderIdSchema>["id"];
 
-// this type infers the return from getGenders() - meaning it will include any joins
-export type CompleteGender = Awaited<
-  ReturnType<typeof getGenders>
->["genders"][number];

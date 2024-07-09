@@ -1,5 +1,4 @@
-import { type getWorkshopFormAccumulatives } from "@/lib/api/workshopFormAccumulatives/queries";
-import { integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -76,7 +75,4 @@ export type WorkshopFormAccumulativeId = z.infer<
   typeof workshopFormAccumulativeIdSchema
 >["id"];
 
-// this type infers the return from getWorkshopFormAccumulatives() - meaning it will include any joins
-export type CompleteWorkshopFormAccumulative = Awaited<
-  ReturnType<typeof getWorkshopFormAccumulatives>
->["workshopFormAccumulatives"][number];
+

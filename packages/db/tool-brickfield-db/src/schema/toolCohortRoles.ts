@@ -1,4 +1,3 @@
-import { type getToolCohortRoles } from "@/lib/api/toolCohortRoles/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -51,7 +50,4 @@ export type UpdateToolCohortRoleParams = z.infer<
 >;
 export type ToolCohortRoleId = z.infer<typeof toolCohortRoleIdSchema>["id"];
 
-// this type infers the return from getToolCohortRoles() - meaning it will include any joins
-export type CompleteToolCohortRole = Awaited<
-  ReturnType<typeof getToolCohortRoles>
->["toolCohortRoles"][number];
+

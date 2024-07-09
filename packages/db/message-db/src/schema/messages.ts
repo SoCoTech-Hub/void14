@@ -1,4 +1,3 @@
-import { type getMessages } from "@/lib/api/messages/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -80,7 +79,3 @@ export type NewMessageParams = z.infer<typeof insertMessageParams>;
 export type UpdateMessageParams = z.infer<typeof updateMessageParams>;
 export type MessageId = z.infer<typeof messageIdSchema>["id"];
 
-// this type infers the return from getMessages() - meaning it will include any joins
-export type CompleteMessage = Awaited<
-  ReturnType<typeof getMessages>
->["messages"][number];

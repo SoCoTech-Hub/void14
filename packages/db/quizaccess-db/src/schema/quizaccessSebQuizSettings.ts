@@ -1,4 +1,3 @@
-import { type getQuizaccessSebQuizSettings } from "@/lib/api/quizaccessSebQuizSettings/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -6,6 +5,7 @@ import {
   pgTable,
   text,
   timestamp,
+  uniqueIndex,
   varchar,
 } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -145,7 +145,3 @@ export type QuizaccessSebQuizSettingId = z.infer<
   typeof quizaccessSebQuizSettingIdSchema
 >["id"];
 
-// this type infers the return from getQuizaccessSebQuizSettings() - meaning it will include any joins
-export type CompleteQuizaccessSebQuizSetting = Awaited<
-  ReturnType<typeof getQuizaccessSebQuizSettings>
->["quizaccessSebQuizSettings"][number];

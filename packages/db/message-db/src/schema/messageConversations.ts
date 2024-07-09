@@ -1,4 +1,3 @@
-import { type getMessageConversations } from "@/lib/api/messageConversations/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -70,7 +69,3 @@ export type MessageConversationId = z.infer<
   typeof messageConversationIdSchema
 >["id"];
 
-// this type infers the return from getMessageConversations() - meaning it will include any joins
-export type CompleteMessageConversation = Awaited<
-  ReturnType<typeof getMessageConversations>
->["messageConversations"][number];

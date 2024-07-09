@@ -1,4 +1,3 @@
-import { type getUserSchools } from "@/lib/api/userSchools/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -48,7 +47,4 @@ export type NewUserSchoolParams = z.infer<typeof insertUserSchoolParams>;
 export type UpdateUserSchoolParams = z.infer<typeof updateUserSchoolParams>;
 export type UserSchoolId = z.infer<typeof userSchoolIdSchema>["id"];
 
-// this type infers the return from getUserSchools() - meaning it will include any joins
-export type CompleteUserSchool = Awaited<
-  ReturnType<typeof getUserSchools>
->["userSchools"][number];
+

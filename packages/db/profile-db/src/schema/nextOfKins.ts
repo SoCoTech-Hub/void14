@@ -1,4 +1,3 @@
-import { type getNextOfKins } from "@/lib/api/nextOfKins/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -52,7 +51,4 @@ export type NewNextOfKinParams = z.infer<typeof insertNextOfKinParams>;
 export type UpdateNextOfKinParams = z.infer<typeof updateNextOfKinParams>;
 export type NextOfKinId = z.infer<typeof nextOfKinIdSchema>["id"];
 
-// this type infers the return from getNextOfKins() - meaning it will include any joins
-export type CompleteNextOfKin = Awaited<
-  ReturnType<typeof getNextOfKins>
->["nextOfKins"][number];
+

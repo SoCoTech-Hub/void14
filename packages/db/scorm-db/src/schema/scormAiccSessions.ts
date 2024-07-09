@@ -1,4 +1,3 @@
-import { type getScormAiccSessions } from "@/lib/api/scormAiccSessions/queries";
 import { sql } from "drizzle-orm";
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -75,7 +74,4 @@ export type UpdateScormAiccSessionParams = z.infer<
 >;
 export type ScormAiccSessionId = z.infer<typeof scormAiccSessionIdSchema>["id"];
 
-// this type infers the return from getScormAiccSessions() - meaning it will include any joins
-export type CompleteScormAiccSession = Awaited<
-  ReturnType<typeof getScormAiccSessions>
->["scormAiccSessions"][number];
+

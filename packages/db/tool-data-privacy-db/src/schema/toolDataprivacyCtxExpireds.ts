@@ -1,4 +1,3 @@
-import { type getToolDataprivacyCtxExpireds } from "@/lib/api/toolDataprivacyCtxExpireds/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -81,7 +80,4 @@ export type ToolDataprivacyCtxExpiredId = z.infer<
   typeof toolDataprivacyCtxExpiredIdSchema
 >["id"];
 
-// this type infers the return from getToolDataprivacyCtxExpireds() - meaning it will include any joins
-export type CompleteToolDataprivacyCtxExpired = Awaited<
-  ReturnType<typeof getToolDataprivacyCtxExpireds>
->["toolDataprivacyCtxExpireds"][number];
+

@@ -1,4 +1,3 @@
-import { type getUserPrivateKeys } from "@/lib/api/userPrivateKeys/queries";
 import { sql } from "drizzle-orm";
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -65,7 +64,4 @@ export type UpdateUserPrivateKeyParams = z.infer<
 >;
 export type UserPrivateKeyId = z.infer<typeof userPrivateKeyIdSchema>["id"];
 
-// this type infers the return from getUserPrivateKeys() - meaning it will include any joins
-export type CompleteUserPrivateKey = Awaited<
-  ReturnType<typeof getUserPrivateKeys>
->["userPrivateKeys"][number];
+

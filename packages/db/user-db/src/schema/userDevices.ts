@@ -1,4 +1,3 @@
-import { type getUserDevices } from "@/lib/api/userDevices/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -59,7 +58,4 @@ export type NewUserDeviceParams = z.infer<typeof insertUserDeviceParams>;
 export type UpdateUserDeviceParams = z.infer<typeof updateUserDeviceParams>;
 export type UserDeviceId = z.infer<typeof userDeviceIdSchema>["id"];
 
-// this type infers the return from getUserDevices() - meaning it will include any joins
-export type CompleteUserDevice = Awaited<
-  ReturnType<typeof getUserDevices>
->["userDevices"][number];
+

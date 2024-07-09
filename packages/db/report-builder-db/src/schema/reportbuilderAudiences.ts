@@ -1,6 +1,5 @@
-import { type getReportbuilderAudiences } from "@/lib/api/reportbuilderAudiences/queries";
 import { sql } from "drizzle-orm";
-import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -68,7 +67,3 @@ export type ReportbuilderAudienceId = z.infer<
   typeof reportbuilderAudienceIdSchema
 >["id"];
 
-// this type infers the return from getReportbuilderAudiences() - meaning it will include any joins
-export type CompleteReportbuilderAudience = Awaited<
-  ReturnType<typeof getReportbuilderAudiences>
->["reportbuilderAudiences"][number];

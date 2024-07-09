@@ -1,5 +1,4 @@
-import { type getWorkshopEvalBestSettings } from "@/lib/api/workshopEvalBestSettings/queries";
-import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
+import { integer, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -66,7 +65,4 @@ export type WorkshopEvalBestSettingId = z.infer<
   typeof workshopEvalBestSettingIdSchema
 >["id"];
 
-// this type infers the return from getWorkshopEvalBestSettings() - meaning it will include any joins
-export type CompleteWorkshopEvalBestSetting = Awaited<
-  ReturnType<typeof getWorkshopEvalBestSettings>
->["workshopEvalBestSettings"][number];
+

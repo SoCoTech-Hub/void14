@@ -1,5 +1,4 @@
-import { type getQuestionSetReferences } from "@/lib/api/questionSetReferences/queries";
-import { pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -57,7 +56,4 @@ export type QuestionSetReferenceId = z.infer<
   typeof questionSetReferenceIdSchema
 >["id"];
 
-// this type infers the return from getQuestionSetReferences() - meaning it will include any joins
-export type CompleteQuestionSetReference = Awaited<
-  ReturnType<typeof getQuestionSetReferences>
->["questionSetReferences"][number];
+

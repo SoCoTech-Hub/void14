@@ -1,4 +1,3 @@
-import { type getTagInstances } from "@/lib/api/tagInstances/queries";
 import { sql } from "drizzle-orm";
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -64,7 +63,3 @@ export type NewTagInstanceParams = z.infer<typeof insertTagInstanceParams>;
 export type UpdateTagInstanceParams = z.infer<typeof updateTagInstanceParams>;
 export type TagInstanceId = z.infer<typeof tagInstanceIdSchema>["id"];
 
-// this type infers the return from getTagInstances() - meaning it will include any joins
-export type CompleteTagInstance = Awaited<
-  ReturnType<typeof getTagInstances>
->["tagInstances"][number];

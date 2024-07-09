@@ -1,4 +1,3 @@
-import { type getQuizOverviewRegrades } from "@/lib/api/quizOverviewRegrades/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -78,7 +77,3 @@ export type QuizOverviewRegradeId = z.infer<
   typeof quizOverviewRegradeIdSchema
 >["id"];
 
-// this type infers the return from getQuizOverviewRegrades() - meaning it will include any joins
-export type CompleteQuizOverviewRegrade = Awaited<
-  ReturnType<typeof getQuizOverviewRegrades>
->["quizOverviewRegrades"][number];

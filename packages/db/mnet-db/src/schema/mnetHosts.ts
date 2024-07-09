@@ -1,4 +1,3 @@
-import { type getMnetHosts } from "@/lib/api/mnetHosts/queries";
 import {
   boolean,
   integer,
@@ -88,7 +87,4 @@ export type NewMnetHostParams = z.infer<typeof insertMnetHostParams>;
 export type UpdateMnetHostParams = z.infer<typeof updateMnetHostParams>;
 export type MnetHostId = z.infer<typeof mnetHostIdSchema>["id"];
 
-// this type infers the return from getMnetHosts() - meaning it will include any joins
-export type CompleteMnetHost = Awaited<
-  ReturnType<typeof getMnetHosts>
->["mnetHosts"][number];
+

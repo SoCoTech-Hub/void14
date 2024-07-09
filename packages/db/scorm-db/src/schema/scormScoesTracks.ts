@@ -1,4 +1,3 @@
-import { type getScormScoesTracks } from "@/lib/api/scormScoesTracks/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -78,7 +77,4 @@ export type UpdateScormScoesTrackParams = z.infer<
 >;
 export type ScormScoesTrackId = z.infer<typeof scormScoesTrackIdSchema>["id"];
 
-// this type infers the return from getScormScoesTracks() - meaning it will include any joins
-export type CompleteScormScoesTrack = Awaited<
-  ReturnType<typeof getScormScoesTracks>
->["scormScoesTracks"][number];
+

@@ -1,5 +1,4 @@
-import { type getQtypeEssayOptions } from "@/lib/api/qtypeEssayOptions/queries";
-import { boolean, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { boolean, integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -82,7 +81,3 @@ export type UpdateQtypeEssayOptionParams = z.infer<
 >;
 export type QtypeEssayOptionId = z.infer<typeof qtypeEssayOptionIdSchema>["id"];
 
-// this type infers the return from getQtypeEssayOptions() - meaning it will include any joins
-export type CompleteQtypeEssayOption = Awaited<
-  ReturnType<typeof getQtypeEssayOptions>
->["qtypeEssayOptions"][number];

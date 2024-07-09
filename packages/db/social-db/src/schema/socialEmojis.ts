@@ -1,4 +1,3 @@
-import { type getSocialEmojis } from "@/lib/api/socialEmojis/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -33,7 +32,3 @@ export type NewSocialEmojiParams = z.infer<typeof insertSocialEmojiParams>;
 export type UpdateSocialEmojiParams = z.infer<typeof updateSocialEmojiParams>;
 export type SocialEmojiId = z.infer<typeof socialEmojiIdSchema>["id"];
 
-// this type infers the return from getSocialEmojis() - meaning it will include any joins
-export type CompleteSocialEmoji = Awaited<
-  ReturnType<typeof getSocialEmojis>
->["socialEmojis"][number];

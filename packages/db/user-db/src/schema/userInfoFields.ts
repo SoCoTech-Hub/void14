@@ -1,5 +1,4 @@
-import { type getUserInfoFields } from "@/lib/api/userInfoFields/queries";
-import { boolean, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { boolean, integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -82,7 +81,3 @@ export type UpdateUserInfoFieldParams = z.infer<
 >;
 export type UserInfoFieldId = z.infer<typeof userInfoFieldIdSchema>["id"];
 
-// this type infers the return from getUserInfoFields() - meaning it will include any joins
-export type CompleteUserInfoField = Awaited<
-  ReturnType<typeof getUserInfoFields>
->["userInfoFields"][number];

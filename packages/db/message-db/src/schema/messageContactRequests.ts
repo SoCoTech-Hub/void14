@@ -1,4 +1,3 @@
-import { type getMessageContactRequests } from "@/lib/api/messageContactRequests/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -54,7 +53,3 @@ export type MessageContactRequestId = z.infer<
   typeof messageContactRequestIdSchema
 >["id"];
 
-// this type infers the return from getMessageContactRequests() - meaning it will include any joins
-export type CompleteMessageContactRequest = Awaited<
-  ReturnType<typeof getMessageContactRequests>
->["messageContactRequests"][number];

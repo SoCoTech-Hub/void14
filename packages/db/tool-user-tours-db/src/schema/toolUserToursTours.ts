@@ -1,4 +1,3 @@
-import { type getToolUserToursTours } from "@/lib/api/toolUserToursTours/queries";
 import { boolean, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -58,7 +57,3 @@ export type ToolUserToursTourId = z.infer<
   typeof toolUserToursTourIdSchema
 >["id"];
 
-// this type infers the return from getToolUserToursTours() - meaning it will include any joins
-export type CompleteToolUserToursTour = Awaited<
-  ReturnType<typeof getToolUserToursTours>
->["toolUserToursTours"][number];

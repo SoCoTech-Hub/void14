@@ -1,4 +1,3 @@
-import { type getQuizSections } from "@/lib/api/quizSections/queries";
 import {
   boolean,
   integer,
@@ -64,7 +63,3 @@ export type NewQuizSectionParams = z.infer<typeof insertQuizSectionParams>;
 export type UpdateQuizSectionParams = z.infer<typeof updateQuizSectionParams>;
 export type QuizSectionId = z.infer<typeof quizSectionIdSchema>["id"];
 
-// this type infers the return from getQuizSections() - meaning it will include any joins
-export type CompleteQuizSection = Awaited<
-  ReturnType<typeof getQuizSections>
->["quizSections"][number];

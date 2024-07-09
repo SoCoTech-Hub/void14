@@ -1,5 +1,4 @@
-import { type getMnetHost2services } from "@/lib/api/mnetHost2services/queries";
-import { boolean, pgTable, varchar } from "drizzle-orm/pg-core";
+import { boolean, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -69,7 +68,3 @@ export type UpdateMnetHost2serviceParams = z.infer<
 >;
 export type MnetHost2serviceId = z.infer<typeof mnetHost2serviceIdSchema>["id"];
 
-// this type infers the return from getMnetHost2services() - meaning it will include any joins
-export type CompleteMnetHost2service = Awaited<
-  ReturnType<typeof getMnetHost2services>
->["mnetHost2services"][number];

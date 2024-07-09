@@ -1,5 +1,4 @@
-import { type getMyPages } from "@/lib/api/myPages/queries";
-import { boolean, integer, pgTable, varchar } from "drizzle-orm/pg-core";
+import { boolean, integer, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -56,7 +55,4 @@ export type NewMyPageParams = z.infer<typeof insertMyPageParams>;
 export type UpdateMyPageParams = z.infer<typeof updateMyPageParams>;
 export type MyPageId = z.infer<typeof myPageIdSchema>["id"];
 
-// this type infers the return from getMyPages() - meaning it will include any joins
-export type CompleteMyPage = Awaited<
-  ReturnType<typeof getMyPages>
->["myPages"][number];
+

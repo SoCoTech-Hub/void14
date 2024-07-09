@@ -1,4 +1,3 @@
-import { type getNotes } from "@/lib/api/notes/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -44,8 +43,3 @@ export type NewNote = z.infer<typeof insertNoteSchema>;
 export type NewNoteParams = z.infer<typeof insertNoteParams>;
 export type UpdateNoteParams = z.infer<typeof updateNoteParams>;
 export type NoteId = z.infer<typeof noteIdSchema>["id"];
-
-// this type infers the return from getNotes() - meaning it will include any joins
-export type CompleteNote = Awaited<
-  ReturnType<typeof getNotes>
->["notes"][number];

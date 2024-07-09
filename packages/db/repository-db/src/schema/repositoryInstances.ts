@@ -1,6 +1,5 @@
-import { type getRepositoryInstances } from "@/lib/api/repositoryInstances/queries";
 import { sql } from "drizzle-orm";
-import { boolean, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
+import { boolean, pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -76,7 +75,3 @@ export type RepositoryInstanceId = z.infer<
   typeof repositoryInstanceIdSchema
 >["id"];
 
-// this type infers the return from getRepositoryInstances() - meaning it will include any joins
-export type CompleteRepositoryInstance = Awaited<
-  ReturnType<typeof getRepositoryInstances>
->["repositoryInstances"][number];

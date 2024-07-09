@@ -1,4 +1,3 @@
-import { type getQualificationsResponses } from "@/lib/api/qualificationsResponses/queries";
 import { boolean, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -65,7 +64,4 @@ export type QualificationsResponseId = z.infer<
   typeof qualificationsResponseIdSchema
 >["id"];
 
-// this type infers the return from getQualificationsResponses() - meaning it will include any joins
-export type CompleteQualificationsResponse = Awaited<
-  ReturnType<typeof getQualificationsResponses>
->["qualificationsResponses"][number];
+

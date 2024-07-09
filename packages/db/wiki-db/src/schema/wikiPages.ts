@@ -1,4 +1,3 @@
-import { type getWikiPages } from "@/lib/api/wikiPages/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -69,7 +68,4 @@ export type NewWikiPageParams = z.infer<typeof insertWikiPageParams>;
 export type UpdateWikiPageParams = z.infer<typeof updateWikiPageParams>;
 export type WikiPageId = z.infer<typeof wikiPageIdSchema>["id"];
 
-// this type infers the return from getWikiPages() - meaning it will include any joins
-export type CompleteWikiPage = Awaited<
-  ReturnType<typeof getWikiPages>
->["wikiPages"][number];
+

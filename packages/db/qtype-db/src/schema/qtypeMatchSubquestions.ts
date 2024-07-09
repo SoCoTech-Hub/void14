@@ -1,5 +1,4 @@
-import { type getQtypeMatchSubquestions } from "@/lib/api/qtypeMatchSubquestions/queries";
-import { integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -61,7 +60,3 @@ export type QtypeMatchSubquestionId = z.infer<
   typeof qtypeMatchSubquestionIdSchema
 >["id"];
 
-// this type infers the return from getQtypeMatchSubquestions() - meaning it will include any joins
-export type CompleteQtypeMatchSubquestion = Awaited<
-  ReturnType<typeof getQtypeMatchSubquestions>
->["qtypeMatchSubquestions"][number];

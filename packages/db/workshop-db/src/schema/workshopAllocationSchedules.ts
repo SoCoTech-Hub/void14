@@ -1,4 +1,3 @@
-import { type getWorkshopAllocationSchedules } from "@/lib/api/workshopAllocationSchedules/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -6,6 +5,7 @@ import {
   pgTable,
   text,
   timestamp,
+  uniqueIndex,
   varchar,
 } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -92,7 +92,4 @@ export type WorkshopAllocationScheduleId = z.infer<
   typeof workshopAllocationScheduleIdSchema
 >["id"];
 
-// this type infers the return from getWorkshopAllocationSchedules() - meaning it will include any joins
-export type CompleteWorkshopAllocationSchedule = Awaited<
-  ReturnType<typeof getWorkshopAllocationSchedules>
->["workshopAllocationSchedules"][number];
+

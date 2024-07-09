@@ -1,4 +1,3 @@
-import { type getTagColls } from "@/lib/api/tagColls/queries";
 import { boolean, integer, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -47,7 +46,4 @@ export type NewTagCollParams = z.infer<typeof insertTagCollParams>;
 export type UpdateTagCollParams = z.infer<typeof updateTagCollParams>;
 export type TagCollId = z.infer<typeof tagCollIdSchema>["id"];
 
-// this type infers the return from getTagColls() - meaning it will include any joins
-export type CompleteTagColl = Awaited<
-  ReturnType<typeof getTagColls>
->["tagColls"][number];
+

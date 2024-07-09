@@ -1,4 +1,3 @@
-import { type getQuestionResponseAnalysises } from "@/lib/api/questionResponseAnalysises/queries";
 import { sql } from "drizzle-orm";
 import {
   pgTable,
@@ -89,7 +88,3 @@ export type QuestionResponseAnalysiseId = z.infer<
   typeof questionResponseAnalysiseIdSchema
 >["id"];
 
-// this type infers the return from getQuestionResponseAnalysises() - meaning it will include any joins
-export type CompleteQuestionResponseAnalysise = Awaited<
-  ReturnType<typeof getQuestionResponseAnalysises>
->["questionResponseAnalysises"][number];

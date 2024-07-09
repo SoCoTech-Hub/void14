@@ -1,91 +1,99 @@
 {
-    "name":  "@soco/user-db",
-    "version":  "0.1.0",
-    "private":  true,
-    "type":  "module",
-    "exports":  {
-                    "./schema/mnetHosts":  {
-                                               "types":  "./dist/schema/mnetHosts.d.ts",
-                                               "default":  "./src/schema/mnetHosts.ts"
-                                           },
-                    "./schema/mnetLogs":  {
-                                              "types":  "./dist/schema/mnetLogs.d.ts",
-                                              "default":  "./src/schema/mnetLogs.ts"
-                                          },
-                    "./schema/mnetRemoteService2rpcs":  {
-                                                            "types":  "./dist/schema/mnetRemoteService2rpcs.d.ts",
-                                                            "default":  "./src/schema/mnetRemoteService2rpcs.ts"
-                                                        },
-                    "./schema/mnetServices":  {
-                                                  "types":  "./dist/schema/mnetServices.d.ts",
-                                                  "default":  "./src/schema/mnetServices.ts"
-                                              },
-                    "./schema/mnetService2rpcs":  {
-                                                      "types":  "./dist/schema/mnetService2rpcs.d.ts",
-                                                      "default":  "./src/schema/mnetService2rpcs.ts"
-                                                  },
-                    "./schema/mnetSessions":  {
-                                                  "types":  "./dist/schema/mnetSessions.d.ts",
-                                                  "default":  "./src/schema/mnetSessions.ts"
-                                              },
-                    "./schema/mnetRpcs":  {
-                                              "types":  "./dist/schema/mnetRpcs.d.ts",
-                                              "default":  "./src/schema/mnetRpcs.ts"
-                                          },
-                    "./schema/mnetServiceEnrolCourses":  {
-                                                             "types":  "./dist/schema/mnetServiceEnrolCourses.d.ts",
-                                                             "default":  "./src/schema/mnetServiceEnrolCourses.ts"
-                                                         },
-                    "./schema/mnetRemoteRpc":  {
-                                                   "types":  "./dist/schema/mnetRemoteRpc.d.ts",
-                                                   "default":  "./src/schema/mnetRemoteRpc.ts"
-                                               },
-                    "./schema/mnetApplications":  {
-                                                      "types":  "./dist/schema/mnetApplications.d.ts",
-                                                      "default":  "./src/schema/mnetApplications.ts"
-                                                  },
-                    "./schema/mnetSsoAccessControls":  {
-                                                           "types":  "./dist/schema/mnetSsoAccessControls.d.ts",
-                                                           "default":  "./src/schema/mnetSsoAccessControls.ts"
-                                                       },
-                    "./schema/mnetHost2services":  {
-                                                       "types":  "./dist/schema/mnetHost2services.d.ts",
-                                                       "default":  "./src/schema/mnetHost2services.ts"
-                                                   },
-                    "./schema/mnetServiceEnrolEnrolments":  {
-                                                                "types":  "./dist/schema/mnetServiceEnrolEnrolments.d.ts",
-                                                                "default":  "./src/schema/mnetServiceEnrolEnrolments.ts"
-                                                            }
-                },
-    "license":  "MIT",
-    "scripts":  {
-                    "build":  "tsc",
-                    "dev":  "tsc --watch",
-                    "clean":  "rm -rf .turbo node_modules",
-                    "format":  "prettier --check . --ignore-path ../../.gitignore",
-                    "lint":  "eslint",
-                    "push":  "pnpm with-env drizzle-kit push",
-                    "studio":  "pnpm with-env drizzle-kit studio",
-                    "typecheck":  "tsc --noEmit --emitDeclarationOnly false",
-                    "with-env":  "dotenv -e ../../.env --"
-                },
-    "dependencies":  {
-                         "@soco/utils":  "workspace:*",
-                         "@t3-oss/env-core":  "^0.10.1",
-                         "postgres":  "^3.4.4",
-                         "drizzle-orm":  "^0.31.2",
-                         "drizzle-zod":  "^0.5.1",
-                         "zod":  "^3.23.8"
-                     },
-    "devDependencies":  {
-                            "@soco/eslint-config":  "workspace:*",
-                            "@soco/prettier-config":  "workspace:*",
-                            "@soco/tsconfig":  "workspace:*",
-                            "dotenv-cli":  "^7.4.2",
-                            "drizzle-kit":  "^0.22.7",
-                            "eslint":  "^8",
-                            "prettier":  "^3.3.2",
-                            "typescript":  "^5.4.5"
-                        },
-    "prettier":  "@soco/prettier-config"
+  "name": "@soco/mnet-db",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "default": "./src/client.ts"
+    },
+    "./schema/mnetHosts": {
+      "types": "./dist/schema/mnetHosts.d.ts",
+      "default": "./src/schema/mnetHosts.ts"
+    },
+    "./schema/mnetLogs": {
+      "types": "./dist/schema/mnetLogs.d.ts",
+      "default": "./src/schema/mnetLogs.ts"
+    },
+    "./schema/mnetRemoteService2rpcs": {
+      "types": "./dist/schema/mnetRemoteService2rpcs.d.ts",
+      "default": "./src/schema/mnetRemoteService2rpcs.ts"
+    },
+    "./schema/mnetServices": {
+      "types": "./dist/schema/mnetServices.d.ts",
+      "default": "./src/schema/mnetServices.ts"
+    },
+    "./schema/mnetService2rpcs": {
+      "types": "./dist/schema/mnetService2rpcs.d.ts",
+      "default": "./src/schema/mnetService2rpcs.ts"
+    },
+    "./schema/mnetSessions": {
+      "types": "./dist/schema/mnetSessions.d.ts",
+      "default": "./src/schema/mnetSessions.ts"
+    },
+    "./schema/mnetRpcs": {
+      "types": "./dist/schema/mnetRpcs.d.ts",
+      "default": "./src/schema/mnetRpcs.ts"
+    },
+    "./schema/mnetServiceEnrolCourses": {
+      "types": "./dist/schema/mnetServiceEnrolCourses.d.ts",
+      "default": "./src/schema/mnetServiceEnrolCourses.ts"
+    },
+    "./schema/mnetRemoteRpc": {
+      "types": "./dist/schema/mnetRemoteRpc.d.ts",
+      "default": "./src/schema/mnetRemoteRpc.ts"
+    },
+    "./schema/mnetApplications": {
+      "types": "./dist/schema/mnetApplications.d.ts",
+      "default": "./src/schema/mnetApplications.ts"
+    },
+    "./schema/mnetSsoAccessControls": {
+      "types": "./dist/schema/mnetSsoAccessControls.d.ts",
+      "default": "./src/schema/mnetSsoAccessControls.ts"
+    },
+    "./schema/mnetHost2services": {
+      "types": "./dist/schema/mnetHost2services.d.ts",
+      "default": "./src/schema/mnetHost2services.ts"
+    },
+    "./schema/mnetServiceEnrolEnrolments": {
+      "types": "./dist/schema/mnetServiceEnrolEnrolments.d.ts",
+      "default": "./src/schema/mnetServiceEnrolEnrolments.ts"
+    }
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf .turbo node_modules",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "push": "pnpm with-env drizzle-kit push",
+    "studio": "pnpm with-env drizzle-kit studio",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "dependencies": {
+    "@soco/utils": "workspace:*",
+    "@t3-oss/env-core": "^0.10.1",
+    "postgres": "^3.4.4",
+    "drizzle-orm": "^0.31.2",
+    "drizzle-zod": "^0.5.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@soco/eslint-config": "workspace:*",
+    "@soco/prettier-config": "workspace:*",
+    "@soco/tsconfig": "workspace:*",
+    "dotenv-cli": "^7.4.2",
+    "drizzle-kit": "^0.22.7",
+    "eslint": "^8",
+    "prettier": "^3.3.2",
+    "typescript": "^5.4.5"
+  },
+  "prettier": "@soco/prettier-config"
 }

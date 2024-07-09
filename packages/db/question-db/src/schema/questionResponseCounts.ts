@@ -1,5 +1,4 @@
-import { type getQuestionResponseCounts } from "@/lib/api/questionResponseCounts/queries";
-import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
+import { integer, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -70,7 +69,3 @@ export type QuestionResponseCountId = z.infer<
   typeof questionResponseCountIdSchema
 >["id"];
 
-// this type infers the return from getQuestionResponseCounts() - meaning it will include any joins
-export type CompleteQuestionResponseCount = Awaited<
-  ReturnType<typeof getQuestionResponseCounts>
->["questionResponseCounts"][number];

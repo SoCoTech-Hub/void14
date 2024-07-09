@@ -1,4 +1,3 @@
-import { type getToolRecyclebinCategories } from "@/lib/api/toolRecyclebinCategories/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -65,7 +64,3 @@ export type ToolRecyclebinCategoryId = z.infer<
   typeof toolRecyclebinCategoryIdSchema
 >["id"];
 
-// this type infers the return from getToolRecyclebinCategories() - meaning it will include any joins
-export type CompleteToolRecyclebinCategory = Awaited<
-  ReturnType<typeof getToolRecyclebinCategories>
->["toolRecyclebinCategories"][number];

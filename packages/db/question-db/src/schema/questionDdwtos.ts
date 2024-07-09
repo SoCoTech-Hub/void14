@@ -1,5 +1,4 @@
-import { type getQuestionDdwtos } from "@/lib/api/questionDdwtos/queries";
-import { boolean, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { boolean, integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -72,7 +71,3 @@ export type UpdateQuestionDdwtoParams = z.infer<
 >;
 export type QuestionDdwtoId = z.infer<typeof questionDdwtoIdSchema>["id"];
 
-// this type infers the return from getQuestionDdwtos() - meaning it will include any joins
-export type CompleteQuestionDdwto = Awaited<
-  ReturnType<typeof getQuestionDdwtos>
->["questionDdwtos"][number];

@@ -1,4 +1,3 @@
-import { type getQuizAttempts } from "@/lib/api/quizAttempts/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -7,6 +6,7 @@ import {
   real,
   text,
   timestamp,
+  uniqueIndex,
   varchar,
 } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -103,7 +103,3 @@ export type NewQuizAttemptParams = z.infer<typeof insertQuizAttemptParams>;
 export type UpdateQuizAttemptParams = z.infer<typeof updateQuizAttemptParams>;
 export type QuizAttemptId = z.infer<typeof quizAttemptIdSchema>["id"];
 
-// this type infers the return from getQuizAttempts() - meaning it will include any joins
-export type CompleteQuizAttempt = Awaited<
-  ReturnType<typeof getQuizAttempts>
->["quizAttempts"][number];

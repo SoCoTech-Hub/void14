@@ -1,4 +1,3 @@
-import { type getTagAreas } from "@/lib/api/tagAreas/queries";
 import { boolean, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -55,7 +54,4 @@ export type NewTagAreaParams = z.infer<typeof insertTagAreaParams>;
 export type UpdateTagAreaParams = z.infer<typeof updateTagAreaParams>;
 export type TagAreaId = z.infer<typeof tagAreaIdSchema>["id"];
 
-// this type infers the return from getTagAreas() - meaning it will include any joins
-export type CompleteTagArea = Awaited<
-  ReturnType<typeof getTagAreas>
->["tagAreas"][number];
+

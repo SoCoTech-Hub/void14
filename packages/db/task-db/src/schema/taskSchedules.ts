@@ -1,4 +1,3 @@
-import { type getTaskSchedules } from "@/lib/api/taskSchedules/queries";
 import {
   boolean,
   integer,
@@ -67,7 +66,3 @@ export type NewTaskScheduleParams = z.infer<typeof insertTaskScheduleParams>;
 export type UpdateTaskScheduleParams = z.infer<typeof updateTaskScheduleParams>;
 export type TaskScheduleId = z.infer<typeof taskScheduleIdSchema>["id"];
 
-// this type infers the return from getTaskSchedules() - meaning it will include any joins
-export type CompleteTaskSchedule = Awaited<
-  ReturnType<typeof getTaskSchedules>
->["taskSchedules"][number];

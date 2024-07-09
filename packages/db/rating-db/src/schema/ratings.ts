@@ -1,6 +1,5 @@
-import { type getRatings } from "@/lib/api/ratings/queries";
 import { sql } from "drizzle-orm";
-import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
+import { integer, pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -65,7 +64,3 @@ export type NewRatingParams = z.infer<typeof insertRatingParams>;
 export type UpdateRatingParams = z.infer<typeof updateRatingParams>;
 export type RatingId = z.infer<typeof ratingIdSchema>["id"];
 
-// this type infers the return from getRatings() - meaning it will include any joins
-export type CompleteRating = Awaited<
-  ReturnType<typeof getRatings>
->["ratings"][number];

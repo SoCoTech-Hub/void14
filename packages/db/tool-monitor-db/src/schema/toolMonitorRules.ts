@@ -1,4 +1,3 @@
-import { type getToolMonitorRules } from "@/lib/api/toolMonitorRules/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -78,7 +77,4 @@ export type UpdateToolMonitorRuleParams = z.infer<
 >;
 export type ToolMonitorRuleId = z.infer<typeof toolMonitorRuleIdSchema>["id"];
 
-// this type infers the return from getToolMonitorRules() - meaning it will include any joins
-export type CompleteToolMonitorRule = Awaited<
-  ReturnType<typeof getToolMonitorRules>
->["toolMonitorRules"][number];
+

@@ -1,4 +1,3 @@
-import { type getZooms } from "@/lib/api/zooms/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -38,7 +37,3 @@ export type NewZoomParams = z.infer<typeof insertZoomParams>;
 export type UpdateZoomParams = z.infer<typeof updateZoomParams>;
 export type ZoomId = z.infer<typeof zoomIdSchema>["id"];
 
-// this type infers the return from getZooms() - meaning it will include any joins
-export type CompleteZoom = Awaited<
-  ReturnType<typeof getZooms>
->["zooms"][number];

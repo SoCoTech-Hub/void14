@@ -1,4 +1,3 @@
-import { type getSearchIndexRequests } from "@/lib/api/searchIndexRequests/queries";
 import { sql } from "drizzle-orm";
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -61,7 +60,3 @@ export type SearchIndexRequestId = z.infer<
   typeof searchIndexRequestIdSchema
 >["id"];
 
-// this type infers the return from getSearchIndexRequests() - meaning it will include any joins
-export type CompleteSearchIndexRequest = Awaited<
-  ReturnType<typeof getSearchIndexRequests>
->["searchIndexRequests"][number];

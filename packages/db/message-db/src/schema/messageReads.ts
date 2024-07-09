@@ -1,4 +1,3 @@
-import { type getMessageReads } from "@/lib/api/messageReads/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -81,7 +80,4 @@ export type NewMessageReadParams = z.infer<typeof insertMessageReadParams>;
 export type UpdateMessageReadParams = z.infer<typeof updateMessageReadParams>;
 export type MessageReadId = z.infer<typeof messageReadIdSchema>["id"];
 
-// this type infers the return from getMessageReads() - meaning it will include any joins
-export type CompleteMessageRead = Awaited<
-  ReturnType<typeof getMessageReads>
->["messageReads"][number];
+

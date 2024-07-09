@@ -1,4 +1,3 @@
-import { type getSocialLinks } from "@/lib/api/socialLinks/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -34,7 +33,3 @@ export type NewSocialLinkParams = z.infer<typeof insertSocialLinkParams>;
 export type UpdateSocialLinkParams = z.infer<typeof updateSocialLinkParams>;
 export type SocialLinkId = z.infer<typeof socialLinkIdSchema>["id"];
 
-// this type infers the return from getSocialLinks() - meaning it will include any joins
-export type CompleteSocialLink = Awaited<
-  ReturnType<typeof getSocialLinks>
->["socialLinks"][number];

@@ -1,4 +1,3 @@
-import { type getStatsUserWeeklies } from "@/lib/api/statsUserWeeklies/queries";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -54,7 +53,4 @@ export type UpdateStatsUserWeeklyParams = z.infer<
 >;
 export type StatsUserWeeklyId = z.infer<typeof statsUserWeeklyIdSchema>["id"];
 
-// this type infers the return from getStatsUserWeeklies() - meaning it will include any joins
-export type CompleteStatsUserWeekly = Awaited<
-  ReturnType<typeof getStatsUserWeeklies>
->["statsUserWeeklies"][number];
+

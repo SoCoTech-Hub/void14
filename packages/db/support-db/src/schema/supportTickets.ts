@@ -1,4 +1,3 @@
-import { type getSupportTickets } from "@/lib/api/supportTickets/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -100,7 +99,3 @@ export type UpdateSupportTicketParams = z.infer<
 >;
 export type SupportTicketId = z.infer<typeof supportTicketIdSchema>["id"];
 
-// this type infers the return from getSupportTickets() - meaning it will include any joins
-export type CompleteSupportTicket = Awaited<
-  ReturnType<typeof getSupportTickets>
->["supportTickets"][number];

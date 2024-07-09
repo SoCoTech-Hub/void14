@@ -1,10 +1,8 @@
 import { varchar, boolean, pgTable } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
-import { scormSeqObjectives } from './scormSeqObjectives'
 import { scormScoes } from './scormScoes'
 import { scormSeqObjectives } from './scormSeqObjectives'
-import { type getScormSeqMapinfos } from '@/lib/api/scormSeqMapinfos/queries'
 
 import { nanoid } from '@soco/utils'
 
@@ -71,7 +69,3 @@ export type UpdateScormSeqMapinfoParams = z.infer<
 >
 export type ScormSeqMapinfoId = z.infer<typeof scormSeqMapinfoIdSchema>['id']
 
-// this type infers the return from getScormSeqMapinfos() - meaning it will include any joins
-export type CompleteScormSeqMapinfo = Awaited<
-	ReturnType<typeof getScormSeqMapinfos>
->['scormSeqMapinfos'][number]

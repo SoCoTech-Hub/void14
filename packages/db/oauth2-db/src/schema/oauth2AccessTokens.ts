@@ -1,4 +1,3 @@
-import { type getOauth2AccessTokens } from "@/lib/api/oauth2AccessTokens/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -13,7 +12,7 @@ import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { oauth2issuers } from "./oauth2issuers";
+import { oauth2Issuers } from "./oauth2Issuers";
 
 export const oauth2AccessTokens = pgTable(
   "oauth2_access_tokens",
@@ -24,7 +23,7 @@ export const oauth2AccessTokens = pgTable(
       .$defaultFn(() => nanoid()),
     expires: integer("expires").notNull(),
     oauth2issuerId: varchar("oauth2issuer_id", { length: 256 })
-      .references(() => oauth2issuers.id, { onDelete: "cascade" })
+      .references(() => oauth2Issuers.id, { onDelete: "cascade" })
       .notNull(),
     scope: text("scope"),
     token: text("token"),
@@ -87,7 +86,4 @@ export type Oauth2AccessTokenId = z.infer<
   typeof oauth2AccessTokenIdSchema
 >["id"];
 
-// this type infers the return from getOauth2AccessTokens() - meaning it will include any joins
-export type CompleteOauth2AccessToken = Awaited<
-  ReturnType<typeof getOauth2AccessTokens>
->["oauth2AccessTokens"][number];
+

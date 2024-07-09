@@ -1,5 +1,4 @@
-import { type getQuestionAnswers } from "@/lib/api/questionAnswers/queries";
-import { integer, pgTable, real, text, varchar } from "drizzle-orm/pg-core";
+import { integer, pgTable, real, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -67,7 +66,4 @@ export type UpdateQuestionAnswerParams = z.infer<
 >;
 export type QuestionAnswerId = z.infer<typeof questionAnswerIdSchema>["id"];
 
-// this type infers the return from getQuestionAnswers() - meaning it will include any joins
-export type CompleteQuestionAnswer = Awaited<
-  ReturnType<typeof getQuestionAnswers>
->["questionAnswers"][number];
+

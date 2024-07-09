@@ -1,4 +1,3 @@
-import { type getThemeComponents } from "@/lib/api/themeComponents/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -36,7 +35,4 @@ export type UpdateThemeComponentParams = z.infer<
 >;
 export type ThemeComponentId = z.infer<typeof themeComponentIdSchema>["id"];
 
-// this type infers the return from getThemeComponents() - meaning it will include any joins
-export type CompleteThemeComponent = Awaited<
-  ReturnType<typeof getThemeComponents>
->["themeComponents"][number];
+

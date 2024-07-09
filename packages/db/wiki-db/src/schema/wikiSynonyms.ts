@@ -1,5 +1,4 @@
-import { type getWikiSynonyms } from "@/lib/api/wikiSynonyms/queries";
-import { pgTable, varchar } from "drizzle-orm/pg-core";
+import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -58,8 +57,3 @@ export type NewWikiSynonym = z.infer<typeof insertWikiSynonymSchema>;
 export type NewWikiSynonymParams = z.infer<typeof insertWikiSynonymParams>;
 export type UpdateWikiSynonymParams = z.infer<typeof updateWikiSynonymParams>;
 export type WikiSynonymId = z.infer<typeof wikiSynonymIdSchema>["id"];
-
-// this type infers the return from getWikiSynonyms() - meaning it will include any joins
-export type CompleteWikiSynonym = Awaited<
-  ReturnType<typeof getWikiSynonyms>
->["wikiSynonyms"][number];

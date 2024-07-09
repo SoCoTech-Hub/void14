@@ -1,9 +1,9 @@
-import { type getModules } from "@/lib/api/modules/queries";
 import {
   boolean,
   integer,
   pgTable,
   timestamp,
+  uniqueIndex,
   varchar,
 } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -60,7 +60,4 @@ export type NewModuleParams = z.infer<typeof insertModuleParams>;
 export type UpdateModuleParams = z.infer<typeof updateModuleParams>;
 export type ModuleId = z.infer<typeof moduleIdSchema>["id"];
 
-// this type infers the return from getModules() - meaning it will include any joins
-export type CompleteModule = Awaited<
-  ReturnType<typeof getModules>
->["modules"][number];
+

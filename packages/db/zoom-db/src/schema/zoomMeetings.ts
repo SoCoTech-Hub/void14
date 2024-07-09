@@ -1,4 +1,3 @@
-import { type getZoomMeetings } from "@/lib/api/zoomMeetings/queries";
 import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -50,7 +49,4 @@ export type NewZoomMeetingParams = z.infer<typeof insertZoomMeetingParams>;
 export type UpdateZoomMeetingParams = z.infer<typeof updateZoomMeetingParams>;
 export type ZoomMeetingId = z.infer<typeof zoomMeetingIdSchema>["id"];
 
-// this type infers the return from getZoomMeetings() - meaning it will include any joins
-export type CompleteZoomMeeting = Awaited<
-  ReturnType<typeof getZoomMeetings>
->["zoomMeetings"][number];
+

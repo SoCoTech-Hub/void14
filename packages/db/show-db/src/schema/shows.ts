@@ -1,4 +1,3 @@
-import { type getShows } from "@/lib/api/shows/queries";
 import { sql } from "drizzle-orm";
 import {
   pgTable,
@@ -69,7 +68,4 @@ export type NewShowParams = z.infer<typeof insertShowParams>;
 export type UpdateShowParams = z.infer<typeof updateShowParams>;
 export type ShowId = z.infer<typeof showIdSchema>["id"];
 
-// this type infers the return from getShows() - meaning it will include any joins
-export type CompleteShow = Awaited<
-  ReturnType<typeof getShows>
->["shows"][number];
+

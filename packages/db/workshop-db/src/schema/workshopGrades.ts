@@ -1,5 +1,4 @@
-import { type getWorkshopGrades } from "@/lib/api/workshopGrades/queries";
-import { integer, pgTable, real, text, varchar } from "drizzle-orm/pg-core";
+import { integer, pgTable, real, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -63,7 +62,3 @@ export type UpdateWorkshopGradeParams = z.infer<
 >;
 export type WorkshopGradeId = z.infer<typeof workshopGradeIdSchema>["id"];
 
-// this type infers the return from getWorkshopGrades() - meaning it will include any joins
-export type CompleteWorkshopGrade = Awaited<
-  ReturnType<typeof getWorkshopGrades>
->["workshopGrades"][number];

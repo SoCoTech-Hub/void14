@@ -1,4 +1,3 @@
-import { type getSurveys } from "@/lib/api/surveys/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -64,7 +63,3 @@ export type NewSurveyParams = z.infer<typeof insertSurveyParams>;
 export type UpdateSurveyParams = z.infer<typeof updateSurveyParams>;
 export type SurveyId = z.infer<typeof surveyIdSchema>["id"];
 
-// this type infers the return from getSurveys() - meaning it will include any joins
-export type CompleteSurvey = Awaited<
-  ReturnType<typeof getSurveys>
->["surveys"][number];

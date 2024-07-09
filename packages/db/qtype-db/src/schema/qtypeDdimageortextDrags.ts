@@ -1,5 +1,4 @@
-import { type getQtypeDdimageortextDrags } from "@/lib/api/qtypeDdimageortextDrags/queries";
-import { boolean, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { boolean, integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -64,8 +63,3 @@ export type UpdateQtypeDdimageortextDragParams = z.infer<
 export type QtypeDdimageortextDragId = z.infer<
   typeof qtypeDdimageortextDragIdSchema
 >["id"];
-
-// this type infers the return from getQtypeDdimageortextDrags() - meaning it will include any joins
-export type CompleteQtypeDdimageortextDrag = Awaited<
-  ReturnType<typeof getQtypeDdimageortextDrags>
->["qtypeDdimageortextDrags"][number];

@@ -1,6 +1,5 @@
-import { type getRegistrationHubs } from "@/lib/api/registrationHubs/queries";
 import { sql } from "drizzle-orm";
-import { boolean, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
+import { boolean, pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -63,7 +62,3 @@ export type UpdateRegistrationHubParams = z.infer<
 >;
 export type RegistrationHubId = z.infer<typeof registrationHubIdSchema>["id"];
 
-// this type infers the return from getRegistrationHubs() - meaning it will include any joins
-export type CompleteRegistrationHub = Awaited<
-  ReturnType<typeof getRegistrationHubs>
->["registrationHubs"][number];

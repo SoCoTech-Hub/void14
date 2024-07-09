@@ -1,5 +1,4 @@
-import { type getQtypeDdmarkerDrops } from "@/lib/api/qtypeDdmarkerDrops/queries";
-import { integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -63,7 +62,4 @@ export type QtypeDdmarkerDropId = z.infer<
   typeof qtypeDdmarkerDropIdSchema
 >["id"];
 
-// this type infers the return from getQtypeDdmarkerDrops() - meaning it will include any joins
-export type CompleteQtypeDdmarkerDrop = Awaited<
-  ReturnType<typeof getQtypeDdmarkerDrops>
->["qtypeDdmarkerDrops"][number];
+

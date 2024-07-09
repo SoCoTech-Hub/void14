@@ -1,5 +1,4 @@
-import { type getWorkshopFormComments } from "@/lib/api/workshopFormComments/queries";
-import { integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -68,7 +67,4 @@ export type WorkshopFormCommentId = z.infer<
   typeof workshopFormCommentIdSchema
 >["id"];
 
-// this type infers the return from getWorkshopFormComments() - meaning it will include any joins
-export type CompleteWorkshopFormComment = Awaited<
-  ReturnType<typeof getWorkshopFormComments>
->["workshopFormComments"][number];
+

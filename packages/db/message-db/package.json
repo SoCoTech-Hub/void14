@@ -1,111 +1,119 @@
 {
-    "name":  "@soco/user-db",
-    "version":  "0.1.0",
-    "private":  true,
-    "type":  "module",
-    "exports":  {
-                    "./schema/messageEmailMessages":  {
-                                                          "types":  "./dist/schema/messageEmailMessages.d.ts",
-                                                          "default":  "./src/schema/messageEmailMessages.ts"
-                                                      },
-                    "./schema/messagePopups":  {
-                                                   "types":  "./dist/schema/messagePopups.d.ts",
-                                                   "default":  "./src/schema/messagePopups.ts"
-                                               },
-                    "./schema/messageProcessors":  {
-                                                       "types":  "./dist/schema/messageProcessors.d.ts",
-                                                       "default":  "./src/schema/messageProcessors.ts"
-                                                   },
-                    "./schema/messageContactRequests":  {
-                                                            "types":  "./dist/schema/messageContactRequests.d.ts",
-                                                            "default":  "./src/schema/messageContactRequests.ts"
-                                                        },
-                    "./schema/messageConversations":  {
-                                                          "types":  "./dist/schema/messageConversations.d.ts",
-                                                          "default":  "./src/schema/messageConversations.ts"
-                                                      },
-                    "./schema/messageAirnotifierDevices":  {
-                                                               "types":  "./dist/schema/messageAirnotifierDevices.d.ts",
-                                                               "default":  "./src/schema/messageAirnotifierDevices.ts"
-                                                           },
-                    "./schema/messageUsersBlockeds":  {
-                                                          "types":  "./dist/schema/messageUsersBlockeds.d.ts",
-                                                          "default":  "./src/schema/messageUsersBlockeds.ts"
-                                                      },
-                    "./schema/messageinboundHandlers":  {
-                                                            "types":  "./dist/schema/messageinboundHandlers.d.ts",
-                                                            "default":  "./src/schema/messageinboundHandlers.ts"
-                                                        },
-                    "./schema/messageUserActions":  {
-                                                        "types":  "./dist/schema/messageUserActions.d.ts",
-                                                        "default":  "./src/schema/messageUserActions.ts"
-                                                    },
-                    "./schema/messageConversationActions":  {
-                                                                "types":  "./dist/schema/messageConversationActions.d.ts",
-                                                                "default":  "./src/schema/messageConversationActions.ts"
-                                                            },
-                    "./schema/messageContacts":  {
-                                                     "types":  "./dist/schema/messageContacts.d.ts",
-                                                     "default":  "./src/schema/messageContacts.ts"
-                                                 },
-                    "./schema/messageinboundDatakeys":  {
-                                                            "types":  "./dist/schema/messageinboundDatakeys.d.ts",
-                                                            "default":  "./src/schema/messageinboundDatakeys.ts"
-                                                        },
-                    "./schema/messageinboundMessagelists":  {
-                                                                "types":  "./dist/schema/messageinboundMessagelists.d.ts",
-                                                                "default":  "./src/schema/messageinboundMessagelists.ts"
-                                                            },
-                    "./schema/messageReads":  {
-                                                  "types":  "./dist/schema/messageReads.d.ts",
-                                                  "default":  "./src/schema/messageReads.ts"
-                                              },
-                    "./schema/messages":  {
-                                              "types":  "./dist/schema/messages.d.ts",
-                                              "default":  "./src/schema/messages.ts"
-                                          },
-                    "./schema/messageProviders":  {
-                                                      "types":  "./dist/schema/messageProviders.d.ts",
-                                                      "default":  "./src/schema/messageProviders.ts"
-                                                  },
-                    "./schema/messagePopupNotifications":  {
-                                                               "types":  "./dist/schema/messagePopupNotifications.d.ts",
-                                                               "default":  "./src/schema/messagePopupNotifications.ts"
-                                                           },
-                    "./schema/messageConversationMembers":  {
-                                                                "types":  "./dist/schema/messageConversationMembers.d.ts",
-                                                                "default":  "./src/schema/messageConversationMembers.ts"
-                                                            }
-                },
-    "license":  "MIT",
-    "scripts":  {
-                    "build":  "tsc",
-                    "dev":  "tsc --watch",
-                    "clean":  "rm -rf .turbo node_modules",
-                    "format":  "prettier --check . --ignore-path ../../.gitignore",
-                    "lint":  "eslint",
-                    "push":  "pnpm with-env drizzle-kit push",
-                    "studio":  "pnpm with-env drizzle-kit studio",
-                    "typecheck":  "tsc --noEmit --emitDeclarationOnly false",
-                    "with-env":  "dotenv -e ../../.env --"
-                },
-    "dependencies":  {
-                         "@soco/utils":  "workspace:*",
-                         "@t3-oss/env-core":  "^0.10.1",
-                         "postgres":  "^3.4.4",
-                         "drizzle-orm":  "^0.31.2",
-                         "drizzle-zod":  "^0.5.1",
-                         "zod":  "^3.23.8"
-                     },
-    "devDependencies":  {
-                            "@soco/eslint-config":  "workspace:*",
-                            "@soco/prettier-config":  "workspace:*",
-                            "@soco/tsconfig":  "workspace:*",
-                            "dotenv-cli":  "^7.4.2",
-                            "drizzle-kit":  "^0.22.7",
-                            "eslint":  "^8",
-                            "prettier":  "^3.3.2",
-                            "typescript":  "^5.4.5"
-                        },
-    "prettier":  "@soco/prettier-config"
+  "name": "@soco/message-db",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "default": "./src/client.ts"
+    },
+    "./schema/messageEmailMessages": {
+      "types": "./dist/schema/messageEmailMessages.d.ts",
+      "default": "./src/schema/messageEmailMessages.ts"
+    },
+    "./schema/messagePopups": {
+      "types": "./dist/schema/messagePopups.d.ts",
+      "default": "./src/schema/messagePopups.ts"
+    },
+    "./schema/messageProcessors": {
+      "types": "./dist/schema/messageProcessors.d.ts",
+      "default": "./src/schema/messageProcessors.ts"
+    },
+    "./schema/messageContactRequests": {
+      "types": "./dist/schema/messageContactRequests.d.ts",
+      "default": "./src/schema/messageContactRequests.ts"
+    },
+    "./schema/messageConversations": {
+      "types": "./dist/schema/messageConversations.d.ts",
+      "default": "./src/schema/messageConversations.ts"
+    },
+    "./schema/messageAirnotifierDevices": {
+      "types": "./dist/schema/messageAirnotifierDevices.d.ts",
+      "default": "./src/schema/messageAirnotifierDevices.ts"
+    },
+    "./schema/messageUsersBlockeds": {
+      "types": "./dist/schema/messageUsersBlockeds.d.ts",
+      "default": "./src/schema/messageUsersBlockeds.ts"
+    },
+    "./schema/messageinboundHandlers": {
+      "types": "./dist/schema/messageinboundHandlers.d.ts",
+      "default": "./src/schema/messageinboundHandlers.ts"
+    },
+    "./schema/messageUserActions": {
+      "types": "./dist/schema/messageUserActions.d.ts",
+      "default": "./src/schema/messageUserActions.ts"
+    },
+    "./schema/messageConversationActions": {
+      "types": "./dist/schema/messageConversationActions.d.ts",
+      "default": "./src/schema/messageConversationActions.ts"
+    },
+    "./schema/messageContacts": {
+      "types": "./dist/schema/messageContacts.d.ts",
+      "default": "./src/schema/messageContacts.ts"
+    },
+    "./schema/messageinboundDatakeys": {
+      "types": "./dist/schema/messageinboundDatakeys.d.ts",
+      "default": "./src/schema/messageinboundDatakeys.ts"
+    },
+    "./schema/messageinboundMessagelists": {
+      "types": "./dist/schema/messageinboundMessagelists.d.ts",
+      "default": "./src/schema/messageinboundMessagelists.ts"
+    },
+    "./schema/messageReads": {
+      "types": "./dist/schema/messageReads.d.ts",
+      "default": "./src/schema/messageReads.ts"
+    },
+    "./schema/messages": {
+      "types": "./dist/schema/messages.d.ts",
+      "default": "./src/schema/messages.ts"
+    },
+    "./schema/messageProviders": {
+      "types": "./dist/schema/messageProviders.d.ts",
+      "default": "./src/schema/messageProviders.ts"
+    },
+    "./schema/messagePopupNotifications": {
+      "types": "./dist/schema/messagePopupNotifications.d.ts",
+      "default": "./src/schema/messagePopupNotifications.ts"
+    },
+    "./schema/messageConversationMembers": {
+      "types": "./dist/schema/messageConversationMembers.d.ts",
+      "default": "./src/schema/messageConversationMembers.ts"
+    }
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf .turbo node_modules",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "push": "pnpm with-env drizzle-kit push",
+    "studio": "pnpm with-env drizzle-kit studio",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "dependencies": {
+    "@soco/utils": "workspace:*",
+    "@t3-oss/env-core": "^0.10.1",
+    "postgres": "^3.4.4",
+    "drizzle-orm": "^0.31.2",
+    "drizzle-zod": "^0.5.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@soco/eslint-config": "workspace:*",
+    "@soco/prettier-config": "workspace:*",
+    "@soco/tsconfig": "workspace:*",
+    "dotenv-cli": "^7.4.2",
+    "drizzle-kit": "^0.22.7",
+    "eslint": "^8",
+    "prettier": "^3.3.2",
+    "typescript": "^5.4.5"
+  },
+  "prettier": "@soco/prettier-config"
 }

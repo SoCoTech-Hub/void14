@@ -1,5 +1,4 @@
-import { type getMnetServiceEnrolCourses } from "@/lib/api/mnetServiceEnrolCourses/queries";
-import { integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -81,7 +80,3 @@ export type MnetServiceEnrolCourseId = z.infer<
   typeof mnetServiceEnrolCourseIdSchema
 >["id"];
 
-// this type infers the return from getMnetServiceEnrolCourses() - meaning it will include any joins
-export type CompleteMnetServiceEnrolCourse = Awaited<
-  ReturnType<typeof getMnetServiceEnrolCourses>
->["mnetServiceEnrolCourses"][number];
