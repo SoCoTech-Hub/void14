@@ -2,7 +2,7 @@ import type { TRPCRouterRecord } from "@trpc/server";
 import { z } from "zod";
 
 import { desc, eq } from "@soco/auth-db";
-import { CreatePostSchema, Post } from "@acme/db/schema";
+import { CreatePostSchema, Post } from "@soco/db/schema";
 
 import { protectedProcedure, publicProcedure } from "../trpc";
 

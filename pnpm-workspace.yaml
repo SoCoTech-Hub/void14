@@ -3,4 +3,5 @@ packages:
   - apps/dashboard/*
   - apps/frontend/*
   - packages/*
+  - packages/db/*
   - tooling/*

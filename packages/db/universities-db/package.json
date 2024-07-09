@@ -1,5 +1,5 @@
 {
-  "name": "@soco/university-db",
+  "name": "@soco/universities-db",
   "version": "0.1.0",
   "private": true,
   "type": "module",
