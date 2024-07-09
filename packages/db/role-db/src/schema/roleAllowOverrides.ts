@@ -1,4 +1,3 @@
-import { type getRoleAllowOverrides } from "@/lib/api/roleAllowOverrides/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -56,7 +55,4 @@ export type RoleAllowOverrideId = z.infer<
   typeof roleAllowOverrideIdSchema
 >["id"];
 
-// this type infers the return from getRoleAllowOverrides() - meaning it will include any joins
-export type CompleteRoleAllowOverride = Awaited<
-  ReturnType<typeof getRoleAllowOverrides>
->["roleAllowOverrides"][number];
+

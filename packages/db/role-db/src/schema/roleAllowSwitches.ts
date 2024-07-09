@@ -1,4 +1,3 @@
-import { type getRoleAllowSwitches } from "@/lib/api/roleAllowSwitches/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -52,7 +51,3 @@ export type UpdateRoleAllowSwitchParams = z.infer<
 >;
 export type RoleAllowSwitchId = z.infer<typeof roleAllowSwitchIdSchema>["id"];
 
-// this type infers the return from getRoleAllowSwitches() - meaning it will include any joins
-export type CompleteRoleAllowSwitch = Awaited<
-  ReturnType<typeof getRoleAllowSwitches>
->["roleAllowSwitches"][number];

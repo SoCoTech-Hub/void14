@@ -1,5 +1,4 @@
-import { type getMnetRpcs } from "@/lib/api/mnetRpcs/queries";
-import { boolean, pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { boolean, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -59,7 +58,3 @@ export type NewMnetRpcParams = z.infer<typeof insertMnetRpcParams>;
 export type UpdateMnetRpcParams = z.infer<typeof updateMnetRpcParams>;
 export type MnetRpcId = z.infer<typeof mnetRpcIdSchema>["id"];
 
-// this type infers the return from getMnetRpcs() - meaning it will include any joins
-export type CompleteMnetRpc = Awaited<
-  ReturnType<typeof getMnetRpcs>
->["mnetRpcs"][number];

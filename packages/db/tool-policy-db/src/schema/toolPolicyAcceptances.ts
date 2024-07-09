@@ -1,4 +1,3 @@
-import { type getToolPolicyAcceptances } from "@/lib/api/toolPolicyAcceptances/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -72,7 +71,4 @@ export type ToolPolicyAcceptanceId = z.infer<
   typeof toolPolicyAcceptanceIdSchema
 >["id"];
 
-// this type infers the return from getToolPolicyAcceptances() - meaning it will include any joins
-export type CompleteToolPolicyAcceptance = Awaited<
-  ReturnType<typeof getToolPolicyAcceptances>
->["toolPolicyAcceptances"][number];
+

@@ -1,4 +1,3 @@
-import { type getThemes } from "@/lib/api/themes/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -54,7 +53,3 @@ export type NewThemeParams = z.infer<typeof insertThemeParams>;
 export type UpdateThemeParams = z.infer<typeof updateThemeParams>;
 export type ThemeId = z.infer<typeof themeIdSchema>["id"];
 
-// this type infers the return from getThemes() - meaning it will include any joins
-export type CompleteTheme = Awaited<
-  ReturnType<typeof getThemes>
->["themes"][number];

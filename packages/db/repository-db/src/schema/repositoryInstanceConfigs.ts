@@ -1,4 +1,3 @@
-import { type getRepositoryInstanceConfigs } from "@/lib/api/repositoryInstanceConfigs/queries";
 import { pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -64,8 +63,3 @@ export type UpdateRepositoryInstanceConfigParams = z.infer<
 export type RepositoryInstanceConfigId = z.infer<
   typeof repositoryInstanceConfigIdSchema
 >["id"];
-
-// this type infers the return from getRepositoryInstanceConfigs() - meaning it will include any joins
-export type CompleteRepositoryInstanceConfig = Awaited<
-  ReturnType<typeof getRepositoryInstanceConfigs>
->["repositoryInstanceConfigs"][number];

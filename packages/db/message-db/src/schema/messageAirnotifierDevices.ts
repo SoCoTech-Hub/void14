@@ -1,4 +1,3 @@
-import { type getMessageAirnotifierDevices } from "@/lib/api/messageAirnotifierDevices/queries";
 import { boolean, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -53,7 +52,3 @@ export type MessageAirnotifierDeviceId = z.infer<
   typeof messageAirnotifierDeviceIdSchema
 >["id"];
 
-// this type infers the return from getMessageAirnotifierDevices() - meaning it will include any joins
-export type CompleteMessageAirnotifierDevice = Awaited<
-  ReturnType<typeof getMessageAirnotifierDevices>
->["messageAirnotifierDevices"][number];

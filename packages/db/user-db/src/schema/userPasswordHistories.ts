@@ -1,4 +1,3 @@
-import { type getUserPasswordHistories } from "@/lib/api/userPasswordHistories/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -54,7 +53,4 @@ export type UserPasswordHistoryId = z.infer<
   typeof userPasswordHistoryIdSchema
 >["id"];
 
-// this type infers the return from getUserPasswordHistories() - meaning it will include any joins
-export type CompleteUserPasswordHistory = Awaited<
-  ReturnType<typeof getUserPasswordHistories>
->["userPasswordHistories"][number];
+

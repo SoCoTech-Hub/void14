@@ -1,4 +1,3 @@
-import { type getToolPolicyVersions } from "@/lib/api/toolPolicyVersions/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -96,7 +95,4 @@ export type ToolPolicyVersionId = z.infer<
   typeof toolPolicyVersionIdSchema
 >["id"];
 
-// this type infers the return from getToolPolicyVersions() - meaning it will include any joins
-export type CompleteToolPolicyVersion = Awaited<
-  ReturnType<typeof getToolPolicyVersions>
->["toolPolicyVersions"][number];
+

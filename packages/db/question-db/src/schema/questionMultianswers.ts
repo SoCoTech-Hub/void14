@@ -1,5 +1,4 @@
-import { type getQuestionMultianswers } from "@/lib/api/questionMultianswers/queries";
-import { pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -62,7 +61,4 @@ export type QuestionMultianswerId = z.infer<
   typeof questionMultianswerIdSchema
 >["id"];
 
-// this type infers the return from getQuestionMultianswers() - meaning it will include any joins
-export type CompleteQuestionMultianswer = Awaited<
-  ReturnType<typeof getQuestionMultianswers>
->["questionMultianswers"][number];
+

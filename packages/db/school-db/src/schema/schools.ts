@@ -1,4 +1,3 @@
-import { type getSchools } from "@/lib/api/schools/queries";
 import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -56,7 +55,4 @@ export type NewSchoolParams = z.infer<typeof insertSchoolParams>;
 export type UpdateSchoolParams = z.infer<typeof updateSchoolParams>;
 export type SchoolId = z.infer<typeof schoolIdSchema>["id"];
 
-// this type infers the return from getSchools() - meaning it will include any joins
-export type CompleteSchool = Awaited<
-  ReturnType<typeof getSchools>
->["schools"][number];
+

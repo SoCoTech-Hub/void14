@@ -1,4 +1,3 @@
-import { type getMnetLogs } from "@/lib/api/mnetLogs/queries";
 import { integer, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -67,8 +66,3 @@ export type NewMnetLog = z.infer<typeof insertMnetLogSchema>;
 export type NewMnetLogParams = z.infer<typeof insertMnetLogParams>;
 export type UpdateMnetLogParams = z.infer<typeof updateMnetLogParams>;
 export type MnetLogId = z.infer<typeof mnetLogIdSchema>["id"];
-
-// this type infers the return from getMnetLogs() - meaning it will include any joins
-export type CompleteMnetLog = Awaited<
-  ReturnType<typeof getMnetLogs>
->["mnetLogs"][number];

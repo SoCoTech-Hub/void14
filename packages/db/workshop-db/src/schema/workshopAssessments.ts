@@ -1,4 +1,3 @@
-import { type getWorkshopAssessments } from "@/lib/api/workshopAssessments/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -98,7 +97,3 @@ export type WorkshopAssessmentId = z.infer<
   typeof workshopAssessmentIdSchema
 >["id"];
 
-// this type infers the return from getWorkshopAssessments() - meaning it will include any joins
-export type CompleteWorkshopAssessment = Awaited<
-  ReturnType<typeof getWorkshopAssessments>
->["workshopAssessments"][number];

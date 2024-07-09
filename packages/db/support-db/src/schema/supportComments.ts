@@ -1,4 +1,3 @@
-import { type getSupportComments } from "@/lib/api/supportComments/queries";
 import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -54,8 +53,3 @@ export type UpdateSupportCommentParams = z.infer<
   typeof updateSupportCommentParams
 >;
 export type SupportCommentId = z.infer<typeof supportCommentIdSchema>["id"];
-
-// this type infers the return from getSupportComments() - meaning it will include any joins
-export type CompleteSupportComment = Awaited<
-  ReturnType<typeof getSupportComments>
->["supportComments"][number];

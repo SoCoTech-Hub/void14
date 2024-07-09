@@ -1,4 +1,3 @@
-import { type getOauth2Issuers } from "@/lib/api/oauth2Issuers/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -6,6 +5,7 @@ import {
   pgTable,
   text,
   timestamp,
+  uniqueIndex,
   varchar,
 } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -93,7 +93,3 @@ export type NewOauth2IssuerParams = z.infer<typeof insertOauth2IssuerParams>;
 export type UpdateOauth2IssuerParams = z.infer<typeof updateOauth2IssuerParams>;
 export type Oauth2IssuerId = z.infer<typeof oauth2IssuerIdSchema>["id"];
 
-// this type infers the return from getOauth2Issuers() - meaning it will include any joins
-export type CompleteOauth2Issuer = Awaited<
-  ReturnType<typeof getOauth2Issuers>
->["oauth2Issuers"][number];

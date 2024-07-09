@@ -1,4 +1,3 @@
-import { type getStickers } from "@/lib/api/stickers/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -35,7 +34,3 @@ export type NewStickerParams = z.infer<typeof insertStickerParams>;
 export type UpdateStickerParams = z.infer<typeof updateStickerParams>;
 export type StickerId = z.infer<typeof stickerIdSchema>["id"];
 
-// this type infers the return from getStickers() - meaning it will include any joins
-export type CompleteSticker = Awaited<
-  ReturnType<typeof getStickers>
->["stickers"][number];

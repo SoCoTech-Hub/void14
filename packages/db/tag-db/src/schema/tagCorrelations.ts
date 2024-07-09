@@ -1,4 +1,3 @@
-import { type getTagCorrelations } from "@/lib/api/tagCorrelations/queries";
 import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -46,8 +45,3 @@ export type UpdateTagCorrelationParams = z.infer<
   typeof updateTagCorrelationParams
 >;
 export type TagCorrelationId = z.infer<typeof tagCorrelationIdSchema>["id"];
-
-// this type infers the return from getTagCorrelations() - meaning it will include any joins
-export type CompleteTagCorrelation = Awaited<
-  ReturnType<typeof getTagCorrelations>
->["tagCorrelations"][number];

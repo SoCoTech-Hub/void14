@@ -1,5 +1,4 @@
-import { type getMnetSsoAccessControls } from "@/lib/api/mnetSsoAccessControls/queries";
-import { pgTable, varchar } from "drizzle-orm/pg-core";
+import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -63,8 +62,3 @@ export type UpdateMnetSsoAccessControlParams = z.infer<
 export type MnetSsoAccessControlId = z.infer<
   typeof mnetSsoAccessControlIdSchema
 >["id"];
-
-// this type infers the return from getMnetSsoAccessControls() - meaning it will include any joins
-export type CompleteMnetSsoAccessControl = Awaited<
-  ReturnType<typeof getMnetSsoAccessControls>
->["mnetSsoAccessControls"][number];

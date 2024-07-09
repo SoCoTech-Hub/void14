@@ -1,4 +1,3 @@
-import { type getScormSeqRollupRuleConds } from "@/lib/api/scormSeqRollupRuleConds/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -61,7 +60,4 @@ export type ScormSeqRollupRuleCondId = z.infer<
   typeof scormSeqRollupRuleCondIdSchema
 >["id"];
 
-// this type infers the return from getScormSeqRollupRuleConds() - meaning it will include any joins
-export type CompleteScormSeqRollupRuleCond = Awaited<
-  ReturnType<typeof getScormSeqRollupRuleConds>
->["scormSeqRollupRuleConds"][number];
+

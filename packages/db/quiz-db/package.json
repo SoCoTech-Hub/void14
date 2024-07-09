@@ -1,79 +1,87 @@
 {
-    "name":  "@soco/user-db",
-    "version":  "0.1.0",
-    "private":  true,
-    "type":  "module",
-    "exports":  {
-                    "./schema/quizFeedbacks":  {
-                                                   "types":  "./dist/schema/quizFeedbacks.d.ts",
-                                                   "default":  "./src/schema/quizFeedbacks.ts"
-                                               },
-                    "./schema/quizSections":  {
-                                                  "types":  "./dist/schema/quizSections.d.ts",
-                                                  "default":  "./src/schema/quizSections.ts"
-                                              },
-                    "./schema/quizStatistics":  {
-                                                    "types":  "./dist/schema/quizStatistics.d.ts",
-                                                    "default":  "./src/schema/quizStatistics.ts"
-                                                },
-                    "./schema/quizes":  {
-                                            "types":  "./dist/schema/quizes.d.ts",
-                                            "default":  "./src/schema/quizes.ts"
-                                        },
-                    "./schema/quizGrades":  {
-                                                "types":  "./dist/schema/quizGrades.d.ts",
-                                                "default":  "./src/schema/quizGrades.ts"
-                                            },
-                    "./schema/quizSlots":  {
-                                               "types":  "./dist/schema/quizSlots.d.ts",
-                                               "default":  "./src/schema/quizSlots.ts"
-                                           },
-                    "./schema/quizReports":  {
-                                                 "types":  "./dist/schema/quizReports.d.ts",
-                                                 "default":  "./src/schema/quizReports.ts"
-                                             },
-                    "./schema/quizOverrides":  {
-                                                   "types":  "./dist/schema/quizOverrides.d.ts",
-                                                   "default":  "./src/schema/quizOverrides.ts"
-                                               },
-                    "./schema/quizOverviewRegrades":  {
-                                                          "types":  "./dist/schema/quizOverviewRegrades.d.ts",
-                                                          "default":  "./src/schema/quizOverviewRegrades.ts"
-                                                      },
-                    "./schema/quizAttempts":  {
-                                                  "types":  "./dist/schema/quizAttempts.d.ts",
-                                                  "default":  "./src/schema/quizAttempts.ts"
-                                              }
-                },
-    "license":  "MIT",
-    "scripts":  {
-                    "build":  "tsc",
-                    "dev":  "tsc --watch",
-                    "clean":  "rm -rf .turbo node_modules",
-                    "format":  "prettier --check . --ignore-path ../../.gitignore",
-                    "lint":  "eslint",
-                    "push":  "pnpm with-env drizzle-kit push",
-                    "studio":  "pnpm with-env drizzle-kit studio",
-                    "typecheck":  "tsc --noEmit --emitDeclarationOnly false",
-                    "with-env":  "dotenv -e ../../.env --"
-                },
-    "dependencies":  {
-                         "@soco/utils":  "workspace:*",
-                         "@t3-oss/env-core":  "^0.10.1",
-                         "postgres":  "^3.4.4",
-                         "drizzle-orm":  "^0.31.2",
-                         "drizzle-zod":  "^0.5.1",
-                         "zod":  "^3.23.8"
-                     },
-    "devDependencies":  {
-                            "@soco/eslint-config":  "workspace:*",
-                            "@soco/prettier-config":  "workspace:*",
-                            "@soco/tsconfig":  "workspace:*",
-                            "dotenv-cli":  "^7.4.2",
-                            "drizzle-kit":  "^0.22.7",
-                            "eslint":  "^8",
-                            "prettier":  "^3.3.2",
-                            "typescript":  "^5.4.5"
-                        },
-    "prettier":  "@soco/prettier-config"
+  "name": "@soco/quiz-db",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    },
+    "./client": {
+      "types": "./dist/client.d.ts",
+      "default": "./src/client.ts"
+    },
+    "./schema/quizFeedbacks": {
+      "types": "./dist/schema/quizFeedbacks.d.ts",
+      "default": "./src/schema/quizFeedbacks.ts"
+    },
+    "./schema/quizSections": {
+      "types": "./dist/schema/quizSections.d.ts",
+      "default": "./src/schema/quizSections.ts"
+    },
+    "./schema/quizStatistics": {
+      "types": "./dist/schema/quizStatistics.d.ts",
+      "default": "./src/schema/quizStatistics.ts"
+    },
+    "./schema/quizes": {
+      "types": "./dist/schema/quizes.d.ts",
+      "default": "./src/schema/quizes.ts"
+    },
+    "./schema/quizGrades": {
+      "types": "./dist/schema/quizGrades.d.ts",
+      "default": "./src/schema/quizGrades.ts"
+    },
+    "./schema/quizSlots": {
+      "types": "./dist/schema/quizSlots.d.ts",
+      "default": "./src/schema/quizSlots.ts"
+    },
+    "./schema/quizReports": {
+      "types": "./dist/schema/quizReports.d.ts",
+      "default": "./src/schema/quizReports.ts"
+    },
+    "./schema/quizOverrides": {
+      "types": "./dist/schema/quizOverrides.d.ts",
+      "default": "./src/schema/quizOverrides.ts"
+    },
+    "./schema/quizOverviewRegrades": {
+      "types": "./dist/schema/quizOverviewRegrades.d.ts",
+      "default": "./src/schema/quizOverviewRegrades.ts"
+    },
+    "./schema/quizAttempts": {
+      "types": "./dist/schema/quizAttempts.d.ts",
+      "default": "./src/schema/quizAttempts.ts"
+    }
+  },
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "clean": "rm -rf .turbo node_modules",
+    "format": "prettier --check . --ignore-path ../../.gitignore",
+    "lint": "eslint",
+    "push": "pnpm with-env drizzle-kit push",
+    "studio": "pnpm with-env drizzle-kit studio",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "with-env": "dotenv -e ../../.env --"
+  },
+  "dependencies": {
+    "@soco/utils": "workspace:*",
+    "@t3-oss/env-core": "^0.10.1",
+    "postgres": "^3.4.4",
+    "drizzle-orm": "^0.31.2",
+    "drizzle-zod": "^0.5.1",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@soco/eslint-config": "workspace:*",
+    "@soco/prettier-config": "workspace:*",
+    "@soco/tsconfig": "workspace:*",
+    "dotenv-cli": "^7.4.2",
+    "drizzle-kit": "^0.22.7",
+    "eslint": "^8",
+    "prettier": "^3.3.2",
+    "typescript": "^5.4.5"
+  },
+  "prettier": "@soco/prettier-config"
 }

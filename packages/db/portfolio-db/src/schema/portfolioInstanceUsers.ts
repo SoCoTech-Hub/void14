@@ -1,4 +1,3 @@
-import { type getPortfolioInstanceUsers } from "@/lib/api/portfolioInstanceUsers/queries";
 import { pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -70,7 +69,3 @@ export type PortfolioInstanceUserId = z.infer<
   typeof portfolioInstanceUserIdSchema
 >["id"];
 
-// this type infers the return from getPortfolioInstanceUsers() - meaning it will include any joins
-export type CompletePortfolioInstanceUser = Awaited<
-  ReturnType<typeof getPortfolioInstanceUsers>
->["portfolioInstanceUsers"][number];

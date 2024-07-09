@@ -1,4 +1,3 @@
-import { type getUserLastAccesses } from "@/lib/api/userLastAccesses/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -49,7 +48,4 @@ export type UpdateUserLastAccessParams = z.infer<
 >;
 export type UserLastAccessId = z.infer<typeof userLastAccessIdSchema>["id"];
 
-// this type infers the return from getUserLastAccesses() - meaning it will include any joins
-export type CompleteUserLastAccess = Awaited<
-  ReturnType<typeof getUserLastAccesses>
->["userLastAccesses"][number];
+

@@ -1,4 +1,3 @@
-import { type getSessions } from "@/lib/api/sessions/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -63,7 +62,3 @@ export type NewSessionParams = z.infer<typeof insertSessionParams>;
 export type UpdateSessionParams = z.infer<typeof updateSessionParams>;
 export type SessionId = z.infer<typeof sessionIdSchema>["id"];
 
-// this type infers the return from getSessions() - meaning it will include any joins
-export type CompleteSession = Awaited<
-  ReturnType<typeof getSessions>
->["sessions"][number];

@@ -1,5 +1,4 @@
-import { type getMnetSessions } from "@/lib/api/mnetSessions/queries";
-import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
+import { integer, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -68,7 +67,4 @@ export type NewMnetSessionParams = z.infer<typeof insertMnetSessionParams>;
 export type UpdateMnetSessionParams = z.infer<typeof updateMnetSessionParams>;
 export type MnetSessionId = z.infer<typeof mnetSessionIdSchema>["id"];
 
-// this type infers the return from getMnetSessions() - meaning it will include any joins
-export type CompleteMnetSession = Awaited<
-  ReturnType<typeof getMnetSessions>
->["mnetSessions"][number];
+

@@ -1,4 +1,3 @@
-import { type getScorms } from "@/lib/api/scorms/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -150,7 +149,4 @@ export type NewScormParams = z.infer<typeof insertScormParams>;
 export type UpdateScormParams = z.infer<typeof updateScormParams>;
 export type ScormId = z.infer<typeof scormIdSchema>["id"];
 
-// this type infers the return from getScorms() - meaning it will include any joins
-export type CompleteScorm = Awaited<
-  ReturnType<typeof getScorms>
->["scorms"][number];
+

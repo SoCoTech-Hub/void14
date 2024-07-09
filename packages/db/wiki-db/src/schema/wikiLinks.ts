@@ -2,10 +2,6 @@ import { varchar, pgTable, uniqueIndex } from 'drizzle-orm/pg-core'
 import { createInsertSchema, createSelectSchema } from 'drizzle-zod'
 import { z } from 'zod'
 import { wikiPages } from './wikiPages'
-import { wikiPages } from './wikiPages'
-import { wikiPages } from './wikiPages'
-import { wikiPages } from './wikiPages'
-import { type getWikiLinks } from '@/lib/api/wikiLinks/queries'
 
 import { nanoid } from '@soco/utils'
 
@@ -67,7 +63,4 @@ export type NewWikiLinkParams = z.infer<typeof insertWikiLinkParams>
 export type UpdateWikiLinkParams = z.infer<typeof updateWikiLinkParams>
 export type WikiLinkId = z.infer<typeof wikiLinkIdSchema>['id']
 
-// this type infers the return from getWikiLinks() - meaning it will include any joins
-export type CompleteWikiLink = Awaited<
-	ReturnType<typeof getWikiLinks>
->['wikiLinks'][number]
+

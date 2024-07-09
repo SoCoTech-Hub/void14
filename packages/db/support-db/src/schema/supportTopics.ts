@@ -1,4 +1,3 @@
-import { type getSupportTopics } from "@/lib/api/supportTopics/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -43,7 +42,4 @@ export type NewSupportTopicParams = z.infer<typeof insertSupportTopicParams>;
 export type UpdateSupportTopicParams = z.infer<typeof updateSupportTopicParams>;
 export type SupportTopicId = z.infer<typeof supportTopicIdSchema>["id"];
 
-// this type infers the return from getSupportTopics() - meaning it will include any joins
-export type CompleteSupportTopic = Awaited<
-  ReturnType<typeof getSupportTopics>
->["supportTopics"][number];
+

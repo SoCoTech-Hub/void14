@@ -1,4 +1,3 @@
-import { type getToolCustomLangs } from "@/lib/api/toolCustomLangs/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -69,7 +68,4 @@ export type UpdateToolCustomLangParams = z.infer<
 >;
 export type ToolCustomLangId = z.infer<typeof toolCustomLangIdSchema>["id"];
 
-// this type infers the return from getToolCustomLangs() - meaning it will include any joins
-export type CompleteToolCustomLang = Awaited<
-  ReturnType<typeof getToolCustomLangs>
->["toolCustomLangs"][number];
+

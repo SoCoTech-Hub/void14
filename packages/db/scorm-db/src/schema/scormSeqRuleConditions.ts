@@ -1,4 +1,3 @@
-import { type getScormSeqRuleConditions } from "@/lib/api/scormSeqRuleConditions/queries";
 import { pgTable, real, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -64,7 +63,4 @@ export type ScormSeqRuleConditionId = z.infer<
   typeof scormSeqRuleConditionIdSchema
 >["id"];
 
-// this type infers the return from getScormSeqRuleConditions() - meaning it will include any joins
-export type CompleteScormSeqRuleCondition = Awaited<
-  ReturnType<typeof getScormSeqRuleConditions>
->["scormSeqRuleConditions"][number];
+

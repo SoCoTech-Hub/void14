@@ -1,4 +1,3 @@
-import { type getSupportDepartments } from "@/lib/api/supportDepartments/queries";
 import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -46,7 +45,4 @@ export type SupportDepartmentId = z.infer<
   typeof supportDepartmentIdSchema
 >["id"];
 
-// this type infers the return from getSupportDepartments() - meaning it will include any joins
-export type CompleteSupportDepartment = Awaited<
-  ReturnType<typeof getSupportDepartments>
->["supportDepartments"][number];
+

@@ -1,4 +1,3 @@
-import { type getQuizSlots } from "@/lib/api/quizSlots/queries";
 import {
   boolean,
   integer,
@@ -69,7 +68,3 @@ export type NewQuizSlotParams = z.infer<typeof insertQuizSlotParams>;
 export type UpdateQuizSlotParams = z.infer<typeof updateQuizSlotParams>;
 export type QuizSlotId = z.infer<typeof quizSlotIdSchema>["id"];
 
-// this type infers the return from getQuizSlots() - meaning it will include any joins
-export type CompleteQuizSlot = Awaited<
-  ReturnType<typeof getQuizSlots>
->["quizSlots"][number];

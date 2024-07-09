@@ -1,4 +1,3 @@
-import { type getMessageEmailMessages } from "@/lib/api/messageEmailMessages/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -46,7 +45,4 @@ export type MessageEmailMessageId = z.infer<
   typeof messageEmailMessageIdSchema
 >["id"];
 
-// this type infers the return from getMessageEmailMessages() - meaning it will include any joins
-export type CompleteMessageEmailMessage = Awaited<
-  ReturnType<typeof getMessageEmailMessages>
->["messageEmailMessages"][number];
+

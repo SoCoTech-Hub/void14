@@ -1,4 +1,3 @@
-import { type getScormSeqRuleConds } from "@/lib/api/scormSeqRuleConds/queries";
 import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -52,7 +51,3 @@ export type UpdateScormSeqRuleCondParams = z.infer<
 >;
 export type ScormSeqRuleCondId = z.infer<typeof scormSeqRuleCondIdSchema>["id"];
 
-// this type infers the return from getScormSeqRuleConds() - meaning it will include any joins
-export type CompleteScormSeqRuleCond = Awaited<
-  ReturnType<typeof getScormSeqRuleConds>
->["scormSeqRuleConds"][number];

@@ -1,10 +1,10 @@
-import { type getReportbuilderColumns } from "@/lib/api/reportbuilderColumns/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
   integer,
   pgTable,
   timestamp,
+  uniqueIndex,
   varchar,
 } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -91,7 +91,3 @@ export type ReportbuilderColumnId = z.infer<
   typeof reportbuilderColumnIdSchema
 >["id"];
 
-// this type infers the return from getReportbuilderColumns() - meaning it will include any joins
-export type CompleteReportbuilderColumn = Awaited<
-  ReturnType<typeof getReportbuilderColumns>
->["reportbuilderColumns"][number];

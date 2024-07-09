@@ -1,12 +1,11 @@
-import { type getOauth2SystemAccounts } from "@/lib/api/oauth2SystemAccounts/queries";
 import { sql } from "drizzle-orm";
-import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { oauth2issuers } from "./oauth2issuers";
+import { oauth2Issuers } from "./oauth2Issuers";
 
 export const oauth2SystemAccounts = pgTable(
   "oauth2_system_accounts",
@@ -18,7 +17,7 @@ export const oauth2SystemAccounts = pgTable(
     email: text("email"),
     grantedScopes: text("granted_scopes"),
     oauth2issuerId: varchar("oauth2issuer_id", { length: 256 })
-      .references(() => oauth2issuers.id, { onDelete: "cascade" })
+      .references(() => oauth2Issuers.id, { onDelete: "cascade" })
       .notNull(),
     refreshToken: text("refresh_token"),
     username: text("username"),
@@ -79,7 +78,3 @@ export type Oauth2SystemAccountId = z.infer<
   typeof oauth2SystemAccountIdSchema
 >["id"];
 
-// this type infers the return from getOauth2SystemAccounts() - meaning it will include any joins
-export type CompleteOauth2SystemAccount = Awaited<
-  ReturnType<typeof getOauth2SystemAccounts>
->["oauth2SystemAccounts"][number];

@@ -1,4 +1,3 @@
-import { type getWorkshopFormRubrics } from "@/lib/api/workshopFormRubrics/queries";
 import {
   integer,
   pgTable,
@@ -79,7 +78,4 @@ export type WorkshopFormRubricId = z.infer<
   typeof workshopFormRubricIdSchema
 >["id"];
 
-// this type infers the return from getWorkshopFormRubrics() - meaning it will include any joins
-export type CompleteWorkshopFormRubric = Awaited<
-  ReturnType<typeof getWorkshopFormRubrics>
->["workshopFormRubrics"][number];
+

@@ -1,10 +1,10 @@
-import { type getPosts } from "@/lib/api/posts/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
   pgTable,
   text,
   timestamp,
+  uniqueIndex,
   varchar,
 } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -84,7 +84,3 @@ export type NewPostParams = z.infer<typeof insertPostParams>;
 export type UpdatePostParams = z.infer<typeof updatePostParams>;
 export type PostId = z.infer<typeof postIdSchema>["id"];
 
-// this type infers the return from getPosts() - meaning it will include any joins
-export type CompletePost = Awaited<
-  ReturnType<typeof getPosts>
->["posts"][number];

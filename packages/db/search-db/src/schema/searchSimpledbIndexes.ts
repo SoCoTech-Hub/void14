@@ -1,4 +1,3 @@
-import { type getSearchSimpledbIndexes } from "@/lib/api/searchSimpledbIndexes/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -78,7 +77,3 @@ export type SearchSimpledbIndexId = z.infer<
   typeof searchSimpledbIndexIdSchema
 >["id"];
 
-// this type infers the return from getSearchSimpledbIndexes() - meaning it will include any joins
-export type CompleteSearchSimpledbIndex = Awaited<
-  ReturnType<typeof getSearchSimpledbIndexes>
->["searchSimpledbIndexes"][number];

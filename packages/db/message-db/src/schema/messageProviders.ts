@@ -1,4 +1,3 @@
-import { type getMessageProviders } from "@/lib/api/messageProviders/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -38,7 +37,4 @@ export type UpdateMessageProviderParams = z.infer<
 >;
 export type MessageProviderId = z.infer<typeof messageProviderIdSchema>["id"];
 
-// this type infers the return from getMessageProviders() - meaning it will include any joins
-export type CompleteMessageProvider = Awaited<
-  ReturnType<typeof getMessageProviders>
->["messageProviders"][number];
+

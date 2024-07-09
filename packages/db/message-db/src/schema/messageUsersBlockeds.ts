@@ -1,4 +1,3 @@
-import { type getMessageUsersBlockeds } from "@/lib/api/messageUsersBlockeds/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -53,7 +52,3 @@ export type MessageUsersBlockedId = z.infer<
   typeof messageUsersBlockedIdSchema
 >["id"];
 
-// this type infers the return from getMessageUsersBlockeds() - meaning it will include any joins
-export type CompleteMessageUsersBlocked = Awaited<
-  ReturnType<typeof getMessageUsersBlockeds>
->["messageUsersBlockeds"][number];

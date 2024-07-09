@@ -1,4 +1,3 @@
-import { type getThemeComponentStyles } from "@/lib/api/themeComponentStyles/queries";
 import { sql } from "drizzle-orm";
 import {
   pgTable,
@@ -87,7 +86,4 @@ export type ThemeComponentStyleId = z.infer<
   typeof themeComponentStyleIdSchema
 >["id"];
 
-// this type infers the return from getThemeComponentStyles() - meaning it will include any joins
-export type CompleteThemeComponentStyle = Awaited<
-  ReturnType<typeof getThemeComponentStyles>
->["themeComponentStyles"][number];
+

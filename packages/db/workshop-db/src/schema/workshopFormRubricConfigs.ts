@@ -1,5 +1,4 @@
-import { type getWorkshopFormRubricConfigs } from "@/lib/api/workshopFormRubricConfigs/queries";
-import { pgTable, varchar } from "drizzle-orm/pg-core";
+import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -64,7 +63,4 @@ export type WorkshopFormRubricConfigId = z.infer<
   typeof workshopFormRubricConfigIdSchema
 >["id"];
 
-// this type infers the return from getWorkshopFormRubricConfigs() - meaning it will include any joins
-export type CompleteWorkshopFormRubricConfig = Awaited<
-  ReturnType<typeof getWorkshopFormRubricConfigs>
->["workshopFormRubricConfigs"][number];
+

@@ -1,4 +1,3 @@
-import { type getScales } from "@/lib/api/scales/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -62,7 +61,4 @@ export type NewScaleParams = z.infer<typeof insertScaleParams>;
 export type UpdateScaleParams = z.infer<typeof updateScaleParams>;
 export type ScaleId = z.infer<typeof scaleIdSchema>["id"];
 
-// this type infers the return from getScales() - meaning it will include any joins
-export type CompleteScale = Awaited<
-  ReturnType<typeof getScales>
->["scales"][number];
+

@@ -1,4 +1,3 @@
-import { type getProfiles } from "@/lib/api/profiles/queries";
 import { sql } from "drizzle-orm";
 import {
   date,
@@ -94,7 +93,4 @@ export type NewProfileParams = z.infer<typeof insertProfileParams>;
 export type UpdateProfileParams = z.infer<typeof updateProfileParams>;
 export type ProfileId = z.infer<typeof profileIdSchema>["id"];
 
-// this type infers the return from getProfiles() - meaning it will include any joins
-export type CompleteProfile = Awaited<
-  ReturnType<typeof getProfiles>
->["profiles"][number];
+

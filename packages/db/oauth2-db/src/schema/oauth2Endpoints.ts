@@ -1,12 +1,11 @@
-import { type getOauth2Endpoints } from "@/lib/api/oauth2Endpoints/queries";
 import { sql } from "drizzle-orm";
-import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { oauth2issuers } from "./oauth2issuers";
+import { oauth2Issuers } from "./oauth2Issuers";
 
 export const oauth2Endpoints = pgTable(
   "oauth2_endpoints",
@@ -16,7 +15,7 @@ export const oauth2Endpoints = pgTable(
       .primaryKey()
       .$defaultFn(() => nanoid()),
     oauth2issuerId: varchar("oauth2issuer_id", { length: 256 })
-      .references(() => oauth2issuers.id, { onDelete: "cascade" })
+      .references(() => oauth2Issuers.id, { onDelete: "cascade" })
       .notNull(),
     name: varchar("name", { length: 256 }),
     url: text("url"),
@@ -73,7 +72,4 @@ export type UpdateOauth2EndpointParams = z.infer<
 >;
 export type Oauth2EndpointId = z.infer<typeof oauth2EndpointIdSchema>["id"];
 
-// this type infers the return from getOauth2Endpoints() - meaning it will include any joins
-export type CompleteOauth2Endpoint = Awaited<
-  ReturnType<typeof getOauth2Endpoints>
->["oauth2Endpoints"][number];
+

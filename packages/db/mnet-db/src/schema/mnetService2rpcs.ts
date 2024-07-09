@@ -1,5 +1,4 @@
-import { type getMnetService2rpcs } from "@/lib/api/mnetService2rpcs/queries";
-import { pgTable, varchar } from "drizzle-orm/pg-core";
+import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -62,7 +61,3 @@ export type UpdateMnetService2rpcParams = z.infer<
 >;
 export type MnetService2rpcId = z.infer<typeof mnetService2rpcIdSchema>["id"];
 
-// this type infers the return from getMnetService2rpcs() - meaning it will include any joins
-export type CompleteMnetService2rpc = Awaited<
-  ReturnType<typeof getMnetService2rpcs>
->["mnetService2rpcs"][number];

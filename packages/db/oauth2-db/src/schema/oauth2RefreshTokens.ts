@@ -1,12 +1,11 @@
-import { type getOauth2RefreshTokens } from "@/lib/api/oauth2RefreshTokens/queries";
 import { sql } from "drizzle-orm";
-import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
+import { pgTable, text, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { oauth2issuers } from "./oauth2issuers";
+import { oauth2Issuers } from "./oauth2Issuers";
 
 export const oauth2RefreshTokens = pgTable(
   "oauth2_refresh_tokens",
@@ -16,7 +15,7 @@ export const oauth2RefreshTokens = pgTable(
       .primaryKey()
       .$defaultFn(() => nanoid()),
     oauth2issuerId: varchar("oauth2issuer_id", { length: 256 })
-      .references(() => oauth2issuers.id, { onDelete: "cascade" })
+      .references(() => oauth2Issuers.id, { onDelete: "cascade" })
       .notNull(),
     scopeHash: varchar("scope_hash", { length: 256 }).notNull(),
     token: text("token").notNull(),
@@ -77,7 +76,4 @@ export type Oauth2RefreshTokenId = z.infer<
   typeof oauth2RefreshTokenIdSchema
 >["id"];
 
-// this type infers the return from getOauth2RefreshTokens() - meaning it will include any joins
-export type CompleteOauth2RefreshToken = Awaited<
-  ReturnType<typeof getOauth2RefreshTokens>
->["oauth2RefreshTokens"][number];
+

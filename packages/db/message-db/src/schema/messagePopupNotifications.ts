@@ -1,4 +1,3 @@
-import { type getMessagePopupNotifications } from "@/lib/api/messagePopupNotifications/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -46,7 +45,3 @@ export type MessagePopupNotificationId = z.infer<
   typeof messagePopupNotificationIdSchema
 >["id"];
 
-// this type infers the return from getMessagePopupNotifications() - meaning it will include any joins
-export type CompleteMessagePopupNotification = Awaited<
-  ReturnType<typeof getMessagePopupNotifications>
->["messagePopupNotifications"][number];

@@ -1,4 +1,3 @@
-import { type getScaleHistories } from "@/lib/api/scaleHistories/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -52,7 +51,4 @@ export type NewScaleHistoryParams = z.infer<typeof insertScaleHistoryParams>;
 export type UpdateScaleHistoryParams = z.infer<typeof updateScaleHistoryParams>;
 export type ScaleHistoryId = z.infer<typeof scaleHistoryIdSchema>["id"];
 
-// this type infers the return from getScaleHistories() - meaning it will include any joins
-export type CompleteScaleHistory = Awaited<
-  ReturnType<typeof getScaleHistories>
->["scaleHistories"][number];
+

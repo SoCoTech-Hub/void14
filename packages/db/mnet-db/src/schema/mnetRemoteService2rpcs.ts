@@ -1,5 +1,4 @@
-import { type getMnetRemoteService2rpcs } from "@/lib/api/mnetRemoteService2rpcs/queries";
-import { pgTable, varchar } from "drizzle-orm/pg-core";
+import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -50,8 +49,3 @@ export type UpdateMnetRemoteService2rpcParams = z.infer<
 export type MnetRemoteService2rpcId = z.infer<
   typeof mnetRemoteService2rpcIdSchema
 >["id"];
-
-// this type infers the return from getMnetRemoteService2rpcs() - meaning it will include any joins
-export type CompleteMnetRemoteService2rpc = Awaited<
-  ReturnType<typeof getMnetRemoteService2rpcs>
->["mnetRemoteService2rpcs"][number];

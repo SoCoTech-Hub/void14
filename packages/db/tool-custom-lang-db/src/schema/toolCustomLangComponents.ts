@@ -1,4 +1,3 @@
-import { type getToolCustomLangComponents } from "@/lib/api/toolCustomLangComponents/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -43,8 +42,3 @@ export type UpdateToolCustomLangComponentParams = z.infer<
 export type ToolCustomLangComponentId = z.infer<
   typeof toolCustomLangComponentIdSchema
 >["id"];
-
-// this type infers the return from getToolCustomLangComponents() - meaning it will include any joins
-export type CompleteToolCustomLangComponent = Awaited<
-  ReturnType<typeof getToolCustomLangComponents>
->["toolCustomLangComponents"][number];

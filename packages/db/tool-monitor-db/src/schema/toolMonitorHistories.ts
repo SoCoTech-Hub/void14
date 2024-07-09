@@ -1,4 +1,3 @@
-import { type getToolMonitorHistories } from "@/lib/api/toolMonitorHistories/queries";
 import { sql } from "drizzle-orm";
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -61,7 +60,4 @@ export type ToolMonitorHistoryId = z.infer<
   typeof toolMonitorHistoryIdSchema
 >["id"];
 
-// this type infers the return from getToolMonitorHistories() - meaning it will include any joins
-export type CompleteToolMonitorHistory = Awaited<
-  ReturnType<typeof getToolMonitorHistories>
->["toolMonitorHistories"][number];
+

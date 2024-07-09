@@ -1,4 +1,3 @@
-import { type getMessageConversationActions } from "@/lib/api/messageConversationActions/queries";
 import { sql } from "drizzle-orm";
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -68,8 +67,3 @@ export type UpdateMessageConversationActionParams = z.infer<
 export type MessageConversationActionId = z.infer<
   typeof messageConversationActionIdSchema
 >["id"];
-
-// this type infers the return from getMessageConversationActions() - meaning it will include any joins
-export type CompleteMessageConversationAction = Awaited<
-  ReturnType<typeof getMessageConversationActions>
->["messageConversationActions"][number];

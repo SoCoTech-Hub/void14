@@ -1,4 +1,3 @@
-import { type getQuestionAttemptSteps } from "@/lib/api/questionAttemptSteps/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -88,8 +87,3 @@ export type UpdateQuestionAttemptStepParams = z.infer<
 export type QuestionAttemptStepId = z.infer<
   typeof questionAttemptStepIdSchema
 >["id"];
-
-// this type infers the return from getQuestionAttemptSteps() - meaning it will include any joins
-export type CompleteQuestionAttemptStep = Awaited<
-  ReturnType<typeof getQuestionAttemptSteps>
->["questionAttemptSteps"][number];

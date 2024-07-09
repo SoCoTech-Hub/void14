@@ -1,12 +1,11 @@
-import { type getOauth2UserFieldMappings } from "@/lib/api/oauth2UserFieldMappings/queries";
 import { sql } from "drizzle-orm";
-import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
+import { pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
 import { nanoid, timestamps } from "@soco/utils";
 
-import { oauth2issuers } from "./oauth2issuers";
+import { oauth2Issuers } from "./oauth2Issuers";
 
 export const oauth2UserFieldMappings = pgTable(
   "oauth2_user_field_mappings",
@@ -18,7 +17,7 @@ export const oauth2UserFieldMappings = pgTable(
     externalField: varchar("external_field", { length: 256 }),
     internalField: varchar("internal_field", { length: 256 }),
     oauth2issuerId: varchar("oauth2issuer_id", { length: 256 })
-      .references(() => oauth2issuers.id, { onDelete: "cascade" })
+      .references(() => oauth2Issuers.id, { onDelete: "cascade" })
       .notNull(),
     userId: varchar("user_id", { length: 256 }).notNull(),
 
@@ -79,7 +78,3 @@ export type Oauth2UserFieldMappingId = z.infer<
   typeof oauth2UserFieldMappingIdSchema
 >["id"];
 
-// this type infers the return from getOauth2UserFieldMappings() - meaning it will include any joins
-export type CompleteOauth2UserFieldMapping = Awaited<
-  ReturnType<typeof getOauth2UserFieldMappings>
->["oauth2UserFieldMappings"][number];

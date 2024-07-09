@@ -1,5 +1,4 @@
-import { type getPortfolioTempdatas } from "@/lib/api/portfolioTempdatas/queries";
-import { boolean, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { boolean, integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -74,7 +73,3 @@ export type PortfolioTempdataId = z.infer<
   typeof portfolioTempdataIdSchema
 >["id"];
 
-// this type infers the return from getPortfolioTempdatas() - meaning it will include any joins
-export type CompletePortfolioTempdata = Awaited<
-  ReturnType<typeof getPortfolioTempdatas>
->["portfolioTempdatas"][number];

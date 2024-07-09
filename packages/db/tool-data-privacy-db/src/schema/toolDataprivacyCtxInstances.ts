@@ -1,4 +1,3 @@
-import { type getToolDataprivacyCtxInstances } from "@/lib/api/toolDataprivacyCtxInstances/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -81,7 +80,3 @@ export type ToolDataprivacyCtxInstanceId = z.infer<
   typeof toolDataprivacyCtxInstanceIdSchema
 >["id"];
 
-// this type infers the return from getToolDataprivacyCtxInstances() - meaning it will include any joins
-export type CompleteToolDataprivacyCtxInstance = Awaited<
-  ReturnType<typeof getToolDataprivacyCtxInstances>
->["toolDataprivacyCtxInstances"][number];

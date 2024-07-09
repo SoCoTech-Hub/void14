@@ -1,5 +1,4 @@
-import { type getQuestionNumericals } from "@/lib/api/questionNumericals/queries";
-import { pgTable, varchar } from "drizzle-orm/pg-core";
+import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -67,8 +66,3 @@ export type UpdateQuestionNumericalParams = z.infer<
 export type QuestionNumericalId = z.infer<
   typeof questionNumericalIdSchema
 >["id"];
-
-// this type infers the return from getQuestionNumericals() - meaning it will include any joins
-export type CompleteQuestionNumerical = Awaited<
-  ReturnType<typeof getQuestionNumericals>
->["questionNumericals"][number];

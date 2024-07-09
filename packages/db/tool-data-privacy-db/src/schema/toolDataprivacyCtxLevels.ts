@@ -1,4 +1,3 @@
-import { type getToolDataprivacyCtxLevels } from "@/lib/api/toolDataprivacyCtxLevels/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -80,7 +79,3 @@ export type ToolDataprivacyCtxLevelId = z.infer<
   typeof toolDataprivacyCtxLevelIdSchema
 >["id"];
 
-// this type infers the return from getToolDataprivacyCtxLevels() - meaning it will include any joins
-export type CompleteToolDataprivacyCtxLevel = Awaited<
-  ReturnType<typeof getToolDataprivacyCtxLevels>
->["toolDataprivacyCtxLevels"][number];

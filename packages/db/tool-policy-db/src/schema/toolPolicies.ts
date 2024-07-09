@@ -1,4 +1,3 @@
-import { type getToolPolicies } from "@/lib/api/toolPolicies/queries";
 import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -39,7 +38,4 @@ export type NewToolPolicyParams = z.infer<typeof insertToolPolicyParams>;
 export type UpdateToolPolicyParams = z.infer<typeof updateToolPolicyParams>;
 export type ToolPolicyId = z.infer<typeof toolPolicyIdSchema>["id"];
 
-// this type infers the return from getToolPolicies() - meaning it will include any joins
-export type CompleteToolPolicy = Awaited<
-  ReturnType<typeof getToolPolicies>
->["toolPolicies"][number];
+

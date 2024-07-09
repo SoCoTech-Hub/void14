@@ -1,10 +1,10 @@
-import { type getWikiVersions } from "@/lib/api/wikiVersions/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
   pgTable,
   text,
   timestamp,
+  uniqueIndex,
   varchar,
 } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -79,8 +79,3 @@ export type NewWikiVersion = z.infer<typeof insertWikiVersionSchema>;
 export type NewWikiVersionParams = z.infer<typeof insertWikiVersionParams>;
 export type UpdateWikiVersionParams = z.infer<typeof updateWikiVersionParams>;
 export type WikiVersionId = z.infer<typeof wikiVersionIdSchema>["id"];
-
-// this type infers the return from getWikiVersions() - meaning it will include any joins
-export type CompleteWikiVersion = Awaited<
-  ReturnType<typeof getWikiVersions>
->["wikiVersions"][number];

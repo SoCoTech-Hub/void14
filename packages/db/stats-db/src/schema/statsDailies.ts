@@ -1,4 +1,3 @@
-import { type getStatsDailies } from "@/lib/api/statsDailies/queries";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -43,7 +42,4 @@ export type NewStatsDailyParams = z.infer<typeof insertStatsDailyParams>;
 export type UpdateStatsDailyParams = z.infer<typeof updateStatsDailyParams>;
 export type StatsDailyId = z.infer<typeof statsDailyIdSchema>["id"];
 
-// this type infers the return from getStatsDailies() - meaning it will include any joins
-export type CompleteStatsDaily = Awaited<
-  ReturnType<typeof getStatsDailies>
->["statsDailies"][number];
+

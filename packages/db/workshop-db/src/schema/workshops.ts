@@ -1,4 +1,3 @@
-import { type getWorkshops } from "@/lib/api/workshops/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -145,7 +144,4 @@ export type NewWorkshopParams = z.infer<typeof insertWorkshopParams>;
 export type UpdateWorkshopParams = z.infer<typeof updateWorkshopParams>;
 export type WorkshopId = z.infer<typeof workshopIdSchema>["id"];
 
-// this type infers the return from getWorkshops() - meaning it will include any joins
-export type CompleteWorkshop = Awaited<
-  ReturnType<typeof getWorkshops>
->["workshops"][number];
+

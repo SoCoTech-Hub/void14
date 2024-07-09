@@ -1,4 +1,3 @@
-import { type getTaskAdhocs } from "@/lib/api/taskAdhocs/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -68,7 +67,3 @@ export type NewTaskAdhocParams = z.infer<typeof insertTaskAdhocParams>;
 export type UpdateTaskAdhocParams = z.infer<typeof updateTaskAdhocParams>;
 export type TaskAdhocId = z.infer<typeof taskAdhocIdSchema>["id"];
 
-// this type infers the return from getTaskAdhocs() - meaning it will include any joins
-export type CompleteTaskAdhoc = Awaited<
-  ReturnType<typeof getTaskAdhocs>
->["taskAdhocs"][number];

@@ -1,4 +1,3 @@
-import { type getUrls } from "@/lib/api/urls/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -69,6 +68,3 @@ export type NewUrl = z.infer<typeof insertUrlSchema>;
 export type NewUrlParams = z.infer<typeof insertUrlParams>;
 export type UpdateUrlParams = z.infer<typeof updateUrlParams>;
 export type UrlId = z.infer<typeof urlIdSchema>["id"];
-
-// this type infers the return from getUrls() - meaning it will include any joins
-export type CompleteUrl = Awaited<ReturnType<typeof getUrls>>["urls"][number];

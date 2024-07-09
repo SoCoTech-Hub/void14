@@ -1,5 +1,4 @@
-import { type getQtypeMultichoiceOptions } from "@/lib/api/qtypeMultichoiceOptions/queries";
-import { boolean, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { boolean, integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -83,8 +82,3 @@ export type UpdateQtypeMultichoiceOptionParams = z.infer<
 export type QtypeMultichoiceOptionId = z.infer<
   typeof qtypeMultichoiceOptionIdSchema
 >["id"];
-
-// this type infers the return from getQtypeMultichoiceOptions() - meaning it will include any joins
-export type CompleteQtypeMultichoiceOption = Awaited<
-  ReturnType<typeof getQtypeMultichoiceOptions>
->["qtypeMultichoiceOptions"][number];

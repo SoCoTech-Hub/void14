@@ -1,4 +1,3 @@
-import { type getRepositoryOnedriveAccesses } from "@/lib/api/repositoryOnedriveAccesses/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -61,7 +60,3 @@ export type RepositoryOnedriveAccessId = z.infer<
   typeof repositoryOnedriveAccessIdSchema
 >["id"];
 
-// this type infers the return from getRepositoryOnedriveAccesses() - meaning it will include any joins
-export type CompleteRepositoryOnedriveAccess = Awaited<
-  ReturnType<typeof getRepositoryOnedriveAccesses>
->["repositoryOnedriveAccesses"][number];

@@ -1,5 +1,4 @@
-import { type getQtypeDdmarkerDrags } from "@/lib/api/qtypeDdmarkerDrags/queries";
-import { boolean, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { boolean, integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -65,7 +64,3 @@ export type QtypeDdmarkerDragId = z.infer<
   typeof qtypeDdmarkerDragIdSchema
 >["id"];
 
-// this type infers the return from getQtypeDdmarkerDrags() - meaning it will include any joins
-export type CompleteQtypeDdmarkerDrag = Awaited<
-  ReturnType<typeof getQtypeDdmarkerDrags>
->["qtypeDdmarkerDrags"][number];

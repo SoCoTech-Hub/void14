@@ -1,5 +1,4 @@
-import { type getQtypeMatchOptions } from "@/lib/api/qtypeMatchOptions/queries";
-import { boolean, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { boolean, integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -71,7 +70,3 @@ export type UpdateQtypeMatchOptionParams = z.infer<
 >;
 export type QtypeMatchOptionId = z.infer<typeof qtypeMatchOptionIdSchema>["id"];
 
-// this type infers the return from getQtypeMatchOptions() - meaning it will include any joins
-export type CompleteQtypeMatchOption = Awaited<
-  ReturnType<typeof getQtypeMatchOptions>
->["qtypeMatchOptions"][number];

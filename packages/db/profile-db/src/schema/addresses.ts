@@ -1,4 +1,3 @@
-import { type getAddresses } from "@/lib/api/addresses/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -57,8 +56,3 @@ export type NewAddress = z.infer<typeof insertAddressSchema>;
 export type NewAddressParams = z.infer<typeof insertAddressParams>;
 export type UpdateAddressParams = z.infer<typeof updateAddressParams>;
 export type AddressId = z.infer<typeof addressIdSchema>["id"];
-
-// this type infers the return from getAddresses() - meaning it will include any joins
-export type CompleteAddress = Awaited<
-  ReturnType<typeof getAddresses>
->["addresses"][number];

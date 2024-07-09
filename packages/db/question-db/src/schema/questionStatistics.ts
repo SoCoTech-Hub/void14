@@ -1,4 +1,3 @@
-import { type getQuestionStatistics } from "@/lib/api/questionStatistics/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -7,6 +6,7 @@ import {
   real,
   text,
   timestamp,
+  uniqueIndex,
   varchar,
 } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -116,7 +116,3 @@ export type QuestionStatisticId = z.infer<
   typeof questionStatisticIdSchema
 >["id"];
 
-// this type infers the return from getQuestionStatistics() - meaning it will include any joins
-export type CompleteQuestionStatistic = Awaited<
-  ReturnType<typeof getQuestionStatistics>
->["questionStatistics"][number];

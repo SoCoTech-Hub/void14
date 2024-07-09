@@ -1,4 +1,3 @@
-import { type getMnetApplications } from "@/lib/api/mnetApplications/queries";
 import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -48,7 +47,4 @@ export type UpdateMnetApplicationParams = z.infer<
 >;
 export type MnetApplicationId = z.infer<typeof mnetApplicationIdSchema>["id"];
 
-// this type infers the return from getMnetApplications() - meaning it will include any joins
-export type CompleteMnetApplication = Awaited<
-  ReturnType<typeof getMnetApplications>
->["mnetApplications"][number];
+

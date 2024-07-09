@@ -1,4 +1,3 @@
-import { type getWikiLocks } from "@/lib/api/wikiLocks/queries";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -52,7 +51,3 @@ export type NewWikiLockParams = z.infer<typeof insertWikiLockParams>;
 export type UpdateWikiLockParams = z.infer<typeof updateWikiLockParams>;
 export type WikiLockId = z.infer<typeof wikiLockIdSchema>["id"];
 
-// this type infers the return from getWikiLocks() - meaning it will include any joins
-export type CompleteWikiLock = Awaited<
-  ReturnType<typeof getWikiLocks>
->["wikiLocks"][number];

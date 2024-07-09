@@ -1,5 +1,4 @@
-import { type getQuestionBankEntries } from "@/lib/api/questionBankEntries/queries";
-import { pgTable, varchar } from "drizzle-orm/pg-core";
+import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -68,7 +67,3 @@ export type QuestionBankEntryId = z.infer<
   typeof questionBankEntryIdSchema
 >["id"];
 
-// this type infers the return from getQuestionBankEntries() - meaning it will include any joins
-export type CompleteQuestionBankEntry = Awaited<
-  ReturnType<typeof getQuestionBankEntries>
->["questionBankEntries"][number];

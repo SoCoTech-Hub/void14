@@ -1,4 +1,3 @@
-import { type getToolRecyclebinCourses } from "@/lib/api/toolRecyclebinCourses/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -52,8 +51,3 @@ export type UpdateToolRecyclebinCourseParams = z.infer<
 export type ToolRecyclebinCourseId = z.infer<
   typeof toolRecyclebinCourseIdSchema
 >["id"];
-
-// this type infers the return from getToolRecyclebinCourses() - meaning it will include any joins
-export type CompleteToolRecyclebinCourse = Awaited<
-  ReturnType<typeof getToolRecyclebinCourses>
->["toolRecyclebinCourses"][number];

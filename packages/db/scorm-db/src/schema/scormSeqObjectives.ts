@@ -1,4 +1,3 @@
-import { type getScormSeqObjectives } from "@/lib/api/scormSeqObjectives/queries";
 import { boolean, pgTable, real, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -61,7 +60,3 @@ export type ScormSeqObjectiveId = z.infer<
   typeof scormSeqObjectiveIdSchema
 >["id"];
 
-// this type infers the return from getScormSeqObjectives() - meaning it will include any joins
-export type CompleteScormSeqObjective = Awaited<
-  ReturnType<typeof getScormSeqObjectives>
->["scormSeqObjectives"][number];

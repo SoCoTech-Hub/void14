@@ -1,4 +1,3 @@
-import { type getWikis } from "@/lib/api/wikis/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -6,6 +5,7 @@ import {
   pgTable,
   text,
   timestamp,
+  uniqueIndex,
   varchar,
 } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -76,7 +76,3 @@ export type NewWikiParams = z.infer<typeof insertWikiParams>;
 export type UpdateWikiParams = z.infer<typeof updateWikiParams>;
 export type WikiId = z.infer<typeof wikiIdSchema>["id"];
 
-// this type infers the return from getWikis() - meaning it will include any joins
-export type CompleteWiki = Awaited<
-  ReturnType<typeof getWikis>
->["wikis"][number];

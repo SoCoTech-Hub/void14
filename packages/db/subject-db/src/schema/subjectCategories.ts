@@ -1,4 +1,3 @@
-import { type getSubjectCategories } from "@/lib/api/subjectCategories/queries";
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -38,7 +37,3 @@ export type UpdateSubjectCategoryParams = z.infer<
 >;
 export type SubjectCategoryId = z.infer<typeof subjectCategoryIdSchema>["id"];
 
-// this type infers the return from getSubjectCategories() - meaning it will include any joins
-export type CompleteSubjectCategory = Awaited<
-  ReturnType<typeof getSubjectCategories>
->["subjectCategories"][number];

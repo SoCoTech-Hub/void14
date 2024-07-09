@@ -1,5 +1,4 @@
-import { type getWikiSubwikis } from "@/lib/api/wikiSubwikis/queries";
-import { pgTable, varchar } from "drizzle-orm/pg-core";
+import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -56,8 +55,3 @@ export type NewWikiSubwiki = z.infer<typeof insertWikiSubwikiSchema>;
 export type NewWikiSubwikiParams = z.infer<typeof insertWikiSubwikiParams>;
 export type UpdateWikiSubwikiParams = z.infer<typeof updateWikiSubwikiParams>;
 export type WikiSubwikiId = z.infer<typeof wikiSubwikiIdSchema>["id"];
-
-// this type infers the return from getWikiSubwikis() - meaning it will include any joins
-export type CompleteWikiSubwiki = Awaited<
-  ReturnType<typeof getWikiSubwikis>
->["wikiSubwikis"][number];

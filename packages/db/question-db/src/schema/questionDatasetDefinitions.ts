@@ -1,5 +1,4 @@
-import { type getQuestionDatasetDefinitions } from "@/lib/api/questionDatasetDefinitions/queries";
-import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
+import { integer, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -70,8 +69,3 @@ export type UpdateQuestionDatasetDefinitionParams = z.infer<
 export type QuestionDatasetDefinitionId = z.infer<
   typeof questionDatasetDefinitionIdSchema
 >["id"];
-
-// this type infers the return from getQuestionDatasetDefinitions() - meaning it will include any joins
-export type CompleteQuestionDatasetDefinition = Awaited<
-  ReturnType<typeof getQuestionDatasetDefinitions>
->["questionDatasetDefinitions"][number];

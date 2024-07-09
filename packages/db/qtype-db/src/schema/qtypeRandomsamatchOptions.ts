@@ -1,5 +1,4 @@
-import { type getQtypeRandomsamatchOptions } from "@/lib/api/qtypeRandomsamatchOptions/queries";
-import { boolean, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
+import { boolean, integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -79,8 +78,3 @@ export type UpdateQtypeRandomsamatchOptionParams = z.infer<
 export type QtypeRandomsamatchOptionId = z.infer<
   typeof qtypeRandomsamatchOptionIdSchema
 >["id"];
-
-// this type infers the return from getQtypeRandomsamatchOptions() - meaning it will include any joins
-export type CompleteQtypeRandomsamatchOption = Awaited<
-  ReturnType<typeof getQtypeRandomsamatchOptions>
->["qtypeRandomsamatchOptions"][number];

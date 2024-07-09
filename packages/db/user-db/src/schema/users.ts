@@ -1,4 +1,3 @@
-import { type getUsers } from "@/lib/api/users/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -136,7 +135,4 @@ export type NewUserParams = z.infer<typeof insertUserParams>;
 export type UpdateUserParams = z.infer<typeof updateUserParams>;
 export type UserId = z.infer<typeof userIdSchema>["id"];
 
-// this type infers the return from getUsers() - meaning it will include any joins
-export type CompleteUser = Awaited<
-  ReturnType<typeof getUsers>
->["users"][number];
+

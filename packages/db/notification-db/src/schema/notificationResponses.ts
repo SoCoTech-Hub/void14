@@ -1,4 +1,3 @@
-import { type getNotificationResponses } from "@/lib/api/notificationResponses/queries";
 import { boolean, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -64,7 +63,3 @@ export type NotificationResponseId = z.infer<
   typeof notificationResponseIdSchema
 >["id"];
 
-// this type infers the return from getNotificationResponses() - meaning it will include any joins
-export type CompleteNotificationResponse = Awaited<
-  ReturnType<typeof getNotificationResponses>
->["notificationResponses"][number];

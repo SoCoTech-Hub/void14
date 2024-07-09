@@ -1,4 +1,3 @@
-import { type getWorkshopSubmissions } from "@/lib/api/workshopSubmissions/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -7,6 +6,7 @@ import {
   real,
   text,
   timestamp,
+  uniqueIndex,
   varchar,
 } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -115,7 +115,4 @@ export type WorkshopSubmissionId = z.infer<
   typeof workshopSubmissionIdSchema
 >["id"];
 
-// this type infers the return from getWorkshopSubmissions() - meaning it will include any joins
-export type CompleteWorkshopSubmission = Awaited<
-  ReturnType<typeof getWorkshopSubmissions>
->["workshopSubmissions"][number];
+

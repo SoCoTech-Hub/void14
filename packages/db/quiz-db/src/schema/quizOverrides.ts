@@ -1,5 +1,4 @@
-import { type getQuizOverrides } from "@/lib/api/quizOverrides/queries";
-import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
+import { integer, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -70,7 +69,3 @@ export type NewQuizOverrideParams = z.infer<typeof insertQuizOverrideParams>;
 export type UpdateQuizOverrideParams = z.infer<typeof updateQuizOverrideParams>;
 export type QuizOverrideId = z.infer<typeof quizOverrideIdSchema>["id"];
 
-// this type infers the return from getQuizOverrides() - meaning it will include any joins
-export type CompleteQuizOverride = Awaited<
-  ReturnType<typeof getQuizOverrides>
->["quizOverrides"][number];

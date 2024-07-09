@@ -1,4 +1,3 @@
-import { type getTags } from "@/lib/api/tags/queries";
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -75,5 +74,4 @@ export type NewTagParams = z.infer<typeof insertTagParams>;
 export type UpdateTagParams = z.infer<typeof updateTagParams>;
 export type TagId = z.infer<typeof tagIdSchema>["id"];
 
-// this type infers the return from getTags() - meaning it will include any joins
-export type CompleteTag = Awaited<ReturnType<typeof getTags>>["tags"][number];
+

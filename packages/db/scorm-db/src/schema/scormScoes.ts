@@ -1,4 +1,3 @@
-import { type getScormScoes } from "@/lib/api/scormScoes/queries";
 import { integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -52,7 +51,3 @@ export type NewScormScoeParams = z.infer<typeof insertScormScoeParams>;
 export type UpdateScormScoeParams = z.infer<typeof updateScormScoeParams>;
 export type ScormScoeId = z.infer<typeof scormScoeIdSchema>["id"];
 
-// this type infers the return from getScormScoes() - meaning it will include any joins
-export type CompleteScormScoe = Awaited<
-  ReturnType<typeof getScormScoes>
->["scormScoes"][number];

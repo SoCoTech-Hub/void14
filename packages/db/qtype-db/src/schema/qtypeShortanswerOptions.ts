@@ -1,5 +1,4 @@
-import { type getQtypeShortanswerOptions } from "@/lib/api/qtypeShortanswerOptions/queries";
-import { boolean, pgTable, varchar } from "drizzle-orm/pg-core";
+import { boolean, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -59,8 +58,3 @@ export type UpdateQtypeShortanswerOptionParams = z.infer<
 export type QtypeShortanswerOptionId = z.infer<
   typeof qtypeShortanswerOptionIdSchema
 >["id"];
-
-// this type infers the return from getQtypeShortanswerOptions() - meaning it will include any joins
-export type CompleteQtypeShortanswerOption = Awaited<
-  ReturnType<typeof getQtypeShortanswerOptions>
->["qtypeShortanswerOptions"][number];

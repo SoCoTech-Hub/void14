@@ -1,4 +1,3 @@
-import { type getMessageinboundMessagelists } from "@/lib/api/messageinboundMessagelists/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -65,7 +64,4 @@ export type MessageinboundMessagelistId = z.infer<
   typeof messageinboundMessagelistIdSchema
 >["id"];
 
-// this type infers the return from getMessageinboundMessagelists() - meaning it will include any joins
-export type CompleteMessageinboundMessagelist = Awaited<
-  ReturnType<typeof getMessageinboundMessagelists>
->["messageinboundMessagelists"][number];
+

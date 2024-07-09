@@ -1,4 +1,3 @@
-import { type getToolMonitorEvents } from "@/lib/api/toolMonitorEvents/queries";
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
@@ -49,8 +48,3 @@ export type UpdateToolMonitorEventParams = z.infer<
   typeof updateToolMonitorEventParams
 >;
 export type ToolMonitorEventId = z.infer<typeof toolMonitorEventIdSchema>["id"];
-
-// this type infers the return from getToolMonitorEvents() - meaning it will include any joins
-export type CompleteToolMonitorEvent = Awaited<
-  ReturnType<typeof getToolMonitorEvents>
->["toolMonitorEvents"][number];

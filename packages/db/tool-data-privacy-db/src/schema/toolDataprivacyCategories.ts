@@ -1,4 +1,3 @@
-import { type getToolDataprivacyCategories } from "@/lib/api/toolDataprivacyCategories/queries";
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -76,7 +75,4 @@ export type ToolDataprivacyCategoryId = z.infer<
   typeof toolDataprivacyCategoryIdSchema
 >["id"];
 
-// this type infers the return from getToolDataprivacyCategories() - meaning it will include any joins
-export type CompleteToolDataprivacyCategory = Awaited<
-  ReturnType<typeof getToolDataprivacyCategories>
->["toolDataprivacyCategories"][number];
+

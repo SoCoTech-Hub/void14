@@ -1,5 +1,4 @@
-import { type getWorkshopFormNumErrorMaps } from "@/lib/api/workshopFormNumErrorMaps/queries";
-import { integer, pgTable, real, varchar } from "drizzle-orm/pg-core";
+import { integer, pgTable, real, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -69,7 +68,3 @@ export type WorkshopFormNumErrorMapId = z.infer<
   typeof workshopFormNumErrorMapIdSchema
 >["id"];
 
-// this type infers the return from getWorkshopFormNumErrorMaps() - meaning it will include any joins
-export type CompleteWorkshopFormNumErrorMap = Awaited<
-  ReturnType<typeof getWorkshopFormNumErrorMaps>
->["workshopFormNumErrorMaps"][number];
