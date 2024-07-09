@@ -1,8 +1,7 @@
+import { accountRouter } from "./routers/account";
+import { bookChaptersRouter } from "./routers/bookChapters";
+import { booksRouter } from "./routers/books";
 import { createTRPCRouter } from "./trpc";
-
-import { accountRouter } from './routers/account';
-import { bookChaptersRouter } from './routers/bookChapters';
-import { booksRouter } from './routers/books';
 
 export const appRouter = createTRPCRouter({
   account: accountRouter,

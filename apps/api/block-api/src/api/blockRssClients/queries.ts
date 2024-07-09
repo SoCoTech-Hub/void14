@@ -1,8 +1,6 @@
-import { and, eq } from "drizzle-orm";
-
 import type { BlockRssClientId } from "@soco/block-db/schema/blockRssClients";
 import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/block-db/index";
+import { and, db, eq } from "@soco/block-db";
 import {
   blockRssClientIdSchema,
   blockRssClients,

@@ -1,19 +1,29 @@
-import { getBlockRssClientById, getBlockRssClients } from "../api/blockRssClients/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   blockRssClientIdSchema,
   insertBlockRssClientParams,
   updateBlockRssClientParams,
 } from "@soco/block-db/schema/blockRssClients";
-import { createBlockRssClient, deleteBlockRssClient, updateBlockRssClient } from "../api/blockRssClients/mutations";
 
-export const blockRssClientsRouter =createTRPCRouter({
+import {
+  createBlockRssClient,
+  deleteBlockRssClient,
+  updateBlockRssClient,
+} from "../api/blockRssClients/mutations";
+import {
+  getBlockRssClientById,
+  getBlockRssClients,
+} from "../api/blockRssClients/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const blockRssClientsRouter = createTRPCRouter({
   getBlockRssClients: publicProcedure.query(async () => {
     return getBlockRssClients();
   }),
-  getBlockRssClientById: publicProcedure.input(blockRssClientIdSchema).query(async ({ input }) => {
-    return getBlockRssClientById(input.id);
-  }),
+  getBlockRssClientById: publicProcedure
+    .input(blockRssClientIdSchema)
+    .query(async ({ input }) => {
+      return getBlockRssClientById(input.id);
+    }),
   createBlockRssClient: publicProcedure
     .input(insertBlockRssClientParams)
     .mutation(async ({ input }) => {

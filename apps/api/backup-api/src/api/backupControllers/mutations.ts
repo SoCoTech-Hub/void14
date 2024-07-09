@@ -1,14 +1,14 @@
-import { and, eq } from "drizzle-orm";
-
-import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/backup-db/index";
-import {
+import type {
   BackupControllerId,
+  NewBackupControllerParams,
+  UpdateBackupControllerParams,
+} from "@soco/backup-db/schema/backupControllers";
+import { getUserAuth } from "@soco/auth-services";
+import { and, db, eq } from "@soco/backup-db";
+import {
   backupControllerIdSchema,
   backupControllers,
   insertBackupControllerSchema,
-  NewBackupControllerParams,
-  UpdateBackupControllerParams,
   updateBackupControllerSchema,
 } from "@soco/backup-db/schema/backupControllers";
 

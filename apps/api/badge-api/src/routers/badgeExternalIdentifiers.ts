@@ -1,19 +1,29 @@
-import { getBadgeExternalIdentifierById, getBadgeExternalIdentifiers } from "../api/badgeExternalIdentifiers/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   badgeExternalIdentifierIdSchema,
   insertBadgeExternalIdentifierParams,
   updateBadgeExternalIdentifierParams,
 } from "@soco/badge-db/schema/badgeExternalIdentifiers";
-import { createBadgeExternalIdentifier, deleteBadgeExternalIdentifier, updateBadgeExternalIdentifier } from "../api/badgeExternalIdentifiers/mutations";
 
-export const badgeExternalIdentifiersRouter =createTRPCRouter({
+import {
+  createBadgeExternalIdentifier,
+  deleteBadgeExternalIdentifier,
+  updateBadgeExternalIdentifier,
+} from "../api/badgeExternalIdentifiers/mutations";
+import {
+  getBadgeExternalIdentifierById,
+  getBadgeExternalIdentifiers,
+} from "../api/badgeExternalIdentifiers/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const badgeExternalIdentifiersRouter = createTRPCRouter({
   getBadgeExternalIdentifiers: publicProcedure.query(async () => {
     return getBadgeExternalIdentifiers();
   }),
-  getBadgeExternalIdentifierById: publicProcedure.input(badgeExternalIdentifierIdSchema).query(async ({ input }) => {
-    return getBadgeExternalIdentifierById(input.id);
-  }),
+  getBadgeExternalIdentifierById: publicProcedure
+    .input(badgeExternalIdentifierIdSchema)
+    .query(async ({ input }) => {
+      return getBadgeExternalIdentifierById(input.id);
+    }),
   createBadgeExternalIdentifier: publicProcedure
     .input(insertBadgeExternalIdentifierParams)
     .mutation(async ({ input }) => {

@@ -1,8 +1,6 @@
-import { and, eq } from "drizzle-orm";
-
 import type { BlogExternalId } from "@soco/blog-db/schema/blogExternals";
 import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/blog-db/index";
+import { and, db, eq } from "@soco/blog-db";
 import {
   blogExternalIdSchema,
   blogExternals,

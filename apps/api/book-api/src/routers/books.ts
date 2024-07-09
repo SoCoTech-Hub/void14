@@ -1,13 +1,14 @@
-import { getBookById, getBooks } from "../api/books/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   bookIdSchema,
   insertBookParams,
   updateBookParams,
 } from "@soco/book-db/schema/books";
-import { createBook, deleteBook, updateBook } from "../api/books/mutations";
 
-export const booksRouter =createTRPCRouter({
+import { createBook, deleteBook, updateBook } from "../api/books/mutations";
+import { getBookById, getBooks } from "../api/books/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const booksRouter = createTRPCRouter({
   getBooks: publicProcedure.query(async () => {
     return getBooks();
   }),

@@ -1,8 +1,6 @@
-import { and, eq } from "drizzle-orm";
-
 import type { BadgeId } from "@soco/badge-db/schema/badges";
 import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/badge-db/index";
+import { and, db, eq } from "@soco/badge-db";
 import { badgeIdSchema, badges } from "@soco/badge-db/schema/badges";
 
 export const getBadges = async () => {

@@ -1,19 +1,29 @@
-import { getBlockRecentlyAccessedItemById, getBlockRecentlyAccessedItems } from "../api/blockRecentlyAccessedItems/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   blockRecentlyAccessedItemIdSchema,
   insertBlockRecentlyAccessedItemParams,
   updateBlockRecentlyAccessedItemParams,
 } from "@soco/block-db/schema/blockRecentlyAccessedItems";
-import { createBlockRecentlyAccessedItem, deleteBlockRecentlyAccessedItem, updateBlockRecentlyAccessedItem } from "../api/blockRecentlyAccessedItems/mutations";
 
-export const blockRecentlyAccessedItemsRouter =createTRPCRouter({
+import {
+  createBlockRecentlyAccessedItem,
+  deleteBlockRecentlyAccessedItem,
+  updateBlockRecentlyAccessedItem,
+} from "../api/blockRecentlyAccessedItems/mutations";
+import {
+  getBlockRecentlyAccessedItemById,
+  getBlockRecentlyAccessedItems,
+} from "../api/blockRecentlyAccessedItems/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const blockRecentlyAccessedItemsRouter = createTRPCRouter({
   getBlockRecentlyAccessedItems: publicProcedure.query(async () => {
     return getBlockRecentlyAccessedItems();
   }),
-  getBlockRecentlyAccessedItemById: publicProcedure.input(blockRecentlyAccessedItemIdSchema).query(async ({ input }) => {
-    return getBlockRecentlyAccessedItemById(input.id);
-  }),
+  getBlockRecentlyAccessedItemById: publicProcedure
+    .input(blockRecentlyAccessedItemIdSchema)
+    .query(async ({ input }) => {
+      return getBlockRecentlyAccessedItemById(input.id);
+    }),
   createBlockRecentlyAccessedItem: publicProcedure
     .input(insertBlockRecentlyAccessedItemParams)
     .mutation(async ({ input }) => {

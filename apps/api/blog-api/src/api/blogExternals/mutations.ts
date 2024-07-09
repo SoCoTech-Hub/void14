@@ -1,14 +1,14 @@
-import { and, eq } from "drizzle-orm";
-
-import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/blog-db/index";
-import {
+import type {
   BlogExternalId,
+  NewBlogExternalParams,
+  UpdateBlogExternalParams,
+} from "@soco/blog-db/schema/blogExternals";
+import { getUserAuth } from "@soco/auth-services";
+import { and, db, eq } from "@soco/blog-db";
+import {
   blogExternalIdSchema,
   blogExternals,
   insertBlogExternalSchema,
-  NewBlogExternalParams,
-  UpdateBlogExternalParams,
   updateBlogExternalSchema,
 } from "@soco/blog-db/schema/blogExternals";
 

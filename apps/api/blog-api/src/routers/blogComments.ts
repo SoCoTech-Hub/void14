@@ -1,19 +1,29 @@
-import { getBlogCommentById, getBlogComments } from "../api/blogComments/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   blogCommentIdSchema,
   insertBlogCommentParams,
   updateBlogCommentParams,
 } from "@soco/blog-db/schema/blogComments";
-import { createBlogComment, deleteBlogComment, updateBlogComment } from "../api/blogComments/mutations";
 
-export const blogCommentsRouter =createTRPCRouter({
+import {
+  createBlogComment,
+  deleteBlogComment,
+  updateBlogComment,
+} from "../api/blogComments/mutations";
+import {
+  getBlogCommentById,
+  getBlogComments,
+} from "../api/blogComments/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const blogCommentsRouter = createTRPCRouter({
   getBlogComments: publicProcedure.query(async () => {
     return getBlogComments();
   }),
-  getBlogCommentById: publicProcedure.input(blogCommentIdSchema).query(async ({ input }) => {
-    return getBlogCommentById(input.id);
-  }),
+  getBlogCommentById: publicProcedure
+    .input(blogCommentIdSchema)
+    .query(async ({ input }) => {
+      return getBlogCommentById(input.id);
+    }),
   createBlogComment: publicProcedure
     .input(insertBlogCommentParams)
     .mutation(async ({ input }) => {

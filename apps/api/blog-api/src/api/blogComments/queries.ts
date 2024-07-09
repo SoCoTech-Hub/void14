@@ -1,8 +1,6 @@
-import { and, eq } from "drizzle-orm";
-
 import type { BlogCommentId } from "@soco/blog-db/schema/blogComments";
 import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/blog-db/index";
+import { and, db, eq } from "@soco/blog-db";
 import {
   blogCommentIdSchema,
   blogComments,

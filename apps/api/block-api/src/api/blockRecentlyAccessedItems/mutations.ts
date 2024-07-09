@@ -1,14 +1,14 @@
-import { and, eq } from "drizzle-orm";
-
-import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/block-db/index";
-import {
+import type {
   BlockRecentlyAccessedItemId,
+  NewBlockRecentlyAccessedItemParams,
+  UpdateBlockRecentlyAccessedItemParams,
+} from "@soco/block-db/schema/blockRecentlyAccessedItems";
+import { getUserAuth } from "@soco/auth-services";
+import { and, db, eq } from "@soco/block-db";
+import {
   blockRecentlyAccessedItemIdSchema,
   blockRecentlyAccessedItems,
   insertBlockRecentlyAccessedItemSchema,
-  NewBlockRecentlyAccessedItemParams,
-  UpdateBlockRecentlyAccessedItemParams,
   updateBlockRecentlyAccessedItemSchema,
 } from "@soco/block-db/schema/blockRecentlyAccessedItems";
 

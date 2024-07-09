@@ -1,19 +1,29 @@
-import { getSocialReactionById, getSocialReactions } from "../api/socialReactions/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  socialReactionIdSchema,
   insertSocialReactionParams,
+  socialReactionIdSchema,
   updateSocialReactionParams,
 } from "@soco/blog-db/schema/socialReactions";
-import { createSocialReaction, deleteSocialReaction, updateSocialReaction } from "../api/socialReactions/mutations";
 
-export const socialReactionsRouter =createTRPCRouter({
+import {
+  createSocialReaction,
+  deleteSocialReaction,
+  updateSocialReaction,
+} from "../api/socialReactions/mutations";
+import {
+  getSocialReactionById,
+  getSocialReactions,
+} from "../api/socialReactions/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const socialReactionsRouter = createTRPCRouter({
   getSocialReactions: publicProcedure.query(async () => {
     return getSocialReactions();
   }),
-  getSocialReactionById: publicProcedure.input(socialReactionIdSchema).query(async ({ input }) => {
-    return getSocialReactionById(input.id);
-  }),
+  getSocialReactionById: publicProcedure
+    .input(socialReactionIdSchema)
+    .query(async ({ input }) => {
+      return getSocialReactionById(input.id);
+    }),
   createSocialReaction: publicProcedure
     .input(insertSocialReactionParams)
     .mutation(async ({ input }) => {

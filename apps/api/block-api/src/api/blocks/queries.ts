@@ -1,10 +1,10 @@
-import { db } from "@soco/block-db/index";
-import { eq } from "drizzle-orm";
-import { type BlockId, blockIdSchema, blocks } from "@soco/block-db/schema/blocks";
+import type { BlockId } from "@soco/block-db/schema/blocks";
+import { db, eq } from "@soco/block-db";
+import { blockIdSchema, blocks } from "@soco/block-db/schema/blocks";
 
 export const getBlocks = async () => {
   const rows = await db.select().from(blocks);
-  const b = rows
+  const b = rows;
   return { blocks: b };
 };
 
@@ -15,5 +15,3 @@ export const getBlockById = async (id: BlockId) => {
   const b = row;
   return { block: b };
 };
-
-

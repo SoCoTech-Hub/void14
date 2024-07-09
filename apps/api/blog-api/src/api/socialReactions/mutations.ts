@@ -1,14 +1,14 @@
-import { and, eq } from "drizzle-orm";
-
-import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/blog-db/index";
-import {
-  insertSocialReactionSchema,
+import type {
   NewSocialReactionParams,
   SocialReactionId,
+  UpdateSocialReactionParams,
+} from "@soco/blog-db/schema/socialReactions";
+import { getUserAuth } from "@soco/auth-services";
+import { and, db, eq } from "@soco/blog-db";
+import {
+  insertSocialReactionSchema,
   socialReactionIdSchema,
   socialReactions,
-  UpdateSocialReactionParams,
   updateSocialReactionSchema,
 } from "@soco/blog-db/schema/socialReactions";
 

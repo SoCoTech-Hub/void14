@@ -1,14 +1,14 @@
-import { and, eq } from "drizzle-orm";
-
-import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/badge-db/index";
-import {
+import type {
   BadgeCriteriaMetId,
+  NewBadgeCriteriaMetParams,
+  UpdateBadgeCriteriaMetParams,
+} from "@soco/badge-db/schema/badgeCriteriaMets";
+import { getUserAuth } from "@soco/auth-services";
+import { and, db, eq } from "@soco/badge-db";
+import {
   badgeCriteriaMetIdSchema,
   badgeCriteriaMets,
   insertBadgeCriteriaMetSchema,
-  NewBadgeCriteriaMetParams,
-  UpdateBadgeCriteriaMetParams,
   updateBadgeCriteriaMetSchema,
 } from "@soco/badge-db/schema/badgeCriteriaMets";
 

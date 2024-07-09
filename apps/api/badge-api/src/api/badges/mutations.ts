@@ -1,14 +1,14 @@
-import { and, eq } from "drizzle-orm";
-
-import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/badge-db/index";
-import {
+import type {
   BadgeId,
+  NewBadgeParams,
+  UpdateBadgeParams,
+} from "@soco/badge-db/schema/badges";
+import { getUserAuth } from "@soco/auth-services";
+import { and, db, eq } from "@soco/badge-db";
+import {
   badgeIdSchema,
   badges,
   insertBadgeSchema,
-  NewBadgeParams,
-  UpdateBadgeParams,
   updateBadgeSchema,
 } from "@soco/badge-db/schema/badges";
 

@@ -1,19 +1,29 @@
-import { getBadgeAlignmentById, getBadgeAlignments } from "../api/badgeAlignments/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   badgeAlignmentIdSchema,
   insertBadgeAlignmentParams,
   updateBadgeAlignmentParams,
 } from "@soco/badge-db/schema/badgeAlignments";
-import { createBadgeAlignment, deleteBadgeAlignment, updateBadgeAlignment } from "../api/badgeAlignments/mutations";
 
-export const badgeAlignmentsRouter =createTRPCRouter({
+import {
+  createBadgeAlignment,
+  deleteBadgeAlignment,
+  updateBadgeAlignment,
+} from "../api/badgeAlignments/mutations";
+import {
+  getBadgeAlignmentById,
+  getBadgeAlignments,
+} from "../api/badgeAlignments/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const badgeAlignmentsRouter = createTRPCRouter({
   getBadgeAlignments: publicProcedure.query(async () => {
     return getBadgeAlignments();
   }),
-  getBadgeAlignmentById: publicProcedure.input(badgeAlignmentIdSchema).query(async ({ input }) => {
-    return getBadgeAlignmentById(input.id);
-  }),
+  getBadgeAlignmentById: publicProcedure
+    .input(badgeAlignmentIdSchema)
+    .query(async ({ input }) => {
+      return getBadgeAlignmentById(input.id);
+    }),
   createBadgeAlignment: publicProcedure
     .input(insertBadgeAlignmentParams)
     .mutation(async ({ input }) => {

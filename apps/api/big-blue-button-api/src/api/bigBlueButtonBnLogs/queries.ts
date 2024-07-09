@@ -1,8 +1,6 @@
-import { and, eq } from "drizzle-orm";
-
 import type { BigBlueButtonBnLogId } from "@soco/big-blue-button-db/schema/bigBlueButtonBnLogs";
 import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/big-blue-button-db/index";
+import { and, db, eq } from "@soco/big-blue-button-db";
 import {
   bigBlueButtonBnLogIdSchema,
   bigBlueButtonBnLogs,

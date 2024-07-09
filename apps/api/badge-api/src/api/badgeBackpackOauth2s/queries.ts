@@ -1,8 +1,6 @@
-import { and, eq } from "drizzle-orm";
-
 import type { BadgeBackpackOauth2Id } from "@soco/badge-db/schema/badgeBackpackOauth2s";
 import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/badge-db/index";
+import { and, db, eq } from "@soco/badge-db";
 import {
   badgeBackpackOauth2IdSchema,
   badgeBackpackOauth2s,

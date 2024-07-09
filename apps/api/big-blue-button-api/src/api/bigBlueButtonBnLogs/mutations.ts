@@ -1,14 +1,14 @@
-import { and, eq } from "drizzle-orm";
-
-import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/big-blue-button-db/index";
-import {
+import type {
   BigBlueButtonBnLogId,
+  NewBigBlueButtonBnLogParams,
+  UpdateBigBlueButtonBnLogParams,
+} from "@soco/big-blue-button-db/schema/bigBlueButtonBnLogs";
+import { getUserAuth } from "@soco/auth-services";
+import { and, db, eq } from "@soco/big-blue-button-db";
+import {
   bigBlueButtonBnLogIdSchema,
   bigBlueButtonBnLogs,
   insertBigBlueButtonBnLogSchema,
-  NewBigBlueButtonBnLogParams,
-  UpdateBigBlueButtonBnLogParams,
   updateBigBlueButtonBnLogSchema,
 } from "@soco/big-blue-button-db/schema/bigBlueButtonBnLogs";
 

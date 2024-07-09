@@ -1,8 +1,6 @@
-import { and, eq } from "drizzle-orm";
-
 import type { BackupControllerId } from "@soco/backup-db/schema/backupControllers";
 import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/backup-db/index";
+import { and, db, eq } from "@soco/backup-db";
 import {
   backupControllerIdSchema,
   backupControllers,

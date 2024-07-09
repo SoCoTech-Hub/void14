@@ -1,8 +1,6 @@
-import { and, eq } from "drizzle-orm";
-
 import type { BadgeIssueId } from "@soco/badge-db/schema/badgeIssues";
 import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/badge-db/index";
+import { and, db, eq } from "@soco/badge-db";
 import {
   badgeIssueIdSchema,
   badgeIssues,

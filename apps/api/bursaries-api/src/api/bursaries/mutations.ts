@@ -1,14 +1,14 @@
-import { and, eq } from "drizzle-orm";
-
-import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/bursaries-db/index";
-import {
-  bursaries,
+import type {
   BursaryId,
-  bursaryIdSchema,
-  insertBursarySchema,
   NewBursaryParams,
   UpdateBursaryParams,
+} from "@soco/bursaries-db/schema/bursaries";
+import { getUserAuth } from "@soco/auth-services";
+import { and, db, eq } from "@soco/bursaries-db";
+import {
+  bursaries,
+  bursaryIdSchema,
+  insertBursarySchema,
   updateBursarySchema,
 } from "@soco/bursaries-db/schema/bursaries";
 

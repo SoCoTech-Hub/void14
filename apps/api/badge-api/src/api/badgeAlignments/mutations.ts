@@ -1,19 +1,25 @@
-import { db } from "@soco/badge-db/index";
-import { eq } from "drizzle-orm";
-import { 
-  BadgeAlignmentId, 
+import type {
+  BadgeAlignmentId,
   NewBadgeAlignmentParams,
-  UpdateBadgeAlignmentParams, 
-  updateBadgeAlignmentSchema,
-  insertBadgeAlignmentSchema, 
+  UpdateBadgeAlignmentParams,
+} from "@soco/badge-db/schema/badgeAlignments";
+import { db, eq } from "@soco/badge-db";
+import {
+  badgeAlignmentIdSchema,
   badgeAlignments,
-  badgeAlignmentIdSchema 
+  insertBadgeAlignmentSchema,
+  updateBadgeAlignmentSchema,
 } from "@soco/badge-db/schema/badgeAlignments";
 
-export const createBadgeAlignment = async (badgeAlignment: NewBadgeAlignmentParams) => {
+export const createBadgeAlignment = async (
+  badgeAlignment: NewBadgeAlignmentParams,
+) => {
   const newBadgeAlignment = insertBadgeAlignmentSchema.parse(badgeAlignment);
   try {
-    const [b] =  await db.insert(badgeAlignments).values(newBadgeAlignment).returning();
+    const [b] = await db
+      .insert(badgeAlignments)
+      .values(newBadgeAlignment)
+      .returning();
     return { badgeAlignment: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +28,18 @@ export const createBadgeAlignment = async (badgeAlignment: NewBadgeAlignmentPara
   }
 };
 
-export const updateBadgeAlignment = async (id: BadgeAlignmentId, badgeAlignment: UpdateBadgeAlignmentParams) => {
+export const updateBadgeAlignment = async (
+  id: BadgeAlignmentId,
+  badgeAlignment: UpdateBadgeAlignmentParams,
+) => {
   const { id: badgeAlignmentId } = badgeAlignmentIdSchema.parse({ id });
   const newBadgeAlignment = updateBadgeAlignmentSchema.parse(badgeAlignment);
   try {
-    const [b] =  await db
-     .update(badgeAlignments)
-     .set(newBadgeAlignment)
-     .where(eq(badgeAlignments.id, badgeAlignmentId!))
-     .returning();
+    const [b] = await db
+      .update(badgeAlignments)
+      .set(newBadgeAlignment)
+      .where(eq(badgeAlignments.id, badgeAlignmentId!))
+      .returning();
     return { badgeAlignment: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +51,10 @@ export const updateBadgeAlignment = async (id: BadgeAlignmentId, badgeAlignment:
 export const deleteBadgeAlignment = async (id: BadgeAlignmentId) => {
   const { id: badgeAlignmentId } = badgeAlignmentIdSchema.parse({ id });
   try {
-    const [b] =  await db.delete(badgeAlignments).where(eq(badgeAlignments.id, badgeAlignmentId!))
-    .returning();
+    const [b] = await db
+      .delete(badgeAlignments)
+      .where(eq(badgeAlignments.id, badgeAlignmentId!))
+      .returning();
     return { badgeAlignment: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +62,3 @@ export const deleteBadgeAlignment = async (id: BadgeAlignmentId) => {
     throw { error: message };
   }
 };
-

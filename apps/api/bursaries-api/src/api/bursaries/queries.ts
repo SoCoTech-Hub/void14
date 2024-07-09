@@ -1,8 +1,6 @@
-import { and, eq } from "drizzle-orm";
-
 import type { BursaryId } from "@soco/bursaries-db/schema/bursaries";
 import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/bursaries-db/index";
+import { and, db, eq } from "@soco/bursaries-db";
 import {
   bursaries,
   bursaryIdSchema,

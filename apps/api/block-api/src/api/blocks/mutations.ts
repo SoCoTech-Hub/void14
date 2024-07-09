@@ -1,19 +1,20 @@
-import { db } from "@soco/block-db/index";
-import { eq } from "drizzle-orm";
-import { 
-  BlockId, 
+import type {
+  BlockId,
   NewBlockParams,
-  UpdateBlockParams, 
-  updateBlockSchema,
-  insertBlockSchema, 
+  UpdateBlockParams,
+} from "@soco/block-db/schema/blocks";
+import { db, eq } from "@soco/block-db";
+import {
+  blockIdSchema,
   blocks,
-  blockIdSchema 
+  insertBlockSchema,
+  updateBlockSchema,
 } from "@soco/block-db/schema/blocks";
 
 export const createBlock = async (block: NewBlockParams) => {
   const newBlock = insertBlockSchema.parse(block);
   try {
-    const [b] =  await db.insert(blocks).values(newBlock).returning();
+    const [b] = await db.insert(blocks).values(newBlock).returning();
     return { block: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -26,11 +27,11 @@ export const updateBlock = async (id: BlockId, block: UpdateBlockParams) => {
   const { id: blockId } = blockIdSchema.parse({ id });
   const newBlock = updateBlockSchema.parse(block);
   try {
-    const [b] =  await db
-     .update(blocks)
-     .set(newBlock)
-     .where(eq(blocks.id, blockId!))
-     .returning();
+    const [b] = await db
+      .update(blocks)
+      .set(newBlock)
+      .where(eq(blocks.id, blockId!))
+      .returning();
     return { block: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +43,10 @@ export const updateBlock = async (id: BlockId, block: UpdateBlockParams) => {
 export const deleteBlock = async (id: BlockId) => {
   const { id: blockId } = blockIdSchema.parse({ id });
   try {
-    const [b] =  await db.delete(blocks).where(eq(blocks.id, blockId!))
-    .returning();
+    const [b] = await db
+      .delete(blocks)
+      .where(eq(blocks.id, blockId!))
+      .returning();
     return { block: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +54,3 @@ export const deleteBlock = async (id: BlockId) => {
     throw { error: message };
   }
 };
-

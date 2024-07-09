@@ -1,19 +1,20 @@
-import { db } from "@soco/book-db/index";
-import { eq } from "drizzle-orm";
-import { 
-  BookId, 
+import type {
+  BookId,
   NewBookParams,
-  UpdateBookParams, 
-  updateBookSchema,
-  insertBookSchema, 
+  UpdateBookParams,
+} from "@soco/book-db/schema/books";
+import { db, eq } from "@soco/book-db";
+import {
+  bookIdSchema,
   books,
-  bookIdSchema 
+  insertBookSchema,
+  updateBookSchema,
 } from "@soco/book-db/schema/books";
 
 export const createBook = async (book: NewBookParams) => {
   const newBook = insertBookSchema.parse(book);
   try {
-    const [b] =  await db.insert(books).values(newBook).returning();
+    const [b] = await db.insert(books).values(newBook).returning();
     return { book: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -26,11 +27,11 @@ export const updateBook = async (id: BookId, book: UpdateBookParams) => {
   const { id: bookId } = bookIdSchema.parse({ id });
   const newBook = updateBookSchema.parse(book);
   try {
-    const [b] =  await db
-     .update(books)
-     .set({...newBook, updatedAt: new Date() })
-     .where(eq(books.id, bookId!))
-     .returning();
+    const [b] = await db
+      .update(books)
+      .set({ ...newBook, updatedAt: new Date() })
+      .where(eq(books.id, bookId!))
+      .returning();
     return { book: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +43,7 @@ export const updateBook = async (id: BookId, book: UpdateBookParams) => {
 export const deleteBook = async (id: BookId) => {
   const { id: bookId } = bookIdSchema.parse({ id });
   try {
-    const [b] =  await db.delete(books).where(eq(books.id, bookId!))
-    .returning();
+    const [b] = await db.delete(books).where(eq(books.id, bookId!)).returning();
     return { book: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +51,3 @@ export const deleteBook = async (id: BookId) => {
     throw { error: message };
   }
 };
-

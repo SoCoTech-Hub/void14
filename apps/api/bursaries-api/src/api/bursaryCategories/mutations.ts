@@ -1,19 +1,25 @@
-import { db } from "@soco/bursaries-db/index";
-import { eq } from "drizzle-orm";
-import { 
-  BursaryCategoryId, 
+import type {
+  BursaryCategoryId,
   NewBursaryCategoryParams,
-  UpdateBursaryCategoryParams, 
-  updateBursaryCategorySchema,
-  insertBursaryCategorySchema, 
+  UpdateBursaryCategoryParams,
+} from "@soco/bursaries-db/schema/bursaryCategories";
+import { db, eq } from "@soco/bursaries-db";
+import {
   bursaryCategories,
-  bursaryCategoryIdSchema 
+  bursaryCategoryIdSchema,
+  insertBursaryCategorySchema,
+  updateBursaryCategorySchema,
 } from "@soco/bursaries-db/schema/bursaryCategories";
 
-export const createBursaryCategory = async (bursaryCategory: NewBursaryCategoryParams) => {
+export const createBursaryCategory = async (
+  bursaryCategory: NewBursaryCategoryParams,
+) => {
   const newBursaryCategory = insertBursaryCategorySchema.parse(bursaryCategory);
   try {
-    const [b] =  await db.insert(bursaryCategories).values(newBursaryCategory).returning();
+    const [b] = await db
+      .insert(bursaryCategories)
+      .values(newBursaryCategory)
+      .returning();
     return { bursaryCategory: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +28,18 @@ export const createBursaryCategory = async (bursaryCategory: NewBursaryCategoryP
   }
 };
 
-export const updateBursaryCategory = async (id: BursaryCategoryId, bursaryCategory: UpdateBursaryCategoryParams) => {
+export const updateBursaryCategory = async (
+  id: BursaryCategoryId,
+  bursaryCategory: UpdateBursaryCategoryParams,
+) => {
   const { id: bursaryCategoryId } = bursaryCategoryIdSchema.parse({ id });
   const newBursaryCategory = updateBursaryCategorySchema.parse(bursaryCategory);
   try {
-    const [b] =  await db
-     .update(bursaryCategories)
-     .set(newBursaryCategory)
-     .where(eq(bursaryCategories.id, bursaryCategoryId!))
-     .returning();
+    const [b] = await db
+      .update(bursaryCategories)
+      .set(newBursaryCategory)
+      .where(eq(bursaryCategories.id, bursaryCategoryId!))
+      .returning();
     return { bursaryCategory: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +51,10 @@ export const updateBursaryCategory = async (id: BursaryCategoryId, bursaryCatego
 export const deleteBursaryCategory = async (id: BursaryCategoryId) => {
   const { id: bursaryCategoryId } = bursaryCategoryIdSchema.parse({ id });
   try {
-    const [b] =  await db.delete(bursaryCategories).where(eq(bursaryCategories.id, bursaryCategoryId!))
-    .returning();
+    const [b] = await db
+      .delete(bursaryCategories)
+      .where(eq(bursaryCategories.id, bursaryCategoryId!))
+      .returning();
     return { bursaryCategory: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +62,3 @@ export const deleteBursaryCategory = async (id: BursaryCategoryId) => {
     throw { error: message };
   }
 };
-

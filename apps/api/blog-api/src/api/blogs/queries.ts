@@ -1,10 +1,10 @@
-import { db } from "@soco/blog-db/index";
-import { eq } from "drizzle-orm";
-import { type BlogId, blogIdSchema, blogs } from "@soco/blog-db/schema/blogs";
+import type { BlogId } from "@soco/blog-db/schema/blogs";
+import { db, eq } from "@soco/blog-db";
+import { blogIdSchema, blogs } from "@soco/blog-db/schema/blogs";
 
 export const getBlogs = async () => {
   const rows = await db.select().from(blogs);
-  const b = rows
+  const b = rows;
   return { blogs: b };
 };
 
@@ -15,5 +15,3 @@ export const getBlogById = async (id: BlogId) => {
   const b = row;
   return { blog: b };
 };
-
-

@@ -1,19 +1,25 @@
-import { db } from "@soco/backup-db/index";
-import { eq } from "drizzle-orm";
-import { 
-  BackupCourseId, 
+import type {
+  BackupCourseId,
   NewBackupCourseParams,
-  UpdateBackupCourseParams, 
-  updateBackupCourseSchema,
-  insertBackupCourseSchema, 
+  UpdateBackupCourseParams,
+} from "@soco/backup-db/schema/backupCourses";
+import { db, eq } from "@soco/backup-db";
+import {
+  backupCourseIdSchema,
   backupCourses,
-  backupCourseIdSchema 
+  insertBackupCourseSchema,
+  updateBackupCourseSchema,
 } from "@soco/backup-db/schema/backupCourses";
 
-export const createBackupCourse = async (backupCourse: NewBackupCourseParams) => {
+export const createBackupCourse = async (
+  backupCourse: NewBackupCourseParams,
+) => {
   const newBackupCourse = insertBackupCourseSchema.parse(backupCourse);
   try {
-    const [b] =  await db.insert(backupCourses).values(newBackupCourse).returning();
+    const [b] = await db
+      .insert(backupCourses)
+      .values(newBackupCourse)
+      .returning();
     return { backupCourse: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +28,18 @@ export const createBackupCourse = async (backupCourse: NewBackupCourseParams) =>
   }
 };
 
-export const updateBackupCourse = async (id: BackupCourseId, backupCourse: UpdateBackupCourseParams) => {
+export const updateBackupCourse = async (
+  id: BackupCourseId,
+  backupCourse: UpdateBackupCourseParams,
+) => {
   const { id: backupCourseId } = backupCourseIdSchema.parse({ id });
   const newBackupCourse = updateBackupCourseSchema.parse(backupCourse);
   try {
-    const [b] =  await db
-     .update(backupCourses)
-     .set({...newBackupCourse, updatedAt: new Date() })
-     .where(eq(backupCourses.id, backupCourseId!))
-     .returning();
+    const [b] = await db
+      .update(backupCourses)
+      .set({ ...newBackupCourse, updatedAt: new Date() })
+      .where(eq(backupCourses.id, backupCourseId!))
+      .returning();
     return { backupCourse: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +51,10 @@ export const updateBackupCourse = async (id: BackupCourseId, backupCourse: Updat
 export const deleteBackupCourse = async (id: BackupCourseId) => {
   const { id: backupCourseId } = backupCourseIdSchema.parse({ id });
   try {
-    const [b] =  await db.delete(backupCourses).where(eq(backupCourses.id, backupCourseId!))
-    .returning();
+    const [b] = await db
+      .delete(backupCourses)
+      .where(eq(backupCourses.id, backupCourseId!))
+      .returning();
     return { backupCourse: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +62,3 @@ export const deleteBackupCourse = async (id: BackupCourseId) => {
     throw { error: message };
   }
 };
-
