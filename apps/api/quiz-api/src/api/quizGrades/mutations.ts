@@ -1,21 +1,25 @@
-import { db } from "@soco/quiz-db/index";
 import { and, eq } from "drizzle-orm";
-import { 
-  QuizGradeId, 
+
+import { getUserAuth } from "@soco/auth-services";
+import { db } from "@soco/quiz-db/index";
+import {
+  insertQuizGradeSchema,
   NewQuizGradeParams,
-  UpdateQuizGradeParams, 
-  updateQuizGradeSchema,
-  insertQuizGradeSchema, 
+  QuizGradeId,
+  quizGradeIdSchema,
   quizGrades,
-  quizGradeIdSchema 
+  UpdateQuizGradeParams,
+  updateQuizGradeSchema,
 } from "@soco/quiz-db/schema/quizGrades";
-import { getUserAuth } from "@/lib/auth/utils";
 
 export const createQuizGrade = async (quizGrade: NewQuizGradeParams) => {
   const { session } = await getUserAuth();
-  const newQuizGrade = insertQuizGradeSchema.parse({ ...quizGrade, userId: session?.user.id! });
+  const newQuizGrade = insertQuizGradeSchema.parse({
+    ...quizGrade,
+    userId: session?.user.id!,
+  });
   try {
-    const [q] =  await db.insert(quizGrades).values(newQuizGrade).returning();
+    const [q] = await db.insert(quizGrades).values(newQuizGrade).returning();
     return { quizGrade: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +28,27 @@ export const createQuizGrade = async (quizGrade: NewQuizGradeParams) => {
   }
 };
 
-export const updateQuizGrade = async (id: QuizGradeId, quizGrade: UpdateQuizGradeParams) => {
+export const updateQuizGrade = async (
+  id: QuizGradeId,
+  quizGrade: UpdateQuizGradeParams,
+) => {
   const { session } = await getUserAuth();
   const { id: quizGradeId } = quizGradeIdSchema.parse({ id });
-  const newQuizGrade = updateQuizGradeSchema.parse({ ...quizGrade, userId: session?.user.id! });
+  const newQuizGrade = updateQuizGradeSchema.parse({
+    ...quizGrade,
+    userId: session?.user.id!,
+  });
   try {
-    const [q] =  await db
-     .update(quizGrades)
-     .set({...newQuizGrade, updatedAt: new Date() })
-     .where(and(eq(quizGrades.id, quizGradeId!), eq(quizGrades.userId, session?.user.id!)))
-     .returning();
+    const [q] = await db
+      .update(quizGrades)
+      .set({ ...newQuizGrade, updatedAt: new Date() })
+      .where(
+        and(
+          eq(quizGrades.id, quizGradeId!),
+          eq(quizGrades.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { quizGrade: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +61,15 @@ export const deleteQuizGrade = async (id: QuizGradeId) => {
   const { session } = await getUserAuth();
   const { id: quizGradeId } = quizGradeIdSchema.parse({ id });
   try {
-    const [q] =  await db.delete(quizGrades).where(and(eq(quizGrades.id, quizGradeId!), eq(quizGrades.userId, session?.user.id!)))
-    .returning();
+    const [q] = await db
+      .delete(quizGrades)
+      .where(
+        and(
+          eq(quizGrades.id, quizGradeId!),
+          eq(quizGrades.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { quizGrade: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +77,3 @@ export const deleteQuizGrade = async (id: QuizGradeId) => {
     throw { error: message };
   }
 };
-

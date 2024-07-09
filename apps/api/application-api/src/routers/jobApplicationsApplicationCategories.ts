@@ -1,19 +1,29 @@
-import { getJobApplicationsApplicationCategoryById, getJobApplicationsApplicationCategories } from "../api/jobApplicationsApplicationCategories/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  jobApplicationsApplicationCategoryIdSchema,
   insertJobApplicationsApplicationCategoryParams,
+  jobApplicationsApplicationCategoryIdSchema,
   updateJobApplicationsApplicationCategoryParams,
 } from "@soco/application-db/schema/jobApplicationsApplicationCategories";
-import { createJobApplicationsApplicationCategory, deleteJobApplicationsApplicationCategory, updateJobApplicationsApplicationCategory } from "../api/jobApplicationsApplicationCategories/mutations";
 
-export const jobApplicationsApplicationCategoriesRouter =createTRPCRouter({
+import {
+  createJobApplicationsApplicationCategory,
+  deleteJobApplicationsApplicationCategory,
+  updateJobApplicationsApplicationCategory,
+} from "../api/jobApplicationsApplicationCategories/mutations";
+import {
+  getJobApplicationsApplicationCategories,
+  getJobApplicationsApplicationCategoryById,
+} from "../api/jobApplicationsApplicationCategories/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const jobApplicationsApplicationCategoriesRouter = createTRPCRouter({
   getJobApplicationsApplicationCategories: publicProcedure.query(async () => {
     return getJobApplicationsApplicationCategories();
   }),
-  getJobApplicationsApplicationCategoryById: publicProcedure.input(jobApplicationsApplicationCategoryIdSchema).query(async ({ input }) => {
-    return getJobApplicationsApplicationCategoryById(input.id);
-  }),
+  getJobApplicationsApplicationCategoryById: publicProcedure
+    .input(jobApplicationsApplicationCategoryIdSchema)
+    .query(async ({ input }) => {
+      return getJobApplicationsApplicationCategoryById(input.id);
+    }),
   createJobApplicationsApplicationCategory: publicProcedure
     .input(insertJobApplicationsApplicationCategoryParams)
     .mutation(async ({ input }) => {

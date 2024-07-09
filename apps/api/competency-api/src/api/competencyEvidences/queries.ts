@@ -1,22 +1,36 @@
+import { and, eq } from "drizzle-orm";
+
+import type { CompetencyEvidenceId } from "@soco/competency-db/schema/competencyEvidences";
+import { getUserAuth } from "@soco/auth-services";
 import { db } from "@soco/competency-db/index";
-import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
-import { type CompetencyEvidenceId, competencyEvidenceIdSchema, competencyEvidences } from "@soco/competency-db/schema/competencyEvidences";
+import {
+  competencyEvidenceIdSchema,
+  competencyEvidences,
+} from "@soco/competency-db/schema/competencyEvidences";
 
 export const getCompetencyEvidences = async () => {
   const { session } = await getUserAuth();
-  const rows = await db.select().from(competencyEvidences).where(eq(competencyEvidences.userId, session?.user.id!));
-  const c = rows
+  const rows = await db
+    .select()
+    .from(competencyEvidences)
+    .where(eq(competencyEvidences.userId, session?.user.id!));
+  const c = rows;
   return { competencyEvidences: c };
 };
 
 export const getCompetencyEvidenceById = async (id: CompetencyEvidenceId) => {
   const { session } = await getUserAuth();
   const { id: competencyEvidenceId } = competencyEvidenceIdSchema.parse({ id });
-  const [row] = await db.select().from(competencyEvidences).where(and(eq(competencyEvidences.id, competencyEvidenceId), eq(competencyEvidences.userId, session?.user.id!)));
+  const [row] = await db
+    .select()
+    .from(competencyEvidences)
+    .where(
+      and(
+        eq(competencyEvidences.id, competencyEvidenceId),
+        eq(competencyEvidences.userId, session?.user.id!),
+      ),
+    );
   if (row === undefined) return {};
   const c = row;
   return { competencyEvidence: c };
 };
-
-

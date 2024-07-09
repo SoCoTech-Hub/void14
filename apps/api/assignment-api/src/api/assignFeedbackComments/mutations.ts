@@ -1,19 +1,27 @@
-import { db } from "@soco/assignment-db/index";
-import { eq } from "drizzle-orm";
-import { 
-  AssignFeedbackCommentId, 
+import type {
+  AssignFeedbackCommentId,
   NewAssignFeedbackCommentParams,
-  UpdateAssignFeedbackCommentParams, 
-  updateAssignFeedbackCommentSchema,
-  insertAssignFeedbackCommentSchema, 
+  UpdateAssignFeedbackCommentParams,
+} from "@soco/assignment-db/schema/assignFeedbackComments";
+import { db, eq } from "@soco/assignment-db";
+import {
+  assignFeedbackCommentIdSchema,
   assignFeedbackComments,
-  assignFeedbackCommentIdSchema 
+  insertAssignFeedbackCommentSchema,
+  updateAssignFeedbackCommentSchema,
 } from "@soco/assignment-db/schema/assignFeedbackComments";
 
-export const createAssignFeedbackComment = async (assignFeedbackComment: NewAssignFeedbackCommentParams) => {
-  const newAssignFeedbackComment = insertAssignFeedbackCommentSchema.parse(assignFeedbackComment);
+export const createAssignFeedbackComment = async (
+  assignFeedbackComment: NewAssignFeedbackCommentParams,
+) => {
+  const newAssignFeedbackComment = insertAssignFeedbackCommentSchema.parse(
+    assignFeedbackComment,
+  );
   try {
-    const [a] =  await db.insert(assignFeedbackComments).values(newAssignFeedbackComment).returning();
+    const [a] = await db
+      .insert(assignFeedbackComments)
+      .values(newAssignFeedbackComment)
+      .returning();
     return { assignFeedbackComment: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,22 @@ export const createAssignFeedbackComment = async (assignFeedbackComment: NewAssi
   }
 };
 
-export const updateAssignFeedbackComment = async (id: AssignFeedbackCommentId, assignFeedbackComment: UpdateAssignFeedbackCommentParams) => {
-  const { id: assignFeedbackCommentId } = assignFeedbackCommentIdSchema.parse({ id });
-  const newAssignFeedbackComment = updateAssignFeedbackCommentSchema.parse(assignFeedbackComment);
+export const updateAssignFeedbackComment = async (
+  id: AssignFeedbackCommentId,
+  assignFeedbackComment: UpdateAssignFeedbackCommentParams,
+) => {
+  const { id: assignFeedbackCommentId } = assignFeedbackCommentIdSchema.parse({
+    id,
+  });
+  const newAssignFeedbackComment = updateAssignFeedbackCommentSchema.parse(
+    assignFeedbackComment,
+  );
   try {
-    const [a] =  await db
-     .update(assignFeedbackComments)
-     .set({...newAssignFeedbackComment, updatedAt: new Date() })
-     .where(eq(assignFeedbackComments.id, assignFeedbackCommentId!))
-     .returning();
+    const [a] = await db
+      .update(assignFeedbackComments)
+      .set({ ...newAssignFeedbackComment, updatedAt: new Date() })
+      .where(eq(assignFeedbackComments.id, assignFeedbackCommentId!))
+      .returning();
     return { assignFeedbackComment: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +54,17 @@ export const updateAssignFeedbackComment = async (id: AssignFeedbackCommentId, a
   }
 };
 
-export const deleteAssignFeedbackComment = async (id: AssignFeedbackCommentId) => {
-  const { id: assignFeedbackCommentId } = assignFeedbackCommentIdSchema.parse({ id });
+export const deleteAssignFeedbackComment = async (
+  id: AssignFeedbackCommentId,
+) => {
+  const { id: assignFeedbackCommentId } = assignFeedbackCommentIdSchema.parse({
+    id,
+  });
   try {
-    const [a] =  await db.delete(assignFeedbackComments).where(eq(assignFeedbackComments.id, assignFeedbackCommentId!))
-    .returning();
+    const [a] = await db
+      .delete(assignFeedbackComments)
+      .where(eq(assignFeedbackComments.id, assignFeedbackCommentId!))
+      .returning();
     return { assignFeedbackComment: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +72,3 @@ export const deleteAssignFeedbackComment = async (id: AssignFeedbackCommentId) =
     throw { error: message };
   }
 };
-

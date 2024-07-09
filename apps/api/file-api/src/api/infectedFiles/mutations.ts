@@ -1,21 +1,30 @@
-import { db } from "@soco/file-db/index";
 import { and, eq } from "drizzle-orm";
-import { 
-  InfectedFileId, 
-  NewInfectedFileParams,
-  UpdateInfectedFileParams, 
-  updateInfectedFileSchema,
-  insertInfectedFileSchema, 
-  infectedFiles,
-  infectedFileIdSchema 
-} from "@soco/file-db/schema/infectedFiles";
-import { getUserAuth } from "@/lib/auth/utils";
 
-export const createInfectedFile = async (infectedFile: NewInfectedFileParams) => {
+import { getUserAuth } from "@soco/auth-services";
+import { db } from "@soco/file-db/index";
+import {
+  InfectedFileId,
+  infectedFileIdSchema,
+  infectedFiles,
+  insertInfectedFileSchema,
+  NewInfectedFileParams,
+  UpdateInfectedFileParams,
+  updateInfectedFileSchema,
+} from "@soco/file-db/schema/infectedFiles";
+
+export const createInfectedFile = async (
+  infectedFile: NewInfectedFileParams,
+) => {
   const { session } = await getUserAuth();
-  const newInfectedFile = insertInfectedFileSchema.parse({ ...infectedFile, userId: session?.user.id! });
+  const newInfectedFile = insertInfectedFileSchema.parse({
+    ...infectedFile,
+    userId: session?.user.id!,
+  });
   try {
-    const [i] =  await db.insert(infectedFiles).values(newInfectedFile).returning();
+    const [i] = await db
+      .insert(infectedFiles)
+      .values(newInfectedFile)
+      .returning();
     return { infectedFile: i };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +33,27 @@ export const createInfectedFile = async (infectedFile: NewInfectedFileParams) =>
   }
 };
 
-export const updateInfectedFile = async (id: InfectedFileId, infectedFile: UpdateInfectedFileParams) => {
+export const updateInfectedFile = async (
+  id: InfectedFileId,
+  infectedFile: UpdateInfectedFileParams,
+) => {
   const { session } = await getUserAuth();
   const { id: infectedFileId } = infectedFileIdSchema.parse({ id });
-  const newInfectedFile = updateInfectedFileSchema.parse({ ...infectedFile, userId: session?.user.id! });
+  const newInfectedFile = updateInfectedFileSchema.parse({
+    ...infectedFile,
+    userId: session?.user.id!,
+  });
   try {
-    const [i] =  await db
-     .update(infectedFiles)
-     .set({...newInfectedFile, updatedAt: new Date() })
-     .where(and(eq(infectedFiles.id, infectedFileId!), eq(infectedFiles.userId, session?.user.id!)))
-     .returning();
+    const [i] = await db
+      .update(infectedFiles)
+      .set({ ...newInfectedFile, updatedAt: new Date() })
+      .where(
+        and(
+          eq(infectedFiles.id, infectedFileId!),
+          eq(infectedFiles.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { infectedFile: i };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +66,15 @@ export const deleteInfectedFile = async (id: InfectedFileId) => {
   const { session } = await getUserAuth();
   const { id: infectedFileId } = infectedFileIdSchema.parse({ id });
   try {
-    const [i] =  await db.delete(infectedFiles).where(and(eq(infectedFiles.id, infectedFileId!), eq(infectedFiles.userId, session?.user.id!)))
-    .returning();
+    const [i] = await db
+      .delete(infectedFiles)
+      .where(
+        and(
+          eq(infectedFiles.id, infectedFileId!),
+          eq(infectedFiles.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { infectedFile: i };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +82,3 @@ export const deleteInfectedFile = async (id: InfectedFileId) => {
     throw { error: message };
   }
 };
-

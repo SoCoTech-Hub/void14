@@ -1,19 +1,29 @@
-import { getAnalyticsUsedFileById, getAnalyticsUsedFiles } from "../api/analyticsUsedFiles/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   analyticsUsedFileIdSchema,
   insertAnalyticsUsedFileParams,
   updateAnalyticsUsedFileParams,
 } from "@soco/analytics-db/schema/analyticsUsedFiles";
-import { createAnalyticsUsedFile, deleteAnalyticsUsedFile, updateAnalyticsUsedFile } from "../api/analyticsUsedFiles/mutations";
 
-export const analyticsUsedFilesRouter =createTRPCRouter({
+import {
+  createAnalyticsUsedFile,
+  deleteAnalyticsUsedFile,
+  updateAnalyticsUsedFile,
+} from "../api/analyticsUsedFiles/mutations";
+import {
+  getAnalyticsUsedFileById,
+  getAnalyticsUsedFiles,
+} from "../api/analyticsUsedFiles/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const analyticsUsedFilesRouter = createTRPCRouter({
   getAnalyticsUsedFiles: publicProcedure.query(async () => {
     return getAnalyticsUsedFiles();
   }),
-  getAnalyticsUsedFileById: publicProcedure.input(analyticsUsedFileIdSchema).query(async ({ input }) => {
-    return getAnalyticsUsedFileById(input.id);
-  }),
+  getAnalyticsUsedFileById: publicProcedure
+    .input(analyticsUsedFileIdSchema)
+    .query(async ({ input }) => {
+      return getAnalyticsUsedFileById(input.id);
+    }),
   createAnalyticsUsedFile: publicProcedure
     .input(insertAnalyticsUsedFileParams)
     .mutation(async ({ input }) => {

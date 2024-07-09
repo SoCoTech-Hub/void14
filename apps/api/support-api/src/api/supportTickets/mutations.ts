@@ -1,21 +1,30 @@
-import { db } from "@soco/support-db/index";
 import { and, eq } from "drizzle-orm";
-import { 
-  SupportTicketId, 
-  NewSupportTicketParams,
-  UpdateSupportTicketParams, 
-  updateSupportTicketSchema,
-  insertSupportTicketSchema, 
-  supportTickets,
-  supportTicketIdSchema 
-} from "@soco/support-db/schema/supportTickets";
-import { getUserAuth } from "@/lib/auth/utils";
 
-export const createSupportTicket = async (supportTicket: NewSupportTicketParams) => {
+import { getUserAuth } from "@soco/auth-services";
+import { db } from "@soco/support-db/index";
+import {
+  insertSupportTicketSchema,
+  NewSupportTicketParams,
+  SupportTicketId,
+  supportTicketIdSchema,
+  supportTickets,
+  UpdateSupportTicketParams,
+  updateSupportTicketSchema,
+} from "@soco/support-db/schema/supportTickets";
+
+export const createSupportTicket = async (
+  supportTicket: NewSupportTicketParams,
+) => {
   const { session } = await getUserAuth();
-  const newSupportTicket = insertSupportTicketSchema.parse({ ...supportTicket, userId: session?.user.id! });
+  const newSupportTicket = insertSupportTicketSchema.parse({
+    ...supportTicket,
+    userId: session?.user.id!,
+  });
   try {
-    const [s] =  await db.insert(supportTickets).values(newSupportTicket).returning();
+    const [s] = await db
+      .insert(supportTickets)
+      .values(newSupportTicket)
+      .returning();
     return { supportTicket: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +33,27 @@ export const createSupportTicket = async (supportTicket: NewSupportTicketParams)
   }
 };
 
-export const updateSupportTicket = async (id: SupportTicketId, supportTicket: UpdateSupportTicketParams) => {
+export const updateSupportTicket = async (
+  id: SupportTicketId,
+  supportTicket: UpdateSupportTicketParams,
+) => {
   const { session } = await getUserAuth();
   const { id: supportTicketId } = supportTicketIdSchema.parse({ id });
-  const newSupportTicket = updateSupportTicketSchema.parse({ ...supportTicket, userId: session?.user.id! });
+  const newSupportTicket = updateSupportTicketSchema.parse({
+    ...supportTicket,
+    userId: session?.user.id!,
+  });
   try {
-    const [s] =  await db
-     .update(supportTickets)
-     .set({...newSupportTicket, updatedAt: new Date() })
-     .where(and(eq(supportTickets.id, supportTicketId!), eq(supportTickets.userId, session?.user.id!)))
-     .returning();
+    const [s] = await db
+      .update(supportTickets)
+      .set({ ...newSupportTicket, updatedAt: new Date() })
+      .where(
+        and(
+          eq(supportTickets.id, supportTicketId!),
+          eq(supportTickets.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { supportTicket: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +66,15 @@ export const deleteSupportTicket = async (id: SupportTicketId) => {
   const { session } = await getUserAuth();
   const { id: supportTicketId } = supportTicketIdSchema.parse({ id });
   try {
-    const [s] =  await db.delete(supportTickets).where(and(eq(supportTickets.id, supportTicketId!), eq(supportTickets.userId, session?.user.id!)))
-    .returning();
+    const [s] = await db
+      .delete(supportTickets)
+      .where(
+        and(
+          eq(supportTickets.id, supportTicketId!),
+          eq(supportTickets.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { supportTicket: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +82,3 @@ export const deleteSupportTicket = async (id: SupportTicketId) => {
     throw { error: message };
   }
 };
-

@@ -1,22 +1,36 @@
+import { and, eq } from "drizzle-orm";
+
+import type { BlogExternalId } from "@soco/blog-db/schema/blogExternals";
+import { getUserAuth } from "@soco/auth-services";
 import { db } from "@soco/blog-db/index";
-import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
-import { type BlogExternalId, blogExternalIdSchema, blogExternals } from "@soco/blog-db/schema/blogExternals";
+import {
+  blogExternalIdSchema,
+  blogExternals,
+} from "@soco/blog-db/schema/blogExternals";
 
 export const getBlogExternals = async () => {
   const { session } = await getUserAuth();
-  const rows = await db.select().from(blogExternals).where(eq(blogExternals.userId, session?.user.id!));
-  const b = rows
+  const rows = await db
+    .select()
+    .from(blogExternals)
+    .where(eq(blogExternals.userId, session?.user.id!));
+  const b = rows;
   return { blogExternals: b };
 };
 
 export const getBlogExternalById = async (id: BlogExternalId) => {
   const { session } = await getUserAuth();
   const { id: blogExternalId } = blogExternalIdSchema.parse({ id });
-  const [row] = await db.select().from(blogExternals).where(and(eq(blogExternals.id, blogExternalId), eq(blogExternals.userId, session?.user.id!)));
+  const [row] = await db
+    .select()
+    .from(blogExternals)
+    .where(
+      and(
+        eq(blogExternals.id, blogExternalId),
+        eq(blogExternals.userId, session?.user.id!),
+      ),
+    );
   if (row === undefined) return {};
   const b = row;
   return { blogExternal: b };
 };
-
-

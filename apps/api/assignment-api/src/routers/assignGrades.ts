@@ -1,19 +1,29 @@
-import { getAssignGradeById, getAssignGrades } from "../api/assignGrades/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   assignGradeIdSchema,
   insertAssignGradeParams,
   updateAssignGradeParams,
 } from "@soco/assignment-db/schema/assignGrades";
-import { createAssignGrade, deleteAssignGrade, updateAssignGrade } from "../api/assignGrades/mutations";
 
-export const assignGradesRouter =createTRPCRouter({
+import {
+  createAssignGrade,
+  deleteAssignGrade,
+  updateAssignGrade,
+} from "../api/assignGrades/mutations";
+import {
+  getAssignGradeById,
+  getAssignGrades,
+} from "../api/assignGrades/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const assignGradesRouter = createTRPCRouter({
   getAssignGrades: publicProcedure.query(async () => {
     return getAssignGrades();
   }),
-  getAssignGradeById: publicProcedure.input(assignGradeIdSchema).query(async ({ input }) => {
-    return getAssignGradeById(input.id);
-  }),
+  getAssignGradeById: publicProcedure
+    .input(assignGradeIdSchema)
+    .query(async ({ input }) => {
+      return getAssignGradeById(input.id);
+    }),
   createAssignGrade: publicProcedure
     .input(insertAssignGradeParams)
     .mutation(async ({ input }) => {

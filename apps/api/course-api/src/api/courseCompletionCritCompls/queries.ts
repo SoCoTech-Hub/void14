@@ -1,23 +1,51 @@
+import { and, eq } from "drizzle-orm";
+
+import type { CourseCompletionCritComplId } from "@soco/course-db/schema/courseCompletionCritCompls";
+import { getUserAuth } from "@soco/auth-services";
 import { db } from "@soco/course-db/index";
-import { eq, and } from "drizzle-orm";
-import { getUserAuth } from "@/lib/auth/utils";
-import { type CourseCompletionCritComplId, courseCompletionCritComplIdSchema, courseCompletionCritCompls } from "@soco/course-db/schema/courseCompletionCritCompls";
+import {
+  courseCompletionCritComplIdSchema,
+  courseCompletionCritCompls,
+} from "@soco/course-db/schema/courseCompletionCritCompls";
 import { courses } from "@soco/course-db/schema/courses";
 
 export const getCourseCompletionCritCompls = async () => {
   const { session } = await getUserAuth();
-  const rows = await db.select({ courseCompletionCritCompl: courseCompletionCritCompls, course: courses }).from(courseCompletionCritCompls).leftJoin(courses, eq(courseCompletionCritCompls.courseId, courses.id)).where(eq(courseCompletionCritCompls.userId, session?.user.id!));
-  const c = rows .map((r) => ({ ...r.courseCompletionCritCompl, course: r.course})); 
+  const rows = await db
+    .select({
+      courseCompletionCritCompl: courseCompletionCritCompls,
+      course: courses,
+    })
+    .from(courseCompletionCritCompls)
+    .leftJoin(courses, eq(courseCompletionCritCompls.courseId, courses.id))
+    .where(eq(courseCompletionCritCompls.userId, session?.user.id!));
+  const c = rows.map((r) => ({
+    ...r.courseCompletionCritCompl,
+    course: r.course,
+  }));
   return { courseCompletionCritCompls: c };
 };
 
-export const getCourseCompletionCritComplById = async (id: CourseCompletionCritComplId) => {
+export const getCourseCompletionCritComplById = async (
+  id: CourseCompletionCritComplId,
+) => {
   const { session } = await getUserAuth();
-  const { id: courseCompletionCritComplId } = courseCompletionCritComplIdSchema.parse({ id });
-  const [row] = await db.select({ courseCompletionCritCompl: courseCompletionCritCompls, course: courses }).from(courseCompletionCritCompls).where(and(eq(courseCompletionCritCompls.id, courseCompletionCritComplId), eq(courseCompletionCritCompls.userId, session?.user.id!))).leftJoin(courses, eq(courseCompletionCritCompls.courseId, courses.id));
+  const { id: courseCompletionCritComplId } =
+    courseCompletionCritComplIdSchema.parse({ id });
+  const [row] = await db
+    .select({
+      courseCompletionCritCompl: courseCompletionCritCompls,
+      course: courses,
+    })
+    .from(courseCompletionCritCompls)
+    .where(
+      and(
+        eq(courseCompletionCritCompls.id, courseCompletionCritComplId),
+        eq(courseCompletionCritCompls.userId, session?.user.id!),
+      ),
+    )
+    .leftJoin(courses, eq(courseCompletionCritCompls.courseId, courses.id));
   if (row === undefined) return {};
-  const c =  { ...row.courseCompletionCritCompl, course: row.course } ;
+  const c = { ...row.courseCompletionCritCompl, course: row.course };
   return { courseCompletionCritCompl: c };
 };
-
-

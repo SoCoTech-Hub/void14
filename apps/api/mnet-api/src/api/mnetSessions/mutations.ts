@@ -1,21 +1,28 @@
-import { db } from "@soco/mnet-db/index";
 import { and, eq } from "drizzle-orm";
-import { 
-  MnetSessionId, 
-  NewMnetSessionParams,
-  UpdateMnetSessionParams, 
-  updateMnetSessionSchema,
-  insertMnetSessionSchema, 
+
+import { getUserAuth } from "@soco/auth-services";
+import { db } from "@soco/mnet-db/index";
+import {
+  insertMnetSessionSchema,
+  MnetSessionId,
+  mnetSessionIdSchema,
   mnetSessions,
-  mnetSessionIdSchema 
+  NewMnetSessionParams,
+  UpdateMnetSessionParams,
+  updateMnetSessionSchema,
 } from "@soco/mnet-db/schema/mnetSessions";
-import { getUserAuth } from "@/lib/auth/utils";
 
 export const createMnetSession = async (mnetSession: NewMnetSessionParams) => {
   const { session } = await getUserAuth();
-  const newMnetSession = insertMnetSessionSchema.parse({ ...mnetSession, userId: session?.user.id! });
+  const newMnetSession = insertMnetSessionSchema.parse({
+    ...mnetSession,
+    userId: session?.user.id!,
+  });
   try {
-    const [m] =  await db.insert(mnetSessions).values(newMnetSession).returning();
+    const [m] = await db
+      .insert(mnetSessions)
+      .values(newMnetSession)
+      .returning();
     return { mnetSession: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +31,27 @@ export const createMnetSession = async (mnetSession: NewMnetSessionParams) => {
   }
 };
 
-export const updateMnetSession = async (id: MnetSessionId, mnetSession: UpdateMnetSessionParams) => {
+export const updateMnetSession = async (
+  id: MnetSessionId,
+  mnetSession: UpdateMnetSessionParams,
+) => {
   const { session } = await getUserAuth();
   const { id: mnetSessionId } = mnetSessionIdSchema.parse({ id });
-  const newMnetSession = updateMnetSessionSchema.parse({ ...mnetSession, userId: session?.user.id! });
+  const newMnetSession = updateMnetSessionSchema.parse({
+    ...mnetSession,
+    userId: session?.user.id!,
+  });
   try {
-    const [m] =  await db
-     .update(mnetSessions)
-     .set(newMnetSession)
-     .where(and(eq(mnetSessions.id, mnetSessionId!), eq(mnetSessions.userId, session?.user.id!)))
-     .returning();
+    const [m] = await db
+      .update(mnetSessions)
+      .set(newMnetSession)
+      .where(
+        and(
+          eq(mnetSessions.id, mnetSessionId!),
+          eq(mnetSessions.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { mnetSession: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +64,15 @@ export const deleteMnetSession = async (id: MnetSessionId) => {
   const { session } = await getUserAuth();
   const { id: mnetSessionId } = mnetSessionIdSchema.parse({ id });
   try {
-    const [m] =  await db.delete(mnetSessions).where(and(eq(mnetSessions.id, mnetSessionId!), eq(mnetSessions.userId, session?.user.id!)))
-    .returning();
+    const [m] = await db
+      .delete(mnetSessions)
+      .where(
+        and(
+          eq(mnetSessions.id, mnetSessionId!),
+          eq(mnetSessions.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { mnetSession: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +80,3 @@ export const deleteMnetSession = async (id: MnetSessionId) => {
     throw { error: message };
   }
 };
-
