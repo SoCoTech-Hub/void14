@@ -84,9 +84,9 @@
     "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-slot": "^1.0.2",
     "@soco/utils": "workspace:*",
-    "react": "^18",
+    "react": "18.3.1",
     "react-day-picker": "^8.10.0",
-    "react-dom": "^18",
+    "react-dom": "18.3.1",
     "react-hook-form": "^7.51.5",
     "zod": "^3.23.8"
   },
@@ -95,8 +95,8 @@
     "@soco/prettier-config": "workspace:*",
     "@soco/tsconfig": "workspace:*",
     "eslint": "^8",
-    "prettier": "^3.3.1",
-    "typescript": "^5.4.5"
+    "prettier": "^3.3.2",
+    "typescript": "^5.5.3"
   },
   "prettier": "@soco/prettier-config"
 }

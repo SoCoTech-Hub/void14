@@ -2,6 +2,9 @@ packages:
   - apps/api/*
   - apps/dashboard/*
   - apps/frontend/*
-  - packages/*
+  - packages/auth-service
   - packages/db/*
+  - packages/ui
+  - packages/utils
+  - packages/validators
   - tooling/*

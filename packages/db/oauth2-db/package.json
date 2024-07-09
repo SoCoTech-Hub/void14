@@ -62,10 +62,10 @@
     "@soco/prettier-config": "workspace:*",
     "@soco/tsconfig": "workspace:*",
     "dotenv-cli": "^7.4.2",
-    "drizzle-kit": "^0.22.7",
+    "drizzle-kit": "^0.22.8",
     "eslint": "^8",
     "prettier": "^3.3.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.5.3"
   },
   "prettier": "@soco/prettier-config"
 }
