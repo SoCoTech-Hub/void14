@@ -1,21 +1,30 @@
-import { db } from "@soco/course-db/index";
 import { and, eq } from "drizzle-orm";
-import { 
-  CourseRequestId, 
-  NewCourseRequestParams,
-  UpdateCourseRequestParams, 
-  updateCourseRequestSchema,
-  insertCourseRequestSchema, 
-  courseRequests,
-  courseRequestIdSchema 
-} from "@soco/course-db/schema/courseRequests";
-import { getUserAuth } from "@/lib/auth/utils";
 
-export const createCourseRequest = async (courseRequest: NewCourseRequestParams) => {
+import { getUserAuth } from "@soco/auth-services";
+import { db } from "@soco/course-db/index";
+import {
+  CourseRequestId,
+  courseRequestIdSchema,
+  courseRequests,
+  insertCourseRequestSchema,
+  NewCourseRequestParams,
+  UpdateCourseRequestParams,
+  updateCourseRequestSchema,
+} from "@soco/course-db/schema/courseRequests";
+
+export const createCourseRequest = async (
+  courseRequest: NewCourseRequestParams,
+) => {
   const { session } = await getUserAuth();
-  const newCourseRequest = insertCourseRequestSchema.parse({ ...courseRequest, userId: session?.user.id! });
+  const newCourseRequest = insertCourseRequestSchema.parse({
+    ...courseRequest,
+    userId: session?.user.id!,
+  });
   try {
-    const [c] =  await db.insert(courseRequests).values(newCourseRequest).returning();
+    const [c] = await db
+      .insert(courseRequests)
+      .values(newCourseRequest)
+      .returning();
     return { courseRequest: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +33,27 @@ export const createCourseRequest = async (courseRequest: NewCourseRequestParams)
   }
 };
 
-export const updateCourseRequest = async (id: CourseRequestId, courseRequest: UpdateCourseRequestParams) => {
+export const updateCourseRequest = async (
+  id: CourseRequestId,
+  courseRequest: UpdateCourseRequestParams,
+) => {
   const { session } = await getUserAuth();
   const { id: courseRequestId } = courseRequestIdSchema.parse({ id });
-  const newCourseRequest = updateCourseRequestSchema.parse({ ...courseRequest, userId: session?.user.id! });
+  const newCourseRequest = updateCourseRequestSchema.parse({
+    ...courseRequest,
+    userId: session?.user.id!,
+  });
   try {
-    const [c] =  await db
-     .update(courseRequests)
-     .set({...newCourseRequest, updatedAt: new Date() })
-     .where(and(eq(courseRequests.id, courseRequestId!), eq(courseRequests.userId, session?.user.id!)))
-     .returning();
+    const [c] = await db
+      .update(courseRequests)
+      .set({ ...newCourseRequest, updatedAt: new Date() })
+      .where(
+        and(
+          eq(courseRequests.id, courseRequestId!),
+          eq(courseRequests.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { courseRequest: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +66,15 @@ export const deleteCourseRequest = async (id: CourseRequestId) => {
   const { session } = await getUserAuth();
   const { id: courseRequestId } = courseRequestIdSchema.parse({ id });
   try {
-    const [c] =  await db.delete(courseRequests).where(and(eq(courseRequests.id, courseRequestId!), eq(courseRequests.userId, session?.user.id!)))
-    .returning();
+    const [c] = await db
+      .delete(courseRequests)
+      .where(
+        and(
+          eq(courseRequests.id, courseRequestId!),
+          eq(courseRequests.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { courseRequest: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +82,3 @@ export const deleteCourseRequest = async (id: CourseRequestId) => {
     throw { error: message };
   }
 };
-

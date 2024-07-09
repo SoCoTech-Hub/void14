@@ -1,13 +1,12 @@
+import { adminPresetAppPlugsRouter } from "./routers/adminPresetAppPlugs";
+import { adminPresetItAsRouter } from "./routers/adminPresetItAs";
+import { adminPresetItsRouter } from "./routers/adminPresetIts";
+import { adminPresetPlugsRouter } from "./routers/adminPresetPlugs";
+import { adminPresetsRouter } from "./routers/adminPresets";
+import { adminpresetsAppItAsRouter } from "./routers/adminpresetsAppItAs";
+import { adminpresetsAppItsRouter } from "./routers/adminpresetsAppIts";
+import { adminPresetsAppsRouter } from "./routers/adminPresetsApps";
 import { createTRPCRouter } from "./trpc";
-
-import { adminPresetAppPlugsRouter } from './routers/adminPresetAppPlugs';
-import { adminPresetItAsRouter } from './routers/adminPresetItAs';
-import { adminPresetItsRouter } from './routers/adminPresetIts';
-import { adminPresetPlugsRouter } from './routers/adminPresetPlugs';
-import { adminPresetsRouter } from './routers/adminPresets';
-import { adminpresetsAppItAsRouter } from './routers/adminpresetsAppItAs';
-import { adminpresetsAppItsRouter } from './routers/adminpresetsAppIts';
-import { adminPresetsAppsRouter } from './routers/adminPresetsApps';
 
 export const appRouter = createTRPCRouter({
   adminPresetAppPlugs: adminPresetAppPlugsRouter,

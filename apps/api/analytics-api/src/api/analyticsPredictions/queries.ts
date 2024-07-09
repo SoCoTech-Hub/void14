@@ -1,19 +1,25 @@
-import { db } from "@soco/analytics-db/index";
-import { eq } from "drizzle-orm";
-import { type AnalyticsPredictionId, analyticsPredictionIdSchema, analyticsPredictions } from "@soco/analytics-db/schema/analyticsPredictions";
+import type { AnalyticsPredictionId } from "@soco/analytics-db/schema/analyticsPredictions";
+import { db, eq } from "@soco/analytics-db";
+import {
+  analyticsPredictionIdSchema,
+  analyticsPredictions,
+} from "@soco/analytics-db/schema/analyticsPredictions";
 
 export const getAnalyticsPredictions = async () => {
   const rows = await db.select().from(analyticsPredictions);
-  const a = rows
+  const a = rows;
   return { analyticsPredictions: a };
 };
 
 export const getAnalyticsPredictionById = async (id: AnalyticsPredictionId) => {
-  const { id: analyticsPredictionId } = analyticsPredictionIdSchema.parse({ id });
-  const [row] = await db.select().from(analyticsPredictions).where(eq(analyticsPredictions.id, analyticsPredictionId));
+  const { id: analyticsPredictionId } = analyticsPredictionIdSchema.parse({
+    id,
+  });
+  const [row] = await db
+    .select()
+    .from(analyticsPredictions)
+    .where(eq(analyticsPredictions.id, analyticsPredictionId));
   if (row === undefined) return {};
   const a = row;
   return { analyticsPrediction: a };
 };
-
-

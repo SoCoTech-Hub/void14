@@ -1,19 +1,27 @@
-import { db } from "@soco/analytics-db/index";
-import { eq } from "drizzle-orm";
-import { 
-  AnalyticsUsedAnalysableId, 
+import type {
+  AnalyticsUsedAnalysableId,
   NewAnalyticsUsedAnalysableParams,
-  UpdateAnalyticsUsedAnalysableParams, 
-  updateAnalyticsUsedAnalysableSchema,
-  insertAnalyticsUsedAnalysableSchema, 
+  UpdateAnalyticsUsedAnalysableParams,
+} from "@soco/analytics-db/schema/analyticsUsedAnalysables";
+import { db, eq } from "@soco/analytics-db";
+import {
+  analyticsUsedAnalysableIdSchema,
   analyticsUsedAnalysables,
-  analyticsUsedAnalysableIdSchema 
+  insertAnalyticsUsedAnalysableSchema,
+  updateAnalyticsUsedAnalysableSchema,
 } from "@soco/analytics-db/schema/analyticsUsedAnalysables";
 
-export const createAnalyticsUsedAnalysable = async (analyticsUsedAnalysable: NewAnalyticsUsedAnalysableParams) => {
-  const newAnalyticsUsedAnalysable = insertAnalyticsUsedAnalysableSchema.parse(analyticsUsedAnalysable);
+export const createAnalyticsUsedAnalysable = async (
+  analyticsUsedAnalysable: NewAnalyticsUsedAnalysableParams,
+) => {
+  const newAnalyticsUsedAnalysable = insertAnalyticsUsedAnalysableSchema.parse(
+    analyticsUsedAnalysable,
+  );
   try {
-    const [a] =  await db.insert(analyticsUsedAnalysables).values(newAnalyticsUsedAnalysable).returning();
+    const [a] = await db
+      .insert(analyticsUsedAnalysables)
+      .values(newAnalyticsUsedAnalysable)
+      .returning();
     return { analyticsUsedAnalysable: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,21 @@ export const createAnalyticsUsedAnalysable = async (analyticsUsedAnalysable: New
   }
 };
 
-export const updateAnalyticsUsedAnalysable = async (id: AnalyticsUsedAnalysableId, analyticsUsedAnalysable: UpdateAnalyticsUsedAnalysableParams) => {
-  const { id: analyticsUsedAnalysableId } = analyticsUsedAnalysableIdSchema.parse({ id });
-  const newAnalyticsUsedAnalysable = updateAnalyticsUsedAnalysableSchema.parse(analyticsUsedAnalysable);
+export const updateAnalyticsUsedAnalysable = async (
+  id: AnalyticsUsedAnalysableId,
+  analyticsUsedAnalysable: UpdateAnalyticsUsedAnalysableParams,
+) => {
+  const { id: analyticsUsedAnalysableId } =
+    analyticsUsedAnalysableIdSchema.parse({ id });
+  const newAnalyticsUsedAnalysable = updateAnalyticsUsedAnalysableSchema.parse(
+    analyticsUsedAnalysable,
+  );
   try {
-    const [a] =  await db
-     .update(analyticsUsedAnalysables)
-     .set({...newAnalyticsUsedAnalysable, updatedAt: new Date() })
-     .where(eq(analyticsUsedAnalysables.id, analyticsUsedAnalysableId!))
-     .returning();
+    const [a] = await db
+      .update(analyticsUsedAnalysables)
+      .set({ ...newAnalyticsUsedAnalysable, updatedAt: new Date() })
+      .where(eq(analyticsUsedAnalysables.id, analyticsUsedAnalysableId!))
+      .returning();
     return { analyticsUsedAnalysable: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +53,16 @@ export const updateAnalyticsUsedAnalysable = async (id: AnalyticsUsedAnalysableI
   }
 };
 
-export const deleteAnalyticsUsedAnalysable = async (id: AnalyticsUsedAnalysableId) => {
-  const { id: analyticsUsedAnalysableId } = analyticsUsedAnalysableIdSchema.parse({ id });
+export const deleteAnalyticsUsedAnalysable = async (
+  id: AnalyticsUsedAnalysableId,
+) => {
+  const { id: analyticsUsedAnalysableId } =
+    analyticsUsedAnalysableIdSchema.parse({ id });
   try {
-    const [a] =  await db.delete(analyticsUsedAnalysables).where(eq(analyticsUsedAnalysables.id, analyticsUsedAnalysableId!))
-    .returning();
+    const [a] = await db
+      .delete(analyticsUsedAnalysables)
+      .where(eq(analyticsUsedAnalysables.id, analyticsUsedAnalysableId!))
+      .returning();
     return { analyticsUsedAnalysable: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +70,3 @@ export const deleteAnalyticsUsedAnalysable = async (id: AnalyticsUsedAnalysableI
     throw { error: message };
   }
 };
-

@@ -1,19 +1,29 @@
-import { getApplicationResponseById, getApplicationResponses } from "../api/applicationResponses/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   applicationResponseIdSchema,
   insertApplicationResponseParams,
   updateApplicationResponseParams,
 } from "@soco/application-db/schema/applicationResponses";
-import { createApplicationResponse, deleteApplicationResponse, updateApplicationResponse } from "../api/applicationResponses/mutations";
 
-export const applicationResponsesRouter =createTRPCRouter({
+import {
+  createApplicationResponse,
+  deleteApplicationResponse,
+  updateApplicationResponse,
+} from "../api/applicationResponses/mutations";
+import {
+  getApplicationResponseById,
+  getApplicationResponses,
+} from "../api/applicationResponses/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const applicationResponsesRouter = createTRPCRouter({
   getApplicationResponses: publicProcedure.query(async () => {
     return getApplicationResponses();
   }),
-  getApplicationResponseById: publicProcedure.input(applicationResponseIdSchema).query(async ({ input }) => {
-    return getApplicationResponseById(input.id);
-  }),
+  getApplicationResponseById: publicProcedure
+    .input(applicationResponseIdSchema)
+    .query(async ({ input }) => {
+      return getApplicationResponseById(input.id);
+    }),
   createApplicationResponse: publicProcedure
     .input(insertApplicationResponseParams)
     .mutation(async ({ input }) => {

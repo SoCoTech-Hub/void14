@@ -1,21 +1,31 @@
-import { db } from "@soco/repository-db/index";
 import { and, eq } from "drizzle-orm";
-import { 
-  RepositoryOnedriveAccessId, 
+
+import { getUserAuth } from "@soco/auth-services";
+import { db } from "@soco/repository-db/index";
+import {
+  insertRepositoryOnedriveAccessSchema,
   NewRepositoryOnedriveAccessParams,
-  UpdateRepositoryOnedriveAccessParams, 
-  updateRepositoryOnedriveAccessSchema,
-  insertRepositoryOnedriveAccessSchema, 
   repositoryOnedriveAccesses,
-  repositoryOnedriveAccessIdSchema 
+  RepositoryOnedriveAccessId,
+  repositoryOnedriveAccessIdSchema,
+  UpdateRepositoryOnedriveAccessParams,
+  updateRepositoryOnedriveAccessSchema,
 } from "@soco/repository-db/schema/repositoryOnedriveAccesses";
-import { getUserAuth } from "@/lib/auth/utils";
 
-export const createRepositoryOnedriveAccess = async (repositoryOnedriveAccess: NewRepositoryOnedriveAccessParams) => {
+export const createRepositoryOnedriveAccess = async (
+  repositoryOnedriveAccess: NewRepositoryOnedriveAccessParams,
+) => {
   const { session } = await getUserAuth();
-  const newRepositoryOnedriveAccess = insertRepositoryOnedriveAccessSchema.parse({ ...repositoryOnedriveAccess, userId: session?.user.id! });
+  const newRepositoryOnedriveAccess =
+    insertRepositoryOnedriveAccessSchema.parse({
+      ...repositoryOnedriveAccess,
+      userId: session?.user.id!,
+    });
   try {
-    const [r] =  await db.insert(repositoryOnedriveAccesses).values(newRepositoryOnedriveAccess).returning();
+    const [r] = await db
+      .insert(repositoryOnedriveAccesses)
+      .values(newRepositoryOnedriveAccess)
+      .returning();
     return { repositoryOnedriveAccess: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +34,29 @@ export const createRepositoryOnedriveAccess = async (repositoryOnedriveAccess: N
   }
 };
 
-export const updateRepositoryOnedriveAccess = async (id: RepositoryOnedriveAccessId, repositoryOnedriveAccess: UpdateRepositoryOnedriveAccessParams) => {
+export const updateRepositoryOnedriveAccess = async (
+  id: RepositoryOnedriveAccessId,
+  repositoryOnedriveAccess: UpdateRepositoryOnedriveAccessParams,
+) => {
   const { session } = await getUserAuth();
-  const { id: repositoryOnedriveAccessId } = repositoryOnedriveAccessIdSchema.parse({ id });
-  const newRepositoryOnedriveAccess = updateRepositoryOnedriveAccessSchema.parse({ ...repositoryOnedriveAccess, userId: session?.user.id! });
+  const { id: repositoryOnedriveAccessId } =
+    repositoryOnedriveAccessIdSchema.parse({ id });
+  const newRepositoryOnedriveAccess =
+    updateRepositoryOnedriveAccessSchema.parse({
+      ...repositoryOnedriveAccess,
+      userId: session?.user.id!,
+    });
   try {
-    const [r] =  await db
-     .update(repositoryOnedriveAccesses)
-     .set({...newRepositoryOnedriveAccess, updatedAt: new Date() })
-     .where(and(eq(repositoryOnedriveAccesses.id, repositoryOnedriveAccessId!), eq(repositoryOnedriveAccesses.userId, session?.user.id!)))
-     .returning();
+    const [r] = await db
+      .update(repositoryOnedriveAccesses)
+      .set({ ...newRepositoryOnedriveAccess, updatedAt: new Date() })
+      .where(
+        and(
+          eq(repositoryOnedriveAccesses.id, repositoryOnedriveAccessId!),
+          eq(repositoryOnedriveAccesses.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { repositoryOnedriveAccess: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,12 +65,22 @@ export const updateRepositoryOnedriveAccess = async (id: RepositoryOnedriveAcces
   }
 };
 
-export const deleteRepositoryOnedriveAccess = async (id: RepositoryOnedriveAccessId) => {
+export const deleteRepositoryOnedriveAccess = async (
+  id: RepositoryOnedriveAccessId,
+) => {
   const { session } = await getUserAuth();
-  const { id: repositoryOnedriveAccessId } = repositoryOnedriveAccessIdSchema.parse({ id });
+  const { id: repositoryOnedriveAccessId } =
+    repositoryOnedriveAccessIdSchema.parse({ id });
   try {
-    const [r] =  await db.delete(repositoryOnedriveAccesses).where(and(eq(repositoryOnedriveAccesses.id, repositoryOnedriveAccessId!), eq(repositoryOnedriveAccesses.userId, session?.user.id!)))
-    .returning();
+    const [r] = await db
+      .delete(repositoryOnedriveAccesses)
+      .where(
+        and(
+          eq(repositoryOnedriveAccesses.id, repositoryOnedriveAccessId!),
+          eq(repositoryOnedriveAccesses.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { repositoryOnedriveAccess: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +88,3 @@ export const deleteRepositoryOnedriveAccess = async (id: RepositoryOnedriveAcces
     throw { error: message };
   }
 };
-

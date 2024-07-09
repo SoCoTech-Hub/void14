@@ -1,21 +1,25 @@
-import { db } from "@soco/calendar-db/index";
 import { and, eq } from "drizzle-orm";
-import { 
-  CalendarId, 
-  NewCalendarParams,
-  UpdateCalendarParams, 
-  updateCalendarSchema,
-  insertCalendarSchema, 
+
+import { getUserAuth } from "@soco/auth-services";
+import { db } from "@soco/calendar-db/index";
+import {
   calendar,
-  calendarIdSchema 
+  CalendarId,
+  calendarIdSchema,
+  insertCalendarSchema,
+  NewCalendarParams,
+  UpdateCalendarParams,
+  updateCalendarSchema,
 } from "@soco/calendar-db/schema/calendar";
-import { getUserAuth } from "@/lib/auth/utils";
 
 export const createCalendar = async (calendar: NewCalendarParams) => {
   const { session } = await getUserAuth();
-  const newCalendar = insertCalendarSchema.parse({ ...calendar, userId: session?.user.id! });
+  const newCalendar = insertCalendarSchema.parse({
+    ...calendar,
+    userId: session?.user.id!,
+  });
   try {
-    const [c] =  await db.insert(calendar).values(newCalendar).returning();
+    const [c] = await db.insert(calendar).values(newCalendar).returning();
     return { calendar: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +28,27 @@ export const createCalendar = async (calendar: NewCalendarParams) => {
   }
 };
 
-export const updateCalendar = async (id: CalendarId, calendar: UpdateCalendarParams) => {
+export const updateCalendar = async (
+  id: CalendarId,
+  calendar: UpdateCalendarParams,
+) => {
   const { session } = await getUserAuth();
   const { id: calendarId } = calendarIdSchema.parse({ id });
-  const newCalendar = updateCalendarSchema.parse({ ...calendar, userId: session?.user.id! });
+  const newCalendar = updateCalendarSchema.parse({
+    ...calendar,
+    userId: session?.user.id!,
+  });
   try {
-    const [c] =  await db
-     .update(calendar)
-     .set({...newCalendar, updatedAt: new Date() })
-     .where(and(eq(calendar.id, calendarId!), eq(calendar.userId, session?.user.id!)))
-     .returning();
+    const [c] = await db
+      .update(calendar)
+      .set({ ...newCalendar, updatedAt: new Date() })
+      .where(
+        and(
+          eq(calendar.id, calendarId!),
+          eq(calendar.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { calendar: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +61,15 @@ export const deleteCalendar = async (id: CalendarId) => {
   const { session } = await getUserAuth();
   const { id: calendarId } = calendarIdSchema.parse({ id });
   try {
-    const [c] =  await db.delete(calendar).where(and(eq(calendar.id, calendarId!), eq(calendar.userId, session?.user.id!)))
-    .returning();
+    const [c] = await db
+      .delete(calendar)
+      .where(
+        and(
+          eq(calendar.id, calendarId!),
+          eq(calendar.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { calendar: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +77,3 @@ export const deleteCalendar = async (id: CalendarId) => {
     throw { error: message };
   }
 };
-

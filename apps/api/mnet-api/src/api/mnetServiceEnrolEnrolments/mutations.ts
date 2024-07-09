@@ -1,21 +1,31 @@
-import { db } from "@soco/mnet-db/index";
 import { and, eq } from "drizzle-orm";
-import { 
-  MnetServiceEnrolEnrolmentId, 
-  NewMnetServiceEnrolEnrolmentParams,
-  UpdateMnetServiceEnrolEnrolmentParams, 
-  updateMnetServiceEnrolEnrolmentSchema,
-  insertMnetServiceEnrolEnrolmentSchema, 
+
+import { getUserAuth } from "@soco/auth-services";
+import { db } from "@soco/mnet-db/index";
+import {
+  insertMnetServiceEnrolEnrolmentSchema,
+  MnetServiceEnrolEnrolmentId,
+  mnetServiceEnrolEnrolmentIdSchema,
   mnetServiceEnrolEnrolments,
-  mnetServiceEnrolEnrolmentIdSchema 
+  NewMnetServiceEnrolEnrolmentParams,
+  UpdateMnetServiceEnrolEnrolmentParams,
+  updateMnetServiceEnrolEnrolmentSchema,
 } from "@soco/mnet-db/schema/mnetServiceEnrolEnrolments";
-import { getUserAuth } from "@/lib/auth/utils";
 
-export const createMnetServiceEnrolEnrolment = async (mnetServiceEnrolEnrolment: NewMnetServiceEnrolEnrolmentParams) => {
+export const createMnetServiceEnrolEnrolment = async (
+  mnetServiceEnrolEnrolment: NewMnetServiceEnrolEnrolmentParams,
+) => {
   const { session } = await getUserAuth();
-  const newMnetServiceEnrolEnrolment = insertMnetServiceEnrolEnrolmentSchema.parse({ ...mnetServiceEnrolEnrolment, userId: session?.user.id! });
+  const newMnetServiceEnrolEnrolment =
+    insertMnetServiceEnrolEnrolmentSchema.parse({
+      ...mnetServiceEnrolEnrolment,
+      userId: session?.user.id!,
+    });
   try {
-    const [m] =  await db.insert(mnetServiceEnrolEnrolments).values(newMnetServiceEnrolEnrolment).returning();
+    const [m] = await db
+      .insert(mnetServiceEnrolEnrolments)
+      .values(newMnetServiceEnrolEnrolment)
+      .returning();
     return { mnetServiceEnrolEnrolment: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +34,29 @@ export const createMnetServiceEnrolEnrolment = async (mnetServiceEnrolEnrolment:
   }
 };
 
-export const updateMnetServiceEnrolEnrolment = async (id: MnetServiceEnrolEnrolmentId, mnetServiceEnrolEnrolment: UpdateMnetServiceEnrolEnrolmentParams) => {
+export const updateMnetServiceEnrolEnrolment = async (
+  id: MnetServiceEnrolEnrolmentId,
+  mnetServiceEnrolEnrolment: UpdateMnetServiceEnrolEnrolmentParams,
+) => {
   const { session } = await getUserAuth();
-  const { id: mnetServiceEnrolEnrolmentId } = mnetServiceEnrolEnrolmentIdSchema.parse({ id });
-  const newMnetServiceEnrolEnrolment = updateMnetServiceEnrolEnrolmentSchema.parse({ ...mnetServiceEnrolEnrolment, userId: session?.user.id! });
+  const { id: mnetServiceEnrolEnrolmentId } =
+    mnetServiceEnrolEnrolmentIdSchema.parse({ id });
+  const newMnetServiceEnrolEnrolment =
+    updateMnetServiceEnrolEnrolmentSchema.parse({
+      ...mnetServiceEnrolEnrolment,
+      userId: session?.user.id!,
+    });
   try {
-    const [m] =  await db
-     .update(mnetServiceEnrolEnrolments)
-     .set(newMnetServiceEnrolEnrolment)
-     .where(and(eq(mnetServiceEnrolEnrolments.id, mnetServiceEnrolEnrolmentId!), eq(mnetServiceEnrolEnrolments.userId, session?.user.id!)))
-     .returning();
+    const [m] = await db
+      .update(mnetServiceEnrolEnrolments)
+      .set(newMnetServiceEnrolEnrolment)
+      .where(
+        and(
+          eq(mnetServiceEnrolEnrolments.id, mnetServiceEnrolEnrolmentId!),
+          eq(mnetServiceEnrolEnrolments.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { mnetServiceEnrolEnrolment: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,12 +65,22 @@ export const updateMnetServiceEnrolEnrolment = async (id: MnetServiceEnrolEnrolm
   }
 };
 
-export const deleteMnetServiceEnrolEnrolment = async (id: MnetServiceEnrolEnrolmentId) => {
+export const deleteMnetServiceEnrolEnrolment = async (
+  id: MnetServiceEnrolEnrolmentId,
+) => {
   const { session } = await getUserAuth();
-  const { id: mnetServiceEnrolEnrolmentId } = mnetServiceEnrolEnrolmentIdSchema.parse({ id });
+  const { id: mnetServiceEnrolEnrolmentId } =
+    mnetServiceEnrolEnrolmentIdSchema.parse({ id });
   try {
-    const [m] =  await db.delete(mnetServiceEnrolEnrolments).where(and(eq(mnetServiceEnrolEnrolments.id, mnetServiceEnrolEnrolmentId!), eq(mnetServiceEnrolEnrolments.userId, session?.user.id!)))
-    .returning();
+    const [m] = await db
+      .delete(mnetServiceEnrolEnrolments)
+      .where(
+        and(
+          eq(mnetServiceEnrolEnrolments.id, mnetServiceEnrolEnrolmentId!),
+          eq(mnetServiceEnrolEnrolments.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { mnetServiceEnrolEnrolment: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +88,3 @@ export const deleteMnetServiceEnrolEnrolment = async (id: MnetServiceEnrolEnrolm
     throw { error: message };
   }
 };
-

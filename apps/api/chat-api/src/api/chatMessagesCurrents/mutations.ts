@@ -1,21 +1,30 @@
-import { db } from "@soco/chat-db/index";
 import { and, eq } from "drizzle-orm";
-import { 
-  ChatMessagesCurrentId, 
-  NewChatMessagesCurrentParams,
-  UpdateChatMessagesCurrentParams, 
-  updateChatMessagesCurrentSchema,
-  insertChatMessagesCurrentSchema, 
-  chatMessagesCurrents,
-  chatMessagesCurrentIdSchema 
-} from "@soco/chat-db/schema/chatMessagesCurrents";
-import { getUserAuth } from "@/lib/auth/utils";
 
-export const createChatMessagesCurrent = async (chatMessagesCurrent: NewChatMessagesCurrentParams) => {
+import { getUserAuth } from "@soco/auth-services";
+import { db } from "@soco/chat-db/index";
+import {
+  ChatMessagesCurrentId,
+  chatMessagesCurrentIdSchema,
+  chatMessagesCurrents,
+  insertChatMessagesCurrentSchema,
+  NewChatMessagesCurrentParams,
+  UpdateChatMessagesCurrentParams,
+  updateChatMessagesCurrentSchema,
+} from "@soco/chat-db/schema/chatMessagesCurrents";
+
+export const createChatMessagesCurrent = async (
+  chatMessagesCurrent: NewChatMessagesCurrentParams,
+) => {
   const { session } = await getUserAuth();
-  const newChatMessagesCurrent = insertChatMessagesCurrentSchema.parse({ ...chatMessagesCurrent, userId: session?.user.id! });
+  const newChatMessagesCurrent = insertChatMessagesCurrentSchema.parse({
+    ...chatMessagesCurrent,
+    userId: session?.user.id!,
+  });
   try {
-    const [c] =  await db.insert(chatMessagesCurrents).values(newChatMessagesCurrent).returning();
+    const [c] = await db
+      .insert(chatMessagesCurrents)
+      .values(newChatMessagesCurrent)
+      .returning();
     return { chatMessagesCurrent: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +33,29 @@ export const createChatMessagesCurrent = async (chatMessagesCurrent: NewChatMess
   }
 };
 
-export const updateChatMessagesCurrent = async (id: ChatMessagesCurrentId, chatMessagesCurrent: UpdateChatMessagesCurrentParams) => {
+export const updateChatMessagesCurrent = async (
+  id: ChatMessagesCurrentId,
+  chatMessagesCurrent: UpdateChatMessagesCurrentParams,
+) => {
   const { session } = await getUserAuth();
-  const { id: chatMessagesCurrentId } = chatMessagesCurrentIdSchema.parse({ id });
-  const newChatMessagesCurrent = updateChatMessagesCurrentSchema.parse({ ...chatMessagesCurrent, userId: session?.user.id! });
+  const { id: chatMessagesCurrentId } = chatMessagesCurrentIdSchema.parse({
+    id,
+  });
+  const newChatMessagesCurrent = updateChatMessagesCurrentSchema.parse({
+    ...chatMessagesCurrent,
+    userId: session?.user.id!,
+  });
   try {
-    const [c] =  await db
-     .update(chatMessagesCurrents)
-     .set({...newChatMessagesCurrent, updatedAt: new Date() })
-     .where(and(eq(chatMessagesCurrents.id, chatMessagesCurrentId!), eq(chatMessagesCurrents.userId, session?.user.id!)))
-     .returning();
+    const [c] = await db
+      .update(chatMessagesCurrents)
+      .set({ ...newChatMessagesCurrent, updatedAt: new Date() })
+      .where(
+        and(
+          eq(chatMessagesCurrents.id, chatMessagesCurrentId!),
+          eq(chatMessagesCurrents.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { chatMessagesCurrent: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -44,10 +66,19 @@ export const updateChatMessagesCurrent = async (id: ChatMessagesCurrentId, chatM
 
 export const deleteChatMessagesCurrent = async (id: ChatMessagesCurrentId) => {
   const { session } = await getUserAuth();
-  const { id: chatMessagesCurrentId } = chatMessagesCurrentIdSchema.parse({ id });
+  const { id: chatMessagesCurrentId } = chatMessagesCurrentIdSchema.parse({
+    id,
+  });
   try {
-    const [c] =  await db.delete(chatMessagesCurrents).where(and(eq(chatMessagesCurrents.id, chatMessagesCurrentId!), eq(chatMessagesCurrents.userId, session?.user.id!)))
-    .returning();
+    const [c] = await db
+      .delete(chatMessagesCurrents)
+      .where(
+        and(
+          eq(chatMessagesCurrents.id, chatMessagesCurrentId!),
+          eq(chatMessagesCurrents.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { chatMessagesCurrent: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +86,3 @@ export const deleteChatMessagesCurrent = async (id: ChatMessagesCurrentId) => {
     throw { error: message };
   }
 };
-

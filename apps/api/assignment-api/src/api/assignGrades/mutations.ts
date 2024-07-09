@@ -1,21 +1,28 @@
-import { db } from "@soco/assignment-db/index";
-import { and, eq } from "drizzle-orm";
-import { 
-  AssignGradeId, 
+import type {
+  AssignGradeId,
   NewAssignGradeParams,
-  UpdateAssignGradeParams, 
-  updateAssignGradeSchema,
-  insertAssignGradeSchema, 
-  assignGrades,
-  assignGradeIdSchema 
+  UpdateAssignGradeParams,
 } from "@soco/assignment-db/schema/assignGrades";
-import { getUserAuth } from "@/lib/auth/utils";
+import { and, db, eq } from "@soco/assignment-db";
+import {
+  assignGradeIdSchema,
+  assignGrades,
+  insertAssignGradeSchema,
+  updateAssignGradeSchema,
+} from "@soco/assignment-db/schema/assignGrades";
+import { getUserAuth } from "@soco/auth-services";
 
 export const createAssignGrade = async (assignGrade: NewAssignGradeParams) => {
   const { session } = await getUserAuth();
-  const newAssignGrade = insertAssignGradeSchema.parse({ ...assignGrade, userId: session?.user.id! });
+  const newAssignGrade = insertAssignGradeSchema.parse({
+    ...assignGrade,
+    userId: session?.user.id!,
+  });
   try {
-    const [a] =  await db.insert(assignGrades).values(newAssignGrade).returning();
+    const [a] = await db
+      .insert(assignGrades)
+      .values(newAssignGrade)
+      .returning();
     return { assignGrade: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +31,27 @@ export const createAssignGrade = async (assignGrade: NewAssignGradeParams) => {
   }
 };
 
-export const updateAssignGrade = async (id: AssignGradeId, assignGrade: UpdateAssignGradeParams) => {
+export const updateAssignGrade = async (
+  id: AssignGradeId,
+  assignGrade: UpdateAssignGradeParams,
+) => {
   const { session } = await getUserAuth();
   const { id: assignGradeId } = assignGradeIdSchema.parse({ id });
-  const newAssignGrade = updateAssignGradeSchema.parse({ ...assignGrade, userId: session?.user.id! });
+  const newAssignGrade = updateAssignGradeSchema.parse({
+    ...assignGrade,
+    userId: session?.user.id!,
+  });
   try {
-    const [a] =  await db
-     .update(assignGrades)
-     .set({...newAssignGrade, updatedAt: new Date() })
-     .where(and(eq(assignGrades.id, assignGradeId!), eq(assignGrades.userId, session?.user.id!)))
-     .returning();
+    const [a] = await db
+      .update(assignGrades)
+      .set({ ...newAssignGrade, updatedAt: new Date() })
+      .where(
+        and(
+          eq(assignGrades.id, assignGradeId!),
+          eq(assignGrades.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { assignGrade: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +64,15 @@ export const deleteAssignGrade = async (id: AssignGradeId) => {
   const { session } = await getUserAuth();
   const { id: assignGradeId } = assignGradeIdSchema.parse({ id });
   try {
-    const [a] =  await db.delete(assignGrades).where(and(eq(assignGrades.id, assignGradeId!), eq(assignGrades.userId, session?.user.id!)))
-    .returning();
+    const [a] = await db
+      .delete(assignGrades)
+      .where(
+        and(
+          eq(assignGrades.id, assignGradeId!),
+          eq(assignGrades.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { assignGrade: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +80,3 @@ export const deleteAssignGrade = async (id: AssignGradeId) => {
     throw { error: message };
   }
 };
-

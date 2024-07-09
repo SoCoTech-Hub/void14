@@ -1,19 +1,26 @@
-import { db } from "@soco/assignment-db/index";
-import { eq } from "drizzle-orm";
-import { 
-  AssignFeedbackEditpdfCmntId, 
+import type {
+  AssignFeedbackEditpdfCmntId,
   NewAssignFeedbackEditpdfCmntParams,
-  UpdateAssignFeedbackEditpdfCmntParams, 
-  updateAssignFeedbackEditpdfCmntSchema,
-  insertAssignFeedbackEditpdfCmntSchema, 
+  UpdateAssignFeedbackEditpdfCmntParams,
+} from "@soco/assignment-db/schema/assignFeedbackEditpdfCmnts";
+import { db, eq } from "@soco/assignment-db";
+import {
+  assignFeedbackEditpdfCmntIdSchema,
   assignFeedbackEditpdfCmnts,
-  assignFeedbackEditpdfCmntIdSchema 
+  insertAssignFeedbackEditpdfCmntSchema,
+  updateAssignFeedbackEditpdfCmntSchema,
 } from "@soco/assignment-db/schema/assignFeedbackEditpdfCmnts";
 
-export const createAssignFeedbackEditpdfCmnt = async (assignFeedbackEditpdfCmnt: NewAssignFeedbackEditpdfCmntParams) => {
-  const newAssignFeedbackEditpdfCmnt = insertAssignFeedbackEditpdfCmntSchema.parse(assignFeedbackEditpdfCmnt);
+export const createAssignFeedbackEditpdfCmnt = async (
+  assignFeedbackEditpdfCmnt: NewAssignFeedbackEditpdfCmntParams,
+) => {
+  const newAssignFeedbackEditpdfCmnt =
+    insertAssignFeedbackEditpdfCmntSchema.parse(assignFeedbackEditpdfCmnt);
   try {
-    const [a] =  await db.insert(assignFeedbackEditpdfCmnts).values(newAssignFeedbackEditpdfCmnt).returning();
+    const [a] = await db
+      .insert(assignFeedbackEditpdfCmnts)
+      .values(newAssignFeedbackEditpdfCmnt)
+      .returning();
     return { assignFeedbackEditpdfCmnt: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,20 @@ export const createAssignFeedbackEditpdfCmnt = async (assignFeedbackEditpdfCmnt:
   }
 };
 
-export const updateAssignFeedbackEditpdfCmnt = async (id: AssignFeedbackEditpdfCmntId, assignFeedbackEditpdfCmnt: UpdateAssignFeedbackEditpdfCmntParams) => {
-  const { id: assignFeedbackEditpdfCmntId } = assignFeedbackEditpdfCmntIdSchema.parse({ id });
-  const newAssignFeedbackEditpdfCmnt = updateAssignFeedbackEditpdfCmntSchema.parse(assignFeedbackEditpdfCmnt);
+export const updateAssignFeedbackEditpdfCmnt = async (
+  id: AssignFeedbackEditpdfCmntId,
+  assignFeedbackEditpdfCmnt: UpdateAssignFeedbackEditpdfCmntParams,
+) => {
+  const { id: assignFeedbackEditpdfCmntId } =
+    assignFeedbackEditpdfCmntIdSchema.parse({ id });
+  const newAssignFeedbackEditpdfCmnt =
+    updateAssignFeedbackEditpdfCmntSchema.parse(assignFeedbackEditpdfCmnt);
   try {
-    const [a] =  await db
-     .update(assignFeedbackEditpdfCmnts)
-     .set(newAssignFeedbackEditpdfCmnt)
-     .where(eq(assignFeedbackEditpdfCmnts.id, assignFeedbackEditpdfCmntId!))
-     .returning();
+    const [a] = await db
+      .update(assignFeedbackEditpdfCmnts)
+      .set(newAssignFeedbackEditpdfCmnt)
+      .where(eq(assignFeedbackEditpdfCmnts.id, assignFeedbackEditpdfCmntId!))
+      .returning();
     return { assignFeedbackEditpdfCmnt: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +51,16 @@ export const updateAssignFeedbackEditpdfCmnt = async (id: AssignFeedbackEditpdfC
   }
 };
 
-export const deleteAssignFeedbackEditpdfCmnt = async (id: AssignFeedbackEditpdfCmntId) => {
-  const { id: assignFeedbackEditpdfCmntId } = assignFeedbackEditpdfCmntIdSchema.parse({ id });
+export const deleteAssignFeedbackEditpdfCmnt = async (
+  id: AssignFeedbackEditpdfCmntId,
+) => {
+  const { id: assignFeedbackEditpdfCmntId } =
+    assignFeedbackEditpdfCmntIdSchema.parse({ id });
   try {
-    const [a] =  await db.delete(assignFeedbackEditpdfCmnts).where(eq(assignFeedbackEditpdfCmnts.id, assignFeedbackEditpdfCmntId!))
-    .returning();
+    const [a] = await db
+      .delete(assignFeedbackEditpdfCmnts)
+      .where(eq(assignFeedbackEditpdfCmnts.id, assignFeedbackEditpdfCmntId!))
+      .returning();
     return { assignFeedbackEditpdfCmnt: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +68,3 @@ export const deleteAssignFeedbackEditpdfCmnt = async (id: AssignFeedbackEditpdfC
     throw { error: message };
   }
 };
-

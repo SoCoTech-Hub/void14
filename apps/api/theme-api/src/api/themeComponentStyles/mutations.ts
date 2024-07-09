@@ -1,21 +1,30 @@
-import { db } from "@soco/theme-db/index";
 import { and, eq } from "drizzle-orm";
-import { 
-  ThemeComponentStyleId, 
-  NewThemeComponentStyleParams,
-  UpdateThemeComponentStyleParams, 
-  updateThemeComponentStyleSchema,
-  insertThemeComponentStyleSchema, 
-  themeComponentStyles,
-  themeComponentStyleIdSchema 
-} from "@soco/theme-db/schema/themeComponentStyles";
-import { getUserAuth } from "@/lib/auth/utils";
 
-export const createThemeComponentStyle = async (themeComponentStyle: NewThemeComponentStyleParams) => {
+import { getUserAuth } from "@soco/auth-services";
+import { db } from "@soco/theme-db/index";
+import {
+  insertThemeComponentStyleSchema,
+  NewThemeComponentStyleParams,
+  ThemeComponentStyleId,
+  themeComponentStyleIdSchema,
+  themeComponentStyles,
+  UpdateThemeComponentStyleParams,
+  updateThemeComponentStyleSchema,
+} from "@soco/theme-db/schema/themeComponentStyles";
+
+export const createThemeComponentStyle = async (
+  themeComponentStyle: NewThemeComponentStyleParams,
+) => {
   const { session } = await getUserAuth();
-  const newThemeComponentStyle = insertThemeComponentStyleSchema.parse({ ...themeComponentStyle, userId: session?.user.id! });
+  const newThemeComponentStyle = insertThemeComponentStyleSchema.parse({
+    ...themeComponentStyle,
+    userId: session?.user.id!,
+  });
   try {
-    const [t] =  await db.insert(themeComponentStyles).values(newThemeComponentStyle).returning();
+    const [t] = await db
+      .insert(themeComponentStyles)
+      .values(newThemeComponentStyle)
+      .returning();
     return { themeComponentStyle: t };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +33,29 @@ export const createThemeComponentStyle = async (themeComponentStyle: NewThemeCom
   }
 };
 
-export const updateThemeComponentStyle = async (id: ThemeComponentStyleId, themeComponentStyle: UpdateThemeComponentStyleParams) => {
+export const updateThemeComponentStyle = async (
+  id: ThemeComponentStyleId,
+  themeComponentStyle: UpdateThemeComponentStyleParams,
+) => {
   const { session } = await getUserAuth();
-  const { id: themeComponentStyleId } = themeComponentStyleIdSchema.parse({ id });
-  const newThemeComponentStyle = updateThemeComponentStyleSchema.parse({ ...themeComponentStyle, userId: session?.user.id! });
+  const { id: themeComponentStyleId } = themeComponentStyleIdSchema.parse({
+    id,
+  });
+  const newThemeComponentStyle = updateThemeComponentStyleSchema.parse({
+    ...themeComponentStyle,
+    userId: session?.user.id!,
+  });
   try {
-    const [t] =  await db
-     .update(themeComponentStyles)
-     .set({...newThemeComponentStyle, updatedAt: new Date() })
-     .where(and(eq(themeComponentStyles.id, themeComponentStyleId!), eq(themeComponentStyles.userId, session?.user.id!)))
-     .returning();
+    const [t] = await db
+      .update(themeComponentStyles)
+      .set({ ...newThemeComponentStyle, updatedAt: new Date() })
+      .where(
+        and(
+          eq(themeComponentStyles.id, themeComponentStyleId!),
+          eq(themeComponentStyles.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { themeComponentStyle: t };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -44,10 +66,19 @@ export const updateThemeComponentStyle = async (id: ThemeComponentStyleId, theme
 
 export const deleteThemeComponentStyle = async (id: ThemeComponentStyleId) => {
   const { session } = await getUserAuth();
-  const { id: themeComponentStyleId } = themeComponentStyleIdSchema.parse({ id });
+  const { id: themeComponentStyleId } = themeComponentStyleIdSchema.parse({
+    id,
+  });
   try {
-    const [t] =  await db.delete(themeComponentStyles).where(and(eq(themeComponentStyles.id, themeComponentStyleId!), eq(themeComponentStyles.userId, session?.user.id!)))
-    .returning();
+    const [t] = await db
+      .delete(themeComponentStyles)
+      .where(
+        and(
+          eq(themeComponentStyles.id, themeComponentStyleId!),
+          eq(themeComponentStyles.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { themeComponentStyle: t };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +86,3 @@ export const deleteThemeComponentStyle = async (id: ThemeComponentStyleId) => {
     throw { error: message };
   }
 };
-
