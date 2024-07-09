@@ -1,8 +1,6 @@
-import { and, eq } from "drizzle-orm";
-
 import type { CompetencyPlanId } from "@soco/competency-db/schema/competencyPlans";
 import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/competency-db/index";
+import { and, db, eq } from "@soco/competency-db";
 import {
   competencyPlanIdSchema,
   competencyPlans,

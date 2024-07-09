@@ -1,8 +1,6 @@
-import { and, eq } from "drizzle-orm";
-
 import type { CalendarId } from "@soco/calendar-db/schema/calendar";
 import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/calendar-db/index";
+import { and, db, eq } from "@soco/calendar-db";
 import { calendar, calendarIdSchema } from "@soco/calendar-db/schema/calendar";
 
 export const getCalendars = async () => {

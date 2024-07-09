@@ -1,14 +1,14 @@
-import { and, eq } from "drizzle-orm";
-
-import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/comment-db/index";
-import {
+import type {
   CommentId,
+  NewCommentParams,
+  UpdateCommentParams,
+} from "@soco/comment-db/schema/comments";
+import { getUserAuth } from "@soco/auth-services";
+import { and, db, eq } from "@soco/comment-db";
+import {
   commentIdSchema,
   comments,
   insertCommentSchema,
-  NewCommentParams,
-  UpdateCommentParams,
   updateCommentSchema,
 } from "@soco/comment-db/schema/comments";
 

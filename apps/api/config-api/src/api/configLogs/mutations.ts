@@ -1,14 +1,14 @@
-import { and, eq } from "drizzle-orm";
-
-import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/config-db/index";
-import {
+import type {
   ConfigLogId,
+  NewConfigLogParams,
+  UpdateConfigLogParams,
+} from "@soco/config-db/schema/configLogs";
+import { getUserAuth } from "@soco/auth-services";
+import { and, db, eq } from "@soco/config-db";
+import {
   configLogIdSchema,
   configLogs,
   insertConfigLogSchema,
-  NewConfigLogParams,
-  UpdateConfigLogParams,
   updateConfigLogSchema,
 } from "@soco/config-db/schema/configLogs";
 

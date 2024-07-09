@@ -1,7 +1,6 @@
+import { contextsRouter } from "./routers/contexts";
+import { contextTempRouter } from "./routers/contextTemp";
 import { createTRPCRouter } from "./trpc";
-
-import { contextsRouter } from './routers/contexts';
-import { contextTempRouter } from './routers/contextTemp';
 
 export const appRouter = createTRPCRouter({
   contexts: contextsRouter,

@@ -1,6 +1,5 @@
+import { commentsRouter } from "./routers/comments";
 import { createTRPCRouter } from "./trpc";
-
-import { commentsRouter } from './routers/comments';
 
 export const appRouter = createTRPCRouter({
   comments: commentsRouter,

@@ -1,10 +1,10 @@
-import { db } from "@soco/choice-db/index";
-import { eq } from "drizzle-orm";
-import { type ChoiceId, choiceIdSchema, choices } from "@soco/choice-db/schema/choices";
+import type { ChoiceId } from "@soco/choice-db/schema/choices";
+import { db, eq } from "@soco/choice-db";
+import { choiceIdSchema, choices } from "@soco/choice-db/schema/choices";
 
 export const getChoices = async () => {
   const rows = await db.select().from(choices);
-  const c = rows
+  const c = rows;
   return { choices: c };
 };
 
@@ -15,5 +15,3 @@ export const getChoiceById = async (id: ChoiceId) => {
   const c = row;
   return { choice: c };
 };
-
-

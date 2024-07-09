@@ -1,10 +1,10 @@
-import { db } from "@soco/config-db/index";
-import { eq } from "drizzle-orm";
-import { type ConfigId, configIdSchema, configs } from "@soco/config-db/schema/configs";
+import type { ConfigId } from "@soco/config-db/schema/configs";
+import { db, eq } from "@soco/config-db";
+import { configIdSchema, configs } from "@soco/config-db/schema/configs";
 
 export const getConfigs = async () => {
   const rows = await db.select().from(configs);
-  const c = rows
+  const c = rows;
   return { configs: c };
 };
 
@@ -15,5 +15,3 @@ export const getConfigById = async (id: ConfigId) => {
   const c = row;
   return { config: c };
 };
-
-

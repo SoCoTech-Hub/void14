@@ -1,19 +1,29 @@
-import { getChoiceOptionById, getChoiceOptions } from "../api/choiceOptions/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   choiceOptionIdSchema,
   insertChoiceOptionParams,
   updateChoiceOptionParams,
 } from "@soco/choice-db/schema/choiceOptions";
-import { createChoiceOption, deleteChoiceOption, updateChoiceOption } from "../api/choiceOptions/mutations";
 
-export const choiceOptionsRouter =createTRPCRouter({
+import {
+  createChoiceOption,
+  deleteChoiceOption,
+  updateChoiceOption,
+} from "../api/choiceOptions/mutations";
+import {
+  getChoiceOptionById,
+  getChoiceOptions,
+} from "../api/choiceOptions/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const choiceOptionsRouter = createTRPCRouter({
   getChoiceOptions: publicProcedure.query(async () => {
     return getChoiceOptions();
   }),
-  getChoiceOptionById: publicProcedure.input(choiceOptionIdSchema).query(async ({ input }) => {
-    return getChoiceOptionById(input.id);
-  }),
+  getChoiceOptionById: publicProcedure
+    .input(choiceOptionIdSchema)
+    .query(async ({ input }) => {
+      return getChoiceOptionById(input.id);
+    }),
   createChoiceOption: publicProcedure
     .input(insertChoiceOptionParams)
     .mutation(async ({ input }) => {

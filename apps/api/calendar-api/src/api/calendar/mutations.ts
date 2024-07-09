@@ -1,14 +1,14 @@
-import { and, eq } from "drizzle-orm";
-
-import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/calendar-db/index";
-import {
-  calendar,
+import type {
   CalendarId,
-  calendarIdSchema,
-  insertCalendarSchema,
   NewCalendarParams,
   UpdateCalendarParams,
+} from "@soco/calendar-db/schema/calendar";
+import { getUserAuth } from "@soco/auth-services";
+import { and, db, eq } from "@soco/calendar-db";
+import {
+  calendar,
+  calendarIdSchema,
+  insertCalendarSchema,
   updateCalendarSchema,
 } from "@soco/calendar-db/schema/calendar";
 

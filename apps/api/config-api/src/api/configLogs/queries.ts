@@ -1,8 +1,6 @@
-import { and, eq } from "drizzle-orm";
-
 import type { ConfigLogId } from "@soco/config-db/schema/configLogs";
 import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/config-db/index";
+import { and, db, eq } from "@soco/config-db";
 import {
   configLogIdSchema,
   configLogs,

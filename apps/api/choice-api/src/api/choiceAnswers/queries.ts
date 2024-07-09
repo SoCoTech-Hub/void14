@@ -1,8 +1,6 @@
-import { and, eq } from "drizzle-orm";
-
 import type { ChoiceAnswerId } from "@soco/choice-db/schema/choiceAnswers";
 import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/choice-db/index";
+import { and, db, eq } from "@soco/choice-db";
 import {
   choiceAnswerIdSchema,
   choiceAnswers,

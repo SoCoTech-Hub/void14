@@ -1,8 +1,6 @@
-import { and, eq } from "drizzle-orm";
-
 import type { ChatUserId } from "@soco/chat-db/schema/chatUsers";
 import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/chat-db/index";
+import { and, db, eq } from "@soco/chat-db";
 import { chats } from "@soco/chat-db/schema/chats";
 import { chatUserIdSchema, chatUsers } from "@soco/chat-db/schema/chatUsers";
 

@@ -1,14 +1,14 @@
-import { and, eq } from "drizzle-orm";
-
-import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/chat-db/index";
-import {
+import type {
   ChatMessageId,
+  NewChatMessageParams,
+  UpdateChatMessageParams,
+} from "@soco/chat-db/schema/chatMessages";
+import { getUserAuth } from "@soco/auth-services";
+import { and, db, eq } from "@soco/chat-db";
+import {
   chatMessageIdSchema,
   chatMessages,
   insertChatMessageSchema,
-  NewChatMessageParams,
-  UpdateChatMessageParams,
   updateChatMessageSchema,
 } from "@soco/chat-db/schema/chatMessages";
 

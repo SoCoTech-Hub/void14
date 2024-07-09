@@ -1,14 +1,14 @@
-import { and, eq } from "drizzle-orm";
-
-import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/choice-db/index";
-import {
+import type {
   ChoiceAnswerId,
+  NewChoiceAnswerParams,
+  UpdateChoiceAnswerParams,
+} from "@soco/choice-db/schema/choiceAnswers";
+import { getUserAuth } from "@soco/auth-services";
+import { and, db, eq } from "@soco/choice-db";
+import {
   choiceAnswerIdSchema,
   choiceAnswers,
   insertChoiceAnswerSchema,
-  NewChoiceAnswerParams,
-  UpdateChoiceAnswerParams,
   updateChoiceAnswerSchema,
 } from "@soco/choice-db/schema/choiceAnswers";
 

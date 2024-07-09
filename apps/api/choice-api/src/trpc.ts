@@ -3,8 +3,8 @@ import superjson from "superjson";
 import { ZodError } from "zod";
 
 import type { Session } from "@soco/auth-service";
-import { db } from "@soco/choice-db/client";
 import { auth, validateToken } from "@soco/auth-service";
+import { db } from "@soco/choice-db";
 
 /**
  * Isomorphic Session getter for API requests

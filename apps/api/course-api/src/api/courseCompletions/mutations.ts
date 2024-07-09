@@ -1,14 +1,14 @@
-import { and, eq } from "drizzle-orm";
-
-import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/course-db/index";
-import {
+import type {
   CourseCompletionId,
+  NewCourseCompletionParams,
+  UpdateCourseCompletionParams,
+} from "@soco/course-db/schema/courseCompletions";
+import { getUserAuth } from "@soco/auth-services";
+import { and, db, eq } from "@soco/course-db";
+import {
   courseCompletionIdSchema,
   courseCompletions,
   insertCourseCompletionSchema,
-  NewCourseCompletionParams,
-  UpdateCourseCompletionParams,
   updateCourseCompletionSchema,
 } from "@soco/course-db/schema/courseCompletions";
 

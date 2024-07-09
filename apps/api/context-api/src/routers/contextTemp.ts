@@ -1,19 +1,29 @@
-import { getContextTempById, getContextTemp } from "../api/contextTemp/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   contextTempIdSchema,
   insertContextTempParams,
   updateContextTempParams,
 } from "@soco/context-db/schema/contextTemp";
-import { createContextTemp, deleteContextTemp, updateContextTemp } from "../api/contextTemp/mutations";
 
-export const contextTempRouter =createTRPCRouter({
+import {
+  createContextTemp,
+  deleteContextTemp,
+  updateContextTemp,
+} from "../api/contextTemp/mutations";
+import {
+  getContextTempById,
+  getContextTemps,
+} from "../api/contextTemp/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const contextTempRouter = createTRPCRouter({
   getContextTemp: publicProcedure.query(async () => {
-    return getContextTemp();
+    return getContextTemps();
   }),
-  getContextTempById: publicProcedure.input(contextTempIdSchema).query(async ({ input }) => {
-    return getContextTempById(input.id);
-  }),
+  getContextTempById: publicProcedure
+    .input(contextTempIdSchema)
+    .query(async ({ input }) => {
+      return getContextTempById(input.id);
+    }),
   createContextTemp: publicProcedure
     .input(insertContextTempParams)
     .mutation(async ({ input }) => {

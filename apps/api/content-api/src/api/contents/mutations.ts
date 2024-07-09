@@ -1,14 +1,14 @@
-import { and, eq } from "drizzle-orm";
-
-import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/content-db/index";
-import {
+import type {
   ContentId,
+  NewContentParams,
+  UpdateContentParams,
+} from "@soco/content-db/schema/contents";
+import { getUserAuth } from "@soco/auth-services";
+import { and, db, eq } from "@soco/content-db";
+import {
   contentIdSchema,
   contents,
   insertContentSchema,
-  NewContentParams,
-  UpdateContentParams,
   updateContentSchema,
 } from "@soco/content-db/schema/contents";
 

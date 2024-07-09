@@ -1,8 +1,6 @@
-import { and, eq } from "drizzle-orm";
-
 import type { CourseModulesCompletionId } from "@soco/course-db/schema/courseModulesCompletions";
 import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/course-db/index";
+import { and, db, eq } from "@soco/course-db";
 import {
   courseModulesCompletionIdSchema,
   courseModulesCompletions,

@@ -1,14 +1,14 @@
-import { and, eq } from "drizzle-orm";
-
-import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/competency-db/index";
-import {
-  competencies,
+import type {
   CompetencyId,
-  competencyIdSchema,
-  insertCompetencySchema,
   NewCompetencyParams,
   UpdateCompetencyParams,
+} from "@soco/competency-db/schema/competencies";
+import { getUserAuth } from "@soco/auth-services";
+import { and, db, eq } from "@soco/competency-db";
+import {
+  competencies,
+  competencyIdSchema,
+  insertCompetencySchema,
   updateCompetencySchema,
 } from "@soco/competency-db/schema/competencies";
 

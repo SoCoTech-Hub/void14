@@ -1,19 +1,26 @@
-import { getCalendarById, getCalendar } from "../api/calendar/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   calendarIdSchema,
   insertCalendarParams,
   updateCalendarParams,
 } from "@soco/calendar-db/schema/calendar";
-import { createCalendar, deleteCalendar, updateCalendar } from "../api/calendar/mutations";
 
-export const calendarRouter =createTRPCRouter({
+import {
+  createCalendar,
+  deleteCalendar,
+  updateCalendar,
+} from "../api/calendar/mutations";
+import { getCalendar, getCalendarById } from "../api/calendar/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const calendarRouter = createTRPCRouter({
   getCalendar: publicProcedure.query(async () => {
     return getCalendar();
   }),
-  getCalendarById: publicProcedure.input(calendarIdSchema).query(async ({ input }) => {
-    return getCalendarById(input.id);
-  }),
+  getCalendarById: publicProcedure
+    .input(calendarIdSchema)
+    .query(async ({ input }) => {
+      return getCalendarById(input.id);
+    }),
   createCalendar: publicProcedure
     .input(insertCalendarParams)
     .mutation(async ({ input }) => {

@@ -1,8 +1,6 @@
-import { and, eq } from "drizzle-orm";
-
 import type { CohortMemberId } from "@soco/cohort-db/schema/cohortMembers";
 import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/cohort-db/index";
+import { and, db, eq } from "@soco/cohort-db";
 import {
   cohortMemberIdSchema,
   cohortMembers,

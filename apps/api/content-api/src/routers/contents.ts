@@ -1,19 +1,26 @@
-import { getContentById, getContents } from "../api/contents/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   contentIdSchema,
   insertContentParams,
   updateContentParams,
 } from "@soco/content-db/schema/contents";
-import { createContent, deleteContent, updateContent } from "../api/contents/mutations";
 
-export const contentsRouter =createTRPCRouter({
+import {
+  createContent,
+  deleteContent,
+  updateContent,
+} from "../api/contents/mutations";
+import { getContentById, getContents } from "../api/contents/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const contentsRouter = createTRPCRouter({
   getContents: publicProcedure.query(async () => {
     return getContents();
   }),
-  getContentById: publicProcedure.input(contentIdSchema).query(async ({ input }) => {
-    return getContentById(input.id);
-  }),
+  getContentById: publicProcedure
+    .input(contentIdSchema)
+    .query(async ({ input }) => {
+      return getContentById(input.id);
+    }),
   createContent: publicProcedure
     .input(insertContentParams)
     .mutation(async ({ input }) => {
