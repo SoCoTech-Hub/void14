@@ -1,10 +1,10 @@
 import type { Config } from "drizzle-kit";
 
-if (!process.env.DATABASE_URL) {
-  throw new Error("Missing DATABASE_URL");
+if (!process.env.GLOSSARY_DB_URL) {
+  throw new Error("Missing GLOSSARY_DB_URL");
 }
 
-const nonPoolingUrl = process.env.DATABASE_URL.replace(":6543", ":5432");
+const nonPoolingUrl = process.env.GLOSSARY_DB_URL.replace(":6543", ":5432");
 
 export default {
   schema: "./src/schema.ts",
