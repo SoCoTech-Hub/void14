@@ -11,7 +11,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const oauth2Issuers = pgTable(
   "oauth2_issuers",
@@ -92,4 +93,3 @@ export type NewOauth2Issuer = z.infer<typeof insertOauth2IssuerSchema>;
 export type NewOauth2IssuerParams = z.infer<typeof insertOauth2IssuerParams>;
 export type UpdateOauth2IssuerParams = z.infer<typeof updateOauth2IssuerParams>;
 export type Oauth2IssuerId = z.infer<typeof oauth2IssuerIdSchema>["id"];
-

@@ -1,4 +1,3 @@
-
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -10,7 +9,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const blogExternals = pgTable("blog_externals", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -62,5 +62,3 @@ export type NewBlogExternal = z.infer<typeof insertBlogExternalSchema>;
 export type NewBlogExternalParams = z.infer<typeof insertBlogExternalParams>;
 export type UpdateBlogExternalParams = z.infer<typeof updateBlogExternalParams>;
 export type BlogExternalId = z.infer<typeof blogExternalIdSchema>["id"];
-
-

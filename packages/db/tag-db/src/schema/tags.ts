@@ -10,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { tagColls } from "./tagColls";
 
@@ -73,5 +74,3 @@ export type NewTag = z.infer<typeof insertTagSchema>;
 export type NewTagParams = z.infer<typeof insertTagParams>;
 export type UpdateTagParams = z.infer<typeof updateTagParams>;
 export type TagId = z.infer<typeof tagIdSchema>["id"];
-
-

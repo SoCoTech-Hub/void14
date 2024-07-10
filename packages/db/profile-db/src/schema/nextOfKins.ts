@@ -3,7 +3,8 @@ import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const nextOfKins = pgTable("next_of_kins", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -50,5 +51,3 @@ export type NewNextOfKin = z.infer<typeof insertNextOfKinSchema>;
 export type NewNextOfKinParams = z.infer<typeof insertNextOfKinParams>;
 export type UpdateNextOfKinParams = z.infer<typeof updateNextOfKinParams>;
 export type NextOfKinId = z.infer<typeof nextOfKinIdSchema>["id"];
-
-

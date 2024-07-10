@@ -2,7 +2,7 @@ import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const glossaryEntriesCategories = pgTable(
   "glossary_entries_categories",
@@ -45,5 +45,3 @@ export type UpdateGlossaryEntriesCategoryParams = z.infer<
 export type GlossaryEntriesCategoryId = z.infer<
   typeof glossaryEntriesCategoryIdSchema
 >["id"];
-
-

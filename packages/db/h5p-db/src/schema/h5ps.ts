@@ -9,7 +9,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const h5ps = pgTable("h5ps", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -55,5 +56,3 @@ export type NewH5p = z.infer<typeof insertH5pSchema>;
 export type NewH5pParams = z.infer<typeof insertH5pParams>;
 export type UpdateH5pParams = z.infer<typeof updateH5pParams>;
 export type H5pId = z.infer<typeof h5pIdSchema>["id"];
-
-

@@ -2,7 +2,7 @@ import { integer, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { portfolioInstances } from "./portfolioInstances";
 import { portfolioTempdatas } from "./portfolioTempdatas";
@@ -71,4 +71,3 @@ export type NewPortfolioLog = z.infer<typeof insertPortfolioLogSchema>;
 export type NewPortfolioLogParams = z.infer<typeof insertPortfolioLogParams>;
 export type UpdatePortfolioLogParams = z.infer<typeof updatePortfolioLogParams>;
 export type PortfolioLogId = z.infer<typeof portfolioLogIdSchema>["id"];
-

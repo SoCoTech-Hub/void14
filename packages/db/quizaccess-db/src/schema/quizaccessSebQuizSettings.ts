@@ -11,7 +11,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { quizaccessSebTemplates } from "./quizaccessSebTemplates";
 
@@ -144,4 +145,3 @@ export type UpdateQuizaccessSebQuizSettingParams = z.infer<
 export type QuizaccessSebQuizSettingId = z.infer<
   typeof quizaccessSebQuizSettingIdSchema
 >["id"];
-

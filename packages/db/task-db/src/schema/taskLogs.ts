@@ -10,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const taskLogs = pgTable("task_logs", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -72,4 +73,3 @@ export type NewTaskLog = z.infer<typeof insertTaskLogSchema>;
 export type NewTaskLogParams = z.infer<typeof insertTaskLogParams>;
 export type UpdateTaskLogParams = z.infer<typeof updateTaskLogParams>;
 export type TaskLogId = z.infer<typeof taskLogIdSchema>["id"];
-

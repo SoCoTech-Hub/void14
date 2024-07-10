@@ -1,8 +1,15 @@
-import { boolean, integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import {
+  boolean,
+  integer,
+  pgTable,
+  text,
+  uniqueIndex,
+  varchar,
+} from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const licenses = pgTable(
   "licenses",
@@ -56,4 +63,3 @@ export type NewLicense = z.infer<typeof insertLicenseSchema>;
 export type NewLicenseParams = z.infer<typeof insertLicenseParams>;
 export type UpdateLicenseParams = z.infer<typeof updateLicenseParams>;
 export type LicenseId = z.infer<typeof licenseIdSchema>["id"];
-

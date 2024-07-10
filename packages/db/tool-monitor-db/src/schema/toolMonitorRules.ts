@@ -9,7 +9,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const toolMonitorRules = pgTable("tool_monitor_rules", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -76,5 +77,3 @@ export type UpdateToolMonitorRuleParams = z.infer<
   typeof updateToolMonitorRuleParams
 >;
 export type ToolMonitorRuleId = z.infer<typeof toolMonitorRuleIdSchema>["id"];
-
-

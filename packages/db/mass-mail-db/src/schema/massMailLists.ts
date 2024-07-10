@@ -3,7 +3,8 @@ import { boolean, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const massMailLists = pgTable("mass_mail_lists", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -52,4 +53,3 @@ export type NewMassMailList = z.infer<typeof insertMassMailListSchema>;
 export type NewMassMailListParams = z.infer<typeof insertMassMailListParams>;
 export type UpdateMassMailListParams = z.infer<typeof updateMassMailListParams>;
 export type MassMailListId = z.infer<typeof massMailListIdSchema>["id"];
-

@@ -3,7 +3,8 @@ import { pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const userDevices = pgTable(
   "user_devices",
@@ -57,5 +58,3 @@ export type NewUserDevice = z.infer<typeof insertUserDeviceSchema>;
 export type NewUserDeviceParams = z.infer<typeof insertUserDeviceParams>;
 export type UpdateUserDeviceParams = z.infer<typeof updateUserDeviceParams>;
 export type UserDeviceId = z.infer<typeof userDeviceIdSchema>["id"];
-
-

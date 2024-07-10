@@ -1,9 +1,8 @@
-
 import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const contexts = pgTable("contexts", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -45,5 +44,3 @@ export type NewContext = z.infer<typeof insertContextSchema>;
 export type NewContextParams = z.infer<typeof insertContextParams>;
 export type UpdateContextParams = z.infer<typeof updateContextParams>;
 export type ContextId = z.infer<typeof contextIdSchema>["id"];
-
-

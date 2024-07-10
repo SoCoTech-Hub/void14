@@ -9,7 +9,7 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const modules = pgTable(
   "modules",
@@ -59,5 +59,3 @@ export type NewModule = z.infer<typeof insertModuleSchema>;
 export type NewModuleParams = z.infer<typeof insertModuleParams>;
 export type UpdateModuleParams = z.infer<typeof updateModuleParams>;
 export type ModuleId = z.infer<typeof moduleIdSchema>["id"];
-
-

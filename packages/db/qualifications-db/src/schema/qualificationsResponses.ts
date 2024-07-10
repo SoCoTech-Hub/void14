@@ -2,7 +2,7 @@ import { boolean, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { qualifications } from "./qualifications";
 
@@ -63,5 +63,3 @@ export type UpdateQualificationsResponseParams = z.infer<
 export type QualificationsResponseId = z.infer<
   typeof qualificationsResponseIdSchema
 >["id"];
-
-

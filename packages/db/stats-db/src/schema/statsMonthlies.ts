@@ -2,7 +2,7 @@ import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const statsMonthlies = pgTable("stats_monthlies", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -41,4 +41,3 @@ export type NewStatsMonthly = z.infer<typeof insertStatsMonthlySchema>;
 export type NewStatsMonthlyParams = z.infer<typeof insertStatsMonthlyParams>;
 export type UpdateStatsMonthlyParams = z.infer<typeof updateStatsMonthlyParams>;
 export type StatsMonthlyId = z.infer<typeof statsMonthlyIdSchema>["id"];
-

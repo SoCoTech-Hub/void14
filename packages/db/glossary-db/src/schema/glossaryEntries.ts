@@ -10,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const glossaryEntries = pgTable("glossary_entries", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -83,4 +84,3 @@ export type UpdateGlossaryEntryParams = z.infer<
   typeof updateGlossaryEntryParams
 >;
 export type GlossaryEntryId = z.infer<typeof glossaryEntryIdSchema>["id"];
-

@@ -2,7 +2,7 @@ import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { enrolLtiResourceLinks } from "./enrolLtiResourceLinks";
 import { enrolLtiUsers } from "./enrolLtiUsers";
@@ -62,4 +62,3 @@ export type UpdateEnrolLtiUserResourceLinkParams = z.infer<
 export type EnrolLtiUserResourceLinkId = z.infer<
   typeof enrolLtiUserResourceLinkIdSchema
 >["id"];
-

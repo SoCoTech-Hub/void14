@@ -3,7 +3,8 @@ import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { surveyQuestions } from "./surveyQuestions";
 import { surveys } from "./surveys";
@@ -63,5 +64,3 @@ export type NewSurveyAnswer = z.infer<typeof insertSurveyAnswerSchema>;
 export type NewSurveyAnswerParams = z.infer<typeof insertSurveyAnswerParams>;
 export type UpdateSurveyAnswerParams = z.infer<typeof updateSurveyAnswerParams>;
 export type SurveyAnswerId = z.infer<typeof surveyAnswerIdSchema>["id"];
-
-

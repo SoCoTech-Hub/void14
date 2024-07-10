@@ -3,7 +3,8 @@ import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { cohorts } from "./cohorts";
 
@@ -55,5 +56,3 @@ export type NewCohortMember = z.infer<typeof insertCohortMemberSchema>;
 export type NewCohortMemberParams = z.infer<typeof insertCohortMemberParams>;
 export type UpdateCohortMemberParams = z.infer<typeof updateCohortMemberParams>;
 export type CohortMemberId = z.infer<typeof cohortMemberIdSchema>["id"];
-
-

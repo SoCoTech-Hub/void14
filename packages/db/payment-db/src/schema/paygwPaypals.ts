@@ -2,7 +2,7 @@ import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { payments } from "./payments";
 
@@ -49,5 +49,3 @@ export type NewPaygwPaypal = z.infer<typeof insertPaygwPaypalSchema>;
 export type NewPaygwPaypalParams = z.infer<typeof insertPaygwPaypalParams>;
 export type UpdatePaygwPaypalParams = z.infer<typeof updatePaygwPaypalParams>;
 export type PaygwPaypalId = z.infer<typeof paygwPaypalIdSchema>["id"];
-
-

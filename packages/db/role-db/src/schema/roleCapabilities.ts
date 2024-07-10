@@ -3,7 +3,8 @@ import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { roles } from "./roles";
 
@@ -61,4 +62,3 @@ export type UpdateRoleCapabilityParams = z.infer<
   typeof updateRoleCapabilityParams
 >;
 export type RoleCapabilityId = z.infer<typeof roleCapabilityIdSchema>["id"];
-

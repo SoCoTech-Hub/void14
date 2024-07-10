@@ -1,10 +1,10 @@
-
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const blockRecentlyAccessedItems = pgTable(
   "block_recently_accessed_items",
@@ -71,5 +71,3 @@ export type UpdateBlockRecentlyAccessedItemParams = z.infer<
 export type BlockRecentlyAccessedItemId = z.infer<
   typeof blockRecentlyAccessedItemIdSchema
 >["id"];
-
-

@@ -12,7 +12,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const quizes = pgTable(
   "quizes",
@@ -155,4 +156,3 @@ export type NewQuize = z.infer<typeof insertQuizeSchema>;
 export type NewQuizeParams = z.infer<typeof insertQuizeParams>;
 export type UpdateQuizeParams = z.infer<typeof updateQuizeParams>;
 export type QuizId = z.infer<typeof quizIdSchema>["id"];
-

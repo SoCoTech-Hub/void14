@@ -2,7 +2,7 @@ import { integer, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { mnetHosts } from "./mnetHosts";
 
@@ -66,5 +66,3 @@ export type NewMnetSession = z.infer<typeof insertMnetSessionSchema>;
 export type NewMnetSessionParams = z.infer<typeof insertMnetSessionParams>;
 export type UpdateMnetSessionParams = z.infer<typeof updateMnetSessionParams>;
 export type MnetSessionId = z.infer<typeof mnetSessionIdSchema>["id"];
-
-

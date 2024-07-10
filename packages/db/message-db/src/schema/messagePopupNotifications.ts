@@ -2,7 +2,7 @@ import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const messagePopupNotifications = pgTable(
   "message_popup_notifications",
@@ -44,4 +44,3 @@ export type UpdateMessagePopupNotificationParams = z.infer<
 export type MessagePopupNotificationId = z.infer<
   typeof messagePopupNotificationIdSchema
 >["id"];
-

@@ -2,7 +2,7 @@ import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { bursaries } from "./bursaries";
 import { bursaryCategories } from "./bursaryCategories";
@@ -67,5 +67,3 @@ export type UpdateBursaryCategoriesBursaryParams = z.infer<
 export type BursaryCategoriesBursaryId = z.infer<
   typeof bursaryCategoriesBursaryIdSchema
 >["id"];
-
-

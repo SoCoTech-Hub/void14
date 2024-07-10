@@ -2,7 +2,7 @@ import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const socialLinks = pgTable("social_links", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -32,4 +32,3 @@ export type NewSocialLink = z.infer<typeof insertSocialLinkSchema>;
 export type NewSocialLinkParams = z.infer<typeof insertSocialLinkParams>;
 export type UpdateSocialLinkParams = z.infer<typeof updateSocialLinkParams>;
 export type SocialLinkId = z.infer<typeof socialLinkIdSchema>["id"];
-

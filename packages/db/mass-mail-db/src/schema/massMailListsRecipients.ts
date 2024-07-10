@@ -2,7 +2,7 @@ import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { massMailLists } from "./massMailLists";
 import { massMailRecipients } from "./massMailRecipients";
@@ -57,5 +57,3 @@ export type UpdateMassMailListsRecipientParams = z.infer<
 export type MassMailListsRecipientId = z.infer<
   typeof massMailListsRecipientIdSchema
 >["id"];
-
-

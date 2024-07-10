@@ -2,7 +2,7 @@ import { boolean, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { tagColls } from "./tagColls";
 
@@ -53,5 +53,3 @@ export type NewTagArea = z.infer<typeof insertTagAreaSchema>;
 export type NewTagAreaParams = z.infer<typeof insertTagAreaParams>;
 export type UpdateTagAreaParams = z.infer<typeof updateTagAreaParams>;
 export type TagAreaId = z.infer<typeof tagAreaIdSchema>["id"];
-
-

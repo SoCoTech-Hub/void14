@@ -2,7 +2,7 @@ import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { feedbacks } from "./feedbacks";
 
@@ -51,4 +51,3 @@ export type UpdateFeedbackSitecourseMapParams = z.infer<
 export type FeedbackSitecourseMapId = z.infer<
   typeof feedbackSitecourseMapIdSchema
 >["id"];
-

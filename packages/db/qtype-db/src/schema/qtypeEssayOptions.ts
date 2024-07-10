@@ -1,8 +1,15 @@
-import { boolean, integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import {
+  boolean,
+  integer,
+  pgTable,
+  text,
+  uniqueIndex,
+  varchar,
+} from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const qtypeEssayOptions = pgTable(
   "qtype_essay_options",
@@ -80,4 +87,3 @@ export type UpdateQtypeEssayOptionParams = z.infer<
   typeof updateQtypeEssayOptionParams
 >;
 export type QtypeEssayOptionId = z.infer<typeof qtypeEssayOptionIdSchema>["id"];
-

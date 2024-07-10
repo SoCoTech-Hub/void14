@@ -10,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const notifications = pgTable(
   "notifications",
@@ -79,4 +80,3 @@ export type NewNotification = z.infer<typeof insertNotificationSchema>;
 export type NewNotificationParams = z.infer<typeof insertNotificationParams>;
 export type UpdateNotificationParams = z.infer<typeof updateNotificationParams>;
 export type NotificationId = z.infer<typeof notificationIdSchema>["id"];
-

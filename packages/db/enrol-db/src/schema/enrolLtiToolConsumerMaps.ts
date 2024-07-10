@@ -2,7 +2,7 @@ import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const enrolLtiToolConsumerMaps = pgTable(
   "enrol_lti_tool_consumer_maps",
@@ -45,5 +45,3 @@ export type UpdateEnrolLtiToolConsumerMapParams = z.infer<
 export type EnrolLtiToolConsumerMapId = z.infer<
   typeof enrolLtiToolConsumerMapIdSchema
 >["id"];
-
-

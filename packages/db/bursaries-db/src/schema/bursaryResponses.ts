@@ -3,7 +3,8 @@ import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { bursaries } from "./bursaries";
 
@@ -59,5 +60,3 @@ export type UpdateBursaryResponseParams = z.infer<
   typeof updateBursaryResponseParams
 >;
 export type BursaryResponseId = z.infer<typeof bursaryResponseIdSchema>["id"];
-
-

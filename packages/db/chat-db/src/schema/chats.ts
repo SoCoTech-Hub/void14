@@ -1,4 +1,3 @@
-
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -11,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const chats = pgTable(
   "chats",
@@ -75,5 +75,3 @@ export type NewChat = z.infer<typeof insertChatSchema>;
 export type NewChatParams = z.infer<typeof insertChatParams>;
 export type UpdateChatParams = z.infer<typeof updateChatParams>;
 export type ChatId = z.infer<typeof chatIdSchema>["id"];
-
-

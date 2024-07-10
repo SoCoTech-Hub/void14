@@ -2,7 +2,7 @@ import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const statsDailies = pgTable("stats_dailies", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -41,5 +41,3 @@ export type NewStatsDaily = z.infer<typeof insertStatsDailySchema>;
 export type NewStatsDailyParams = z.infer<typeof insertStatsDailyParams>;
 export type UpdateStatsDailyParams = z.infer<typeof updateStatsDailyParams>;
 export type StatsDailyId = z.infer<typeof statsDailyIdSchema>["id"];
-
-

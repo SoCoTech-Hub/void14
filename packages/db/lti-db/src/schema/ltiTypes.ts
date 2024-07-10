@@ -10,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const ltiTypes = pgTable("lti_types", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -68,5 +69,3 @@ export type NewLtiType = z.infer<typeof insertLtiTypeSchema>;
 export type NewLtiTypeParams = z.infer<typeof insertLtiTypeParams>;
 export type UpdateLtiTypeParams = z.infer<typeof updateLtiTypeParams>;
 export type LtiTypeId = z.infer<typeof ltiTypeIdSchema>["id"];
-
-

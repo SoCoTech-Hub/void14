@@ -1,4 +1,3 @@
-
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -11,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { blogs } from "./blogs";
 
@@ -74,5 +74,3 @@ export type NewBlogComment = z.infer<typeof insertBlogCommentSchema>;
 export type NewBlogCommentParams = z.infer<typeof insertBlogCommentParams>;
 export type UpdateBlogCommentParams = z.infer<typeof updateBlogCommentParams>;
 export type BlogCommentId = z.infer<typeof blogCommentIdSchema>["id"];
-
-

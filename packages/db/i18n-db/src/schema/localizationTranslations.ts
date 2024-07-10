@@ -2,7 +2,7 @@ import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { localizationFields } from "./localizationFields";
 import { localizationLanguages } from "./localizationLanguages";
@@ -58,5 +58,3 @@ export type UpdateLocalizationTranslationParams = z.infer<
 export type LocalizationTranslationId = z.infer<
   typeof localizationTranslationIdSchema
 >["id"];
-
-

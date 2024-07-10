@@ -9,7 +9,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const medias = pgTable(
   "medias",
@@ -66,4 +67,3 @@ export type NewMedia = z.infer<typeof insertMediaSchema>;
 export type NewMediaParams = z.infer<typeof insertMediaParams>;
 export type UpdateMediaParams = z.infer<typeof updateMediaParams>;
 export type MediaId = z.infer<typeof mediaIdSchema>["id"];
-

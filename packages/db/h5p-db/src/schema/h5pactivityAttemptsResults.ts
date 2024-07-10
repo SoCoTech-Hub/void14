@@ -10,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const h5pactivityAttemptsResults = pgTable(
   "h5pactivity_attempts_results",
@@ -86,5 +87,3 @@ export type UpdateH5pactivityAttemptsResultParams = z.infer<
 export type H5pactivityAttemptsResultId = z.infer<
   typeof h5pactivityAttemptsResultIdSchema
 >["id"];
-
-

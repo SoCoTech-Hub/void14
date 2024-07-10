@@ -10,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { lessonPages } from "./lessonPages";
 import { lessons } from "./lessons";
@@ -80,4 +81,3 @@ export type NewLessonAnswer = z.infer<typeof insertLessonAnswerSchema>;
 export type NewLessonAnswerParams = z.infer<typeof insertLessonAnswerParams>;
 export type UpdateLessonAnswerParams = z.infer<typeof updateLessonAnswerParams>;
 export type LessonAnswerId = z.infer<typeof lessonAnswerIdSchema>["id"];
-

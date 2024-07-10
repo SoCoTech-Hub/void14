@@ -1,4 +1,3 @@
-
 import {
   boolean,
   pgTable,
@@ -9,7 +8,7 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const blocks = pgTable(
   "blocks",
@@ -56,5 +55,3 @@ export type NewBlock = z.infer<typeof insertBlockSchema>;
 export type NewBlockParams = z.infer<typeof insertBlockParams>;
 export type UpdateBlockParams = z.infer<typeof updateBlockParams>;
 export type BlockId = z.infer<typeof blockIdSchema>["id"];
-
-

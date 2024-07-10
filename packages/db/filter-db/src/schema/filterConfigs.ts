@@ -2,7 +2,7 @@ import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const filterConfigs = pgTable("filter_configs", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -33,5 +33,3 @@ export type NewFilterConfig = z.infer<typeof insertFilterConfigSchema>;
 export type NewFilterConfigParams = z.infer<typeof insertFilterConfigParams>;
 export type UpdateFilterConfigParams = z.infer<typeof updateFilterConfigParams>;
 export type FilterConfigId = z.infer<typeof filterConfigIdSchema>["id"];
-
-

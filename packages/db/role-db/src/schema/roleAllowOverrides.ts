@@ -2,7 +2,7 @@ import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { roles } from "./roles";
 
@@ -54,5 +54,3 @@ export type UpdateRoleAllowOverrideParams = z.infer<
 export type RoleAllowOverrideId = z.infer<
   typeof roleAllowOverrideIdSchema
 >["id"];
-
-

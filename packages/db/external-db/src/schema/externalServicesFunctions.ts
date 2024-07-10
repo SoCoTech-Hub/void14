@@ -1,9 +1,8 @@
-
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const externalServicesFunctions = pgTable(
   "external_services_functions",
@@ -46,5 +45,3 @@ export type UpdateExternalServicesFunctionParams = z.infer<
 export type ExternalServicesFunctionId = z.infer<
   typeof externalServicesFunctionIdSchema
 >["id"];
-
-

@@ -1,8 +1,14 @@
-import { integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import {
+  integer,
+  pgTable,
+  text,
+  uniqueIndex,
+  varchar,
+} from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { workshops } from "./workshops";
 
@@ -74,5 +80,3 @@ export type UpdateWorkshopFormAccumulativeParams = z.infer<
 export type WorkshopFormAccumulativeId = z.infer<
   typeof workshopFormAccumulativeIdSchema
 >["id"];
-
-

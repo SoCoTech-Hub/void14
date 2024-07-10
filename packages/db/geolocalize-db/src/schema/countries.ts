@@ -2,7 +2,7 @@ import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const countries = pgTable("countries", {
   id: varchar("id", { length: 191 })
@@ -31,5 +31,3 @@ export type NewCountry = z.infer<typeof insertCountrySchema>;
 export type NewCountryParams = z.infer<typeof insertCountryParams>;
 export type UpdateCountryParams = z.infer<typeof updateCountryParams>;
 export type CountryId = z.infer<typeof countryIdSchema>["id"];
-
-

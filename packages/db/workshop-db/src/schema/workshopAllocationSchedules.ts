@@ -11,7 +11,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { workshops } from "./workshops";
 
@@ -91,5 +92,3 @@ export type UpdateWorkshopAllocationScheduleParams = z.infer<
 export type WorkshopAllocationScheduleId = z.infer<
   typeof workshopAllocationScheduleIdSchema
 >["id"];
-
-

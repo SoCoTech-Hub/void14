@@ -2,7 +2,7 @@ import { boolean, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { messages } from "./messages";
 
@@ -43,5 +43,3 @@ export type NewMessagePopup = z.infer<typeof insertMessagePopupSchema>;
 export type NewMessagePopupParams = z.infer<typeof insertMessagePopupParams>;
 export type UpdateMessagePopupParams = z.infer<typeof updateMessagePopupParams>;
 export type MessagePopupId = z.infer<typeof messagePopupIdSchema>["id"];
-
-

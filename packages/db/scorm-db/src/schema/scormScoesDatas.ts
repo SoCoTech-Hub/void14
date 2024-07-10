@@ -2,7 +2,7 @@ import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { scormScoes } from "./scormScoes";
 
@@ -46,4 +46,3 @@ export type UpdateScormScoesDataParams = z.infer<
   typeof updateScormScoesDataParams
 >;
 export type ScormScoesDataId = z.infer<typeof scormScoesDataIdSchema>["id"];
-

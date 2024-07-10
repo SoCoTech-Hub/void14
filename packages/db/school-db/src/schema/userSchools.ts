@@ -2,7 +2,7 @@ import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { schools } from "./schools";
 
@@ -46,5 +46,3 @@ export type NewUserSchool = z.infer<typeof insertUserSchoolSchema>;
 export type NewUserSchoolParams = z.infer<typeof insertUserSchoolParams>;
 export type UpdateUserSchoolParams = z.infer<typeof updateUserSchoolParams>;
 export type UserSchoolId = z.infer<typeof userSchoolIdSchema>["id"];
-
-

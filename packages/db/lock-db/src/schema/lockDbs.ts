@@ -2,7 +2,7 @@ import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const lockDbs = pgTable("lock_dbs", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -38,4 +38,3 @@ export type NewLockDb = z.infer<typeof insertLockDbSchema>;
 export type NewLockDbParams = z.infer<typeof insertLockDbParams>;
 export type UpdateLockDbParams = z.infer<typeof updateLockDbParams>;
 export type LockDbId = z.infer<typeof lockDbIdSchema>["id"];
-

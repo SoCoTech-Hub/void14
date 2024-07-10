@@ -2,7 +2,7 @@ import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { wikiPages } from "./wikiPages";
 
@@ -50,4 +50,3 @@ export type NewWikiLock = z.infer<typeof insertWikiLockSchema>;
 export type NewWikiLockParams = z.infer<typeof insertWikiLockParams>;
 export type UpdateWikiLockParams = z.infer<typeof updateWikiLockParams>;
 export type WikiLockId = z.infer<typeof wikiLockIdSchema>["id"];
-

@@ -10,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const feedbacks = pgTable("feedbacks", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -86,5 +87,3 @@ export type NewFeedback = z.infer<typeof insertFeedbackSchema>;
 export type NewFeedbackParams = z.infer<typeof insertFeedbackParams>;
 export type UpdateFeedbackParams = z.infer<typeof updateFeedbackParams>;
 export type FeedbackId = z.infer<typeof feedbackIdSchema>["id"];
-
-

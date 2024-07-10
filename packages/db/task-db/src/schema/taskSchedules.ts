@@ -8,7 +8,7 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const taskSchedules = pgTable("task_schedules", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -65,4 +65,3 @@ export type NewTaskSchedule = z.infer<typeof insertTaskScheduleSchema>;
 export type NewTaskScheduleParams = z.infer<typeof insertTaskScheduleParams>;
 export type UpdateTaskScheduleParams = z.infer<typeof updateTaskScheduleParams>;
 export type TaskScheduleId = z.infer<typeof taskScheduleIdSchema>["id"];
-

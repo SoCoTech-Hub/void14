@@ -2,7 +2,7 @@ import { boolean, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const h5pLibraries = pgTable("h5p_libraries", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -68,4 +68,3 @@ export type NewH5pLibrary = z.infer<typeof insertH5pLibrarySchema>;
 export type NewH5pLibraryParams = z.infer<typeof insertH5pLibraryParams>;
 export type UpdateH5pLibraryParams = z.infer<typeof updateH5pLibraryParams>;
 export type H5pLibraryId = z.infer<typeof h5pLibraryIdSchema>["id"];
-

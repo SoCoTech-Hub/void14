@@ -2,7 +2,7 @@ import { integer, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const quizReports = pgTable(
   "quiz_reports",
@@ -46,5 +46,3 @@ export type NewQuizReport = z.infer<typeof insertQuizReportSchema>;
 export type NewQuizReportParams = z.infer<typeof insertQuizReportParams>;
 export type UpdateQuizReportParams = z.infer<typeof updateQuizReportParams>;
 export type QuizReportId = z.infer<typeof quizReportIdSchema>["id"];
-
-

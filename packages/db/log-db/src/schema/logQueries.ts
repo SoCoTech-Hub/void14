@@ -9,7 +9,7 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const logQueries = pgTable("log_queries", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -56,5 +56,3 @@ export type NewLogQuery = z.infer<typeof insertLogQuerySchema>;
 export type NewLogQueryParams = z.infer<typeof insertLogQueryParams>;
 export type UpdateLogQueryParams = z.infer<typeof updateLogQueryParams>;
 export type LogQueryId = z.infer<typeof logQueryIdSchema>["id"];
-
-

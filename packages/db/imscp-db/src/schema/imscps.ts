@@ -9,7 +9,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const imscps = pgTable("imscps", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -60,5 +61,3 @@ export type NewImscp = z.infer<typeof insertImscpSchema>;
 export type NewImscpParams = z.infer<typeof insertImscpParams>;
 export type UpdateImscpParams = z.infer<typeof updateImscpParams>;
 export type ImscpId = z.infer<typeof imscpIdSchema>["id"];
-
-

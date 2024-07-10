@@ -9,7 +9,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const sessions = pgTable("sessions", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -61,4 +62,3 @@ export type NewSession = z.infer<typeof insertSessionSchema>;
 export type NewSessionParams = z.infer<typeof insertSessionParams>;
 export type UpdateSessionParams = z.infer<typeof updateSessionParams>;
 export type SessionId = z.infer<typeof sessionIdSchema>["id"];
-

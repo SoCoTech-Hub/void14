@@ -10,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { addresses } from "./addresses";
 import { genders } from "./genders";
@@ -92,5 +93,3 @@ export type NewProfile = z.infer<typeof insertProfileSchema>;
 export type NewProfileParams = z.infer<typeof insertProfileParams>;
 export type UpdateProfileParams = z.infer<typeof updateProfileParams>;
 export type ProfileId = z.infer<typeof profileIdSchema>["id"];
-
-

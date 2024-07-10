@@ -2,7 +2,7 @@ import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { h5pLibraries } from "./h5pLibraries";
 
@@ -52,5 +52,3 @@ export type UpdateH5pLibrariesCachedassetParams = z.infer<
 export type H5pLibrariesCachedassetId = z.infer<
   typeof h5pLibrariesCachedassetIdSchema
 >["id"];
-
-

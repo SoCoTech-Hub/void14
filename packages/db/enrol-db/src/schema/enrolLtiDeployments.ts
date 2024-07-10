@@ -3,7 +3,8 @@ import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const enrolLtiDeployments = pgTable("enrol_lti_deployments", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -50,4 +51,3 @@ export type UpdateEnrolLtiDeploymentParams = z.infer<
 export type EnrolLtiDeploymentId = z.infer<
   typeof enrolLtiDeploymentIdSchema
 >["id"];
-

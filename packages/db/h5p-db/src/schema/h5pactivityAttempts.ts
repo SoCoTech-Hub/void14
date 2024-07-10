@@ -1,4 +1,3 @@
-
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -11,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const h5pactivityAttempts = pgTable("h5pactivity_attempts", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -86,5 +86,3 @@ export type UpdateH5pactivityAttemptParams = z.infer<
 export type H5pactivityAttemptId = z.infer<
   typeof h5pactivityAttemptIdSchema
 >["id"];
-
-

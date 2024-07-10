@@ -1,9 +1,8 @@
-
 import { boolean, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { adminPresets } from "./adminPresets";
 
@@ -60,4 +59,3 @@ export type UpdateAdminPresetPlugParams = z.infer<
   typeof updateAdminPresetPlugParams
 >;
 export type AdminPresetPlugId = z.infer<typeof adminPresetPlugIdSchema>["id"];
-

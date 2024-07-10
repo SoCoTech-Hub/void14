@@ -1,4 +1,3 @@
-
 import { sql } from "drizzle-orm";
 import {
   pgTable,
@@ -10,7 +9,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { workshops } from "./workshops";
 
@@ -83,5 +83,3 @@ export type UpdateWorkshopAggregationParams = z.infer<
 export type WorkshopAggregationId = z.infer<
   typeof workshopAggregationIdSchema
 >["id"];
-
-

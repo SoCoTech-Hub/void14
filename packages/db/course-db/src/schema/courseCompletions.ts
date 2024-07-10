@@ -2,7 +2,7 @@ import { pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { courses } from "./courses";
 
@@ -70,4 +70,3 @@ export type UpdateCourseCompletionParams = z.infer<
   typeof updateCourseCompletionParams
 >;
 export type CourseCompletionId = z.infer<typeof courseCompletionIdSchema>["id"];
-

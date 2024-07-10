@@ -3,7 +3,8 @@ import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { tags } from "./tags";
 
@@ -62,4 +63,3 @@ export type NewTagInstance = z.infer<typeof insertTagInstanceSchema>;
 export type NewTagInstanceParams = z.infer<typeof insertTagInstanceParams>;
 export type UpdateTagInstanceParams = z.infer<typeof updateTagInstanceParams>;
 export type TagInstanceId = z.infer<typeof tagInstanceIdSchema>["id"];
-

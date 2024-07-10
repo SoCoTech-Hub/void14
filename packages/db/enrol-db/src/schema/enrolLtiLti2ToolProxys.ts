@@ -3,7 +3,8 @@ import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const enrolLtiLti2ToolProxys = pgTable("enrol_lti_lti2_tool_proxys", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -50,4 +51,3 @@ export type UpdateEnrolLtiLti2ToolProxyParams = z.infer<
 export type EnrolLtiLti2ToolProxyId = z.infer<
   typeof enrolLtiLti2ToolProxyIdSchema
 >["id"];
-

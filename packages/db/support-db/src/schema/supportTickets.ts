@@ -10,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { supportDepartments } from "./supportDepartments";
 import { supportStatuses } from "./supportStatuses";
@@ -98,4 +99,3 @@ export type UpdateSupportTicketParams = z.infer<
   typeof updateSupportTicketParams
 >;
 export type SupportTicketId = z.infer<typeof supportTicketIdSchema>["id"];
-

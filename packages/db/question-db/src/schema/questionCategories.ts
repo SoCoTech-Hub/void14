@@ -1,8 +1,14 @@
-import { integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import {
+  integer,
+  pgTable,
+  text,
+  uniqueIndex,
+  varchar,
+} from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const questionCategories = pgTable(
   "question_categories",
@@ -60,5 +66,3 @@ export type UpdateQuestionCategoryParams = z.infer<
   typeof updateQuestionCategoryParams
 >;
 export type QuestionCategoryId = z.infer<typeof questionCategoryIdSchema>["id"];
-
-

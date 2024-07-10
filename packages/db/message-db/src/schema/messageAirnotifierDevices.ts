@@ -2,7 +2,7 @@ import { boolean, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const messageAirnotifierDevices = pgTable(
   "message_airnotifier_devices",
@@ -51,4 +51,3 @@ export type UpdateMessageAirnotifierDeviceParams = z.infer<
 export type MessageAirnotifierDeviceId = z.infer<
   typeof messageAirnotifierDeviceIdSchema
 >["id"];
-

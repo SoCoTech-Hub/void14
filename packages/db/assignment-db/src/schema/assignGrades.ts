@@ -1,4 +1,3 @@
-
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -11,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { assignments } from "./assignments";
 
@@ -79,5 +79,3 @@ export type NewAssignGrade = z.infer<typeof insertAssignGradeSchema>;
 export type NewAssignGradeParams = z.infer<typeof insertAssignGradeParams>;
 export type UpdateAssignGradeParams = z.infer<typeof updateAssignGradeParams>;
 export type AssignGradeId = z.infer<typeof assignGradeIdSchema>["id"];
-
-

@@ -11,7 +11,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const reportbuilderSchedules = pgTable(
   "reportbuilder_schedules",
@@ -104,5 +105,3 @@ export type UpdateReportbuilderScheduleParams = z.infer<
 export type ReportbuilderScheduleId = z.infer<
   typeof reportbuilderScheduleIdSchema
 >["id"];
-
-

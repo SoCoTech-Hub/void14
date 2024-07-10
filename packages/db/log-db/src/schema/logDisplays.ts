@@ -2,7 +2,7 @@ import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const logDisplays = pgTable("log_displays", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -34,5 +34,3 @@ export type NewLogDisplay = z.infer<typeof insertLogDisplaySchema>;
 export type NewLogDisplayParams = z.infer<typeof insertLogDisplayParams>;
 export type UpdateLogDisplayParams = z.infer<typeof updateLogDisplayParams>;
 export type LogDisplayId = z.infer<typeof logDisplayIdSchema>["id"];
-
-

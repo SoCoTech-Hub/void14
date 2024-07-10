@@ -1,4 +1,3 @@
-
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -11,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const blockInstances = pgTable("block_instances", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -67,5 +67,3 @@ export type UpdateBlockInstanceParams = z.infer<
   typeof updateBlockInstanceParams
 >;
 export type BlockInstanceId = z.infer<typeof blockInstanceIdSchema>["id"];
-
-

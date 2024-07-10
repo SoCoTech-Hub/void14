@@ -1,8 +1,15 @@
-import { boolean, integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import {
+  boolean,
+  integer,
+  pgTable,
+  text,
+  uniqueIndex,
+  varchar,
+} from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { questions } from "./questions";
 
@@ -70,4 +77,3 @@ export type UpdateQuestionDdwtoParams = z.infer<
   typeof updateQuestionDdwtoParams
 >;
 export type QuestionDdwtoId = z.infer<typeof questionDdwtoIdSchema>["id"];
-

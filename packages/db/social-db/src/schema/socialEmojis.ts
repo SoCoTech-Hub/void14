@@ -2,7 +2,7 @@ import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const socialEmojis = pgTable("social_emojis", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -31,4 +31,3 @@ export type NewSocialEmoji = z.infer<typeof insertSocialEmojiSchema>;
 export type NewSocialEmojiParams = z.infer<typeof insertSocialEmojiParams>;
 export type UpdateSocialEmojiParams = z.infer<typeof updateSocialEmojiParams>;
 export type SocialEmojiId = z.infer<typeof socialEmojiIdSchema>["id"];
-

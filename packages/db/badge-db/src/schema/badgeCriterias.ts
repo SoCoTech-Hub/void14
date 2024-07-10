@@ -1,4 +1,3 @@
-
 import {
   boolean,
   integer,
@@ -10,7 +9,7 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { badges } from "./badges";
 
@@ -66,5 +65,3 @@ export type UpdateBadgeCriteriaParams = z.infer<
   typeof updateBadgeCriteriaParams
 >;
 export type BadgeCriteriaId = z.infer<typeof badgeCriteriaIdSchema>["id"];
-
-

@@ -1,9 +1,8 @@
-
 import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { applicationCategories } from "./applicationCategories";
 import { jobApplications } from "./jobApplications";
@@ -64,4 +63,3 @@ export type UpdateJobApplicationsApplicationCategoryParams = z.infer<
 export type JobApplicationsApplicationCategoryId = z.infer<
   typeof jobApplicationsApplicationCategoryIdSchema
 >["id"];
-

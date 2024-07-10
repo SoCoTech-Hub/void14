@@ -2,7 +2,7 @@ import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const stickers = pgTable("stickers", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -33,4 +33,3 @@ export type NewSticker = z.infer<typeof insertStickerSchema>;
 export type NewStickerParams = z.infer<typeof insertStickerParams>;
 export type UpdateStickerParams = z.infer<typeof updateStickerParams>;
 export type StickerId = z.infer<typeof stickerIdSchema>["id"];
-

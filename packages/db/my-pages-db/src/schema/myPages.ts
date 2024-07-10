@@ -1,8 +1,14 @@
-import { boolean, integer, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import {
+  boolean,
+  integer,
+  pgTable,
+  uniqueIndex,
+  varchar,
+} from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const myPages = pgTable(
   "my_pages",
@@ -54,5 +60,3 @@ export type NewMyPage = z.infer<typeof insertMyPageSchema>;
 export type NewMyPageParams = z.infer<typeof insertMyPageParams>;
 export type UpdateMyPageParams = z.infer<typeof updateMyPageParams>;
 export type MyPageId = z.infer<typeof myPageIdSchema>["id"];
-
-

@@ -1,8 +1,14 @@
-import { integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import {
+  integer,
+  pgTable,
+  text,
+  uniqueIndex,
+  varchar,
+} from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { mnetHosts } from "./mnetHosts";
 
@@ -79,4 +85,3 @@ export type UpdateMnetServiceEnrolCourseParams = z.infer<
 export type MnetServiceEnrolCourseId = z.infer<
   typeof mnetServiceEnrolCourseIdSchema
 >["id"];
-

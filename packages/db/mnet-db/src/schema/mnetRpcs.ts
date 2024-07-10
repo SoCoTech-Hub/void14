@@ -1,8 +1,14 @@
-import { boolean, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import {
+  boolean,
+  pgTable,
+  text,
+  uniqueIndex,
+  varchar,
+} from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const mnetRpcs = pgTable(
   "mnet_rpcs",
@@ -57,4 +63,3 @@ export type NewMnetRpc = z.infer<typeof insertMnetRpcSchema>;
 export type NewMnetRpcParams = z.infer<typeof insertMnetRpcParams>;
 export type UpdateMnetRpcParams = z.infer<typeof updateMnetRpcParams>;
 export type MnetRpcId = z.infer<typeof mnetRpcIdSchema>["id"];
-

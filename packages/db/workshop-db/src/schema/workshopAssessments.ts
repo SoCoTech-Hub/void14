@@ -11,7 +11,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const workshopAssessments = pgTable(
   "workshop_assessments",
@@ -96,4 +97,3 @@ export type UpdateWorkshopAssessmentParams = z.infer<
 export type WorkshopAssessmentId = z.infer<
   typeof workshopAssessmentIdSchema
 >["id"];
-

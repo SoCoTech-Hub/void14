@@ -1,4 +1,3 @@
-
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -10,7 +9,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { competencies } from "./competencies";
 
@@ -88,5 +88,3 @@ export type UpdateCompetencyModuleCompParams = z.infer<
 export type CompetencyModuleCompId = z.infer<
   typeof competencyModuleCompIdSchema
 >["id"];
-
-

@@ -1,4 +1,3 @@
-
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -10,7 +9,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const badgeBackpackOauth2s = pgTable("badge_backpack_oauth2s", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -71,5 +71,3 @@ export type UpdateBadgeBackpackOauth2Params = z.infer<
 export type BadgeBackpackOauth2Id = z.infer<
   typeof badgeBackpackOauth2IdSchema
 >["id"];
-
-

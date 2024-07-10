@@ -1,8 +1,14 @@
-import { integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import {
+  integer,
+  pgTable,
+  text,
+  uniqueIndex,
+  varchar,
+} from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const qtypeMatchSubquestions = pgTable(
   "qtype_match_subquestions",
@@ -59,4 +65,3 @@ export type UpdateQtypeMatchSubquestionParams = z.infer<
 export type QtypeMatchSubquestionId = z.infer<
   typeof qtypeMatchSubquestionIdSchema
 >["id"];
-

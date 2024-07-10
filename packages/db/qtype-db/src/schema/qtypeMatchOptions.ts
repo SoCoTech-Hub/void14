@@ -1,8 +1,15 @@
-import { boolean, integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import {
+  boolean,
+  integer,
+  pgTable,
+  text,
+  uniqueIndex,
+  varchar,
+} from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const qtypeMatchOptions = pgTable(
   "qtype_match_options",
@@ -69,4 +76,3 @@ export type UpdateQtypeMatchOptionParams = z.infer<
   typeof updateQtypeMatchOptionParams
 >;
 export type QtypeMatchOptionId = z.infer<typeof qtypeMatchOptionIdSchema>["id"];
-

@@ -12,7 +12,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { quizes } from "./quizes";
 
@@ -102,4 +103,3 @@ export type NewQuizAttempt = z.infer<typeof insertQuizAttemptSchema>;
 export type NewQuizAttemptParams = z.infer<typeof insertQuizAttemptParams>;
 export type UpdateQuizAttemptParams = z.infer<typeof updateQuizAttemptParams>;
 export type QuizAttemptId = z.infer<typeof quizAttemptIdSchema>["id"];
-

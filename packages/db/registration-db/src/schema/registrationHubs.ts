@@ -1,9 +1,16 @@
 import { sql } from "drizzle-orm";
-import { boolean, pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import {
+  boolean,
+  pgTable,
+  timestamp,
+  uniqueIndex,
+  varchar,
+} from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const registrationHubs = pgTable(
   "registration_hubs",
@@ -61,4 +68,3 @@ export type UpdateRegistrationHubParams = z.infer<
   typeof updateRegistrationHubParams
 >;
 export type RegistrationHubId = z.infer<typeof registrationHubIdSchema>["id"];
-

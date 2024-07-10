@@ -10,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { oauth2Issuers } from "./oauth2Issuers";
 
@@ -85,5 +86,3 @@ export type UpdateOauth2AccessTokenParams = z.infer<
 export type Oauth2AccessTokenId = z.infer<
   typeof oauth2AccessTokenIdSchema
 >["id"];
-
-

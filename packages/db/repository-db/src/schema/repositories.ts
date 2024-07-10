@@ -1,8 +1,14 @@
-import { boolean, integer, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import {
+  boolean,
+  integer,
+  pgTable,
+  uniqueIndex,
+  varchar,
+} from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const repositories = pgTable(
   "repositories",
@@ -48,4 +54,3 @@ export type NewRepository = z.infer<typeof insertRepositorySchema>;
 export type NewRepositoryParams = z.infer<typeof insertRepositoryParams>;
 export type UpdateRepositoryParams = z.infer<typeof updateRepositoryParams>;
 export type RepositoryId = z.infer<typeof repositoryIdSchema>["id"];
-

@@ -2,7 +2,7 @@ import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { dataRecords } from "./dataRecords";
 import { fields } from "./fields";
@@ -51,4 +51,3 @@ export type NewDataContent = z.infer<typeof insertDataContentSchema>;
 export type NewDataContentParams = z.infer<typeof insertDataContentParams>;
 export type UpdateDataContentParams = z.infer<typeof updateDataContentParams>;
 export type DataContentId = z.infer<typeof dataContentIdSchema>["id"];
-

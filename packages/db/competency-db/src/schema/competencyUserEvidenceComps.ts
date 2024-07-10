@@ -3,7 +3,8 @@ import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { competencies } from "./competencies";
 import { competencyUserEvidences } from "./competencyUserEvidences";
@@ -78,4 +79,3 @@ export type UpdateCompetencyUserEvidenceCompParams = z.infer<
 export type CompetencyUserEvidenceCompId = z.infer<
   typeof competencyUserEvidenceCompIdSchema
 >["id"];
-

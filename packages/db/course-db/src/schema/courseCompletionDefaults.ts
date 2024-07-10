@@ -9,7 +9,7 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { courses } from "./courses";
 
@@ -85,4 +85,3 @@ export type UpdateCourseCompletionDefaultParams = z.infer<
 export type CourseCompletionDefaultId = z.infer<
   typeof courseCompletionDefaultIdSchema
 >["id"];
-

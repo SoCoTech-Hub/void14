@@ -10,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const quizOverviewRegrades = pgTable(
   "quiz_overview_regrades",
@@ -76,4 +77,3 @@ export type UpdateQuizOverviewRegradeParams = z.infer<
 export type QuizOverviewRegradeId = z.infer<
   typeof quizOverviewRegradeIdSchema
 >["id"];
-

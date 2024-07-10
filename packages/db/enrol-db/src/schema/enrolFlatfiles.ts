@@ -3,7 +3,8 @@ import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const enrolFlatfiles = pgTable("enrol_flatfiles", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -50,4 +51,3 @@ export type UpdateEnrolFlatfileParams = z.infer<
   typeof updateEnrolFlatfileParams
 >;
 export type EnrolFlatfileId = z.infer<typeof enrolFlatfileIdSchema>["id"];
-

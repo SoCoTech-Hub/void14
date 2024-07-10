@@ -2,7 +2,7 @@ import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const ltiserviceGradebookservices = pgTable(
   "ltiservice_gradebookservices",
@@ -53,5 +53,3 @@ export type UpdateLtiserviceGradebookserviceParams = z.infer<
 export type LtiserviceGradebookserviceId = z.infer<
   typeof ltiserviceGradebookserviceIdSchema
 >["id"];
-
-

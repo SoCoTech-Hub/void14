@@ -2,7 +2,7 @@ import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const zooms = pgTable("zooms", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -36,4 +36,3 @@ export type NewZoom = z.infer<typeof insertZoomSchema>;
 export type NewZoomParams = z.infer<typeof insertZoomParams>;
 export type UpdateZoomParams = z.infer<typeof updateZoomParams>;
 export type ZoomId = z.infer<typeof zoomIdSchema>["id"];
-

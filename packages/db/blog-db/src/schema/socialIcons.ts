@@ -2,7 +2,7 @@ import type { z } from "zod";
 import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const socialIcons = pgTable(
   "social_icons",
@@ -38,4 +38,3 @@ export type NewSocialIcon = z.infer<typeof insertSocialIconSchema>;
 export type NewSocialIconParams = z.infer<typeof insertSocialIconParams>;
 export type UpdateSocialIconParams = z.infer<typeof updateSocialIconParams>;
 export type SocialIconId = z.infer<typeof socialIconIdSchema>["id"];
-

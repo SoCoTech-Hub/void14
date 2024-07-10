@@ -1,4 +1,3 @@
-
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -10,7 +9,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { choices } from "./choices";
 
@@ -60,5 +60,3 @@ export type NewChoiceOption = z.infer<typeof insertChoiceOptionSchema>;
 export type NewChoiceOptionParams = z.infer<typeof insertChoiceOptionParams>;
 export type UpdateChoiceOptionParams = z.infer<typeof updateChoiceOptionParams>;
 export type ChoiceOptionId = z.infer<typeof choiceOptionIdSchema>["id"];
-
-

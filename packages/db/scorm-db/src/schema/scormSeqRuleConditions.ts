@@ -2,7 +2,7 @@ import { pgTable, real, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { scormScoes } from "./scormScoes";
 import { scormSeqRuleConds } from "./scormSeqRuleConds";
@@ -62,5 +62,3 @@ export type UpdateScormSeqRuleConditionParams = z.infer<
 export type ScormSeqRuleConditionId = z.infer<
   typeof scormSeqRuleConditionIdSchema
 >["id"];
-
-

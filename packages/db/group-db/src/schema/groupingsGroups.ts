@@ -2,7 +2,7 @@ import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { groupings } from "./groupings";
 import { groups } from "./groups";
@@ -53,5 +53,3 @@ export type UpdateGroupingsGroupParams = z.infer<
   typeof updateGroupingsGroupParams
 >;
 export type GroupingsGroupId = z.infer<typeof groupingsGroupIdSchema>["id"];
-
-

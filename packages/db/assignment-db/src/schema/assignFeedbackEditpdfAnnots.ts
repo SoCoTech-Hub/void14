@@ -1,9 +1,8 @@
-
 import { boolean, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const assignFeedbackEditpdfAnnots = pgTable(
   "assign_feedback_editpdf_annots",
@@ -70,5 +69,3 @@ export type UpdateAssignFeedbackEditpdfAnnotParams = z.infer<
 export type AssignFeedbackEditpdfAnnotId = z.infer<
   typeof assignFeedbackEditpdfAnnotIdSchema
 >["id"];
-
-

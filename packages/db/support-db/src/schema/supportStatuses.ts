@@ -2,7 +2,7 @@ import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const supportStatuses = pgTable("support_statuses", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -33,5 +33,3 @@ export type UpdateSupportStatusParams = z.infer<
   typeof updateSupportStatusParams
 >;
 export type SupportStatusId = z.infer<typeof supportStatusIdSchema>["id"];
-
-

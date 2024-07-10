@@ -1,9 +1,8 @@
-
 import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { countries } from "./countries";
 
@@ -60,4 +59,3 @@ export type UpdateCountryOrganizationParams = z.infer<
 export type CountryOrganizationId = z.infer<
   typeof countryOrganizationIdSchema
 >["id"];
-

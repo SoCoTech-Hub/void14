@@ -11,7 +11,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const forums = pgTable("forums", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -120,5 +121,3 @@ export type NewForum = z.infer<typeof insertForumSchema>;
 export type NewForumParams = z.infer<typeof insertForumParams>;
 export type UpdateForumParams = z.infer<typeof updateForumParams>;
 export type ForumId = z.infer<typeof forumIdSchema>["id"];
-
-

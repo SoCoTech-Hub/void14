@@ -2,7 +2,7 @@ import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { forums } from "./forums";
 
@@ -55,4 +55,3 @@ export type UpdateForumSubscriptionParams = z.infer<
 export type ForumSubscriptionId = z.infer<
   typeof forumSubscriptionIdSchema
 >["id"];
-

@@ -3,7 +3,8 @@ import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const scaleHistories = pgTable("scale_histories", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -50,5 +51,3 @@ export type NewScaleHistory = z.infer<typeof insertScaleHistorySchema>;
 export type NewScaleHistoryParams = z.infer<typeof insertScaleHistoryParams>;
 export type UpdateScaleHistoryParams = z.infer<typeof updateScaleHistoryParams>;
 export type ScaleHistoryId = z.infer<typeof scaleHistoryIdSchema>["id"];
-
-

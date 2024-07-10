@@ -9,7 +9,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const scales = pgTable("scales", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -60,5 +61,3 @@ export type NewScale = z.infer<typeof insertScaleSchema>;
 export type NewScaleParams = z.infer<typeof insertScaleParams>;
 export type UpdateScaleParams = z.infer<typeof updateScaleParams>;
 export type ScaleId = z.infer<typeof scaleIdSchema>["id"];
-
-

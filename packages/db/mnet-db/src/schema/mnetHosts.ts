@@ -9,7 +9,7 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { mnetApplications } from "./mnetApplications";
 
@@ -86,5 +86,3 @@ export type NewMnetHost = z.infer<typeof insertMnetHostSchema>;
 export type NewMnetHostParams = z.infer<typeof insertMnetHostParams>;
 export type UpdateMnetHostParams = z.infer<typeof updateMnetHostParams>;
 export type MnetHostId = z.infer<typeof mnetHostIdSchema>["id"];
-
-

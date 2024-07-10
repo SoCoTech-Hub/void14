@@ -2,7 +2,7 @@ import { pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { courses } from "./courses";
 
@@ -63,5 +63,3 @@ export type UpdateCourseFormatOptionParams = z.infer<
 export type CourseFormatOptionId = z.infer<
   typeof courseFormatOptionIdSchema
 >["id"];
-
-

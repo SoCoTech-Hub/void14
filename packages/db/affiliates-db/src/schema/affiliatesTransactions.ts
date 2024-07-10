@@ -1,9 +1,8 @@
-
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { affiliates } from "./affiliates";
 import { affiliatesStatuses } from "./affiliatesStatuses";
@@ -67,4 +66,3 @@ export type UpdateAffiliatesTransactionParams = z.infer<
 export type AffiliatesTransactionId = z.infer<
   typeof affiliatesTransactionIdSchema
 >["id"];
-

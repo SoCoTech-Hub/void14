@@ -1,4 +1,3 @@
-
 import { sql } from "drizzle-orm";
 import {
   pgTable,
@@ -10,7 +9,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const analyticsTrainSamples = pgTable(
   "analytics_train_samples",
@@ -68,5 +68,3 @@ export type UpdateAnalyticsTrainSampleParams = z.infer<
 export type AnalyticsTrainSampleId = z.infer<
   typeof analyticsTrainSampleIdSchema
 >["id"];
-
-

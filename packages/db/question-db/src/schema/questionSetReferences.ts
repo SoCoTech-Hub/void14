@@ -2,7 +2,7 @@ import { pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const questionSetReferences = pgTable(
   "question_set_references",
@@ -55,5 +55,3 @@ export type UpdateQuestionSetReferenceParams = z.infer<
 export type QuestionSetReferenceId = z.infer<
   typeof questionSetReferenceIdSchema
 >["id"];
-
-

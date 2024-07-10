@@ -2,7 +2,7 @@ import { boolean, integer, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const tagColls = pgTable("tag_colls", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -45,5 +45,3 @@ export type NewTagColl = z.infer<typeof insertTagCollSchema>;
 export type NewTagCollParams = z.infer<typeof insertTagCollParams>;
 export type UpdateTagCollParams = z.infer<typeof updateTagCollParams>;
 export type TagCollId = z.infer<typeof tagCollIdSchema>["id"];
-
-

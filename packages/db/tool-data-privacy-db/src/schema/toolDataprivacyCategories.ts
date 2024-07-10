@@ -9,7 +9,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const toolDataprivacyCategories = pgTable(
   "tool_dataprivacy_categories",
@@ -74,5 +75,3 @@ export type UpdateToolDataprivacyCategoryParams = z.infer<
 export type ToolDataprivacyCategoryId = z.infer<
   typeof toolDataprivacyCategoryIdSchema
 >["id"];
-
-

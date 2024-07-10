@@ -2,7 +2,7 @@ import { boolean, integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const feedbackItems = pgTable("feedback_items", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -51,4 +51,3 @@ export type NewFeedbackItem = z.infer<typeof insertFeedbackItemSchema>;
 export type NewFeedbackItemParams = z.infer<typeof insertFeedbackItemParams>;
 export type UpdateFeedbackItemParams = z.infer<typeof updateFeedbackItemParams>;
 export type FeedbackItemId = z.infer<typeof feedbackItemIdSchema>["id"];
-

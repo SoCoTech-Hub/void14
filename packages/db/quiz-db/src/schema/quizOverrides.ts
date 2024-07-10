@@ -2,7 +2,7 @@ import { integer, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { quizes } from "./quizes";
 
@@ -68,4 +68,3 @@ export type NewQuizOverride = z.infer<typeof insertQuizOverrideSchema>;
 export type NewQuizOverrideParams = z.infer<typeof insertQuizOverrideParams>;
 export type UpdateQuizOverrideParams = z.infer<typeof updateQuizOverrideParams>;
 export type QuizOverrideId = z.infer<typeof quizOverrideIdSchema>["id"];
-

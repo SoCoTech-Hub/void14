@@ -1,9 +1,8 @@
-
 import { pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { assignments } from "./assignments";
 
@@ -64,5 +63,3 @@ export type UpdateAssignPluginConfigParams = z.infer<
 export type AssignPluginConfigId = z.infer<
   typeof assignPluginConfigIdSchema
 >["id"];
-
-

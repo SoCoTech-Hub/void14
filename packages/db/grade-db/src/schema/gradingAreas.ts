@@ -2,7 +2,7 @@ import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const gradingAreas = pgTable("grading_areas", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -33,4 +33,3 @@ export type NewGradingArea = z.infer<typeof insertGradingAreaSchema>;
 export type NewGradingAreaParams = z.infer<typeof insertGradingAreaParams>;
 export type UpdateGradingAreaParams = z.infer<typeof updateGradingAreaParams>;
 export type GradingAreaId = z.infer<typeof gradingAreaIdSchema>["id"];
-

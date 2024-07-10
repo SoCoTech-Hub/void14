@@ -2,7 +2,7 @@ import { integer, pgTable, real, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const gradingformRubricLevels = pgTable("gradingform_rubric_levels", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -52,5 +52,3 @@ export type UpdateGradingformRubricLevelParams = z.infer<
 export type GradingformRubricLevelId = z.infer<
   typeof gradingformRubricLevelIdSchema
 >["id"];
-
-

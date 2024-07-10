@@ -12,7 +12,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { questions } from "./questions";
 
@@ -115,4 +116,3 @@ export type UpdateQuestionStatisticParams = z.infer<
 export type QuestionStatisticId = z.infer<
   typeof questionStatisticIdSchema
 >["id"];
-

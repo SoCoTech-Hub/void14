@@ -2,7 +2,7 @@ import { pgTable, real, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const gradeLetters = pgTable("grade_letters", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -38,4 +38,3 @@ export type NewGradeLetter = z.infer<typeof insertGradeLetterSchema>;
 export type NewGradeLetterParams = z.infer<typeof insertGradeLetterParams>;
 export type UpdateGradeLetterParams = z.infer<typeof updateGradeLetterParams>;
 export type GradeLetterId = z.infer<typeof gradeLetterIdSchema>["id"];
-

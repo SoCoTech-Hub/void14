@@ -13,7 +13,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const enrols = pgTable(
   "enrols",
@@ -127,5 +128,3 @@ export type NewEnrol = z.infer<typeof insertEnrolSchema>;
 export type NewEnrolParams = z.infer<typeof insertEnrolParams>;
 export type UpdateEnrolParams = z.infer<typeof updateEnrolParams>;
 export type EnrolId = z.infer<typeof enrolIdSchema>["id"];
-
-

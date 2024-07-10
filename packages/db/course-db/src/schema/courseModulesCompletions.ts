@@ -1,9 +1,16 @@
 import { sql } from "drizzle-orm";
-import { boolean, pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import {
+  boolean,
+  pgTable,
+  timestamp,
+  uniqueIndex,
+  varchar,
+} from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const courseModulesCompletions = pgTable(
   "course_modules_completions",
@@ -75,4 +82,3 @@ export type UpdateCourseModulesCompletionParams = z.infer<
 export type CourseModulesCompletionId = z.infer<
   typeof courseModulesCompletionIdSchema
 >["id"];
-

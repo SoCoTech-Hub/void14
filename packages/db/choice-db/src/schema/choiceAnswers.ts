@@ -1,10 +1,10 @@
-
 import { sql } from "drizzle-orm";
 import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { choiceOptions } from "./choiceOptions";
 import { choices } from "./choices";
@@ -62,5 +62,3 @@ export type NewChoiceAnswer = z.infer<typeof insertChoiceAnswerSchema>;
 export type NewChoiceAnswerParams = z.infer<typeof insertChoiceAnswerParams>;
 export type UpdateChoiceAnswerParams = z.infer<typeof updateChoiceAnswerParams>;
 export type ChoiceAnswerId = z.infer<typeof choiceAnswerIdSchema>["id"];
-
-

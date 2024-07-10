@@ -9,7 +9,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const groupings = pgTable("groupings", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -56,4 +57,3 @@ export type NewGrouping = z.infer<typeof insertGroupingSchema>;
 export type NewGroupingParams = z.infer<typeof insertGroupingParams>;
 export type UpdateGroupingParams = z.infer<typeof updateGroupingParams>;
 export type GroupingId = z.infer<typeof groupingIdSchema>["id"];
-

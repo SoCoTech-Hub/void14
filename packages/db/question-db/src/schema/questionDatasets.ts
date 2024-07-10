@@ -2,7 +2,7 @@ import { pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { questionDatasetDefinitions } from "./questionDatasetDefinitions";
 import { questions } from "./questions";
@@ -62,4 +62,3 @@ export type UpdateQuestionDatasetParams = z.infer<
   typeof updateQuestionDatasetParams
 >;
 export type QuestionDatasetId = z.infer<typeof questionDatasetIdSchema>["id"];
-

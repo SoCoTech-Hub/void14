@@ -1,9 +1,16 @@
 import { sql } from "drizzle-orm";
-import { boolean, pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import {
+  boolean,
+  pgTable,
+  timestamp,
+  uniqueIndex,
+  varchar,
+} from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { courses } from "./courses";
 
@@ -73,4 +80,3 @@ export type UpdateCoursePublishParams = z.infer<
   typeof updateCoursePublishParams
 >;
 export type CoursePublishId = z.infer<typeof coursePublishIdSchema>["id"];
-

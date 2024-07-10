@@ -3,7 +3,8 @@ import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const ltiToolSettings = pgTable("lti_tool_settings", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -47,5 +48,3 @@ export type UpdateLtiToolSettingParams = z.infer<
   typeof updateLtiToolSettingParams
 >;
 export type LtiToolSettingId = z.infer<typeof ltiToolSettingIdSchema>["id"];
-
-

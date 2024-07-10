@@ -10,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const messageReads = pgTable("message_reads", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -79,5 +80,3 @@ export type NewMessageRead = z.infer<typeof insertMessageReadSchema>;
 export type NewMessageReadParams = z.infer<typeof insertMessageReadParams>;
 export type UpdateMessageReadParams = z.infer<typeof updateMessageReadParams>;
 export type MessageReadId = z.infer<typeof messageReadIdSchema>["id"];
-
-

@@ -8,7 +8,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { workshops } from "./workshops";
 
@@ -77,5 +78,3 @@ export type UpdateWorkshopFormRubricParams = z.infer<
 export type WorkshopFormRubricId = z.infer<
   typeof workshopFormRubricIdSchema
 >["id"];
-
-

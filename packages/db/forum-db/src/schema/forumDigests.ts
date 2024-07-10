@@ -2,7 +2,7 @@ import { boolean, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const forumDigests = pgTable("forum_digests", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -43,5 +43,3 @@ export type NewForumDigest = z.infer<typeof insertForumDigestSchema>;
 export type NewForumDigestParams = z.infer<typeof insertForumDigestParams>;
 export type UpdateForumDigestParams = z.infer<typeof updateForumDigestParams>;
 export type ForumDigestId = z.infer<typeof forumDigestIdSchema>["id"];
-
-

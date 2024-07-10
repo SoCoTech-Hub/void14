@@ -3,7 +3,8 @@ import { boolean, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { datas } from "./datas";
 
@@ -59,5 +60,3 @@ export type NewDataRecord = z.infer<typeof insertDataRecordSchema>;
 export type NewDataRecordParams = z.infer<typeof insertDataRecordParams>;
 export type UpdateDataRecordParams = z.infer<typeof updateDataRecordParams>;
 export type DataRecordId = z.infer<typeof dataRecordIdSchema>["id"];
-
-

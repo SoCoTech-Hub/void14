@@ -1,9 +1,16 @@
 import { sql } from "drizzle-orm";
-import { boolean, pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import {
+  boolean,
+  pgTable,
+  timestamp,
+  uniqueIndex,
+  varchar,
+} from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const repositoryInstances = pgTable(
   "repository_instances",
@@ -74,4 +81,3 @@ export type UpdateRepositoryInstanceParams = z.infer<
 export type RepositoryInstanceId = z.infer<
   typeof repositoryInstanceIdSchema
 >["id"];
-

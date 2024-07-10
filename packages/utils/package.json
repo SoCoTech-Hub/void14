@@ -7,6 +7,18 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./src/index.ts"
+    },
+    "./cn": {
+      "types": "./dist/cn.d.ts",
+      "default": "./src/cn.ts"
+    },
+    "./nanoid": {
+      "types": "./dist/nanoid.d.ts",
+      "default": "./src/nanoid.ts"
+    },
+    "./timestamps": {
+      "types": "./dist/timestamps.d.ts",
+      "default": "./src/timestamps.ts"
     }
   },
   "license": "MIT",

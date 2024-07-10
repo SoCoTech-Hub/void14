@@ -1,4 +1,3 @@
-
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -10,7 +9,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const feedbackCompletedtmps = pgTable("feedback_completedtmps", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -73,5 +73,3 @@ export type UpdateFeedbackCompletedtmpParams = z.infer<
 export type FeedbackCompletedtmpId = z.infer<
   typeof feedbackCompletedtmpIdSchema
 >["id"];
-
-

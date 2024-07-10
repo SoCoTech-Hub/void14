@@ -10,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const resources = pgTable("resources", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -74,4 +75,3 @@ export type NewResource = z.infer<typeof insertResourceSchema>;
 export type NewResourceParams = z.infer<typeof insertResourceParams>;
 export type UpdateResourceParams = z.infer<typeof updateResourceParams>;
 export type ResourceId = z.infer<typeof resourceIdSchema>["id"];
-

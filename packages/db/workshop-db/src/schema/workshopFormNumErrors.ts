@@ -2,7 +2,7 @@ import { integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { workshops } from "./workshops";
 
@@ -75,5 +75,3 @@ export type UpdateWorkshopFormNumErrorParams = z.infer<
 export type WorkshopFormNumErrorId = z.infer<
   typeof workshopFormNumErrorIdSchema
 >["id"];
-
-

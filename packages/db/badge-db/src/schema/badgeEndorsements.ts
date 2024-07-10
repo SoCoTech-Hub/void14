@@ -1,4 +1,3 @@
-
 import { sql } from "drizzle-orm";
 import {
   pgTable,
@@ -10,7 +9,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { badges } from "./badges";
 
@@ -78,5 +78,3 @@ export type UpdateBadgeEndorsementParams = z.infer<
   typeof updateBadgeEndorsementParams
 >;
 export type BadgeEndorsementId = z.infer<typeof badgeEndorsementIdSchema>["id"];
-
-

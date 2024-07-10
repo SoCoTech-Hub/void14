@@ -1,21 +1,30 @@
-import { db } from "@soco/admin-preset-db/client";
-import { and, eq } from "@soco/admin-preset-db";
-import { 
-  AdminPresetId, 
-  NewAdminPresetParams,
-  UpdateAdminPresetParams, 
-  updateAdminPresetSchema,
-  insertAdminPresetSchema, 
-  adminPresets,
-  adminPresetIdSchema 
-} from "@soco/admin-preset-db/schema/adminPresets";
 import { getUserAuth } from "@/lib/auth/utils";
+
+import type {
+  AdminPresetId,
+  NewAdminPresetParams,
+  UpdateAdminPresetParams,
+} from "@soco/admin-preset-db/schema/adminPresets";
+import { and, eq } from "@soco/admin-preset-db";
+import { db } from "@soco/admin-preset-db/client";
+import {
+  adminPresetIdSchema,
+  adminPresets,
+  insertAdminPresetSchema,
+  updateAdminPresetSchema,
+} from "@soco/admin-preset-db/schema/adminPresets";
 
 export const createAdminPreset = async (adminPreset: NewAdminPresetParams) => {
   const { session } = await getUserAuth();
-  const newAdminPreset = insertAdminPresetSchema.parse({ ...adminPreset, userId: session?.user.id! });
+  const newAdminPreset = insertAdminPresetSchema.parse({
+    ...adminPreset,
+    userId: session?.user.id!,
+  });
   try {
-    const [a] =  await db.insert(adminPresets).values(newAdminPreset).returning();
+    const [a] = await db
+      .insert(adminPresets)
+      .values(newAdminPreset)
+      .returning();
     return { adminPreset: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +33,27 @@ export const createAdminPreset = async (adminPreset: NewAdminPresetParams) => {
   }
 };
 
-export const updateAdminPreset = async (id: AdminPresetId, adminPreset: UpdateAdminPresetParams) => {
+export const updateAdminPreset = async (
+  id: AdminPresetId,
+  adminPreset: UpdateAdminPresetParams,
+) => {
   const { session } = await getUserAuth();
   const { id: adminPresetId } = adminPresetIdSchema.parse({ id });
-  const newAdminPreset = updateAdminPresetSchema.parse({ ...adminPreset, userId: session?.user.id! });
+  const newAdminPreset = updateAdminPresetSchema.parse({
+    ...adminPreset,
+    userId: session?.user.id!,
+  });
   try {
-    const [a] =  await db
-     .update(adminPresets)
-     .set({...newAdminPreset, updatedAt: new Date() })
-     .where(and(eq(adminPresets.id, adminPresetId!), eq(adminPresets.userId, session?.user.id!)))
-     .returning();
+    const [a] = await db
+      .update(adminPresets)
+      .set({ ...newAdminPreset, updatedAt: new Date() })
+      .where(
+        and(
+          eq(adminPresets.id, adminPresetId!),
+          eq(adminPresets.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { adminPreset: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +66,15 @@ export const deleteAdminPreset = async (id: AdminPresetId) => {
   const { session } = await getUserAuth();
   const { id: adminPresetId } = adminPresetIdSchema.parse({ id });
   try {
-    const [a] =  await db.delete(adminPresets).where(and(eq(adminPresets.id, adminPresetId!), eq(adminPresets.userId, session?.user.id!)))
-    .returning();
+    const [a] = await db
+      .delete(adminPresets)
+      .where(
+        and(
+          eq(adminPresets.id, adminPresetId!),
+          eq(adminPresets.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { adminPreset: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +82,3 @@ export const deleteAdminPreset = async (id: AdminPresetId) => {
     throw { error: message };
   }
 };
-

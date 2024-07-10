@@ -1,4 +1,3 @@
-
 import type { z } from "zod";
 import { sql } from "drizzle-orm";
 import {
@@ -10,7 +9,8 @@ import {
 } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const blogs = pgTable(
   "blogs",
@@ -56,5 +56,3 @@ export type NewBlog = z.infer<typeof insertBlogSchema>;
 export type NewBlogParams = z.infer<typeof insertBlogParams>;
 export type UpdateBlogParams = z.infer<typeof updateBlogParams>;
 export type BlogId = z.infer<typeof blogIdSchema>["id"];
-
-

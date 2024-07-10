@@ -1,4 +1,3 @@
-
 import { sql } from "drizzle-orm";
 import {
   boolean,
@@ -11,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { chats } from "./chats";
 
@@ -86,5 +86,3 @@ export type UpdateChatMessagesCurrentParams = z.infer<
 export type ChatMessagesCurrentId = z.infer<
   typeof chatMessagesCurrentIdSchema
 >["id"];
-
-

@@ -9,7 +9,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { massMailLists } from "./massMailLists";
 
@@ -80,5 +81,3 @@ export type UpdateMassMailMessageParams = z.infer<
   typeof updateMassMailMessageParams
 >;
 export type MassMailMessageId = z.infer<typeof massMailMessageIdSchema>["id"];
-
-

@@ -2,7 +2,7 @@ import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { lessonPages } from "./lessonPages";
 import { lessons } from "./lessons";
@@ -62,5 +62,3 @@ export type NewLessonBranch = z.infer<typeof insertLessonBranchSchema>;
 export type NewLessonBranchParams = z.infer<typeof insertLessonBranchParams>;
 export type UpdateLessonBranchParams = z.infer<typeof updateLessonBranchParams>;
 export type LessonBranchId = z.infer<typeof lessonBranchIdSchema>["id"];
-
-

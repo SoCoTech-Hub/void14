@@ -1,8 +1,15 @@
-import { boolean, integer, pgTable, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import {
+  boolean,
+  integer,
+  pgTable,
+  text,
+  uniqueIndex,
+  varchar,
+} from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const qtypeDdmarkerDrags = pgTable(
   "qtype_ddmarker_drags",
@@ -63,4 +70,3 @@ export type UpdateQtypeDdmarkerDragParams = z.infer<
 export type QtypeDdmarkerDragId = z.infer<
   typeof qtypeDdmarkerDragIdSchema
 >["id"];
-

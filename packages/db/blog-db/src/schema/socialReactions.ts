@@ -3,7 +3,8 @@ import { pgTable, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { blogs } from "./blogs";
 import { socialIcons } from "./socialIcons";
@@ -74,4 +75,3 @@ export type UpdateSocialReactionParams = z.infer<
   typeof updateSocialReactionParams
 >;
 export type SocialReactionId = z.infer<typeof socialReactionIdSchema>["id"];
-

@@ -2,7 +2,7 @@ import { integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const roles = pgTable("roles", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -40,4 +40,3 @@ export type NewRole = z.infer<typeof insertRoleSchema>;
 export type NewRoleParams = z.infer<typeof insertRoleParams>;
 export type UpdateRoleParams = z.infer<typeof updateRoleParams>;
 export type RoleId = z.infer<typeof roleIdSchema>["id"];
-

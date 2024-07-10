@@ -1,4 +1,3 @@
-
 import {
   boolean,
   integer,
@@ -9,7 +8,7 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { blockInstances } from "./blockInstances";
 
@@ -69,5 +68,3 @@ export type UpdateBlockPositionParams = z.infer<
   typeof updateBlockPositionParams
 >;
 export type BlockPositionId = z.infer<typeof blockPositionIdSchema>["id"];
-
-

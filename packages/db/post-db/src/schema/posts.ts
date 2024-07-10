@@ -10,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const posts = pgTable(
   "posts",
@@ -83,4 +84,3 @@ export type NewPost = z.infer<typeof insertPostSchema>;
 export type NewPostParams = z.infer<typeof insertPostParams>;
 export type UpdatePostParams = z.infer<typeof updatePostParams>;
 export type PostId = z.infer<typeof postIdSchema>["id"];
-

@@ -2,7 +2,7 @@ import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const digilibCategories = pgTable("digilib_categories", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -39,5 +39,3 @@ export type UpdateDigilibCategoryParams = z.infer<
   typeof updateDigilibCategoryParams
 >;
 export type DigilibCategoryId = z.infer<typeof digilibCategoryIdSchema>["id"];
-
-

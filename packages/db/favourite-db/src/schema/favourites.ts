@@ -1,10 +1,10 @@
-
 import { sql } from "drizzle-orm";
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const favourites = pgTable("favourites", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -56,5 +56,3 @@ export type NewFavourite = z.infer<typeof insertFavouriteSchema>;
 export type NewFavouriteParams = z.infer<typeof insertFavouriteParams>;
 export type UpdateFavouriteParams = z.infer<typeof updateFavouriteParams>;
 export type FavouriteId = z.infer<typeof favouriteIdSchema>["id"];
-
-

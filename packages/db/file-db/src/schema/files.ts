@@ -11,7 +11,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const files = pgTable(
   "files",
@@ -85,5 +86,3 @@ export type NewFile = z.infer<typeof insertFileSchema>;
 export type NewFileParams = z.infer<typeof insertFileParams>;
 export type UpdateFileParams = z.infer<typeof updateFileParams>;
 export type FileId = z.infer<typeof fileIdSchema>["id"];
-
-

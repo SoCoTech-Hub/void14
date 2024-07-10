@@ -1,10 +1,10 @@
-
 import { sql } from "drizzle-orm";
 import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const bursaries = pgTable("bursaries", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -62,5 +62,3 @@ export type NewBursary = z.infer<typeof insertBursarySchema>;
 export type NewBursaryParams = z.infer<typeof insertBursaryParams>;
 export type UpdateBursaryParams = z.infer<typeof updateBursaryParams>;
 export type BursaryId = z.infer<typeof bursaryIdSchema>["id"];
-
-

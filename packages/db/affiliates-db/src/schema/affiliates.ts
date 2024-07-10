@@ -1,9 +1,8 @@
-
 import { boolean, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const affiliates = pgTable("affiliates", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -44,5 +43,3 @@ export type NewAffiliate = z.infer<typeof insertAffiliateSchema>;
 export type NewAffiliateParams = z.infer<typeof insertAffiliateParams>;
 export type UpdateAffiliateParams = z.infer<typeof updateAffiliateParams>;
 export type AffiliateId = z.infer<typeof affiliateIdSchema>["id"];
-
-

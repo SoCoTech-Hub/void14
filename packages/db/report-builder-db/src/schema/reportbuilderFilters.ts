@@ -10,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const reportbuilderFilters = pgTable(
   "reportbuilder_filters",
@@ -83,5 +84,3 @@ export type UpdateReportbuilderFilterParams = z.infer<
 export type ReportbuilderFilterId = z.infer<
   typeof reportbuilderFilterIdSchema
 >["id"];
-
-

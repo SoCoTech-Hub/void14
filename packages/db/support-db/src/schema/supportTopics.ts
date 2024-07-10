@@ -2,7 +2,7 @@ import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { supportDepartments } from "./supportDepartments";
 
@@ -41,5 +41,3 @@ export type NewSupportTopic = z.infer<typeof insertSupportTopicSchema>;
 export type NewSupportTopicParams = z.infer<typeof insertSupportTopicParams>;
 export type UpdateSupportTopicParams = z.infer<typeof updateSupportTopicParams>;
 export type SupportTopicId = z.infer<typeof supportTopicIdSchema>["id"];
-
-

@@ -2,7 +2,7 @@ import { integer, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const toolPolicies = pgTable("tool_policies", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -37,5 +37,3 @@ export type NewToolPolicy = z.infer<typeof insertToolPolicySchema>;
 export type NewToolPolicyParams = z.infer<typeof insertToolPolicyParams>;
 export type UpdateToolPolicyParams = z.infer<typeof updateToolPolicyParams>;
 export type ToolPolicyId = z.infer<typeof toolPolicyIdSchema>["id"];
-
-

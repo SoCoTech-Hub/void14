@@ -12,7 +12,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const gradeGrades = pgTable("grade_grades", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -102,5 +103,3 @@ export type NewGradeGrade = z.infer<typeof insertGradeGradeSchema>;
 export type NewGradeGradeParams = z.infer<typeof insertGradeGradeParams>;
 export type UpdateGradeGradeParams = z.infer<typeof updateGradeGradeParams>;
 export type GradeGradeId = z.infer<typeof gradeGradeIdSchema>["id"];
-
-

@@ -1,9 +1,16 @@
 import { sql } from "drizzle-orm";
-import { pgTable, real, timestamp, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import {
+  pgTable,
+  real,
+  timestamp,
+  uniqueIndex,
+  varchar,
+} from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { quizes } from "./quizes";
 
@@ -66,5 +73,3 @@ export type NewQuizGrade = z.infer<typeof insertQuizGradeSchema>;
 export type NewQuizGradeParams = z.infer<typeof insertQuizGradeParams>;
 export type UpdateQuizGradeParams = z.infer<typeof updateQuizGradeParams>;
 export type QuizGradeId = z.infer<typeof quizGradeIdSchema>["id"];
-
-

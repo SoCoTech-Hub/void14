@@ -8,7 +8,7 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { lessons } from "./lessons";
 
@@ -61,4 +61,3 @@ export type NewLessonGrade = z.infer<typeof insertLessonGradeSchema>;
 export type NewLessonGradeParams = z.infer<typeof insertLessonGradeParams>;
 export type UpdateLessonGradeParams = z.infer<typeof updateLessonGradeParams>;
 export type LessonGradeId = z.infer<typeof lessonGradeIdSchema>["id"];
-

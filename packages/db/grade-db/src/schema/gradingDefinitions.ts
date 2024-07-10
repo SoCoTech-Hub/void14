@@ -9,7 +9,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const gradingDefinitions = pgTable("grading_definitions", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -78,4 +79,3 @@ export type UpdateGradingDefinitionParams = z.infer<
 export type GradingDefinitionId = z.infer<
   typeof gradingDefinitionIdSchema
 >["id"];
-

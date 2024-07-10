@@ -1,4 +1,3 @@
-
 import {
   integer,
   pgTable,
@@ -9,7 +8,7 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { assigns } from "./assigns";
 
@@ -83,5 +82,3 @@ export type UpdateAssignOverrideParams = z.infer<
   typeof updateAssignOverrideParams
 >;
 export type AssignOverrideId = z.infer<typeof assignOverrideIdSchema>["id"];
-
-

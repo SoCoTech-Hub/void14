@@ -2,7 +2,7 @@ import { boolean, pgTable, uniqueIndex, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { mnetHosts } from "./mnetHosts";
 import { mnetServices } from "./mnetServices";
@@ -67,4 +67,3 @@ export type UpdateMnetHost2serviceParams = z.infer<
   typeof updateMnetHost2serviceParams
 >;
 export type MnetHost2serviceId = z.infer<typeof mnetHost2serviceIdSchema>["id"];
-

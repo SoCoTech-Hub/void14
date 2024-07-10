@@ -1,8 +1,15 @@
-import { integer, pgTable, real, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import {
+  integer,
+  pgTable,
+  real,
+  text,
+  uniqueIndex,
+  varchar,
+} from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const workshopGrades = pgTable(
   "workshop_grades",
@@ -61,4 +68,3 @@ export type UpdateWorkshopGradeParams = z.infer<
   typeof updateWorkshopGradeParams
 >;
 export type WorkshopGradeId = z.infer<typeof workshopGradeIdSchema>["id"];
-

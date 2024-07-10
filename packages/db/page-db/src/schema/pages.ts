@@ -10,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const pages = pgTable(
   "pages",
@@ -79,4 +80,3 @@ export type NewPage = z.infer<typeof insertPageSchema>;
 export type NewPageParams = z.infer<typeof insertPageParams>;
 export type UpdatePageParams = z.infer<typeof updatePageParams>;
 export type PageId = z.infer<typeof pageIdSchema>["id"];
-

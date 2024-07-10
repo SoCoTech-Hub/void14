@@ -9,7 +9,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { lessons } from "./lessons";
 
@@ -70,5 +71,3 @@ export type NewLessonTimer = z.infer<typeof insertLessonTimerSchema>;
 export type NewLessonTimerParams = z.infer<typeof insertLessonTimerParams>;
 export type UpdateLessonTimerParams = z.infer<typeof updateLessonTimerParams>;
 export type LessonTimerId = z.infer<typeof lessonTimerIdSchema>["id"];
-
-

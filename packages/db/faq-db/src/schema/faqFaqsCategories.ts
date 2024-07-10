@@ -2,7 +2,7 @@ import { pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { faqCategories } from "./faqCategories";
 import { faqs } from "./faqs";
@@ -51,5 +51,3 @@ export type UpdateFaqFaqsCategoryParams = z.infer<
   typeof updateFaqFaqsCategoryParams
 >;
 export type FaqFaqsCategoryId = z.infer<typeof faqFaqsCategoryIdSchema>["id"];
-
-

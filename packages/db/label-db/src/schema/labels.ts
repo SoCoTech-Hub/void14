@@ -9,7 +9,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const labels = pgTable("labels", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -53,4 +54,3 @@ export type NewLabel = z.infer<typeof insertLabelSchema>;
 export type NewLabelParams = z.infer<typeof insertLabelParams>;
 export type UpdateLabelParams = z.infer<typeof updateLabelParams>;
 export type LabelId = z.infer<typeof labelIdSchema>["id"];
-

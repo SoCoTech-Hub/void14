@@ -2,7 +2,7 @@ import { boolean, pgTable, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { glossaries } from "./glossaries";
 
@@ -49,5 +49,3 @@ export type UpdateGlossaryCategoryParams = z.infer<
   typeof updateGlossaryCategoryParams
 >;
 export type GlossaryCategoryId = z.infer<typeof glossaryCategoryIdSchema>["id"];
-
-

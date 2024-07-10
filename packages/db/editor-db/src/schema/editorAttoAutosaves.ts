@@ -3,7 +3,8 @@ import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const editorAttoAutosaves = pgTable("editor_atto_autosaves", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -56,4 +57,3 @@ export type UpdateEditorAttoAutosaveParams = z.infer<
 export type EditorAttoAutosaveId = z.infer<
   typeof editorAttoAutosaveIdSchema
 >["id"];
-

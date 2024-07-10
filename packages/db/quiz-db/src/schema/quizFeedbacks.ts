@@ -1,8 +1,15 @@
-import { integer, pgTable, real, text, uniqueIndex, varchar } from "drizzle-orm/pg-core";
+import {
+  integer,
+  pgTable,
+  real,
+  text,
+  uniqueIndex,
+  varchar,
+} from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { quizes } from "./quizes";
 
@@ -58,5 +65,3 @@ export type NewQuizFeedback = z.infer<typeof insertQuizFeedbackSchema>;
 export type NewQuizFeedbackParams = z.infer<typeof insertQuizFeedbackParams>;
 export type UpdateQuizFeedbackParams = z.infer<typeof updateQuizFeedbackParams>;
 export type QuizFeedbackId = z.infer<typeof quizFeedbackIdSchema>["id"];
-
-

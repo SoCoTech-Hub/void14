@@ -10,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 import { digilibCategories } from "./digilibCategories";
 
@@ -79,5 +80,3 @@ export type NewDigilib = z.infer<typeof insertDigilibSchema>;
 export type NewDigilibParams = z.infer<typeof insertDigilibParams>;
 export type UpdateDigilibParams = z.infer<typeof updateDigilibParams>;
 export type DigilibId = z.infer<typeof digilibIdSchema>["id"];
-
-

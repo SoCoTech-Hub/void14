@@ -1,4 +1,3 @@
-
 import { sql } from "drizzle-orm";
 import {
   integer,
@@ -10,7 +9,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const competencyEvidences = pgTable("competency_evidences", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -77,5 +77,3 @@ export type UpdateCompetencyEvidenceParams = z.infer<
 export type CompetencyEvidenceId = z.infer<
   typeof competencyEvidenceIdSchema
 >["id"];
-
-

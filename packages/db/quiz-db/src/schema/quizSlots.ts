@@ -9,7 +9,7 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { quizes } from "./quizes";
 
@@ -67,4 +67,3 @@ export type NewQuizSlot = z.infer<typeof insertQuizSlotSchema>;
 export type NewQuizSlotParams = z.infer<typeof insertQuizSlotParams>;
 export type UpdateQuizSlotParams = z.infer<typeof updateQuizSlotParams>;
 export type QuizSlotId = z.infer<typeof quizSlotIdSchema>["id"];
-

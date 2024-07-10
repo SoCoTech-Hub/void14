@@ -10,7 +10,8 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const enrolLtiLti2Consumers = pgTable("enrol_lti_lti2_consumers", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -84,5 +85,3 @@ export type UpdateEnrolLtiLti2ConsumerParams = z.infer<
 export type EnrolLtiLti2ConsumerId = z.infer<
   typeof enrolLtiLti2ConsumerIdSchema
 >["id"];
-
-

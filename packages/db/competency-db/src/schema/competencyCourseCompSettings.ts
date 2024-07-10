@@ -1,10 +1,10 @@
-
 import { sql } from "drizzle-orm";
 import { integer, pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const competencyCourseCompSettings = pgTable(
   "competency_course_comp_settings",
@@ -70,4 +70,3 @@ export type UpdateCompetencyCourseCompSettingParams = z.infer<
 export type CompetencyCourseCompSettingId = z.infer<
   typeof competencyCourseCompSettingIdSchema
 >["id"];
-

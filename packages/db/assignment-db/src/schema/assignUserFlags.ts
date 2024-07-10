@@ -1,4 +1,3 @@
-
 import {
   boolean,
   pgTable,
@@ -9,7 +8,7 @@ import {
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 import { assignments } from "./assignments";
 

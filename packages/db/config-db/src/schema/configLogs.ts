@@ -1,10 +1,10 @@
-
 import { sql } from "drizzle-orm";
 import { pgTable, text, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid, timestamps } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
+import { timestamps } from "@soco/utils/timestamps";
 
 export const configLogs = pgTable("config_logs", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -47,5 +47,3 @@ export type NewConfigLog = z.infer<typeof insertConfigLogSchema>;
 export type NewConfigLogParams = z.infer<typeof insertConfigLogParams>;
 export type UpdateConfigLogParams = z.infer<typeof updateConfigLogParams>;
 export type ConfigLogId = z.infer<typeof configLogIdSchema>["id"];
-
-

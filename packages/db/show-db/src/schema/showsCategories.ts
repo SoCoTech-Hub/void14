@@ -2,7 +2,7 @@ import { pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const showsCategories = pgTable("shows_categories", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -34,4 +34,3 @@ export type UpdateShowsCategoryParams = z.infer<
   typeof updateShowsCategoryParams
 >;
 export type ShowsCategoryId = z.infer<typeof showsCategoryIdSchema>["id"];
-

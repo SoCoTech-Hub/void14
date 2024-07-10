@@ -2,7 +2,7 @@ import { integer, pgTable, text, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
-import { nanoid } from "@soco/utils";
+import { nanoid } from "@soco/utils/nanoid";
 
 export const toolUserToursSteps = pgTable("tool_user_tours_steps", {
   organizationId: varchar("organization_id", { length: 191 }).notNull(),
@@ -56,4 +56,3 @@ export type UpdateToolUserToursStepParams = z.infer<
 export type ToolUserToursStepId = z.infer<
   typeof toolUserToursStepIdSchema
 >["id"];
-
