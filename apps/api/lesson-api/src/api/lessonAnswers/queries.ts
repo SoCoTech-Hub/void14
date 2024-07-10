@@ -1,5 +1,5 @@
-import { db } from "@soco/lesson-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/lesson-db/client";
+import { eq } from "@soco/lesson-db";
 import { type LessonAnswerId, lessonAnswerIdSchema, lessonAnswers } from "@soco/lesson-db/schema/lessonAnswers";
 import { lessons } from "@soco/lesson-db/schema/lessons";
 import { lessonPages } from "@soco/lesson-db/schema/lessonPages";

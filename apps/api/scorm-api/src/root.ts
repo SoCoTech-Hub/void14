@@ -1,5 +1,3 @@
-import { createTRPCRouter } from "./trpc";
-
 import { scormAiccSessionsRouter } from './routers/scormAiccSessions';
 import { scormsRouter } from './routers/scorms';
 import { scormScoesRouter } from './routers/scormScoes';
@@ -11,6 +9,7 @@ import { scormSeqRollupRuleCondsRouter } from './routers/scormSeqRollupRuleConds
 import { scormSeqRollupRulesRouter } from './routers/scormSeqRollupRules';
 import { scormSeqRuleConditionsRouter } from './routers/scormSeqRuleConditions';
 import { scormSeqRuleCondsRouter } from './routers/scormSeqRuleConds';
+import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   scormAiccSessions: scormAiccSessionsRouter,

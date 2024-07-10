@@ -1,29 +1,19 @@
+import { getCustomFieldFieldById, getCustomFieldFields } from "../api/customFieldFields/queries";
+import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   customFieldFieldIdSchema,
   insertCustomFieldFieldParams,
   updateCustomFieldFieldParams,
 } from "@soco/custom-field-db/schema/customFieldFields";
+import { createCustomFieldField, deleteCustomFieldField, updateCustomFieldField } from "../api/customFieldFields/mutations";
 
-import {
-  createCustomFieldField,
-  deleteCustomFieldField,
-  updateCustomFieldField,
-} from "../api/customFieldFields/mutations";
-import {
-  getCustomFieldFieldById,
-  getCustomFieldFields,
-} from "../api/customFieldFields/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
-
-export const customFieldFieldsRouter = createTRPCRouter({
+export const customFieldFieldsRouter =createTRPCRouter({
   getCustomFieldFields: publicProcedure.query(async () => {
     return getCustomFieldFields();
   }),
-  getCustomFieldFieldById: publicProcedure
-    .input(customFieldFieldIdSchema)
-    .query(async ({ input }) => {
-      return getCustomFieldFieldById(input.id);
-    }),
+  getCustomFieldFieldById: publicProcedure.input(customFieldFieldIdSchema).query(async ({ input }) => {
+    return getCustomFieldFieldById(input.id);
+  }),
   createCustomFieldField: publicProcedure
     .input(insertCustomFieldFieldParams)
     .mutation(async ({ input }) => {

@@ -1,5 +1,5 @@
-import { db } from "@soco/wiki-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/wiki-db/client";
+import { eq } from "@soco/wiki-db";
 import { 
   WikiLinkId, 
   NewWikiLinkParams,

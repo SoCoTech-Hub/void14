@@ -1,5 +1,5 @@
-import { db } from "@soco/subject-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/subject-db/client";
+import { eq } from "@soco/subject-db";
 import { type SubjectsSubjectCategoryId, subjectsSubjectCategoryIdSchema, subjectsSubjectCategories } from "@soco/subject-db/schema/subjectsSubjectCategories";
 import { subjectCategories } from "@soco/subject-db/schema/subjectCategories";
 import { subjects } from "@soco/subject-db/schema/subjects";

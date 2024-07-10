@@ -1,5 +1,5 @@
-import { db } from "@soco/message-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/message-db/client";
+import { eq } from "@soco/message-db";
 import { type MessagePopupId, messagePopupIdSchema, messagePopups } from "@soco/message-db/schema/messagePopups";
 import { messages } from "@soco/message-db/schema/messages";
 

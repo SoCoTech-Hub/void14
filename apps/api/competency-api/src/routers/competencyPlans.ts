@@ -1,29 +1,19 @@
+import { getCompetencyPlanById, getCompetencyPlans } from "../api/competencyPlans/queries";
+import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   competencyPlanIdSchema,
   insertCompetencyPlanParams,
   updateCompetencyPlanParams,
 } from "@soco/competency-db/schema/competencyPlans";
+import { createCompetencyPlan, deleteCompetencyPlan, updateCompetencyPlan } from "../api/competencyPlans/mutations";
 
-import {
-  createCompetencyPlan,
-  deleteCompetencyPlan,
-  updateCompetencyPlan,
-} from "../api/competencyPlans/mutations";
-import {
-  getCompetencyPlanById,
-  getCompetencyPlans,
-} from "../api/competencyPlans/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
-
-export const competencyPlansRouter = createTRPCRouter({
+export const competencyPlansRouter =createTRPCRouter({
   getCompetencyPlans: publicProcedure.query(async () => {
     return getCompetencyPlans();
   }),
-  getCompetencyPlanById: publicProcedure
-    .input(competencyPlanIdSchema)
-    .query(async ({ input }) => {
-      return getCompetencyPlanById(input.id);
-    }),
+  getCompetencyPlanById: publicProcedure.input(competencyPlanIdSchema).query(async ({ input }) => {
+    return getCompetencyPlanById(input.id);
+  }),
   createCompetencyPlan: publicProcedure
     .input(insertCompetencyPlanParams)
     .mutation(async ({ input }) => {

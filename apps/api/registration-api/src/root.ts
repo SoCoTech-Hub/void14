@@ -1,6 +1,5 @@
-import { createTRPCRouter } from "./trpc";
-
 import { registrationHubsRouter } from './routers/registrationHubs';
+import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   registrationHubs: registrationHubsRouter,

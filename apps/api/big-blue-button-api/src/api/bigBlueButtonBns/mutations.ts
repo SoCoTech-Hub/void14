@@ -1,25 +1,19 @@
-import type {
-  BigBlueButtonBnId,
+import { db } from "@soco/big-blue-button-db/client";
+import { eq } from "@soco/big-blue-button-db";
+import { 
+  BigBlueButtonBnId, 
   NewBigBlueButtonBnParams,
-  UpdateBigBlueButtonBnParams,
-} from "@soco/big-blue-button-db/schema/bigBlueButtonBns";
-import { db, eq } from "@soco/big-blue-button-db";
-import {
-  bigBlueButtonBnIdSchema,
-  bigBlueButtonBns,
-  insertBigBlueButtonBnSchema,
+  UpdateBigBlueButtonBnParams, 
   updateBigBlueButtonBnSchema,
+  insertBigBlueButtonBnSchema, 
+  bigBlueButtonBns,
+  bigBlueButtonBnIdSchema 
 } from "@soco/big-blue-button-db/schema/bigBlueButtonBns";
 
-export const createBigBlueButtonBn = async (
-  bigBlueButtonBn: NewBigBlueButtonBnParams,
-) => {
+export const createBigBlueButtonBn = async (bigBlueButtonBn: NewBigBlueButtonBnParams) => {
   const newBigBlueButtonBn = insertBigBlueButtonBnSchema.parse(bigBlueButtonBn);
   try {
-    const [b] = await db
-      .insert(bigBlueButtonBns)
-      .values(newBigBlueButtonBn)
-      .returning();
+    const [b] =  await db.insert(bigBlueButtonBns).values(newBigBlueButtonBn).returning();
     return { bigBlueButtonBn: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -28,18 +22,15 @@ export const createBigBlueButtonBn = async (
   }
 };
 
-export const updateBigBlueButtonBn = async (
-  id: BigBlueButtonBnId,
-  bigBlueButtonBn: UpdateBigBlueButtonBnParams,
-) => {
+export const updateBigBlueButtonBn = async (id: BigBlueButtonBnId, bigBlueButtonBn: UpdateBigBlueButtonBnParams) => {
   const { id: bigBlueButtonBnId } = bigBlueButtonBnIdSchema.parse({ id });
   const newBigBlueButtonBn = updateBigBlueButtonBnSchema.parse(bigBlueButtonBn);
   try {
-    const [b] = await db
-      .update(bigBlueButtonBns)
-      .set({ ...newBigBlueButtonBn, updatedAt: new Date() })
-      .where(eq(bigBlueButtonBns.id, bigBlueButtonBnId!))
-      .returning();
+    const [b] =  await db
+     .update(bigBlueButtonBns)
+     .set({...newBigBlueButtonBn, updatedAt: new Date() })
+     .where(eq(bigBlueButtonBns.id, bigBlueButtonBnId!))
+     .returning();
     return { bigBlueButtonBn: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,10 +42,8 @@ export const updateBigBlueButtonBn = async (
 export const deleteBigBlueButtonBn = async (id: BigBlueButtonBnId) => {
   const { id: bigBlueButtonBnId } = bigBlueButtonBnIdSchema.parse({ id });
   try {
-    const [b] = await db
-      .delete(bigBlueButtonBns)
-      .where(eq(bigBlueButtonBns.id, bigBlueButtonBnId!))
-      .returning();
+    const [b] =  await db.delete(bigBlueButtonBns).where(eq(bigBlueButtonBns.id, bigBlueButtonBnId!))
+    .returning();
     return { bigBlueButtonBn: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -62,3 +51,4 @@ export const deleteBigBlueButtonBn = async (id: BigBlueButtonBnId) => {
     throw { error: message };
   }
 };
+

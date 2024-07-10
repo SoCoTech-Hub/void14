@@ -1,5 +1,5 @@
-import { db } from "@soco/tool-policy-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/tool-policy-db/client";
+import { eq } from "@soco/tool-policy-db";
 import { 
   ToolPolicyId, 
   NewToolPolicyParams,

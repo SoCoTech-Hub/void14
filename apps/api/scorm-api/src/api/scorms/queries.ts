@@ -1,5 +1,5 @@
-import { db } from "@soco/scorm-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/scorm-db/client";
+import { eq } from "@soco/scorm-db";
 import { type ScormId, scormIdSchema, scorms } from "@soco/scorm-db/schema/scorms";
 
 export const getScorms = async () => {

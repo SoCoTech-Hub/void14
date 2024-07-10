@@ -1,5 +1,5 @@
-import { db } from "@soco/resource-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/resource-db/client";
+import { eq } from "@soco/resource-db";
 import { 
   ResourceOldId, 
   NewResourceOldParams,

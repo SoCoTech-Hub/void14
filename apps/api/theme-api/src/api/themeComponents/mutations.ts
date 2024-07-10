@@ -1,5 +1,5 @@
-import { db } from "@soco/theme-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/theme-db/client";
+import { eq } from "@soco/theme-db";
 import { 
   ThemeComponentId, 
   NewThemeComponentParams,

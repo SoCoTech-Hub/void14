@@ -1,5 +1,5 @@
-import { db } from "@soco/message-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/message-db/client";
+import { eq } from "@soco/message-db";
 import { type MessagePopupNotificationId, messagePopupNotificationIdSchema, messagePopupNotifications } from "@soco/message-db/schema/messagePopupNotifications";
 
 export const getMessagePopupNotifications = async () => {

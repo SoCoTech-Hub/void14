@@ -1,5 +1,5 @@
-import { db } from "@soco/registration-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/registration-db/client";
+import { eq } from "@soco/registration-db";
 import { type RegistrationHubId, registrationHubIdSchema, registrationHubs } from "@soco/registration-db/schema/registrationHubs";
 
 export const getRegistrationHubs = async () => {

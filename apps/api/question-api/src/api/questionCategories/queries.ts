@@ -1,5 +1,5 @@
-import { db } from "@soco/question-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/question-db/client";
+import { eq } from "@soco/question-db";
 import { type QuestionCategoryId, questionCategoryIdSchema, questionCategories } from "@soco/question-db/schema/questionCategories";
 
 export const getQuestionCategories = async () => {

@@ -1,26 +1,19 @@
-import type {
-  AssignmentUpgradeId,
+import { db } from "@soco/assignment-db/client";
+import { eq } from "@soco/assignment-db";
+import { 
+  AssignmentUpgradeId, 
   NewAssignmentUpgradeParams,
-  UpdateAssignmentUpgradeParams,
-} from "@soco/assignment-db/schema/assignmentUpgrades";
-import { db, eq } from "@soco/assignment-db";
-import {
-  assignmentUpgradeIdSchema,
-  assignmentUpgrades,
-  insertAssignmentUpgradeSchema,
+  UpdateAssignmentUpgradeParams, 
   updateAssignmentUpgradeSchema,
+  insertAssignmentUpgradeSchema, 
+  assignmentUpgrades,
+  assignmentUpgradeIdSchema 
 } from "@soco/assignment-db/schema/assignmentUpgrades";
 
-export const createAssignmentUpgrade = async (
-  assignmentUpgrade: NewAssignmentUpgradeParams,
-) => {
-  const newAssignmentUpgrade =
-    insertAssignmentUpgradeSchema.parse(assignmentUpgrade);
+export const createAssignmentUpgrade = async (assignmentUpgrade: NewAssignmentUpgradeParams) => {
+  const newAssignmentUpgrade = insertAssignmentUpgradeSchema.parse(assignmentUpgrade);
   try {
-    const [a] = await db
-      .insert(assignmentUpgrades)
-      .values(newAssignmentUpgrade)
-      .returning();
+    const [a] =  await db.insert(assignmentUpgrades).values(newAssignmentUpgrade).returning();
     return { assignmentUpgrade: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -29,19 +22,15 @@ export const createAssignmentUpgrade = async (
   }
 };
 
-export const updateAssignmentUpgrade = async (
-  id: AssignmentUpgradeId,
-  assignmentUpgrade: UpdateAssignmentUpgradeParams,
-) => {
+export const updateAssignmentUpgrade = async (id: AssignmentUpgradeId, assignmentUpgrade: UpdateAssignmentUpgradeParams) => {
   const { id: assignmentUpgradeId } = assignmentUpgradeIdSchema.parse({ id });
-  const newAssignmentUpgrade =
-    updateAssignmentUpgradeSchema.parse(assignmentUpgrade);
+  const newAssignmentUpgrade = updateAssignmentUpgradeSchema.parse(assignmentUpgrade);
   try {
-    const [a] = await db
-      .update(assignmentUpgrades)
-      .set({ ...newAssignmentUpgrade, updatedAt: new Date() })
-      .where(eq(assignmentUpgrades.id, assignmentUpgradeId!))
-      .returning();
+    const [a] =  await db
+     .update(assignmentUpgrades)
+     .set({...newAssignmentUpgrade, updatedAt: new Date() })
+     .where(eq(assignmentUpgrades.id, assignmentUpgradeId!))
+     .returning();
     return { assignmentUpgrade: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -53,10 +42,8 @@ export const updateAssignmentUpgrade = async (
 export const deleteAssignmentUpgrade = async (id: AssignmentUpgradeId) => {
   const { id: assignmentUpgradeId } = assignmentUpgradeIdSchema.parse({ id });
   try {
-    const [a] = await db
-      .delete(assignmentUpgrades)
-      .where(eq(assignmentUpgrades.id, assignmentUpgradeId!))
-      .returning();
+    const [a] =  await db.delete(assignmentUpgrades).where(eq(assignmentUpgrades.id, assignmentUpgradeId!))
+    .returning();
     return { assignmentUpgrade: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -64,3 +51,4 @@ export const deleteAssignmentUpgrade = async (id: AssignmentUpgradeId) => {
     throw { error: message };
   }
 };
+

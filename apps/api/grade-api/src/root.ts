@@ -1,5 +1,3 @@
-import { createTRPCRouter } from "./trpc";
-
 import { gradeCategoriesRouter } from './routers/gradeCategories';
 import { gradeCategoriesHistoriesRouter } from './routers/gradeCategoriesHistories';
 import { gradeGradesRouter } from './routers/gradeGrades';
@@ -22,6 +20,7 @@ import { gradingformRubricCriteriasRouter } from './routers/gradingformRubricCri
 import { gradingformRubricFillingsRouter } from './routers/gradingformRubricFillings';
 import { gradingformRubricLevelsRouter } from './routers/gradingformRubricLevels';
 import { gradingInstancesRouter } from './routers/gradingInstances';
+import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   gradeCategories: gradeCategoriesRouter,

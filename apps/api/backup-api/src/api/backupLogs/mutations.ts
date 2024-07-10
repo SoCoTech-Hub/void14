@@ -1,20 +1,19 @@
-import type {
-  BackupLogId,
+import { db } from "@soco/backup-db/client";
+import { eq } from "@soco/backup-db";
+import { 
+  BackupLogId, 
   NewBackupLogParams,
-  UpdateBackupLogParams,
-} from "@soco/backup-db/schema/backupLogs";
-import { db, eq } from "@soco/backup-db";
-import {
-  backupLogIdSchema,
-  backupLogs,
-  insertBackupLogSchema,
+  UpdateBackupLogParams, 
   updateBackupLogSchema,
+  insertBackupLogSchema, 
+  backupLogs,
+  backupLogIdSchema 
 } from "@soco/backup-db/schema/backupLogs";
 
 export const createBackupLog = async (backupLog: NewBackupLogParams) => {
   const newBackupLog = insertBackupLogSchema.parse(backupLog);
   try {
-    const [b] = await db.insert(backupLogs).values(newBackupLog).returning();
+    const [b] =  await db.insert(backupLogs).values(newBackupLog).returning();
     return { backupLog: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -23,18 +22,15 @@ export const createBackupLog = async (backupLog: NewBackupLogParams) => {
   }
 };
 
-export const updateBackupLog = async (
-  id: BackupLogId,
-  backupLog: UpdateBackupLogParams,
-) => {
+export const updateBackupLog = async (id: BackupLogId, backupLog: UpdateBackupLogParams) => {
   const { id: backupLogId } = backupLogIdSchema.parse({ id });
   const newBackupLog = updateBackupLogSchema.parse(backupLog);
   try {
-    const [b] = await db
-      .update(backupLogs)
-      .set({ ...newBackupLog, updatedAt: new Date() })
-      .where(eq(backupLogs.id, backupLogId!))
-      .returning();
+    const [b] =  await db
+     .update(backupLogs)
+     .set({...newBackupLog, updatedAt: new Date() })
+     .where(eq(backupLogs.id, backupLogId!))
+     .returning();
     return { backupLog: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,10 +42,8 @@ export const updateBackupLog = async (
 export const deleteBackupLog = async (id: BackupLogId) => {
   const { id: backupLogId } = backupLogIdSchema.parse({ id });
   try {
-    const [b] = await db
-      .delete(backupLogs)
-      .where(eq(backupLogs.id, backupLogId!))
-      .returning();
+    const [b] =  await db.delete(backupLogs).where(eq(backupLogs.id, backupLogId!))
+    .returning();
     return { backupLog: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -57,3 +51,4 @@ export const deleteBackupLog = async (id: BackupLogId) => {
     throw { error: message };
   }
 };
+

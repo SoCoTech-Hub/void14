@@ -1,9 +1,8 @@
-import { createTRPCRouter } from "./trpc";
-
 import { massMailListsRouter } from './routers/massMailLists';
 import { massMailListsRecipientsRouter } from './routers/massMailListsRecipients';
 import { massMailMessagesRouter } from './routers/massMailMessages';
 import { massMailRecipientsRouter } from './routers/massMailRecipients';
+import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   massMailLists: massMailListsRouter,

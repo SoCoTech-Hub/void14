@@ -1,6 +1,6 @@
-import { bigBlueButtonBnLogsRouter } from "./routers/bigBlueButtonBnLogs";
-import { bigBlueButtonBnRecordingsRouter } from "./routers/bigBlueButtonBnRecordings";
-import { bigBlueButtonBnsRouter } from "./routers/bigBlueButtonBns";
+import { bigBlueButtonBnLogsRouter } from './routers/bigBlueButtonBnLogs';
+import { bigBlueButtonBnRecordingsRouter } from './routers/bigBlueButtonBnRecordings';
+import { bigBlueButtonBnsRouter } from './routers/bigBlueButtonBns';
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

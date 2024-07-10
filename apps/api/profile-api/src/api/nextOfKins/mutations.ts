@@ -1,25 +1,21 @@
-import { and, eq } from "drizzle-orm";
-
-import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/profile-db/index";
-import {
-  insertNextOfKinSchema,
+import { db } from "@soco/profile-db/client";
+import { and, eq } from "@soco/profile-db";
+import { 
+  NextOfKinId, 
   NewNextOfKinParams,
-  NextOfKinId,
-  nextOfKinIdSchema,
-  nextOfKins,
-  UpdateNextOfKinParams,
+  UpdateNextOfKinParams, 
   updateNextOfKinSchema,
+  insertNextOfKinSchema, 
+  nextOfKins,
+  nextOfKinIdSchema 
 } from "@soco/profile-db/schema/nextOfKins";
+import { getUserAuth } from "@/lib/auth/utils";
 
 export const createNextOfKin = async (nextOfKin: NewNextOfKinParams) => {
   const { session } = await getUserAuth();
-  const newNextOfKin = insertNextOfKinSchema.parse({
-    ...nextOfKin,
-    userId: session?.user.id!,
-  });
+  const newNextOfKin = insertNextOfKinSchema.parse({ ...nextOfKin, userId: session?.user.id! });
   try {
-    const [n] = await db.insert(nextOfKins).values(newNextOfKin).returning();
+    const [n] =  await db.insert(nextOfKins).values(newNextOfKin).returning();
     return { nextOfKin: n };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -28,27 +24,16 @@ export const createNextOfKin = async (nextOfKin: NewNextOfKinParams) => {
   }
 };
 
-export const updateNextOfKin = async (
-  id: NextOfKinId,
-  nextOfKin: UpdateNextOfKinParams,
-) => {
+export const updateNextOfKin = async (id: NextOfKinId, nextOfKin: UpdateNextOfKinParams) => {
   const { session } = await getUserAuth();
   const { id: nextOfKinId } = nextOfKinIdSchema.parse({ id });
-  const newNextOfKin = updateNextOfKinSchema.parse({
-    ...nextOfKin,
-    userId: session?.user.id!,
-  });
+  const newNextOfKin = updateNextOfKinSchema.parse({ ...nextOfKin, userId: session?.user.id! });
   try {
-    const [n] = await db
-      .update(nextOfKins)
-      .set({ ...newNextOfKin, updatedAt: new Date() })
-      .where(
-        and(
-          eq(nextOfKins.id, nextOfKinId!),
-          eq(nextOfKins.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [n] =  await db
+     .update(nextOfKins)
+     .set({...newNextOfKin, updatedAt: new Date() })
+     .where(and(eq(nextOfKins.id, nextOfKinId!), eq(nextOfKins.userId, session?.user.id!)))
+     .returning();
     return { nextOfKin: n };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -61,15 +46,8 @@ export const deleteNextOfKin = async (id: NextOfKinId) => {
   const { session } = await getUserAuth();
   const { id: nextOfKinId } = nextOfKinIdSchema.parse({ id });
   try {
-    const [n] = await db
-      .delete(nextOfKins)
-      .where(
-        and(
-          eq(nextOfKins.id, nextOfKinId!),
-          eq(nextOfKins.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [n] =  await db.delete(nextOfKins).where(and(eq(nextOfKins.id, nextOfKinId!), eq(nextOfKins.userId, session?.user.id!)))
+    .returning();
     return { nextOfKin: n };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -77,3 +55,4 @@ export const deleteNextOfKin = async (id: NextOfKinId) => {
     throw { error: message };
   }
 };
+

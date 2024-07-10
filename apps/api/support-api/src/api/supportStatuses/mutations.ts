@@ -1,5 +1,5 @@
-import { db } from "@soco/support-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/support-db/client";
+import { eq } from "@soco/support-db";
 import { 
   SupportStatusId, 
   NewSupportStatusParams,

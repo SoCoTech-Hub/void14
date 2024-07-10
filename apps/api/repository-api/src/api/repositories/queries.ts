@@ -1,5 +1,5 @@
-import { db } from "@soco/repository-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/repository-db/client";
+import { eq } from "@soco/repository-db";
 import { type RepositoryId, repositoryIdSchema, repositories } from "@soco/repository-db/schema/repositories";
 
 export const getRepositories = async () => {

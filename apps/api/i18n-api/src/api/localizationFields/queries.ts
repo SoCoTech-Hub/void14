@@ -1,5 +1,5 @@
-import { db } from "@soco/i18n-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/i18n-db/client";
+import { eq } from "@soco/i18n-db";
 import { type LocalizationFieldId, localizationFieldIdSchema, localizationFields } from "@soco/i18n-db/schema/localizationFields";
 
 export const getLocalizationFields = async () => {

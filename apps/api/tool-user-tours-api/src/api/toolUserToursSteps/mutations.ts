@@ -1,5 +1,5 @@
-import { db } from "@soco/tool-user-tours-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/tool-user-tours-db/client";
+import { eq } from "@soco/tool-user-tours-db";
 import { 
   ToolUserToursStepId, 
   NewToolUserToursStepParams,

@@ -1,30 +1,21 @@
-import type {
-  CourseModulesCompletionId,
+import { db } from "@soco/course-db/client";
+import { and, eq } from "@soco/course-db";
+import { 
+  CourseModulesCompletionId, 
   NewCourseModulesCompletionParams,
-  UpdateCourseModulesCompletionParams,
-} from "@soco/course-db/schema/courseModulesCompletions";
-import { getUserAuth } from "@soco/auth-services";
-import { and, db, eq } from "@soco/course-db";
-import {
-  courseModulesCompletionIdSchema,
-  courseModulesCompletions,
-  insertCourseModulesCompletionSchema,
+  UpdateCourseModulesCompletionParams, 
   updateCourseModulesCompletionSchema,
+  insertCourseModulesCompletionSchema, 
+  courseModulesCompletions,
+  courseModulesCompletionIdSchema 
 } from "@soco/course-db/schema/courseModulesCompletions";
+import { getUserAuth } from "@/lib/auth/utils";
 
-export const createCourseModulesCompletion = async (
-  courseModulesCompletion: NewCourseModulesCompletionParams,
-) => {
+export const createCourseModulesCompletion = async (courseModulesCompletion: NewCourseModulesCompletionParams) => {
   const { session } = await getUserAuth();
-  const newCourseModulesCompletion = insertCourseModulesCompletionSchema.parse({
-    ...courseModulesCompletion,
-    userId: session?.user.id!,
-  });
+  const newCourseModulesCompletion = insertCourseModulesCompletionSchema.parse({ ...courseModulesCompletion, userId: session?.user.id! });
   try {
-    const [c] = await db
-      .insert(courseModulesCompletions)
-      .values(newCourseModulesCompletion)
-      .returning();
+    const [c] =  await db.insert(courseModulesCompletions).values(newCourseModulesCompletion).returning();
     return { courseModulesCompletion: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -33,28 +24,16 @@ export const createCourseModulesCompletion = async (
   }
 };
 
-export const updateCourseModulesCompletion = async (
-  id: CourseModulesCompletionId,
-  courseModulesCompletion: UpdateCourseModulesCompletionParams,
-) => {
+export const updateCourseModulesCompletion = async (id: CourseModulesCompletionId, courseModulesCompletion: UpdateCourseModulesCompletionParams) => {
   const { session } = await getUserAuth();
-  const { id: courseModulesCompletionId } =
-    courseModulesCompletionIdSchema.parse({ id });
-  const newCourseModulesCompletion = updateCourseModulesCompletionSchema.parse({
-    ...courseModulesCompletion,
-    userId: session?.user.id!,
-  });
+  const { id: courseModulesCompletionId } = courseModulesCompletionIdSchema.parse({ id });
+  const newCourseModulesCompletion = updateCourseModulesCompletionSchema.parse({ ...courseModulesCompletion, userId: session?.user.id! });
   try {
-    const [c] = await db
-      .update(courseModulesCompletions)
-      .set({ ...newCourseModulesCompletion, updatedAt: new Date() })
-      .where(
-        and(
-          eq(courseModulesCompletions.id, courseModulesCompletionId!),
-          eq(courseModulesCompletions.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [c] =  await db
+     .update(courseModulesCompletions)
+     .set({...newCourseModulesCompletion, updatedAt: new Date() })
+     .where(and(eq(courseModulesCompletions.id, courseModulesCompletionId!), eq(courseModulesCompletions.userId, session?.user.id!)))
+     .returning();
     return { courseModulesCompletion: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -63,22 +42,12 @@ export const updateCourseModulesCompletion = async (
   }
 };
 
-export const deleteCourseModulesCompletion = async (
-  id: CourseModulesCompletionId,
-) => {
+export const deleteCourseModulesCompletion = async (id: CourseModulesCompletionId) => {
   const { session } = await getUserAuth();
-  const { id: courseModulesCompletionId } =
-    courseModulesCompletionIdSchema.parse({ id });
+  const { id: courseModulesCompletionId } = courseModulesCompletionIdSchema.parse({ id });
   try {
-    const [c] = await db
-      .delete(courseModulesCompletions)
-      .where(
-        and(
-          eq(courseModulesCompletions.id, courseModulesCompletionId!),
-          eq(courseModulesCompletions.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [c] =  await db.delete(courseModulesCompletions).where(and(eq(courseModulesCompletions.id, courseModulesCompletionId!), eq(courseModulesCompletions.userId, session?.user.id!)))
+    .returning();
     return { courseModulesCompletion: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -86,3 +55,4 @@ export const deleteCourseModulesCompletion = async (
     throw { error: message };
   }
 };
+

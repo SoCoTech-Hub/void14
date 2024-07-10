@@ -1,5 +1,5 @@
-import { db } from "@soco/enrol-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/enrol-db/client";
+import { eq } from "@soco/enrol-db";
 import { 
   EnrolLtiLti2ShareKeyId, 
   NewEnrolLtiLti2ShareKeyParams,

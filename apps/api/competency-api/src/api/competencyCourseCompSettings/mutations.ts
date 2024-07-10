@@ -1,31 +1,21 @@
-import type {
-  CompetencyCourseCompSettingId,
+import { db } from "@soco/competency-db/client";
+import { and, eq } from "@soco/competency-db";
+import { 
+  CompetencyCourseCompSettingId, 
   NewCompetencyCourseCompSettingParams,
-  UpdateCompetencyCourseCompSettingParams,
-} from "@soco/competency-db/schema/competencyCourseCompSettings";
-import { getUserAuth } from "@soco/auth-services";
-import { and, db, eq } from "@soco/competency-db";
-import {
-  competencyCourseCompSettingIdSchema,
-  competencyCourseCompSettings,
-  insertCompetencyCourseCompSettingSchema,
+  UpdateCompetencyCourseCompSettingParams, 
   updateCompetencyCourseCompSettingSchema,
+  insertCompetencyCourseCompSettingSchema, 
+  competencyCourseCompSettings,
+  competencyCourseCompSettingIdSchema 
 } from "@soco/competency-db/schema/competencyCourseCompSettings";
+import { getUserAuth } from "@/lib/auth/utils";
 
-export const createCompetencyCourseCompSetting = async (
-  competencyCourseCompSetting: NewCompetencyCourseCompSettingParams,
-) => {
+export const createCompetencyCourseCompSetting = async (competencyCourseCompSetting: NewCompetencyCourseCompSettingParams) => {
   const { session } = await getUserAuth();
-  const newCompetencyCourseCompSetting =
-    insertCompetencyCourseCompSettingSchema.parse({
-      ...competencyCourseCompSetting,
-      userId: session?.user.id!,
-    });
+  const newCompetencyCourseCompSetting = insertCompetencyCourseCompSettingSchema.parse({ ...competencyCourseCompSetting, userId: session?.user.id! });
   try {
-    const [c] = await db
-      .insert(competencyCourseCompSettings)
-      .values(newCompetencyCourseCompSetting)
-      .returning();
+    const [c] =  await db.insert(competencyCourseCompSettings).values(newCompetencyCourseCompSetting).returning();
     return { competencyCourseCompSetting: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -34,29 +24,16 @@ export const createCompetencyCourseCompSetting = async (
   }
 };
 
-export const updateCompetencyCourseCompSetting = async (
-  id: CompetencyCourseCompSettingId,
-  competencyCourseCompSetting: UpdateCompetencyCourseCompSettingParams,
-) => {
+export const updateCompetencyCourseCompSetting = async (id: CompetencyCourseCompSettingId, competencyCourseCompSetting: UpdateCompetencyCourseCompSettingParams) => {
   const { session } = await getUserAuth();
-  const { id: competencyCourseCompSettingId } =
-    competencyCourseCompSettingIdSchema.parse({ id });
-  const newCompetencyCourseCompSetting =
-    updateCompetencyCourseCompSettingSchema.parse({
-      ...competencyCourseCompSetting,
-      userId: session?.user.id!,
-    });
+  const { id: competencyCourseCompSettingId } = competencyCourseCompSettingIdSchema.parse({ id });
+  const newCompetencyCourseCompSetting = updateCompetencyCourseCompSettingSchema.parse({ ...competencyCourseCompSetting, userId: session?.user.id! });
   try {
-    const [c] = await db
-      .update(competencyCourseCompSettings)
-      .set({ ...newCompetencyCourseCompSetting, updatedAt: new Date() })
-      .where(
-        and(
-          eq(competencyCourseCompSettings.id, competencyCourseCompSettingId!),
-          eq(competencyCourseCompSettings.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [c] =  await db
+     .update(competencyCourseCompSettings)
+     .set({...newCompetencyCourseCompSetting, updatedAt: new Date() })
+     .where(and(eq(competencyCourseCompSettings.id, competencyCourseCompSettingId!), eq(competencyCourseCompSettings.userId, session?.user.id!)))
+     .returning();
     return { competencyCourseCompSetting: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -65,22 +42,12 @@ export const updateCompetencyCourseCompSetting = async (
   }
 };
 
-export const deleteCompetencyCourseCompSetting = async (
-  id: CompetencyCourseCompSettingId,
-) => {
+export const deleteCompetencyCourseCompSetting = async (id: CompetencyCourseCompSettingId) => {
   const { session } = await getUserAuth();
-  const { id: competencyCourseCompSettingId } =
-    competencyCourseCompSettingIdSchema.parse({ id });
+  const { id: competencyCourseCompSettingId } = competencyCourseCompSettingIdSchema.parse({ id });
   try {
-    const [c] = await db
-      .delete(competencyCourseCompSettings)
-      .where(
-        and(
-          eq(competencyCourseCompSettings.id, competencyCourseCompSettingId!),
-          eq(competencyCourseCompSettings.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [c] =  await db.delete(competencyCourseCompSettings).where(and(eq(competencyCourseCompSettings.id, competencyCourseCompSettingId!), eq(competencyCourseCompSettings.userId, session?.user.id!)))
+    .returning();
     return { competencyCourseCompSetting: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -88,3 +55,4 @@ export const deleteCompetencyCourseCompSetting = async (
     throw { error: message };
   }
 };
+

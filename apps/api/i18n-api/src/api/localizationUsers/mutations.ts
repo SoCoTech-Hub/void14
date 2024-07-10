@@ -1,30 +1,21 @@
-import { and, eq } from "drizzle-orm";
-
-import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/i18n-db/index";
-import {
-  insertLocalizationUserSchema,
-  LocalizationUserId,
-  localizationUserIdSchema,
-  localizationUsers,
+import { db } from "@soco/i18n-db/client";
+import { and, eq } from "@soco/i18n-db";
+import { 
+  LocalizationUserId, 
   NewLocalizationUserParams,
-  UpdateLocalizationUserParams,
+  UpdateLocalizationUserParams, 
   updateLocalizationUserSchema,
+  insertLocalizationUserSchema, 
+  localizationUsers,
+  localizationUserIdSchema 
 } from "@soco/i18n-db/schema/localizationUsers";
+import { getUserAuth } from "@/lib/auth/utils";
 
-export const createLocalizationUser = async (
-  localizationUser: NewLocalizationUserParams,
-) => {
+export const createLocalizationUser = async (localizationUser: NewLocalizationUserParams) => {
   const { session } = await getUserAuth();
-  const newLocalizationUser = insertLocalizationUserSchema.parse({
-    ...localizationUser,
-    userId: session?.user.id!,
-  });
+  const newLocalizationUser = insertLocalizationUserSchema.parse({ ...localizationUser, userId: session?.user.id! });
   try {
-    const [l] = await db
-      .insert(localizationUsers)
-      .values(newLocalizationUser)
-      .returning();
+    const [l] =  await db.insert(localizationUsers).values(newLocalizationUser).returning();
     return { localizationUser: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -33,27 +24,16 @@ export const createLocalizationUser = async (
   }
 };
 
-export const updateLocalizationUser = async (
-  id: LocalizationUserId,
-  localizationUser: UpdateLocalizationUserParams,
-) => {
+export const updateLocalizationUser = async (id: LocalizationUserId, localizationUser: UpdateLocalizationUserParams) => {
   const { session } = await getUserAuth();
   const { id: localizationUserId } = localizationUserIdSchema.parse({ id });
-  const newLocalizationUser = updateLocalizationUserSchema.parse({
-    ...localizationUser,
-    userId: session?.user.id!,
-  });
+  const newLocalizationUser = updateLocalizationUserSchema.parse({ ...localizationUser, userId: session?.user.id! });
   try {
-    const [l] = await db
-      .update(localizationUsers)
-      .set(newLocalizationUser)
-      .where(
-        and(
-          eq(localizationUsers.id, localizationUserId!),
-          eq(localizationUsers.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [l] =  await db
+     .update(localizationUsers)
+     .set(newLocalizationUser)
+     .where(and(eq(localizationUsers.id, localizationUserId!), eq(localizationUsers.userId, session?.user.id!)))
+     .returning();
     return { localizationUser: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -66,15 +46,8 @@ export const deleteLocalizationUser = async (id: LocalizationUserId) => {
   const { session } = await getUserAuth();
   const { id: localizationUserId } = localizationUserIdSchema.parse({ id });
   try {
-    const [l] = await db
-      .delete(localizationUsers)
-      .where(
-        and(
-          eq(localizationUsers.id, localizationUserId!),
-          eq(localizationUsers.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [l] =  await db.delete(localizationUsers).where(and(eq(localizationUsers.id, localizationUserId!), eq(localizationUsers.userId, session?.user.id!)))
+    .returning();
     return { localizationUser: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -82,3 +55,4 @@ export const deleteLocalizationUser = async (id: LocalizationUserId) => {
     throw { error: message };
   }
 };
+

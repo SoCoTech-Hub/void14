@@ -1,27 +1,19 @@
-import type {
-  AnalyticsPredictSampleId,
+import { db } from "@soco/analytics-db/client";
+import { eq } from "@soco/analytics-db";
+import { 
+  AnalyticsPredictSampleId, 
   NewAnalyticsPredictSampleParams,
-  UpdateAnalyticsPredictSampleParams,
-} from "@soco/analytics-db/schema/analyticsPredictSamples";
-import { db, eq } from "@soco/analytics-db";
-import {
-  analyticsPredictSampleIdSchema,
-  analyticsPredictSamples,
-  insertAnalyticsPredictSampleSchema,
+  UpdateAnalyticsPredictSampleParams, 
   updateAnalyticsPredictSampleSchema,
+  insertAnalyticsPredictSampleSchema, 
+  analyticsPredictSamples,
+  analyticsPredictSampleIdSchema 
 } from "@soco/analytics-db/schema/analyticsPredictSamples";
 
-export const createAnalyticsPredictSample = async (
-  analyticsPredictSample: NewAnalyticsPredictSampleParams,
-) => {
-  const newAnalyticsPredictSample = insertAnalyticsPredictSampleSchema.parse(
-    analyticsPredictSample,
-  );
+export const createAnalyticsPredictSample = async (analyticsPredictSample: NewAnalyticsPredictSampleParams) => {
+  const newAnalyticsPredictSample = insertAnalyticsPredictSampleSchema.parse(analyticsPredictSample);
   try {
-    const [a] = await db
-      .insert(analyticsPredictSamples)
-      .values(newAnalyticsPredictSample)
-      .returning();
+    const [a] =  await db.insert(analyticsPredictSamples).values(newAnalyticsPredictSample).returning();
     return { analyticsPredictSample: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -30,22 +22,15 @@ export const createAnalyticsPredictSample = async (
   }
 };
 
-export const updateAnalyticsPredictSample = async (
-  id: AnalyticsPredictSampleId,
-  analyticsPredictSample: UpdateAnalyticsPredictSampleParams,
-) => {
-  const { id: analyticsPredictSampleId } = analyticsPredictSampleIdSchema.parse(
-    { id },
-  );
-  const newAnalyticsPredictSample = updateAnalyticsPredictSampleSchema.parse(
-    analyticsPredictSample,
-  );
+export const updateAnalyticsPredictSample = async (id: AnalyticsPredictSampleId, analyticsPredictSample: UpdateAnalyticsPredictSampleParams) => {
+  const { id: analyticsPredictSampleId } = analyticsPredictSampleIdSchema.parse({ id });
+  const newAnalyticsPredictSample = updateAnalyticsPredictSampleSchema.parse(analyticsPredictSample);
   try {
-    const [a] = await db
-      .update(analyticsPredictSamples)
-      .set({ ...newAnalyticsPredictSample, updatedAt: new Date() })
-      .where(eq(analyticsPredictSamples.id, analyticsPredictSampleId!))
-      .returning();
+    const [a] =  await db
+     .update(analyticsPredictSamples)
+     .set({...newAnalyticsPredictSample, updatedAt: new Date() })
+     .where(eq(analyticsPredictSamples.id, analyticsPredictSampleId!))
+     .returning();
     return { analyticsPredictSample: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -54,17 +39,11 @@ export const updateAnalyticsPredictSample = async (
   }
 };
 
-export const deleteAnalyticsPredictSample = async (
-  id: AnalyticsPredictSampleId,
-) => {
-  const { id: analyticsPredictSampleId } = analyticsPredictSampleIdSchema.parse(
-    { id },
-  );
+export const deleteAnalyticsPredictSample = async (id: AnalyticsPredictSampleId) => {
+  const { id: analyticsPredictSampleId } = analyticsPredictSampleIdSchema.parse({ id });
   try {
-    const [a] = await db
-      .delete(analyticsPredictSamples)
-      .where(eq(analyticsPredictSamples.id, analyticsPredictSampleId!))
-      .returning();
+    const [a] =  await db.delete(analyticsPredictSamples).where(eq(analyticsPredictSamples.id, analyticsPredictSampleId!))
+    .returning();
     return { analyticsPredictSample: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -72,3 +51,4 @@ export const deleteAnalyticsPredictSample = async (
     throw { error: message };
   }
 };
+

@@ -1,5 +1,3 @@
-import { createTRPCRouter } from "./trpc";
-
 import { lessonAnswersRouter } from './routers/lessonAnswers';
 import { lessonAttemptsRouter } from './routers/lessonAttempts';
 import { lessonBranchesRouter } from './routers/lessonBranches';
@@ -8,6 +6,7 @@ import { lessonOverridesRouter } from './routers/lessonOverrides';
 import { lessonPagesRouter } from './routers/lessonPages';
 import { lessonsRouter } from './routers/lessons';
 import { lessonTimerRouter } from './routers/lessonTimer';
+import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   lessonAnswers: lessonAnswersRouter,

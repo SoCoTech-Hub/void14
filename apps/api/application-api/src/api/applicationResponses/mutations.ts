@@ -1,30 +1,21 @@
-import type {
-  ApplicationResponseId,
+import { db } from "@soco/application-db/client";
+import { and, eq } from "@soco/application-db";
+import { 
+  ApplicationResponseId, 
   NewApplicationResponseParams,
-  UpdateApplicationResponseParams,
-} from "@soco/application-db/schema/applicationResponses";
-import { and, db, eq } from "@soco/application-db";
-import {
-  applicationResponseIdSchema,
-  applicationResponses,
-  insertApplicationResponseSchema,
+  UpdateApplicationResponseParams, 
   updateApplicationResponseSchema,
+  insertApplicationResponseSchema, 
+  applicationResponses,
+  applicationResponseIdSchema 
 } from "@soco/application-db/schema/applicationResponses";
-import { getUserAuth } from "@soco/auth-services";
+import { getUserAuth } from "@/lib/auth/utils";
 
-export const createApplicationResponse = async (
-  applicationResponse: NewApplicationResponseParams,
-) => {
+export const createApplicationResponse = async (applicationResponse: NewApplicationResponseParams) => {
   const { session } = await getUserAuth();
-  const newApplicationResponse = insertApplicationResponseSchema.parse({
-    ...applicationResponse,
-    userId: session?.user.id!,
-  });
+  const newApplicationResponse = insertApplicationResponseSchema.parse({ ...applicationResponse, userId: session?.user.id! });
   try {
-    const [a] = await db
-      .insert(applicationResponses)
-      .values(newApplicationResponse)
-      .returning();
+    const [a] =  await db.insert(applicationResponses).values(newApplicationResponse).returning();
     return { applicationResponse: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -33,29 +24,16 @@ export const createApplicationResponse = async (
   }
 };
 
-export const updateApplicationResponse = async (
-  id: ApplicationResponseId,
-  applicationResponse: UpdateApplicationResponseParams,
-) => {
+export const updateApplicationResponse = async (id: ApplicationResponseId, applicationResponse: UpdateApplicationResponseParams) => {
   const { session } = await getUserAuth();
-  const { id: applicationResponseId } = applicationResponseIdSchema.parse({
-    id,
-  });
-  const newApplicationResponse = updateApplicationResponseSchema.parse({
-    ...applicationResponse,
-    userId: session?.user.id!,
-  });
+  const { id: applicationResponseId } = applicationResponseIdSchema.parse({ id });
+  const newApplicationResponse = updateApplicationResponseSchema.parse({ ...applicationResponse, userId: session?.user.id! });
   try {
-    const [a] = await db
-      .update(applicationResponses)
-      .set({ ...newApplicationResponse, updatedAt: new Date() })
-      .where(
-        and(
-          eq(applicationResponses.id, applicationResponseId!),
-          eq(applicationResponses.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [a] =  await db
+     .update(applicationResponses)
+     .set({...newApplicationResponse, updatedAt: new Date() })
+     .where(and(eq(applicationResponses.id, applicationResponseId!), eq(applicationResponses.userId, session?.user.id!)))
+     .returning();
     return { applicationResponse: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -66,19 +44,10 @@ export const updateApplicationResponse = async (
 
 export const deleteApplicationResponse = async (id: ApplicationResponseId) => {
   const { session } = await getUserAuth();
-  const { id: applicationResponseId } = applicationResponseIdSchema.parse({
-    id,
-  });
+  const { id: applicationResponseId } = applicationResponseIdSchema.parse({ id });
   try {
-    const [a] = await db
-      .delete(applicationResponses)
-      .where(
-        and(
-          eq(applicationResponses.id, applicationResponseId!),
-          eq(applicationResponses.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [a] =  await db.delete(applicationResponses).where(and(eq(applicationResponses.id, applicationResponseId!), eq(applicationResponses.userId, session?.user.id!)))
+    .returning();
     return { applicationResponse: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -86,3 +55,4 @@ export const deleteApplicationResponse = async (id: ApplicationResponseId) => {
     throw { error: message };
   }
 };
+

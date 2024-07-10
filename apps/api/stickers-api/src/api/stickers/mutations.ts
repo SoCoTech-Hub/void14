@@ -1,5 +1,5 @@
-import { db } from "@soco/stickers-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/stickers-db/client";
+import { eq } from "@soco/stickers-db";
 import { 
   StickerId, 
   NewStickerParams,

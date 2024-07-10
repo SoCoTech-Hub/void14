@@ -1,26 +1,19 @@
-import type {
-  BadgeCriteriaParamId,
+import { db } from "@soco/badge-db/client";
+import { eq } from "@soco/badge-db";
+import { 
+  BadgeCriteriaParamId, 
   NewBadgeCriteriaParamParams,
-  UpdateBadgeCriteriaParamParams,
-} from "@soco/badge-db/schema/badgeCriteriaParams";
-import { db, eq } from "@soco/badge-db";
-import {
-  badgeCriteriaParamIdSchema,
-  badgeCriteriaParams,
-  insertBadgeCriteriaParamSchema,
+  UpdateBadgeCriteriaParamParams, 
   updateBadgeCriteriaParamSchema,
+  insertBadgeCriteriaParamSchema, 
+  badgeCriteriaParams,
+  badgeCriteriaParamIdSchema 
 } from "@soco/badge-db/schema/badgeCriteriaParams";
 
-export const createBadgeCriteriaParam = async (
-  badgeCriteriaParam: NewBadgeCriteriaParamParams,
-) => {
-  const newBadgeCriteriaParam =
-    insertBadgeCriteriaParamSchema.parse(badgeCriteriaParam);
+export const createBadgeCriteriaParam = async (badgeCriteriaParam: NewBadgeCriteriaParamParams) => {
+  const newBadgeCriteriaParam = insertBadgeCriteriaParamSchema.parse(badgeCriteriaParam);
   try {
-    const [b] = await db
-      .insert(badgeCriteriaParams)
-      .values(newBadgeCriteriaParam)
-      .returning();
+    const [b] =  await db.insert(badgeCriteriaParams).values(newBadgeCriteriaParam).returning();
     return { badgeCriteriaParam: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -29,19 +22,15 @@ export const createBadgeCriteriaParam = async (
   }
 };
 
-export const updateBadgeCriteriaParam = async (
-  id: BadgeCriteriaParamId,
-  badgeCriteriaParam: UpdateBadgeCriteriaParamParams,
-) => {
+export const updateBadgeCriteriaParam = async (id: BadgeCriteriaParamId, badgeCriteriaParam: UpdateBadgeCriteriaParamParams) => {
   const { id: badgeCriteriaParamId } = badgeCriteriaParamIdSchema.parse({ id });
-  const newBadgeCriteriaParam =
-    updateBadgeCriteriaParamSchema.parse(badgeCriteriaParam);
+  const newBadgeCriteriaParam = updateBadgeCriteriaParamSchema.parse(badgeCriteriaParam);
   try {
-    const [b] = await db
-      .update(badgeCriteriaParams)
-      .set(newBadgeCriteriaParam)
-      .where(eq(badgeCriteriaParams.id, badgeCriteriaParamId!))
-      .returning();
+    const [b] =  await db
+     .update(badgeCriteriaParams)
+     .set(newBadgeCriteriaParam)
+     .where(eq(badgeCriteriaParams.id, badgeCriteriaParamId!))
+     .returning();
     return { badgeCriteriaParam: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -53,10 +42,8 @@ export const updateBadgeCriteriaParam = async (
 export const deleteBadgeCriteriaParam = async (id: BadgeCriteriaParamId) => {
   const { id: badgeCriteriaParamId } = badgeCriteriaParamIdSchema.parse({ id });
   try {
-    const [b] = await db
-      .delete(badgeCriteriaParams)
-      .where(eq(badgeCriteriaParams.id, badgeCriteriaParamId!))
-      .returning();
+    const [b] =  await db.delete(badgeCriteriaParams).where(eq(badgeCriteriaParams.id, badgeCriteriaParamId!))
+    .returning();
     return { badgeCriteriaParam: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -64,3 +51,4 @@ export const deleteBadgeCriteriaParam = async (id: BadgeCriteriaParamId) => {
     throw { error: message };
   }
 };
+

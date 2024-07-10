@@ -1,5 +1,5 @@
-import { db } from "@soco/show-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/show-db/client";
+import { eq } from "@soco/show-db";
 import { type ShowId, showIdSchema, shows } from "@soco/show-db/schema/shows";
 import { showsCategories } from "@soco/show-db/schema/showsCategories";
 

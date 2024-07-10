@@ -1,4 +1,4 @@
-import { contentsRouter } from "./routers/contents";
+import { contentsRouter } from './routers/contents';
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

@@ -1,5 +1,5 @@
-import { db } from "@soco/enrol-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/enrol-db/client";
+import { eq } from "@soco/enrol-db";
 import { type EnrolLtiLti2ShareKeyId, enrolLtiLti2ShareKeyIdSchema, enrolLtiLti2ShareKeys } from "@soco/enrol-db/schema/enrolLtiLti2ShareKeys";
 
 export const getEnrolLtiLti2ShareKeys = async () => {

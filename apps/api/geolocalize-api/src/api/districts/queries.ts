@@ -1,5 +1,5 @@
-import { db } from "@soco/geolocalize-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/geolocalize-db/client";
+import { eq } from "@soco/geolocalize-db";
 import { type DistrictId, districtIdSchema, districts } from "@soco/geolocalize-db/schema/districts";
 import { provinces } from "@soco/geolocalize-db/schema/provinces";
 

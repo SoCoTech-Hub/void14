@@ -1,5 +1,5 @@
-import { db } from "@soco/mnet-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/mnet-db/client";
+import { eq } from "@soco/mnet-db";
 import { type MnetApplicationId, mnetApplicationIdSchema, mnetApplications } from "@soco/mnet-db/schema/mnetApplications";
 
 export const getMnetApplications = async () => {

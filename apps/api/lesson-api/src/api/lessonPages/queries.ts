@@ -1,5 +1,5 @@
-import { db } from "@soco/lesson-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/lesson-db/client";
+import { eq } from "@soco/lesson-db";
 import { type LessonPageId, lessonPageIdSchema, lessonPages } from "@soco/lesson-db/schema/lessonPages";
 
 export const getLessonPages = async () => {

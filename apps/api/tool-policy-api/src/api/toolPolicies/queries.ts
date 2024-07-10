@@ -1,5 +1,5 @@
-import { db } from "@soco/tool-policy-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/tool-policy-db/client";
+import { eq } from "@soco/tool-policy-db";
 import { type ToolPolicyId, toolPolicyIdSchema, toolPolicies } from "@soco/tool-policy-db/schema/toolPolicies";
 
 export const getToolPolicies = async () => {

@@ -1,5 +1,5 @@
-import { db } from "@soco/tag-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/tag-db/client";
+import { eq } from "@soco/tag-db";
 import { type TagAreaId, tagAreaIdSchema, tagAreas } from "@soco/tag-db/schema/tagAreas";
 import { tagColls } from "@soco/tag-db/schema/tagColls";
 

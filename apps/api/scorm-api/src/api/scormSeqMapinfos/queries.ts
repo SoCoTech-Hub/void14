@@ -1,5 +1,5 @@
-import { db } from "@soco/scorm-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/scorm-db/client";
+import { eq } from "@soco/scorm-db";
 import { type ScormSeqMapinfoId, scormSeqMapinfoIdSchema, scormSeqMapinfos } from "@soco/scorm-db/schema/scormSeqMapinfos";
 import { scormSeqObjectives } from "@soco/scorm-db/schema/scormSeqObjectives";
 import { scormScoes } from "@soco/scorm-db/schema/scormScoes";

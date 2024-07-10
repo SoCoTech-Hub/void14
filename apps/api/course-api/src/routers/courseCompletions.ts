@@ -1,29 +1,19 @@
+import { getCourseCompletionById, getCourseCompletions } from "../api/courseCompletions/queries";
+import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   courseCompletionIdSchema,
   insertCourseCompletionParams,
   updateCourseCompletionParams,
 } from "@soco/course-db/schema/courseCompletions";
+import { createCourseCompletion, deleteCourseCompletion, updateCourseCompletion } from "../api/courseCompletions/mutations";
 
-import {
-  createCourseCompletion,
-  deleteCourseCompletion,
-  updateCourseCompletion,
-} from "../api/courseCompletions/mutations";
-import {
-  getCourseCompletionById,
-  getCourseCompletions,
-} from "../api/courseCompletions/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
-
-export const courseCompletionsRouter = createTRPCRouter({
+export const courseCompletionsRouter =createTRPCRouter({
   getCourseCompletions: publicProcedure.query(async () => {
     return getCourseCompletions();
   }),
-  getCourseCompletionById: publicProcedure
-    .input(courseCompletionIdSchema)
-    .query(async ({ input }) => {
-      return getCourseCompletionById(input.id);
-    }),
+  getCourseCompletionById: publicProcedure.input(courseCompletionIdSchema).query(async ({ input }) => {
+    return getCourseCompletionById(input.id);
+  }),
   createCourseCompletion: publicProcedure
     .input(insertCourseCompletionParams)
     .mutation(async ({ input }) => {

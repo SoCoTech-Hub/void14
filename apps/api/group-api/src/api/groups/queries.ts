@@ -1,5 +1,5 @@
-import { db } from "@soco/group-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/group-db/client";
+import { eq } from "@soco/group-db";
 import { type GroupId, groupIdSchema, groups } from "@soco/group-db/schema/groups";
 
 export const getGroups = async () => {

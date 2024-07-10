@@ -1,5 +1,5 @@
-import { db } from "@soco/geolocalize-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/geolocalize-db/client";
+import { eq } from "@soco/geolocalize-db";
 import { 
   CountryId, 
   NewCountryParams,

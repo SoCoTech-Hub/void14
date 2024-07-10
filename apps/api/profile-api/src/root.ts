@@ -1,9 +1,8 @@
-import { createTRPCRouter } from "./trpc";
-
 import { addressesRouter } from './routers/addresses';
 import { gendersRouter } from './routers/genders';
 import { nextOfKinsRouter } from './routers/nextOfKins';
 import { profilesRouter } from './routers/profiles';
+import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   addresses: addressesRouter,

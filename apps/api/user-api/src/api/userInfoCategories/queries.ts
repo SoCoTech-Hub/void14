@@ -1,5 +1,5 @@
-import { db } from "@soco/user-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/user-db/client";
+import { eq } from "@soco/user-db";
 import { type UserInfoCategoryId, userInfoCategoryIdSchema, userInfoCategories } from "@soco/user-db/schema/userInfoCategories";
 
 export const getUserInfoCategories = async () => {

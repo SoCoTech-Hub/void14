@@ -1,5 +1,5 @@
-import { db } from "@soco/universities-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/universities-db/client";
+import { eq } from "@soco/universities-db";
 import { 
   UniversityId, 
   NewUniversityParams,

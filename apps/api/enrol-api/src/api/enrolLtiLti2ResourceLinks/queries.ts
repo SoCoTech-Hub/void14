@@ -1,5 +1,5 @@
-import { db } from "@soco/enrol-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/enrol-db/client";
+import { eq } from "@soco/enrol-db";
 import { type EnrolLtiLti2ResourceLinkId, enrolLtiLti2ResourceLinkIdSchema, enrolLtiLti2ResourceLinks } from "@soco/enrol-db/schema/enrolLtiLti2ResourceLinks";
 
 export const getEnrolLtiLti2ResourceLinks = async () => {

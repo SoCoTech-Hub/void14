@@ -1,26 +1,19 @@
-import type {
-  AssignPluginConfigId,
+import { db } from "@soco/assignment-db/client";
+import { eq } from "@soco/assignment-db";
+import { 
+  AssignPluginConfigId, 
   NewAssignPluginConfigParams,
-  UpdateAssignPluginConfigParams,
-} from "@soco/assignment-db/schema/assignPluginConfigs";
-import { db, eq } from "@soco/assignment-db";
-import {
-  assignPluginConfigIdSchema,
-  assignPluginConfigs,
-  insertAssignPluginConfigSchema,
+  UpdateAssignPluginConfigParams, 
   updateAssignPluginConfigSchema,
+  insertAssignPluginConfigSchema, 
+  assignPluginConfigs,
+  assignPluginConfigIdSchema 
 } from "@soco/assignment-db/schema/assignPluginConfigs";
 
-export const createAssignPluginConfig = async (
-  assignPluginConfig: NewAssignPluginConfigParams,
-) => {
-  const newAssignPluginConfig =
-    insertAssignPluginConfigSchema.parse(assignPluginConfig);
+export const createAssignPluginConfig = async (assignPluginConfig: NewAssignPluginConfigParams) => {
+  const newAssignPluginConfig = insertAssignPluginConfigSchema.parse(assignPluginConfig);
   try {
-    const [a] = await db
-      .insert(assignPluginConfigs)
-      .values(newAssignPluginConfig)
-      .returning();
+    const [a] =  await db.insert(assignPluginConfigs).values(newAssignPluginConfig).returning();
     return { assignPluginConfig: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -29,19 +22,15 @@ export const createAssignPluginConfig = async (
   }
 };
 
-export const updateAssignPluginConfig = async (
-  id: AssignPluginConfigId,
-  assignPluginConfig: UpdateAssignPluginConfigParams,
-) => {
+export const updateAssignPluginConfig = async (id: AssignPluginConfigId, assignPluginConfig: UpdateAssignPluginConfigParams) => {
   const { id: assignPluginConfigId } = assignPluginConfigIdSchema.parse({ id });
-  const newAssignPluginConfig =
-    updateAssignPluginConfigSchema.parse(assignPluginConfig);
+  const newAssignPluginConfig = updateAssignPluginConfigSchema.parse(assignPluginConfig);
   try {
-    const [a] = await db
-      .update(assignPluginConfigs)
-      .set(newAssignPluginConfig)
-      .where(eq(assignPluginConfigs.id, assignPluginConfigId!))
-      .returning();
+    const [a] =  await db
+     .update(assignPluginConfigs)
+     .set(newAssignPluginConfig)
+     .where(eq(assignPluginConfigs.id, assignPluginConfigId!))
+     .returning();
     return { assignPluginConfig: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -53,10 +42,8 @@ export const updateAssignPluginConfig = async (
 export const deleteAssignPluginConfig = async (id: AssignPluginConfigId) => {
   const { id: assignPluginConfigId } = assignPluginConfigIdSchema.parse({ id });
   try {
-    const [a] = await db
-      .delete(assignPluginConfigs)
-      .where(eq(assignPluginConfigs.id, assignPluginConfigId!))
-      .returning();
+    const [a] =  await db.delete(assignPluginConfigs).where(eq(assignPluginConfigs.id, assignPluginConfigId!))
+    .returning();
     return { assignPluginConfig: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -64,3 +51,4 @@ export const deleteAssignPluginConfig = async (id: AssignPluginConfigId) => {
     throw { error: message };
   }
 };
+

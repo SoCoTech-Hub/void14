@@ -1,5 +1,5 @@
-import { db } from "@soco/glossary-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/glossary-db/client";
+import { eq } from "@soco/glossary-db";
 import { type GlossaryFormatId, glossaryFormatIdSchema, glossaryFormats } from "@soco/glossary-db/schema/glossaryFormats";
 
 export const getGlossaryFormats = async () => {

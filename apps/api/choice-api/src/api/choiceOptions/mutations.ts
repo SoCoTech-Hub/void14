@@ -1,25 +1,19 @@
-import type {
-  ChoiceOptionId,
+import { db } from "@soco/choice-db/client";
+import { eq } from "@soco/choice-db";
+import { 
+  ChoiceOptionId, 
   NewChoiceOptionParams,
-  UpdateChoiceOptionParams,
-} from "@soco/choice-db/schema/choiceOptions";
-import { db, eq } from "@soco/choice-db";
-import {
-  choiceOptionIdSchema,
-  choiceOptions,
-  insertChoiceOptionSchema,
+  UpdateChoiceOptionParams, 
   updateChoiceOptionSchema,
+  insertChoiceOptionSchema, 
+  choiceOptions,
+  choiceOptionIdSchema 
 } from "@soco/choice-db/schema/choiceOptions";
 
-export const createChoiceOption = async (
-  choiceOption: NewChoiceOptionParams,
-) => {
+export const createChoiceOption = async (choiceOption: NewChoiceOptionParams) => {
   const newChoiceOption = insertChoiceOptionSchema.parse(choiceOption);
   try {
-    const [c] = await db
-      .insert(choiceOptions)
-      .values(newChoiceOption)
-      .returning();
+    const [c] =  await db.insert(choiceOptions).values(newChoiceOption).returning();
     return { choiceOption: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -28,18 +22,15 @@ export const createChoiceOption = async (
   }
 };
 
-export const updateChoiceOption = async (
-  id: ChoiceOptionId,
-  choiceOption: UpdateChoiceOptionParams,
-) => {
+export const updateChoiceOption = async (id: ChoiceOptionId, choiceOption: UpdateChoiceOptionParams) => {
   const { id: choiceOptionId } = choiceOptionIdSchema.parse({ id });
   const newChoiceOption = updateChoiceOptionSchema.parse(choiceOption);
   try {
-    const [c] = await db
-      .update(choiceOptions)
-      .set({ ...newChoiceOption, updatedAt: new Date() })
-      .where(eq(choiceOptions.id, choiceOptionId!))
-      .returning();
+    const [c] =  await db
+     .update(choiceOptions)
+     .set({...newChoiceOption, updatedAt: new Date() })
+     .where(eq(choiceOptions.id, choiceOptionId!))
+     .returning();
     return { choiceOption: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,10 +42,8 @@ export const updateChoiceOption = async (
 export const deleteChoiceOption = async (id: ChoiceOptionId) => {
   const { id: choiceOptionId } = choiceOptionIdSchema.parse({ id });
   try {
-    const [c] = await db
-      .delete(choiceOptions)
-      .where(eq(choiceOptions.id, choiceOptionId!))
-      .returning();
+    const [c] =  await db.delete(choiceOptions).where(eq(choiceOptions.id, choiceOptionId!))
+    .returning();
     return { choiceOption: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -62,3 +51,4 @@ export const deleteChoiceOption = async (id: ChoiceOptionId) => {
     throw { error: message };
   }
 };
+

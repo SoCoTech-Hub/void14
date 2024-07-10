@@ -1,5 +1,5 @@
-import { db } from "@soco/h5p-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/h5p-db/client";
+import { eq } from "@soco/h5p-db";
 import { type H5pContentsLibraryId, h5pContentsLibraryIdSchema, h5pContentsLibraries } from "@soco/h5p-db/schema/h5pContentsLibraries";
 
 export const getH5pContentsLibraries = async () => {

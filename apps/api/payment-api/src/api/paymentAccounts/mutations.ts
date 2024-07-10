@@ -1,5 +1,5 @@
-import { db } from "@soco/payment-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/payment-db/client";
+import { eq } from "@soco/payment-db";
 import { 
   PaymentAccountId, 
   NewPaymentAccountParams,

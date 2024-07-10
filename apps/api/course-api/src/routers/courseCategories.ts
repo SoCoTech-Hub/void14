@@ -1,29 +1,19 @@
+import { getCourseCategoryById, getCourseCategories } from "../api/courseCategories/queries";
+import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   courseCategoryIdSchema,
   insertCourseCategoryParams,
   updateCourseCategoryParams,
 } from "@soco/course-db/schema/courseCategories";
+import { createCourseCategory, deleteCourseCategory, updateCourseCategory } from "../api/courseCategories/mutations";
 
-import {
-  createCourseCategory,
-  deleteCourseCategory,
-  updateCourseCategory,
-} from "../api/courseCategories/mutations";
-import {
-  getCourseCategories,
-  getCourseCategoryById,
-} from "../api/courseCategories/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
-
-export const courseCategoriesRouter = createTRPCRouter({
+export const courseCategoriesRouter =createTRPCRouter({
   getCourseCategories: publicProcedure.query(async () => {
     return getCourseCategories();
   }),
-  getCourseCategoryById: publicProcedure
-    .input(courseCategoryIdSchema)
-    .query(async ({ input }) => {
-      return getCourseCategoryById(input.id);
-    }),
+  getCourseCategoryById: publicProcedure.input(courseCategoryIdSchema).query(async ({ input }) => {
+    return getCourseCategoryById(input.id);
+  }),
   createCourseCategory: publicProcedure
     .input(insertCourseCategoryParams)
     .mutation(async ({ input }) => {

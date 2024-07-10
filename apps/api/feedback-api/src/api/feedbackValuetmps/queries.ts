@@ -1,5 +1,5 @@
-import { db } from "@soco/feedback-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/feedback-db/client";
+import { eq } from "@soco/feedback-db";
 import { type FeedbackValuetmpId, feedbackValuetmpIdSchema, feedbackValuetmps } from "@soco/feedback-db/schema/feedbackValuetmps";
 
 export const getFeedbackValuetmps = async () => {

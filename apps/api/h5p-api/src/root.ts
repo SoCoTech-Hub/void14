@@ -1,5 +1,3 @@
-import { createTRPCRouter } from "./trpc";
-
 import { h5pactivitiesRouter } from './routers/h5pactivities';
 import { h5pactivityAttemptsRouter } from './routers/h5pactivityAttempts';
 import { h5pactivityAttemptsResultsRouter } from './routers/h5pactivityAttemptsResults';
@@ -8,6 +6,7 @@ import { h5pLibrariesRouter } from './routers/h5pLibraries';
 import { h5pLibrariesCachedassetsRouter } from './routers/h5pLibrariesCachedassets';
 import { h5pLibraryDependenciesRouter } from './routers/h5pLibraryDependencies';
 import { h5psRouter } from './routers/h5ps';
+import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   h5pactivities: h5pactivitiesRouter,

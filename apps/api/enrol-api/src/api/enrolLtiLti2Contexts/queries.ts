@@ -1,5 +1,5 @@
-import { db } from "@soco/enrol-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/enrol-db/client";
+import { eq } from "@soco/enrol-db";
 import { type EnrolLtiLti2ContextId, enrolLtiLti2ContextIdSchema, enrolLtiLti2Contexts } from "@soco/enrol-db/schema/enrolLtiLti2Contexts";
 
 export const getEnrolLtiLti2Contexts = async () => {

@@ -1,29 +1,19 @@
+import { getAffiliatesDetailById, getAffiliatesDetails } from "../api/affiliatesDetails/queries";
+import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   affiliatesDetailIdSchema,
   insertAffiliatesDetailParams,
   updateAffiliatesDetailParams,
 } from "@soco/affiliates-db/schema/affiliatesDetails";
+import { createAffiliatesDetail, deleteAffiliatesDetail, updateAffiliatesDetail } from "../api/affiliatesDetails/mutations";
 
-import {
-  createAffiliatesDetail,
-  deleteAffiliatesDetail,
-  updateAffiliatesDetail,
-} from "../api/affiliatesDetails/mutations";
-import {
-  getAffiliatesDetailById,
-  getAffiliatesDetails,
-} from "../api/affiliatesDetails/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
-
-export const affiliatesDetailsRouter = createTRPCRouter({
+export const affiliatesDetailsRouter =createTRPCRouter({
   getAffiliatesDetails: publicProcedure.query(async () => {
     return getAffiliatesDetails();
   }),
-  getAffiliatesDetailById: publicProcedure
-    .input(affiliatesDetailIdSchema)
-    .query(async ({ input }) => {
-      return getAffiliatesDetailById(input.id);
-    }),
+  getAffiliatesDetailById: publicProcedure.input(affiliatesDetailIdSchema).query(async ({ input }) => {
+    return getAffiliatesDetailById(input.id);
+  }),
   createAffiliatesDetail: publicProcedure
     .input(insertAffiliatesDetailParams)
     .mutation(async ({ input }) => {

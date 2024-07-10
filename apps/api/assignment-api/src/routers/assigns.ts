@@ -1,26 +1,19 @@
+import { getAssignById, getAssigns } from "../api/assigns/queries";
+import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   assignIdSchema,
   insertAssignParams,
   updateAssignParams,
 } from "@soco/assignment-db/schema/assigns";
+import { createAssign, deleteAssign, updateAssign } from "../api/assigns/mutations";
 
-import {
-  createAssign,
-  deleteAssign,
-  updateAssign,
-} from "../api/assigns/mutations";
-import { getAssignById, getAssigns } from "../api/assigns/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
-
-export const assignsRouter = createTRPCRouter({
+export const assignsRouter =createTRPCRouter({
   getAssigns: publicProcedure.query(async () => {
     return getAssigns();
   }),
-  getAssignById: publicProcedure
-    .input(assignIdSchema)
-    .query(async ({ input }) => {
-      return getAssignById(input.id);
-    }),
+  getAssignById: publicProcedure.input(assignIdSchema).query(async ({ input }) => {
+    return getAssignById(input.id);
+  }),
   createAssign: publicProcedure
     .input(insertAssignParams)
     .mutation(async ({ input }) => {

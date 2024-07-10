@@ -1,5 +1,5 @@
-import { db } from "@soco/url-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/url-db/client";
+import { eq } from "@soco/url-db";
 import { type UrlId, urlIdSchema, urls } from "@soco/url-db/schema/urls";
 
 export const getUrls = async () => {

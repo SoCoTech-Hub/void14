@@ -1,26 +1,19 @@
+import { getBackupLogById, getBackupLogs } from "../api/backupLogs/queries";
+import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   backupLogIdSchema,
   insertBackupLogParams,
   updateBackupLogParams,
 } from "@soco/backup-db/schema/backupLogs";
+import { createBackupLog, deleteBackupLog, updateBackupLog } from "../api/backupLogs/mutations";
 
-import {
-  createBackupLog,
-  deleteBackupLog,
-  updateBackupLog,
-} from "../api/backupLogs/mutations";
-import { getBackupLogById, getBackupLogs } from "../api/backupLogs/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
-
-export const backupLogsRouter = createTRPCRouter({
+export const backupLogsRouter =createTRPCRouter({
   getBackupLogs: publicProcedure.query(async () => {
     return getBackupLogs();
   }),
-  getBackupLogById: publicProcedure
-    .input(backupLogIdSchema)
-    .query(async ({ input }) => {
-      return getBackupLogById(input.id);
-    }),
+  getBackupLogById: publicProcedure.input(backupLogIdSchema).query(async ({ input }) => {
+    return getBackupLogById(input.id);
+  }),
   createBackupLog: publicProcedure
     .input(insertBackupLogParams)
     .mutation(async ({ input }) => {

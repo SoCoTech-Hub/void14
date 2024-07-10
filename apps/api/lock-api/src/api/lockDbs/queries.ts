@@ -1,5 +1,5 @@
-import { db } from "@soco/lock-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/lock-db/client";
+import { eq } from "@soco/lock-db";
 import { type LockDbId, lockDbIdSchema, lockDbs } from "@soco/lock-db/schema/lockDbs";
 
 export const getLockDbs = async () => {

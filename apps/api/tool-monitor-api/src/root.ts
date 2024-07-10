@@ -1,9 +1,8 @@
-import { createTRPCRouter } from "./trpc";
-
 import { toolMonitorEventsRouter } from './routers/toolMonitorEvents';
 import { toolMonitorHistoriesRouter } from './routers/toolMonitorHistories';
 import { toolMonitorRulesRouter } from './routers/toolMonitorRules';
 import { toolMonitorSubscriptionsRouter } from './routers/toolMonitorSubscriptions';
+import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   toolMonitorEvents: toolMonitorEventsRouter,

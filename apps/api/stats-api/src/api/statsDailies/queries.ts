@@ -1,5 +1,5 @@
-import { db } from "@soco/stats-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/stats-db/client";
+import { eq } from "@soco/stats-db";
 import { type StatsDailyId, statsDailyIdSchema, statsDailies } from "@soco/stats-db/schema/statsDailies";
 
 export const getStatsDailies = async () => {

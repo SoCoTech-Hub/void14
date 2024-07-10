@@ -1,5 +1,5 @@
-import { db } from "@soco/label-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/label-db/client";
+import { eq } from "@soco/label-db";
 import { 
   LabelId, 
   NewLabelParams,

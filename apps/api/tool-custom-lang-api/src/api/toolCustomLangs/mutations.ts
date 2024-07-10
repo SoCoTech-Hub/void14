@@ -1,5 +1,5 @@
-import { db } from "@soco/tool-custom-lang-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/tool-custom-lang-db/client";
+import { eq } from "@soco/tool-custom-lang-db";
 import { 
   ToolCustomLangId, 
   NewToolCustomLangParams,

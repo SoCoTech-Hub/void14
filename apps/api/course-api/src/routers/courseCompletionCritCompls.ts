@@ -1,29 +1,19 @@
+import { getCourseCompletionCritComplById, getCourseCompletionCritCompls } from "../api/courseCompletionCritCompls/queries";
+import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   courseCompletionCritComplIdSchema,
   insertCourseCompletionCritComplParams,
   updateCourseCompletionCritComplParams,
 } from "@soco/course-db/schema/courseCompletionCritCompls";
+import { createCourseCompletionCritCompl, deleteCourseCompletionCritCompl, updateCourseCompletionCritCompl } from "../api/courseCompletionCritCompls/mutations";
 
-import {
-  createCourseCompletionCritCompl,
-  deleteCourseCompletionCritCompl,
-  updateCourseCompletionCritCompl,
-} from "../api/courseCompletionCritCompls/mutations";
-import {
-  getCourseCompletionCritComplById,
-  getCourseCompletionCritCompls,
-} from "../api/courseCompletionCritCompls/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
-
-export const courseCompletionCritComplsRouter = createTRPCRouter({
+export const courseCompletionCritComplsRouter =createTRPCRouter({
   getCourseCompletionCritCompls: publicProcedure.query(async () => {
     return getCourseCompletionCritCompls();
   }),
-  getCourseCompletionCritComplById: publicProcedure
-    .input(courseCompletionCritComplIdSchema)
-    .query(async ({ input }) => {
-      return getCourseCompletionCritComplById(input.id);
-    }),
+  getCourseCompletionCritComplById: publicProcedure.input(courseCompletionCritComplIdSchema).query(async ({ input }) => {
+    return getCourseCompletionCritComplById(input.id);
+  }),
   createCourseCompletionCritCompl: publicProcedure
     .input(insertCourseCompletionCritComplParams)
     .mutation(async ({ input }) => {

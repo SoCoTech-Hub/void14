@@ -1,22 +1,19 @@
+import { getBadgeById, getBadges } from "../api/badges/queries";
+import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   badgeIdSchema,
   insertBadgeParams,
   updateBadgeParams,
 } from "@soco/badge-db/schema/badges";
-
 import { createBadge, deleteBadge, updateBadge } from "../api/badges/mutations";
-import { getBadgeById, getBadges } from "../api/badges/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const badgesRouter = createTRPCRouter({
+export const badgesRouter =createTRPCRouter({
   getBadges: publicProcedure.query(async () => {
     return getBadges();
   }),
-  getBadgeById: publicProcedure
-    .input(badgeIdSchema)
-    .query(async ({ input }) => {
-      return getBadgeById(input.id);
-    }),
+  getBadgeById: publicProcedure.input(badgeIdSchema).query(async ({ input }) => {
+    return getBadgeById(input.id);
+  }),
   createBadge: publicProcedure
     .input(insertBadgeParams)
     .mutation(async ({ input }) => {

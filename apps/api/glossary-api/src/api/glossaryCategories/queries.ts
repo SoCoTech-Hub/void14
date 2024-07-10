@@ -1,5 +1,5 @@
-import { db } from "@soco/glossary-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/glossary-db/client";
+import { eq } from "@soco/glossary-db";
 import { type GlossaryCategoryId, glossaryCategoryIdSchema, glossaryCategories } from "@soco/glossary-db/schema/glossaryCategories";
 import { glossaries } from "@soco/glossary-db/schema/glossaries";
 

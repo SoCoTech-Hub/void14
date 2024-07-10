@@ -1,25 +1,21 @@
-import { and, eq } from "drizzle-orm";
-
-import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/rating-db/index";
-import {
-  insertRatingSchema,
+import { db } from "@soco/rating-db/client";
+import { and, eq } from "@soco/rating-db";
+import { 
+  RatingId, 
   NewRatingParams,
-  RatingId,
-  ratingIdSchema,
-  ratings,
-  UpdateRatingParams,
+  UpdateRatingParams, 
   updateRatingSchema,
+  insertRatingSchema, 
+  ratings,
+  ratingIdSchema 
 } from "@soco/rating-db/schema/ratings";
+import { getUserAuth } from "@/lib/auth/utils";
 
 export const createRating = async (rating: NewRatingParams) => {
   const { session } = await getUserAuth();
-  const newRating = insertRatingSchema.parse({
-    ...rating,
-    userId: session?.user.id!,
-  });
+  const newRating = insertRatingSchema.parse({ ...rating, userId: session?.user.id! });
   try {
-    const [r] = await db.insert(ratings).values(newRating).returning();
+    const [r] =  await db.insert(ratings).values(newRating).returning();
     return { rating: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -28,24 +24,16 @@ export const createRating = async (rating: NewRatingParams) => {
   }
 };
 
-export const updateRating = async (
-  id: RatingId,
-  rating: UpdateRatingParams,
-) => {
+export const updateRating = async (id: RatingId, rating: UpdateRatingParams) => {
   const { session } = await getUserAuth();
   const { id: ratingId } = ratingIdSchema.parse({ id });
-  const newRating = updateRatingSchema.parse({
-    ...rating,
-    userId: session?.user.id!,
-  });
+  const newRating = updateRatingSchema.parse({ ...rating, userId: session?.user.id! });
   try {
-    const [r] = await db
-      .update(ratings)
-      .set({ ...newRating, updatedAt: new Date() })
-      .where(
-        and(eq(ratings.id, ratingId!), eq(ratings.userId, session?.user.id!)),
-      )
-      .returning();
+    const [r] =  await db
+     .update(ratings)
+     .set({...newRating, updatedAt: new Date() })
+     .where(and(eq(ratings.id, ratingId!), eq(ratings.userId, session?.user.id!)))
+     .returning();
     return { rating: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -58,12 +46,8 @@ export const deleteRating = async (id: RatingId) => {
   const { session } = await getUserAuth();
   const { id: ratingId } = ratingIdSchema.parse({ id });
   try {
-    const [r] = await db
-      .delete(ratings)
-      .where(
-        and(eq(ratings.id, ratingId!), eq(ratings.userId, session?.user.id!)),
-      )
-      .returning();
+    const [r] =  await db.delete(ratings).where(and(eq(ratings.id, ratingId!), eq(ratings.userId, session?.user.id!)))
+    .returning();
     return { rating: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -71,3 +55,4 @@ export const deleteRating = async (id: RatingId) => {
     throw { error: message };
   }
 };
+

@@ -1,5 +1,3 @@
-import { createTRPCRouter } from "./trpc";
-
 import { enrolFlatfilesRouter } from './routers/enrolFlatfiles';
 import { enrolLtiAppRegistrationsRouter } from './routers/enrolLtiAppRegistrations';
 import { enrolLtiContextsRouter } from './routers/enrolLtiContexts';
@@ -18,6 +16,7 @@ import { enrolLtiUserResourceLinksRouter } from './routers/enrolLtiUserResourceL
 import { enrolLtiUsersRouter } from './routers/enrolLtiUsers';
 import { enrolPaypalsRouter } from './routers/enrolPaypals';
 import { enrolsRouter } from './routers/enrols';
+import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   enrolFlatfiles: enrolFlatfilesRouter,

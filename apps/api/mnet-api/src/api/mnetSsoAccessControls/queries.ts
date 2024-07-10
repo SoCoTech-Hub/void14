@@ -1,5 +1,5 @@
-import { db } from "@soco/mnet-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/mnet-db/client";
+import { eq } from "@soco/mnet-db";
 import { type MnetSsoAccessControlId, mnetSsoAccessControlIdSchema, mnetSsoAccessControls } from "@soco/mnet-db/schema/mnetSsoAccessControls";
 import { mnetHosts } from "@soco/mnet-db/schema/mnetHosts";
 

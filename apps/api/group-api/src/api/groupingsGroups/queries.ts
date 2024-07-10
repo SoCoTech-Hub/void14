@@ -1,5 +1,5 @@
-import { db } from "@soco/group-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/group-db/client";
+import { eq } from "@soco/group-db";
 import { type GroupingsGroupId, groupingsGroupIdSchema, groupingsGroups } from "@soco/group-db/schema/groupingsGroups";
 import { groupings } from "@soco/group-db/schema/groupings";
 import { groups } from "@soco/group-db/schema/groups";

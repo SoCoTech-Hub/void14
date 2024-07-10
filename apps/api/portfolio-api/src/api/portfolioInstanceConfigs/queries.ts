@@ -1,5 +1,5 @@
-import { db } from "@soco/portfolio-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/portfolio-db/client";
+import { eq } from "@soco/portfolio-db";
 import { type PortfolioInstanceConfigId, portfolioInstanceConfigIdSchema, portfolioInstanceConfigs } from "@soco/portfolio-db/schema/portfolioInstanceConfigs";
 import { portfolioInstances } from "@soco/portfolio-db/schema/portfolioInstances";
 

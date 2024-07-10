@@ -1,7 +1,6 @@
-import { createTRPCRouter } from "./trpc";
-
 import { digilibCategoriesRouter } from './routers/digilibCategories';
 import { digilibsRouter } from './routers/digilibs';
+import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   digilibCategories: digilibCategoriesRouter,

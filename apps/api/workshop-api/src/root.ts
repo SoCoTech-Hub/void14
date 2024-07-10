@@ -1,5 +1,3 @@
-import { createTRPCRouter } from "./trpc";
-
 import { workshopAggregationsRouter } from './routers/workshopAggregations';
 import { workshopAllocationSchedulesRouter } from './routers/workshopAllocationSchedules';
 import { workshopAssessmentsRouter } from './routers/workshopAssessments';
@@ -14,6 +12,7 @@ import { workshopFormRubricsRouter } from './routers/workshopFormRubrics';
 import { workshopGradesRouter } from './routers/workshopGrades';
 import { workshopsRouter } from './routers/workshops';
 import { workshopSubmissionsRouter } from './routers/workshopSubmissions';
+import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   workshopAggregations: workshopAggregationsRouter,

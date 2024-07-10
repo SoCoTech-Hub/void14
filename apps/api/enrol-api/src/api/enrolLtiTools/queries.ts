@@ -1,5 +1,5 @@
-import { db } from "@soco/enrol-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/enrol-db/client";
+import { eq } from "@soco/enrol-db";
 import { type EnrolLtiToolId, enrolLtiToolIdSchema, enrolLtiTools } from "@soco/enrol-db/schema/enrolLtiTools";
 
 export const getEnrolLtiTools = async () => {

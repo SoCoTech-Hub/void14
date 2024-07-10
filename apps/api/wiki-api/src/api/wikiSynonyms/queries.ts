@@ -1,5 +1,5 @@
-import { db } from "@soco/wiki-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/wiki-db/client";
+import { eq } from "@soco/wiki-db";
 import { type WikiSynonymId, wikiSynonymIdSchema, wikiSynonyms } from "@soco/wiki-db/schema/wikiSynonyms";
 import { wikiPages } from "@soco/wiki-db/schema/wikiPages";
 import { wikiSubwikis } from "@soco/wiki-db/schema/wikiSubwikis";

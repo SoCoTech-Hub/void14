@@ -1,5 +1,5 @@
-import { db } from "@soco/forum-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/forum-db/client";
+import { eq } from "@soco/forum-db";
 import { 
   ForumId, 
   NewForumParams,

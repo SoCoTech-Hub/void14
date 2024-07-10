@@ -1,5 +1,5 @@
-import { db } from "@soco/tool-recyclebin-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/tool-recyclebin-db/client";
+import { eq } from "@soco/tool-recyclebin-db";
 import { 
   ToolRecyclebinCourseId, 
   NewToolRecyclebinCourseParams,

@@ -1,5 +1,5 @@
-import { db } from "@soco/qualifications-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/qualifications-db/client";
+import { eq } from "@soco/qualifications-db";
 import { 
   QualificationId, 
   NewQualificationParams,

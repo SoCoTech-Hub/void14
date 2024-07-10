@@ -1,5 +1,5 @@
-import { db } from "@soco/log-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/log-db/client";
+import { eq } from "@soco/log-db";
 import { type LogDisplayId, logDisplayIdSchema, logDisplays } from "@soco/log-db/schema/logDisplays";
 
 export const getLogDisplays = async () => {

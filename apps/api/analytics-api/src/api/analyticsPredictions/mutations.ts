@@ -1,26 +1,19 @@
-import type {
-  AnalyticsPredictionId,
+import { db } from "@soco/analytics-db/client";
+import { eq } from "@soco/analytics-db";
+import { 
+  AnalyticsPredictionId, 
   NewAnalyticsPredictionParams,
-  UpdateAnalyticsPredictionParams,
-} from "@soco/analytics-db/schema/analyticsPredictions";
-import { db, eq } from "@soco/analytics-db";
-import {
-  analyticsPredictionIdSchema,
-  analyticsPredictions,
-  insertAnalyticsPredictionSchema,
+  UpdateAnalyticsPredictionParams, 
   updateAnalyticsPredictionSchema,
+  insertAnalyticsPredictionSchema, 
+  analyticsPredictions,
+  analyticsPredictionIdSchema 
 } from "@soco/analytics-db/schema/analyticsPredictions";
 
-export const createAnalyticsPrediction = async (
-  analyticsPrediction: NewAnalyticsPredictionParams,
-) => {
-  const newAnalyticsPrediction =
-    insertAnalyticsPredictionSchema.parse(analyticsPrediction);
+export const createAnalyticsPrediction = async (analyticsPrediction: NewAnalyticsPredictionParams) => {
+  const newAnalyticsPrediction = insertAnalyticsPredictionSchema.parse(analyticsPrediction);
   try {
-    const [a] = await db
-      .insert(analyticsPredictions)
-      .values(newAnalyticsPrediction)
-      .returning();
+    const [a] =  await db.insert(analyticsPredictions).values(newAnalyticsPrediction).returning();
     return { analyticsPrediction: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -29,21 +22,15 @@ export const createAnalyticsPrediction = async (
   }
 };
 
-export const updateAnalyticsPrediction = async (
-  id: AnalyticsPredictionId,
-  analyticsPrediction: UpdateAnalyticsPredictionParams,
-) => {
-  const { id: analyticsPredictionId } = analyticsPredictionIdSchema.parse({
-    id,
-  });
-  const newAnalyticsPrediction =
-    updateAnalyticsPredictionSchema.parse(analyticsPrediction);
+export const updateAnalyticsPrediction = async (id: AnalyticsPredictionId, analyticsPrediction: UpdateAnalyticsPredictionParams) => {
+  const { id: analyticsPredictionId } = analyticsPredictionIdSchema.parse({ id });
+  const newAnalyticsPrediction = updateAnalyticsPredictionSchema.parse(analyticsPrediction);
   try {
-    const [a] = await db
-      .update(analyticsPredictions)
-      .set({ ...newAnalyticsPrediction, updatedAt: new Date() })
-      .where(eq(analyticsPredictions.id, analyticsPredictionId!))
-      .returning();
+    const [a] =  await db
+     .update(analyticsPredictions)
+     .set({...newAnalyticsPrediction, updatedAt: new Date() })
+     .where(eq(analyticsPredictions.id, analyticsPredictionId!))
+     .returning();
     return { analyticsPrediction: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -53,14 +40,10 @@ export const updateAnalyticsPrediction = async (
 };
 
 export const deleteAnalyticsPrediction = async (id: AnalyticsPredictionId) => {
-  const { id: analyticsPredictionId } = analyticsPredictionIdSchema.parse({
-    id,
-  });
+  const { id: analyticsPredictionId } = analyticsPredictionIdSchema.parse({ id });
   try {
-    const [a] = await db
-      .delete(analyticsPredictions)
-      .where(eq(analyticsPredictions.id, analyticsPredictionId!))
-      .returning();
+    const [a] =  await db.delete(analyticsPredictions).where(eq(analyticsPredictions.id, analyticsPredictionId!))
+    .returning();
     return { analyticsPrediction: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -68,3 +51,4 @@ export const deleteAnalyticsPrediction = async (id: AnalyticsPredictionId) => {
     throw { error: message };
   }
 };
+

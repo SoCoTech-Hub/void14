@@ -1,5 +1,5 @@
-import { db } from "@soco/repository-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/repository-db/client";
+import { eq } from "@soco/repository-db";
 import { 
   RepositoryInstanceConfigId, 
   NewRepositoryInstanceConfigParams,

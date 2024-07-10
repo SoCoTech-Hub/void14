@@ -1,26 +1,19 @@
+import { getCommentById, getComments } from "../api/comments/queries";
+import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   commentIdSchema,
   insertCommentParams,
   updateCommentParams,
 } from "@soco/comment-db/schema/comments";
+import { createComment, deleteComment, updateComment } from "../api/comments/mutations";
 
-import {
-  createComment,
-  deleteComment,
-  updateComment,
-} from "../api/comments/mutations";
-import { getCommentById, getComments } from "../api/comments/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
-
-export const commentsRouter = createTRPCRouter({
+export const commentsRouter =createTRPCRouter({
   getComments: publicProcedure.query(async () => {
     return getComments();
   }),
-  getCommentById: publicProcedure
-    .input(commentIdSchema)
-    .query(async ({ input }) => {
-      return getCommentById(input.id);
-    }),
+  getCommentById: publicProcedure.input(commentIdSchema).query(async ({ input }) => {
+    return getCommentById(input.id);
+  }),
   createComment: publicProcedure
     .input(insertCommentParams)
     .mutation(async ({ input }) => {

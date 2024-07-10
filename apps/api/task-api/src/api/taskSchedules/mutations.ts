@@ -1,5 +1,5 @@
-import { db } from "@soco/task-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/task-db/client";
+import { eq } from "@soco/task-db";
 import { 
   TaskScheduleId, 
   NewTaskScheduleParams,

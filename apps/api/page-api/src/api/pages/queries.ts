@@ -1,5 +1,5 @@
-import { db } from "@soco/page-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/page-db/client";
+import { eq } from "@soco/page-db";
 import { type PageId, pageIdSchema, pages } from "@soco/page-db/schema/pages";
 
 export const getPages = async () => {

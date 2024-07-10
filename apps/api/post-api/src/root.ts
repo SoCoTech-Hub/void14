@@ -1,6 +1,5 @@
-import { createTRPCRouter } from "./trpc";
-
 import { postsRouter } from './routers/posts';
+import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   posts: postsRouter,

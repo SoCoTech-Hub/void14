@@ -1,5 +1,5 @@
-import { db } from "@soco/search-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/search-db/client";
+import { eq } from "@soco/search-db";
 import { 
   SearchIndexRequestId, 
   NewSearchIndexRequestParams,

@@ -1,5 +1,5 @@
-import { db } from "@soco/registration-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/registration-db/client";
+import { eq } from "@soco/registration-db";
 import { 
   RegistrationHubId, 
   NewRegistrationHubParams,

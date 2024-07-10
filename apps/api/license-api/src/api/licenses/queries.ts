@@ -1,5 +1,5 @@
-import { db } from "@soco/license-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/license-db/client";
+import { eq } from "@soco/license-db";
 import { type LicenseId, licenseIdSchema, licenses } from "@soco/license-db/schema/licenses";
 
 export const getLicenses = async () => {

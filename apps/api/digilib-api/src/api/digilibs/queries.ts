@@ -1,5 +1,5 @@
-import { db } from "@soco/digilib-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/digilib-db/client";
+import { eq } from "@soco/digilib-db";
 import { type DigilibId, digilibIdSchema, digilibs } from "@soco/digilib-db/schema/digilibs";
 import { digilibCategories } from "@soco/digilib-db/schema/digilibCategories";
 

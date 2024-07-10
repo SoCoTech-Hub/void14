@@ -1,5 +1,5 @@
-import { db } from "@soco/qtype-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/qtype-db/client";
+import { eq } from "@soco/qtype-db";
 import { type QtypeDdimageortextId, qtypeDdimageortextIdSchema, qtypeDdimageortexts } from "@soco/qtype-db/schema/qtypeDdimageortexts";
 
 export const getQtypeDdimageortexts = async () => {

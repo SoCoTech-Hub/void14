@@ -1,29 +1,19 @@
+import { getAssignUserMappingById, getAssignUserMappings } from "../api/assignUserMappings/queries";
+import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   assignUserMappingIdSchema,
   insertAssignUserMappingParams,
   updateAssignUserMappingParams,
 } from "@soco/assignment-db/schema/assignUserMappings";
+import { createAssignUserMapping, deleteAssignUserMapping, updateAssignUserMapping } from "../api/assignUserMappings/mutations";
 
-import {
-  createAssignUserMapping,
-  deleteAssignUserMapping,
-  updateAssignUserMapping,
-} from "../api/assignUserMappings/mutations";
-import {
-  getAssignUserMappingById,
-  getAssignUserMappings,
-} from "../api/assignUserMappings/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
-
-export const assignUserMappingsRouter = createTRPCRouter({
+export const assignUserMappingsRouter =createTRPCRouter({
   getAssignUserMappings: publicProcedure.query(async () => {
     return getAssignUserMappings();
   }),
-  getAssignUserMappingById: publicProcedure
-    .input(assignUserMappingIdSchema)
-    .query(async ({ input }) => {
-      return getAssignUserMappingById(input.id);
-    }),
+  getAssignUserMappingById: publicProcedure.input(assignUserMappingIdSchema).query(async ({ input }) => {
+    return getAssignUserMappingById(input.id);
+  }),
   createAssignUserMapping: publicProcedure
     .input(insertAssignUserMappingParams)
     .mutation(async ({ input }) => {

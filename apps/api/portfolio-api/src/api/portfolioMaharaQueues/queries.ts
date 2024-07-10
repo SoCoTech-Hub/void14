@@ -1,5 +1,5 @@
-import { db } from "@soco/portfolio-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/portfolio-db/client";
+import { eq } from "@soco/portfolio-db";
 import { type PortfolioMaharaQueueId, portfolioMaharaQueueIdSchema, portfolioMaharaQueues } from "@soco/portfolio-db/schema/portfolioMaharaQueues";
 import { portfolioTempdatas } from "@soco/portfolio-db/schema/portfolioTempdatas";
 

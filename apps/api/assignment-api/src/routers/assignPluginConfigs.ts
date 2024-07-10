@@ -1,29 +1,19 @@
+import { getAssignPluginConfigById, getAssignPluginConfigs } from "../api/assignPluginConfigs/queries";
+import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   assignPluginConfigIdSchema,
   insertAssignPluginConfigParams,
   updateAssignPluginConfigParams,
 } from "@soco/assignment-db/schema/assignPluginConfigs";
+import { createAssignPluginConfig, deleteAssignPluginConfig, updateAssignPluginConfig } from "../api/assignPluginConfigs/mutations";
 
-import {
-  createAssignPluginConfig,
-  deleteAssignPluginConfig,
-  updateAssignPluginConfig,
-} from "../api/assignPluginConfigs/mutations";
-import {
-  getAssignPluginConfigById,
-  getAssignPluginConfigs,
-} from "../api/assignPluginConfigs/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
-
-export const assignPluginConfigsRouter = createTRPCRouter({
+export const assignPluginConfigsRouter =createTRPCRouter({
   getAssignPluginConfigs: publicProcedure.query(async () => {
     return getAssignPluginConfigs();
   }),
-  getAssignPluginConfigById: publicProcedure
-    .input(assignPluginConfigIdSchema)
-    .query(async ({ input }) => {
-      return getAssignPluginConfigById(input.id);
-    }),
+  getAssignPluginConfigById: publicProcedure.input(assignPluginConfigIdSchema).query(async ({ input }) => {
+    return getAssignPluginConfigById(input.id);
+  }),
   createAssignPluginConfig: publicProcedure
     .input(insertAssignPluginConfigParams)
     .mutation(async ({ input }) => {

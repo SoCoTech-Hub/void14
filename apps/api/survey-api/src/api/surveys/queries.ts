@@ -1,5 +1,5 @@
-import { db } from "@soco/survey-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/survey-db/client";
+import { eq } from "@soco/survey-db";
 import { type SurveyId, surveyIdSchema, surveys } from "@soco/survey-db/schema/surveys";
 
 export const getSurveys = async () => {

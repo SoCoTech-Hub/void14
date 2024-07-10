@@ -1,29 +1,19 @@
+import { getAssignFeedbackCommentById, getAssignFeedbackComments } from "../api/assignFeedbackComments/queries";
+import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   assignFeedbackCommentIdSchema,
   insertAssignFeedbackCommentParams,
   updateAssignFeedbackCommentParams,
 } from "@soco/assignment-db/schema/assignFeedbackComments";
+import { createAssignFeedbackComment, deleteAssignFeedbackComment, updateAssignFeedbackComment } from "../api/assignFeedbackComments/mutations";
 
-import {
-  createAssignFeedbackComment,
-  deleteAssignFeedbackComment,
-  updateAssignFeedbackComment,
-} from "../api/assignFeedbackComments/mutations";
-import {
-  getAssignFeedbackCommentById,
-  getAssignFeedbackComments,
-} from "../api/assignFeedbackComments/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
-
-export const assignFeedbackCommentsRouter = createTRPCRouter({
+export const assignFeedbackCommentsRouter =createTRPCRouter({
   getAssignFeedbackComments: publicProcedure.query(async () => {
     return getAssignFeedbackComments();
   }),
-  getAssignFeedbackCommentById: publicProcedure
-    .input(assignFeedbackCommentIdSchema)
-    .query(async ({ input }) => {
-      return getAssignFeedbackCommentById(input.id);
-    }),
+  getAssignFeedbackCommentById: publicProcedure.input(assignFeedbackCommentIdSchema).query(async ({ input }) => {
+    return getAssignFeedbackCommentById(input.id);
+  }),
   createAssignFeedbackComment: publicProcedure
     .input(insertAssignFeedbackCommentParams)
     .mutation(async ({ input }) => {

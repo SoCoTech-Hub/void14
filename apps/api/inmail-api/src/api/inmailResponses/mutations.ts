@@ -1,30 +1,21 @@
-import { and, eq } from "drizzle-orm";
-
-import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/inmail-db/index";
-import {
-  InmailResponseId,
-  inmailResponseIdSchema,
-  inmailResponses,
-  insertInmailResponseSchema,
+import { db } from "@soco/inmail-db/client";
+import { and, eq } from "@soco/inmail-db";
+import { 
+  InmailResponseId, 
   NewInmailResponseParams,
-  UpdateInmailResponseParams,
+  UpdateInmailResponseParams, 
   updateInmailResponseSchema,
+  insertInmailResponseSchema, 
+  inmailResponses,
+  inmailResponseIdSchema 
 } from "@soco/inmail-db/schema/inmailResponses";
+import { getUserAuth } from "@/lib/auth/utils";
 
-export const createInmailResponse = async (
-  inmailResponse: NewInmailResponseParams,
-) => {
+export const createInmailResponse = async (inmailResponse: NewInmailResponseParams) => {
   const { session } = await getUserAuth();
-  const newInmailResponse = insertInmailResponseSchema.parse({
-    ...inmailResponse,
-    userId: session?.user.id!,
-  });
+  const newInmailResponse = insertInmailResponseSchema.parse({ ...inmailResponse, userId: session?.user.id! });
   try {
-    const [i] = await db
-      .insert(inmailResponses)
-      .values(newInmailResponse)
-      .returning();
+    const [i] =  await db.insert(inmailResponses).values(newInmailResponse).returning();
     return { inmailResponse: i };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -33,27 +24,16 @@ export const createInmailResponse = async (
   }
 };
 
-export const updateInmailResponse = async (
-  id: InmailResponseId,
-  inmailResponse: UpdateInmailResponseParams,
-) => {
+export const updateInmailResponse = async (id: InmailResponseId, inmailResponse: UpdateInmailResponseParams) => {
   const { session } = await getUserAuth();
   const { id: inmailResponseId } = inmailResponseIdSchema.parse({ id });
-  const newInmailResponse = updateInmailResponseSchema.parse({
-    ...inmailResponse,
-    userId: session?.user.id!,
-  });
+  const newInmailResponse = updateInmailResponseSchema.parse({ ...inmailResponse, userId: session?.user.id! });
   try {
-    const [i] = await db
-      .update(inmailResponses)
-      .set(newInmailResponse)
-      .where(
-        and(
-          eq(inmailResponses.id, inmailResponseId!),
-          eq(inmailResponses.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [i] =  await db
+     .update(inmailResponses)
+     .set(newInmailResponse)
+     .where(and(eq(inmailResponses.id, inmailResponseId!), eq(inmailResponses.userId, session?.user.id!)))
+     .returning();
     return { inmailResponse: i };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -66,15 +46,8 @@ export const deleteInmailResponse = async (id: InmailResponseId) => {
   const { session } = await getUserAuth();
   const { id: inmailResponseId } = inmailResponseIdSchema.parse({ id });
   try {
-    const [i] = await db
-      .delete(inmailResponses)
-      .where(
-        and(
-          eq(inmailResponses.id, inmailResponseId!),
-          eq(inmailResponses.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [i] =  await db.delete(inmailResponses).where(and(eq(inmailResponses.id, inmailResponseId!), eq(inmailResponses.userId, session?.user.id!)))
+    .returning();
     return { inmailResponse: i };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -82,3 +55,4 @@ export const deleteInmailResponse = async (id: InmailResponseId) => {
     throw { error: message };
   }
 };
+

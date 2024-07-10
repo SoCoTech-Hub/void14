@@ -1,5 +1,5 @@
-import { db } from '@soco/quiz-db/index'
-import { eq } from 'drizzle-orm'
+import { db } from '@soco/quiz-db/client'
+import { eq } from '@soco/quiz-db'
 import { type QuizId, quizIdSchema, quizes } from '@soco/quiz-db/schema/quizes'
 
 export const getQuizes = async () => {

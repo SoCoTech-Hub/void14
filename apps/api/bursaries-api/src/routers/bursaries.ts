@@ -1,26 +1,19 @@
+import { getBursaryById, getBursaries } from "../api/bursaries/queries";
+import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   bursaryIdSchema,
   insertBursaryParams,
   updateBursaryParams,
 } from "@soco/bursaries-db/schema/bursaries";
+import { createBursary, deleteBursary, updateBursary } from "../api/bursaries/mutations";
 
-import {
-  createBursary,
-  deleteBursary,
-  updateBursary,
-} from "../api/bursaries/mutations";
-import { getBursaries, getBursaryById } from "../api/bursaries/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
-
-export const bursariesRouter = createTRPCRouter({
+export const bursariesRouter =createTRPCRouter({
   getBursaries: publicProcedure.query(async () => {
     return getBursaries();
   }),
-  getBursaryById: publicProcedure
-    .input(bursaryIdSchema)
-    .query(async ({ input }) => {
-      return getBursaryById(input.id);
-    }),
+  getBursaryById: publicProcedure.input(bursaryIdSchema).query(async ({ input }) => {
+    return getBursaryById(input.id);
+  }),
   createBursary: publicProcedure
     .input(insertBursaryParams)
     .mutation(async ({ input }) => {

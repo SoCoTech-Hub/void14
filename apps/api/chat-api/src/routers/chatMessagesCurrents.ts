@@ -1,29 +1,19 @@
+import { getChatMessagesCurrentById, getChatMessagesCurrents } from "../api/chatMessagesCurrents/queries";
+import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   chatMessagesCurrentIdSchema,
   insertChatMessagesCurrentParams,
   updateChatMessagesCurrentParams,
 } from "@soco/chat-db/schema/chatMessagesCurrents";
+import { createChatMessagesCurrent, deleteChatMessagesCurrent, updateChatMessagesCurrent } from "../api/chatMessagesCurrents/mutations";
 
-import {
-  createChatMessagesCurrent,
-  deleteChatMessagesCurrent,
-  updateChatMessagesCurrent,
-} from "../api/chatMessagesCurrents/mutations";
-import {
-  getChatMessagesCurrentById,
-  getChatMessagesCurrents,
-} from "../api/chatMessagesCurrents/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
-
-export const chatMessagesCurrentsRouter = createTRPCRouter({
+export const chatMessagesCurrentsRouter =createTRPCRouter({
   getChatMessagesCurrents: publicProcedure.query(async () => {
     return getChatMessagesCurrents();
   }),
-  getChatMessagesCurrentById: publicProcedure
-    .input(chatMessagesCurrentIdSchema)
-    .query(async ({ input }) => {
-      return getChatMessagesCurrentById(input.id);
-    }),
+  getChatMessagesCurrentById: publicProcedure.input(chatMessagesCurrentIdSchema).query(async ({ input }) => {
+    return getChatMessagesCurrentById(input.id);
+  }),
   createChatMessagesCurrent: publicProcedure
     .input(insertChatMessagesCurrentParams)
     .mutation(async ({ input }) => {

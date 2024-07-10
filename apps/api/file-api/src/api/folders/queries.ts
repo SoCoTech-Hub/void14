@@ -1,5 +1,5 @@
-import { db } from "@soco/file-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/file-db/client";
+import { eq } from "@soco/file-db";
 import { type FolderId, folderIdSchema, folders } from "@soco/file-db/schema/folders";
 
 export const getFolders = async () => {

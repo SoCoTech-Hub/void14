@@ -1,5 +1,3 @@
-import { createTRPCRouter } from "./trpc";
-
 import { messageAirnotifierDevicesRouter } from './routers/messageAirnotifierDevices';
 import { messageContactRequestsRouter } from './routers/messageContactRequests';
 import { messageContactsRouter } from './routers/messageContacts';
@@ -18,6 +16,7 @@ import { messageReadsRouter } from './routers/messageReads';
 import { messagesRouter } from './routers/messages';
 import { messageUserActionsRouter } from './routers/messageUserActions';
 import { messageUsersBlockedsRouter } from './routers/messageUsersBlockeds';
+import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   messageAirnotifierDevices: messageAirnotifierDevicesRouter,

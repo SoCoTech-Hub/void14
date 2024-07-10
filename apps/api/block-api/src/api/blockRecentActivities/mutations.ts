@@ -1,30 +1,21 @@
-import type {
-  BlockRecentActivityId,
+import { db } from "@soco/block-db/client";
+import { and, eq } from "@soco/block-db";
+import { 
+  BlockRecentActivityId, 
   NewBlockRecentActivityParams,
-  UpdateBlockRecentActivityParams,
-} from "@soco/block-db/schema/blockRecentActivities";
-import { getUserAuth } from "@soco/auth-services";
-import { and, db, eq } from "@soco/block-db";
-import {
-  blockRecentActivities,
-  blockRecentActivityIdSchema,
-  insertBlockRecentActivitySchema,
+  UpdateBlockRecentActivityParams, 
   updateBlockRecentActivitySchema,
+  insertBlockRecentActivitySchema, 
+  blockRecentActivities,
+  blockRecentActivityIdSchema 
 } from "@soco/block-db/schema/blockRecentActivities";
+import { getUserAuth } from "@/lib/auth/utils";
 
-export const createBlockRecentActivity = async (
-  blockRecentActivity: NewBlockRecentActivityParams,
-) => {
+export const createBlockRecentActivity = async (blockRecentActivity: NewBlockRecentActivityParams) => {
   const { session } = await getUserAuth();
-  const newBlockRecentActivity = insertBlockRecentActivitySchema.parse({
-    ...blockRecentActivity,
-    userId: session?.user.id!,
-  });
+  const newBlockRecentActivity = insertBlockRecentActivitySchema.parse({ ...blockRecentActivity, userId: session?.user.id! });
   try {
-    const [b] = await db
-      .insert(blockRecentActivities)
-      .values(newBlockRecentActivity)
-      .returning();
+    const [b] =  await db.insert(blockRecentActivities).values(newBlockRecentActivity).returning();
     return { blockRecentActivity: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -33,29 +24,16 @@ export const createBlockRecentActivity = async (
   }
 };
 
-export const updateBlockRecentActivity = async (
-  id: BlockRecentActivityId,
-  blockRecentActivity: UpdateBlockRecentActivityParams,
-) => {
+export const updateBlockRecentActivity = async (id: BlockRecentActivityId, blockRecentActivity: UpdateBlockRecentActivityParams) => {
   const { session } = await getUserAuth();
-  const { id: blockRecentActivityId } = blockRecentActivityIdSchema.parse({
-    id,
-  });
-  const newBlockRecentActivity = updateBlockRecentActivitySchema.parse({
-    ...blockRecentActivity,
-    userId: session?.user.id!,
-  });
+  const { id: blockRecentActivityId } = blockRecentActivityIdSchema.parse({ id });
+  const newBlockRecentActivity = updateBlockRecentActivitySchema.parse({ ...blockRecentActivity, userId: session?.user.id! });
   try {
-    const [b] = await db
-      .update(blockRecentActivities)
-      .set({ ...newBlockRecentActivity, updatedAt: new Date() })
-      .where(
-        and(
-          eq(blockRecentActivities.id, blockRecentActivityId!),
-          eq(blockRecentActivities.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [b] =  await db
+     .update(blockRecentActivities)
+     .set({...newBlockRecentActivity, updatedAt: new Date() })
+     .where(and(eq(blockRecentActivities.id, blockRecentActivityId!), eq(blockRecentActivities.userId, session?.user.id!)))
+     .returning();
     return { blockRecentActivity: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -66,19 +44,10 @@ export const updateBlockRecentActivity = async (
 
 export const deleteBlockRecentActivity = async (id: BlockRecentActivityId) => {
   const { session } = await getUserAuth();
-  const { id: blockRecentActivityId } = blockRecentActivityIdSchema.parse({
-    id,
-  });
+  const { id: blockRecentActivityId } = blockRecentActivityIdSchema.parse({ id });
   try {
-    const [b] = await db
-      .delete(blockRecentActivities)
-      .where(
-        and(
-          eq(blockRecentActivities.id, blockRecentActivityId!),
-          eq(blockRecentActivities.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [b] =  await db.delete(blockRecentActivities).where(and(eq(blockRecentActivities.id, blockRecentActivityId!), eq(blockRecentActivities.userId, session?.user.id!)))
+    .returning();
     return { blockRecentActivity: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -86,3 +55,4 @@ export const deleteBlockRecentActivity = async (id: BlockRecentActivityId) => {
     throw { error: message };
   }
 };
+

@@ -1,5 +1,5 @@
-import { db } from "@soco/mnet-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/mnet-db/client";
+import { eq } from "@soco/mnet-db";
 import { type MnetServiceEnrolCourseId, mnetServiceEnrolCourseIdSchema, mnetServiceEnrolCourses } from "@soco/mnet-db/schema/mnetServiceEnrolCourses";
 import { mnetHosts } from "@soco/mnet-db/schema/mnetHosts";
 

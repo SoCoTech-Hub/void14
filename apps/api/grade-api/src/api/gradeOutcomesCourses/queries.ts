@@ -1,5 +1,5 @@
-import { db } from "@soco/grade-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/grade-db/client";
+import { eq } from "@soco/grade-db";
 import { type GradeOutcomesCourseId, gradeOutcomesCourseIdSchema, gradeOutcomesCourses } from "@soco/grade-db/schema/gradeOutcomesCourses";
 import { gradeOutcomes } from "@soco/grade-db/schema/gradeOutcomes";
 

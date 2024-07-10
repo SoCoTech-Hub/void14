@@ -1,5 +1,5 @@
-import { db } from "@soco/external-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/external-db/client";
+import { eq } from "@soco/external-db";
 import { type ExternalServiceId, externalServiceIdSchema, externalServices } from "@soco/external-db/schema/externalServices";
 
 export const getExternalServices = async () => {

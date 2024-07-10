@@ -1,5 +1,5 @@
-import { db } from "@soco/wiki-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/wiki-db/client";
+import { eq } from "@soco/wiki-db";
 import { type WikiId, wikiIdSchema, wikis } from "@soco/wiki-db/schema/wikis";
 
 export const getWikis = async () => {

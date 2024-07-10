@@ -1,5 +1,5 @@
-import { db } from "@soco/workshop-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/workshop-db/client";
+import { eq } from "@soco/workshop-db";
 import { type WorkshopEvalBestSettingId, workshopEvalBestSettingIdSchema, workshopEvalBestSettings } from "@soco/workshop-db/schema/workshopEvalBestSettings";
 import { workshops } from "@soco/workshop-db/schema/workshops";
 

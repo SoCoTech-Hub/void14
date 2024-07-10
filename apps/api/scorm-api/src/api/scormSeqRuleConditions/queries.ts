@@ -1,5 +1,5 @@
-import { db } from "@soco/scorm-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/scorm-db/client";
+import { eq } from "@soco/scorm-db";
 import { type ScormSeqRuleConditionId, scormSeqRuleConditionIdSchema, scormSeqRuleConditions } from "@soco/scorm-db/schema/scormSeqRuleConditions";
 import { scormSeqRuleConds } from "@soco/scorm-db/schema/scormSeqRuleConds";
 import { scormScoes } from "@soco/scorm-db/schema/scormScoes";

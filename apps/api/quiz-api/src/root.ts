@@ -1,5 +1,3 @@
-import { createTRPCRouter } from "./trpc";
-
 import { quizAttemptsRouter } from './routers/quizAttempts';
 import { quizesRouter } from './routers/quizes';
 import { quizFeedbacksRouter } from './routers/quizFeedbacks';
@@ -10,6 +8,7 @@ import { quizReportsRouter } from './routers/quizReports';
 import { quizSectionsRouter } from './routers/quizSections';
 import { quizSlotsRouter } from './routers/quizSlots';
 import { quizStatisticsRouter } from './routers/quizStatistics';
+import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   quizAttempts: quizAttemptsRouter,

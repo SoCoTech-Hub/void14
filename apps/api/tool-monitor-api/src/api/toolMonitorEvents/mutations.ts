@@ -1,5 +1,5 @@
-import { db } from "@soco/tool-monitor-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/tool-monitor-db/client";
+import { eq } from "@soco/tool-monitor-db";
 import { 
   ToolMonitorEventId, 
   NewToolMonitorEventParams,

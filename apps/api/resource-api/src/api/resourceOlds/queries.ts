@@ -1,5 +1,5 @@
-import { db } from "@soco/resource-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/resource-db/client";
+import { eq } from "@soco/resource-db";
 import { type ResourceOldId, resourceOldIdSchema, resourceOlds } from "@soco/resource-db/schema/resourceOlds";
 
 export const getResourceOlds = async () => {

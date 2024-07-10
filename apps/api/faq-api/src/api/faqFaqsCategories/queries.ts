@@ -1,5 +1,5 @@
-import { db } from "@soco/faq-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/faq-db/client";
+import { eq } from "@soco/faq-db";
 import { type FaqFaqsCategoryId, faqFaqsCategoryIdSchema, faqFaqsCategories } from "@soco/faq-db/schema/faqFaqsCategories";
 import { faqCategories } from "@soco/faq-db/schema/faqCategories";
 import { faqs } from "@soco/faq-db/schema/faqs";

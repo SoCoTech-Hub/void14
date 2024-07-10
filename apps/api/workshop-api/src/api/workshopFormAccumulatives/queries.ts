@@ -1,5 +1,5 @@
-import { db } from "@soco/workshop-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/workshop-db/client";
+import { eq } from "@soco/workshop-db";
 import { type WorkshopFormAccumulativeId, workshopFormAccumulativeIdSchema, workshopFormAccumulatives } from "@soco/workshop-db/schema/workshopFormAccumulatives";
 import { workshops } from "@soco/workshop-db/schema/workshops";
 

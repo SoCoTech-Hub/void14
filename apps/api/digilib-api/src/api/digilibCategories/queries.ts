@@ -1,5 +1,5 @@
-import { db } from "@soco/digilib-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/digilib-db/client";
+import { eq } from "@soco/digilib-db";
 import { type DigilibCategoryId, digilibCategoryIdSchema, digilibCategories } from "@soco/digilib-db/schema/digilibCategories";
 
 export const getDigilibCategories = async () => {

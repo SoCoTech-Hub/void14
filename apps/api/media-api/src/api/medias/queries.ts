@@ -1,5 +1,5 @@
-import { db } from "@soco/media-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/media-db/client";
+import { eq } from "@soco/media-db";
 import { type MediaId, mediaIdSchema, medias } from "@soco/media-db/schema/medias";
 
 export const getMedias = async () => {

@@ -1,6 +1,5 @@
-import { createTRPCRouter } from "./trpc";
-
 import { favouritesRouter } from './routers/favourites';
+import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   favourites: favouritesRouter,

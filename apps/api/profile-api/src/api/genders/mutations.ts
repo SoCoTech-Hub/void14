@@ -1,5 +1,5 @@
-import { db } from "@soco/profile-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/profile-db/client";
+import { eq } from "@soco/profile-db";
 import { 
   GenderId, 
   NewGenderParams,

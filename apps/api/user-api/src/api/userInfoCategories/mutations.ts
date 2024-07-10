@@ -1,5 +1,5 @@
-import { db } from "@soco/user-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/user-db/client";
+import { eq } from "@soco/user-db";
 import { 
   UserInfoCategoryId, 
   NewUserInfoCategoryParams,

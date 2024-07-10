@@ -1,5 +1,5 @@
-import { db } from "@soco/faq-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/faq-db/client";
+import { eq } from "@soco/faq-db";
 import { 
   FaqFaqsCategoryId, 
   NewFaqFaqsCategoryParams,

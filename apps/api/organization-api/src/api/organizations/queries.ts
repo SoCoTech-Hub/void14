@@ -1,5 +1,5 @@
-import { db } from "@soco/organization-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/organization-db/client";
+import { eq } from "@soco/organization-db";
 import { type OrganizationId, organizationIdSchema, organizations } from "@soco/organization-db/schema/organizations";
 
 export const getOrganizations = async () => {

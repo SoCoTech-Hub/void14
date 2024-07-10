@@ -1,5 +1,5 @@
-import { db } from "@soco/file-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/file-db/client";
+import { eq } from "@soco/file-db";
 import { type FilesReferenceId, filesReferenceIdSchema, filesReferences } from "@soco/file-db/schema/filesReferences";
 
 export const getFilesReferences = async () => {

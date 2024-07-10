@@ -1,5 +1,5 @@
-import { db } from "@soco/subject-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/subject-db/client";
+import { eq } from "@soco/subject-db";
 import { type SubjectId, subjectIdSchema, subjects } from "@soco/subject-db/schema/subjects";
 
 export const getSubjects = async () => {

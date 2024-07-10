@@ -1,5 +1,5 @@
-import { db } from "@soco/zoom-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/zoom-db/client";
+import { eq } from "@soco/zoom-db";
 import { 
   ZoomId, 
   NewZoomParams,

@@ -1,5 +1,5 @@
-import { db } from "@soco/grade-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/grade-db/client";
+import { eq } from "@soco/grade-db";
 import { type GradingformRubricFillingId, gradingformRubricFillingIdSchema, gradingformRubricFillings } from "@soco/grade-db/schema/gradingformRubricFillings";
 
 export const getGradingformRubricFillings = async () => {

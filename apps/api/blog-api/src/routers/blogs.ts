@@ -1,14 +1,13 @@
+import { getBlogById, getBlogs } from "../api/blogs/queries";
+import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   blogIdSchema,
   insertBlogParams,
   updateBlogParams,
 } from "@soco/blog-db/schema/blogs";
-
 import { createBlog, deleteBlog, updateBlog } from "../api/blogs/mutations";
-import { getBlogById, getBlogs } from "../api/blogs/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const blogsRouter = createTRPCRouter({
+export const blogsRouter =createTRPCRouter({
   getBlogs: publicProcedure.query(async () => {
     return getBlogs();
   }),

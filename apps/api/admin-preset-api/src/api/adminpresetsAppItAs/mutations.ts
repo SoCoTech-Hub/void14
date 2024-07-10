@@ -1,26 +1,19 @@
-import type {
-  AdminpresetsAppItAId,
+import { db } from "@soco/admin-preset-db/client";
+import { eq } from "@soco/admin-preset-db";
+import { 
+  AdminpresetsAppItAId, 
   NewAdminpresetsAppItAParams,
-  UpdateAdminpresetsAppItAParams,
-} from "@soco/admin-preset-db/schema/adminpresetsAppItAs";
-import { db, eq } from "@soco/admin-preset-db";
-import {
-  adminpresetsAppItAIdSchema,
-  adminpresetsAppItAs,
-  insertAdminpresetsAppItASchema,
+  UpdateAdminpresetsAppItAParams, 
   updateAdminpresetsAppItASchema,
+  insertAdminpresetsAppItASchema, 
+  adminpresetsAppItAs,
+  adminpresetsAppItAIdSchema 
 } from "@soco/admin-preset-db/schema/adminpresetsAppItAs";
 
-export const createAdminpresetsAppItA = async (
-  adminpresetsAppItA: NewAdminpresetsAppItAParams,
-) => {
-  const newAdminpresetsAppItA =
-    insertAdminpresetsAppItASchema.parse(adminpresetsAppItA);
+export const createAdminpresetsAppItA = async (adminpresetsAppItA: NewAdminpresetsAppItAParams) => {
+  const newAdminpresetsAppItA = insertAdminpresetsAppItASchema.parse(adminpresetsAppItA);
   try {
-    const [a] = await db
-      .insert(adminpresetsAppItAs)
-      .values(newAdminpresetsAppItA)
-      .returning();
+    const [a] =  await db.insert(adminpresetsAppItAs).values(newAdminpresetsAppItA).returning();
     return { adminpresetsAppItA: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -29,19 +22,15 @@ export const createAdminpresetsAppItA = async (
   }
 };
 
-export const updateAdminpresetsAppItA = async (
-  id: AdminpresetsAppItAId,
-  adminpresetsAppItA: UpdateAdminpresetsAppItAParams,
-) => {
+export const updateAdminpresetsAppItA = async (id: AdminpresetsAppItAId, adminpresetsAppItA: UpdateAdminpresetsAppItAParams) => {
   const { id: adminpresetsAppItAId } = adminpresetsAppItAIdSchema.parse({ id });
-  const newAdminpresetsAppItA =
-    updateAdminpresetsAppItASchema.parse(adminpresetsAppItA);
+  const newAdminpresetsAppItA = updateAdminpresetsAppItASchema.parse(adminpresetsAppItA);
   try {
-    const [a] = await db
-      .update(adminpresetsAppItAs)
-      .set(newAdminpresetsAppItA)
-      .where(eq(adminpresetsAppItAs.id, adminpresetsAppItAId!))
-      .returning();
+    const [a] =  await db
+     .update(adminpresetsAppItAs)
+     .set(newAdminpresetsAppItA)
+     .where(eq(adminpresetsAppItAs.id, adminpresetsAppItAId!))
+     .returning();
     return { adminpresetsAppItA: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -53,10 +42,8 @@ export const updateAdminpresetsAppItA = async (
 export const deleteAdminpresetsAppItA = async (id: AdminpresetsAppItAId) => {
   const { id: adminpresetsAppItAId } = adminpresetsAppItAIdSchema.parse({ id });
   try {
-    const [a] = await db
-      .delete(adminpresetsAppItAs)
-      .where(eq(adminpresetsAppItAs.id, adminpresetsAppItAId!))
-      .returning();
+    const [a] =  await db.delete(adminpresetsAppItAs).where(eq(adminpresetsAppItAs.id, adminpresetsAppItAId!))
+    .returning();
     return { adminpresetsAppItA: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -64,3 +51,4 @@ export const deleteAdminpresetsAppItA = async (id: AdminpresetsAppItAId) => {
     throw { error: message };
   }
 };
+

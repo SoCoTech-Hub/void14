@@ -1,26 +1,19 @@
-import type { AssignFeedbackEditpdfCmntId } from "@soco/assignment-db/schema/assignFeedbackEditpdfCmnts";
-import { db, eq } from "@soco/assignment-db";
-import {
-  assignFeedbackEditpdfCmntIdSchema,
-  assignFeedbackEditpdfCmnts,
-} from "@soco/assignment-db/schema/assignFeedbackEditpdfCmnts";
+import { db } from "@soco/assignment-db/client";
+import { eq } from "@soco/assignment-db";
+import { type AssignFeedbackEditpdfCmntId, assignFeedbackEditpdfCmntIdSchema, assignFeedbackEditpdfCmnts } from "@soco/assignment-db/schema/assignFeedbackEditpdfCmnts";
 
 export const getAssignFeedbackEditpdfCmnts = async () => {
   const rows = await db.select().from(assignFeedbackEditpdfCmnts);
-  const a = rows;
+  const a = rows
   return { assignFeedbackEditpdfCmnts: a };
 };
 
-export const getAssignFeedbackEditpdfCmntById = async (
-  id: AssignFeedbackEditpdfCmntId,
-) => {
-  const { id: assignFeedbackEditpdfCmntId } =
-    assignFeedbackEditpdfCmntIdSchema.parse({ id });
-  const [row] = await db
-    .select()
-    .from(assignFeedbackEditpdfCmnts)
-    .where(eq(assignFeedbackEditpdfCmnts.id, assignFeedbackEditpdfCmntId));
+export const getAssignFeedbackEditpdfCmntById = async (id: AssignFeedbackEditpdfCmntId) => {
+  const { id: assignFeedbackEditpdfCmntId } = assignFeedbackEditpdfCmntIdSchema.parse({ id });
+  const [row] = await db.select().from(assignFeedbackEditpdfCmnts).where(eq(assignFeedbackEditpdfCmnts.id, assignFeedbackEditpdfCmntId));
   if (row === undefined) return {};
   const a = row;
   return { assignFeedbackEditpdfCmnt: a };
 };
+
+

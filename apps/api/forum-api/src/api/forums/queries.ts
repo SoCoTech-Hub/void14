@@ -1,5 +1,5 @@
-import { db } from "@soco/forum-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/forum-db/client";
+import { eq } from "@soco/forum-db";
 import { type ForumId, forumIdSchema, forums } from "@soco/forum-db/schema/forums";
 
 export const getForums = async () => {

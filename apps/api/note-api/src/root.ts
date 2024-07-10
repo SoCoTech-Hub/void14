@@ -1,6 +1,5 @@
-import { createTRPCRouter } from "./trpc";
-
 import { notesRouter } from './routers/notes';
+import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   notes: notesRouter,

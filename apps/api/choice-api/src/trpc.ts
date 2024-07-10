@@ -4,7 +4,7 @@ import { ZodError } from "zod";
 
 import type { Session } from "@soco/auth-service";
 import { auth, validateToken } from "@soco/auth-service";
-import { db } from "@soco/choice-db";
+import { db } from "@soco/choice-db/client";
 
 /**
  * Isomorphic Session getter for API requests

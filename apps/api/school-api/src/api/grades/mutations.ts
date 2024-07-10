@@ -1,5 +1,5 @@
-import { db } from "@soco/school-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/school-db/client";
+import { eq } from "@soco/school-db";
 import { 
   GradeId, 
   NewGradeParams,

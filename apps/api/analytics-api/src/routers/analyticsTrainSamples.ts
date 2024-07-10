@@ -1,29 +1,19 @@
+import { getAnalyticsTrainSampleById, getAnalyticsTrainSamples } from "../api/analyticsTrainSamples/queries";
+import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   analyticsTrainSampleIdSchema,
   insertAnalyticsTrainSampleParams,
   updateAnalyticsTrainSampleParams,
 } from "@soco/analytics-db/schema/analyticsTrainSamples";
+import { createAnalyticsTrainSample, deleteAnalyticsTrainSample, updateAnalyticsTrainSample } from "../api/analyticsTrainSamples/mutations";
 
-import {
-  createAnalyticsTrainSample,
-  deleteAnalyticsTrainSample,
-  updateAnalyticsTrainSample,
-} from "../api/analyticsTrainSamples/mutations";
-import {
-  getAnalyticsTrainSampleById,
-  getAnalyticsTrainSamples,
-} from "../api/analyticsTrainSamples/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
-
-export const analyticsTrainSamplesRouter = createTRPCRouter({
+export const analyticsTrainSamplesRouter =createTRPCRouter({
   getAnalyticsTrainSamples: publicProcedure.query(async () => {
     return getAnalyticsTrainSamples();
   }),
-  getAnalyticsTrainSampleById: publicProcedure
-    .input(analyticsTrainSampleIdSchema)
-    .query(async ({ input }) => {
-      return getAnalyticsTrainSampleById(input.id);
-    }),
+  getAnalyticsTrainSampleById: publicProcedure.input(analyticsTrainSampleIdSchema).query(async ({ input }) => {
+    return getAnalyticsTrainSampleById(input.id);
+  }),
   createAnalyticsTrainSample: publicProcedure
     .input(insertAnalyticsTrainSampleParams)
     .mutation(async ({ input }) => {

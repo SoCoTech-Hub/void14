@@ -1,31 +1,21 @@
-import type {
-  AssignFeedbackEditpdfQuickId,
+import { db } from "@soco/assignment-db/client";
+import { and, eq } from "@soco/assignment-db";
+import { 
+  AssignFeedbackEditpdfQuickId, 
   NewAssignFeedbackEditpdfQuickParams,
-  UpdateAssignFeedbackEditpdfQuickParams,
-} from "@soco/assignment-db/schema/assignFeedbackEditpdfQuicks";
-import { and, db, eq } from "@soco/assignment-db";
-import {
-  assignFeedbackEditpdfQuickIdSchema,
-  assignFeedbackEditpdfQuicks,
-  insertAssignFeedbackEditpdfQuickSchema,
+  UpdateAssignFeedbackEditpdfQuickParams, 
   updateAssignFeedbackEditpdfQuickSchema,
+  insertAssignFeedbackEditpdfQuickSchema, 
+  assignFeedbackEditpdfQuicks,
+  assignFeedbackEditpdfQuickIdSchema 
 } from "@soco/assignment-db/schema/assignFeedbackEditpdfQuicks";
-import { getUserAuth } from "@soco/auth-services";
+import { getUserAuth } from "@/lib/auth/utils";
 
-export const createAssignFeedbackEditpdfQuick = async (
-  assignFeedbackEditpdfQuick: NewAssignFeedbackEditpdfQuickParams,
-) => {
+export const createAssignFeedbackEditpdfQuick = async (assignFeedbackEditpdfQuick: NewAssignFeedbackEditpdfQuickParams) => {
   const { session } = await getUserAuth();
-  const newAssignFeedbackEditpdfQuick =
-    insertAssignFeedbackEditpdfQuickSchema.parse({
-      ...assignFeedbackEditpdfQuick,
-      userId: session?.user.id!,
-    });
+  const newAssignFeedbackEditpdfQuick = insertAssignFeedbackEditpdfQuickSchema.parse({ ...assignFeedbackEditpdfQuick, userId: session?.user.id! });
   try {
-    const [a] = await db
-      .insert(assignFeedbackEditpdfQuicks)
-      .values(newAssignFeedbackEditpdfQuick)
-      .returning();
+    const [a] =  await db.insert(assignFeedbackEditpdfQuicks).values(newAssignFeedbackEditpdfQuick).returning();
     return { assignFeedbackEditpdfQuick: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -34,29 +24,16 @@ export const createAssignFeedbackEditpdfQuick = async (
   }
 };
 
-export const updateAssignFeedbackEditpdfQuick = async (
-  id: AssignFeedbackEditpdfQuickId,
-  assignFeedbackEditpdfQuick: UpdateAssignFeedbackEditpdfQuickParams,
-) => {
+export const updateAssignFeedbackEditpdfQuick = async (id: AssignFeedbackEditpdfQuickId, assignFeedbackEditpdfQuick: UpdateAssignFeedbackEditpdfQuickParams) => {
   const { session } = await getUserAuth();
-  const { id: assignFeedbackEditpdfQuickId } =
-    assignFeedbackEditpdfQuickIdSchema.parse({ id });
-  const newAssignFeedbackEditpdfQuick =
-    updateAssignFeedbackEditpdfQuickSchema.parse({
-      ...assignFeedbackEditpdfQuick,
-      userId: session?.user.id!,
-    });
+  const { id: assignFeedbackEditpdfQuickId } = assignFeedbackEditpdfQuickIdSchema.parse({ id });
+  const newAssignFeedbackEditpdfQuick = updateAssignFeedbackEditpdfQuickSchema.parse({ ...assignFeedbackEditpdfQuick, userId: session?.user.id! });
   try {
-    const [a] = await db
-      .update(assignFeedbackEditpdfQuicks)
-      .set(newAssignFeedbackEditpdfQuick)
-      .where(
-        and(
-          eq(assignFeedbackEditpdfQuicks.id, assignFeedbackEditpdfQuickId!),
-          eq(assignFeedbackEditpdfQuicks.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [a] =  await db
+     .update(assignFeedbackEditpdfQuicks)
+     .set(newAssignFeedbackEditpdfQuick)
+     .where(and(eq(assignFeedbackEditpdfQuicks.id, assignFeedbackEditpdfQuickId!), eq(assignFeedbackEditpdfQuicks.userId, session?.user.id!)))
+     .returning();
     return { assignFeedbackEditpdfQuick: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -65,22 +42,12 @@ export const updateAssignFeedbackEditpdfQuick = async (
   }
 };
 
-export const deleteAssignFeedbackEditpdfQuick = async (
-  id: AssignFeedbackEditpdfQuickId,
-) => {
+export const deleteAssignFeedbackEditpdfQuick = async (id: AssignFeedbackEditpdfQuickId) => {
   const { session } = await getUserAuth();
-  const { id: assignFeedbackEditpdfQuickId } =
-    assignFeedbackEditpdfQuickIdSchema.parse({ id });
+  const { id: assignFeedbackEditpdfQuickId } = assignFeedbackEditpdfQuickIdSchema.parse({ id });
   try {
-    const [a] = await db
-      .delete(assignFeedbackEditpdfQuicks)
-      .where(
-        and(
-          eq(assignFeedbackEditpdfQuicks.id, assignFeedbackEditpdfQuickId!),
-          eq(assignFeedbackEditpdfQuicks.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [a] =  await db.delete(assignFeedbackEditpdfQuicks).where(and(eq(assignFeedbackEditpdfQuicks.id, assignFeedbackEditpdfQuickId!), eq(assignFeedbackEditpdfQuicks.userId, session?.user.id!)))
+    .returning();
     return { assignFeedbackEditpdfQuick: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -88,3 +55,4 @@ export const deleteAssignFeedbackEditpdfQuick = async (
     throw { error: message };
   }
 };
+

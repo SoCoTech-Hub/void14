@@ -1,6 +1,5 @@
-import { createTRPCRouter } from "./trpc";
-
 import { myPagesRouter } from './routers/myPages';
+import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   myPages: myPagesRouter,

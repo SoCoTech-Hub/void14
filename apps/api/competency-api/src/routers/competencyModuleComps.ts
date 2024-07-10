@@ -1,29 +1,19 @@
+import { getCompetencyModuleCompById, getCompetencyModuleComps } from "../api/competencyModuleComps/queries";
+import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   competencyModuleCompIdSchema,
   insertCompetencyModuleCompParams,
   updateCompetencyModuleCompParams,
 } from "@soco/competency-db/schema/competencyModuleComps";
+import { createCompetencyModuleComp, deleteCompetencyModuleComp, updateCompetencyModuleComp } from "../api/competencyModuleComps/mutations";
 
-import {
-  createCompetencyModuleComp,
-  deleteCompetencyModuleComp,
-  updateCompetencyModuleComp,
-} from "../api/competencyModuleComps/mutations";
-import {
-  getCompetencyModuleCompById,
-  getCompetencyModuleComps,
-} from "../api/competencyModuleComps/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
-
-export const competencyModuleCompsRouter = createTRPCRouter({
+export const competencyModuleCompsRouter =createTRPCRouter({
   getCompetencyModuleComps: publicProcedure.query(async () => {
     return getCompetencyModuleComps();
   }),
-  getCompetencyModuleCompById: publicProcedure
-    .input(competencyModuleCompIdSchema)
-    .query(async ({ input }) => {
-      return getCompetencyModuleCompById(input.id);
-    }),
+  getCompetencyModuleCompById: publicProcedure.input(competencyModuleCompIdSchema).query(async ({ input }) => {
+    return getCompetencyModuleCompById(input.id);
+  }),
   createCompetencyModuleComp: publicProcedure
     .input(insertCompetencyModuleCompParams)
     .mutation(async ({ input }) => {

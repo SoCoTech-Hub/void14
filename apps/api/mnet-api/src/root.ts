@@ -1,5 +1,3 @@
-import { createTRPCRouter } from "./trpc";
-
 import { mnetApplicationsRouter } from './routers/mnetApplications';
 import { mnetHost2servicesRouter } from './routers/mnetHost2services';
 import { mnetHostsRouter } from './routers/mnetHosts';
@@ -13,6 +11,7 @@ import { mnetServiceEnrolEnrolmentsRouter } from './routers/mnetServiceEnrolEnro
 import { mnetServicesRouter } from './routers/mnetServices';
 import { mnetSessionsRouter } from './routers/mnetSessions';
 import { mnetSsoAccessControlsRouter } from './routers/mnetSsoAccessControls';
+import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   mnetApplications: mnetApplicationsRouter,

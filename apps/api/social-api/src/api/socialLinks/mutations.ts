@@ -1,5 +1,5 @@
-import { db } from "@soco/social-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/social-db/client";
+import { eq } from "@soco/social-db";
 import { 
   SocialLinkId, 
   NewSocialLinkParams,

@@ -1,29 +1,19 @@
+import { getChatMessageById, getChatMessages } from "../api/chatMessages/queries";
+import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   chatMessageIdSchema,
   insertChatMessageParams,
   updateChatMessageParams,
 } from "@soco/chat-db/schema/chatMessages";
+import { createChatMessage, deleteChatMessage, updateChatMessage } from "../api/chatMessages/mutations";
 
-import {
-  createChatMessage,
-  deleteChatMessage,
-  updateChatMessage,
-} from "../api/chatMessages/mutations";
-import {
-  getChatMessageById,
-  getChatMessages,
-} from "../api/chatMessages/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
-
-export const chatMessagesRouter = createTRPCRouter({
+export const chatMessagesRouter =createTRPCRouter({
   getChatMessages: publicProcedure.query(async () => {
     return getChatMessages();
   }),
-  getChatMessageById: publicProcedure
-    .input(chatMessageIdSchema)
-    .query(async ({ input }) => {
-      return getChatMessageById(input.id);
-    }),
+  getChatMessageById: publicProcedure.input(chatMessageIdSchema).query(async ({ input }) => {
+    return getChatMessageById(input.id);
+  }),
   createChatMessage: publicProcedure
     .input(insertChatMessageParams)
     .mutation(async ({ input }) => {

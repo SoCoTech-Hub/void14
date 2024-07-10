@@ -1,5 +1,5 @@
-import { db } from "@soco/module-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/module-db/client";
+import { eq } from "@soco/module-db";
 import { type ModuleId, moduleIdSchema, modules } from "@soco/module-db/schema/modules";
 
 export const getModules = async () => {

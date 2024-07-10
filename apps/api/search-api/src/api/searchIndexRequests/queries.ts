@@ -1,5 +1,5 @@
-import { db } from "@soco/search-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/search-db/client";
+import { eq } from "@soco/search-db";
 import { type SearchIndexRequestId, searchIndexRequestIdSchema, searchIndexRequests } from "@soco/search-db/schema/searchIndexRequests";
 
 export const getSearchIndexRequests = async () => {

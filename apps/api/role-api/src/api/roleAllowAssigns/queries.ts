@@ -1,5 +1,5 @@
-import { db } from '@soco/role-db/index'
-import { eq } from 'drizzle-orm'
+import { db } from '@soco/role-db/client'
+import { eq } from '@soco/role-db'
 import {
 	type RoleAllowAssignId,
 	roleAllowAssignIdSchema,

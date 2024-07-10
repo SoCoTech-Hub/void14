@@ -1,25 +1,19 @@
-import type {
-  CourseSectionId,
+import { db } from "@soco/course-db/client";
+import { eq } from "@soco/course-db";
+import { 
+  CourseSectionId, 
   NewCourseSectionParams,
-  UpdateCourseSectionParams,
-} from "@soco/course-db/schema/courseSections";
-import { db, eq } from "@soco/course-db";
-import {
-  courseSectionIdSchema,
-  courseSections,
-  insertCourseSectionSchema,
+  UpdateCourseSectionParams, 
   updateCourseSectionSchema,
+  insertCourseSectionSchema, 
+  courseSections,
+  courseSectionIdSchema 
 } from "@soco/course-db/schema/courseSections";
 
-export const createCourseSection = async (
-  courseSection: NewCourseSectionParams,
-) => {
+export const createCourseSection = async (courseSection: NewCourseSectionParams) => {
   const newCourseSection = insertCourseSectionSchema.parse(courseSection);
   try {
-    const [c] = await db
-      .insert(courseSections)
-      .values(newCourseSection)
-      .returning();
+    const [c] =  await db.insert(courseSections).values(newCourseSection).returning();
     return { courseSection: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -28,18 +22,15 @@ export const createCourseSection = async (
   }
 };
 
-export const updateCourseSection = async (
-  id: CourseSectionId,
-  courseSection: UpdateCourseSectionParams,
-) => {
+export const updateCourseSection = async (id: CourseSectionId, courseSection: UpdateCourseSectionParams) => {
   const { id: courseSectionId } = courseSectionIdSchema.parse({ id });
   const newCourseSection = updateCourseSectionSchema.parse(courseSection);
   try {
-    const [c] = await db
-      .update(courseSections)
-      .set({ ...newCourseSection, updatedAt: new Date() })
-      .where(eq(courseSections.id, courseSectionId!))
-      .returning();
+    const [c] =  await db
+     .update(courseSections)
+     .set({...newCourseSection, updatedAt: new Date() })
+     .where(eq(courseSections.id, courseSectionId!))
+     .returning();
     return { courseSection: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,10 +42,8 @@ export const updateCourseSection = async (
 export const deleteCourseSection = async (id: CourseSectionId) => {
   const { id: courseSectionId } = courseSectionIdSchema.parse({ id });
   try {
-    const [c] = await db
-      .delete(courseSections)
-      .where(eq(courseSections.id, courseSectionId!))
-      .returning();
+    const [c] =  await db.delete(courseSections).where(eq(courseSections.id, courseSectionId!))
+    .returning();
     return { courseSection: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -62,3 +51,4 @@ export const deleteCourseSection = async (id: CourseSectionId) => {
     throw { error: message };
   }
 };
+

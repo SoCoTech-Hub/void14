@@ -1,7 +1,6 @@
-import { createTRPCRouter } from "./trpc";
-
 import { inmailResponsesRouter } from './routers/inmailResponses';
 import { inmailsRouter } from './routers/inmails';
+import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   inmailResponses: inmailResponsesRouter,

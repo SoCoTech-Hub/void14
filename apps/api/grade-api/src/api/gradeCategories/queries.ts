@@ -1,5 +1,5 @@
-import { db } from "@soco/grade-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/grade-db/client";
+import { eq } from "@soco/grade-db";
 import { type GradeCategoryId, gradeCategoryIdSchema, gradeCategories } from "@soco/grade-db/schema/gradeCategories";
 
 export const getGradeCategories = async () => {

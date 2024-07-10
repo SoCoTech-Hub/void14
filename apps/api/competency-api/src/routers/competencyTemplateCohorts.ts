@@ -1,29 +1,19 @@
+import { getCompetencyTemplateCohortById, getCompetencyTemplateCohorts } from "../api/competencyTemplateCohorts/queries";
+import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   competencyTemplateCohortIdSchema,
   insertCompetencyTemplateCohortParams,
   updateCompetencyTemplateCohortParams,
 } from "@soco/competency-db/schema/competencyTemplateCohorts";
+import { createCompetencyTemplateCohort, deleteCompetencyTemplateCohort, updateCompetencyTemplateCohort } from "../api/competencyTemplateCohorts/mutations";
 
-import {
-  createCompetencyTemplateCohort,
-  deleteCompetencyTemplateCohort,
-  updateCompetencyTemplateCohort,
-} from "../api/competencyTemplateCohorts/mutations";
-import {
-  getCompetencyTemplateCohortById,
-  getCompetencyTemplateCohorts,
-} from "../api/competencyTemplateCohorts/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
-
-export const competencyTemplateCohortsRouter = createTRPCRouter({
+export const competencyTemplateCohortsRouter =createTRPCRouter({
   getCompetencyTemplateCohorts: publicProcedure.query(async () => {
     return getCompetencyTemplateCohorts();
   }),
-  getCompetencyTemplateCohortById: publicProcedure
-    .input(competencyTemplateCohortIdSchema)
-    .query(async ({ input }) => {
-      return getCompetencyTemplateCohortById(input.id);
-    }),
+  getCompetencyTemplateCohortById: publicProcedure.input(competencyTemplateCohortIdSchema).query(async ({ input }) => {
+    return getCompetencyTemplateCohortById(input.id);
+  }),
   createCompetencyTemplateCohort: publicProcedure
     .input(insertCompetencyTemplateCohortParams)
     .mutation(async ({ input }) => {

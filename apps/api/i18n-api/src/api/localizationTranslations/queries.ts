@@ -1,5 +1,5 @@
-import { db } from "@soco/i18n-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/i18n-db/client";
+import { eq } from "@soco/i18n-db";
 import { type LocalizationTranslationId, localizationTranslationIdSchema, localizationTranslations } from "@soco/i18n-db/schema/localizationTranslations";
 import { localizationFields } from "@soco/i18n-db/schema/localizationFields";
 import { localizationLanguages } from "@soco/i18n-db/schema/localizationLanguages";

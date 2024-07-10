@@ -1,5 +1,5 @@
-import { db } from "@soco/qtype-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/qtype-db/client";
+import { eq } from "@soco/qtype-db";
 import { type QtypeShortanswerOptionId, qtypeShortanswerOptionIdSchema, qtypeShortanswerOptions } from "@soco/qtype-db/schema/qtypeShortanswerOptions";
 
 export const getQtypeShortanswerOptions = async () => {

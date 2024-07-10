@@ -1,5 +1,5 @@
-import { db } from "@soco/data-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/data-db/client";
+import { eq } from "@soco/data-db";
 import { 
   FieldId, 
   NewFieldParams,

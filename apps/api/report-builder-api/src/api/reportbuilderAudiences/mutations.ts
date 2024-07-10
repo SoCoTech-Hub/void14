@@ -1,30 +1,21 @@
-import { and, eq } from "drizzle-orm";
-
-import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/report-builder-db/index";
-import {
-  insertReportbuilderAudienceSchema,
+import { db } from "@soco/report-builder-db/client";
+import { and, eq } from "@soco/report-builder-db";
+import { 
+  ReportbuilderAudienceId, 
   NewReportbuilderAudienceParams,
-  ReportbuilderAudienceId,
-  reportbuilderAudienceIdSchema,
-  reportbuilderAudiences,
-  UpdateReportbuilderAudienceParams,
+  UpdateReportbuilderAudienceParams, 
   updateReportbuilderAudienceSchema,
+  insertReportbuilderAudienceSchema, 
+  reportbuilderAudiences,
+  reportbuilderAudienceIdSchema 
 } from "@soco/report-builder-db/schema/reportbuilderAudiences";
+import { getUserAuth } from "@/lib/auth/utils";
 
-export const createReportbuilderAudience = async (
-  reportbuilderAudience: NewReportbuilderAudienceParams,
-) => {
+export const createReportbuilderAudience = async (reportbuilderAudience: NewReportbuilderAudienceParams) => {
   const { session } = await getUserAuth();
-  const newReportbuilderAudience = insertReportbuilderAudienceSchema.parse({
-    ...reportbuilderAudience,
-    userId: session?.user.id!,
-  });
+  const newReportbuilderAudience = insertReportbuilderAudienceSchema.parse({ ...reportbuilderAudience, userId: session?.user.id! });
   try {
-    const [r] = await db
-      .insert(reportbuilderAudiences)
-      .values(newReportbuilderAudience)
-      .returning();
+    const [r] =  await db.insert(reportbuilderAudiences).values(newReportbuilderAudience).returning();
     return { reportbuilderAudience: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -33,29 +24,16 @@ export const createReportbuilderAudience = async (
   }
 };
 
-export const updateReportbuilderAudience = async (
-  id: ReportbuilderAudienceId,
-  reportbuilderAudience: UpdateReportbuilderAudienceParams,
-) => {
+export const updateReportbuilderAudience = async (id: ReportbuilderAudienceId, reportbuilderAudience: UpdateReportbuilderAudienceParams) => {
   const { session } = await getUserAuth();
-  const { id: reportbuilderAudienceId } = reportbuilderAudienceIdSchema.parse({
-    id,
-  });
-  const newReportbuilderAudience = updateReportbuilderAudienceSchema.parse({
-    ...reportbuilderAudience,
-    userId: session?.user.id!,
-  });
+  const { id: reportbuilderAudienceId } = reportbuilderAudienceIdSchema.parse({ id });
+  const newReportbuilderAudience = updateReportbuilderAudienceSchema.parse({ ...reportbuilderAudience, userId: session?.user.id! });
   try {
-    const [r] = await db
-      .update(reportbuilderAudiences)
-      .set({ ...newReportbuilderAudience, updatedAt: new Date() })
-      .where(
-        and(
-          eq(reportbuilderAudiences.id, reportbuilderAudienceId!),
-          eq(reportbuilderAudiences.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [r] =  await db
+     .update(reportbuilderAudiences)
+     .set({...newReportbuilderAudience, updatedAt: new Date() })
+     .where(and(eq(reportbuilderAudiences.id, reportbuilderAudienceId!), eq(reportbuilderAudiences.userId, session?.user.id!)))
+     .returning();
     return { reportbuilderAudience: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -64,23 +42,12 @@ export const updateReportbuilderAudience = async (
   }
 };
 
-export const deleteReportbuilderAudience = async (
-  id: ReportbuilderAudienceId,
-) => {
+export const deleteReportbuilderAudience = async (id: ReportbuilderAudienceId) => {
   const { session } = await getUserAuth();
-  const { id: reportbuilderAudienceId } = reportbuilderAudienceIdSchema.parse({
-    id,
-  });
+  const { id: reportbuilderAudienceId } = reportbuilderAudienceIdSchema.parse({ id });
   try {
-    const [r] = await db
-      .delete(reportbuilderAudiences)
-      .where(
-        and(
-          eq(reportbuilderAudiences.id, reportbuilderAudienceId!),
-          eq(reportbuilderAudiences.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [r] =  await db.delete(reportbuilderAudiences).where(and(eq(reportbuilderAudiences.id, reportbuilderAudienceId!), eq(reportbuilderAudiences.userId, session?.user.id!)))
+    .returning();
     return { reportbuilderAudience: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -88,3 +55,4 @@ export const deleteReportbuilderAudience = async (
     throw { error: message };
   }
 };
+

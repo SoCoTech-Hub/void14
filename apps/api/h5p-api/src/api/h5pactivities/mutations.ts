@@ -1,5 +1,5 @@
-import { db } from "@soco/h5p-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/h5p-db/client";
+import { eq } from "@soco/h5p-db";
 import { 
   H5pactivityId, 
   NewH5pactivityParams,

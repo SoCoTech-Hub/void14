@@ -1,30 +1,21 @@
-import { and, eq } from "drizzle-orm";
-
-import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/feedback-db/index";
-import {
-  FeedbackCompletedtmpId,
-  feedbackCompletedtmpIdSchema,
-  feedbackCompletedtmps,
-  insertFeedbackCompletedtmpSchema,
+import { db } from "@soco/feedback-db/client";
+import { and, eq } from "@soco/feedback-db";
+import { 
+  FeedbackCompletedtmpId, 
   NewFeedbackCompletedtmpParams,
-  UpdateFeedbackCompletedtmpParams,
+  UpdateFeedbackCompletedtmpParams, 
   updateFeedbackCompletedtmpSchema,
+  insertFeedbackCompletedtmpSchema, 
+  feedbackCompletedtmps,
+  feedbackCompletedtmpIdSchema 
 } from "@soco/feedback-db/schema/feedbackCompletedtmps";
+import { getUserAuth } from "@/lib/auth/utils";
 
-export const createFeedbackCompletedtmp = async (
-  feedbackCompletedtmp: NewFeedbackCompletedtmpParams,
-) => {
+export const createFeedbackCompletedtmp = async (feedbackCompletedtmp: NewFeedbackCompletedtmpParams) => {
   const { session } = await getUserAuth();
-  const newFeedbackCompletedtmp = insertFeedbackCompletedtmpSchema.parse({
-    ...feedbackCompletedtmp,
-    userId: session?.user.id!,
-  });
+  const newFeedbackCompletedtmp = insertFeedbackCompletedtmpSchema.parse({ ...feedbackCompletedtmp, userId: session?.user.id! });
   try {
-    const [f] = await db
-      .insert(feedbackCompletedtmps)
-      .values(newFeedbackCompletedtmp)
-      .returning();
+    const [f] =  await db.insert(feedbackCompletedtmps).values(newFeedbackCompletedtmp).returning();
     return { feedbackCompletedtmp: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -33,29 +24,16 @@ export const createFeedbackCompletedtmp = async (
   }
 };
 
-export const updateFeedbackCompletedtmp = async (
-  id: FeedbackCompletedtmpId,
-  feedbackCompletedtmp: UpdateFeedbackCompletedtmpParams,
-) => {
+export const updateFeedbackCompletedtmp = async (id: FeedbackCompletedtmpId, feedbackCompletedtmp: UpdateFeedbackCompletedtmpParams) => {
   const { session } = await getUserAuth();
-  const { id: feedbackCompletedtmpId } = feedbackCompletedtmpIdSchema.parse({
-    id,
-  });
-  const newFeedbackCompletedtmp = updateFeedbackCompletedtmpSchema.parse({
-    ...feedbackCompletedtmp,
-    userId: session?.user.id!,
-  });
+  const { id: feedbackCompletedtmpId } = feedbackCompletedtmpIdSchema.parse({ id });
+  const newFeedbackCompletedtmp = updateFeedbackCompletedtmpSchema.parse({ ...feedbackCompletedtmp, userId: session?.user.id! });
   try {
-    const [f] = await db
-      .update(feedbackCompletedtmps)
-      .set({ ...newFeedbackCompletedtmp, updatedAt: new Date() })
-      .where(
-        and(
-          eq(feedbackCompletedtmps.id, feedbackCompletedtmpId!),
-          eq(feedbackCompletedtmps.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [f] =  await db
+     .update(feedbackCompletedtmps)
+     .set({...newFeedbackCompletedtmp, updatedAt: new Date() })
+     .where(and(eq(feedbackCompletedtmps.id, feedbackCompletedtmpId!), eq(feedbackCompletedtmps.userId, session?.user.id!)))
+     .returning();
     return { feedbackCompletedtmp: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -64,23 +42,12 @@ export const updateFeedbackCompletedtmp = async (
   }
 };
 
-export const deleteFeedbackCompletedtmp = async (
-  id: FeedbackCompletedtmpId,
-) => {
+export const deleteFeedbackCompletedtmp = async (id: FeedbackCompletedtmpId) => {
   const { session } = await getUserAuth();
-  const { id: feedbackCompletedtmpId } = feedbackCompletedtmpIdSchema.parse({
-    id,
-  });
+  const { id: feedbackCompletedtmpId } = feedbackCompletedtmpIdSchema.parse({ id });
   try {
-    const [f] = await db
-      .delete(feedbackCompletedtmps)
-      .where(
-        and(
-          eq(feedbackCompletedtmps.id, feedbackCompletedtmpId!),
-          eq(feedbackCompletedtmps.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [f] =  await db.delete(feedbackCompletedtmps).where(and(eq(feedbackCompletedtmps.id, feedbackCompletedtmpId!), eq(feedbackCompletedtmps.userId, session?.user.id!)))
+    .returning();
     return { feedbackCompletedtmp: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -88,3 +55,4 @@ export const deleteFeedbackCompletedtmp = async (
     throw { error: message };
   }
 };
+

@@ -1,29 +1,19 @@
+import { getBlogExternalById, getBlogExternals } from "../api/blogExternals/queries";
+import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   blogExternalIdSchema,
   insertBlogExternalParams,
   updateBlogExternalParams,
 } from "@soco/blog-db/schema/blogExternals";
+import { createBlogExternal, deleteBlogExternal, updateBlogExternal } from "../api/blogExternals/mutations";
 
-import {
-  createBlogExternal,
-  deleteBlogExternal,
-  updateBlogExternal,
-} from "../api/blogExternals/mutations";
-import {
-  getBlogExternalById,
-  getBlogExternals,
-} from "../api/blogExternals/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
-
-export const blogExternalsRouter = createTRPCRouter({
+export const blogExternalsRouter =createTRPCRouter({
   getBlogExternals: publicProcedure.query(async () => {
     return getBlogExternals();
   }),
-  getBlogExternalById: publicProcedure
-    .input(blogExternalIdSchema)
-    .query(async ({ input }) => {
-      return getBlogExternalById(input.id);
-    }),
+  getBlogExternalById: publicProcedure.input(blogExternalIdSchema).query(async ({ input }) => {
+    return getBlogExternalById(input.id);
+  }),
   createBlogExternal: publicProcedure
     .input(insertBlogExternalParams)
     .mutation(async ({ input }) => {

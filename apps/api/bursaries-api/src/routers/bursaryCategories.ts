@@ -1,29 +1,19 @@
+import { getBursaryCategoryById, getBursaryCategories } from "../api/bursaryCategories/queries";
+import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   bursaryCategoryIdSchema,
   insertBursaryCategoryParams,
   updateBursaryCategoryParams,
 } from "@soco/bursaries-db/schema/bursaryCategories";
+import { createBursaryCategory, deleteBursaryCategory, updateBursaryCategory } from "../api/bursaryCategories/mutations";
 
-import {
-  createBursaryCategory,
-  deleteBursaryCategory,
-  updateBursaryCategory,
-} from "../api/bursaryCategories/mutations";
-import {
-  getBursaryCategories,
-  getBursaryCategoryById,
-} from "../api/bursaryCategories/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
-
-export const bursaryCategoriesRouter = createTRPCRouter({
+export const bursaryCategoriesRouter =createTRPCRouter({
   getBursaryCategories: publicProcedure.query(async () => {
     return getBursaryCategories();
   }),
-  getBursaryCategoryById: publicProcedure
-    .input(bursaryCategoryIdSchema)
-    .query(async ({ input }) => {
-      return getBursaryCategoryById(input.id);
-    }),
+  getBursaryCategoryById: publicProcedure.input(bursaryCategoryIdSchema).query(async ({ input }) => {
+    return getBursaryCategoryById(input.id);
+  }),
   createBursaryCategory: publicProcedure
     .input(insertBursaryCategoryParams)
     .mutation(async ({ input }) => {

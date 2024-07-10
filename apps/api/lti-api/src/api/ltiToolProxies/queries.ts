@@ -1,5 +1,5 @@
-import { db } from "@soco/lti-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/lti-db/client";
+import { eq } from "@soco/lti-db";
 import { type LtiToolProxyId, ltiToolProxyIdSchema, ltiToolProxies } from "@soco/lti-db/schema/ltiToolProxies";
 
 export const getLtiToolProxies = async () => {

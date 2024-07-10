@@ -1,29 +1,19 @@
+import { getConfigPluginById, getConfigPlugins } from "../api/configPlugins/queries";
+import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   configPluginIdSchema,
   insertConfigPluginParams,
   updateConfigPluginParams,
 } from "@soco/config-db/schema/configPlugins";
+import { createConfigPlugin, deleteConfigPlugin, updateConfigPlugin } from "../api/configPlugins/mutations";
 
-import {
-  createConfigPlugin,
-  deleteConfigPlugin,
-  updateConfigPlugin,
-} from "../api/configPlugins/mutations";
-import {
-  getConfigPluginById,
-  getConfigPlugins,
-} from "../api/configPlugins/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
-
-export const configPluginsRouter = createTRPCRouter({
+export const configPluginsRouter =createTRPCRouter({
   getConfigPlugins: publicProcedure.query(async () => {
     return getConfigPlugins();
   }),
-  getConfigPluginById: publicProcedure
-    .input(configPluginIdSchema)
-    .query(async ({ input }) => {
-      return getConfigPluginById(input.id);
-    }),
+  getConfigPluginById: publicProcedure.input(configPluginIdSchema).query(async ({ input }) => {
+    return getConfigPluginById(input.id);
+  }),
   createConfigPlugin: publicProcedure
     .input(insertConfigPluginParams)
     .mutation(async ({ input }) => {

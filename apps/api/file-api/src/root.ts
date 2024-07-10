@@ -1,10 +1,9 @@
-import { createTRPCRouter } from "./trpc";
-
 import { fileConversionsRouter } from './routers/fileConversions';
 import { filesRouter } from './routers/files';
 import { filesReferencesRouter } from './routers/filesReferences';
 import { foldersRouter } from './routers/folders';
 import { infectedFilesRouter } from './routers/infectedFiles';
+import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   fileConversions: fileConversionsRouter,

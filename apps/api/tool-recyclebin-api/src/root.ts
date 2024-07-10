@@ -1,7 +1,6 @@
-import { createTRPCRouter } from "./trpc";
-
 import { toolRecyclebinCategoriesRouter } from './routers/toolRecyclebinCategories';
 import { toolRecyclebinCoursesRouter } from './routers/toolRecyclebinCourses';
+import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   toolRecyclebinCategories: toolRecyclebinCategoriesRouter,

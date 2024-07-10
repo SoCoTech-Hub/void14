@@ -1,5 +1,5 @@
-import { db } from "@soco/enrol-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/enrol-db/client";
+import { eq } from "@soco/enrol-db";
 import { type EnrolLtiUserResourceLinkId, enrolLtiUserResourceLinkIdSchema, enrolLtiUserResourceLinks } from "@soco/enrol-db/schema/enrolLtiUserResourceLinks";
 import { enrolLtiUsers } from "@soco/enrol-db/schema/enrolLtiUsers";
 import { enrolLtiResourceLinks } from "@soco/enrol-db/schema/enrolLtiResourceLinks";

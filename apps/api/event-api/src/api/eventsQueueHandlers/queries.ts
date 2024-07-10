@@ -1,5 +1,5 @@
-import { db } from "@soco/event-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/event-db/client";
+import { eq } from "@soco/event-db";
 import { type EventsQueueHandlerId, eventsQueueHandlerIdSchema, eventsQueueHandlers } from "@soco/event-db/schema/eventsQueueHandlers";
 
 export const getEventsQueueHandlers = async () => {

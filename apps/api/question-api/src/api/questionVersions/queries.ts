@@ -1,5 +1,5 @@
-import { db } from "@soco/question-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/question-db/client";
+import { eq } from "@soco/question-db";
 import { type QuestionVersionId, questionVersionIdSchema, questionVersions } from "@soco/question-db/schema/questionVersions";
 import { questionBankEntries } from "@soco/question-db/schema/questionBankEntries";
 import { questions } from "@soco/question-db/schema/questions";

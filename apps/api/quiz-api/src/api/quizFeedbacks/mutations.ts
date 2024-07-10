@@ -1,5 +1,5 @@
-import { db } from "@soco/quiz-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/quiz-db/client";
+import { eq } from "@soco/quiz-db";
 import { 
   QuizFeedbackId, 
   NewQuizFeedbackParams,

@@ -1,5 +1,5 @@
-import { db } from "@soco/mass-mail-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/mass-mail-db/client";
+import { eq } from "@soco/mass-mail-db";
 import { type MassMailListsRecipientId, massMailListsRecipientIdSchema, massMailListsRecipients } from "@soco/mass-mail-db/schema/massMailListsRecipients";
 import { massMailLists } from "@soco/mass-mail-db/schema/massMailLists";
 import { massMailRecipients } from "@soco/mass-mail-db/schema/massMailRecipients";

@@ -1,8 +1,7 @@
-import { createTRPCRouter } from "./trpc";
-
 import { logDisplaysRouter } from './routers/logDisplays';
 import { logQueriesRouter } from './routers/logQueries';
 import { logstoreStandardLogsRouter } from './routers/logstoreStandardLogs';
+import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   logDisplays: logDisplaysRouter,

@@ -1,5 +1,5 @@
-import { db } from "@soco/stats-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/stats-db/client";
+import { eq } from "@soco/stats-db";
 import { type StatsMonthlyId, statsMonthlyIdSchema, statsMonthlies } from "@soco/stats-db/schema/statsMonthlies";
 
 export const getStatsMonthlies = async () => {

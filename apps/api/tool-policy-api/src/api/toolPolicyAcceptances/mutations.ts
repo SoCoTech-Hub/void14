@@ -1,30 +1,21 @@
-import { and, eq } from "drizzle-orm";
-
-import { getUserAuth } from "@soco/auth-services";
-import { db } from "@soco/tool-policy-db/index";
-import {
-  insertToolPolicyAcceptanceSchema,
+import { db } from "@soco/tool-policy-db/client";
+import { and, eq } from "@soco/tool-policy-db";
+import { 
+  ToolPolicyAcceptanceId, 
   NewToolPolicyAcceptanceParams,
-  ToolPolicyAcceptanceId,
-  toolPolicyAcceptanceIdSchema,
-  toolPolicyAcceptances,
-  UpdateToolPolicyAcceptanceParams,
+  UpdateToolPolicyAcceptanceParams, 
   updateToolPolicyAcceptanceSchema,
+  insertToolPolicyAcceptanceSchema, 
+  toolPolicyAcceptances,
+  toolPolicyAcceptanceIdSchema 
 } from "@soco/tool-policy-db/schema/toolPolicyAcceptances";
+import { getUserAuth } from "@/lib/auth/utils";
 
-export const createToolPolicyAcceptance = async (
-  toolPolicyAcceptance: NewToolPolicyAcceptanceParams,
-) => {
+export const createToolPolicyAcceptance = async (toolPolicyAcceptance: NewToolPolicyAcceptanceParams) => {
   const { session } = await getUserAuth();
-  const newToolPolicyAcceptance = insertToolPolicyAcceptanceSchema.parse({
-    ...toolPolicyAcceptance,
-    userId: session?.user.id!,
-  });
+  const newToolPolicyAcceptance = insertToolPolicyAcceptanceSchema.parse({ ...toolPolicyAcceptance, userId: session?.user.id! });
   try {
-    const [t] = await db
-      .insert(toolPolicyAcceptances)
-      .values(newToolPolicyAcceptance)
-      .returning();
+    const [t] =  await db.insert(toolPolicyAcceptances).values(newToolPolicyAcceptance).returning();
     return { toolPolicyAcceptance: t };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -33,29 +24,16 @@ export const createToolPolicyAcceptance = async (
   }
 };
 
-export const updateToolPolicyAcceptance = async (
-  id: ToolPolicyAcceptanceId,
-  toolPolicyAcceptance: UpdateToolPolicyAcceptanceParams,
-) => {
+export const updateToolPolicyAcceptance = async (id: ToolPolicyAcceptanceId, toolPolicyAcceptance: UpdateToolPolicyAcceptanceParams) => {
   const { session } = await getUserAuth();
-  const { id: toolPolicyAcceptanceId } = toolPolicyAcceptanceIdSchema.parse({
-    id,
-  });
-  const newToolPolicyAcceptance = updateToolPolicyAcceptanceSchema.parse({
-    ...toolPolicyAcceptance,
-    userId: session?.user.id!,
-  });
+  const { id: toolPolicyAcceptanceId } = toolPolicyAcceptanceIdSchema.parse({ id });
+  const newToolPolicyAcceptance = updateToolPolicyAcceptanceSchema.parse({ ...toolPolicyAcceptance, userId: session?.user.id! });
   try {
-    const [t] = await db
-      .update(toolPolicyAcceptances)
-      .set({ ...newToolPolicyAcceptance, updatedAt: new Date() })
-      .where(
-        and(
-          eq(toolPolicyAcceptances.id, toolPolicyAcceptanceId!),
-          eq(toolPolicyAcceptances.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [t] =  await db
+     .update(toolPolicyAcceptances)
+     .set({...newToolPolicyAcceptance, updatedAt: new Date() })
+     .where(and(eq(toolPolicyAcceptances.id, toolPolicyAcceptanceId!), eq(toolPolicyAcceptances.userId, session?.user.id!)))
+     .returning();
     return { toolPolicyAcceptance: t };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -64,23 +42,12 @@ export const updateToolPolicyAcceptance = async (
   }
 };
 
-export const deleteToolPolicyAcceptance = async (
-  id: ToolPolicyAcceptanceId,
-) => {
+export const deleteToolPolicyAcceptance = async (id: ToolPolicyAcceptanceId) => {
   const { session } = await getUserAuth();
-  const { id: toolPolicyAcceptanceId } = toolPolicyAcceptanceIdSchema.parse({
-    id,
-  });
+  const { id: toolPolicyAcceptanceId } = toolPolicyAcceptanceIdSchema.parse({ id });
   try {
-    const [t] = await db
-      .delete(toolPolicyAcceptances)
-      .where(
-        and(
-          eq(toolPolicyAcceptances.id, toolPolicyAcceptanceId!),
-          eq(toolPolicyAcceptances.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [t] =  await db.delete(toolPolicyAcceptances).where(and(eq(toolPolicyAcceptances.id, toolPolicyAcceptanceId!), eq(toolPolicyAcceptances.userId, session?.user.id!)))
+    .returning();
     return { toolPolicyAcceptance: t };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -88,3 +55,4 @@ export const deleteToolPolicyAcceptance = async (
     throw { error: message };
   }
 };
+

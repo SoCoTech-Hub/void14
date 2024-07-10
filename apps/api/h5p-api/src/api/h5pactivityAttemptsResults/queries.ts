@@ -1,5 +1,5 @@
-import { db } from "@soco/h5p-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/h5p-db/client";
+import { eq } from "@soco/h5p-db";
 import { type H5pactivityAttemptsResultId, h5pactivityAttemptsResultIdSchema, h5pactivityAttemptsResults } from "@soco/h5p-db/schema/h5pactivityAttemptsResults";
 
 export const getH5pactivityAttemptsResults = async () => {

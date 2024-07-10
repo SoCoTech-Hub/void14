@@ -1,5 +1,5 @@
-import { db } from "@soco/filter-db/index";
-import { eq } from "drizzle-orm";
+import { db } from "@soco/filter-db/client";
+import { eq } from "@soco/filter-db";
 import { type FilterActiveId, filterActiveIdSchema, filterActives } from "@soco/filter-db/schema/filterActives";
 
 export const getFilterActives = async () => {
