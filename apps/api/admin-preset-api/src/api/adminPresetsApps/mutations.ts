@@ -1,5 +1,3 @@
-import { getUserAuth } from "@/lib/auth/utils";
-
 import type {
   AdminPresetsAppId,
   NewAdminPresetsAppParams,
@@ -13,6 +11,7 @@ import {
   insertAdminPresetsAppSchema,
   updateAdminPresetsAppSchema,
 } from "@soco/admin-preset-db/schema/adminPresetsApps";
+import { getUserAuth } from "@soco/auth-service";
 
 export const createAdminPresetsApp = async (
   adminPresetsApp: NewAdminPresetsAppParams,

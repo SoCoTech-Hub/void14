@@ -1,5 +1,3 @@
-import { getUserAuth } from "@/lib/auth/utils";
-
 import type {
   AdminPresetId,
   NewAdminPresetParams,
@@ -13,6 +11,7 @@ import {
   insertAdminPresetSchema,
   updateAdminPresetSchema,
 } from "@soco/admin-preset-db/schema/adminPresets";
+import { getUserAuth } from "@soco/auth-service";
 
 export const createAdminPreset = async (adminPreset: NewAdminPresetParams) => {
   const { session } = await getUserAuth();

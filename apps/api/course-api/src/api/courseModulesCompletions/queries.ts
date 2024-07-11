@@ -1,22 +1,38 @@
+import type { CourseModulesCompletionId } from "@soco/course-db/schema/courseModulesCompletions";
+import { getUserAuth } from "@soco/auth-service";
+import { and, eq } from "@soco/course-db";
 import { db } from "@soco/course-db/client";
-import { eq, and } from "@soco/course-db";
-import { getUserAuth } from "@/lib/auth/utils";
-import { type CourseModulesCompletionId, courseModulesCompletionIdSchema, courseModulesCompletions } from "@soco/course-db/schema/courseModulesCompletions";
+import {
+  courseModulesCompletionIdSchema,
+  courseModulesCompletions,
+} from "@soco/course-db/schema/courseModulesCompletions";
 
 export const getCourseModulesCompletions = async () => {
   const { session } = await getUserAuth();
-  const rows = await db.select().from(courseModulesCompletions).where(eq(courseModulesCompletions.userId, session?.user.id!));
-  const c = rows
+  const rows = await db
+    .select()
+    .from(courseModulesCompletions)
+    .where(eq(courseModulesCompletions.userId, session?.user.id!));
+  const c = rows;
   return { courseModulesCompletions: c };
 };
 
-export const getCourseModulesCompletionById = async (id: CourseModulesCompletionId) => {
+export const getCourseModulesCompletionById = async (
+  id: CourseModulesCompletionId,
+) => {
   const { session } = await getUserAuth();
-  const { id: courseModulesCompletionId } = courseModulesCompletionIdSchema.parse({ id });
-  const [row] = await db.select().from(courseModulesCompletions).where(and(eq(courseModulesCompletions.id, courseModulesCompletionId), eq(courseModulesCompletions.userId, session?.user.id!)));
+  const { id: courseModulesCompletionId } =
+    courseModulesCompletionIdSchema.parse({ id });
+  const [row] = await db
+    .select()
+    .from(courseModulesCompletions)
+    .where(
+      and(
+        eq(courseModulesCompletions.id, courseModulesCompletionId),
+        eq(courseModulesCompletions.userId, session?.user.id!),
+      ),
+    );
   if (row === undefined) return {};
   const c = row;
   return { courseModulesCompletion: c };
 };
-
-

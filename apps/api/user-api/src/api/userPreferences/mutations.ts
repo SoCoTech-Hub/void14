@@ -1,21 +1,29 @@
-import { db } from "@soco/user-db/client";
+import { getUserAuth } from "@soco/auth-service";
 import { and, eq } from "@soco/user-db";
-import { 
-  UserPreferenceId, 
+import { db } from "@soco/user-db/client";
+import {
+  insertUserPreferenceSchema,
   NewUserPreferenceParams,
-  UpdateUserPreferenceParams, 
+  UpdateUserPreferenceParams,
   updateUserPreferenceSchema,
-  insertUserPreferenceSchema, 
+  UserPreferenceId,
+  userPreferenceIdSchema,
   userPreferences,
-  userPreferenceIdSchema 
 } from "@soco/user-db/schema/userPreferences";
-import { getUserAuth } from "@/lib/auth/utils";
 
-export const createUserPreference = async (userPreference: NewUserPreferenceParams) => {
+export const createUserPreference = async (
+  userPreference: NewUserPreferenceParams,
+) => {
   const { session } = await getUserAuth();
-  const newUserPreference = insertUserPreferenceSchema.parse({ ...userPreference, userId: session?.user.id! });
+  const newUserPreference = insertUserPreferenceSchema.parse({
+    ...userPreference,
+    userId: session?.user.id!,
+  });
   try {
-    const [u] =  await db.insert(userPreferences).values(newUserPreference).returning();
+    const [u] = await db
+      .insert(userPreferences)
+      .values(newUserPreference)
+      .returning();
     return { userPreference: u };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +32,27 @@ export const createUserPreference = async (userPreference: NewUserPreferencePara
   }
 };
 
-export const updateUserPreference = async (id: UserPreferenceId, userPreference: UpdateUserPreferenceParams) => {
+export const updateUserPreference = async (
+  id: UserPreferenceId,
+  userPreference: UpdateUserPreferenceParams,
+) => {
   const { session } = await getUserAuth();
   const { id: userPreferenceId } = userPreferenceIdSchema.parse({ id });
-  const newUserPreference = updateUserPreferenceSchema.parse({ ...userPreference, userId: session?.user.id! });
+  const newUserPreference = updateUserPreferenceSchema.parse({
+    ...userPreference,
+    userId: session?.user.id!,
+  });
   try {
-    const [u] =  await db
-     .update(userPreferences)
-     .set(newUserPreference)
-     .where(and(eq(userPreferences.id, userPreferenceId!), eq(userPreferences.userId, session?.user.id!)))
-     .returning();
+    const [u] = await db
+      .update(userPreferences)
+      .set(newUserPreference)
+      .where(
+        and(
+          eq(userPreferences.id, userPreferenceId!),
+          eq(userPreferences.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { userPreference: u };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +65,15 @@ export const deleteUserPreference = async (id: UserPreferenceId) => {
   const { session } = await getUserAuth();
   const { id: userPreferenceId } = userPreferenceIdSchema.parse({ id });
   try {
-    const [u] =  await db.delete(userPreferences).where(and(eq(userPreferences.id, userPreferenceId!), eq(userPreferences.userId, session?.user.id!)))
-    .returning();
+    const [u] = await db
+      .delete(userPreferences)
+      .where(
+        and(
+          eq(userPreferences.id, userPreferenceId!),
+          eq(userPreferences.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { userPreference: u };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +81,3 @@ export const deleteUserPreference = async (id: UserPreferenceId) => {
     throw { error: message };
   }
 };
-

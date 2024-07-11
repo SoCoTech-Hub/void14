@@ -1,5 +1,3 @@
-import { getUserAuth } from "@/lib/auth/utils";
-
 import type { AdminPresetsAppId } from "@soco/admin-preset-db/schema/adminPresetsApps";
 import { and, eq } from "@soco/admin-preset-db";
 import { db } from "@soco/admin-preset-db/client";
@@ -8,6 +6,7 @@ import {
   adminPresetsAppIdSchema,
   adminPresetsApps,
 } from "@soco/admin-preset-db/schema/adminPresetsApps";
+import { getUserAuth } from "@soco/auth-service";
 
 export const getAdminPresetsApps = async () => {
   const { session } = await getUserAuth();

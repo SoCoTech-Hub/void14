@@ -1,21 +1,29 @@
-import { db } from "@soco/feedback-db/client";
+import { getUserAuth } from "@soco/auth-service";
 import { and, eq } from "@soco/feedback-db";
-import { 
-  FeedbackCompletedId, 
-  NewFeedbackCompletedParams,
-  UpdateFeedbackCompletedParams, 
-  updateFeedbackCompletedSchema,
-  insertFeedbackCompletedSchema, 
+import { db } from "@soco/feedback-db/client";
+import {
+  FeedbackCompletedId,
+  feedbackCompletedIdSchema,
   feedbackCompleteds,
-  feedbackCompletedIdSchema 
+  insertFeedbackCompletedSchema,
+  NewFeedbackCompletedParams,
+  UpdateFeedbackCompletedParams,
+  updateFeedbackCompletedSchema,
 } from "@soco/feedback-db/schema/feedbackCompleteds";
-import { getUserAuth } from "@/lib/auth/utils";
 
-export const createFeedbackCompleted = async (feedbackCompleted: NewFeedbackCompletedParams) => {
+export const createFeedbackCompleted = async (
+  feedbackCompleted: NewFeedbackCompletedParams,
+) => {
   const { session } = await getUserAuth();
-  const newFeedbackCompleted = insertFeedbackCompletedSchema.parse({ ...feedbackCompleted, userId: session?.user.id! });
+  const newFeedbackCompleted = insertFeedbackCompletedSchema.parse({
+    ...feedbackCompleted,
+    userId: session?.user.id!,
+  });
   try {
-    const [f] =  await db.insert(feedbackCompleteds).values(newFeedbackCompleted).returning();
+    const [f] = await db
+      .insert(feedbackCompleteds)
+      .values(newFeedbackCompleted)
+      .returning();
     return { feedbackCompleted: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +32,27 @@ export const createFeedbackCompleted = async (feedbackCompleted: NewFeedbackComp
   }
 };
 
-export const updateFeedbackCompleted = async (id: FeedbackCompletedId, feedbackCompleted: UpdateFeedbackCompletedParams) => {
+export const updateFeedbackCompleted = async (
+  id: FeedbackCompletedId,
+  feedbackCompleted: UpdateFeedbackCompletedParams,
+) => {
   const { session } = await getUserAuth();
   const { id: feedbackCompletedId } = feedbackCompletedIdSchema.parse({ id });
-  const newFeedbackCompleted = updateFeedbackCompletedSchema.parse({ ...feedbackCompleted, userId: session?.user.id! });
+  const newFeedbackCompleted = updateFeedbackCompletedSchema.parse({
+    ...feedbackCompleted,
+    userId: session?.user.id!,
+  });
   try {
-    const [f] =  await db
-     .update(feedbackCompleteds)
-     .set({...newFeedbackCompleted, updatedAt: new Date() })
-     .where(and(eq(feedbackCompleteds.id, feedbackCompletedId!), eq(feedbackCompleteds.userId, session?.user.id!)))
-     .returning();
+    const [f] = await db
+      .update(feedbackCompleteds)
+      .set({ ...newFeedbackCompleted, updatedAt: new Date() })
+      .where(
+        and(
+          eq(feedbackCompleteds.id, feedbackCompletedId!),
+          eq(feedbackCompleteds.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { feedbackCompleted: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +65,15 @@ export const deleteFeedbackCompleted = async (id: FeedbackCompletedId) => {
   const { session } = await getUserAuth();
   const { id: feedbackCompletedId } = feedbackCompletedIdSchema.parse({ id });
   try {
-    const [f] =  await db.delete(feedbackCompleteds).where(and(eq(feedbackCompleteds.id, feedbackCompletedId!), eq(feedbackCompleteds.userId, session?.user.id!)))
-    .returning();
+    const [f] = await db
+      .delete(feedbackCompleteds)
+      .where(
+        and(
+          eq(feedbackCompleteds.id, feedbackCompletedId!),
+          eq(feedbackCompleteds.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { feedbackCompleted: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +81,3 @@ export const deleteFeedbackCompleted = async (id: FeedbackCompletedId) => {
     throw { error: message };
   }
 };
-

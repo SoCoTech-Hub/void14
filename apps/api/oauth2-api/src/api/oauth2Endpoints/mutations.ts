@@ -1,21 +1,29 @@
-import { db } from "@soco/oauth2-db/client";
+import { getUserAuth } from "@soco/auth-service";
 import { and, eq } from "@soco/oauth2-db";
-import { 
-  Oauth2EndpointId, 
+import { db } from "@soco/oauth2-db/client";
+import {
+  insertOauth2EndpointSchema,
   NewOauth2EndpointParams,
-  UpdateOauth2EndpointParams, 
-  updateOauth2EndpointSchema,
-  insertOauth2EndpointSchema, 
+  Oauth2EndpointId,
+  oauth2EndpointIdSchema,
   oauth2Endpoints,
-  oauth2EndpointIdSchema 
+  UpdateOauth2EndpointParams,
+  updateOauth2EndpointSchema,
 } from "@soco/oauth2-db/schema/oauth2Endpoints";
-import { getUserAuth } from "@/lib/auth/utils";
 
-export const createOauth2Endpoint = async (oauth2Endpoint: NewOauth2EndpointParams) => {
+export const createOauth2Endpoint = async (
+  oauth2Endpoint: NewOauth2EndpointParams,
+) => {
   const { session } = await getUserAuth();
-  const newOauth2Endpoint = insertOauth2EndpointSchema.parse({ ...oauth2Endpoint, userId: session?.user.id! });
+  const newOauth2Endpoint = insertOauth2EndpointSchema.parse({
+    ...oauth2Endpoint,
+    userId: session?.user.id!,
+  });
   try {
-    const [o] =  await db.insert(oauth2Endpoints).values(newOauth2Endpoint).returning();
+    const [o] = await db
+      .insert(oauth2Endpoints)
+      .values(newOauth2Endpoint)
+      .returning();
     return { oauth2Endpoint: o };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +32,27 @@ export const createOauth2Endpoint = async (oauth2Endpoint: NewOauth2EndpointPara
   }
 };
 
-export const updateOauth2Endpoint = async (id: Oauth2EndpointId, oauth2Endpoint: UpdateOauth2EndpointParams) => {
+export const updateOauth2Endpoint = async (
+  id: Oauth2EndpointId,
+  oauth2Endpoint: UpdateOauth2EndpointParams,
+) => {
   const { session } = await getUserAuth();
   const { id: oauth2EndpointId } = oauth2EndpointIdSchema.parse({ id });
-  const newOauth2Endpoint = updateOauth2EndpointSchema.parse({ ...oauth2Endpoint, userId: session?.user.id! });
+  const newOauth2Endpoint = updateOauth2EndpointSchema.parse({
+    ...oauth2Endpoint,
+    userId: session?.user.id!,
+  });
   try {
-    const [o] =  await db
-     .update(oauth2Endpoints)
-     .set({...newOauth2Endpoint, updatedAt: new Date() })
-     .where(and(eq(oauth2Endpoints.id, oauth2EndpointId!), eq(oauth2Endpoints.userId, session?.user.id!)))
-     .returning();
+    const [o] = await db
+      .update(oauth2Endpoints)
+      .set({ ...newOauth2Endpoint, updatedAt: new Date() })
+      .where(
+        and(
+          eq(oauth2Endpoints.id, oauth2EndpointId!),
+          eq(oauth2Endpoints.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { oauth2Endpoint: o };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +65,15 @@ export const deleteOauth2Endpoint = async (id: Oauth2EndpointId) => {
   const { session } = await getUserAuth();
   const { id: oauth2EndpointId } = oauth2EndpointIdSchema.parse({ id });
   try {
-    const [o] =  await db.delete(oauth2Endpoints).where(and(eq(oauth2Endpoints.id, oauth2EndpointId!), eq(oauth2Endpoints.userId, session?.user.id!)))
-    .returning();
+    const [o] = await db
+      .delete(oauth2Endpoints)
+      .where(
+        and(
+          eq(oauth2Endpoints.id, oauth2EndpointId!),
+          eq(oauth2Endpoints.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { oauth2Endpoint: o };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +81,3 @@ export const deleteOauth2Endpoint = async (id: Oauth2EndpointId) => {
     throw { error: message };
   }
 };
-

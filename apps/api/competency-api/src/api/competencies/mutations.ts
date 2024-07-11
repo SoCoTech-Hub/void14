@@ -1,21 +1,24 @@
-import { db } from "@soco/competency-db/client";
+import { getUserAuth } from "@soco/auth-service";
 import { and, eq } from "@soco/competency-db";
-import { 
-  CompetencyId, 
-  NewCompetencyParams,
-  UpdateCompetencyParams, 
-  updateCompetencySchema,
-  insertCompetencySchema, 
+import { db } from "@soco/competency-db/client";
+import {
   competencies,
-  competencyIdSchema 
+  CompetencyId,
+  competencyIdSchema,
+  insertCompetencySchema,
+  NewCompetencyParams,
+  UpdateCompetencyParams,
+  updateCompetencySchema,
 } from "@soco/competency-db/schema/competencies";
-import { getUserAuth } from "@/lib/auth/utils";
 
 export const createCompetency = async (competency: NewCompetencyParams) => {
   const { session } = await getUserAuth();
-  const newCompetency = insertCompetencySchema.parse({ ...competency, userId: session?.user.id! });
+  const newCompetency = insertCompetencySchema.parse({
+    ...competency,
+    userId: session?.user.id!,
+  });
   try {
-    const [c] =  await db.insert(competencies).values(newCompetency).returning();
+    const [c] = await db.insert(competencies).values(newCompetency).returning();
     return { competency: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +27,27 @@ export const createCompetency = async (competency: NewCompetencyParams) => {
   }
 };
 
-export const updateCompetency = async (id: CompetencyId, competency: UpdateCompetencyParams) => {
+export const updateCompetency = async (
+  id: CompetencyId,
+  competency: UpdateCompetencyParams,
+) => {
   const { session } = await getUserAuth();
   const { id: competencyId } = competencyIdSchema.parse({ id });
-  const newCompetency = updateCompetencySchema.parse({ ...competency, userId: session?.user.id! });
+  const newCompetency = updateCompetencySchema.parse({
+    ...competency,
+    userId: session?.user.id!,
+  });
   try {
-    const [c] =  await db
-     .update(competencies)
-     .set({...newCompetency, updatedAt: new Date() })
-     .where(and(eq(competencies.id, competencyId!), eq(competencies.userId, session?.user.id!)))
-     .returning();
+    const [c] = await db
+      .update(competencies)
+      .set({ ...newCompetency, updatedAt: new Date() })
+      .where(
+        and(
+          eq(competencies.id, competencyId!),
+          eq(competencies.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { competency: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +60,15 @@ export const deleteCompetency = async (id: CompetencyId) => {
   const { session } = await getUserAuth();
   const { id: competencyId } = competencyIdSchema.parse({ id });
   try {
-    const [c] =  await db.delete(competencies).where(and(eq(competencies.id, competencyId!), eq(competencies.userId, session?.user.id!)))
-    .returning();
+    const [c] = await db
+      .delete(competencies)
+      .where(
+        and(
+          eq(competencies.id, competencyId!),
+          eq(competencies.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { competency: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +76,3 @@ export const deleteCompetency = async (id: CompetencyId) => {
     throw { error: message };
   }
 };
-

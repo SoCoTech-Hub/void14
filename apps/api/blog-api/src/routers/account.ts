@@ -1,10 +1,10 @@
-import { getUserAuth } from "@/lib/auth/utils";
-import { publicProcedure,createTRPCRouter } from "../trpc";
+import { getUserAuth } from "@soco/auth-service";
 
-export const accountRouter =createTRPCRouter({
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const accountRouter = createTRPCRouter({
   getUser: publicProcedure.query(async () => {
     const { session } = await getUserAuth();
     return session;
   }),
-
 });

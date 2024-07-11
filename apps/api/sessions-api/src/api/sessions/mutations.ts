@@ -9,7 +9,7 @@ import {
   sessions,
   sessionIdSchema 
 } from "@soco/sessions-db/schema/sessions";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth-service";
 
 export const createSession = async (session: NewSessionParams) => {
   const { session } = await getUserAuth();

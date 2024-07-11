@@ -1,21 +1,29 @@
-import { db } from "@soco/enrol-db/client";
+import { getUserAuth } from "@soco/auth-service";
 import { and, eq } from "@soco/enrol-db";
-import { 
-  EnrolLtiUserId, 
-  NewEnrolLtiUserParams,
-  UpdateEnrolLtiUserParams, 
-  updateEnrolLtiUserSchema,
-  insertEnrolLtiUserSchema, 
+import { db } from "@soco/enrol-db/client";
+import {
+  EnrolLtiUserId,
+  enrolLtiUserIdSchema,
   enrolLtiUsers,
-  enrolLtiUserIdSchema 
+  insertEnrolLtiUserSchema,
+  NewEnrolLtiUserParams,
+  UpdateEnrolLtiUserParams,
+  updateEnrolLtiUserSchema,
 } from "@soco/enrol-db/schema/enrolLtiUsers";
-import { getUserAuth } from "@/lib/auth/utils";
 
-export const createEnrolLtiUser = async (enrolLtiUser: NewEnrolLtiUserParams) => {
+export const createEnrolLtiUser = async (
+  enrolLtiUser: NewEnrolLtiUserParams,
+) => {
   const { session } = await getUserAuth();
-  const newEnrolLtiUser = insertEnrolLtiUserSchema.parse({ ...enrolLtiUser, userId: session?.user.id! });
+  const newEnrolLtiUser = insertEnrolLtiUserSchema.parse({
+    ...enrolLtiUser,
+    userId: session?.user.id!,
+  });
   try {
-    const [e] =  await db.insert(enrolLtiUsers).values(newEnrolLtiUser).returning();
+    const [e] = await db
+      .insert(enrolLtiUsers)
+      .values(newEnrolLtiUser)
+      .returning();
     return { enrolLtiUser: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +32,27 @@ export const createEnrolLtiUser = async (enrolLtiUser: NewEnrolLtiUserParams) =>
   }
 };
 
-export const updateEnrolLtiUser = async (id: EnrolLtiUserId, enrolLtiUser: UpdateEnrolLtiUserParams) => {
+export const updateEnrolLtiUser = async (
+  id: EnrolLtiUserId,
+  enrolLtiUser: UpdateEnrolLtiUserParams,
+) => {
   const { session } = await getUserAuth();
   const { id: enrolLtiUserId } = enrolLtiUserIdSchema.parse({ id });
-  const newEnrolLtiUser = updateEnrolLtiUserSchema.parse({ ...enrolLtiUser, userId: session?.user.id! });
+  const newEnrolLtiUser = updateEnrolLtiUserSchema.parse({
+    ...enrolLtiUser,
+    userId: session?.user.id!,
+  });
   try {
-    const [e] =  await db
-     .update(enrolLtiUsers)
-     .set({...newEnrolLtiUser, updatedAt: new Date() })
-     .where(and(eq(enrolLtiUsers.id, enrolLtiUserId!), eq(enrolLtiUsers.userId, session?.user.id!)))
-     .returning();
+    const [e] = await db
+      .update(enrolLtiUsers)
+      .set({ ...newEnrolLtiUser, updatedAt: new Date() })
+      .where(
+        and(
+          eq(enrolLtiUsers.id, enrolLtiUserId!),
+          eq(enrolLtiUsers.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { enrolLtiUser: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +65,15 @@ export const deleteEnrolLtiUser = async (id: EnrolLtiUserId) => {
   const { session } = await getUserAuth();
   const { id: enrolLtiUserId } = enrolLtiUserIdSchema.parse({ id });
   try {
-    const [e] =  await db.delete(enrolLtiUsers).where(and(eq(enrolLtiUsers.id, enrolLtiUserId!), eq(enrolLtiUsers.userId, session?.user.id!)))
-    .returning();
+    const [e] = await db
+      .delete(enrolLtiUsers)
+      .where(
+        and(
+          eq(enrolLtiUsers.id, enrolLtiUserId!),
+          eq(enrolLtiUsers.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { enrolLtiUser: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +81,3 @@ export const deleteEnrolLtiUser = async (id: EnrolLtiUserId) => {
     throw { error: message };
   }
 };
-

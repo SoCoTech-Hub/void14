@@ -1,21 +1,29 @@
-import { db } from "@soco/tool-monitor-db/client";
+import { getUserAuth } from "@soco/auth-service";
 import { and, eq } from "@soco/tool-monitor-db";
-import { 
-  ToolMonitorRuleId, 
+import { db } from "@soco/tool-monitor-db/client";
+import {
+  insertToolMonitorRuleSchema,
   NewToolMonitorRuleParams,
-  UpdateToolMonitorRuleParams, 
-  updateToolMonitorRuleSchema,
-  insertToolMonitorRuleSchema, 
+  ToolMonitorRuleId,
+  toolMonitorRuleIdSchema,
   toolMonitorRules,
-  toolMonitorRuleIdSchema 
+  UpdateToolMonitorRuleParams,
+  updateToolMonitorRuleSchema,
 } from "@soco/tool-monitor-db/schema/toolMonitorRules";
-import { getUserAuth } from "@/lib/auth/utils";
 
-export const createToolMonitorRule = async (toolMonitorRule: NewToolMonitorRuleParams) => {
+export const createToolMonitorRule = async (
+  toolMonitorRule: NewToolMonitorRuleParams,
+) => {
   const { session } = await getUserAuth();
-  const newToolMonitorRule = insertToolMonitorRuleSchema.parse({ ...toolMonitorRule, userId: session?.user.id! });
+  const newToolMonitorRule = insertToolMonitorRuleSchema.parse({
+    ...toolMonitorRule,
+    userId: session?.user.id!,
+  });
   try {
-    const [t] =  await db.insert(toolMonitorRules).values(newToolMonitorRule).returning();
+    const [t] = await db
+      .insert(toolMonitorRules)
+      .values(newToolMonitorRule)
+      .returning();
     return { toolMonitorRule: t };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +32,27 @@ export const createToolMonitorRule = async (toolMonitorRule: NewToolMonitorRuleP
   }
 };
 
-export const updateToolMonitorRule = async (id: ToolMonitorRuleId, toolMonitorRule: UpdateToolMonitorRuleParams) => {
+export const updateToolMonitorRule = async (
+  id: ToolMonitorRuleId,
+  toolMonitorRule: UpdateToolMonitorRuleParams,
+) => {
   const { session } = await getUserAuth();
   const { id: toolMonitorRuleId } = toolMonitorRuleIdSchema.parse({ id });
-  const newToolMonitorRule = updateToolMonitorRuleSchema.parse({ ...toolMonitorRule, userId: session?.user.id! });
+  const newToolMonitorRule = updateToolMonitorRuleSchema.parse({
+    ...toolMonitorRule,
+    userId: session?.user.id!,
+  });
   try {
-    const [t] =  await db
-     .update(toolMonitorRules)
-     .set({...newToolMonitorRule, updatedAt: new Date() })
-     .where(and(eq(toolMonitorRules.id, toolMonitorRuleId!), eq(toolMonitorRules.userId, session?.user.id!)))
-     .returning();
+    const [t] = await db
+      .update(toolMonitorRules)
+      .set({ ...newToolMonitorRule, updatedAt: new Date() })
+      .where(
+        and(
+          eq(toolMonitorRules.id, toolMonitorRuleId!),
+          eq(toolMonitorRules.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { toolMonitorRule: t };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +65,15 @@ export const deleteToolMonitorRule = async (id: ToolMonitorRuleId) => {
   const { session } = await getUserAuth();
   const { id: toolMonitorRuleId } = toolMonitorRuleIdSchema.parse({ id });
   try {
-    const [t] =  await db.delete(toolMonitorRules).where(and(eq(toolMonitorRules.id, toolMonitorRuleId!), eq(toolMonitorRules.userId, session?.user.id!)))
-    .returning();
+    const [t] = await db
+      .delete(toolMonitorRules)
+      .where(
+        and(
+          eq(toolMonitorRules.id, toolMonitorRuleId!),
+          eq(toolMonitorRules.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { toolMonitorRule: t };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +81,3 @@ export const deleteToolMonitorRule = async (id: ToolMonitorRuleId) => {
     throw { error: message };
   }
 };
-

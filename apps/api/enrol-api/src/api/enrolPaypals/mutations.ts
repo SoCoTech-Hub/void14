@@ -1,21 +1,27 @@
-import { db } from "@soco/enrol-db/client";
+import { getUserAuth } from "@soco/auth-service";
 import { and, eq } from "@soco/enrol-db";
-import { 
-  EnrolPaypalId, 
-  NewEnrolPaypalParams,
-  UpdateEnrolPaypalParams, 
-  updateEnrolPaypalSchema,
-  insertEnrolPaypalSchema, 
+import { db } from "@soco/enrol-db/client";
+import {
+  EnrolPaypalId,
+  enrolPaypalIdSchema,
   enrolPaypals,
-  enrolPaypalIdSchema 
+  insertEnrolPaypalSchema,
+  NewEnrolPaypalParams,
+  UpdateEnrolPaypalParams,
+  updateEnrolPaypalSchema,
 } from "@soco/enrol-db/schema/enrolPaypals";
-import { getUserAuth } from "@/lib/auth/utils";
 
 export const createEnrolPaypal = async (enrolPaypal: NewEnrolPaypalParams) => {
   const { session } = await getUserAuth();
-  const newEnrolPaypal = insertEnrolPaypalSchema.parse({ ...enrolPaypal, userId: session?.user.id! });
+  const newEnrolPaypal = insertEnrolPaypalSchema.parse({
+    ...enrolPaypal,
+    userId: session?.user.id!,
+  });
   try {
-    const [e] =  await db.insert(enrolPaypals).values(newEnrolPaypal).returning();
+    const [e] = await db
+      .insert(enrolPaypals)
+      .values(newEnrolPaypal)
+      .returning();
     return { enrolPaypal: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +30,27 @@ export const createEnrolPaypal = async (enrolPaypal: NewEnrolPaypalParams) => {
   }
 };
 
-export const updateEnrolPaypal = async (id: EnrolPaypalId, enrolPaypal: UpdateEnrolPaypalParams) => {
+export const updateEnrolPaypal = async (
+  id: EnrolPaypalId,
+  enrolPaypal: UpdateEnrolPaypalParams,
+) => {
   const { session } = await getUserAuth();
   const { id: enrolPaypalId } = enrolPaypalIdSchema.parse({ id });
-  const newEnrolPaypal = updateEnrolPaypalSchema.parse({ ...enrolPaypal, userId: session?.user.id! });
+  const newEnrolPaypal = updateEnrolPaypalSchema.parse({
+    ...enrolPaypal,
+    userId: session?.user.id!,
+  });
   try {
-    const [e] =  await db
-     .update(enrolPaypals)
-     .set({...newEnrolPaypal, updatedAt: new Date() })
-     .where(and(eq(enrolPaypals.id, enrolPaypalId!), eq(enrolPaypals.userId, session?.user.id!)))
-     .returning();
+    const [e] = await db
+      .update(enrolPaypals)
+      .set({ ...newEnrolPaypal, updatedAt: new Date() })
+      .where(
+        and(
+          eq(enrolPaypals.id, enrolPaypalId!),
+          eq(enrolPaypals.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { enrolPaypal: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +63,15 @@ export const deleteEnrolPaypal = async (id: EnrolPaypalId) => {
   const { session } = await getUserAuth();
   const { id: enrolPaypalId } = enrolPaypalIdSchema.parse({ id });
   try {
-    const [e] =  await db.delete(enrolPaypals).where(and(eq(enrolPaypals.id, enrolPaypalId!), eq(enrolPaypals.userId, session?.user.id!)))
-    .returning();
+    const [e] = await db
+      .delete(enrolPaypals)
+      .where(
+        and(
+          eq(enrolPaypals.id, enrolPaypalId!),
+          eq(enrolPaypals.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { enrolPaypal: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +79,3 @@ export const deleteEnrolPaypal = async (id: EnrolPaypalId) => {
     throw { error: message };
   }
 };
-

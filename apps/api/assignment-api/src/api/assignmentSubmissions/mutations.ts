@@ -1,21 +1,29 @@
-import { db } from "@soco/assignment-db/client";
 import { and, eq } from "@soco/assignment-db";
-import { 
-  AssignmentSubmissionId, 
-  NewAssignmentSubmissionParams,
-  UpdateAssignmentSubmissionParams, 
-  updateAssignmentSubmissionSchema,
-  insertAssignmentSubmissionSchema, 
+import { db } from "@soco/assignment-db/client";
+import {
+  AssignmentSubmissionId,
+  assignmentSubmissionIdSchema,
   assignmentSubmissions,
-  assignmentSubmissionIdSchema 
+  insertAssignmentSubmissionSchema,
+  NewAssignmentSubmissionParams,
+  UpdateAssignmentSubmissionParams,
+  updateAssignmentSubmissionSchema,
 } from "@soco/assignment-db/schema/assignmentSubmissions";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth-service";
 
-export const createAssignmentSubmission = async (assignmentSubmission: NewAssignmentSubmissionParams) => {
+export const createAssignmentSubmission = async (
+  assignmentSubmission: NewAssignmentSubmissionParams,
+) => {
   const { session } = await getUserAuth();
-  const newAssignmentSubmission = insertAssignmentSubmissionSchema.parse({ ...assignmentSubmission, userId: session?.user.id! });
+  const newAssignmentSubmission = insertAssignmentSubmissionSchema.parse({
+    ...assignmentSubmission,
+    userId: session?.user.id!,
+  });
   try {
-    const [a] =  await db.insert(assignmentSubmissions).values(newAssignmentSubmission).returning();
+    const [a] = await db
+      .insert(assignmentSubmissions)
+      .values(newAssignmentSubmission)
+      .returning();
     return { assignmentSubmission: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +32,29 @@ export const createAssignmentSubmission = async (assignmentSubmission: NewAssign
   }
 };
 
-export const updateAssignmentSubmission = async (id: AssignmentSubmissionId, assignmentSubmission: UpdateAssignmentSubmissionParams) => {
+export const updateAssignmentSubmission = async (
+  id: AssignmentSubmissionId,
+  assignmentSubmission: UpdateAssignmentSubmissionParams,
+) => {
   const { session } = await getUserAuth();
-  const { id: assignmentSubmissionId } = assignmentSubmissionIdSchema.parse({ id });
-  const newAssignmentSubmission = updateAssignmentSubmissionSchema.parse({ ...assignmentSubmission, userId: session?.user.id! });
+  const { id: assignmentSubmissionId } = assignmentSubmissionIdSchema.parse({
+    id,
+  });
+  const newAssignmentSubmission = updateAssignmentSubmissionSchema.parse({
+    ...assignmentSubmission,
+    userId: session?.user.id!,
+  });
   try {
-    const [a] =  await db
-     .update(assignmentSubmissions)
-     .set({...newAssignmentSubmission, updatedAt: new Date() })
-     .where(and(eq(assignmentSubmissions.id, assignmentSubmissionId!), eq(assignmentSubmissions.userId, session?.user.id!)))
-     .returning();
+    const [a] = await db
+      .update(assignmentSubmissions)
+      .set({ ...newAssignmentSubmission, updatedAt: new Date() })
+      .where(
+        and(
+          eq(assignmentSubmissions.id, assignmentSubmissionId!),
+          eq(assignmentSubmissions.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { assignmentSubmission: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,12 +63,23 @@ export const updateAssignmentSubmission = async (id: AssignmentSubmissionId, ass
   }
 };
 
-export const deleteAssignmentSubmission = async (id: AssignmentSubmissionId) => {
+export const deleteAssignmentSubmission = async (
+  id: AssignmentSubmissionId,
+) => {
   const { session } = await getUserAuth();
-  const { id: assignmentSubmissionId } = assignmentSubmissionIdSchema.parse({ id });
+  const { id: assignmentSubmissionId } = assignmentSubmissionIdSchema.parse({
+    id,
+  });
   try {
-    const [a] =  await db.delete(assignmentSubmissions).where(and(eq(assignmentSubmissions.id, assignmentSubmissionId!), eq(assignmentSubmissions.userId, session?.user.id!)))
-    .returning();
+    const [a] = await db
+      .delete(assignmentSubmissions)
+      .where(
+        and(
+          eq(assignmentSubmissions.id, assignmentSubmissionId!),
+          eq(assignmentSubmissions.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { assignmentSubmission: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +87,3 @@ export const deleteAssignmentSubmission = async (id: AssignmentSubmissionId) => 
     throw { error: message };
   }
 };
-

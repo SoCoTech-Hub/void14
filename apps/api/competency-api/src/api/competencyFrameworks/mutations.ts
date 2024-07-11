@@ -1,21 +1,29 @@
-import { db } from "@soco/competency-db/client";
+import { getUserAuth } from "@soco/auth-service";
 import { and, eq } from "@soco/competency-db";
-import { 
-  CompetencyFrameworkId, 
-  NewCompetencyFrameworkParams,
-  UpdateCompetencyFrameworkParams, 
-  updateCompetencyFrameworkSchema,
-  insertCompetencyFrameworkSchema, 
+import { db } from "@soco/competency-db/client";
+import {
+  CompetencyFrameworkId,
+  competencyFrameworkIdSchema,
   competencyFrameworks,
-  competencyFrameworkIdSchema 
+  insertCompetencyFrameworkSchema,
+  NewCompetencyFrameworkParams,
+  UpdateCompetencyFrameworkParams,
+  updateCompetencyFrameworkSchema,
 } from "@soco/competency-db/schema/competencyFrameworks";
-import { getUserAuth } from "@/lib/auth/utils";
 
-export const createCompetencyFramework = async (competencyFramework: NewCompetencyFrameworkParams) => {
+export const createCompetencyFramework = async (
+  competencyFramework: NewCompetencyFrameworkParams,
+) => {
   const { session } = await getUserAuth();
-  const newCompetencyFramework = insertCompetencyFrameworkSchema.parse({ ...competencyFramework, userId: session?.user.id! });
+  const newCompetencyFramework = insertCompetencyFrameworkSchema.parse({
+    ...competencyFramework,
+    userId: session?.user.id!,
+  });
   try {
-    const [c] =  await db.insert(competencyFrameworks).values(newCompetencyFramework).returning();
+    const [c] = await db
+      .insert(competencyFrameworks)
+      .values(newCompetencyFramework)
+      .returning();
     return { competencyFramework: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +32,29 @@ export const createCompetencyFramework = async (competencyFramework: NewCompeten
   }
 };
 
-export const updateCompetencyFramework = async (id: CompetencyFrameworkId, competencyFramework: UpdateCompetencyFrameworkParams) => {
+export const updateCompetencyFramework = async (
+  id: CompetencyFrameworkId,
+  competencyFramework: UpdateCompetencyFrameworkParams,
+) => {
   const { session } = await getUserAuth();
-  const { id: competencyFrameworkId } = competencyFrameworkIdSchema.parse({ id });
-  const newCompetencyFramework = updateCompetencyFrameworkSchema.parse({ ...competencyFramework, userId: session?.user.id! });
+  const { id: competencyFrameworkId } = competencyFrameworkIdSchema.parse({
+    id,
+  });
+  const newCompetencyFramework = updateCompetencyFrameworkSchema.parse({
+    ...competencyFramework,
+    userId: session?.user.id!,
+  });
   try {
-    const [c] =  await db
-     .update(competencyFrameworks)
-     .set({...newCompetencyFramework, updatedAt: new Date() })
-     .where(and(eq(competencyFrameworks.id, competencyFrameworkId!), eq(competencyFrameworks.userId, session?.user.id!)))
-     .returning();
+    const [c] = await db
+      .update(competencyFrameworks)
+      .set({ ...newCompetencyFramework, updatedAt: new Date() })
+      .where(
+        and(
+          eq(competencyFrameworks.id, competencyFrameworkId!),
+          eq(competencyFrameworks.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { competencyFramework: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -44,10 +65,19 @@ export const updateCompetencyFramework = async (id: CompetencyFrameworkId, compe
 
 export const deleteCompetencyFramework = async (id: CompetencyFrameworkId) => {
   const { session } = await getUserAuth();
-  const { id: competencyFrameworkId } = competencyFrameworkIdSchema.parse({ id });
+  const { id: competencyFrameworkId } = competencyFrameworkIdSchema.parse({
+    id,
+  });
   try {
-    const [c] =  await db.delete(competencyFrameworks).where(and(eq(competencyFrameworks.id, competencyFrameworkId!), eq(competencyFrameworks.userId, session?.user.id!)))
-    .returning();
+    const [c] = await db
+      .delete(competencyFrameworks)
+      .where(
+        and(
+          eq(competencyFrameworks.id, competencyFrameworkId!),
+          eq(competencyFrameworks.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { competencyFramework: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +85,3 @@ export const deleteCompetencyFramework = async (id: CompetencyFrameworkId) => {
     throw { error: message };
   }
 };
-
