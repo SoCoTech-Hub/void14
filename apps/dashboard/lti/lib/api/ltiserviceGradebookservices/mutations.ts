@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  LtiserviceGradebookserviceId, 
-  NewLtiserviceGradebookserviceParams,
-  UpdateLtiserviceGradebookserviceParams, 
+  type LtiserviceGradebookserviceId, 
+  type NewLtiserviceGradebookserviceParams,
+  type UpdateLtiserviceGradebookserviceParams, 
   updateLtiserviceGradebookserviceSchema,
   insertLtiserviceGradebookserviceSchema, 
   ltiserviceGradebookservices,

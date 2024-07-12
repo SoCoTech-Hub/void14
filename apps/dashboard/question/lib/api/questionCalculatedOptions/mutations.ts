@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  QuestionCalculatedOptionId, 
-  NewQuestionCalculatedOptionParams,
-  UpdateQuestionCalculatedOptionParams, 
+  type QuestionCalculatedOptionId, 
+  type NewQuestionCalculatedOptionParams,
+  type UpdateQuestionCalculatedOptionParams, 
   updateQuestionCalculatedOptionSchema,
   insertQuestionCalculatedOptionSchema, 
   questionCalculatedOptions,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  BursaryId, 
-  NewBursaryParams,
-  UpdateBursaryParams, 
+  type BursaryId, 
+  type NewBursaryParams,
+  type UpdateBursaryParams, 
   updateBursarySchema,
   insertBursarySchema, 
   bursaries,

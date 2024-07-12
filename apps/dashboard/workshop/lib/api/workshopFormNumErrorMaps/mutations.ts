@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  WorkshopFormNumErrorMapId, 
-  NewWorkshopFormNumErrorMapParams,
-  UpdateWorkshopFormNumErrorMapParams, 
+  type WorkshopFormNumErrorMapId, 
+  type NewWorkshopFormNumErrorMapParams,
+  type UpdateWorkshopFormNumErrorMapParams, 
   updateWorkshopFormNumErrorMapSchema,
   insertWorkshopFormNumErrorMapSchema, 
   workshopFormNumErrorMaps,

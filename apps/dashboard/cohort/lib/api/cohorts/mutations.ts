@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  CohortId, 
-  NewCohortParams,
-  UpdateCohortParams, 
+  type CohortId, 
+  type NewCohortParams,
+  type UpdateCohortParams, 
   updateCohortSchema,
   insertCohortSchema, 
   cohorts,

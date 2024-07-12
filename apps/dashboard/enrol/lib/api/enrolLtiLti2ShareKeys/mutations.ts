@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  EnrolLtiLti2ShareKeyId, 
-  NewEnrolLtiLti2ShareKeyParams,
-  UpdateEnrolLtiLti2ShareKeyParams, 
+  type EnrolLtiLti2ShareKeyId, 
+  type NewEnrolLtiLti2ShareKeyParams,
+  type UpdateEnrolLtiLti2ShareKeyParams, 
   updateEnrolLtiLti2ShareKeySchema,
   insertEnrolLtiLti2ShareKeySchema, 
   enrolLtiLti2ShareKeys,

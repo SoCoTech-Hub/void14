@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  AnalyticsModelId, 
-  NewAnalyticsModelParams,
-  UpdateAnalyticsModelParams, 
+  type AnalyticsModelId, 
+  type NewAnalyticsModelParams,
+  type UpdateAnalyticsModelParams, 
   updateAnalyticsModelSchema,
   insertAnalyticsModelSchema, 
   analyticsModels,

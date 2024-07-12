@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  FileId, 
-  NewFileParams,
-  UpdateFileParams, 
+  type FileId, 
+  type NewFileParams,
+  type UpdateFileParams, 
   updateFileSchema,
   insertFileSchema, 
   files,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  QtypeMultichoiceOptionId, 
-  NewQtypeMultichoiceOptionParams,
-  UpdateQtypeMultichoiceOptionParams, 
+  type QtypeMultichoiceOptionId, 
+  type NewQtypeMultichoiceOptionParams,
+  type UpdateQtypeMultichoiceOptionParams, 
   updateQtypeMultichoiceOptionSchema,
   insertQtypeMultichoiceOptionSchema, 
   qtypeMultichoiceOptions,

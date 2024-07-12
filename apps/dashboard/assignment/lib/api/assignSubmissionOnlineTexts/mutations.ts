@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  AssignSubmissionOnlineTextId, 
-  NewAssignSubmissionOnlineTextParams,
-  UpdateAssignSubmissionOnlineTextParams, 
+  type AssignSubmissionOnlineTextId, 
+  type NewAssignSubmissionOnlineTextParams,
+  type UpdateAssignSubmissionOnlineTextParams, 
   updateAssignSubmissionOnlineTextSchema,
   insertAssignSubmissionOnlineTextSchema, 
   assignSubmissionOnlineTexts,

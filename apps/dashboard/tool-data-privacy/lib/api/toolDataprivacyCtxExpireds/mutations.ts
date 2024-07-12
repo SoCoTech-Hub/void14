@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  ToolDataprivacyCtxExpiredId, 
-  NewToolDataprivacyCtxExpiredParams,
-  UpdateToolDataprivacyCtxExpiredParams, 
+  type ToolDataprivacyCtxExpiredId, 
+  type NewToolDataprivacyCtxExpiredParams,
+  type UpdateToolDataprivacyCtxExpiredParams, 
   updateToolDataprivacyCtxExpiredSchema,
   insertToolDataprivacyCtxExpiredSchema, 
   toolDataprivacyCtxExpireds,

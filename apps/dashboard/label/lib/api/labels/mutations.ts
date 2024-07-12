@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  LabelId, 
-  NewLabelParams,
-  UpdateLabelParams, 
+  type LabelId, 
+  type NewLabelParams,
+  type UpdateLabelParams, 
   updateLabelSchema,
   insertLabelSchema, 
   labels,

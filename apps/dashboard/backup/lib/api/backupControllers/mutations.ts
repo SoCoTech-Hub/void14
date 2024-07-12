@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  BackupControllerId, 
-  NewBackupControllerParams,
-  UpdateBackupControllerParams, 
+  type BackupControllerId, 
+  type NewBackupControllerParams,
+  type UpdateBackupControllerParams, 
   updateBackupControllerSchema,
   insertBackupControllerSchema, 
   backupControllers,

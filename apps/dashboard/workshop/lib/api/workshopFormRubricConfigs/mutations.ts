@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  WorkshopFormRubricConfigId, 
-  NewWorkshopFormRubricConfigParams,
-  UpdateWorkshopFormRubricConfigParams, 
+  type WorkshopFormRubricConfigId, 
+  type NewWorkshopFormRubricConfigParams,
+  type UpdateWorkshopFormRubricConfigParams, 
   updateWorkshopFormRubricConfigSchema,
   insertWorkshopFormRubricConfigSchema, 
   workshopFormRubricConfigs,

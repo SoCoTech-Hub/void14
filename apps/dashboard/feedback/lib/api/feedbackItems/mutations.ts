@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  FeedbackItemId, 
-  NewFeedbackItemParams,
-  UpdateFeedbackItemParams, 
+  type FeedbackItemId, 
+  type NewFeedbackItemParams,
+  type UpdateFeedbackItemParams, 
   updateFeedbackItemSchema,
   insertFeedbackItemSchema, 
   feedbackItems,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  CountryId, 
-  NewCountryParams,
-  UpdateCountryParams, 
+  type CountryId, 
+  type NewCountryParams,
+  type UpdateCountryParams, 
   updateCountrySchema,
   insertCountrySchema, 
   countries,

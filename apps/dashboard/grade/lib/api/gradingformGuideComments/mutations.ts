@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  GradingformGuideCommentId, 
-  NewGradingformGuideCommentParams,
-  UpdateGradingformGuideCommentParams, 
+  type GradingformGuideCommentId, 
+  type NewGradingformGuideCommentParams,
+  type UpdateGradingformGuideCommentParams, 
   updateGradingformGuideCommentSchema,
   insertGradingformGuideCommentSchema, 
   gradingformGuideComments,

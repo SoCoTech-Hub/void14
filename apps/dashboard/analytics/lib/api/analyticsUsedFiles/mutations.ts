@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  AnalyticsUsedFileId, 
-  NewAnalyticsUsedFileParams,
-  UpdateAnalyticsUsedFileParams, 
+  type AnalyticsUsedFileId, 
+  type NewAnalyticsUsedFileParams,
+  type UpdateAnalyticsUsedFileParams, 
   updateAnalyticsUsedFileSchema,
   insertAnalyticsUsedFileSchema, 
   analyticsUsedFiles,

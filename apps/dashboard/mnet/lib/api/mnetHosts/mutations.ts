@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  MnetHostId, 
-  NewMnetHostParams,
-  UpdateMnetHostParams, 
+  type MnetHostId, 
+  type NewMnetHostParams,
+  type UpdateMnetHostParams, 
   updateMnetHostSchema,
   insertMnetHostSchema, 
   mnetHosts,

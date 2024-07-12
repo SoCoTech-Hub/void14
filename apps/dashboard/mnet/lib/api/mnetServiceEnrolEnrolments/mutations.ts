@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  MnetServiceEnrolEnrolmentId, 
-  NewMnetServiceEnrolEnrolmentParams,
-  UpdateMnetServiceEnrolEnrolmentParams, 
+  type MnetServiceEnrolEnrolmentId, 
+  type NewMnetServiceEnrolEnrolmentParams,
+  type UpdateMnetServiceEnrolEnrolmentParams, 
   updateMnetServiceEnrolEnrolmentSchema,
   insertMnetServiceEnrolEnrolmentSchema, 
   mnetServiceEnrolEnrolments,

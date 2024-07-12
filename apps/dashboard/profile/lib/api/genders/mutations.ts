@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  GenderId, 
-  NewGenderParams,
-  UpdateGenderParams, 
+  type GenderId, 
+  type NewGenderParams,
+  type UpdateGenderParams, 
   updateGenderSchema,
   insertGenderSchema, 
   genders,

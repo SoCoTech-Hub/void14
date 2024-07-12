@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  UniversityId, 
-  NewUniversityParams,
-  UpdateUniversityParams, 
+  type UniversityId, 
+  type NewUniversityParams,
+  type UpdateUniversityParams, 
   updateUniversitySchema,
   insertUniversitySchema, 
   universities,

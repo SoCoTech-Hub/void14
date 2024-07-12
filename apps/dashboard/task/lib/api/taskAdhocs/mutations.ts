@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  TaskAdhocId, 
-  NewTaskAdhocParams,
-  UpdateTaskAdhocParams, 
+  type TaskAdhocId, 
+  type NewTaskAdhocParams,
+  type UpdateTaskAdhocParams, 
   updateTaskAdhocSchema,
   insertTaskAdhocSchema, 
   taskAdhocs,

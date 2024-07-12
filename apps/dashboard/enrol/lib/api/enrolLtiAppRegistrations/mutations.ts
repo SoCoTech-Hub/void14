@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  EnrolLtiAppRegistrationId, 
-  NewEnrolLtiAppRegistrationParams,
-  UpdateEnrolLtiAppRegistrationParams, 
+  type EnrolLtiAppRegistrationId, 
+  type NewEnrolLtiAppRegistrationParams,
+  type UpdateEnrolLtiAppRegistrationParams, 
   updateEnrolLtiAppRegistrationSchema,
   insertEnrolLtiAppRegistrationSchema, 
   enrolLtiAppRegistrations,

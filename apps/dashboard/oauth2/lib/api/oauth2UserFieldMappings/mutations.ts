@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  Oauth2UserFieldMappingId, 
-  NewOauth2UserFieldMappingParams,
-  UpdateOauth2UserFieldMappingParams, 
+  type Oauth2UserFieldMappingId, 
+  type NewOauth2UserFieldMappingParams,
+  type UpdateOauth2UserFieldMappingParams, 
   updateOauth2UserFieldMappingSchema,
   insertOauth2UserFieldMappingSchema, 
   oauth2UserFieldMappings,

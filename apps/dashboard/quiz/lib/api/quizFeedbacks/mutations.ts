@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  QuizFeedbackId, 
-  NewQuizFeedbackParams,
-  UpdateQuizFeedbackParams, 
+  type QuizFeedbackId, 
+  type NewQuizFeedbackParams,
+  type UpdateQuizFeedbackParams, 
   updateQuizFeedbackSchema,
   insertQuizFeedbackSchema, 
   quizFeedbacks,

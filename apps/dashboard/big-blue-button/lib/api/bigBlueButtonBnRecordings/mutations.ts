@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  BigBlueButtonBnRecordingId, 
-  NewBigBlueButtonBnRecordingParams,
-  UpdateBigBlueButtonBnRecordingParams, 
+  type BigBlueButtonBnRecordingId, 
+  type NewBigBlueButtonBnRecordingParams,
+  type UpdateBigBlueButtonBnRecordingParams, 
   updateBigBlueButtonBnRecordingSchema,
   insertBigBlueButtonBnRecordingSchema, 
   bigBlueButtonBnRecordings,

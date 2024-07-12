@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  EnrolLtiResourceLinkId, 
-  NewEnrolLtiResourceLinkParams,
-  UpdateEnrolLtiResourceLinkParams, 
+  type EnrolLtiResourceLinkId, 
+  type NewEnrolLtiResourceLinkParams,
+  type UpdateEnrolLtiResourceLinkParams, 
   updateEnrolLtiResourceLinkSchema,
   insertEnrolLtiResourceLinkSchema, 
   enrolLtiResourceLinks,

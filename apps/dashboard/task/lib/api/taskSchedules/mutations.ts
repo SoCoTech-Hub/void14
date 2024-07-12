@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  TaskScheduleId, 
-  NewTaskScheduleParams,
-  UpdateTaskScheduleParams, 
+  type TaskScheduleId, 
+  type NewTaskScheduleParams,
+  type UpdateTaskScheduleParams, 
   updateTaskScheduleSchema,
   insertTaskScheduleSchema, 
   taskSchedules,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  SocialId, 
-  NewSocialParams,
-  UpdateSocialParams, 
+  type SocialId, 
+  type NewSocialParams,
+  type UpdateSocialParams, 
   updateSocialSchema,
   insertSocialSchema, 
   socials,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  ToolUserToursStepId, 
-  NewToolUserToursStepParams,
-  UpdateToolUserToursStepParams, 
+  type ToolUserToursStepId, 
+  type NewToolUserToursStepParams,
+  type UpdateToolUserToursStepParams, 
   updateToolUserToursStepSchema,
   insertToolUserToursStepSchema, 
   toolUserToursSteps,

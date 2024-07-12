@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  DigilibId, 
-  NewDigilibParams,
-  UpdateDigilibParams, 
+  type DigilibId, 
+  type NewDigilibParams,
+  type UpdateDigilibParams, 
   updateDigilibSchema,
   insertDigilibSchema, 
   digilibs,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  MessageConversationMemberId, 
-  NewMessageConversationMemberParams,
-  UpdateMessageConversationMemberParams, 
+  type MessageConversationMemberId, 
+  type NewMessageConversationMemberParams,
+  type UpdateMessageConversationMemberParams, 
   updateMessageConversationMemberSchema,
   insertMessageConversationMemberSchema, 
   messageConversationMembers,

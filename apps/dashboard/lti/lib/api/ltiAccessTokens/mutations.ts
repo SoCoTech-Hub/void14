@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  LtiAccessTokenId, 
-  NewLtiAccessTokenParams,
-  UpdateLtiAccessTokenParams, 
+  type LtiAccessTokenId, 
+  type NewLtiAccessTokenParams,
+  type UpdateLtiAccessTokenParams, 
   updateLtiAccessTokenSchema,
   insertLtiAccessTokenSchema, 
   ltiAccessTokens,

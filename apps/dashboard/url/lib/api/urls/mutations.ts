@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  UrlId, 
-  NewUrlParams,
-  UpdateUrlParams, 
+  type UrlId, 
+  type NewUrlParams,
+  type UpdateUrlParams, 
   updateUrlSchema,
   insertUrlSchema, 
   urls,

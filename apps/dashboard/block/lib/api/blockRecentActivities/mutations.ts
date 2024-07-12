@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  BlockRecentActivityId, 
-  NewBlockRecentActivityParams,
-  UpdateBlockRecentActivityParams, 
+  type BlockRecentActivityId, 
+  type NewBlockRecentActivityParams,
+  type UpdateBlockRecentActivityParams, 
   updateBlockRecentActivitySchema,
   insertBlockRecentActivitySchema, 
   blockRecentActivities,

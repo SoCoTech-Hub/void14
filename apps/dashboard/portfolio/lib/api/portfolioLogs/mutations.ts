@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  PortfolioLogId, 
-  NewPortfolioLogParams,
-  UpdatePortfolioLogParams, 
+  type PortfolioLogId, 
+  type NewPortfolioLogParams,
+  type UpdatePortfolioLogParams, 
   updatePortfolioLogSchema,
   insertPortfolioLogSchema, 
   portfolioLogs,

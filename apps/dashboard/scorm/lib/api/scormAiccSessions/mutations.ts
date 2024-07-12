@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  ScormAiccSessionId, 
-  NewScormAiccSessionParams,
-  UpdateScormAiccSessionParams, 
+  type ScormAiccSessionId, 
+  type NewScormAiccSessionParams,
+  type UpdateScormAiccSessionParams, 
   updateScormAiccSessionSchema,
   insertScormAiccSessionSchema, 
   scormAiccSessions,

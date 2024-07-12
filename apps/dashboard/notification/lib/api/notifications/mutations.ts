@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  NotificationId, 
-  NewNotificationParams,
-  UpdateNotificationParams, 
+  type NotificationId, 
+  type NewNotificationParams,
+  type UpdateNotificationParams, 
   updateNotificationSchema,
   insertNotificationSchema, 
   notifications,

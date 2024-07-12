@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  UserInfoCategoryId, 
-  NewUserInfoCategoryParams,
-  UpdateUserInfoCategoryParams, 
+  type UserInfoCategoryId, 
+  type NewUserInfoCategoryParams,
+  type UpdateUserInfoCategoryParams, 
   updateUserInfoCategorySchema,
   insertUserInfoCategorySchema, 
   userInfoCategories,

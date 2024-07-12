@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  LogDisplayId, 
-  NewLogDisplayParams,
-  UpdateLogDisplayParams, 
+  type LogDisplayId, 
+  type NewLogDisplayParams,
+  type UpdateLogDisplayParams, 
   updateLogDisplaySchema,
   insertLogDisplaySchema, 
   logDisplays,

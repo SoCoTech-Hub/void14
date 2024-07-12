@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  SearchSimpledbIndexId, 
-  NewSearchSimpledbIndexParams,
-  UpdateSearchSimpledbIndexParams, 
+  type SearchSimpledbIndexId, 
+  type NewSearchSimpledbIndexParams,
+  type UpdateSearchSimpledbIndexParams, 
   updateSearchSimpledbIndexSchema,
   insertSearchSimpledbIndexSchema, 
   searchSimpledbIndexes,

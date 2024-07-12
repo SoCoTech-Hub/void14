@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  BadgeCriteriaMetId, 
-  NewBadgeCriteriaMetParams,
-  UpdateBadgeCriteriaMetParams, 
+  type BadgeCriteriaMetId, 
+  type NewBadgeCriteriaMetParams,
+  type UpdateBadgeCriteriaMetParams, 
   updateBadgeCriteriaMetSchema,
   insertBadgeCriteriaMetSchema, 
   badgeCriteriaMets,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  GlossaryEntriesCategoryId, 
-  NewGlossaryEntriesCategoryParams,
-  UpdateGlossaryEntriesCategoryParams, 
+  type GlossaryEntriesCategoryId, 
+  type NewGlossaryEntriesCategoryParams,
+  type UpdateGlossaryEntriesCategoryParams, 
   updateGlossaryEntriesCategorySchema,
   insertGlossaryEntriesCategorySchema, 
   glossaryEntriesCategories,

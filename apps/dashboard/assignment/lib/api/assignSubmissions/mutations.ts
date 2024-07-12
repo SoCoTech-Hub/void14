@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  AssignSubmissionId, 
-  NewAssignSubmissionParams,
-  UpdateAssignSubmissionParams, 
+  type AssignSubmissionId, 
+  type NewAssignSubmissionParams,
+  type UpdateAssignSubmissionParams, 
   updateAssignSubmissionSchema,
   insertAssignSubmissionSchema, 
   assignSubmissions,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  SurveyAnswerId, 
-  NewSurveyAnswerParams,
-  UpdateSurveyAnswerParams, 
+  type SurveyAnswerId, 
+  type NewSurveyAnswerParams,
+  type UpdateSurveyAnswerParams, 
   updateSurveyAnswerSchema,
   insertSurveyAnswerSchema, 
   surveyAnswers,

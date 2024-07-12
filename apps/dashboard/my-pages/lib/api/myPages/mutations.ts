@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  MyPageId, 
-  NewMyPageParams,
-  UpdateMyPageParams, 
+  type MyPageId, 
+  type NewMyPageParams,
+  type UpdateMyPageParams, 
   updateMyPageSchema,
   insertMyPageSchema, 
   myPages,

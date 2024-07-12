@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  MnetApplicationId, 
-  NewMnetApplicationParams,
-  UpdateMnetApplicationParams, 
+  type MnetApplicationId, 
+  type NewMnetApplicationParams,
+  type UpdateMnetApplicationParams, 
   updateMnetApplicationSchema,
   insertMnetApplicationSchema, 
   mnetApplications,

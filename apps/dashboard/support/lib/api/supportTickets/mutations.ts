@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  SupportTicketId, 
-  NewSupportTicketParams,
-  UpdateSupportTicketParams, 
+  type SupportTicketId, 
+  type NewSupportTicketParams,
+  type UpdateSupportTicketParams, 
   updateSupportTicketSchema,
   insertSupportTicketSchema, 
   supportTickets,

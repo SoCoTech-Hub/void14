@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  ConfigLogId, 
-  NewConfigLogParams,
-  UpdateConfigLogParams, 
+  type ConfigLogId, 
+  type NewConfigLogParams,
+  type UpdateConfigLogParams, 
   updateConfigLogSchema,
   insertConfigLogSchema, 
   configLogs,

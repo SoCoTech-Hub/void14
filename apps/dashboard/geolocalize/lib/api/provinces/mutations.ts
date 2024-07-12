@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  ProvinceId, 
-  NewProvinceParams,
-  UpdateProvinceParams, 
+  type ProvinceId, 
+  type NewProvinceParams,
+  type UpdateProvinceParams, 
   updateProvinceSchema,
   insertProvinceSchema, 
   provinces,

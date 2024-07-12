@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  ResourceId, 
-  NewResourceParams,
-  UpdateResourceParams, 
+  type ResourceId, 
+  type NewResourceParams,
+  type UpdateResourceParams, 
   updateResourceSchema,
   insertResourceSchema, 
   resources,

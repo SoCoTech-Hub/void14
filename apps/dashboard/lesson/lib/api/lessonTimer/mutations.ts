@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  LessonTimerId, 
-  NewLessonTimerParams,
-  UpdateLessonTimerParams, 
+  type LessonTimerId, 
+  type NewLessonTimerParams,
+  type UpdateLessonTimerParams, 
   updateLessonTimerSchema,
   insertLessonTimerSchema, 
   lessonTimer,

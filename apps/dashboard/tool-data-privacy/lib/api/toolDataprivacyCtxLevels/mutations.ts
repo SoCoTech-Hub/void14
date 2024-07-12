@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  ToolDataprivacyCtxLevelId, 
-  NewToolDataprivacyCtxLevelParams,
-  UpdateToolDataprivacyCtxLevelParams, 
+  type ToolDataprivacyCtxLevelId, 
+  type NewToolDataprivacyCtxLevelParams,
+  type UpdateToolDataprivacyCtxLevelParams, 
   updateToolDataprivacyCtxLevelSchema,
   insertToolDataprivacyCtxLevelSchema, 
   toolDataprivacyCtxLevels,

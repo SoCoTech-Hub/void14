@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  LocalizationTranslationId, 
-  NewLocalizationTranslationParams,
-  UpdateLocalizationTranslationParams, 
+  type LocalizationTranslationId, 
+  type NewLocalizationTranslationParams,
+  type UpdateLocalizationTranslationParams, 
   updateLocalizationTranslationSchema,
   insertLocalizationTranslationSchema, 
   localizationTranslations,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  UserPasswordResetId, 
-  NewUserPasswordResetParams,
-  UpdateUserPasswordResetParams, 
+  type UserPasswordResetId, 
+  type NewUserPasswordResetParams,
+  type UpdateUserPasswordResetParams, 
   updateUserPasswordResetSchema,
   insertUserPasswordResetSchema, 
   userPasswordResets,

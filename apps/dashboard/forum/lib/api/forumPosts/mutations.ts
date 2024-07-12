@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  ForumPostId, 
-  NewForumPostParams,
-  UpdateForumPostParams, 
+  type ForumPostId, 
+  type NewForumPostParams,
+  type UpdateForumPostParams, 
   updateForumPostSchema,
   insertForumPostSchema, 
   forumPosts,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  MessageinboundDatakeyId, 
-  NewMessageinboundDatakeyParams,
-  UpdateMessageinboundDatakeyParams, 
+  type MessageinboundDatakeyId, 
+  type NewMessageinboundDatakeyParams,
+  type UpdateMessageinboundDatakeyParams, 
   updateMessageinboundDatakeySchema,
   insertMessageinboundDatakeySchema, 
   messageinboundDatakeys,

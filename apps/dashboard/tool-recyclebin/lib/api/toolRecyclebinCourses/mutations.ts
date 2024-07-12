@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  ToolRecyclebinCourseId, 
-  NewToolRecyclebinCourseParams,
-  UpdateToolRecyclebinCourseParams, 
+  type ToolRecyclebinCourseId, 
+  type NewToolRecyclebinCourseParams,
+  type UpdateToolRecyclebinCourseParams, 
   updateToolRecyclebinCourseSchema,
   insertToolRecyclebinCourseSchema, 
   toolRecyclebinCourses,

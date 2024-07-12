@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  InmailResponseId, 
-  NewInmailResponseParams,
-  UpdateInmailResponseParams, 
+  type InmailResponseId, 
+  type NewInmailResponseParams,
+  type UpdateInmailResponseParams, 
   updateInmailResponseSchema,
   insertInmailResponseSchema, 
   inmailResponses,

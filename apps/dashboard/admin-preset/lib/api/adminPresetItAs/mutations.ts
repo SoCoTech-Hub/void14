@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  AdminPresetItAId, 
-  NewAdminPresetItAParams,
-  UpdateAdminPresetItAParams, 
+  type AdminPresetItAId, 
+  type NewAdminPresetItAParams,
+  type UpdateAdminPresetItAParams, 
   updateAdminPresetItASchema,
   insertAdminPresetItASchema, 
   adminPresetItAs,

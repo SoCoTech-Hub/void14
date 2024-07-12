@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  H5pactivityAttemptsResultId, 
-  NewH5pactivityAttemptsResultParams,
-  UpdateH5pactivityAttemptsResultParams, 
+  type H5pactivityAttemptsResultId, 
+  type NewH5pactivityAttemptsResultParams,
+  type UpdateH5pactivityAttemptsResultParams, 
   updateH5pactivityAttemptsResultSchema,
   insertH5pactivityAttemptsResultSchema, 
   h5pactivityAttemptsResults,

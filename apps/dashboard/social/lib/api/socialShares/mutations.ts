@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  SocialShareId, 
-  NewSocialShareParams,
-  UpdateSocialShareParams, 
+  type SocialShareId, 
+  type NewSocialShareParams,
+  type UpdateSocialShareParams, 
   updateSocialShareSchema,
   insertSocialShareSchema, 
   socialShares,

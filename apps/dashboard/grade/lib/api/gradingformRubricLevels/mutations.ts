@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  GradingformRubricLevelId, 
-  NewGradingformRubricLevelParams,
-  UpdateGradingformRubricLevelParams, 
+  type GradingformRubricLevelId, 
+  type NewGradingformRubricLevelParams,
+  type UpdateGradingformRubricLevelParams, 
   updateGradingformRubricLevelSchema,
   insertGradingformRubricLevelSchema, 
   gradingformRubricLevels,

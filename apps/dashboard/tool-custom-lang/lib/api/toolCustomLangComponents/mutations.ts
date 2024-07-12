@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  ToolCustomLangComponentId, 
-  NewToolCustomLangComponentParams,
-  UpdateToolCustomLangComponentParams, 
+  type ToolCustomLangComponentId, 
+  type NewToolCustomLangComponentParams,
+  type UpdateToolCustomLangComponentParams, 
   updateToolCustomLangComponentSchema,
   insertToolCustomLangComponentSchema, 
   toolCustomLangComponents,

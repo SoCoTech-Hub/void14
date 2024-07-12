@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  AssignUserMappingId, 
-  NewAssignUserMappingParams,
-  UpdateAssignUserMappingParams, 
+  type AssignUserMappingId, 
+  type NewAssignUserMappingParams,
+  type UpdateAssignUserMappingParams, 
   updateAssignUserMappingSchema,
   insertAssignUserMappingSchema, 
   assignUserMappings,

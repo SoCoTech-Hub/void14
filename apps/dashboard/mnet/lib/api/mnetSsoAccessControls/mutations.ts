@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  MnetSsoAccessControlId, 
-  NewMnetSsoAccessControlParams,
-  UpdateMnetSsoAccessControlParams, 
+  type MnetSsoAccessControlId, 
+  type NewMnetSsoAccessControlParams,
+  type UpdateMnetSsoAccessControlParams, 
   updateMnetSsoAccessControlSchema,
   insertMnetSsoAccessControlSchema, 
   mnetSsoAccessControls,

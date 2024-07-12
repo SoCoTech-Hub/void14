@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  SocialIconId, 
-  NewSocialIconParams,
-  UpdateSocialIconParams, 
+  type SocialIconId, 
+  type NewSocialIconParams,
+  type UpdateSocialIconParams, 
   updateSocialIconSchema,
   insertSocialIconSchema, 
   socialIcons,

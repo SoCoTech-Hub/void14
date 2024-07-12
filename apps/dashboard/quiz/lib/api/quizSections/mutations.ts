@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  QuizSectionId, 
-  NewQuizSectionParams,
-  UpdateQuizSectionParams, 
+  type QuizSectionId, 
+  type NewQuizSectionParams,
+  type UpdateQuizSectionParams, 
   updateQuizSectionSchema,
   insertQuizSectionSchema, 
   quizSections,

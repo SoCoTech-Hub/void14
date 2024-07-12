@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  CalendarId, 
-  NewCalendarParams,
-  UpdateCalendarParams, 
+  type CalendarId, 
+  type NewCalendarParams,
+  type UpdateCalendarParams, 
   updateCalendarSchema,
   insertCalendarSchema, 
   calendar,

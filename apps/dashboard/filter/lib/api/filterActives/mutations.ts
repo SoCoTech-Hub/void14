@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  FilterActiveId, 
-  NewFilterActiveParams,
-  UpdateFilterActiveParams, 
+  type FilterActiveId, 
+  type NewFilterActiveParams,
+  type UpdateFilterActiveParams, 
   updateFilterActiveSchema,
   insertFilterActiveSchema, 
   filterActives,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  ZoomLessonId, 
-  NewZoomLessonParams,
-  UpdateZoomLessonParams, 
+  type ZoomLessonId, 
+  type NewZoomLessonParams,
+  type UpdateZoomLessonParams, 
   updateZoomLessonSchema,
   insertZoomLessonSchema, 
   zoomLessons,

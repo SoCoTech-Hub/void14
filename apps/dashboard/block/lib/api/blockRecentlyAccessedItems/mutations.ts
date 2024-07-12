@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  BlockRecentlyAccessedItemId, 
-  NewBlockRecentlyAccessedItemParams,
-  UpdateBlockRecentlyAccessedItemParams, 
+  type BlockRecentlyAccessedItemId, 
+  type NewBlockRecentlyAccessedItemParams,
+  type UpdateBlockRecentlyAccessedItemParams, 
   updateBlockRecentlyAccessedItemSchema,
   insertBlockRecentlyAccessedItemSchema, 
   blockRecentlyAccessedItems,

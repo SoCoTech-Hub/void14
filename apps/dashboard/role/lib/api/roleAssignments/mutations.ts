@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  RoleAssignmentId, 
-  NewRoleAssignmentParams,
-  UpdateRoleAssignmentParams, 
+  type RoleAssignmentId, 
+  type NewRoleAssignmentParams,
+  type UpdateRoleAssignmentParams, 
   updateRoleAssignmentSchema,
   insertRoleAssignmentSchema, 
   roleAssignments,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  TagInstanceId, 
-  NewTagInstanceParams,
-  UpdateTagInstanceParams, 
+  type TagInstanceId, 
+  type NewTagInstanceParams,
+  type UpdateTagInstanceParams, 
   updateTagInstanceSchema,
   insertTagInstanceSchema, 
   tagInstances,

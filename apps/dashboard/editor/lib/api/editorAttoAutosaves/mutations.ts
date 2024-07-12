@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  EditorAttoAutosaveId, 
-  NewEditorAttoAutosaveParams,
-  UpdateEditorAttoAutosaveParams, 
+  type EditorAttoAutosaveId, 
+  type NewEditorAttoAutosaveParams,
+  type UpdateEditorAttoAutosaveParams, 
   updateEditorAttoAutosaveSchema,
   insertEditorAttoAutosaveSchema, 
   editorAttoAutosaves,

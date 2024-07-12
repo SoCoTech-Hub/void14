@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  ScormSeqMapinfoId, 
-  NewScormSeqMapinfoParams,
-  UpdateScormSeqMapinfoParams, 
+  type ScormSeqMapinfoId, 
+  type NewScormSeqMapinfoParams,
+  type UpdateScormSeqMapinfoParams, 
   updateScormSeqMapinfoSchema,
   insertScormSeqMapinfoSchema, 
   scormSeqMapinfos,

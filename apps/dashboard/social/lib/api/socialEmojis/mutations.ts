@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  SocialEmojiId, 
-  NewSocialEmojiParams,
-  UpdateSocialEmojiParams, 
+  type SocialEmojiId, 
+  type NewSocialEmojiParams,
+  type UpdateSocialEmojiParams, 
   updateSocialEmojiSchema,
   insertSocialEmojiSchema, 
   socialEmojis,

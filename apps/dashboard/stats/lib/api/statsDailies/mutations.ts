@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  StatsDailyId, 
-  NewStatsDailyParams,
-  UpdateStatsDailyParams, 
+  type StatsDailyId, 
+  type NewStatsDailyParams,
+  type UpdateStatsDailyParams, 
   updateStatsDailySchema,
   insertStatsDailySchema, 
   statsDailies,

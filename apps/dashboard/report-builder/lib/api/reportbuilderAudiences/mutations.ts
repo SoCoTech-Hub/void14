@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  ReportbuilderAudienceId, 
-  NewReportbuilderAudienceParams,
-  UpdateReportbuilderAudienceParams, 
+  type ReportbuilderAudienceId, 
+  type NewReportbuilderAudienceParams,
+  type UpdateReportbuilderAudienceParams, 
   updateReportbuilderAudienceSchema,
   insertReportbuilderAudienceSchema, 
   reportbuilderAudiences,

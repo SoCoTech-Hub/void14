@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  FieldId, 
-  NewFieldParams,
-  UpdateFieldParams, 
+  type FieldId, 
+  type NewFieldParams,
+  type UpdateFieldParams, 
   updateFieldSchema,
   insertFieldSchema, 
   fields,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  QuestionGapselectId, 
-  NewQuestionGapselectParams,
-  UpdateQuestionGapselectParams, 
+  type QuestionGapselectId, 
+  type NewQuestionGapselectParams,
+  type UpdateQuestionGapselectParams, 
   updateQuestionGapselectSchema,
   insertQuestionGapselectSchema, 
   questionGapselects,

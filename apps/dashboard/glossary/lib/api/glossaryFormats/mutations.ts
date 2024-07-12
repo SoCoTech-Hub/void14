@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  GlossaryFormatId, 
-  NewGlossaryFormatParams,
-  UpdateGlossaryFormatParams, 
+  type GlossaryFormatId, 
+  type NewGlossaryFormatParams,
+  type UpdateGlossaryFormatParams, 
   updateGlossaryFormatSchema,
   insertGlossaryFormatSchema, 
   glossaryFormats,

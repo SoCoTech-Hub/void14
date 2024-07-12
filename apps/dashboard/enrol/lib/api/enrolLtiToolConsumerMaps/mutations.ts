@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  EnrolLtiToolConsumerMapId, 
-  NewEnrolLtiToolConsumerMapParams,
-  UpdateEnrolLtiToolConsumerMapParams, 
+  type EnrolLtiToolConsumerMapId, 
+  type NewEnrolLtiToolConsumerMapParams,
+  type UpdateEnrolLtiToolConsumerMapParams, 
   updateEnrolLtiToolConsumerMapSchema,
   insertEnrolLtiToolConsumerMapSchema, 
   enrolLtiToolConsumerMaps,

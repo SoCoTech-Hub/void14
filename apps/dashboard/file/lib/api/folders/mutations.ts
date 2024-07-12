@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  FolderId, 
-  NewFolderParams,
-  UpdateFolderParams, 
+  type FolderId, 
+  type NewFolderParams,
+  type UpdateFolderParams, 
   updateFolderSchema,
   insertFolderSchema, 
   folders,

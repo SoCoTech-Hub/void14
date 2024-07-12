@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  ScormSeqRollupRuleId, 
-  NewScormSeqRollupRuleParams,
-  UpdateScormSeqRollupRuleParams, 
+  type ScormSeqRollupRuleId, 
+  type NewScormSeqRollupRuleParams,
+  type UpdateScormSeqRollupRuleParams, 
   updateScormSeqRollupRuleSchema,
   insertScormSeqRollupRuleSchema, 
   scormSeqRollupRules,

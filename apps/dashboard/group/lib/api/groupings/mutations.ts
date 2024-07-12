@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  GroupingId, 
-  NewGroupingParams,
-  UpdateGroupingParams, 
+  type GroupingId, 
+  type NewGroupingParams,
+  type UpdateGroupingParams, 
   updateGroupingSchema,
   insertGroupingSchema, 
   groupings,

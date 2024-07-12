@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  QuizOverviewRegradeId, 
-  NewQuizOverviewRegradeParams,
-  UpdateQuizOverviewRegradeParams, 
+  type QuizOverviewRegradeId, 
+  type NewQuizOverviewRegradeParams,
+  type UpdateQuizOverviewRegradeParams, 
   updateQuizOverviewRegradeSchema,
   insertQuizOverviewRegradeSchema, 
   quizOverviewRegrades,

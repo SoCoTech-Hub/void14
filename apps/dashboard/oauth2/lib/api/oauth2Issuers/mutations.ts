@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  Oauth2IssuerId, 
-  NewOauth2IssuerParams,
-  UpdateOauth2IssuerParams, 
+  type Oauth2IssuerId, 
+  type NewOauth2IssuerParams,
+  type UpdateOauth2IssuerParams, 
   updateOauth2IssuerSchema,
   insertOauth2IssuerSchema, 
   oauth2Issuers,

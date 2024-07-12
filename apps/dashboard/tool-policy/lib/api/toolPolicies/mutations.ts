@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  ToolPolicyId, 
-  NewToolPolicyParams,
-  UpdateToolPolicyParams, 
+  type ToolPolicyId, 
+  type NewToolPolicyParams,
+  type UpdateToolPolicyParams, 
   updateToolPolicySchema,
   insertToolPolicySchema, 
   toolPolicies,

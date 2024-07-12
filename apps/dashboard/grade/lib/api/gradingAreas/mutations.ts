@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  GradingAreaId, 
-  NewGradingAreaParams,
-  UpdateGradingAreaParams, 
+  type GradingAreaId, 
+  type NewGradingAreaParams,
+  type UpdateGradingAreaParams, 
   updateGradingAreaSchema,
   insertGradingAreaSchema, 
   gradingAreas,

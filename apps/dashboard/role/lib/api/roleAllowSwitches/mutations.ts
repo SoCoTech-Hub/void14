@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  RoleAllowSwitchId, 
-  NewRoleAllowSwitchParams,
-  UpdateRoleAllowSwitchParams, 
+  type RoleAllowSwitchId, 
+  type NewRoleAllowSwitchParams,
+  type UpdateRoleAllowSwitchParams, 
   updateRoleAllowSwitchSchema,
   insertRoleAllowSwitchSchema, 
   roleAllowSwitches,

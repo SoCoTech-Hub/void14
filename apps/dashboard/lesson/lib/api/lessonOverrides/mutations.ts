@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  LessonOverrideId, 
-  NewLessonOverrideParams,
-  UpdateLessonOverrideParams, 
+  type LessonOverrideId, 
+  type NewLessonOverrideParams,
+  type UpdateLessonOverrideParams, 
   updateLessonOverrideSchema,
   insertLessonOverrideSchema, 
   lessonOverrides,

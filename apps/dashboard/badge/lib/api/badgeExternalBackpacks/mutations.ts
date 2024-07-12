@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  BadgeExternalBackpackId, 
-  NewBadgeExternalBackpackParams,
-  UpdateBadgeExternalBackpackParams, 
+  type BadgeExternalBackpackId, 
+  type NewBadgeExternalBackpackParams,
+  type UpdateBadgeExternalBackpackParams, 
   updateBadgeExternalBackpackSchema,
   insertBadgeExternalBackpackSchema, 
   badgeExternalBackpacks,

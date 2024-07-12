@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  QtypeRandomsamatchOptionId, 
-  NewQtypeRandomsamatchOptionParams,
-  UpdateQtypeRandomsamatchOptionParams, 
+  type QtypeRandomsamatchOptionId, 
+  type NewQtypeRandomsamatchOptionParams,
+  type UpdateQtypeRandomsamatchOptionParams, 
   updateQtypeRandomsamatchOptionSchema,
   insertQtypeRandomsamatchOptionSchema, 
   qtypeRandomsamatchOptions,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  DistrictOrganizationId, 
-  NewDistrictOrganizationParams,
-  UpdateDistrictOrganizationParams, 
+  type DistrictOrganizationId, 
+  type NewDistrictOrganizationParams,
+  type UpdateDistrictOrganizationParams, 
   updateDistrictOrganizationSchema,
   insertDistrictOrganizationSchema, 
   districtOrganizations,

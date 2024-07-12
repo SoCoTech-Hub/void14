@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  QuizGradeId, 
-  NewQuizGradeParams,
-  UpdateQuizGradeParams, 
+  type QuizGradeId, 
+  type NewQuizGradeParams,
+  type UpdateQuizGradeParams, 
   updateQuizGradeSchema,
   insertQuizGradeSchema, 
   quizGrades,

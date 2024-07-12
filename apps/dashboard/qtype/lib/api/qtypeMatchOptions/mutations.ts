@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  QtypeMatchOptionId, 
-  NewQtypeMatchOptionParams,
-  UpdateQtypeMatchOptionParams, 
+  type QtypeMatchOptionId, 
+  type NewQtypeMatchOptionParams,
+  type UpdateQtypeMatchOptionParams, 
   updateQtypeMatchOptionSchema,
   insertQtypeMatchOptionSchema, 
   qtypeMatchOptions,

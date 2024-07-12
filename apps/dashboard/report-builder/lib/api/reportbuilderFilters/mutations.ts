@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  ReportbuilderFilterId, 
-  NewReportbuilderFilterParams,
-  UpdateReportbuilderFilterParams, 
+  type ReportbuilderFilterId, 
+  type NewReportbuilderFilterParams,
+  type UpdateReportbuilderFilterParams, 
   updateReportbuilderFilterSchema,
   insertReportbuilderFilterSchema, 
   reportbuilderFilters,

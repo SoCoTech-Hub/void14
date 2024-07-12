@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  ProfileId, 
-  NewProfileParams,
-  UpdateProfileParams, 
+  type ProfileId, 
+  type NewProfileParams,
+  type UpdateProfileParams, 
   updateProfileSchema,
   insertProfileSchema, 
   profiles,

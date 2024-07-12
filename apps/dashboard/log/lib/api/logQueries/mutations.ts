@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  LogQueryId, 
-  NewLogQueryParams,
-  UpdateLogQueryParams, 
+  type LogQueryId, 
+  type NewLogQueryParams,
+  type UpdateLogQueryParams, 
   updateLogQuerySchema,
   insertLogQuerySchema, 
   logQueries,

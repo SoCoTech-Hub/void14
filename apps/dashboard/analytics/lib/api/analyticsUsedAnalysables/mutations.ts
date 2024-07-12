@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  AnalyticsUsedAnalysableId, 
-  NewAnalyticsUsedAnalysableParams,
-  UpdateAnalyticsUsedAnalysableParams, 
+  type AnalyticsUsedAnalysableId, 
+  type NewAnalyticsUsedAnalysableParams,
+  type UpdateAnalyticsUsedAnalysableParams, 
   updateAnalyticsUsedAnalysableSchema,
   insertAnalyticsUsedAnalysableSchema, 
   analyticsUsedAnalysables,

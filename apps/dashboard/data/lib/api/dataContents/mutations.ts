@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  DataContentId, 
-  NewDataContentParams,
-  UpdateDataContentParams, 
+  type DataContentId, 
+  type NewDataContentParams,
+  type UpdateDataContentParams, 
   updateDataContentSchema,
   insertDataContentSchema, 
   dataContents,

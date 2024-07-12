@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  ScormScoesDataId, 
-  NewScormScoesDataParams,
-  UpdateScormScoesDataParams, 
+  type ScormScoesDataId, 
+  type NewScormScoesDataParams,
+  type UpdateScormScoesDataParams, 
   updateScormScoesDataSchema,
   insertScormScoesDataSchema, 
   scormScoesDatas,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  ToolDataprivacyPurposeId, 
-  NewToolDataprivacyPurposeParams,
-  UpdateToolDataprivacyPurposeParams, 
+  type ToolDataprivacyPurposeId, 
+  type NewToolDataprivacyPurposeParams,
+  type UpdateToolDataprivacyPurposeParams, 
   updateToolDataprivacyPurposeSchema,
   insertToolDataprivacyPurposeSchema, 
   toolDataprivacyPurposes,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  BadgeManualAwardId, 
-  NewBadgeManualAwardParams,
-  UpdateBadgeManualAwardParams, 
+  type BadgeManualAwardId, 
+  type NewBadgeManualAwardParams,
+  type UpdateBadgeManualAwardParams, 
   updateBadgeManualAwardSchema,
   insertBadgeManualAwardSchema, 
   badgeManualAwards,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  DigilibCategoryId, 
-  NewDigilibCategoryParams,
-  UpdateDigilibCategoryParams, 
+  type DigilibCategoryId, 
+  type NewDigilibCategoryParams,
+  type UpdateDigilibCategoryParams, 
   updateDigilibCategorySchema,
   insertDigilibCategorySchema, 
   digilibCategories,

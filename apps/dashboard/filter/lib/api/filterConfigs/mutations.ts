@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  FilterConfigId, 
-  NewFilterConfigParams,
-  UpdateFilterConfigParams, 
+  type FilterConfigId, 
+  type NewFilterConfigParams,
+  type UpdateFilterConfigParams, 
   updateFilterConfigSchema,
   insertFilterConfigSchema, 
   filterConfigs,

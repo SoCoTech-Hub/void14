@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  ToolRecyclebinCategoryId, 
-  NewToolRecyclebinCategoryParams,
-  UpdateToolRecyclebinCategoryParams, 
+  type ToolRecyclebinCategoryId, 
+  type NewToolRecyclebinCategoryParams,
+  type UpdateToolRecyclebinCategoryParams, 
   updateToolRecyclebinCategorySchema,
   insertToolRecyclebinCategorySchema, 
   toolRecyclebinCategories,

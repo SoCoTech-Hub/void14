@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  JobApplicationsApplicationCategoryId, 
-  NewJobApplicationsApplicationCategoryParams,
-  UpdateJobApplicationsApplicationCategoryParams, 
+  type JobApplicationsApplicationCategoryId, 
+  type NewJobApplicationsApplicationCategoryParams,
+  type UpdateJobApplicationsApplicationCategoryParams, 
   updateJobApplicationsApplicationCategorySchema,
   insertJobApplicationsApplicationCategorySchema, 
   jobApplicationsApplicationCategories,

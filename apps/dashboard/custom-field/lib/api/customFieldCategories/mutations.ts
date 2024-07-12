@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  CustomFieldCategoryId, 
-  NewCustomFieldCategoryParams,
-  UpdateCustomFieldCategoryParams, 
+  type CustomFieldCategoryId, 
+  type NewCustomFieldCategoryParams,
+  type UpdateCustomFieldCategoryParams, 
   updateCustomFieldCategorySchema,
   insertCustomFieldCategorySchema, 
   customFieldCategories,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  LogstoreStandardLogId, 
-  NewLogstoreStandardLogParams,
-  UpdateLogstoreStandardLogParams, 
+  type LogstoreStandardLogId, 
+  type NewLogstoreStandardLogParams,
+  type UpdateLogstoreStandardLogParams, 
   updateLogstoreStandardLogSchema,
   insertLogstoreStandardLogSchema, 
   logstoreStandardLogs,

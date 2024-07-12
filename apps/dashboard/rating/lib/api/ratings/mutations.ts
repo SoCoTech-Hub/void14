@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  RatingId, 
-  NewRatingParams,
-  UpdateRatingParams, 
+  type RatingId, 
+  type NewRatingParams,
+  type UpdateRatingParams, 
   updateRatingSchema,
   insertRatingSchema, 
   ratings,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  GradeSettingId, 
-  NewGradeSettingParams,
-  UpdateGradeSettingParams, 
+  type GradeSettingId, 
+  type NewGradeSettingParams,
+  type UpdateGradeSettingParams, 
   updateGradeSettingSchema,
   insertGradeSettingSchema, 
   gradeSettings,

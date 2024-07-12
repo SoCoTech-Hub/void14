@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  EnrolLtiLti2ToolProxyId, 
-  NewEnrolLtiLti2ToolProxyParams,
-  UpdateEnrolLtiLti2ToolProxyParams, 
+  type EnrolLtiLti2ToolProxyId, 
+  type NewEnrolLtiLti2ToolProxyParams,
+  type UpdateEnrolLtiLti2ToolProxyParams, 
   updateEnrolLtiLti2ToolProxySchema,
   insertEnrolLtiLti2ToolProxySchema, 
   enrolLtiLti2ToolProxys,

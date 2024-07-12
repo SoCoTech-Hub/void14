@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  QualificationId, 
-  NewQualificationParams,
-  UpdateQualificationParams, 
+  type QualificationId, 
+  type NewQualificationParams,
+  type UpdateQualificationParams, 
   updateQualificationSchema,
   insertQualificationSchema, 
   qualifications,

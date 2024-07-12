@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  MessageUserActionId, 
-  NewMessageUserActionParams,
-  UpdateMessageUserActionParams, 
+  type MessageUserActionId, 
+  type NewMessageUserActionParams,
+  type UpdateMessageUserActionParams, 
   updateMessageUserActionSchema,
   insertMessageUserActionSchema, 
   messageUserActions,

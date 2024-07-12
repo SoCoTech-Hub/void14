@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  GradeOutcomesCourseId, 
-  NewGradeOutcomesCourseParams,
-  UpdateGradeOutcomesCourseParams, 
+  type GradeOutcomesCourseId, 
+  type NewGradeOutcomesCourseParams,
+  type UpdateGradeOutcomesCourseParams, 
   updateGradeOutcomesCourseSchema,
   insertGradeOutcomesCourseSchema, 
   gradeOutcomesCourses,

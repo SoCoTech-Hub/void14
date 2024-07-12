@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  UserPrivateKeyId, 
-  NewUserPrivateKeyParams,
-  UpdateUserPrivateKeyParams, 
+  type UserPrivateKeyId, 
+  type NewUserPrivateKeyParams,
+  type UpdateUserPrivateKeyParams, 
   updateUserPrivateKeySchema,
   insertUserPrivateKeySchema, 
   userPrivateKeys,

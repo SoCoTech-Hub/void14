@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  CourseModuleId, 
-  NewCourseModuleParams,
-  UpdateCourseModuleParams, 
+  type CourseModuleId, 
+  type NewCourseModuleParams,
+  type UpdateCourseModuleParams, 
   updateCourseModuleSchema,
   insertCourseModuleSchema, 
   courseModules,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  QtypeMatchSubquestionId, 
-  NewQtypeMatchSubquestionParams,
-  UpdateQtypeMatchSubquestionParams, 
+  type QtypeMatchSubquestionId, 
+  type NewQtypeMatchSubquestionParams,
+  type UpdateQtypeMatchSubquestionParams, 
   updateQtypeMatchSubquestionSchema,
   insertQtypeMatchSubquestionSchema, 
   qtypeMatchSubquestions,

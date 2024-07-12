@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  QuestionAttemptId, 
-  NewQuestionAttemptParams,
-  UpdateQuestionAttemptParams, 
+  type QuestionAttemptId, 
+  type NewQuestionAttemptParams,
+  type UpdateQuestionAttemptParams, 
   updateQuestionAttemptSchema,
   insertQuestionAttemptSchema, 
   questionAttempts,

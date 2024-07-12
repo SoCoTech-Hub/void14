@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  FeedbackSitecourseMapId, 
-  NewFeedbackSitecourseMapParams,
-  UpdateFeedbackSitecourseMapParams, 
+  type FeedbackSitecourseMapId, 
+  type NewFeedbackSitecourseMapParams,
+  type UpdateFeedbackSitecourseMapParams, 
   updateFeedbackSitecourseMapSchema,
   insertFeedbackSitecourseMapSchema, 
   feedbackSitecourseMaps,

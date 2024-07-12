@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  MessageinboundMessagelistId, 
-  NewMessageinboundMessagelistParams,
-  UpdateMessageinboundMessagelistParams, 
+  type MessageinboundMessagelistId, 
+  type NewMessageinboundMessagelistParams,
+  type UpdateMessageinboundMessagelistParams, 
   updateMessageinboundMessagelistSchema,
   insertMessageinboundMessagelistSchema, 
   messageinboundMessagelists,

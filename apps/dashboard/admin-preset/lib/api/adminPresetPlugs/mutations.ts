@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  AdminPresetPlugId, 
-  NewAdminPresetPlugParams,
-  UpdateAdminPresetPlugParams, 
+  type AdminPresetPlugId, 
+  type NewAdminPresetPlugParams,
+  type UpdateAdminPresetPlugParams, 
   updateAdminPresetPlugSchema,
   insertAdminPresetPlugSchema, 
   adminPresetPlugs,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  UserDeviceId, 
-  NewUserDeviceParams,
-  UpdateUserDeviceParams, 
+  type UserDeviceId, 
+  type NewUserDeviceParams,
+  type UpdateUserDeviceParams, 
   updateUserDeviceSchema,
   insertUserDeviceSchema, 
   userDevices,

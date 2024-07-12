@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  MessageProviderId, 
-  NewMessageProviderParams,
-  UpdateMessageProviderParams, 
+  type MessageProviderId, 
+  type NewMessageProviderParams,
+  type UpdateMessageProviderParams, 
   updateMessageProviderSchema,
   insertMessageProviderSchema, 
   messageProviders,

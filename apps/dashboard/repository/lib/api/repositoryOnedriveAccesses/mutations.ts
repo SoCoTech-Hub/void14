@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  RepositoryOnedriveAccessId, 
-  NewRepositoryOnedriveAccessParams,
-  UpdateRepositoryOnedriveAccessParams, 
+  type RepositoryOnedriveAccessId, 
+  type NewRepositoryOnedriveAccessParams,
+  type UpdateRepositoryOnedriveAccessParams, 
   updateRepositoryOnedriveAccessSchema,
   insertRepositoryOnedriveAccessSchema, 
   repositoryOnedriveAccesses,

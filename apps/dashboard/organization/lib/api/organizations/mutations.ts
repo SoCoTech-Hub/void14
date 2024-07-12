@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  OrganizationId, 
-  NewOrganizationParams,
-  UpdateOrganizationParams, 
+  type OrganizationId, 
+  type NewOrganizationParams,
+  type UpdateOrganizationParams, 
   updateOrganizationSchema,
   insertOrganizationSchema, 
   organizations,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  ScormSeqRuleConditionId, 
-  NewScormSeqRuleConditionParams,
-  UpdateScormSeqRuleConditionParams, 
+  type ScormSeqRuleConditionId, 
+  type NewScormSeqRuleConditionParams,
+  type UpdateScormSeqRuleConditionParams, 
   updateScormSeqRuleConditionSchema,
   insertScormSeqRuleConditionSchema, 
   scormSeqRuleConditions,

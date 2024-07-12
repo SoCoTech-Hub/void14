@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  BadgeBackpackOauth2Id, 
-  NewBadgeBackpackOauth2Params,
-  UpdateBadgeBackpackOauth2Params, 
+  type BadgeBackpackOauth2Id, 
+  type NewBadgeBackpackOauth2Params,
+  type UpdateBadgeBackpackOauth2Params, 
   updateBadgeBackpackOauth2Schema,
   insertBadgeBackpackOauth2Schema, 
   badgeBackpackOauth2s,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  NoteId, 
-  NewNoteParams,
-  UpdateNoteParams, 
+  type NoteId, 
+  type NewNoteParams,
+  type UpdateNoteParams, 
   updateNoteSchema,
   insertNoteSchema, 
   notes,

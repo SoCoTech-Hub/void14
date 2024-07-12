@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  QuestionResponseCountId, 
-  NewQuestionResponseCountParams,
-  UpdateQuestionResponseCountParams, 
+  type QuestionResponseCountId, 
+  type NewQuestionResponseCountParams,
+  type UpdateQuestionResponseCountParams, 
   updateQuestionResponseCountSchema,
   insertQuestionResponseCountSchema, 
   questionResponseCounts,

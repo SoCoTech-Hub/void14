@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  BadgeCriteriaParamId, 
-  NewBadgeCriteriaParamParams,
-  UpdateBadgeCriteriaParamParams, 
+  type BadgeCriteriaParamId, 
+  type NewBadgeCriteriaParamParams,
+  type UpdateBadgeCriteriaParamParams, 
   updateBadgeCriteriaParamSchema,
   insertBadgeCriteriaParamSchema, 
   badgeCriteriaParams,

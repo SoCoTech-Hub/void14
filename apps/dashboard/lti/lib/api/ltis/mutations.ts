@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  LtiId, 
-  NewLtiParams,
-  UpdateLtiParams, 
+  type LtiId, 
+  type NewLtiParams,
+  type UpdateLtiParams, 
   updateLtiSchema,
   insertLtiSchema, 
   ltis,

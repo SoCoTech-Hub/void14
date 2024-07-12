@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  AssignOverrideId, 
-  NewAssignOverrideParams,
-  UpdateAssignOverrideParams, 
+  type AssignOverrideId, 
+  type NewAssignOverrideParams,
+  type UpdateAssignOverrideParams, 
   updateAssignOverrideSchema,
   insertAssignOverrideSchema, 
   assignOverrides,

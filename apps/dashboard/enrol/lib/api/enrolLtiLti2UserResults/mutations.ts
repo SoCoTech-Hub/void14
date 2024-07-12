@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  EnrolLtiLti2UserResultId, 
-  NewEnrolLtiLti2UserResultParams,
-  UpdateEnrolLtiLti2UserResultParams, 
+  type EnrolLtiLti2UserResultId, 
+  type NewEnrolLtiLti2UserResultParams,
+  type UpdateEnrolLtiLti2UserResultParams, 
   updateEnrolLtiLti2UserResultSchema,
   insertEnrolLtiLti2UserResultSchema, 
   enrolLtiLti2UserResults,

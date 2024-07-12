@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  QuestionCategoryId, 
-  NewQuestionCategoryParams,
-  UpdateQuestionCategoryParams, 
+  type QuestionCategoryId, 
+  type NewQuestionCategoryParams,
+  type UpdateQuestionCategoryParams, 
   updateQuestionCategorySchema,
   insertQuestionCategorySchema, 
   questionCategories,

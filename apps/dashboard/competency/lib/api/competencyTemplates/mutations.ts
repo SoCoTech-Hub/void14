@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  CompetencyTemplateId, 
-  NewCompetencyTemplateParams,
-  UpdateCompetencyTemplateParams, 
+  type CompetencyTemplateId, 
+  type NewCompetencyTemplateParams,
+  type UpdateCompetencyTemplateParams, 
   updateCompetencyTemplateSchema,
   insertCompetencyTemplateSchema, 
   competencyTemplates,

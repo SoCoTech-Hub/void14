@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  BlockInstanceId, 
-  NewBlockInstanceParams,
-  UpdateBlockInstanceParams, 
+  type BlockInstanceId, 
+  type NewBlockInstanceParams,
+  type UpdateBlockInstanceParams, 
   updateBlockInstanceSchema,
   insertBlockInstanceSchema, 
   blockInstances,

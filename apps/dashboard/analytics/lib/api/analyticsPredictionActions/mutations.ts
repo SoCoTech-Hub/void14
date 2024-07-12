@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  AnalyticsPredictionActionId, 
-  NewAnalyticsPredictionActionParams,
-  UpdateAnalyticsPredictionActionParams, 
+  type AnalyticsPredictionActionId, 
+  type NewAnalyticsPredictionActionParams,
+  type UpdateAnalyticsPredictionActionParams, 
   updateAnalyticsPredictionActionSchema,
   insertAnalyticsPredictionActionSchema, 
   analyticsPredictionActions,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  LtiToolSettingId, 
-  NewLtiToolSettingParams,
-  UpdateLtiToolSettingParams, 
+  type LtiToolSettingId, 
+  type NewLtiToolSettingParams,
+  type UpdateLtiToolSettingParams, 
   updateLtiToolSettingSchema,
   insertLtiToolSettingSchema, 
   ltiToolSettings,

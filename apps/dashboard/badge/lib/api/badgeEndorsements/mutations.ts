@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  BadgeEndorsementId, 
-  NewBadgeEndorsementParams,
-  UpdateBadgeEndorsementParams, 
+  type BadgeEndorsementId, 
+  type NewBadgeEndorsementParams,
+  type UpdateBadgeEndorsementParams, 
   updateBadgeEndorsementSchema,
   insertBadgeEndorsementSchema, 
   badgeEndorsements,

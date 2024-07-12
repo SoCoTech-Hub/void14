@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  ShowsCategoryId, 
-  NewShowsCategoryParams,
-  UpdateShowsCategoryParams, 
+  type ShowsCategoryId, 
+  type NewShowsCategoryParams,
+  type UpdateShowsCategoryParams, 
   updateShowsCategorySchema,
   insertShowsCategorySchema, 
   showsCategories,

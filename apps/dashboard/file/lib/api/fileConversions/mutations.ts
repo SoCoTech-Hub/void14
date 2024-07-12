@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  FileConversionId, 
-  NewFileConversionParams,
-  UpdateFileConversionParams, 
+  type FileConversionId, 
+  type NewFileConversionParams,
+  type UpdateFileConversionParams, 
   updateFileConversionSchema,
   insertFileConversionSchema, 
   fileConversions,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  AssignFeedbackEditpdfCmntId, 
-  NewAssignFeedbackEditpdfCmntParams,
-  UpdateAssignFeedbackEditpdfCmntParams, 
+  type AssignFeedbackEditpdfCmntId, 
+  type NewAssignFeedbackEditpdfCmntParams,
+  type UpdateAssignFeedbackEditpdfCmntParams, 
   updateAssignFeedbackEditpdfCmntSchema,
   insertAssignFeedbackEditpdfCmntSchema, 
   assignFeedbackEditpdfCmnts,

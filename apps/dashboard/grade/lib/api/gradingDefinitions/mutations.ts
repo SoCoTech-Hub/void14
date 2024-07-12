@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  GradingDefinitionId, 
-  NewGradingDefinitionParams,
-  UpdateGradingDefinitionParams, 
+  type GradingDefinitionId, 
+  type NewGradingDefinitionParams,
+  type UpdateGradingDefinitionParams, 
   updateGradingDefinitionSchema,
   insertGradingDefinitionSchema, 
   gradingDefinitions,

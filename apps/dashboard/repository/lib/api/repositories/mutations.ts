@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  RepositoryId, 
-  NewRepositoryParams,
-  UpdateRepositoryParams, 
+  type RepositoryId, 
+  type NewRepositoryParams,
+  type UpdateRepositoryParams, 
   updateRepositorySchema,
   insertRepositorySchema, 
   repositories,

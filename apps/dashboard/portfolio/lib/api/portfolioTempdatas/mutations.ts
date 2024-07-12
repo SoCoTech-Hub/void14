@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  PortfolioTempdataId, 
-  NewPortfolioTempdataParams,
-  UpdatePortfolioTempdataParams, 
+  type PortfolioTempdataId, 
+  type NewPortfolioTempdataParams,
+  type UpdatePortfolioTempdataParams, 
   updatePortfolioTempdataSchema,
   insertPortfolioTempdataSchema, 
   portfolioTempdatas,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  SupportStatusId, 
-  NewSupportStatusParams,
-  UpdateSupportStatusParams, 
+  type SupportStatusId, 
+  type NewSupportStatusParams,
+  type UpdateSupportStatusParams, 
   updateSupportStatusSchema,
   insertSupportStatusSchema, 
   supportStatuses,

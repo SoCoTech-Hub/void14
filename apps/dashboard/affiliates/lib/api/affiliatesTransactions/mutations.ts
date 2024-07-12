@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  AffiliatesTransactionId, 
-  NewAffiliatesTransactionParams,
-  UpdateAffiliatesTransactionParams, 
+  type AffiliatesTransactionId, 
+  type NewAffiliatesTransactionParams,
+  type UpdateAffiliatesTransactionParams, 
   updateAffiliatesTransactionSchema,
   insertAffiliatesTransactionSchema, 
   affiliatesTransactions,

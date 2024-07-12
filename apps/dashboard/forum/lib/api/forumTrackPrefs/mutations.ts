@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  ForumTrackPrefId, 
-  NewForumTrackPrefParams,
-  UpdateForumTrackPrefParams, 
+  type ForumTrackPrefId, 
+  type NewForumTrackPrefParams,
+  type UpdateForumTrackPrefParams, 
   updateForumTrackPrefSchema,
   insertForumTrackPrefSchema, 
   forumTrackPrefs,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  PortfolioMaharaQueueId, 
-  NewPortfolioMaharaQueueParams,
-  UpdatePortfolioMaharaQueueParams, 
+  type PortfolioMaharaQueueId, 
+  type NewPortfolioMaharaQueueParams,
+  type UpdatePortfolioMaharaQueueParams, 
   updatePortfolioMaharaQueueSchema,
   insertPortfolioMaharaQueueSchema, 
   portfolioMaharaQueues,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  FaqCategoryId, 
-  NewFaqCategoryParams,
-  UpdateFaqCategoryParams, 
+  type FaqCategoryId, 
+  type NewFaqCategoryParams,
+  type UpdateFaqCategoryParams, 
   updateFaqCategorySchema,
   insertFaqCategorySchema, 
   faqCategories,

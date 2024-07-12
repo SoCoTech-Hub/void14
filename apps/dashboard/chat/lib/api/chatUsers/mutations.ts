@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  ChatUserId, 
-  NewChatUserParams,
-  UpdateChatUserParams, 
+  type ChatUserId, 
+  type NewChatUserParams,
+  type UpdateChatUserParams, 
   updateChatUserSchema,
   insertChatUserSchema, 
   chatUsers,

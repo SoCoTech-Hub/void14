@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  PortfolioInstanceConfigId, 
-  NewPortfolioInstanceConfigParams,
-  UpdatePortfolioInstanceConfigParams, 
+  type PortfolioInstanceConfigId, 
+  type NewPortfolioInstanceConfigParams,
+  type UpdatePortfolioInstanceConfigParams, 
   updatePortfolioInstanceConfigSchema,
   insertPortfolioInstanceConfigSchema, 
   portfolioInstanceConfigs,

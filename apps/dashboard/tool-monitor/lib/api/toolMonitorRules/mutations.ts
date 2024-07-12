@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  ToolMonitorRuleId, 
-  NewToolMonitorRuleParams,
-  UpdateToolMonitorRuleParams, 
+  type ToolMonitorRuleId, 
+  type NewToolMonitorRuleParams,
+  type UpdateToolMonitorRuleParams, 
   updateToolMonitorRuleSchema,
   insertToolMonitorRuleSchema, 
   toolMonitorRules,

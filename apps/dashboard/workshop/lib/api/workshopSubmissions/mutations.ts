@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  WorkshopSubmissionId, 
-  NewWorkshopSubmissionParams,
-  UpdateWorkshopSubmissionParams, 
+  type WorkshopSubmissionId, 
+  type NewWorkshopSubmissionParams,
+  type UpdateWorkshopSubmissionParams, 
   updateWorkshopSubmissionSchema,
   insertWorkshopSubmissionSchema, 
   workshopSubmissions,

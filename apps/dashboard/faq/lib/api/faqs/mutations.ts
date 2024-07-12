@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  FaqId, 
-  NewFaqParams,
-  UpdateFaqParams, 
+  type FaqId, 
+  type NewFaqParams,
+  type UpdateFaqParams, 
   updateFaqSchema,
   insertFaqSchema, 
   faqs,

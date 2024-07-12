@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  BigBlueButtonBnId, 
-  NewBigBlueButtonBnParams,
-  UpdateBigBlueButtonBnParams, 
+  type BigBlueButtonBnId, 
+  type NewBigBlueButtonBnParams,
+  type UpdateBigBlueButtonBnParams, 
   updateBigBlueButtonBnSchema,
   insertBigBlueButtonBnSchema, 
   bigBlueButtonBns,

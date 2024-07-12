@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  AnalyticsTrainSampleId, 
-  NewAnalyticsTrainSampleParams,
-  UpdateAnalyticsTrainSampleParams, 
+  type AnalyticsTrainSampleId, 
+  type NewAnalyticsTrainSampleParams,
+  type UpdateAnalyticsTrainSampleParams, 
   updateAnalyticsTrainSampleSchema,
   insertAnalyticsTrainSampleSchema, 
   analyticsTrainSamples,

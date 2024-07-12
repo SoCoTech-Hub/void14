@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  CompetencyPlanCompId, 
-  NewCompetencyPlanCompParams,
-  UpdateCompetencyPlanCompParams, 
+  type CompetencyPlanCompId, 
+  type NewCompetencyPlanCompParams,
+  type UpdateCompetencyPlanCompParams, 
   updateCompetencyPlanCompSchema,
   insertCompetencyPlanCompSchema, 
   competencyPlanComps,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  RoleAllowOverrideId, 
-  NewRoleAllowOverrideParams,
-  UpdateRoleAllowOverrideParams, 
+  type RoleAllowOverrideId, 
+  type NewRoleAllowOverrideParams,
+  type UpdateRoleAllowOverrideParams, 
   updateRoleAllowOverrideSchema,
   insertRoleAllowOverrideSchema, 
   roleAllowOverrides,

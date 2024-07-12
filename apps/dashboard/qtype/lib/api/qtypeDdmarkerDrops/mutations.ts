@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  QtypeDdmarkerDropId, 
-  NewQtypeDdmarkerDropParams,
-  UpdateQtypeDdmarkerDropParams, 
+  type QtypeDdmarkerDropId, 
+  type NewQtypeDdmarkerDropParams,
+  type UpdateQtypeDdmarkerDropParams, 
   updateQtypeDdmarkerDropSchema,
   insertQtypeDdmarkerDropSchema, 
   qtypeDdmarkerDrops,

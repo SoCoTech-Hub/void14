@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  MessageContactId, 
-  NewMessageContactParams,
-  UpdateMessageContactParams, 
+  type MessageContactId, 
+  type NewMessageContactParams,
+  type UpdateMessageContactParams, 
   updateMessageContactSchema,
   insertMessageContactSchema, 
   messageContacts,

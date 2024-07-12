@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  SocialReactionId, 
-  NewSocialReactionParams,
-  UpdateSocialReactionParams, 
+  type SocialReactionId, 
+  type NewSocialReactionParams,
+  type UpdateSocialReactionParams, 
   updateSocialReactionSchema,
   insertSocialReactionSchema, 
   socialReactions,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  EnrolLtiLti2NonceId, 
-  NewEnrolLtiLti2NonceParams,
-  UpdateEnrolLtiLti2NonceParams, 
+  type EnrolLtiLti2NonceId, 
+  type NewEnrolLtiLti2NonceParams,
+  type UpdateEnrolLtiLti2NonceParams, 
   updateEnrolLtiLti2NonceSchema,
   insertEnrolLtiLti2NonceSchema, 
   enrolLtiLti2Nonces,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  ContextId, 
-  NewContextParams,
-  UpdateContextParams, 
+  type ContextId, 
+  type NewContextParams,
+  type UpdateContextParams, 
   updateContextSchema,
   insertContextSchema, 
   contexts,

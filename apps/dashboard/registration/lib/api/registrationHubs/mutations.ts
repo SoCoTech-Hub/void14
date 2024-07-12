@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  RegistrationHubId, 
-  NewRegistrationHubParams,
-  UpdateRegistrationHubParams, 
+  type RegistrationHubId, 
+  type NewRegistrationHubParams,
+  type UpdateRegistrationHubParams, 
   updateRegistrationHubSchema,
   insertRegistrationHubSchema, 
   registrationHubs,

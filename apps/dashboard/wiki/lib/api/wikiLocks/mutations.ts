@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  WikiLockId, 
-  NewWikiLockParams,
-  UpdateWikiLockParams, 
+  type WikiLockId, 
+  type NewWikiLockParams,
+  type UpdateWikiLockParams, 
   updateWikiLockSchema,
   insertWikiLockSchema, 
   wikiLocks,

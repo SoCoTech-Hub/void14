@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  MediaId, 
-  NewMediaParams,
-  UpdateMediaParams, 
+  type MediaId, 
+  type NewMediaParams,
+  type UpdateMediaParams, 
   updateMediaSchema,
   insertMediaSchema, 
   medias,

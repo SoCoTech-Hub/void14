@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  QuestionTruefalseId, 
-  NewQuestionTruefalseParams,
-  UpdateQuestionTruefalseParams, 
+  type QuestionTruefalseId, 
+  type NewQuestionTruefalseParams,
+  type UpdateQuestionTruefalseParams, 
   updateQuestionTruefalseSchema,
   insertQuestionTruefalseSchema, 
   questionTruefalse,

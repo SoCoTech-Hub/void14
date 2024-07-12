@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  ToolMonitorEventId, 
-  NewToolMonitorEventParams,
-  UpdateToolMonitorEventParams, 
+  type ToolMonitorEventId, 
+  type NewToolMonitorEventParams,
+  type UpdateToolMonitorEventParams, 
   updateToolMonitorEventSchema,
   insertToolMonitorEventSchema, 
   toolMonitorEvents,

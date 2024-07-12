@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  AnalyticsIndicatorCalcId, 
-  NewAnalyticsIndicatorCalcParams,
-  UpdateAnalyticsIndicatorCalcParams, 
+  type AnalyticsIndicatorCalcId, 
+  type NewAnalyticsIndicatorCalcParams,
+  type UpdateAnalyticsIndicatorCalcParams, 
   updateAnalyticsIndicatorCalcSchema,
   insertAnalyticsIndicatorCalcSchema, 
   analyticsIndicatorCalcs,

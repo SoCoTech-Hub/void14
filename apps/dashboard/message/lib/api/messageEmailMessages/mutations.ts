@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  MessageEmailMessageId, 
-  NewMessageEmailMessageParams,
-  UpdateMessageEmailMessageParams, 
+  type MessageEmailMessageId, 
+  type NewMessageEmailMessageParams,
+  type UpdateMessageEmailMessageParams, 
   updateMessageEmailMessageSchema,
   insertMessageEmailMessageSchema, 
   messageEmailMessages,

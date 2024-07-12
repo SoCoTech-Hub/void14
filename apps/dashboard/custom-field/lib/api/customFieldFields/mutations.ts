@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  CustomFieldFieldId, 
-  NewCustomFieldFieldParams,
-  UpdateCustomFieldFieldParams, 
+  type CustomFieldFieldId, 
+  type NewCustomFieldFieldParams,
+  type UpdateCustomFieldFieldParams, 
   updateCustomFieldFieldSchema,
   insertCustomFieldFieldSchema, 
   customFieldFields,

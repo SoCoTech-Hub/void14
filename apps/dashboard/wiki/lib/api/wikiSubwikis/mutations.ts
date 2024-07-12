@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  WikiSubwikiId, 
-  NewWikiSubwikiParams,
-  UpdateWikiSubwikiParams, 
+  type WikiSubwikiId, 
+  type NewWikiSubwikiParams,
+  type UpdateWikiSubwikiParams, 
   updateWikiSubwikiSchema,
   insertWikiSubwikiSchema, 
   wikiSubwikis,

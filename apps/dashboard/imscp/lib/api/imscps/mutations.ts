@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  ImscpId, 
-  NewImscpParams,
-  UpdateImscpParams, 
+  type ImscpId, 
+  type NewImscpParams,
+  type UpdateImscpParams, 
   updateImscpSchema,
   insertImscpSchema, 
   imscps,

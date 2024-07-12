@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  UserLastAccessId, 
-  NewUserLastAccessParams,
-  UpdateUserLastAccessParams, 
+  type UserLastAccessId, 
+  type NewUserLastAccessParams,
+  type UpdateUserLastAccessParams, 
   updateUserLastAccessSchema,
   insertUserLastAccessSchema, 
   userLastAccesses,

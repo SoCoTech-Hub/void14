@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  QtypeDdimageortextDropId, 
-  NewQtypeDdimageortextDropParams,
-  UpdateQtypeDdimageortextDropParams, 
+  type QtypeDdimageortextDropId, 
+  type NewQtypeDdimageortextDropParams,
+  type UpdateQtypeDdimageortextDropParams, 
   updateQtypeDdimageortextDropSchema,
   insertQtypeDdimageortextDropSchema, 
   qtypeDdimageortextDrops,

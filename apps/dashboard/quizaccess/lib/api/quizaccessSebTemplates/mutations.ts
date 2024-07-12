@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  QuizaccessSebTemplateId, 
-  NewQuizaccessSebTemplateParams,
-  UpdateQuizaccessSebTemplateParams, 
+  type QuizaccessSebTemplateId, 
+  type NewQuizaccessSebTemplateParams,
+  type UpdateQuizaccessSebTemplateParams, 
   updateQuizaccessSebTemplateSchema,
   insertQuizaccessSebTemplateSchema, 
   quizaccessSebTemplates,

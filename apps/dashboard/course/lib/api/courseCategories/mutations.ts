@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  CourseCategoryId, 
-  NewCourseCategoryParams,
-  UpdateCourseCategoryParams, 
+  type CourseCategoryId, 
+  type NewCourseCategoryParams,
+  type UpdateCourseCategoryParams, 
   updateCourseCategorySchema,
   insertCourseCategorySchema, 
   courseCategories,

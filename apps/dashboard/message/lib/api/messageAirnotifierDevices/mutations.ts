@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  MessageAirnotifierDeviceId, 
-  NewMessageAirnotifierDeviceParams,
-  UpdateMessageAirnotifierDeviceParams, 
+  type MessageAirnotifierDeviceId, 
+  type NewMessageAirnotifierDeviceParams,
+  type UpdateMessageAirnotifierDeviceParams, 
   updateMessageAirnotifierDeviceSchema,
   insertMessageAirnotifierDeviceSchema, 
   messageAirnotifierDevices,

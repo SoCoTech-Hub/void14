@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  ReportbuilderScheduleId, 
-  NewReportbuilderScheduleParams,
-  UpdateReportbuilderScheduleParams, 
+  type ReportbuilderScheduleId, 
+  type NewReportbuilderScheduleParams,
+  type UpdateReportbuilderScheduleParams, 
   updateReportbuilderScheduleSchema,
   insertReportbuilderScheduleSchema, 
   reportbuilderSchedules,

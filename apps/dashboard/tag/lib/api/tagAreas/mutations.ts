@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  TagAreaId, 
-  NewTagAreaParams,
-  UpdateTagAreaParams, 
+  type TagAreaId, 
+  type NewTagAreaParams,
+  type UpdateTagAreaParams, 
   updateTagAreaSchema,
   insertTagAreaSchema, 
   tagAreas,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  StickerId, 
-  NewStickerParams,
-  UpdateStickerParams, 
+  type StickerId, 
+  type NewStickerParams,
+  type UpdateStickerParams, 
   updateStickerSchema,
   insertStickerSchema, 
   stickers,

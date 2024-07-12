@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  AddressId, 
-  NewAddressParams,
-  UpdateAddressParams, 
+  type AddressId, 
+  type NewAddressParams,
+  type UpdateAddressParams, 
   updateAddressSchema,
   insertAddressSchema, 
   addresses,

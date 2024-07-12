@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  QtypeShortanswerOptionId, 
-  NewQtypeShortanswerOptionParams,
-  UpdateQtypeShortanswerOptionParams, 
+  type QtypeShortanswerOptionId, 
+  type NewQtypeShortanswerOptionParams,
+  type UpdateQtypeShortanswerOptionParams, 
   updateQtypeShortanswerOptionSchema,
   insertQtypeShortanswerOptionSchema, 
   qtypeShortanswerOptions,

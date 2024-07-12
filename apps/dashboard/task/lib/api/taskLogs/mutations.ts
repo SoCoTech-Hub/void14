@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  TaskLogId, 
-  NewTaskLogParams,
-  UpdateTaskLogParams, 
+  type TaskLogId, 
+  type NewTaskLogParams,
+  type UpdateTaskLogParams, 
   updateTaskLogSchema,
   insertTaskLogSchema, 
   taskLogs,

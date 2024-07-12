@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  GradeCategoriesHistoryId, 
-  NewGradeCategoriesHistoryParams,
-  UpdateGradeCategoriesHistoryParams, 
+  type GradeCategoriesHistoryId, 
+  type NewGradeCategoriesHistoryParams,
+  type UpdateGradeCategoriesHistoryParams, 
   updateGradeCategoriesHistorySchema,
   insertGradeCategoriesHistorySchema, 
   gradeCategoriesHistories,

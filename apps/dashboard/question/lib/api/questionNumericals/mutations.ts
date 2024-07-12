@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  QuestionNumericalId, 
-  NewQuestionNumericalParams,
-  UpdateQuestionNumericalParams, 
+  type QuestionNumericalId, 
+  type NewQuestionNumericalParams,
+  type UpdateQuestionNumericalParams, 
   updateQuestionNumericalSchema,
   insertQuestionNumericalSchema, 
   questionNumericals,

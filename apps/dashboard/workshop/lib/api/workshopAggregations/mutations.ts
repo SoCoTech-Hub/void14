@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  WorkshopAggregationId, 
-  NewWorkshopAggregationParams,
-  UpdateWorkshopAggregationParams, 
+  type WorkshopAggregationId, 
+  type NewWorkshopAggregationParams,
+  type UpdateWorkshopAggregationParams, 
   updateWorkshopAggregationSchema,
   insertWorkshopAggregationSchema, 
   workshopAggregations,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  SupportCommentId, 
-  NewSupportCommentParams,
-  UpdateSupportCommentParams, 
+  type SupportCommentId, 
+  type NewSupportCommentParams,
+  type UpdateSupportCommentParams, 
   updateSupportCommentSchema,
   insertSupportCommentSchema, 
   supportComments,

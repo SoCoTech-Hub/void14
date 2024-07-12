@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  MnetService2rpcId, 
-  NewMnetService2rpcParams,
-  UpdateMnetService2rpcParams, 
+  type MnetService2rpcId, 
+  type NewMnetService2rpcParams,
+  type UpdateMnetService2rpcParams, 
   updateMnetService2rpcSchema,
   insertMnetService2rpcSchema, 
   mnetService2rpcs,

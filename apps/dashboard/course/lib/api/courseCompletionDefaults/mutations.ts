@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  CourseCompletionDefaultId, 
-  NewCourseCompletionDefaultParams,
-  UpdateCourseCompletionDefaultParams, 
+  type CourseCompletionDefaultId, 
+  type NewCourseCompletionDefaultParams,
+  type UpdateCourseCompletionDefaultParams, 
   updateCourseCompletionDefaultSchema,
   insertCourseCompletionDefaultSchema, 
   courseCompletionDefaults,

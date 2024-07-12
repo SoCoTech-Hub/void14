@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  WorkshopEvalBestSettingId, 
-  NewWorkshopEvalBestSettingParams,
-  UpdateWorkshopEvalBestSettingParams, 
+  type WorkshopEvalBestSettingId, 
+  type NewWorkshopEvalBestSettingParams,
+  type UpdateWorkshopEvalBestSettingParams, 
   updateWorkshopEvalBestSettingSchema,
   insertWorkshopEvalBestSettingSchema, 
   workshopEvalBestSettings,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  ContentId, 
-  NewContentParams,
-  UpdateContentParams, 
+  type ContentId, 
+  type NewContentParams,
+  type UpdateContentParams, 
   updateContentSchema,
   insertContentSchema, 
   contents,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  InfectedFileId, 
-  NewInfectedFileParams,
-  UpdateInfectedFileParams, 
+  type InfectedFileId, 
+  type NewInfectedFileParams,
+  type UpdateInfectedFileParams, 
   updateInfectedFileSchema,
   insertInfectedFileSchema, 
   infectedFiles,

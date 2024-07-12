@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  Oauth2SystemAccountId, 
-  NewOauth2SystemAccountParams,
-  UpdateOauth2SystemAccountParams, 
+  type Oauth2SystemAccountId, 
+  type NewOauth2SystemAccountParams,
+  type UpdateOauth2SystemAccountParams, 
   updateOauth2SystemAccountSchema,
   insertOauth2SystemAccountSchema, 
   oauth2SystemAccounts,

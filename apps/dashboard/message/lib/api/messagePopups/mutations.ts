@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  MessagePopupId, 
-  NewMessagePopupParams,
-  UpdateMessagePopupParams, 
+  type MessagePopupId, 
+  type NewMessagePopupParams,
+  type UpdateMessagePopupParams, 
   updateMessagePopupSchema,
   insertMessagePopupSchema, 
   messagePopups,

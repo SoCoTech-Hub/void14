@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  ScaleId, 
-  NewScaleParams,
-  UpdateScaleParams, 
+  type ScaleId, 
+  type NewScaleParams,
+  type UpdateScaleParams, 
   updateScaleSchema,
   insertScaleSchema, 
   scales,

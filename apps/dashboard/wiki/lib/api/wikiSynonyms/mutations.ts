@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  WikiSynonymId, 
-  NewWikiSynonymParams,
-  UpdateWikiSynonymParams, 
+  type WikiSynonymId, 
+  type NewWikiSynonymParams,
+  type UpdateWikiSynonymParams, 
   updateWikiSynonymSchema,
   insertWikiSynonymSchema, 
   wikiSynonyms,

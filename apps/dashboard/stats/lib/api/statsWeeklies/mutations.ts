@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  StatsWeeklyId, 
-  NewStatsWeeklyParams,
-  UpdateStatsWeeklyParams, 
+  type StatsWeeklyId, 
+  type NewStatsWeeklyParams,
+  type UpdateStatsWeeklyParams, 
   updateStatsWeeklySchema,
   insertStatsWeeklySchema, 
   statsWeeklies,

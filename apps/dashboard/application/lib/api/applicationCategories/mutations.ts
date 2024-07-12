@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  ApplicationCategoryId, 
-  NewApplicationCategoryParams,
-  UpdateApplicationCategoryParams, 
+  type ApplicationCategoryId, 
+  type NewApplicationCategoryParams,
+  type UpdateApplicationCategoryParams, 
   updateApplicationCategorySchema,
   insertApplicationCategorySchema, 
   applicationCategories,

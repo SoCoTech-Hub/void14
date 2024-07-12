@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  PaymentAccountId, 
-  NewPaymentAccountParams,
-  UpdatePaymentAccountParams, 
+  type PaymentAccountId, 
+  type NewPaymentAccountParams,
+  type UpdatePaymentAccountParams, 
   updatePaymentAccountSchema,
   insertPaymentAccountSchema, 
   paymentAccounts,

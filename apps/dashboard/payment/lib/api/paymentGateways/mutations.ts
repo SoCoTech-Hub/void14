@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  PaymentGatewayId, 
-  NewPaymentGatewayParams,
-  UpdatePaymentGatewayParams, 
+  type PaymentGatewayId, 
+  type NewPaymentGatewayParams,
+  type UpdatePaymentGatewayParams, 
   updatePaymentGatewaySchema,
   insertPaymentGatewaySchema, 
   paymentGateways,

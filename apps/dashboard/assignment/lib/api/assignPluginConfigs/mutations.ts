@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  AssignPluginConfigId, 
-  NewAssignPluginConfigParams,
-  UpdateAssignPluginConfigParams, 
+  type AssignPluginConfigId, 
+  type NewAssignPluginConfigParams,
+  type UpdateAssignPluginConfigParams, 
   updateAssignPluginConfigSchema,
   insertAssignPluginConfigSchema, 
   assignPluginConfigs,

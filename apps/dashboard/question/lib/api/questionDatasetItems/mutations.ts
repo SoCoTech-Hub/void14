@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  QuestionDatasetItemId, 
-  NewQuestionDatasetItemParams,
-  UpdateQuestionDatasetItemParams, 
+  type QuestionDatasetItemId, 
+  type NewQuestionDatasetItemParams,
+  type UpdateQuestionDatasetItemParams, 
   updateQuestionDatasetItemSchema,
   insertQuestionDatasetItemSchema, 
   questionDatasetItems,

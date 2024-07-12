@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  QuizSlotId, 
-  NewQuizSlotParams,
-  UpdateQuizSlotParams, 
+  type QuizSlotId, 
+  type NewQuizSlotParams,
+  type UpdateQuizSlotParams, 
   updateQuizSlotSchema,
   insertQuizSlotSchema, 
   quizSlots,

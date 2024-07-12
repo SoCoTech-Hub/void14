@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  MassMailListsRecipientId, 
-  NewMassMailListsRecipientParams,
-  UpdateMassMailListsRecipientParams, 
+  type MassMailListsRecipientId, 
+  type NewMassMailListsRecipientParams,
+  type UpdateMassMailListsRecipientParams, 
   updateMassMailListsRecipientSchema,
   insertMassMailListsRecipientSchema, 
   massMailListsRecipients,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  SupportDepartmentId, 
-  NewSupportDepartmentParams,
-  UpdateSupportDepartmentParams, 
+  type SupportDepartmentId, 
+  type NewSupportDepartmentParams,
+  type UpdateSupportDepartmentParams, 
   updateSupportDepartmentSchema,
   insertSupportDepartmentSchema, 
   supportDepartments,

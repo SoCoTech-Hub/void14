@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  RoleCapabilityId, 
-  NewRoleCapabilityParams,
-  UpdateRoleCapabilityParams, 
+  type RoleCapabilityId, 
+  type NewRoleCapabilityParams,
+  type UpdateRoleCapabilityParams, 
   updateRoleCapabilitySchema,
   insertRoleCapabilitySchema, 
   roleCapabilities,

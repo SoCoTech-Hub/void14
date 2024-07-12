@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  WikiId, 
-  NewWikiParams,
-  UpdateWikiParams, 
+  type WikiId, 
+  type NewWikiParams,
+  type UpdateWikiParams, 
   updateWikiSchema,
   insertWikiSchema, 
   wikis,

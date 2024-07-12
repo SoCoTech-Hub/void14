@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  ScormSeqObjectiveId, 
-  NewScormSeqObjectiveParams,
-  UpdateScormSeqObjectiveParams, 
+  type ScormSeqObjectiveId, 
+  type NewScormSeqObjectiveParams,
+  type UpdateScormSeqObjectiveParams, 
   updateScormSeqObjectiveSchema,
   insertScormSeqObjectiveSchema, 
   scormSeqObjectives,

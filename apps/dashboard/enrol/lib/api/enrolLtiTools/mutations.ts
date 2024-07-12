@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  EnrolLtiToolId, 
-  NewEnrolLtiToolParams,
-  UpdateEnrolLtiToolParams, 
+  type EnrolLtiToolId, 
+  type NewEnrolLtiToolParams,
+  type UpdateEnrolLtiToolParams, 
   updateEnrolLtiToolSchema,
   insertEnrolLtiToolSchema, 
   enrolLtiTools,

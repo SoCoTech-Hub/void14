@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  MessageUsersBlockedId, 
-  NewMessageUsersBlockedParams,
-  UpdateMessageUsersBlockedParams, 
+  type MessageUsersBlockedId, 
+  type NewMessageUsersBlockedParams,
+  type UpdateMessageUsersBlockedParams, 
   updateMessageUsersBlockedSchema,
   insertMessageUsersBlockedSchema, 
   messageUsersBlockeds,

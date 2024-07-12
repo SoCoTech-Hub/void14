@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  TagCorrelationId, 
-  NewTagCorrelationParams,
-  UpdateTagCorrelationParams, 
+  type TagCorrelationId, 
+  type NewTagCorrelationParams,
+  type UpdateTagCorrelationParams, 
   updateTagCorrelationSchema,
   insertTagCorrelationSchema, 
   tagCorrelations,

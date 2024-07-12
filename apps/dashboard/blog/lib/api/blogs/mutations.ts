@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  BlogId, 
-  NewBlogParams,
-  UpdateBlogParams, 
+  type BlogId, 
+  type NewBlogParams,
+  type UpdateBlogParams, 
   updateBlogSchema,
   insertBlogSchema, 
   blogs,

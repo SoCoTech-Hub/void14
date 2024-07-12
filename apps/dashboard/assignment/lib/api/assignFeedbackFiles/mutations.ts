@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  AssignFeedbackFileId, 
-  NewAssignFeedbackFileParams,
-  UpdateAssignFeedbackFileParams, 
+  type AssignFeedbackFileId, 
+  type NewAssignFeedbackFileParams,
+  type UpdateAssignFeedbackFileParams, 
   updateAssignFeedbackFileSchema,
   insertAssignFeedbackFileSchema, 
   assignFeedbackFiles,

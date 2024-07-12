@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  H5pId, 
-  NewH5pParams,
-  UpdateH5pParams, 
+  type H5pId, 
+  type NewH5pParams,
+  type UpdateH5pParams, 
   updateH5pSchema,
   insertH5pSchema, 
   h5ps,

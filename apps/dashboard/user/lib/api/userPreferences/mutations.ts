@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  UserPreferenceId, 
-  NewUserPreferenceParams,
-  UpdateUserPreferenceParams, 
+  type UserPreferenceId, 
+  type NewUserPreferenceParams,
+  type UpdateUserPreferenceParams, 
   updateUserPreferenceSchema,
   insertUserPreferenceSchema, 
   userPreferences,

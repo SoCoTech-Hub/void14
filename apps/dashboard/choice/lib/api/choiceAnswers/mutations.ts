@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  ChoiceAnswerId, 
-  NewChoiceAnswerParams,
-  UpdateChoiceAnswerParams, 
+  type ChoiceAnswerId, 
+  type NewChoiceAnswerParams,
+  type UpdateChoiceAnswerParams, 
   updateChoiceAnswerSchema,
   insertChoiceAnswerSchema, 
   choiceAnswers,

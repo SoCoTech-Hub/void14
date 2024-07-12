@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  ReportbuilderColumnId, 
-  NewReportbuilderColumnParams,
-  UpdateReportbuilderColumnParams, 
+  type ReportbuilderColumnId, 
+  type NewReportbuilderColumnParams,
+  type UpdateReportbuilderColumnParams, 
   updateReportbuilderColumnSchema,
   insertReportbuilderColumnSchema, 
   reportbuilderColumns,

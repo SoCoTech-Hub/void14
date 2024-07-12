@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  MessagePopupNotificationId, 
-  NewMessagePopupNotificationParams,
-  UpdateMessagePopupNotificationParams, 
+  type MessagePopupNotificationId, 
+  type NewMessagePopupNotificationParams,
+  type UpdateMessagePopupNotificationParams, 
   updateMessagePopupNotificationSchema,
   insertMessagePopupNotificationSchema, 
   messagePopupNotifications,

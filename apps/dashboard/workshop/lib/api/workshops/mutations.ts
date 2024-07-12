@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  WorkshopId, 
-  NewWorkshopParams,
-  UpdateWorkshopParams, 
+  type WorkshopId, 
+  type NewWorkshopParams,
+  type UpdateWorkshopParams, 
   updateWorkshopSchema,
   insertWorkshopSchema, 
   workshops,

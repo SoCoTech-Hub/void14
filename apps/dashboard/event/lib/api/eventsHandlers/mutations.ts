@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  EventsHandlerId, 
-  NewEventsHandlerParams,
-  UpdateEventsHandlerParams, 
+  type EventsHandlerId, 
+  type NewEventsHandlerParams,
+  type UpdateEventsHandlerParams, 
   updateEventsHandlerSchema,
   insertEventsHandlerSchema, 
   eventsHandlers,

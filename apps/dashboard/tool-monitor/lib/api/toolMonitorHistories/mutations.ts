@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  ToolMonitorHistoryId, 
-  NewToolMonitorHistoryParams,
-  UpdateToolMonitorHistoryParams, 
+  type ToolMonitorHistoryId, 
+  type NewToolMonitorHistoryParams,
+  type UpdateToolMonitorHistoryParams, 
   updateToolMonitorHistorySchema,
   insertToolMonitorHistorySchema, 
   toolMonitorHistories,

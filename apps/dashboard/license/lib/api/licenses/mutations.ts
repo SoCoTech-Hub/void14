@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  LicenseId, 
-  NewLicenseParams,
-  UpdateLicenseParams, 
+  type LicenseId, 
+  type NewLicenseParams,
+  type UpdateLicenseParams, 
   updateLicenseSchema,
   insertLicenseSchema, 
   licenses,

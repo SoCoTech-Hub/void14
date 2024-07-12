@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  FeedbackCompletedId, 
-  NewFeedbackCompletedParams,
-  UpdateFeedbackCompletedParams, 
+  type FeedbackCompletedId, 
+  type NewFeedbackCompletedParams,
+  type UpdateFeedbackCompletedParams, 
   updateFeedbackCompletedSchema,
   insertFeedbackCompletedSchema, 
   feedbackCompleteds,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  SubjectId, 
-  NewSubjectParams,
-  UpdateSubjectParams, 
+  type SubjectId, 
+  type NewSubjectParams,
+  type UpdateSubjectParams, 
   updateSubjectSchema,
   insertSubjectSchema, 
   subjects,

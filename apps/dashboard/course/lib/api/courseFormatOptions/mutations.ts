@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  CourseFormatOptionId, 
-  NewCourseFormatOptionParams,
-  UpdateCourseFormatOptionParams, 
+  type CourseFormatOptionId, 
+  type NewCourseFormatOptionParams,
+  type UpdateCourseFormatOptionParams, 
   updateCourseFormatOptionSchema,
   insertCourseFormatOptionSchema, 
   courseFormatOptions,

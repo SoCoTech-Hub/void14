@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  SearchIndexRequestId, 
-  NewSearchIndexRequestParams,
-  UpdateSearchIndexRequestParams, 
+  type SearchIndexRequestId, 
+  type NewSearchIndexRequestParams,
+  type UpdateSearchIndexRequestParams, 
   updateSearchIndexRequestSchema,
   insertSearchIndexRequestSchema, 
   searchIndexRequests,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  LockDbId, 
-  NewLockDbParams,
-  UpdateLockDbParams, 
+  type LockDbId, 
+  type NewLockDbParams,
+  type UpdateLockDbParams, 
   updateLockDbSchema,
   insertLockDbSchema, 
   lockDbs,

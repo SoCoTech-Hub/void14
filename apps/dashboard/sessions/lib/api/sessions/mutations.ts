@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  SessionId, 
-  NewSessionParams,
-  UpdateSessionParams, 
+  type SessionId, 
+  type NewSessionParams,
+  type UpdateSessionParams, 
   updateSessionSchema,
   insertSessionSchema, 
   sessions,

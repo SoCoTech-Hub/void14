@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  RoleAllowViewId, 
-  NewRoleAllowViewParams,
-  UpdateRoleAllowViewParams, 
+  type RoleAllowViewId, 
+  type NewRoleAllowViewParams,
+  type UpdateRoleAllowViewParams, 
   updateRoleAllowViewSchema,
   insertRoleAllowViewSchema, 
   roleAllowViews,

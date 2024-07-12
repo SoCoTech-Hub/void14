@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  RoleContextLevelId, 
-  NewRoleContextLevelParams,
-  UpdateRoleContextLevelParams, 
+  type RoleContextLevelId, 
+  type NewRoleContextLevelParams,
+  type UpdateRoleContextLevelParams, 
   updateRoleContextLevelSchema,
   insertRoleContextLevelSchema, 
   roleContextLevels,

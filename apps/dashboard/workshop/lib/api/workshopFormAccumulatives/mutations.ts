@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  WorkshopFormAccumulativeId, 
-  NewWorkshopFormAccumulativeParams,
-  UpdateWorkshopFormAccumulativeParams, 
+  type WorkshopFormAccumulativeId, 
+  type NewWorkshopFormAccumulativeParams,
+  type UpdateWorkshopFormAccumulativeParams, 
   updateWorkshopFormAccumulativeSchema,
   insertWorkshopFormAccumulativeSchema, 
   workshopFormAccumulatives,

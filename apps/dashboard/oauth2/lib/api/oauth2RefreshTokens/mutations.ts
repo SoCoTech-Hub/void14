@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  Oauth2RefreshTokenId, 
-  NewOauth2RefreshTokenParams,
-  UpdateOauth2RefreshTokenParams, 
+  type Oauth2RefreshTokenId, 
+  type NewOauth2RefreshTokenParams,
+  type UpdateOauth2RefreshTokenParams, 
   updateOauth2RefreshTokenSchema,
   insertOauth2RefreshTokenSchema, 
   oauth2RefreshTokens,

@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  JobApplicationId, 
-  NewJobApplicationParams,
-  UpdateJobApplicationParams, 
+  type JobApplicationId, 
+  type NewJobApplicationParams,
+  type UpdateJobApplicationParams, 
   updateJobApplicationSchema,
   insertJobApplicationSchema, 
   jobApplications,

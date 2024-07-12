@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  ToolMonitorSubscriptionId, 
-  NewToolMonitorSubscriptionParams,
-  UpdateToolMonitorSubscriptionParams, 
+  type ToolMonitorSubscriptionId, 
+  type NewToolMonitorSubscriptionParams,
+  type UpdateToolMonitorSubscriptionParams, 
   updateToolMonitorSubscriptionSchema,
   insertToolMonitorSubscriptionSchema, 
   toolMonitorSubscriptions,

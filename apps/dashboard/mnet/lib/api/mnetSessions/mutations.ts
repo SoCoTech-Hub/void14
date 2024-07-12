@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { and, eq } from "drizzle-orm";
 import { 
-  MnetSessionId, 
-  NewMnetSessionParams,
-  UpdateMnetSessionParams, 
+  type MnetSessionId, 
+  type NewMnetSessionParams,
+  type UpdateMnetSessionParams, 
   updateMnetSessionSchema,
   insertMnetSessionSchema, 
   mnetSessions,

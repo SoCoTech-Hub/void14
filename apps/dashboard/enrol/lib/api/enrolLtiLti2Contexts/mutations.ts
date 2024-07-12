@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  EnrolLtiLti2ContextId, 
-  NewEnrolLtiLti2ContextParams,
-  UpdateEnrolLtiLti2ContextParams, 
+  type EnrolLtiLti2ContextId, 
+  type NewEnrolLtiLti2ContextParams,
+  type UpdateEnrolLtiLti2ContextParams, 
   updateEnrolLtiLti2ContextSchema,
   insertEnrolLtiLti2ContextSchema, 
   enrolLtiLti2Contexts,

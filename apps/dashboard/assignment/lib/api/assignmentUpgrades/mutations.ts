@@ -1,9 +1,9 @@
 import { db } from "@/lib/db/index";
 import { eq } from "drizzle-orm";
 import { 
-  AssignmentUpgradeId, 
-  NewAssignmentUpgradeParams,
-  UpdateAssignmentUpgradeParams, 
+  type AssignmentUpgradeId, 
+  type NewAssignmentUpgradeParams,
+  type UpdateAssignmentUpgradeParams, 
   updateAssignmentUpgradeSchema,
   insertAssignmentUpgradeSchema, 
   assignmentUpgrades,
