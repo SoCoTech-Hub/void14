@@ -1,13 +1,18 @@
 import type { Config } from "drizzle-kit";
+import { config as loadEnv } from "dotenv";
 
-if (!process.env.AUTH_AUTH_DB_URL) {
-  throw new Error("Missing AUTH_DB_URL");
+loadEnv(); // Load environment variables from .env file
+
+if (!process.env.AUTH_DB_URL) {
+  throw new Error("Missing environment variable: AUTH_DB_URL");
 }
 
-const nonPoolingUrl = process.env.AUTH_AUTH_DB_URL.replace(":6543", ":5432");
+const nonPoolingUrl = process.env.AUTH_DB_URL.replace(":6543", ":5432");
 
-export default {
-  schema: "./src/schema.ts",
+const drizzleConfig: Config = {
+  schema: "./src/schema/index.ts",
   dialect: "postgresql",
   dbCredentials: { url: nonPoolingUrl },
-} satisfies Config;
+};
+
+export default drizzleConfig;
