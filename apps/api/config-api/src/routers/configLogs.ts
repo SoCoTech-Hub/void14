@@ -1,19 +1,26 @@
-import { getConfigLogById, getConfigLogs } from "../api/configLogs/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   configLogIdSchema,
   insertConfigLogParams,
   updateConfigLogParams,
 } from "@soco/config-db/schema/configLogs";
-import { createConfigLog, deleteConfigLog, updateConfigLog } from "../api/configLogs/mutations";
 
-export const configLogsRouter =createTRPCRouter({
+import {
+  createConfigLog,
+  deleteConfigLog,
+  updateConfigLog,
+} from "../api/configLogs/mutations";
+import { getConfigLogById, getConfigLogs } from "../api/configLogs/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const configLogsRouter = createTRPCRouter({
   getConfigLogs: publicProcedure.query(async () => {
     return getConfigLogs();
   }),
-  getConfigLogById: publicProcedure.input(configLogIdSchema).query(async ({ input }) => {
-    return getConfigLogById(input.id);
-  }),
+  getConfigLogById: publicProcedure
+    .input(configLogIdSchema)
+    .query(async ({ input }) => {
+      return getConfigLogById(input.id);
+    }),
   createConfigLog: publicProcedure
     .input(insertConfigLogParams)
     .mutation(async ({ input }) => {

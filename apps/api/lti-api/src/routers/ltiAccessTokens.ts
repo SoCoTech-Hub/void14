@@ -1,19 +1,29 @@
-import { getLtiAccessTokenById, getLtiAccessTokens } from "../api/ltiAccessTokens/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  ltiAccessTokenIdSchema,
   insertLtiAccessTokenParams,
+  ltiAccessTokenIdSchema,
   updateLtiAccessTokenParams,
 } from "@soco/lti-db/schema/ltiAccessTokens";
-import { createLtiAccessToken, deleteLtiAccessToken, updateLtiAccessToken } from "../api/ltiAccessTokens/mutations";
 
-export const ltiAccessTokensRouter =createTRPCRouter({
+import {
+  createLtiAccessToken,
+  deleteLtiAccessToken,
+  updateLtiAccessToken,
+} from "../api/ltiAccessTokens/mutations";
+import {
+  getLtiAccessTokenById,
+  getLtiAccessTokens,
+} from "../api/ltiAccessTokens/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const ltiAccessTokensRouter = createTRPCRouter({
   getLtiAccessTokens: publicProcedure.query(async () => {
     return getLtiAccessTokens();
   }),
-  getLtiAccessTokenById: publicProcedure.input(ltiAccessTokenIdSchema).query(async ({ input }) => {
-    return getLtiAccessTokenById(input.id);
-  }),
+  getLtiAccessTokenById: publicProcedure
+    .input(ltiAccessTokenIdSchema)
+    .query(async ({ input }) => {
+      return getLtiAccessTokenById(input.id);
+    }),
   createLtiAccessToken: publicProcedure
     .input(insertLtiAccessTokenParams)
     .mutation(async ({ input }) => {

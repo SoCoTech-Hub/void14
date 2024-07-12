@@ -1,19 +1,29 @@
-import { getReportbuilderColumnById, getReportbuilderColumns } from "../api/reportbuilderColumns/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  reportbuilderColumnIdSchema,
   insertReportbuilderColumnParams,
+  reportbuilderColumnIdSchema,
   updateReportbuilderColumnParams,
 } from "@soco/report-builder-db/schema/reportbuilderColumns";
-import { createReportbuilderColumn, deleteReportbuilderColumn, updateReportbuilderColumn } from "../api/reportbuilderColumns/mutations";
 
-export const reportbuilderColumnsRouter =createTRPCRouter({
+import {
+  createReportbuilderColumn,
+  deleteReportbuilderColumn,
+  updateReportbuilderColumn,
+} from "../api/reportbuilderColumns/mutations";
+import {
+  getReportbuilderColumnById,
+  getReportbuilderColumns,
+} from "../api/reportbuilderColumns/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const reportbuilderColumnsRouter = createTRPCRouter({
   getReportbuilderColumns: publicProcedure.query(async () => {
     return getReportbuilderColumns();
   }),
-  getReportbuilderColumnById: publicProcedure.input(reportbuilderColumnIdSchema).query(async ({ input }) => {
-    return getReportbuilderColumnById(input.id);
-  }),
+  getReportbuilderColumnById: publicProcedure
+    .input(reportbuilderColumnIdSchema)
+    .query(async ({ input }) => {
+      return getReportbuilderColumnById(input.id);
+    }),
   createReportbuilderColumn: publicProcedure
     .input(insertReportbuilderColumnParams)
     .mutation(async ({ input }) => {

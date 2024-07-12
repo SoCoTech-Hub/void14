@@ -1,19 +1,26 @@
-import { getWikiPageById, getWikiPages } from "../api/wikiPages/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  wikiPageIdSchema,
   insertWikiPageParams,
   updateWikiPageParams,
+  wikiPageIdSchema,
 } from "@soco/wiki-db/schema/wikiPages";
-import { createWikiPage, deleteWikiPage, updateWikiPage } from "../api/wikiPages/mutations";
 
-export const wikiPagesRouter =createTRPCRouter({
+import {
+  createWikiPage,
+  deleteWikiPage,
+  updateWikiPage,
+} from "../api/wikiPages/mutations";
+import { getWikiPageById, getWikiPages } from "../api/wikiPages/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const wikiPagesRouter = createTRPCRouter({
   getWikiPages: publicProcedure.query(async () => {
     return getWikiPages();
   }),
-  getWikiPageById: publicProcedure.input(wikiPageIdSchema).query(async ({ input }) => {
-    return getWikiPageById(input.id);
-  }),
+  getWikiPageById: publicProcedure
+    .input(wikiPageIdSchema)
+    .query(async ({ input }) => {
+      return getWikiPageById(input.id);
+    }),
   createWikiPage: publicProcedure
     .input(insertWikiPageParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,29 @@
-import { getQuizFeedbackById, getQuizFeedbacks } from "../api/quizFeedbacks/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  quizFeedbackIdSchema,
   insertQuizFeedbackParams,
+  quizFeedbackIdSchema,
   updateQuizFeedbackParams,
 } from "@soco/quiz-db/schema/quizFeedbacks";
-import { createQuizFeedback, deleteQuizFeedback, updateQuizFeedback } from "../api/quizFeedbacks/mutations";
 
-export const quizFeedbacksRouter =createTRPCRouter({
+import {
+  createQuizFeedback,
+  deleteQuizFeedback,
+  updateQuizFeedback,
+} from "../api/quizFeedbacks/mutations";
+import {
+  getQuizFeedbackById,
+  getQuizFeedbacks,
+} from "../api/quizFeedbacks/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const quizFeedbacksRouter = createTRPCRouter({
   getQuizFeedbacks: publicProcedure.query(async () => {
     return getQuizFeedbacks();
   }),
-  getQuizFeedbackById: publicProcedure.input(quizFeedbackIdSchema).query(async ({ input }) => {
-    return getQuizFeedbackById(input.id);
-  }),
+  getQuizFeedbackById: publicProcedure
+    .input(quizFeedbackIdSchema)
+    .query(async ({ input }) => {
+      return getQuizFeedbackById(input.id);
+    }),
   createQuizFeedback: publicProcedure
     .input(insertQuizFeedbackParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,27 @@
-import { db } from "@soco/scorm-db/client";
+import type {
+  NewScormSeqRuleCondParams,
+  ScormSeqRuleCondId,
+  UpdateScormSeqRuleCondParams,
+} from "@soco/scorm-db/schema/scormSeqRuleConds";
 import { eq } from "@soco/scorm-db";
-import { 
-  type ScormSeqRuleCondId, 
-  type NewScormSeqRuleCondParams,
-  type UpdateScormSeqRuleCondParams, 
-  updateScormSeqRuleCondSchema,
-  insertScormSeqRuleCondSchema, 
+import { db } from "@soco/scorm-db/client";
+import {
+  insertScormSeqRuleCondSchema,
+  scormSeqRuleCondIdSchema,
   scormSeqRuleConds,
-  scormSeqRuleCondIdSchema 
+  updateScormSeqRuleCondSchema,
 } from "@soco/scorm-db/schema/scormSeqRuleConds";
 
-export const createScormSeqRuleCond = async (scormSeqRuleCond: NewScormSeqRuleCondParams) => {
-  const newScormSeqRuleCond = insertScormSeqRuleCondSchema.parse(scormSeqRuleCond);
+export const createScormSeqRuleCond = async (
+  scormSeqRuleCond: NewScormSeqRuleCondParams,
+) => {
+  const newScormSeqRuleCond =
+    insertScormSeqRuleCondSchema.parse(scormSeqRuleCond);
   try {
-    const [s] =  await db.insert(scormSeqRuleConds).values(newScormSeqRuleCond).returning();
+    const [s] = await db
+      .insert(scormSeqRuleConds)
+      .values(newScormSeqRuleCond)
+      .returning();
     return { scormSeqRuleCond: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,19 @@ export const createScormSeqRuleCond = async (scormSeqRuleCond: NewScormSeqRuleCo
   }
 };
 
-export const updateScormSeqRuleCond = async (id: ScormSeqRuleCondId, scormSeqRuleCond: UpdateScormSeqRuleCondParams) => {
+export const updateScormSeqRuleCond = async (
+  id: ScormSeqRuleCondId,
+  scormSeqRuleCond: UpdateScormSeqRuleCondParams,
+) => {
   const { id: scormSeqRuleCondId } = scormSeqRuleCondIdSchema.parse({ id });
-  const newScormSeqRuleCond = updateScormSeqRuleCondSchema.parse(scormSeqRuleCond);
+  const newScormSeqRuleCond =
+    updateScormSeqRuleCondSchema.parse(scormSeqRuleCond);
   try {
-    const [s] =  await db
-     .update(scormSeqRuleConds)
-     .set(newScormSeqRuleCond)
-     .where(eq(scormSeqRuleConds.id, scormSeqRuleCondId!))
-     .returning();
+    const [s] = await db
+      .update(scormSeqRuleConds)
+      .set(newScormSeqRuleCond)
+      .where(eq(scormSeqRuleConds.id, scormSeqRuleCondId!))
+      .returning();
     return { scormSeqRuleCond: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +54,10 @@ export const updateScormSeqRuleCond = async (id: ScormSeqRuleCondId, scormSeqRul
 export const deleteScormSeqRuleCond = async (id: ScormSeqRuleCondId) => {
   const { id: scormSeqRuleCondId } = scormSeqRuleCondIdSchema.parse({ id });
   try {
-    const [s] =  await db.delete(scormSeqRuleConds).where(eq(scormSeqRuleConds.id, scormSeqRuleCondId!))
-    .returning();
+    const [s] = await db
+      .delete(scormSeqRuleConds)
+      .where(eq(scormSeqRuleConds.id, scormSeqRuleCondId!))
+      .returning();
     return { scormSeqRuleCond: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +65,3 @@ export const deleteScormSeqRuleCond = async (id: ScormSeqRuleCondId) => {
     throw { error: message };
   }
 };
-

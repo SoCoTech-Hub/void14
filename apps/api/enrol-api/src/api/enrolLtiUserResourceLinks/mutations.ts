@@ -1,19 +1,27 @@
-import { db } from "@soco/enrol-db/client";
+import type {
+  EnrolLtiUserResourceLinkId,
+  NewEnrolLtiUserResourceLinkParams,
+  UpdateEnrolLtiUserResourceLinkParams,
+} from "@soco/enrol-db/schema/enrolLtiUserResourceLinks";
 import { eq } from "@soco/enrol-db";
-import { 
-  type EnrolLtiUserResourceLinkId, 
-  type NewEnrolLtiUserResourceLinkParams,
-  type UpdateEnrolLtiUserResourceLinkParams, 
-  updateEnrolLtiUserResourceLinkSchema,
-  insertEnrolLtiUserResourceLinkSchema, 
+import { db } from "@soco/enrol-db/client";
+import {
+  enrolLtiUserResourceLinkIdSchema,
   enrolLtiUserResourceLinks,
-  enrolLtiUserResourceLinkIdSchema 
+  insertEnrolLtiUserResourceLinkSchema,
+  updateEnrolLtiUserResourceLinkSchema,
 } from "@soco/enrol-db/schema/enrolLtiUserResourceLinks";
 
-export const createEnrolLtiUserResourceLink = async (enrolLtiUserResourceLink: NewEnrolLtiUserResourceLinkParams) => {
-  const newEnrolLtiUserResourceLink = insertEnrolLtiUserResourceLinkSchema.parse(enrolLtiUserResourceLink);
+export const createEnrolLtiUserResourceLink = async (
+  enrolLtiUserResourceLink: NewEnrolLtiUserResourceLinkParams,
+) => {
+  const newEnrolLtiUserResourceLink =
+    insertEnrolLtiUserResourceLinkSchema.parse(enrolLtiUserResourceLink);
   try {
-    const [e] =  await db.insert(enrolLtiUserResourceLinks).values(newEnrolLtiUserResourceLink).returning();
+    const [e] = await db
+      .insert(enrolLtiUserResourceLinks)
+      .values(newEnrolLtiUserResourceLink)
+      .returning();
     return { enrolLtiUserResourceLink: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,20 @@ export const createEnrolLtiUserResourceLink = async (enrolLtiUserResourceLink: N
   }
 };
 
-export const updateEnrolLtiUserResourceLink = async (id: EnrolLtiUserResourceLinkId, enrolLtiUserResourceLink: UpdateEnrolLtiUserResourceLinkParams) => {
-  const { id: enrolLtiUserResourceLinkId } = enrolLtiUserResourceLinkIdSchema.parse({ id });
-  const newEnrolLtiUserResourceLink = updateEnrolLtiUserResourceLinkSchema.parse(enrolLtiUserResourceLink);
+export const updateEnrolLtiUserResourceLink = async (
+  id: EnrolLtiUserResourceLinkId,
+  enrolLtiUserResourceLink: UpdateEnrolLtiUserResourceLinkParams,
+) => {
+  const { id: enrolLtiUserResourceLinkId } =
+    enrolLtiUserResourceLinkIdSchema.parse({ id });
+  const newEnrolLtiUserResourceLink =
+    updateEnrolLtiUserResourceLinkSchema.parse(enrolLtiUserResourceLink);
   try {
-    const [e] =  await db
-     .update(enrolLtiUserResourceLinks)
-     .set(newEnrolLtiUserResourceLink)
-     .where(eq(enrolLtiUserResourceLinks.id, enrolLtiUserResourceLinkId!))
-     .returning();
+    const [e] = await db
+      .update(enrolLtiUserResourceLinks)
+      .set(newEnrolLtiUserResourceLink)
+      .where(eq(enrolLtiUserResourceLinks.id, enrolLtiUserResourceLinkId!))
+      .returning();
     return { enrolLtiUserResourceLink: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +52,16 @@ export const updateEnrolLtiUserResourceLink = async (id: EnrolLtiUserResourceLin
   }
 };
 
-export const deleteEnrolLtiUserResourceLink = async (id: EnrolLtiUserResourceLinkId) => {
-  const { id: enrolLtiUserResourceLinkId } = enrolLtiUserResourceLinkIdSchema.parse({ id });
+export const deleteEnrolLtiUserResourceLink = async (
+  id: EnrolLtiUserResourceLinkId,
+) => {
+  const { id: enrolLtiUserResourceLinkId } =
+    enrolLtiUserResourceLinkIdSchema.parse({ id });
   try {
-    const [e] =  await db.delete(enrolLtiUserResourceLinks).where(eq(enrolLtiUserResourceLinks.id, enrolLtiUserResourceLinkId!))
-    .returning();
+    const [e] = await db
+      .delete(enrolLtiUserResourceLinks)
+      .where(eq(enrolLtiUserResourceLinks.id, enrolLtiUserResourceLinkId!))
+      .returning();
     return { enrolLtiUserResourceLink: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +69,3 @@ export const deleteEnrolLtiUserResourceLink = async (id: EnrolLtiUserResourceLin
     throw { error: message };
   }
 };
-

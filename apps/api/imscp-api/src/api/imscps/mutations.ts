@@ -1,19 +1,21 @@
-import { db } from "@soco/imscp-db/client";
+import type {
+  ImscpId,
+  NewImscpParams,
+  UpdateImscpParams,
+} from "@soco/imscp-db/schema/imscps";
 import { eq } from "@soco/imscp-db";
-import { 
-  type ImscpId, 
-  type NewImscpParams,
-  type UpdateImscpParams, 
-  updateImscpSchema,
-  insertImscpSchema, 
+import { db } from "@soco/imscp-db/client";
+import {
+  imscpIdSchema,
   imscps,
-  imscpIdSchema 
+  insertImscpSchema,
+  updateImscpSchema,
 } from "@soco/imscp-db/schema/imscps";
 
 export const createImscp = async (imscp: NewImscpParams) => {
   const newImscp = insertImscpSchema.parse(imscp);
   try {
-    const [i] =  await db.insert(imscps).values(newImscp).returning();
+    const [i] = await db.insert(imscps).values(newImscp).returning();
     return { imscp: i };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -26,11 +28,11 @@ export const updateImscp = async (id: ImscpId, imscp: UpdateImscpParams) => {
   const { id: imscpId } = imscpIdSchema.parse({ id });
   const newImscp = updateImscpSchema.parse(imscp);
   try {
-    const [i] =  await db
-     .update(imscps)
-     .set({...newImscp, updatedAt: new Date() })
-     .where(eq(imscps.id, imscpId!))
-     .returning();
+    const [i] = await db
+      .update(imscps)
+      .set({ ...newImscp, updatedAt: new Date() })
+      .where(eq(imscps.id, imscpId!))
+      .returning();
     return { imscp: i };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +44,10 @@ export const updateImscp = async (id: ImscpId, imscp: UpdateImscpParams) => {
 export const deleteImscp = async (id: ImscpId) => {
   const { id: imscpId } = imscpIdSchema.parse({ id });
   try {
-    const [i] =  await db.delete(imscps).where(eq(imscps.id, imscpId!))
-    .returning();
+    const [i] = await db
+      .delete(imscps)
+      .where(eq(imscps.id, imscpId!))
+      .returning();
     return { imscp: i };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +55,3 @@ export const deleteImscp = async (id: ImscpId) => {
     throw { error: message };
   }
 };
-

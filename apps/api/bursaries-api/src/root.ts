@@ -1,7 +1,7 @@
-import { bursariesRouter } from './routers/bursaries';
-import { bursaryCategoriesRouter } from './routers/bursaryCategories';
-import { bursaryCategoriesBursariesRouter } from './routers/bursaryCategoriesBursaries';
-import { bursaryResponsesRouter } from './routers/bursaryResponses';
+import { bursariesRouter } from "./routers/bursaries";
+import { bursaryCategoriesRouter } from "./routers/bursaryCategories";
+import { bursaryCategoriesBursariesRouter } from "./routers/bursaryCategoriesBursaries";
+import { bursaryResponsesRouter } from "./routers/bursaryResponses";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

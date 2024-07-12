@@ -1,19 +1,29 @@
-import { getMessageinboundMessagelistById, getMessageinboundMessagelists } from "../api/messageinboundMessagelists/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  messageinboundMessagelistIdSchema,
   insertMessageinboundMessagelistParams,
+  messageinboundMessagelistIdSchema,
   updateMessageinboundMessagelistParams,
 } from "@soco/message-db/schema/messageinboundMessagelists";
-import { createMessageinboundMessagelist, deleteMessageinboundMessagelist, updateMessageinboundMessagelist } from "../api/messageinboundMessagelists/mutations";
 
-export const messageinboundMessagelistsRouter =createTRPCRouter({
+import {
+  createMessageinboundMessagelist,
+  deleteMessageinboundMessagelist,
+  updateMessageinboundMessagelist,
+} from "../api/messageinboundMessagelists/mutations";
+import {
+  getMessageinboundMessagelistById,
+  getMessageinboundMessagelists,
+} from "../api/messageinboundMessagelists/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const messageinboundMessagelistsRouter = createTRPCRouter({
   getMessageinboundMessagelists: publicProcedure.query(async () => {
     return getMessageinboundMessagelists();
   }),
-  getMessageinboundMessagelistById: publicProcedure.input(messageinboundMessagelistIdSchema).query(async ({ input }) => {
-    return getMessageinboundMessagelistById(input.id);
-  }),
+  getMessageinboundMessagelistById: publicProcedure
+    .input(messageinboundMessagelistIdSchema)
+    .query(async ({ input }) => {
+      return getMessageinboundMessagelistById(input.id);
+    }),
   createMessageinboundMessagelist: publicProcedure
     .input(insertMessageinboundMessagelistParams)
     .mutation(async ({ input }) => {

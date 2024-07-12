@@ -1,21 +1,31 @@
-import { db } from "@soco/forum-db/client";
-import { and, eq } from "@soco/forum-db";
-import { 
-  type ForumTrackPrefId, 
-  type NewForumTrackPrefParams,
-  type UpdateForumTrackPrefParams, 
-  updateForumTrackPrefSchema,
-  insertForumTrackPrefSchema, 
-  forumTrackPrefs,
-  forumTrackPrefIdSchema 
+import type {
+  ForumTrackPrefId,
+  NewForumTrackPrefParams,
+  UpdateForumTrackPrefParams,
 } from "@soco/forum-db/schema/forumTrackPrefs";
 import { getUserAuth } from "@soco/auth-service";
+import { and, eq } from "@soco/forum-db";
+import { db } from "@soco/forum-db/client";
+import {
+  forumTrackPrefIdSchema,
+  forumTrackPrefs,
+  insertForumTrackPrefSchema,
+  updateForumTrackPrefSchema,
+} from "@soco/forum-db/schema/forumTrackPrefs";
 
-export const createForumTrackPref = async (forumTrackPref: NewForumTrackPrefParams) => {
+export const createForumTrackPref = async (
+  forumTrackPref: NewForumTrackPrefParams,
+) => {
   const { session } = await getUserAuth();
-  const newForumTrackPref = insertForumTrackPrefSchema.parse({ ...forumTrackPref, userId: session?.user.id! });
+  const newForumTrackPref = insertForumTrackPrefSchema.parse({
+    ...forumTrackPref,
+    userId: session?.user.id!,
+  });
   try {
-    const [f] =  await db.insert(forumTrackPrefs).values(newForumTrackPref).returning();
+    const [f] = await db
+      .insert(forumTrackPrefs)
+      .values(newForumTrackPref)
+      .returning();
     return { forumTrackPref: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +34,27 @@ export const createForumTrackPref = async (forumTrackPref: NewForumTrackPrefPara
   }
 };
 
-export const updateForumTrackPref = async (id: ForumTrackPrefId, forumTrackPref: UpdateForumTrackPrefParams) => {
+export const updateForumTrackPref = async (
+  id: ForumTrackPrefId,
+  forumTrackPref: UpdateForumTrackPrefParams,
+) => {
   const { session } = await getUserAuth();
   const { id: forumTrackPrefId } = forumTrackPrefIdSchema.parse({ id });
-  const newForumTrackPref = updateForumTrackPrefSchema.parse({ ...forumTrackPref, userId: session?.user.id! });
+  const newForumTrackPref = updateForumTrackPrefSchema.parse({
+    ...forumTrackPref,
+    userId: session?.user.id!,
+  });
   try {
-    const [f] =  await db
-     .update(forumTrackPrefs)
-     .set(newForumTrackPref)
-     .where(and(eq(forumTrackPrefs.id, forumTrackPrefId!), eq(forumTrackPrefs.userId, session?.user.id!)))
-     .returning();
+    const [f] = await db
+      .update(forumTrackPrefs)
+      .set(newForumTrackPref)
+      .where(
+        and(
+          eq(forumTrackPrefs.id, forumTrackPrefId!),
+          eq(forumTrackPrefs.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { forumTrackPref: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +67,15 @@ export const deleteForumTrackPref = async (id: ForumTrackPrefId) => {
   const { session } = await getUserAuth();
   const { id: forumTrackPrefId } = forumTrackPrefIdSchema.parse({ id });
   try {
-    const [f] =  await db.delete(forumTrackPrefs).where(and(eq(forumTrackPrefs.id, forumTrackPrefId!), eq(forumTrackPrefs.userId, session?.user.id!)))
-    .returning();
+    const [f] = await db
+      .delete(forumTrackPrefs)
+      .where(
+        and(
+          eq(forumTrackPrefs.id, forumTrackPrefId!),
+          eq(forumTrackPrefs.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { forumTrackPref: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +83,3 @@ export const deleteForumTrackPref = async (id: ForumTrackPrefId) => {
     throw { error: message };
   }
 };
-

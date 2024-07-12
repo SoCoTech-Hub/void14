@@ -1,10 +1,11 @@
-import { db } from "@soco/wiki-db/client";
+import type { WikiId } from "@soco/wiki-db/schema/wikis";
 import { eq } from "@soco/wiki-db";
-import { type WikiId, wikiIdSchema, wikis } from "@soco/wiki-db/schema/wikis";
+import { db } from "@soco/wiki-db/client";
+import { wikiIdSchema, wikis } from "@soco/wiki-db/schema/wikis";
 
 export const getWikis = async () => {
   const rows = await db.select().from(wikis);
-  const w = rows
+  const w = rows;
   return { wikis: w };
 };
 
@@ -15,5 +16,3 @@ export const getWikiById = async (id: WikiId) => {
   const w = row;
   return { wiki: w };
 };
-
-

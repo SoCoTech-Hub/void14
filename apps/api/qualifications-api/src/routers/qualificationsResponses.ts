@@ -1,19 +1,29 @@
-import { getQualificationsResponseById, getQualificationsResponses } from "../api/qualificationsResponses/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  qualificationsResponseIdSchema,
   insertQualificationsResponseParams,
+  qualificationsResponseIdSchema,
   updateQualificationsResponseParams,
 } from "@soco/qualifications-db/schema/qualificationsResponses";
-import { createQualificationsResponse, deleteQualificationsResponse, updateQualificationsResponse } from "../api/qualificationsResponses/mutations";
 
-export const qualificationsResponsesRouter =createTRPCRouter({
+import {
+  createQualificationsResponse,
+  deleteQualificationsResponse,
+  updateQualificationsResponse,
+} from "../api/qualificationsResponses/mutations";
+import {
+  getQualificationsResponseById,
+  getQualificationsResponses,
+} from "../api/qualificationsResponses/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const qualificationsResponsesRouter = createTRPCRouter({
   getQualificationsResponses: publicProcedure.query(async () => {
     return getQualificationsResponses();
   }),
-  getQualificationsResponseById: publicProcedure.input(qualificationsResponseIdSchema).query(async ({ input }) => {
-    return getQualificationsResponseById(input.id);
-  }),
+  getQualificationsResponseById: publicProcedure
+    .input(qualificationsResponseIdSchema)
+    .query(async ({ input }) => {
+      return getQualificationsResponseById(input.id);
+    }),
   createQualificationsResponse: publicProcedure
     .input(insertQualificationsResponseParams)
     .mutation(async ({ input }) => {

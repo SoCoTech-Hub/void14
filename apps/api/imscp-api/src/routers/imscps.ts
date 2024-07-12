@@ -1,19 +1,22 @@
-import { getImscpById, getImscps } from "../api/imscps/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   imscpIdSchema,
   insertImscpParams,
   updateImscpParams,
 } from "@soco/imscp-db/schema/imscps";
-import { createImscp, deleteImscp, updateImscp } from "../api/imscps/mutations";
 
-export const imscpsRouter =createTRPCRouter({
+import { createImscp, deleteImscp, updateImscp } from "../api/imscps/mutations";
+import { getImscpById, getImscps } from "../api/imscps/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const imscpsRouter = createTRPCRouter({
   getImscps: publicProcedure.query(async () => {
     return getImscps();
   }),
-  getImscpById: publicProcedure.input(imscpIdSchema).query(async ({ input }) => {
-    return getImscpById(input.id);
-  }),
+  getImscpById: publicProcedure
+    .input(imscpIdSchema)
+    .query(async ({ input }) => {
+      return getImscpById(input.id);
+    }),
   createImscp: publicProcedure
     .input(insertImscpParams)
     .mutation(async ({ input }) => {

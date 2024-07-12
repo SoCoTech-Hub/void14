@@ -1,19 +1,26 @@
-import { db } from "@soco/course-db/client";
+import type {
+  CoursePublishId,
+  NewCoursePublishParams,
+  UpdateCoursePublishParams,
+} from "@soco/course-db/schema/coursePublishes";
 import { eq } from "@soco/course-db";
-import { 
-  type CoursePublishId, 
-  type NewCoursePublishParams,
-  type UpdateCoursePublishParams, 
-  updateCoursePublishSchema,
-  insertCoursePublishSchema, 
+import { db } from "@soco/course-db/client";
+import {
   coursePublishes,
-  coursePublishIdSchema 
+  coursePublishIdSchema,
+  insertCoursePublishSchema,
+  updateCoursePublishSchema,
 } from "@soco/course-db/schema/coursePublishes";
 
-export const createCoursePublish = async (coursePublish: NewCoursePublishParams) => {
+export const createCoursePublish = async (
+  coursePublish: NewCoursePublishParams,
+) => {
   const newCoursePublish = insertCoursePublishSchema.parse(coursePublish);
   try {
-    const [c] =  await db.insert(coursePublishes).values(newCoursePublish).returning();
+    const [c] = await db
+      .insert(coursePublishes)
+      .values(newCoursePublish)
+      .returning();
     return { coursePublish: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,18 @@ export const createCoursePublish = async (coursePublish: NewCoursePublishParams)
   }
 };
 
-export const updateCoursePublish = async (id: CoursePublishId, coursePublish: UpdateCoursePublishParams) => {
+export const updateCoursePublish = async (
+  id: CoursePublishId,
+  coursePublish: UpdateCoursePublishParams,
+) => {
   const { id: coursePublishId } = coursePublishIdSchema.parse({ id });
   const newCoursePublish = updateCoursePublishSchema.parse(coursePublish);
   try {
-    const [c] =  await db
-     .update(coursePublishes)
-     .set({...newCoursePublish, updatedAt: new Date() })
-     .where(eq(coursePublishes.id, coursePublishId!))
-     .returning();
+    const [c] = await db
+      .update(coursePublishes)
+      .set({ ...newCoursePublish, updatedAt: new Date() })
+      .where(eq(coursePublishes.id, coursePublishId!))
+      .returning();
     return { coursePublish: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +52,10 @@ export const updateCoursePublish = async (id: CoursePublishId, coursePublish: Up
 export const deleteCoursePublish = async (id: CoursePublishId) => {
   const { id: coursePublishId } = coursePublishIdSchema.parse({ id });
   try {
-    const [c] =  await db.delete(coursePublishes).where(eq(coursePublishes.id, coursePublishId!))
-    .returning();
+    const [c] = await db
+      .delete(coursePublishes)
+      .where(eq(coursePublishes.id, coursePublishId!))
+      .returning();
     return { coursePublish: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +63,3 @@ export const deleteCoursePublish = async (id: CoursePublishId) => {
     throw { error: message };
   }
 };
-

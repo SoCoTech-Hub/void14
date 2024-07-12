@@ -1,4 +1,4 @@
-import { mediasRouter } from './routers/medias';
+import { mediasRouter } from "./routers/medias";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

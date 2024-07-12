@@ -1,19 +1,27 @@
-import { db } from "@soco/repository-db/client";
+import type {
+  NewRepositoryInstanceConfigParams,
+  RepositoryInstanceConfigId,
+  UpdateRepositoryInstanceConfigParams,
+} from "@soco/repository-db/schema/repositoryInstanceConfigs";
 import { eq } from "@soco/repository-db";
-import { 
-  type RepositoryInstanceConfigId, 
-  type NewRepositoryInstanceConfigParams,
-  type UpdateRepositoryInstanceConfigParams, 
-  updateRepositoryInstanceConfigSchema,
-  insertRepositoryInstanceConfigSchema, 
+import { db } from "@soco/repository-db/client";
+import {
+  insertRepositoryInstanceConfigSchema,
+  repositoryInstanceConfigIdSchema,
   repositoryInstanceConfigs,
-  repositoryInstanceConfigIdSchema 
+  updateRepositoryInstanceConfigSchema,
 } from "@soco/repository-db/schema/repositoryInstanceConfigs";
 
-export const createRepositoryInstanceConfig = async (repositoryInstanceConfig: NewRepositoryInstanceConfigParams) => {
-  const newRepositoryInstanceConfig = insertRepositoryInstanceConfigSchema.parse(repositoryInstanceConfig);
+export const createRepositoryInstanceConfig = async (
+  repositoryInstanceConfig: NewRepositoryInstanceConfigParams,
+) => {
+  const newRepositoryInstanceConfig =
+    insertRepositoryInstanceConfigSchema.parse(repositoryInstanceConfig);
   try {
-    const [r] =  await db.insert(repositoryInstanceConfigs).values(newRepositoryInstanceConfig).returning();
+    const [r] = await db
+      .insert(repositoryInstanceConfigs)
+      .values(newRepositoryInstanceConfig)
+      .returning();
     return { repositoryInstanceConfig: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,20 @@ export const createRepositoryInstanceConfig = async (repositoryInstanceConfig: N
   }
 };
 
-export const updateRepositoryInstanceConfig = async (id: RepositoryInstanceConfigId, repositoryInstanceConfig: UpdateRepositoryInstanceConfigParams) => {
-  const { id: repositoryInstanceConfigId } = repositoryInstanceConfigIdSchema.parse({ id });
-  const newRepositoryInstanceConfig = updateRepositoryInstanceConfigSchema.parse(repositoryInstanceConfig);
+export const updateRepositoryInstanceConfig = async (
+  id: RepositoryInstanceConfigId,
+  repositoryInstanceConfig: UpdateRepositoryInstanceConfigParams,
+) => {
+  const { id: repositoryInstanceConfigId } =
+    repositoryInstanceConfigIdSchema.parse({ id });
+  const newRepositoryInstanceConfig =
+    updateRepositoryInstanceConfigSchema.parse(repositoryInstanceConfig);
   try {
-    const [r] =  await db
-     .update(repositoryInstanceConfigs)
-     .set(newRepositoryInstanceConfig)
-     .where(eq(repositoryInstanceConfigs.id, repositoryInstanceConfigId!))
-     .returning();
+    const [r] = await db
+      .update(repositoryInstanceConfigs)
+      .set(newRepositoryInstanceConfig)
+      .where(eq(repositoryInstanceConfigs.id, repositoryInstanceConfigId!))
+      .returning();
     return { repositoryInstanceConfig: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +52,16 @@ export const updateRepositoryInstanceConfig = async (id: RepositoryInstanceConfi
   }
 };
 
-export const deleteRepositoryInstanceConfig = async (id: RepositoryInstanceConfigId) => {
-  const { id: repositoryInstanceConfigId } = repositoryInstanceConfigIdSchema.parse({ id });
+export const deleteRepositoryInstanceConfig = async (
+  id: RepositoryInstanceConfigId,
+) => {
+  const { id: repositoryInstanceConfigId } =
+    repositoryInstanceConfigIdSchema.parse({ id });
   try {
-    const [r] =  await db.delete(repositoryInstanceConfigs).where(eq(repositoryInstanceConfigs.id, repositoryInstanceConfigId!))
-    .returning();
+    const [r] = await db
+      .delete(repositoryInstanceConfigs)
+      .where(eq(repositoryInstanceConfigs.id, repositoryInstanceConfigId!))
+      .returning();
     return { repositoryInstanceConfig: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +69,3 @@ export const deleteRepositoryInstanceConfig = async (id: RepositoryInstanceConfi
     throw { error: message };
   }
 };
-

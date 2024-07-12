@@ -1,19 +1,29 @@
-import { getQuestionNumericalOptionById, getQuestionNumericalOptions } from "../api/questionNumericalOptions/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  questionNumericalOptionIdSchema,
   insertQuestionNumericalOptionParams,
+  questionNumericalOptionIdSchema,
   updateQuestionNumericalOptionParams,
 } from "@soco/question-db/schema/questionNumericalOptions";
-import { createQuestionNumericalOption, deleteQuestionNumericalOption, updateQuestionNumericalOption } from "../api/questionNumericalOptions/mutations";
 
-export const questionNumericalOptionsRouter =createTRPCRouter({
+import {
+  createQuestionNumericalOption,
+  deleteQuestionNumericalOption,
+  updateQuestionNumericalOption,
+} from "../api/questionNumericalOptions/mutations";
+import {
+  getQuestionNumericalOptionById,
+  getQuestionNumericalOptions,
+} from "../api/questionNumericalOptions/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const questionNumericalOptionsRouter = createTRPCRouter({
   getQuestionNumericalOptions: publicProcedure.query(async () => {
     return getQuestionNumericalOptions();
   }),
-  getQuestionNumericalOptionById: publicProcedure.input(questionNumericalOptionIdSchema).query(async ({ input }) => {
-    return getQuestionNumericalOptionById(input.id);
-  }),
+  getQuestionNumericalOptionById: publicProcedure
+    .input(questionNumericalOptionIdSchema)
+    .query(async ({ input }) => {
+      return getQuestionNumericalOptionById(input.id);
+    }),
   createQuestionNumericalOption: publicProcedure
     .input(insertQuestionNumericalOptionParams)
     .mutation(async ({ input }) => {

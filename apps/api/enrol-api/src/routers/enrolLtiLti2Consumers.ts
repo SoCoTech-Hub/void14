@@ -1,19 +1,29 @@
-import { getEnrolLtiLti2ConsumerById, getEnrolLtiLti2Consumers } from "../api/enrolLtiLti2Consumers/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   enrolLtiLti2ConsumerIdSchema,
   insertEnrolLtiLti2ConsumerParams,
   updateEnrolLtiLti2ConsumerParams,
 } from "@soco/enrol-db/schema/enrolLtiLti2Consumers";
-import { createEnrolLtiLti2Consumer, deleteEnrolLtiLti2Consumer, updateEnrolLtiLti2Consumer } from "../api/enrolLtiLti2Consumers/mutations";
 
-export const enrolLtiLti2ConsumersRouter =createTRPCRouter({
+import {
+  createEnrolLtiLti2Consumer,
+  deleteEnrolLtiLti2Consumer,
+  updateEnrolLtiLti2Consumer,
+} from "../api/enrolLtiLti2Consumers/mutations";
+import {
+  getEnrolLtiLti2ConsumerById,
+  getEnrolLtiLti2Consumers,
+} from "../api/enrolLtiLti2Consumers/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const enrolLtiLti2ConsumersRouter = createTRPCRouter({
   getEnrolLtiLti2Consumers: publicProcedure.query(async () => {
     return getEnrolLtiLti2Consumers();
   }),
-  getEnrolLtiLti2ConsumerById: publicProcedure.input(enrolLtiLti2ConsumerIdSchema).query(async ({ input }) => {
-    return getEnrolLtiLti2ConsumerById(input.id);
-  }),
+  getEnrolLtiLti2ConsumerById: publicProcedure
+    .input(enrolLtiLti2ConsumerIdSchema)
+    .query(async ({ input }) => {
+      return getEnrolLtiLti2ConsumerById(input.id);
+    }),
   createEnrolLtiLti2Consumer: publicProcedure
     .input(insertEnrolLtiLti2ConsumerParams)
     .mutation(async ({ input }) => {

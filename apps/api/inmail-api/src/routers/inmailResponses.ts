@@ -1,19 +1,29 @@
-import { getInmailResponseById, getInmailResponses } from "../api/inmailResponses/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   inmailResponseIdSchema,
   insertInmailResponseParams,
   updateInmailResponseParams,
 } from "@soco/inmail-db/schema/inmailResponses";
-import { createInmailResponse, deleteInmailResponse, updateInmailResponse } from "../api/inmailResponses/mutations";
 
-export const inmailResponsesRouter =createTRPCRouter({
+import {
+  createInmailResponse,
+  deleteInmailResponse,
+  updateInmailResponse,
+} from "../api/inmailResponses/mutations";
+import {
+  getInmailResponseById,
+  getInmailResponses,
+} from "../api/inmailResponses/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const inmailResponsesRouter = createTRPCRouter({
   getInmailResponses: publicProcedure.query(async () => {
     return getInmailResponses();
   }),
-  getInmailResponseById: publicProcedure.input(inmailResponseIdSchema).query(async ({ input }) => {
-    return getInmailResponseById(input.id);
-  }),
+  getInmailResponseById: publicProcedure
+    .input(inmailResponseIdSchema)
+    .query(async ({ input }) => {
+      return getInmailResponseById(input.id);
+    }),
   createInmailResponse: publicProcedure
     .input(insertInmailResponseParams)
     .mutation(async ({ input }) => {

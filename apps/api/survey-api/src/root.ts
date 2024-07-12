@@ -1,7 +1,7 @@
-import { surveyAnalysissRouter } from './routers/surveyAnalysiss';
-import { surveyAnswersRouter } from './routers/surveyAnswers';
-import { surveyQuestionsRouter } from './routers/surveyQuestions';
-import { surveysRouter } from './routers/surveys';
+import { surveyAnalysissRouter } from "./routers/surveyAnalysiss";
+import { surveyAnswersRouter } from "./routers/surveyAnswers";
+import { surveyQuestionsRouter } from "./routers/surveyQuestions";
+import { surveysRouter } from "./routers/surveys";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

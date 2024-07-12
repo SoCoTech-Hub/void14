@@ -1,19 +1,29 @@
-import { getSurveyAnswerById, getSurveyAnswers } from "../api/surveyAnswers/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  surveyAnswerIdSchema,
   insertSurveyAnswerParams,
+  surveyAnswerIdSchema,
   updateSurveyAnswerParams,
 } from "@soco/survey-db/schema/surveyAnswers";
-import { createSurveyAnswer, deleteSurveyAnswer, updateSurveyAnswer } from "../api/surveyAnswers/mutations";
 
-export const surveyAnswersRouter =createTRPCRouter({
+import {
+  createSurveyAnswer,
+  deleteSurveyAnswer,
+  updateSurveyAnswer,
+} from "../api/surveyAnswers/mutations";
+import {
+  getSurveyAnswerById,
+  getSurveyAnswers,
+} from "../api/surveyAnswers/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const surveyAnswersRouter = createTRPCRouter({
   getSurveyAnswers: publicProcedure.query(async () => {
     return getSurveyAnswers();
   }),
-  getSurveyAnswerById: publicProcedure.input(surveyAnswerIdSchema).query(async ({ input }) => {
-    return getSurveyAnswerById(input.id);
-  }),
+  getSurveyAnswerById: publicProcedure
+    .input(surveyAnswerIdSchema)
+    .query(async ({ input }) => {
+      return getSurveyAnswerById(input.id);
+    }),
   createSurveyAnswer: publicProcedure
     .input(insertSurveyAnswerParams)
     .mutation(async ({ input }) => {

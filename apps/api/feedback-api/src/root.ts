@@ -1,11 +1,11 @@
-import { feedbackCompletedsRouter } from './routers/feedbackCompleteds';
-import { feedbackCompletedtmpsRouter } from './routers/feedbackCompletedtmps';
-import { feedbackItemsRouter } from './routers/feedbackItems';
-import { feedbacksRouter } from './routers/feedbacks';
-import { feedbackSitecourseMapsRouter } from './routers/feedbackSitecourseMaps';
-import { feedbackTemplatesRouter } from './routers/feedbackTemplates';
-import { feedbackValuesRouter } from './routers/feedbackValues';
-import { feedbackValuetmpsRouter } from './routers/feedbackValuetmps';
+import { feedbackCompletedsRouter } from "./routers/feedbackCompleteds";
+import { feedbackCompletedtmpsRouter } from "./routers/feedbackCompletedtmps";
+import { feedbackItemsRouter } from "./routers/feedbackItems";
+import { feedbacksRouter } from "./routers/feedbacks";
+import { feedbackSitecourseMapsRouter } from "./routers/feedbackSitecourseMaps";
+import { feedbackTemplatesRouter } from "./routers/feedbackTemplates";
+import { feedbackValuesRouter } from "./routers/feedbackValues";
+import { feedbackValuetmpsRouter } from "./routers/feedbackValuetmps";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

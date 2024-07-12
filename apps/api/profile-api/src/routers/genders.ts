@@ -1,19 +1,26 @@
-import { getGenderById, getGenders } from "../api/genders/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   genderIdSchema,
   insertGenderParams,
   updateGenderParams,
 } from "@soco/profile-db/schema/genders";
-import { createGender, deleteGender, updateGender } from "../api/genders/mutations";
 
-export const gendersRouter =createTRPCRouter({
+import {
+  createGender,
+  deleteGender,
+  updateGender,
+} from "../api/genders/mutations";
+import { getGenderById, getGenders } from "../api/genders/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const gendersRouter = createTRPCRouter({
   getGenders: publicProcedure.query(async () => {
     return getGenders();
   }),
-  getGenderById: publicProcedure.input(genderIdSchema).query(async ({ input }) => {
-    return getGenderById(input.id);
-  }),
+  getGenderById: publicProcedure
+    .input(genderIdSchema)
+    .query(async ({ input }) => {
+      return getGenderById(input.id);
+    }),
   createGender: publicProcedure
     .input(insertGenderParams)
     .mutation(async ({ input }) => {

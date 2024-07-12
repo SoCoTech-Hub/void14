@@ -1,19 +1,29 @@
-import { getAssignSubmissionOnlineTextById, getAssignSubmissionOnlineTexts } from "../api/assignSubmissionOnlineTexts/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   assignSubmissionOnlineTextIdSchema,
   insertAssignSubmissionOnlineTextParams,
   updateAssignSubmissionOnlineTextParams,
 } from "@soco/assignment-db/schema/assignSubmissionOnlineTexts";
-import { createAssignSubmissionOnlineText, deleteAssignSubmissionOnlineText, updateAssignSubmissionOnlineText } from "../api/assignSubmissionOnlineTexts/mutations";
 
-export const assignSubmissionOnlineTextsRouter =createTRPCRouter({
+import {
+  createAssignSubmissionOnlineText,
+  deleteAssignSubmissionOnlineText,
+  updateAssignSubmissionOnlineText,
+} from "../api/assignSubmissionOnlineTexts/mutations";
+import {
+  getAssignSubmissionOnlineTextById,
+  getAssignSubmissionOnlineTexts,
+} from "../api/assignSubmissionOnlineTexts/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const assignSubmissionOnlineTextsRouter = createTRPCRouter({
   getAssignSubmissionOnlineTexts: publicProcedure.query(async () => {
     return getAssignSubmissionOnlineTexts();
   }),
-  getAssignSubmissionOnlineTextById: publicProcedure.input(assignSubmissionOnlineTextIdSchema).query(async ({ input }) => {
-    return getAssignSubmissionOnlineTextById(input.id);
-  }),
+  getAssignSubmissionOnlineTextById: publicProcedure
+    .input(assignSubmissionOnlineTextIdSchema)
+    .query(async ({ input }) => {
+      return getAssignSubmissionOnlineTextById(input.id);
+    }),
   createAssignSubmissionOnlineText: publicProcedure
     .input(insertAssignSubmissionOnlineTextParams)
     .mutation(async ({ input }) => {

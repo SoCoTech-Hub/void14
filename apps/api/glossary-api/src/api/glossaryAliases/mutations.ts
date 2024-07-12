@@ -1,19 +1,26 @@
-import { db } from "@soco/glossary-db/client";
+import type {
+  GlossaryAliasId,
+  NewGlossaryAliasParams,
+  UpdateGlossaryAliasParams,
+} from "@soco/glossary-db/schema/glossaryAliases";
 import { eq } from "@soco/glossary-db";
-import { 
-  type GlossaryAliasId, 
-  type NewGlossaryAliasParams,
-  type UpdateGlossaryAliasParams, 
-  updateGlossaryAliasSchema,
-  insertGlossaryAliasSchema, 
+import { db } from "@soco/glossary-db/client";
+import {
   glossaryAliases,
-  glossaryAliasIdSchema 
+  glossaryAliasIdSchema,
+  insertGlossaryAliasSchema,
+  updateGlossaryAliasSchema,
 } from "@soco/glossary-db/schema/glossaryAliases";
 
-export const createGlossaryAlias = async (glossaryAlias: NewGlossaryAliasParams) => {
+export const createGlossaryAlias = async (
+  glossaryAlias: NewGlossaryAliasParams,
+) => {
   const newGlossaryAlias = insertGlossaryAliasSchema.parse(glossaryAlias);
   try {
-    const [g] =  await db.insert(glossaryAliases).values(newGlossaryAlias).returning();
+    const [g] = await db
+      .insert(glossaryAliases)
+      .values(newGlossaryAlias)
+      .returning();
     return { glossaryAlias: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,18 @@ export const createGlossaryAlias = async (glossaryAlias: NewGlossaryAliasParams)
   }
 };
 
-export const updateGlossaryAlias = async (id: GlossaryAliasId, glossaryAlias: UpdateGlossaryAliasParams) => {
+export const updateGlossaryAlias = async (
+  id: GlossaryAliasId,
+  glossaryAlias: UpdateGlossaryAliasParams,
+) => {
   const { id: glossaryAliasId } = glossaryAliasIdSchema.parse({ id });
   const newGlossaryAlias = updateGlossaryAliasSchema.parse(glossaryAlias);
   try {
-    const [g] =  await db
-     .update(glossaryAliases)
-     .set(newGlossaryAlias)
-     .where(eq(glossaryAliases.id, glossaryAliasId!))
-     .returning();
+    const [g] = await db
+      .update(glossaryAliases)
+      .set(newGlossaryAlias)
+      .where(eq(glossaryAliases.id, glossaryAliasId!))
+      .returning();
     return { glossaryAlias: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +52,10 @@ export const updateGlossaryAlias = async (id: GlossaryAliasId, glossaryAlias: Up
 export const deleteGlossaryAlias = async (id: GlossaryAliasId) => {
   const { id: glossaryAliasId } = glossaryAliasIdSchema.parse({ id });
   try {
-    const [g] =  await db.delete(glossaryAliases).where(eq(glossaryAliases.id, glossaryAliasId!))
-    .returning();
+    const [g] = await db
+      .delete(glossaryAliases)
+      .where(eq(glossaryAliases.id, glossaryAliasId!))
+      .returning();
     return { glossaryAlias: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +63,3 @@ export const deleteGlossaryAlias = async (id: GlossaryAliasId) => {
     throw { error: message };
   }
 };
-

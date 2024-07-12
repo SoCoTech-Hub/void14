@@ -1,10 +1,11 @@
-import { db } from "@soco/block-db/client";
+import type { BlockId } from "@soco/block-db/schema/blocks";
 import { eq } from "@soco/block-db";
-import { type BlockId, blockIdSchema, blocks } from "@soco/block-db/schema/blocks";
+import { db } from "@soco/block-db/client";
+import { blockIdSchema, blocks } from "@soco/block-db/schema/blocks";
 
 export const getBlocks = async () => {
   const rows = await db.select().from(blocks);
-  const b = rows
+  const b = rows;
   return { blocks: b };
 };
 
@@ -15,5 +16,3 @@ export const getBlockById = async (id: BlockId) => {
   const b = row;
   return { block: b };
 };
-
-

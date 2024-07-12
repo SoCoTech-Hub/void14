@@ -1,19 +1,29 @@
-import { getMnetRemoteService2rpcById, getMnetRemoteService2rpcs } from "../api/mnetRemoteService2rpcs/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  mnetRemoteService2rpcIdSchema,
   insertMnetRemoteService2rpcParams,
+  mnetRemoteService2rpcIdSchema,
   updateMnetRemoteService2rpcParams,
 } from "@soco/mnet-db/schema/mnetRemoteService2rpcs";
-import { createMnetRemoteService2rpc, deleteMnetRemoteService2rpc, updateMnetRemoteService2rpc } from "../api/mnetRemoteService2rpcs/mutations";
 
-export const mnetRemoteService2rpcsRouter =createTRPCRouter({
+import {
+  createMnetRemoteService2rpc,
+  deleteMnetRemoteService2rpc,
+  updateMnetRemoteService2rpc,
+} from "../api/mnetRemoteService2rpcs/mutations";
+import {
+  getMnetRemoteService2rpcById,
+  getMnetRemoteService2rpcs,
+} from "../api/mnetRemoteService2rpcs/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const mnetRemoteService2rpcsRouter = createTRPCRouter({
   getMnetRemoteService2rpcs: publicProcedure.query(async () => {
     return getMnetRemoteService2rpcs();
   }),
-  getMnetRemoteService2rpcById: publicProcedure.input(mnetRemoteService2rpcIdSchema).query(async ({ input }) => {
-    return getMnetRemoteService2rpcById(input.id);
-  }),
+  getMnetRemoteService2rpcById: publicProcedure
+    .input(mnetRemoteService2rpcIdSchema)
+    .query(async ({ input }) => {
+      return getMnetRemoteService2rpcById(input.id);
+    }),
   createMnetRemoteService2rpc: publicProcedure
     .input(insertMnetRemoteService2rpcParams)
     .mutation(async ({ input }) => {

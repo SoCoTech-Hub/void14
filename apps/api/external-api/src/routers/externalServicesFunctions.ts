@@ -1,19 +1,29 @@
-import { getExternalServicesFunctionById, getExternalServicesFunctions } from "../api/externalServicesFunctions/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   externalServicesFunctionIdSchema,
   insertExternalServicesFunctionParams,
   updateExternalServicesFunctionParams,
 } from "@soco/external-db/schema/externalServicesFunctions";
-import { createExternalServicesFunction, deleteExternalServicesFunction, updateExternalServicesFunction } from "../api/externalServicesFunctions/mutations";
 
-export const externalServicesFunctionsRouter =createTRPCRouter({
+import {
+  createExternalServicesFunction,
+  deleteExternalServicesFunction,
+  updateExternalServicesFunction,
+} from "../api/externalServicesFunctions/mutations";
+import {
+  getExternalServicesFunctionById,
+  getExternalServicesFunctions,
+} from "../api/externalServicesFunctions/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const externalServicesFunctionsRouter = createTRPCRouter({
   getExternalServicesFunctions: publicProcedure.query(async () => {
     return getExternalServicesFunctions();
   }),
-  getExternalServicesFunctionById: publicProcedure.input(externalServicesFunctionIdSchema).query(async ({ input }) => {
-    return getExternalServicesFunctionById(input.id);
-  }),
+  getExternalServicesFunctionById: publicProcedure
+    .input(externalServicesFunctionIdSchema)
+    .query(async ({ input }) => {
+      return getExternalServicesFunctionById(input.id);
+    }),
   createExternalServicesFunction: publicProcedure
     .input(insertExternalServicesFunctionParams)
     .mutation(async ({ input }) => {

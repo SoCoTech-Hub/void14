@@ -1,19 +1,28 @@
-import { db } from "@soco/feedback-db/client";
+import type {
+  FeedbackSitecourseMapId,
+  NewFeedbackSitecourseMapParams,
+  UpdateFeedbackSitecourseMapParams,
+} from "@soco/feedback-db/schema/feedbackSitecourseMaps";
 import { eq } from "@soco/feedback-db";
-import { 
-  type FeedbackSitecourseMapId, 
-  type NewFeedbackSitecourseMapParams,
-  type UpdateFeedbackSitecourseMapParams, 
-  updateFeedbackSitecourseMapSchema,
-  insertFeedbackSitecourseMapSchema, 
+import { db } from "@soco/feedback-db/client";
+import {
+  feedbackSitecourseMapIdSchema,
   feedbackSitecourseMaps,
-  feedbackSitecourseMapIdSchema 
+  insertFeedbackSitecourseMapSchema,
+  updateFeedbackSitecourseMapSchema,
 } from "@soco/feedback-db/schema/feedbackSitecourseMaps";
 
-export const createFeedbackSitecourseMap = async (feedbackSitecourseMap: NewFeedbackSitecourseMapParams) => {
-  const newFeedbackSitecourseMap = insertFeedbackSitecourseMapSchema.parse(feedbackSitecourseMap);
+export const createFeedbackSitecourseMap = async (
+  feedbackSitecourseMap: NewFeedbackSitecourseMapParams,
+) => {
+  const newFeedbackSitecourseMap = insertFeedbackSitecourseMapSchema.parse(
+    feedbackSitecourseMap,
+  );
   try {
-    const [f] =  await db.insert(feedbackSitecourseMaps).values(newFeedbackSitecourseMap).returning();
+    const [f] = await db
+      .insert(feedbackSitecourseMaps)
+      .values(newFeedbackSitecourseMap)
+      .returning();
     return { feedbackSitecourseMap: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +31,22 @@ export const createFeedbackSitecourseMap = async (feedbackSitecourseMap: NewFeed
   }
 };
 
-export const updateFeedbackSitecourseMap = async (id: FeedbackSitecourseMapId, feedbackSitecourseMap: UpdateFeedbackSitecourseMapParams) => {
-  const { id: feedbackSitecourseMapId } = feedbackSitecourseMapIdSchema.parse({ id });
-  const newFeedbackSitecourseMap = updateFeedbackSitecourseMapSchema.parse(feedbackSitecourseMap);
+export const updateFeedbackSitecourseMap = async (
+  id: FeedbackSitecourseMapId,
+  feedbackSitecourseMap: UpdateFeedbackSitecourseMapParams,
+) => {
+  const { id: feedbackSitecourseMapId } = feedbackSitecourseMapIdSchema.parse({
+    id,
+  });
+  const newFeedbackSitecourseMap = updateFeedbackSitecourseMapSchema.parse(
+    feedbackSitecourseMap,
+  );
   try {
-    const [f] =  await db
-     .update(feedbackSitecourseMaps)
-     .set(newFeedbackSitecourseMap)
-     .where(eq(feedbackSitecourseMaps.id, feedbackSitecourseMapId!))
-     .returning();
+    const [f] = await db
+      .update(feedbackSitecourseMaps)
+      .set(newFeedbackSitecourseMap)
+      .where(eq(feedbackSitecourseMaps.id, feedbackSitecourseMapId!))
+      .returning();
     return { feedbackSitecourseMap: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +55,17 @@ export const updateFeedbackSitecourseMap = async (id: FeedbackSitecourseMapId, f
   }
 };
 
-export const deleteFeedbackSitecourseMap = async (id: FeedbackSitecourseMapId) => {
-  const { id: feedbackSitecourseMapId } = feedbackSitecourseMapIdSchema.parse({ id });
+export const deleteFeedbackSitecourseMap = async (
+  id: FeedbackSitecourseMapId,
+) => {
+  const { id: feedbackSitecourseMapId } = feedbackSitecourseMapIdSchema.parse({
+    id,
+  });
   try {
-    const [f] =  await db.delete(feedbackSitecourseMaps).where(eq(feedbackSitecourseMaps.id, feedbackSitecourseMapId!))
-    .returning();
+    const [f] = await db
+      .delete(feedbackSitecourseMaps)
+      .where(eq(feedbackSitecourseMaps.id, feedbackSitecourseMapId!))
+      .returning();
     return { feedbackSitecourseMap: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +73,3 @@ export const deleteFeedbackSitecourseMap = async (id: FeedbackSitecourseMapId) =
     throw { error: message };
   }
 };
-

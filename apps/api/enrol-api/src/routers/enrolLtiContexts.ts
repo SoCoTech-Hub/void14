@@ -1,19 +1,29 @@
-import { getEnrolLtiContextById, getEnrolLtiContexts } from "../api/enrolLtiContexts/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   enrolLtiContextIdSchema,
   insertEnrolLtiContextParams,
   updateEnrolLtiContextParams,
 } from "@soco/enrol-db/schema/enrolLtiContexts";
-import { createEnrolLtiContext, deleteEnrolLtiContext, updateEnrolLtiContext } from "../api/enrolLtiContexts/mutations";
 
-export const enrolLtiContextsRouter =createTRPCRouter({
+import {
+  createEnrolLtiContext,
+  deleteEnrolLtiContext,
+  updateEnrolLtiContext,
+} from "../api/enrolLtiContexts/mutations";
+import {
+  getEnrolLtiContextById,
+  getEnrolLtiContexts,
+} from "../api/enrolLtiContexts/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const enrolLtiContextsRouter = createTRPCRouter({
   getEnrolLtiContexts: publicProcedure.query(async () => {
     return getEnrolLtiContexts();
   }),
-  getEnrolLtiContextById: publicProcedure.input(enrolLtiContextIdSchema).query(async ({ input }) => {
-    return getEnrolLtiContextById(input.id);
-  }),
+  getEnrolLtiContextById: publicProcedure
+    .input(enrolLtiContextIdSchema)
+    .query(async ({ input }) => {
+      return getEnrolLtiContextById(input.id);
+    }),
   createEnrolLtiContext: publicProcedure
     .input(insertEnrolLtiContextParams)
     .mutation(async ({ input }) => {

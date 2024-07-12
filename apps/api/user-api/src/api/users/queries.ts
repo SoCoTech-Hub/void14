@@ -1,10 +1,11 @@
-import { db } from "@soco/user-db/client";
+import type { UserId } from "@soco/user-db/schema/users";
 import { eq } from "@soco/user-db";
-import { type UserId, userIdSchema, users } from "@soco/user-db/schema/users";
+import { db } from "@soco/user-db/client";
+import { userIdSchema, users } from "@soco/user-db/schema/users";
 
 export const getUsers = async () => {
   const rows = await db.select().from(users);
-  const u = rows
+  const u = rows;
   return { users: u };
 };
 
@@ -15,5 +16,3 @@ export const getUserById = async (id: UserId) => {
   const u = row;
   return { user: u };
 };
-
-

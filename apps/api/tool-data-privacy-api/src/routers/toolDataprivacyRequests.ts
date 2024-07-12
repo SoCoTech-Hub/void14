@@ -1,19 +1,29 @@
-import { getToolDataprivacyRequestById, getToolDataprivacyRequests } from "../api/toolDataprivacyRequests/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  toolDataprivacyRequestIdSchema,
   insertToolDataprivacyRequestParams,
+  toolDataprivacyRequestIdSchema,
   updateToolDataprivacyRequestParams,
 } from "@soco/tool-data-privacy-db/schema/toolDataprivacyRequests";
-import { createToolDataprivacyRequest, deleteToolDataprivacyRequest, updateToolDataprivacyRequest } from "../api/toolDataprivacyRequests/mutations";
 
-export const toolDataprivacyRequestsRouter =createTRPCRouter({
+import {
+  createToolDataprivacyRequest,
+  deleteToolDataprivacyRequest,
+  updateToolDataprivacyRequest,
+} from "../api/toolDataprivacyRequests/mutations";
+import {
+  getToolDataprivacyRequestById,
+  getToolDataprivacyRequests,
+} from "../api/toolDataprivacyRequests/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const toolDataprivacyRequestsRouter = createTRPCRouter({
   getToolDataprivacyRequests: publicProcedure.query(async () => {
     return getToolDataprivacyRequests();
   }),
-  getToolDataprivacyRequestById: publicProcedure.input(toolDataprivacyRequestIdSchema).query(async ({ input }) => {
-    return getToolDataprivacyRequestById(input.id);
-  }),
+  getToolDataprivacyRequestById: publicProcedure
+    .input(toolDataprivacyRequestIdSchema)
+    .query(async ({ input }) => {
+      return getToolDataprivacyRequestById(input.id);
+    }),
   createToolDataprivacyRequest: publicProcedure
     .input(insertToolDataprivacyRequestParams)
     .mutation(async ({ input }) => {

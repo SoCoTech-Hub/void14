@@ -1,19 +1,21 @@
-import { db } from "@soco/mnet-db/client";
+import type {
+  MnetHostId,
+  NewMnetHostParams,
+  UpdateMnetHostParams,
+} from "@soco/mnet-db/schema/mnetHosts";
 import { eq } from "@soco/mnet-db";
-import { 
-  type MnetHostId, 
-  type NewMnetHostParams,
-  type UpdateMnetHostParams, 
-  updateMnetHostSchema,
-  insertMnetHostSchema, 
+import { db } from "@soco/mnet-db/client";
+import {
+  insertMnetHostSchema,
+  mnetHostIdSchema,
   mnetHosts,
-  mnetHostIdSchema 
+  updateMnetHostSchema,
 } from "@soco/mnet-db/schema/mnetHosts";
 
 export const createMnetHost = async (mnetHost: NewMnetHostParams) => {
   const newMnetHost = insertMnetHostSchema.parse(mnetHost);
   try {
-    const [m] =  await db.insert(mnetHosts).values(newMnetHost).returning();
+    const [m] = await db.insert(mnetHosts).values(newMnetHost).returning();
     return { mnetHost: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +24,18 @@ export const createMnetHost = async (mnetHost: NewMnetHostParams) => {
   }
 };
 
-export const updateMnetHost = async (id: MnetHostId, mnetHost: UpdateMnetHostParams) => {
+export const updateMnetHost = async (
+  id: MnetHostId,
+  mnetHost: UpdateMnetHostParams,
+) => {
   const { id: mnetHostId } = mnetHostIdSchema.parse({ id });
   const newMnetHost = updateMnetHostSchema.parse(mnetHost);
   try {
-    const [m] =  await db
-     .update(mnetHosts)
-     .set(newMnetHost)
-     .where(eq(mnetHosts.id, mnetHostId!))
-     .returning();
+    const [m] = await db
+      .update(mnetHosts)
+      .set(newMnetHost)
+      .where(eq(mnetHosts.id, mnetHostId!))
+      .returning();
     return { mnetHost: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +47,10 @@ export const updateMnetHost = async (id: MnetHostId, mnetHost: UpdateMnetHostPar
 export const deleteMnetHost = async (id: MnetHostId) => {
   const { id: mnetHostId } = mnetHostIdSchema.parse({ id });
   try {
-    const [m] =  await db.delete(mnetHosts).where(eq(mnetHosts.id, mnetHostId!))
-    .returning();
+    const [m] = await db
+      .delete(mnetHosts)
+      .where(eq(mnetHosts.id, mnetHostId!))
+      .returning();
     return { mnetHost: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +58,3 @@ export const deleteMnetHost = async (id: MnetHostId) => {
     throw { error: message };
   }
 };
-

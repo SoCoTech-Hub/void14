@@ -1,19 +1,29 @@
-import { getLtiTypesConfigById, getLtiTypesConfigs } from "../api/ltiTypesConfigs/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  ltiTypesConfigIdSchema,
   insertLtiTypesConfigParams,
+  ltiTypesConfigIdSchema,
   updateLtiTypesConfigParams,
 } from "@soco/lti-db/schema/ltiTypesConfigs";
-import { createLtiTypesConfig, deleteLtiTypesConfig, updateLtiTypesConfig } from "../api/ltiTypesConfigs/mutations";
 
-export const ltiTypesConfigsRouter =createTRPCRouter({
+import {
+  createLtiTypesConfig,
+  deleteLtiTypesConfig,
+  updateLtiTypesConfig,
+} from "../api/ltiTypesConfigs/mutations";
+import {
+  getLtiTypesConfigById,
+  getLtiTypesConfigs,
+} from "../api/ltiTypesConfigs/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const ltiTypesConfigsRouter = createTRPCRouter({
   getLtiTypesConfigs: publicProcedure.query(async () => {
     return getLtiTypesConfigs();
   }),
-  getLtiTypesConfigById: publicProcedure.input(ltiTypesConfigIdSchema).query(async ({ input }) => {
-    return getLtiTypesConfigById(input.id);
-  }),
+  getLtiTypesConfigById: publicProcedure
+    .input(ltiTypesConfigIdSchema)
+    .query(async ({ input }) => {
+      return getLtiTypesConfigById(input.id);
+    }),
   createLtiTypesConfig: publicProcedure
     .input(insertLtiTypesConfigParams)
     .mutation(async ({ input }) => {

@@ -9,7 +9,7 @@ import {
 import { getUserAuth } from "@soco/auth-service";
 
 export const getAdminPresetsApps = async () => {
-  const { session } = await getUserAuth();
+  const { Session: session } = await getUserAuth();
   const rows = await db
     .select({ adminPresetsApp: adminPresetsApps, adminPreset: adminPresets })
     .from(adminPresetsApps)
@@ -23,7 +23,7 @@ export const getAdminPresetsApps = async () => {
 };
 
 export const getAdminPresetsAppById = async (id: AdminPresetsAppId) => {
-  const { session } = await getUserAuth();
+  const { Session: session } = await getUserAuth();
   const { id: adminPresetsAppId } = adminPresetsAppIdSchema.parse({ id });
   const [row] = await db
     .select({ adminPresetsApp: adminPresetsApps, adminPreset: adminPresets })

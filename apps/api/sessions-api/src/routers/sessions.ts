@@ -1,19 +1,26 @@
-import { getSessionById, getSessions } from "../api/sessions/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  sessionIdSchema,
   insertSessionParams,
+  sessionIdSchema,
   updateSessionParams,
 } from "@soco/sessions-db/schema/sessions";
-import { createSession, deleteSession, updateSession } from "../api/sessions/mutations";
 
-export const sessionsRouter =createTRPCRouter({
+import {
+  createSession,
+  deleteSession,
+  updateSession,
+} from "../api/sessions/mutations";
+import { getSessionById, getSessions } from "../api/sessions/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const sessionsRouter = createTRPCRouter({
   getSessions: publicProcedure.query(async () => {
     return getSessions();
   }),
-  getSessionById: publicProcedure.input(sessionIdSchema).query(async ({ input }) => {
-    return getSessionById(input.id);
-  }),
+  getSessionById: publicProcedure
+    .input(sessionIdSchema)
+    .query(async ({ input }) => {
+      return getSessionById(input.id);
+    }),
   createSession: publicProcedure
     .input(insertSessionParams)
     .mutation(async ({ input }) => {

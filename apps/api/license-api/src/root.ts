@@ -1,4 +1,4 @@
-import { licensesRouter } from './routers/licenses';
+import { licensesRouter } from "./routers/licenses";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

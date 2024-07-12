@@ -1,19 +1,26 @@
-import { db } from "@soco/mnet-db/client";
+import type {
+  MnetService2rpcId,
+  NewMnetService2rpcParams,
+  UpdateMnetService2rpcParams,
+} from "@soco/mnet-db/schema/mnetService2rpcs";
 import { eq } from "@soco/mnet-db";
-import { 
-  type MnetService2rpcId, 
-  type NewMnetService2rpcParams,
-  type UpdateMnetService2rpcParams, 
-  updateMnetService2rpcSchema,
-  insertMnetService2rpcSchema, 
+import { db } from "@soco/mnet-db/client";
+import {
+  insertMnetService2rpcSchema,
+  mnetService2rpcIdSchema,
   mnetService2rpcs,
-  mnetService2rpcIdSchema 
+  updateMnetService2rpcSchema,
 } from "@soco/mnet-db/schema/mnetService2rpcs";
 
-export const createMnetService2rpc = async (mnetService2rpc: NewMnetService2rpcParams) => {
+export const createMnetService2rpc = async (
+  mnetService2rpc: NewMnetService2rpcParams,
+) => {
   const newMnetService2rpc = insertMnetService2rpcSchema.parse(mnetService2rpc);
   try {
-    const [m] =  await db.insert(mnetService2rpcs).values(newMnetService2rpc).returning();
+    const [m] = await db
+      .insert(mnetService2rpcs)
+      .values(newMnetService2rpc)
+      .returning();
     return { mnetService2rpc: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,18 @@ export const createMnetService2rpc = async (mnetService2rpc: NewMnetService2rpcP
   }
 };
 
-export const updateMnetService2rpc = async (id: MnetService2rpcId, mnetService2rpc: UpdateMnetService2rpcParams) => {
+export const updateMnetService2rpc = async (
+  id: MnetService2rpcId,
+  mnetService2rpc: UpdateMnetService2rpcParams,
+) => {
   const { id: mnetService2rpcId } = mnetService2rpcIdSchema.parse({ id });
   const newMnetService2rpc = updateMnetService2rpcSchema.parse(mnetService2rpc);
   try {
-    const [m] =  await db
-     .update(mnetService2rpcs)
-     .set(newMnetService2rpc)
-     .where(eq(mnetService2rpcs.id, mnetService2rpcId!))
-     .returning();
+    const [m] = await db
+      .update(mnetService2rpcs)
+      .set(newMnetService2rpc)
+      .where(eq(mnetService2rpcs.id, mnetService2rpcId!))
+      .returning();
     return { mnetService2rpc: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +52,10 @@ export const updateMnetService2rpc = async (id: MnetService2rpcId, mnetService2r
 export const deleteMnetService2rpc = async (id: MnetService2rpcId) => {
   const { id: mnetService2rpcId } = mnetService2rpcIdSchema.parse({ id });
   try {
-    const [m] =  await db.delete(mnetService2rpcs).where(eq(mnetService2rpcs.id, mnetService2rpcId!))
-    .returning();
+    const [m] = await db
+      .delete(mnetService2rpcs)
+      .where(eq(mnetService2rpcs.id, mnetService2rpcId!))
+      .returning();
     return { mnetService2rpc: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +63,3 @@ export const deleteMnetService2rpc = async (id: MnetService2rpcId) => {
     throw { error: message };
   }
 };
-

@@ -1,19 +1,29 @@
-import { getGlossaryAliasById, getGlossaryAliases } from "../api/glossaryAliases/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   glossaryAliasIdSchema,
   insertGlossaryAliasParams,
   updateGlossaryAliasParams,
 } from "@soco/glossary-db/schema/glossaryAliases";
-import { createGlossaryAlias, deleteGlossaryAlias, updateGlossaryAlias } from "../api/glossaryAliases/mutations";
 
-export const glossaryAliasesRouter =createTRPCRouter({
+import {
+  createGlossaryAlias,
+  deleteGlossaryAlias,
+  updateGlossaryAlias,
+} from "../api/glossaryAliases/mutations";
+import {
+  getGlossaryAliasById,
+  getGlossaryAliases,
+} from "../api/glossaryAliases/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const glossaryAliasesRouter = createTRPCRouter({
   getGlossaryAliases: publicProcedure.query(async () => {
     return getGlossaryAliases();
   }),
-  getGlossaryAliasById: publicProcedure.input(glossaryAliasIdSchema).query(async ({ input }) => {
-    return getGlossaryAliasById(input.id);
-  }),
+  getGlossaryAliasById: publicProcedure
+    .input(glossaryAliasIdSchema)
+    .query(async ({ input }) => {
+      return getGlossaryAliasById(input.id);
+    }),
   createGlossaryAlias: publicProcedure
     .input(insertGlossaryAliasParams)
     .mutation(async ({ input }) => {

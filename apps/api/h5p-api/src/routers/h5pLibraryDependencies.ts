@@ -1,19 +1,29 @@
-import { getH5pLibraryDependencyById, getH5pLibraryDependencies } from "../api/h5pLibraryDependencies/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   h5pLibraryDependencyIdSchema,
   insertH5pLibraryDependencyParams,
   updateH5pLibraryDependencyParams,
 } from "@soco/h5p-db/schema/h5pLibraryDependencies";
-import { createH5pLibraryDependency, deleteH5pLibraryDependency, updateH5pLibraryDependency } from "../api/h5pLibraryDependencies/mutations";
 
-export const h5pLibraryDependenciesRouter =createTRPCRouter({
+import {
+  createH5pLibraryDependency,
+  deleteH5pLibraryDependency,
+  updateH5pLibraryDependency,
+} from "../api/h5pLibraryDependencies/mutations";
+import {
+  getH5pLibraryDependencies,
+  getH5pLibraryDependencyById,
+} from "../api/h5pLibraryDependencies/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const h5pLibraryDependenciesRouter = createTRPCRouter({
   getH5pLibraryDependencies: publicProcedure.query(async () => {
     return getH5pLibraryDependencies();
   }),
-  getH5pLibraryDependencyById: publicProcedure.input(h5pLibraryDependencyIdSchema).query(async ({ input }) => {
-    return getH5pLibraryDependencyById(input.id);
-  }),
+  getH5pLibraryDependencyById: publicProcedure
+    .input(h5pLibraryDependencyIdSchema)
+    .query(async ({ input }) => {
+      return getH5pLibraryDependencyById(input.id);
+    }),
   createH5pLibraryDependency: publicProcedure
     .input(insertH5pLibraryDependencyParams)
     .mutation(async ({ input }) => {

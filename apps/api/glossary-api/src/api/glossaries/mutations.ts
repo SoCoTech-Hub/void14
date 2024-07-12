@@ -1,19 +1,21 @@
-import { db } from "@soco/glossary-db/client";
+import type {
+  GlossaryId,
+  NewGlossaryParams,
+  UpdateGlossaryParams,
+} from "@soco/glossary-db/schema/glossaries";
 import { eq } from "@soco/glossary-db";
-import { 
-  type GlossaryId, 
-  type NewGlossaryParams,
-  type UpdateGlossaryParams, 
-  updateGlossarySchema,
-  insertGlossarySchema, 
+import { db } from "@soco/glossary-db/client";
+import {
   glossaries,
-  glossaryIdSchema 
+  glossaryIdSchema,
+  insertGlossarySchema,
+  updateGlossarySchema,
 } from "@soco/glossary-db/schema/glossaries";
 
 export const createGlossary = async (glossary: NewGlossaryParams) => {
   const newGlossary = insertGlossarySchema.parse(glossary);
   try {
-    const [g] =  await db.insert(glossaries).values(newGlossary).returning();
+    const [g] = await db.insert(glossaries).values(newGlossary).returning();
     return { glossary: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +24,18 @@ export const createGlossary = async (glossary: NewGlossaryParams) => {
   }
 };
 
-export const updateGlossary = async (id: GlossaryId, glossary: UpdateGlossaryParams) => {
+export const updateGlossary = async (
+  id: GlossaryId,
+  glossary: UpdateGlossaryParams,
+) => {
   const { id: glossaryId } = glossaryIdSchema.parse({ id });
   const newGlossary = updateGlossarySchema.parse(glossary);
   try {
-    const [g] =  await db
-     .update(glossaries)
-     .set({...newGlossary, updatedAt: new Date() })
-     .where(eq(glossaries.id, glossaryId!))
-     .returning();
+    const [g] = await db
+      .update(glossaries)
+      .set({ ...newGlossary, updatedAt: new Date() })
+      .where(eq(glossaries.id, glossaryId!))
+      .returning();
     return { glossary: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +47,10 @@ export const updateGlossary = async (id: GlossaryId, glossary: UpdateGlossaryPar
 export const deleteGlossary = async (id: GlossaryId) => {
   const { id: glossaryId } = glossaryIdSchema.parse({ id });
   try {
-    const [g] =  await db.delete(glossaries).where(eq(glossaries.id, glossaryId!))
-    .returning();
+    const [g] = await db
+      .delete(glossaries)
+      .where(eq(glossaries.id, glossaryId!))
+      .returning();
     return { glossary: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +58,3 @@ export const deleteGlossary = async (id: GlossaryId) => {
     throw { error: message };
   }
 };
-

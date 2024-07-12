@@ -1,19 +1,26 @@
-import { getProvinceById, getProvinces } from "../api/provinces/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  provinceIdSchema,
   insertProvinceParams,
+  provinceIdSchema,
   updateProvinceParams,
 } from "@soco/geolocalize-db/schema/provinces";
-import { createProvince, deleteProvince, updateProvince } from "../api/provinces/mutations";
 
-export const provincesRouter =createTRPCRouter({
+import {
+  createProvince,
+  deleteProvince,
+  updateProvince,
+} from "../api/provinces/mutations";
+import { getProvinceById, getProvinces } from "../api/provinces/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const provincesRouter = createTRPCRouter({
   getProvinces: publicProcedure.query(async () => {
     return getProvinces();
   }),
-  getProvinceById: publicProcedure.input(provinceIdSchema).query(async ({ input }) => {
-    return getProvinceById(input.id);
-  }),
+  getProvinceById: publicProcedure
+    .input(provinceIdSchema)
+    .query(async ({ input }) => {
+      return getProvinceById(input.id);
+    }),
   createProvince: publicProcedure
     .input(insertProvinceParams)
     .mutation(async ({ input }) => {

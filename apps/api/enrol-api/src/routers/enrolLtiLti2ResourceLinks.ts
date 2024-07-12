@@ -1,19 +1,29 @@
-import { getEnrolLtiLti2ResourceLinkById, getEnrolLtiLti2ResourceLinks } from "../api/enrolLtiLti2ResourceLinks/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   enrolLtiLti2ResourceLinkIdSchema,
   insertEnrolLtiLti2ResourceLinkParams,
   updateEnrolLtiLti2ResourceLinkParams,
 } from "@soco/enrol-db/schema/enrolLtiLti2ResourceLinks";
-import { createEnrolLtiLti2ResourceLink, deleteEnrolLtiLti2ResourceLink, updateEnrolLtiLti2ResourceLink } from "../api/enrolLtiLti2ResourceLinks/mutations";
 
-export const enrolLtiLti2ResourceLinksRouter =createTRPCRouter({
+import {
+  createEnrolLtiLti2ResourceLink,
+  deleteEnrolLtiLti2ResourceLink,
+  updateEnrolLtiLti2ResourceLink,
+} from "../api/enrolLtiLti2ResourceLinks/mutations";
+import {
+  getEnrolLtiLti2ResourceLinkById,
+  getEnrolLtiLti2ResourceLinks,
+} from "../api/enrolLtiLti2ResourceLinks/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const enrolLtiLti2ResourceLinksRouter = createTRPCRouter({
   getEnrolLtiLti2ResourceLinks: publicProcedure.query(async () => {
     return getEnrolLtiLti2ResourceLinks();
   }),
-  getEnrolLtiLti2ResourceLinkById: publicProcedure.input(enrolLtiLti2ResourceLinkIdSchema).query(async ({ input }) => {
-    return getEnrolLtiLti2ResourceLinkById(input.id);
-  }),
+  getEnrolLtiLti2ResourceLinkById: publicProcedure
+    .input(enrolLtiLti2ResourceLinkIdSchema)
+    .query(async ({ input }) => {
+      return getEnrolLtiLti2ResourceLinkById(input.id);
+    }),
   createEnrolLtiLti2ResourceLink: publicProcedure
     .input(insertEnrolLtiLti2ResourceLinkParams)
     .mutation(async ({ input }) => {

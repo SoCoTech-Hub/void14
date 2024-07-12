@@ -1,19 +1,29 @@
-import { getMessageProviderById, getMessageProviders } from "../api/messageProviders/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  messageProviderIdSchema,
   insertMessageProviderParams,
+  messageProviderIdSchema,
   updateMessageProviderParams,
 } from "@soco/message-db/schema/messageProviders";
-import { createMessageProvider, deleteMessageProvider, updateMessageProvider } from "../api/messageProviders/mutations";
 
-export const messageProvidersRouter =createTRPCRouter({
+import {
+  createMessageProvider,
+  deleteMessageProvider,
+  updateMessageProvider,
+} from "../api/messageProviders/mutations";
+import {
+  getMessageProviderById,
+  getMessageProviders,
+} from "../api/messageProviders/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const messageProvidersRouter = createTRPCRouter({
   getMessageProviders: publicProcedure.query(async () => {
     return getMessageProviders();
   }),
-  getMessageProviderById: publicProcedure.input(messageProviderIdSchema).query(async ({ input }) => {
-    return getMessageProviderById(input.id);
-  }),
+  getMessageProviderById: publicProcedure
+    .input(messageProviderIdSchema)
+    .query(async ({ input }) => {
+      return getMessageProviderById(input.id);
+    }),
   createMessageProvider: publicProcedure
     .input(insertMessageProviderParams)
     .mutation(async ({ input }) => {

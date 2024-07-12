@@ -1,19 +1,29 @@
-import { getCourseCompletionAggrMethdById, getCourseCompletionAggrMethds } from "../api/courseCompletionAggrMethds/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   courseCompletionAggrMethdIdSchema,
   insertCourseCompletionAggrMethdParams,
   updateCourseCompletionAggrMethdParams,
 } from "@soco/course-db/schema/courseCompletionAggrMethds";
-import { createCourseCompletionAggrMethd, deleteCourseCompletionAggrMethd, updateCourseCompletionAggrMethd } from "../api/courseCompletionAggrMethds/mutations";
 
-export const courseCompletionAggrMethdsRouter =createTRPCRouter({
+import {
+  createCourseCompletionAggrMethd,
+  deleteCourseCompletionAggrMethd,
+  updateCourseCompletionAggrMethd,
+} from "../api/courseCompletionAggrMethds/mutations";
+import {
+  getCourseCompletionAggrMethdById,
+  getCourseCompletionAggrMethds,
+} from "../api/courseCompletionAggrMethds/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const courseCompletionAggrMethdsRouter = createTRPCRouter({
   getCourseCompletionAggrMethds: publicProcedure.query(async () => {
     return getCourseCompletionAggrMethds();
   }),
-  getCourseCompletionAggrMethdById: publicProcedure.input(courseCompletionAggrMethdIdSchema).query(async ({ input }) => {
-    return getCourseCompletionAggrMethdById(input.id);
-  }),
+  getCourseCompletionAggrMethdById: publicProcedure
+    .input(courseCompletionAggrMethdIdSchema)
+    .query(async ({ input }) => {
+      return getCourseCompletionAggrMethdById(input.id);
+    }),
   createCourseCompletionAggrMethd: publicProcedure
     .input(insertCourseCompletionAggrMethdParams)
     .mutation(async ({ input }) => {

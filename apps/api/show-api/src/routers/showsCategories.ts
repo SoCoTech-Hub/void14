@@ -1,19 +1,29 @@
-import { getShowsCategoryById, getShowsCategories } from "../api/showsCategories/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  showsCategoryIdSchema,
   insertShowsCategoryParams,
+  showsCategoryIdSchema,
   updateShowsCategoryParams,
 } from "@soco/show-db/schema/showsCategories";
-import { createShowsCategory, deleteShowsCategory, updateShowsCategory } from "../api/showsCategories/mutations";
 
-export const showsCategoriesRouter =createTRPCRouter({
+import {
+  createShowsCategory,
+  deleteShowsCategory,
+  updateShowsCategory,
+} from "../api/showsCategories/mutations";
+import {
+  getShowsCategories,
+  getShowsCategoryById,
+} from "../api/showsCategories/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const showsCategoriesRouter = createTRPCRouter({
   getShowsCategories: publicProcedure.query(async () => {
     return getShowsCategories();
   }),
-  getShowsCategoryById: publicProcedure.input(showsCategoryIdSchema).query(async ({ input }) => {
-    return getShowsCategoryById(input.id);
-  }),
+  getShowsCategoryById: publicProcedure
+    .input(showsCategoryIdSchema)
+    .query(async ({ input }) => {
+      return getShowsCategoryById(input.id);
+    }),
   createShowsCategory: publicProcedure
     .input(insertShowsCategoryParams)
     .mutation(async ({ input }) => {

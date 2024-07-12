@@ -1,19 +1,28 @@
-import { db } from "@soco/tool-recyclebin-db/client";
+import type { ToolRecyclebinCourseId } from "@soco/tool-recyclebin-db/schema/toolRecyclebinCourses";
 import { eq } from "@soco/tool-recyclebin-db";
-import { type ToolRecyclebinCourseId, toolRecyclebinCourseIdSchema, toolRecyclebinCourses } from "@soco/tool-recyclebin-db/schema/toolRecyclebinCourses";
+import { db } from "@soco/tool-recyclebin-db/client";
+import {
+  toolRecyclebinCourseIdSchema,
+  toolRecyclebinCourses,
+} from "@soco/tool-recyclebin-db/schema/toolRecyclebinCourses";
 
 export const getToolRecyclebinCourses = async () => {
   const rows = await db.select().from(toolRecyclebinCourses);
-  const t = rows
+  const t = rows;
   return { toolRecyclebinCourses: t };
 };
 
-export const getToolRecyclebinCourseById = async (id: ToolRecyclebinCourseId) => {
-  const { id: toolRecyclebinCourseId } = toolRecyclebinCourseIdSchema.parse({ id });
-  const [row] = await db.select().from(toolRecyclebinCourses).where(eq(toolRecyclebinCourses.id, toolRecyclebinCourseId));
+export const getToolRecyclebinCourseById = async (
+  id: ToolRecyclebinCourseId,
+) => {
+  const { id: toolRecyclebinCourseId } = toolRecyclebinCourseIdSchema.parse({
+    id,
+  });
+  const [row] = await db
+    .select()
+    .from(toolRecyclebinCourses)
+    .where(eq(toolRecyclebinCourses.id, toolRecyclebinCourseId));
   if (row === undefined) return {};
   const t = row;
   return { toolRecyclebinCourse: t };
 };
-
-

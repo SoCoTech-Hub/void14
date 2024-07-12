@@ -1,19 +1,29 @@
-import { getWorkshopFormAccumulativeById, getWorkshopFormAccumulatives } from "../api/workshopFormAccumulatives/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  workshopFormAccumulativeIdSchema,
   insertWorkshopFormAccumulativeParams,
   updateWorkshopFormAccumulativeParams,
+  workshopFormAccumulativeIdSchema,
 } from "@soco/workshop-db/schema/workshopFormAccumulatives";
-import { createWorkshopFormAccumulative, deleteWorkshopFormAccumulative, updateWorkshopFormAccumulative } from "../api/workshopFormAccumulatives/mutations";
 
-export const workshopFormAccumulativesRouter =createTRPCRouter({
+import {
+  createWorkshopFormAccumulative,
+  deleteWorkshopFormAccumulative,
+  updateWorkshopFormAccumulative,
+} from "../api/workshopFormAccumulatives/mutations";
+import {
+  getWorkshopFormAccumulativeById,
+  getWorkshopFormAccumulatives,
+} from "../api/workshopFormAccumulatives/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const workshopFormAccumulativesRouter = createTRPCRouter({
   getWorkshopFormAccumulatives: publicProcedure.query(async () => {
     return getWorkshopFormAccumulatives();
   }),
-  getWorkshopFormAccumulativeById: publicProcedure.input(workshopFormAccumulativeIdSchema).query(async ({ input }) => {
-    return getWorkshopFormAccumulativeById(input.id);
-  }),
+  getWorkshopFormAccumulativeById: publicProcedure
+    .input(workshopFormAccumulativeIdSchema)
+    .query(async ({ input }) => {
+      return getWorkshopFormAccumulativeById(input.id);
+    }),
   createWorkshopFormAccumulative: publicProcedure
     .input(insertWorkshopFormAccumulativeParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,26 @@
-import { getMnetHostById, getMnetHosts } from "../api/mnetHosts/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  mnetHostIdSchema,
   insertMnetHostParams,
+  mnetHostIdSchema,
   updateMnetHostParams,
 } from "@soco/mnet-db/schema/mnetHosts";
-import { createMnetHost, deleteMnetHost, updateMnetHost } from "../api/mnetHosts/mutations";
 
-export const mnetHostsRouter =createTRPCRouter({
+import {
+  createMnetHost,
+  deleteMnetHost,
+  updateMnetHost,
+} from "../api/mnetHosts/mutations";
+import { getMnetHostById, getMnetHosts } from "../api/mnetHosts/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const mnetHostsRouter = createTRPCRouter({
   getMnetHosts: publicProcedure.query(async () => {
     return getMnetHosts();
   }),
-  getMnetHostById: publicProcedure.input(mnetHostIdSchema).query(async ({ input }) => {
-    return getMnetHostById(input.id);
-  }),
+  getMnetHostById: publicProcedure
+    .input(mnetHostIdSchema)
+    .query(async ({ input }) => {
+      return getMnetHostById(input.id);
+    }),
   createMnetHost: publicProcedure
     .input(insertMnetHostParams)
     .mutation(async ({ input }) => {

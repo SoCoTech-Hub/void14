@@ -1,6 +1,6 @@
-import { themeComponentsRouter } from './routers/themeComponents';
-import { themeComponentStylesRouter } from './routers/themeComponentStyles';
-import { themesRouter } from './routers/themes';
+import { themeComponentsRouter } from "./routers/themeComponents";
+import { themeComponentStylesRouter } from "./routers/themeComponentStyles";
+import { themesRouter } from "./routers/themes";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

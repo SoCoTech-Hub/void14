@@ -1,19 +1,29 @@
-import { getQuizOverrideById, getQuizOverrides } from "../api/quizOverrides/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  quizOverrideIdSchema,
   insertQuizOverrideParams,
+  quizOverrideIdSchema,
   updateQuizOverrideParams,
 } from "@soco/quiz-db/schema/quizOverrides";
-import { createQuizOverride, deleteQuizOverride, updateQuizOverride } from "../api/quizOverrides/mutations";
 
-export const quizOverridesRouter =createTRPCRouter({
+import {
+  createQuizOverride,
+  deleteQuizOverride,
+  updateQuizOverride,
+} from "../api/quizOverrides/mutations";
+import {
+  getQuizOverrideById,
+  getQuizOverrides,
+} from "../api/quizOverrides/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const quizOverridesRouter = createTRPCRouter({
   getQuizOverrides: publicProcedure.query(async () => {
     return getQuizOverrides();
   }),
-  getQuizOverrideById: publicProcedure.input(quizOverrideIdSchema).query(async ({ input }) => {
-    return getQuizOverrideById(input.id);
-  }),
+  getQuizOverrideById: publicProcedure
+    .input(quizOverrideIdSchema)
+    .query(async ({ input }) => {
+      return getQuizOverrideById(input.id);
+    }),
   createQuizOverride: publicProcedure
     .input(insertQuizOverrideParams)
     .mutation(async ({ input }) => {

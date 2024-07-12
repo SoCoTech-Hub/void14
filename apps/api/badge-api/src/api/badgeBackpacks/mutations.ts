@@ -1,21 +1,31 @@
-import { db } from "@soco/badge-db/client";
-import { and, eq } from "@soco/badge-db";
-import { 
-  type BadgeBackpackId, 
-  type NewBadgeBackpackParams,
-  type UpdateBadgeBackpackParams, 
-  updateBadgeBackpackSchema,
-  insertBadgeBackpackSchema, 
-  badgeBackpacks,
-  badgeBackpackIdSchema 
+import type {
+  BadgeBackpackId,
+  NewBadgeBackpackParams,
+  UpdateBadgeBackpackParams,
 } from "@soco/badge-db/schema/badgeBackpacks";
 import { getUserAuth } from "@soco/auth-service";
+import { and, eq } from "@soco/badge-db";
+import { db } from "@soco/badge-db/client";
+import {
+  badgeBackpackIdSchema,
+  badgeBackpacks,
+  insertBadgeBackpackSchema,
+  updateBadgeBackpackSchema,
+} from "@soco/badge-db/schema/badgeBackpacks";
 
-export const createBadgeBackpack = async (badgeBackpack: NewBadgeBackpackParams) => {
+export const createBadgeBackpack = async (
+  badgeBackpack: NewBadgeBackpackParams,
+) => {
   const { session } = await getUserAuth();
-  const newBadgeBackpack = insertBadgeBackpackSchema.parse({ ...badgeBackpack, userId: session?.user.id! });
+  const newBadgeBackpack = insertBadgeBackpackSchema.parse({
+    ...badgeBackpack,
+    userId: session?.user.id!,
+  });
   try {
-    const [b] =  await db.insert(badgeBackpacks).values(newBadgeBackpack).returning();
+    const [b] = await db
+      .insert(badgeBackpacks)
+      .values(newBadgeBackpack)
+      .returning();
     return { badgeBackpack: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +34,27 @@ export const createBadgeBackpack = async (badgeBackpack: NewBadgeBackpackParams)
   }
 };
 
-export const updateBadgeBackpack = async (id: BadgeBackpackId, badgeBackpack: UpdateBadgeBackpackParams) => {
+export const updateBadgeBackpack = async (
+  id: BadgeBackpackId,
+  badgeBackpack: UpdateBadgeBackpackParams,
+) => {
   const { session } = await getUserAuth();
   const { id: badgeBackpackId } = badgeBackpackIdSchema.parse({ id });
-  const newBadgeBackpack = updateBadgeBackpackSchema.parse({ ...badgeBackpack, userId: session?.user.id! });
+  const newBadgeBackpack = updateBadgeBackpackSchema.parse({
+    ...badgeBackpack,
+    userId: session?.user.id!,
+  });
   try {
-    const [b] =  await db
-     .update(badgeBackpacks)
-     .set(newBadgeBackpack)
-     .where(and(eq(badgeBackpacks.id, badgeBackpackId!), eq(badgeBackpacks.userId, session?.user.id!)))
-     .returning();
+    const [b] = await db
+      .update(badgeBackpacks)
+      .set(newBadgeBackpack)
+      .where(
+        and(
+          eq(badgeBackpacks.id, badgeBackpackId!),
+          eq(badgeBackpacks.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { badgeBackpack: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +67,15 @@ export const deleteBadgeBackpack = async (id: BadgeBackpackId) => {
   const { session } = await getUserAuth();
   const { id: badgeBackpackId } = badgeBackpackIdSchema.parse({ id });
   try {
-    const [b] =  await db.delete(badgeBackpacks).where(and(eq(badgeBackpacks.id, badgeBackpackId!), eq(badgeBackpacks.userId, session?.user.id!)))
-    .returning();
+    const [b] = await db
+      .delete(badgeBackpacks)
+      .where(
+        and(
+          eq(badgeBackpacks.id, badgeBackpackId!),
+          eq(badgeBackpacks.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { badgeBackpack: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +83,3 @@ export const deleteBadgeBackpack = async (id: BadgeBackpackId) => {
     throw { error: message };
   }
 };
-

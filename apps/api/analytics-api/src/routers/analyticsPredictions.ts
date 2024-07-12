@@ -1,19 +1,29 @@
-import { getAnalyticsPredictionById, getAnalyticsPredictions } from "../api/analyticsPredictions/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   analyticsPredictionIdSchema,
   insertAnalyticsPredictionParams,
   updateAnalyticsPredictionParams,
 } from "@soco/analytics-db/schema/analyticsPredictions";
-import { createAnalyticsPrediction, deleteAnalyticsPrediction, updateAnalyticsPrediction } from "../api/analyticsPredictions/mutations";
 
-export const analyticsPredictionsRouter =createTRPCRouter({
+import {
+  createAnalyticsPrediction,
+  deleteAnalyticsPrediction,
+  updateAnalyticsPrediction,
+} from "../api/analyticsPredictions/mutations";
+import {
+  getAnalyticsPredictionById,
+  getAnalyticsPredictions,
+} from "../api/analyticsPredictions/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const analyticsPredictionsRouter = createTRPCRouter({
   getAnalyticsPredictions: publicProcedure.query(async () => {
     return getAnalyticsPredictions();
   }),
-  getAnalyticsPredictionById: publicProcedure.input(analyticsPredictionIdSchema).query(async ({ input }) => {
-    return getAnalyticsPredictionById(input.id);
-  }),
+  getAnalyticsPredictionById: publicProcedure
+    .input(analyticsPredictionIdSchema)
+    .query(async ({ input }) => {
+      return getAnalyticsPredictionById(input.id);
+    }),
   createAnalyticsPrediction: publicProcedure
     .input(insertAnalyticsPredictionParams)
     .mutation(async ({ input }) => {

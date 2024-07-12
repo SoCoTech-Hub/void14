@@ -1,19 +1,29 @@
-import { getReportbuilderFilterById, getReportbuilderFilters } from "../api/reportbuilderFilters/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  reportbuilderFilterIdSchema,
   insertReportbuilderFilterParams,
+  reportbuilderFilterIdSchema,
   updateReportbuilderFilterParams,
 } from "@soco/report-builder-db/schema/reportbuilderFilters";
-import { createReportbuilderFilter, deleteReportbuilderFilter, updateReportbuilderFilter } from "../api/reportbuilderFilters/mutations";
 
-export const reportbuilderFiltersRouter =createTRPCRouter({
+import {
+  createReportbuilderFilter,
+  deleteReportbuilderFilter,
+  updateReportbuilderFilter,
+} from "../api/reportbuilderFilters/mutations";
+import {
+  getReportbuilderFilterById,
+  getReportbuilderFilters,
+} from "../api/reportbuilderFilters/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const reportbuilderFiltersRouter = createTRPCRouter({
   getReportbuilderFilters: publicProcedure.query(async () => {
     return getReportbuilderFilters();
   }),
-  getReportbuilderFilterById: publicProcedure.input(reportbuilderFilterIdSchema).query(async ({ input }) => {
-    return getReportbuilderFilterById(input.id);
-  }),
+  getReportbuilderFilterById: publicProcedure
+    .input(reportbuilderFilterIdSchema)
+    .query(async ({ input }) => {
+      return getReportbuilderFilterById(input.id);
+    }),
   createReportbuilderFilter: publicProcedure
     .input(insertReportbuilderFilterParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,26 @@
-import { getNextOfKinById, getNextOfKins } from "../api/nextOfKins/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  nextOfKinIdSchema,
   insertNextOfKinParams,
+  nextOfKinIdSchema,
   updateNextOfKinParams,
 } from "@soco/profile-db/schema/nextOfKins";
-import { createNextOfKin, deleteNextOfKin, updateNextOfKin } from "../api/nextOfKins/mutations";
 
-export const nextOfKinsRouter =createTRPCRouter({
+import {
+  createNextOfKin,
+  deleteNextOfKin,
+  updateNextOfKin,
+} from "../api/nextOfKins/mutations";
+import { getNextOfKinById, getNextOfKins } from "../api/nextOfKins/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const nextOfKinsRouter = createTRPCRouter({
   getNextOfKins: publicProcedure.query(async () => {
     return getNextOfKins();
   }),
-  getNextOfKinById: publicProcedure.input(nextOfKinIdSchema).query(async ({ input }) => {
-    return getNextOfKinById(input.id);
-  }),
+  getNextOfKinById: publicProcedure
+    .input(nextOfKinIdSchema)
+    .query(async ({ input }) => {
+      return getNextOfKinById(input.id);
+    }),
   createNextOfKin: publicProcedure
     .input(insertNextOfKinParams)
     .mutation(async ({ input }) => {

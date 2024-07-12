@@ -1,19 +1,21 @@
-import { db } from "@soco/lesson-db/client";
+import type {
+  LessonPageId,
+  NewLessonPageParams,
+  UpdateLessonPageParams,
+} from "@soco/lesson-db/schema/lessonPages";
 import { eq } from "@soco/lesson-db";
-import { 
-  type LessonPageId, 
-  type NewLessonPageParams,
-  type UpdateLessonPageParams, 
-  updateLessonPageSchema,
-  insertLessonPageSchema, 
+import { db } from "@soco/lesson-db/client";
+import {
+  insertLessonPageSchema,
+  lessonPageIdSchema,
   lessonPages,
-  lessonPageIdSchema 
+  updateLessonPageSchema,
 } from "@soco/lesson-db/schema/lessonPages";
 
 export const createLessonPage = async (lessonPage: NewLessonPageParams) => {
   const newLessonPage = insertLessonPageSchema.parse(lessonPage);
   try {
-    const [l] =  await db.insert(lessonPages).values(newLessonPage).returning();
+    const [l] = await db.insert(lessonPages).values(newLessonPage).returning();
     return { lessonPage: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +24,18 @@ export const createLessonPage = async (lessonPage: NewLessonPageParams) => {
   }
 };
 
-export const updateLessonPage = async (id: LessonPageId, lessonPage: UpdateLessonPageParams) => {
+export const updateLessonPage = async (
+  id: LessonPageId,
+  lessonPage: UpdateLessonPageParams,
+) => {
   const { id: lessonPageId } = lessonPageIdSchema.parse({ id });
   const newLessonPage = updateLessonPageSchema.parse(lessonPage);
   try {
-    const [l] =  await db
-     .update(lessonPages)
-     .set({...newLessonPage, updatedAt: new Date() })
-     .where(eq(lessonPages.id, lessonPageId!))
-     .returning();
+    const [l] = await db
+      .update(lessonPages)
+      .set({ ...newLessonPage, updatedAt: new Date() })
+      .where(eq(lessonPages.id, lessonPageId!))
+      .returning();
     return { lessonPage: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +47,10 @@ export const updateLessonPage = async (id: LessonPageId, lessonPage: UpdateLesso
 export const deleteLessonPage = async (id: LessonPageId) => {
   const { id: lessonPageId } = lessonPageIdSchema.parse({ id });
   try {
-    const [l] =  await db.delete(lessonPages).where(eq(lessonPages.id, lessonPageId!))
-    .returning();
+    const [l] = await db
+      .delete(lessonPages)
+      .where(eq(lessonPages.id, lessonPageId!))
+      .returning();
     return { lessonPage: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +58,3 @@ export const deleteLessonPage = async (id: LessonPageId) => {
     throw { error: message };
   }
 };
-

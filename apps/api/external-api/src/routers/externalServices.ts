@@ -1,19 +1,29 @@
-import { getExternalServiceById, getExternalServices } from "../api/externalServices/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   externalServiceIdSchema,
   insertExternalServiceParams,
   updateExternalServiceParams,
 } from "@soco/external-db/schema/externalServices";
-import { createExternalService, deleteExternalService, updateExternalService } from "../api/externalServices/mutations";
 
-export const externalServicesRouter =createTRPCRouter({
+import {
+  createExternalService,
+  deleteExternalService,
+  updateExternalService,
+} from "../api/externalServices/mutations";
+import {
+  getExternalServiceById,
+  getExternalServices,
+} from "../api/externalServices/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const externalServicesRouter = createTRPCRouter({
   getExternalServices: publicProcedure.query(async () => {
     return getExternalServices();
   }),
-  getExternalServiceById: publicProcedure.input(externalServiceIdSchema).query(async ({ input }) => {
-    return getExternalServiceById(input.id);
-  }),
+  getExternalServiceById: publicProcedure
+    .input(externalServiceIdSchema)
+    .query(async ({ input }) => {
+      return getExternalServiceById(input.id);
+    }),
   createExternalService: publicProcedure
     .input(insertExternalServiceParams)
     .mutation(async ({ input }) => {

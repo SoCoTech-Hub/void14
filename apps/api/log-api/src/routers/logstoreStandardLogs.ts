@@ -1,19 +1,29 @@
-import { getLogstoreStandardLogById, getLogstoreStandardLogs } from "../api/logstoreStandardLogs/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  logstoreStandardLogIdSchema,
   insertLogstoreStandardLogParams,
+  logstoreStandardLogIdSchema,
   updateLogstoreStandardLogParams,
 } from "@soco/log-db/schema/logstoreStandardLogs";
-import { createLogstoreStandardLog, deleteLogstoreStandardLog, updateLogstoreStandardLog } from "../api/logstoreStandardLogs/mutations";
 
-export const logstoreStandardLogsRouter =createTRPCRouter({
+import {
+  createLogstoreStandardLog,
+  deleteLogstoreStandardLog,
+  updateLogstoreStandardLog,
+} from "../api/logstoreStandardLogs/mutations";
+import {
+  getLogstoreStandardLogById,
+  getLogstoreStandardLogs,
+} from "../api/logstoreStandardLogs/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const logstoreStandardLogsRouter = createTRPCRouter({
   getLogstoreStandardLogs: publicProcedure.query(async () => {
     return getLogstoreStandardLogs();
   }),
-  getLogstoreStandardLogById: publicProcedure.input(logstoreStandardLogIdSchema).query(async ({ input }) => {
-    return getLogstoreStandardLogById(input.id);
-  }),
+  getLogstoreStandardLogById: publicProcedure
+    .input(logstoreStandardLogIdSchema)
+    .query(async ({ input }) => {
+      return getLogstoreStandardLogById(input.id);
+    }),
   createLogstoreStandardLog: publicProcedure
     .input(insertLogstoreStandardLogParams)
     .mutation(async ({ input }) => {

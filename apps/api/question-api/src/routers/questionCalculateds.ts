@@ -1,19 +1,29 @@
-import { getQuestionCalculatedById, getQuestionCalculateds } from "../api/questionCalculateds/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  questionCalculatedIdSchema,
   insertQuestionCalculatedParams,
+  questionCalculatedIdSchema,
   updateQuestionCalculatedParams,
 } from "@soco/question-db/schema/questionCalculateds";
-import { createQuestionCalculated, deleteQuestionCalculated, updateQuestionCalculated } from "../api/questionCalculateds/mutations";
 
-export const questionCalculatedsRouter =createTRPCRouter({
+import {
+  createQuestionCalculated,
+  deleteQuestionCalculated,
+  updateQuestionCalculated,
+} from "../api/questionCalculateds/mutations";
+import {
+  getQuestionCalculatedById,
+  getQuestionCalculateds,
+} from "../api/questionCalculateds/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const questionCalculatedsRouter = createTRPCRouter({
   getQuestionCalculateds: publicProcedure.query(async () => {
     return getQuestionCalculateds();
   }),
-  getQuestionCalculatedById: publicProcedure.input(questionCalculatedIdSchema).query(async ({ input }) => {
-    return getQuestionCalculatedById(input.id);
-  }),
+  getQuestionCalculatedById: publicProcedure
+    .input(questionCalculatedIdSchema)
+    .query(async ({ input }) => {
+      return getQuestionCalculatedById(input.id);
+    }),
   createQuestionCalculated: publicProcedure
     .input(insertQuestionCalculatedParams)
     .mutation(async ({ input }) => {

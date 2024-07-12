@@ -1,13 +1,14 @@
-import { getUrlById, getUrls } from "../api/urls/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  urlIdSchema,
   insertUrlParams,
   updateUrlParams,
+  urlIdSchema,
 } from "@soco/url-db/schema/urls";
-import { createUrl, deleteUrl, updateUrl } from "../api/urls/mutations";
 
-export const urlsRouter =createTRPCRouter({
+import { createUrl, deleteUrl, updateUrl } from "../api/urls/mutations";
+import { getUrlById, getUrls } from "../api/urls/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const urlsRouter = createTRPCRouter({
   getUrls: publicProcedure.query(async () => {
     return getUrls();
   }),
@@ -24,9 +25,7 @@ export const urlsRouter =createTRPCRouter({
     .mutation(async ({ input }) => {
       return updateUrl(input.id, input);
     }),
-  deleteUrl: publicProcedure
-    .input(urlIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteUrl(input.id);
-    }),
+  deleteUrl: publicProcedure.input(urlIdSchema).mutation(async ({ input }) => {
+    return deleteUrl(input.id);
+  }),
 });

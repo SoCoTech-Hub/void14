@@ -1,19 +1,29 @@
-import { getTaskScheduleById, getTaskSchedules } from "../api/taskSchedules/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  taskScheduleIdSchema,
   insertTaskScheduleParams,
+  taskScheduleIdSchema,
   updateTaskScheduleParams,
 } from "@soco/task-db/schema/taskSchedules";
-import { createTaskSchedule, deleteTaskSchedule, updateTaskSchedule } from "../api/taskSchedules/mutations";
 
-export const taskSchedulesRouter =createTRPCRouter({
+import {
+  createTaskSchedule,
+  deleteTaskSchedule,
+  updateTaskSchedule,
+} from "../api/taskSchedules/mutations";
+import {
+  getTaskScheduleById,
+  getTaskSchedules,
+} from "../api/taskSchedules/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const taskSchedulesRouter = createTRPCRouter({
   getTaskSchedules: publicProcedure.query(async () => {
     return getTaskSchedules();
   }),
-  getTaskScheduleById: publicProcedure.input(taskScheduleIdSchema).query(async ({ input }) => {
-    return getTaskScheduleById(input.id);
-  }),
+  getTaskScheduleById: publicProcedure
+    .input(taskScheduleIdSchema)
+    .query(async ({ input }) => {
+      return getTaskScheduleById(input.id);
+    }),
   createTaskSchedule: publicProcedure
     .input(insertTaskScheduleParams)
     .mutation(async ({ input }) => {

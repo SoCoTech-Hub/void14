@@ -1,19 +1,29 @@
-import { getGradingDefinitionById, getGradingDefinitions } from "../api/gradingDefinitions/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   gradingDefinitionIdSchema,
   insertGradingDefinitionParams,
   updateGradingDefinitionParams,
 } from "@soco/grade-db/schema/gradingDefinitions";
-import { createGradingDefinition, deleteGradingDefinition, updateGradingDefinition } from "../api/gradingDefinitions/mutations";
 
-export const gradingDefinitionsRouter =createTRPCRouter({
+import {
+  createGradingDefinition,
+  deleteGradingDefinition,
+  updateGradingDefinition,
+} from "../api/gradingDefinitions/mutations";
+import {
+  getGradingDefinitionById,
+  getGradingDefinitions,
+} from "../api/gradingDefinitions/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const gradingDefinitionsRouter = createTRPCRouter({
   getGradingDefinitions: publicProcedure.query(async () => {
     return getGradingDefinitions();
   }),
-  getGradingDefinitionById: publicProcedure.input(gradingDefinitionIdSchema).query(async ({ input }) => {
-    return getGradingDefinitionById(input.id);
-  }),
+  getGradingDefinitionById: publicProcedure
+    .input(gradingDefinitionIdSchema)
+    .query(async ({ input }) => {
+      return getGradingDefinitionById(input.id);
+    }),
   createGradingDefinition: publicProcedure
     .input(insertGradingDefinitionParams)
     .mutation(async ({ input }) => {

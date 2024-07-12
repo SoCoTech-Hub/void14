@@ -1,19 +1,29 @@
-import { getMessageReadById, getMessageReads } from "../api/messageReads/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  messageReadIdSchema,
   insertMessageReadParams,
+  messageReadIdSchema,
   updateMessageReadParams,
 } from "@soco/message-db/schema/messageReads";
-import { createMessageRead, deleteMessageRead, updateMessageRead } from "../api/messageReads/mutations";
 
-export const messageReadsRouter =createTRPCRouter({
+import {
+  createMessageRead,
+  deleteMessageRead,
+  updateMessageRead,
+} from "../api/messageReads/mutations";
+import {
+  getMessageReadById,
+  getMessageReads,
+} from "../api/messageReads/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const messageReadsRouter = createTRPCRouter({
   getMessageReads: publicProcedure.query(async () => {
     return getMessageReads();
   }),
-  getMessageReadById: publicProcedure.input(messageReadIdSchema).query(async ({ input }) => {
-    return getMessageReadById(input.id);
-  }),
+  getMessageReadById: publicProcedure
+    .input(messageReadIdSchema)
+    .query(async ({ input }) => {
+      return getMessageReadById(input.id);
+    }),
   createMessageRead: publicProcedure
     .input(insertMessageReadParams)
     .mutation(async ({ input }) => {

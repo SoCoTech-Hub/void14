@@ -4,7 +4,10 @@ if (!process.env.TOOL_CUSTOM_LANG_DB_URL) {
   throw new Error("Missing TOOL_CUSTOM_LANG_DB_URL");
 }
 
-const nonPoolingUrl = process.env.TOOL_CUSTOM_LANG_DB_URL.replace(":6543", ":5432");
+const nonPoolingUrl = process.env.TOOL_CUSTOM_LANG_DB_URL.replace(
+  ":6543",
+  ":5432",
+);
 
 export default {
   schema: "./src/schema.ts",

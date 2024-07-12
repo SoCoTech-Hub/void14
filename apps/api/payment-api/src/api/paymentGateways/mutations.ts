@@ -1,19 +1,26 @@
-import { db } from "@soco/payment-db/client";
+import type {
+  NewPaymentGatewayParams,
+  PaymentGatewayId,
+  UpdatePaymentGatewayParams,
+} from "@soco/payment-db/schema/paymentGateways";
 import { eq } from "@soco/payment-db";
-import { 
-  type PaymentGatewayId, 
-  type NewPaymentGatewayParams,
-  type UpdatePaymentGatewayParams, 
-  updatePaymentGatewaySchema,
-  insertPaymentGatewaySchema, 
+import { db } from "@soco/payment-db/client";
+import {
+  insertPaymentGatewaySchema,
+  paymentGatewayIdSchema,
   paymentGateways,
-  paymentGatewayIdSchema 
+  updatePaymentGatewaySchema,
 } from "@soco/payment-db/schema/paymentGateways";
 
-export const createPaymentGateway = async (paymentGateway: NewPaymentGatewayParams) => {
+export const createPaymentGateway = async (
+  paymentGateway: NewPaymentGatewayParams,
+) => {
   const newPaymentGateway = insertPaymentGatewaySchema.parse(paymentGateway);
   try {
-    const [p] =  await db.insert(paymentGateways).values(newPaymentGateway).returning();
+    const [p] = await db
+      .insert(paymentGateways)
+      .values(newPaymentGateway)
+      .returning();
     return { paymentGateway: p };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,18 @@ export const createPaymentGateway = async (paymentGateway: NewPaymentGatewayPara
   }
 };
 
-export const updatePaymentGateway = async (id: PaymentGatewayId, paymentGateway: UpdatePaymentGatewayParams) => {
+export const updatePaymentGateway = async (
+  id: PaymentGatewayId,
+  paymentGateway: UpdatePaymentGatewayParams,
+) => {
   const { id: paymentGatewayId } = paymentGatewayIdSchema.parse({ id });
   const newPaymentGateway = updatePaymentGatewaySchema.parse(paymentGateway);
   try {
-    const [p] =  await db
-     .update(paymentGateways)
-     .set({...newPaymentGateway, updatedAt: new Date() })
-     .where(eq(paymentGateways.id, paymentGatewayId!))
-     .returning();
+    const [p] = await db
+      .update(paymentGateways)
+      .set({ ...newPaymentGateway, updatedAt: new Date() })
+      .where(eq(paymentGateways.id, paymentGatewayId!))
+      .returning();
     return { paymentGateway: p };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +52,10 @@ export const updatePaymentGateway = async (id: PaymentGatewayId, paymentGateway:
 export const deletePaymentGateway = async (id: PaymentGatewayId) => {
   const { id: paymentGatewayId } = paymentGatewayIdSchema.parse({ id });
   try {
-    const [p] =  await db.delete(paymentGateways).where(eq(paymentGateways.id, paymentGatewayId!))
-    .returning();
+    const [p] = await db
+      .delete(paymentGateways)
+      .where(eq(paymentGateways.id, paymentGatewayId!))
+      .returning();
     return { paymentGateway: p };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +63,3 @@ export const deletePaymentGateway = async (id: PaymentGatewayId) => {
     throw { error: message };
   }
 };
-

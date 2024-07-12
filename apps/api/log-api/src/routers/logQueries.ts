@@ -1,19 +1,26 @@
-import { getLogQueryById, getLogQueries } from "../api/logQueries/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  logQueryIdSchema,
   insertLogQueryParams,
+  logQueryIdSchema,
   updateLogQueryParams,
 } from "@soco/log-db/schema/logQueries";
-import { createLogQuery, deleteLogQuery, updateLogQuery } from "../api/logQueries/mutations";
 
-export const logQueriesRouter =createTRPCRouter({
+import {
+  createLogQuery,
+  deleteLogQuery,
+  updateLogQuery,
+} from "../api/logQueries/mutations";
+import { getLogQueries, getLogQueryById } from "../api/logQueries/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const logQueriesRouter = createTRPCRouter({
   getLogQueries: publicProcedure.query(async () => {
     return getLogQueries();
   }),
-  getLogQueryById: publicProcedure.input(logQueryIdSchema).query(async ({ input }) => {
-    return getLogQueryById(input.id);
-  }),
+  getLogQueryById: publicProcedure
+    .input(logQueryIdSchema)
+    .query(async ({ input }) => {
+      return getLogQueryById(input.id);
+    }),
   createLogQuery: publicProcedure
     .input(insertLogQueryParams)
     .mutation(async ({ input }) => {

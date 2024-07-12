@@ -1,19 +1,28 @@
-import { db } from "@soco/qtype-db/client";
+import type {
+  NewQtypeMatchSubquestionParams,
+  QtypeMatchSubquestionId,
+  UpdateQtypeMatchSubquestionParams,
+} from "@soco/qtype-db/schema/qtypeMatchSubquestions";
 import { eq } from "@soco/qtype-db";
-import { 
-  type QtypeMatchSubquestionId, 
-  type NewQtypeMatchSubquestionParams,
-  type UpdateQtypeMatchSubquestionParams, 
-  updateQtypeMatchSubquestionSchema,
-  insertQtypeMatchSubquestionSchema, 
+import { db } from "@soco/qtype-db/client";
+import {
+  insertQtypeMatchSubquestionSchema,
+  qtypeMatchSubquestionIdSchema,
   qtypeMatchSubquestions,
-  qtypeMatchSubquestionIdSchema 
+  updateQtypeMatchSubquestionSchema,
 } from "@soco/qtype-db/schema/qtypeMatchSubquestions";
 
-export const createQtypeMatchSubquestion = async (qtypeMatchSubquestion: NewQtypeMatchSubquestionParams) => {
-  const newQtypeMatchSubquestion = insertQtypeMatchSubquestionSchema.parse(qtypeMatchSubquestion);
+export const createQtypeMatchSubquestion = async (
+  qtypeMatchSubquestion: NewQtypeMatchSubquestionParams,
+) => {
+  const newQtypeMatchSubquestion = insertQtypeMatchSubquestionSchema.parse(
+    qtypeMatchSubquestion,
+  );
   try {
-    const [q] =  await db.insert(qtypeMatchSubquestions).values(newQtypeMatchSubquestion).returning();
+    const [q] = await db
+      .insert(qtypeMatchSubquestions)
+      .values(newQtypeMatchSubquestion)
+      .returning();
     return { qtypeMatchSubquestion: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +31,22 @@ export const createQtypeMatchSubquestion = async (qtypeMatchSubquestion: NewQtyp
   }
 };
 
-export const updateQtypeMatchSubquestion = async (id: QtypeMatchSubquestionId, qtypeMatchSubquestion: UpdateQtypeMatchSubquestionParams) => {
-  const { id: qtypeMatchSubquestionId } = qtypeMatchSubquestionIdSchema.parse({ id });
-  const newQtypeMatchSubquestion = updateQtypeMatchSubquestionSchema.parse(qtypeMatchSubquestion);
+export const updateQtypeMatchSubquestion = async (
+  id: QtypeMatchSubquestionId,
+  qtypeMatchSubquestion: UpdateQtypeMatchSubquestionParams,
+) => {
+  const { id: qtypeMatchSubquestionId } = qtypeMatchSubquestionIdSchema.parse({
+    id,
+  });
+  const newQtypeMatchSubquestion = updateQtypeMatchSubquestionSchema.parse(
+    qtypeMatchSubquestion,
+  );
   try {
-    const [q] =  await db
-     .update(qtypeMatchSubquestions)
-     .set(newQtypeMatchSubquestion)
-     .where(eq(qtypeMatchSubquestions.id, qtypeMatchSubquestionId!))
-     .returning();
+    const [q] = await db
+      .update(qtypeMatchSubquestions)
+      .set(newQtypeMatchSubquestion)
+      .where(eq(qtypeMatchSubquestions.id, qtypeMatchSubquestionId!))
+      .returning();
     return { qtypeMatchSubquestion: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +55,17 @@ export const updateQtypeMatchSubquestion = async (id: QtypeMatchSubquestionId, q
   }
 };
 
-export const deleteQtypeMatchSubquestion = async (id: QtypeMatchSubquestionId) => {
-  const { id: qtypeMatchSubquestionId } = qtypeMatchSubquestionIdSchema.parse({ id });
+export const deleteQtypeMatchSubquestion = async (
+  id: QtypeMatchSubquestionId,
+) => {
+  const { id: qtypeMatchSubquestionId } = qtypeMatchSubquestionIdSchema.parse({
+    id,
+  });
   try {
-    const [q] =  await db.delete(qtypeMatchSubquestions).where(eq(qtypeMatchSubquestions.id, qtypeMatchSubquestionId!))
-    .returning();
+    const [q] = await db
+      .delete(qtypeMatchSubquestions)
+      .where(eq(qtypeMatchSubquestions.id, qtypeMatchSubquestionId!))
+      .returning();
     return { qtypeMatchSubquestion: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +73,3 @@ export const deleteQtypeMatchSubquestion = async (id: QtypeMatchSubquestionId) =
     throw { error: message };
   }
 };
-

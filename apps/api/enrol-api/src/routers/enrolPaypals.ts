@@ -1,19 +1,29 @@
-import { getEnrolPaypalById, getEnrolPaypals } from "../api/enrolPaypals/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   enrolPaypalIdSchema,
   insertEnrolPaypalParams,
   updateEnrolPaypalParams,
 } from "@soco/enrol-db/schema/enrolPaypals";
-import { createEnrolPaypal, deleteEnrolPaypal, updateEnrolPaypal } from "../api/enrolPaypals/mutations";
 
-export const enrolPaypalsRouter =createTRPCRouter({
+import {
+  createEnrolPaypal,
+  deleteEnrolPaypal,
+  updateEnrolPaypal,
+} from "../api/enrolPaypals/mutations";
+import {
+  getEnrolPaypalById,
+  getEnrolPaypals,
+} from "../api/enrolPaypals/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const enrolPaypalsRouter = createTRPCRouter({
   getEnrolPaypals: publicProcedure.query(async () => {
     return getEnrolPaypals();
   }),
-  getEnrolPaypalById: publicProcedure.input(enrolPaypalIdSchema).query(async ({ input }) => {
-    return getEnrolPaypalById(input.id);
-  }),
+  getEnrolPaypalById: publicProcedure
+    .input(enrolPaypalIdSchema)
+    .query(async ({ input }) => {
+      return getEnrolPaypalById(input.id);
+    }),
   createEnrolPaypal: publicProcedure
     .input(insertEnrolPaypalParams)
     .mutation(async ({ input }) => {

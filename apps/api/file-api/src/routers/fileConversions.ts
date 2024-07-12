@@ -1,19 +1,29 @@
-import { getFileConversionById, getFileConversions } from "../api/fileConversions/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   fileConversionIdSchema,
   insertFileConversionParams,
   updateFileConversionParams,
 } from "@soco/file-db/schema/fileConversions";
-import { createFileConversion, deleteFileConversion, updateFileConversion } from "../api/fileConversions/mutations";
 
-export const fileConversionsRouter =createTRPCRouter({
+import {
+  createFileConversion,
+  deleteFileConversion,
+  updateFileConversion,
+} from "../api/fileConversions/mutations";
+import {
+  getFileConversionById,
+  getFileConversions,
+} from "../api/fileConversions/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const fileConversionsRouter = createTRPCRouter({
   getFileConversions: publicProcedure.query(async () => {
     return getFileConversions();
   }),
-  getFileConversionById: publicProcedure.input(fileConversionIdSchema).query(async ({ input }) => {
-    return getFileConversionById(input.id);
-  }),
+  getFileConversionById: publicProcedure
+    .input(fileConversionIdSchema)
+    .query(async ({ input }) => {
+      return getFileConversionById(input.id);
+    }),
   createFileConversion: publicProcedure
     .input(insertFileConversionParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,29 @@
-import { getQuestionMultianswerById, getQuestionMultianswers } from "../api/questionMultianswers/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  questionMultianswerIdSchema,
   insertQuestionMultianswerParams,
+  questionMultianswerIdSchema,
   updateQuestionMultianswerParams,
 } from "@soco/question-db/schema/questionMultianswers";
-import { createQuestionMultianswer, deleteQuestionMultianswer, updateQuestionMultianswer } from "../api/questionMultianswers/mutations";
 
-export const questionMultianswersRouter =createTRPCRouter({
+import {
+  createQuestionMultianswer,
+  deleteQuestionMultianswer,
+  updateQuestionMultianswer,
+} from "../api/questionMultianswers/mutations";
+import {
+  getQuestionMultianswerById,
+  getQuestionMultianswers,
+} from "../api/questionMultianswers/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const questionMultianswersRouter = createTRPCRouter({
   getQuestionMultianswers: publicProcedure.query(async () => {
     return getQuestionMultianswers();
   }),
-  getQuestionMultianswerById: publicProcedure.input(questionMultianswerIdSchema).query(async ({ input }) => {
-    return getQuestionMultianswerById(input.id);
-  }),
+  getQuestionMultianswerById: publicProcedure
+    .input(questionMultianswerIdSchema)
+    .query(async ({ input }) => {
+      return getQuestionMultianswerById(input.id);
+    }),
   createQuestionMultianswer: publicProcedure
     .input(insertQuestionMultianswerParams)
     .mutation(async ({ input }) => {

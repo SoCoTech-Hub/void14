@@ -1,19 +1,29 @@
-import { getMessageContactById, getMessageContacts } from "../api/messageContacts/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  messageContactIdSchema,
   insertMessageContactParams,
+  messageContactIdSchema,
   updateMessageContactParams,
 } from "@soco/message-db/schema/messageContacts";
-import { createMessageContact, deleteMessageContact, updateMessageContact } from "../api/messageContacts/mutations";
 
-export const messageContactsRouter =createTRPCRouter({
+import {
+  createMessageContact,
+  deleteMessageContact,
+  updateMessageContact,
+} from "../api/messageContacts/mutations";
+import {
+  getMessageContactById,
+  getMessageContacts,
+} from "../api/messageContacts/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const messageContactsRouter = createTRPCRouter({
   getMessageContacts: publicProcedure.query(async () => {
     return getMessageContacts();
   }),
-  getMessageContactById: publicProcedure.input(messageContactIdSchema).query(async ({ input }) => {
-    return getMessageContactById(input.id);
-  }),
+  getMessageContactById: publicProcedure
+    .input(messageContactIdSchema)
+    .query(async ({ input }) => {
+      return getMessageContactById(input.id);
+    }),
   createMessageContact: publicProcedure
     .input(insertMessageContactParams)
     .mutation(async ({ input }) => {

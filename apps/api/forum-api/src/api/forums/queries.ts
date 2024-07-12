@@ -1,10 +1,11 @@
-import { db } from "@soco/forum-db/client";
+import type { ForumId } from "@soco/forum-db/schema/forums";
 import { eq } from "@soco/forum-db";
-import { type ForumId, forumIdSchema, forums } from "@soco/forum-db/schema/forums";
+import { db } from "@soco/forum-db/client";
+import { forumIdSchema, forums } from "@soco/forum-db/schema/forums";
 
 export const getForums = async () => {
   const rows = await db.select().from(forums);
-  const f = rows
+  const f = rows;
   return { forums: f };
 };
 
@@ -15,5 +16,3 @@ export const getForumById = async (id: ForumId) => {
   const f = row;
   return { forum: f };
 };
-
-

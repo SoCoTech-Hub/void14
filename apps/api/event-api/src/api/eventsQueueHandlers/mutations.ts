@@ -1,19 +1,27 @@
-import { db } from "@soco/event-db/client";
+import type {
+  EventsQueueHandlerId,
+  NewEventsQueueHandlerParams,
+  UpdateEventsQueueHandlerParams,
+} from "@soco/event-db/schema/eventsQueueHandlers";
 import { eq } from "@soco/event-db";
-import { 
-  type EventsQueueHandlerId, 
-  type NewEventsQueueHandlerParams,
-  type UpdateEventsQueueHandlerParams, 
-  updateEventsQueueHandlerSchema,
-  insertEventsQueueHandlerSchema, 
+import { db } from "@soco/event-db/client";
+import {
+  eventsQueueHandlerIdSchema,
   eventsQueueHandlers,
-  eventsQueueHandlerIdSchema 
+  insertEventsQueueHandlerSchema,
+  updateEventsQueueHandlerSchema,
 } from "@soco/event-db/schema/eventsQueueHandlers";
 
-export const createEventsQueueHandler = async (eventsQueueHandler: NewEventsQueueHandlerParams) => {
-  const newEventsQueueHandler = insertEventsQueueHandlerSchema.parse(eventsQueueHandler);
+export const createEventsQueueHandler = async (
+  eventsQueueHandler: NewEventsQueueHandlerParams,
+) => {
+  const newEventsQueueHandler =
+    insertEventsQueueHandlerSchema.parse(eventsQueueHandler);
   try {
-    const [e] =  await db.insert(eventsQueueHandlers).values(newEventsQueueHandler).returning();
+    const [e] = await db
+      .insert(eventsQueueHandlers)
+      .values(newEventsQueueHandler)
+      .returning();
     return { eventsQueueHandler: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,19 @@ export const createEventsQueueHandler = async (eventsQueueHandler: NewEventsQueu
   }
 };
 
-export const updateEventsQueueHandler = async (id: EventsQueueHandlerId, eventsQueueHandler: UpdateEventsQueueHandlerParams) => {
+export const updateEventsQueueHandler = async (
+  id: EventsQueueHandlerId,
+  eventsQueueHandler: UpdateEventsQueueHandlerParams,
+) => {
   const { id: eventsQueueHandlerId } = eventsQueueHandlerIdSchema.parse({ id });
-  const newEventsQueueHandler = updateEventsQueueHandlerSchema.parse(eventsQueueHandler);
+  const newEventsQueueHandler =
+    updateEventsQueueHandlerSchema.parse(eventsQueueHandler);
   try {
-    const [e] =  await db
-     .update(eventsQueueHandlers)
-     .set({...newEventsQueueHandler, updatedAt: new Date() })
-     .where(eq(eventsQueueHandlers.id, eventsQueueHandlerId!))
-     .returning();
+    const [e] = await db
+      .update(eventsQueueHandlers)
+      .set({ ...newEventsQueueHandler, updatedAt: new Date() })
+      .where(eq(eventsQueueHandlers.id, eventsQueueHandlerId!))
+      .returning();
     return { eventsQueueHandler: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +54,10 @@ export const updateEventsQueueHandler = async (id: EventsQueueHandlerId, eventsQ
 export const deleteEventsQueueHandler = async (id: EventsQueueHandlerId) => {
   const { id: eventsQueueHandlerId } = eventsQueueHandlerIdSchema.parse({ id });
   try {
-    const [e] =  await db.delete(eventsQueueHandlers).where(eq(eventsQueueHandlers.id, eventsQueueHandlerId!))
-    .returning();
+    const [e] = await db
+      .delete(eventsQueueHandlers)
+      .where(eq(eventsQueueHandlers.id, eventsQueueHandlerId!))
+      .returning();
     return { eventsQueueHandler: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +65,3 @@ export const deleteEventsQueueHandler = async (id: EventsQueueHandlerId) => {
     throw { error: message };
   }
 };
-

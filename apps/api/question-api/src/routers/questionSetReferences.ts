@@ -1,19 +1,29 @@
-import { getQuestionSetReferenceById, getQuestionSetReferences } from "../api/questionSetReferences/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  questionSetReferenceIdSchema,
   insertQuestionSetReferenceParams,
+  questionSetReferenceIdSchema,
   updateQuestionSetReferenceParams,
 } from "@soco/question-db/schema/questionSetReferences";
-import { createQuestionSetReference, deleteQuestionSetReference, updateQuestionSetReference } from "../api/questionSetReferences/mutations";
 
-export const questionSetReferencesRouter =createTRPCRouter({
+import {
+  createQuestionSetReference,
+  deleteQuestionSetReference,
+  updateQuestionSetReference,
+} from "../api/questionSetReferences/mutations";
+import {
+  getQuestionSetReferenceById,
+  getQuestionSetReferences,
+} from "../api/questionSetReferences/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const questionSetReferencesRouter = createTRPCRouter({
   getQuestionSetReferences: publicProcedure.query(async () => {
     return getQuestionSetReferences();
   }),
-  getQuestionSetReferenceById: publicProcedure.input(questionSetReferenceIdSchema).query(async ({ input }) => {
-    return getQuestionSetReferenceById(input.id);
-  }),
+  getQuestionSetReferenceById: publicProcedure
+    .input(questionSetReferenceIdSchema)
+    .query(async ({ input }) => {
+      return getQuestionSetReferenceById(input.id);
+    }),
   createQuestionSetReference: publicProcedure
     .input(insertQuestionSetReferenceParams)
     .mutation(async ({ input }) => {

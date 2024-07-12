@@ -1,10 +1,11 @@
-import { db } from "@soco/data-db/client";
+import type { DataId } from "@soco/data-db/schema/datas";
 import { eq } from "@soco/data-db";
-import { type DataId, dataIdSchema, datas } from "@soco/data-db/schema/datas";
+import { db } from "@soco/data-db/client";
+import { dataIdSchema, datas } from "@soco/data-db/schema/datas";
 
 export const getDatas = async () => {
   const rows = await db.select().from(datas);
-  const d = rows
+  const d = rows;
   return { datas: d };
 };
 
@@ -15,5 +16,3 @@ export const getDataById = async (id: DataId) => {
   const d = row;
   return { data: d };
 };
-
-

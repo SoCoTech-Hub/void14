@@ -1,19 +1,28 @@
-import { db } from "@soco/i18n-db/client";
+import type {
+  LocalizationTranslationId,
+  NewLocalizationTranslationParams,
+  UpdateLocalizationTranslationParams,
+} from "@soco/i18n-db/schema/localizationTranslations";
 import { eq } from "@soco/i18n-db";
-import { 
-  type LocalizationTranslationId, 
-  type NewLocalizationTranslationParams,
-  type UpdateLocalizationTranslationParams, 
-  updateLocalizationTranslationSchema,
-  insertLocalizationTranslationSchema, 
+import { db } from "@soco/i18n-db/client";
+import {
+  insertLocalizationTranslationSchema,
+  localizationTranslationIdSchema,
   localizationTranslations,
-  localizationTranslationIdSchema 
+  updateLocalizationTranslationSchema,
 } from "@soco/i18n-db/schema/localizationTranslations";
 
-export const createLocalizationTranslation = async (localizationTranslation: NewLocalizationTranslationParams) => {
-  const newLocalizationTranslation = insertLocalizationTranslationSchema.parse(localizationTranslation);
+export const createLocalizationTranslation = async (
+  localizationTranslation: NewLocalizationTranslationParams,
+) => {
+  const newLocalizationTranslation = insertLocalizationTranslationSchema.parse(
+    localizationTranslation,
+  );
   try {
-    const [l] =  await db.insert(localizationTranslations).values(newLocalizationTranslation).returning();
+    const [l] = await db
+      .insert(localizationTranslations)
+      .values(newLocalizationTranslation)
+      .returning();
     return { localizationTranslation: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +31,21 @@ export const createLocalizationTranslation = async (localizationTranslation: New
   }
 };
 
-export const updateLocalizationTranslation = async (id: LocalizationTranslationId, localizationTranslation: UpdateLocalizationTranslationParams) => {
-  const { id: localizationTranslationId } = localizationTranslationIdSchema.parse({ id });
-  const newLocalizationTranslation = updateLocalizationTranslationSchema.parse(localizationTranslation);
+export const updateLocalizationTranslation = async (
+  id: LocalizationTranslationId,
+  localizationTranslation: UpdateLocalizationTranslationParams,
+) => {
+  const { id: localizationTranslationId } =
+    localizationTranslationIdSchema.parse({ id });
+  const newLocalizationTranslation = updateLocalizationTranslationSchema.parse(
+    localizationTranslation,
+  );
   try {
-    const [l] =  await db
-     .update(localizationTranslations)
-     .set(newLocalizationTranslation)
-     .where(eq(localizationTranslations.id, localizationTranslationId!))
-     .returning();
+    const [l] = await db
+      .update(localizationTranslations)
+      .set(newLocalizationTranslation)
+      .where(eq(localizationTranslations.id, localizationTranslationId!))
+      .returning();
     return { localizationTranslation: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +54,16 @@ export const updateLocalizationTranslation = async (id: LocalizationTranslationI
   }
 };
 
-export const deleteLocalizationTranslation = async (id: LocalizationTranslationId) => {
-  const { id: localizationTranslationId } = localizationTranslationIdSchema.parse({ id });
+export const deleteLocalizationTranslation = async (
+  id: LocalizationTranslationId,
+) => {
+  const { id: localizationTranslationId } =
+    localizationTranslationIdSchema.parse({ id });
   try {
-    const [l] =  await db.delete(localizationTranslations).where(eq(localizationTranslations.id, localizationTranslationId!))
-    .returning();
+    const [l] = await db
+      .delete(localizationTranslations)
+      .where(eq(localizationTranslations.id, localizationTranslationId!))
+      .returning();
     return { localizationTranslation: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +71,3 @@ export const deleteLocalizationTranslation = async (id: LocalizationTranslationI
     throw { error: message };
   }
 };
-

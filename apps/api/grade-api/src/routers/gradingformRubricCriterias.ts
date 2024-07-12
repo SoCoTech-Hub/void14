@@ -1,19 +1,29 @@
-import { getGradingformRubricCriteriaById, getGradingformRubricCriterias } from "../api/gradingformRubricCriterias/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   gradingformRubricCriteriaIdSchema,
   insertGradingformRubricCriteriaParams,
   updateGradingformRubricCriteriaParams,
 } from "@soco/grade-db/schema/gradingformRubricCriterias";
-import { createGradingformRubricCriteria, deleteGradingformRubricCriteria, updateGradingformRubricCriteria } from "../api/gradingformRubricCriterias/mutations";
 
-export const gradingformRubricCriteriasRouter =createTRPCRouter({
+import {
+  createGradingformRubricCriteria,
+  deleteGradingformRubricCriteria,
+  updateGradingformRubricCriteria,
+} from "../api/gradingformRubricCriterias/mutations";
+import {
+  getGradingformRubricCriteriaById,
+  getGradingformRubricCriterias,
+} from "../api/gradingformRubricCriterias/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const gradingformRubricCriteriasRouter = createTRPCRouter({
   getGradingformRubricCriterias: publicProcedure.query(async () => {
     return getGradingformRubricCriterias();
   }),
-  getGradingformRubricCriteriaById: publicProcedure.input(gradingformRubricCriteriaIdSchema).query(async ({ input }) => {
-    return getGradingformRubricCriteriaById(input.id);
-  }),
+  getGradingformRubricCriteriaById: publicProcedure
+    .input(gradingformRubricCriteriaIdSchema)
+    .query(async ({ input }) => {
+      return getGradingformRubricCriteriaById(input.id);
+    }),
   createGradingformRubricCriteria: publicProcedure
     .input(insertGradingformRubricCriteriaParams)
     .mutation(async ({ input }) => {

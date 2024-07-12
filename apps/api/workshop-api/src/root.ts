@@ -1,17 +1,17 @@
-import { workshopAggregationsRouter } from './routers/workshopAggregations';
-import { workshopAllocationSchedulesRouter } from './routers/workshopAllocationSchedules';
-import { workshopAssessmentsRouter } from './routers/workshopAssessments';
-import { workshopEvalBestSettingsRouter } from './routers/workshopEvalBestSettings';
-import { workshopFormAccumulativesRouter } from './routers/workshopFormAccumulatives';
-import { workshopFormCommentsRouter } from './routers/workshopFormComments';
-import { workshopFormNumErrorMapsRouter } from './routers/workshopFormNumErrorMaps';
-import { workshopFormNumErrorsRouter } from './routers/workshopFormNumErrors';
-import { workshopFormRubricConfigsRouter } from './routers/workshopFormRubricConfigs';
-import { workshopFormRubricLevelsRouter } from './routers/workshopFormRubricLevels';
-import { workshopFormRubricsRouter } from './routers/workshopFormRubrics';
-import { workshopGradesRouter } from './routers/workshopGrades';
-import { workshopsRouter } from './routers/workshops';
-import { workshopSubmissionsRouter } from './routers/workshopSubmissions';
+import { workshopAggregationsRouter } from "./routers/workshopAggregations";
+import { workshopAllocationSchedulesRouter } from "./routers/workshopAllocationSchedules";
+import { workshopAssessmentsRouter } from "./routers/workshopAssessments";
+import { workshopEvalBestSettingsRouter } from "./routers/workshopEvalBestSettings";
+import { workshopFormAccumulativesRouter } from "./routers/workshopFormAccumulatives";
+import { workshopFormCommentsRouter } from "./routers/workshopFormComments";
+import { workshopFormNumErrorMapsRouter } from "./routers/workshopFormNumErrorMaps";
+import { workshopFormNumErrorsRouter } from "./routers/workshopFormNumErrors";
+import { workshopFormRubricConfigsRouter } from "./routers/workshopFormRubricConfigs";
+import { workshopFormRubricLevelsRouter } from "./routers/workshopFormRubricLevels";
+import { workshopFormRubricsRouter } from "./routers/workshopFormRubrics";
+import { workshopGradesRouter } from "./routers/workshopGrades";
+import { workshopsRouter } from "./routers/workshops";
+import { workshopSubmissionsRouter } from "./routers/workshopSubmissions";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

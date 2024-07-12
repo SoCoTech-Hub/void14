@@ -1,19 +1,29 @@
-import { getSurveyAnalysissById, getSurveyAnalysiss } from "../api/surveyAnalysiss/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  surveyAnalysissIdSchema,
   insertSurveyAnalysissParams,
+  surveyAnalysissIdSchema,
   updateSurveyAnalysissParams,
 } from "@soco/survey-db/schema/surveyAnalysiss";
-import { createSurveyAnalysiss, deleteSurveyAnalysiss, updateSurveyAnalysiss } from "../api/surveyAnalysiss/mutations";
 
-export const surveyAnalysissRouter =createTRPCRouter({
+import {
+  createSurveyAnalysiss,
+  deleteSurveyAnalysiss,
+  updateSurveyAnalysiss,
+} from "../api/surveyAnalysiss/mutations";
+import {
+  getSurveyAnalysiss,
+  getSurveyAnalysissById,
+} from "../api/surveyAnalysiss/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const surveyAnalysissRouter = createTRPCRouter({
   getSurveyAnalysiss: publicProcedure.query(async () => {
     return getSurveyAnalysiss();
   }),
-  getSurveyAnalysissById: publicProcedure.input(surveyAnalysissIdSchema).query(async ({ input }) => {
-    return getSurveyAnalysissById(input.id);
-  }),
+  getSurveyAnalysissById: publicProcedure
+    .input(surveyAnalysissIdSchema)
+    .query(async ({ input }) => {
+      return getSurveyAnalysissById(input.id);
+    }),
   createSurveyAnalysiss: publicProcedure
     .input(insertSurveyAnalysissParams)
     .mutation(async ({ input }) => {

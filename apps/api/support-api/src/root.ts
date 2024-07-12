@@ -1,8 +1,8 @@
-import { supportCommentsRouter } from './routers/supportComments';
-import { supportDepartmentsRouter } from './routers/supportDepartments';
-import { supportStatusesRouter } from './routers/supportStatuses';
-import { supportTicketsRouter } from './routers/supportTickets';
-import { supportTopicsRouter } from './routers/supportTopics';
+import { supportCommentsRouter } from "./routers/supportComments";
+import { supportDepartmentsRouter } from "./routers/supportDepartments";
+import { supportStatusesRouter } from "./routers/supportStatuses";
+import { supportTicketsRouter } from "./routers/supportTickets";
+import { supportTopicsRouter } from "./routers/supportTopics";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

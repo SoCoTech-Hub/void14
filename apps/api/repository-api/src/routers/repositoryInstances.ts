@@ -1,19 +1,29 @@
-import { getRepositoryInstanceById, getRepositoryInstances } from "../api/repositoryInstances/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  repositoryInstanceIdSchema,
   insertRepositoryInstanceParams,
+  repositoryInstanceIdSchema,
   updateRepositoryInstanceParams,
 } from "@soco/repository-db/schema/repositoryInstances";
-import { createRepositoryInstance, deleteRepositoryInstance, updateRepositoryInstance } from "../api/repositoryInstances/mutations";
 
-export const repositoryInstancesRouter =createTRPCRouter({
+import {
+  createRepositoryInstance,
+  deleteRepositoryInstance,
+  updateRepositoryInstance,
+} from "../api/repositoryInstances/mutations";
+import {
+  getRepositoryInstanceById,
+  getRepositoryInstances,
+} from "../api/repositoryInstances/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const repositoryInstancesRouter = createTRPCRouter({
   getRepositoryInstances: publicProcedure.query(async () => {
     return getRepositoryInstances();
   }),
-  getRepositoryInstanceById: publicProcedure.input(repositoryInstanceIdSchema).query(async ({ input }) => {
-    return getRepositoryInstanceById(input.id);
-  }),
+  getRepositoryInstanceById: publicProcedure
+    .input(repositoryInstanceIdSchema)
+    .query(async ({ input }) => {
+      return getRepositoryInstanceById(input.id);
+    }),
   createRepositoryInstance: publicProcedure
     .input(insertRepositoryInstanceParams)
     .mutation(async ({ input }) => {

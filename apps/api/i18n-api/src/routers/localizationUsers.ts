@@ -1,19 +1,29 @@
-import { getLocalizationUserById, getLocalizationUsers } from "../api/localizationUsers/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  localizationUserIdSchema,
   insertLocalizationUserParams,
+  localizationUserIdSchema,
   updateLocalizationUserParams,
 } from "@soco/i18n-db/schema/localizationUsers";
-import { createLocalizationUser, deleteLocalizationUser, updateLocalizationUser } from "../api/localizationUsers/mutations";
 
-export const localizationUsersRouter =createTRPCRouter({
+import {
+  createLocalizationUser,
+  deleteLocalizationUser,
+  updateLocalizationUser,
+} from "../api/localizationUsers/mutations";
+import {
+  getLocalizationUserById,
+  getLocalizationUsers,
+} from "../api/localizationUsers/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const localizationUsersRouter = createTRPCRouter({
   getLocalizationUsers: publicProcedure.query(async () => {
     return getLocalizationUsers();
   }),
-  getLocalizationUserById: publicProcedure.input(localizationUserIdSchema).query(async ({ input }) => {
-    return getLocalizationUserById(input.id);
-  }),
+  getLocalizationUserById: publicProcedure
+    .input(localizationUserIdSchema)
+    .query(async ({ input }) => {
+      return getLocalizationUserById(input.id);
+    }),
   createLocalizationUser: publicProcedure
     .input(insertLocalizationUserParams)
     .mutation(async ({ input }) => {

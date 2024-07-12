@@ -1,19 +1,22 @@
-import { getGradeById, getGrades } from "../api/grades/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   gradeIdSchema,
   insertGradeParams,
   updateGradeParams,
 } from "@soco/school-db/schema/grades";
-import { createGrade, deleteGrade, updateGrade } from "../api/grades/mutations";
 
-export const gradesRouter =createTRPCRouter({
+import { createGrade, deleteGrade, updateGrade } from "../api/grades/mutations";
+import { getGradeById, getGrades } from "../api/grades/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const gradesRouter = createTRPCRouter({
   getGrades: publicProcedure.query(async () => {
     return getGrades();
   }),
-  getGradeById: publicProcedure.input(gradeIdSchema).query(async ({ input }) => {
-    return getGradeById(input.id);
-  }),
+  getGradeById: publicProcedure
+    .input(gradeIdSchema)
+    .query(async ({ input }) => {
+      return getGradeById(input.id);
+    }),
   createGrade: publicProcedure
     .input(insertGradeParams)
     .mutation(async ({ input }) => {

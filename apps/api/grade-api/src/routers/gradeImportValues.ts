@@ -1,19 +1,29 @@
-import { getGradeImportValueById, getGradeImportValues } from "../api/gradeImportValues/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   gradeImportValueIdSchema,
   insertGradeImportValueParams,
   updateGradeImportValueParams,
 } from "@soco/grade-db/schema/gradeImportValues";
-import { createGradeImportValue, deleteGradeImportValue, updateGradeImportValue } from "../api/gradeImportValues/mutations";
 
-export const gradeImportValuesRouter =createTRPCRouter({
+import {
+  createGradeImportValue,
+  deleteGradeImportValue,
+  updateGradeImportValue,
+} from "../api/gradeImportValues/mutations";
+import {
+  getGradeImportValueById,
+  getGradeImportValues,
+} from "../api/gradeImportValues/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const gradeImportValuesRouter = createTRPCRouter({
   getGradeImportValues: publicProcedure.query(async () => {
     return getGradeImportValues();
   }),
-  getGradeImportValueById: publicProcedure.input(gradeImportValueIdSchema).query(async ({ input }) => {
-    return getGradeImportValueById(input.id);
-  }),
+  getGradeImportValueById: publicProcedure
+    .input(gradeImportValueIdSchema)
+    .query(async ({ input }) => {
+      return getGradeImportValueById(input.id);
+    }),
   createGradeImportValue: publicProcedure
     .input(insertGradeImportValueParams)
     .mutation(async ({ input }) => {

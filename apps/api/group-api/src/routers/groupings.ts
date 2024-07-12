@@ -1,19 +1,26 @@
-import { getGroupingById, getGroupings } from "../api/groupings/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   groupingIdSchema,
   insertGroupingParams,
   updateGroupingParams,
 } from "@soco/group-db/schema/groupings";
-import { createGrouping, deleteGrouping, updateGrouping } from "../api/groupings/mutations";
 
-export const groupingsRouter =createTRPCRouter({
+import {
+  createGrouping,
+  deleteGrouping,
+  updateGrouping,
+} from "../api/groupings/mutations";
+import { getGroupingById, getGroupings } from "../api/groupings/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const groupingsRouter = createTRPCRouter({
   getGroupings: publicProcedure.query(async () => {
     return getGroupings();
   }),
-  getGroupingById: publicProcedure.input(groupingIdSchema).query(async ({ input }) => {
-    return getGroupingById(input.id);
-  }),
+  getGroupingById: publicProcedure
+    .input(groupingIdSchema)
+    .query(async ({ input }) => {
+      return getGroupingById(input.id);
+    }),
   createGrouping: publicProcedure
     .input(insertGroupingParams)
     .mutation(async ({ input }) => {

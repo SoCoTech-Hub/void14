@@ -1,4 +1,4 @@
-import { sessionsRouter } from './routers/sessions';
+import { sessionsRouter } from "./routers/sessions";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

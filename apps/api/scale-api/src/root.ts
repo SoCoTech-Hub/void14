@@ -1,5 +1,5 @@
-import { scaleHistoriesRouter } from './routers/scaleHistories';
-import { scalesRouter } from './routers/scales';
+import { scaleHistoriesRouter } from "./routers/scaleHistories";
+import { scalesRouter } from "./routers/scales";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

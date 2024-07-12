@@ -1,4 +1,4 @@
-import { labelsRouter } from './routers/labels';
+import { labelsRouter } from "./routers/labels";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

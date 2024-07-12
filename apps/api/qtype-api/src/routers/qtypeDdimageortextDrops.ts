@@ -1,19 +1,29 @@
-import { getQtypeDdimageortextDropById, getQtypeDdimageortextDrops } from "../api/qtypeDdimageortextDrops/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  qtypeDdimageortextDropIdSchema,
   insertQtypeDdimageortextDropParams,
+  qtypeDdimageortextDropIdSchema,
   updateQtypeDdimageortextDropParams,
 } from "@soco/qtype-db/schema/qtypeDdimageortextDrops";
-import { createQtypeDdimageortextDrop, deleteQtypeDdimageortextDrop, updateQtypeDdimageortextDrop } from "../api/qtypeDdimageortextDrops/mutations";
 
-export const qtypeDdimageortextDropsRouter =createTRPCRouter({
+import {
+  createQtypeDdimageortextDrop,
+  deleteQtypeDdimageortextDrop,
+  updateQtypeDdimageortextDrop,
+} from "../api/qtypeDdimageortextDrops/mutations";
+import {
+  getQtypeDdimageortextDropById,
+  getQtypeDdimageortextDrops,
+} from "../api/qtypeDdimageortextDrops/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const qtypeDdimageortextDropsRouter = createTRPCRouter({
   getQtypeDdimageortextDrops: publicProcedure.query(async () => {
     return getQtypeDdimageortextDrops();
   }),
-  getQtypeDdimageortextDropById: publicProcedure.input(qtypeDdimageortextDropIdSchema).query(async ({ input }) => {
-    return getQtypeDdimageortextDropById(input.id);
-  }),
+  getQtypeDdimageortextDropById: publicProcedure
+    .input(qtypeDdimageortextDropIdSchema)
+    .query(async ({ input }) => {
+      return getQtypeDdimageortextDropById(input.id);
+    }),
   createQtypeDdimageortextDrop: publicProcedure
     .input(insertQtypeDdimageortextDropParams)
     .mutation(async ({ input }) => {

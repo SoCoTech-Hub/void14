@@ -1,19 +1,26 @@
-import { getPaymentById, getPayments } from "../api/payments/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  paymentIdSchema,
   insertPaymentParams,
+  paymentIdSchema,
   updatePaymentParams,
 } from "@soco/payment-db/schema/payments";
-import { createPayment, deletePayment, updatePayment } from "../api/payments/mutations";
 
-export const paymentsRouter =createTRPCRouter({
+import {
+  createPayment,
+  deletePayment,
+  updatePayment,
+} from "../api/payments/mutations";
+import { getPaymentById, getPayments } from "../api/payments/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const paymentsRouter = createTRPCRouter({
   getPayments: publicProcedure.query(async () => {
     return getPayments();
   }),
-  getPaymentById: publicProcedure.input(paymentIdSchema).query(async ({ input }) => {
-    return getPaymentById(input.id);
-  }),
+  getPaymentById: publicProcedure
+    .input(paymentIdSchema)
+    .query(async ({ input }) => {
+      return getPaymentById(input.id);
+    }),
   createPayment: publicProcedure
     .input(insertPaymentParams)
     .mutation(async ({ input }) => {

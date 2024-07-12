@@ -1,19 +1,27 @@
-import { db } from "@soco/affiliates-db/client";
+import type {
+  AffiliatesSettingId,
+  NewAffiliatesSettingParams,
+  UpdateAffiliatesSettingParams,
+} from "@soco/affiliates-db/schema/affiliatesSettings";
 import { eq } from "@soco/affiliates-db";
-import { 
-  type AffiliatesSettingId, 
-  type NewAffiliatesSettingParams,
-  type UpdateAffiliatesSettingParams, 
-  updateAffiliatesSettingSchema,
-  insertAffiliatesSettingSchema, 
+import { db } from "@soco/affiliates-db/client";
+import {
+  affiliatesSettingIdSchema,
   affiliatesSettings,
-  affiliatesSettingIdSchema 
+  insertAffiliatesSettingSchema,
+  updateAffiliatesSettingSchema,
 } from "@soco/affiliates-db/schema/affiliatesSettings";
 
-export const createAffiliatesSetting = async (affiliatesSetting: NewAffiliatesSettingParams) => {
-  const newAffiliatesSetting = insertAffiliatesSettingSchema.parse(affiliatesSetting);
+export const createAffiliatesSetting = async (
+  affiliatesSetting: NewAffiliatesSettingParams,
+) => {
+  const newAffiliatesSetting =
+    insertAffiliatesSettingSchema.parse(affiliatesSetting);
   try {
-    const [a] =  await db.insert(affiliatesSettings).values(newAffiliatesSetting).returning();
+    const [a] = await db
+      .insert(affiliatesSettings)
+      .values(newAffiliatesSetting)
+      .returning();
     return { affiliatesSetting: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,19 @@ export const createAffiliatesSetting = async (affiliatesSetting: NewAffiliatesSe
   }
 };
 
-export const updateAffiliatesSetting = async (id: AffiliatesSettingId, affiliatesSetting: UpdateAffiliatesSettingParams) => {
+export const updateAffiliatesSetting = async (
+  id: AffiliatesSettingId,
+  affiliatesSetting: UpdateAffiliatesSettingParams,
+) => {
   const { id: affiliatesSettingId } = affiliatesSettingIdSchema.parse({ id });
-  const newAffiliatesSetting = updateAffiliatesSettingSchema.parse(affiliatesSetting);
+  const newAffiliatesSetting =
+    updateAffiliatesSettingSchema.parse(affiliatesSetting);
   try {
-    const [a] =  await db
-     .update(affiliatesSettings)
-     .set(newAffiliatesSetting)
-     .where(eq(affiliatesSettings.id, affiliatesSettingId!))
-     .returning();
+    const [a] = await db
+      .update(affiliatesSettings)
+      .set(newAffiliatesSetting)
+      .where(eq(affiliatesSettings.id, affiliatesSettingId!))
+      .returning();
     return { affiliatesSetting: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +54,10 @@ export const updateAffiliatesSetting = async (id: AffiliatesSettingId, affiliate
 export const deleteAffiliatesSetting = async (id: AffiliatesSettingId) => {
   const { id: affiliatesSettingId } = affiliatesSettingIdSchema.parse({ id });
   try {
-    const [a] =  await db.delete(affiliatesSettings).where(eq(affiliatesSettings.id, affiliatesSettingId!))
-    .returning();
+    const [a] = await db
+      .delete(affiliatesSettings)
+      .where(eq(affiliatesSettings.id, affiliatesSettingId!))
+      .returning();
     return { affiliatesSetting: a };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +65,3 @@ export const deleteAffiliatesSetting = async (id: AffiliatesSettingId) => {
     throw { error: message };
   }
 };
-

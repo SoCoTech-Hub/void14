@@ -1,19 +1,26 @@
-import { getMessageById, getMessages } from "../api/messages/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  messageIdSchema,
   insertMessageParams,
+  messageIdSchema,
   updateMessageParams,
 } from "@soco/message-db/schema/messages";
-import { createMessage, deleteMessage, updateMessage } from "../api/messages/mutations";
 
-export const messagesRouter =createTRPCRouter({
+import {
+  createMessage,
+  deleteMessage,
+  updateMessage,
+} from "../api/messages/mutations";
+import { getMessageById, getMessages } from "../api/messages/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const messagesRouter = createTRPCRouter({
   getMessages: publicProcedure.query(async () => {
     return getMessages();
   }),
-  getMessageById: publicProcedure.input(messageIdSchema).query(async ({ input }) => {
-    return getMessageById(input.id);
-  }),
+  getMessageById: publicProcedure
+    .input(messageIdSchema)
+    .query(async ({ input }) => {
+      return getMessageById(input.id);
+    }),
   createMessage: publicProcedure
     .input(insertMessageParams)
     .mutation(async ({ input }) => {

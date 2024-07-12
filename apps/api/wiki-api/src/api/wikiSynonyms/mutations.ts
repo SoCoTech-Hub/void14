@@ -1,19 +1,24 @@
-import { db } from "@soco/wiki-db/client";
+import type {
+  NewWikiSynonymParams,
+  UpdateWikiSynonymParams,
+  WikiSynonymId,
+} from "@soco/wiki-db/schema/wikiSynonyms";
 import { eq } from "@soco/wiki-db";
-import { 
-  type WikiSynonymId, 
-  type NewWikiSynonymParams,
-  type UpdateWikiSynonymParams, 
+import { db } from "@soco/wiki-db/client";
+import {
+  insertWikiSynonymSchema,
   updateWikiSynonymSchema,
-  insertWikiSynonymSchema, 
+  wikiSynonymIdSchema,
   wikiSynonyms,
-  wikiSynonymIdSchema 
 } from "@soco/wiki-db/schema/wikiSynonyms";
 
 export const createWikiSynonym = async (wikiSynonym: NewWikiSynonymParams) => {
   const newWikiSynonym = insertWikiSynonymSchema.parse(wikiSynonym);
   try {
-    const [w] =  await db.insert(wikiSynonyms).values(newWikiSynonym).returning();
+    const [w] = await db
+      .insert(wikiSynonyms)
+      .values(newWikiSynonym)
+      .returning();
     return { wikiSynonym: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +27,18 @@ export const createWikiSynonym = async (wikiSynonym: NewWikiSynonymParams) => {
   }
 };
 
-export const updateWikiSynonym = async (id: WikiSynonymId, wikiSynonym: UpdateWikiSynonymParams) => {
+export const updateWikiSynonym = async (
+  id: WikiSynonymId,
+  wikiSynonym: UpdateWikiSynonymParams,
+) => {
   const { id: wikiSynonymId } = wikiSynonymIdSchema.parse({ id });
   const newWikiSynonym = updateWikiSynonymSchema.parse(wikiSynonym);
   try {
-    const [w] =  await db
-     .update(wikiSynonyms)
-     .set(newWikiSynonym)
-     .where(eq(wikiSynonyms.id, wikiSynonymId!))
-     .returning();
+    const [w] = await db
+      .update(wikiSynonyms)
+      .set(newWikiSynonym)
+      .where(eq(wikiSynonyms.id, wikiSynonymId!))
+      .returning();
     return { wikiSynonym: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +50,10 @@ export const updateWikiSynonym = async (id: WikiSynonymId, wikiSynonym: UpdateWi
 export const deleteWikiSynonym = async (id: WikiSynonymId) => {
   const { id: wikiSynonymId } = wikiSynonymIdSchema.parse({ id });
   try {
-    const [w] =  await db.delete(wikiSynonyms).where(eq(wikiSynonyms.id, wikiSynonymId!))
-    .returning();
+    const [w] = await db
+      .delete(wikiSynonyms)
+      .where(eq(wikiSynonyms.id, wikiSynonymId!))
+      .returning();
     return { wikiSynonym: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +61,3 @@ export const deleteWikiSynonym = async (id: WikiSynonymId) => {
     throw { error: message };
   }
 };
-

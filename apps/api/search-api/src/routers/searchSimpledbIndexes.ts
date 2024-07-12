@@ -1,19 +1,29 @@
-import { getSearchSimpledbIndexById, getSearchSimpledbIndexes } from "../api/searchSimpledbIndexes/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  searchSimpledbIndexIdSchema,
   insertSearchSimpledbIndexParams,
+  searchSimpledbIndexIdSchema,
   updateSearchSimpledbIndexParams,
 } from "@soco/search-db/schema/searchSimpledbIndexes";
-import { createSearchSimpledbIndex, deleteSearchSimpledbIndex, updateSearchSimpledbIndex } from "../api/searchSimpledbIndexes/mutations";
 
-export const searchSimpledbIndexesRouter =createTRPCRouter({
+import {
+  createSearchSimpledbIndex,
+  deleteSearchSimpledbIndex,
+  updateSearchSimpledbIndex,
+} from "../api/searchSimpledbIndexes/mutations";
+import {
+  getSearchSimpledbIndexById,
+  getSearchSimpledbIndexes,
+} from "../api/searchSimpledbIndexes/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const searchSimpledbIndexesRouter = createTRPCRouter({
   getSearchSimpledbIndexes: publicProcedure.query(async () => {
     return getSearchSimpledbIndexes();
   }),
-  getSearchSimpledbIndexById: publicProcedure.input(searchSimpledbIndexIdSchema).query(async ({ input }) => {
-    return getSearchSimpledbIndexById(input.id);
-  }),
+  getSearchSimpledbIndexById: publicProcedure
+    .input(searchSimpledbIndexIdSchema)
+    .query(async ({ input }) => {
+      return getSearchSimpledbIndexById(input.id);
+    }),
   createSearchSimpledbIndex: publicProcedure
     .input(insertSearchSimpledbIndexParams)
     .mutation(async ({ input }) => {

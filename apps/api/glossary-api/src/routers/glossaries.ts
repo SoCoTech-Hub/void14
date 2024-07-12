@@ -1,19 +1,26 @@
-import { getGlossaryById, getGlossaries } from "../api/glossaries/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   glossaryIdSchema,
   insertGlossaryParams,
   updateGlossaryParams,
 } from "@soco/glossary-db/schema/glossaries";
-import { createGlossary, deleteGlossary, updateGlossary } from "../api/glossaries/mutations";
 
-export const glossariesRouter =createTRPCRouter({
+import {
+  createGlossary,
+  deleteGlossary,
+  updateGlossary,
+} from "../api/glossaries/mutations";
+import { getGlossaries, getGlossaryById } from "../api/glossaries/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const glossariesRouter = createTRPCRouter({
   getGlossaries: publicProcedure.query(async () => {
     return getGlossaries();
   }),
-  getGlossaryById: publicProcedure.input(glossaryIdSchema).query(async ({ input }) => {
-    return getGlossaryById(input.id);
-  }),
+  getGlossaryById: publicProcedure
+    .input(glossaryIdSchema)
+    .query(async ({ input }) => {
+      return getGlossaryById(input.id);
+    }),
   createGlossary: publicProcedure
     .input(insertGlossaryParams)
     .mutation(async ({ input }) => {

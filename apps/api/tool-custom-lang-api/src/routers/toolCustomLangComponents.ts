@@ -1,19 +1,29 @@
-import { getToolCustomLangComponentById, getToolCustomLangComponents } from "../api/toolCustomLangComponents/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  toolCustomLangComponentIdSchema,
   insertToolCustomLangComponentParams,
+  toolCustomLangComponentIdSchema,
   updateToolCustomLangComponentParams,
 } from "@soco/tool-custom-lang-db/schema/toolCustomLangComponents";
-import { createToolCustomLangComponent, deleteToolCustomLangComponent, updateToolCustomLangComponent } from "../api/toolCustomLangComponents/mutations";
 
-export const toolCustomLangComponentsRouter =createTRPCRouter({
+import {
+  createToolCustomLangComponent,
+  deleteToolCustomLangComponent,
+  updateToolCustomLangComponent,
+} from "../api/toolCustomLangComponents/mutations";
+import {
+  getToolCustomLangComponentById,
+  getToolCustomLangComponents,
+} from "../api/toolCustomLangComponents/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const toolCustomLangComponentsRouter = createTRPCRouter({
   getToolCustomLangComponents: publicProcedure.query(async () => {
     return getToolCustomLangComponents();
   }),
-  getToolCustomLangComponentById: publicProcedure.input(toolCustomLangComponentIdSchema).query(async ({ input }) => {
-    return getToolCustomLangComponentById(input.id);
-  }),
+  getToolCustomLangComponentById: publicProcedure
+    .input(toolCustomLangComponentIdSchema)
+    .query(async ({ input }) => {
+      return getToolCustomLangComponentById(input.id);
+    }),
   createToolCustomLangComponent: publicProcedure
     .input(insertToolCustomLangComponentParams)
     .mutation(async ({ input }) => {

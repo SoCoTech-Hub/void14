@@ -1,19 +1,26 @@
-import { getSchoolById, getSchools } from "../api/schools/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  schoolIdSchema,
   insertSchoolParams,
+  schoolIdSchema,
   updateSchoolParams,
 } from "@soco/school-db/schema/schools";
-import { createSchool, deleteSchool, updateSchool } from "../api/schools/mutations";
 
-export const schoolsRouter =createTRPCRouter({
+import {
+  createSchool,
+  deleteSchool,
+  updateSchool,
+} from "../api/schools/mutations";
+import { getSchoolById, getSchools } from "../api/schools/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const schoolsRouter = createTRPCRouter({
   getSchools: publicProcedure.query(async () => {
     return getSchools();
   }),
-  getSchoolById: publicProcedure.input(schoolIdSchema).query(async ({ input }) => {
-    return getSchoolById(input.id);
-  }),
+  getSchoolById: publicProcedure
+    .input(schoolIdSchema)
+    .query(async ({ input }) => {
+      return getSchoolById(input.id);
+    }),
   createSchool: publicProcedure
     .input(insertSchoolParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,26 @@
-import { getSubjectById, getSubjects } from "../api/subjects/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  subjectIdSchema,
   insertSubjectParams,
+  subjectIdSchema,
   updateSubjectParams,
 } from "@soco/subject-db/schema/subjects";
-import { createSubject, deleteSubject, updateSubject } from "../api/subjects/mutations";
 
-export const subjectsRouter =createTRPCRouter({
+import {
+  createSubject,
+  deleteSubject,
+  updateSubject,
+} from "../api/subjects/mutations";
+import { getSubjectById, getSubjects } from "../api/subjects/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const subjectsRouter = createTRPCRouter({
   getSubjects: publicProcedure.query(async () => {
     return getSubjects();
   }),
-  getSubjectById: publicProcedure.input(subjectIdSchema).query(async ({ input }) => {
-    return getSubjectById(input.id);
-  }),
+  getSubjectById: publicProcedure
+    .input(subjectIdSchema)
+    .query(async ({ input }) => {
+      return getSubjectById(input.id);
+    }),
   createSubject: publicProcedure
     .input(insertSubjectParams)
     .mutation(async ({ input }) => {

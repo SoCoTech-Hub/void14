@@ -1,19 +1,29 @@
-import { getRoleContextLevelById, getRoleContextLevels } from "../api/roleContextLevels/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  roleContextLevelIdSchema,
   insertRoleContextLevelParams,
+  roleContextLevelIdSchema,
   updateRoleContextLevelParams,
 } from "@soco/role-db/schema/roleContextLevels";
-import { createRoleContextLevel, deleteRoleContextLevel, updateRoleContextLevel } from "../api/roleContextLevels/mutations";
 
-export const roleContextLevelsRouter =createTRPCRouter({
+import {
+  createRoleContextLevel,
+  deleteRoleContextLevel,
+  updateRoleContextLevel,
+} from "../api/roleContextLevels/mutations";
+import {
+  getRoleContextLevelById,
+  getRoleContextLevels,
+} from "../api/roleContextLevels/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const roleContextLevelsRouter = createTRPCRouter({
   getRoleContextLevels: publicProcedure.query(async () => {
     return getRoleContextLevels();
   }),
-  getRoleContextLevelById: publicProcedure.input(roleContextLevelIdSchema).query(async ({ input }) => {
-    return getRoleContextLevelById(input.id);
-  }),
+  getRoleContextLevelById: publicProcedure
+    .input(roleContextLevelIdSchema)
+    .query(async ({ input }) => {
+      return getRoleContextLevelById(input.id);
+    }),
   createRoleContextLevel: publicProcedure
     .input(insertRoleContextLevelParams)
     .mutation(async ({ input }) => {

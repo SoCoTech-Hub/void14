@@ -1,19 +1,26 @@
-import { db } from "@soco/mnet-db/client";
+import type {
+  MnetApplicationId,
+  NewMnetApplicationParams,
+  UpdateMnetApplicationParams,
+} from "@soco/mnet-db/schema/mnetApplications";
 import { eq } from "@soco/mnet-db";
-import { 
-  type MnetApplicationId, 
-  type NewMnetApplicationParams,
-  type UpdateMnetApplicationParams, 
-  updateMnetApplicationSchema,
-  insertMnetApplicationSchema, 
+import { db } from "@soco/mnet-db/client";
+import {
+  insertMnetApplicationSchema,
+  mnetApplicationIdSchema,
   mnetApplications,
-  mnetApplicationIdSchema 
+  updateMnetApplicationSchema,
 } from "@soco/mnet-db/schema/mnetApplications";
 
-export const createMnetApplication = async (mnetApplication: NewMnetApplicationParams) => {
+export const createMnetApplication = async (
+  mnetApplication: NewMnetApplicationParams,
+) => {
   const newMnetApplication = insertMnetApplicationSchema.parse(mnetApplication);
   try {
-    const [m] =  await db.insert(mnetApplications).values(newMnetApplication).returning();
+    const [m] = await db
+      .insert(mnetApplications)
+      .values(newMnetApplication)
+      .returning();
     return { mnetApplication: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,18 @@ export const createMnetApplication = async (mnetApplication: NewMnetApplicationP
   }
 };
 
-export const updateMnetApplication = async (id: MnetApplicationId, mnetApplication: UpdateMnetApplicationParams) => {
+export const updateMnetApplication = async (
+  id: MnetApplicationId,
+  mnetApplication: UpdateMnetApplicationParams,
+) => {
   const { id: mnetApplicationId } = mnetApplicationIdSchema.parse({ id });
   const newMnetApplication = updateMnetApplicationSchema.parse(mnetApplication);
   try {
-    const [m] =  await db
-     .update(mnetApplications)
-     .set(newMnetApplication)
-     .where(eq(mnetApplications.id, mnetApplicationId!))
-     .returning();
+    const [m] = await db
+      .update(mnetApplications)
+      .set(newMnetApplication)
+      .where(eq(mnetApplications.id, mnetApplicationId!))
+      .returning();
     return { mnetApplication: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +52,10 @@ export const updateMnetApplication = async (id: MnetApplicationId, mnetApplicati
 export const deleteMnetApplication = async (id: MnetApplicationId) => {
   const { id: mnetApplicationId } = mnetApplicationIdSchema.parse({ id });
   try {
-    const [m] =  await db.delete(mnetApplications).where(eq(mnetApplications.id, mnetApplicationId!))
-    .returning();
+    const [m] = await db
+      .delete(mnetApplications)
+      .where(eq(mnetApplications.id, mnetApplicationId!))
+      .returning();
     return { mnetApplication: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +63,3 @@ export const deleteMnetApplication = async (id: MnetApplicationId) => {
     throw { error: message };
   }
 };
-

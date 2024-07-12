@@ -1,19 +1,26 @@
-import { getForumGradeById, getForumGrades } from "../api/forumGrades/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   forumGradeIdSchema,
   insertForumGradeParams,
   updateForumGradeParams,
 } from "@soco/forum-db/schema/forumGrades";
-import { createForumGrade, deleteForumGrade, updateForumGrade } from "../api/forumGrades/mutations";
 
-export const forumGradesRouter =createTRPCRouter({
+import {
+  createForumGrade,
+  deleteForumGrade,
+  updateForumGrade,
+} from "../api/forumGrades/mutations";
+import { getForumGradeById, getForumGrades } from "../api/forumGrades/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const forumGradesRouter = createTRPCRouter({
   getForumGrades: publicProcedure.query(async () => {
     return getForumGrades();
   }),
-  getForumGradeById: publicProcedure.input(forumGradeIdSchema).query(async ({ input }) => {
-    return getForumGradeById(input.id);
-  }),
+  getForumGradeById: publicProcedure
+    .input(forumGradeIdSchema)
+    .query(async ({ input }) => {
+      return getForumGradeById(input.id);
+    }),
   createForumGrade: publicProcedure
     .input(insertForumGradeParams)
     .mutation(async ({ input }) => {

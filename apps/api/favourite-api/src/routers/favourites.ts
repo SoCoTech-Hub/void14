@@ -1,19 +1,26 @@
-import { getFavouriteById, getFavourites } from "../api/favourites/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   favouriteIdSchema,
   insertFavouriteParams,
   updateFavouriteParams,
 } from "@soco/favourite-db/schema/favourites";
-import { createFavourite, deleteFavourite, updateFavourite } from "../api/favourites/mutations";
 
-export const favouritesRouter =createTRPCRouter({
+import {
+  createFavourite,
+  deleteFavourite,
+  updateFavourite,
+} from "../api/favourites/mutations";
+import { getFavouriteById, getFavourites } from "../api/favourites/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const favouritesRouter = createTRPCRouter({
   getFavourites: publicProcedure.query(async () => {
     return getFavourites();
   }),
-  getFavouriteById: publicProcedure.input(favouriteIdSchema).query(async ({ input }) => {
-    return getFavouriteById(input.id);
-  }),
+  getFavouriteById: publicProcedure
+    .input(favouriteIdSchema)
+    .query(async ({ input }) => {
+      return getFavouriteById(input.id);
+    }),
   createFavourite: publicProcedure
     .input(insertFavouriteParams)
     .mutation(async ({ input }) => {

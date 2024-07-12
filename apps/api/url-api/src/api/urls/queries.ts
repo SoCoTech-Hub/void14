@@ -1,10 +1,11 @@
-import { db } from "@soco/url-db/client";
+import type { UrlId } from "@soco/url-db/schema/urls";
 import { eq } from "@soco/url-db";
-import { type UrlId, urlIdSchema, urls } from "@soco/url-db/schema/urls";
+import { db } from "@soco/url-db/client";
+import { urlIdSchema, urls } from "@soco/url-db/schema/urls";
 
 export const getUrls = async () => {
   const rows = await db.select().from(urls);
-  const u = rows
+  const u = rows;
   return { urls: u };
 };
 
@@ -15,5 +16,3 @@ export const getUrlById = async (id: UrlId) => {
   const u = row;
   return { url: u };
 };
-
-

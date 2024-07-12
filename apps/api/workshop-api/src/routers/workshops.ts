@@ -1,19 +1,26 @@
-import { getWorkshopById, getWorkshops } from "../api/workshops/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  workshopIdSchema,
   insertWorkshopParams,
   updateWorkshopParams,
+  workshopIdSchema,
 } from "@soco/workshop-db/schema/workshops";
-import { createWorkshop, deleteWorkshop, updateWorkshop } from "../api/workshops/mutations";
 
-export const workshopsRouter =createTRPCRouter({
+import {
+  createWorkshop,
+  deleteWorkshop,
+  updateWorkshop,
+} from "../api/workshops/mutations";
+import { getWorkshopById, getWorkshops } from "../api/workshops/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const workshopsRouter = createTRPCRouter({
   getWorkshops: publicProcedure.query(async () => {
     return getWorkshops();
   }),
-  getWorkshopById: publicProcedure.input(workshopIdSchema).query(async ({ input }) => {
-    return getWorkshopById(input.id);
-  }),
+  getWorkshopById: publicProcedure
+    .input(workshopIdSchema)
+    .query(async ({ input }) => {
+      return getWorkshopById(input.id);
+    }),
   createWorkshop: publicProcedure
     .input(insertWorkshopParams)
     .mutation(async ({ input }) => {

@@ -1,4 +1,4 @@
-import { imscpsRouter } from './routers/imscps';
+import { imscpsRouter } from "./routers/imscps";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

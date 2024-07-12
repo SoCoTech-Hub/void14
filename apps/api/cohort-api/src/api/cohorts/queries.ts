@@ -1,10 +1,11 @@
-import { db } from "@soco/cohort-db/client";
+import type { CohortId } from "@soco/cohort-db/schema/cohorts";
 import { eq } from "@soco/cohort-db";
-import { type CohortId, cohortIdSchema, cohorts } from "@soco/cohort-db/schema/cohorts";
+import { db } from "@soco/cohort-db/client";
+import { cohortIdSchema, cohorts } from "@soco/cohort-db/schema/cohorts";
 
 export const getCohorts = async () => {
   const rows = await db.select().from(cohorts);
-  const c = rows
+  const c = rows;
   return { cohorts: c };
 };
 
@@ -15,5 +16,3 @@ export const getCohortById = async (id: CohortId) => {
   const c = row;
   return { cohort: c };
 };
-
-

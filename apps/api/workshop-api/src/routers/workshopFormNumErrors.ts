@@ -1,19 +1,29 @@
-import { getWorkshopFormNumErrorById, getWorkshopFormNumErrors } from "../api/workshopFormNumErrors/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  workshopFormNumErrorIdSchema,
   insertWorkshopFormNumErrorParams,
   updateWorkshopFormNumErrorParams,
+  workshopFormNumErrorIdSchema,
 } from "@soco/workshop-db/schema/workshopFormNumErrors";
-import { createWorkshopFormNumError, deleteWorkshopFormNumError, updateWorkshopFormNumError } from "../api/workshopFormNumErrors/mutations";
 
-export const workshopFormNumErrorsRouter =createTRPCRouter({
+import {
+  createWorkshopFormNumError,
+  deleteWorkshopFormNumError,
+  updateWorkshopFormNumError,
+} from "../api/workshopFormNumErrors/mutations";
+import {
+  getWorkshopFormNumErrorById,
+  getWorkshopFormNumErrors,
+} from "../api/workshopFormNumErrors/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const workshopFormNumErrorsRouter = createTRPCRouter({
   getWorkshopFormNumErrors: publicProcedure.query(async () => {
     return getWorkshopFormNumErrors();
   }),
-  getWorkshopFormNumErrorById: publicProcedure.input(workshopFormNumErrorIdSchema).query(async ({ input }) => {
-    return getWorkshopFormNumErrorById(input.id);
-  }),
+  getWorkshopFormNumErrorById: publicProcedure
+    .input(workshopFormNumErrorIdSchema)
+    .query(async ({ input }) => {
+      return getWorkshopFormNumErrorById(input.id);
+    }),
   createWorkshopFormNumError: publicProcedure
     .input(insertWorkshopFormNumErrorParams)
     .mutation(async ({ input }) => {

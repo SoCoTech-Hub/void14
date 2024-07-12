@@ -1,13 +1,14 @@
-import { getUserById, getUsers } from "../api/users/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  userIdSchema,
   insertUserParams,
   updateUserParams,
+  userIdSchema,
 } from "@soco/user-db/schema/users";
-import { createUser, deleteUser, updateUser } from "../api/users/mutations";
 
-export const usersRouter =createTRPCRouter({
+import { createUser, deleteUser, updateUser } from "../api/users/mutations";
+import { getUserById, getUsers } from "../api/users/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const usersRouter = createTRPCRouter({
   getUsers: publicProcedure.query(async () => {
     return getUsers();
   }),

@@ -1,20 +1,29 @@
-import { db } from "@soco/message-db/client";
+import type { MessagePopupId } from "@soco/message-db/schema/messagePopups";
 import { eq } from "@soco/message-db";
-import { type MessagePopupId, messagePopupIdSchema, messagePopups } from "@soco/message-db/schema/messagePopups";
+import { db } from "@soco/message-db/client";
+import {
+  messagePopupIdSchema,
+  messagePopups,
+} from "@soco/message-db/schema/messagePopups";
 import { messages } from "@soco/message-db/schema/messages";
 
 export const getMessagePopups = async () => {
-  const rows = await db.select({ messagePopup: messagePopups, message: messages }).from(messagePopups).leftJoin(messages, eq(messagePopups.messageId, messages.id));
-  const m = rows .map((r) => ({ ...r.messagePopup, message: r.message})); 
+  const rows = await db
+    .select({ messagePopup: messagePopups, message: messages })
+    .from(messagePopups)
+    .leftJoin(messages, eq(messagePopups.messageId, messages.id));
+  const m = rows.map((r) => ({ ...r.messagePopup, message: r.message }));
   return { messagePopups: m };
 };
 
 export const getMessagePopupById = async (id: MessagePopupId) => {
   const { id: messagePopupId } = messagePopupIdSchema.parse({ id });
-  const [row] = await db.select({ messagePopup: messagePopups, message: messages }).from(messagePopups).where(eq(messagePopups.id, messagePopupId)).leftJoin(messages, eq(messagePopups.messageId, messages.id));
+  const [row] = await db
+    .select({ messagePopup: messagePopups, message: messages })
+    .from(messagePopups)
+    .where(eq(messagePopups.id, messagePopupId))
+    .leftJoin(messages, eq(messagePopups.messageId, messages.id));
   if (row === undefined) return {};
-  const m =  { ...row.messagePopup, message: row.message } ;
+  const m = { ...row.messagePopup, message: row.message };
   return { messagePopup: m };
 };
-
-

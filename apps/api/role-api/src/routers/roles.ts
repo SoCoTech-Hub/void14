@@ -1,13 +1,14 @@
-import { getRoleById, getRoles } from "../api/roles/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  roleIdSchema,
   insertRoleParams,
+  roleIdSchema,
   updateRoleParams,
 } from "@soco/role-db/schema/roles";
-import { createRole, deleteRole, updateRole } from "../api/roles/mutations";
 
-export const rolesRouter =createTRPCRouter({
+import { createRole, deleteRole, updateRole } from "../api/roles/mutations";
+import { getRoleById, getRoles } from "../api/roles/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const rolesRouter = createTRPCRouter({
   getRoles: publicProcedure.query(async () => {
     return getRoles();
   }),

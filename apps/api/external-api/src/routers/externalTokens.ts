@@ -1,19 +1,29 @@
-import { getExternalTokenById, getExternalTokens } from "../api/externalTokens/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   externalTokenIdSchema,
   insertExternalTokenParams,
   updateExternalTokenParams,
 } from "@soco/external-db/schema/externalTokens";
-import { createExternalToken, deleteExternalToken, updateExternalToken } from "../api/externalTokens/mutations";
 
-export const externalTokensRouter =createTRPCRouter({
+import {
+  createExternalToken,
+  deleteExternalToken,
+  updateExternalToken,
+} from "../api/externalTokens/mutations";
+import {
+  getExternalTokenById,
+  getExternalTokens,
+} from "../api/externalTokens/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const externalTokensRouter = createTRPCRouter({
   getExternalTokens: publicProcedure.query(async () => {
     return getExternalTokens();
   }),
-  getExternalTokenById: publicProcedure.input(externalTokenIdSchema).query(async ({ input }) => {
-    return getExternalTokenById(input.id);
-  }),
+  getExternalTokenById: publicProcedure
+    .input(externalTokenIdSchema)
+    .query(async ({ input }) => {
+      return getExternalTokenById(input.id);
+    }),
   createExternalToken: publicProcedure
     .input(insertExternalTokenParams)
     .mutation(async ({ input }) => {

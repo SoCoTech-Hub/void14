@@ -1,7 +1,7 @@
-import { localizationFieldsRouter } from './routers/localizationFields';
-import { localizationLanguagesRouter } from './routers/localizationLanguages';
-import { localizationTranslationsRouter } from './routers/localizationTranslations';
-import { localizationUsersRouter } from './routers/localizationUsers';
+import { localizationFieldsRouter } from "./routers/localizationFields";
+import { localizationLanguagesRouter } from "./routers/localizationLanguages";
+import { localizationTranslationsRouter } from "./routers/localizationTranslations";
+import { localizationUsersRouter } from "./routers/localizationUsers";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

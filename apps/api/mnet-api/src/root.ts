@@ -1,16 +1,16 @@
-import { mnetApplicationsRouter } from './routers/mnetApplications';
-import { mnetHost2servicesRouter } from './routers/mnetHost2services';
-import { mnetHostsRouter } from './routers/mnetHosts';
-import { mnetLogsRouter } from './routers/mnetLogs';
-import { mnetRemoteRpcRouter } from './routers/mnetRemoteRpc';
-import { mnetRemoteService2rpcsRouter } from './routers/mnetRemoteService2rpcs';
-import { mnetRpcsRouter } from './routers/mnetRpcs';
-import { mnetService2rpcsRouter } from './routers/mnetService2rpcs';
-import { mnetServiceEnrolCoursesRouter } from './routers/mnetServiceEnrolCourses';
-import { mnetServiceEnrolEnrolmentsRouter } from './routers/mnetServiceEnrolEnrolments';
-import { mnetServicesRouter } from './routers/mnetServices';
-import { mnetSessionsRouter } from './routers/mnetSessions';
-import { mnetSsoAccessControlsRouter } from './routers/mnetSsoAccessControls';
+import { mnetApplicationsRouter } from "./routers/mnetApplications";
+import { mnetHost2servicesRouter } from "./routers/mnetHost2services";
+import { mnetHostsRouter } from "./routers/mnetHosts";
+import { mnetLogsRouter } from "./routers/mnetLogs";
+import { mnetRemoteRpcRouter } from "./routers/mnetRemoteRpc";
+import { mnetRemoteService2rpcsRouter } from "./routers/mnetRemoteService2rpcs";
+import { mnetRpcsRouter } from "./routers/mnetRpcs";
+import { mnetService2rpcsRouter } from "./routers/mnetService2rpcs";
+import { mnetServiceEnrolCoursesRouter } from "./routers/mnetServiceEnrolCourses";
+import { mnetServiceEnrolEnrolmentsRouter } from "./routers/mnetServiceEnrolEnrolments";
+import { mnetServicesRouter } from "./routers/mnetServices";
+import { mnetSessionsRouter } from "./routers/mnetSessions";
+import { mnetSsoAccessControlsRouter } from "./routers/mnetSsoAccessControls";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

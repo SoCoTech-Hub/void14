@@ -1,19 +1,29 @@
-import { getStatsDailyById, getStatsDailies } from "../api/statsDailies/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  statsDailyIdSchema,
   insertStatsDailyParams,
+  statsDailyIdSchema,
   updateStatsDailyParams,
 } from "@soco/stats-db/schema/statsDailies";
-import { createStatsDaily, deleteStatsDaily, updateStatsDaily } from "../api/statsDailies/mutations";
 
-export const statsDailiesRouter =createTRPCRouter({
+import {
+  createStatsDaily,
+  deleteStatsDaily,
+  updateStatsDaily,
+} from "../api/statsDailies/mutations";
+import {
+  getStatsDailies,
+  getStatsDailyById,
+} from "../api/statsDailies/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const statsDailiesRouter = createTRPCRouter({
   getStatsDailies: publicProcedure.query(async () => {
     return getStatsDailies();
   }),
-  getStatsDailyById: publicProcedure.input(statsDailyIdSchema).query(async ({ input }) => {
-    return getStatsDailyById(input.id);
-  }),
+  getStatsDailyById: publicProcedure
+    .input(statsDailyIdSchema)
+    .query(async ({ input }) => {
+      return getStatsDailyById(input.id);
+    }),
   createStatsDaily: publicProcedure
     .input(insertStatsDailyParams)
     .mutation(async ({ input }) => {

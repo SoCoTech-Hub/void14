@@ -1,13 +1,14 @@
-import { getFileById, getFiles } from "../api/files/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   fileIdSchema,
   insertFileParams,
   updateFileParams,
 } from "@soco/file-db/schema/files";
-import { createFile, deleteFile, updateFile } from "../api/files/mutations";
 
-export const filesRouter =createTRPCRouter({
+import { createFile, deleteFile, updateFile } from "../api/files/mutations";
+import { getFileById, getFiles } from "../api/files/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const filesRouter = createTRPCRouter({
   getFiles: publicProcedure.query(async () => {
     return getFiles();
   }),

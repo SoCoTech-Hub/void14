@@ -1,19 +1,29 @@
-import { getQuestionAttemptById, getQuestionAttempts } from "../api/questionAttempts/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  questionAttemptIdSchema,
   insertQuestionAttemptParams,
+  questionAttemptIdSchema,
   updateQuestionAttemptParams,
 } from "@soco/question-db/schema/questionAttempts";
-import { createQuestionAttempt, deleteQuestionAttempt, updateQuestionAttempt } from "../api/questionAttempts/mutations";
 
-export const questionAttemptsRouter =createTRPCRouter({
+import {
+  createQuestionAttempt,
+  deleteQuestionAttempt,
+  updateQuestionAttempt,
+} from "../api/questionAttempts/mutations";
+import {
+  getQuestionAttemptById,
+  getQuestionAttempts,
+} from "../api/questionAttempts/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const questionAttemptsRouter = createTRPCRouter({
   getQuestionAttempts: publicProcedure.query(async () => {
     return getQuestionAttempts();
   }),
-  getQuestionAttemptById: publicProcedure.input(questionAttemptIdSchema).query(async ({ input }) => {
-    return getQuestionAttemptById(input.id);
-  }),
+  getQuestionAttemptById: publicProcedure
+    .input(questionAttemptIdSchema)
+    .query(async ({ input }) => {
+      return getQuestionAttemptById(input.id);
+    }),
   createQuestionAttempt: publicProcedure
     .input(insertQuestionAttemptParams)
     .mutation(async ({ input }) => {

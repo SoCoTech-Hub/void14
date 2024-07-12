@@ -1,19 +1,29 @@
-import { getMessageConversationMemberById, getMessageConversationMembers } from "../api/messageConversationMembers/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  messageConversationMemberIdSchema,
   insertMessageConversationMemberParams,
+  messageConversationMemberIdSchema,
   updateMessageConversationMemberParams,
 } from "@soco/message-db/schema/messageConversationMembers";
-import { createMessageConversationMember, deleteMessageConversationMember, updateMessageConversationMember } from "../api/messageConversationMembers/mutations";
 
-export const messageConversationMembersRouter =createTRPCRouter({
+import {
+  createMessageConversationMember,
+  deleteMessageConversationMember,
+  updateMessageConversationMember,
+} from "../api/messageConversationMembers/mutations";
+import {
+  getMessageConversationMemberById,
+  getMessageConversationMembers,
+} from "../api/messageConversationMembers/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const messageConversationMembersRouter = createTRPCRouter({
   getMessageConversationMembers: publicProcedure.query(async () => {
     return getMessageConversationMembers();
   }),
-  getMessageConversationMemberById: publicProcedure.input(messageConversationMemberIdSchema).query(async ({ input }) => {
-    return getMessageConversationMemberById(input.id);
-  }),
+  getMessageConversationMemberById: publicProcedure
+    .input(messageConversationMemberIdSchema)
+    .query(async ({ input }) => {
+      return getMessageConversationMemberById(input.id);
+    }),
   createMessageConversationMember: publicProcedure
     .input(insertMessageConversationMemberParams)
     .mutation(async ({ input }) => {

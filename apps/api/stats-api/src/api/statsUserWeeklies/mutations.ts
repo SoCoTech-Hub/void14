@@ -1,21 +1,31 @@
-import { db } from "@soco/stats-db/client";
-import { and, eq } from "@soco/stats-db";
-import { 
-  type StatsUserWeeklyId, 
-  type NewStatsUserWeeklyParams,
-  type UpdateStatsUserWeeklyParams, 
-  updateStatsUserWeeklySchema,
-  insertStatsUserWeeklySchema, 
-  statsUserWeeklies,
-  statsUserWeeklyIdSchema 
+import type {
+  NewStatsUserWeeklyParams,
+  StatsUserWeeklyId,
+  UpdateStatsUserWeeklyParams,
 } from "@soco/stats-db/schema/statsUserWeeklies";
 import { getUserAuth } from "@soco/auth-service";
+import { and, eq } from "@soco/stats-db";
+import { db } from "@soco/stats-db/client";
+import {
+  insertStatsUserWeeklySchema,
+  statsUserWeeklies,
+  statsUserWeeklyIdSchema,
+  updateStatsUserWeeklySchema,
+} from "@soco/stats-db/schema/statsUserWeeklies";
 
-export const createStatsUserWeekly = async (statsUserWeekly: NewStatsUserWeeklyParams) => {
+export const createStatsUserWeekly = async (
+  statsUserWeekly: NewStatsUserWeeklyParams,
+) => {
   const { session } = await getUserAuth();
-  const newStatsUserWeekly = insertStatsUserWeeklySchema.parse({ ...statsUserWeekly, userId: session?.user.id! });
+  const newStatsUserWeekly = insertStatsUserWeeklySchema.parse({
+    ...statsUserWeekly,
+    userId: session?.user.id!,
+  });
   try {
-    const [s] =  await db.insert(statsUserWeeklies).values(newStatsUserWeekly).returning();
+    const [s] = await db
+      .insert(statsUserWeeklies)
+      .values(newStatsUserWeekly)
+      .returning();
     return { statsUserWeekly: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +34,27 @@ export const createStatsUserWeekly = async (statsUserWeekly: NewStatsUserWeeklyP
   }
 };
 
-export const updateStatsUserWeekly = async (id: StatsUserWeeklyId, statsUserWeekly: UpdateStatsUserWeeklyParams) => {
+export const updateStatsUserWeekly = async (
+  id: StatsUserWeeklyId,
+  statsUserWeekly: UpdateStatsUserWeeklyParams,
+) => {
   const { session } = await getUserAuth();
   const { id: statsUserWeeklyId } = statsUserWeeklyIdSchema.parse({ id });
-  const newStatsUserWeekly = updateStatsUserWeeklySchema.parse({ ...statsUserWeekly, userId: session?.user.id! });
+  const newStatsUserWeekly = updateStatsUserWeeklySchema.parse({
+    ...statsUserWeekly,
+    userId: session?.user.id!,
+  });
   try {
-    const [s] =  await db
-     .update(statsUserWeeklies)
-     .set(newStatsUserWeekly)
-     .where(and(eq(statsUserWeeklies.id, statsUserWeeklyId!), eq(statsUserWeeklies.userId, session?.user.id!)))
-     .returning();
+    const [s] = await db
+      .update(statsUserWeeklies)
+      .set(newStatsUserWeekly)
+      .where(
+        and(
+          eq(statsUserWeeklies.id, statsUserWeeklyId!),
+          eq(statsUserWeeklies.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { statsUserWeekly: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +67,15 @@ export const deleteStatsUserWeekly = async (id: StatsUserWeeklyId) => {
   const { session } = await getUserAuth();
   const { id: statsUserWeeklyId } = statsUserWeeklyIdSchema.parse({ id });
   try {
-    const [s] =  await db.delete(statsUserWeeklies).where(and(eq(statsUserWeeklies.id, statsUserWeeklyId!), eq(statsUserWeeklies.userId, session?.user.id!)))
-    .returning();
+    const [s] = await db
+      .delete(statsUserWeeklies)
+      .where(
+        and(
+          eq(statsUserWeeklies.id, statsUserWeeklyId!),
+          eq(statsUserWeeklies.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { statsUserWeekly: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +83,3 @@ export const deleteStatsUserWeekly = async (id: StatsUserWeeklyId) => {
     throw { error: message };
   }
 };
-

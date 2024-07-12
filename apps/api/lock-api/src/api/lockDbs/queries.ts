@@ -1,10 +1,11 @@
-import { db } from "@soco/lock-db/client";
+import type { LockDbId } from "@soco/lock-db/schema/lockDbs";
 import { eq } from "@soco/lock-db";
-import { type LockDbId, lockDbIdSchema, lockDbs } from "@soco/lock-db/schema/lockDbs";
+import { db } from "@soco/lock-db/client";
+import { lockDbIdSchema, lockDbs } from "@soco/lock-db/schema/lockDbs";
 
 export const getLockDbs = async () => {
   const rows = await db.select().from(lockDbs);
-  const l = rows
+  const l = rows;
   return { lockDbs: l };
 };
 
@@ -15,5 +16,3 @@ export const getLockDbById = async (id: LockDbId) => {
   const l = row;
   return { lockDb: l };
 };
-
-

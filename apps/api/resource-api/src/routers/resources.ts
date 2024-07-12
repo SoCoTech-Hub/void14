@@ -1,19 +1,26 @@
-import { getResourceById, getResources } from "../api/resources/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  resourceIdSchema,
   insertResourceParams,
+  resourceIdSchema,
   updateResourceParams,
 } from "@soco/resource-db/schema/resources";
-import { createResource, deleteResource, updateResource } from "../api/resources/mutations";
 
-export const resourcesRouter =createTRPCRouter({
+import {
+  createResource,
+  deleteResource,
+  updateResource,
+} from "../api/resources/mutations";
+import { getResourceById, getResources } from "../api/resources/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const resourcesRouter = createTRPCRouter({
   getResources: publicProcedure.query(async () => {
     return getResources();
   }),
-  getResourceById: publicProcedure.input(resourceIdSchema).query(async ({ input }) => {
-    return getResourceById(input.id);
-  }),
+  getResourceById: publicProcedure
+    .input(resourceIdSchema)
+    .query(async ({ input }) => {
+      return getResourceById(input.id);
+    }),
   createResource: publicProcedure
     .input(insertResourceParams)
     .mutation(async ({ input }) => {

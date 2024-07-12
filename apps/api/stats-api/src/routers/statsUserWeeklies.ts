@@ -1,19 +1,29 @@
-import { getStatsUserWeeklyById, getStatsUserWeeklies } from "../api/statsUserWeeklies/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  statsUserWeeklyIdSchema,
   insertStatsUserWeeklyParams,
+  statsUserWeeklyIdSchema,
   updateStatsUserWeeklyParams,
 } from "@soco/stats-db/schema/statsUserWeeklies";
-import { createStatsUserWeekly, deleteStatsUserWeekly, updateStatsUserWeekly } from "../api/statsUserWeeklies/mutations";
 
-export const statsUserWeekliesRouter =createTRPCRouter({
+import {
+  createStatsUserWeekly,
+  deleteStatsUserWeekly,
+  updateStatsUserWeekly,
+} from "../api/statsUserWeeklies/mutations";
+import {
+  getStatsUserWeeklies,
+  getStatsUserWeeklyById,
+} from "../api/statsUserWeeklies/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const statsUserWeekliesRouter = createTRPCRouter({
   getStatsUserWeeklies: publicProcedure.query(async () => {
     return getStatsUserWeeklies();
   }),
-  getStatsUserWeeklyById: publicProcedure.input(statsUserWeeklyIdSchema).query(async ({ input }) => {
-    return getStatsUserWeeklyById(input.id);
-  }),
+  getStatsUserWeeklyById: publicProcedure
+    .input(statsUserWeeklyIdSchema)
+    .query(async ({ input }) => {
+      return getStatsUserWeeklyById(input.id);
+    }),
   createStatsUserWeekly: publicProcedure
     .input(insertStatsUserWeeklyParams)
     .mutation(async ({ input }) => {

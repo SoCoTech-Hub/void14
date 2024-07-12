@@ -6,7 +6,7 @@
     "build": "nitro build",
     "clean": "rm -rf .turbo node_modules",
     "lint": "eslint",
-    "format": "prettier --check . --ignore-path ../../.gitignore --fix",
+    "format": "prettier --check . --ignore-path ../../.gitignore --write",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

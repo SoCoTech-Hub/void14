@@ -1,19 +1,29 @@
-import { getToolUserToursStepById, getToolUserToursSteps } from "../api/toolUserToursSteps/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  toolUserToursStepIdSchema,
   insertToolUserToursStepParams,
+  toolUserToursStepIdSchema,
   updateToolUserToursStepParams,
 } from "@soco/tool-user-tours-db/schema/toolUserToursSteps";
-import { createToolUserToursStep, deleteToolUserToursStep, updateToolUserToursStep } from "../api/toolUserToursSteps/mutations";
 
-export const toolUserToursStepsRouter =createTRPCRouter({
+import {
+  createToolUserToursStep,
+  deleteToolUserToursStep,
+  updateToolUserToursStep,
+} from "../api/toolUserToursSteps/mutations";
+import {
+  getToolUserToursStepById,
+  getToolUserToursSteps,
+} from "../api/toolUserToursSteps/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const toolUserToursStepsRouter = createTRPCRouter({
   getToolUserToursSteps: publicProcedure.query(async () => {
     return getToolUserToursSteps();
   }),
-  getToolUserToursStepById: publicProcedure.input(toolUserToursStepIdSchema).query(async ({ input }) => {
-    return getToolUserToursStepById(input.id);
-  }),
+  getToolUserToursStepById: publicProcedure
+    .input(toolUserToursStepIdSchema)
+    .query(async ({ input }) => {
+      return getToolUserToursStepById(input.id);
+    }),
   createToolUserToursStep: publicProcedure
     .input(insertToolUserToursStepParams)
     .mutation(async ({ input }) => {

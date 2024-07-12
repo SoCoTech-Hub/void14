@@ -1,19 +1,29 @@
-import { getUserPasswordResetById, getUserPasswordResets } from "../api/userPasswordResets/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  userPasswordResetIdSchema,
   insertUserPasswordResetParams,
   updateUserPasswordResetParams,
+  userPasswordResetIdSchema,
 } from "@soco/user-db/schema/userPasswordResets";
-import { createUserPasswordReset, deleteUserPasswordReset, updateUserPasswordReset } from "../api/userPasswordResets/mutations";
 
-export const userPasswordResetsRouter =createTRPCRouter({
+import {
+  createUserPasswordReset,
+  deleteUserPasswordReset,
+  updateUserPasswordReset,
+} from "../api/userPasswordResets/mutations";
+import {
+  getUserPasswordResetById,
+  getUserPasswordResets,
+} from "../api/userPasswordResets/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const userPasswordResetsRouter = createTRPCRouter({
   getUserPasswordResets: publicProcedure.query(async () => {
     return getUserPasswordResets();
   }),
-  getUserPasswordResetById: publicProcedure.input(userPasswordResetIdSchema).query(async ({ input }) => {
-    return getUserPasswordResetById(input.id);
-  }),
+  getUserPasswordResetById: publicProcedure
+    .input(userPasswordResetIdSchema)
+    .query(async ({ input }) => {
+      return getUserPasswordResetById(input.id);
+    }),
   createUserPasswordReset: publicProcedure
     .input(insertUserPasswordResetParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,29 @@
-import { getThemeComponentStyleById, getThemeComponentStyles } from "../api/themeComponentStyles/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  themeComponentStyleIdSchema,
   insertThemeComponentStyleParams,
+  themeComponentStyleIdSchema,
   updateThemeComponentStyleParams,
 } from "@soco/theme-db/schema/themeComponentStyles";
-import { createThemeComponentStyle, deleteThemeComponentStyle, updateThemeComponentStyle } from "../api/themeComponentStyles/mutations";
 
-export const themeComponentStylesRouter =createTRPCRouter({
+import {
+  createThemeComponentStyle,
+  deleteThemeComponentStyle,
+  updateThemeComponentStyle,
+} from "../api/themeComponentStyles/mutations";
+import {
+  getThemeComponentStyleById,
+  getThemeComponentStyles,
+} from "../api/themeComponentStyles/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const themeComponentStylesRouter = createTRPCRouter({
   getThemeComponentStyles: publicProcedure.query(async () => {
     return getThemeComponentStyles();
   }),
-  getThemeComponentStyleById: publicProcedure.input(themeComponentStyleIdSchema).query(async ({ input }) => {
-    return getThemeComponentStyleById(input.id);
-  }),
+  getThemeComponentStyleById: publicProcedure
+    .input(themeComponentStyleIdSchema)
+    .query(async ({ input }) => {
+      return getThemeComponentStyleById(input.id);
+    }),
   createThemeComponentStyle: publicProcedure
     .input(insertThemeComponentStyleParams)
     .mutation(async ({ input }) => {

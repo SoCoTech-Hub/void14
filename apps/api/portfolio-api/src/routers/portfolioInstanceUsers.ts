@@ -1,19 +1,29 @@
-import { getPortfolioInstanceUserById, getPortfolioInstanceUsers } from "../api/portfolioInstanceUsers/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  portfolioInstanceUserIdSchema,
   insertPortfolioInstanceUserParams,
+  portfolioInstanceUserIdSchema,
   updatePortfolioInstanceUserParams,
 } from "@soco/portfolio-db/schema/portfolioInstanceUsers";
-import { createPortfolioInstanceUser, deletePortfolioInstanceUser, updatePortfolioInstanceUser } from "../api/portfolioInstanceUsers/mutations";
 
-export const portfolioInstanceUsersRouter =createTRPCRouter({
+import {
+  createPortfolioInstanceUser,
+  deletePortfolioInstanceUser,
+  updatePortfolioInstanceUser,
+} from "../api/portfolioInstanceUsers/mutations";
+import {
+  getPortfolioInstanceUserById,
+  getPortfolioInstanceUsers,
+} from "../api/portfolioInstanceUsers/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const portfolioInstanceUsersRouter = createTRPCRouter({
   getPortfolioInstanceUsers: publicProcedure.query(async () => {
     return getPortfolioInstanceUsers();
   }),
-  getPortfolioInstanceUserById: publicProcedure.input(portfolioInstanceUserIdSchema).query(async ({ input }) => {
-    return getPortfolioInstanceUserById(input.id);
-  }),
+  getPortfolioInstanceUserById: publicProcedure
+    .input(portfolioInstanceUserIdSchema)
+    .query(async ({ input }) => {
+      return getPortfolioInstanceUserById(input.id);
+    }),
   createPortfolioInstanceUser: publicProcedure
     .input(insertPortfolioInstanceUserParams)
     .mutation(async ({ input }) => {

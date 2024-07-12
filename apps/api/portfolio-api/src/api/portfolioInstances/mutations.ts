@@ -1,19 +1,27 @@
-import { db } from "@soco/portfolio-db/client";
+import type {
+  NewPortfolioInstanceParams,
+  PortfolioInstanceId,
+  UpdatePortfolioInstanceParams,
+} from "@soco/portfolio-db/schema/portfolioInstances";
 import { eq } from "@soco/portfolio-db";
-import { 
-  type PortfolioInstanceId, 
-  type NewPortfolioInstanceParams,
-  type UpdatePortfolioInstanceParams, 
-  updatePortfolioInstanceSchema,
-  insertPortfolioInstanceSchema, 
+import { db } from "@soco/portfolio-db/client";
+import {
+  insertPortfolioInstanceSchema,
+  portfolioInstanceIdSchema,
   portfolioInstances,
-  portfolioInstanceIdSchema 
+  updatePortfolioInstanceSchema,
 } from "@soco/portfolio-db/schema/portfolioInstances";
 
-export const createPortfolioInstance = async (portfolioInstance: NewPortfolioInstanceParams) => {
-  const newPortfolioInstance = insertPortfolioInstanceSchema.parse(portfolioInstance);
+export const createPortfolioInstance = async (
+  portfolioInstance: NewPortfolioInstanceParams,
+) => {
+  const newPortfolioInstance =
+    insertPortfolioInstanceSchema.parse(portfolioInstance);
   try {
-    const [p] =  await db.insert(portfolioInstances).values(newPortfolioInstance).returning();
+    const [p] = await db
+      .insert(portfolioInstances)
+      .values(newPortfolioInstance)
+      .returning();
     return { portfolioInstance: p };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,19 @@ export const createPortfolioInstance = async (portfolioInstance: NewPortfolioIns
   }
 };
 
-export const updatePortfolioInstance = async (id: PortfolioInstanceId, portfolioInstance: UpdatePortfolioInstanceParams) => {
+export const updatePortfolioInstance = async (
+  id: PortfolioInstanceId,
+  portfolioInstance: UpdatePortfolioInstanceParams,
+) => {
   const { id: portfolioInstanceId } = portfolioInstanceIdSchema.parse({ id });
-  const newPortfolioInstance = updatePortfolioInstanceSchema.parse(portfolioInstance);
+  const newPortfolioInstance =
+    updatePortfolioInstanceSchema.parse(portfolioInstance);
   try {
-    const [p] =  await db
-     .update(portfolioInstances)
-     .set(newPortfolioInstance)
-     .where(eq(portfolioInstances.id, portfolioInstanceId!))
-     .returning();
+    const [p] = await db
+      .update(portfolioInstances)
+      .set(newPortfolioInstance)
+      .where(eq(portfolioInstances.id, portfolioInstanceId!))
+      .returning();
     return { portfolioInstance: p };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +54,10 @@ export const updatePortfolioInstance = async (id: PortfolioInstanceId, portfolio
 export const deletePortfolioInstance = async (id: PortfolioInstanceId) => {
   const { id: portfolioInstanceId } = portfolioInstanceIdSchema.parse({ id });
   try {
-    const [p] =  await db.delete(portfolioInstances).where(eq(portfolioInstances.id, portfolioInstanceId!))
-    .returning();
+    const [p] = await db
+      .delete(portfolioInstances)
+      .where(eq(portfolioInstances.id, portfolioInstanceId!))
+      .returning();
     return { portfolioInstance: p };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +65,3 @@ export const deletePortfolioInstance = async (id: PortfolioInstanceId) => {
     throw { error: message };
   }
 };
-

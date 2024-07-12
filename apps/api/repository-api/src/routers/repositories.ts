@@ -1,19 +1,29 @@
-import { getRepositoryById, getRepositories } from "../api/repositories/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  repositoryIdSchema,
   insertRepositoryParams,
+  repositoryIdSchema,
   updateRepositoryParams,
 } from "@soco/repository-db/schema/repositories";
-import { createRepository, deleteRepository, updateRepository } from "../api/repositories/mutations";
 
-export const repositoriesRouter =createTRPCRouter({
+import {
+  createRepository,
+  deleteRepository,
+  updateRepository,
+} from "../api/repositories/mutations";
+import {
+  getRepositories,
+  getRepositoryById,
+} from "../api/repositories/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const repositoriesRouter = createTRPCRouter({
   getRepositories: publicProcedure.query(async () => {
     return getRepositories();
   }),
-  getRepositoryById: publicProcedure.input(repositoryIdSchema).query(async ({ input }) => {
-    return getRepositoryById(input.id);
-  }),
+  getRepositoryById: publicProcedure
+    .input(repositoryIdSchema)
+    .query(async ({ input }) => {
+      return getRepositoryById(input.id);
+    }),
   createRepository: publicProcedure
     .input(insertRepositoryParams)
     .mutation(async ({ input }) => {

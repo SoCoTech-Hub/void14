@@ -1,11 +1,11 @@
-import { lessonAnswersRouter } from './routers/lessonAnswers';
-import { lessonAttemptsRouter } from './routers/lessonAttempts';
-import { lessonBranchesRouter } from './routers/lessonBranches';
-import { lessonGradesRouter } from './routers/lessonGrades';
-import { lessonOverridesRouter } from './routers/lessonOverrides';
-import { lessonPagesRouter } from './routers/lessonPages';
-import { lessonsRouter } from './routers/lessons';
-import { lessonTimerRouter } from './routers/lessonTimer';
+import { lessonAnswersRouter } from "./routers/lessonAnswers";
+import { lessonAttemptsRouter } from "./routers/lessonAttempts";
+import { lessonBranchesRouter } from "./routers/lessonBranches";
+import { lessonGradesRouter } from "./routers/lessonGrades";
+import { lessonOverridesRouter } from "./routers/lessonOverrides";
+import { lessonPagesRouter } from "./routers/lessonPages";
+import { lessonsRouter } from "./routers/lessons";
+import { lessonTimerRouter } from "./routers/lessonTimer";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

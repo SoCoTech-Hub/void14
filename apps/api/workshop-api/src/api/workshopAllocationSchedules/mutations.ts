@@ -1,19 +1,27 @@
-import { db } from "@soco/workshop-db/client";
+import type {
+  NewWorkshopAllocationScheduleParams,
+  UpdateWorkshopAllocationScheduleParams,
+  WorkshopAllocationScheduleId,
+} from "@soco/workshop-db/schema/workshopAllocationSchedules";
 import { eq } from "@soco/workshop-db";
-import { 
-  type WorkshopAllocationScheduleId, 
-  type NewWorkshopAllocationScheduleParams,
-  type UpdateWorkshopAllocationScheduleParams, 
+import { db } from "@soco/workshop-db/client";
+import {
+  insertWorkshopAllocationScheduleSchema,
   updateWorkshopAllocationScheduleSchema,
-  insertWorkshopAllocationScheduleSchema, 
+  workshopAllocationScheduleIdSchema,
   workshopAllocationSchedules,
-  workshopAllocationScheduleIdSchema 
 } from "@soco/workshop-db/schema/workshopAllocationSchedules";
 
-export const createWorkshopAllocationSchedule = async (workshopAllocationSchedule: NewWorkshopAllocationScheduleParams) => {
-  const newWorkshopAllocationSchedule = insertWorkshopAllocationScheduleSchema.parse(workshopAllocationSchedule);
+export const createWorkshopAllocationSchedule = async (
+  workshopAllocationSchedule: NewWorkshopAllocationScheduleParams,
+) => {
+  const newWorkshopAllocationSchedule =
+    insertWorkshopAllocationScheduleSchema.parse(workshopAllocationSchedule);
   try {
-    const [w] =  await db.insert(workshopAllocationSchedules).values(newWorkshopAllocationSchedule).returning();
+    const [w] = await db
+      .insert(workshopAllocationSchedules)
+      .values(newWorkshopAllocationSchedule)
+      .returning();
     return { workshopAllocationSchedule: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,20 @@ export const createWorkshopAllocationSchedule = async (workshopAllocationSchedul
   }
 };
 
-export const updateWorkshopAllocationSchedule = async (id: WorkshopAllocationScheduleId, workshopAllocationSchedule: UpdateWorkshopAllocationScheduleParams) => {
-  const { id: workshopAllocationScheduleId } = workshopAllocationScheduleIdSchema.parse({ id });
-  const newWorkshopAllocationSchedule = updateWorkshopAllocationScheduleSchema.parse(workshopAllocationSchedule);
+export const updateWorkshopAllocationSchedule = async (
+  id: WorkshopAllocationScheduleId,
+  workshopAllocationSchedule: UpdateWorkshopAllocationScheduleParams,
+) => {
+  const { id: workshopAllocationScheduleId } =
+    workshopAllocationScheduleIdSchema.parse({ id });
+  const newWorkshopAllocationSchedule =
+    updateWorkshopAllocationScheduleSchema.parse(workshopAllocationSchedule);
   try {
-    const [w] =  await db
-     .update(workshopAllocationSchedules)
-     .set({...newWorkshopAllocationSchedule, updatedAt: new Date() })
-     .where(eq(workshopAllocationSchedules.id, workshopAllocationScheduleId!))
-     .returning();
+    const [w] = await db
+      .update(workshopAllocationSchedules)
+      .set({ ...newWorkshopAllocationSchedule, updatedAt: new Date() })
+      .where(eq(workshopAllocationSchedules.id, workshopAllocationScheduleId!))
+      .returning();
     return { workshopAllocationSchedule: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +52,16 @@ export const updateWorkshopAllocationSchedule = async (id: WorkshopAllocationSch
   }
 };
 
-export const deleteWorkshopAllocationSchedule = async (id: WorkshopAllocationScheduleId) => {
-  const { id: workshopAllocationScheduleId } = workshopAllocationScheduleIdSchema.parse({ id });
+export const deleteWorkshopAllocationSchedule = async (
+  id: WorkshopAllocationScheduleId,
+) => {
+  const { id: workshopAllocationScheduleId } =
+    workshopAllocationScheduleIdSchema.parse({ id });
   try {
-    const [w] =  await db.delete(workshopAllocationSchedules).where(eq(workshopAllocationSchedules.id, workshopAllocationScheduleId!))
-    .returning();
+    const [w] = await db
+      .delete(workshopAllocationSchedules)
+      .where(eq(workshopAllocationSchedules.id, workshopAllocationScheduleId!))
+      .returning();
     return { workshopAllocationSchedule: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +69,3 @@ export const deleteWorkshopAllocationSchedule = async (id: WorkshopAllocationSch
     throw { error: message };
   }
 };
-

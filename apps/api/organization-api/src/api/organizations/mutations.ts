@@ -1,19 +1,26 @@
-import { db } from "@soco/organization-db/client";
+import type {
+  NewOrganizationParams,
+  OrganizationId,
+  UpdateOrganizationParams,
+} from "@soco/organization-db/schema/organizations";
 import { eq } from "@soco/organization-db";
-import { 
-  type OrganizationId, 
-  type NewOrganizationParams,
-  type UpdateOrganizationParams, 
-  updateOrganizationSchema,
-  insertOrganizationSchema, 
+import { db } from "@soco/organization-db/client";
+import {
+  insertOrganizationSchema,
+  organizationIdSchema,
   organizations,
-  organizationIdSchema 
+  updateOrganizationSchema,
 } from "@soco/organization-db/schema/organizations";
 
-export const createOrganization = async (organization: NewOrganizationParams) => {
+export const createOrganization = async (
+  organization: NewOrganizationParams,
+) => {
   const newOrganization = insertOrganizationSchema.parse(organization);
   try {
-    const [o] =  await db.insert(organizations).values(newOrganization).returning();
+    const [o] = await db
+      .insert(organizations)
+      .values(newOrganization)
+      .returning();
     return { organization: o };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,18 @@ export const createOrganization = async (organization: NewOrganizationParams) =>
   }
 };
 
-export const updateOrganization = async (id: OrganizationId, organization: UpdateOrganizationParams) => {
+export const updateOrganization = async (
+  id: OrganizationId,
+  organization: UpdateOrganizationParams,
+) => {
   const { id: organizationId } = organizationIdSchema.parse({ id });
   const newOrganization = updateOrganizationSchema.parse(organization);
   try {
-    const [o] =  await db
-     .update(organizations)
-     .set(newOrganization)
-     .where(eq(organizations.id, organizationId!))
-     .returning();
+    const [o] = await db
+      .update(organizations)
+      .set(newOrganization)
+      .where(eq(organizations.id, organizationId!))
+      .returning();
     return { organization: o };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +52,10 @@ export const updateOrganization = async (id: OrganizationId, organization: Updat
 export const deleteOrganization = async (id: OrganizationId) => {
   const { id: organizationId } = organizationIdSchema.parse({ id });
   try {
-    const [o] =  await db.delete(organizations).where(eq(organizations.id, organizationId!))
-    .returning();
+    const [o] = await db
+      .delete(organizations)
+      .where(eq(organizations.id, organizationId!))
+      .returning();
     return { organization: o };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +63,3 @@ export const deleteOrganization = async (id: OrganizationId) => {
     throw { error: message };
   }
 };
-

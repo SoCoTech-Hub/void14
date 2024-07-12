@@ -1,19 +1,28 @@
-import { db } from "@soco/portfolio-db/client";
+import type {
+  NewPortfolioInstanceConfigParams,
+  PortfolioInstanceConfigId,
+  UpdatePortfolioInstanceConfigParams,
+} from "@soco/portfolio-db/schema/portfolioInstanceConfigs";
 import { eq } from "@soco/portfolio-db";
-import { 
-  type PortfolioInstanceConfigId, 
-  type NewPortfolioInstanceConfigParams,
-  type UpdatePortfolioInstanceConfigParams, 
-  updatePortfolioInstanceConfigSchema,
-  insertPortfolioInstanceConfigSchema, 
+import { db } from "@soco/portfolio-db/client";
+import {
+  insertPortfolioInstanceConfigSchema,
+  portfolioInstanceConfigIdSchema,
   portfolioInstanceConfigs,
-  portfolioInstanceConfigIdSchema 
+  updatePortfolioInstanceConfigSchema,
 } from "@soco/portfolio-db/schema/portfolioInstanceConfigs";
 
-export const createPortfolioInstanceConfig = async (portfolioInstanceConfig: NewPortfolioInstanceConfigParams) => {
-  const newPortfolioInstanceConfig = insertPortfolioInstanceConfigSchema.parse(portfolioInstanceConfig);
+export const createPortfolioInstanceConfig = async (
+  portfolioInstanceConfig: NewPortfolioInstanceConfigParams,
+) => {
+  const newPortfolioInstanceConfig = insertPortfolioInstanceConfigSchema.parse(
+    portfolioInstanceConfig,
+  );
   try {
-    const [p] =  await db.insert(portfolioInstanceConfigs).values(newPortfolioInstanceConfig).returning();
+    const [p] = await db
+      .insert(portfolioInstanceConfigs)
+      .values(newPortfolioInstanceConfig)
+      .returning();
     return { portfolioInstanceConfig: p };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +31,21 @@ export const createPortfolioInstanceConfig = async (portfolioInstanceConfig: New
   }
 };
 
-export const updatePortfolioInstanceConfig = async (id: PortfolioInstanceConfigId, portfolioInstanceConfig: UpdatePortfolioInstanceConfigParams) => {
-  const { id: portfolioInstanceConfigId } = portfolioInstanceConfigIdSchema.parse({ id });
-  const newPortfolioInstanceConfig = updatePortfolioInstanceConfigSchema.parse(portfolioInstanceConfig);
+export const updatePortfolioInstanceConfig = async (
+  id: PortfolioInstanceConfigId,
+  portfolioInstanceConfig: UpdatePortfolioInstanceConfigParams,
+) => {
+  const { id: portfolioInstanceConfigId } =
+    portfolioInstanceConfigIdSchema.parse({ id });
+  const newPortfolioInstanceConfig = updatePortfolioInstanceConfigSchema.parse(
+    portfolioInstanceConfig,
+  );
   try {
-    const [p] =  await db
-     .update(portfolioInstanceConfigs)
-     .set(newPortfolioInstanceConfig)
-     .where(eq(portfolioInstanceConfigs.id, portfolioInstanceConfigId!))
-     .returning();
+    const [p] = await db
+      .update(portfolioInstanceConfigs)
+      .set(newPortfolioInstanceConfig)
+      .where(eq(portfolioInstanceConfigs.id, portfolioInstanceConfigId!))
+      .returning();
     return { portfolioInstanceConfig: p };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +54,16 @@ export const updatePortfolioInstanceConfig = async (id: PortfolioInstanceConfigI
   }
 };
 
-export const deletePortfolioInstanceConfig = async (id: PortfolioInstanceConfigId) => {
-  const { id: portfolioInstanceConfigId } = portfolioInstanceConfigIdSchema.parse({ id });
+export const deletePortfolioInstanceConfig = async (
+  id: PortfolioInstanceConfigId,
+) => {
+  const { id: portfolioInstanceConfigId } =
+    portfolioInstanceConfigIdSchema.parse({ id });
   try {
-    const [p] =  await db.delete(portfolioInstanceConfigs).where(eq(portfolioInstanceConfigs.id, portfolioInstanceConfigId!))
-    .returning();
+    const [p] = await db
+      .delete(portfolioInstanceConfigs)
+      .where(eq(portfolioInstanceConfigs.id, portfolioInstanceConfigId!))
+      .returning();
     return { portfolioInstanceConfig: p };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +71,3 @@ export const deletePortfolioInstanceConfig = async (id: PortfolioInstanceConfigI
     throw { error: message };
   }
 };
-

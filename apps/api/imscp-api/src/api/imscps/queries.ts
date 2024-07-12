@@ -1,10 +1,11 @@
-import { db } from "@soco/imscp-db/client";
+import type { ImscpId } from "@soco/imscp-db/schema/imscps";
 import { eq } from "@soco/imscp-db";
-import { type ImscpId, imscpIdSchema, imscps } from "@soco/imscp-db/schema/imscps";
+import { db } from "@soco/imscp-db/client";
+import { imscpIdSchema, imscps } from "@soco/imscp-db/schema/imscps";
 
 export const getImscps = async () => {
   const rows = await db.select().from(imscps);
-  const i = rows
+  const i = rows;
   return { imscps: i };
 };
 
@@ -15,5 +16,3 @@ export const getImscpById = async (id: ImscpId) => {
   const i = row;
   return { imscp: i };
 };
-
-

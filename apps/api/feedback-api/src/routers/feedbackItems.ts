@@ -1,19 +1,29 @@
-import { getFeedbackItemById, getFeedbackItems } from "../api/feedbackItems/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   feedbackItemIdSchema,
   insertFeedbackItemParams,
   updateFeedbackItemParams,
 } from "@soco/feedback-db/schema/feedbackItems";
-import { createFeedbackItem, deleteFeedbackItem, updateFeedbackItem } from "../api/feedbackItems/mutations";
 
-export const feedbackItemsRouter =createTRPCRouter({
+import {
+  createFeedbackItem,
+  deleteFeedbackItem,
+  updateFeedbackItem,
+} from "../api/feedbackItems/mutations";
+import {
+  getFeedbackItemById,
+  getFeedbackItems,
+} from "../api/feedbackItems/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const feedbackItemsRouter = createTRPCRouter({
   getFeedbackItems: publicProcedure.query(async () => {
     return getFeedbackItems();
   }),
-  getFeedbackItemById: publicProcedure.input(feedbackItemIdSchema).query(async ({ input }) => {
-    return getFeedbackItemById(input.id);
-  }),
+  getFeedbackItemById: publicProcedure
+    .input(feedbackItemIdSchema)
+    .query(async ({ input }) => {
+      return getFeedbackItemById(input.id);
+    }),
   createFeedbackItem: publicProcedure
     .input(insertFeedbackItemParams)
     .mutation(async ({ input }) => {

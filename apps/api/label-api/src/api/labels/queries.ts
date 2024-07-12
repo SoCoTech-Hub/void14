@@ -1,10 +1,11 @@
-import { db } from "@soco/label-db/client";
+import type { LabelId } from "@soco/label-db/schema/labels";
 import { eq } from "@soco/label-db";
-import { type LabelId, labelIdSchema, labels } from "@soco/label-db/schema/labels";
+import { db } from "@soco/label-db/client";
+import { labelIdSchema, labels } from "@soco/label-db/schema/labels";
 
 export const getLabels = async () => {
   const rows = await db.select().from(labels);
-  const l = rows
+  const l = rows;
   return { labels: l };
 };
 
@@ -15,5 +16,3 @@ export const getLabelById = async (id: LabelId) => {
   const l = row;
   return { label: l };
 };
-
-

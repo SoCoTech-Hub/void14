@@ -1,19 +1,26 @@
-import { getMnetRpcById, getMnetRpcs } from "../api/mnetRpcs/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  mnetRpcIdSchema,
   insertMnetRpcParams,
+  mnetRpcIdSchema,
   updateMnetRpcParams,
 } from "@soco/mnet-db/schema/mnetRpcs";
-import { createMnetRpc, deleteMnetRpc, updateMnetRpc } from "../api/mnetRpcs/mutations";
 
-export const mnetRpcsRouter =createTRPCRouter({
+import {
+  createMnetRpc,
+  deleteMnetRpc,
+  updateMnetRpc,
+} from "../api/mnetRpcs/mutations";
+import { getMnetRpcById, getMnetRpcs } from "../api/mnetRpcs/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const mnetRpcsRouter = createTRPCRouter({
   getMnetRpcs: publicProcedure.query(async () => {
     return getMnetRpcs();
   }),
-  getMnetRpcById: publicProcedure.input(mnetRpcIdSchema).query(async ({ input }) => {
-    return getMnetRpcById(input.id);
-  }),
+  getMnetRpcById: publicProcedure
+    .input(mnetRpcIdSchema)
+    .query(async ({ input }) => {
+      return getMnetRpcById(input.id);
+    }),
   createMnetRpc: publicProcedure
     .input(insertMnetRpcParams)
     .mutation(async ({ input }) => {

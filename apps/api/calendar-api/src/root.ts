@@ -1,4 +1,4 @@
-import { calendarRouter } from './routers/calendar';
+import { calendarRouter } from "./routers/calendar";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

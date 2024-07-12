@@ -1,19 +1,29 @@
-import { getQuizOverviewRegradeById, getQuizOverviewRegrades } from "../api/quizOverviewRegrades/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  quizOverviewRegradeIdSchema,
   insertQuizOverviewRegradeParams,
+  quizOverviewRegradeIdSchema,
   updateQuizOverviewRegradeParams,
 } from "@soco/quiz-db/schema/quizOverviewRegrades";
-import { createQuizOverviewRegrade, deleteQuizOverviewRegrade, updateQuizOverviewRegrade } from "../api/quizOverviewRegrades/mutations";
 
-export const quizOverviewRegradesRouter =createTRPCRouter({
+import {
+  createQuizOverviewRegrade,
+  deleteQuizOverviewRegrade,
+  updateQuizOverviewRegrade,
+} from "../api/quizOverviewRegrades/mutations";
+import {
+  getQuizOverviewRegradeById,
+  getQuizOverviewRegrades,
+} from "../api/quizOverviewRegrades/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const quizOverviewRegradesRouter = createTRPCRouter({
   getQuizOverviewRegrades: publicProcedure.query(async () => {
     return getQuizOverviewRegrades();
   }),
-  getQuizOverviewRegradeById: publicProcedure.input(quizOverviewRegradeIdSchema).query(async ({ input }) => {
-    return getQuizOverviewRegradeById(input.id);
-  }),
+  getQuizOverviewRegradeById: publicProcedure
+    .input(quizOverviewRegradeIdSchema)
+    .query(async ({ input }) => {
+      return getQuizOverviewRegradeById(input.id);
+    }),
   createQuizOverviewRegrade: publicProcedure
     .input(insertQuizOverviewRegradeParams)
     .mutation(async ({ input }) => {

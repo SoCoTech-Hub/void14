@@ -1,19 +1,29 @@
-import { getWikiSubwikiById, getWikiSubwikis } from "../api/wikiSubwikis/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  wikiSubwikiIdSchema,
   insertWikiSubwikiParams,
   updateWikiSubwikiParams,
+  wikiSubwikiIdSchema,
 } from "@soco/wiki-db/schema/wikiSubwikis";
-import { createWikiSubwiki, deleteWikiSubwiki, updateWikiSubwiki } from "../api/wikiSubwikis/mutations";
 
-export const wikiSubwikisRouter =createTRPCRouter({
+import {
+  createWikiSubwiki,
+  deleteWikiSubwiki,
+  updateWikiSubwiki,
+} from "../api/wikiSubwikis/mutations";
+import {
+  getWikiSubwikiById,
+  getWikiSubwikis,
+} from "../api/wikiSubwikis/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const wikiSubwikisRouter = createTRPCRouter({
   getWikiSubwikis: publicProcedure.query(async () => {
     return getWikiSubwikis();
   }),
-  getWikiSubwikiById: publicProcedure.input(wikiSubwikiIdSchema).query(async ({ input }) => {
-    return getWikiSubwikiById(input.id);
-  }),
+  getWikiSubwikiById: publicProcedure
+    .input(wikiSubwikiIdSchema)
+    .query(async ({ input }) => {
+      return getWikiSubwikiById(input.id);
+    }),
   createWikiSubwiki: publicProcedure
     .input(insertWikiSubwikiParams)
     .mutation(async ({ input }) => {

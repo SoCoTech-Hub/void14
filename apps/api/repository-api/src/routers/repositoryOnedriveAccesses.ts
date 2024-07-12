@@ -1,19 +1,29 @@
-import { getRepositoryOnedriveAccessById, getRepositoryOnedriveAccesses } from "../api/repositoryOnedriveAccesses/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  repositoryOnedriveAccessIdSchema,
   insertRepositoryOnedriveAccessParams,
+  repositoryOnedriveAccessIdSchema,
   updateRepositoryOnedriveAccessParams,
 } from "@soco/repository-db/schema/repositoryOnedriveAccesses";
-import { createRepositoryOnedriveAccess, deleteRepositoryOnedriveAccess, updateRepositoryOnedriveAccess } from "../api/repositoryOnedriveAccesses/mutations";
 
-export const repositoryOnedriveAccessesRouter =createTRPCRouter({
+import {
+  createRepositoryOnedriveAccess,
+  deleteRepositoryOnedriveAccess,
+  updateRepositoryOnedriveAccess,
+} from "../api/repositoryOnedriveAccesses/mutations";
+import {
+  getRepositoryOnedriveAccessById,
+  getRepositoryOnedriveAccesses,
+} from "../api/repositoryOnedriveAccesses/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const repositoryOnedriveAccessesRouter = createTRPCRouter({
   getRepositoryOnedriveAccesses: publicProcedure.query(async () => {
     return getRepositoryOnedriveAccesses();
   }),
-  getRepositoryOnedriveAccessById: publicProcedure.input(repositoryOnedriveAccessIdSchema).query(async ({ input }) => {
-    return getRepositoryOnedriveAccessById(input.id);
-  }),
+  getRepositoryOnedriveAccessById: publicProcedure
+    .input(repositoryOnedriveAccessIdSchema)
+    .query(async ({ input }) => {
+      return getRepositoryOnedriveAccessById(input.id);
+    }),
   createRepositoryOnedriveAccess: publicProcedure
     .input(insertRepositoryOnedriveAccessParams)
     .mutation(async ({ input }) => {

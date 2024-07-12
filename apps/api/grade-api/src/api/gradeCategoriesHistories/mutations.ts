@@ -1,19 +1,28 @@
-import { db } from "@soco/grade-db/client";
+import type {
+  GradeCategoriesHistoryId,
+  NewGradeCategoriesHistoryParams,
+  UpdateGradeCategoriesHistoryParams,
+} from "@soco/grade-db/schema/gradeCategoriesHistories";
 import { eq } from "@soco/grade-db";
-import { 
-  type GradeCategoriesHistoryId, 
-  type NewGradeCategoriesHistoryParams,
-  type UpdateGradeCategoriesHistoryParams, 
-  updateGradeCategoriesHistorySchema,
-  insertGradeCategoriesHistorySchema, 
+import { db } from "@soco/grade-db/client";
+import {
   gradeCategoriesHistories,
-  gradeCategoriesHistoryIdSchema 
+  gradeCategoriesHistoryIdSchema,
+  insertGradeCategoriesHistorySchema,
+  updateGradeCategoriesHistorySchema,
 } from "@soco/grade-db/schema/gradeCategoriesHistories";
 
-export const createGradeCategoriesHistory = async (gradeCategoriesHistory: NewGradeCategoriesHistoryParams) => {
-  const newGradeCategoriesHistory = insertGradeCategoriesHistorySchema.parse(gradeCategoriesHistory);
+export const createGradeCategoriesHistory = async (
+  gradeCategoriesHistory: NewGradeCategoriesHistoryParams,
+) => {
+  const newGradeCategoriesHistory = insertGradeCategoriesHistorySchema.parse(
+    gradeCategoriesHistory,
+  );
   try {
-    const [g] =  await db.insert(gradeCategoriesHistories).values(newGradeCategoriesHistory).returning();
+    const [g] = await db
+      .insert(gradeCategoriesHistories)
+      .values(newGradeCategoriesHistory)
+      .returning();
     return { gradeCategoriesHistory: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +31,22 @@ export const createGradeCategoriesHistory = async (gradeCategoriesHistory: NewGr
   }
 };
 
-export const updateGradeCategoriesHistory = async (id: GradeCategoriesHistoryId, gradeCategoriesHistory: UpdateGradeCategoriesHistoryParams) => {
-  const { id: gradeCategoriesHistoryId } = gradeCategoriesHistoryIdSchema.parse({ id });
-  const newGradeCategoriesHistory = updateGradeCategoriesHistorySchema.parse(gradeCategoriesHistory);
+export const updateGradeCategoriesHistory = async (
+  id: GradeCategoriesHistoryId,
+  gradeCategoriesHistory: UpdateGradeCategoriesHistoryParams,
+) => {
+  const { id: gradeCategoriesHistoryId } = gradeCategoriesHistoryIdSchema.parse(
+    { id },
+  );
+  const newGradeCategoriesHistory = updateGradeCategoriesHistorySchema.parse(
+    gradeCategoriesHistory,
+  );
   try {
-    const [g] =  await db
-     .update(gradeCategoriesHistories)
-     .set({...newGradeCategoriesHistory, updatedAt: new Date() })
-     .where(eq(gradeCategoriesHistories.id, gradeCategoriesHistoryId!))
-     .returning();
+    const [g] = await db
+      .update(gradeCategoriesHistories)
+      .set({ ...newGradeCategoriesHistory, updatedAt: new Date() })
+      .where(eq(gradeCategoriesHistories.id, gradeCategoriesHistoryId!))
+      .returning();
     return { gradeCategoriesHistory: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +55,17 @@ export const updateGradeCategoriesHistory = async (id: GradeCategoriesHistoryId,
   }
 };
 
-export const deleteGradeCategoriesHistory = async (id: GradeCategoriesHistoryId) => {
-  const { id: gradeCategoriesHistoryId } = gradeCategoriesHistoryIdSchema.parse({ id });
+export const deleteGradeCategoriesHistory = async (
+  id: GradeCategoriesHistoryId,
+) => {
+  const { id: gradeCategoriesHistoryId } = gradeCategoriesHistoryIdSchema.parse(
+    { id },
+  );
   try {
-    const [g] =  await db.delete(gradeCategoriesHistories).where(eq(gradeCategoriesHistories.id, gradeCategoriesHistoryId!))
-    .returning();
+    const [g] = await db
+      .delete(gradeCategoriesHistories)
+      .where(eq(gradeCategoriesHistories.id, gradeCategoriesHistoryId!))
+      .returning();
     return { gradeCategoriesHistory: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +73,3 @@ export const deleteGradeCategoriesHistory = async (id: GradeCategoriesHistoryId)
     throw { error: message };
   }
 };
-

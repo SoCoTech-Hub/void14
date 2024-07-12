@@ -1,6 +1,6 @@
-import { zoomLessonsRouter } from './routers/zoomLessons';
-import { zoomMeetingsRouter } from './routers/zoomMeetings';
-import { zoomsRouter } from './routers/zooms';
+import { zoomLessonsRouter } from "./routers/zoomLessons";
+import { zoomMeetingsRouter } from "./routers/zoomMeetings";
+import { zoomsRouter } from "./routers/zooms";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

@@ -1,13 +1,14 @@
-import { getFaqById, getFaqs } from "../api/faqs/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   faqIdSchema,
   insertFaqParams,
   updateFaqParams,
 } from "@soco/faq-db/schema/faqs";
-import { createFaq, deleteFaq, updateFaq } from "../api/faqs/mutations";
 
-export const faqsRouter =createTRPCRouter({
+import { createFaq, deleteFaq, updateFaq } from "../api/faqs/mutations";
+import { getFaqById, getFaqs } from "../api/faqs/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const faqsRouter = createTRPCRouter({
   getFaqs: publicProcedure.query(async () => {
     return getFaqs();
   }),
@@ -24,9 +25,7 @@ export const faqsRouter =createTRPCRouter({
     .mutation(async ({ input }) => {
       return updateFaq(input.id, input);
     }),
-  deleteFaq: publicProcedure
-    .input(faqIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteFaq(input.id);
-    }),
+  deleteFaq: publicProcedure.input(faqIdSchema).mutation(async ({ input }) => {
+    return deleteFaq(input.id);
+  }),
 });

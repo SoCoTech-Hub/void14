@@ -1,19 +1,29 @@
-import { getWikiVersionById, getWikiVersions } from "../api/wikiVersions/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  wikiVersionIdSchema,
   insertWikiVersionParams,
   updateWikiVersionParams,
+  wikiVersionIdSchema,
 } from "@soco/wiki-db/schema/wikiVersions";
-import { createWikiVersion, deleteWikiVersion, updateWikiVersion } from "../api/wikiVersions/mutations";
 
-export const wikiVersionsRouter =createTRPCRouter({
+import {
+  createWikiVersion,
+  deleteWikiVersion,
+  updateWikiVersion,
+} from "../api/wikiVersions/mutations";
+import {
+  getWikiVersionById,
+  getWikiVersions,
+} from "../api/wikiVersions/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const wikiVersionsRouter = createTRPCRouter({
   getWikiVersions: publicProcedure.query(async () => {
     return getWikiVersions();
   }),
-  getWikiVersionById: publicProcedure.input(wikiVersionIdSchema).query(async ({ input }) => {
-    return getWikiVersionById(input.id);
-  }),
+  getWikiVersionById: publicProcedure
+    .input(wikiVersionIdSchema)
+    .query(async ({ input }) => {
+      return getWikiVersionById(input.id);
+    }),
   createWikiVersion: publicProcedure
     .input(insertWikiVersionParams)
     .mutation(async ({ input }) => {

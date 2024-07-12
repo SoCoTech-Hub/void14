@@ -1,19 +1,26 @@
-import { db } from "@soco/stats-db/client";
+import type {
+  NewStatsMonthlyParams,
+  StatsMonthlyId,
+  UpdateStatsMonthlyParams,
+} from "@soco/stats-db/schema/statsMonthlies";
 import { eq } from "@soco/stats-db";
-import { 
-  type StatsMonthlyId, 
-  type NewStatsMonthlyParams,
-  type UpdateStatsMonthlyParams, 
-  updateStatsMonthlySchema,
-  insertStatsMonthlySchema, 
+import { db } from "@soco/stats-db/client";
+import {
+  insertStatsMonthlySchema,
   statsMonthlies,
-  statsMonthlyIdSchema 
+  statsMonthlyIdSchema,
+  updateStatsMonthlySchema,
 } from "@soco/stats-db/schema/statsMonthlies";
 
-export const createStatsMonthly = async (statsMonthly: NewStatsMonthlyParams) => {
+export const createStatsMonthly = async (
+  statsMonthly: NewStatsMonthlyParams,
+) => {
   const newStatsMonthly = insertStatsMonthlySchema.parse(statsMonthly);
   try {
-    const [s] =  await db.insert(statsMonthlies).values(newStatsMonthly).returning();
+    const [s] = await db
+      .insert(statsMonthlies)
+      .values(newStatsMonthly)
+      .returning();
     return { statsMonthly: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,18 @@ export const createStatsMonthly = async (statsMonthly: NewStatsMonthlyParams) =>
   }
 };
 
-export const updateStatsMonthly = async (id: StatsMonthlyId, statsMonthly: UpdateStatsMonthlyParams) => {
+export const updateStatsMonthly = async (
+  id: StatsMonthlyId,
+  statsMonthly: UpdateStatsMonthlyParams,
+) => {
   const { id: statsMonthlyId } = statsMonthlyIdSchema.parse({ id });
   const newStatsMonthly = updateStatsMonthlySchema.parse(statsMonthly);
   try {
-    const [s] =  await db
-     .update(statsMonthlies)
-     .set(newStatsMonthly)
-     .where(eq(statsMonthlies.id, statsMonthlyId!))
-     .returning();
+    const [s] = await db
+      .update(statsMonthlies)
+      .set(newStatsMonthly)
+      .where(eq(statsMonthlies.id, statsMonthlyId!))
+      .returning();
     return { statsMonthly: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +52,10 @@ export const updateStatsMonthly = async (id: StatsMonthlyId, statsMonthly: Updat
 export const deleteStatsMonthly = async (id: StatsMonthlyId) => {
   const { id: statsMonthlyId } = statsMonthlyIdSchema.parse({ id });
   try {
-    const [s] =  await db.delete(statsMonthlies).where(eq(statsMonthlies.id, statsMonthlyId!))
-    .returning();
+    const [s] = await db
+      .delete(statsMonthlies)
+      .where(eq(statsMonthlies.id, statsMonthlyId!))
+      .returning();
     return { statsMonthly: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +63,3 @@ export const deleteStatsMonthly = async (id: StatsMonthlyId) => {
     throw { error: message };
   }
 };
-

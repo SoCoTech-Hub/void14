@@ -1,19 +1,29 @@
-import { getRoleAllowSwitchById, getRoleAllowSwitches } from "../api/roleAllowSwitches/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  roleAllowSwitchIdSchema,
   insertRoleAllowSwitchParams,
+  roleAllowSwitchIdSchema,
   updateRoleAllowSwitchParams,
 } from "@soco/role-db/schema/roleAllowSwitches";
-import { createRoleAllowSwitch, deleteRoleAllowSwitch, updateRoleAllowSwitch } from "../api/roleAllowSwitches/mutations";
 
-export const roleAllowSwitchesRouter =createTRPCRouter({
+import {
+  createRoleAllowSwitch,
+  deleteRoleAllowSwitch,
+  updateRoleAllowSwitch,
+} from "../api/roleAllowSwitches/mutations";
+import {
+  getRoleAllowSwitchById,
+  getRoleAllowSwitches,
+} from "../api/roleAllowSwitches/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const roleAllowSwitchesRouter = createTRPCRouter({
   getRoleAllowSwitches: publicProcedure.query(async () => {
     return getRoleAllowSwitches();
   }),
-  getRoleAllowSwitchById: publicProcedure.input(roleAllowSwitchIdSchema).query(async ({ input }) => {
-    return getRoleAllowSwitchById(input.id);
-  }),
+  getRoleAllowSwitchById: publicProcedure
+    .input(roleAllowSwitchIdSchema)
+    .query(async ({ input }) => {
+      return getRoleAllowSwitchById(input.id);
+    }),
   createRoleAllowSwitch: publicProcedure
     .input(insertRoleAllowSwitchParams)
     .mutation(async ({ input }) => {

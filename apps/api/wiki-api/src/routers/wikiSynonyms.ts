@@ -1,19 +1,29 @@
-import { getWikiSynonymById, getWikiSynonyms } from "../api/wikiSynonyms/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  wikiSynonymIdSchema,
   insertWikiSynonymParams,
   updateWikiSynonymParams,
+  wikiSynonymIdSchema,
 } from "@soco/wiki-db/schema/wikiSynonyms";
-import { createWikiSynonym, deleteWikiSynonym, updateWikiSynonym } from "../api/wikiSynonyms/mutations";
 
-export const wikiSynonymsRouter =createTRPCRouter({
+import {
+  createWikiSynonym,
+  deleteWikiSynonym,
+  updateWikiSynonym,
+} from "../api/wikiSynonyms/mutations";
+import {
+  getWikiSynonymById,
+  getWikiSynonyms,
+} from "../api/wikiSynonyms/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const wikiSynonymsRouter = createTRPCRouter({
   getWikiSynonyms: publicProcedure.query(async () => {
     return getWikiSynonyms();
   }),
-  getWikiSynonymById: publicProcedure.input(wikiSynonymIdSchema).query(async ({ input }) => {
-    return getWikiSynonymById(input.id);
-  }),
+  getWikiSynonymById: publicProcedure
+    .input(wikiSynonymIdSchema)
+    .query(async ({ input }) => {
+      return getWikiSynonymById(input.id);
+    }),
   createWikiSynonym: publicProcedure
     .input(insertWikiSynonymParams)
     .mutation(async ({ input }) => {

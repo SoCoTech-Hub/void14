@@ -1,19 +1,26 @@
-import { getUserDeviceById, getUserDevices } from "../api/userDevices/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  userDeviceIdSchema,
   insertUserDeviceParams,
   updateUserDeviceParams,
+  userDeviceIdSchema,
 } from "@soco/user-db/schema/userDevices";
-import { createUserDevice, deleteUserDevice, updateUserDevice } from "../api/userDevices/mutations";
 
-export const userDevicesRouter =createTRPCRouter({
+import {
+  createUserDevice,
+  deleteUserDevice,
+  updateUserDevice,
+} from "../api/userDevices/mutations";
+import { getUserDeviceById, getUserDevices } from "../api/userDevices/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const userDevicesRouter = createTRPCRouter({
   getUserDevices: publicProcedure.query(async () => {
     return getUserDevices();
   }),
-  getUserDeviceById: publicProcedure.input(userDeviceIdSchema).query(async ({ input }) => {
-    return getUserDeviceById(input.id);
-  }),
+  getUserDeviceById: publicProcedure
+    .input(userDeviceIdSchema)
+    .query(async ({ input }) => {
+      return getUserDeviceById(input.id);
+    }),
   createUserDevice: publicProcedure
     .input(insertUserDeviceParams)
     .mutation(async ({ input }) => {

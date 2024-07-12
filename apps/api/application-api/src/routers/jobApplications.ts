@@ -1,19 +1,29 @@
-import { getJobApplicationById, getJobApplications } from "../api/jobApplications/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  jobApplicationIdSchema,
   insertJobApplicationParams,
+  jobApplicationIdSchema,
   updateJobApplicationParams,
 } from "@soco/application-db/schema/jobApplications";
-import { createJobApplication, deleteJobApplication, updateJobApplication } from "../api/jobApplications/mutations";
 
-export const jobApplicationsRouter =createTRPCRouter({
+import {
+  createJobApplication,
+  deleteJobApplication,
+  updateJobApplication,
+} from "../api/jobApplications/mutations";
+import {
+  getJobApplicationById,
+  getJobApplications,
+} from "../api/jobApplications/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const jobApplicationsRouter = createTRPCRouter({
   getJobApplications: publicProcedure.query(async () => {
     return getJobApplications();
   }),
-  getJobApplicationById: publicProcedure.input(jobApplicationIdSchema).query(async ({ input }) => {
-    return getJobApplicationById(input.id);
-  }),
+  getJobApplicationById: publicProcedure
+    .input(jobApplicationIdSchema)
+    .query(async ({ input }) => {
+      return getJobApplicationById(input.id);
+    }),
   createJobApplication: publicProcedure
     .input(insertJobApplicationParams)
     .mutation(async ({ input }) => {

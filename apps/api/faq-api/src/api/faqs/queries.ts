@@ -1,10 +1,11 @@
-import { db } from "@soco/faq-db/client";
+import type { FaqId } from "@soco/faq-db/schema/faqs";
 import { eq } from "@soco/faq-db";
-import { type FaqId, faqIdSchema, faqs } from "@soco/faq-db/schema/faqs";
+import { db } from "@soco/faq-db/client";
+import { faqIdSchema, faqs } from "@soco/faq-db/schema/faqs";
 
 export const getFaqs = async () => {
   const rows = await db.select().from(faqs);
-  const f = rows
+  const f = rows;
   return { faqs: f };
 };
 
@@ -15,5 +16,3 @@ export const getFaqById = async (id: FaqId) => {
   const f = row;
   return { faq: f };
 };
-
-

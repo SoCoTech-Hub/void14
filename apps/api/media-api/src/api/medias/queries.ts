@@ -1,10 +1,11 @@
-import { db } from "@soco/media-db/client";
+import type { MediaId } from "@soco/media-db/schema/medias";
 import { eq } from "@soco/media-db";
-import { type MediaId, mediaIdSchema, medias } from "@soco/media-db/schema/medias";
+import { db } from "@soco/media-db/client";
+import { mediaIdSchema, medias } from "@soco/media-db/schema/medias";
 
 export const getMedias = async () => {
   const rows = await db.select().from(medias);
-  const m = rows
+  const m = rows;
   return { medias: m };
 };
 
@@ -15,5 +16,3 @@ export const getMediaById = async (id: MediaId) => {
   const m = row;
   return { media: m };
 };
-
-

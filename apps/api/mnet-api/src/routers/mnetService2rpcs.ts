@@ -1,19 +1,29 @@
-import { getMnetService2rpcById, getMnetService2rpcs } from "../api/mnetService2rpcs/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  mnetService2rpcIdSchema,
   insertMnetService2rpcParams,
+  mnetService2rpcIdSchema,
   updateMnetService2rpcParams,
 } from "@soco/mnet-db/schema/mnetService2rpcs";
-import { createMnetService2rpc, deleteMnetService2rpc, updateMnetService2rpc } from "../api/mnetService2rpcs/mutations";
 
-export const mnetService2rpcsRouter =createTRPCRouter({
+import {
+  createMnetService2rpc,
+  deleteMnetService2rpc,
+  updateMnetService2rpc,
+} from "../api/mnetService2rpcs/mutations";
+import {
+  getMnetService2rpcById,
+  getMnetService2rpcs,
+} from "../api/mnetService2rpcs/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const mnetService2rpcsRouter = createTRPCRouter({
   getMnetService2rpcs: publicProcedure.query(async () => {
     return getMnetService2rpcs();
   }),
-  getMnetService2rpcById: publicProcedure.input(mnetService2rpcIdSchema).query(async ({ input }) => {
-    return getMnetService2rpcById(input.id);
-  }),
+  getMnetService2rpcById: publicProcedure
+    .input(mnetService2rpcIdSchema)
+    .query(async ({ input }) => {
+      return getMnetService2rpcById(input.id);
+    }),
   createMnetService2rpc: publicProcedure
     .input(insertMnetService2rpcParams)
     .mutation(async ({ input }) => {

@@ -1,13 +1,14 @@
-import { getZoomById, getZooms } from "../api/zooms/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  zoomIdSchema,
   insertZoomParams,
   updateZoomParams,
+  zoomIdSchema,
 } from "@soco/zoom-db/schema/zooms";
-import { createZoom, deleteZoom, updateZoom } from "../api/zooms/mutations";
 
-export const zoomsRouter =createTRPCRouter({
+import { createZoom, deleteZoom, updateZoom } from "../api/zooms/mutations";
+import { getZoomById, getZooms } from "../api/zooms/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const zoomsRouter = createTRPCRouter({
   getZooms: publicProcedure.query(async () => {
     return getZooms();
   }),

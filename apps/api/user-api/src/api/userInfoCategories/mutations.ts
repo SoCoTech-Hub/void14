@@ -1,19 +1,27 @@
-import { db } from "@soco/user-db/client";
+import type {
+  NewUserInfoCategoryParams,
+  UpdateUserInfoCategoryParams,
+  UserInfoCategoryId,
+} from "@soco/user-db/schema/userInfoCategories";
 import { eq } from "@soco/user-db";
-import { 
-  type UserInfoCategoryId, 
-  type NewUserInfoCategoryParams,
-  type UpdateUserInfoCategoryParams, 
+import { db } from "@soco/user-db/client";
+import {
+  insertUserInfoCategorySchema,
   updateUserInfoCategorySchema,
-  insertUserInfoCategorySchema, 
   userInfoCategories,
-  userInfoCategoryIdSchema 
+  userInfoCategoryIdSchema,
 } from "@soco/user-db/schema/userInfoCategories";
 
-export const createUserInfoCategory = async (userInfoCategory: NewUserInfoCategoryParams) => {
-  const newUserInfoCategory = insertUserInfoCategorySchema.parse(userInfoCategory);
+export const createUserInfoCategory = async (
+  userInfoCategory: NewUserInfoCategoryParams,
+) => {
+  const newUserInfoCategory =
+    insertUserInfoCategorySchema.parse(userInfoCategory);
   try {
-    const [u] =  await db.insert(userInfoCategories).values(newUserInfoCategory).returning();
+    const [u] = await db
+      .insert(userInfoCategories)
+      .values(newUserInfoCategory)
+      .returning();
     return { userInfoCategory: u };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,19 @@ export const createUserInfoCategory = async (userInfoCategory: NewUserInfoCatego
   }
 };
 
-export const updateUserInfoCategory = async (id: UserInfoCategoryId, userInfoCategory: UpdateUserInfoCategoryParams) => {
+export const updateUserInfoCategory = async (
+  id: UserInfoCategoryId,
+  userInfoCategory: UpdateUserInfoCategoryParams,
+) => {
   const { id: userInfoCategoryId } = userInfoCategoryIdSchema.parse({ id });
-  const newUserInfoCategory = updateUserInfoCategorySchema.parse(userInfoCategory);
+  const newUserInfoCategory =
+    updateUserInfoCategorySchema.parse(userInfoCategory);
   try {
-    const [u] =  await db
-     .update(userInfoCategories)
-     .set(newUserInfoCategory)
-     .where(eq(userInfoCategories.id, userInfoCategoryId!))
-     .returning();
+    const [u] = await db
+      .update(userInfoCategories)
+      .set(newUserInfoCategory)
+      .where(eq(userInfoCategories.id, userInfoCategoryId!))
+      .returning();
     return { userInfoCategory: u };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +54,10 @@ export const updateUserInfoCategory = async (id: UserInfoCategoryId, userInfoCat
 export const deleteUserInfoCategory = async (id: UserInfoCategoryId) => {
   const { id: userInfoCategoryId } = userInfoCategoryIdSchema.parse({ id });
   try {
-    const [u] =  await db.delete(userInfoCategories).where(eq(userInfoCategories.id, userInfoCategoryId!))
-    .returning();
+    const [u] = await db
+      .delete(userInfoCategories)
+      .where(eq(userInfoCategories.id, userInfoCategoryId!))
+      .returning();
     return { userInfoCategory: u };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +65,3 @@ export const deleteUserInfoCategory = async (id: UserInfoCategoryId) => {
     throw { error: message };
   }
 };
-

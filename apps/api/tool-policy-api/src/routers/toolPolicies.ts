@@ -1,19 +1,29 @@
-import { getToolPolicyById, getToolPolicies } from "../api/toolPolicies/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  toolPolicyIdSchema,
   insertToolPolicyParams,
+  toolPolicyIdSchema,
   updateToolPolicyParams,
 } from "@soco/tool-policy-db/schema/toolPolicies";
-import { createToolPolicy, deleteToolPolicy, updateToolPolicy } from "../api/toolPolicies/mutations";
 
-export const toolPoliciesRouter =createTRPCRouter({
+import {
+  createToolPolicy,
+  deleteToolPolicy,
+  updateToolPolicy,
+} from "../api/toolPolicies/mutations";
+import {
+  getToolPolicies,
+  getToolPolicyById,
+} from "../api/toolPolicies/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const toolPoliciesRouter = createTRPCRouter({
   getToolPolicies: publicProcedure.query(async () => {
     return getToolPolicies();
   }),
-  getToolPolicyById: publicProcedure.input(toolPolicyIdSchema).query(async ({ input }) => {
-    return getToolPolicyById(input.id);
-  }),
+  getToolPolicyById: publicProcedure
+    .input(toolPolicyIdSchema)
+    .query(async ({ input }) => {
+      return getToolPolicyById(input.id);
+    }),
   createToolPolicy: publicProcedure
     .input(insertToolPolicyParams)
     .mutation(async ({ input }) => {

@@ -1,5 +1,5 @@
-import { qualificationsRouter } from './routers/qualifications';
-import { qualificationsResponsesRouter } from './routers/qualificationsResponses';
+import { qualificationsRouter } from "./routers/qualifications";
+import { qualificationsResponsesRouter } from "./routers/qualificationsResponses";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

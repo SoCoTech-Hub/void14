@@ -1,19 +1,29 @@
-import { getSupportStatusById, getSupportStatuses } from "../api/supportStatuses/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  supportStatusIdSchema,
   insertSupportStatusParams,
+  supportStatusIdSchema,
   updateSupportStatusParams,
 } from "@soco/support-db/schema/supportStatuses";
-import { createSupportStatus, deleteSupportStatus, updateSupportStatus } from "../api/supportStatuses/mutations";
 
-export const supportStatusesRouter =createTRPCRouter({
+import {
+  createSupportStatus,
+  deleteSupportStatus,
+  updateSupportStatus,
+} from "../api/supportStatuses/mutations";
+import {
+  getSupportStatusById,
+  getSupportStatuses,
+} from "../api/supportStatuses/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const supportStatusesRouter = createTRPCRouter({
   getSupportStatuses: publicProcedure.query(async () => {
     return getSupportStatuses();
   }),
-  getSupportStatusById: publicProcedure.input(supportStatusIdSchema).query(async ({ input }) => {
-    return getSupportStatusById(input.id);
-  }),
+  getSupportStatusById: publicProcedure
+    .input(supportStatusIdSchema)
+    .query(async ({ input }) => {
+      return getSupportStatusById(input.id);
+    }),
   createSupportStatus: publicProcedure
     .input(insertSupportStatusParams)
     .mutation(async ({ input }) => {

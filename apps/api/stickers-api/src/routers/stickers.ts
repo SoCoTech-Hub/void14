@@ -1,19 +1,26 @@
-import { getStickerById, getStickers } from "../api/stickers/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  stickerIdSchema,
   insertStickerParams,
+  stickerIdSchema,
   updateStickerParams,
 } from "@soco/stickers-db/schema/stickers";
-import { createSticker, deleteSticker, updateSticker } from "../api/stickers/mutations";
 
-export const stickersRouter =createTRPCRouter({
+import {
+  createSticker,
+  deleteSticker,
+  updateSticker,
+} from "../api/stickers/mutations";
+import { getStickerById, getStickers } from "../api/stickers/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const stickersRouter = createTRPCRouter({
   getStickers: publicProcedure.query(async () => {
     return getStickers();
   }),
-  getStickerById: publicProcedure.input(stickerIdSchema).query(async ({ input }) => {
-    return getStickerById(input.id);
-  }),
+  getStickerById: publicProcedure
+    .input(stickerIdSchema)
+    .query(async ({ input }) => {
+      return getStickerById(input.id);
+    }),
   createSticker: publicProcedure
     .input(insertStickerParams)
     .mutation(async ({ input }) => {

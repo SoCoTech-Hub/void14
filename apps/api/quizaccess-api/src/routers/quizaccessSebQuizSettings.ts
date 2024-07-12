@@ -1,19 +1,29 @@
-import { getQuizaccessSebQuizSettingById, getQuizaccessSebQuizSettings } from "../api/quizaccessSebQuizSettings/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  quizaccessSebQuizSettingIdSchema,
   insertQuizaccessSebQuizSettingParams,
+  quizaccessSebQuizSettingIdSchema,
   updateQuizaccessSebQuizSettingParams,
 } from "@soco/quizaccess-db/schema/quizaccessSebQuizSettings";
-import { createQuizaccessSebQuizSetting, deleteQuizaccessSebQuizSetting, updateQuizaccessSebQuizSetting } from "../api/quizaccessSebQuizSettings/mutations";
 
-export const quizaccessSebQuizSettingsRouter =createTRPCRouter({
+import {
+  createQuizaccessSebQuizSetting,
+  deleteQuizaccessSebQuizSetting,
+  updateQuizaccessSebQuizSetting,
+} from "../api/quizaccessSebQuizSettings/mutations";
+import {
+  getQuizaccessSebQuizSettingById,
+  getQuizaccessSebQuizSettings,
+} from "../api/quizaccessSebQuizSettings/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const quizaccessSebQuizSettingsRouter = createTRPCRouter({
   getQuizaccessSebQuizSettings: publicProcedure.query(async () => {
     return getQuizaccessSebQuizSettings();
   }),
-  getQuizaccessSebQuizSettingById: publicProcedure.input(quizaccessSebQuizSettingIdSchema).query(async ({ input }) => {
-    return getQuizaccessSebQuizSettingById(input.id);
-  }),
+  getQuizaccessSebQuizSettingById: publicProcedure
+    .input(quizaccessSebQuizSettingIdSchema)
+    .query(async ({ input }) => {
+      return getQuizaccessSebQuizSettingById(input.id);
+    }),
   createQuizaccessSebQuizSetting: publicProcedure
     .input(insertQuizaccessSebQuizSettingParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,29 @@
-import { getAssignFeedbackFileById, getAssignFeedbackFiles } from "../api/assignFeedbackFiles/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   assignFeedbackFileIdSchema,
   insertAssignFeedbackFileParams,
   updateAssignFeedbackFileParams,
 } from "@soco/assignment-db/schema/assignFeedbackFiles";
-import { createAssignFeedbackFile, deleteAssignFeedbackFile, updateAssignFeedbackFile } from "../api/assignFeedbackFiles/mutations";
 
-export const assignFeedbackFilesRouter =createTRPCRouter({
+import {
+  createAssignFeedbackFile,
+  deleteAssignFeedbackFile,
+  updateAssignFeedbackFile,
+} from "../api/assignFeedbackFiles/mutations";
+import {
+  getAssignFeedbackFileById,
+  getAssignFeedbackFiles,
+} from "../api/assignFeedbackFiles/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const assignFeedbackFilesRouter = createTRPCRouter({
   getAssignFeedbackFiles: publicProcedure.query(async () => {
     return getAssignFeedbackFiles();
   }),
-  getAssignFeedbackFileById: publicProcedure.input(assignFeedbackFileIdSchema).query(async ({ input }) => {
-    return getAssignFeedbackFileById(input.id);
-  }),
+  getAssignFeedbackFileById: publicProcedure
+    .input(assignFeedbackFileIdSchema)
+    .query(async ({ input }) => {
+      return getAssignFeedbackFileById(input.id);
+    }),
   createAssignFeedbackFile: publicProcedure
     .input(insertAssignFeedbackFileParams)
     .mutation(async ({ input }) => {

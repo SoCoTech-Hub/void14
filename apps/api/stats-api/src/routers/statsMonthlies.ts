@@ -1,19 +1,29 @@
-import { getStatsMonthlyById, getStatsMonthlies } from "../api/statsMonthlies/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  statsMonthlyIdSchema,
   insertStatsMonthlyParams,
+  statsMonthlyIdSchema,
   updateStatsMonthlyParams,
 } from "@soco/stats-db/schema/statsMonthlies";
-import { createStatsMonthly, deleteStatsMonthly, updateStatsMonthly } from "../api/statsMonthlies/mutations";
 
-export const statsMonthliesRouter =createTRPCRouter({
+import {
+  createStatsMonthly,
+  deleteStatsMonthly,
+  updateStatsMonthly,
+} from "../api/statsMonthlies/mutations";
+import {
+  getStatsMonthlies,
+  getStatsMonthlyById,
+} from "../api/statsMonthlies/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const statsMonthliesRouter = createTRPCRouter({
   getStatsMonthlies: publicProcedure.query(async () => {
     return getStatsMonthlies();
   }),
-  getStatsMonthlyById: publicProcedure.input(statsMonthlyIdSchema).query(async ({ input }) => {
-    return getStatsMonthlyById(input.id);
-  }),
+  getStatsMonthlyById: publicProcedure
+    .input(statsMonthlyIdSchema)
+    .query(async ({ input }) => {
+      return getStatsMonthlyById(input.id);
+    }),
   createStatsMonthly: publicProcedure
     .input(insertStatsMonthlyParams)
     .mutation(async ({ input }) => {

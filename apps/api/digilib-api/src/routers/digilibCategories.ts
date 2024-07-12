@@ -1,19 +1,29 @@
-import { getDigilibCategoryById, getDigilibCategories } from "../api/digilibCategories/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   digilibCategoryIdSchema,
   insertDigilibCategoryParams,
   updateDigilibCategoryParams,
 } from "@soco/digilib-db/schema/digilibCategories";
-import { createDigilibCategory, deleteDigilibCategory, updateDigilibCategory } from "../api/digilibCategories/mutations";
 
-export const digilibCategoriesRouter =createTRPCRouter({
+import {
+  createDigilibCategory,
+  deleteDigilibCategory,
+  updateDigilibCategory,
+} from "../api/digilibCategories/mutations";
+import {
+  getDigilibCategories,
+  getDigilibCategoryById,
+} from "../api/digilibCategories/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const digilibCategoriesRouter = createTRPCRouter({
   getDigilibCategories: publicProcedure.query(async () => {
     return getDigilibCategories();
   }),
-  getDigilibCategoryById: publicProcedure.input(digilibCategoryIdSchema).query(async ({ input }) => {
-    return getDigilibCategoryById(input.id);
-  }),
+  getDigilibCategoryById: publicProcedure
+    .input(digilibCategoryIdSchema)
+    .query(async ({ input }) => {
+      return getDigilibCategoryById(input.id);
+    }),
   createDigilibCategory: publicProcedure
     .input(insertDigilibCategoryParams)
     .mutation(async ({ input }) => {

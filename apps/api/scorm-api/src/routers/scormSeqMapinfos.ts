@@ -1,19 +1,29 @@
-import { getScormSeqMapinfoById, getScormSeqMapinfos } from "../api/scormSeqMapinfos/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  scormSeqMapinfoIdSchema,
   insertScormSeqMapinfoParams,
+  scormSeqMapinfoIdSchema,
   updateScormSeqMapinfoParams,
 } from "@soco/scorm-db/schema/scormSeqMapinfos";
-import { createScormSeqMapinfo, deleteScormSeqMapinfo, updateScormSeqMapinfo } from "../api/scormSeqMapinfos/mutations";
 
-export const scormSeqMapinfosRouter =createTRPCRouter({
+import {
+  createScormSeqMapinfo,
+  deleteScormSeqMapinfo,
+  updateScormSeqMapinfo,
+} from "../api/scormSeqMapinfos/mutations";
+import {
+  getScormSeqMapinfoById,
+  getScormSeqMapinfos,
+} from "../api/scormSeqMapinfos/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const scormSeqMapinfosRouter = createTRPCRouter({
   getScormSeqMapinfos: publicProcedure.query(async () => {
     return getScormSeqMapinfos();
   }),
-  getScormSeqMapinfoById: publicProcedure.input(scormSeqMapinfoIdSchema).query(async ({ input }) => {
-    return getScormSeqMapinfoById(input.id);
-  }),
+  getScormSeqMapinfoById: publicProcedure
+    .input(scormSeqMapinfoIdSchema)
+    .query(async ({ input }) => {
+      return getScormSeqMapinfoById(input.id);
+    }),
   createScormSeqMapinfo: publicProcedure
     .input(insertScormSeqMapinfoParams)
     .mutation(async ({ input }) => {

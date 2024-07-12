@@ -1,19 +1,27 @@
-import { db } from "@soco/enrol-db/client";
+import type {
+  EnrolLtiDeploymentId,
+  NewEnrolLtiDeploymentParams,
+  UpdateEnrolLtiDeploymentParams,
+} from "@soco/enrol-db/schema/enrolLtiDeployments";
 import { eq } from "@soco/enrol-db";
-import { 
-  type EnrolLtiDeploymentId, 
-  type NewEnrolLtiDeploymentParams,
-  type UpdateEnrolLtiDeploymentParams, 
-  updateEnrolLtiDeploymentSchema,
-  insertEnrolLtiDeploymentSchema, 
+import { db } from "@soco/enrol-db/client";
+import {
+  enrolLtiDeploymentIdSchema,
   enrolLtiDeployments,
-  enrolLtiDeploymentIdSchema 
+  insertEnrolLtiDeploymentSchema,
+  updateEnrolLtiDeploymentSchema,
 } from "@soco/enrol-db/schema/enrolLtiDeployments";
 
-export const createEnrolLtiDeployment = async (enrolLtiDeployment: NewEnrolLtiDeploymentParams) => {
-  const newEnrolLtiDeployment = insertEnrolLtiDeploymentSchema.parse(enrolLtiDeployment);
+export const createEnrolLtiDeployment = async (
+  enrolLtiDeployment: NewEnrolLtiDeploymentParams,
+) => {
+  const newEnrolLtiDeployment =
+    insertEnrolLtiDeploymentSchema.parse(enrolLtiDeployment);
   try {
-    const [e] =  await db.insert(enrolLtiDeployments).values(newEnrolLtiDeployment).returning();
+    const [e] = await db
+      .insert(enrolLtiDeployments)
+      .values(newEnrolLtiDeployment)
+      .returning();
     return { enrolLtiDeployment: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,19 @@ export const createEnrolLtiDeployment = async (enrolLtiDeployment: NewEnrolLtiDe
   }
 };
 
-export const updateEnrolLtiDeployment = async (id: EnrolLtiDeploymentId, enrolLtiDeployment: UpdateEnrolLtiDeploymentParams) => {
+export const updateEnrolLtiDeployment = async (
+  id: EnrolLtiDeploymentId,
+  enrolLtiDeployment: UpdateEnrolLtiDeploymentParams,
+) => {
   const { id: enrolLtiDeploymentId } = enrolLtiDeploymentIdSchema.parse({ id });
-  const newEnrolLtiDeployment = updateEnrolLtiDeploymentSchema.parse(enrolLtiDeployment);
+  const newEnrolLtiDeployment =
+    updateEnrolLtiDeploymentSchema.parse(enrolLtiDeployment);
   try {
-    const [e] =  await db
-     .update(enrolLtiDeployments)
-     .set({...newEnrolLtiDeployment, updatedAt: new Date() })
-     .where(eq(enrolLtiDeployments.id, enrolLtiDeploymentId!))
-     .returning();
+    const [e] = await db
+      .update(enrolLtiDeployments)
+      .set({ ...newEnrolLtiDeployment, updatedAt: new Date() })
+      .where(eq(enrolLtiDeployments.id, enrolLtiDeploymentId!))
+      .returning();
     return { enrolLtiDeployment: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +54,10 @@ export const updateEnrolLtiDeployment = async (id: EnrolLtiDeploymentId, enrolLt
 export const deleteEnrolLtiDeployment = async (id: EnrolLtiDeploymentId) => {
   const { id: enrolLtiDeploymentId } = enrolLtiDeploymentIdSchema.parse({ id });
   try {
-    const [e] =  await db.delete(enrolLtiDeployments).where(eq(enrolLtiDeployments.id, enrolLtiDeploymentId!))
-    .returning();
+    const [e] = await db
+      .delete(enrolLtiDeployments)
+      .where(eq(enrolLtiDeployments.id, enrolLtiDeploymentId!))
+      .returning();
     return { enrolLtiDeployment: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +65,3 @@ export const deleteEnrolLtiDeployment = async (id: EnrolLtiDeploymentId) => {
     throw { error: message };
   }
 };
-

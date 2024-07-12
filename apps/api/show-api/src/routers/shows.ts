@@ -1,13 +1,14 @@
-import { getShowById, getShows } from "../api/shows/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  showIdSchema,
   insertShowParams,
+  showIdSchema,
   updateShowParams,
 } from "@soco/show-db/schema/shows";
-import { createShow, deleteShow, updateShow } from "../api/shows/mutations";
 
-export const showsRouter =createTRPCRouter({
+import { createShow, deleteShow, updateShow } from "../api/shows/mutations";
+import { getShowById, getShows } from "../api/shows/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const showsRouter = createTRPCRouter({
   getShows: publicProcedure.query(async () => {
     return getShows();
   }),

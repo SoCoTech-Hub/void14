@@ -1,19 +1,27 @@
-import { db } from "@soco/mnet-db/client";
+import type {
+  MnetSsoAccessControlId,
+  NewMnetSsoAccessControlParams,
+  UpdateMnetSsoAccessControlParams,
+} from "@soco/mnet-db/schema/mnetSsoAccessControls";
 import { eq } from "@soco/mnet-db";
-import { 
-  type MnetSsoAccessControlId, 
-  type NewMnetSsoAccessControlParams,
-  type UpdateMnetSsoAccessControlParams, 
-  updateMnetSsoAccessControlSchema,
-  insertMnetSsoAccessControlSchema, 
+import { db } from "@soco/mnet-db/client";
+import {
+  insertMnetSsoAccessControlSchema,
+  mnetSsoAccessControlIdSchema,
   mnetSsoAccessControls,
-  mnetSsoAccessControlIdSchema 
+  updateMnetSsoAccessControlSchema,
 } from "@soco/mnet-db/schema/mnetSsoAccessControls";
 
-export const createMnetSsoAccessControl = async (mnetSsoAccessControl: NewMnetSsoAccessControlParams) => {
-  const newMnetSsoAccessControl = insertMnetSsoAccessControlSchema.parse(mnetSsoAccessControl);
+export const createMnetSsoAccessControl = async (
+  mnetSsoAccessControl: NewMnetSsoAccessControlParams,
+) => {
+  const newMnetSsoAccessControl =
+    insertMnetSsoAccessControlSchema.parse(mnetSsoAccessControl);
   try {
-    const [m] =  await db.insert(mnetSsoAccessControls).values(newMnetSsoAccessControl).returning();
+    const [m] = await db
+      .insert(mnetSsoAccessControls)
+      .values(newMnetSsoAccessControl)
+      .returning();
     return { mnetSsoAccessControl: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,21 @@ export const createMnetSsoAccessControl = async (mnetSsoAccessControl: NewMnetSs
   }
 };
 
-export const updateMnetSsoAccessControl = async (id: MnetSsoAccessControlId, mnetSsoAccessControl: UpdateMnetSsoAccessControlParams) => {
-  const { id: mnetSsoAccessControlId } = mnetSsoAccessControlIdSchema.parse({ id });
-  const newMnetSsoAccessControl = updateMnetSsoAccessControlSchema.parse(mnetSsoAccessControl);
+export const updateMnetSsoAccessControl = async (
+  id: MnetSsoAccessControlId,
+  mnetSsoAccessControl: UpdateMnetSsoAccessControlParams,
+) => {
+  const { id: mnetSsoAccessControlId } = mnetSsoAccessControlIdSchema.parse({
+    id,
+  });
+  const newMnetSsoAccessControl =
+    updateMnetSsoAccessControlSchema.parse(mnetSsoAccessControl);
   try {
-    const [m] =  await db
-     .update(mnetSsoAccessControls)
-     .set(newMnetSsoAccessControl)
-     .where(eq(mnetSsoAccessControls.id, mnetSsoAccessControlId!))
-     .returning();
+    const [m] = await db
+      .update(mnetSsoAccessControls)
+      .set(newMnetSsoAccessControl)
+      .where(eq(mnetSsoAccessControls.id, mnetSsoAccessControlId!))
+      .returning();
     return { mnetSsoAccessControl: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +53,17 @@ export const updateMnetSsoAccessControl = async (id: MnetSsoAccessControlId, mne
   }
 };
 
-export const deleteMnetSsoAccessControl = async (id: MnetSsoAccessControlId) => {
-  const { id: mnetSsoAccessControlId } = mnetSsoAccessControlIdSchema.parse({ id });
+export const deleteMnetSsoAccessControl = async (
+  id: MnetSsoAccessControlId,
+) => {
+  const { id: mnetSsoAccessControlId } = mnetSsoAccessControlIdSchema.parse({
+    id,
+  });
   try {
-    const [m] =  await db.delete(mnetSsoAccessControls).where(eq(mnetSsoAccessControls.id, mnetSsoAccessControlId!))
-    .returning();
+    const [m] = await db
+      .delete(mnetSsoAccessControls)
+      .where(eq(mnetSsoAccessControls.id, mnetSsoAccessControlId!))
+      .returning();
     return { mnetSsoAccessControl: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +71,3 @@ export const deleteMnetSsoAccessControl = async (id: MnetSsoAccessControlId) => 
     throw { error: message };
   }
 };
-

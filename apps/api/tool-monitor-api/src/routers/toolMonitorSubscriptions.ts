@@ -1,19 +1,29 @@
-import { getToolMonitorSubscriptionById, getToolMonitorSubscriptions } from "../api/toolMonitorSubscriptions/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  toolMonitorSubscriptionIdSchema,
   insertToolMonitorSubscriptionParams,
+  toolMonitorSubscriptionIdSchema,
   updateToolMonitorSubscriptionParams,
 } from "@soco/tool-monitor-db/schema/toolMonitorSubscriptions";
-import { createToolMonitorSubscription, deleteToolMonitorSubscription, updateToolMonitorSubscription } from "../api/toolMonitorSubscriptions/mutations";
 
-export const toolMonitorSubscriptionsRouter =createTRPCRouter({
+import {
+  createToolMonitorSubscription,
+  deleteToolMonitorSubscription,
+  updateToolMonitorSubscription,
+} from "../api/toolMonitorSubscriptions/mutations";
+import {
+  getToolMonitorSubscriptionById,
+  getToolMonitorSubscriptions,
+} from "../api/toolMonitorSubscriptions/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const toolMonitorSubscriptionsRouter = createTRPCRouter({
   getToolMonitorSubscriptions: publicProcedure.query(async () => {
     return getToolMonitorSubscriptions();
   }),
-  getToolMonitorSubscriptionById: publicProcedure.input(toolMonitorSubscriptionIdSchema).query(async ({ input }) => {
-    return getToolMonitorSubscriptionById(input.id);
-  }),
+  getToolMonitorSubscriptionById: publicProcedure
+    .input(toolMonitorSubscriptionIdSchema)
+    .query(async ({ input }) => {
+      return getToolMonitorSubscriptionById(input.id);
+    }),
   createToolMonitorSubscription: publicProcedure
     .input(insertToolMonitorSubscriptionParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,26 @@
-import { getProfileById, getProfiles } from "../api/profiles/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  profileIdSchema,
   insertProfileParams,
+  profileIdSchema,
   updateProfileParams,
 } from "@soco/profile-db/schema/profiles";
-import { createProfile, deleteProfile, updateProfile } from "../api/profiles/mutations";
 
-export const profilesRouter =createTRPCRouter({
+import {
+  createProfile,
+  deleteProfile,
+  updateProfile,
+} from "../api/profiles/mutations";
+import { getProfileById, getProfiles } from "../api/profiles/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const profilesRouter = createTRPCRouter({
   getProfiles: publicProcedure.query(async () => {
     return getProfiles();
   }),
-  getProfileById: publicProcedure.input(profileIdSchema).query(async ({ input }) => {
-    return getProfileById(input.id);
-  }),
+  getProfileById: publicProcedure
+    .input(profileIdSchema)
+    .query(async ({ input }) => {
+      return getProfileById(input.id);
+    }),
   createProfile: publicProcedure
     .input(insertProfileParams)
     .mutation(async ({ input }) => {

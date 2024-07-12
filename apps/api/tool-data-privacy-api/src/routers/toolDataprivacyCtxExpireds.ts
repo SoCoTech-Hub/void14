@@ -1,19 +1,29 @@
-import { getToolDataprivacyCtxExpiredById, getToolDataprivacyCtxExpireds } from "../api/toolDataprivacyCtxExpireds/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  toolDataprivacyCtxExpiredIdSchema,
   insertToolDataprivacyCtxExpiredParams,
+  toolDataprivacyCtxExpiredIdSchema,
   updateToolDataprivacyCtxExpiredParams,
 } from "@soco/tool-data-privacy-db/schema/toolDataprivacyCtxExpireds";
-import { createToolDataprivacyCtxExpired, deleteToolDataprivacyCtxExpired, updateToolDataprivacyCtxExpired } from "../api/toolDataprivacyCtxExpireds/mutations";
 
-export const toolDataprivacyCtxExpiredsRouter =createTRPCRouter({
+import {
+  createToolDataprivacyCtxExpired,
+  deleteToolDataprivacyCtxExpired,
+  updateToolDataprivacyCtxExpired,
+} from "../api/toolDataprivacyCtxExpireds/mutations";
+import {
+  getToolDataprivacyCtxExpiredById,
+  getToolDataprivacyCtxExpireds,
+} from "../api/toolDataprivacyCtxExpireds/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const toolDataprivacyCtxExpiredsRouter = createTRPCRouter({
   getToolDataprivacyCtxExpireds: publicProcedure.query(async () => {
     return getToolDataprivacyCtxExpireds();
   }),
-  getToolDataprivacyCtxExpiredById: publicProcedure.input(toolDataprivacyCtxExpiredIdSchema).query(async ({ input }) => {
-    return getToolDataprivacyCtxExpiredById(input.id);
-  }),
+  getToolDataprivacyCtxExpiredById: publicProcedure
+    .input(toolDataprivacyCtxExpiredIdSchema)
+    .query(async ({ input }) => {
+      return getToolDataprivacyCtxExpiredById(input.id);
+    }),
   createToolDataprivacyCtxExpired: publicProcedure
     .input(insertToolDataprivacyCtxExpiredParams)
     .mutation(async ({ input }) => {

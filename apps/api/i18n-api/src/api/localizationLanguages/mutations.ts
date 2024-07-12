@@ -1,19 +1,27 @@
-import { db } from "@soco/i18n-db/client";
+import type {
+  LocalizationLanguageId,
+  NewLocalizationLanguageParams,
+  UpdateLocalizationLanguageParams,
+} from "@soco/i18n-db/schema/localizationLanguages";
 import { eq } from "@soco/i18n-db";
-import { 
-  type LocalizationLanguageId, 
-  type NewLocalizationLanguageParams,
-  type UpdateLocalizationLanguageParams, 
-  updateLocalizationLanguageSchema,
-  insertLocalizationLanguageSchema, 
+import { db } from "@soco/i18n-db/client";
+import {
+  insertLocalizationLanguageSchema,
+  localizationLanguageIdSchema,
   localizationLanguages,
-  localizationLanguageIdSchema 
+  updateLocalizationLanguageSchema,
 } from "@soco/i18n-db/schema/localizationLanguages";
 
-export const createLocalizationLanguage = async (localizationLanguage: NewLocalizationLanguageParams) => {
-  const newLocalizationLanguage = insertLocalizationLanguageSchema.parse(localizationLanguage);
+export const createLocalizationLanguage = async (
+  localizationLanguage: NewLocalizationLanguageParams,
+) => {
+  const newLocalizationLanguage =
+    insertLocalizationLanguageSchema.parse(localizationLanguage);
   try {
-    const [l] =  await db.insert(localizationLanguages).values(newLocalizationLanguage).returning();
+    const [l] = await db
+      .insert(localizationLanguages)
+      .values(newLocalizationLanguage)
+      .returning();
     return { localizationLanguage: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,21 @@ export const createLocalizationLanguage = async (localizationLanguage: NewLocali
   }
 };
 
-export const updateLocalizationLanguage = async (id: LocalizationLanguageId, localizationLanguage: UpdateLocalizationLanguageParams) => {
-  const { id: localizationLanguageId } = localizationLanguageIdSchema.parse({ id });
-  const newLocalizationLanguage = updateLocalizationLanguageSchema.parse(localizationLanguage);
+export const updateLocalizationLanguage = async (
+  id: LocalizationLanguageId,
+  localizationLanguage: UpdateLocalizationLanguageParams,
+) => {
+  const { id: localizationLanguageId } = localizationLanguageIdSchema.parse({
+    id,
+  });
+  const newLocalizationLanguage =
+    updateLocalizationLanguageSchema.parse(localizationLanguage);
   try {
-    const [l] =  await db
-     .update(localizationLanguages)
-     .set(newLocalizationLanguage)
-     .where(eq(localizationLanguages.id, localizationLanguageId!))
-     .returning();
+    const [l] = await db
+      .update(localizationLanguages)
+      .set(newLocalizationLanguage)
+      .where(eq(localizationLanguages.id, localizationLanguageId!))
+      .returning();
     return { localizationLanguage: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +53,17 @@ export const updateLocalizationLanguage = async (id: LocalizationLanguageId, loc
   }
 };
 
-export const deleteLocalizationLanguage = async (id: LocalizationLanguageId) => {
-  const { id: localizationLanguageId } = localizationLanguageIdSchema.parse({ id });
+export const deleteLocalizationLanguage = async (
+  id: LocalizationLanguageId,
+) => {
+  const { id: localizationLanguageId } = localizationLanguageIdSchema.parse({
+    id,
+  });
   try {
-    const [l] =  await db.delete(localizationLanguages).where(eq(localizationLanguages.id, localizationLanguageId!))
-    .returning();
+    const [l] = await db
+      .delete(localizationLanguages)
+      .where(eq(localizationLanguages.id, localizationLanguageId!))
+      .returning();
     return { localizationLanguage: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +71,3 @@ export const deleteLocalizationLanguage = async (id: LocalizationLanguageId) => 
     throw { error: message };
   }
 };
-

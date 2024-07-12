@@ -1,19 +1,29 @@
-import { getGlossaryEntryById, getGlossaryEntries } from "../api/glossaryEntries/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   glossaryEntryIdSchema,
   insertGlossaryEntryParams,
   updateGlossaryEntryParams,
 } from "@soco/glossary-db/schema/glossaryEntries";
-import { createGlossaryEntry, deleteGlossaryEntry, updateGlossaryEntry } from "../api/glossaryEntries/mutations";
 
-export const glossaryEntriesRouter =createTRPCRouter({
+import {
+  createGlossaryEntry,
+  deleteGlossaryEntry,
+  updateGlossaryEntry,
+} from "../api/glossaryEntries/mutations";
+import {
+  getGlossaryEntries,
+  getGlossaryEntryById,
+} from "../api/glossaryEntries/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const glossaryEntriesRouter = createTRPCRouter({
   getGlossaryEntries: publicProcedure.query(async () => {
     return getGlossaryEntries();
   }),
-  getGlossaryEntryById: publicProcedure.input(glossaryEntryIdSchema).query(async ({ input }) => {
-    return getGlossaryEntryById(input.id);
-  }),
+  getGlossaryEntryById: publicProcedure
+    .input(glossaryEntryIdSchema)
+    .query(async ({ input }) => {
+      return getGlossaryEntryById(input.id);
+    }),
   createGlossaryEntry: publicProcedure
     .input(insertGlossaryEntryParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,26 @@
-import { getLockDbById, getLockDbs } from "../api/lockDbs/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  lockDbIdSchema,
   insertLockDbParams,
+  lockDbIdSchema,
   updateLockDbParams,
 } from "@soco/lock-db/schema/lockDbs";
-import { createLockDb, deleteLockDb, updateLockDb } from "../api/lockDbs/mutations";
 
-export const lockDbsRouter =createTRPCRouter({
+import {
+  createLockDb,
+  deleteLockDb,
+  updateLockDb,
+} from "../api/lockDbs/mutations";
+import { getLockDbById, getLockDbs } from "../api/lockDbs/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const lockDbsRouter = createTRPCRouter({
   getLockDbs: publicProcedure.query(async () => {
     return getLockDbs();
   }),
-  getLockDbById: publicProcedure.input(lockDbIdSchema).query(async ({ input }) => {
-    return getLockDbById(input.id);
-  }),
+  getLockDbById: publicProcedure
+    .input(lockDbIdSchema)
+    .query(async ({ input }) => {
+      return getLockDbById(input.id);
+    }),
   createLockDb: publicProcedure
     .input(insertLockDbParams)
     .mutation(async ({ input }) => {

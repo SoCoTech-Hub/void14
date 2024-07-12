@@ -1,19 +1,26 @@
-import { getDistrictById, getDistricts } from "../api/districts/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   districtIdSchema,
   insertDistrictParams,
   updateDistrictParams,
 } from "@soco/geolocalize-db/schema/districts";
-import { createDistrict, deleteDistrict, updateDistrict } from "../api/districts/mutations";
 
-export const districtsRouter =createTRPCRouter({
+import {
+  createDistrict,
+  deleteDistrict,
+  updateDistrict,
+} from "../api/districts/mutations";
+import { getDistrictById, getDistricts } from "../api/districts/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const districtsRouter = createTRPCRouter({
   getDistricts: publicProcedure.query(async () => {
     return getDistricts();
   }),
-  getDistrictById: publicProcedure.input(districtIdSchema).query(async ({ input }) => {
-    return getDistrictById(input.id);
-  }),
+  getDistrictById: publicProcedure
+    .input(districtIdSchema)
+    .query(async ({ input }) => {
+      return getDistrictById(input.id);
+    }),
   createDistrict: publicProcedure
     .input(insertDistrictParams)
     .mutation(async ({ input }) => {

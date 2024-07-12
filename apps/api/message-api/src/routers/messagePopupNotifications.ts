@@ -1,19 +1,29 @@
-import { getMessagePopupNotificationById, getMessagePopupNotifications } from "../api/messagePopupNotifications/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  messagePopupNotificationIdSchema,
   insertMessagePopupNotificationParams,
+  messagePopupNotificationIdSchema,
   updateMessagePopupNotificationParams,
 } from "@soco/message-db/schema/messagePopupNotifications";
-import { createMessagePopupNotification, deleteMessagePopupNotification, updateMessagePopupNotification } from "../api/messagePopupNotifications/mutations";
 
-export const messagePopupNotificationsRouter =createTRPCRouter({
+import {
+  createMessagePopupNotification,
+  deleteMessagePopupNotification,
+  updateMessagePopupNotification,
+} from "../api/messagePopupNotifications/mutations";
+import {
+  getMessagePopupNotificationById,
+  getMessagePopupNotifications,
+} from "../api/messagePopupNotifications/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const messagePopupNotificationsRouter = createTRPCRouter({
   getMessagePopupNotifications: publicProcedure.query(async () => {
     return getMessagePopupNotifications();
   }),
-  getMessagePopupNotificationById: publicProcedure.input(messagePopupNotificationIdSchema).query(async ({ input }) => {
-    return getMessagePopupNotificationById(input.id);
-  }),
+  getMessagePopupNotificationById: publicProcedure
+    .input(messagePopupNotificationIdSchema)
+    .query(async ({ input }) => {
+      return getMessagePopupNotificationById(input.id);
+    }),
   createMessagePopupNotification: publicProcedure
     .input(insertMessagePopupNotificationParams)
     .mutation(async ({ input }) => {

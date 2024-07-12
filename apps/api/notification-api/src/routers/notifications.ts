@@ -1,19 +1,29 @@
-import { getNotificationById, getNotifications } from "../api/notifications/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  notificationIdSchema,
   insertNotificationParams,
+  notificationIdSchema,
   updateNotificationParams,
 } from "@soco/notification-db/schema/notifications";
-import { createNotification, deleteNotification, updateNotification } from "../api/notifications/mutations";
 
-export const notificationsRouter =createTRPCRouter({
+import {
+  createNotification,
+  deleteNotification,
+  updateNotification,
+} from "../api/notifications/mutations";
+import {
+  getNotificationById,
+  getNotifications,
+} from "../api/notifications/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const notificationsRouter = createTRPCRouter({
   getNotifications: publicProcedure.query(async () => {
     return getNotifications();
   }),
-  getNotificationById: publicProcedure.input(notificationIdSchema).query(async ({ input }) => {
-    return getNotificationById(input.id);
-  }),
+  getNotificationById: publicProcedure
+    .input(notificationIdSchema)
+    .query(async ({ input }) => {
+      return getNotificationById(input.id);
+    }),
   createNotification: publicProcedure
     .input(insertNotificationParams)
     .mutation(async ({ input }) => {

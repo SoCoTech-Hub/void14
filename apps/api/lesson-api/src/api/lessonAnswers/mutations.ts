@@ -1,19 +1,26 @@
-import { db } from "@soco/lesson-db/client";
+import type {
+  LessonAnswerId,
+  NewLessonAnswerParams,
+  UpdateLessonAnswerParams,
+} from "@soco/lesson-db/schema/lessonAnswers";
 import { eq } from "@soco/lesson-db";
-import { 
-  type LessonAnswerId, 
-  type NewLessonAnswerParams,
-  type UpdateLessonAnswerParams, 
-  updateLessonAnswerSchema,
-  insertLessonAnswerSchema, 
+import { db } from "@soco/lesson-db/client";
+import {
+  insertLessonAnswerSchema,
+  lessonAnswerIdSchema,
   lessonAnswers,
-  lessonAnswerIdSchema 
+  updateLessonAnswerSchema,
 } from "@soco/lesson-db/schema/lessonAnswers";
 
-export const createLessonAnswer = async (lessonAnswer: NewLessonAnswerParams) => {
+export const createLessonAnswer = async (
+  lessonAnswer: NewLessonAnswerParams,
+) => {
   const newLessonAnswer = insertLessonAnswerSchema.parse(lessonAnswer);
   try {
-    const [l] =  await db.insert(lessonAnswers).values(newLessonAnswer).returning();
+    const [l] = await db
+      .insert(lessonAnswers)
+      .values(newLessonAnswer)
+      .returning();
     return { lessonAnswer: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,18 @@ export const createLessonAnswer = async (lessonAnswer: NewLessonAnswerParams) =>
   }
 };
 
-export const updateLessonAnswer = async (id: LessonAnswerId, lessonAnswer: UpdateLessonAnswerParams) => {
+export const updateLessonAnswer = async (
+  id: LessonAnswerId,
+  lessonAnswer: UpdateLessonAnswerParams,
+) => {
   const { id: lessonAnswerId } = lessonAnswerIdSchema.parse({ id });
   const newLessonAnswer = updateLessonAnswerSchema.parse(lessonAnswer);
   try {
-    const [l] =  await db
-     .update(lessonAnswers)
-     .set({...newLessonAnswer, updatedAt: new Date() })
-     .where(eq(lessonAnswers.id, lessonAnswerId!))
-     .returning();
+    const [l] = await db
+      .update(lessonAnswers)
+      .set({ ...newLessonAnswer, updatedAt: new Date() })
+      .where(eq(lessonAnswers.id, lessonAnswerId!))
+      .returning();
     return { lessonAnswer: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +52,10 @@ export const updateLessonAnswer = async (id: LessonAnswerId, lessonAnswer: Updat
 export const deleteLessonAnswer = async (id: LessonAnswerId) => {
   const { id: lessonAnswerId } = lessonAnswerIdSchema.parse({ id });
   try {
-    const [l] =  await db.delete(lessonAnswers).where(eq(lessonAnswers.id, lessonAnswerId!))
-    .returning();
+    const [l] = await db
+      .delete(lessonAnswers)
+      .where(eq(lessonAnswers.id, lessonAnswerId!))
+      .returning();
     return { lessonAnswer: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +63,3 @@ export const deleteLessonAnswer = async (id: LessonAnswerId) => {
     throw { error: message };
   }
 };
-

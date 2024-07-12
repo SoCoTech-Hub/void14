@@ -1,19 +1,29 @@
-import { getUserInfoCategoryById, getUserInfoCategories } from "../api/userInfoCategories/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  userInfoCategoryIdSchema,
   insertUserInfoCategoryParams,
   updateUserInfoCategoryParams,
+  userInfoCategoryIdSchema,
 } from "@soco/user-db/schema/userInfoCategories";
-import { createUserInfoCategory, deleteUserInfoCategory, updateUserInfoCategory } from "../api/userInfoCategories/mutations";
 
-export const userInfoCategoriesRouter =createTRPCRouter({
+import {
+  createUserInfoCategory,
+  deleteUserInfoCategory,
+  updateUserInfoCategory,
+} from "../api/userInfoCategories/mutations";
+import {
+  getUserInfoCategories,
+  getUserInfoCategoryById,
+} from "../api/userInfoCategories/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const userInfoCategoriesRouter = createTRPCRouter({
   getUserInfoCategories: publicProcedure.query(async () => {
     return getUserInfoCategories();
   }),
-  getUserInfoCategoryById: publicProcedure.input(userInfoCategoryIdSchema).query(async ({ input }) => {
-    return getUserInfoCategoryById(input.id);
-  }),
+  getUserInfoCategoryById: publicProcedure
+    .input(userInfoCategoryIdSchema)
+    .query(async ({ input }) => {
+      return getUserInfoCategoryById(input.id);
+    }),
   createUserInfoCategory: publicProcedure
     .input(insertUserInfoCategoryParams)
     .mutation(async ({ input }) => {

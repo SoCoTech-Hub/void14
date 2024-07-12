@@ -1,19 +1,29 @@
-import { getMnetSessionById, getMnetSessions } from "../api/mnetSessions/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  mnetSessionIdSchema,
   insertMnetSessionParams,
+  mnetSessionIdSchema,
   updateMnetSessionParams,
 } from "@soco/mnet-db/schema/mnetSessions";
-import { createMnetSession, deleteMnetSession, updateMnetSession } from "../api/mnetSessions/mutations";
 
-export const mnetSessionsRouter =createTRPCRouter({
+import {
+  createMnetSession,
+  deleteMnetSession,
+  updateMnetSession,
+} from "../api/mnetSessions/mutations";
+import {
+  getMnetSessionById,
+  getMnetSessions,
+} from "../api/mnetSessions/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const mnetSessionsRouter = createTRPCRouter({
   getMnetSessions: publicProcedure.query(async () => {
     return getMnetSessions();
   }),
-  getMnetSessionById: publicProcedure.input(mnetSessionIdSchema).query(async ({ input }) => {
-    return getMnetSessionById(input.id);
-  }),
+  getMnetSessionById: publicProcedure
+    .input(mnetSessionIdSchema)
+    .query(async ({ input }) => {
+      return getMnetSessionById(input.id);
+    }),
   createMnetSession: publicProcedure
     .input(insertMnetSessionParams)
     .mutation(async ({ input }) => {

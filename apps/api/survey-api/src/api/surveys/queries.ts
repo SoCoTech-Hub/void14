@@ -1,10 +1,11 @@
-import { db } from "@soco/survey-db/client";
+import type { SurveyId } from "@soco/survey-db/schema/surveys";
 import { eq } from "@soco/survey-db";
-import { type SurveyId, surveyIdSchema, surveys } from "@soco/survey-db/schema/surveys";
+import { db } from "@soco/survey-db/client";
+import { surveyIdSchema, surveys } from "@soco/survey-db/schema/surveys";
 
 export const getSurveys = async () => {
   const rows = await db.select().from(surveys);
-  const s = rows
+  const s = rows;
   return { surveys: s };
 };
 
@@ -15,5 +16,3 @@ export const getSurveyById = async (id: SurveyId) => {
   const s = row;
   return { survey: s };
 };
-
-

@@ -1,19 +1,29 @@
-import { getEnrolLtiUserById, getEnrolLtiUsers } from "../api/enrolLtiUsers/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   enrolLtiUserIdSchema,
   insertEnrolLtiUserParams,
   updateEnrolLtiUserParams,
 } from "@soco/enrol-db/schema/enrolLtiUsers";
-import { createEnrolLtiUser, deleteEnrolLtiUser, updateEnrolLtiUser } from "../api/enrolLtiUsers/mutations";
 
-export const enrolLtiUsersRouter =createTRPCRouter({
+import {
+  createEnrolLtiUser,
+  deleteEnrolLtiUser,
+  updateEnrolLtiUser,
+} from "../api/enrolLtiUsers/mutations";
+import {
+  getEnrolLtiUserById,
+  getEnrolLtiUsers,
+} from "../api/enrolLtiUsers/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const enrolLtiUsersRouter = createTRPCRouter({
   getEnrolLtiUsers: publicProcedure.query(async () => {
     return getEnrolLtiUsers();
   }),
-  getEnrolLtiUserById: publicProcedure.input(enrolLtiUserIdSchema).query(async ({ input }) => {
-    return getEnrolLtiUserById(input.id);
-  }),
+  getEnrolLtiUserById: publicProcedure
+    .input(enrolLtiUserIdSchema)
+    .query(async ({ input }) => {
+      return getEnrolLtiUserById(input.id);
+    }),
   createEnrolLtiUser: publicProcedure
     .input(insertEnrolLtiUserParams)
     .mutation(async ({ input }) => {

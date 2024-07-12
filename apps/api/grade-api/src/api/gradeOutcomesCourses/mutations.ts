@@ -1,19 +1,27 @@
-import { db } from "@soco/grade-db/client";
+import type {
+  GradeOutcomesCourseId,
+  NewGradeOutcomesCourseParams,
+  UpdateGradeOutcomesCourseParams,
+} from "@soco/grade-db/schema/gradeOutcomesCourses";
 import { eq } from "@soco/grade-db";
-import { 
-  type GradeOutcomesCourseId, 
-  type NewGradeOutcomesCourseParams,
-  type UpdateGradeOutcomesCourseParams, 
-  updateGradeOutcomesCourseSchema,
-  insertGradeOutcomesCourseSchema, 
+import { db } from "@soco/grade-db/client";
+import {
+  gradeOutcomesCourseIdSchema,
   gradeOutcomesCourses,
-  gradeOutcomesCourseIdSchema 
+  insertGradeOutcomesCourseSchema,
+  updateGradeOutcomesCourseSchema,
 } from "@soco/grade-db/schema/gradeOutcomesCourses";
 
-export const createGradeOutcomesCourse = async (gradeOutcomesCourse: NewGradeOutcomesCourseParams) => {
-  const newGradeOutcomesCourse = insertGradeOutcomesCourseSchema.parse(gradeOutcomesCourse);
+export const createGradeOutcomesCourse = async (
+  gradeOutcomesCourse: NewGradeOutcomesCourseParams,
+) => {
+  const newGradeOutcomesCourse =
+    insertGradeOutcomesCourseSchema.parse(gradeOutcomesCourse);
   try {
-    const [g] =  await db.insert(gradeOutcomesCourses).values(newGradeOutcomesCourse).returning();
+    const [g] = await db
+      .insert(gradeOutcomesCourses)
+      .values(newGradeOutcomesCourse)
+      .returning();
     return { gradeOutcomesCourse: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,21 @@ export const createGradeOutcomesCourse = async (gradeOutcomesCourse: NewGradeOut
   }
 };
 
-export const updateGradeOutcomesCourse = async (id: GradeOutcomesCourseId, gradeOutcomesCourse: UpdateGradeOutcomesCourseParams) => {
-  const { id: gradeOutcomesCourseId } = gradeOutcomesCourseIdSchema.parse({ id });
-  const newGradeOutcomesCourse = updateGradeOutcomesCourseSchema.parse(gradeOutcomesCourse);
+export const updateGradeOutcomesCourse = async (
+  id: GradeOutcomesCourseId,
+  gradeOutcomesCourse: UpdateGradeOutcomesCourseParams,
+) => {
+  const { id: gradeOutcomesCourseId } = gradeOutcomesCourseIdSchema.parse({
+    id,
+  });
+  const newGradeOutcomesCourse =
+    updateGradeOutcomesCourseSchema.parse(gradeOutcomesCourse);
   try {
-    const [g] =  await db
-     .update(gradeOutcomesCourses)
-     .set(newGradeOutcomesCourse)
-     .where(eq(gradeOutcomesCourses.id, gradeOutcomesCourseId!))
-     .returning();
+    const [g] = await db
+      .update(gradeOutcomesCourses)
+      .set(newGradeOutcomesCourse)
+      .where(eq(gradeOutcomesCourses.id, gradeOutcomesCourseId!))
+      .returning();
     return { gradeOutcomesCourse: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -40,10 +54,14 @@ export const updateGradeOutcomesCourse = async (id: GradeOutcomesCourseId, grade
 };
 
 export const deleteGradeOutcomesCourse = async (id: GradeOutcomesCourseId) => {
-  const { id: gradeOutcomesCourseId } = gradeOutcomesCourseIdSchema.parse({ id });
+  const { id: gradeOutcomesCourseId } = gradeOutcomesCourseIdSchema.parse({
+    id,
+  });
   try {
-    const [g] =  await db.delete(gradeOutcomesCourses).where(eq(gradeOutcomesCourses.id, gradeOutcomesCourseId!))
-    .returning();
+    const [g] = await db
+      .delete(gradeOutcomesCourses)
+      .where(eq(gradeOutcomesCourses.id, gradeOutcomesCourseId!))
+      .returning();
     return { gradeOutcomesCourse: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +69,3 @@ export const deleteGradeOutcomesCourse = async (id: GradeOutcomesCourseId) => {
     throw { error: message };
   }
 };
-

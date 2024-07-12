@@ -1,10 +1,11 @@
-import { db } from "@soco/page-db/client";
+import type { PageId } from "@soco/page-db/schema/pages";
 import { eq } from "@soco/page-db";
-import { type PageId, pageIdSchema, pages } from "@soco/page-db/schema/pages";
+import { db } from "@soco/page-db/client";
+import { pageIdSchema, pages } from "@soco/page-db/schema/pages";
 
 export const getPages = async () => {
   const rows = await db.select().from(pages);
-  const p = rows
+  const p = rows;
   return { pages: p };
 };
 
@@ -15,5 +16,3 @@ export const getPageById = async (id: PageId) => {
   const p = row;
   return { page: p };
 };
-
-

@@ -1,19 +1,29 @@
-import { getWorkshopEvalBestSettingById, getWorkshopEvalBestSettings } from "../api/workshopEvalBestSettings/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  workshopEvalBestSettingIdSchema,
   insertWorkshopEvalBestSettingParams,
   updateWorkshopEvalBestSettingParams,
+  workshopEvalBestSettingIdSchema,
 } from "@soco/workshop-db/schema/workshopEvalBestSettings";
-import { createWorkshopEvalBestSetting, deleteWorkshopEvalBestSetting, updateWorkshopEvalBestSetting } from "../api/workshopEvalBestSettings/mutations";
 
-export const workshopEvalBestSettingsRouter =createTRPCRouter({
+import {
+  createWorkshopEvalBestSetting,
+  deleteWorkshopEvalBestSetting,
+  updateWorkshopEvalBestSetting,
+} from "../api/workshopEvalBestSettings/mutations";
+import {
+  getWorkshopEvalBestSettingById,
+  getWorkshopEvalBestSettings,
+} from "../api/workshopEvalBestSettings/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const workshopEvalBestSettingsRouter = createTRPCRouter({
   getWorkshopEvalBestSettings: publicProcedure.query(async () => {
     return getWorkshopEvalBestSettings();
   }),
-  getWorkshopEvalBestSettingById: publicProcedure.input(workshopEvalBestSettingIdSchema).query(async ({ input }) => {
-    return getWorkshopEvalBestSettingById(input.id);
-  }),
+  getWorkshopEvalBestSettingById: publicProcedure
+    .input(workshopEvalBestSettingIdSchema)
+    .query(async ({ input }) => {
+      return getWorkshopEvalBestSettingById(input.id);
+    }),
   createWorkshopEvalBestSetting: publicProcedure
     .input(insertWorkshopEvalBestSettingParams)
     .mutation(async ({ input }) => {

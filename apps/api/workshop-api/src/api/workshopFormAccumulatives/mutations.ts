@@ -1,19 +1,27 @@
-import { db } from "@soco/workshop-db/client";
+import type {
+  NewWorkshopFormAccumulativeParams,
+  UpdateWorkshopFormAccumulativeParams,
+  WorkshopFormAccumulativeId,
+} from "@soco/workshop-db/schema/workshopFormAccumulatives";
 import { eq } from "@soco/workshop-db";
-import { 
-  type WorkshopFormAccumulativeId, 
-  type NewWorkshopFormAccumulativeParams,
-  type UpdateWorkshopFormAccumulativeParams, 
+import { db } from "@soco/workshop-db/client";
+import {
+  insertWorkshopFormAccumulativeSchema,
   updateWorkshopFormAccumulativeSchema,
-  insertWorkshopFormAccumulativeSchema, 
+  workshopFormAccumulativeIdSchema,
   workshopFormAccumulatives,
-  workshopFormAccumulativeIdSchema 
 } from "@soco/workshop-db/schema/workshopFormAccumulatives";
 
-export const createWorkshopFormAccumulative = async (workshopFormAccumulative: NewWorkshopFormAccumulativeParams) => {
-  const newWorkshopFormAccumulative = insertWorkshopFormAccumulativeSchema.parse(workshopFormAccumulative);
+export const createWorkshopFormAccumulative = async (
+  workshopFormAccumulative: NewWorkshopFormAccumulativeParams,
+) => {
+  const newWorkshopFormAccumulative =
+    insertWorkshopFormAccumulativeSchema.parse(workshopFormAccumulative);
   try {
-    const [w] =  await db.insert(workshopFormAccumulatives).values(newWorkshopFormAccumulative).returning();
+    const [w] = await db
+      .insert(workshopFormAccumulatives)
+      .values(newWorkshopFormAccumulative)
+      .returning();
     return { workshopFormAccumulative: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,20 @@ export const createWorkshopFormAccumulative = async (workshopFormAccumulative: N
   }
 };
 
-export const updateWorkshopFormAccumulative = async (id: WorkshopFormAccumulativeId, workshopFormAccumulative: UpdateWorkshopFormAccumulativeParams) => {
-  const { id: workshopFormAccumulativeId } = workshopFormAccumulativeIdSchema.parse({ id });
-  const newWorkshopFormAccumulative = updateWorkshopFormAccumulativeSchema.parse(workshopFormAccumulative);
+export const updateWorkshopFormAccumulative = async (
+  id: WorkshopFormAccumulativeId,
+  workshopFormAccumulative: UpdateWorkshopFormAccumulativeParams,
+) => {
+  const { id: workshopFormAccumulativeId } =
+    workshopFormAccumulativeIdSchema.parse({ id });
+  const newWorkshopFormAccumulative =
+    updateWorkshopFormAccumulativeSchema.parse(workshopFormAccumulative);
   try {
-    const [w] =  await db
-     .update(workshopFormAccumulatives)
-     .set(newWorkshopFormAccumulative)
-     .where(eq(workshopFormAccumulatives.id, workshopFormAccumulativeId!))
-     .returning();
+    const [w] = await db
+      .update(workshopFormAccumulatives)
+      .set(newWorkshopFormAccumulative)
+      .where(eq(workshopFormAccumulatives.id, workshopFormAccumulativeId!))
+      .returning();
     return { workshopFormAccumulative: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +52,16 @@ export const updateWorkshopFormAccumulative = async (id: WorkshopFormAccumulativ
   }
 };
 
-export const deleteWorkshopFormAccumulative = async (id: WorkshopFormAccumulativeId) => {
-  const { id: workshopFormAccumulativeId } = workshopFormAccumulativeIdSchema.parse({ id });
+export const deleteWorkshopFormAccumulative = async (
+  id: WorkshopFormAccumulativeId,
+) => {
+  const { id: workshopFormAccumulativeId } =
+    workshopFormAccumulativeIdSchema.parse({ id });
   try {
-    const [w] =  await db.delete(workshopFormAccumulatives).where(eq(workshopFormAccumulatives.id, workshopFormAccumulativeId!))
-    .returning();
+    const [w] = await db
+      .delete(workshopFormAccumulatives)
+      .where(eq(workshopFormAccumulatives.id, workshopFormAccumulativeId!))
+      .returning();
     return { workshopFormAccumulative: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +69,3 @@ export const deleteWorkshopFormAccumulative = async (id: WorkshopFormAccumulativ
     throw { error: message };
   }
 };
-

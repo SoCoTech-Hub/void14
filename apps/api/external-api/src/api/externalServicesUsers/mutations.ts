@@ -1,21 +1,29 @@
-import { db } from "@soco/external-db/client";
-import { and, eq } from "@soco/external-db";
-import { 
-  ExternalServicesUserId, 
-  NewExternalServicesUserParams,
-  UpdateExternalServicesUserParams, 
-  updateExternalServicesUserSchema,
-  insertExternalServicesUserSchema, 
-  externalServicesUsers,
-  externalServicesUserIdSchema 
-} from "@soco/external-db/schema/externalServicesUsers";
 import { getUserAuth } from "@soco/auth-service";
+import { and, eq } from "@soco/external-db";
+import { db } from "@soco/external-db/client";
+import {
+  ExternalServicesUserId,
+  externalServicesUserIdSchema,
+  externalServicesUsers,
+  insertExternalServicesUserSchema,
+  NewExternalServicesUserParams,
+  UpdateExternalServicesUserParams,
+  updateExternalServicesUserSchema,
+} from "@soco/external-db/schema/externalServicesUsers";
 
-export const createExternalServicesUser = async (externalServicesUser: NewExternalServicesUserParams) => {
+export const createExternalServicesUser = async (
+  externalServicesUser: NewExternalServicesUserParams,
+) => {
   const { session } = await getUserAuth();
-  const newExternalServicesUser = insertExternalServicesUserSchema.parse({ ...externalServicesUser, userId: session?.user.id! });
+  const newExternalServicesUser = insertExternalServicesUserSchema.parse({
+    ...externalServicesUser,
+    userId: session?.user.id!,
+  });
   try {
-    const [e] =  await db.insert(externalServicesUsers).values(newExternalServicesUser).returning();
+    const [e] = await db
+      .insert(externalServicesUsers)
+      .values(newExternalServicesUser)
+      .returning();
     return { externalServicesUser: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +32,29 @@ export const createExternalServicesUser = async (externalServicesUser: NewExtern
   }
 };
 
-export const updateExternalServicesUser = async (id: ExternalServicesUserId, externalServicesUser: UpdateExternalServicesUserParams) => {
+export const updateExternalServicesUser = async (
+  id: ExternalServicesUserId,
+  externalServicesUser: UpdateExternalServicesUserParams,
+) => {
   const { session } = await getUserAuth();
-  const { id: externalServicesUserId } = externalServicesUserIdSchema.parse({ id });
-  const newExternalServicesUser = updateExternalServicesUserSchema.parse({ ...externalServicesUser, userId: session?.user.id! });
+  const { id: externalServicesUserId } = externalServicesUserIdSchema.parse({
+    id,
+  });
+  const newExternalServicesUser = updateExternalServicesUserSchema.parse({
+    ...externalServicesUser,
+    userId: session?.user.id!,
+  });
   try {
-    const [e] =  await db
-     .update(externalServicesUsers)
-     .set({...newExternalServicesUser, updatedAt: new Date() })
-     .where(and(eq(externalServicesUsers.id, externalServicesUserId!), eq(externalServicesUsers.userId, session?.user.id!)))
-     .returning();
+    const [e] = await db
+      .update(externalServicesUsers)
+      .set({ ...newExternalServicesUser, updatedAt: new Date() })
+      .where(
+        and(
+          eq(externalServicesUsers.id, externalServicesUserId!),
+          eq(externalServicesUsers.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { externalServicesUser: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,12 +63,23 @@ export const updateExternalServicesUser = async (id: ExternalServicesUserId, ext
   }
 };
 
-export const deleteExternalServicesUser = async (id: ExternalServicesUserId) => {
+export const deleteExternalServicesUser = async (
+  id: ExternalServicesUserId,
+) => {
   const { session } = await getUserAuth();
-  const { id: externalServicesUserId } = externalServicesUserIdSchema.parse({ id });
+  const { id: externalServicesUserId } = externalServicesUserIdSchema.parse({
+    id,
+  });
   try {
-    const [e] =  await db.delete(externalServicesUsers).where(and(eq(externalServicesUsers.id, externalServicesUserId!), eq(externalServicesUsers.userId, session?.user.id!)))
-    .returning();
+    const [e] = await db
+      .delete(externalServicesUsers)
+      .where(
+        and(
+          eq(externalServicesUsers.id, externalServicesUserId!),
+          eq(externalServicesUsers.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { externalServicesUser: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +87,3 @@ export const deleteExternalServicesUser = async (id: ExternalServicesUserId) => 
     throw { error: message };
   }
 };
-

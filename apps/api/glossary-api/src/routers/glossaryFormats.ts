@@ -1,19 +1,29 @@
-import { getGlossaryFormatById, getGlossaryFormats } from "../api/glossaryFormats/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   glossaryFormatIdSchema,
   insertGlossaryFormatParams,
   updateGlossaryFormatParams,
 } from "@soco/glossary-db/schema/glossaryFormats";
-import { createGlossaryFormat, deleteGlossaryFormat, updateGlossaryFormat } from "../api/glossaryFormats/mutations";
 
-export const glossaryFormatsRouter =createTRPCRouter({
+import {
+  createGlossaryFormat,
+  deleteGlossaryFormat,
+  updateGlossaryFormat,
+} from "../api/glossaryFormats/mutations";
+import {
+  getGlossaryFormatById,
+  getGlossaryFormats,
+} from "../api/glossaryFormats/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const glossaryFormatsRouter = createTRPCRouter({
   getGlossaryFormats: publicProcedure.query(async () => {
     return getGlossaryFormats();
   }),
-  getGlossaryFormatById: publicProcedure.input(glossaryFormatIdSchema).query(async ({ input }) => {
-    return getGlossaryFormatById(input.id);
-  }),
+  getGlossaryFormatById: publicProcedure
+    .input(glossaryFormatIdSchema)
+    .query(async ({ input }) => {
+      return getGlossaryFormatById(input.id);
+    }),
   createGlossaryFormat: publicProcedure
     .input(insertGlossaryFormatParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,29 @@
-import { getSearchIndexRequestById, getSearchIndexRequests } from "../api/searchIndexRequests/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  searchIndexRequestIdSchema,
   insertSearchIndexRequestParams,
+  searchIndexRequestIdSchema,
   updateSearchIndexRequestParams,
 } from "@soco/search-db/schema/searchIndexRequests";
-import { createSearchIndexRequest, deleteSearchIndexRequest, updateSearchIndexRequest } from "../api/searchIndexRequests/mutations";
 
-export const searchIndexRequestsRouter =createTRPCRouter({
+import {
+  createSearchIndexRequest,
+  deleteSearchIndexRequest,
+  updateSearchIndexRequest,
+} from "../api/searchIndexRequests/mutations";
+import {
+  getSearchIndexRequestById,
+  getSearchIndexRequests,
+} from "../api/searchIndexRequests/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const searchIndexRequestsRouter = createTRPCRouter({
   getSearchIndexRequests: publicProcedure.query(async () => {
     return getSearchIndexRequests();
   }),
-  getSearchIndexRequestById: publicProcedure.input(searchIndexRequestIdSchema).query(async ({ input }) => {
-    return getSearchIndexRequestById(input.id);
-  }),
+  getSearchIndexRequestById: publicProcedure
+    .input(searchIndexRequestIdSchema)
+    .query(async ({ input }) => {
+      return getSearchIndexRequestById(input.id);
+    }),
   createSearchIndexRequest: publicProcedure
     .input(insertSearchIndexRequestParams)
     .mutation(async ({ input }) => {

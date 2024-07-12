@@ -1,6 +1,6 @@
-import { toolPoliciesRouter } from './routers/toolPolicies';
-import { toolPolicyAcceptancesRouter } from './routers/toolPolicyAcceptances';
-import { toolPolicyVersionsRouter } from './routers/toolPolicyVersions';
+import { toolPoliciesRouter } from "./routers/toolPolicies";
+import { toolPolicyAcceptancesRouter } from "./routers/toolPolicyAcceptances";
+import { toolPolicyVersionsRouter } from "./routers/toolPolicyVersions";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

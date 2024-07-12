@@ -1,19 +1,29 @@
-import { getEventSubscriptionById, getEventSubscriptions } from "../api/eventSubscriptions/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   eventSubscriptionIdSchema,
   insertEventSubscriptionParams,
   updateEventSubscriptionParams,
 } from "@soco/event-db/schema/eventSubscriptions";
-import { createEventSubscription, deleteEventSubscription, updateEventSubscription } from "../api/eventSubscriptions/mutations";
 
-export const eventSubscriptionsRouter =createTRPCRouter({
+import {
+  createEventSubscription,
+  deleteEventSubscription,
+  updateEventSubscription,
+} from "../api/eventSubscriptions/mutations";
+import {
+  getEventSubscriptionById,
+  getEventSubscriptions,
+} from "../api/eventSubscriptions/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const eventSubscriptionsRouter = createTRPCRouter({
   getEventSubscriptions: publicProcedure.query(async () => {
     return getEventSubscriptions();
   }),
-  getEventSubscriptionById: publicProcedure.input(eventSubscriptionIdSchema).query(async ({ input }) => {
-    return getEventSubscriptionById(input.id);
-  }),
+  getEventSubscriptionById: publicProcedure
+    .input(eventSubscriptionIdSchema)
+    .query(async ({ input }) => {
+      return getEventSubscriptionById(input.id);
+    }),
   createEventSubscription: publicProcedure
     .input(insertEventSubscriptionParams)
     .mutation(async ({ input }) => {

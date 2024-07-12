@@ -1,19 +1,29 @@
-import { getAffiliatesSettingById, getAffiliatesSettings } from "../api/affiliatesSettings/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   affiliatesSettingIdSchema,
   insertAffiliatesSettingParams,
   updateAffiliatesSettingParams,
 } from "@soco/affiliates-db/schema/affiliatesSettings";
-import { createAffiliatesSetting, deleteAffiliatesSetting, updateAffiliatesSetting } from "../api/affiliatesSettings/mutations";
 
-export const affiliatesSettingsRouter =createTRPCRouter({
+import {
+  createAffiliatesSetting,
+  deleteAffiliatesSetting,
+  updateAffiliatesSetting,
+} from "../api/affiliatesSettings/mutations";
+import {
+  getAffiliatesSettingById,
+  getAffiliatesSettings,
+} from "../api/affiliatesSettings/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const affiliatesSettingsRouter = createTRPCRouter({
   getAffiliatesSettings: publicProcedure.query(async () => {
     return getAffiliatesSettings();
   }),
-  getAffiliatesSettingById: publicProcedure.input(affiliatesSettingIdSchema).query(async ({ input }) => {
-    return getAffiliatesSettingById(input.id);
-  }),
+  getAffiliatesSettingById: publicProcedure
+    .input(affiliatesSettingIdSchema)
+    .query(async ({ input }) => {
+      return getAffiliatesSettingById(input.id);
+    }),
   createAffiliatesSetting: publicProcedure
     .input(insertAffiliatesSettingParams)
     .mutation(async ({ input }) => {

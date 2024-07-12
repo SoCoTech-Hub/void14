@@ -1,19 +1,29 @@
-import { getQuestionAttemptStepById, getQuestionAttemptSteps } from "../api/questionAttemptSteps/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  questionAttemptStepIdSchema,
   insertQuestionAttemptStepParams,
+  questionAttemptStepIdSchema,
   updateQuestionAttemptStepParams,
 } from "@soco/question-db/schema/questionAttemptSteps";
-import { createQuestionAttemptStep, deleteQuestionAttemptStep, updateQuestionAttemptStep } from "../api/questionAttemptSteps/mutations";
 
-export const questionAttemptStepsRouter =createTRPCRouter({
+import {
+  createQuestionAttemptStep,
+  deleteQuestionAttemptStep,
+  updateQuestionAttemptStep,
+} from "../api/questionAttemptSteps/mutations";
+import {
+  getQuestionAttemptStepById,
+  getQuestionAttemptSteps,
+} from "../api/questionAttemptSteps/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const questionAttemptStepsRouter = createTRPCRouter({
   getQuestionAttemptSteps: publicProcedure.query(async () => {
     return getQuestionAttemptSteps();
   }),
-  getQuestionAttemptStepById: publicProcedure.input(questionAttemptStepIdSchema).query(async ({ input }) => {
-    return getQuestionAttemptStepById(input.id);
-  }),
+  getQuestionAttemptStepById: publicProcedure
+    .input(questionAttemptStepIdSchema)
+    .query(async ({ input }) => {
+      return getQuestionAttemptStepById(input.id);
+    }),
   createQuestionAttemptStep: publicProcedure
     .input(insertQuestionAttemptStepParams)
     .mutation(async ({ input }) => {

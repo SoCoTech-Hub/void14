@@ -1,19 +1,26 @@
-import { db } from "@soco/enrol-db/client";
+import type {
+  EnrolLtiContextId,
+  NewEnrolLtiContextParams,
+  UpdateEnrolLtiContextParams,
+} from "@soco/enrol-db/schema/enrolLtiContexts";
 import { eq } from "@soco/enrol-db";
-import { 
-  type EnrolLtiContextId, 
-  type NewEnrolLtiContextParams,
-  type UpdateEnrolLtiContextParams, 
-  updateEnrolLtiContextSchema,
-  insertEnrolLtiContextSchema, 
+import { db } from "@soco/enrol-db/client";
+import {
+  enrolLtiContextIdSchema,
   enrolLtiContexts,
-  enrolLtiContextIdSchema 
+  insertEnrolLtiContextSchema,
+  updateEnrolLtiContextSchema,
 } from "@soco/enrol-db/schema/enrolLtiContexts";
 
-export const createEnrolLtiContext = async (enrolLtiContext: NewEnrolLtiContextParams) => {
+export const createEnrolLtiContext = async (
+  enrolLtiContext: NewEnrolLtiContextParams,
+) => {
   const newEnrolLtiContext = insertEnrolLtiContextSchema.parse(enrolLtiContext);
   try {
-    const [e] =  await db.insert(enrolLtiContexts).values(newEnrolLtiContext).returning();
+    const [e] = await db
+      .insert(enrolLtiContexts)
+      .values(newEnrolLtiContext)
+      .returning();
     return { enrolLtiContext: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,18 @@ export const createEnrolLtiContext = async (enrolLtiContext: NewEnrolLtiContextP
   }
 };
 
-export const updateEnrolLtiContext = async (id: EnrolLtiContextId, enrolLtiContext: UpdateEnrolLtiContextParams) => {
+export const updateEnrolLtiContext = async (
+  id: EnrolLtiContextId,
+  enrolLtiContext: UpdateEnrolLtiContextParams,
+) => {
   const { id: enrolLtiContextId } = enrolLtiContextIdSchema.parse({ id });
   const newEnrolLtiContext = updateEnrolLtiContextSchema.parse(enrolLtiContext);
   try {
-    const [e] =  await db
-     .update(enrolLtiContexts)
-     .set({...newEnrolLtiContext, updatedAt: new Date() })
-     .where(eq(enrolLtiContexts.id, enrolLtiContextId!))
-     .returning();
+    const [e] = await db
+      .update(enrolLtiContexts)
+      .set({ ...newEnrolLtiContext, updatedAt: new Date() })
+      .where(eq(enrolLtiContexts.id, enrolLtiContextId!))
+      .returning();
     return { enrolLtiContext: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +52,10 @@ export const updateEnrolLtiContext = async (id: EnrolLtiContextId, enrolLtiConte
 export const deleteEnrolLtiContext = async (id: EnrolLtiContextId) => {
   const { id: enrolLtiContextId } = enrolLtiContextIdSchema.parse({ id });
   try {
-    const [e] =  await db.delete(enrolLtiContexts).where(eq(enrolLtiContexts.id, enrolLtiContextId!))
-    .returning();
+    const [e] = await db
+      .delete(enrolLtiContexts)
+      .where(eq(enrolLtiContexts.id, enrolLtiContextId!))
+      .returning();
     return { enrolLtiContext: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +63,3 @@ export const deleteEnrolLtiContext = async (id: EnrolLtiContextId) => {
     throw { error: message };
   }
 };
-

@@ -1,19 +1,29 @@
-import { getBlockRecentActivityById, getBlockRecentActivities } from "../api/blockRecentActivities/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   blockRecentActivityIdSchema,
   insertBlockRecentActivityParams,
   updateBlockRecentActivityParams,
 } from "@soco/block-db/schema/blockRecentActivities";
-import { createBlockRecentActivity, deleteBlockRecentActivity, updateBlockRecentActivity } from "../api/blockRecentActivities/mutations";
 
-export const blockRecentActivitiesRouter =createTRPCRouter({
+import {
+  createBlockRecentActivity,
+  deleteBlockRecentActivity,
+  updateBlockRecentActivity,
+} from "../api/blockRecentActivities/mutations";
+import {
+  getBlockRecentActivities,
+  getBlockRecentActivityById,
+} from "../api/blockRecentActivities/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const blockRecentActivitiesRouter = createTRPCRouter({
   getBlockRecentActivities: publicProcedure.query(async () => {
     return getBlockRecentActivities();
   }),
-  getBlockRecentActivityById: publicProcedure.input(blockRecentActivityIdSchema).query(async ({ input }) => {
-    return getBlockRecentActivityById(input.id);
-  }),
+  getBlockRecentActivityById: publicProcedure
+    .input(blockRecentActivityIdSchema)
+    .query(async ({ input }) => {
+      return getBlockRecentActivityById(input.id);
+    }),
   createBlockRecentActivity: publicProcedure
     .input(insertBlockRecentActivityParams)
     .mutation(async ({ input }) => {

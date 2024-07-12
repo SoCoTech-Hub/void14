@@ -1,19 +1,29 @@
-import { getQuestionNumericalById, getQuestionNumericals } from "../api/questionNumericals/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  questionNumericalIdSchema,
   insertQuestionNumericalParams,
+  questionNumericalIdSchema,
   updateQuestionNumericalParams,
 } from "@soco/question-db/schema/questionNumericals";
-import { createQuestionNumerical, deleteQuestionNumerical, updateQuestionNumerical } from "../api/questionNumericals/mutations";
 
-export const questionNumericalsRouter =createTRPCRouter({
+import {
+  createQuestionNumerical,
+  deleteQuestionNumerical,
+  updateQuestionNumerical,
+} from "../api/questionNumericals/mutations";
+import {
+  getQuestionNumericalById,
+  getQuestionNumericals,
+} from "../api/questionNumericals/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const questionNumericalsRouter = createTRPCRouter({
   getQuestionNumericals: publicProcedure.query(async () => {
     return getQuestionNumericals();
   }),
-  getQuestionNumericalById: publicProcedure.input(questionNumericalIdSchema).query(async ({ input }) => {
-    return getQuestionNumericalById(input.id);
-  }),
+  getQuestionNumericalById: publicProcedure
+    .input(questionNumericalIdSchema)
+    .query(async ({ input }) => {
+      return getQuestionNumericalById(input.id);
+    }),
   createQuestionNumerical: publicProcedure
     .input(insertQuestionNumericalParams)
     .mutation(async ({ input }) => {

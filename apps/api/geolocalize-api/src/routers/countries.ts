@@ -1,19 +1,26 @@
-import { getCountryById, getCountries } from "../api/countries/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   countryIdSchema,
   insertCountryParams,
   updateCountryParams,
 } from "@soco/geolocalize-db/schema/countries";
-import { createCountry, deleteCountry, updateCountry } from "../api/countries/mutations";
 
-export const countriesRouter =createTRPCRouter({
+import {
+  createCountry,
+  deleteCountry,
+  updateCountry,
+} from "../api/countries/mutations";
+import { getCountries, getCountryById } from "../api/countries/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const countriesRouter = createTRPCRouter({
   getCountries: publicProcedure.query(async () => {
     return getCountries();
   }),
-  getCountryById: publicProcedure.input(countryIdSchema).query(async ({ input }) => {
-    return getCountryById(input.id);
-  }),
+  getCountryById: publicProcedure
+    .input(countryIdSchema)
+    .query(async ({ input }) => {
+      return getCountryById(input.id);
+    }),
   createCountry: publicProcedure
     .input(insertCountryParams)
     .mutation(async ({ input }) => {

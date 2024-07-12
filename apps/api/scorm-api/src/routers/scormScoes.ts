@@ -1,19 +1,26 @@
-import { getScormScoeById, getScormScoes } from "../api/scormScoes/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  scormScoeIdSchema,
   insertScormScoeParams,
+  scormScoeIdSchema,
   updateScormScoeParams,
 } from "@soco/scorm-db/schema/scormScoes";
-import { createScormScoe, deleteScormScoe, updateScormScoe } from "../api/scormScoes/mutations";
 
-export const scormScoesRouter =createTRPCRouter({
+import {
+  createScormScoe,
+  deleteScormScoe,
+  updateScormScoe,
+} from "../api/scormScoes/mutations";
+import { getScormScoeById, getScormScoes } from "../api/scormScoes/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const scormScoesRouter = createTRPCRouter({
   getScormScoes: publicProcedure.query(async () => {
     return getScormScoes();
   }),
-  getScormScoeById: publicProcedure.input(scormScoeIdSchema).query(async ({ input }) => {
-    return getScormScoeById(input.id);
-  }),
+  getScormScoeById: publicProcedure
+    .input(scormScoeIdSchema)
+    .query(async ({ input }) => {
+      return getScormScoeById(input.id);
+    }),
   createScormScoe: publicProcedure
     .input(insertScormScoeParams)
     .mutation(async ({ input }) => {

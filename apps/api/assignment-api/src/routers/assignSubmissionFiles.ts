@@ -1,19 +1,29 @@
-import { getAssignSubmissionFileById, getAssignSubmissionFiles } from "../api/assignSubmissionFiles/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   assignSubmissionFileIdSchema,
   insertAssignSubmissionFileParams,
   updateAssignSubmissionFileParams,
 } from "@soco/assignment-db/schema/assignSubmissionFiles";
-import { createAssignSubmissionFile, deleteAssignSubmissionFile, updateAssignSubmissionFile } from "../api/assignSubmissionFiles/mutations";
 
-export const assignSubmissionFilesRouter =createTRPCRouter({
+import {
+  createAssignSubmissionFile,
+  deleteAssignSubmissionFile,
+  updateAssignSubmissionFile,
+} from "../api/assignSubmissionFiles/mutations";
+import {
+  getAssignSubmissionFileById,
+  getAssignSubmissionFiles,
+} from "../api/assignSubmissionFiles/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const assignSubmissionFilesRouter = createTRPCRouter({
   getAssignSubmissionFiles: publicProcedure.query(async () => {
     return getAssignSubmissionFiles();
   }),
-  getAssignSubmissionFileById: publicProcedure.input(assignSubmissionFileIdSchema).query(async ({ input }) => {
-    return getAssignSubmissionFileById(input.id);
-  }),
+  getAssignSubmissionFileById: publicProcedure
+    .input(assignSubmissionFileIdSchema)
+    .query(async ({ input }) => {
+      return getAssignSubmissionFileById(input.id);
+    }),
   createAssignSubmissionFile: publicProcedure
     .input(insertAssignSubmissionFileParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,26 @@
-import { getQuizReportById, getQuizReports } from "../api/quizReports/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  quizReportIdSchema,
   insertQuizReportParams,
+  quizReportIdSchema,
   updateQuizReportParams,
 } from "@soco/quiz-db/schema/quizReports";
-import { createQuizReport, deleteQuizReport, updateQuizReport } from "../api/quizReports/mutations";
 
-export const quizReportsRouter =createTRPCRouter({
+import {
+  createQuizReport,
+  deleteQuizReport,
+  updateQuizReport,
+} from "../api/quizReports/mutations";
+import { getQuizReportById, getQuizReports } from "../api/quizReports/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const quizReportsRouter = createTRPCRouter({
   getQuizReports: publicProcedure.query(async () => {
     return getQuizReports();
   }),
-  getQuizReportById: publicProcedure.input(quizReportIdSchema).query(async ({ input }) => {
-    return getQuizReportById(input.id);
-  }),
+  getQuizReportById: publicProcedure
+    .input(quizReportIdSchema)
+    .query(async ({ input }) => {
+      return getQuizReportById(input.id);
+    }),
   createQuizReport: publicProcedure
     .input(insertQuizReportParams)
     .mutation(async ({ input }) => {

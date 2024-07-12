@@ -1,19 +1,29 @@
-import { getBigBlueButtonBnLogById, getBigBlueButtonBnLogs } from "../api/bigBlueButtonBnLogs/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   bigBlueButtonBnLogIdSchema,
   insertBigBlueButtonBnLogParams,
   updateBigBlueButtonBnLogParams,
 } from "@soco/big-blue-button-db/schema/bigBlueButtonBnLogs";
-import { createBigBlueButtonBnLog, deleteBigBlueButtonBnLog, updateBigBlueButtonBnLog } from "../api/bigBlueButtonBnLogs/mutations";
 
-export const bigBlueButtonBnLogsRouter =createTRPCRouter({
+import {
+  createBigBlueButtonBnLog,
+  deleteBigBlueButtonBnLog,
+  updateBigBlueButtonBnLog,
+} from "../api/bigBlueButtonBnLogs/mutations";
+import {
+  getBigBlueButtonBnLogById,
+  getBigBlueButtonBnLogs,
+} from "../api/bigBlueButtonBnLogs/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const bigBlueButtonBnLogsRouter = createTRPCRouter({
   getBigBlueButtonBnLogs: publicProcedure.query(async () => {
     return getBigBlueButtonBnLogs();
   }),
-  getBigBlueButtonBnLogById: publicProcedure.input(bigBlueButtonBnLogIdSchema).query(async ({ input }) => {
-    return getBigBlueButtonBnLogById(input.id);
-  }),
+  getBigBlueButtonBnLogById: publicProcedure
+    .input(bigBlueButtonBnLogIdSchema)
+    .query(async ({ input }) => {
+      return getBigBlueButtonBnLogById(input.id);
+    }),
   createBigBlueButtonBnLog: publicProcedure
     .input(insertBigBlueButtonBnLogParams)
     .mutation(async ({ input }) => {

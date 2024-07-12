@@ -1,10 +1,11 @@
-import { db } from "@soco/book-db/client";
+import type { BookId } from "@soco/book-db/schema/books";
 import { eq } from "@soco/book-db";
-import { type BookId, bookIdSchema, books } from "@soco/book-db/schema/books";
+import { db } from "@soco/book-db/client";
+import { bookIdSchema, books } from "@soco/book-db/schema/books";
 
 export const getBooks = async () => {
   const rows = await db.select().from(books);
-  const b = rows
+  const b = rows;
   return { books: b };
 };
 
@@ -15,5 +16,3 @@ export const getBookById = async (id: BookId) => {
   const b = row;
   return { book: b };
 };
-
-

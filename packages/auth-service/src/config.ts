@@ -76,7 +76,7 @@ export const invalidateSessionToken = async (token: string) => {
 
 // TODO: Need to fix the auth section below
 export interface AuthSession {
-  session: {
+  Session: {
     user: {
       id: string;
       name?: string;
@@ -87,9 +87,9 @@ export interface AuthSession {
 }
 export const getUserAuth = async (): Promise<AuthSession> => {
   const { session, user } = await validateRequest();
-  if (!session) return { session: null };
+  if (!session) return { Session: null };
   return {
-    session: {
+    Session: {
       user: {
         id: user.id,
         email: user.email,
@@ -135,3 +135,12 @@ export const validateAuthFormData = (
 
   return { data: result.data, error: null };
 };
+function validateRequest():
+  | { session: any; user: any }
+  | PromiseLike<{ session: any; user: any }> {
+  throw new Error("Function not implemented.");
+}
+
+function redirect(arg0: string) {
+  throw new Error("Function not implemented.");
+}

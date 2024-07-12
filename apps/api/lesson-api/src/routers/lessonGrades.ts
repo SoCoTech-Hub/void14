@@ -1,19 +1,29 @@
-import { getLessonGradeById, getLessonGrades } from "../api/lessonGrades/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  lessonGradeIdSchema,
   insertLessonGradeParams,
+  lessonGradeIdSchema,
   updateLessonGradeParams,
 } from "@soco/lesson-db/schema/lessonGrades";
-import { createLessonGrade, deleteLessonGrade, updateLessonGrade } from "../api/lessonGrades/mutations";
 
-export const lessonGradesRouter =createTRPCRouter({
+import {
+  createLessonGrade,
+  deleteLessonGrade,
+  updateLessonGrade,
+} from "../api/lessonGrades/mutations";
+import {
+  getLessonGradeById,
+  getLessonGrades,
+} from "../api/lessonGrades/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const lessonGradesRouter = createTRPCRouter({
   getLessonGrades: publicProcedure.query(async () => {
     return getLessonGrades();
   }),
-  getLessonGradeById: publicProcedure.input(lessonGradeIdSchema).query(async ({ input }) => {
-    return getLessonGradeById(input.id);
-  }),
+  getLessonGradeById: publicProcedure
+    .input(lessonGradeIdSchema)
+    .query(async ({ input }) => {
+      return getLessonGradeById(input.id);
+    }),
   createLessonGrade: publicProcedure
     .input(insertLessonGradeParams)
     .mutation(async ({ input }) => {

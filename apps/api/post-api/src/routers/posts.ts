@@ -1,13 +1,14 @@
-import { getPostById, getPosts } from "../api/posts/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  postIdSchema,
   insertPostParams,
+  postIdSchema,
   updatePostParams,
 } from "@soco/post-db/schema/posts";
-import { createPost, deletePost, updatePost } from "../api/posts/mutations";
 
-export const postsRouter =createTRPCRouter({
+import { createPost, deletePost, updatePost } from "../api/posts/mutations";
+import { getPostById, getPosts } from "../api/posts/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const postsRouter = createTRPCRouter({
   getPosts: publicProcedure.query(async () => {
     return getPosts();
   }),

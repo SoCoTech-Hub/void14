@@ -1,19 +1,29 @@
-import { getUserPasswordHistoryById, getUserPasswordHistories } from "../api/userPasswordHistories/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  userPasswordHistoryIdSchema,
   insertUserPasswordHistoryParams,
   updateUserPasswordHistoryParams,
+  userPasswordHistoryIdSchema,
 } from "@soco/user-db/schema/userPasswordHistories";
-import { createUserPasswordHistory, deleteUserPasswordHistory, updateUserPasswordHistory } from "../api/userPasswordHistories/mutations";
 
-export const userPasswordHistoriesRouter =createTRPCRouter({
+import {
+  createUserPasswordHistory,
+  deleteUserPasswordHistory,
+  updateUserPasswordHistory,
+} from "../api/userPasswordHistories/mutations";
+import {
+  getUserPasswordHistories,
+  getUserPasswordHistoryById,
+} from "../api/userPasswordHistories/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const userPasswordHistoriesRouter = createTRPCRouter({
   getUserPasswordHistories: publicProcedure.query(async () => {
     return getUserPasswordHistories();
   }),
-  getUserPasswordHistoryById: publicProcedure.input(userPasswordHistoryIdSchema).query(async ({ input }) => {
-    return getUserPasswordHistoryById(input.id);
-  }),
+  getUserPasswordHistoryById: publicProcedure
+    .input(userPasswordHistoryIdSchema)
+    .query(async ({ input }) => {
+      return getUserPasswordHistoryById(input.id);
+    }),
   createUserPasswordHistory: publicProcedure
     .input(insertUserPasswordHistoryParams)
     .mutation(async ({ input }) => {

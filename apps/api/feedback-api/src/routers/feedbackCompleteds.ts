@@ -1,19 +1,29 @@
-import { getFeedbackCompletedById, getFeedbackCompleteds } from "../api/feedbackCompleteds/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   feedbackCompletedIdSchema,
   insertFeedbackCompletedParams,
   updateFeedbackCompletedParams,
 } from "@soco/feedback-db/schema/feedbackCompleteds";
-import { createFeedbackCompleted, deleteFeedbackCompleted, updateFeedbackCompleted } from "../api/feedbackCompleteds/mutations";
 
-export const feedbackCompletedsRouter =createTRPCRouter({
+import {
+  createFeedbackCompleted,
+  deleteFeedbackCompleted,
+  updateFeedbackCompleted,
+} from "../api/feedbackCompleteds/mutations";
+import {
+  getFeedbackCompletedById,
+  getFeedbackCompleteds,
+} from "../api/feedbackCompleteds/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const feedbackCompletedsRouter = createTRPCRouter({
   getFeedbackCompleteds: publicProcedure.query(async () => {
     return getFeedbackCompleteds();
   }),
-  getFeedbackCompletedById: publicProcedure.input(feedbackCompletedIdSchema).query(async ({ input }) => {
-    return getFeedbackCompletedById(input.id);
-  }),
+  getFeedbackCompletedById: publicProcedure
+    .input(feedbackCompletedIdSchema)
+    .query(async ({ input }) => {
+      return getFeedbackCompletedById(input.id);
+    }),
   createFeedbackCompleted: publicProcedure
     .input(insertFeedbackCompletedParams)
     .mutation(async ({ input }) => {

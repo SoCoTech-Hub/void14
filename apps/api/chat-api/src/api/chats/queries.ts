@@ -1,10 +1,11 @@
-import { db } from "@soco/chat-db/client";
+import type { ChatId } from "@soco/chat-db/schema/chats";
 import { eq } from "@soco/chat-db";
-import { type ChatId, chatIdSchema, chats } from "@soco/chat-db/schema/chats";
+import { db } from "@soco/chat-db/client";
+import { chatIdSchema, chats } from "@soco/chat-db/schema/chats";
 
 export const getChats = async () => {
   const rows = await db.select().from(chats);
-  const c = rows
+  const c = rows;
   return { chats: c };
 };
 
@@ -15,5 +16,3 @@ export const getChatById = async (id: ChatId) => {
   const c = row;
   return { chat: c };
 };
-
-

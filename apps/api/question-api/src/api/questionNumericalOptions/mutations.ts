@@ -1,19 +1,28 @@
-import { db } from "@soco/question-db/client";
+import type {
+  NewQuestionNumericalOptionParams,
+  QuestionNumericalOptionId,
+  UpdateQuestionNumericalOptionParams,
+} from "@soco/question-db/schema/questionNumericalOptions";
 import { eq } from "@soco/question-db";
-import { 
-  type QuestionNumericalOptionId, 
-  type NewQuestionNumericalOptionParams,
-  type UpdateQuestionNumericalOptionParams, 
-  updateQuestionNumericalOptionSchema,
-  insertQuestionNumericalOptionSchema, 
+import { db } from "@soco/question-db/client";
+import {
+  insertQuestionNumericalOptionSchema,
+  questionNumericalOptionIdSchema,
   questionNumericalOptions,
-  questionNumericalOptionIdSchema 
+  updateQuestionNumericalOptionSchema,
 } from "@soco/question-db/schema/questionNumericalOptions";
 
-export const createQuestionNumericalOption = async (questionNumericalOption: NewQuestionNumericalOptionParams) => {
-  const newQuestionNumericalOption = insertQuestionNumericalOptionSchema.parse(questionNumericalOption);
+export const createQuestionNumericalOption = async (
+  questionNumericalOption: NewQuestionNumericalOptionParams,
+) => {
+  const newQuestionNumericalOption = insertQuestionNumericalOptionSchema.parse(
+    questionNumericalOption,
+  );
   try {
-    const [q] =  await db.insert(questionNumericalOptions).values(newQuestionNumericalOption).returning();
+    const [q] = await db
+      .insert(questionNumericalOptions)
+      .values(newQuestionNumericalOption)
+      .returning();
     return { questionNumericalOption: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +31,21 @@ export const createQuestionNumericalOption = async (questionNumericalOption: New
   }
 };
 
-export const updateQuestionNumericalOption = async (id: QuestionNumericalOptionId, questionNumericalOption: UpdateQuestionNumericalOptionParams) => {
-  const { id: questionNumericalOptionId } = questionNumericalOptionIdSchema.parse({ id });
-  const newQuestionNumericalOption = updateQuestionNumericalOptionSchema.parse(questionNumericalOption);
+export const updateQuestionNumericalOption = async (
+  id: QuestionNumericalOptionId,
+  questionNumericalOption: UpdateQuestionNumericalOptionParams,
+) => {
+  const { id: questionNumericalOptionId } =
+    questionNumericalOptionIdSchema.parse({ id });
+  const newQuestionNumericalOption = updateQuestionNumericalOptionSchema.parse(
+    questionNumericalOption,
+  );
   try {
-    const [q] =  await db
-     .update(questionNumericalOptions)
-     .set(newQuestionNumericalOption)
-     .where(eq(questionNumericalOptions.id, questionNumericalOptionId!))
-     .returning();
+    const [q] = await db
+      .update(questionNumericalOptions)
+      .set(newQuestionNumericalOption)
+      .where(eq(questionNumericalOptions.id, questionNumericalOptionId!))
+      .returning();
     return { questionNumericalOption: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +54,16 @@ export const updateQuestionNumericalOption = async (id: QuestionNumericalOptionI
   }
 };
 
-export const deleteQuestionNumericalOption = async (id: QuestionNumericalOptionId) => {
-  const { id: questionNumericalOptionId } = questionNumericalOptionIdSchema.parse({ id });
+export const deleteQuestionNumericalOption = async (
+  id: QuestionNumericalOptionId,
+) => {
+  const { id: questionNumericalOptionId } =
+    questionNumericalOptionIdSchema.parse({ id });
   try {
-    const [q] =  await db.delete(questionNumericalOptions).where(eq(questionNumericalOptions.id, questionNumericalOptionId!))
-    .returning();
+    const [q] = await db
+      .delete(questionNumericalOptions)
+      .where(eq(questionNumericalOptions.id, questionNumericalOptionId!))
+      .returning();
     return { questionNumericalOption: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +71,3 @@ export const deleteQuestionNumericalOption = async (id: QuestionNumericalOptionI
     throw { error: message };
   }
 };
-

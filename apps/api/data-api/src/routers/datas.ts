@@ -1,13 +1,14 @@
-import { getDataById, getDatas } from "../api/datas/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   dataIdSchema,
   insertDataParams,
   updateDataParams,
 } from "@soco/data-db/schema/datas";
-import { createData, deleteData, updateData } from "../api/datas/mutations";
 
-export const datasRouter =createTRPCRouter({
+import { createData, deleteData, updateData } from "../api/datas/mutations";
+import { getDataById, getDatas } from "../api/datas/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const datasRouter = createTRPCRouter({
   getDatas: publicProcedure.query(async () => {
     return getDatas();
   }),

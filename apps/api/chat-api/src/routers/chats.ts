@@ -1,13 +1,14 @@
-import { getChatById, getChats } from "../api/chats/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   chatIdSchema,
   insertChatParams,
   updateChatParams,
 } from "@soco/chat-db/schema/chats";
-import { createChat, deleteChat, updateChat } from "../api/chats/mutations";
 
-export const chatsRouter =createTRPCRouter({
+import { createChat, deleteChat, updateChat } from "../api/chats/mutations";
+import { getChatById, getChats } from "../api/chats/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const chatsRouter = createTRPCRouter({
   getChats: publicProcedure.query(async () => {
     return getChats();
   }),

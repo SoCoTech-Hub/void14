@@ -1,21 +1,31 @@
-import { db } from "@soco/workshop-db/client";
-import { and, eq } from "@soco/workshop-db";
-import { 
-  type WorkshopGradeId, 
-  type NewWorkshopGradeParams,
-  type UpdateWorkshopGradeParams, 
-  updateWorkshopGradeSchema,
-  insertWorkshopGradeSchema, 
-  workshopGrades,
-  workshopGradeIdSchema 
+import type {
+  NewWorkshopGradeParams,
+  UpdateWorkshopGradeParams,
+  WorkshopGradeId,
 } from "@soco/workshop-db/schema/workshopGrades";
 import { getUserAuth } from "@soco/auth-service";
+import { and, eq } from "@soco/workshop-db";
+import { db } from "@soco/workshop-db/client";
+import {
+  insertWorkshopGradeSchema,
+  updateWorkshopGradeSchema,
+  workshopGradeIdSchema,
+  workshopGrades,
+} from "@soco/workshop-db/schema/workshopGrades";
 
-export const createWorkshopGrade = async (workshopGrade: NewWorkshopGradeParams) => {
+export const createWorkshopGrade = async (
+  workshopGrade: NewWorkshopGradeParams,
+) => {
   const { session } = await getUserAuth();
-  const newWorkshopGrade = insertWorkshopGradeSchema.parse({ ...workshopGrade, userId: session?.user.id! });
+  const newWorkshopGrade = insertWorkshopGradeSchema.parse({
+    ...workshopGrade,
+    userId: session?.user.id!,
+  });
   try {
-    const [w] =  await db.insert(workshopGrades).values(newWorkshopGrade).returning();
+    const [w] = await db
+      .insert(workshopGrades)
+      .values(newWorkshopGrade)
+      .returning();
     return { workshopGrade: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +34,27 @@ export const createWorkshopGrade = async (workshopGrade: NewWorkshopGradeParams)
   }
 };
 
-export const updateWorkshopGrade = async (id: WorkshopGradeId, workshopGrade: UpdateWorkshopGradeParams) => {
+export const updateWorkshopGrade = async (
+  id: WorkshopGradeId,
+  workshopGrade: UpdateWorkshopGradeParams,
+) => {
   const { session } = await getUserAuth();
   const { id: workshopGradeId } = workshopGradeIdSchema.parse({ id });
-  const newWorkshopGrade = updateWorkshopGradeSchema.parse({ ...workshopGrade, userId: session?.user.id! });
+  const newWorkshopGrade = updateWorkshopGradeSchema.parse({
+    ...workshopGrade,
+    userId: session?.user.id!,
+  });
   try {
-    const [w] =  await db
-     .update(workshopGrades)
-     .set(newWorkshopGrade)
-     .where(and(eq(workshopGrades.id, workshopGradeId!), eq(workshopGrades.userId, session?.user.id!)))
-     .returning();
+    const [w] = await db
+      .update(workshopGrades)
+      .set(newWorkshopGrade)
+      .where(
+        and(
+          eq(workshopGrades.id, workshopGradeId!),
+          eq(workshopGrades.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { workshopGrade: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -46,8 +67,15 @@ export const deleteWorkshopGrade = async (id: WorkshopGradeId) => {
   const { session } = await getUserAuth();
   const { id: workshopGradeId } = workshopGradeIdSchema.parse({ id });
   try {
-    const [w] =  await db.delete(workshopGrades).where(and(eq(workshopGrades.id, workshopGradeId!), eq(workshopGrades.userId, session?.user.id!)))
-    .returning();
+    const [w] = await db
+      .delete(workshopGrades)
+      .where(
+        and(
+          eq(workshopGrades.id, workshopGradeId!),
+          eq(workshopGrades.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { workshopGrade: w };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +83,3 @@ export const deleteWorkshopGrade = async (id: WorkshopGradeId) => {
     throw { error: message };
   }
 };
-

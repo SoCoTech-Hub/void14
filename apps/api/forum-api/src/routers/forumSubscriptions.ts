@@ -1,19 +1,29 @@
-import { getForumSubscriptionById, getForumSubscriptions } from "../api/forumSubscriptions/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   forumSubscriptionIdSchema,
   insertForumSubscriptionParams,
   updateForumSubscriptionParams,
 } from "@soco/forum-db/schema/forumSubscriptions";
-import { createForumSubscription, deleteForumSubscription, updateForumSubscription } from "../api/forumSubscriptions/mutations";
 
-export const forumSubscriptionsRouter =createTRPCRouter({
+import {
+  createForumSubscription,
+  deleteForumSubscription,
+  updateForumSubscription,
+} from "../api/forumSubscriptions/mutations";
+import {
+  getForumSubscriptionById,
+  getForumSubscriptions,
+} from "../api/forumSubscriptions/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const forumSubscriptionsRouter = createTRPCRouter({
   getForumSubscriptions: publicProcedure.query(async () => {
     return getForumSubscriptions();
   }),
-  getForumSubscriptionById: publicProcedure.input(forumSubscriptionIdSchema).query(async ({ input }) => {
-    return getForumSubscriptionById(input.id);
-  }),
+  getForumSubscriptionById: publicProcedure
+    .input(forumSubscriptionIdSchema)
+    .query(async ({ input }) => {
+      return getForumSubscriptionById(input.id);
+    }),
   createForumSubscription: publicProcedure
     .input(insertForumSubscriptionParams)
     .mutation(async ({ input }) => {

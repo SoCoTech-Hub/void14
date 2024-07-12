@@ -1,19 +1,29 @@
-import { getEnrolLtiLti2ToolProxyById, getEnrolLtiLti2ToolProxys } from "../api/enrolLtiLti2ToolProxys/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   enrolLtiLti2ToolProxyIdSchema,
   insertEnrolLtiLti2ToolProxyParams,
   updateEnrolLtiLti2ToolProxyParams,
 } from "@soco/enrol-db/schema/enrolLtiLti2ToolProxys";
-import { createEnrolLtiLti2ToolProxy, deleteEnrolLtiLti2ToolProxy, updateEnrolLtiLti2ToolProxy } from "../api/enrolLtiLti2ToolProxys/mutations";
 
-export const enrolLtiLti2ToolProxysRouter =createTRPCRouter({
+import {
+  createEnrolLtiLti2ToolProxy,
+  deleteEnrolLtiLti2ToolProxy,
+  updateEnrolLtiLti2ToolProxy,
+} from "../api/enrolLtiLti2ToolProxys/mutations";
+import {
+  getEnrolLtiLti2ToolProxyById,
+  getEnrolLtiLti2ToolProxys,
+} from "../api/enrolLtiLti2ToolProxys/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const enrolLtiLti2ToolProxysRouter = createTRPCRouter({
   getEnrolLtiLti2ToolProxys: publicProcedure.query(async () => {
     return getEnrolLtiLti2ToolProxys();
   }),
-  getEnrolLtiLti2ToolProxyById: publicProcedure.input(enrolLtiLti2ToolProxyIdSchema).query(async ({ input }) => {
-    return getEnrolLtiLti2ToolProxyById(input.id);
-  }),
+  getEnrolLtiLti2ToolProxyById: publicProcedure
+    .input(enrolLtiLti2ToolProxyIdSchema)
+    .query(async ({ input }) => {
+      return getEnrolLtiLti2ToolProxyById(input.id);
+    }),
   createEnrolLtiLti2ToolProxy: publicProcedure
     .input(insertEnrolLtiLti2ToolProxyParams)
     .mutation(async ({ input }) => {

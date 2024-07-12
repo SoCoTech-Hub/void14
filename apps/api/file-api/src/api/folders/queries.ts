@@ -1,10 +1,11 @@
-import { db } from "@soco/file-db/client";
+import type { FolderId } from "@soco/file-db/schema/folders";
 import { eq } from "@soco/file-db";
-import { type FolderId, folderIdSchema, folders } from "@soco/file-db/schema/folders";
+import { db } from "@soco/file-db/client";
+import { folderIdSchema, folders } from "@soco/file-db/schema/folders";
 
 export const getFolders = async () => {
   const rows = await db.select().from(folders);
-  const f = rows
+  const f = rows;
   return { folders: f };
 };
 
@@ -15,5 +16,3 @@ export const getFolderById = async (id: FolderId) => {
   const f = row;
   return { folder: f };
 };
-
-

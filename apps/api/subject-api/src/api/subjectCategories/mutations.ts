@@ -1,19 +1,26 @@
-import { db } from "@soco/subject-db/client";
+import type {
+  NewSubjectCategoryParams,
+  SubjectCategoryId,
+  UpdateSubjectCategoryParams,
+} from "@soco/subject-db/schema/subjectCategories";
 import { eq } from "@soco/subject-db";
-import { 
-  type SubjectCategoryId, 
-  type NewSubjectCategoryParams,
-  type UpdateSubjectCategoryParams, 
-  updateSubjectCategorySchema,
-  insertSubjectCategorySchema, 
+import { db } from "@soco/subject-db/client";
+import {
+  insertSubjectCategorySchema,
   subjectCategories,
-  subjectCategoryIdSchema 
+  subjectCategoryIdSchema,
+  updateSubjectCategorySchema,
 } from "@soco/subject-db/schema/subjectCategories";
 
-export const createSubjectCategory = async (subjectCategory: NewSubjectCategoryParams) => {
+export const createSubjectCategory = async (
+  subjectCategory: NewSubjectCategoryParams,
+) => {
   const newSubjectCategory = insertSubjectCategorySchema.parse(subjectCategory);
   try {
-    const [s] =  await db.insert(subjectCategories).values(newSubjectCategory).returning();
+    const [s] = await db
+      .insert(subjectCategories)
+      .values(newSubjectCategory)
+      .returning();
     return { subjectCategory: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,18 @@ export const createSubjectCategory = async (subjectCategory: NewSubjectCategoryP
   }
 };
 
-export const updateSubjectCategory = async (id: SubjectCategoryId, subjectCategory: UpdateSubjectCategoryParams) => {
+export const updateSubjectCategory = async (
+  id: SubjectCategoryId,
+  subjectCategory: UpdateSubjectCategoryParams,
+) => {
   const { id: subjectCategoryId } = subjectCategoryIdSchema.parse({ id });
   const newSubjectCategory = updateSubjectCategorySchema.parse(subjectCategory);
   try {
-    const [s] =  await db
-     .update(subjectCategories)
-     .set(newSubjectCategory)
-     .where(eq(subjectCategories.id, subjectCategoryId!))
-     .returning();
+    const [s] = await db
+      .update(subjectCategories)
+      .set(newSubjectCategory)
+      .where(eq(subjectCategories.id, subjectCategoryId!))
+      .returning();
     return { subjectCategory: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +52,10 @@ export const updateSubjectCategory = async (id: SubjectCategoryId, subjectCatego
 export const deleteSubjectCategory = async (id: SubjectCategoryId) => {
   const { id: subjectCategoryId } = subjectCategoryIdSchema.parse({ id });
   try {
-    const [s] =  await db.delete(subjectCategories).where(eq(subjectCategories.id, subjectCategoryId!))
-    .returning();
+    const [s] = await db
+      .delete(subjectCategories)
+      .where(eq(subjectCategories.id, subjectCategoryId!))
+      .returning();
     return { subjectCategory: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +63,3 @@ export const deleteSubjectCategory = async (id: SubjectCategoryId) => {
     throw { error: message };
   }
 };
-

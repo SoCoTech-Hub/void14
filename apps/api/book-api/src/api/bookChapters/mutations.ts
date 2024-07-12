@@ -1,14 +1,16 @@
+import type {
+  BookChapterId,
+  NewBookChapterParams,
+  UpdateBookChapterParams,
+} from "@soco/book-db/schema/bookChapters";
+import { eq } from "@soco/book-db";
 import { db } from "@soco/book-db/client";
 import {
-  type BookChapterId,
   bookChapterIdSchema,
   bookChapters,
   insertBookChapterSchema,
-  type NewBookChapterParams,
-  type UpdateBookChapterParams,
   updateBookChapterSchema,
 } from "@soco/book-db/schema/bookChapters";
-import { eq } from "@soco/book-db";
 
 export const createBookChapter = async (bookChapter: NewBookChapterParams) => {
   const newBookChapter = insertBookChapterSchema.parse(bookChapter);

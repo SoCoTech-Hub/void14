@@ -1,19 +1,29 @@
-import { getQuestionTruefalseById, getQuestionTruefalse } from "../api/questionTruefalse/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  questionTruefalseIdSchema,
   insertQuestionTruefalseParams,
+  questionTruefalseIdSchema,
   updateQuestionTruefalseParams,
 } from "@soco/question-db/schema/questionTruefalse";
-import { createQuestionTruefalse, deleteQuestionTruefalse, updateQuestionTruefalse } from "../api/questionTruefalse/mutations";
 
-export const questionTruefalseRouter =createTRPCRouter({
+import {
+  createQuestionTruefalse,
+  deleteQuestionTruefalse,
+  updateQuestionTruefalse,
+} from "../api/questionTruefalse/mutations";
+import {
+  getQuestionTruefalse,
+  getQuestionTruefalseById,
+} from "../api/questionTruefalse/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const questionTruefalseRouter = createTRPCRouter({
   getQuestionTruefalse: publicProcedure.query(async () => {
     return getQuestionTruefalse();
   }),
-  getQuestionTruefalseById: publicProcedure.input(questionTruefalseIdSchema).query(async ({ input }) => {
-    return getQuestionTruefalseById(input.id);
-  }),
+  getQuestionTruefalseById: publicProcedure
+    .input(questionTruefalseIdSchema)
+    .query(async ({ input }) => {
+      return getQuestionTruefalseById(input.id);
+    }),
   createQuestionTruefalse: publicProcedure
     .input(insertQuestionTruefalseParams)
     .mutation(async ({ input }) => {

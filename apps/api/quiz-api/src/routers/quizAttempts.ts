@@ -1,19 +1,29 @@
-import { getQuizAttemptById, getQuizAttempts } from "../api/quizAttempts/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  quizAttemptIdSchema,
   insertQuizAttemptParams,
+  quizAttemptIdSchema,
   updateQuizAttemptParams,
 } from "@soco/quiz-db/schema/quizAttempts";
-import { createQuizAttempt, deleteQuizAttempt, updateQuizAttempt } from "../api/quizAttempts/mutations";
 
-export const quizAttemptsRouter =createTRPCRouter({
+import {
+  createQuizAttempt,
+  deleteQuizAttempt,
+  updateQuizAttempt,
+} from "../api/quizAttempts/mutations";
+import {
+  getQuizAttemptById,
+  getQuizAttempts,
+} from "../api/quizAttempts/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const quizAttemptsRouter = createTRPCRouter({
   getQuizAttempts: publicProcedure.query(async () => {
     return getQuizAttempts();
   }),
-  getQuizAttemptById: publicProcedure.input(quizAttemptIdSchema).query(async ({ input }) => {
-    return getQuizAttemptById(input.id);
-  }),
+  getQuizAttemptById: publicProcedure
+    .input(quizAttemptIdSchema)
+    .query(async ({ input }) => {
+      return getQuizAttemptById(input.id);
+    }),
   createQuizAttempt: publicProcedure
     .input(insertQuizAttemptParams)
     .mutation(async ({ input }) => {

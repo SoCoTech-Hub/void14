@@ -1,19 +1,29 @@
-import { getQtypeDdimageortextById, getQtypeDdimageortexts } from "../api/qtypeDdimageortexts/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  qtypeDdimageortextIdSchema,
   insertQtypeDdimageortextParams,
+  qtypeDdimageortextIdSchema,
   updateQtypeDdimageortextParams,
 } from "@soco/qtype-db/schema/qtypeDdimageortexts";
-import { createQtypeDdimageortext, deleteQtypeDdimageortext, updateQtypeDdimageortext } from "../api/qtypeDdimageortexts/mutations";
 
-export const qtypeDdimageortextsRouter =createTRPCRouter({
+import {
+  createQtypeDdimageortext,
+  deleteQtypeDdimageortext,
+  updateQtypeDdimageortext,
+} from "../api/qtypeDdimageortexts/mutations";
+import {
+  getQtypeDdimageortextById,
+  getQtypeDdimageortexts,
+} from "../api/qtypeDdimageortexts/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const qtypeDdimageortextsRouter = createTRPCRouter({
   getQtypeDdimageortexts: publicProcedure.query(async () => {
     return getQtypeDdimageortexts();
   }),
-  getQtypeDdimageortextById: publicProcedure.input(qtypeDdimageortextIdSchema).query(async ({ input }) => {
-    return getQtypeDdimageortextById(input.id);
-  }),
+  getQtypeDdimageortextById: publicProcedure
+    .input(qtypeDdimageortextIdSchema)
+    .query(async ({ input }) => {
+      return getQtypeDdimageortextById(input.id);
+    }),
   createQtypeDdimageortext: publicProcedure
     .input(insertQtypeDdimageortextParams)
     .mutation(async ({ input }) => {

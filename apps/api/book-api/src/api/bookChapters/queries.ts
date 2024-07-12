@@ -1,11 +1,11 @@
 import type { BookChapterId } from "@soco/book-db/schema/bookChapters";
+import { eq } from "@soco/book-db";
 import { db } from "@soco/book-db/client";
 import {
   bookChapterIdSchema,
   bookChapters,
 } from "@soco/book-db/schema/bookChapters";
 import { books } from "@soco/book-db/schema/books";
-import { eq } from "@soco/book-db";
 
 export const getBookChapters = async () => {
   const rows = await db

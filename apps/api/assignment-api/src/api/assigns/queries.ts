@@ -1,10 +1,11 @@
-import { db } from "@soco/assignment-db/client";
+import type { AssignId } from "@soco/assignment-db/schema/assigns";
 import { eq } from "@soco/assignment-db";
-import { type AssignId, assignIdSchema, assigns } from "@soco/assignment-db/schema/assigns";
+import { db } from "@soco/assignment-db/client";
+import { assignIdSchema, assigns } from "@soco/assignment-db/schema/assigns";
 
 export const getAssigns = async () => {
   const rows = await db.select().from(assigns);
-  const a = rows
+  const a = rows;
   return { assigns: a };
 };
 
@@ -15,5 +16,3 @@ export const getAssignById = async (id: AssignId) => {
   const a = row;
   return { assign: a };
 };
-
-

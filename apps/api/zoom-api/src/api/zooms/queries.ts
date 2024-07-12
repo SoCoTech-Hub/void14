@@ -1,10 +1,11 @@
-import { db } from "@soco/zoom-db/client";
+import type { ZoomId } from "@soco/zoom-db/schema/zooms";
 import { eq } from "@soco/zoom-db";
-import { type ZoomId, zoomIdSchema, zooms } from "@soco/zoom-db/schema/zooms";
+import { db } from "@soco/zoom-db/client";
+import { zoomIdSchema, zooms } from "@soco/zoom-db/schema/zooms";
 
 export const getZooms = async () => {
   const rows = await db.select().from(zooms);
-  const z = rows
+  const z = rows;
   return { zooms: z };
 };
 
@@ -15,5 +16,3 @@ export const getZoomById = async (id: ZoomId) => {
   const z = row;
   return { zoom: z };
 };
-
-

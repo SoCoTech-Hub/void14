@@ -1,10 +1,11 @@
-import { db } from "@soco/enrol-db/client";
+import type { EnrolId } from "@soco/enrol-db/schema/enrols";
 import { eq } from "@soco/enrol-db";
-import { type EnrolId, enrolIdSchema, enrols } from "@soco/enrol-db/schema/enrols";
+import { db } from "@soco/enrol-db/client";
+import { enrolIdSchema, enrols } from "@soco/enrol-db/schema/enrols";
 
 export const getEnrols = async () => {
   const rows = await db.select().from(enrols);
-  const e = rows
+  const e = rows;
   return { enrols: e };
 };
 
@@ -15,5 +16,3 @@ export const getEnrolById = async (id: EnrolId) => {
   const e = row;
   return { enrol: e };
 };
-
-

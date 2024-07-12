@@ -1,19 +1,29 @@
-import { getScaleHistoryById, getScaleHistories } from "../api/scaleHistories/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  scaleHistoryIdSchema,
   insertScaleHistoryParams,
+  scaleHistoryIdSchema,
   updateScaleHistoryParams,
 } from "@soco/scale-db/schema/scaleHistories";
-import { createScaleHistory, deleteScaleHistory, updateScaleHistory } from "../api/scaleHistories/mutations";
 
-export const scaleHistoriesRouter =createTRPCRouter({
+import {
+  createScaleHistory,
+  deleteScaleHistory,
+  updateScaleHistory,
+} from "../api/scaleHistories/mutations";
+import {
+  getScaleHistories,
+  getScaleHistoryById,
+} from "../api/scaleHistories/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const scaleHistoriesRouter = createTRPCRouter({
   getScaleHistories: publicProcedure.query(async () => {
     return getScaleHistories();
   }),
-  getScaleHistoryById: publicProcedure.input(scaleHistoryIdSchema).query(async ({ input }) => {
-    return getScaleHistoryById(input.id);
-  }),
+  getScaleHistoryById: publicProcedure
+    .input(scaleHistoryIdSchema)
+    .query(async ({ input }) => {
+      return getScaleHistoryById(input.id);
+    }),
   createScaleHistory: publicProcedure
     .input(insertScaleHistoryParams)
     .mutation(async ({ input }) => {

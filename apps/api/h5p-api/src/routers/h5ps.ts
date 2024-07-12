@@ -1,13 +1,14 @@
-import { getH5pById, getH5ps } from "../api/h5ps/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   h5pIdSchema,
   insertH5pParams,
   updateH5pParams,
 } from "@soco/h5p-db/schema/h5ps";
-import { createH5p, deleteH5p, updateH5p } from "../api/h5ps/mutations";
 
-export const h5psRouter =createTRPCRouter({
+import { createH5p, deleteH5p, updateH5p } from "../api/h5ps/mutations";
+import { getH5pById, getH5ps } from "../api/h5ps/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const h5psRouter = createTRPCRouter({
   getH5ps: publicProcedure.query(async () => {
     return getH5ps();
   }),
@@ -24,9 +25,7 @@ export const h5psRouter =createTRPCRouter({
     .mutation(async ({ input }) => {
       return updateH5p(input.id, input);
     }),
-  deleteH5p: publicProcedure
-    .input(h5pIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteH5p(input.id);
-    }),
+  deleteH5p: publicProcedure.input(h5pIdSchema).mutation(async ({ input }) => {
+    return deleteH5p(input.id);
+  }),
 });

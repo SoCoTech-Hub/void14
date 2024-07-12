@@ -1,19 +1,26 @@
-import { getAddressById, getAddresses } from "../api/addresses/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   addressIdSchema,
   insertAddressParams,
   updateAddressParams,
 } from "@soco/profile-db/schema/addresses";
-import { createAddress, deleteAddress, updateAddress } from "../api/addresses/mutations";
 
-export const addressesRouter =createTRPCRouter({
+import {
+  createAddress,
+  deleteAddress,
+  updateAddress,
+} from "../api/addresses/mutations";
+import { getAddressById, getAddresses } from "../api/addresses/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const addressesRouter = createTRPCRouter({
   getAddresses: publicProcedure.query(async () => {
     return getAddresses();
   }),
-  getAddressById: publicProcedure.input(addressIdSchema).query(async ({ input }) => {
-    return getAddressById(input.id);
-  }),
+  getAddressById: publicProcedure
+    .input(addressIdSchema)
+    .query(async ({ input }) => {
+      return getAddressById(input.id);
+    }),
   createAddress: publicProcedure
     .input(insertAddressParams)
     .mutation(async ({ input }) => {

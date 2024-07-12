@@ -1,10 +1,11 @@
-import { db } from "@soco/group-db/client";
+import type { GroupId } from "@soco/group-db/schema/groups";
 import { eq } from "@soco/group-db";
-import { type GroupId, groupIdSchema, groups } from "@soco/group-db/schema/groups";
+import { db } from "@soco/group-db/client";
+import { groupIdSchema, groups } from "@soco/group-db/schema/groups";
 
 export const getGroups = async () => {
   const rows = await db.select().from(groups);
-  const g = rows
+  const g = rows;
   return { groups: g };
 };
 
@@ -15,5 +16,3 @@ export const getGroupById = async (id: GroupId) => {
   const g = row;
   return { group: g };
 };
-
-

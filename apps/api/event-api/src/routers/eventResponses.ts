@@ -1,19 +1,29 @@
-import { getEventResponseById, getEventResponses } from "../api/eventResponses/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   eventResponseIdSchema,
   insertEventResponseParams,
   updateEventResponseParams,
 } from "@soco/event-db/schema/eventResponses";
-import { createEventResponse, deleteEventResponse, updateEventResponse } from "../api/eventResponses/mutations";
 
-export const eventResponsesRouter =createTRPCRouter({
+import {
+  createEventResponse,
+  deleteEventResponse,
+  updateEventResponse,
+} from "../api/eventResponses/mutations";
+import {
+  getEventResponseById,
+  getEventResponses,
+} from "../api/eventResponses/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const eventResponsesRouter = createTRPCRouter({
   getEventResponses: publicProcedure.query(async () => {
     return getEventResponses();
   }),
-  getEventResponseById: publicProcedure.input(eventResponseIdSchema).query(async ({ input }) => {
-    return getEventResponseById(input.id);
-  }),
+  getEventResponseById: publicProcedure
+    .input(eventResponseIdSchema)
+    .query(async ({ input }) => {
+      return getEventResponseById(input.id);
+    }),
   createEventResponse: publicProcedure
     .input(insertEventResponseParams)
     .mutation(async ({ input }) => {

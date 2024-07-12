@@ -1,19 +1,29 @@
-import { getPortfolioTempdataById, getPortfolioTempdatas } from "../api/portfolioTempdatas/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  portfolioTempdataIdSchema,
   insertPortfolioTempdataParams,
+  portfolioTempdataIdSchema,
   updatePortfolioTempdataParams,
 } from "@soco/portfolio-db/schema/portfolioTempdatas";
-import { createPortfolioTempdata, deletePortfolioTempdata, updatePortfolioTempdata } from "../api/portfolioTempdatas/mutations";
 
-export const portfolioTempdatasRouter =createTRPCRouter({
+import {
+  createPortfolioTempdata,
+  deletePortfolioTempdata,
+  updatePortfolioTempdata,
+} from "../api/portfolioTempdatas/mutations";
+import {
+  getPortfolioTempdataById,
+  getPortfolioTempdatas,
+} from "../api/portfolioTempdatas/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const portfolioTempdatasRouter = createTRPCRouter({
   getPortfolioTempdatas: publicProcedure.query(async () => {
     return getPortfolioTempdatas();
   }),
-  getPortfolioTempdataById: publicProcedure.input(portfolioTempdataIdSchema).query(async ({ input }) => {
-    return getPortfolioTempdataById(input.id);
-  }),
+  getPortfolioTempdataById: publicProcedure
+    .input(portfolioTempdataIdSchema)
+    .query(async ({ input }) => {
+      return getPortfolioTempdataById(input.id);
+    }),
   createPortfolioTempdata: publicProcedure
     .input(insertPortfolioTempdataParams)
     .mutation(async ({ input }) => {

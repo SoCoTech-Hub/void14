@@ -8,7 +8,7 @@ import {
 import { getUserAuth } from "@soco/auth-service";
 
 export const getAdminPresets = async () => {
-  const { session } = await getUserAuth();
+  const { Session: session } = await getUserAuth();
   const rows = await db
     .select()
     .from(adminPresets)
@@ -18,7 +18,7 @@ export const getAdminPresets = async () => {
 };
 
 export const getAdminPresetById = async (id: AdminPresetId) => {
-  const { session } = await getUserAuth();
+  const { Session: session } = await getUserAuth();
   const { id: adminPresetId } = adminPresetIdSchema.parse({ id });
   const [row] = await db
     .select()

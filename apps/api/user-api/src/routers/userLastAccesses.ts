@@ -1,19 +1,29 @@
-import { getUserLastAccessById, getUserLastAccesses } from "../api/userLastAccesses/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  userLastAccessIdSchema,
   insertUserLastAccessParams,
   updateUserLastAccessParams,
+  userLastAccessIdSchema,
 } from "@soco/user-db/schema/userLastAccesses";
-import { createUserLastAccess, deleteUserLastAccess, updateUserLastAccess } from "../api/userLastAccesses/mutations";
 
-export const userLastAccessesRouter =createTRPCRouter({
+import {
+  createUserLastAccess,
+  deleteUserLastAccess,
+  updateUserLastAccess,
+} from "../api/userLastAccesses/mutations";
+import {
+  getUserLastAccessById,
+  getUserLastAccesses,
+} from "../api/userLastAccesses/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const userLastAccessesRouter = createTRPCRouter({
   getUserLastAccesses: publicProcedure.query(async () => {
     return getUserLastAccesses();
   }),
-  getUserLastAccessById: publicProcedure.input(userLastAccessIdSchema).query(async ({ input }) => {
-    return getUserLastAccessById(input.id);
-  }),
+  getUserLastAccessById: publicProcedure
+    .input(userLastAccessIdSchema)
+    .query(async ({ input }) => {
+      return getUserLastAccessById(input.id);
+    }),
   createUserLastAccess: publicProcedure
     .input(insertUserLastAccessParams)
     .mutation(async ({ input }) => {

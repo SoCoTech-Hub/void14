@@ -1,19 +1,29 @@
-import { getGradeCategoriesHistoryById, getGradeCategoriesHistories } from "../api/gradeCategoriesHistories/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   gradeCategoriesHistoryIdSchema,
   insertGradeCategoriesHistoryParams,
   updateGradeCategoriesHistoryParams,
 } from "@soco/grade-db/schema/gradeCategoriesHistories";
-import { createGradeCategoriesHistory, deleteGradeCategoriesHistory, updateGradeCategoriesHistory } from "../api/gradeCategoriesHistories/mutations";
 
-export const gradeCategoriesHistoriesRouter =createTRPCRouter({
+import {
+  createGradeCategoriesHistory,
+  deleteGradeCategoriesHistory,
+  updateGradeCategoriesHistory,
+} from "../api/gradeCategoriesHistories/mutations";
+import {
+  getGradeCategoriesHistories,
+  getGradeCategoriesHistoryById,
+} from "../api/gradeCategoriesHistories/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const gradeCategoriesHistoriesRouter = createTRPCRouter({
   getGradeCategoriesHistories: publicProcedure.query(async () => {
     return getGradeCategoriesHistories();
   }),
-  getGradeCategoriesHistoryById: publicProcedure.input(gradeCategoriesHistoryIdSchema).query(async ({ input }) => {
-    return getGradeCategoriesHistoryById(input.id);
-  }),
+  getGradeCategoriesHistoryById: publicProcedure
+    .input(gradeCategoriesHistoryIdSchema)
+    .query(async ({ input }) => {
+      return getGradeCategoriesHistoryById(input.id);
+    }),
   createGradeCategoriesHistory: publicProcedure
     .input(insertGradeCategoriesHistoryParams)
     .mutation(async ({ input }) => {

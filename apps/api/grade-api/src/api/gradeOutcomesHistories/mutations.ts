@@ -1,21 +1,31 @@
-import { db } from "@soco/grade-db/client";
-import { and, eq } from "@soco/grade-db";
-import { 
-  type GradeOutcomesHistoryId, 
-  type NewGradeOutcomesHistoryParams,
-  type UpdateGradeOutcomesHistoryParams, 
-  updateGradeOutcomesHistorySchema,
-  insertGradeOutcomesHistorySchema, 
-  gradeOutcomesHistories,
-  gradeOutcomesHistoryIdSchema 
+import type {
+  GradeOutcomesHistoryId,
+  NewGradeOutcomesHistoryParams,
+  UpdateGradeOutcomesHistoryParams,
 } from "@soco/grade-db/schema/gradeOutcomesHistories";
 import { getUserAuth } from "@soco/auth-service";
+import { and, eq } from "@soco/grade-db";
+import { db } from "@soco/grade-db/client";
+import {
+  gradeOutcomesHistories,
+  gradeOutcomesHistoryIdSchema,
+  insertGradeOutcomesHistorySchema,
+  updateGradeOutcomesHistorySchema,
+} from "@soco/grade-db/schema/gradeOutcomesHistories";
 
-export const createGradeOutcomesHistory = async (gradeOutcomesHistory: NewGradeOutcomesHistoryParams) => {
+export const createGradeOutcomesHistory = async (
+  gradeOutcomesHistory: NewGradeOutcomesHistoryParams,
+) => {
   const { session } = await getUserAuth();
-  const newGradeOutcomesHistory = insertGradeOutcomesHistorySchema.parse({ ...gradeOutcomesHistory, userId: session?.user.id! });
+  const newGradeOutcomesHistory = insertGradeOutcomesHistorySchema.parse({
+    ...gradeOutcomesHistory,
+    userId: session?.user.id!,
+  });
   try {
-    const [g] =  await db.insert(gradeOutcomesHistories).values(newGradeOutcomesHistory).returning();
+    const [g] = await db
+      .insert(gradeOutcomesHistories)
+      .values(newGradeOutcomesHistory)
+      .returning();
     return { gradeOutcomesHistory: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -24,16 +34,29 @@ export const createGradeOutcomesHistory = async (gradeOutcomesHistory: NewGradeO
   }
 };
 
-export const updateGradeOutcomesHistory = async (id: GradeOutcomesHistoryId, gradeOutcomesHistory: UpdateGradeOutcomesHistoryParams) => {
+export const updateGradeOutcomesHistory = async (
+  id: GradeOutcomesHistoryId,
+  gradeOutcomesHistory: UpdateGradeOutcomesHistoryParams,
+) => {
   const { session } = await getUserAuth();
-  const { id: gradeOutcomesHistoryId } = gradeOutcomesHistoryIdSchema.parse({ id });
-  const newGradeOutcomesHistory = updateGradeOutcomesHistorySchema.parse({ ...gradeOutcomesHistory, userId: session?.user.id! });
+  const { id: gradeOutcomesHistoryId } = gradeOutcomesHistoryIdSchema.parse({
+    id,
+  });
+  const newGradeOutcomesHistory = updateGradeOutcomesHistorySchema.parse({
+    ...gradeOutcomesHistory,
+    userId: session?.user.id!,
+  });
   try {
-    const [g] =  await db
-     .update(gradeOutcomesHistories)
-     .set({...newGradeOutcomesHistory, updatedAt: new Date() })
-     .where(and(eq(gradeOutcomesHistories.id, gradeOutcomesHistoryId!), eq(gradeOutcomesHistories.userId, session?.user.id!)))
-     .returning();
+    const [g] = await db
+      .update(gradeOutcomesHistories)
+      .set({ ...newGradeOutcomesHistory, updatedAt: new Date() })
+      .where(
+        and(
+          eq(gradeOutcomesHistories.id, gradeOutcomesHistoryId!),
+          eq(gradeOutcomesHistories.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { gradeOutcomesHistory: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,12 +65,23 @@ export const updateGradeOutcomesHistory = async (id: GradeOutcomesHistoryId, gra
   }
 };
 
-export const deleteGradeOutcomesHistory = async (id: GradeOutcomesHistoryId) => {
+export const deleteGradeOutcomesHistory = async (
+  id: GradeOutcomesHistoryId,
+) => {
   const { session } = await getUserAuth();
-  const { id: gradeOutcomesHistoryId } = gradeOutcomesHistoryIdSchema.parse({ id });
+  const { id: gradeOutcomesHistoryId } = gradeOutcomesHistoryIdSchema.parse({
+    id,
+  });
   try {
-    const [g] =  await db.delete(gradeOutcomesHistories).where(and(eq(gradeOutcomesHistories.id, gradeOutcomesHistoryId!), eq(gradeOutcomesHistories.userId, session?.user.id!)))
-    .returning();
+    const [g] = await db
+      .delete(gradeOutcomesHistories)
+      .where(
+        and(
+          eq(gradeOutcomesHistories.id, gradeOutcomesHistoryId!),
+          eq(gradeOutcomesHistories.userId, session?.user.id!),
+        ),
+      )
+      .returning();
     return { gradeOutcomesHistory: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -55,4 +89,3 @@ export const deleteGradeOutcomesHistory = async (id: GradeOutcomesHistoryId) => 
     throw { error: message };
   }
 };
-

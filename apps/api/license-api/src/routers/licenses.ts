@@ -1,19 +1,26 @@
-import { getLicenseById, getLicenses } from "../api/licenses/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  licenseIdSchema,
   insertLicenseParams,
+  licenseIdSchema,
   updateLicenseParams,
 } from "@soco/license-db/schema/licenses";
-import { createLicense, deleteLicense, updateLicense } from "../api/licenses/mutations";
 
-export const licensesRouter =createTRPCRouter({
+import {
+  createLicense,
+  deleteLicense,
+  updateLicense,
+} from "../api/licenses/mutations";
+import { getLicenseById, getLicenses } from "../api/licenses/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const licensesRouter = createTRPCRouter({
   getLicenses: publicProcedure.query(async () => {
     return getLicenses();
   }),
-  getLicenseById: publicProcedure.input(licenseIdSchema).query(async ({ input }) => {
-    return getLicenseById(input.id);
-  }),
+  getLicenseById: publicProcedure
+    .input(licenseIdSchema)
+    .query(async ({ input }) => {
+      return getLicenseById(input.id);
+    }),
   createLicense: publicProcedure
     .input(insertLicenseParams)
     .mutation(async ({ input }) => {

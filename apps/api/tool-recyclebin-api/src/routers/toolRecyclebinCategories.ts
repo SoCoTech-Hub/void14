@@ -1,19 +1,29 @@
-import { getToolRecyclebinCategoryById, getToolRecyclebinCategories } from "../api/toolRecyclebinCategories/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  toolRecyclebinCategoryIdSchema,
   insertToolRecyclebinCategoryParams,
+  toolRecyclebinCategoryIdSchema,
   updateToolRecyclebinCategoryParams,
 } from "@soco/tool-recyclebin-db/schema/toolRecyclebinCategories";
-import { createToolRecyclebinCategory, deleteToolRecyclebinCategory, updateToolRecyclebinCategory } from "../api/toolRecyclebinCategories/mutations";
 
-export const toolRecyclebinCategoriesRouter =createTRPCRouter({
+import {
+  createToolRecyclebinCategory,
+  deleteToolRecyclebinCategory,
+  updateToolRecyclebinCategory,
+} from "../api/toolRecyclebinCategories/mutations";
+import {
+  getToolRecyclebinCategories,
+  getToolRecyclebinCategoryById,
+} from "../api/toolRecyclebinCategories/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const toolRecyclebinCategoriesRouter = createTRPCRouter({
   getToolRecyclebinCategories: publicProcedure.query(async () => {
     return getToolRecyclebinCategories();
   }),
-  getToolRecyclebinCategoryById: publicProcedure.input(toolRecyclebinCategoryIdSchema).query(async ({ input }) => {
-    return getToolRecyclebinCategoryById(input.id);
-  }),
+  getToolRecyclebinCategoryById: publicProcedure
+    .input(toolRecyclebinCategoryIdSchema)
+    .query(async ({ input }) => {
+      return getToolRecyclebinCategoryById(input.id);
+    }),
   createToolRecyclebinCategory: publicProcedure
     .input(insertToolRecyclebinCategoryParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,29 @@
-import { getFeedbackValuetmpById, getFeedbackValuetmps } from "../api/feedbackValuetmps/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   feedbackValuetmpIdSchema,
   insertFeedbackValuetmpParams,
   updateFeedbackValuetmpParams,
 } from "@soco/feedback-db/schema/feedbackValuetmps";
-import { createFeedbackValuetmp, deleteFeedbackValuetmp, updateFeedbackValuetmp } from "../api/feedbackValuetmps/mutations";
 
-export const feedbackValuetmpsRouter =createTRPCRouter({
+import {
+  createFeedbackValuetmp,
+  deleteFeedbackValuetmp,
+  updateFeedbackValuetmp,
+} from "../api/feedbackValuetmps/mutations";
+import {
+  getFeedbackValuetmpById,
+  getFeedbackValuetmps,
+} from "../api/feedbackValuetmps/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const feedbackValuetmpsRouter = createTRPCRouter({
   getFeedbackValuetmps: publicProcedure.query(async () => {
     return getFeedbackValuetmps();
   }),
-  getFeedbackValuetmpById: publicProcedure.input(feedbackValuetmpIdSchema).query(async ({ input }) => {
-    return getFeedbackValuetmpById(input.id);
-  }),
+  getFeedbackValuetmpById: publicProcedure
+    .input(feedbackValuetmpIdSchema)
+    .query(async ({ input }) => {
+      return getFeedbackValuetmpById(input.id);
+    }),
   createFeedbackValuetmp: publicProcedure
     .input(insertFeedbackValuetmpParams)
     .mutation(async ({ input }) => {

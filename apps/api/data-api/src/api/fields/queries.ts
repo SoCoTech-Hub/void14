@@ -1,20 +1,26 @@
-import { db } from "@soco/data-db/client";
+import type { FieldId } from "@soco/data-db/schema/fields";
 import { eq } from "@soco/data-db";
-import { type FieldId, fieldIdSchema, fields } from "@soco/data-db/schema/fields";
+import { db } from "@soco/data-db/client";
 import { datas } from "@soco/data-db/schema/datas";
+import { fieldIdSchema, fields } from "@soco/data-db/schema/fields";
 
 export const getFields = async () => {
-  const rows = await db.select({ field: fields, data: datas }).from(fields).leftJoin(datas, eq(fields.dataId, datas.id));
-  const f = rows .map((r) => ({ ...r.field, data: r.data})); 
+  const rows = await db
+    .select({ field: fields, data: datas })
+    .from(fields)
+    .leftJoin(datas, eq(fields.dataId, datas.id));
+  const f = rows.map((r) => ({ ...r.field, data: r.data }));
   return { fields: f };
 };
 
 export const getFieldById = async (id: FieldId) => {
   const { id: fieldId } = fieldIdSchema.parse({ id });
-  const [row] = await db.select({ field: fields, data: datas }).from(fields).where(eq(fields.id, fieldId)).leftJoin(datas, eq(fields.dataId, datas.id));
+  const [row] = await db
+    .select({ field: fields, data: datas })
+    .from(fields)
+    .where(eq(fields.id, fieldId))
+    .leftJoin(datas, eq(fields.dataId, datas.id));
   if (row === undefined) return {};
-  const f =  { ...row.field, data: row.data } ;
+  const f = { ...row.field, data: row.data };
   return { field: f };
 };
-
-

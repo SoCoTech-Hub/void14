@@ -1,19 +1,29 @@
-import { getDataContentById, getDataContents } from "../api/dataContents/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   dataContentIdSchema,
   insertDataContentParams,
   updateDataContentParams,
 } from "@soco/data-db/schema/dataContents";
-import { createDataContent, deleteDataContent, updateDataContent } from "../api/dataContents/mutations";
 
-export const dataContentsRouter =createTRPCRouter({
+import {
+  createDataContent,
+  deleteDataContent,
+  updateDataContent,
+} from "../api/dataContents/mutations";
+import {
+  getDataContentById,
+  getDataContents,
+} from "../api/dataContents/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const dataContentsRouter = createTRPCRouter({
   getDataContents: publicProcedure.query(async () => {
     return getDataContents();
   }),
-  getDataContentById: publicProcedure.input(dataContentIdSchema).query(async ({ input }) => {
-    return getDataContentById(input.id);
-  }),
+  getDataContentById: publicProcedure
+    .input(dataContentIdSchema)
+    .query(async ({ input }) => {
+      return getDataContentById(input.id);
+    }),
   createDataContent: publicProcedure
     .input(insertDataContentParams)
     .mutation(async ({ input }) => {

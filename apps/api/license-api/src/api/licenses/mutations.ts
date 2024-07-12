@@ -1,19 +1,21 @@
-import { db } from "@soco/license-db/client";
+import type {
+  LicenseId,
+  NewLicenseParams,
+  UpdateLicenseParams,
+} from "@soco/license-db/schema/licenses";
 import { eq } from "@soco/license-db";
-import { 
-  type LicenseId, 
-  type NewLicenseParams,
-  type UpdateLicenseParams, 
-  updateLicenseSchema,
-  insertLicenseSchema, 
+import { db } from "@soco/license-db/client";
+import {
+  insertLicenseSchema,
+  licenseIdSchema,
   licenses,
-  licenseIdSchema 
+  updateLicenseSchema,
 } from "@soco/license-db/schema/licenses";
 
 export const createLicense = async (license: NewLicenseParams) => {
   const newLicense = insertLicenseSchema.parse(license);
   try {
-    const [l] =  await db.insert(licenses).values(newLicense).returning();
+    const [l] = await db.insert(licenses).values(newLicense).returning();
     return { license: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +24,18 @@ export const createLicense = async (license: NewLicenseParams) => {
   }
 };
 
-export const updateLicense = async (id: LicenseId, license: UpdateLicenseParams) => {
+export const updateLicense = async (
+  id: LicenseId,
+  license: UpdateLicenseParams,
+) => {
   const { id: licenseId } = licenseIdSchema.parse({ id });
   const newLicense = updateLicenseSchema.parse(license);
   try {
-    const [l] =  await db
-     .update(licenses)
-     .set(newLicense)
-     .where(eq(licenses.id, licenseId!))
-     .returning();
+    const [l] = await db
+      .update(licenses)
+      .set(newLicense)
+      .where(eq(licenses.id, licenseId!))
+      .returning();
     return { license: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +47,10 @@ export const updateLicense = async (id: LicenseId, license: UpdateLicenseParams)
 export const deleteLicense = async (id: LicenseId) => {
   const { id: licenseId } = licenseIdSchema.parse({ id });
   try {
-    const [l] =  await db.delete(licenses).where(eq(licenses.id, licenseId!))
-    .returning();
+    const [l] = await db
+      .delete(licenses)
+      .where(eq(licenses.id, licenseId!))
+      .returning();
     return { license: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +58,3 @@ export const deleteLicense = async (id: LicenseId) => {
     throw { error: message };
   }
 };
-

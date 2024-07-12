@@ -1,19 +1,26 @@
-import { getForumQueueById, getForumQueues } from "../api/forumQueues/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   forumQueueIdSchema,
   insertForumQueueParams,
   updateForumQueueParams,
 } from "@soco/forum-db/schema/forumQueues";
-import { createForumQueue, deleteForumQueue, updateForumQueue } from "../api/forumQueues/mutations";
 
-export const forumQueuesRouter =createTRPCRouter({
+import {
+  createForumQueue,
+  deleteForumQueue,
+  updateForumQueue,
+} from "../api/forumQueues/mutations";
+import { getForumQueueById, getForumQueues } from "../api/forumQueues/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const forumQueuesRouter = createTRPCRouter({
   getForumQueues: publicProcedure.query(async () => {
     return getForumQueues();
   }),
-  getForumQueueById: publicProcedure.input(forumQueueIdSchema).query(async ({ input }) => {
-    return getForumQueueById(input.id);
-  }),
+  getForumQueueById: publicProcedure
+    .input(forumQueueIdSchema)
+    .query(async ({ input }) => {
+      return getForumQueueById(input.id);
+    }),
   createForumQueue: publicProcedure
     .input(insertForumQueueParams)
     .mutation(async ({ input }) => {

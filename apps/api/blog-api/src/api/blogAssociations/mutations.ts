@@ -1,19 +1,26 @@
-import { db } from "@soco/blog-db/client";
+import type {
+  BlogAssociationId,
+  NewBlogAssociationParams,
+  UpdateBlogAssociationParams,
+} from "@soco/blog-db/schema/blogAssociations";
 import { eq } from "@soco/blog-db";
-import { 
-  type BlogAssociationId, 
-  type NewBlogAssociationParams,
-  type UpdateBlogAssociationParams, 
-  updateBlogAssociationSchema,
-  insertBlogAssociationSchema, 
+import { db } from "@soco/blog-db/client";
+import {
+  blogAssociationIdSchema,
   blogAssociations,
-  blogAssociationIdSchema 
+  insertBlogAssociationSchema,
+  updateBlogAssociationSchema,
 } from "@soco/blog-db/schema/blogAssociations";
 
-export const createBlogAssociation = async (blogAssociation: NewBlogAssociationParams) => {
+export const createBlogAssociation = async (
+  blogAssociation: NewBlogAssociationParams,
+) => {
   const newBlogAssociation = insertBlogAssociationSchema.parse(blogAssociation);
   try {
-    const [b] =  await db.insert(blogAssociations).values(newBlogAssociation).returning();
+    const [b] = await db
+      .insert(blogAssociations)
+      .values(newBlogAssociation)
+      .returning();
     return { blogAssociation: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,18 @@ export const createBlogAssociation = async (blogAssociation: NewBlogAssociationP
   }
 };
 
-export const updateBlogAssociation = async (id: BlogAssociationId, blogAssociation: UpdateBlogAssociationParams) => {
+export const updateBlogAssociation = async (
+  id: BlogAssociationId,
+  blogAssociation: UpdateBlogAssociationParams,
+) => {
   const { id: blogAssociationId } = blogAssociationIdSchema.parse({ id });
   const newBlogAssociation = updateBlogAssociationSchema.parse(blogAssociation);
   try {
-    const [b] =  await db
-     .update(blogAssociations)
-     .set(newBlogAssociation)
-     .where(eq(blogAssociations.id, blogAssociationId!))
-     .returning();
+    const [b] = await db
+      .update(blogAssociations)
+      .set(newBlogAssociation)
+      .where(eq(blogAssociations.id, blogAssociationId!))
+      .returning();
     return { blogAssociation: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +52,10 @@ export const updateBlogAssociation = async (id: BlogAssociationId, blogAssociati
 export const deleteBlogAssociation = async (id: BlogAssociationId) => {
   const { id: blogAssociationId } = blogAssociationIdSchema.parse({ id });
   try {
-    const [b] =  await db.delete(blogAssociations).where(eq(blogAssociations.id, blogAssociationId!))
-    .returning();
+    const [b] = await db
+      .delete(blogAssociations)
+      .where(eq(blogAssociations.id, blogAssociationId!))
+      .returning();
     return { blogAssociation: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +63,3 @@ export const deleteBlogAssociation = async (id: BlogAssociationId) => {
     throw { error: message };
   }
 };
-

@@ -1,19 +1,24 @@
-import { db } from "@soco/external-db/client";
 import { eq } from "@soco/external-db";
-import { 
-  ExternalServiceId, 
-  NewExternalServiceParams,
-  UpdateExternalServiceParams, 
-  updateExternalServiceSchema,
-  insertExternalServiceSchema, 
+import { db } from "@soco/external-db/client";
+import {
+  ExternalServiceId,
+  externalServiceIdSchema,
   externalServices,
-  externalServiceIdSchema 
+  insertExternalServiceSchema,
+  NewExternalServiceParams,
+  UpdateExternalServiceParams,
+  updateExternalServiceSchema,
 } from "@soco/external-db/schema/externalServices";
 
-export const createExternalService = async (externalService: NewExternalServiceParams) => {
+export const createExternalService = async (
+  externalService: NewExternalServiceParams,
+) => {
   const newExternalService = insertExternalServiceSchema.parse(externalService);
   try {
-    const [e] =  await db.insert(externalServices).values(newExternalService).returning();
+    const [e] = await db
+      .insert(externalServices)
+      .values(newExternalService)
+      .returning();
     return { externalService: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +27,18 @@ export const createExternalService = async (externalService: NewExternalServiceP
   }
 };
 
-export const updateExternalService = async (id: ExternalServiceId, externalService: UpdateExternalServiceParams) => {
+export const updateExternalService = async (
+  id: ExternalServiceId,
+  externalService: UpdateExternalServiceParams,
+) => {
   const { id: externalServiceId } = externalServiceIdSchema.parse({ id });
   const newExternalService = updateExternalServiceSchema.parse(externalService);
   try {
-    const [e] =  await db
-     .update(externalServices)
-     .set({...newExternalService, updatedAt: new Date() })
-     .where(eq(externalServices.id, externalServiceId!))
-     .returning();
+    const [e] = await db
+      .update(externalServices)
+      .set({ ...newExternalService, updatedAt: new Date() })
+      .where(eq(externalServices.id, externalServiceId!))
+      .returning();
     return { externalService: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +50,10 @@ export const updateExternalService = async (id: ExternalServiceId, externalServi
 export const deleteExternalService = async (id: ExternalServiceId) => {
   const { id: externalServiceId } = externalServiceIdSchema.parse({ id });
   try {
-    const [e] =  await db.delete(externalServices).where(eq(externalServices.id, externalServiceId!))
-    .returning();
+    const [e] = await db
+      .delete(externalServices)
+      .where(eq(externalServices.id, externalServiceId!))
+      .returning();
     return { externalService: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +61,3 @@ export const deleteExternalService = async (id: ExternalServiceId) => {
     throw { error: message };
   }
 };
-

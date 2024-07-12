@@ -1,19 +1,29 @@
-import { getReportbuilderAudienceById, getReportbuilderAudiences } from "../api/reportbuilderAudiences/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  reportbuilderAudienceIdSchema,
   insertReportbuilderAudienceParams,
+  reportbuilderAudienceIdSchema,
   updateReportbuilderAudienceParams,
 } from "@soco/report-builder-db/schema/reportbuilderAudiences";
-import { createReportbuilderAudience, deleteReportbuilderAudience, updateReportbuilderAudience } from "../api/reportbuilderAudiences/mutations";
 
-export const reportbuilderAudiencesRouter =createTRPCRouter({
+import {
+  createReportbuilderAudience,
+  deleteReportbuilderAudience,
+  updateReportbuilderAudience,
+} from "../api/reportbuilderAudiences/mutations";
+import {
+  getReportbuilderAudienceById,
+  getReportbuilderAudiences,
+} from "../api/reportbuilderAudiences/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const reportbuilderAudiencesRouter = createTRPCRouter({
   getReportbuilderAudiences: publicProcedure.query(async () => {
     return getReportbuilderAudiences();
   }),
-  getReportbuilderAudienceById: publicProcedure.input(reportbuilderAudienceIdSchema).query(async ({ input }) => {
-    return getReportbuilderAudienceById(input.id);
-  }),
+  getReportbuilderAudienceById: publicProcedure
+    .input(reportbuilderAudienceIdSchema)
+    .query(async ({ input }) => {
+      return getReportbuilderAudienceById(input.id);
+    }),
   createReportbuilderAudience: publicProcedure
     .input(insertReportbuilderAudienceParams)
     .mutation(async ({ input }) => {

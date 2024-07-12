@@ -1,4 +1,4 @@
-import { stickersRouter } from './routers/stickers';
+import { stickersRouter } from "./routers/stickers";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

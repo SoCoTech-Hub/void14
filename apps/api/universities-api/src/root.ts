@@ -1,4 +1,4 @@
-import { universitiesRouter } from './routers/universities';
+import { universitiesRouter } from "./routers/universities";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

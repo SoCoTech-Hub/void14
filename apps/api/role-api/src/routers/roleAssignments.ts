@@ -1,19 +1,29 @@
-import { getRoleAssignmentById, getRoleAssignments } from "../api/roleAssignments/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  roleAssignmentIdSchema,
   insertRoleAssignmentParams,
+  roleAssignmentIdSchema,
   updateRoleAssignmentParams,
 } from "@soco/role-db/schema/roleAssignments";
-import { createRoleAssignment, deleteRoleAssignment, updateRoleAssignment } from "../api/roleAssignments/mutations";
 
-export const roleAssignmentsRouter =createTRPCRouter({
+import {
+  createRoleAssignment,
+  deleteRoleAssignment,
+  updateRoleAssignment,
+} from "../api/roleAssignments/mutations";
+import {
+  getRoleAssignmentById,
+  getRoleAssignments,
+} from "../api/roleAssignments/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const roleAssignmentsRouter = createTRPCRouter({
   getRoleAssignments: publicProcedure.query(async () => {
     return getRoleAssignments();
   }),
-  getRoleAssignmentById: publicProcedure.input(roleAssignmentIdSchema).query(async ({ input }) => {
-    return getRoleAssignmentById(input.id);
-  }),
+  getRoleAssignmentById: publicProcedure
+    .input(roleAssignmentIdSchema)
+    .query(async ({ input }) => {
+      return getRoleAssignmentById(input.id);
+    }),
   createRoleAssignment: publicProcedure
     .input(insertRoleAssignmentParams)
     .mutation(async ({ input }) => {

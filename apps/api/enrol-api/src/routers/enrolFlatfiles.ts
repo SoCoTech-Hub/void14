@@ -1,19 +1,29 @@
-import { getEnrolFlatfileById, getEnrolFlatfiles } from "../api/enrolFlatfiles/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   enrolFlatfileIdSchema,
   insertEnrolFlatfileParams,
   updateEnrolFlatfileParams,
 } from "@soco/enrol-db/schema/enrolFlatfiles";
-import { createEnrolFlatfile, deleteEnrolFlatfile, updateEnrolFlatfile } from "../api/enrolFlatfiles/mutations";
 
-export const enrolFlatfilesRouter =createTRPCRouter({
+import {
+  createEnrolFlatfile,
+  deleteEnrolFlatfile,
+  updateEnrolFlatfile,
+} from "../api/enrolFlatfiles/mutations";
+import {
+  getEnrolFlatfileById,
+  getEnrolFlatfiles,
+} from "../api/enrolFlatfiles/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const enrolFlatfilesRouter = createTRPCRouter({
   getEnrolFlatfiles: publicProcedure.query(async () => {
     return getEnrolFlatfiles();
   }),
-  getEnrolFlatfileById: publicProcedure.input(enrolFlatfileIdSchema).query(async ({ input }) => {
-    return getEnrolFlatfileById(input.id);
-  }),
+  getEnrolFlatfileById: publicProcedure
+    .input(enrolFlatfileIdSchema)
+    .query(async ({ input }) => {
+      return getEnrolFlatfileById(input.id);
+    }),
   createEnrolFlatfile: publicProcedure
     .input(insertEnrolFlatfileParams)
     .mutation(async ({ input }) => {

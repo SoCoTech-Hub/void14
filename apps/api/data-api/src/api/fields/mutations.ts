@@ -1,19 +1,21 @@
-import { db } from "@soco/data-db/client";
+import type {
+  FieldId,
+  NewFieldParams,
+  UpdateFieldParams,
+} from "@soco/data-db/schema/fields";
 import { eq } from "@soco/data-db";
-import { 
-  type FieldId, 
-  type NewFieldParams,
-  type UpdateFieldParams, 
-  updateFieldSchema,
-  insertFieldSchema, 
+import { db } from "@soco/data-db/client";
+import {
+  fieldIdSchema,
   fields,
-  fieldIdSchema 
+  insertFieldSchema,
+  updateFieldSchema,
 } from "@soco/data-db/schema/fields";
 
 export const createField = async (field: NewFieldParams) => {
   const newField = insertFieldSchema.parse(field);
   try {
-    const [f] =  await db.insert(fields).values(newField).returning();
+    const [f] = await db.insert(fields).values(newField).returning();
     return { field: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -26,11 +28,11 @@ export const updateField = async (id: FieldId, field: UpdateFieldParams) => {
   const { id: fieldId } = fieldIdSchema.parse({ id });
   const newField = updateFieldSchema.parse(field);
   try {
-    const [f] =  await db
-     .update(fields)
-     .set(newField)
-     .where(eq(fields.id, fieldId!))
-     .returning();
+    const [f] = await db
+      .update(fields)
+      .set(newField)
+      .where(eq(fields.id, fieldId!))
+      .returning();
     return { field: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +44,10 @@ export const updateField = async (id: FieldId, field: UpdateFieldParams) => {
 export const deleteField = async (id: FieldId) => {
   const { id: fieldId } = fieldIdSchema.parse({ id });
   try {
-    const [f] =  await db.delete(fields).where(eq(fields.id, fieldId!))
-    .returning();
+    const [f] = await db
+      .delete(fields)
+      .where(eq(fields.id, fieldId!))
+      .returning();
     return { field: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +55,3 @@ export const deleteField = async (id: FieldId) => {
     throw { error: message };
   }
 };
-

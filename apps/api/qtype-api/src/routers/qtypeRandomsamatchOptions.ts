@@ -1,19 +1,29 @@
-import { getQtypeRandomsamatchOptionById, getQtypeRandomsamatchOptions } from "../api/qtypeRandomsamatchOptions/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  qtypeRandomsamatchOptionIdSchema,
   insertQtypeRandomsamatchOptionParams,
+  qtypeRandomsamatchOptionIdSchema,
   updateQtypeRandomsamatchOptionParams,
 } from "@soco/qtype-db/schema/qtypeRandomsamatchOptions";
-import { createQtypeRandomsamatchOption, deleteQtypeRandomsamatchOption, updateQtypeRandomsamatchOption } from "../api/qtypeRandomsamatchOptions/mutations";
 
-export const qtypeRandomsamatchOptionsRouter =createTRPCRouter({
+import {
+  createQtypeRandomsamatchOption,
+  deleteQtypeRandomsamatchOption,
+  updateQtypeRandomsamatchOption,
+} from "../api/qtypeRandomsamatchOptions/mutations";
+import {
+  getQtypeRandomsamatchOptionById,
+  getQtypeRandomsamatchOptions,
+} from "../api/qtypeRandomsamatchOptions/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const qtypeRandomsamatchOptionsRouter = createTRPCRouter({
   getQtypeRandomsamatchOptions: publicProcedure.query(async () => {
     return getQtypeRandomsamatchOptions();
   }),
-  getQtypeRandomsamatchOptionById: publicProcedure.input(qtypeRandomsamatchOptionIdSchema).query(async ({ input }) => {
-    return getQtypeRandomsamatchOptionById(input.id);
-  }),
+  getQtypeRandomsamatchOptionById: publicProcedure
+    .input(qtypeRandomsamatchOptionIdSchema)
+    .query(async ({ input }) => {
+      return getQtypeRandomsamatchOptionById(input.id);
+    }),
   createQtypeRandomsamatchOption: publicProcedure
     .input(insertQtypeRandomsamatchOptionParams)
     .mutation(async ({ input }) => {

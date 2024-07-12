@@ -1,5 +1,5 @@
-import { searchIndexRequestsRouter } from './routers/searchIndexRequests';
-import { searchSimpledbIndexesRouter } from './routers/searchSimpledbIndexes';
+import { searchIndexRequestsRouter } from "./routers/searchIndexRequests";
+import { searchSimpledbIndexesRouter } from "./routers/searchSimpledbIndexes";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

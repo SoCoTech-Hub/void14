@@ -1,19 +1,29 @@
-import { getTagInstanceById, getTagInstances } from "../api/tagInstances/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  tagInstanceIdSchema,
   insertTagInstanceParams,
+  tagInstanceIdSchema,
   updateTagInstanceParams,
 } from "@soco/tag-db/schema/tagInstances";
-import { createTagInstance, deleteTagInstance, updateTagInstance } from "../api/tagInstances/mutations";
 
-export const tagInstancesRouter =createTRPCRouter({
+import {
+  createTagInstance,
+  deleteTagInstance,
+  updateTagInstance,
+} from "../api/tagInstances/mutations";
+import {
+  getTagInstanceById,
+  getTagInstances,
+} from "../api/tagInstances/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const tagInstancesRouter = createTRPCRouter({
   getTagInstances: publicProcedure.query(async () => {
     return getTagInstances();
   }),
-  getTagInstanceById: publicProcedure.input(tagInstanceIdSchema).query(async ({ input }) => {
-    return getTagInstanceById(input.id);
-  }),
+  getTagInstanceById: publicProcedure
+    .input(tagInstanceIdSchema)
+    .query(async ({ input }) => {
+      return getTagInstanceById(input.id);
+    }),
   createTagInstance: publicProcedure
     .input(insertTagInstanceParams)
     .mutation(async ({ input }) => {

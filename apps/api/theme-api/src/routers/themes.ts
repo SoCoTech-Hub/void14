@@ -1,19 +1,22 @@
-import { getThemeById, getThemes } from "../api/themes/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  themeIdSchema,
   insertThemeParams,
+  themeIdSchema,
   updateThemeParams,
 } from "@soco/theme-db/schema/themes";
-import { createTheme, deleteTheme, updateTheme } from "../api/themes/mutations";
 
-export const themesRouter =createTRPCRouter({
+import { createTheme, deleteTheme, updateTheme } from "../api/themes/mutations";
+import { getThemeById, getThemes } from "../api/themes/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const themesRouter = createTRPCRouter({
   getThemes: publicProcedure.query(async () => {
     return getThemes();
   }),
-  getThemeById: publicProcedure.input(themeIdSchema).query(async ({ input }) => {
-    return getThemeById(input.id);
-  }),
+  getThemeById: publicProcedure
+    .input(themeIdSchema)
+    .query(async ({ input }) => {
+      return getThemeById(input.id);
+    }),
   createTheme: publicProcedure
     .input(insertThemeParams)
     .mutation(async ({ input }) => {

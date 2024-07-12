@@ -1,19 +1,29 @@
-import { getCourseModuleById, getCourseModules } from "../api/courseModules/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   courseModuleIdSchema,
   insertCourseModuleParams,
   updateCourseModuleParams,
 } from "@soco/course-db/schema/courseModules";
-import { createCourseModule, deleteCourseModule, updateCourseModule } from "../api/courseModules/mutations";
 
-export const courseModulesRouter =createTRPCRouter({
+import {
+  createCourseModule,
+  deleteCourseModule,
+  updateCourseModule,
+} from "../api/courseModules/mutations";
+import {
+  getCourseModuleById,
+  getCourseModules,
+} from "../api/courseModules/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const courseModulesRouter = createTRPCRouter({
   getCourseModules: publicProcedure.query(async () => {
     return getCourseModules();
   }),
-  getCourseModuleById: publicProcedure.input(courseModuleIdSchema).query(async ({ input }) => {
-    return getCourseModuleById(input.id);
-  }),
+  getCourseModuleById: publicProcedure
+    .input(courseModuleIdSchema)
+    .query(async ({ input }) => {
+      return getCourseModuleById(input.id);
+    }),
   createCourseModule: publicProcedure
     .input(insertCourseModuleParams)
     .mutation(async ({ input }) => {

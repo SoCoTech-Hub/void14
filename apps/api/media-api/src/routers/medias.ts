@@ -1,19 +1,22 @@
-import { getMediaById, getMedias } from "../api/medias/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  mediaIdSchema,
   insertMediaParams,
+  mediaIdSchema,
   updateMediaParams,
 } from "@soco/media-db/schema/medias";
-import { createMedia, deleteMedia, updateMedia } from "../api/medias/mutations";
 
-export const mediasRouter =createTRPCRouter({
+import { createMedia, deleteMedia, updateMedia } from "../api/medias/mutations";
+import { getMediaById, getMedias } from "../api/medias/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const mediasRouter = createTRPCRouter({
   getMedias: publicProcedure.query(async () => {
     return getMedias();
   }),
-  getMediaById: publicProcedure.input(mediaIdSchema).query(async ({ input }) => {
-    return getMediaById(input.id);
-  }),
+  getMediaById: publicProcedure
+    .input(mediaIdSchema)
+    .query(async ({ input }) => {
+      return getMediaById(input.id);
+    }),
   createMedia: publicProcedure
     .input(insertMediaParams)
     .mutation(async ({ input }) => {

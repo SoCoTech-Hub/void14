@@ -1,13 +1,14 @@
-import { getWikiById, getWikis } from "../api/wikis/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  wikiIdSchema,
   insertWikiParams,
   updateWikiParams,
+  wikiIdSchema,
 } from "@soco/wiki-db/schema/wikis";
-import { createWiki, deleteWiki, updateWiki } from "../api/wikis/mutations";
 
-export const wikisRouter =createTRPCRouter({
+import { createWiki, deleteWiki, updateWiki } from "../api/wikis/mutations";
+import { getWikiById, getWikis } from "../api/wikis/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const wikisRouter = createTRPCRouter({
   getWikis: publicProcedure.query(async () => {
     return getWikis();
   }),

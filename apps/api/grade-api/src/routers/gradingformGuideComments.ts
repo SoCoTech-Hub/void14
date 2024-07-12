@@ -1,19 +1,29 @@
-import { getGradingformGuideCommentById, getGradingformGuideComments } from "../api/gradingformGuideComments/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   gradingformGuideCommentIdSchema,
   insertGradingformGuideCommentParams,
   updateGradingformGuideCommentParams,
 } from "@soco/grade-db/schema/gradingformGuideComments";
-import { createGradingformGuideComment, deleteGradingformGuideComment, updateGradingformGuideComment } from "../api/gradingformGuideComments/mutations";
 
-export const gradingformGuideCommentsRouter =createTRPCRouter({
+import {
+  createGradingformGuideComment,
+  deleteGradingformGuideComment,
+  updateGradingformGuideComment,
+} from "../api/gradingformGuideComments/mutations";
+import {
+  getGradingformGuideCommentById,
+  getGradingformGuideComments,
+} from "../api/gradingformGuideComments/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const gradingformGuideCommentsRouter = createTRPCRouter({
   getGradingformGuideComments: publicProcedure.query(async () => {
     return getGradingformGuideComments();
   }),
-  getGradingformGuideCommentById: publicProcedure.input(gradingformGuideCommentIdSchema).query(async ({ input }) => {
-    return getGradingformGuideCommentById(input.id);
-  }),
+  getGradingformGuideCommentById: publicProcedure
+    .input(gradingformGuideCommentIdSchema)
+    .query(async ({ input }) => {
+      return getGradingformGuideCommentById(input.id);
+    }),
   createGradingformGuideComment: publicProcedure
     .input(insertGradingformGuideCommentParams)
     .mutation(async ({ input }) => {

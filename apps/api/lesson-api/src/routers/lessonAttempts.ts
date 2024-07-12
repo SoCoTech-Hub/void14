@@ -1,19 +1,29 @@
-import { getLessonAttemptById, getLessonAttempts } from "../api/lessonAttempts/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  lessonAttemptIdSchema,
   insertLessonAttemptParams,
+  lessonAttemptIdSchema,
   updateLessonAttemptParams,
 } from "@soco/lesson-db/schema/lessonAttempts";
-import { createLessonAttempt, deleteLessonAttempt, updateLessonAttempt } from "../api/lessonAttempts/mutations";
 
-export const lessonAttemptsRouter =createTRPCRouter({
+import {
+  createLessonAttempt,
+  deleteLessonAttempt,
+  updateLessonAttempt,
+} from "../api/lessonAttempts/mutations";
+import {
+  getLessonAttemptById,
+  getLessonAttempts,
+} from "../api/lessonAttempts/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const lessonAttemptsRouter = createTRPCRouter({
   getLessonAttempts: publicProcedure.query(async () => {
     return getLessonAttempts();
   }),
-  getLessonAttemptById: publicProcedure.input(lessonAttemptIdSchema).query(async ({ input }) => {
-    return getLessonAttemptById(input.id);
-  }),
+  getLessonAttemptById: publicProcedure
+    .input(lessonAttemptIdSchema)
+    .query(async ({ input }) => {
+      return getLessonAttemptById(input.id);
+    }),
   createLessonAttempt: publicProcedure
     .input(insertLessonAttemptParams)
     .mutation(async ({ input }) => {

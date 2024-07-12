@@ -1,19 +1,22 @@
-import { getLabelById, getLabels } from "../api/labels/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  labelIdSchema,
   insertLabelParams,
+  labelIdSchema,
   updateLabelParams,
 } from "@soco/label-db/schema/labels";
-import { createLabel, deleteLabel, updateLabel } from "../api/labels/mutations";
 
-export const labelsRouter =createTRPCRouter({
+import { createLabel, deleteLabel, updateLabel } from "../api/labels/mutations";
+import { getLabelById, getLabels } from "../api/labels/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const labelsRouter = createTRPCRouter({
   getLabels: publicProcedure.query(async () => {
     return getLabels();
   }),
-  getLabelById: publicProcedure.input(labelIdSchema).query(async ({ input }) => {
-    return getLabelById(input.id);
-  }),
+  getLabelById: publicProcedure
+    .input(labelIdSchema)
+    .query(async ({ input }) => {
+      return getLabelById(input.id);
+    }),
   createLabel: publicProcedure
     .input(insertLabelParams)
     .mutation(async ({ input }) => {

@@ -1,19 +1,27 @@
-import { db } from "@soco/enrol-db/client";
+import type {
+  EnrolLtiResourceLinkId,
+  NewEnrolLtiResourceLinkParams,
+  UpdateEnrolLtiResourceLinkParams,
+} from "@soco/enrol-db/schema/enrolLtiResourceLinks";
 import { eq } from "@soco/enrol-db";
-import { 
-  type EnrolLtiResourceLinkId, 
-  type NewEnrolLtiResourceLinkParams,
-  type UpdateEnrolLtiResourceLinkParams, 
-  updateEnrolLtiResourceLinkSchema,
-  insertEnrolLtiResourceLinkSchema, 
+import { db } from "@soco/enrol-db/client";
+import {
+  enrolLtiResourceLinkIdSchema,
   enrolLtiResourceLinks,
-  enrolLtiResourceLinkIdSchema 
+  insertEnrolLtiResourceLinkSchema,
+  updateEnrolLtiResourceLinkSchema,
 } from "@soco/enrol-db/schema/enrolLtiResourceLinks";
 
-export const createEnrolLtiResourceLink = async (enrolLtiResourceLink: NewEnrolLtiResourceLinkParams) => {
-  const newEnrolLtiResourceLink = insertEnrolLtiResourceLinkSchema.parse(enrolLtiResourceLink);
+export const createEnrolLtiResourceLink = async (
+  enrolLtiResourceLink: NewEnrolLtiResourceLinkParams,
+) => {
+  const newEnrolLtiResourceLink =
+    insertEnrolLtiResourceLinkSchema.parse(enrolLtiResourceLink);
   try {
-    const [e] =  await db.insert(enrolLtiResourceLinks).values(newEnrolLtiResourceLink).returning();
+    const [e] = await db
+      .insert(enrolLtiResourceLinks)
+      .values(newEnrolLtiResourceLink)
+      .returning();
     return { enrolLtiResourceLink: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,21 @@ export const createEnrolLtiResourceLink = async (enrolLtiResourceLink: NewEnrolL
   }
 };
 
-export const updateEnrolLtiResourceLink = async (id: EnrolLtiResourceLinkId, enrolLtiResourceLink: UpdateEnrolLtiResourceLinkParams) => {
-  const { id: enrolLtiResourceLinkId } = enrolLtiResourceLinkIdSchema.parse({ id });
-  const newEnrolLtiResourceLink = updateEnrolLtiResourceLinkSchema.parse(enrolLtiResourceLink);
+export const updateEnrolLtiResourceLink = async (
+  id: EnrolLtiResourceLinkId,
+  enrolLtiResourceLink: UpdateEnrolLtiResourceLinkParams,
+) => {
+  const { id: enrolLtiResourceLinkId } = enrolLtiResourceLinkIdSchema.parse({
+    id,
+  });
+  const newEnrolLtiResourceLink =
+    updateEnrolLtiResourceLinkSchema.parse(enrolLtiResourceLink);
   try {
-    const [e] =  await db
-     .update(enrolLtiResourceLinks)
-     .set({...newEnrolLtiResourceLink, updatedAt: new Date() })
-     .where(eq(enrolLtiResourceLinks.id, enrolLtiResourceLinkId!))
-     .returning();
+    const [e] = await db
+      .update(enrolLtiResourceLinks)
+      .set({ ...newEnrolLtiResourceLink, updatedAt: new Date() })
+      .where(eq(enrolLtiResourceLinks.id, enrolLtiResourceLinkId!))
+      .returning();
     return { enrolLtiResourceLink: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +53,17 @@ export const updateEnrolLtiResourceLink = async (id: EnrolLtiResourceLinkId, enr
   }
 };
 
-export const deleteEnrolLtiResourceLink = async (id: EnrolLtiResourceLinkId) => {
-  const { id: enrolLtiResourceLinkId } = enrolLtiResourceLinkIdSchema.parse({ id });
+export const deleteEnrolLtiResourceLink = async (
+  id: EnrolLtiResourceLinkId,
+) => {
+  const { id: enrolLtiResourceLinkId } = enrolLtiResourceLinkIdSchema.parse({
+    id,
+  });
   try {
-    const [e] =  await db.delete(enrolLtiResourceLinks).where(eq(enrolLtiResourceLinks.id, enrolLtiResourceLinkId!))
-    .returning();
+    const [e] = await db
+      .delete(enrolLtiResourceLinks)
+      .where(eq(enrolLtiResourceLinks.id, enrolLtiResourceLinkId!))
+      .returning();
     return { enrolLtiResourceLink: e };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +71,3 @@ export const deleteEnrolLtiResourceLink = async (id: EnrolLtiResourceLinkId) => 
     throw { error: message };
   }
 };
-

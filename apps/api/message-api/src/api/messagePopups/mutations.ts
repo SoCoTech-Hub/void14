@@ -1,19 +1,26 @@
-import { db } from "@soco/message-db/client";
+import type {
+  MessagePopupId,
+  NewMessagePopupParams,
+  UpdateMessagePopupParams,
+} from "@soco/message-db/schema/messagePopups";
 import { eq } from "@soco/message-db";
-import { 
-  type MessagePopupId, 
-  type NewMessagePopupParams,
-  type UpdateMessagePopupParams, 
-  updateMessagePopupSchema,
-  insertMessagePopupSchema, 
+import { db } from "@soco/message-db/client";
+import {
+  insertMessagePopupSchema,
+  messagePopupIdSchema,
   messagePopups,
-  messagePopupIdSchema 
+  updateMessagePopupSchema,
 } from "@soco/message-db/schema/messagePopups";
 
-export const createMessagePopup = async (messagePopup: NewMessagePopupParams) => {
+export const createMessagePopup = async (
+  messagePopup: NewMessagePopupParams,
+) => {
   const newMessagePopup = insertMessagePopupSchema.parse(messagePopup);
   try {
-    const [m] =  await db.insert(messagePopups).values(newMessagePopup).returning();
+    const [m] = await db
+      .insert(messagePopups)
+      .values(newMessagePopup)
+      .returning();
     return { messagePopup: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,18 @@ export const createMessagePopup = async (messagePopup: NewMessagePopupParams) =>
   }
 };
 
-export const updateMessagePopup = async (id: MessagePopupId, messagePopup: UpdateMessagePopupParams) => {
+export const updateMessagePopup = async (
+  id: MessagePopupId,
+  messagePopup: UpdateMessagePopupParams,
+) => {
   const { id: messagePopupId } = messagePopupIdSchema.parse({ id });
   const newMessagePopup = updateMessagePopupSchema.parse(messagePopup);
   try {
-    const [m] =  await db
-     .update(messagePopups)
-     .set(newMessagePopup)
-     .where(eq(messagePopups.id, messagePopupId!))
-     .returning();
+    const [m] = await db
+      .update(messagePopups)
+      .set(newMessagePopup)
+      .where(eq(messagePopups.id, messagePopupId!))
+      .returning();
     return { messagePopup: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +52,10 @@ export const updateMessagePopup = async (id: MessagePopupId, messagePopup: Updat
 export const deleteMessagePopup = async (id: MessagePopupId) => {
   const { id: messagePopupId } = messagePopupIdSchema.parse({ id });
   try {
-    const [m] =  await db.delete(messagePopups).where(eq(messagePopups.id, messagePopupId!))
-    .returning();
+    const [m] = await db
+      .delete(messagePopups)
+      .where(eq(messagePopups.id, messagePopupId!))
+      .returning();
     return { messagePopup: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +63,3 @@ export const deleteMessagePopup = async (id: MessagePopupId) => {
     throw { error: message };
   }
 };
-

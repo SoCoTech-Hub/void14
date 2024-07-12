@@ -14,7 +14,7 @@ import {
 import { getUserAuth } from "@soco/auth-service";
 
 export const createAdminPreset = async (adminPreset: NewAdminPresetParams) => {
-  const { session } = await getUserAuth();
+  const { Session: session } = await getUserAuth();
   const newAdminPreset = insertAdminPresetSchema.parse({
     ...adminPreset,
     userId: session?.user.id!,
@@ -36,7 +36,7 @@ export const updateAdminPreset = async (
   id: AdminPresetId,
   adminPreset: UpdateAdminPresetParams,
 ) => {
-  const { session } = await getUserAuth();
+  const { Session: session } = await getUserAuth();
   const { id: adminPresetId } = adminPresetIdSchema.parse({ id });
   const newAdminPreset = updateAdminPresetSchema.parse({
     ...adminPreset,
@@ -62,7 +62,7 @@ export const updateAdminPreset = async (
 };
 
 export const deleteAdminPreset = async (id: AdminPresetId) => {
-  const { session } = await getUserAuth();
+  const { Session: session } = await getUserAuth();
   const { id: adminPresetId } = adminPresetIdSchema.parse({ id });
   try {
     const [a] = await db

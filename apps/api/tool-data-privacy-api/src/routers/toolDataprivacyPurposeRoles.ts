@@ -1,19 +1,29 @@
-import { getToolDataprivacyPurposeRoleById, getToolDataprivacyPurposeRoles } from "../api/toolDataprivacyPurposeRoles/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  toolDataprivacyPurposeRoleIdSchema,
   insertToolDataprivacyPurposeRoleParams,
+  toolDataprivacyPurposeRoleIdSchema,
   updateToolDataprivacyPurposeRoleParams,
 } from "@soco/tool-data-privacy-db/schema/toolDataprivacyPurposeRoles";
-import { createToolDataprivacyPurposeRole, deleteToolDataprivacyPurposeRole, updateToolDataprivacyPurposeRole } from "../api/toolDataprivacyPurposeRoles/mutations";
 
-export const toolDataprivacyPurposeRolesRouter =createTRPCRouter({
+import {
+  createToolDataprivacyPurposeRole,
+  deleteToolDataprivacyPurposeRole,
+  updateToolDataprivacyPurposeRole,
+} from "../api/toolDataprivacyPurposeRoles/mutations";
+import {
+  getToolDataprivacyPurposeRoleById,
+  getToolDataprivacyPurposeRoles,
+} from "../api/toolDataprivacyPurposeRoles/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const toolDataprivacyPurposeRolesRouter = createTRPCRouter({
   getToolDataprivacyPurposeRoles: publicProcedure.query(async () => {
     return getToolDataprivacyPurposeRoles();
   }),
-  getToolDataprivacyPurposeRoleById: publicProcedure.input(toolDataprivacyPurposeRoleIdSchema).query(async ({ input }) => {
-    return getToolDataprivacyPurposeRoleById(input.id);
-  }),
+  getToolDataprivacyPurposeRoleById: publicProcedure
+    .input(toolDataprivacyPurposeRoleIdSchema)
+    .query(async ({ input }) => {
+      return getToolDataprivacyPurposeRoleById(input.id);
+    }),
   createToolDataprivacyPurposeRole: publicProcedure
     .input(insertToolDataprivacyPurposeRoleParams)
     .mutation(async ({ input }) => {

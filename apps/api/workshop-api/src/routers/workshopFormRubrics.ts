@@ -1,19 +1,29 @@
-import { getWorkshopFormRubricById, getWorkshopFormRubrics } from "../api/workshopFormRubrics/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  workshopFormRubricIdSchema,
   insertWorkshopFormRubricParams,
   updateWorkshopFormRubricParams,
+  workshopFormRubricIdSchema,
 } from "@soco/workshop-db/schema/workshopFormRubrics";
-import { createWorkshopFormRubric, deleteWorkshopFormRubric, updateWorkshopFormRubric } from "../api/workshopFormRubrics/mutations";
 
-export const workshopFormRubricsRouter =createTRPCRouter({
+import {
+  createWorkshopFormRubric,
+  deleteWorkshopFormRubric,
+  updateWorkshopFormRubric,
+} from "../api/workshopFormRubrics/mutations";
+import {
+  getWorkshopFormRubricById,
+  getWorkshopFormRubrics,
+} from "../api/workshopFormRubrics/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const workshopFormRubricsRouter = createTRPCRouter({
   getWorkshopFormRubrics: publicProcedure.query(async () => {
     return getWorkshopFormRubrics();
   }),
-  getWorkshopFormRubricById: publicProcedure.input(workshopFormRubricIdSchema).query(async ({ input }) => {
-    return getWorkshopFormRubricById(input.id);
-  }),
+  getWorkshopFormRubricById: publicProcedure
+    .input(workshopFormRubricIdSchema)
+    .query(async ({ input }) => {
+      return getWorkshopFormRubricById(input.id);
+    }),
   createWorkshopFormRubric: publicProcedure
     .input(insertWorkshopFormRubricParams)
     .mutation(async ({ input }) => {

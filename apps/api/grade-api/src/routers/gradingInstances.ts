@@ -1,19 +1,29 @@
-import { getGradingInstanceById, getGradingInstances } from "../api/gradingInstances/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   gradingInstanceIdSchema,
   insertGradingInstanceParams,
   updateGradingInstanceParams,
 } from "@soco/grade-db/schema/gradingInstances";
-import { createGradingInstance, deleteGradingInstance, updateGradingInstance } from "../api/gradingInstances/mutations";
 
-export const gradingInstancesRouter =createTRPCRouter({
+import {
+  createGradingInstance,
+  deleteGradingInstance,
+  updateGradingInstance,
+} from "../api/gradingInstances/mutations";
+import {
+  getGradingInstanceById,
+  getGradingInstances,
+} from "../api/gradingInstances/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const gradingInstancesRouter = createTRPCRouter({
   getGradingInstances: publicProcedure.query(async () => {
     return getGradingInstances();
   }),
-  getGradingInstanceById: publicProcedure.input(gradingInstanceIdSchema).query(async ({ input }) => {
-    return getGradingInstanceById(input.id);
-  }),
+  getGradingInstanceById: publicProcedure
+    .input(gradingInstanceIdSchema)
+    .query(async ({ input }) => {
+      return getGradingInstanceById(input.id);
+    }),
   createGradingInstance: publicProcedure
     .input(insertGradingInstanceParams)
     .mutation(async ({ input }) => {

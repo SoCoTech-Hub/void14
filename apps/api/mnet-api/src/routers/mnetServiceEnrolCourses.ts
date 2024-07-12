@@ -1,19 +1,29 @@
-import { getMnetServiceEnrolCourseById, getMnetServiceEnrolCourses } from "../api/mnetServiceEnrolCourses/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  mnetServiceEnrolCourseIdSchema,
   insertMnetServiceEnrolCourseParams,
+  mnetServiceEnrolCourseIdSchema,
   updateMnetServiceEnrolCourseParams,
 } from "@soco/mnet-db/schema/mnetServiceEnrolCourses";
-import { createMnetServiceEnrolCourse, deleteMnetServiceEnrolCourse, updateMnetServiceEnrolCourse } from "../api/mnetServiceEnrolCourses/mutations";
 
-export const mnetServiceEnrolCoursesRouter =createTRPCRouter({
+import {
+  createMnetServiceEnrolCourse,
+  deleteMnetServiceEnrolCourse,
+  updateMnetServiceEnrolCourse,
+} from "../api/mnetServiceEnrolCourses/mutations";
+import {
+  getMnetServiceEnrolCourseById,
+  getMnetServiceEnrolCourses,
+} from "../api/mnetServiceEnrolCourses/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const mnetServiceEnrolCoursesRouter = createTRPCRouter({
   getMnetServiceEnrolCourses: publicProcedure.query(async () => {
     return getMnetServiceEnrolCourses();
   }),
-  getMnetServiceEnrolCourseById: publicProcedure.input(mnetServiceEnrolCourseIdSchema).query(async ({ input }) => {
-    return getMnetServiceEnrolCourseById(input.id);
-  }),
+  getMnetServiceEnrolCourseById: publicProcedure
+    .input(mnetServiceEnrolCourseIdSchema)
+    .query(async ({ input }) => {
+      return getMnetServiceEnrolCourseById(input.id);
+    }),
   createMnetServiceEnrolCourse: publicProcedure
     .input(insertMnetServiceEnrolCourseParams)
     .mutation(async ({ input }) => {

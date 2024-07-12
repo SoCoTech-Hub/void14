@@ -1,19 +1,29 @@
-import { getPaymentGatewayById, getPaymentGateways } from "../api/paymentGateways/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  paymentGatewayIdSchema,
   insertPaymentGatewayParams,
+  paymentGatewayIdSchema,
   updatePaymentGatewayParams,
 } from "@soco/payment-db/schema/paymentGateways";
-import { createPaymentGateway, deletePaymentGateway, updatePaymentGateway } from "../api/paymentGateways/mutations";
 
-export const paymentGatewaysRouter =createTRPCRouter({
+import {
+  createPaymentGateway,
+  deletePaymentGateway,
+  updatePaymentGateway,
+} from "../api/paymentGateways/mutations";
+import {
+  getPaymentGatewayById,
+  getPaymentGateways,
+} from "../api/paymentGateways/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const paymentGatewaysRouter = createTRPCRouter({
   getPaymentGateways: publicProcedure.query(async () => {
     return getPaymentGateways();
   }),
-  getPaymentGatewayById: publicProcedure.input(paymentGatewayIdSchema).query(async ({ input }) => {
-    return getPaymentGatewayById(input.id);
-  }),
+  getPaymentGatewayById: publicProcedure
+    .input(paymentGatewayIdSchema)
+    .query(async ({ input }) => {
+      return getPaymentGatewayById(input.id);
+    }),
   createPaymentGateway: publicProcedure
     .input(insertPaymentGatewayParams)
     .mutation(async ({ input }) => {

@@ -1,13 +1,14 @@
-import { getNoteById, getNotes } from "../api/notes/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  noteIdSchema,
   insertNoteParams,
+  noteIdSchema,
   updateNoteParams,
 } from "@soco/note-db/schema/notes";
-import { createNote, deleteNote, updateNote } from "../api/notes/mutations";
 
-export const notesRouter =createTRPCRouter({
+import { createNote, deleteNote, updateNote } from "../api/notes/mutations";
+import { getNoteById, getNotes } from "../api/notes/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const notesRouter = createTRPCRouter({
   getNotes: publicProcedure.query(async () => {
     return getNotes();
   }),

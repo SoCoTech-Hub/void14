@@ -1,19 +1,29 @@
-import { getQuestionStatisticById, getQuestionStatistics } from "../api/questionStatistics/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  questionStatisticIdSchema,
   insertQuestionStatisticParams,
+  questionStatisticIdSchema,
   updateQuestionStatisticParams,
 } from "@soco/question-db/schema/questionStatistics";
-import { createQuestionStatistic, deleteQuestionStatistic, updateQuestionStatistic } from "../api/questionStatistics/mutations";
 
-export const questionStatisticsRouter =createTRPCRouter({
+import {
+  createQuestionStatistic,
+  deleteQuestionStatistic,
+  updateQuestionStatistic,
+} from "../api/questionStatistics/mutations";
+import {
+  getQuestionStatisticById,
+  getQuestionStatistics,
+} from "../api/questionStatistics/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const questionStatisticsRouter = createTRPCRouter({
   getQuestionStatistics: publicProcedure.query(async () => {
     return getQuestionStatistics();
   }),
-  getQuestionStatisticById: publicProcedure.input(questionStatisticIdSchema).query(async ({ input }) => {
-    return getQuestionStatisticById(input.id);
-  }),
+  getQuestionStatisticById: publicProcedure
+    .input(questionStatisticIdSchema)
+    .query(async ({ input }) => {
+      return getQuestionStatisticById(input.id);
+    }),
   createQuestionStatistic: publicProcedure
     .input(insertQuestionStatisticParams)
     .mutation(async ({ input }) => {

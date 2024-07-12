@@ -1,19 +1,29 @@
-import { getSupportDepartmentById, getSupportDepartments } from "../api/supportDepartments/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  supportDepartmentIdSchema,
   insertSupportDepartmentParams,
+  supportDepartmentIdSchema,
   updateSupportDepartmentParams,
 } from "@soco/support-db/schema/supportDepartments";
-import { createSupportDepartment, deleteSupportDepartment, updateSupportDepartment } from "../api/supportDepartments/mutations";
 
-export const supportDepartmentsRouter =createTRPCRouter({
+import {
+  createSupportDepartment,
+  deleteSupportDepartment,
+  updateSupportDepartment,
+} from "../api/supportDepartments/mutations";
+import {
+  getSupportDepartmentById,
+  getSupportDepartments,
+} from "../api/supportDepartments/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const supportDepartmentsRouter = createTRPCRouter({
   getSupportDepartments: publicProcedure.query(async () => {
     return getSupportDepartments();
   }),
-  getSupportDepartmentById: publicProcedure.input(supportDepartmentIdSchema).query(async ({ input }) => {
-    return getSupportDepartmentById(input.id);
-  }),
+  getSupportDepartmentById: publicProcedure
+    .input(supportDepartmentIdSchema)
+    .query(async ({ input }) => {
+      return getSupportDepartmentById(input.id);
+    }),
   createSupportDepartment: publicProcedure
     .input(insertSupportDepartmentParams)
     .mutation(async ({ input }) => {

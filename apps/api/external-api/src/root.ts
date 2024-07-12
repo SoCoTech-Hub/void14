@@ -1,8 +1,8 @@
-import { externalFunctionsRouter } from './routers/externalFunctions';
-import { externalServicesRouter } from './routers/externalServices';
-import { externalServicesFunctionsRouter } from './routers/externalServicesFunctions';
-import { externalServicesUsersRouter } from './routers/externalServicesUsers';
-import { externalTokensRouter } from './routers/externalTokens';
+import { externalFunctionsRouter } from "./routers/externalFunctions";
+import { externalServicesRouter } from "./routers/externalServices";
+import { externalServicesFunctionsRouter } from "./routers/externalServicesFunctions";
+import { externalServicesUsersRouter } from "./routers/externalServicesUsers";
+import { externalTokensRouter } from "./routers/externalTokens";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

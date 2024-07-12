@@ -1,19 +1,29 @@
-import { getSurveyQuestionById, getSurveyQuestions } from "../api/surveyQuestions/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  surveyQuestionIdSchema,
   insertSurveyQuestionParams,
+  surveyQuestionIdSchema,
   updateSurveyQuestionParams,
 } from "@soco/survey-db/schema/surveyQuestions";
-import { createSurveyQuestion, deleteSurveyQuestion, updateSurveyQuestion } from "../api/surveyQuestions/mutations";
 
-export const surveyQuestionsRouter =createTRPCRouter({
+import {
+  createSurveyQuestion,
+  deleteSurveyQuestion,
+  updateSurveyQuestion,
+} from "../api/surveyQuestions/mutations";
+import {
+  getSurveyQuestionById,
+  getSurveyQuestions,
+} from "../api/surveyQuestions/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const surveyQuestionsRouter = createTRPCRouter({
   getSurveyQuestions: publicProcedure.query(async () => {
     return getSurveyQuestions();
   }),
-  getSurveyQuestionById: publicProcedure.input(surveyQuestionIdSchema).query(async ({ input }) => {
-    return getSurveyQuestionById(input.id);
-  }),
+  getSurveyQuestionById: publicProcedure
+    .input(surveyQuestionIdSchema)
+    .query(async ({ input }) => {
+      return getSurveyQuestionById(input.id);
+    }),
   createSurveyQuestion: publicProcedure
     .input(insertSurveyQuestionParams)
     .mutation(async ({ input }) => {

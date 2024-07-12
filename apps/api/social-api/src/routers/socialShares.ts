@@ -1,19 +1,29 @@
-import { getSocialShareById, getSocialShares } from "../api/socialShares/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  socialShareIdSchema,
   insertSocialShareParams,
+  socialShareIdSchema,
   updateSocialShareParams,
 } from "@soco/social-db/schema/socialShares";
-import { createSocialShare, deleteSocialShare, updateSocialShare } from "../api/socialShares/mutations";
 
-export const socialSharesRouter =createTRPCRouter({
+import {
+  createSocialShare,
+  deleteSocialShare,
+  updateSocialShare,
+} from "../api/socialShares/mutations";
+import {
+  getSocialShareById,
+  getSocialShares,
+} from "../api/socialShares/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const socialSharesRouter = createTRPCRouter({
   getSocialShares: publicProcedure.query(async () => {
     return getSocialShares();
   }),
-  getSocialShareById: publicProcedure.input(socialShareIdSchema).query(async ({ input }) => {
-    return getSocialShareById(input.id);
-  }),
+  getSocialShareById: publicProcedure
+    .input(socialShareIdSchema)
+    .query(async ({ input }) => {
+      return getSocialShareById(input.id);
+    }),
   createSocialShare: publicProcedure
     .input(insertSocialShareParams)
     .mutation(async ({ input }) => {

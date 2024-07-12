@@ -1,19 +1,29 @@
-import { getRoleAllowViewById, getRoleAllowViews } from "../api/roleAllowViews/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  roleAllowViewIdSchema,
   insertRoleAllowViewParams,
+  roleAllowViewIdSchema,
   updateRoleAllowViewParams,
 } from "@soco/role-db/schema/roleAllowViews";
-import { createRoleAllowView, deleteRoleAllowView, updateRoleAllowView } from "../api/roleAllowViews/mutations";
 
-export const roleAllowViewsRouter =createTRPCRouter({
+import {
+  createRoleAllowView,
+  deleteRoleAllowView,
+  updateRoleAllowView,
+} from "../api/roleAllowViews/mutations";
+import {
+  getRoleAllowViewById,
+  getRoleAllowViews,
+} from "../api/roleAllowViews/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const roleAllowViewsRouter = createTRPCRouter({
   getRoleAllowViews: publicProcedure.query(async () => {
     return getRoleAllowViews();
   }),
-  getRoleAllowViewById: publicProcedure.input(roleAllowViewIdSchema).query(async ({ input }) => {
-    return getRoleAllowViewById(input.id);
-  }),
+  getRoleAllowViewById: publicProcedure
+    .input(roleAllowViewIdSchema)
+    .query(async ({ input }) => {
+      return getRoleAllowViewById(input.id);
+    }),
   createRoleAllowView: publicProcedure
     .input(insertRoleAllowViewParams)
     .mutation(async ({ input }) => {

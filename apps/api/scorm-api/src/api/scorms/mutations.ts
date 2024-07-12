@@ -1,19 +1,21 @@
-import { db } from "@soco/scorm-db/client";
+import type {
+  NewScormParams,
+  ScormId,
+  UpdateScormParams,
+} from "@soco/scorm-db/schema/scorms";
 import { eq } from "@soco/scorm-db";
-import { 
-  type ScormId, 
-  type NewScormParams,
-  type UpdateScormParams, 
-  updateScormSchema,
-  insertScormSchema, 
+import { db } from "@soco/scorm-db/client";
+import {
+  insertScormSchema,
+  scormIdSchema,
   scorms,
-  scormIdSchema 
+  updateScormSchema,
 } from "@soco/scorm-db/schema/scorms";
 
 export const createScorm = async (scorm: NewScormParams) => {
   const newScorm = insertScormSchema.parse(scorm);
   try {
-    const [s] =  await db.insert(scorms).values(newScorm).returning();
+    const [s] = await db.insert(scorms).values(newScorm).returning();
     return { scorm: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -26,11 +28,11 @@ export const updateScorm = async (id: ScormId, scorm: UpdateScormParams) => {
   const { id: scormId } = scormIdSchema.parse({ id });
   const newScorm = updateScormSchema.parse(scorm);
   try {
-    const [s] =  await db
-     .update(scorms)
-     .set({...newScorm, updatedAt: new Date() })
-     .where(eq(scorms.id, scormId!))
-     .returning();
+    const [s] = await db
+      .update(scorms)
+      .set({ ...newScorm, updatedAt: new Date() })
+      .where(eq(scorms.id, scormId!))
+      .returning();
     return { scorm: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +44,10 @@ export const updateScorm = async (id: ScormId, scorm: UpdateScormParams) => {
 export const deleteScorm = async (id: ScormId) => {
   const { id: scormId } = scormIdSchema.parse({ id });
   try {
-    const [s] =  await db.delete(scorms).where(eq(scorms.id, scormId!))
-    .returning();
+    const [s] = await db
+      .delete(scorms)
+      .where(eq(scorms.id, scormId!))
+      .returning();
     return { scorm: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +55,3 @@ export const deleteScorm = async (id: ScormId) => {
     throw { error: message };
   }
 };
-

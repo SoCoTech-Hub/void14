@@ -1,19 +1,29 @@
-import { getEditorAttoAutosaveById, getEditorAttoAutosaves } from "../api/editorAttoAutosaves/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   editorAttoAutosaveIdSchema,
   insertEditorAttoAutosaveParams,
   updateEditorAttoAutosaveParams,
 } from "@soco/editor-db/schema/editorAttoAutosaves";
-import { createEditorAttoAutosave, deleteEditorAttoAutosave, updateEditorAttoAutosave } from "../api/editorAttoAutosaves/mutations";
 
-export const editorAttoAutosavesRouter =createTRPCRouter({
+import {
+  createEditorAttoAutosave,
+  deleteEditorAttoAutosave,
+  updateEditorAttoAutosave,
+} from "../api/editorAttoAutosaves/mutations";
+import {
+  getEditorAttoAutosaveById,
+  getEditorAttoAutosaves,
+} from "../api/editorAttoAutosaves/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const editorAttoAutosavesRouter = createTRPCRouter({
   getEditorAttoAutosaves: publicProcedure.query(async () => {
     return getEditorAttoAutosaves();
   }),
-  getEditorAttoAutosaveById: publicProcedure.input(editorAttoAutosaveIdSchema).query(async ({ input }) => {
-    return getEditorAttoAutosaveById(input.id);
-  }),
+  getEditorAttoAutosaveById: publicProcedure
+    .input(editorAttoAutosaveIdSchema)
+    .query(async ({ input }) => {
+      return getEditorAttoAutosaveById(input.id);
+    }),
   createEditorAttoAutosave: publicProcedure
     .input(insertEditorAttoAutosaveParams)
     .mutation(async ({ input }) => {

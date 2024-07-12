@@ -1,19 +1,29 @@
-import { getH5pContentsLibraryById, getH5pContentsLibraries } from "../api/h5pContentsLibraries/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
   h5pContentsLibraryIdSchema,
   insertH5pContentsLibraryParams,
   updateH5pContentsLibraryParams,
 } from "@soco/h5p-db/schema/h5pContentsLibraries";
-import { createH5pContentsLibrary, deleteH5pContentsLibrary, updateH5pContentsLibrary } from "../api/h5pContentsLibraries/mutations";
 
-export const h5pContentsLibrariesRouter =createTRPCRouter({
+import {
+  createH5pContentsLibrary,
+  deleteH5pContentsLibrary,
+  updateH5pContentsLibrary,
+} from "../api/h5pContentsLibraries/mutations";
+import {
+  getH5pContentsLibraries,
+  getH5pContentsLibraryById,
+} from "../api/h5pContentsLibraries/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const h5pContentsLibrariesRouter = createTRPCRouter({
   getH5pContentsLibraries: publicProcedure.query(async () => {
     return getH5pContentsLibraries();
   }),
-  getH5pContentsLibraryById: publicProcedure.input(h5pContentsLibraryIdSchema).query(async ({ input }) => {
-    return getH5pContentsLibraryById(input.id);
-  }),
+  getH5pContentsLibraryById: publicProcedure
+    .input(h5pContentsLibraryIdSchema)
+    .query(async ({ input }) => {
+      return getH5pContentsLibraryById(input.id);
+    }),
   createH5pContentsLibrary: publicProcedure
     .input(insertH5pContentsLibraryParams)
     .mutation(async ({ input }) => {

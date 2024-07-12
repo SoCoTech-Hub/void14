@@ -1,19 +1,26 @@
-import { db } from "@soco/payment-db/client";
+import type {
+  NewPaymentAccountParams,
+  PaymentAccountId,
+  UpdatePaymentAccountParams,
+} from "@soco/payment-db/schema/paymentAccounts";
 import { eq } from "@soco/payment-db";
-import { 
-  type PaymentAccountId, 
-  type NewPaymentAccountParams,
-  type UpdatePaymentAccountParams, 
-  updatePaymentAccountSchema,
-  insertPaymentAccountSchema, 
+import { db } from "@soco/payment-db/client";
+import {
+  insertPaymentAccountSchema,
+  paymentAccountIdSchema,
   paymentAccounts,
-  paymentAccountIdSchema 
+  updatePaymentAccountSchema,
 } from "@soco/payment-db/schema/paymentAccounts";
 
-export const createPaymentAccount = async (paymentAccount: NewPaymentAccountParams) => {
+export const createPaymentAccount = async (
+  paymentAccount: NewPaymentAccountParams,
+) => {
   const newPaymentAccount = insertPaymentAccountSchema.parse(paymentAccount);
   try {
-    const [p] =  await db.insert(paymentAccounts).values(newPaymentAccount).returning();
+    const [p] = await db
+      .insert(paymentAccounts)
+      .values(newPaymentAccount)
+      .returning();
     return { paymentAccount: p };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,18 @@ export const createPaymentAccount = async (paymentAccount: NewPaymentAccountPara
   }
 };
 
-export const updatePaymentAccount = async (id: PaymentAccountId, paymentAccount: UpdatePaymentAccountParams) => {
+export const updatePaymentAccount = async (
+  id: PaymentAccountId,
+  paymentAccount: UpdatePaymentAccountParams,
+) => {
   const { id: paymentAccountId } = paymentAccountIdSchema.parse({ id });
   const newPaymentAccount = updatePaymentAccountSchema.parse(paymentAccount);
   try {
-    const [p] =  await db
-     .update(paymentAccounts)
-     .set({...newPaymentAccount, updatedAt: new Date() })
-     .where(eq(paymentAccounts.id, paymentAccountId!))
-     .returning();
+    const [p] = await db
+      .update(paymentAccounts)
+      .set({ ...newPaymentAccount, updatedAt: new Date() })
+      .where(eq(paymentAccounts.id, paymentAccountId!))
+      .returning();
     return { paymentAccount: p };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +52,10 @@ export const updatePaymentAccount = async (id: PaymentAccountId, paymentAccount:
 export const deletePaymentAccount = async (id: PaymentAccountId) => {
   const { id: paymentAccountId } = paymentAccountIdSchema.parse({ id });
   try {
-    const [p] =  await db.delete(paymentAccounts).where(eq(paymentAccounts.id, paymentAccountId!))
-    .returning();
+    const [p] = await db
+      .delete(paymentAccounts)
+      .where(eq(paymentAccounts.id, paymentAccountId!))
+      .returning();
     return { paymentAccount: p };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +63,3 @@ export const deletePaymentAccount = async (id: PaymentAccountId) => {
     throw { error: message };
   }
 };
-

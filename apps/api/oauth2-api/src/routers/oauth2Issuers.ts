@@ -1,19 +1,29 @@
-import { getOauth2IssuerById, getOauth2Issuers } from "../api/oauth2Issuers/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  oauth2IssuerIdSchema,
   insertOauth2IssuerParams,
+  oauth2IssuerIdSchema,
   updateOauth2IssuerParams,
 } from "@soco/oauth2-db/schema/oauth2Issuers";
-import { createOauth2Issuer, deleteOauth2Issuer, updateOauth2Issuer } from "../api/oauth2Issuers/mutations";
 
-export const oauth2IssuersRouter =createTRPCRouter({
+import {
+  createOauth2Issuer,
+  deleteOauth2Issuer,
+  updateOauth2Issuer,
+} from "../api/oauth2Issuers/mutations";
+import {
+  getOauth2IssuerById,
+  getOauth2Issuers,
+} from "../api/oauth2Issuers/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const oauth2IssuersRouter = createTRPCRouter({
   getOauth2Issuers: publicProcedure.query(async () => {
     return getOauth2Issuers();
   }),
-  getOauth2IssuerById: publicProcedure.input(oauth2IssuerIdSchema).query(async ({ input }) => {
-    return getOauth2IssuerById(input.id);
-  }),
+  getOauth2IssuerById: publicProcedure
+    .input(oauth2IssuerIdSchema)
+    .query(async ({ input }) => {
+      return getOauth2IssuerById(input.id);
+    }),
   createOauth2Issuer: publicProcedure
     .input(insertOauth2IssuerParams)
     .mutation(async ({ input }) => {

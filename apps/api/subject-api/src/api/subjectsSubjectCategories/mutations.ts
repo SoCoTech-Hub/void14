@@ -1,19 +1,28 @@
-import { db } from "@soco/subject-db/client";
+import type {
+  NewSubjectsSubjectCategoryParams,
+  SubjectsSubjectCategoryId,
+  UpdateSubjectsSubjectCategoryParams,
+} from "@soco/subject-db/schema/subjectsSubjectCategories";
 import { eq } from "@soco/subject-db";
-import { 
-  type SubjectsSubjectCategoryId, 
-  type NewSubjectsSubjectCategoryParams,
-  type UpdateSubjectsSubjectCategoryParams, 
-  updateSubjectsSubjectCategorySchema,
-  insertSubjectsSubjectCategorySchema, 
+import { db } from "@soco/subject-db/client";
+import {
+  insertSubjectsSubjectCategorySchema,
   subjectsSubjectCategories,
-  subjectsSubjectCategoryIdSchema 
+  subjectsSubjectCategoryIdSchema,
+  updateSubjectsSubjectCategorySchema,
 } from "@soco/subject-db/schema/subjectsSubjectCategories";
 
-export const createSubjectsSubjectCategory = async (subjectsSubjectCategory: NewSubjectsSubjectCategoryParams) => {
-  const newSubjectsSubjectCategory = insertSubjectsSubjectCategorySchema.parse(subjectsSubjectCategory);
+export const createSubjectsSubjectCategory = async (
+  subjectsSubjectCategory: NewSubjectsSubjectCategoryParams,
+) => {
+  const newSubjectsSubjectCategory = insertSubjectsSubjectCategorySchema.parse(
+    subjectsSubjectCategory,
+  );
   try {
-    const [s] =  await db.insert(subjectsSubjectCategories).values(newSubjectsSubjectCategory).returning();
+    const [s] = await db
+      .insert(subjectsSubjectCategories)
+      .values(newSubjectsSubjectCategory)
+      .returning();
     return { subjectsSubjectCategory: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +31,21 @@ export const createSubjectsSubjectCategory = async (subjectsSubjectCategory: New
   }
 };
 
-export const updateSubjectsSubjectCategory = async (id: SubjectsSubjectCategoryId, subjectsSubjectCategory: UpdateSubjectsSubjectCategoryParams) => {
-  const { id: subjectsSubjectCategoryId } = subjectsSubjectCategoryIdSchema.parse({ id });
-  const newSubjectsSubjectCategory = updateSubjectsSubjectCategorySchema.parse(subjectsSubjectCategory);
+export const updateSubjectsSubjectCategory = async (
+  id: SubjectsSubjectCategoryId,
+  subjectsSubjectCategory: UpdateSubjectsSubjectCategoryParams,
+) => {
+  const { id: subjectsSubjectCategoryId } =
+    subjectsSubjectCategoryIdSchema.parse({ id });
+  const newSubjectsSubjectCategory = updateSubjectsSubjectCategorySchema.parse(
+    subjectsSubjectCategory,
+  );
   try {
-    const [s] =  await db
-     .update(subjectsSubjectCategories)
-     .set(newSubjectsSubjectCategory)
-     .where(eq(subjectsSubjectCategories.id, subjectsSubjectCategoryId!))
-     .returning();
+    const [s] = await db
+      .update(subjectsSubjectCategories)
+      .set(newSubjectsSubjectCategory)
+      .where(eq(subjectsSubjectCategories.id, subjectsSubjectCategoryId!))
+      .returning();
     return { subjectsSubjectCategory: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -39,11 +54,16 @@ export const updateSubjectsSubjectCategory = async (id: SubjectsSubjectCategoryI
   }
 };
 
-export const deleteSubjectsSubjectCategory = async (id: SubjectsSubjectCategoryId) => {
-  const { id: subjectsSubjectCategoryId } = subjectsSubjectCategoryIdSchema.parse({ id });
+export const deleteSubjectsSubjectCategory = async (
+  id: SubjectsSubjectCategoryId,
+) => {
+  const { id: subjectsSubjectCategoryId } =
+    subjectsSubjectCategoryIdSchema.parse({ id });
   try {
-    const [s] =  await db.delete(subjectsSubjectCategories).where(eq(subjectsSubjectCategories.id, subjectsSubjectCategoryId!))
-    .returning();
+    const [s] = await db
+      .delete(subjectsSubjectCategories)
+      .where(eq(subjectsSubjectCategories.id, subjectsSubjectCategoryId!))
+      .returning();
     return { subjectsSubjectCategory: s };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +71,3 @@ export const deleteSubjectsSubjectCategory = async (id: SubjectsSubjectCategoryI
     throw { error: message };
   }
 };
-

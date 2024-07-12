@@ -1,19 +1,26 @@
-import { db } from "@soco/lti-db/client";
+import type {
+  LtiToolProxyId,
+  NewLtiToolProxyParams,
+  UpdateLtiToolProxyParams,
+} from "@soco/lti-db/schema/ltiToolProxies";
 import { eq } from "@soco/lti-db";
-import { 
-  type LtiToolProxyId, 
-  type NewLtiToolProxyParams,
-  type UpdateLtiToolProxyParams, 
-  updateLtiToolProxySchema,
-  insertLtiToolProxySchema, 
+import { db } from "@soco/lti-db/client";
+import {
+  insertLtiToolProxySchema,
   ltiToolProxies,
-  ltiToolProxyIdSchema 
+  ltiToolProxyIdSchema,
+  updateLtiToolProxySchema,
 } from "@soco/lti-db/schema/ltiToolProxies";
 
-export const createLtiToolProxy = async (ltiToolProxy: NewLtiToolProxyParams) => {
+export const createLtiToolProxy = async (
+  ltiToolProxy: NewLtiToolProxyParams,
+) => {
   const newLtiToolProxy = insertLtiToolProxySchema.parse(ltiToolProxy);
   try {
-    const [l] =  await db.insert(ltiToolProxies).values(newLtiToolProxy).returning();
+    const [l] = await db
+      .insert(ltiToolProxies)
+      .values(newLtiToolProxy)
+      .returning();
     return { ltiToolProxy: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,18 @@ export const createLtiToolProxy = async (ltiToolProxy: NewLtiToolProxyParams) =>
   }
 };
 
-export const updateLtiToolProxy = async (id: LtiToolProxyId, ltiToolProxy: UpdateLtiToolProxyParams) => {
+export const updateLtiToolProxy = async (
+  id: LtiToolProxyId,
+  ltiToolProxy: UpdateLtiToolProxyParams,
+) => {
   const { id: ltiToolProxyId } = ltiToolProxyIdSchema.parse({ id });
   const newLtiToolProxy = updateLtiToolProxySchema.parse(ltiToolProxy);
   try {
-    const [l] =  await db
-     .update(ltiToolProxies)
-     .set({...newLtiToolProxy, updatedAt: new Date() })
-     .where(eq(ltiToolProxies.id, ltiToolProxyId!))
-     .returning();
+    const [l] = await db
+      .update(ltiToolProxies)
+      .set({ ...newLtiToolProxy, updatedAt: new Date() })
+      .where(eq(ltiToolProxies.id, ltiToolProxyId!))
+      .returning();
     return { ltiToolProxy: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +52,10 @@ export const updateLtiToolProxy = async (id: LtiToolProxyId, ltiToolProxy: Updat
 export const deleteLtiToolProxy = async (id: LtiToolProxyId) => {
   const { id: ltiToolProxyId } = ltiToolProxyIdSchema.parse({ id });
   try {
-    const [l] =  await db.delete(ltiToolProxies).where(eq(ltiToolProxies.id, ltiToolProxyId!))
-    .returning();
+    const [l] = await db
+      .delete(ltiToolProxies)
+      .where(eq(ltiToolProxies.id, ltiToolProxyId!))
+      .returning();
     return { ltiToolProxy: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +63,3 @@ export const deleteLtiToolProxy = async (id: LtiToolProxyId) => {
     throw { error: message };
   }
 };
-

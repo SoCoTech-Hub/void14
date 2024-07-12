@@ -1,19 +1,29 @@
-import { getWorkshopAggregationById, getWorkshopAggregations } from "../api/workshopAggregations/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  workshopAggregationIdSchema,
   insertWorkshopAggregationParams,
   updateWorkshopAggregationParams,
+  workshopAggregationIdSchema,
 } from "@soco/workshop-db/schema/workshopAggregations";
-import { createWorkshopAggregation, deleteWorkshopAggregation, updateWorkshopAggregation } from "../api/workshopAggregations/mutations";
 
-export const workshopAggregationsRouter =createTRPCRouter({
+import {
+  createWorkshopAggregation,
+  deleteWorkshopAggregation,
+  updateWorkshopAggregation,
+} from "../api/workshopAggregations/mutations";
+import {
+  getWorkshopAggregationById,
+  getWorkshopAggregations,
+} from "../api/workshopAggregations/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const workshopAggregationsRouter = createTRPCRouter({
   getWorkshopAggregations: publicProcedure.query(async () => {
     return getWorkshopAggregations();
   }),
-  getWorkshopAggregationById: publicProcedure.input(workshopAggregationIdSchema).query(async ({ input }) => {
-    return getWorkshopAggregationById(input.id);
-  }),
+  getWorkshopAggregationById: publicProcedure
+    .input(workshopAggregationIdSchema)
+    .query(async ({ input }) => {
+      return getWorkshopAggregationById(input.id);
+    }),
   createWorkshopAggregation: publicProcedure
     .input(insertWorkshopAggregationParams)
     .mutation(async ({ input }) => {

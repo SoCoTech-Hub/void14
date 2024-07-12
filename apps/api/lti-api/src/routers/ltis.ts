@@ -1,13 +1,14 @@
-import { getLtiById, getLtis } from "../api/ltis/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  ltiIdSchema,
   insertLtiParams,
+  ltiIdSchema,
   updateLtiParams,
 } from "@soco/lti-db/schema/ltis";
-import { createLti, deleteLti, updateLti } from "../api/ltis/mutations";
 
-export const ltisRouter =createTRPCRouter({
+import { createLti, deleteLti, updateLti } from "../api/ltis/mutations";
+import { getLtiById, getLtis } from "../api/ltis/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const ltisRouter = createTRPCRouter({
   getLtis: publicProcedure.query(async () => {
     return getLtis();
   }),
@@ -24,9 +25,7 @@ export const ltisRouter =createTRPCRouter({
     .mutation(async ({ input }) => {
       return updateLti(input.id, input);
     }),
-  deleteLti: publicProcedure
-    .input(ltiIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteLti(input.id);
-    }),
+  deleteLti: publicProcedure.input(ltiIdSchema).mutation(async ({ input }) => {
+    return deleteLti(input.id);
+  }),
 });

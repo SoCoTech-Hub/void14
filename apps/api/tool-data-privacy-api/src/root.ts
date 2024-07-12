@@ -1,10 +1,10 @@
-import { toolDataprivacyCategoriesRouter } from './routers/toolDataprivacyCategories';
-import { toolDataprivacyCtxExpiredsRouter } from './routers/toolDataprivacyCtxExpireds';
-import { toolDataprivacyCtxInstancesRouter } from './routers/toolDataprivacyCtxInstances';
-import { toolDataprivacyCtxLevelsRouter } from './routers/toolDataprivacyCtxLevels';
-import { toolDataprivacyPurposeRolesRouter } from './routers/toolDataprivacyPurposeRoles';
-import { toolDataprivacyPurposesRouter } from './routers/toolDataprivacyPurposes';
-import { toolDataprivacyRequestsRouter } from './routers/toolDataprivacyRequests';
+import { toolDataprivacyCategoriesRouter } from "./routers/toolDataprivacyCategories";
+import { toolDataprivacyCtxExpiredsRouter } from "./routers/toolDataprivacyCtxExpireds";
+import { toolDataprivacyCtxInstancesRouter } from "./routers/toolDataprivacyCtxInstances";
+import { toolDataprivacyCtxLevelsRouter } from "./routers/toolDataprivacyCtxLevels";
+import { toolDataprivacyPurposeRolesRouter } from "./routers/toolDataprivacyPurposeRoles";
+import { toolDataprivacyPurposesRouter } from "./routers/toolDataprivacyPurposes";
+import { toolDataprivacyRequestsRouter } from "./routers/toolDataprivacyRequests";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({

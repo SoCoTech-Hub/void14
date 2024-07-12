@@ -1,19 +1,26 @@
-import { getMyPageById, getMyPages } from "../api/myPages/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  myPageIdSchema,
   insertMyPageParams,
+  myPageIdSchema,
   updateMyPageParams,
 } from "@soco/my-pages-db/schema/myPages";
-import { createMyPage, deleteMyPage, updateMyPage } from "../api/myPages/mutations";
 
-export const myPagesRouter =createTRPCRouter({
+import {
+  createMyPage,
+  deleteMyPage,
+  updateMyPage,
+} from "../api/myPages/mutations";
+import { getMyPageById, getMyPages } from "../api/myPages/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const myPagesRouter = createTRPCRouter({
   getMyPages: publicProcedure.query(async () => {
     return getMyPages();
   }),
-  getMyPageById: publicProcedure.input(myPageIdSchema).query(async ({ input }) => {
-    return getMyPageById(input.id);
-  }),
+  getMyPageById: publicProcedure
+    .input(myPageIdSchema)
+    .query(async ({ input }) => {
+      return getMyPageById(input.id);
+    }),
   createMyPage: publicProcedure
     .input(insertMyPageParams)
     .mutation(async ({ input }) => {

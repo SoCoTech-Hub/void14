@@ -1,19 +1,27 @@
-import { db } from "@soco/badge-db/client";
+import type {
+  BadgeEndorsementId,
+  NewBadgeEndorsementParams,
+  UpdateBadgeEndorsementParams,
+} from "@soco/badge-db/schema/badgeEndorsements";
 import { eq } from "@soco/badge-db";
-import { 
-  type BadgeEndorsementId, 
-  type NewBadgeEndorsementParams,
-  type UpdateBadgeEndorsementParams, 
-  updateBadgeEndorsementSchema,
-  insertBadgeEndorsementSchema, 
+import { db } from "@soco/badge-db/client";
+import {
+  badgeEndorsementIdSchema,
   badgeEndorsements,
-  badgeEndorsementIdSchema 
+  insertBadgeEndorsementSchema,
+  updateBadgeEndorsementSchema,
 } from "@soco/badge-db/schema/badgeEndorsements";
 
-export const createBadgeEndorsement = async (badgeEndorsement: NewBadgeEndorsementParams) => {
-  const newBadgeEndorsement = insertBadgeEndorsementSchema.parse(badgeEndorsement);
+export const createBadgeEndorsement = async (
+  badgeEndorsement: NewBadgeEndorsementParams,
+) => {
+  const newBadgeEndorsement =
+    insertBadgeEndorsementSchema.parse(badgeEndorsement);
   try {
-    const [b] =  await db.insert(badgeEndorsements).values(newBadgeEndorsement).returning();
+    const [b] = await db
+      .insert(badgeEndorsements)
+      .values(newBadgeEndorsement)
+      .returning();
     return { badgeEndorsement: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +30,19 @@ export const createBadgeEndorsement = async (badgeEndorsement: NewBadgeEndorseme
   }
 };
 
-export const updateBadgeEndorsement = async (id: BadgeEndorsementId, badgeEndorsement: UpdateBadgeEndorsementParams) => {
+export const updateBadgeEndorsement = async (
+  id: BadgeEndorsementId,
+  badgeEndorsement: UpdateBadgeEndorsementParams,
+) => {
   const { id: badgeEndorsementId } = badgeEndorsementIdSchema.parse({ id });
-  const newBadgeEndorsement = updateBadgeEndorsementSchema.parse(badgeEndorsement);
+  const newBadgeEndorsement =
+    updateBadgeEndorsementSchema.parse(badgeEndorsement);
   try {
-    const [b] =  await db
-     .update(badgeEndorsements)
-     .set({...newBadgeEndorsement, updatedAt: new Date() })
-     .where(eq(badgeEndorsements.id, badgeEndorsementId!))
-     .returning();
+    const [b] = await db
+      .update(badgeEndorsements)
+      .set({ ...newBadgeEndorsement, updatedAt: new Date() })
+      .where(eq(badgeEndorsements.id, badgeEndorsementId!))
+      .returning();
     return { badgeEndorsement: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +54,10 @@ export const updateBadgeEndorsement = async (id: BadgeEndorsementId, badgeEndors
 export const deleteBadgeEndorsement = async (id: BadgeEndorsementId) => {
   const { id: badgeEndorsementId } = badgeEndorsementIdSchema.parse({ id });
   try {
-    const [b] =  await db.delete(badgeEndorsements).where(eq(badgeEndorsements.id, badgeEndorsementId!))
-    .returning();
+    const [b] = await db
+      .delete(badgeEndorsements)
+      .where(eq(badgeEndorsements.id, badgeEndorsementId!))
+      .returning();
     return { badgeEndorsement: b };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +65,3 @@ export const deleteBadgeEndorsement = async (id: BadgeEndorsementId) => {
     throw { error: message };
   }
 };
-

@@ -1,10 +1,11 @@
-import { db } from "@soco/school-db/client";
+import type { GradeId } from "@soco/school-db/schema/grades";
 import { eq } from "@soco/school-db";
-import { type GradeId, gradeIdSchema, grades } from "@soco/school-db/schema/grades";
+import { db } from "@soco/school-db/client";
+import { gradeIdSchema, grades } from "@soco/school-db/schema/grades";
 
 export const getGrades = async () => {
   const rows = await db.select().from(grades);
-  const g = rows
+  const g = rows;
   return { grades: g };
 };
 
@@ -15,5 +16,3 @@ export const getGradeById = async (id: GradeId) => {
   const g = row;
   return { grade: g };
 };
-
-

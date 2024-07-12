@@ -1,19 +1,29 @@
-import { getOrganizationById, getOrganizations } from "../api/organizations/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  organizationIdSchema,
   insertOrganizationParams,
+  organizationIdSchema,
   updateOrganizationParams,
 } from "@soco/organization-db/schema/organizations";
-import { createOrganization, deleteOrganization, updateOrganization } from "../api/organizations/mutations";
 
-export const organizationsRouter =createTRPCRouter({
+import {
+  createOrganization,
+  deleteOrganization,
+  updateOrganization,
+} from "../api/organizations/mutations";
+import {
+  getOrganizationById,
+  getOrganizations,
+} from "../api/organizations/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const organizationsRouter = createTRPCRouter({
   getOrganizations: publicProcedure.query(async () => {
     return getOrganizations();
   }),
-  getOrganizationById: publicProcedure.input(organizationIdSchema).query(async ({ input }) => {
-    return getOrganizationById(input.id);
-  }),
+  getOrganizationById: publicProcedure
+    .input(organizationIdSchema)
+    .query(async ({ input }) => {
+      return getOrganizationById(input.id);
+    }),
   createOrganization: publicProcedure
     .input(insertOrganizationParams)
     .mutation(async ({ input }) => {

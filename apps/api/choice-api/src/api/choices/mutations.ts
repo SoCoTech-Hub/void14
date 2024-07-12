@@ -1,19 +1,21 @@
-import { db } from "@soco/choice-db/client";
+import type {
+  ChoiceId,
+  NewChoiceParams,
+  UpdateChoiceParams,
+} from "@soco/choice-db/schema/choices";
 import { eq } from "@soco/choice-db";
-import { 
-  type ChoiceId, 
-  type NewChoiceParams,
-  type UpdateChoiceParams, 
-  updateChoiceSchema,
-  insertChoiceSchema, 
+import { db } from "@soco/choice-db/client";
+import {
+  choiceIdSchema,
   choices,
-  choiceIdSchema 
+  insertChoiceSchema,
+  updateChoiceSchema,
 } from "@soco/choice-db/schema/choices";
 
 export const createChoice = async (choice: NewChoiceParams) => {
   const newChoice = insertChoiceSchema.parse(choice);
   try {
-    const [c] =  await db.insert(choices).values(newChoice).returning();
+    const [c] = await db.insert(choices).values(newChoice).returning();
     return { choice: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +24,18 @@ export const createChoice = async (choice: NewChoiceParams) => {
   }
 };
 
-export const updateChoice = async (id: ChoiceId, choice: UpdateChoiceParams) => {
+export const updateChoice = async (
+  id: ChoiceId,
+  choice: UpdateChoiceParams,
+) => {
   const { id: choiceId } = choiceIdSchema.parse({ id });
   const newChoice = updateChoiceSchema.parse(choice);
   try {
-    const [c] =  await db
-     .update(choices)
-     .set({...newChoice, updatedAt: new Date() })
-     .where(eq(choices.id, choiceId!))
-     .returning();
+    const [c] = await db
+      .update(choices)
+      .set({ ...newChoice, updatedAt: new Date() })
+      .where(eq(choices.id, choiceId!))
+      .returning();
     return { choice: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +47,10 @@ export const updateChoice = async (id: ChoiceId, choice: UpdateChoiceParams) => 
 export const deleteChoice = async (id: ChoiceId) => {
   const { id: choiceId } = choiceIdSchema.parse({ id });
   try {
-    const [c] =  await db.delete(choices).where(eq(choices.id, choiceId!))
-    .returning();
+    const [c] = await db
+      .delete(choices)
+      .where(eq(choices.id, choiceId!))
+      .returning();
     return { choice: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +58,3 @@ export const deleteChoice = async (id: ChoiceId) => {
     throw { error: message };
   }
 };
-

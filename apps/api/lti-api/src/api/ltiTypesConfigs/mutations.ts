@@ -1,19 +1,26 @@
-import { db } from "@soco/lti-db/client";
+import type {
+  LtiTypesConfigId,
+  NewLtiTypesConfigParams,
+  UpdateLtiTypesConfigParams,
+} from "@soco/lti-db/schema/ltiTypesConfigs";
 import { eq } from "@soco/lti-db";
-import { 
-  type LtiTypesConfigId, 
-  type NewLtiTypesConfigParams,
-  type UpdateLtiTypesConfigParams, 
-  updateLtiTypesConfigSchema,
-  insertLtiTypesConfigSchema, 
+import { db } from "@soco/lti-db/client";
+import {
+  insertLtiTypesConfigSchema,
+  ltiTypesConfigIdSchema,
   ltiTypesConfigs,
-  ltiTypesConfigIdSchema 
+  updateLtiTypesConfigSchema,
 } from "@soco/lti-db/schema/ltiTypesConfigs";
 
-export const createLtiTypesConfig = async (ltiTypesConfig: NewLtiTypesConfigParams) => {
+export const createLtiTypesConfig = async (
+  ltiTypesConfig: NewLtiTypesConfigParams,
+) => {
   const newLtiTypesConfig = insertLtiTypesConfigSchema.parse(ltiTypesConfig);
   try {
-    const [l] =  await db.insert(ltiTypesConfigs).values(newLtiTypesConfig).returning();
+    const [l] = await db
+      .insert(ltiTypesConfigs)
+      .values(newLtiTypesConfig)
+      .returning();
     return { ltiTypesConfig: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -22,15 +29,18 @@ export const createLtiTypesConfig = async (ltiTypesConfig: NewLtiTypesConfigPara
   }
 };
 
-export const updateLtiTypesConfig = async (id: LtiTypesConfigId, ltiTypesConfig: UpdateLtiTypesConfigParams) => {
+export const updateLtiTypesConfig = async (
+  id: LtiTypesConfigId,
+  ltiTypesConfig: UpdateLtiTypesConfigParams,
+) => {
   const { id: ltiTypesConfigId } = ltiTypesConfigIdSchema.parse({ id });
   const newLtiTypesConfig = updateLtiTypesConfigSchema.parse(ltiTypesConfig);
   try {
-    const [l] =  await db
-     .update(ltiTypesConfigs)
-     .set(newLtiTypesConfig)
-     .where(eq(ltiTypesConfigs.id, ltiTypesConfigId!))
-     .returning();
+    const [l] = await db
+      .update(ltiTypesConfigs)
+      .set(newLtiTypesConfig)
+      .where(eq(ltiTypesConfigs.id, ltiTypesConfigId!))
+      .returning();
     return { ltiTypesConfig: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -42,8 +52,10 @@ export const updateLtiTypesConfig = async (id: LtiTypesConfigId, ltiTypesConfig:
 export const deleteLtiTypesConfig = async (id: LtiTypesConfigId) => {
   const { id: ltiTypesConfigId } = ltiTypesConfigIdSchema.parse({ id });
   try {
-    const [l] =  await db.delete(ltiTypesConfigs).where(eq(ltiTypesConfigs.id, ltiTypesConfigId!))
-    .returning();
+    const [l] = await db
+      .delete(ltiTypesConfigs)
+      .where(eq(ltiTypesConfigs.id, ltiTypesConfigId!))
+      .returning();
     return { ltiTypesConfig: l };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -51,4 +63,3 @@ export const deleteLtiTypesConfig = async (id: LtiTypesConfigId) => {
     throw { error: message };
   }
 };
-

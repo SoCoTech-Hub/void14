@@ -1,19 +1,29 @@
-import { getLtiSubmissionById, getLtiSubmissions } from "../api/ltiSubmissions/queries";
-import { publicProcedure,createTRPCRouter } from "../trpc";
 import {
-  ltiSubmissionIdSchema,
   insertLtiSubmissionParams,
+  ltiSubmissionIdSchema,
   updateLtiSubmissionParams,
 } from "@soco/lti-db/schema/ltiSubmissions";
-import { createLtiSubmission, deleteLtiSubmission, updateLtiSubmission } from "../api/ltiSubmissions/mutations";
 
-export const ltiSubmissionsRouter =createTRPCRouter({
+import {
+  createLtiSubmission,
+  deleteLtiSubmission,
+  updateLtiSubmission,
+} from "../api/ltiSubmissions/mutations";
+import {
+  getLtiSubmissionById,
+  getLtiSubmissions,
+} from "../api/ltiSubmissions/queries";
+import { createTRPCRouter, publicProcedure } from "../trpc";
+
+export const ltiSubmissionsRouter = createTRPCRouter({
   getLtiSubmissions: publicProcedure.query(async () => {
     return getLtiSubmissions();
   }),
-  getLtiSubmissionById: publicProcedure.input(ltiSubmissionIdSchema).query(async ({ input }) => {
-    return getLtiSubmissionById(input.id);
-  }),
+  getLtiSubmissionById: publicProcedure
+    .input(ltiSubmissionIdSchema)
+    .query(async ({ input }) => {
+      return getLtiSubmissionById(input.id);
+    }),
   createLtiSubmission: publicProcedure
     .input(insertLtiSubmissionParams)
     .mutation(async ({ input }) => {
