@@ -15,28 +15,29 @@ import {
 } from "../api/analyticsModels/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const analyticsModelsRouter = createTRPCRouter({
-  getAnalyticsModels: publicProcedure.query(async () => {
-    return getAnalyticsModels();
-  }),
-  getAnalyticsModelById: publicProcedure
-    .input(analyticsModelIdSchema)
-    .query(async ({ input }) => {
-      return getAnalyticsModelById(input.id);
+export const analyticsModelsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getAnalyticsModels: publicProcedure.query(async () => {
+      return getAnalyticsModels();
     }),
-  createAnalyticsModel: publicProcedure
-    .input(insertAnalyticsModelParams)
-    .mutation(async ({ input }) => {
-      return createAnalyticsModel(input);
-    }),
-  updateAnalyticsModel: publicProcedure
-    .input(updateAnalyticsModelParams)
-    .mutation(async ({ input }) => {
-      return updateAnalyticsModel(input.id, input);
-    }),
-  deleteAnalyticsModel: publicProcedure
-    .input(analyticsModelIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteAnalyticsModel(input.id);
-    }),
-});
+    getAnalyticsModelById: publicProcedure
+      .input(analyticsModelIdSchema)
+      .query(async ({ input }) => {
+        return getAnalyticsModelById(input.id);
+      }),
+    createAnalyticsModel: publicProcedure
+      .input(insertAnalyticsModelParams)
+      .mutation(async ({ input }) => {
+        return createAnalyticsModel(input);
+      }),
+    updateAnalyticsModel: publicProcedure
+      .input(updateAnalyticsModelParams)
+      .mutation(async ({ input }) => {
+        return updateAnalyticsModel(input.id, input);
+      }),
+    deleteAnalyticsModel: publicProcedure
+      .input(analyticsModelIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteAnalyticsModel(input.id);
+      }),
+  });

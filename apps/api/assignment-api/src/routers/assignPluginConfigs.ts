@@ -15,28 +15,29 @@ import {
 } from "../api/assignPluginConfigs/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const assignPluginConfigsRouter = createTRPCRouter({
-  getAssignPluginConfigs: publicProcedure.query(async () => {
-    return getAssignPluginConfigs();
-  }),
-  getAssignPluginConfigById: publicProcedure
-    .input(assignPluginConfigIdSchema)
-    .query(async ({ input }) => {
-      return getAssignPluginConfigById(input.id);
+export const assignPluginConfigsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getAssignPluginConfigs: publicProcedure.query(async () => {
+      return getAssignPluginConfigs();
     }),
-  createAssignPluginConfig: publicProcedure
-    .input(insertAssignPluginConfigParams)
-    .mutation(async ({ input }) => {
-      return createAssignPluginConfig(input);
-    }),
-  updateAssignPluginConfig: publicProcedure
-    .input(updateAssignPluginConfigParams)
-    .mutation(async ({ input }) => {
-      return updateAssignPluginConfig(input.id, input);
-    }),
-  deleteAssignPluginConfig: publicProcedure
-    .input(assignPluginConfigIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteAssignPluginConfig(input.id);
-    }),
-});
+    getAssignPluginConfigById: publicProcedure
+      .input(assignPluginConfigIdSchema)
+      .query(async ({ input }) => {
+        return getAssignPluginConfigById(input.id);
+      }),
+    createAssignPluginConfig: publicProcedure
+      .input(insertAssignPluginConfigParams)
+      .mutation(async ({ input }) => {
+        return createAssignPluginConfig(input);
+      }),
+    updateAssignPluginConfig: publicProcedure
+      .input(updateAssignPluginConfigParams)
+      .mutation(async ({ input }) => {
+        return updateAssignPluginConfig(input.id, input);
+      }),
+    deleteAssignPluginConfig: publicProcedure
+      .input(assignPluginConfigIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteAssignPluginConfig(input.id);
+      }),
+  });

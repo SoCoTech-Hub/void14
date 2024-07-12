@@ -15,7 +15,9 @@ import {
 } from "../api/questionDatasetDefinitions/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const questionDatasetDefinitionsRouter = createTRPCRouter({
+export const questionDatasetDefinitionsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getQuestionDatasetDefinitions: publicProcedure.query(async () => {
     return getQuestionDatasetDefinitions();
   }),

@@ -15,28 +15,29 @@ import {
 } from "../api/lessonAnswers/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const lessonAnswersRouter = createTRPCRouter({
-  getLessonAnswers: publicProcedure.query(async () => {
-    return getLessonAnswers();
-  }),
-  getLessonAnswerById: publicProcedure
-    .input(lessonAnswerIdSchema)
-    .query(async ({ input }) => {
-      return getLessonAnswerById(input.id);
+export const lessonAnswersRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getLessonAnswers: publicProcedure.query(async () => {
+      return getLessonAnswers();
     }),
-  createLessonAnswer: publicProcedure
-    .input(insertLessonAnswerParams)
-    .mutation(async ({ input }) => {
-      return createLessonAnswer(input);
-    }),
-  updateLessonAnswer: publicProcedure
-    .input(updateLessonAnswerParams)
-    .mutation(async ({ input }) => {
-      return updateLessonAnswer(input.id, input);
-    }),
-  deleteLessonAnswer: publicProcedure
-    .input(lessonAnswerIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteLessonAnswer(input.id);
-    }),
-});
+    getLessonAnswerById: publicProcedure
+      .input(lessonAnswerIdSchema)
+      .query(async ({ input }) => {
+        return getLessonAnswerById(input.id);
+      }),
+    createLessonAnswer: publicProcedure
+      .input(insertLessonAnswerParams)
+      .mutation(async ({ input }) => {
+        return createLessonAnswer(input);
+      }),
+    updateLessonAnswer: publicProcedure
+      .input(updateLessonAnswerParams)
+      .mutation(async ({ input }) => {
+        return updateLessonAnswer(input.id, input);
+      }),
+    deleteLessonAnswer: publicProcedure
+      .input(lessonAnswerIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteLessonAnswer(input.id);
+      }),
+  });

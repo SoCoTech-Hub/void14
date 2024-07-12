@@ -15,7 +15,9 @@ import {
 } from "../api/analyticsUsedAnalysables/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const analyticsUsedAnalysablesRouter = createTRPCRouter({
+export const analyticsUsedAnalysablesRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getAnalyticsUsedAnalysables: publicProcedure.query(async () => {
     return getAnalyticsUsedAnalysables();
   }),

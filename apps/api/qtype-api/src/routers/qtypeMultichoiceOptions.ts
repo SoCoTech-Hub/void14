@@ -15,7 +15,9 @@ import {
 } from "../api/qtypeMultichoiceOptions/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const qtypeMultichoiceOptionsRouter = createTRPCRouter({
+export const qtypeMultichoiceOptionsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getQtypeMultichoiceOptions: publicProcedure.query(async () => {
     return getQtypeMultichoiceOptions();
   }),

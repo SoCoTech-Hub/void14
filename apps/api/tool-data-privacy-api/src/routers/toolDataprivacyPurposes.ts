@@ -15,7 +15,9 @@ import {
 } from "../api/toolDataprivacyPurposes/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const toolDataprivacyPurposesRouter = createTRPCRouter({
+export const toolDataprivacyPurposesRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getToolDataprivacyPurposes: publicProcedure.query(async () => {
     return getToolDataprivacyPurposes();
   }),

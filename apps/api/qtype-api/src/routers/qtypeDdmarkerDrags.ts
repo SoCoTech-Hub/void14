@@ -15,28 +15,29 @@ import {
 } from "../api/qtypeDdmarkerDrags/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const qtypeDdmarkerDragsRouter = createTRPCRouter({
-  getQtypeDdmarkerDrags: publicProcedure.query(async () => {
-    return getQtypeDdmarkerDrags();
-  }),
-  getQtypeDdmarkerDragById: publicProcedure
-    .input(qtypeDdmarkerDragIdSchema)
-    .query(async ({ input }) => {
-      return getQtypeDdmarkerDragById(input.id);
+export const qtypeDdmarkerDragsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getQtypeDdmarkerDrags: publicProcedure.query(async () => {
+      return getQtypeDdmarkerDrags();
     }),
-  createQtypeDdmarkerDrag: publicProcedure
-    .input(insertQtypeDdmarkerDragParams)
-    .mutation(async ({ input }) => {
-      return createQtypeDdmarkerDrag(input);
-    }),
-  updateQtypeDdmarkerDrag: publicProcedure
-    .input(updateQtypeDdmarkerDragParams)
-    .mutation(async ({ input }) => {
-      return updateQtypeDdmarkerDrag(input.id, input);
-    }),
-  deleteQtypeDdmarkerDrag: publicProcedure
-    .input(qtypeDdmarkerDragIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteQtypeDdmarkerDrag(input.id);
-    }),
-});
+    getQtypeDdmarkerDragById: publicProcedure
+      .input(qtypeDdmarkerDragIdSchema)
+      .query(async ({ input }) => {
+        return getQtypeDdmarkerDragById(input.id);
+      }),
+    createQtypeDdmarkerDrag: publicProcedure
+      .input(insertQtypeDdmarkerDragParams)
+      .mutation(async ({ input }) => {
+        return createQtypeDdmarkerDrag(input);
+      }),
+    updateQtypeDdmarkerDrag: publicProcedure
+      .input(updateQtypeDdmarkerDragParams)
+      .mutation(async ({ input }) => {
+        return updateQtypeDdmarkerDrag(input.id, input);
+      }),
+    deleteQtypeDdmarkerDrag: publicProcedure
+      .input(qtypeDdmarkerDragIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteQtypeDdmarkerDrag(input.id);
+      }),
+  });

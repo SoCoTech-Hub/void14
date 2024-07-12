@@ -4,7 +4,7 @@ import { nextOfKinsRouter } from "./routers/nextOfKins";
 import { profilesRouter } from "./routers/profiles";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   addresses: addressesRouter,
   genders: gendersRouter,
   nextOfKins: nextOfKinsRouter,

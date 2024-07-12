@@ -15,28 +15,29 @@ import {
 } from "../api/oauth2Endpoints/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const oauth2EndpointsRouter = createTRPCRouter({
-  getOauth2Endpoints: publicProcedure.query(async () => {
-    return getOauth2Endpoints();
-  }),
-  getOauth2EndpointById: publicProcedure
-    .input(oauth2EndpointIdSchema)
-    .query(async ({ input }) => {
-      return getOauth2EndpointById(input.id);
+export const oauth2EndpointsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getOauth2Endpoints: publicProcedure.query(async () => {
+      return getOauth2Endpoints();
     }),
-  createOauth2Endpoint: publicProcedure
-    .input(insertOauth2EndpointParams)
-    .mutation(async ({ input }) => {
-      return createOauth2Endpoint(input);
-    }),
-  updateOauth2Endpoint: publicProcedure
-    .input(updateOauth2EndpointParams)
-    .mutation(async ({ input }) => {
-      return updateOauth2Endpoint(input.id, input);
-    }),
-  deleteOauth2Endpoint: publicProcedure
-    .input(oauth2EndpointIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteOauth2Endpoint(input.id);
-    }),
-});
+    getOauth2EndpointById: publicProcedure
+      .input(oauth2EndpointIdSchema)
+      .query(async ({ input }) => {
+        return getOauth2EndpointById(input.id);
+      }),
+    createOauth2Endpoint: publicProcedure
+      .input(insertOauth2EndpointParams)
+      .mutation(async ({ input }) => {
+        return createOauth2Endpoint(input);
+      }),
+    updateOauth2Endpoint: publicProcedure
+      .input(updateOauth2EndpointParams)
+      .mutation(async ({ input }) => {
+        return updateOauth2Endpoint(input.id, input);
+      }),
+    deleteOauth2Endpoint: publicProcedure
+      .input(oauth2EndpointIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteOauth2Endpoint(input.id);
+      }),
+  });

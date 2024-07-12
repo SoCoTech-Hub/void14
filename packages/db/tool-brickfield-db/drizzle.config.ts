@@ -7,7 +7,10 @@ if (!process.env.TOOL_BRICKFIELD_DB_URL) {
   throw new Error("Missing environment variable: TOOL_BRICKFIELD_DB_URL");
 }
 
-const nonPoolingUrl = process.env.TOOL_BRICKFIELD_DB_URL.replace(":6543", ":5432");
+const nonPoolingUrl = process.env.TOOL_BRICKFIELD_DB_URL.replace(
+  ":6543",
+  ":5432",
+);
 
 const drizzleConfig: Config = {
   schema: "./src/schema/index.ts",

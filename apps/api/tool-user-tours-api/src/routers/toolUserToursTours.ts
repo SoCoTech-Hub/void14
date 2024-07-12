@@ -15,28 +15,29 @@ import {
 } from "../api/toolUserToursTours/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const toolUserToursToursRouter = createTRPCRouter({
-  getToolUserToursTours: publicProcedure.query(async () => {
-    return getToolUserToursTours();
-  }),
-  getToolUserToursTourById: publicProcedure
-    .input(toolUserToursTourIdSchema)
-    .query(async ({ input }) => {
-      return getToolUserToursTourById(input.id);
+export const toolUserToursToursRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getToolUserToursTours: publicProcedure.query(async () => {
+      return getToolUserToursTours();
     }),
-  createToolUserToursTour: publicProcedure
-    .input(insertToolUserToursTourParams)
-    .mutation(async ({ input }) => {
-      return createToolUserToursTour(input);
-    }),
-  updateToolUserToursTour: publicProcedure
-    .input(updateToolUserToursTourParams)
-    .mutation(async ({ input }) => {
-      return updateToolUserToursTour(input.id, input);
-    }),
-  deleteToolUserToursTour: publicProcedure
-    .input(toolUserToursTourIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteToolUserToursTour(input.id);
-    }),
-});
+    getToolUserToursTourById: publicProcedure
+      .input(toolUserToursTourIdSchema)
+      .query(async ({ input }) => {
+        return getToolUserToursTourById(input.id);
+      }),
+    createToolUserToursTour: publicProcedure
+      .input(insertToolUserToursTourParams)
+      .mutation(async ({ input }) => {
+        return createToolUserToursTour(input);
+      }),
+    updateToolUserToursTour: publicProcedure
+      .input(updateToolUserToursTourParams)
+      .mutation(async ({ input }) => {
+        return updateToolUserToursTour(input.id, input);
+      }),
+    deleteToolUserToursTour: publicProcedure
+      .input(toolUserToursTourIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteToolUserToursTour(input.id);
+      }),
+  });

@@ -15,7 +15,9 @@ import {
 } from "../api/qtypeRandomsamatchOptions/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const qtypeRandomsamatchOptionsRouter = createTRPCRouter({
+export const qtypeRandomsamatchOptionsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getQtypeRandomsamatchOptions: publicProcedure.query(async () => {
     return getQtypeRandomsamatchOptions();
   }),

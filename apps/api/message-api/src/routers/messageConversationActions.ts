@@ -15,7 +15,9 @@ import {
 } from "../api/messageConversationActions/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const messageConversationActionsRouter = createTRPCRouter({
+export const messageConversationActionsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getMessageConversationActions: publicProcedure.query(async () => {
     return getMessageConversationActions();
   }),

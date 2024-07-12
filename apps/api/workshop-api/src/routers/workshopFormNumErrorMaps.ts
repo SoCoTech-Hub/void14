@@ -15,7 +15,9 @@ import {
 } from "../api/workshopFormNumErrorMaps/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const workshopFormNumErrorMapsRouter = createTRPCRouter({
+export const workshopFormNumErrorMapsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getWorkshopFormNumErrorMaps: publicProcedure.query(async () => {
     return getWorkshopFormNumErrorMaps();
   }),

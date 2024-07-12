@@ -4,7 +4,7 @@ import { jobApplicationsRouter } from "./routers/jobApplications";
 import { jobApplicationsApplicationCategoriesRouter } from "./routers/jobApplicationsApplicationCategories";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   applicationCategories: applicationCategoriesRouter,
   applicationResponses: applicationResponsesRouter,
   jobApplications: jobApplicationsRouter,

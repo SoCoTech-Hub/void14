@@ -15,28 +15,29 @@ import {
 } from "../api/gradeCategories/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const gradeCategoriesRouter = createTRPCRouter({
-  getGradeCategories: publicProcedure.query(async () => {
-    return getGradeCategories();
-  }),
-  getGradeCategoryById: publicProcedure
-    .input(gradeCategoryIdSchema)
-    .query(async ({ input }) => {
-      return getGradeCategoryById(input.id);
+export const gradeCategoriesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getGradeCategories: publicProcedure.query(async () => {
+      return getGradeCategories();
     }),
-  createGradeCategory: publicProcedure
-    .input(insertGradeCategoryParams)
-    .mutation(async ({ input }) => {
-      return createGradeCategory(input);
-    }),
-  updateGradeCategory: publicProcedure
-    .input(updateGradeCategoryParams)
-    .mutation(async ({ input }) => {
-      return updateGradeCategory(input.id, input);
-    }),
-  deleteGradeCategory: publicProcedure
-    .input(gradeCategoryIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteGradeCategory(input.id);
-    }),
-});
+    getGradeCategoryById: publicProcedure
+      .input(gradeCategoryIdSchema)
+      .query(async ({ input }) => {
+        return getGradeCategoryById(input.id);
+      }),
+    createGradeCategory: publicProcedure
+      .input(insertGradeCategoryParams)
+      .mutation(async ({ input }) => {
+        return createGradeCategory(input);
+      }),
+    updateGradeCategory: publicProcedure
+      .input(updateGradeCategoryParams)
+      .mutation(async ({ input }) => {
+        return updateGradeCategory(input.id, input);
+      }),
+    deleteGradeCategory: publicProcedure
+      .input(gradeCategoryIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteGradeCategory(input.id);
+      }),
+  });

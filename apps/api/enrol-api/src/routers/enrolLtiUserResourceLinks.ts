@@ -15,7 +15,9 @@ import {
 } from "../api/enrolLtiUserResourceLinks/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const enrolLtiUserResourceLinksRouter = createTRPCRouter({
+export const enrolLtiUserResourceLinksRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getEnrolLtiUserResourceLinks: publicProcedure.query(async () => {
     return getEnrolLtiUserResourceLinks();
   }),

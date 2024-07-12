@@ -3,7 +3,7 @@ import { configPluginsRouter } from "./routers/configPlugins";
 import { configsRouter } from "./routers/configs";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   configLogs: configLogsRouter,
   configPlugins: configPluginsRouter,
   configs: configsRouter,

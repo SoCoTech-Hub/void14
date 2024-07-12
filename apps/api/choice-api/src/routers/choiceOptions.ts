@@ -15,28 +15,29 @@ import {
 } from "../api/choiceOptions/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const choiceOptionsRouter = createTRPCRouter({
-  getChoiceOptions: publicProcedure.query(async () => {
-    return getChoiceOptions();
-  }),
-  getChoiceOptionById: publicProcedure
-    .input(choiceOptionIdSchema)
-    .query(async ({ input }) => {
-      return getChoiceOptionById(input.id);
+export const choiceOptionsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getChoiceOptions: publicProcedure.query(async () => {
+      return getChoiceOptions();
     }),
-  createChoiceOption: publicProcedure
-    .input(insertChoiceOptionParams)
-    .mutation(async ({ input }) => {
-      return createChoiceOption(input);
-    }),
-  updateChoiceOption: publicProcedure
-    .input(updateChoiceOptionParams)
-    .mutation(async ({ input }) => {
-      return updateChoiceOption(input.id, input);
-    }),
-  deleteChoiceOption: publicProcedure
-    .input(choiceOptionIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteChoiceOption(input.id);
-    }),
-});
+    getChoiceOptionById: publicProcedure
+      .input(choiceOptionIdSchema)
+      .query(async ({ input }) => {
+        return getChoiceOptionById(input.id);
+      }),
+    createChoiceOption: publicProcedure
+      .input(insertChoiceOptionParams)
+      .mutation(async ({ input }) => {
+        return createChoiceOption(input);
+      }),
+    updateChoiceOption: publicProcedure
+      .input(updateChoiceOptionParams)
+      .mutation(async ({ input }) => {
+        return updateChoiceOption(input.id, input);
+      }),
+    deleteChoiceOption: publicProcedure
+      .input(choiceOptionIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteChoiceOption(input.id);
+      }),
+  });

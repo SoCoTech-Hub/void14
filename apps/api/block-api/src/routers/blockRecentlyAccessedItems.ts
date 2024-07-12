@@ -15,7 +15,9 @@ import {
 } from "../api/blockRecentlyAccessedItems/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const blockRecentlyAccessedItemsRouter = createTRPCRouter({
+export const blockRecentlyAccessedItemsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getBlockRecentlyAccessedItems: publicProcedure.query(async () => {
     return getBlockRecentlyAccessedItems();
   }),

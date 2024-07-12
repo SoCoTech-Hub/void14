@@ -15,7 +15,9 @@ import {
 } from "../api/bursaryCategoriesBursaries/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const bursaryCategoriesBursariesRouter = createTRPCRouter({
+export const bursaryCategoriesBursariesRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getBursaryCategoriesBursaries: publicProcedure.query(async () => {
     return getBursaryCategoriesBursaries();
   }),

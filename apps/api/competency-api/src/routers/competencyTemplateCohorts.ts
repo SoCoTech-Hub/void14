@@ -15,7 +15,9 @@ import {
 } from "../api/competencyTemplateCohorts/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const competencyTemplateCohortsRouter = createTRPCRouter({
+export const competencyTemplateCohortsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getCompetencyTemplateCohorts: publicProcedure.query(async () => {
     return getCompetencyTemplateCohorts();
   }),

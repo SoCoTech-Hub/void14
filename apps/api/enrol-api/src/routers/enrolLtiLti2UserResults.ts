@@ -15,7 +15,9 @@ import {
 } from "../api/enrolLtiLti2UserResults/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const enrolLtiLti2UserResultsRouter = createTRPCRouter({
+export const enrolLtiLti2UserResultsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getEnrolLtiLti2UserResults: publicProcedure.query(async () => {
     return getEnrolLtiLti2UserResults();
   }),

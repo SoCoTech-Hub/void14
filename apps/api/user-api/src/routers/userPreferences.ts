@@ -15,28 +15,29 @@ import {
 } from "../api/userPreferences/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const userPreferencesRouter = createTRPCRouter({
-  getUserPreferences: publicProcedure.query(async () => {
-    return getUserPreferences();
-  }),
-  getUserPreferenceById: publicProcedure
-    .input(userPreferenceIdSchema)
-    .query(async ({ input }) => {
-      return getUserPreferenceById(input.id);
+export const userPreferencesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getUserPreferences: publicProcedure.query(async () => {
+      return getUserPreferences();
     }),
-  createUserPreference: publicProcedure
-    .input(insertUserPreferenceParams)
-    .mutation(async ({ input }) => {
-      return createUserPreference(input);
-    }),
-  updateUserPreference: publicProcedure
-    .input(updateUserPreferenceParams)
-    .mutation(async ({ input }) => {
-      return updateUserPreference(input.id, input);
-    }),
-  deleteUserPreference: publicProcedure
-    .input(userPreferenceIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteUserPreference(input.id);
-    }),
-});
+    getUserPreferenceById: publicProcedure
+      .input(userPreferenceIdSchema)
+      .query(async ({ input }) => {
+        return getUserPreferenceById(input.id);
+      }),
+    createUserPreference: publicProcedure
+      .input(insertUserPreferenceParams)
+      .mutation(async ({ input }) => {
+        return createUserPreference(input);
+      }),
+    updateUserPreference: publicProcedure
+      .input(updateUserPreferenceParams)
+      .mutation(async ({ input }) => {
+        return updateUserPreference(input.id, input);
+      }),
+    deleteUserPreference: publicProcedure
+      .input(userPreferenceIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteUserPreference(input.id);
+      }),
+  });

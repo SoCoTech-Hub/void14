@@ -15,28 +15,29 @@ import {
 } from "../api/forumDiscussions/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const forumDiscussionsRouter = createTRPCRouter({
-  getForumDiscussions: publicProcedure.query(async () => {
-    return getForumDiscussions();
-  }),
-  getForumDiscussionById: publicProcedure
-    .input(forumDiscussionIdSchema)
-    .query(async ({ input }) => {
-      return getForumDiscussionById(input.id);
+export const forumDiscussionsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getForumDiscussions: publicProcedure.query(async () => {
+      return getForumDiscussions();
     }),
-  createForumDiscussion: publicProcedure
-    .input(insertForumDiscussionParams)
-    .mutation(async ({ input }) => {
-      return createForumDiscussion(input);
-    }),
-  updateForumDiscussion: publicProcedure
-    .input(updateForumDiscussionParams)
-    .mutation(async ({ input }) => {
-      return updateForumDiscussion(input.id, input);
-    }),
-  deleteForumDiscussion: publicProcedure
-    .input(forumDiscussionIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteForumDiscussion(input.id);
-    }),
-});
+    getForumDiscussionById: publicProcedure
+      .input(forumDiscussionIdSchema)
+      .query(async ({ input }) => {
+        return getForumDiscussionById(input.id);
+      }),
+    createForumDiscussion: publicProcedure
+      .input(insertForumDiscussionParams)
+      .mutation(async ({ input }) => {
+        return createForumDiscussion(input);
+      }),
+    updateForumDiscussion: publicProcedure
+      .input(updateForumDiscussionParams)
+      .mutation(async ({ input }) => {
+        return updateForumDiscussion(input.id, input);
+      }),
+    deleteForumDiscussion: publicProcedure
+      .input(forumDiscussionIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteForumDiscussion(input.id);
+      }),
+  });

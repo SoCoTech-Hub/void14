@@ -15,7 +15,9 @@ import {
 } from "../api/localizationTranslations/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const localizationTranslationsRouter = createTRPCRouter({
+export const localizationTranslationsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getLocalizationTranslations: publicProcedure.query(async () => {
     return getLocalizationTranslations();
   }),

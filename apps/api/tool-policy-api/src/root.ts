@@ -3,7 +3,7 @@ import { toolPolicyAcceptancesRouter } from "./routers/toolPolicyAcceptances";
 import { toolPolicyVersionsRouter } from "./routers/toolPolicyVersions";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   toolPolicies: toolPoliciesRouter,
   toolPolicyAcceptances: toolPolicyAcceptancesRouter,
   toolPolicyVersions: toolPolicyVersionsRouter,

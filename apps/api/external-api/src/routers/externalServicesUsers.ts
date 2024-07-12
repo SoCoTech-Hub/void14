@@ -15,28 +15,29 @@ import {
 } from "../api/externalServicesUsers/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const externalServicesUsersRouter = createTRPCRouter({
-  getExternalServicesUsers: publicProcedure.query(async () => {
-    return getExternalServicesUsers();
-  }),
-  getExternalServicesUserById: publicProcedure
-    .input(externalServicesUserIdSchema)
-    .query(async ({ input }) => {
-      return getExternalServicesUserById(input.id);
+export const externalServicesUsersRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getExternalServicesUsers: publicProcedure.query(async () => {
+      return getExternalServicesUsers();
     }),
-  createExternalServicesUser: publicProcedure
-    .input(insertExternalServicesUserParams)
-    .mutation(async ({ input }) => {
-      return createExternalServicesUser(input);
-    }),
-  updateExternalServicesUser: publicProcedure
-    .input(updateExternalServicesUserParams)
-    .mutation(async ({ input }) => {
-      return updateExternalServicesUser(input.id, input);
-    }),
-  deleteExternalServicesUser: publicProcedure
-    .input(externalServicesUserIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteExternalServicesUser(input.id);
-    }),
-});
+    getExternalServicesUserById: publicProcedure
+      .input(externalServicesUserIdSchema)
+      .query(async ({ input }) => {
+        return getExternalServicesUserById(input.id);
+      }),
+    createExternalServicesUser: publicProcedure
+      .input(insertExternalServicesUserParams)
+      .mutation(async ({ input }) => {
+        return createExternalServicesUser(input);
+      }),
+    updateExternalServicesUser: publicProcedure
+      .input(updateExternalServicesUserParams)
+      .mutation(async ({ input }) => {
+        return updateExternalServicesUser(input.id, input);
+      }),
+    deleteExternalServicesUser: publicProcedure
+      .input(externalServicesUserIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteExternalServicesUser(input.id);
+      }),
+  });

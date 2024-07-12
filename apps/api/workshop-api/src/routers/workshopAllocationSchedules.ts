@@ -15,7 +15,9 @@ import {
 } from "../api/workshopAllocationSchedules/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const workshopAllocationSchedulesRouter = createTRPCRouter({
+export const workshopAllocationSchedulesRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getWorkshopAllocationSchedules: publicProcedure.query(async () => {
     return getWorkshopAllocationSchedules();
   }),

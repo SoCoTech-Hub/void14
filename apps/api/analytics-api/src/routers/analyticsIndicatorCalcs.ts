@@ -15,7 +15,9 @@ import {
 } from "../api/analyticsIndicatorCalcs/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const analyticsIndicatorCalcsRouter = createTRPCRouter({
+export const analyticsIndicatorCalcsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getAnalyticsIndicatorCalcs: publicProcedure.query(async () => {
     return getAnalyticsIndicatorCalcs();
   }),

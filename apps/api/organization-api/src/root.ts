@@ -1,7 +1,7 @@
 import { organizationsRouter } from "./routers/organizations";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   organizations: organizationsRouter,
 });
 

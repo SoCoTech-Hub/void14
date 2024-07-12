@@ -12,28 +12,29 @@ import {
 import { getLockDbById, getLockDbs } from "../api/lockDbs/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const lockDbsRouter = createTRPCRouter({
-  getLockDbs: publicProcedure.query(async () => {
-    return getLockDbs();
-  }),
-  getLockDbById: publicProcedure
-    .input(lockDbIdSchema)
-    .query(async ({ input }) => {
-      return getLockDbById(input.id);
+export const lockDbsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getLockDbs: publicProcedure.query(async () => {
+      return getLockDbs();
     }),
-  createLockDb: publicProcedure
-    .input(insertLockDbParams)
-    .mutation(async ({ input }) => {
-      return createLockDb(input);
-    }),
-  updateLockDb: publicProcedure
-    .input(updateLockDbParams)
-    .mutation(async ({ input }) => {
-      return updateLockDb(input.id, input);
-    }),
-  deleteLockDb: publicProcedure
-    .input(lockDbIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteLockDb(input.id);
-    }),
-});
+    getLockDbById: publicProcedure
+      .input(lockDbIdSchema)
+      .query(async ({ input }) => {
+        return getLockDbById(input.id);
+      }),
+    createLockDb: publicProcedure
+      .input(insertLockDbParams)
+      .mutation(async ({ input }) => {
+        return createLockDb(input);
+      }),
+    updateLockDb: publicProcedure
+      .input(updateLockDbParams)
+      .mutation(async ({ input }) => {
+        return updateLockDb(input.id, input);
+      }),
+    deleteLockDb: publicProcedure
+      .input(lockDbIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteLockDb(input.id);
+      }),
+  });

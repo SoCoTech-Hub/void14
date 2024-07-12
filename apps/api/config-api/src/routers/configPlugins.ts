@@ -15,28 +15,29 @@ import {
 } from "../api/configPlugins/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const configPluginsRouter = createTRPCRouter({
-  getConfigPlugins: publicProcedure.query(async () => {
-    return getConfigPlugins();
-  }),
-  getConfigPluginById: publicProcedure
-    .input(configPluginIdSchema)
-    .query(async ({ input }) => {
-      return getConfigPluginById(input.id);
+export const configPluginsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getConfigPlugins: publicProcedure.query(async () => {
+      return getConfigPlugins();
     }),
-  createConfigPlugin: publicProcedure
-    .input(insertConfigPluginParams)
-    .mutation(async ({ input }) => {
-      return createConfigPlugin(input);
-    }),
-  updateConfigPlugin: publicProcedure
-    .input(updateConfigPluginParams)
-    .mutation(async ({ input }) => {
-      return updateConfigPlugin(input.id, input);
-    }),
-  deleteConfigPlugin: publicProcedure
-    .input(configPluginIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteConfigPlugin(input.id);
-    }),
-});
+    getConfigPluginById: publicProcedure
+      .input(configPluginIdSchema)
+      .query(async ({ input }) => {
+        return getConfigPluginById(input.id);
+      }),
+    createConfigPlugin: publicProcedure
+      .input(insertConfigPluginParams)
+      .mutation(async ({ input }) => {
+        return createConfigPlugin(input);
+      }),
+    updateConfigPlugin: publicProcedure
+      .input(updateConfigPluginParams)
+      .mutation(async ({ input }) => {
+        return updateConfigPlugin(input.id, input);
+      }),
+    deleteConfigPlugin: publicProcedure
+      .input(configPluginIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteConfigPlugin(input.id);
+      }),
+  });

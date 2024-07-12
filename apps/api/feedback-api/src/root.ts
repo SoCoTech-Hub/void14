@@ -8,7 +8,7 @@ import { feedbackValuesRouter } from "./routers/feedbackValues";
 import { feedbackValuetmpsRouter } from "./routers/feedbackValuetmps";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   feedbackCompleteds: feedbackCompletedsRouter,
   feedbackCompletedtmps: feedbackCompletedtmpsRouter,
   feedbackItems: feedbackItemsRouter,

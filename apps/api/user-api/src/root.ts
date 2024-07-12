@@ -11,7 +11,7 @@ import { userPrivateKeysRouter } from "./routers/userPrivateKeys";
 import { usersRouter } from "./routers/users";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   userDevices: userDevicesRouter,
   userEnrolments: userEnrolmentsRouter,
   userInfoCategories: userInfoCategoriesRouter,

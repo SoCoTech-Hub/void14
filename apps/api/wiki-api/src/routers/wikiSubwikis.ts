@@ -15,28 +15,29 @@ import {
 } from "../api/wikiSubwikis/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const wikiSubwikisRouter = createTRPCRouter({
-  getWikiSubwikis: publicProcedure.query(async () => {
-    return getWikiSubwikis();
-  }),
-  getWikiSubwikiById: publicProcedure
-    .input(wikiSubwikiIdSchema)
-    .query(async ({ input }) => {
-      return getWikiSubwikiById(input.id);
+export const wikiSubwikisRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getWikiSubwikis: publicProcedure.query(async () => {
+      return getWikiSubwikis();
     }),
-  createWikiSubwiki: publicProcedure
-    .input(insertWikiSubwikiParams)
-    .mutation(async ({ input }) => {
-      return createWikiSubwiki(input);
-    }),
-  updateWikiSubwiki: publicProcedure
-    .input(updateWikiSubwikiParams)
-    .mutation(async ({ input }) => {
-      return updateWikiSubwiki(input.id, input);
-    }),
-  deleteWikiSubwiki: publicProcedure
-    .input(wikiSubwikiIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteWikiSubwiki(input.id);
-    }),
-});
+    getWikiSubwikiById: publicProcedure
+      .input(wikiSubwikiIdSchema)
+      .query(async ({ input }) => {
+        return getWikiSubwikiById(input.id);
+      }),
+    createWikiSubwiki: publicProcedure
+      .input(insertWikiSubwikiParams)
+      .mutation(async ({ input }) => {
+        return createWikiSubwiki(input);
+      }),
+    updateWikiSubwiki: publicProcedure
+      .input(updateWikiSubwikiParams)
+      .mutation(async ({ input }) => {
+        return updateWikiSubwiki(input.id, input);
+      }),
+    deleteWikiSubwiki: publicProcedure
+      .input(wikiSubwikiIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteWikiSubwiki(input.id);
+      }),
+  });

@@ -15,7 +15,9 @@ import {
 } from "../api/messagePopupNotifications/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const messagePopupNotificationsRouter = createTRPCRouter({
+export const messagePopupNotificationsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getMessagePopupNotifications: publicProcedure.query(async () => {
     return getMessagePopupNotifications();
   }),

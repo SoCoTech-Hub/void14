@@ -15,28 +15,29 @@ import {
 } from "../api/supportTickets/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const supportTicketsRouter = createTRPCRouter({
-  getSupportTickets: publicProcedure.query(async () => {
-    return getSupportTickets();
-  }),
-  getSupportTicketById: publicProcedure
-    .input(supportTicketIdSchema)
-    .query(async ({ input }) => {
-      return getSupportTicketById(input.id);
+export const supportTicketsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getSupportTickets: publicProcedure.query(async () => {
+      return getSupportTickets();
     }),
-  createSupportTicket: publicProcedure
-    .input(insertSupportTicketParams)
-    .mutation(async ({ input }) => {
-      return createSupportTicket(input);
-    }),
-  updateSupportTicket: publicProcedure
-    .input(updateSupportTicketParams)
-    .mutation(async ({ input }) => {
-      return updateSupportTicket(input.id, input);
-    }),
-  deleteSupportTicket: publicProcedure
-    .input(supportTicketIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteSupportTicket(input.id);
-    }),
-});
+    getSupportTicketById: publicProcedure
+      .input(supportTicketIdSchema)
+      .query(async ({ input }) => {
+        return getSupportTicketById(input.id);
+      }),
+    createSupportTicket: publicProcedure
+      .input(insertSupportTicketParams)
+      .mutation(async ({ input }) => {
+        return createSupportTicket(input);
+      }),
+    updateSupportTicket: publicProcedure
+      .input(updateSupportTicketParams)
+      .mutation(async ({ input }) => {
+        return updateSupportTicket(input.id, input);
+      }),
+    deleteSupportTicket: publicProcedure
+      .input(supportTicketIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteSupportTicket(input.id);
+      }),
+  });

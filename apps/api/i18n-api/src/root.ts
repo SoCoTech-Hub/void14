@@ -4,7 +4,7 @@ import { localizationTranslationsRouter } from "./routers/localizationTranslatio
 import { localizationUsersRouter } from "./routers/localizationUsers";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   localizationFields: localizationFieldsRouter,
   localizationLanguages: localizationLanguagesRouter,
   localizationTranslations: localizationTranslationsRouter,

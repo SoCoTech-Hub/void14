@@ -15,28 +15,29 @@ import {
 } from "../api/massMailRecipients/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const massMailRecipientsRouter = createTRPCRouter({
-  getMassMailRecipients: publicProcedure.query(async () => {
-    return getMassMailRecipients();
-  }),
-  getMassMailRecipientById: publicProcedure
-    .input(massMailRecipientIdSchema)
-    .query(async ({ input }) => {
-      return getMassMailRecipientById(input.id);
+export const massMailRecipientsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getMassMailRecipients: publicProcedure.query(async () => {
+      return getMassMailRecipients();
     }),
-  createMassMailRecipient: publicProcedure
-    .input(insertMassMailRecipientParams)
-    .mutation(async ({ input }) => {
-      return createMassMailRecipient(input);
-    }),
-  updateMassMailRecipient: publicProcedure
-    .input(updateMassMailRecipientParams)
-    .mutation(async ({ input }) => {
-      return updateMassMailRecipient(input.id, input);
-    }),
-  deleteMassMailRecipient: publicProcedure
-    .input(massMailRecipientIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteMassMailRecipient(input.id);
-    }),
-});
+    getMassMailRecipientById: publicProcedure
+      .input(massMailRecipientIdSchema)
+      .query(async ({ input }) => {
+        return getMassMailRecipientById(input.id);
+      }),
+    createMassMailRecipient: publicProcedure
+      .input(insertMassMailRecipientParams)
+      .mutation(async ({ input }) => {
+        return createMassMailRecipient(input);
+      }),
+    updateMassMailRecipient: publicProcedure
+      .input(updateMassMailRecipientParams)
+      .mutation(async ({ input }) => {
+        return updateMassMailRecipient(input.id, input);
+      }),
+    deleteMassMailRecipient: publicProcedure
+      .input(massMailRecipientIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteMassMailRecipient(input.id);
+      }),
+  });

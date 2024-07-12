@@ -12,28 +12,29 @@ import {
 import { getLessonPageById, getLessonPages } from "../api/lessonPages/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const lessonPagesRouter = createTRPCRouter({
-  getLessonPages: publicProcedure.query(async () => {
-    return getLessonPages();
-  }),
-  getLessonPageById: publicProcedure
-    .input(lessonPageIdSchema)
-    .query(async ({ input }) => {
-      return getLessonPageById(input.id);
+export const lessonPagesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getLessonPages: publicProcedure.query(async () => {
+      return getLessonPages();
     }),
-  createLessonPage: publicProcedure
-    .input(insertLessonPageParams)
-    .mutation(async ({ input }) => {
-      return createLessonPage(input);
-    }),
-  updateLessonPage: publicProcedure
-    .input(updateLessonPageParams)
-    .mutation(async ({ input }) => {
-      return updateLessonPage(input.id, input);
-    }),
-  deleteLessonPage: publicProcedure
-    .input(lessonPageIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteLessonPage(input.id);
-    }),
-});
+    getLessonPageById: publicProcedure
+      .input(lessonPageIdSchema)
+      .query(async ({ input }) => {
+        return getLessonPageById(input.id);
+      }),
+    createLessonPage: publicProcedure
+      .input(insertLessonPageParams)
+      .mutation(async ({ input }) => {
+        return createLessonPage(input);
+      }),
+    updateLessonPage: publicProcedure
+      .input(updateLessonPageParams)
+      .mutation(async ({ input }) => {
+        return updateLessonPage(input.id, input);
+      }),
+    deleteLessonPage: publicProcedure
+      .input(lessonPageIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteLessonPage(input.id);
+      }),
+  });

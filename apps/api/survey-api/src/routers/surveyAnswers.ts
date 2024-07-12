@@ -15,28 +15,29 @@ import {
 } from "../api/surveyAnswers/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const surveyAnswersRouter = createTRPCRouter({
-  getSurveyAnswers: publicProcedure.query(async () => {
-    return getSurveyAnswers();
-  }),
-  getSurveyAnswerById: publicProcedure
-    .input(surveyAnswerIdSchema)
-    .query(async ({ input }) => {
-      return getSurveyAnswerById(input.id);
+export const surveyAnswersRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getSurveyAnswers: publicProcedure.query(async () => {
+      return getSurveyAnswers();
     }),
-  createSurveyAnswer: publicProcedure
-    .input(insertSurveyAnswerParams)
-    .mutation(async ({ input }) => {
-      return createSurveyAnswer(input);
-    }),
-  updateSurveyAnswer: publicProcedure
-    .input(updateSurveyAnswerParams)
-    .mutation(async ({ input }) => {
-      return updateSurveyAnswer(input.id, input);
-    }),
-  deleteSurveyAnswer: publicProcedure
-    .input(surveyAnswerIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteSurveyAnswer(input.id);
-    }),
-});
+    getSurveyAnswerById: publicProcedure
+      .input(surveyAnswerIdSchema)
+      .query(async ({ input }) => {
+        return getSurveyAnswerById(input.id);
+      }),
+    createSurveyAnswer: publicProcedure
+      .input(insertSurveyAnswerParams)
+      .mutation(async ({ input }) => {
+        return createSurveyAnswer(input);
+      }),
+    updateSurveyAnswer: publicProcedure
+      .input(updateSurveyAnswerParams)
+      .mutation(async ({ input }) => {
+        return updateSurveyAnswer(input.id, input);
+      }),
+    deleteSurveyAnswer: publicProcedure
+      .input(surveyAnswerIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteSurveyAnswer(input.id);
+      }),
+  });

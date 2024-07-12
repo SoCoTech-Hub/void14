@@ -15,28 +15,29 @@ import {
 } from "../api/backupControllers/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const backupControllersRouter = createTRPCRouter({
-  getBackupControllers: publicProcedure.query(async () => {
-    return getBackupControllers();
-  }),
-  getBackupControllerById: publicProcedure
-    .input(backupControllerIdSchema)
-    .query(async ({ input }) => {
-      return getBackupControllerById(input.id);
+export const backupControllersRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getBackupControllers: publicProcedure.query(async () => {
+      return getBackupControllers();
     }),
-  createBackupController: publicProcedure
-    .input(insertBackupControllerParams)
-    .mutation(async ({ input }) => {
-      return createBackupController(input);
-    }),
-  updateBackupController: publicProcedure
-    .input(updateBackupControllerParams)
-    .mutation(async ({ input }) => {
-      return updateBackupController(input.id, input);
-    }),
-  deleteBackupController: publicProcedure
-    .input(backupControllerIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteBackupController(input.id);
-    }),
-});
+    getBackupControllerById: publicProcedure
+      .input(backupControllerIdSchema)
+      .query(async ({ input }) => {
+        return getBackupControllerById(input.id);
+      }),
+    createBackupController: publicProcedure
+      .input(insertBackupControllerParams)
+      .mutation(async ({ input }) => {
+        return createBackupController(input);
+      }),
+    updateBackupController: publicProcedure
+      .input(updateBackupControllerParams)
+      .mutation(async ({ input }) => {
+        return updateBackupController(input.id, input);
+      }),
+    deleteBackupController: publicProcedure
+      .input(backupControllerIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteBackupController(input.id);
+      }),
+  });

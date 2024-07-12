@@ -15,28 +15,29 @@ import {
 } from "../api/lessonOverrides/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const lessonOverridesRouter = createTRPCRouter({
-  getLessonOverrides: publicProcedure.query(async () => {
-    return getLessonOverrides();
-  }),
-  getLessonOverrideById: publicProcedure
-    .input(lessonOverrideIdSchema)
-    .query(async ({ input }) => {
-      return getLessonOverrideById(input.id);
+export const lessonOverridesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getLessonOverrides: publicProcedure.query(async () => {
+      return getLessonOverrides();
     }),
-  createLessonOverride: publicProcedure
-    .input(insertLessonOverrideParams)
-    .mutation(async ({ input }) => {
-      return createLessonOverride(input);
-    }),
-  updateLessonOverride: publicProcedure
-    .input(updateLessonOverrideParams)
-    .mutation(async ({ input }) => {
-      return updateLessonOverride(input.id, input);
-    }),
-  deleteLessonOverride: publicProcedure
-    .input(lessonOverrideIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteLessonOverride(input.id);
-    }),
-});
+    getLessonOverrideById: publicProcedure
+      .input(lessonOverrideIdSchema)
+      .query(async ({ input }) => {
+        return getLessonOverrideById(input.id);
+      }),
+    createLessonOverride: publicProcedure
+      .input(insertLessonOverrideParams)
+      .mutation(async ({ input }) => {
+        return createLessonOverride(input);
+      }),
+    updateLessonOverride: publicProcedure
+      .input(updateLessonOverrideParams)
+      .mutation(async ({ input }) => {
+        return updateLessonOverride(input.id, input);
+      }),
+    deleteLessonOverride: publicProcedure
+      .input(lessonOverrideIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteLessonOverride(input.id);
+      }),
+  });

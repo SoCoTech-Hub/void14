@@ -15,7 +15,9 @@ import {
 } from "../api/questionCalculatedOptions/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const questionCalculatedOptionsRouter = createTRPCRouter({
+export const questionCalculatedOptionsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getQuestionCalculatedOptions: publicProcedure.query(async () => {
     return getQuestionCalculatedOptions();
   }),

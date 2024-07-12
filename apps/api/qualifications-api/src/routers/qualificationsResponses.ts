@@ -15,7 +15,9 @@ import {
 } from "../api/qualificationsResponses/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const qualificationsResponsesRouter = createTRPCRouter({
+export const qualificationsResponsesRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getQualificationsResponses: publicProcedure.query(async () => {
     return getQualificationsResponses();
   }),

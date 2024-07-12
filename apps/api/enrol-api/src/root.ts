@@ -18,7 +18,7 @@ import { enrolPaypalsRouter } from "./routers/enrolPaypals";
 import { enrolsRouter } from "./routers/enrols";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   enrolFlatfiles: enrolFlatfilesRouter,
   enrolLtiAppRegistrations: enrolLtiAppRegistrationsRouter,
   enrolLtiContexts: enrolLtiContextsRouter,

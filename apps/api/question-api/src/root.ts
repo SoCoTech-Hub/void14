@@ -27,7 +27,7 @@ import { questionUsagesRouter } from "./routers/questionUsages";
 import { questionVersionsRouter } from "./routers/questionVersions";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   questionAnswers: questionAnswersRouter,
   questionAttempts: questionAttemptsRouter,
   questionAttemptStepDatas: questionAttemptStepDatasRouter,

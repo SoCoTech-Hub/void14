@@ -6,7 +6,7 @@ import { provinceOrganizationsRouter } from "./routers/provinceOrganizations";
 import { provincesRouter } from "./routers/provinces";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   countries: countriesRouter,
   countryOrganizations: countryOrganizationsRouter,
   districtOrganizations: districtOrganizationsRouter,

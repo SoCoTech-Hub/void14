@@ -2,7 +2,7 @@ import { showsRouter } from "./routers/shows";
 import { showsCategoriesRouter } from "./routers/showsCategories";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   shows: showsRouter,
   showsCategories: showsCategoriesRouter,
 });

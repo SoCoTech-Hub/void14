@@ -15,7 +15,9 @@ import {
 } from "../api/externalServicesFunctions/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const externalServicesFunctionsRouter = createTRPCRouter({
+export const externalServicesFunctionsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getExternalServicesFunctions: publicProcedure.query(async () => {
     return getExternalServicesFunctions();
   }),

@@ -15,28 +15,29 @@ import {
 } from "../api/courseCompletions/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const courseCompletionsRouter = createTRPCRouter({
-  getCourseCompletions: publicProcedure.query(async () => {
-    return getCourseCompletions();
-  }),
-  getCourseCompletionById: publicProcedure
-    .input(courseCompletionIdSchema)
-    .query(async ({ input }) => {
-      return getCourseCompletionById(input.id);
+export const courseCompletionsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getCourseCompletions: publicProcedure.query(async () => {
+      return getCourseCompletions();
     }),
-  createCourseCompletion: publicProcedure
-    .input(insertCourseCompletionParams)
-    .mutation(async ({ input }) => {
-      return createCourseCompletion(input);
-    }),
-  updateCourseCompletion: publicProcedure
-    .input(updateCourseCompletionParams)
-    .mutation(async ({ input }) => {
-      return updateCourseCompletion(input.id, input);
-    }),
-  deleteCourseCompletion: publicProcedure
-    .input(courseCompletionIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteCourseCompletion(input.id);
-    }),
-});
+    getCourseCompletionById: publicProcedure
+      .input(courseCompletionIdSchema)
+      .query(async ({ input }) => {
+        return getCourseCompletionById(input.id);
+      }),
+    createCourseCompletion: publicProcedure
+      .input(insertCourseCompletionParams)
+      .mutation(async ({ input }) => {
+        return createCourseCompletion(input);
+      }),
+    updateCourseCompletion: publicProcedure
+      .input(updateCourseCompletionParams)
+      .mutation(async ({ input }) => {
+        return updateCourseCompletion(input.id, input);
+      }),
+    deleteCourseCompletion: publicProcedure
+      .input(courseCompletionIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteCourseCompletion(input.id);
+      }),
+  });

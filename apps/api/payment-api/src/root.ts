@@ -4,7 +4,7 @@ import { paymentGatewaysRouter } from "./routers/paymentGateways";
 import { paymentsRouter } from "./routers/payments";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   paygwPaypals: paygwPaypalsRouter,
   paymentAccounts: paymentAccountsRouter,
   paymentGateways: paymentGatewaysRouter,

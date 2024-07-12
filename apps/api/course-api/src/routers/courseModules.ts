@@ -15,28 +15,29 @@ import {
 } from "../api/courseModules/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const courseModulesRouter = createTRPCRouter({
-  getCourseModules: publicProcedure.query(async () => {
-    return getCourseModules();
-  }),
-  getCourseModuleById: publicProcedure
-    .input(courseModuleIdSchema)
-    .query(async ({ input }) => {
-      return getCourseModuleById(input.id);
+export const courseModulesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getCourseModules: publicProcedure.query(async () => {
+      return getCourseModules();
     }),
-  createCourseModule: publicProcedure
-    .input(insertCourseModuleParams)
-    .mutation(async ({ input }) => {
-      return createCourseModule(input);
-    }),
-  updateCourseModule: publicProcedure
-    .input(updateCourseModuleParams)
-    .mutation(async ({ input }) => {
-      return updateCourseModule(input.id, input);
-    }),
-  deleteCourseModule: publicProcedure
-    .input(courseModuleIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteCourseModule(input.id);
-    }),
-});
+    getCourseModuleById: publicProcedure
+      .input(courseModuleIdSchema)
+      .query(async ({ input }) => {
+        return getCourseModuleById(input.id);
+      }),
+    createCourseModule: publicProcedure
+      .input(insertCourseModuleParams)
+      .mutation(async ({ input }) => {
+        return createCourseModule(input);
+      }),
+    updateCourseModule: publicProcedure
+      .input(updateCourseModuleParams)
+      .mutation(async ({ input }) => {
+        return updateCourseModule(input.id, input);
+      }),
+    deleteCourseModule: publicProcedure
+      .input(courseModuleIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteCourseModule(input.id);
+      }),
+  });

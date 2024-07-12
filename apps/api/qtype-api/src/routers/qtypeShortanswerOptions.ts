@@ -15,7 +15,9 @@ import {
 } from "../api/qtypeShortanswerOptions/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const qtypeShortanswerOptionsRouter = createTRPCRouter({
+export const qtypeShortanswerOptionsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getQtypeShortanswerOptions: publicProcedure.query(async () => {
     return getQtypeShortanswerOptions();
   }),

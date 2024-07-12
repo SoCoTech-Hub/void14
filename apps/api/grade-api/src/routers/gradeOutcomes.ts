@@ -15,28 +15,29 @@ import {
 } from "../api/gradeOutcomes/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const gradeOutcomesRouter = createTRPCRouter({
-  getGradeOutcomes: publicProcedure.query(async () => {
-    return getGradeOutcomes();
-  }),
-  getGradeOutcomeById: publicProcedure
-    .input(gradeOutcomeIdSchema)
-    .query(async ({ input }) => {
-      return getGradeOutcomeById(input.id);
+export const gradeOutcomesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getGradeOutcomes: publicProcedure.query(async () => {
+      return getGradeOutcomes();
     }),
-  createGradeOutcome: publicProcedure
-    .input(insertGradeOutcomeParams)
-    .mutation(async ({ input }) => {
-      return createGradeOutcome(input);
-    }),
-  updateGradeOutcome: publicProcedure
-    .input(updateGradeOutcomeParams)
-    .mutation(async ({ input }) => {
-      return updateGradeOutcome(input.id, input);
-    }),
-  deleteGradeOutcome: publicProcedure
-    .input(gradeOutcomeIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteGradeOutcome(input.id);
-    }),
-});
+    getGradeOutcomeById: publicProcedure
+      .input(gradeOutcomeIdSchema)
+      .query(async ({ input }) => {
+        return getGradeOutcomeById(input.id);
+      }),
+    createGradeOutcome: publicProcedure
+      .input(insertGradeOutcomeParams)
+      .mutation(async ({ input }) => {
+        return createGradeOutcome(input);
+      }),
+    updateGradeOutcome: publicProcedure
+      .input(updateGradeOutcomeParams)
+      .mutation(async ({ input }) => {
+        return updateGradeOutcome(input.id, input);
+      }),
+    deleteGradeOutcome: publicProcedure
+      .input(gradeOutcomeIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteGradeOutcome(input.id);
+      }),
+  });

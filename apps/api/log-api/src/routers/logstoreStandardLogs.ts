@@ -15,28 +15,29 @@ import {
 } from "../api/logstoreStandardLogs/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const logstoreStandardLogsRouter = createTRPCRouter({
-  getLogstoreStandardLogs: publicProcedure.query(async () => {
-    return getLogstoreStandardLogs();
-  }),
-  getLogstoreStandardLogById: publicProcedure
-    .input(logstoreStandardLogIdSchema)
-    .query(async ({ input }) => {
-      return getLogstoreStandardLogById(input.id);
+export const logstoreStandardLogsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getLogstoreStandardLogs: publicProcedure.query(async () => {
+      return getLogstoreStandardLogs();
     }),
-  createLogstoreStandardLog: publicProcedure
-    .input(insertLogstoreStandardLogParams)
-    .mutation(async ({ input }) => {
-      return createLogstoreStandardLog(input);
-    }),
-  updateLogstoreStandardLog: publicProcedure
-    .input(updateLogstoreStandardLogParams)
-    .mutation(async ({ input }) => {
-      return updateLogstoreStandardLog(input.id, input);
-    }),
-  deleteLogstoreStandardLog: publicProcedure
-    .input(logstoreStandardLogIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteLogstoreStandardLog(input.id);
-    }),
-});
+    getLogstoreStandardLogById: publicProcedure
+      .input(logstoreStandardLogIdSchema)
+      .query(async ({ input }) => {
+        return getLogstoreStandardLogById(input.id);
+      }),
+    createLogstoreStandardLog: publicProcedure
+      .input(insertLogstoreStandardLogParams)
+      .mutation(async ({ input }) => {
+        return createLogstoreStandardLog(input);
+      }),
+    updateLogstoreStandardLog: publicProcedure
+      .input(updateLogstoreStandardLogParams)
+      .mutation(async ({ input }) => {
+        return updateLogstoreStandardLog(input.id, input);
+      }),
+    deleteLogstoreStandardLog: publicProcedure
+      .input(logstoreStandardLogIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteLogstoreStandardLog(input.id);
+      }),
+  });

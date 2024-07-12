@@ -12,28 +12,29 @@ import {
 import { getDataRecordById, getDataRecords } from "../api/dataRecords/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const dataRecordsRouter = createTRPCRouter({
-  getDataRecords: publicProcedure.query(async () => {
-    return getDataRecords();
-  }),
-  getDataRecordById: publicProcedure
-    .input(dataRecordIdSchema)
-    .query(async ({ input }) => {
-      return getDataRecordById(input.id);
+export const dataRecordsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getDataRecords: publicProcedure.query(async () => {
+      return getDataRecords();
     }),
-  createDataRecord: publicProcedure
-    .input(insertDataRecordParams)
-    .mutation(async ({ input }) => {
-      return createDataRecord(input);
-    }),
-  updateDataRecord: publicProcedure
-    .input(updateDataRecordParams)
-    .mutation(async ({ input }) => {
-      return updateDataRecord(input.id, input);
-    }),
-  deleteDataRecord: publicProcedure
-    .input(dataRecordIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteDataRecord(input.id);
-    }),
-});
+    getDataRecordById: publicProcedure
+      .input(dataRecordIdSchema)
+      .query(async ({ input }) => {
+        return getDataRecordById(input.id);
+      }),
+    createDataRecord: publicProcedure
+      .input(insertDataRecordParams)
+      .mutation(async ({ input }) => {
+        return createDataRecord(input);
+      }),
+    updateDataRecord: publicProcedure
+      .input(updateDataRecordParams)
+      .mutation(async ({ input }) => {
+        return updateDataRecord(input.id, input);
+      }),
+    deleteDataRecord: publicProcedure
+      .input(dataRecordIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteDataRecord(input.id);
+      }),
+  });

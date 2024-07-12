@@ -15,7 +15,9 @@ import {
 } from "../api/competencyCourseCompSettings/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const competencyCourseCompSettingsRouter = createTRPCRouter({
+export const competencyCourseCompSettingsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getCompetencyCourseCompSettings: publicProcedure.query(async () => {
     return getCompetencyCourseCompSettings();
   }),

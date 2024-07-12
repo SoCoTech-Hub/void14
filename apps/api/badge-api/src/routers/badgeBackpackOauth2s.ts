@@ -15,28 +15,29 @@ import {
 } from "../api/badgeBackpackOauth2s/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const badgeBackpackOauth2sRouter = createTRPCRouter({
-  getBadgeBackpackOauth2s: publicProcedure.query(async () => {
-    return getBadgeBackpackOauth2s();
-  }),
-  getBadgeBackpackOauth2ById: publicProcedure
-    .input(badgeBackpackOauth2IdSchema)
-    .query(async ({ input }) => {
-      return getBadgeBackpackOauth2ById(input.id);
+export const badgeBackpackOauth2sRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getBadgeBackpackOauth2s: publicProcedure.query(async () => {
+      return getBadgeBackpackOauth2s();
     }),
-  createBadgeBackpackOauth2: publicProcedure
-    .input(insertBadgeBackpackOauth2Params)
-    .mutation(async ({ input }) => {
-      return createBadgeBackpackOauth2(input);
-    }),
-  updateBadgeBackpackOauth2: publicProcedure
-    .input(updateBadgeBackpackOauth2Params)
-    .mutation(async ({ input }) => {
-      return updateBadgeBackpackOauth2(input.id, input);
-    }),
-  deleteBadgeBackpackOauth2: publicProcedure
-    .input(badgeBackpackOauth2IdSchema)
-    .mutation(async ({ input }) => {
-      return deleteBadgeBackpackOauth2(input.id);
-    }),
-});
+    getBadgeBackpackOauth2ById: publicProcedure
+      .input(badgeBackpackOauth2IdSchema)
+      .query(async ({ input }) => {
+        return getBadgeBackpackOauth2ById(input.id);
+      }),
+    createBadgeBackpackOauth2: publicProcedure
+      .input(insertBadgeBackpackOauth2Params)
+      .mutation(async ({ input }) => {
+        return createBadgeBackpackOauth2(input);
+      }),
+    updateBadgeBackpackOauth2: publicProcedure
+      .input(updateBadgeBackpackOauth2Params)
+      .mutation(async ({ input }) => {
+        return updateBadgeBackpackOauth2(input.id, input);
+      }),
+    deleteBadgeBackpackOauth2: publicProcedure
+      .input(badgeBackpackOauth2IdSchema)
+      .mutation(async ({ input }) => {
+        return deleteBadgeBackpackOauth2(input.id);
+      }),
+  });

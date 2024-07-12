@@ -6,7 +6,7 @@ import { oauth2SystemAccountsRouter } from "./routers/oauth2SystemAccounts";
 import { oauth2UserFieldMappingsRouter } from "./routers/oauth2UserFieldMappings";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   oauth2AccessTokens: oauth2AccessTokensRouter,
   oauth2Endpoints: oauth2EndpointsRouter,
   oauth2Issuers: oauth2IssuersRouter,

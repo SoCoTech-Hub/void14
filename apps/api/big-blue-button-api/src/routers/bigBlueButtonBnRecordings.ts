@@ -15,7 +15,9 @@ import {
 } from "../api/bigBlueButtonBnRecordings/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const bigBlueButtonBnRecordingsRouter = createTRPCRouter({
+export const bigBlueButtonBnRecordingsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getBigBlueButtonBnRecordings: publicProcedure.query(async () => {
     return getBigBlueButtonBnRecordings();
   }),

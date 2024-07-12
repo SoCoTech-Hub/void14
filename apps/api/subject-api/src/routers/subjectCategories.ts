@@ -15,28 +15,29 @@ import {
 } from "../api/subjectCategories/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const subjectCategoriesRouter = createTRPCRouter({
-  getSubjectCategories: publicProcedure.query(async () => {
-    return getSubjectCategories();
-  }),
-  getSubjectCategoryById: publicProcedure
-    .input(subjectCategoryIdSchema)
-    .query(async ({ input }) => {
-      return getSubjectCategoryById(input.id);
+export const subjectCategoriesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getSubjectCategories: publicProcedure.query(async () => {
+      return getSubjectCategories();
     }),
-  createSubjectCategory: publicProcedure
-    .input(insertSubjectCategoryParams)
-    .mutation(async ({ input }) => {
-      return createSubjectCategory(input);
-    }),
-  updateSubjectCategory: publicProcedure
-    .input(updateSubjectCategoryParams)
-    .mutation(async ({ input }) => {
-      return updateSubjectCategory(input.id, input);
-    }),
-  deleteSubjectCategory: publicProcedure
-    .input(subjectCategoryIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteSubjectCategory(input.id);
-    }),
-});
+    getSubjectCategoryById: publicProcedure
+      .input(subjectCategoryIdSchema)
+      .query(async ({ input }) => {
+        return getSubjectCategoryById(input.id);
+      }),
+    createSubjectCategory: publicProcedure
+      .input(insertSubjectCategoryParams)
+      .mutation(async ({ input }) => {
+        return createSubjectCategory(input);
+      }),
+    updateSubjectCategory: publicProcedure
+      .input(updateSubjectCategoryParams)
+      .mutation(async ({ input }) => {
+        return updateSubjectCategory(input.id, input);
+      }),
+    deleteSubjectCategory: publicProcedure
+      .input(subjectCategoryIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteSubjectCategory(input.id);
+      }),
+  });

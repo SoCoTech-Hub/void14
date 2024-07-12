@@ -15,28 +15,29 @@ import {
 } from "../api/externalFunctions/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const externalFunctionsRouter = createTRPCRouter({
-  getExternalFunctions: publicProcedure.query(async () => {
-    return getExternalFunctions();
-  }),
-  getExternalFunctionById: publicProcedure
-    .input(externalFunctionIdSchema)
-    .query(async ({ input }) => {
-      return getExternalFunctionById(input.id);
+export const externalFunctionsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getExternalFunctions: publicProcedure.query(async () => {
+      return getExternalFunctions();
     }),
-  createExternalFunction: publicProcedure
-    .input(insertExternalFunctionParams)
-    .mutation(async ({ input }) => {
-      return createExternalFunction(input);
-    }),
-  updateExternalFunction: publicProcedure
-    .input(updateExternalFunctionParams)
-    .mutation(async ({ input }) => {
-      return updateExternalFunction(input.id, input);
-    }),
-  deleteExternalFunction: publicProcedure
-    .input(externalFunctionIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteExternalFunction(input.id);
-    }),
-});
+    getExternalFunctionById: publicProcedure
+      .input(externalFunctionIdSchema)
+      .query(async ({ input }) => {
+        return getExternalFunctionById(input.id);
+      }),
+    createExternalFunction: publicProcedure
+      .input(insertExternalFunctionParams)
+      .mutation(async ({ input }) => {
+        return createExternalFunction(input);
+      }),
+    updateExternalFunction: publicProcedure
+      .input(updateExternalFunctionParams)
+      .mutation(async ({ input }) => {
+        return updateExternalFunction(input.id, input);
+      }),
+    deleteExternalFunction: publicProcedure
+      .input(externalFunctionIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteExternalFunction(input.id);
+      }),
+  });

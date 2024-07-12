@@ -15,28 +15,29 @@ import {
 } from "../api/enrolLtiLti2Consumers/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const enrolLtiLti2ConsumersRouter = createTRPCRouter({
-  getEnrolLtiLti2Consumers: publicProcedure.query(async () => {
-    return getEnrolLtiLti2Consumers();
-  }),
-  getEnrolLtiLti2ConsumerById: publicProcedure
-    .input(enrolLtiLti2ConsumerIdSchema)
-    .query(async ({ input }) => {
-      return getEnrolLtiLti2ConsumerById(input.id);
+export const enrolLtiLti2ConsumersRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getEnrolLtiLti2Consumers: publicProcedure.query(async () => {
+      return getEnrolLtiLti2Consumers();
     }),
-  createEnrolLtiLti2Consumer: publicProcedure
-    .input(insertEnrolLtiLti2ConsumerParams)
-    .mutation(async ({ input }) => {
-      return createEnrolLtiLti2Consumer(input);
-    }),
-  updateEnrolLtiLti2Consumer: publicProcedure
-    .input(updateEnrolLtiLti2ConsumerParams)
-    .mutation(async ({ input }) => {
-      return updateEnrolLtiLti2Consumer(input.id, input);
-    }),
-  deleteEnrolLtiLti2Consumer: publicProcedure
-    .input(enrolLtiLti2ConsumerIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteEnrolLtiLti2Consumer(input.id);
-    }),
-});
+    getEnrolLtiLti2ConsumerById: publicProcedure
+      .input(enrolLtiLti2ConsumerIdSchema)
+      .query(async ({ input }) => {
+        return getEnrolLtiLti2ConsumerById(input.id);
+      }),
+    createEnrolLtiLti2Consumer: publicProcedure
+      .input(insertEnrolLtiLti2ConsumerParams)
+      .mutation(async ({ input }) => {
+        return createEnrolLtiLti2Consumer(input);
+      }),
+    updateEnrolLtiLti2Consumer: publicProcedure
+      .input(updateEnrolLtiLti2ConsumerParams)
+      .mutation(async ({ input }) => {
+        return updateEnrolLtiLti2Consumer(input.id, input);
+      }),
+    deleteEnrolLtiLti2Consumer: publicProcedure
+      .input(enrolLtiLti2ConsumerIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteEnrolLtiLti2Consumer(input.id);
+      }),
+  });

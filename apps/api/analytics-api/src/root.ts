@@ -9,7 +9,7 @@ import { analyticsUsedAnalysablesRouter } from "./routers/analyticsUsedAnalysabl
 import { analyticsUsedFilesRouter } from "./routers/analyticsUsedFiles";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   analyticsIndicatorCalcs: analyticsIndicatorCalcsRouter,
   analyticsModelLogs: analyticsModelLogsRouter,
   analyticsModels: analyticsModelsRouter,

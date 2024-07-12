@@ -15,28 +15,29 @@ import {
 } from "../api/adminPresetItAs/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const adminPresetItAsRouter = createTRPCRouter({
-  getAdminPresetItAs: publicProcedure.query(async () => {
-    return getAdminPresetItAs();
-  }),
-  getAdminPresetItAById: publicProcedure
-    .input(adminPresetItAIdSchema)
-    .query(async ({ input }) => {
-      return getAdminPresetItAById(input.id);
+export const adminPresetItAsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getAdminPresetItAs: publicProcedure.query(async () => {
+      return getAdminPresetItAs();
     }),
-  createAdminPresetItA: publicProcedure
-    .input(insertAdminPresetItAParams)
-    .mutation(async ({ input }) => {
-      return createAdminPresetItA(input);
-    }),
-  updateAdminPresetItA: publicProcedure
-    .input(updateAdminPresetItAParams)
-    .mutation(async ({ input }) => {
-      return updateAdminPresetItA(input.id, input);
-    }),
-  deleteAdminPresetItA: publicProcedure
-    .input(adminPresetItAIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteAdminPresetItA(input.id);
-    }),
-});
+    getAdminPresetItAById: publicProcedure
+      .input(adminPresetItAIdSchema)
+      .query(async ({ input }) => {
+        return getAdminPresetItAById(input.id);
+      }),
+    createAdminPresetItA: publicProcedure
+      .input(insertAdminPresetItAParams)
+      .mutation(async ({ input }) => {
+        return createAdminPresetItA(input);
+      }),
+    updateAdminPresetItA: publicProcedure
+      .input(updateAdminPresetItAParams)
+      .mutation(async ({ input }) => {
+        return updateAdminPresetItA(input.id, input);
+      }),
+    deleteAdminPresetItA: publicProcedure
+      .input(adminPresetItAIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteAdminPresetItA(input.id);
+      }),
+  });

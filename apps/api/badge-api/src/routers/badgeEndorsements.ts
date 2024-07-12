@@ -15,28 +15,29 @@ import {
 } from "../api/badgeEndorsements/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const badgeEndorsementsRouter = createTRPCRouter({
-  getBadgeEndorsements: publicProcedure.query(async () => {
-    return getBadgeEndorsements();
-  }),
-  getBadgeEndorsementById: publicProcedure
-    .input(badgeEndorsementIdSchema)
-    .query(async ({ input }) => {
-      return getBadgeEndorsementById(input.id);
+export const badgeEndorsementsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getBadgeEndorsements: publicProcedure.query(async () => {
+      return getBadgeEndorsements();
     }),
-  createBadgeEndorsement: publicProcedure
-    .input(insertBadgeEndorsementParams)
-    .mutation(async ({ input }) => {
-      return createBadgeEndorsement(input);
-    }),
-  updateBadgeEndorsement: publicProcedure
-    .input(updateBadgeEndorsementParams)
-    .mutation(async ({ input }) => {
-      return updateBadgeEndorsement(input.id, input);
-    }),
-  deleteBadgeEndorsement: publicProcedure
-    .input(badgeEndorsementIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteBadgeEndorsement(input.id);
-    }),
-});
+    getBadgeEndorsementById: publicProcedure
+      .input(badgeEndorsementIdSchema)
+      .query(async ({ input }) => {
+        return getBadgeEndorsementById(input.id);
+      }),
+    createBadgeEndorsement: publicProcedure
+      .input(insertBadgeEndorsementParams)
+      .mutation(async ({ input }) => {
+        return createBadgeEndorsement(input);
+      }),
+    updateBadgeEndorsement: publicProcedure
+      .input(updateBadgeEndorsementParams)
+      .mutation(async ({ input }) => {
+        return updateBadgeEndorsement(input.id, input);
+      }),
+    deleteBadgeEndorsement: publicProcedure
+      .input(badgeEndorsementIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteBadgeEndorsement(input.id);
+      }),
+  });

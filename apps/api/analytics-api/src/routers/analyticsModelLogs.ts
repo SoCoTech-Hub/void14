@@ -15,28 +15,29 @@ import {
 } from "../api/analyticsModelLogs/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const analyticsModelLogsRouter = createTRPCRouter({
-  getAnalyticsModelLogs: publicProcedure.query(async () => {
-    return getAnalyticsModelLogs();
-  }),
-  getAnalyticsModelLogById: publicProcedure
-    .input(analyticsModelLogIdSchema)
-    .query(async ({ input }) => {
-      return getAnalyticsModelLogById(input.id);
+export const analyticsModelLogsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getAnalyticsModelLogs: publicProcedure.query(async () => {
+      return getAnalyticsModelLogs();
     }),
-  createAnalyticsModelLog: publicProcedure
-    .input(insertAnalyticsModelLogParams)
-    .mutation(async ({ input }) => {
-      return createAnalyticsModelLog(input);
-    }),
-  updateAnalyticsModelLog: publicProcedure
-    .input(updateAnalyticsModelLogParams)
-    .mutation(async ({ input }) => {
-      return updateAnalyticsModelLog(input.id, input);
-    }),
-  deleteAnalyticsModelLog: publicProcedure
-    .input(analyticsModelLogIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteAnalyticsModelLog(input.id);
-    }),
-});
+    getAnalyticsModelLogById: publicProcedure
+      .input(analyticsModelLogIdSchema)
+      .query(async ({ input }) => {
+        return getAnalyticsModelLogById(input.id);
+      }),
+    createAnalyticsModelLog: publicProcedure
+      .input(insertAnalyticsModelLogParams)
+      .mutation(async ({ input }) => {
+        return createAnalyticsModelLog(input);
+      }),
+    updateAnalyticsModelLog: publicProcedure
+      .input(updateAnalyticsModelLogParams)
+      .mutation(async ({ input }) => {
+        return updateAnalyticsModelLog(input.id, input);
+      }),
+    deleteAnalyticsModelLog: publicProcedure
+      .input(analyticsModelLogIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteAnalyticsModelLog(input.id);
+      }),
+  });

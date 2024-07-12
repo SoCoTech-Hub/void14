@@ -15,28 +15,29 @@ import {
 } from "../api/competencyRelatedComps/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const competencyRelatedCompsRouter = createTRPCRouter({
-  getCompetencyRelatedComps: publicProcedure.query(async () => {
-    return getCompetencyRelatedComps();
-  }),
-  getCompetencyRelatedCompById: publicProcedure
-    .input(competencyRelatedCompIdSchema)
-    .query(async ({ input }) => {
-      return getCompetencyRelatedCompById(input.id);
+export const competencyRelatedCompsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getCompetencyRelatedComps: publicProcedure.query(async () => {
+      return getCompetencyRelatedComps();
     }),
-  createCompetencyRelatedComp: publicProcedure
-    .input(insertCompetencyRelatedCompParams)
-    .mutation(async ({ input }) => {
-      return createCompetencyRelatedComp(input);
-    }),
-  updateCompetencyRelatedComp: publicProcedure
-    .input(updateCompetencyRelatedCompParams)
-    .mutation(async ({ input }) => {
-      return updateCompetencyRelatedComp(input.id, input);
-    }),
-  deleteCompetencyRelatedComp: publicProcedure
-    .input(competencyRelatedCompIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteCompetencyRelatedComp(input.id);
-    }),
-});
+    getCompetencyRelatedCompById: publicProcedure
+      .input(competencyRelatedCompIdSchema)
+      .query(async ({ input }) => {
+        return getCompetencyRelatedCompById(input.id);
+      }),
+    createCompetencyRelatedComp: publicProcedure
+      .input(insertCompetencyRelatedCompParams)
+      .mutation(async ({ input }) => {
+        return createCompetencyRelatedComp(input);
+      }),
+    updateCompetencyRelatedComp: publicProcedure
+      .input(updateCompetencyRelatedCompParams)
+      .mutation(async ({ input }) => {
+        return updateCompetencyRelatedComp(input.id, input);
+      }),
+    deleteCompetencyRelatedComp: publicProcedure
+      .input(competencyRelatedCompIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteCompetencyRelatedComp(input.id);
+      }),
+  });

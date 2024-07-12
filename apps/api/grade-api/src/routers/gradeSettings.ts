@@ -15,28 +15,29 @@ import {
 } from "../api/gradeSettings/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const gradeSettingsRouter = createTRPCRouter({
-  getGradeSettings: publicProcedure.query(async () => {
-    return getGradeSettings();
-  }),
-  getGradeSettingById: publicProcedure
-    .input(gradeSettingIdSchema)
-    .query(async ({ input }) => {
-      return getGradeSettingById(input.id);
+export const gradeSettingsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getGradeSettings: publicProcedure.query(async () => {
+      return getGradeSettings();
     }),
-  createGradeSetting: publicProcedure
-    .input(insertGradeSettingParams)
-    .mutation(async ({ input }) => {
-      return createGradeSetting(input);
-    }),
-  updateGradeSetting: publicProcedure
-    .input(updateGradeSettingParams)
-    .mutation(async ({ input }) => {
-      return updateGradeSetting(input.id, input);
-    }),
-  deleteGradeSetting: publicProcedure
-    .input(gradeSettingIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteGradeSetting(input.id);
-    }),
-});
+    getGradeSettingById: publicProcedure
+      .input(gradeSettingIdSchema)
+      .query(async ({ input }) => {
+        return getGradeSettingById(input.id);
+      }),
+    createGradeSetting: publicProcedure
+      .input(insertGradeSettingParams)
+      .mutation(async ({ input }) => {
+        return createGradeSetting(input);
+      }),
+    updateGradeSetting: publicProcedure
+      .input(updateGradeSettingParams)
+      .mutation(async ({ input }) => {
+        return updateGradeSetting(input.id, input);
+      }),
+    deleteGradeSetting: publicProcedure
+      .input(gradeSettingIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteGradeSetting(input.id);
+      }),
+  });

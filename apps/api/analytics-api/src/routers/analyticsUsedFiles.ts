@@ -15,28 +15,29 @@ import {
 } from "../api/analyticsUsedFiles/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const analyticsUsedFilesRouter = createTRPCRouter({
-  getAnalyticsUsedFiles: publicProcedure.query(async () => {
-    return getAnalyticsUsedFiles();
-  }),
-  getAnalyticsUsedFileById: publicProcedure
-    .input(analyticsUsedFileIdSchema)
-    .query(async ({ input }) => {
-      return getAnalyticsUsedFileById(input.id);
+export const analyticsUsedFilesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getAnalyticsUsedFiles: publicProcedure.query(async () => {
+      return getAnalyticsUsedFiles();
     }),
-  createAnalyticsUsedFile: publicProcedure
-    .input(insertAnalyticsUsedFileParams)
-    .mutation(async ({ input }) => {
-      return createAnalyticsUsedFile(input);
-    }),
-  updateAnalyticsUsedFile: publicProcedure
-    .input(updateAnalyticsUsedFileParams)
-    .mutation(async ({ input }) => {
-      return updateAnalyticsUsedFile(input.id, input);
-    }),
-  deleteAnalyticsUsedFile: publicProcedure
-    .input(analyticsUsedFileIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteAnalyticsUsedFile(input.id);
-    }),
-});
+    getAnalyticsUsedFileById: publicProcedure
+      .input(analyticsUsedFileIdSchema)
+      .query(async ({ input }) => {
+        return getAnalyticsUsedFileById(input.id);
+      }),
+    createAnalyticsUsedFile: publicProcedure
+      .input(insertAnalyticsUsedFileParams)
+      .mutation(async ({ input }) => {
+        return createAnalyticsUsedFile(input);
+      }),
+    updateAnalyticsUsedFile: publicProcedure
+      .input(updateAnalyticsUsedFileParams)
+      .mutation(async ({ input }) => {
+        return updateAnalyticsUsedFile(input.id, input);
+      }),
+    deleteAnalyticsUsedFile: publicProcedure
+      .input(analyticsUsedFileIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteAnalyticsUsedFile(input.id);
+      }),
+  });

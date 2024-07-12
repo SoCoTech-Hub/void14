@@ -15,7 +15,9 @@ import {
 } from "../api/repositoryOnedriveAccesses/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const repositoryOnedriveAccessesRouter = createTRPCRouter({
+export const repositoryOnedriveAccessesRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getRepositoryOnedriveAccesses: publicProcedure.query(async () => {
     return getRepositoryOnedriveAccesses();
   }),

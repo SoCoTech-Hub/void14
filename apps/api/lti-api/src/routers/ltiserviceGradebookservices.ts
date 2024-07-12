@@ -15,7 +15,9 @@ import {
 } from "../api/ltiserviceGradebookservices/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const ltiserviceGradebookservicesRouter = createTRPCRouter({
+export const ltiserviceGradebookservicesRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getLtiserviceGradebookservices: publicProcedure.query(async () => {
     return getLtiserviceGradebookservices();
   }),

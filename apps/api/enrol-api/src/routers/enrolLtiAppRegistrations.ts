@@ -15,7 +15,9 @@ import {
 } from "../api/enrolLtiAppRegistrations/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const enrolLtiAppRegistrationsRouter = createTRPCRouter({
+export const enrolLtiAppRegistrationsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getEnrolLtiAppRegistrations: publicProcedure.query(async () => {
     return getEnrolLtiAppRegistrations();
   }),

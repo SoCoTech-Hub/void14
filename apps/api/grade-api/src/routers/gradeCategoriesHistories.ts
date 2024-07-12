@@ -15,7 +15,9 @@ import {
 } from "../api/gradeCategoriesHistories/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const gradeCategoriesHistoriesRouter = createTRPCRouter({
+export const gradeCategoriesHistoriesRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getGradeCategoriesHistories: publicProcedure.query(async () => {
     return getGradeCategoriesHistories();
   }),

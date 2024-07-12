@@ -22,7 +22,7 @@ import { gradingformRubricLevelsRouter } from "./routers/gradingformRubricLevels
 import { gradingInstancesRouter } from "./routers/gradingInstances";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   gradeCategories: gradeCategoriesRouter,
   gradeCategoriesHistories: gradeCategoriesHistoriesRouter,
   gradeGrades: gradeGradesRouter,

@@ -12,28 +12,29 @@ import {
 import { getMnetRpcById, getMnetRpcs } from "../api/mnetRpcs/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const mnetRpcsRouter = createTRPCRouter({
-  getMnetRpcs: publicProcedure.query(async () => {
-    return getMnetRpcs();
-  }),
-  getMnetRpcById: publicProcedure
-    .input(mnetRpcIdSchema)
-    .query(async ({ input }) => {
-      return getMnetRpcById(input.id);
+export const mnetRpcsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getMnetRpcs: publicProcedure.query(async () => {
+      return getMnetRpcs();
     }),
-  createMnetRpc: publicProcedure
-    .input(insertMnetRpcParams)
-    .mutation(async ({ input }) => {
-      return createMnetRpc(input);
-    }),
-  updateMnetRpc: publicProcedure
-    .input(updateMnetRpcParams)
-    .mutation(async ({ input }) => {
-      return updateMnetRpc(input.id, input);
-    }),
-  deleteMnetRpc: publicProcedure
-    .input(mnetRpcIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteMnetRpc(input.id);
-    }),
-});
+    getMnetRpcById: publicProcedure
+      .input(mnetRpcIdSchema)
+      .query(async ({ input }) => {
+        return getMnetRpcById(input.id);
+      }),
+    createMnetRpc: publicProcedure
+      .input(insertMnetRpcParams)
+      .mutation(async ({ input }) => {
+        return createMnetRpc(input);
+      }),
+    updateMnetRpc: publicProcedure
+      .input(updateMnetRpcParams)
+      .mutation(async ({ input }) => {
+        return updateMnetRpc(input.id, input);
+      }),
+    deleteMnetRpc: publicProcedure
+      .input(mnetRpcIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteMnetRpc(input.id);
+      }),
+  });

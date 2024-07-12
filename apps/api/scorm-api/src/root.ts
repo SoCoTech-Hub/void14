@@ -11,7 +11,7 @@ import { scormSeqRuleConditionsRouter } from "./routers/scormSeqRuleConditions";
 import { scormSeqRuleCondsRouter } from "./routers/scormSeqRuleConds";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   scormAiccSessions: scormAiccSessionsRouter,
   scorms: scormsRouter,
   scormScoes: scormScoesRouter,

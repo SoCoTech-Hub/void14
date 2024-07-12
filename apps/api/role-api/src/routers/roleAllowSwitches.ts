@@ -15,28 +15,29 @@ import {
 } from "../api/roleAllowSwitches/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const roleAllowSwitchesRouter = createTRPCRouter({
-  getRoleAllowSwitches: publicProcedure.query(async () => {
-    return getRoleAllowSwitches();
-  }),
-  getRoleAllowSwitchById: publicProcedure
-    .input(roleAllowSwitchIdSchema)
-    .query(async ({ input }) => {
-      return getRoleAllowSwitchById(input.id);
+export const roleAllowSwitchesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getRoleAllowSwitches: publicProcedure.query(async () => {
+      return getRoleAllowSwitches();
     }),
-  createRoleAllowSwitch: publicProcedure
-    .input(insertRoleAllowSwitchParams)
-    .mutation(async ({ input }) => {
-      return createRoleAllowSwitch(input);
-    }),
-  updateRoleAllowSwitch: publicProcedure
-    .input(updateRoleAllowSwitchParams)
-    .mutation(async ({ input }) => {
-      return updateRoleAllowSwitch(input.id, input);
-    }),
-  deleteRoleAllowSwitch: publicProcedure
-    .input(roleAllowSwitchIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteRoleAllowSwitch(input.id);
-    }),
-});
+    getRoleAllowSwitchById: publicProcedure
+      .input(roleAllowSwitchIdSchema)
+      .query(async ({ input }) => {
+        return getRoleAllowSwitchById(input.id);
+      }),
+    createRoleAllowSwitch: publicProcedure
+      .input(insertRoleAllowSwitchParams)
+      .mutation(async ({ input }) => {
+        return createRoleAllowSwitch(input);
+      }),
+    updateRoleAllowSwitch: publicProcedure
+      .input(updateRoleAllowSwitchParams)
+      .mutation(async ({ input }) => {
+        return updateRoleAllowSwitch(input.id, input);
+      }),
+    deleteRoleAllowSwitch: publicProcedure
+      .input(roleAllowSwitchIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteRoleAllowSwitch(input.id);
+      }),
+  });

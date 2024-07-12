@@ -1,7 +1,7 @@
 import { notesRouter } from "./routers/notes";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   notes: notesRouter,
 });
 

@@ -17,7 +17,7 @@ import { competencyUserEvidenceCompsRouter } from "./routers/competencyUserEvide
 import { competencyUserEvidencesRouter } from "./routers/competencyUserEvidences";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   competencies: competenciesRouter,
   competencyCourseComps: competencyCourseCompsRouter,
   competencyCourseCompSettings: competencyCourseCompSettingsRouter,

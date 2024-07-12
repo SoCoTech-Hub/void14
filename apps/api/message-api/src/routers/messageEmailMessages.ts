@@ -15,28 +15,29 @@ import {
 } from "../api/messageEmailMessages/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const messageEmailMessagesRouter = createTRPCRouter({
-  getMessageEmailMessages: publicProcedure.query(async () => {
-    return getMessageEmailMessages();
-  }),
-  getMessageEmailMessageById: publicProcedure
-    .input(messageEmailMessageIdSchema)
-    .query(async ({ input }) => {
-      return getMessageEmailMessageById(input.id);
+export const messageEmailMessagesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getMessageEmailMessages: publicProcedure.query(async () => {
+      return getMessageEmailMessages();
     }),
-  createMessageEmailMessage: publicProcedure
-    .input(insertMessageEmailMessageParams)
-    .mutation(async ({ input }) => {
-      return createMessageEmailMessage(input);
-    }),
-  updateMessageEmailMessage: publicProcedure
-    .input(updateMessageEmailMessageParams)
-    .mutation(async ({ input }) => {
-      return updateMessageEmailMessage(input.id, input);
-    }),
-  deleteMessageEmailMessage: publicProcedure
-    .input(messageEmailMessageIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteMessageEmailMessage(input.id);
-    }),
-});
+    getMessageEmailMessageById: publicProcedure
+      .input(messageEmailMessageIdSchema)
+      .query(async ({ input }) => {
+        return getMessageEmailMessageById(input.id);
+      }),
+    createMessageEmailMessage: publicProcedure
+      .input(insertMessageEmailMessageParams)
+      .mutation(async ({ input }) => {
+        return createMessageEmailMessage(input);
+      }),
+    updateMessageEmailMessage: publicProcedure
+      .input(updateMessageEmailMessageParams)
+      .mutation(async ({ input }) => {
+        return updateMessageEmailMessage(input.id, input);
+      }),
+    deleteMessageEmailMessage: publicProcedure
+      .input(messageEmailMessageIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteMessageEmailMessage(input.id);
+      }),
+  });

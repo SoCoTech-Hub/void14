@@ -9,7 +9,7 @@ import { roleNamesRouter } from "./routers/roleNames";
 import { rolesRouter } from "./routers/roles";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   roleAllowAssigns: roleAllowAssignsRouter,
   roleAllowOverrides: roleAllowOverridesRouter,
   roleAllowSwitches: roleAllowSwitchesRouter,

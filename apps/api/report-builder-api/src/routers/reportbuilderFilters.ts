@@ -15,28 +15,29 @@ import {
 } from "../api/reportbuilderFilters/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const reportbuilderFiltersRouter = createTRPCRouter({
-  getReportbuilderFilters: publicProcedure.query(async () => {
-    return getReportbuilderFilters();
-  }),
-  getReportbuilderFilterById: publicProcedure
-    .input(reportbuilderFilterIdSchema)
-    .query(async ({ input }) => {
-      return getReportbuilderFilterById(input.id);
+export const reportbuilderFiltersRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getReportbuilderFilters: publicProcedure.query(async () => {
+      return getReportbuilderFilters();
     }),
-  createReportbuilderFilter: publicProcedure
-    .input(insertReportbuilderFilterParams)
-    .mutation(async ({ input }) => {
-      return createReportbuilderFilter(input);
-    }),
-  updateReportbuilderFilter: publicProcedure
-    .input(updateReportbuilderFilterParams)
-    .mutation(async ({ input }) => {
-      return updateReportbuilderFilter(input.id, input);
-    }),
-  deleteReportbuilderFilter: publicProcedure
-    .input(reportbuilderFilterIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteReportbuilderFilter(input.id);
-    }),
-});
+    getReportbuilderFilterById: publicProcedure
+      .input(reportbuilderFilterIdSchema)
+      .query(async ({ input }) => {
+        return getReportbuilderFilterById(input.id);
+      }),
+    createReportbuilderFilter: publicProcedure
+      .input(insertReportbuilderFilterParams)
+      .mutation(async ({ input }) => {
+        return createReportbuilderFilter(input);
+      }),
+    updateReportbuilderFilter: publicProcedure
+      .input(updateReportbuilderFilterParams)
+      .mutation(async ({ input }) => {
+        return updateReportbuilderFilter(input.id, input);
+      }),
+    deleteReportbuilderFilter: publicProcedure
+      .input(reportbuilderFilterIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteReportbuilderFilter(input.id);
+      }),
+  });

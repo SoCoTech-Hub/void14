@@ -2,7 +2,7 @@ import { toolRecyclebinCategoriesRouter } from "./routers/toolRecyclebinCategori
 import { toolRecyclebinCoursesRouter } from "./routers/toolRecyclebinCourses";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   toolRecyclebinCategories: toolRecyclebinCategoriesRouter,
   toolRecyclebinCourses: toolRecyclebinCoursesRouter,
 });

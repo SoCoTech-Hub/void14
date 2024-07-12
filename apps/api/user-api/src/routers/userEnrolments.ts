@@ -15,28 +15,29 @@ import {
 } from "../api/userEnrolments/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const userEnrolmentsRouter = createTRPCRouter({
-  getUserEnrolments: publicProcedure.query(async () => {
-    return getUserEnrolments();
-  }),
-  getUserEnrolmentById: publicProcedure
-    .input(userEnrolmentIdSchema)
-    .query(async ({ input }) => {
-      return getUserEnrolmentById(input.id);
+export const userEnrolmentsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getUserEnrolments: publicProcedure.query(async () => {
+      return getUserEnrolments();
     }),
-  createUserEnrolment: publicProcedure
-    .input(insertUserEnrolmentParams)
-    .mutation(async ({ input }) => {
-      return createUserEnrolment(input);
-    }),
-  updateUserEnrolment: publicProcedure
-    .input(updateUserEnrolmentParams)
-    .mutation(async ({ input }) => {
-      return updateUserEnrolment(input.id, input);
-    }),
-  deleteUserEnrolment: publicProcedure
-    .input(userEnrolmentIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteUserEnrolment(input.id);
-    }),
-});
+    getUserEnrolmentById: publicProcedure
+      .input(userEnrolmentIdSchema)
+      .query(async ({ input }) => {
+        return getUserEnrolmentById(input.id);
+      }),
+    createUserEnrolment: publicProcedure
+      .input(insertUserEnrolmentParams)
+      .mutation(async ({ input }) => {
+        return createUserEnrolment(input);
+      }),
+    updateUserEnrolment: publicProcedure
+      .input(updateUserEnrolmentParams)
+      .mutation(async ({ input }) => {
+        return updateUserEnrolment(input.id, input);
+      }),
+    deleteUserEnrolment: publicProcedure
+      .input(userEnrolmentIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteUserEnrolment(input.id);
+      }),
+  });

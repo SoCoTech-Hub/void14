@@ -10,7 +10,7 @@ import { forumSubscriptionsRouter } from "./routers/forumSubscriptions";
 import { forumTrackPrefsRouter } from "./routers/forumTrackPrefs";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   forumDigests: forumDigestsRouter,
   forumDiscussions: forumDiscussionsRouter,
   forumDiscussionSubs: forumDiscussionSubsRouter,

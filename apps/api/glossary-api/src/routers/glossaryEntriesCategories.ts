@@ -15,7 +15,9 @@ import {
 } from "../api/glossaryEntriesCategories/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const glossaryEntriesCategoriesRouter = createTRPCRouter({
+export const glossaryEntriesCategoriesRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getGlossaryEntriesCategories: publicProcedure.query(async () => {
     return getGlossaryEntriesCategories();
   }),

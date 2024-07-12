@@ -3,7 +3,7 @@ import { bigBlueButtonBnRecordingsRouter } from "./routers/bigBlueButtonBnRecord
 import { bigBlueButtonBnsRouter } from "./routers/bigBlueButtonBns";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   bigBlueButtonBnLogs: bigBlueButtonBnLogsRouter,
   bigBlueButtonBnRecordings: bigBlueButtonBnRecordingsRouter,
   bigBlueButtonBns: bigBlueButtonBnsRouter,

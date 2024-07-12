@@ -15,7 +15,9 @@ import {
 } from "../api/subjectsSubjectCategories/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const subjectsSubjectCategoriesRouter = createTRPCRouter({
+export const subjectsSubjectCategoriesRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getSubjectsSubjectCategories: publicProcedure.query(async () => {
     return getSubjectsSubjectCategories();
   }),

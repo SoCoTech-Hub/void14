@@ -15,28 +15,29 @@ import {
 } from "../api/groupsMembers/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const groupsMembersRouter = createTRPCRouter({
-  getGroupsMembers: publicProcedure.query(async () => {
-    return getGroupsMembers();
-  }),
-  getGroupsMemberById: publicProcedure
-    .input(groupsMemberIdSchema)
-    .query(async ({ input }) => {
-      return getGroupsMemberById(input.id);
+export const groupsMembersRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getGroupsMembers: publicProcedure.query(async () => {
+      return getGroupsMembers();
     }),
-  createGroupsMember: publicProcedure
-    .input(insertGroupsMemberParams)
-    .mutation(async ({ input }) => {
-      return createGroupsMember(input);
-    }),
-  updateGroupsMember: publicProcedure
-    .input(updateGroupsMemberParams)
-    .mutation(async ({ input }) => {
-      return updateGroupsMember(input.id, input);
-    }),
-  deleteGroupsMember: publicProcedure
-    .input(groupsMemberIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteGroupsMember(input.id);
-    }),
-});
+    getGroupsMemberById: publicProcedure
+      .input(groupsMemberIdSchema)
+      .query(async ({ input }) => {
+        return getGroupsMemberById(input.id);
+      }),
+    createGroupsMember: publicProcedure
+      .input(insertGroupsMemberParams)
+      .mutation(async ({ input }) => {
+        return createGroupsMember(input);
+      }),
+    updateGroupsMember: publicProcedure
+      .input(updateGroupsMemberParams)
+      .mutation(async ({ input }) => {
+        return updateGroupsMember(input.id, input);
+      }),
+    deleteGroupsMember: publicProcedure
+      .input(groupsMemberIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteGroupsMember(input.id);
+      }),
+  });

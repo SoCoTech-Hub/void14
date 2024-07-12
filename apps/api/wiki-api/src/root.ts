@@ -7,7 +7,7 @@ import { wikiSynonymsRouter } from "./routers/wikiSynonyms";
 import { wikiVersionsRouter } from "./routers/wikiVersions";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   wikiLinks: wikiLinksRouter,
   wikiLocks: wikiLocksRouter,
   wikiPages: wikiPagesRouter,

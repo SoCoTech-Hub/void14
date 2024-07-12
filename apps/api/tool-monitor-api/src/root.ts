@@ -4,7 +4,7 @@ import { toolMonitorRulesRouter } from "./routers/toolMonitorRules";
 import { toolMonitorSubscriptionsRouter } from "./routers/toolMonitorSubscriptions";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   toolMonitorEvents: toolMonitorEventsRouter,
   toolMonitorHistories: toolMonitorHistoriesRouter,
   toolMonitorRules: toolMonitorRulesRouter,

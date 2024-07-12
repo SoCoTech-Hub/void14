@@ -15,7 +15,9 @@ import {
 } from "../api/competencyUserEvidenceComps/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const competencyUserEvidenceCompsRouter = createTRPCRouter({
+export const competencyUserEvidenceCompsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getCompetencyUserEvidenceComps: publicProcedure.query(async () => {
     return getCompetencyUserEvidenceComps();
   }),

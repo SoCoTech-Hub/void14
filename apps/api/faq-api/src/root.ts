@@ -3,7 +3,7 @@ import { faqFaqsCategoriesRouter } from "./routers/faqFaqsCategories";
 import { faqsRouter } from "./routers/faqs";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   faqCategories: faqCategoriesRouter,
   faqFaqsCategories: faqFaqsCategoriesRouter,
   faqs: faqsRouter,

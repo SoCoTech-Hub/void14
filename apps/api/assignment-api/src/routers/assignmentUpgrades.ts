@@ -15,28 +15,29 @@ import {
 } from "../api/assignmentUpgrades/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const assignmentUpgradesRouter = createTRPCRouter({
-  getAssignmentUpgrades: publicProcedure.query(async () => {
-    return getAssignmentUpgrades();
-  }),
-  getAssignmentUpgradeById: publicProcedure
-    .input(assignmentUpgradeIdSchema)
-    .query(async ({ input }) => {
-      return getAssignmentUpgradeById(input.id);
+export const assignmentUpgradesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getAssignmentUpgrades: publicProcedure.query(async () => {
+      return getAssignmentUpgrades();
     }),
-  createAssignmentUpgrade: publicProcedure
-    .input(insertAssignmentUpgradeParams)
-    .mutation(async ({ input }) => {
-      return createAssignmentUpgrade(input);
-    }),
-  updateAssignmentUpgrade: publicProcedure
-    .input(updateAssignmentUpgradeParams)
-    .mutation(async ({ input }) => {
-      return updateAssignmentUpgrade(input.id, input);
-    }),
-  deleteAssignmentUpgrade: publicProcedure
-    .input(assignmentUpgradeIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteAssignmentUpgrade(input.id);
-    }),
-});
+    getAssignmentUpgradeById: publicProcedure
+      .input(assignmentUpgradeIdSchema)
+      .query(async ({ input }) => {
+        return getAssignmentUpgradeById(input.id);
+      }),
+    createAssignmentUpgrade: publicProcedure
+      .input(insertAssignmentUpgradeParams)
+      .mutation(async ({ input }) => {
+        return createAssignmentUpgrade(input);
+      }),
+    updateAssignmentUpgrade: publicProcedure
+      .input(updateAssignmentUpgradeParams)
+      .mutation(async ({ input }) => {
+        return updateAssignmentUpgrade(input.id, input);
+      }),
+    deleteAssignmentUpgrade: publicProcedure
+      .input(assignmentUpgradeIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteAssignmentUpgrade(input.id);
+      }),
+  });

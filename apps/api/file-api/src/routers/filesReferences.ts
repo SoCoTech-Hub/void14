@@ -15,28 +15,29 @@ import {
 } from "../api/filesReferences/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const filesReferencesRouter = createTRPCRouter({
-  getFilesReferences: publicProcedure.query(async () => {
-    return getFilesReferences();
-  }),
-  getFilesReferenceById: publicProcedure
-    .input(filesReferenceIdSchema)
-    .query(async ({ input }) => {
-      return getFilesReferenceById(input.id);
+export const filesReferencesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getFilesReferences: publicProcedure.query(async () => {
+      return getFilesReferences();
     }),
-  createFilesReference: publicProcedure
-    .input(insertFilesReferenceParams)
-    .mutation(async ({ input }) => {
-      return createFilesReference(input);
-    }),
-  updateFilesReference: publicProcedure
-    .input(updateFilesReferenceParams)
-    .mutation(async ({ input }) => {
-      return updateFilesReference(input.id, input);
-    }),
-  deleteFilesReference: publicProcedure
-    .input(filesReferenceIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteFilesReference(input.id);
-    }),
-});
+    getFilesReferenceById: publicProcedure
+      .input(filesReferenceIdSchema)
+      .query(async ({ input }) => {
+        return getFilesReferenceById(input.id);
+      }),
+    createFilesReference: publicProcedure
+      .input(insertFilesReferenceParams)
+      .mutation(async ({ input }) => {
+        return createFilesReference(input);
+      }),
+    updateFilesReference: publicProcedure
+      .input(updateFilesReferenceParams)
+      .mutation(async ({ input }) => {
+        return updateFilesReference(input.id, input);
+      }),
+    deleteFilesReference: publicProcedure
+      .input(filesReferenceIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteFilesReference(input.id);
+      }),
+  });

@@ -4,7 +4,7 @@ import { repositoryInstancesRouter } from "./routers/repositoryInstances";
 import { repositoryOnedriveAccessesRouter } from "./routers/repositoryOnedriveAccesses";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   repositories: repositoriesRouter,
   repositoryInstanceConfigs: repositoryInstanceConfigsRouter,
   repositoryInstances: repositoryInstancesRouter,

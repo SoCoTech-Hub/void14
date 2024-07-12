@@ -7,7 +7,7 @@ import { toolDataprivacyPurposesRouter } from "./routers/toolDataprivacyPurposes
 import { toolDataprivacyRequestsRouter } from "./routers/toolDataprivacyRequests";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   toolDataprivacyCategories: toolDataprivacyCategoriesRouter,
   toolDataprivacyCtxExpireds: toolDataprivacyCtxExpiredsRouter,
   toolDataprivacyCtxInstances: toolDataprivacyCtxInstancesRouter,

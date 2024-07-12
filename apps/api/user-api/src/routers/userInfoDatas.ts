@@ -15,28 +15,29 @@ import {
 } from "../api/userInfoDatas/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const userInfoDatasRouter = createTRPCRouter({
-  getUserInfoDatas: publicProcedure.query(async () => {
-    return getUserInfoDatas();
-  }),
-  getUserInfoDataById: publicProcedure
-    .input(userInfoDataIdSchema)
-    .query(async ({ input }) => {
-      return getUserInfoDataById(input.id);
+export const userInfoDatasRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getUserInfoDatas: publicProcedure.query(async () => {
+      return getUserInfoDatas();
     }),
-  createUserInfoData: publicProcedure
-    .input(insertUserInfoDataParams)
-    .mutation(async ({ input }) => {
-      return createUserInfoData(input);
-    }),
-  updateUserInfoData: publicProcedure
-    .input(updateUserInfoDataParams)
-    .mutation(async ({ input }) => {
-      return updateUserInfoData(input.id, input);
-    }),
-  deleteUserInfoData: publicProcedure
-    .input(userInfoDataIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteUserInfoData(input.id);
-    }),
-});
+    getUserInfoDataById: publicProcedure
+      .input(userInfoDataIdSchema)
+      .query(async ({ input }) => {
+        return getUserInfoDataById(input.id);
+      }),
+    createUserInfoData: publicProcedure
+      .input(insertUserInfoDataParams)
+      .mutation(async ({ input }) => {
+        return createUserInfoData(input);
+      }),
+    updateUserInfoData: publicProcedure
+      .input(updateUserInfoDataParams)
+      .mutation(async ({ input }) => {
+        return updateUserInfoData(input.id, input);
+      }),
+    deleteUserInfoData: publicProcedure
+      .input(userInfoDataIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteUserInfoData(input.id);
+      }),
+  });

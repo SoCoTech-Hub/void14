@@ -15,28 +15,29 @@ import {
 } from "../api/chatMessagesCurrents/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const chatMessagesCurrentsRouter = createTRPCRouter({
-  getChatMessagesCurrents: publicProcedure.query(async () => {
-    return getChatMessagesCurrents();
-  }),
-  getChatMessagesCurrentById: publicProcedure
-    .input(chatMessagesCurrentIdSchema)
-    .query(async ({ input }) => {
-      return getChatMessagesCurrentById(input.id);
+export const chatMessagesCurrentsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getChatMessagesCurrents: publicProcedure.query(async () => {
+      return getChatMessagesCurrents();
     }),
-  createChatMessagesCurrent: publicProcedure
-    .input(insertChatMessagesCurrentParams)
-    .mutation(async ({ input }) => {
-      return createChatMessagesCurrent(input);
-    }),
-  updateChatMessagesCurrent: publicProcedure
-    .input(updateChatMessagesCurrentParams)
-    .mutation(async ({ input }) => {
-      return updateChatMessagesCurrent(input.id, input);
-    }),
-  deleteChatMessagesCurrent: publicProcedure
-    .input(chatMessagesCurrentIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteChatMessagesCurrent(input.id);
-    }),
-});
+    getChatMessagesCurrentById: publicProcedure
+      .input(chatMessagesCurrentIdSchema)
+      .query(async ({ input }) => {
+        return getChatMessagesCurrentById(input.id);
+      }),
+    createChatMessagesCurrent: publicProcedure
+      .input(insertChatMessagesCurrentParams)
+      .mutation(async ({ input }) => {
+        return createChatMessagesCurrent(input);
+      }),
+    updateChatMessagesCurrent: publicProcedure
+      .input(updateChatMessagesCurrentParams)
+      .mutation(async ({ input }) => {
+        return updateChatMessagesCurrent(input.id, input);
+      }),
+    deleteChatMessagesCurrent: publicProcedure
+      .input(chatMessagesCurrentIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteChatMessagesCurrent(input.id);
+      }),
+  });

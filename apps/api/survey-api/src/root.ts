@@ -4,7 +4,7 @@ import { surveyQuestionsRouter } from "./routers/surveyQuestions";
 import { surveysRouter } from "./routers/surveys";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   surveyAnalysiss: surveyAnalysissRouter,
   surveyAnswers: surveyAnswersRouter,
   surveyQuestions: surveyQuestionsRouter,

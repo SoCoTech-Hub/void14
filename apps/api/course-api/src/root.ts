@@ -13,7 +13,7 @@ import { coursesRouter } from "./routers/courses";
 import { courseSectionsRouter } from "./routers/courseSections";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   courseCategories: courseCategoriesRouter,
   courseCompletionAggrMethds: courseCompletionAggrMethdsRouter,
   courseCompletionCritCompls: courseCompletionCritComplsRouter,

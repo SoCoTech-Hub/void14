@@ -6,7 +6,7 @@ import { statsUserWeekliesRouter } from "./routers/statsUserWeeklies";
 import { statsWeekliesRouter } from "./routers/statsWeeklies";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   statsDailies: statsDailiesRouter,
   statsMonthlies: statsMonthliesRouter,
   statsUserDailies: statsUserDailiesRouter,

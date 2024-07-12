@@ -15,28 +15,29 @@ import {
 } from "../api/roleCapabilities/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const roleCapabilitiesRouter = createTRPCRouter({
-  getRoleCapabilities: publicProcedure.query(async () => {
-    return getRoleCapabilities();
-  }),
-  getRoleCapabilityById: publicProcedure
-    .input(roleCapabilityIdSchema)
-    .query(async ({ input }) => {
-      return getRoleCapabilityById(input.id);
+export const roleCapabilitiesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getRoleCapabilities: publicProcedure.query(async () => {
+      return getRoleCapabilities();
     }),
-  createRoleCapability: publicProcedure
-    .input(insertRoleCapabilityParams)
-    .mutation(async ({ input }) => {
-      return createRoleCapability(input);
-    }),
-  updateRoleCapability: publicProcedure
-    .input(updateRoleCapabilityParams)
-    .mutation(async ({ input }) => {
-      return updateRoleCapability(input.id, input);
-    }),
-  deleteRoleCapability: publicProcedure
-    .input(roleCapabilityIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteRoleCapability(input.id);
-    }),
-});
+    getRoleCapabilityById: publicProcedure
+      .input(roleCapabilityIdSchema)
+      .query(async ({ input }) => {
+        return getRoleCapabilityById(input.id);
+      }),
+    createRoleCapability: publicProcedure
+      .input(insertRoleCapabilityParams)
+      .mutation(async ({ input }) => {
+        return createRoleCapability(input);
+      }),
+    updateRoleCapability: publicProcedure
+      .input(updateRoleCapabilityParams)
+      .mutation(async ({ input }) => {
+        return updateRoleCapability(input.id, input);
+      }),
+    deleteRoleCapability: publicProcedure
+      .input(roleCapabilityIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteRoleCapability(input.id);
+      }),
+  });

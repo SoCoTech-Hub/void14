@@ -15,28 +15,29 @@ import {
 } from "../api/qtypeEssayOptions/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const qtypeEssayOptionsRouter = createTRPCRouter({
-  getQtypeEssayOptions: publicProcedure.query(async () => {
-    return getQtypeEssayOptions();
-  }),
-  getQtypeEssayOptionById: publicProcedure
-    .input(qtypeEssayOptionIdSchema)
-    .query(async ({ input }) => {
-      return getQtypeEssayOptionById(input.id);
+export const qtypeEssayOptionsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getQtypeEssayOptions: publicProcedure.query(async () => {
+      return getQtypeEssayOptions();
     }),
-  createQtypeEssayOption: publicProcedure
-    .input(insertQtypeEssayOptionParams)
-    .mutation(async ({ input }) => {
-      return createQtypeEssayOption(input);
-    }),
-  updateQtypeEssayOption: publicProcedure
-    .input(updateQtypeEssayOptionParams)
-    .mutation(async ({ input }) => {
-      return updateQtypeEssayOption(input.id, input);
-    }),
-  deleteQtypeEssayOption: publicProcedure
-    .input(qtypeEssayOptionIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteQtypeEssayOption(input.id);
-    }),
-});
+    getQtypeEssayOptionById: publicProcedure
+      .input(qtypeEssayOptionIdSchema)
+      .query(async ({ input }) => {
+        return getQtypeEssayOptionById(input.id);
+      }),
+    createQtypeEssayOption: publicProcedure
+      .input(insertQtypeEssayOptionParams)
+      .mutation(async ({ input }) => {
+        return createQtypeEssayOption(input);
+      }),
+    updateQtypeEssayOption: publicProcedure
+      .input(updateQtypeEssayOptionParams)
+      .mutation(async ({ input }) => {
+        return updateQtypeEssayOption(input.id, input);
+      }),
+    deleteQtypeEssayOption: publicProcedure
+      .input(qtypeEssayOptionIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteQtypeEssayOption(input.id);
+      }),
+  });

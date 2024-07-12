@@ -15,28 +15,29 @@ import {
 } from "../api/faqCategories/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const faqCategoriesRouter = createTRPCRouter({
-  getFaqCategories: publicProcedure.query(async () => {
-    return getFaqCategories();
-  }),
-  getFaqCategoryById: publicProcedure
-    .input(faqCategoryIdSchema)
-    .query(async ({ input }) => {
-      return getFaqCategoryById(input.id);
+export const faqCategoriesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getFaqCategories: publicProcedure.query(async () => {
+      return getFaqCategories();
     }),
-  createFaqCategory: publicProcedure
-    .input(insertFaqCategoryParams)
-    .mutation(async ({ input }) => {
-      return createFaqCategory(input);
-    }),
-  updateFaqCategory: publicProcedure
-    .input(updateFaqCategoryParams)
-    .mutation(async ({ input }) => {
-      return updateFaqCategory(input.id, input);
-    }),
-  deleteFaqCategory: publicProcedure
-    .input(faqCategoryIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteFaqCategory(input.id);
-    }),
-});
+    getFaqCategoryById: publicProcedure
+      .input(faqCategoryIdSchema)
+      .query(async ({ input }) => {
+        return getFaqCategoryById(input.id);
+      }),
+    createFaqCategory: publicProcedure
+      .input(insertFaqCategoryParams)
+      .mutation(async ({ input }) => {
+        return createFaqCategory(input);
+      }),
+    updateFaqCategory: publicProcedure
+      .input(updateFaqCategoryParams)
+      .mutation(async ({ input }) => {
+        return updateFaqCategory(input.id, input);
+      }),
+    deleteFaqCategory: publicProcedure
+      .input(faqCategoryIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteFaqCategory(input.id);
+      }),
+  });

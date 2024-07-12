@@ -8,7 +8,7 @@ import { adminpresetsAppItsRouter } from "./routers/adminpresetsAppIts";
 import { adminPresetsAppsRouter } from "./routers/adminPresetsApps";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   adminPresetAppPlugs: adminPresetAppPlugsRouter,
   adminPresetItAs: adminPresetItAsRouter,
   adminPresetIts: adminPresetItsRouter,

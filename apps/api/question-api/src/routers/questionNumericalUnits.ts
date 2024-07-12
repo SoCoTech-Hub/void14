@@ -15,28 +15,29 @@ import {
 } from "../api/questionNumericalUnits/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const questionNumericalUnitsRouter = createTRPCRouter({
-  getQuestionNumericalUnits: publicProcedure.query(async () => {
-    return getQuestionNumericalUnits();
-  }),
-  getQuestionNumericalUnitById: publicProcedure
-    .input(questionNumericalUnitIdSchema)
-    .query(async ({ input }) => {
-      return getQuestionNumericalUnitById(input.id);
+export const questionNumericalUnitsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getQuestionNumericalUnits: publicProcedure.query(async () => {
+      return getQuestionNumericalUnits();
     }),
-  createQuestionNumericalUnit: publicProcedure
-    .input(insertQuestionNumericalUnitParams)
-    .mutation(async ({ input }) => {
-      return createQuestionNumericalUnit(input);
-    }),
-  updateQuestionNumericalUnit: publicProcedure
-    .input(updateQuestionNumericalUnitParams)
-    .mutation(async ({ input }) => {
-      return updateQuestionNumericalUnit(input.id, input);
-    }),
-  deleteQuestionNumericalUnit: publicProcedure
-    .input(questionNumericalUnitIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteQuestionNumericalUnit(input.id);
-    }),
-});
+    getQuestionNumericalUnitById: publicProcedure
+      .input(questionNumericalUnitIdSchema)
+      .query(async ({ input }) => {
+        return getQuestionNumericalUnitById(input.id);
+      }),
+    createQuestionNumericalUnit: publicProcedure
+      .input(insertQuestionNumericalUnitParams)
+      .mutation(async ({ input }) => {
+        return createQuestionNumericalUnit(input);
+      }),
+    updateQuestionNumericalUnit: publicProcedure
+      .input(updateQuestionNumericalUnitParams)
+      .mutation(async ({ input }) => {
+        return updateQuestionNumericalUnit(input.id, input);
+      }),
+    deleteQuestionNumericalUnit: publicProcedure
+      .input(questionNumericalUnitIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteQuestionNumericalUnit(input.id);
+      }),
+  });

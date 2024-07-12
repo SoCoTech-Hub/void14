@@ -7,7 +7,7 @@ import { blockRssClientsRouter } from "./routers/blockRssClients";
 import { blocksRouter } from "./routers/blocks";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   account: accountRouter,
   blockInstances: blockInstancesRouter,
   blockPositions: blockPositionsRouter,

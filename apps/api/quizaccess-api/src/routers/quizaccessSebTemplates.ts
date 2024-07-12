@@ -15,28 +15,29 @@ import {
 } from "../api/quizaccessSebTemplates/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const quizaccessSebTemplatesRouter = createTRPCRouter({
-  getQuizaccessSebTemplates: publicProcedure.query(async () => {
-    return getQuizaccessSebTemplates();
-  }),
-  getQuizaccessSebTemplateById: publicProcedure
-    .input(quizaccessSebTemplateIdSchema)
-    .query(async ({ input }) => {
-      return getQuizaccessSebTemplateById(input.id);
+export const quizaccessSebTemplatesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getQuizaccessSebTemplates: publicProcedure.query(async () => {
+      return getQuizaccessSebTemplates();
     }),
-  createQuizaccessSebTemplate: publicProcedure
-    .input(insertQuizaccessSebTemplateParams)
-    .mutation(async ({ input }) => {
-      return createQuizaccessSebTemplate(input);
-    }),
-  updateQuizaccessSebTemplate: publicProcedure
-    .input(updateQuizaccessSebTemplateParams)
-    .mutation(async ({ input }) => {
-      return updateQuizaccessSebTemplate(input.id, input);
-    }),
-  deleteQuizaccessSebTemplate: publicProcedure
-    .input(quizaccessSebTemplateIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteQuizaccessSebTemplate(input.id);
-    }),
-});
+    getQuizaccessSebTemplateById: publicProcedure
+      .input(quizaccessSebTemplateIdSchema)
+      .query(async ({ input }) => {
+        return getQuizaccessSebTemplateById(input.id);
+      }),
+    createQuizaccessSebTemplate: publicProcedure
+      .input(insertQuizaccessSebTemplateParams)
+      .mutation(async ({ input }) => {
+        return createQuizaccessSebTemplate(input);
+      }),
+    updateQuizaccessSebTemplate: publicProcedure
+      .input(updateQuizaccessSebTemplateParams)
+      .mutation(async ({ input }) => {
+        return updateQuizaccessSebTemplate(input.id, input);
+      }),
+    deleteQuizaccessSebTemplate: publicProcedure
+      .input(quizaccessSebTemplateIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteQuizaccessSebTemplate(input.id);
+      }),
+  });

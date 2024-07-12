@@ -4,7 +4,7 @@ import { socialsRouter } from "./routers/socials";
 import { socialSharesRouter } from "./routers/socialShares";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   socialEmojis: socialEmojisRouter,
   socialLinks: socialLinksRouter,
   socials: socialsRouter,

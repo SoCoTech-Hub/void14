@@ -15,28 +15,29 @@ import {
 } from "../api/competencyPlans/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const competencyPlansRouter = createTRPCRouter({
-  getCompetencyPlans: publicProcedure.query(async () => {
-    return getCompetencyPlans();
-  }),
-  getCompetencyPlanById: publicProcedure
-    .input(competencyPlanIdSchema)
-    .query(async ({ input }) => {
-      return getCompetencyPlanById(input.id);
+export const competencyPlansRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getCompetencyPlans: publicProcedure.query(async () => {
+      return getCompetencyPlans();
     }),
-  createCompetencyPlan: publicProcedure
-    .input(insertCompetencyPlanParams)
-    .mutation(async ({ input }) => {
-      return createCompetencyPlan(input);
-    }),
-  updateCompetencyPlan: publicProcedure
-    .input(updateCompetencyPlanParams)
-    .mutation(async ({ input }) => {
-      return updateCompetencyPlan(input.id, input);
-    }),
-  deleteCompetencyPlan: publicProcedure
-    .input(competencyPlanIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteCompetencyPlan(input.id);
-    }),
-});
+    getCompetencyPlanById: publicProcedure
+      .input(competencyPlanIdSchema)
+      .query(async ({ input }) => {
+        return getCompetencyPlanById(input.id);
+      }),
+    createCompetencyPlan: publicProcedure
+      .input(insertCompetencyPlanParams)
+      .mutation(async ({ input }) => {
+        return createCompetencyPlan(input);
+      }),
+    updateCompetencyPlan: publicProcedure
+      .input(updateCompetencyPlanParams)
+      .mutation(async ({ input }) => {
+        return updateCompetencyPlan(input.id, input);
+      }),
+    deleteCompetencyPlan: publicProcedure
+      .input(competencyPlanIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteCompetencyPlan(input.id);
+      }),
+  });

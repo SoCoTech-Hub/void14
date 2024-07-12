@@ -15,7 +15,9 @@ import {
 } from "../api/qtypeDdimageortextDrops/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const qtypeDdimageortextDropsRouter = createTRPCRouter({
+export const qtypeDdimageortextDropsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getQtypeDdimageortextDrops: publicProcedure.query(async () => {
     return getQtypeDdimageortextDrops();
   }),

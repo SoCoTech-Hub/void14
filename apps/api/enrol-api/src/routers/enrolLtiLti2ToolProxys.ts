@@ -15,28 +15,29 @@ import {
 } from "../api/enrolLtiLti2ToolProxys/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const enrolLtiLti2ToolProxysRouter = createTRPCRouter({
-  getEnrolLtiLti2ToolProxys: publicProcedure.query(async () => {
-    return getEnrolLtiLti2ToolProxys();
-  }),
-  getEnrolLtiLti2ToolProxyById: publicProcedure
-    .input(enrolLtiLti2ToolProxyIdSchema)
-    .query(async ({ input }) => {
-      return getEnrolLtiLti2ToolProxyById(input.id);
+export const enrolLtiLti2ToolProxysRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getEnrolLtiLti2ToolProxys: publicProcedure.query(async () => {
+      return getEnrolLtiLti2ToolProxys();
     }),
-  createEnrolLtiLti2ToolProxy: publicProcedure
-    .input(insertEnrolLtiLti2ToolProxyParams)
-    .mutation(async ({ input }) => {
-      return createEnrolLtiLti2ToolProxy(input);
-    }),
-  updateEnrolLtiLti2ToolProxy: publicProcedure
-    .input(updateEnrolLtiLti2ToolProxyParams)
-    .mutation(async ({ input }) => {
-      return updateEnrolLtiLti2ToolProxy(input.id, input);
-    }),
-  deleteEnrolLtiLti2ToolProxy: publicProcedure
-    .input(enrolLtiLti2ToolProxyIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteEnrolLtiLti2ToolProxy(input.id);
-    }),
-});
+    getEnrolLtiLti2ToolProxyById: publicProcedure
+      .input(enrolLtiLti2ToolProxyIdSchema)
+      .query(async ({ input }) => {
+        return getEnrolLtiLti2ToolProxyById(input.id);
+      }),
+    createEnrolLtiLti2ToolProxy: publicProcedure
+      .input(insertEnrolLtiLti2ToolProxyParams)
+      .mutation(async ({ input }) => {
+        return createEnrolLtiLti2ToolProxy(input);
+      }),
+    updateEnrolLtiLti2ToolProxy: publicProcedure
+      .input(updateEnrolLtiLti2ToolProxyParams)
+      .mutation(async ({ input }) => {
+        return updateEnrolLtiLti2ToolProxy(input.id, input);
+      }),
+    deleteEnrolLtiLti2ToolProxy: publicProcedure
+      .input(enrolLtiLti2ToolProxyIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteEnrolLtiLti2ToolProxy(input.id);
+      }),
+  });

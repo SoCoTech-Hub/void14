@@ -15,28 +15,29 @@ import {
 } from "../api/roleAssignments/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const roleAssignmentsRouter = createTRPCRouter({
-  getRoleAssignments: publicProcedure.query(async () => {
-    return getRoleAssignments();
-  }),
-  getRoleAssignmentById: publicProcedure
-    .input(roleAssignmentIdSchema)
-    .query(async ({ input }) => {
-      return getRoleAssignmentById(input.id);
+export const roleAssignmentsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getRoleAssignments: publicProcedure.query(async () => {
+      return getRoleAssignments();
     }),
-  createRoleAssignment: publicProcedure
-    .input(insertRoleAssignmentParams)
-    .mutation(async ({ input }) => {
-      return createRoleAssignment(input);
-    }),
-  updateRoleAssignment: publicProcedure
-    .input(updateRoleAssignmentParams)
-    .mutation(async ({ input }) => {
-      return updateRoleAssignment(input.id, input);
-    }),
-  deleteRoleAssignment: publicProcedure
-    .input(roleAssignmentIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteRoleAssignment(input.id);
-    }),
-});
+    getRoleAssignmentById: publicProcedure
+      .input(roleAssignmentIdSchema)
+      .query(async ({ input }) => {
+        return getRoleAssignmentById(input.id);
+      }),
+    createRoleAssignment: publicProcedure
+      .input(insertRoleAssignmentParams)
+      .mutation(async ({ input }) => {
+        return createRoleAssignment(input);
+      }),
+    updateRoleAssignment: publicProcedure
+      .input(updateRoleAssignmentParams)
+      .mutation(async ({ input }) => {
+        return updateRoleAssignment(input.id, input);
+      }),
+    deleteRoleAssignment: publicProcedure
+      .input(roleAssignmentIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteRoleAssignment(input.id);
+      }),
+  });

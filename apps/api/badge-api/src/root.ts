@@ -14,7 +14,7 @@ import { badgeRelatedsRouter } from "./routers/badgeRelateds";
 import { badgesRouter } from "./routers/badges";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   badgeAlignments: badgeAlignmentsRouter,
   badgeBackpackOauth2s: badgeBackpackOauth2sRouter,
   badgeBackpacks: badgeBackpacksRouter,

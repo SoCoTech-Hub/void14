@@ -15,28 +15,29 @@ import {
 } from "../api/questionGapselects/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const questionGapselectsRouter = createTRPCRouter({
-  getQuestionGapselects: publicProcedure.query(async () => {
-    return getQuestionGapselects();
-  }),
-  getQuestionGapselectById: publicProcedure
-    .input(questionGapselectIdSchema)
-    .query(async ({ input }) => {
-      return getQuestionGapselectById(input.id);
+export const questionGapselectsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getQuestionGapselects: publicProcedure.query(async () => {
+      return getQuestionGapselects();
     }),
-  createQuestionGapselect: publicProcedure
-    .input(insertQuestionGapselectParams)
-    .mutation(async ({ input }) => {
-      return createQuestionGapselect(input);
-    }),
-  updateQuestionGapselect: publicProcedure
-    .input(updateQuestionGapselectParams)
-    .mutation(async ({ input }) => {
-      return updateQuestionGapselect(input.id, input);
-    }),
-  deleteQuestionGapselect: publicProcedure
-    .input(questionGapselectIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteQuestionGapselect(input.id);
-    }),
-});
+    getQuestionGapselectById: publicProcedure
+      .input(questionGapselectIdSchema)
+      .query(async ({ input }) => {
+        return getQuestionGapselectById(input.id);
+      }),
+    createQuestionGapselect: publicProcedure
+      .input(insertQuestionGapselectParams)
+      .mutation(async ({ input }) => {
+        return createQuestionGapselect(input);
+      }),
+    updateQuestionGapselect: publicProcedure
+      .input(updateQuestionGapselectParams)
+      .mutation(async ({ input }) => {
+        return updateQuestionGapselect(input.id, input);
+      }),
+    deleteQuestionGapselect: publicProcedure
+      .input(questionGapselectIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteQuestionGapselect(input.id);
+      }),
+  });

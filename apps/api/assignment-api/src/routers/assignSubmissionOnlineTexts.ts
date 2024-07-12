@@ -15,7 +15,9 @@ import {
 } from "../api/assignSubmissionOnlineTexts/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const assignSubmissionOnlineTextsRouter = createTRPCRouter({
+export const assignSubmissionOnlineTextsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getAssignSubmissionOnlineTexts: publicProcedure.query(async () => {
     return getAssignSubmissionOnlineTexts();
   }),

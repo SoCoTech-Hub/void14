@@ -15,7 +15,9 @@ import {
 } from "../api/h5pactivityAttemptsResults/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const h5pactivityAttemptsResultsRouter = createTRPCRouter({
+export const h5pactivityAttemptsResultsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getH5pactivityAttemptsResults: publicProcedure.query(async () => {
     return getH5pactivityAttemptsResults();
   }),

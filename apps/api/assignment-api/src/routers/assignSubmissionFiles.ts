@@ -15,28 +15,29 @@ import {
 } from "../api/assignSubmissionFiles/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const assignSubmissionFilesRouter = createTRPCRouter({
-  getAssignSubmissionFiles: publicProcedure.query(async () => {
-    return getAssignSubmissionFiles();
-  }),
-  getAssignSubmissionFileById: publicProcedure
-    .input(assignSubmissionFileIdSchema)
-    .query(async ({ input }) => {
-      return getAssignSubmissionFileById(input.id);
+export const assignSubmissionFilesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getAssignSubmissionFiles: publicProcedure.query(async () => {
+      return getAssignSubmissionFiles();
     }),
-  createAssignSubmissionFile: publicProcedure
-    .input(insertAssignSubmissionFileParams)
-    .mutation(async ({ input }) => {
-      return createAssignSubmissionFile(input);
-    }),
-  updateAssignSubmissionFile: publicProcedure
-    .input(updateAssignSubmissionFileParams)
-    .mutation(async ({ input }) => {
-      return updateAssignSubmissionFile(input.id, input);
-    }),
-  deleteAssignSubmissionFile: publicProcedure
-    .input(assignSubmissionFileIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteAssignSubmissionFile(input.id);
-    }),
-});
+    getAssignSubmissionFileById: publicProcedure
+      .input(assignSubmissionFileIdSchema)
+      .query(async ({ input }) => {
+        return getAssignSubmissionFileById(input.id);
+      }),
+    createAssignSubmissionFile: publicProcedure
+      .input(insertAssignSubmissionFileParams)
+      .mutation(async ({ input }) => {
+        return createAssignSubmissionFile(input);
+      }),
+    updateAssignSubmissionFile: publicProcedure
+      .input(updateAssignSubmissionFileParams)
+      .mutation(async ({ input }) => {
+        return updateAssignSubmissionFile(input.id, input);
+      }),
+    deleteAssignSubmissionFile: publicProcedure
+      .input(assignSubmissionFileIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteAssignSubmissionFile(input.id);
+      }),
+  });

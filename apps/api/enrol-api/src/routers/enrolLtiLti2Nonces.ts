@@ -15,28 +15,29 @@ import {
 } from "../api/enrolLtiLti2Nonces/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const enrolLtiLti2NoncesRouter = createTRPCRouter({
-  getEnrolLtiLti2Nonces: publicProcedure.query(async () => {
-    return getEnrolLtiLti2Nonces();
-  }),
-  getEnrolLtiLti2NonceById: publicProcedure
-    .input(enrolLtiLti2NonceIdSchema)
-    .query(async ({ input }) => {
-      return getEnrolLtiLti2NonceById(input.id);
+export const enrolLtiLti2NoncesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getEnrolLtiLti2Nonces: publicProcedure.query(async () => {
+      return getEnrolLtiLti2Nonces();
     }),
-  createEnrolLtiLti2Nonce: publicProcedure
-    .input(insertEnrolLtiLti2NonceParams)
-    .mutation(async ({ input }) => {
-      return createEnrolLtiLti2Nonce(input);
-    }),
-  updateEnrolLtiLti2Nonce: publicProcedure
-    .input(updateEnrolLtiLti2NonceParams)
-    .mutation(async ({ input }) => {
-      return updateEnrolLtiLti2Nonce(input.id, input);
-    }),
-  deleteEnrolLtiLti2Nonce: publicProcedure
-    .input(enrolLtiLti2NonceIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteEnrolLtiLti2Nonce(input.id);
-    }),
-});
+    getEnrolLtiLti2NonceById: publicProcedure
+      .input(enrolLtiLti2NonceIdSchema)
+      .query(async ({ input }) => {
+        return getEnrolLtiLti2NonceById(input.id);
+      }),
+    createEnrolLtiLti2Nonce: publicProcedure
+      .input(insertEnrolLtiLti2NonceParams)
+      .mutation(async ({ input }) => {
+        return createEnrolLtiLti2Nonce(input);
+      }),
+    updateEnrolLtiLti2Nonce: publicProcedure
+      .input(updateEnrolLtiLti2NonceParams)
+      .mutation(async ({ input }) => {
+        return updateEnrolLtiLti2Nonce(input.id, input);
+      }),
+    deleteEnrolLtiLti2Nonce: publicProcedure
+      .input(enrolLtiLti2NonceIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteEnrolLtiLti2Nonce(input.id);
+      }),
+  });

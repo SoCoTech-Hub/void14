@@ -15,7 +15,9 @@ import {
 } from "../api/mnetServiceEnrolEnrolments/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const mnetServiceEnrolEnrolmentsRouter = createTRPCRouter({
+export const mnetServiceEnrolEnrolmentsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getMnetServiceEnrolEnrolments: publicProcedure.query(async () => {
     return getMnetServiceEnrolEnrolments();
   }),

@@ -15,28 +15,29 @@ import {
 } from "../api/affiliatesSettings/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const affiliatesSettingsRouter = createTRPCRouter({
-  getAffiliatesSettings: publicProcedure.query(async () => {
-    return getAffiliatesSettings();
-  }),
-  getAffiliatesSettingById: publicProcedure
-    .input(affiliatesSettingIdSchema)
-    .query(async ({ input }) => {
-      return getAffiliatesSettingById(input.id);
+export const affiliatesSettingsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getAffiliatesSettings: publicProcedure.query(async () => {
+      return getAffiliatesSettings();
     }),
-  createAffiliatesSetting: publicProcedure
-    .input(insertAffiliatesSettingParams)
-    .mutation(async ({ input }) => {
-      return createAffiliatesSetting(input);
-    }),
-  updateAffiliatesSetting: publicProcedure
-    .input(updateAffiliatesSettingParams)
-    .mutation(async ({ input }) => {
-      return updateAffiliatesSetting(input.id, input);
-    }),
-  deleteAffiliatesSetting: publicProcedure
-    .input(affiliatesSettingIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteAffiliatesSetting(input.id);
-    }),
-});
+    getAffiliatesSettingById: publicProcedure
+      .input(affiliatesSettingIdSchema)
+      .query(async ({ input }) => {
+        return getAffiliatesSettingById(input.id);
+      }),
+    createAffiliatesSetting: publicProcedure
+      .input(insertAffiliatesSettingParams)
+      .mutation(async ({ input }) => {
+        return createAffiliatesSetting(input);
+      }),
+    updateAffiliatesSetting: publicProcedure
+      .input(updateAffiliatesSettingParams)
+      .mutation(async ({ input }) => {
+        return updateAffiliatesSetting(input.id, input);
+      }),
+    deleteAffiliatesSetting: publicProcedure
+      .input(affiliatesSettingIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteAffiliatesSetting(input.id);
+      }),
+  });

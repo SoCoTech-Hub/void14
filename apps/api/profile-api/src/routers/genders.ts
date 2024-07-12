@@ -12,28 +12,29 @@ import {
 import { getGenderById, getGenders } from "../api/genders/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const gendersRouter = createTRPCRouter({
-  getGenders: publicProcedure.query(async () => {
-    return getGenders();
-  }),
-  getGenderById: publicProcedure
-    .input(genderIdSchema)
-    .query(async ({ input }) => {
-      return getGenderById(input.id);
+export const gendersRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getGenders: publicProcedure.query(async () => {
+      return getGenders();
     }),
-  createGender: publicProcedure
-    .input(insertGenderParams)
-    .mutation(async ({ input }) => {
-      return createGender(input);
-    }),
-  updateGender: publicProcedure
-    .input(updateGenderParams)
-    .mutation(async ({ input }) => {
-      return updateGender(input.id, input);
-    }),
-  deleteGender: publicProcedure
-    .input(genderIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteGender(input.id);
-    }),
-});
+    getGenderById: publicProcedure
+      .input(genderIdSchema)
+      .query(async ({ input }) => {
+        return getGenderById(input.id);
+      }),
+    createGender: publicProcedure
+      .input(insertGenderParams)
+      .mutation(async ({ input }) => {
+        return createGender(input);
+      }),
+    updateGender: publicProcedure
+      .input(updateGenderParams)
+      .mutation(async ({ input }) => {
+        return updateGender(input.id, input);
+      }),
+    deleteGender: publicProcedure
+      .input(genderIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteGender(input.id);
+      }),
+  });

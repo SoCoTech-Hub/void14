@@ -15,28 +15,29 @@ import {
 } from "../api/workshopSubmissions/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const workshopSubmissionsRouter = createTRPCRouter({
-  getWorkshopSubmissions: publicProcedure.query(async () => {
-    return getWorkshopSubmissions();
-  }),
-  getWorkshopSubmissionById: publicProcedure
-    .input(workshopSubmissionIdSchema)
-    .query(async ({ input }) => {
-      return getWorkshopSubmissionById(input.id);
+export const workshopSubmissionsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getWorkshopSubmissions: publicProcedure.query(async () => {
+      return getWorkshopSubmissions();
     }),
-  createWorkshopSubmission: publicProcedure
-    .input(insertWorkshopSubmissionParams)
-    .mutation(async ({ input }) => {
-      return createWorkshopSubmission(input);
-    }),
-  updateWorkshopSubmission: publicProcedure
-    .input(updateWorkshopSubmissionParams)
-    .mutation(async ({ input }) => {
-      return updateWorkshopSubmission(input.id, input);
-    }),
-  deleteWorkshopSubmission: publicProcedure
-    .input(workshopSubmissionIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteWorkshopSubmission(input.id);
-    }),
-});
+    getWorkshopSubmissionById: publicProcedure
+      .input(workshopSubmissionIdSchema)
+      .query(async ({ input }) => {
+        return getWorkshopSubmissionById(input.id);
+      }),
+    createWorkshopSubmission: publicProcedure
+      .input(insertWorkshopSubmissionParams)
+      .mutation(async ({ input }) => {
+        return createWorkshopSubmission(input);
+      }),
+    updateWorkshopSubmission: publicProcedure
+      .input(updateWorkshopSubmissionParams)
+      .mutation(async ({ input }) => {
+        return updateWorkshopSubmission(input.id, input);
+      }),
+    deleteWorkshopSubmission: publicProcedure
+      .input(workshopSubmissionIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteWorkshopSubmission(input.id);
+      }),
+  });

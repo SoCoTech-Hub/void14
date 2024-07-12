@@ -15,7 +15,9 @@ import {
 } from "../api/messageAirnotifierDevices/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const messageAirnotifierDevicesRouter = createTRPCRouter({
+export const messageAirnotifierDevicesRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getMessageAirnotifierDevices: publicProcedure.query(async () => {
     return getMessageAirnotifierDevices();
   }),

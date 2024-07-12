@@ -15,28 +15,29 @@ import {
 } from "../api/h5pactivities/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const h5pactivitiesRouter = createTRPCRouter({
-  getH5pactivities: publicProcedure.query(async () => {
-    return getH5pactivities();
-  }),
-  getH5pactivityById: publicProcedure
-    .input(h5pactivityIdSchema)
-    .query(async ({ input }) => {
-      return getH5pactivityById(input.id);
+export const h5pactivitiesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getH5pactivities: publicProcedure.query(async () => {
+      return getH5pactivities();
     }),
-  createH5pactivity: publicProcedure
-    .input(insertH5pactivityParams)
-    .mutation(async ({ input }) => {
-      return createH5pactivity(input);
-    }),
-  updateH5pactivity: publicProcedure
-    .input(updateH5pactivityParams)
-    .mutation(async ({ input }) => {
-      return updateH5pactivity(input.id, input);
-    }),
-  deleteH5pactivity: publicProcedure
-    .input(h5pactivityIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteH5pactivity(input.id);
-    }),
-});
+    getH5pactivityById: publicProcedure
+      .input(h5pactivityIdSchema)
+      .query(async ({ input }) => {
+        return getH5pactivityById(input.id);
+      }),
+    createH5pactivity: publicProcedure
+      .input(insertH5pactivityParams)
+      .mutation(async ({ input }) => {
+        return createH5pactivity(input);
+      }),
+    updateH5pactivity: publicProcedure
+      .input(updateH5pactivityParams)
+      .mutation(async ({ input }) => {
+        return updateH5pactivity(input.id, input);
+      }),
+    deleteH5pactivity: publicProcedure
+      .input(h5pactivityIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteH5pactivity(input.id);
+      }),
+  });

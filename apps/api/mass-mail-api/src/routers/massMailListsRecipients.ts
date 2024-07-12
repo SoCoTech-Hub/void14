@@ -15,7 +15,9 @@ import {
 } from "../api/massMailListsRecipients/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const massMailListsRecipientsRouter = createTRPCRouter({
+export const massMailListsRecipientsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getMassMailListsRecipients: publicProcedure.query(async () => {
     return getMassMailListsRecipients();
   }),

@@ -15,28 +15,29 @@ import {
 } from "../api/assignFeedbackComments/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const assignFeedbackCommentsRouter = createTRPCRouter({
-  getAssignFeedbackComments: publicProcedure.query(async () => {
-    return getAssignFeedbackComments();
-  }),
-  getAssignFeedbackCommentById: publicProcedure
-    .input(assignFeedbackCommentIdSchema)
-    .query(async ({ input }) => {
-      return getAssignFeedbackCommentById(input.id);
+export const assignFeedbackCommentsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getAssignFeedbackComments: publicProcedure.query(async () => {
+      return getAssignFeedbackComments();
     }),
-  createAssignFeedbackComment: publicProcedure
-    .input(insertAssignFeedbackCommentParams)
-    .mutation(async ({ input }) => {
-      return createAssignFeedbackComment(input);
-    }),
-  updateAssignFeedbackComment: publicProcedure
-    .input(updateAssignFeedbackCommentParams)
-    .mutation(async ({ input }) => {
-      return updateAssignFeedbackComment(input.id, input);
-    }),
-  deleteAssignFeedbackComment: publicProcedure
-    .input(assignFeedbackCommentIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteAssignFeedbackComment(input.id);
-    }),
-});
+    getAssignFeedbackCommentById: publicProcedure
+      .input(assignFeedbackCommentIdSchema)
+      .query(async ({ input }) => {
+        return getAssignFeedbackCommentById(input.id);
+      }),
+    createAssignFeedbackComment: publicProcedure
+      .input(insertAssignFeedbackCommentParams)
+      .mutation(async ({ input }) => {
+        return createAssignFeedbackComment(input);
+      }),
+    updateAssignFeedbackComment: publicProcedure
+      .input(updateAssignFeedbackCommentParams)
+      .mutation(async ({ input }) => {
+        return updateAssignFeedbackComment(input.id, input);
+      }),
+    deleteAssignFeedbackComment: publicProcedure
+      .input(assignFeedbackCommentIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteAssignFeedbackComment(input.id);
+      }),
+  });

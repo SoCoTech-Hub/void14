@@ -2,7 +2,7 @@ import { quizaccessSebQuizSettingsRouter } from "./routers/quizaccessSebQuizSett
 import { quizaccessSebTemplatesRouter } from "./routers/quizaccessSebTemplates";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   quizaccessSebQuizSettings: quizaccessSebQuizSettingsRouter,
   quizaccessSebTemplates: quizaccessSebTemplatesRouter,
 });

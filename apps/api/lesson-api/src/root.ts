@@ -8,7 +8,7 @@ import { lessonsRouter } from "./routers/lessons";
 import { lessonTimerRouter } from "./routers/lessonTimer";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   lessonAnswers: lessonAnswersRouter,
   lessonAttempts: lessonAttemptsRouter,
   lessonBranches: lessonBranchesRouter,

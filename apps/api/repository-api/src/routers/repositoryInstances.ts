@@ -15,28 +15,29 @@ import {
 } from "../api/repositoryInstances/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const repositoryInstancesRouter = createTRPCRouter({
-  getRepositoryInstances: publicProcedure.query(async () => {
-    return getRepositoryInstances();
-  }),
-  getRepositoryInstanceById: publicProcedure
-    .input(repositoryInstanceIdSchema)
-    .query(async ({ input }) => {
-      return getRepositoryInstanceById(input.id);
+export const repositoryInstancesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getRepositoryInstances: publicProcedure.query(async () => {
+      return getRepositoryInstances();
     }),
-  createRepositoryInstance: publicProcedure
-    .input(insertRepositoryInstanceParams)
-    .mutation(async ({ input }) => {
-      return createRepositoryInstance(input);
-    }),
-  updateRepositoryInstance: publicProcedure
-    .input(updateRepositoryInstanceParams)
-    .mutation(async ({ input }) => {
-      return updateRepositoryInstance(input.id, input);
-    }),
-  deleteRepositoryInstance: publicProcedure
-    .input(repositoryInstanceIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteRepositoryInstance(input.id);
-    }),
-});
+    getRepositoryInstanceById: publicProcedure
+      .input(repositoryInstanceIdSchema)
+      .query(async ({ input }) => {
+        return getRepositoryInstanceById(input.id);
+      }),
+    createRepositoryInstance: publicProcedure
+      .input(insertRepositoryInstanceParams)
+      .mutation(async ({ input }) => {
+        return createRepositoryInstance(input);
+      }),
+    updateRepositoryInstance: publicProcedure
+      .input(updateRepositoryInstanceParams)
+      .mutation(async ({ input }) => {
+        return updateRepositoryInstance(input.id, input);
+      }),
+    deleteRepositoryInstance: publicProcedure
+      .input(repositoryInstanceIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteRepositoryInstance(input.id);
+      }),
+  });

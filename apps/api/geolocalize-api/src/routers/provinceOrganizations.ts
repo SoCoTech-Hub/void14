@@ -15,28 +15,29 @@ import {
 } from "../api/provinceOrganizations/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const provinceOrganizationsRouter = createTRPCRouter({
-  getProvinceOrganizations: publicProcedure.query(async () => {
-    return getProvinceOrganizations();
-  }),
-  getProvinceOrganizationById: publicProcedure
-    .input(provinceOrganizationIdSchema)
-    .query(async ({ input }) => {
-      return getProvinceOrganizationById(input.id);
+export const provinceOrganizationsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getProvinceOrganizations: publicProcedure.query(async () => {
+      return getProvinceOrganizations();
     }),
-  createProvinceOrganization: publicProcedure
-    .input(insertProvinceOrganizationParams)
-    .mutation(async ({ input }) => {
-      return createProvinceOrganization(input);
-    }),
-  updateProvinceOrganization: publicProcedure
-    .input(updateProvinceOrganizationParams)
-    .mutation(async ({ input }) => {
-      return updateProvinceOrganization(input.id, input);
-    }),
-  deleteProvinceOrganization: publicProcedure
-    .input(provinceOrganizationIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteProvinceOrganization(input.id);
-    }),
-});
+    getProvinceOrganizationById: publicProcedure
+      .input(provinceOrganizationIdSchema)
+      .query(async ({ input }) => {
+        return getProvinceOrganizationById(input.id);
+      }),
+    createProvinceOrganization: publicProcedure
+      .input(insertProvinceOrganizationParams)
+      .mutation(async ({ input }) => {
+        return createProvinceOrganization(input);
+      }),
+    updateProvinceOrganization: publicProcedure
+      .input(updateProvinceOrganizationParams)
+      .mutation(async ({ input }) => {
+        return updateProvinceOrganization(input.id, input);
+      }),
+    deleteProvinceOrganization: publicProcedure
+      .input(provinceOrganizationIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteProvinceOrganization(input.id);
+      }),
+  });

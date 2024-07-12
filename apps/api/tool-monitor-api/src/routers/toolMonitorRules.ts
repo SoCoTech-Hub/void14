@@ -15,28 +15,29 @@ import {
 } from "../api/toolMonitorRules/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const toolMonitorRulesRouter = createTRPCRouter({
-  getToolMonitorRules: publicProcedure.query(async () => {
-    return getToolMonitorRules();
-  }),
-  getToolMonitorRuleById: publicProcedure
-    .input(toolMonitorRuleIdSchema)
-    .query(async ({ input }) => {
-      return getToolMonitorRuleById(input.id);
+export const toolMonitorRulesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getToolMonitorRules: publicProcedure.query(async () => {
+      return getToolMonitorRules();
     }),
-  createToolMonitorRule: publicProcedure
-    .input(insertToolMonitorRuleParams)
-    .mutation(async ({ input }) => {
-      return createToolMonitorRule(input);
-    }),
-  updateToolMonitorRule: publicProcedure
-    .input(updateToolMonitorRuleParams)
-    .mutation(async ({ input }) => {
-      return updateToolMonitorRule(input.id, input);
-    }),
-  deleteToolMonitorRule: publicProcedure
-    .input(toolMonitorRuleIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteToolMonitorRule(input.id);
-    }),
-});
+    getToolMonitorRuleById: publicProcedure
+      .input(toolMonitorRuleIdSchema)
+      .query(async ({ input }) => {
+        return getToolMonitorRuleById(input.id);
+      }),
+    createToolMonitorRule: publicProcedure
+      .input(insertToolMonitorRuleParams)
+      .mutation(async ({ input }) => {
+        return createToolMonitorRule(input);
+      }),
+    updateToolMonitorRule: publicProcedure
+      .input(updateToolMonitorRuleParams)
+      .mutation(async ({ input }) => {
+        return updateToolMonitorRule(input.id, input);
+      }),
+    deleteToolMonitorRule: publicProcedure
+      .input(toolMonitorRuleIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteToolMonitorRule(input.id);
+      }),
+  });

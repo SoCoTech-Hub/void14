@@ -12,28 +12,29 @@ import {
 import { getGroupingById, getGroupings } from "../api/groupings/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const groupingsRouter = createTRPCRouter({
-  getGroupings: publicProcedure.query(async () => {
-    return getGroupings();
-  }),
-  getGroupingById: publicProcedure
-    .input(groupingIdSchema)
-    .query(async ({ input }) => {
-      return getGroupingById(input.id);
+export const groupingsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getGroupings: publicProcedure.query(async () => {
+      return getGroupings();
     }),
-  createGrouping: publicProcedure
-    .input(insertGroupingParams)
-    .mutation(async ({ input }) => {
-      return createGrouping(input);
-    }),
-  updateGrouping: publicProcedure
-    .input(updateGroupingParams)
-    .mutation(async ({ input }) => {
-      return updateGrouping(input.id, input);
-    }),
-  deleteGrouping: publicProcedure
-    .input(groupingIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteGrouping(input.id);
-    }),
-});
+    getGroupingById: publicProcedure
+      .input(groupingIdSchema)
+      .query(async ({ input }) => {
+        return getGroupingById(input.id);
+      }),
+    createGrouping: publicProcedure
+      .input(insertGroupingParams)
+      .mutation(async ({ input }) => {
+        return createGrouping(input);
+      }),
+    updateGrouping: publicProcedure
+      .input(updateGroupingParams)
+      .mutation(async ({ input }) => {
+        return updateGrouping(input.id, input);
+      }),
+    deleteGrouping: publicProcedure
+      .input(groupingIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteGrouping(input.id);
+      }),
+  });

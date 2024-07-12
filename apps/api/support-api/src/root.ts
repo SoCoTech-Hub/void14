@@ -5,7 +5,7 @@ import { supportTicketsRouter } from "./routers/supportTickets";
 import { supportTopicsRouter } from "./routers/supportTopics";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   supportComments: supportCommentsRouter,
   supportDepartments: supportDepartmentsRouter,
   supportStatuses: supportStatusesRouter,

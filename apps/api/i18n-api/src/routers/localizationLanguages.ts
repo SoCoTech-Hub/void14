@@ -15,28 +15,29 @@ import {
 } from "../api/localizationLanguages/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const localizationLanguagesRouter = createTRPCRouter({
-  getLocalizationLanguages: publicProcedure.query(async () => {
-    return getLocalizationLanguages();
-  }),
-  getLocalizationLanguageById: publicProcedure
-    .input(localizationLanguageIdSchema)
-    .query(async ({ input }) => {
-      return getLocalizationLanguageById(input.id);
+export const localizationLanguagesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getLocalizationLanguages: publicProcedure.query(async () => {
+      return getLocalizationLanguages();
     }),
-  createLocalizationLanguage: publicProcedure
-    .input(insertLocalizationLanguageParams)
-    .mutation(async ({ input }) => {
-      return createLocalizationLanguage(input);
-    }),
-  updateLocalizationLanguage: publicProcedure
-    .input(updateLocalizationLanguageParams)
-    .mutation(async ({ input }) => {
-      return updateLocalizationLanguage(input.id, input);
-    }),
-  deleteLocalizationLanguage: publicProcedure
-    .input(localizationLanguageIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteLocalizationLanguage(input.id);
-    }),
-});
+    getLocalizationLanguageById: publicProcedure
+      .input(localizationLanguageIdSchema)
+      .query(async ({ input }) => {
+        return getLocalizationLanguageById(input.id);
+      }),
+    createLocalizationLanguage: publicProcedure
+      .input(insertLocalizationLanguageParams)
+      .mutation(async ({ input }) => {
+        return createLocalizationLanguage(input);
+      }),
+    updateLocalizationLanguage: publicProcedure
+      .input(updateLocalizationLanguageParams)
+      .mutation(async ({ input }) => {
+        return updateLocalizationLanguage(input.id, input);
+      }),
+    deleteLocalizationLanguage: publicProcedure
+      .input(localizationLanguageIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteLocalizationLanguage(input.id);
+      }),
+  });

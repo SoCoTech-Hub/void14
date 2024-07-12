@@ -8,7 +8,7 @@ import { h5pLibraryDependenciesRouter } from "./routers/h5pLibraryDependencies";
 import { h5psRouter } from "./routers/h5ps";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   h5pactivities: h5pactivitiesRouter,
   h5pactivityAttempts: h5pactivityAttemptsRouter,
   h5pactivityAttemptsResults: h5pactivityAttemptsResultsRouter,

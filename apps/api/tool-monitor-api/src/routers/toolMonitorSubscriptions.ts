@@ -15,7 +15,9 @@ import {
 } from "../api/toolMonitorSubscriptions/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const toolMonitorSubscriptionsRouter = createTRPCRouter({
+export const toolMonitorSubscriptionsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getToolMonitorSubscriptions: publicProcedure.query(async () => {
     return getToolMonitorSubscriptions();
   }),

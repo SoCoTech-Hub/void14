@@ -15,28 +15,29 @@ import {
 } from "../api/userInfoCategories/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const userInfoCategoriesRouter = createTRPCRouter({
-  getUserInfoCategories: publicProcedure.query(async () => {
-    return getUserInfoCategories();
-  }),
-  getUserInfoCategoryById: publicProcedure
-    .input(userInfoCategoryIdSchema)
-    .query(async ({ input }) => {
-      return getUserInfoCategoryById(input.id);
+export const userInfoCategoriesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getUserInfoCategories: publicProcedure.query(async () => {
+      return getUserInfoCategories();
     }),
-  createUserInfoCategory: publicProcedure
-    .input(insertUserInfoCategoryParams)
-    .mutation(async ({ input }) => {
-      return createUserInfoCategory(input);
-    }),
-  updateUserInfoCategory: publicProcedure
-    .input(updateUserInfoCategoryParams)
-    .mutation(async ({ input }) => {
-      return updateUserInfoCategory(input.id, input);
-    }),
-  deleteUserInfoCategory: publicProcedure
-    .input(userInfoCategoryIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteUserInfoCategory(input.id);
-    }),
-});
+    getUserInfoCategoryById: publicProcedure
+      .input(userInfoCategoryIdSchema)
+      .query(async ({ input }) => {
+        return getUserInfoCategoryById(input.id);
+      }),
+    createUserInfoCategory: publicProcedure
+      .input(insertUserInfoCategoryParams)
+      .mutation(async ({ input }) => {
+        return createUserInfoCategory(input);
+      }),
+    updateUserInfoCategory: publicProcedure
+      .input(updateUserInfoCategoryParams)
+      .mutation(async ({ input }) => {
+        return updateUserInfoCategory(input.id, input);
+      }),
+    deleteUserInfoCategory: publicProcedure
+      .input(userInfoCategoryIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteUserInfoCategory(input.id);
+      }),
+  });

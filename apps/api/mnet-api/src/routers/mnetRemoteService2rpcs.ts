@@ -15,28 +15,29 @@ import {
 } from "../api/mnetRemoteService2rpcs/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const mnetRemoteService2rpcsRouter = createTRPCRouter({
-  getMnetRemoteService2rpcs: publicProcedure.query(async () => {
-    return getMnetRemoteService2rpcs();
-  }),
-  getMnetRemoteService2rpcById: publicProcedure
-    .input(mnetRemoteService2rpcIdSchema)
-    .query(async ({ input }) => {
-      return getMnetRemoteService2rpcById(input.id);
+export const mnetRemoteService2rpcsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getMnetRemoteService2rpcs: publicProcedure.query(async () => {
+      return getMnetRemoteService2rpcs();
     }),
-  createMnetRemoteService2rpc: publicProcedure
-    .input(insertMnetRemoteService2rpcParams)
-    .mutation(async ({ input }) => {
-      return createMnetRemoteService2rpc(input);
-    }),
-  updateMnetRemoteService2rpc: publicProcedure
-    .input(updateMnetRemoteService2rpcParams)
-    .mutation(async ({ input }) => {
-      return updateMnetRemoteService2rpc(input.id, input);
-    }),
-  deleteMnetRemoteService2rpc: publicProcedure
-    .input(mnetRemoteService2rpcIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteMnetRemoteService2rpc(input.id);
-    }),
-});
+    getMnetRemoteService2rpcById: publicProcedure
+      .input(mnetRemoteService2rpcIdSchema)
+      .query(async ({ input }) => {
+        return getMnetRemoteService2rpcById(input.id);
+      }),
+    createMnetRemoteService2rpc: publicProcedure
+      .input(insertMnetRemoteService2rpcParams)
+      .mutation(async ({ input }) => {
+        return createMnetRemoteService2rpc(input);
+      }),
+    updateMnetRemoteService2rpc: publicProcedure
+      .input(updateMnetRemoteService2rpcParams)
+      .mutation(async ({ input }) => {
+        return updateMnetRemoteService2rpc(input.id, input);
+      }),
+    deleteMnetRemoteService2rpc: publicProcedure
+      .input(mnetRemoteService2rpcIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteMnetRemoteService2rpc(input.id);
+      }),
+  });

@@ -12,28 +12,29 @@ import {
 import { getContextById, getContexts } from "../api/contexts/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const contextsRouter = createTRPCRouter({
-  getContexts: publicProcedure.query(async () => {
-    return getContexts();
-  }),
-  getContextById: publicProcedure
-    .input(contextIdSchema)
-    .query(async ({ input }) => {
-      return getContextById(input.id);
+export const contextsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getContexts: publicProcedure.query(async () => {
+      return getContexts();
     }),
-  createContext: publicProcedure
-    .input(insertContextParams)
-    .mutation(async ({ input }) => {
-      return createContext(input);
-    }),
-  updateContext: publicProcedure
-    .input(updateContextParams)
-    .mutation(async ({ input }) => {
-      return updateContext(input.id, input);
-    }),
-  deleteContext: publicProcedure
-    .input(contextIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteContext(input.id);
-    }),
-});
+    getContextById: publicProcedure
+      .input(contextIdSchema)
+      .query(async ({ input }) => {
+        return getContextById(input.id);
+      }),
+    createContext: publicProcedure
+      .input(insertContextParams)
+      .mutation(async ({ input }) => {
+        return createContext(input);
+      }),
+    updateContext: publicProcedure
+      .input(updateContextParams)
+      .mutation(async ({ input }) => {
+        return updateContext(input.id, input);
+      }),
+    deleteContext: publicProcedure
+      .input(contextIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteContext(input.id);
+      }),
+  });

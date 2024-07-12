@@ -15,7 +15,9 @@ import {
 } from "../api/gradingformRubricCriterias/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const gradingformRubricCriteriasRouter = createTRPCRouter({
+export const gradingformRubricCriteriasRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getGradingformRubricCriterias: publicProcedure.query(async () => {
     return getGradingformRubricCriterias();
   }),

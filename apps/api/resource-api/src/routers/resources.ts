@@ -12,28 +12,29 @@ import {
 import { getResourceById, getResources } from "../api/resources/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const resourcesRouter = createTRPCRouter({
-  getResources: publicProcedure.query(async () => {
-    return getResources();
-  }),
-  getResourceById: publicProcedure
-    .input(resourceIdSchema)
-    .query(async ({ input }) => {
-      return getResourceById(input.id);
+export const resourcesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getResources: publicProcedure.query(async () => {
+      return getResources();
     }),
-  createResource: publicProcedure
-    .input(insertResourceParams)
-    .mutation(async ({ input }) => {
-      return createResource(input);
-    }),
-  updateResource: publicProcedure
-    .input(updateResourceParams)
-    .mutation(async ({ input }) => {
-      return updateResource(input.id, input);
-    }),
-  deleteResource: publicProcedure
-    .input(resourceIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteResource(input.id);
-    }),
-});
+    getResourceById: publicProcedure
+      .input(resourceIdSchema)
+      .query(async ({ input }) => {
+        return getResourceById(input.id);
+      }),
+    createResource: publicProcedure
+      .input(insertResourceParams)
+      .mutation(async ({ input }) => {
+        return createResource(input);
+      }),
+    updateResource: publicProcedure
+      .input(updateResourceParams)
+      .mutation(async ({ input }) => {
+        return updateResource(input.id, input);
+      }),
+    deleteResource: publicProcedure
+      .input(resourceIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteResource(input.id);
+      }),
+  });

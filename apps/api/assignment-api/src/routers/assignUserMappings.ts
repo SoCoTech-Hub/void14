@@ -15,28 +15,29 @@ import {
 } from "../api/assignUserMappings/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const assignUserMappingsRouter = createTRPCRouter({
-  getAssignUserMappings: publicProcedure.query(async () => {
-    return getAssignUserMappings();
-  }),
-  getAssignUserMappingById: publicProcedure
-    .input(assignUserMappingIdSchema)
-    .query(async ({ input }) => {
-      return getAssignUserMappingById(input.id);
+export const assignUserMappingsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getAssignUserMappings: publicProcedure.query(async () => {
+      return getAssignUserMappings();
     }),
-  createAssignUserMapping: publicProcedure
-    .input(insertAssignUserMappingParams)
-    .mutation(async ({ input }) => {
-      return createAssignUserMapping(input);
-    }),
-  updateAssignUserMapping: publicProcedure
-    .input(updateAssignUserMappingParams)
-    .mutation(async ({ input }) => {
-      return updateAssignUserMapping(input.id, input);
-    }),
-  deleteAssignUserMapping: publicProcedure
-    .input(assignUserMappingIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteAssignUserMapping(input.id);
-    }),
-});
+    getAssignUserMappingById: publicProcedure
+      .input(assignUserMappingIdSchema)
+      .query(async ({ input }) => {
+        return getAssignUserMappingById(input.id);
+      }),
+    createAssignUserMapping: publicProcedure
+      .input(insertAssignUserMappingParams)
+      .mutation(async ({ input }) => {
+        return createAssignUserMapping(input);
+      }),
+    updateAssignUserMapping: publicProcedure
+      .input(updateAssignUserMappingParams)
+      .mutation(async ({ input }) => {
+        return updateAssignUserMapping(input.id, input);
+      }),
+    deleteAssignUserMapping: publicProcedure
+      .input(assignUserMappingIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteAssignUserMapping(input.id);
+      }),
+  });

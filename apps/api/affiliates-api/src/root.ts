@@ -5,7 +5,7 @@ import { affiliatesStatusesRouter } from "./routers/affiliatesStatuses";
 import { affiliatesTransactionsRouter } from "./routers/affiliatesTransactions";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   affiliates: affiliatesRouter,
   affiliatesDetails: affiliatesDetailsRouter,
   affiliatesSettings: affiliatesSettingsRouter,

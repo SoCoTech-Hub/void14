@@ -15,7 +15,9 @@ import {
 } from "../api/workshopEvalBestSettings/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const workshopEvalBestSettingsRouter = createTRPCRouter({
+export const workshopEvalBestSettingsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getWorkshopEvalBestSettings: publicProcedure.query(async () => {
     return getWorkshopEvalBestSettings();
   }),

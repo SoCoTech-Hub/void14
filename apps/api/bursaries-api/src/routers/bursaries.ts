@@ -12,28 +12,29 @@ import {
 import { getBursaries, getBursaryById } from "../api/bursaries/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const bursariesRouter = createTRPCRouter({
-  getBursaries: publicProcedure.query(async () => {
-    return getBursaries();
-  }),
-  getBursaryById: publicProcedure
-    .input(bursaryIdSchema)
-    .query(async ({ input }) => {
-      return getBursaryById(input.id);
+export const bursariesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getBursaries: publicProcedure.query(async () => {
+      return getBursaries();
     }),
-  createBursary: publicProcedure
-    .input(insertBursaryParams)
-    .mutation(async ({ input }) => {
-      return createBursary(input);
-    }),
-  updateBursary: publicProcedure
-    .input(updateBursaryParams)
-    .mutation(async ({ input }) => {
-      return updateBursary(input.id, input);
-    }),
-  deleteBursary: publicProcedure
-    .input(bursaryIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteBursary(input.id);
-    }),
-});
+    getBursaryById: publicProcedure
+      .input(bursaryIdSchema)
+      .query(async ({ input }) => {
+        return getBursaryById(input.id);
+      }),
+    createBursary: publicProcedure
+      .input(insertBursaryParams)
+      .mutation(async ({ input }) => {
+        return createBursary(input);
+      }),
+    updateBursary: publicProcedure
+      .input(updateBursaryParams)
+      .mutation(async ({ input }) => {
+        return updateBursary(input.id, input);
+      }),
+    deleteBursary: publicProcedure
+      .input(bursaryIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteBursary(input.id);
+      }),
+  });

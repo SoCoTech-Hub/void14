@@ -15,28 +15,29 @@ import {
 } from "../api/roleContextLevels/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const roleContextLevelsRouter = createTRPCRouter({
-  getRoleContextLevels: publicProcedure.query(async () => {
-    return getRoleContextLevels();
-  }),
-  getRoleContextLevelById: publicProcedure
-    .input(roleContextLevelIdSchema)
-    .query(async ({ input }) => {
-      return getRoleContextLevelById(input.id);
+export const roleContextLevelsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getRoleContextLevels: publicProcedure.query(async () => {
+      return getRoleContextLevels();
     }),
-  createRoleContextLevel: publicProcedure
-    .input(insertRoleContextLevelParams)
-    .mutation(async ({ input }) => {
-      return createRoleContextLevel(input);
-    }),
-  updateRoleContextLevel: publicProcedure
-    .input(updateRoleContextLevelParams)
-    .mutation(async ({ input }) => {
-      return updateRoleContextLevel(input.id, input);
-    }),
-  deleteRoleContextLevel: publicProcedure
-    .input(roleContextLevelIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteRoleContextLevel(input.id);
-    }),
-});
+    getRoleContextLevelById: publicProcedure
+      .input(roleContextLevelIdSchema)
+      .query(async ({ input }) => {
+        return getRoleContextLevelById(input.id);
+      }),
+    createRoleContextLevel: publicProcedure
+      .input(insertRoleContextLevelParams)
+      .mutation(async ({ input }) => {
+        return createRoleContextLevel(input);
+      }),
+    updateRoleContextLevel: publicProcedure
+      .input(updateRoleContextLevelParams)
+      .mutation(async ({ input }) => {
+        return updateRoleContextLevel(input.id, input);
+      }),
+    deleteRoleContextLevel: publicProcedure
+      .input(roleContextLevelIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteRoleContextLevel(input.id);
+      }),
+  });

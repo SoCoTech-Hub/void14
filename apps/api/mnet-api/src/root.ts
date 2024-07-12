@@ -13,7 +13,7 @@ import { mnetSessionsRouter } from "./routers/mnetSessions";
 import { mnetSsoAccessControlsRouter } from "./routers/mnetSsoAccessControls";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   mnetApplications: mnetApplicationsRouter,
   mnetHost2services: mnetHost2servicesRouter,
   mnetHosts: mnetHostsRouter,

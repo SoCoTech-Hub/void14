@@ -3,7 +3,7 @@ import { bookChaptersRouter } from "./routers/bookChapters";
 import { booksRouter } from "./routers/books";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   account: accountRouter,
   bookChapters: bookChaptersRouter,
   books: booksRouter,

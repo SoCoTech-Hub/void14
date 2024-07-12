@@ -15,28 +15,29 @@ import {
 } from "../api/badgeCriteriaParams/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const badgeCriteriaParamsRouter = createTRPCRouter({
-  getBadgeCriteriaParams: publicProcedure.query(async () => {
-    return getBadgeCriteriaParams();
-  }),
-  getBadgeCriteriaParamById: publicProcedure
-    .input(badgeCriteriaParamIdSchema)
-    .query(async ({ input }) => {
-      return getBadgeCriteriaParamById(input.id);
+export const badgeCriteriaParamsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getBadgeCriteriaParams: publicProcedure.query(async () => {
+      return getBadgeCriteriaParams();
     }),
-  createBadgeCriteriaParam: publicProcedure
-    .input(insertBadgeCriteriaParamParams)
-    .mutation(async ({ input }) => {
-      return createBadgeCriteriaParam(input);
-    }),
-  updateBadgeCriteriaParam: publicProcedure
-    .input(updateBadgeCriteriaParamParams)
-    .mutation(async ({ input }) => {
-      return updateBadgeCriteriaParam(input.id, input);
-    }),
-  deleteBadgeCriteriaParam: publicProcedure
-    .input(badgeCriteriaParamIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteBadgeCriteriaParam(input.id);
-    }),
-});
+    getBadgeCriteriaParamById: publicProcedure
+      .input(badgeCriteriaParamIdSchema)
+      .query(async ({ input }) => {
+        return getBadgeCriteriaParamById(input.id);
+      }),
+    createBadgeCriteriaParam: publicProcedure
+      .input(insertBadgeCriteriaParamParams)
+      .mutation(async ({ input }) => {
+        return createBadgeCriteriaParam(input);
+      }),
+    updateBadgeCriteriaParam: publicProcedure
+      .input(updateBadgeCriteriaParamParams)
+      .mutation(async ({ input }) => {
+        return updateBadgeCriteriaParam(input.id, input);
+      }),
+    deleteBadgeCriteriaParam: publicProcedure
+      .input(badgeCriteriaParamIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteBadgeCriteriaParam(input.id);
+      }),
+  });

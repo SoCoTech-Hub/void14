@@ -4,7 +4,7 @@ import { userGradesRouter } from "./routers/userGrades";
 import { userSchoolsRouter } from "./routers/userSchools";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   grades: gradesRouter,
   schools: schoolsRouter,
   userGrades: userGradesRouter,

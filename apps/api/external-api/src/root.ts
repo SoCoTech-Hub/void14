@@ -5,7 +5,7 @@ import { externalServicesUsersRouter } from "./routers/externalServicesUsers";
 import { externalTokensRouter } from "./routers/externalTokens";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   externalFunctions: externalFunctionsRouter,
   externalServices: externalServicesRouter,
   externalServicesFunctions: externalServicesFunctionsRouter,

@@ -15,7 +15,9 @@ import {
 } from "../api/portfolioInstanceConfigs/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const portfolioInstanceConfigsRouter = createTRPCRouter({
+export const portfolioInstanceConfigsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getPortfolioInstanceConfigs: publicProcedure.query(async () => {
     return getPortfolioInstanceConfigs();
   }),

@@ -15,28 +15,29 @@ import {
 } from "../api/userInfoFields/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const userInfoFieldsRouter = createTRPCRouter({
-  getUserInfoFields: publicProcedure.query(async () => {
-    return getUserInfoFields();
-  }),
-  getUserInfoFieldById: publicProcedure
-    .input(userInfoFieldIdSchema)
-    .query(async ({ input }) => {
-      return getUserInfoFieldById(input.id);
+export const userInfoFieldsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getUserInfoFields: publicProcedure.query(async () => {
+      return getUserInfoFields();
     }),
-  createUserInfoField: publicProcedure
-    .input(insertUserInfoFieldParams)
-    .mutation(async ({ input }) => {
-      return createUserInfoField(input);
-    }),
-  updateUserInfoField: publicProcedure
-    .input(updateUserInfoFieldParams)
-    .mutation(async ({ input }) => {
-      return updateUserInfoField(input.id, input);
-    }),
-  deleteUserInfoField: publicProcedure
-    .input(userInfoFieldIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteUserInfoField(input.id);
-    }),
-});
+    getUserInfoFieldById: publicProcedure
+      .input(userInfoFieldIdSchema)
+      .query(async ({ input }) => {
+        return getUserInfoFieldById(input.id);
+      }),
+    createUserInfoField: publicProcedure
+      .input(insertUserInfoFieldParams)
+      .mutation(async ({ input }) => {
+        return createUserInfoField(input);
+      }),
+    updateUserInfoField: publicProcedure
+      .input(updateUserInfoFieldParams)
+      .mutation(async ({ input }) => {
+        return updateUserInfoField(input.id, input);
+      }),
+    deleteUserInfoField: publicProcedure
+      .input(userInfoFieldIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteUserInfoField(input.id);
+      }),
+  });

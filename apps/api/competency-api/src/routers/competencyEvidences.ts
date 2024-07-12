@@ -15,28 +15,29 @@ import {
 } from "../api/competencyEvidences/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const competencyEvidencesRouter = createTRPCRouter({
-  getCompetencyEvidences: publicProcedure.query(async () => {
-    return getCompetencyEvidences();
-  }),
-  getCompetencyEvidenceById: publicProcedure
-    .input(competencyEvidenceIdSchema)
-    .query(async ({ input }) => {
-      return getCompetencyEvidenceById(input.id);
+export const competencyEvidencesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getCompetencyEvidences: publicProcedure.query(async () => {
+      return getCompetencyEvidences();
     }),
-  createCompetencyEvidence: publicProcedure
-    .input(insertCompetencyEvidenceParams)
-    .mutation(async ({ input }) => {
-      return createCompetencyEvidence(input);
-    }),
-  updateCompetencyEvidence: publicProcedure
-    .input(updateCompetencyEvidenceParams)
-    .mutation(async ({ input }) => {
-      return updateCompetencyEvidence(input.id, input);
-    }),
-  deleteCompetencyEvidence: publicProcedure
-    .input(competencyEvidenceIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteCompetencyEvidence(input.id);
-    }),
-});
+    getCompetencyEvidenceById: publicProcedure
+      .input(competencyEvidenceIdSchema)
+      .query(async ({ input }) => {
+        return getCompetencyEvidenceById(input.id);
+      }),
+    createCompetencyEvidence: publicProcedure
+      .input(insertCompetencyEvidenceParams)
+      .mutation(async ({ input }) => {
+        return createCompetencyEvidence(input);
+      }),
+    updateCompetencyEvidence: publicProcedure
+      .input(updateCompetencyEvidenceParams)
+      .mutation(async ({ input }) => {
+        return updateCompetencyEvidence(input.id, input);
+      }),
+    deleteCompetencyEvidence: publicProcedure
+      .input(competencyEvidenceIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteCompetencyEvidence(input.id);
+      }),
+  });

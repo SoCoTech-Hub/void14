@@ -2,7 +2,7 @@ import { toolCustomLangComponentsRouter } from "./routers/toolCustomLangComponen
 import { toolCustomLangsRouter } from "./routers/toolCustomLangs";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   toolCustomLangComponents: toolCustomLangComponentsRouter,
   toolCustomLangs: toolCustomLangsRouter,
 });

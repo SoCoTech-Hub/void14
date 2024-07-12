@@ -4,7 +4,7 @@ import { groupsRouter } from "./routers/groups";
 import { groupsMembersRouter } from "./routers/groupsMembers";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   groupings: groupingsRouter,
   groupingsGroups: groupingsGroupsRouter,
   groups: groupsRouter,

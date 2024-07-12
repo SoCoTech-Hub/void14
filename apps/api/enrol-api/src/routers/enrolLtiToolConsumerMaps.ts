@@ -15,7 +15,9 @@ import {
 } from "../api/enrolLtiToolConsumerMaps/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const enrolLtiToolConsumerMapsRouter = createTRPCRouter({
+export const enrolLtiToolConsumerMapsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getEnrolLtiToolConsumerMaps: publicProcedure.query(async () => {
     return getEnrolLtiToolConsumerMaps();
   }),

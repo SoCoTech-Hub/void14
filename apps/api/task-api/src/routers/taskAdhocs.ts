@@ -12,28 +12,29 @@ import {
 import { getTaskAdhocById, getTaskAdhocs } from "../api/taskAdhocs/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const taskAdhocsRouter = createTRPCRouter({
-  getTaskAdhocs: publicProcedure.query(async () => {
-    return getTaskAdhocs();
-  }),
-  getTaskAdhocById: publicProcedure
-    .input(taskAdhocIdSchema)
-    .query(async ({ input }) => {
-      return getTaskAdhocById(input.id);
+export const taskAdhocsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getTaskAdhocs: publicProcedure.query(async () => {
+      return getTaskAdhocs();
     }),
-  createTaskAdhoc: publicProcedure
-    .input(insertTaskAdhocParams)
-    .mutation(async ({ input }) => {
-      return createTaskAdhoc(input);
-    }),
-  updateTaskAdhoc: publicProcedure
-    .input(updateTaskAdhocParams)
-    .mutation(async ({ input }) => {
-      return updateTaskAdhoc(input.id, input);
-    }),
-  deleteTaskAdhoc: publicProcedure
-    .input(taskAdhocIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteTaskAdhoc(input.id);
-    }),
-});
+    getTaskAdhocById: publicProcedure
+      .input(taskAdhocIdSchema)
+      .query(async ({ input }) => {
+        return getTaskAdhocById(input.id);
+      }),
+    createTaskAdhoc: publicProcedure
+      .input(insertTaskAdhocParams)
+      .mutation(async ({ input }) => {
+        return createTaskAdhoc(input);
+      }),
+    updateTaskAdhoc: publicProcedure
+      .input(updateTaskAdhocParams)
+      .mutation(async ({ input }) => {
+        return updateTaskAdhoc(input.id, input);
+      }),
+    deleteTaskAdhoc: publicProcedure
+      .input(taskAdhocIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteTaskAdhoc(input.id);
+      }),
+  });

@@ -12,28 +12,29 @@ import {
 import { getMnetHostById, getMnetHosts } from "../api/mnetHosts/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const mnetHostsRouter = createTRPCRouter({
-  getMnetHosts: publicProcedure.query(async () => {
-    return getMnetHosts();
-  }),
-  getMnetHostById: publicProcedure
-    .input(mnetHostIdSchema)
-    .query(async ({ input }) => {
-      return getMnetHostById(input.id);
+export const mnetHostsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getMnetHosts: publicProcedure.query(async () => {
+      return getMnetHosts();
     }),
-  createMnetHost: publicProcedure
-    .input(insertMnetHostParams)
-    .mutation(async ({ input }) => {
-      return createMnetHost(input);
-    }),
-  updateMnetHost: publicProcedure
-    .input(updateMnetHostParams)
-    .mutation(async ({ input }) => {
-      return updateMnetHost(input.id, input);
-    }),
-  deleteMnetHost: publicProcedure
-    .input(mnetHostIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteMnetHost(input.id);
-    }),
-});
+    getMnetHostById: publicProcedure
+      .input(mnetHostIdSchema)
+      .query(async ({ input }) => {
+        return getMnetHostById(input.id);
+      }),
+    createMnetHost: publicProcedure
+      .input(insertMnetHostParams)
+      .mutation(async ({ input }) => {
+        return createMnetHost(input);
+      }),
+    updateMnetHost: publicProcedure
+      .input(updateMnetHostParams)
+      .mutation(async ({ input }) => {
+        return updateMnetHost(input.id, input);
+      }),
+    deleteMnetHost: publicProcedure
+      .input(mnetHostIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteMnetHost(input.id);
+      }),
+  });

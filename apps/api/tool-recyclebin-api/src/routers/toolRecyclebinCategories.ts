@@ -15,7 +15,9 @@ import {
 } from "../api/toolRecyclebinCategories/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const toolRecyclebinCategoriesRouter = createTRPCRouter({
+export const toolRecyclebinCategoriesRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getToolRecyclebinCategories: publicProcedure.query(async () => {
     return getToolRecyclebinCategories();
   }),

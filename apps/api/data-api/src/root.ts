@@ -4,7 +4,7 @@ import { datasRouter } from "./routers/datas";
 import { fieldsRouter } from "./routers/fields";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   dataContents: dataContentsRouter,
   dataRecords: dataRecordsRouter,
   datas: datasRouter,

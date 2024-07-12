@@ -15,7 +15,9 @@ import {
 } from "../api/courseCompletionCritCompls/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const courseCompletionCritComplsRouter = createTRPCRouter({
+export const courseCompletionCritComplsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getCourseCompletionCritCompls: publicProcedure.query(async () => {
     return getCourseCompletionCritCompls();
   }),

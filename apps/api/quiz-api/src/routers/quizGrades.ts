@@ -12,28 +12,29 @@ import {
 import { getQuizGradeById, getQuizGrades } from "../api/quizGrades/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const quizGradesRouter = createTRPCRouter({
-  getQuizGrades: publicProcedure.query(async () => {
-    return getQuizGrades();
-  }),
-  getQuizGradeById: publicProcedure
-    .input(quizGradeIdSchema)
-    .query(async ({ input }) => {
-      return getQuizGradeById(input.id);
+export const quizGradesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getQuizGrades: publicProcedure.query(async () => {
+      return getQuizGrades();
     }),
-  createQuizGrade: publicProcedure
-    .input(insertQuizGradeParams)
-    .mutation(async ({ input }) => {
-      return createQuizGrade(input);
-    }),
-  updateQuizGrade: publicProcedure
-    .input(updateQuizGradeParams)
-    .mutation(async ({ input }) => {
-      return updateQuizGrade(input.id, input);
-    }),
-  deleteQuizGrade: publicProcedure
-    .input(quizGradeIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteQuizGrade(input.id);
-    }),
-});
+    getQuizGradeById: publicProcedure
+      .input(quizGradeIdSchema)
+      .query(async ({ input }) => {
+        return getQuizGradeById(input.id);
+      }),
+    createQuizGrade: publicProcedure
+      .input(insertQuizGradeParams)
+      .mutation(async ({ input }) => {
+        return createQuizGrade(input);
+      }),
+    updateQuizGrade: publicProcedure
+      .input(updateQuizGradeParams)
+      .mutation(async ({ input }) => {
+        return updateQuizGrade(input.id, input);
+      }),
+    deleteQuizGrade: publicProcedure
+      .input(quizGradeIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteQuizGrade(input.id);
+      }),
+  });

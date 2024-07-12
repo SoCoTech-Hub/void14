@@ -15,7 +15,9 @@ import {
 } from "../api/badgeExternalIdentifiers/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const badgeExternalIdentifiersRouter = createTRPCRouter({
+export const badgeExternalIdentifiersRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getBadgeExternalIdentifiers: publicProcedure.query(async () => {
     return getBadgeExternalIdentifiers();
   }),

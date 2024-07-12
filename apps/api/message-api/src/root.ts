@@ -18,7 +18,7 @@ import { messageUserActionsRouter } from "./routers/messageUserActions";
 import { messageUsersBlockedsRouter } from "./routers/messageUsersBlockeds";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   messageAirnotifierDevices: messageAirnotifierDevicesRouter,
   messageContactRequests: messageContactRequestsRouter,
   messageContacts: messageContactsRouter,

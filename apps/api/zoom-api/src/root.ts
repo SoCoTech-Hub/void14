@@ -3,7 +3,7 @@ import { zoomMeetingsRouter } from "./routers/zoomMeetings";
 import { zoomsRouter } from "./routers/zooms";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   zoomLessons: zoomLessonsRouter,
   zoomMeetings: zoomMeetingsRouter,
   zooms: zoomsRouter,

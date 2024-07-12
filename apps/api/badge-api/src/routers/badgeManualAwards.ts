@@ -15,28 +15,29 @@ import {
 } from "../api/badgeManualAwards/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const badgeManualAwardsRouter = createTRPCRouter({
-  getBadgeManualAwards: publicProcedure.query(async () => {
-    return getBadgeManualAwards();
-  }),
-  getBadgeManualAwardById: publicProcedure
-    .input(badgeManualAwardIdSchema)
-    .query(async ({ input }) => {
-      return getBadgeManualAwardById(input.id);
+export const badgeManualAwardsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getBadgeManualAwards: publicProcedure.query(async () => {
+      return getBadgeManualAwards();
     }),
-  createBadgeManualAward: publicProcedure
-    .input(insertBadgeManualAwardParams)
-    .mutation(async ({ input }) => {
-      return createBadgeManualAward(input);
-    }),
-  updateBadgeManualAward: publicProcedure
-    .input(updateBadgeManualAwardParams)
-    .mutation(async ({ input }) => {
-      return updateBadgeManualAward(input.id, input);
-    }),
-  deleteBadgeManualAward: publicProcedure
-    .input(badgeManualAwardIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteBadgeManualAward(input.id);
-    }),
-});
+    getBadgeManualAwardById: publicProcedure
+      .input(badgeManualAwardIdSchema)
+      .query(async ({ input }) => {
+        return getBadgeManualAwardById(input.id);
+      }),
+    createBadgeManualAward: publicProcedure
+      .input(insertBadgeManualAwardParams)
+      .mutation(async ({ input }) => {
+        return createBadgeManualAward(input);
+      }),
+    updateBadgeManualAward: publicProcedure
+      .input(updateBadgeManualAwardParams)
+      .mutation(async ({ input }) => {
+        return updateBadgeManualAward(input.id, input);
+      }),
+    deleteBadgeManualAward: publicProcedure
+      .input(badgeManualAwardIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteBadgeManualAward(input.id);
+      }),
+  });

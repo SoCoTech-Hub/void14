@@ -15,7 +15,9 @@ import {
 } from "../api/workshopFormRubricConfigs/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const workshopFormRubricConfigsRouter = createTRPCRouter({
+export const workshopFormRubricConfigsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getWorkshopFormRubricConfigs: publicProcedure.query(async () => {
     return getWorkshopFormRubricConfigs();
   }),

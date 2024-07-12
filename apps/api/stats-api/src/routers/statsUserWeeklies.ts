@@ -15,28 +15,29 @@ import {
 } from "../api/statsUserWeeklies/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const statsUserWeekliesRouter = createTRPCRouter({
-  getStatsUserWeeklies: publicProcedure.query(async () => {
-    return getStatsUserWeeklies();
-  }),
-  getStatsUserWeeklyById: publicProcedure
-    .input(statsUserWeeklyIdSchema)
-    .query(async ({ input }) => {
-      return getStatsUserWeeklyById(input.id);
+export const statsUserWeekliesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getStatsUserWeeklies: publicProcedure.query(async () => {
+      return getStatsUserWeeklies();
     }),
-  createStatsUserWeekly: publicProcedure
-    .input(insertStatsUserWeeklyParams)
-    .mutation(async ({ input }) => {
-      return createStatsUserWeekly(input);
-    }),
-  updateStatsUserWeekly: publicProcedure
-    .input(updateStatsUserWeeklyParams)
-    .mutation(async ({ input }) => {
-      return updateStatsUserWeekly(input.id, input);
-    }),
-  deleteStatsUserWeekly: publicProcedure
-    .input(statsUserWeeklyIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteStatsUserWeekly(input.id);
-    }),
-});
+    getStatsUserWeeklyById: publicProcedure
+      .input(statsUserWeeklyIdSchema)
+      .query(async ({ input }) => {
+        return getStatsUserWeeklyById(input.id);
+      }),
+    createStatsUserWeekly: publicProcedure
+      .input(insertStatsUserWeeklyParams)
+      .mutation(async ({ input }) => {
+        return createStatsUserWeekly(input);
+      }),
+    updateStatsUserWeekly: publicProcedure
+      .input(updateStatsUserWeeklyParams)
+      .mutation(async ({ input }) => {
+        return updateStatsUserWeekly(input.id, input);
+      }),
+    deleteStatsUserWeekly: publicProcedure
+      .input(statsUserWeeklyIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteStatsUserWeekly(input.id);
+      }),
+  });

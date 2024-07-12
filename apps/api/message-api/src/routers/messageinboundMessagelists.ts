@@ -15,7 +15,9 @@ import {
 } from "../api/messageinboundMessagelists/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const messageinboundMessagelistsRouter = createTRPCRouter({
+export const messageinboundMessagelistsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getMessageinboundMessagelists: publicProcedure.query(async () => {
     return getMessageinboundMessagelists();
   }),

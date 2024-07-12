@@ -15,7 +15,9 @@ import {
 } from "../api/quizaccessSebQuizSettings/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const quizaccessSebQuizSettingsRouter = createTRPCRouter({
+export const quizaccessSebQuizSettingsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getQuizaccessSebQuizSettings: publicProcedure.query(async () => {
     return getQuizaccessSebQuizSettings();
   }),

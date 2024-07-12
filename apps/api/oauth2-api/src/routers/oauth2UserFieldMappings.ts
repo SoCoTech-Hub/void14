@@ -15,7 +15,9 @@ import {
 } from "../api/oauth2UserFieldMappings/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const oauth2UserFieldMappingsRouter = createTRPCRouter({
+export const oauth2UserFieldMappingsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getOauth2UserFieldMappings: publicProcedure.query(async () => {
     return getOauth2UserFieldMappings();
   }),

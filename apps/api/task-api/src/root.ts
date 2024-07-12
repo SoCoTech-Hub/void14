@@ -3,7 +3,7 @@ import { taskLogsRouter } from "./routers/taskLogs";
 import { taskSchedulesRouter } from "./routers/taskSchedules";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   taskAdhocs: taskAdhocsRouter,
   taskLogs: taskLogsRouter,
   taskSchedules: taskSchedulesRouter,

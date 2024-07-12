@@ -4,7 +4,7 @@ import { chatsRouter } from "./routers/chats";
 import { chatUsersRouter } from "./routers/chatUsers";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   chatMessages: chatMessagesRouter,
   chatMessagesCurrents: chatMessagesCurrentsRouter,
   chats: chatsRouter,

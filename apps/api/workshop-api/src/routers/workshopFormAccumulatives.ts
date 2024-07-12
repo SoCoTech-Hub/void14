@@ -15,7 +15,9 @@ import {
 } from "../api/workshopFormAccumulatives/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const workshopFormAccumulativesRouter = createTRPCRouter({
+export const workshopFormAccumulativesRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getWorkshopFormAccumulatives: publicProcedure.query(async () => {
     return getWorkshopFormAccumulatives();
   }),

@@ -4,7 +4,7 @@ import { bursaryCategoriesBursariesRouter } from "./routers/bursaryCategoriesBur
 import { bursaryResponsesRouter } from "./routers/bursaryResponses";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   bursaries: bursariesRouter,
   bursaryCategories: bursaryCategoriesRouter,
   bursaryCategoriesBursaries: bursaryCategoriesBursariesRouter,

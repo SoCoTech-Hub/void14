@@ -15,28 +15,29 @@ import {
 } from "../api/badgeRelateds/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const badgeRelatedsRouter = createTRPCRouter({
-  getBadgeRelateds: publicProcedure.query(async () => {
-    return getBadgeRelateds();
-  }),
-  getBadgeRelatedById: publicProcedure
-    .input(badgeRelatedIdSchema)
-    .query(async ({ input }) => {
-      return getBadgeRelatedById(input.id);
+export const badgeRelatedsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getBadgeRelateds: publicProcedure.query(async () => {
+      return getBadgeRelateds();
     }),
-  createBadgeRelated: publicProcedure
-    .input(insertBadgeRelatedParams)
-    .mutation(async ({ input }) => {
-      return createBadgeRelated(input);
-    }),
-  updateBadgeRelated: publicProcedure
-    .input(updateBadgeRelatedParams)
-    .mutation(async ({ input }) => {
-      return updateBadgeRelated(input.id, input);
-    }),
-  deleteBadgeRelated: publicProcedure
-    .input(badgeRelatedIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteBadgeRelated(input.id);
-    }),
-});
+    getBadgeRelatedById: publicProcedure
+      .input(badgeRelatedIdSchema)
+      .query(async ({ input }) => {
+        return getBadgeRelatedById(input.id);
+      }),
+    createBadgeRelated: publicProcedure
+      .input(insertBadgeRelatedParams)
+      .mutation(async ({ input }) => {
+        return createBadgeRelated(input);
+      }),
+    updateBadgeRelated: publicProcedure
+      .input(updateBadgeRelatedParams)
+      .mutation(async ({ input }) => {
+        return updateBadgeRelated(input.id, input);
+      }),
+    deleteBadgeRelated: publicProcedure
+      .input(badgeRelatedIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteBadgeRelated(input.id);
+      }),
+  });

@@ -15,28 +15,29 @@ import {
 } from "../api/enrolLtiLti2ShareKeys/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const enrolLtiLti2ShareKeysRouter = createTRPCRouter({
-  getEnrolLtiLti2ShareKeys: publicProcedure.query(async () => {
-    return getEnrolLtiLti2ShareKeys();
-  }),
-  getEnrolLtiLti2ShareKeyById: publicProcedure
-    .input(enrolLtiLti2ShareKeyIdSchema)
-    .query(async ({ input }) => {
-      return getEnrolLtiLti2ShareKeyById(input.id);
+export const enrolLtiLti2ShareKeysRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getEnrolLtiLti2ShareKeys: publicProcedure.query(async () => {
+      return getEnrolLtiLti2ShareKeys();
     }),
-  createEnrolLtiLti2ShareKey: publicProcedure
-    .input(insertEnrolLtiLti2ShareKeyParams)
-    .mutation(async ({ input }) => {
-      return createEnrolLtiLti2ShareKey(input);
-    }),
-  updateEnrolLtiLti2ShareKey: publicProcedure
-    .input(updateEnrolLtiLti2ShareKeyParams)
-    .mutation(async ({ input }) => {
-      return updateEnrolLtiLti2ShareKey(input.id, input);
-    }),
-  deleteEnrolLtiLti2ShareKey: publicProcedure
-    .input(enrolLtiLti2ShareKeyIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteEnrolLtiLti2ShareKey(input.id);
-    }),
-});
+    getEnrolLtiLti2ShareKeyById: publicProcedure
+      .input(enrolLtiLti2ShareKeyIdSchema)
+      .query(async ({ input }) => {
+        return getEnrolLtiLti2ShareKeyById(input.id);
+      }),
+    createEnrolLtiLti2ShareKey: publicProcedure
+      .input(insertEnrolLtiLti2ShareKeyParams)
+      .mutation(async ({ input }) => {
+        return createEnrolLtiLti2ShareKey(input);
+      }),
+    updateEnrolLtiLti2ShareKey: publicProcedure
+      .input(updateEnrolLtiLti2ShareKeyParams)
+      .mutation(async ({ input }) => {
+        return updateEnrolLtiLti2ShareKey(input.id, input);
+      }),
+    deleteEnrolLtiLti2ShareKey: publicProcedure
+      .input(enrolLtiLti2ShareKeyIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteEnrolLtiLti2ShareKey(input.id);
+      }),
+  });

@@ -15,28 +15,29 @@ import {
 } from "../api/glossaryFormats/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const glossaryFormatsRouter = createTRPCRouter({
-  getGlossaryFormats: publicProcedure.query(async () => {
-    return getGlossaryFormats();
-  }),
-  getGlossaryFormatById: publicProcedure
-    .input(glossaryFormatIdSchema)
-    .query(async ({ input }) => {
-      return getGlossaryFormatById(input.id);
+export const glossaryFormatsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getGlossaryFormats: publicProcedure.query(async () => {
+      return getGlossaryFormats();
     }),
-  createGlossaryFormat: publicProcedure
-    .input(insertGlossaryFormatParams)
-    .mutation(async ({ input }) => {
-      return createGlossaryFormat(input);
-    }),
-  updateGlossaryFormat: publicProcedure
-    .input(updateGlossaryFormatParams)
-    .mutation(async ({ input }) => {
-      return updateGlossaryFormat(input.id, input);
-    }),
-  deleteGlossaryFormat: publicProcedure
-    .input(glossaryFormatIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteGlossaryFormat(input.id);
-    }),
-});
+    getGlossaryFormatById: publicProcedure
+      .input(glossaryFormatIdSchema)
+      .query(async ({ input }) => {
+        return getGlossaryFormatById(input.id);
+      }),
+    createGlossaryFormat: publicProcedure
+      .input(insertGlossaryFormatParams)
+      .mutation(async ({ input }) => {
+        return createGlossaryFormat(input);
+      }),
+    updateGlossaryFormat: publicProcedure
+      .input(updateGlossaryFormatParams)
+      .mutation(async ({ input }) => {
+        return updateGlossaryFormat(input.id, input);
+      }),
+    deleteGlossaryFormat: publicProcedure
+      .input(glossaryFormatIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteGlossaryFormat(input.id);
+      }),
+  });

@@ -15,7 +15,9 @@ import {
 } from "../api/jobApplicationsApplicationCategories/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const jobApplicationsApplicationCategoriesRouter = createTRPCRouter({
+export const jobApplicationsApplicationCategoriesRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getJobApplicationsApplicationCategories: publicProcedure.query(async () => {
     return getJobApplicationsApplicationCategories();
   }),

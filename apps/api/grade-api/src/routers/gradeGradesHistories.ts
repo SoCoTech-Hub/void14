@@ -15,28 +15,29 @@ import {
 } from "../api/gradeGradesHistories/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const gradeGradesHistoriesRouter = createTRPCRouter({
-  getGradeGradesHistories: publicProcedure.query(async () => {
-    return getGradeGradesHistories();
-  }),
-  getGradeGradesHistoryById: publicProcedure
-    .input(gradeGradesHistoryIdSchema)
-    .query(async ({ input }) => {
-      return getGradeGradesHistoryById(input.id);
+export const gradeGradesHistoriesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getGradeGradesHistories: publicProcedure.query(async () => {
+      return getGradeGradesHistories();
     }),
-  createGradeGradesHistory: publicProcedure
-    .input(insertGradeGradesHistoryParams)
-    .mutation(async ({ input }) => {
-      return createGradeGradesHistory(input);
-    }),
-  updateGradeGradesHistory: publicProcedure
-    .input(updateGradeGradesHistoryParams)
-    .mutation(async ({ input }) => {
-      return updateGradeGradesHistory(input.id, input);
-    }),
-  deleteGradeGradesHistory: publicProcedure
-    .input(gradeGradesHistoryIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteGradeGradesHistory(input.id);
-    }),
-});
+    getGradeGradesHistoryById: publicProcedure
+      .input(gradeGradesHistoryIdSchema)
+      .query(async ({ input }) => {
+        return getGradeGradesHistoryById(input.id);
+      }),
+    createGradeGradesHistory: publicProcedure
+      .input(insertGradeGradesHistoryParams)
+      .mutation(async ({ input }) => {
+        return createGradeGradesHistory(input);
+      }),
+    updateGradeGradesHistory: publicProcedure
+      .input(updateGradeGradesHistoryParams)
+      .mutation(async ({ input }) => {
+        return updateGradeGradesHistory(input.id, input);
+      }),
+    deleteGradeGradesHistory: publicProcedure
+      .input(gradeGradesHistoryIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteGradeGradesHistory(input.id);
+      }),
+  });

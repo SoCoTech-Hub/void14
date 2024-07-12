@@ -15,7 +15,9 @@ import {
 } from "../api/questionAttemptStepDatas/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const questionAttemptStepDatasRouter = createTRPCRouter({
+export const questionAttemptStepDatasRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getQuestionAttemptStepDatas: publicProcedure.query(async () => {
     return getQuestionAttemptStepDatas();
   }),

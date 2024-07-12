@@ -15,28 +15,29 @@ import {
 } from "../api/questionTruefalse/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const questionTruefalseRouter = createTRPCRouter({
-  getQuestionTruefalse: publicProcedure.query(async () => {
-    return getQuestionTruefalse();
-  }),
-  getQuestionTruefalseById: publicProcedure
-    .input(questionTruefalseIdSchema)
-    .query(async ({ input }) => {
-      return getQuestionTruefalseById(input.id);
+export const questionTruefalseRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getQuestionTruefalse: publicProcedure.query(async () => {
+      return getQuestionTruefalse();
     }),
-  createQuestionTruefalse: publicProcedure
-    .input(insertQuestionTruefalseParams)
-    .mutation(async ({ input }) => {
-      return createQuestionTruefalse(input);
-    }),
-  updateQuestionTruefalse: publicProcedure
-    .input(updateQuestionTruefalseParams)
-    .mutation(async ({ input }) => {
-      return updateQuestionTruefalse(input.id, input);
-    }),
-  deleteQuestionTruefalse: publicProcedure
-    .input(questionTruefalseIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteQuestionTruefalse(input.id);
-    }),
-});
+    getQuestionTruefalseById: publicProcedure
+      .input(questionTruefalseIdSchema)
+      .query(async ({ input }) => {
+        return getQuestionTruefalseById(input.id);
+      }),
+    createQuestionTruefalse: publicProcedure
+      .input(insertQuestionTruefalseParams)
+      .mutation(async ({ input }) => {
+        return createQuestionTruefalse(input);
+      }),
+    updateQuestionTruefalse: publicProcedure
+      .input(updateQuestionTruefalseParams)
+      .mutation(async ({ input }) => {
+        return updateQuestionTruefalse(input.id, input);
+      }),
+    deleteQuestionTruefalse: publicProcedure
+      .input(questionTruefalseIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteQuestionTruefalse(input.id);
+      }),
+  });

@@ -15,7 +15,9 @@ import {
 } from "../api/repositoryInstanceConfigs/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const repositoryInstanceConfigsRouter = createTRPCRouter({
+export const repositoryInstanceConfigsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getRepositoryInstanceConfigs: publicProcedure.query(async () => {
     return getRepositoryInstanceConfigs();
   }),

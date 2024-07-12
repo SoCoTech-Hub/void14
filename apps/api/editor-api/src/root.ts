@@ -1,7 +1,7 @@
 import { editorAttoAutosavesRouter } from "./routers/editorAttoAutosaves";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   editorAttoAutosaves: editorAttoAutosavesRouter,
 });
 

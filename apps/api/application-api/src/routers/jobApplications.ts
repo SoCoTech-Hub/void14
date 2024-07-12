@@ -15,28 +15,29 @@ import {
 } from "../api/jobApplications/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const jobApplicationsRouter = createTRPCRouter({
-  getJobApplications: publicProcedure.query(async () => {
-    return getJobApplications();
-  }),
-  getJobApplicationById: publicProcedure
-    .input(jobApplicationIdSchema)
-    .query(async ({ input }) => {
-      return getJobApplicationById(input.id);
+export const jobApplicationsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getJobApplications: publicProcedure.query(async () => {
+      return getJobApplications();
     }),
-  createJobApplication: publicProcedure
-    .input(insertJobApplicationParams)
-    .mutation(async ({ input }) => {
-      return createJobApplication(input);
-    }),
-  updateJobApplication: publicProcedure
-    .input(updateJobApplicationParams)
-    .mutation(async ({ input }) => {
-      return updateJobApplication(input.id, input);
-    }),
-  deleteJobApplication: publicProcedure
-    .input(jobApplicationIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteJobApplication(input.id);
-    }),
-});
+    getJobApplicationById: publicProcedure
+      .input(jobApplicationIdSchema)
+      .query(async ({ input }) => {
+        return getJobApplicationById(input.id);
+      }),
+    createJobApplication: publicProcedure
+      .input(insertJobApplicationParams)
+      .mutation(async ({ input }) => {
+        return createJobApplication(input);
+      }),
+    updateJobApplication: publicProcedure
+      .input(updateJobApplicationParams)
+      .mutation(async ({ input }) => {
+        return updateJobApplication(input.id, input);
+      }),
+    deleteJobApplication: publicProcedure
+      .input(jobApplicationIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteJobApplication(input.id);
+      }),
+  });

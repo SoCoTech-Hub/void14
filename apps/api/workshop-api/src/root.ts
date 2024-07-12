@@ -14,7 +14,7 @@ import { workshopsRouter } from "./routers/workshops";
 import { workshopSubmissionsRouter } from "./routers/workshopSubmissions";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   workshopAggregations: workshopAggregationsRouter,
   workshopAllocationSchedules: workshopAllocationSchedulesRouter,
   workshopAssessments: workshopAssessmentsRouter,

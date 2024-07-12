@@ -15,28 +15,29 @@ import {
 } from "../api/cohortMembers/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const cohortMembersRouter = createTRPCRouter({
-  getCohortMembers: publicProcedure.query(async () => {
-    return getCohortMembers();
-  }),
-  getCohortMemberById: publicProcedure
-    .input(cohortMemberIdSchema)
-    .query(async ({ input }) => {
-      return getCohortMemberById(input.id);
+export const cohortMembersRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getCohortMembers: publicProcedure.query(async () => {
+      return getCohortMembers();
     }),
-  createCohortMember: publicProcedure
-    .input(insertCohortMemberParams)
-    .mutation(async ({ input }) => {
-      return createCohortMember(input);
-    }),
-  updateCohortMember: publicProcedure
-    .input(updateCohortMemberParams)
-    .mutation(async ({ input }) => {
-      return updateCohortMember(input.id, input);
-    }),
-  deleteCohortMember: publicProcedure
-    .input(cohortMemberIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteCohortMember(input.id);
-    }),
-});
+    getCohortMemberById: publicProcedure
+      .input(cohortMemberIdSchema)
+      .query(async ({ input }) => {
+        return getCohortMemberById(input.id);
+      }),
+    createCohortMember: publicProcedure
+      .input(insertCohortMemberParams)
+      .mutation(async ({ input }) => {
+        return createCohortMember(input);
+      }),
+    updateCohortMember: publicProcedure
+      .input(updateCohortMemberParams)
+      .mutation(async ({ input }) => {
+        return updateCohortMember(input.id, input);
+      }),
+    deleteCohortMember: publicProcedure
+      .input(cohortMemberIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteCohortMember(input.id);
+      }),
+  });

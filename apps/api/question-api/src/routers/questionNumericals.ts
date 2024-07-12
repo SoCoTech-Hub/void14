@@ -15,28 +15,29 @@ import {
 } from "../api/questionNumericals/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const questionNumericalsRouter = createTRPCRouter({
-  getQuestionNumericals: publicProcedure.query(async () => {
-    return getQuestionNumericals();
-  }),
-  getQuestionNumericalById: publicProcedure
-    .input(questionNumericalIdSchema)
-    .query(async ({ input }) => {
-      return getQuestionNumericalById(input.id);
+export const questionNumericalsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getQuestionNumericals: publicProcedure.query(async () => {
+      return getQuestionNumericals();
     }),
-  createQuestionNumerical: publicProcedure
-    .input(insertQuestionNumericalParams)
-    .mutation(async ({ input }) => {
-      return createQuestionNumerical(input);
-    }),
-  updateQuestionNumerical: publicProcedure
-    .input(updateQuestionNumericalParams)
-    .mutation(async ({ input }) => {
-      return updateQuestionNumerical(input.id, input);
-    }),
-  deleteQuestionNumerical: publicProcedure
-    .input(questionNumericalIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteQuestionNumerical(input.id);
-    }),
-});
+    getQuestionNumericalById: publicProcedure
+      .input(questionNumericalIdSchema)
+      .query(async ({ input }) => {
+        return getQuestionNumericalById(input.id);
+      }),
+    createQuestionNumerical: publicProcedure
+      .input(insertQuestionNumericalParams)
+      .mutation(async ({ input }) => {
+        return createQuestionNumerical(input);
+      }),
+    updateQuestionNumerical: publicProcedure
+      .input(updateQuestionNumericalParams)
+      .mutation(async ({ input }) => {
+        return updateQuestionNumerical(input.id, input);
+      }),
+    deleteQuestionNumerical: publicProcedure
+      .input(questionNumericalIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteQuestionNumerical(input.id);
+      }),
+  });

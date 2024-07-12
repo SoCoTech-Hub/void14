@@ -2,7 +2,7 @@ import { contextsRouter } from "./routers/contexts";
 import { contextTempRouter } from "./routers/contextTemp";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   contexts: contextsRouter,
   contextTemp: contextTempRouter,
 });

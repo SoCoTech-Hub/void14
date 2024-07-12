@@ -15,7 +15,9 @@ import {
 } from "../api/scormSeqRollupRuleConds/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const scormSeqRollupRuleCondsRouter = createTRPCRouter({
+export const scormSeqRollupRuleCondsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getScormSeqRollupRuleConds: publicProcedure.query(async () => {
     return getScormSeqRollupRuleConds();
   }),

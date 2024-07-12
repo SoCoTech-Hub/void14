@@ -15,7 +15,9 @@ import {
 } from "../api/questionNumericalOptions/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const questionNumericalOptionsRouter = createTRPCRouter({
+export const questionNumericalOptionsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getQuestionNumericalOptions: publicProcedure.query(async () => {
     return getQuestionNumericalOptions();
   }),

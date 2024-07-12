@@ -15,28 +15,29 @@ import {
 } from "../api/badgeExternalBackpacks/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const badgeExternalBackpacksRouter = createTRPCRouter({
-  getBadgeExternalBackpacks: publicProcedure.query(async () => {
-    return getBadgeExternalBackpacks();
-  }),
-  getBadgeExternalBackpackById: publicProcedure
-    .input(badgeExternalBackpackIdSchema)
-    .query(async ({ input }) => {
-      return getBadgeExternalBackpackById(input.id);
+export const badgeExternalBackpacksRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getBadgeExternalBackpacks: publicProcedure.query(async () => {
+      return getBadgeExternalBackpacks();
     }),
-  createBadgeExternalBackpack: publicProcedure
-    .input(insertBadgeExternalBackpackParams)
-    .mutation(async ({ input }) => {
-      return createBadgeExternalBackpack(input);
-    }),
-  updateBadgeExternalBackpack: publicProcedure
-    .input(updateBadgeExternalBackpackParams)
-    .mutation(async ({ input }) => {
-      return updateBadgeExternalBackpack(input.id, input);
-    }),
-  deleteBadgeExternalBackpack: publicProcedure
-    .input(badgeExternalBackpackIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteBadgeExternalBackpack(input.id);
-    }),
-});
+    getBadgeExternalBackpackById: publicProcedure
+      .input(badgeExternalBackpackIdSchema)
+      .query(async ({ input }) => {
+        return getBadgeExternalBackpackById(input.id);
+      }),
+    createBadgeExternalBackpack: publicProcedure
+      .input(insertBadgeExternalBackpackParams)
+      .mutation(async ({ input }) => {
+        return createBadgeExternalBackpack(input);
+      }),
+    updateBadgeExternalBackpack: publicProcedure
+      .input(updateBadgeExternalBackpackParams)
+      .mutation(async ({ input }) => {
+        return updateBadgeExternalBackpack(input.id, input);
+      }),
+    deleteBadgeExternalBackpack: publicProcedure
+      .input(badgeExternalBackpackIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteBadgeExternalBackpack(input.id);
+      }),
+  });

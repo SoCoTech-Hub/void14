@@ -15,7 +15,9 @@ import {
 } from "../api/assignFeedbackEditpdfRots/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const assignFeedbackEditpdfRotsRouter = createTRPCRouter({
+export const assignFeedbackEditpdfRotsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getAssignFeedbackEditpdfRots: publicProcedure.query(async () => {
     return getAssignFeedbackEditpdfRots();
   }),

@@ -15,7 +15,9 @@ import {
 } from "../api/h5pLibrariesCachedassets/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const h5pLibrariesCachedassetsRouter = createTRPCRouter({
+export const h5pLibrariesCachedassetsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getH5pLibrariesCachedassets: publicProcedure.query(async () => {
     return getH5pLibrariesCachedassets();
   }),

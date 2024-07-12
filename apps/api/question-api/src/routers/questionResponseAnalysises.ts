@@ -15,7 +15,9 @@ import {
 } from "../api/questionResponseAnalysises/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const questionResponseAnalysisesRouter = createTRPCRouter({
+export const questionResponseAnalysisesRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getQuestionResponseAnalysises: publicProcedure.query(async () => {
     return getQuestionResponseAnalysises();
   }),

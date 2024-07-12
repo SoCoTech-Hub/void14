@@ -1,7 +1,7 @@
 import { labelsRouter } from "./routers/labels";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   labels: labelsRouter,
 });
 

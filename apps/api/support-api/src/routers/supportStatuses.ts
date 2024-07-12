@@ -15,28 +15,29 @@ import {
 } from "../api/supportStatuses/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const supportStatusesRouter = createTRPCRouter({
-  getSupportStatuses: publicProcedure.query(async () => {
-    return getSupportStatuses();
-  }),
-  getSupportStatusById: publicProcedure
-    .input(supportStatusIdSchema)
-    .query(async ({ input }) => {
-      return getSupportStatusById(input.id);
+export const supportStatusesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getSupportStatuses: publicProcedure.query(async () => {
+      return getSupportStatuses();
     }),
-  createSupportStatus: publicProcedure
-    .input(insertSupportStatusParams)
-    .mutation(async ({ input }) => {
-      return createSupportStatus(input);
-    }),
-  updateSupportStatus: publicProcedure
-    .input(updateSupportStatusParams)
-    .mutation(async ({ input }) => {
-      return updateSupportStatus(input.id, input);
-    }),
-  deleteSupportStatus: publicProcedure
-    .input(supportStatusIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteSupportStatus(input.id);
-    }),
-});
+    getSupportStatusById: publicProcedure
+      .input(supportStatusIdSchema)
+      .query(async ({ input }) => {
+        return getSupportStatusById(input.id);
+      }),
+    createSupportStatus: publicProcedure
+      .input(insertSupportStatusParams)
+      .mutation(async ({ input }) => {
+        return createSupportStatus(input);
+      }),
+    updateSupportStatus: publicProcedure
+      .input(updateSupportStatusParams)
+      .mutation(async ({ input }) => {
+        return updateSupportStatus(input.id, input);
+      }),
+    deleteSupportStatus: publicProcedure
+      .input(supportStatusIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteSupportStatus(input.id);
+      }),
+  });

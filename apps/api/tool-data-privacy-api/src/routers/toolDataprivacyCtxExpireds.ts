@@ -15,7 +15,9 @@ import {
 } from "../api/toolDataprivacyCtxExpireds/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const toolDataprivacyCtxExpiredsRouter = createTRPCRouter({
+export const toolDataprivacyCtxExpiredsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getToolDataprivacyCtxExpireds: publicProcedure.query(async () => {
     return getToolDataprivacyCtxExpireds();
   }),

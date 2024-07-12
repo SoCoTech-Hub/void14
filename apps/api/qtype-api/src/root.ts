@@ -12,7 +12,7 @@ import { qtypeRandomsamatchOptionsRouter } from "./routers/qtypeRandomsamatchOpt
 import { qtypeShortanswerOptionsRouter } from "./routers/qtypeShortanswerOptions";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   qtypeDdimageortextDrags: qtypeDdimageortextDragsRouter,
   qtypeDdimageortextDrops: qtypeDdimageortextDropsRouter,
   qtypeDdimageortexts: qtypeDdimageortextsRouter,

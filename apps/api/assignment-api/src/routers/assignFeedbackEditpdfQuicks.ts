@@ -15,7 +15,9 @@ import {
 } from "../api/assignFeedbackEditpdfQuicks/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const assignFeedbackEditpdfQuicksRouter = createTRPCRouter({
+export const assignFeedbackEditpdfQuicksRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getAssignFeedbackEditpdfQuicks: publicProcedure.query(async () => {
     return getAssignFeedbackEditpdfQuicks();
   }),

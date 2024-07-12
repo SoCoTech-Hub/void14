@@ -15,28 +15,29 @@ import {
 } from "../api/mnetApplications/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const mnetApplicationsRouter = createTRPCRouter({
-  getMnetApplications: publicProcedure.query(async () => {
-    return getMnetApplications();
-  }),
-  getMnetApplicationById: publicProcedure
-    .input(mnetApplicationIdSchema)
-    .query(async ({ input }) => {
-      return getMnetApplicationById(input.id);
+export const mnetApplicationsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getMnetApplications: publicProcedure.query(async () => {
+      return getMnetApplications();
     }),
-  createMnetApplication: publicProcedure
-    .input(insertMnetApplicationParams)
-    .mutation(async ({ input }) => {
-      return createMnetApplication(input);
-    }),
-  updateMnetApplication: publicProcedure
-    .input(updateMnetApplicationParams)
-    .mutation(async ({ input }) => {
-      return updateMnetApplication(input.id, input);
-    }),
-  deleteMnetApplication: publicProcedure
-    .input(mnetApplicationIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteMnetApplication(input.id);
-    }),
-});
+    getMnetApplicationById: publicProcedure
+      .input(mnetApplicationIdSchema)
+      .query(async ({ input }) => {
+        return getMnetApplicationById(input.id);
+      }),
+    createMnetApplication: publicProcedure
+      .input(insertMnetApplicationParams)
+      .mutation(async ({ input }) => {
+        return createMnetApplication(input);
+      }),
+    updateMnetApplication: publicProcedure
+      .input(updateMnetApplicationParams)
+      .mutation(async ({ input }) => {
+        return updateMnetApplication(input.id, input);
+      }),
+    deleteMnetApplication: publicProcedure
+      .input(mnetApplicationIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteMnetApplication(input.id);
+      }),
+  });

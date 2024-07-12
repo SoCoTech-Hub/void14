@@ -5,7 +5,7 @@ import { reportbuilderReportsRouter } from "./routers/reportbuilderReports";
 import { reportbuilderSchedulesRouter } from "./routers/reportbuilderSchedules";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   reportbuilderAudiences: reportbuilderAudiencesRouter,
   reportbuilderColumns: reportbuilderColumnsRouter,
   reportbuilderFilters: reportbuilderFiltersRouter,

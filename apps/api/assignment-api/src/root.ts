@@ -19,7 +19,7 @@ import { assignUserFlagsRouter } from "./routers/assignUserFlags";
 import { assignUserMappingsRouter } from "./routers/assignUserMappings";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   assignFeedbackComments: assignFeedbackCommentsRouter,
   assignFeedbackEditpdfAnnots: assignFeedbackEditpdfAnnotsRouter,
   assignFeedbackEditpdfCmnts: assignFeedbackEditpdfCmntsRouter,

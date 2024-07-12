@@ -15,28 +15,29 @@ import {
 } from "../api/ltiToolSettings/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const ltiToolSettingsRouter = createTRPCRouter({
-  getLtiToolSettings: publicProcedure.query(async () => {
-    return getLtiToolSettings();
-  }),
-  getLtiToolSettingById: publicProcedure
-    .input(ltiToolSettingIdSchema)
-    .query(async ({ input }) => {
-      return getLtiToolSettingById(input.id);
+export const ltiToolSettingsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getLtiToolSettings: publicProcedure.query(async () => {
+      return getLtiToolSettings();
     }),
-  createLtiToolSetting: publicProcedure
-    .input(insertLtiToolSettingParams)
-    .mutation(async ({ input }) => {
-      return createLtiToolSetting(input);
-    }),
-  updateLtiToolSetting: publicProcedure
-    .input(updateLtiToolSettingParams)
-    .mutation(async ({ input }) => {
-      return updateLtiToolSetting(input.id, input);
-    }),
-  deleteLtiToolSetting: publicProcedure
-    .input(ltiToolSettingIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteLtiToolSetting(input.id);
-    }),
-});
+    getLtiToolSettingById: publicProcedure
+      .input(ltiToolSettingIdSchema)
+      .query(async ({ input }) => {
+        return getLtiToolSettingById(input.id);
+      }),
+    createLtiToolSetting: publicProcedure
+      .input(insertLtiToolSettingParams)
+      .mutation(async ({ input }) => {
+        return createLtiToolSetting(input);
+      }),
+    updateLtiToolSetting: publicProcedure
+      .input(updateLtiToolSettingParams)
+      .mutation(async ({ input }) => {
+        return updateLtiToolSetting(input.id, input);
+      }),
+    deleteLtiToolSetting: publicProcedure
+      .input(ltiToolSettingIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteLtiToolSetting(input.id);
+      }),
+  });

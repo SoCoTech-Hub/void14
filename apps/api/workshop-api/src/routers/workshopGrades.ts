@@ -15,28 +15,29 @@ import {
 } from "../api/workshopGrades/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const workshopGradesRouter = createTRPCRouter({
-  getWorkshopGrades: publicProcedure.query(async () => {
-    return getWorkshopGrades();
-  }),
-  getWorkshopGradeById: publicProcedure
-    .input(workshopGradeIdSchema)
-    .query(async ({ input }) => {
-      return getWorkshopGradeById(input.id);
+export const workshopGradesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getWorkshopGrades: publicProcedure.query(async () => {
+      return getWorkshopGrades();
     }),
-  createWorkshopGrade: publicProcedure
-    .input(insertWorkshopGradeParams)
-    .mutation(async ({ input }) => {
-      return createWorkshopGrade(input);
-    }),
-  updateWorkshopGrade: publicProcedure
-    .input(updateWorkshopGradeParams)
-    .mutation(async ({ input }) => {
-      return updateWorkshopGrade(input.id, input);
-    }),
-  deleteWorkshopGrade: publicProcedure
-    .input(workshopGradeIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteWorkshopGrade(input.id);
-    }),
-});
+    getWorkshopGradeById: publicProcedure
+      .input(workshopGradeIdSchema)
+      .query(async ({ input }) => {
+        return getWorkshopGradeById(input.id);
+      }),
+    createWorkshopGrade: publicProcedure
+      .input(insertWorkshopGradeParams)
+      .mutation(async ({ input }) => {
+        return createWorkshopGrade(input);
+      }),
+    updateWorkshopGrade: publicProcedure
+      .input(updateWorkshopGradeParams)
+      .mutation(async ({ input }) => {
+        return updateWorkshopGrade(input.id, input);
+      }),
+    deleteWorkshopGrade: publicProcedure
+      .input(workshopGradeIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteWorkshopGrade(input.id);
+      }),
+  });

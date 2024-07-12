@@ -15,28 +15,29 @@ import {
 } from "../api/assignmentSubmissions/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const assignmentSubmissionsRouter = createTRPCRouter({
-  getAssignmentSubmissions: publicProcedure.query(async () => {
-    return getAssignmentSubmissions();
-  }),
-  getAssignmentSubmissionById: publicProcedure
-    .input(assignmentSubmissionIdSchema)
-    .query(async ({ input }) => {
-      return getAssignmentSubmissionById(input.id);
+export const assignmentSubmissionsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getAssignmentSubmissions: publicProcedure.query(async () => {
+      return getAssignmentSubmissions();
     }),
-  createAssignmentSubmission: publicProcedure
-    .input(insertAssignmentSubmissionParams)
-    .mutation(async ({ input }) => {
-      return createAssignmentSubmission(input);
-    }),
-  updateAssignmentSubmission: publicProcedure
-    .input(updateAssignmentSubmissionParams)
-    .mutation(async ({ input }) => {
-      return updateAssignmentSubmission(input.id, input);
-    }),
-  deleteAssignmentSubmission: publicProcedure
-    .input(assignmentSubmissionIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteAssignmentSubmission(input.id);
-    }),
-});
+    getAssignmentSubmissionById: publicProcedure
+      .input(assignmentSubmissionIdSchema)
+      .query(async ({ input }) => {
+        return getAssignmentSubmissionById(input.id);
+      }),
+    createAssignmentSubmission: publicProcedure
+      .input(insertAssignmentSubmissionParams)
+      .mutation(async ({ input }) => {
+        return createAssignmentSubmission(input);
+      }),
+    updateAssignmentSubmission: publicProcedure
+      .input(updateAssignmentSubmissionParams)
+      .mutation(async ({ input }) => {
+        return updateAssignmentSubmission(input.id, input);
+      }),
+    deleteAssignmentSubmission: publicProcedure
+      .input(assignmentSubmissionIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteAssignmentSubmission(input.id);
+      }),
+  });

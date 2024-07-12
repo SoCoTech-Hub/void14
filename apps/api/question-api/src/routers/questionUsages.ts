@@ -15,28 +15,29 @@ import {
 } from "../api/questionUsages/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const questionUsagesRouter = createTRPCRouter({
-  getQuestionUsages: publicProcedure.query(async () => {
-    return getQuestionUsages();
-  }),
-  getQuestionUsageById: publicProcedure
-    .input(questionUsageIdSchema)
-    .query(async ({ input }) => {
-      return getQuestionUsageById(input.id);
+export const questionUsagesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getQuestionUsages: publicProcedure.query(async () => {
+      return getQuestionUsages();
     }),
-  createQuestionUsage: publicProcedure
-    .input(insertQuestionUsageParams)
-    .mutation(async ({ input }) => {
-      return createQuestionUsage(input);
-    }),
-  updateQuestionUsage: publicProcedure
-    .input(updateQuestionUsageParams)
-    .mutation(async ({ input }) => {
-      return updateQuestionUsage(input.id, input);
-    }),
-  deleteQuestionUsage: publicProcedure
-    .input(questionUsageIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteQuestionUsage(input.id);
-    }),
-});
+    getQuestionUsageById: publicProcedure
+      .input(questionUsageIdSchema)
+      .query(async ({ input }) => {
+        return getQuestionUsageById(input.id);
+      }),
+    createQuestionUsage: publicProcedure
+      .input(insertQuestionUsageParams)
+      .mutation(async ({ input }) => {
+        return createQuestionUsage(input);
+      }),
+    updateQuestionUsage: publicProcedure
+      .input(updateQuestionUsageParams)
+      .mutation(async ({ input }) => {
+        return updateQuestionUsage(input.id, input);
+      }),
+    deleteQuestionUsage: publicProcedure
+      .input(questionUsageIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteQuestionUsage(input.id);
+      }),
+  });

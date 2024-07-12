@@ -8,7 +8,7 @@ import { ltiTypesRouter } from "./routers/ltiTypes";
 import { ltiTypesConfigsRouter } from "./routers/ltiTypesConfigs";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   ltiAccessTokens: ltiAccessTokensRouter,
   ltis: ltisRouter,
   ltiserviceGradebookservices: ltiserviceGradebookservicesRouter,

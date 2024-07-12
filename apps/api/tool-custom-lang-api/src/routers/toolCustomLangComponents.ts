@@ -15,7 +15,9 @@ import {
 } from "../api/toolCustomLangComponents/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const toolCustomLangComponentsRouter = createTRPCRouter({
+export const toolCustomLangComponentsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getToolCustomLangComponents: publicProcedure.query(async () => {
     return getToolCustomLangComponents();
   }),

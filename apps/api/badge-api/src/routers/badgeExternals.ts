@@ -15,28 +15,29 @@ import {
 } from "../api/badgeExternals/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const badgeExternalsRouter = createTRPCRouter({
-  getBadgeExternals: publicProcedure.query(async () => {
-    return getBadgeExternals();
-  }),
-  getBadgeExternalById: publicProcedure
-    .input(badgeExternalIdSchema)
-    .query(async ({ input }) => {
-      return getBadgeExternalById(input.id);
+export const badgeExternalsRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getBadgeExternals: publicProcedure.query(async () => {
+      return getBadgeExternals();
     }),
-  createBadgeExternal: publicProcedure
-    .input(insertBadgeExternalParams)
-    .mutation(async ({ input }) => {
-      return createBadgeExternal(input);
-    }),
-  updateBadgeExternal: publicProcedure
-    .input(updateBadgeExternalParams)
-    .mutation(async ({ input }) => {
-      return updateBadgeExternal(input.id, input);
-    }),
-  deleteBadgeExternal: publicProcedure
-    .input(badgeExternalIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteBadgeExternal(input.id);
-    }),
-});
+    getBadgeExternalById: publicProcedure
+      .input(badgeExternalIdSchema)
+      .query(async ({ input }) => {
+        return getBadgeExternalById(input.id);
+      }),
+    createBadgeExternal: publicProcedure
+      .input(insertBadgeExternalParams)
+      .mutation(async ({ input }) => {
+        return createBadgeExternal(input);
+      }),
+    updateBadgeExternal: publicProcedure
+      .input(updateBadgeExternalParams)
+      .mutation(async ({ input }) => {
+        return updateBadgeExternal(input.id, input);
+      }),
+    deleteBadgeExternal: publicProcedure
+      .input(badgeExternalIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteBadgeExternal(input.id);
+      }),
+  });

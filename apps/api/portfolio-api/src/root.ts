@@ -6,7 +6,7 @@ import { portfolioMaharaQueuesRouter } from "./routers/portfolioMaharaQueues";
 import { portfolioTempdatasRouter } from "./routers/portfolioTempdatas";
 import { createTRPCRouter } from "./trpc";
 
-export const appRouter = createTRPCRouter({
+export const appRouter: ReturnType<typeof createTRPCRouter> = createTRPCRouter({
   portfolioInstanceConfigs: portfolioInstanceConfigsRouter,
   portfolioInstances: portfolioInstancesRouter,
   portfolioInstanceUsers: portfolioInstanceUsersRouter,

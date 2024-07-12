@@ -15,28 +15,29 @@ import {
 } from "../api/analyticsTrainSamples/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const analyticsTrainSamplesRouter = createTRPCRouter({
-  getAnalyticsTrainSamples: publicProcedure.query(async () => {
-    return getAnalyticsTrainSamples();
-  }),
-  getAnalyticsTrainSampleById: publicProcedure
-    .input(analyticsTrainSampleIdSchema)
-    .query(async ({ input }) => {
-      return getAnalyticsTrainSampleById(input.id);
+export const analyticsTrainSamplesRouter: ReturnType<typeof createTRPCRouter> =
+  createTRPCRouter({
+    getAnalyticsTrainSamples: publicProcedure.query(async () => {
+      return getAnalyticsTrainSamples();
     }),
-  createAnalyticsTrainSample: publicProcedure
-    .input(insertAnalyticsTrainSampleParams)
-    .mutation(async ({ input }) => {
-      return createAnalyticsTrainSample(input);
-    }),
-  updateAnalyticsTrainSample: publicProcedure
-    .input(updateAnalyticsTrainSampleParams)
-    .mutation(async ({ input }) => {
-      return updateAnalyticsTrainSample(input.id, input);
-    }),
-  deleteAnalyticsTrainSample: publicProcedure
-    .input(analyticsTrainSampleIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteAnalyticsTrainSample(input.id);
-    }),
-});
+    getAnalyticsTrainSampleById: publicProcedure
+      .input(analyticsTrainSampleIdSchema)
+      .query(async ({ input }) => {
+        return getAnalyticsTrainSampleById(input.id);
+      }),
+    createAnalyticsTrainSample: publicProcedure
+      .input(insertAnalyticsTrainSampleParams)
+      .mutation(async ({ input }) => {
+        return createAnalyticsTrainSample(input);
+      }),
+    updateAnalyticsTrainSample: publicProcedure
+      .input(updateAnalyticsTrainSampleParams)
+      .mutation(async ({ input }) => {
+        return updateAnalyticsTrainSample(input.id, input);
+      }),
+    deleteAnalyticsTrainSample: publicProcedure
+      .input(analyticsTrainSampleIdSchema)
+      .mutation(async ({ input }) => {
+        return deleteAnalyticsTrainSample(input.id);
+      }),
+  });

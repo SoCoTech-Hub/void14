@@ -15,7 +15,9 @@ import {
 } from "../api/analyticsPredictionActions/queries";
 import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const analyticsPredictionActionsRouter = createTRPCRouter({
+export const analyticsPredictionActionsRouter: ReturnType<
+  typeof createTRPCRouter
+> = createTRPCRouter({
   getAnalyticsPredictionActions: publicProcedure.query(async () => {
     return getAnalyticsPredictionActions();
   }),
