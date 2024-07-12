@@ -35,21 +35,6 @@ importers:
       '@soco/validators':
         specifier: workspace:*
         version: link:../../../packages/validators
-      '@tanstack/react-query':
-        specifier: ^5.51.1
-        version: 5.51.1(react@18.3.1)
-      '@tanstack/react-query-devtools':
-        specifier: ^5.51.1
-        version: 5.51.1(@tanstack/react-query@5.51.1(react@18.3.1))(react@18.3.1)
-      '@trpc/client':
-        specifier: 11.0.0-rc.456
-        version: 11.0.0-rc.456(@trpc/server@11.0.0-rc.456)
-      '@trpc/next':
-        specifier: 11.0.0-rc.456
-        version: 11.0.0-rc.456(@tanstack/react-query@5.51.1(react@18.3.1))(@trpc/client@11.0.0-rc.456(@trpc/server@11.0.0-rc.456))(@trpc/react-query@11.0.0-rc.456(@tanstack/react-query@5.51.1(react@18.3.1))(@trpc/client@11.0.0-rc.456(@trpc/server@11.0.0-rc.456))(@trpc/server@11.0.0-rc.456)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(@trpc/server@11.0.0-rc.456)(next@14.2.4(@opentelemetry/api@1.9.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-      '@trpc/react-query':
-        specifier: 11.0.0-rc.456
-        version: 11.0.0-rc.456(@tanstack/react-query@5.51.1(react@18.3.1))(@trpc/client@11.0.0-rc.456(@trpc/server@11.0.0-rc.456))(@trpc/server@11.0.0-rc.456)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       '@trpc/server':
         specifier: 11.0.0-rc.456
         version: 11.0.0-rc.456
@@ -25636,7 +25621,7 @@ importers:
         version: 7.34.3(eslint@8.57.0)
       eslint-plugin-react-hooks:
         specifier: rc
-        version: 5.1.0-rc-378b305958-20240710(eslint@8.57.0)
+        version: 5.1.0-rc-85acf2d195-20240711(eslint@8.57.0)
       eslint-plugin-turbo:
         specifier: ^2.0.3
         version: 2.0.6(eslint@8.57.0)
@@ -28794,8 +28779,8 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
 
-  eslint-plugin-react-hooks@5.1.0-rc-378b305958-20240710:
-    resolution: {integrity: sha512-MfKcxMmt/TcOHEgCVAuXqqlFodlk+9KvPwHuOAAvI71kPYeRA8yhGUixJPU43tbHOkvsk5eOx3AclvgC28J53A==}
+  eslint-plugin-react-hooks@5.1.0-rc-85acf2d195-20240711:
+    resolution: {integrity: sha512-akG0N/HBM7XOIMbHLjSev2vV7ch2L+alWT3bdQ3sRzmXH6czIPRcDoS3ejowNxwE7TRAzNdQHPs0G4R5aDOVRw==}
     engines: {node: '>=10'}
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
@@ -34101,7 +34086,7 @@ snapshots:
       safe-regex-test: 1.0.3
       string.prototype.includes: 2.0.0
 
-  eslint-plugin-react-hooks@5.1.0-rc-378b305958-20240710(eslint@8.57.0):
+  eslint-plugin-react-hooks@5.1.0-rc-85acf2d195-20240711(eslint@8.57.0):
     dependencies:
       eslint: 8.57.0
 
