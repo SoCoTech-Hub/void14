@@ -1,9 +1,9 @@
 import { db } from "@soco/assignment-db/client";
 import { eq } from "@soco/assignment-db";
 import { 
-  AssignSubmissionOnlineTextId, 
-  NewAssignSubmissionOnlineTextParams,
-  UpdateAssignSubmissionOnlineTextParams, 
+  type AssignSubmissionOnlineTextId, 
+  type NewAssignSubmissionOnlineTextParams,
+  type UpdateAssignSubmissionOnlineTextParams, 
   updateAssignSubmissionOnlineTextSchema,
   insertAssignSubmissionOnlineTextSchema, 
   assignSubmissionOnlineTexts,

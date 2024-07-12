@@ -1,9 +1,9 @@
 import { db } from "@soco/workshop-db/client";
 import { eq } from "@soco/workshop-db";
 import { 
-  WorkshopFormRubricLevelId, 
-  NewWorkshopFormRubricLevelParams,
-  UpdateWorkshopFormRubricLevelParams, 
+  type WorkshopFormRubricLevelId, 
+  type NewWorkshopFormRubricLevelParams,
+  type UpdateWorkshopFormRubricLevelParams, 
   updateWorkshopFormRubricLevelSchema,
   insertWorkshopFormRubricLevelSchema, 
   workshopFormRubricLevels,

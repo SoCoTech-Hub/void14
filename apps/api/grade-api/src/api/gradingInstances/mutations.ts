@@ -1,9 +1,9 @@
 import { db } from "@soco/grade-db/client";
 import { eq } from "@soco/grade-db";
 import { 
-  GradingInstanceId, 
-  NewGradingInstanceParams,
-  UpdateGradingInstanceParams, 
+  type GradingInstanceId, 
+  type NewGradingInstanceParams,
+  type UpdateGradingInstanceParams, 
   updateGradingInstanceSchema,
   insertGradingInstanceSchema, 
   gradingInstances,

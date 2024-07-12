@@ -1,24 +1,21 @@
-import { getUserAuth } from "@soco/auth-service";
-import { and, eq } from "@soco/content-db";
 import { db } from "@soco/content-db/client";
-import {
-  ContentId,
-  contentIdSchema,
-  contents,
-  insertContentSchema,
-  NewContentParams,
-  UpdateContentParams,
+import { and, eq } from "@soco/content-db";
+import { 
+  type ContentId, 
+  type NewContentParams,
+  type UpdateContentParams, 
   updateContentSchema,
+  insertContentSchema, 
+  contents,
+  contentIdSchema 
 } from "@soco/content-db/schema/contents";
+import { getUserAuth } from "@soco/auth-service";
 
 export const createContent = async (content: NewContentParams) => {
   const { session } = await getUserAuth();
-  const newContent = insertContentSchema.parse({
-    ...content,
-    userId: session?.user.id!,
-  });
+  const newContent = insertContentSchema.parse({ ...content, userId: session?.user.id! });
   try {
-    const [c] = await db.insert(contents).values(newContent).returning();
+    const [c] =  await db.insert(contents).values(newContent).returning();
     return { content: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -27,27 +24,16 @@ export const createContent = async (content: NewContentParams) => {
   }
 };
 
-export const updateContent = async (
-  id: ContentId,
-  content: UpdateContentParams,
-) => {
+export const updateContent = async (id: ContentId, content: UpdateContentParams) => {
   const { session } = await getUserAuth();
   const { id: contentId } = contentIdSchema.parse({ id });
-  const newContent = updateContentSchema.parse({
-    ...content,
-    userId: session?.user.id!,
-  });
+  const newContent = updateContentSchema.parse({ ...content, userId: session?.user.id! });
   try {
-    const [c] = await db
-      .update(contents)
-      .set({ ...newContent, updatedAt: new Date() })
-      .where(
-        and(
-          eq(contents.id, contentId!),
-          eq(contents.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [c] =  await db
+     .update(contents)
+     .set({...newContent, updatedAt: new Date() })
+     .where(and(eq(contents.id, contentId!), eq(contents.userId, session?.user.id!)))
+     .returning();
     return { content: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -60,15 +46,8 @@ export const deleteContent = async (id: ContentId) => {
   const { session } = await getUserAuth();
   const { id: contentId } = contentIdSchema.parse({ id });
   try {
-    const [c] = await db
-      .delete(contents)
-      .where(
-        and(
-          eq(contents.id, contentId!),
-          eq(contents.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [c] =  await db.delete(contents).where(and(eq(contents.id, contentId!), eq(contents.userId, session?.user.id!)))
+    .returning();
     return { content: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -76,3 +55,4 @@ export const deleteContent = async (id: ContentId) => {
     throw { error: message };
   }
 };
+

@@ -1,9 +1,9 @@
 import { db } from "@soco/mass-mail-db/client";
 import { eq } from "@soco/mass-mail-db";
 import { 
-  MassMailListsRecipientId, 
-  NewMassMailListsRecipientParams,
-  UpdateMassMailListsRecipientParams, 
+  type MassMailListsRecipientId, 
+  type NewMassMailListsRecipientParams,
+  type UpdateMassMailListsRecipientParams, 
   updateMassMailListsRecipientSchema,
   insertMassMailListsRecipientSchema, 
   massMailListsRecipients,

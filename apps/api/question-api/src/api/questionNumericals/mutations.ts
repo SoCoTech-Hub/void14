@@ -1,9 +1,9 @@
 import { db } from "@soco/question-db/client";
 import { eq } from "@soco/question-db";
 import { 
-  QuestionNumericalId, 
-  NewQuestionNumericalParams,
-  UpdateQuestionNumericalParams, 
+  type QuestionNumericalId, 
+  type NewQuestionNumericalParams,
+  type UpdateQuestionNumericalParams, 
   updateQuestionNumericalSchema,
   insertQuestionNumericalSchema, 
   questionNumericals,

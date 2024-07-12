@@ -1,9 +1,9 @@
 import { db } from "@soco/badge-db/client";
 import { eq } from "@soco/badge-db";
 import { 
-  BadgeCriteriaId, 
-  NewBadgeCriteriaParams,
-  UpdateBadgeCriteriaParams, 
+  type BadgeCriteriaId, 
+  type NewBadgeCriteriaParams,
+  type UpdateBadgeCriteriaParams, 
   updateBadgeCriteriaSchema,
   insertBadgeCriteriaSchema, 
   badgeCriterias,

@@ -1,9 +1,9 @@
 import { db } from "@soco/tool-policy-db/client";
 import { eq } from "@soco/tool-policy-db";
 import { 
-  ToolPolicyId, 
-  NewToolPolicyParams,
-  UpdateToolPolicyParams, 
+  type ToolPolicyId, 
+  type NewToolPolicyParams,
+  type UpdateToolPolicyParams, 
   updateToolPolicySchema,
   insertToolPolicySchema, 
   toolPolicies,

@@ -1,9 +1,9 @@
 import { db } from "@soco/config-db/client";
 import { eq } from "@soco/config-db";
 import { 
-  ConfigId, 
-  NewConfigParams,
-  UpdateConfigParams, 
+  type ConfigId, 
+  type NewConfigParams,
+  type UpdateConfigParams, 
   updateConfigSchema,
   insertConfigSchema, 
   configs,

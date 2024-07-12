@@ -1,9 +1,9 @@
 import { db } from "@soco/imscp-db/client";
 import { eq } from "@soco/imscp-db";
 import { 
-  ImscpId, 
-  NewImscpParams,
-  UpdateImscpParams, 
+  type ImscpId, 
+  type NewImscpParams,
+  type UpdateImscpParams, 
   updateImscpSchema,
   insertImscpSchema, 
   imscps,

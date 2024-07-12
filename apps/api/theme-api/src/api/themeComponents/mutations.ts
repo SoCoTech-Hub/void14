@@ -1,9 +1,9 @@
 import { db } from "@soco/theme-db/client";
 import { eq } from "@soco/theme-db";
 import { 
-  ThemeComponentId, 
-  NewThemeComponentParams,
-  UpdateThemeComponentParams, 
+  type ThemeComponentId, 
+  type NewThemeComponentParams,
+  type UpdateThemeComponentParams, 
   updateThemeComponentSchema,
   insertThemeComponentSchema, 
   themeComponents,

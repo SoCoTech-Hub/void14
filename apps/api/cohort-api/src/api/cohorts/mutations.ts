@@ -1,9 +1,9 @@
 import { db } from "@soco/cohort-db/client";
 import { eq } from "@soco/cohort-db";
 import { 
-  CohortId, 
-  NewCohortParams,
-  UpdateCohortParams, 
+  type CohortId, 
+  type NewCohortParams,
+  type UpdateCohortParams, 
   updateCohortSchema,
   insertCohortSchema, 
   cohorts,

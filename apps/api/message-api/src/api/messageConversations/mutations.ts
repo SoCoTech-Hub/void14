@@ -1,9 +1,9 @@
 import { db } from "@soco/message-db/client";
 import { eq } from "@soco/message-db";
 import { 
-  MessageConversationId, 
-  NewMessageConversationParams,
-  UpdateMessageConversationParams, 
+  type MessageConversationId, 
+  type NewMessageConversationParams,
+  type UpdateMessageConversationParams, 
   updateMessageConversationSchema,
   insertMessageConversationSchema, 
   messageConversations,

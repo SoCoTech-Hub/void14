@@ -1,9 +1,9 @@
 import { db } from "@soco/enrol-db/client";
 import { eq } from "@soco/enrol-db";
 import { 
-  EnrolLtiAppRegistrationId, 
-  NewEnrolLtiAppRegistrationParams,
-  UpdateEnrolLtiAppRegistrationParams, 
+  type EnrolLtiAppRegistrationId, 
+  type NewEnrolLtiAppRegistrationParams,
+  type UpdateEnrolLtiAppRegistrationParams, 
   updateEnrolLtiAppRegistrationSchema,
   insertEnrolLtiAppRegistrationSchema, 
   enrolLtiAppRegistrations,

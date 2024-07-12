@@ -1,9 +1,9 @@
 import { db } from "@soco/backup-db/client";
 import { eq } from "@soco/backup-db";
 import { 
-  BackupCourseId, 
-  NewBackupCourseParams,
-  UpdateBackupCourseParams, 
+  type BackupCourseId, 
+  type NewBackupCourseParams,
+  type UpdateBackupCourseParams, 
   updateBackupCourseSchema,
   insertBackupCourseSchema, 
   backupCourses,

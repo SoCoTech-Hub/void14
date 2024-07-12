@@ -1,9 +1,9 @@
 import { db } from "@soco/analytics-db/client";
 import { eq } from "@soco/analytics-db";
 import { 
-  AnalyticsPredictionId, 
-  NewAnalyticsPredictionParams,
-  UpdateAnalyticsPredictionParams, 
+  type AnalyticsPredictionId, 
+  type NewAnalyticsPredictionParams,
+  type UpdateAnalyticsPredictionParams, 
   updateAnalyticsPredictionSchema,
   insertAnalyticsPredictionSchema, 
   analyticsPredictions,

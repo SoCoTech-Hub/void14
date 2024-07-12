@@ -1,9 +1,9 @@
 import { db } from "@soco/tag-db/client";
 import { eq } from "@soco/tag-db";
 import { 
-  TagAreaId, 
-  NewTagAreaParams,
-  UpdateTagAreaParams, 
+  type TagAreaId, 
+  type NewTagAreaParams,
+  type UpdateTagAreaParams, 
   updateTagAreaSchema,
   insertTagAreaSchema, 
   tagAreas,

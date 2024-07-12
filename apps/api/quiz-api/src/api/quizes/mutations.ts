@@ -1,9 +1,9 @@
 import { db } from '@soco/quiz-db/client'
 import { eq } from '@soco/quiz-db'
 import {
-	QuizId,
-	NewQuizeParams,
-	UpdateQuizeParams,
+	type QuizId,
+	type NewQuizeParams,
+	type UpdateQuizeParams,
 	updateQuizeSchema,
 	insertQuizeSchema,
 	quizes,

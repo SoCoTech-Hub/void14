@@ -1,9 +1,9 @@
 import { db } from "@soco/portfolio-db/client";
 import { eq } from "@soco/portfolio-db";
 import { 
-  PortfolioInstanceConfigId, 
-  NewPortfolioInstanceConfigParams,
-  UpdatePortfolioInstanceConfigParams, 
+  type PortfolioInstanceConfigId, 
+  type NewPortfolioInstanceConfigParams,
+  type UpdatePortfolioInstanceConfigParams, 
   updatePortfolioInstanceConfigSchema,
   insertPortfolioInstanceConfigSchema, 
   portfolioInstanceConfigs,

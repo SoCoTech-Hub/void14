@@ -1,9 +1,9 @@
 import { db } from "@soco/digilib-db/client";
 import { eq } from "@soco/digilib-db";
 import { 
-  DigilibCategoryId, 
-  NewDigilibCategoryParams,
-  UpdateDigilibCategoryParams, 
+  type DigilibCategoryId, 
+  type NewDigilibCategoryParams,
+  type UpdateDigilibCategoryParams, 
   updateDigilibCategorySchema,
   insertDigilibCategorySchema, 
   digilibCategories,

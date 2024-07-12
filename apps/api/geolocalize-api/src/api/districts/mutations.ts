@@ -1,9 +1,9 @@
 import { db } from "@soco/geolocalize-db/client";
 import { eq } from "@soco/geolocalize-db";
 import { 
-  DistrictId, 
-  NewDistrictParams,
-  UpdateDistrictParams, 
+  type DistrictId, 
+  type NewDistrictParams,
+  type UpdateDistrictParams, 
   updateDistrictSchema,
   insertDistrictSchema, 
   districts,

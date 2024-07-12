@@ -1,9 +1,9 @@
 import { db } from "@soco/stickers-db/client";
 import { eq } from "@soco/stickers-db";
 import { 
-  StickerId, 
-  NewStickerParams,
-  UpdateStickerParams, 
+  type StickerId, 
+  type NewStickerParams,
+  type UpdateStickerParams, 
   updateStickerSchema,
   insertStickerSchema, 
   stickers,

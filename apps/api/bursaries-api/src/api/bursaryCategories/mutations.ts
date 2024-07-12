@@ -1,9 +1,9 @@
 import { db } from "@soco/bursaries-db/client";
 import { eq } from "@soco/bursaries-db";
 import { 
-  BursaryCategoryId, 
-  NewBursaryCategoryParams,
-  UpdateBursaryCategoryParams, 
+  type BursaryCategoryId, 
+  type NewBursaryCategoryParams,
+  type UpdateBursaryCategoryParams, 
   updateBursaryCategorySchema,
   insertBursaryCategorySchema, 
   bursaryCategories,

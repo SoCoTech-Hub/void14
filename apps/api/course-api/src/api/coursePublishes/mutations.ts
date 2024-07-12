@@ -1,9 +1,9 @@
 import { db } from "@soco/course-db/client";
 import { eq } from "@soco/course-db";
 import { 
-  CoursePublishId, 
-  NewCoursePublishParams,
-  UpdateCoursePublishParams, 
+  type CoursePublishId, 
+  type NewCoursePublishParams,
+  type UpdateCoursePublishParams, 
   updateCoursePublishSchema,
   insertCoursePublishSchema, 
   coursePublishes,

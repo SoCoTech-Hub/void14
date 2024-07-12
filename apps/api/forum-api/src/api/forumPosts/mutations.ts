@@ -1,24 +1,21 @@
-import { getUserAuth } from "@soco/auth-service";
-import { and, eq } from "@soco/forum-db";
 import { db } from "@soco/forum-db/client";
-import {
-  ForumPostId,
-  forumPostIdSchema,
-  forumPosts,
-  insertForumPostSchema,
-  NewForumPostParams,
-  UpdateForumPostParams,
+import { and, eq } from "@soco/forum-db";
+import { 
+  type ForumPostId, 
+  type NewForumPostParams,
+  type UpdateForumPostParams, 
   updateForumPostSchema,
+  insertForumPostSchema, 
+  forumPosts,
+  forumPostIdSchema 
 } from "@soco/forum-db/schema/forumPosts";
+import { getUserAuth } from "@soco/auth-service";
 
 export const createForumPost = async (forumPost: NewForumPostParams) => {
   const { session } = await getUserAuth();
-  const newForumPost = insertForumPostSchema.parse({
-    ...forumPost,
-    userId: session?.user.id!,
-  });
+  const newForumPost = insertForumPostSchema.parse({ ...forumPost, userId: session?.user.id! });
   try {
-    const [f] = await db.insert(forumPosts).values(newForumPost).returning();
+    const [f] =  await db.insert(forumPosts).values(newForumPost).returning();
     return { forumPost: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -27,27 +24,16 @@ export const createForumPost = async (forumPost: NewForumPostParams) => {
   }
 };
 
-export const updateForumPost = async (
-  id: ForumPostId,
-  forumPost: UpdateForumPostParams,
-) => {
+export const updateForumPost = async (id: ForumPostId, forumPost: UpdateForumPostParams) => {
   const { session } = await getUserAuth();
   const { id: forumPostId } = forumPostIdSchema.parse({ id });
-  const newForumPost = updateForumPostSchema.parse({
-    ...forumPost,
-    userId: session?.user.id!,
-  });
+  const newForumPost = updateForumPostSchema.parse({ ...forumPost, userId: session?.user.id! });
   try {
-    const [f] = await db
-      .update(forumPosts)
-      .set({ ...newForumPost, updatedAt: new Date() })
-      .where(
-        and(
-          eq(forumPosts.id, forumPostId!),
-          eq(forumPosts.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [f] =  await db
+     .update(forumPosts)
+     .set({...newForumPost, updatedAt: new Date() })
+     .where(and(eq(forumPosts.id, forumPostId!), eq(forumPosts.userId, session?.user.id!)))
+     .returning();
     return { forumPost: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -60,15 +46,8 @@ export const deleteForumPost = async (id: ForumPostId) => {
   const { session } = await getUserAuth();
   const { id: forumPostId } = forumPostIdSchema.parse({ id });
   try {
-    const [f] = await db
-      .delete(forumPosts)
-      .where(
-        and(
-          eq(forumPosts.id, forumPostId!),
-          eq(forumPosts.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [f] =  await db.delete(forumPosts).where(and(eq(forumPosts.id, forumPostId!), eq(forumPosts.userId, session?.user.id!)))
+    .returning();
     return { forumPost: f };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -76,3 +55,4 @@ export const deleteForumPost = async (id: ForumPostId) => {
     throw { error: message };
   }
 };
+

@@ -1,9 +1,9 @@
 import { db } from "@soco/enrol-db/client";
 import { eq } from "@soco/enrol-db";
 import { 
-  EnrolLtiLti2ToolProxyId, 
-  NewEnrolLtiLti2ToolProxyParams,
-  UpdateEnrolLtiLti2ToolProxyParams, 
+  type EnrolLtiLti2ToolProxyId, 
+  type NewEnrolLtiLti2ToolProxyParams,
+  type UpdateEnrolLtiLti2ToolProxyParams, 
   updateEnrolLtiLti2ToolProxySchema,
   insertEnrolLtiLti2ToolProxySchema, 
   enrolLtiLti2ToolProxys,

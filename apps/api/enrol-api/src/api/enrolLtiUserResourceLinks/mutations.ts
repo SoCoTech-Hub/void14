@@ -1,9 +1,9 @@
 import { db } from "@soco/enrol-db/client";
 import { eq } from "@soco/enrol-db";
 import { 
-  EnrolLtiUserResourceLinkId, 
-  NewEnrolLtiUserResourceLinkParams,
-  UpdateEnrolLtiUserResourceLinkParams, 
+  type EnrolLtiUserResourceLinkId, 
+  type NewEnrolLtiUserResourceLinkParams,
+  type UpdateEnrolLtiUserResourceLinkParams, 
   updateEnrolLtiUserResourceLinkSchema,
   insertEnrolLtiUserResourceLinkSchema, 
   enrolLtiUserResourceLinks,

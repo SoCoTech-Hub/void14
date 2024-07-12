@@ -1,9 +1,9 @@
 import { db } from "@soco/filter-db/client";
 import { eq } from "@soco/filter-db";
 import { 
-  FilterActiveId, 
-  NewFilterActiveParams,
-  UpdateFilterActiveParams, 
+  type FilterActiveId, 
+  type NewFilterActiveParams,
+  type UpdateFilterActiveParams, 
   updateFilterActiveSchema,
   insertFilterActiveSchema, 
   filterActives,

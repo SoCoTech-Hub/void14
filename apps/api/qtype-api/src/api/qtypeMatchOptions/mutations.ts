@@ -1,9 +1,9 @@
 import { db } from "@soco/qtype-db/client";
 import { eq } from "@soco/qtype-db";
 import { 
-  QtypeMatchOptionId, 
-  NewQtypeMatchOptionParams,
-  UpdateQtypeMatchOptionParams, 
+  type QtypeMatchOptionId, 
+  type NewQtypeMatchOptionParams,
+  type UpdateQtypeMatchOptionParams, 
   updateQtypeMatchOptionSchema,
   insertQtypeMatchOptionSchema, 
   qtypeMatchOptions,

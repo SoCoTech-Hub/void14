@@ -1,9 +1,9 @@
 import { db } from "@soco/digilib-db/client";
 import { eq } from "@soco/digilib-db";
 import { 
-  DigilibId, 
-  NewDigilibParams,
-  UpdateDigilibParams, 
+  type DigilibId, 
+  type NewDigilibParams,
+  type UpdateDigilibParams, 
   updateDigilibSchema,
   insertDigilibSchema, 
   digilibs,

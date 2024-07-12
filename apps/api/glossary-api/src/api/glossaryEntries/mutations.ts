@@ -1,29 +1,21 @@
-import { getUserAuth } from "@soco/auth-service";
-import { and, eq } from "@soco/glossary-db";
 import { db } from "@soco/glossary-db/client";
-import {
-  glossaryEntries,
-  GlossaryEntryId,
-  glossaryEntryIdSchema,
-  insertGlossaryEntrySchema,
-  NewGlossaryEntryParams,
-  UpdateGlossaryEntryParams,
+import { and, eq } from "@soco/glossary-db";
+import { 
+  type GlossaryEntryId, 
+  type NewGlossaryEntryParams,
+  type UpdateGlossaryEntryParams, 
   updateGlossaryEntrySchema,
+  insertGlossaryEntrySchema, 
+  glossaryEntries,
+  glossaryEntryIdSchema 
 } from "@soco/glossary-db/schema/glossaryEntries";
+import { getUserAuth } from "@soco/auth-service";
 
-export const createGlossaryEntry = async (
-  glossaryEntry: NewGlossaryEntryParams,
-) => {
+export const createGlossaryEntry = async (glossaryEntry: NewGlossaryEntryParams) => {
   const { session } = await getUserAuth();
-  const newGlossaryEntry = insertGlossaryEntrySchema.parse({
-    ...glossaryEntry,
-    userId: session?.user.id!,
-  });
+  const newGlossaryEntry = insertGlossaryEntrySchema.parse({ ...glossaryEntry, userId: session?.user.id! });
   try {
-    const [g] = await db
-      .insert(glossaryEntries)
-      .values(newGlossaryEntry)
-      .returning();
+    const [g] =  await db.insert(glossaryEntries).values(newGlossaryEntry).returning();
     return { glossaryEntry: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -32,27 +24,16 @@ export const createGlossaryEntry = async (
   }
 };
 
-export const updateGlossaryEntry = async (
-  id: GlossaryEntryId,
-  glossaryEntry: UpdateGlossaryEntryParams,
-) => {
+export const updateGlossaryEntry = async (id: GlossaryEntryId, glossaryEntry: UpdateGlossaryEntryParams) => {
   const { session } = await getUserAuth();
   const { id: glossaryEntryId } = glossaryEntryIdSchema.parse({ id });
-  const newGlossaryEntry = updateGlossaryEntrySchema.parse({
-    ...glossaryEntry,
-    userId: session?.user.id!,
-  });
+  const newGlossaryEntry = updateGlossaryEntrySchema.parse({ ...glossaryEntry, userId: session?.user.id! });
   try {
-    const [g] = await db
-      .update(glossaryEntries)
-      .set({ ...newGlossaryEntry, updatedAt: new Date() })
-      .where(
-        and(
-          eq(glossaryEntries.id, glossaryEntryId!),
-          eq(glossaryEntries.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [g] =  await db
+     .update(glossaryEntries)
+     .set({...newGlossaryEntry, updatedAt: new Date() })
+     .where(and(eq(glossaryEntries.id, glossaryEntryId!), eq(glossaryEntries.userId, session?.user.id!)))
+     .returning();
     return { glossaryEntry: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -65,15 +46,8 @@ export const deleteGlossaryEntry = async (id: GlossaryEntryId) => {
   const { session } = await getUserAuth();
   const { id: glossaryEntryId } = glossaryEntryIdSchema.parse({ id });
   try {
-    const [g] = await db
-      .delete(glossaryEntries)
-      .where(
-        and(
-          eq(glossaryEntries.id, glossaryEntryId!),
-          eq(glossaryEntries.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [g] =  await db.delete(glossaryEntries).where(and(eq(glossaryEntries.id, glossaryEntryId!), eq(glossaryEntries.userId, session?.user.id!)))
+    .returning();
     return { glossaryEntry: g };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -81,3 +55,4 @@ export const deleteGlossaryEntry = async (id: GlossaryEntryId) => {
     throw { error: message };
   }
 };
+

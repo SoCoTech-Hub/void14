@@ -1,9 +1,9 @@
 import { db } from "@soco/zoom-db/client";
 import { eq } from "@soco/zoom-db";
 import { 
-  ZoomId, 
-  NewZoomParams,
-  UpdateZoomParams, 
+  type ZoomId, 
+  type NewZoomParams,
+  type UpdateZoomParams, 
   updateZoomSchema,
   insertZoomSchema, 
   zooms,

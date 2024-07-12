@@ -1,9 +1,9 @@
 import { db } from "@soco/course-db/client";
 import { eq } from "@soco/course-db";
 import { 
-  CourseCompletionAggrMethdId, 
-  NewCourseCompletionAggrMethdParams,
-  UpdateCourseCompletionAggrMethdParams, 
+  type CourseCompletionAggrMethdId, 
+  type NewCourseCompletionAggrMethdParams,
+  type UpdateCourseCompletionAggrMethdParams, 
   updateCourseCompletionAggrMethdSchema,
   insertCourseCompletionAggrMethdSchema, 
   courseCompletionAggrMethds,

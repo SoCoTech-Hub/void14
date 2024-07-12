@@ -1,9 +1,9 @@
 import { db } from "@soco/media-db/client";
 import { eq } from "@soco/media-db";
 import { 
-  MediaId, 
-  NewMediaParams,
-  UpdateMediaParams, 
+  type MediaId, 
+  type NewMediaParams,
+  type UpdateMediaParams, 
   updateMediaSchema,
   insertMediaSchema, 
   medias,

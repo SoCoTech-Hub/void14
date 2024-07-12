@@ -1,9 +1,9 @@
 import { db } from "@soco/survey-db/client";
 import { eq } from "@soco/survey-db";
 import { 
-  SurveyQuestionId, 
-  NewSurveyQuestionParams,
-  UpdateSurveyQuestionParams, 
+  type SurveyQuestionId, 
+  type NewSurveyQuestionParams,
+  type UpdateSurveyQuestionParams, 
   updateSurveyQuestionSchema,
   insertSurveyQuestionSchema, 
   surveyQuestions,

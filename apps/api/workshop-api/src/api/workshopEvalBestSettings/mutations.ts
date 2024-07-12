@@ -1,9 +1,9 @@
 import { db } from "@soco/workshop-db/client";
 import { eq } from "@soco/workshop-db";
 import { 
-  WorkshopEvalBestSettingId, 
-  NewWorkshopEvalBestSettingParams,
-  UpdateWorkshopEvalBestSettingParams, 
+  type WorkshopEvalBestSettingId, 
+  type NewWorkshopEvalBestSettingParams,
+  type UpdateWorkshopEvalBestSettingParams, 
   updateWorkshopEvalBestSettingSchema,
   insertWorkshopEvalBestSettingSchema, 
   workshopEvalBestSettings,

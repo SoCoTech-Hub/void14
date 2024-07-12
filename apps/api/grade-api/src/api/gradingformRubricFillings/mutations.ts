@@ -1,9 +1,9 @@
 import { db } from "@soco/grade-db/client";
 import { eq } from "@soco/grade-db";
 import { 
-  GradingformRubricFillingId, 
-  NewGradingformRubricFillingParams,
-  UpdateGradingformRubricFillingParams, 
+  type GradingformRubricFillingId, 
+  type NewGradingformRubricFillingParams,
+  type UpdateGradingformRubricFillingParams, 
   updateGradingformRubricFillingSchema,
   insertGradingformRubricFillingSchema, 
   gradingformRubricFillings,

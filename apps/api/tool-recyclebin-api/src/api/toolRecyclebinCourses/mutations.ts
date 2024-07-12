@@ -1,9 +1,9 @@
 import { db } from "@soco/tool-recyclebin-db/client";
 import { eq } from "@soco/tool-recyclebin-db";
 import { 
-  ToolRecyclebinCourseId, 
-  NewToolRecyclebinCourseParams,
-  UpdateToolRecyclebinCourseParams, 
+  type ToolRecyclebinCourseId, 
+  type NewToolRecyclebinCourseParams,
+  type UpdateToolRecyclebinCourseParams, 
   updateToolRecyclebinCourseSchema,
   insertToolRecyclebinCourseSchema, 
   toolRecyclebinCourses,

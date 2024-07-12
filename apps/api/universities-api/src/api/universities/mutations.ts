@@ -1,9 +1,9 @@
 import { db } from "@soco/universities-db/client";
 import { eq } from "@soco/universities-db";
 import { 
-  UniversityId, 
-  NewUniversityParams,
-  UpdateUniversityParams, 
+  type UniversityId, 
+  type NewUniversityParams,
+  type UpdateUniversityParams, 
   updateUniversitySchema,
   insertUniversitySchema, 
   universities,

@@ -1,9 +1,9 @@
 import { db } from "@soco/block-db/client";
 import { eq } from "@soco/block-db";
 import { 
-  BlockPositionId, 
-  NewBlockPositionParams,
-  UpdateBlockPositionParams, 
+  type BlockPositionId, 
+  type NewBlockPositionParams,
+  type UpdateBlockPositionParams, 
   updateBlockPositionSchema,
   insertBlockPositionSchema, 
   blockPositions,

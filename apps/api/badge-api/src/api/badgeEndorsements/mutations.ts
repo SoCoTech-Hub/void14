@@ -1,9 +1,9 @@
 import { db } from "@soco/badge-db/client";
 import { eq } from "@soco/badge-db";
 import { 
-  BadgeEndorsementId, 
-  NewBadgeEndorsementParams,
-  UpdateBadgeEndorsementParams, 
+  type BadgeEndorsementId, 
+  type NewBadgeEndorsementParams,
+  type UpdateBadgeEndorsementParams, 
   updateBadgeEndorsementSchema,
   insertBadgeEndorsementSchema, 
   badgeEndorsements,

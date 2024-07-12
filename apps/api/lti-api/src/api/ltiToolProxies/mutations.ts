@@ -1,9 +1,9 @@
 import { db } from "@soco/lti-db/client";
 import { eq } from "@soco/lti-db";
 import { 
-  LtiToolProxyId, 
-  NewLtiToolProxyParams,
-  UpdateLtiToolProxyParams, 
+  type LtiToolProxyId, 
+  type NewLtiToolProxyParams,
+  type UpdateLtiToolProxyParams, 
   updateLtiToolProxySchema,
   insertLtiToolProxySchema, 
   ltiToolProxies,

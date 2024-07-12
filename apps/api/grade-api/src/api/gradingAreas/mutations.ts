@@ -1,9 +1,9 @@
 import { db } from "@soco/grade-db/client";
 import { eq } from "@soco/grade-db";
 import { 
-  GradingAreaId, 
-  NewGradingAreaParams,
-  UpdateGradingAreaParams, 
+  type GradingAreaId, 
+  type NewGradingAreaParams,
+  type UpdateGradingAreaParams, 
   updateGradingAreaSchema,
   insertGradingAreaSchema, 
   gradingAreas,

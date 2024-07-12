@@ -1,42 +1,41 @@
 import {
-  adminPresetsAppIdSchema,
-  insertAdminPresetsAppParams,
-  updateAdminPresetsAppParams,
-} from "@soco/admin-preset-db/schema/adminPresetsApps";
-
+	getAdminPresetsAppById,
+	getAdminPresetsApps
+} from '../api/adminPresetsApps/queries'
+import { publicProcedure,createTRPCRouter } from '../trpc'
 import {
-  createAdminPresetsApp,
-  deleteAdminPresetsApp,
-  updateAdminPresetsApp,
-} from "../api/adminPresetsApps/mutations";
+	adminPresetsAppIdSchema,
+	insertAdminPresetsAppParams,
+	updateAdminPresetsAppParams
+} from '@soco/admin-preset-db/schema/adminPresetsApps'
 import {
-  getAdminPresetsAppById,
-  getAdminPresetsApps,
-} from "../api/adminPresetsApps/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
+	createAdminPresetsApp,
+	deleteAdminPresetsApp,
+	updateAdminPresetsApp
+} from '../api/adminPresetsApps/mutations'
 
-export const adminPresetsAppsRouter = createTRPCRouter({
-  getAdminPresetsApps: publicProcedure.query(async () => {
-    return getAdminPresetsApps();
-  }),
-  getAdminPresetsAppById: publicProcedure
-    .input(adminPresetsAppIdSchema)
-    .query(async ({ input }) => {
-      return getAdminPresetsAppById(input.id);
-    }),
-  createAdminPresetsApp: publicProcedure
-    .input(insertAdminPresetsAppParams)
-    .mutation(async ({ input }) => {
-      return createAdminPresetsApp(input);
-    }),
-  updateAdminPresetsApp: publicProcedure
-    .input(updateAdminPresetsAppParams)
-    .mutation(async ({ input }) => {
-      return updateAdminPresetsApp(input.id, input);
-    }),
-  deleteAdminPresetsApp: publicProcedure
-    .input(adminPresetsAppIdSchema)
-    .mutation(async ({ input }) => {
-      return deleteAdminPresetsApp(input.id);
-    }),
-});
+export const adminPresetsAppsRouter =createTRPCRouter({
+	getAdminPresetsApps: publicProcedure.query(async () => {
+		return getAdminPresetsApps()
+	}),
+	getAdminPresetsAppById: publicProcedure
+		.input(adminPresetsAppIdSchema)
+		.query(async ({ input }) => {
+			return getAdminPresetsAppById(input.id)
+		}),
+	createAdminPresetsApp: publicProcedure
+		.input(insertAdminPresetsAppParams)
+		.mutation(async ({ input }) => {
+			return createAdminPresetsApp(input)
+		}),
+	updateAdminPresetsApp: publicProcedure
+		.input(updateAdminPresetsAppParams)
+		.mutation(async ({ input }) => {
+			return updateAdminPresetsApp(input.id, input)
+		}),
+	deleteAdminPresetsApp: publicProcedure
+		.input(adminPresetsAppIdSchema)
+		.mutation(async ({ input }) => {
+			return deleteAdminPresetsApp(input.id)
+		})
+})

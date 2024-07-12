@@ -1,9 +1,9 @@
 import { db } from "@soco/choice-db/client";
 import { eq } from "@soco/choice-db";
 import { 
-  ChoiceOptionId, 
-  NewChoiceOptionParams,
-  UpdateChoiceOptionParams, 
+  type ChoiceOptionId, 
+  type NewChoiceOptionParams,
+  type UpdateChoiceOptionParams, 
   updateChoiceOptionSchema,
   insertChoiceOptionSchema, 
   choiceOptions,

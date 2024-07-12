@@ -1,9 +1,9 @@
 import { db } from "@soco/enrol-db/client";
 import { eq } from "@soco/enrol-db";
 import { 
-  EnrolLtiDeploymentId, 
-  NewEnrolLtiDeploymentParams,
-  UpdateEnrolLtiDeploymentParams, 
+  type EnrolLtiDeploymentId, 
+  type NewEnrolLtiDeploymentParams,
+  type UpdateEnrolLtiDeploymentParams, 
   updateEnrolLtiDeploymentSchema,
   insertEnrolLtiDeploymentSchema, 
   enrolLtiDeployments,

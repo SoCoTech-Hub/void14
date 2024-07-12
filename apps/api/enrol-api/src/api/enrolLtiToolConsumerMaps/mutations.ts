@@ -1,9 +1,9 @@
 import { db } from "@soco/enrol-db/client";
 import { eq } from "@soco/enrol-db";
 import { 
-  EnrolLtiToolConsumerMapId, 
-  NewEnrolLtiToolConsumerMapParams,
-  UpdateEnrolLtiToolConsumerMapParams, 
+  type EnrolLtiToolConsumerMapId, 
+  type NewEnrolLtiToolConsumerMapParams,
+  type UpdateEnrolLtiToolConsumerMapParams, 
   updateEnrolLtiToolConsumerMapSchema,
   insertEnrolLtiToolConsumerMapSchema, 
   enrolLtiToolConsumerMaps,

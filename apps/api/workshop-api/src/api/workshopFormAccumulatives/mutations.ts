@@ -1,9 +1,9 @@
 import { db } from "@soco/workshop-db/client";
 import { eq } from "@soco/workshop-db";
 import { 
-  WorkshopFormAccumulativeId, 
-  NewWorkshopFormAccumulativeParams,
-  UpdateWorkshopFormAccumulativeParams, 
+  type WorkshopFormAccumulativeId, 
+  type NewWorkshopFormAccumulativeParams,
+  type UpdateWorkshopFormAccumulativeParams, 
   updateWorkshopFormAccumulativeSchema,
   insertWorkshopFormAccumulativeSchema, 
   workshopFormAccumulatives,

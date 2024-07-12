@@ -1,9 +1,9 @@
 import { db } from "@soco/wiki-db/client";
 import { eq } from "@soco/wiki-db";
 import { 
-  WikiId, 
-  NewWikiParams,
-  UpdateWikiParams, 
+  type WikiId, 
+  type NewWikiParams,
+  type UpdateWikiParams, 
   updateWikiSchema,
   insertWikiSchema, 
   wikis,

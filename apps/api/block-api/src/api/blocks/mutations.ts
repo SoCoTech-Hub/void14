@@ -1,9 +1,9 @@
 import { db } from "@soco/block-db/client";
 import { eq } from "@soco/block-db";
 import { 
-  BlockId, 
-  NewBlockParams,
-  UpdateBlockParams, 
+  type BlockId, 
+  type NewBlockParams,
+  type UpdateBlockParams, 
   updateBlockSchema,
   insertBlockSchema, 
   blocks,

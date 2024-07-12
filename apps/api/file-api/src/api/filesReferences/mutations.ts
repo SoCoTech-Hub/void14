@@ -1,9 +1,9 @@
 import { db } from "@soco/file-db/client";
 import { eq } from "@soco/file-db";
 import { 
-  FilesReferenceId, 
-  NewFilesReferenceParams,
-  UpdateFilesReferenceParams, 
+  type FilesReferenceId, 
+  type NewFilesReferenceParams,
+  type UpdateFilesReferenceParams, 
   updateFilesReferenceSchema,
   insertFilesReferenceSchema, 
   filesReferences,

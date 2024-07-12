@@ -1,9 +1,9 @@
 import { db } from "@soco/school-db/client";
 import { eq } from "@soco/school-db";
 import { 
-  SchoolId, 
-  NewSchoolParams,
-  UpdateSchoolParams, 
+  type SchoolId, 
+  type NewSchoolParams,
+  type UpdateSchoolParams, 
   updateSchoolSchema,
   insertSchoolSchema, 
   schools,

@@ -1,9 +1,9 @@
 import { db } from "@soco/scorm-db/client";
 import { eq } from "@soco/scorm-db";
 import { 
-  ScormScoesDataId, 
-  NewScormScoesDataParams,
-  UpdateScormScoesDataParams, 
+  type ScormScoesDataId, 
+  type NewScormScoesDataParams,
+  type UpdateScormScoesDataParams, 
   updateScormScoesDataSchema,
   insertScormScoesDataSchema, 
   scormScoesDatas,

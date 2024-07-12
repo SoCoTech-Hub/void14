@@ -1,9 +1,9 @@
 import { db } from "@soco/h5p-db/client";
 import { eq } from "@soco/h5p-db";
 import { 
-  H5pLibrariesCachedassetId, 
-  NewH5pLibrariesCachedassetParams,
-  UpdateH5pLibrariesCachedassetParams, 
+  type H5pLibrariesCachedassetId, 
+  type NewH5pLibrariesCachedassetParams,
+  type UpdateH5pLibrariesCachedassetParams, 
   updateH5pLibrariesCachedassetSchema,
   insertH5pLibrariesCachedassetSchema, 
   h5pLibrariesCachedassets,

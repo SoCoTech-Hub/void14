@@ -1,9 +1,9 @@
 import { db } from "@soco/event-db/client";
 import { eq } from "@soco/event-db";
 import { 
-  EventsQueueHandlerId, 
-  NewEventsQueueHandlerParams,
-  UpdateEventsQueueHandlerParams, 
+  type EventsQueueHandlerId, 
+  type NewEventsQueueHandlerParams,
+  type UpdateEventsQueueHandlerParams, 
   updateEventsQueueHandlerSchema,
   insertEventsQueueHandlerSchema, 
   eventsQueueHandlers,

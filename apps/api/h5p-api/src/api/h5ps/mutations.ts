@@ -1,9 +1,9 @@
 import { db } from "@soco/h5p-db/client";
 import { eq } from "@soco/h5p-db";
 import { 
-  H5pId, 
-  NewH5pParams,
-  UpdateH5pParams, 
+  type H5pId, 
+  type NewH5pParams,
+  type UpdateH5pParams, 
   updateH5pSchema,
   insertH5pSchema, 
   h5ps,

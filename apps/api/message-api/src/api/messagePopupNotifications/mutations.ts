@@ -1,9 +1,9 @@
 import { db } from "@soco/message-db/client";
 import { eq } from "@soco/message-db";
 import { 
-  MessagePopupNotificationId, 
-  NewMessagePopupNotificationParams,
-  UpdateMessagePopupNotificationParams, 
+  type MessagePopupNotificationId, 
+  type NewMessagePopupNotificationParams,
+  type UpdateMessagePopupNotificationParams, 
   updateMessagePopupNotificationSchema,
   insertMessagePopupNotificationSchema, 
   messagePopupNotifications,

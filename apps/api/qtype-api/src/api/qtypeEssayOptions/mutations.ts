@@ -1,9 +1,9 @@
 import { db } from "@soco/qtype-db/client";
 import { eq } from "@soco/qtype-db";
 import { 
-  QtypeEssayOptionId, 
-  NewQtypeEssayOptionParams,
-  UpdateQtypeEssayOptionParams, 
+  type QtypeEssayOptionId, 
+  type NewQtypeEssayOptionParams,
+  type UpdateQtypeEssayOptionParams, 
   updateQtypeEssayOptionSchema,
   insertQtypeEssayOptionSchema, 
   qtypeEssayOptions,

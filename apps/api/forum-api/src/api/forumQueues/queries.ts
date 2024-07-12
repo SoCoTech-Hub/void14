@@ -1,35 +1,22 @@
-import type { ForumQueueId } from "@soco/forum-db/schema/forumQueues";
-import { getUserAuth } from "@soco/auth-service";
-import { and, eq } from "@soco/forum-db";
 import { db } from "@soco/forum-db/client";
-import {
-  forumQueueIdSchema,
-  forumQueues,
-} from "@soco/forum-db/schema/forumQueues";
+import { eq, and } from "@soco/forum-db";
+import { getUserAuth } from "@soco/auth-service";
+import { type ForumQueueId, forumQueueIdSchema, forumQueues } from "@soco/forum-db/schema/forumQueues";
 
 export const getForumQueues = async () => {
   const { session } = await getUserAuth();
-  const rows = await db
-    .select()
-    .from(forumQueues)
-    .where(eq(forumQueues.userId, session?.user.id!));
-  const f = rows;
+  const rows = await db.select().from(forumQueues).where(eq(forumQueues.userId, session?.user.id!));
+  const f = rows
   return { forumQueues: f };
 };
 
 export const getForumQueueById = async (id: ForumQueueId) => {
   const { session } = await getUserAuth();
   const { id: forumQueueId } = forumQueueIdSchema.parse({ id });
-  const [row] = await db
-    .select()
-    .from(forumQueues)
-    .where(
-      and(
-        eq(forumQueues.id, forumQueueId),
-        eq(forumQueues.userId, session?.user.id!),
-      ),
-    );
+  const [row] = await db.select().from(forumQueues).where(and(eq(forumQueues.id, forumQueueId), eq(forumQueues.userId, session?.user.id!)));
   if (row === undefined) return {};
   const f = row;
   return { forumQueue: f };
 };
+
+

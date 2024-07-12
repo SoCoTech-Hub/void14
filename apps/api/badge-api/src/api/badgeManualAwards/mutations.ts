@@ -1,9 +1,9 @@
 import { db } from "@soco/badge-db/client";
 import { eq } from "@soco/badge-db";
 import { 
-  BadgeManualAwardId, 
-  NewBadgeManualAwardParams,
-  UpdateBadgeManualAwardParams, 
+  type BadgeManualAwardId, 
+  type NewBadgeManualAwardParams,
+  type UpdateBadgeManualAwardParams, 
   updateBadgeManualAwardSchema,
   insertBadgeManualAwardSchema, 
   badgeManualAwards,

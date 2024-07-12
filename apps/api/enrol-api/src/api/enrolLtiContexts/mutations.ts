@@ -1,9 +1,9 @@
 import { db } from "@soco/enrol-db/client";
 import { eq } from "@soco/enrol-db";
 import { 
-  EnrolLtiContextId, 
-  NewEnrolLtiContextParams,
-  UpdateEnrolLtiContextParams, 
+  type EnrolLtiContextId, 
+  type NewEnrolLtiContextParams,
+  type UpdateEnrolLtiContextParams, 
   updateEnrolLtiContextSchema,
   insertEnrolLtiContextSchema, 
   enrolLtiContexts,

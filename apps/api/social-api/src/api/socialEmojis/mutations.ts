@@ -1,9 +1,9 @@
 import { db } from "@soco/social-db/client";
 import { eq } from "@soco/social-db";
 import { 
-  SocialEmojiId, 
-  NewSocialEmojiParams,
-  UpdateSocialEmojiParams, 
+  type SocialEmojiId, 
+  type NewSocialEmojiParams,
+  type UpdateSocialEmojiParams, 
   updateSocialEmojiSchema,
   insertSocialEmojiSchema, 
   socialEmojis,

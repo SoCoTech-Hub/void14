@@ -1,9 +1,9 @@
 import { db } from "@soco/analytics-db/client";
 import { eq } from "@soco/analytics-db";
 import { 
-  AnalyticsUsedAnalysableId, 
-  NewAnalyticsUsedAnalysableParams,
-  UpdateAnalyticsUsedAnalysableParams, 
+  type AnalyticsUsedAnalysableId, 
+  type NewAnalyticsUsedAnalysableParams,
+  type UpdateAnalyticsUsedAnalysableParams, 
   updateAnalyticsUsedAnalysableSchema,
   insertAnalyticsUsedAnalysableSchema, 
   analyticsUsedAnalysables,

@@ -1,9 +1,9 @@
 import { db } from "@soco/assignment-db/client";
 import { eq } from "@soco/assignment-db";
 import { 
-  AssignFeedbackFileId, 
-  NewAssignFeedbackFileParams,
-  UpdateAssignFeedbackFileParams, 
+  type AssignFeedbackFileId, 
+  type NewAssignFeedbackFileParams,
+  type UpdateAssignFeedbackFileParams, 
   updateAssignFeedbackFileSchema,
   insertAssignFeedbackFileSchema, 
   assignFeedbackFiles,

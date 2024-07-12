@@ -1,9 +1,9 @@
 import { db } from "@soco/lesson-db/client";
 import { eq } from "@soco/lesson-db";
 import { 
-  LessonAnswerId, 
-  NewLessonAnswerParams,
-  UpdateLessonAnswerParams, 
+  type LessonAnswerId, 
+  type NewLessonAnswerParams,
+  type UpdateLessonAnswerParams, 
   updateLessonAnswerSchema,
   insertLessonAnswerSchema, 
   lessonAnswers,

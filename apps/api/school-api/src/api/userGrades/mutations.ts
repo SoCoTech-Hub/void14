@@ -1,24 +1,21 @@
-import { getUserAuth } from "@soco/auth-service";
-import { and, eq } from "@soco/school-db";
 import { db } from "@soco/school-db/client";
-import {
-  insertUserGradeSchema,
-  NewUserGradeParams,
-  UpdateUserGradeParams,
+import { and, eq } from "@soco/school-db";
+import { 
+  type UserGradeId, 
+  type NewUserGradeParams,
+  type UpdateUserGradeParams, 
   updateUserGradeSchema,
-  UserGradeId,
-  userGradeIdSchema,
+  insertUserGradeSchema, 
   userGrades,
+  userGradeIdSchema 
 } from "@soco/school-db/schema/userGrades";
+import { getUserAuth } from "@soco/auth-service";
 
 export const createUserGrade = async (userGrade: NewUserGradeParams) => {
   const { session } = await getUserAuth();
-  const newUserGrade = insertUserGradeSchema.parse({
-    ...userGrade,
-    userId: session?.user.id!,
-  });
+  const newUserGrade = insertUserGradeSchema.parse({ ...userGrade, userId: session?.user.id! });
   try {
-    const [u] = await db.insert(userGrades).values(newUserGrade).returning();
+    const [u] =  await db.insert(userGrades).values(newUserGrade).returning();
     return { userGrade: u };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -27,27 +24,16 @@ export const createUserGrade = async (userGrade: NewUserGradeParams) => {
   }
 };
 
-export const updateUserGrade = async (
-  id: UserGradeId,
-  userGrade: UpdateUserGradeParams,
-) => {
+export const updateUserGrade = async (id: UserGradeId, userGrade: UpdateUserGradeParams) => {
   const { session } = await getUserAuth();
   const { id: userGradeId } = userGradeIdSchema.parse({ id });
-  const newUserGrade = updateUserGradeSchema.parse({
-    ...userGrade,
-    userId: session?.user.id!,
-  });
+  const newUserGrade = updateUserGradeSchema.parse({ ...userGrade, userId: session?.user.id! });
   try {
-    const [u] = await db
-      .update(userGrades)
-      .set(newUserGrade)
-      .where(
-        and(
-          eq(userGrades.id, userGradeId!),
-          eq(userGrades.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [u] =  await db
+     .update(userGrades)
+     .set(newUserGrade)
+     .where(and(eq(userGrades.id, userGradeId!), eq(userGrades.userId, session?.user.id!)))
+     .returning();
     return { userGrade: u };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -60,15 +46,8 @@ export const deleteUserGrade = async (id: UserGradeId) => {
   const { session } = await getUserAuth();
   const { id: userGradeId } = userGradeIdSchema.parse({ id });
   try {
-    const [u] = await db
-      .delete(userGrades)
-      .where(
-        and(
-          eq(userGrades.id, userGradeId!),
-          eq(userGrades.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [u] =  await db.delete(userGrades).where(and(eq(userGrades.id, userGradeId!), eq(userGrades.userId, session?.user.id!)))
+    .returning();
     return { userGrade: u };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -76,3 +55,4 @@ export const deleteUserGrade = async (id: UserGradeId) => {
     throw { error: message };
   }
 };
+

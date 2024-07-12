@@ -1,9 +1,9 @@
 import { db } from "@soco/scorm-db/client";
 import { eq } from "@soco/scorm-db";
 import { 
-  ScormSeqRollupRuleCondId, 
-  NewScormSeqRollupRuleCondParams,
-  UpdateScormSeqRollupRuleCondParams, 
+  type ScormSeqRollupRuleCondId, 
+  type NewScormSeqRollupRuleCondParams,
+  type UpdateScormSeqRollupRuleCondParams, 
   updateScormSeqRollupRuleCondSchema,
   insertScormSeqRollupRuleCondSchema, 
   scormSeqRollupRuleConds,

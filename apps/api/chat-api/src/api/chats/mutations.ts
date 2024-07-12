@@ -1,9 +1,9 @@
 import { db } from "@soco/chat-db/client";
 import { eq } from "@soco/chat-db";
 import { 
-  ChatId, 
-  NewChatParams,
-  UpdateChatParams, 
+  type ChatId, 
+  type NewChatParams,
+  type UpdateChatParams, 
   updateChatSchema,
   insertChatSchema, 
   chats,

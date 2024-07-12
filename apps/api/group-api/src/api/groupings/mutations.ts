@@ -1,9 +1,9 @@
 import { db } from "@soco/group-db/client";
 import { eq } from "@soco/group-db";
 import { 
-  GroupingId, 
-  NewGroupingParams,
-  UpdateGroupingParams, 
+  type GroupingId, 
+  type NewGroupingParams,
+  type UpdateGroupingParams, 
   updateGroupingSchema,
   insertGroupingSchema, 
   groupings,

@@ -1,9 +1,9 @@
 import { db } from "@soco/lesson-db/client";
 import { eq } from "@soco/lesson-db";
 import { 
-  LessonOverrideId, 
-  NewLessonOverrideParams,
-  UpdateLessonOverrideParams, 
+  type LessonOverrideId, 
+  type NewLessonOverrideParams,
+  type UpdateLessonOverrideParams, 
   updateLessonOverrideSchema,
   insertLessonOverrideSchema, 
   lessonOverrides,

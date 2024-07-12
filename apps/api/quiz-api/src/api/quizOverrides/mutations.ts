@@ -1,29 +1,21 @@
-import { getUserAuth } from "@soco/auth-service";
-import { and, eq } from "@soco/quiz-db";
 import { db } from "@soco/quiz-db/client";
-import {
-  insertQuizOverrideSchema,
-  NewQuizOverrideParams,
-  QuizOverrideId,
-  quizOverrideIdSchema,
-  quizOverrides,
-  UpdateQuizOverrideParams,
+import { and, eq } from "@soco/quiz-db";
+import { 
+  type QuizOverrideId, 
+  type NewQuizOverrideParams,
+  type UpdateQuizOverrideParams, 
   updateQuizOverrideSchema,
+  insertQuizOverrideSchema, 
+  quizOverrides,
+  quizOverrideIdSchema 
 } from "@soco/quiz-db/schema/quizOverrides";
+import { getUserAuth } from "@soco/auth-service";
 
-export const createQuizOverride = async (
-  quizOverride: NewQuizOverrideParams,
-) => {
+export const createQuizOverride = async (quizOverride: NewQuizOverrideParams) => {
   const { session } = await getUserAuth();
-  const newQuizOverride = insertQuizOverrideSchema.parse({
-    ...quizOverride,
-    userId: session?.user.id!,
-  });
+  const newQuizOverride = insertQuizOverrideSchema.parse({ ...quizOverride, userId: session?.user.id! });
   try {
-    const [q] = await db
-      .insert(quizOverrides)
-      .values(newQuizOverride)
-      .returning();
+    const [q] =  await db.insert(quizOverrides).values(newQuizOverride).returning();
     return { quizOverride: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -32,27 +24,16 @@ export const createQuizOverride = async (
   }
 };
 
-export const updateQuizOverride = async (
-  id: QuizOverrideId,
-  quizOverride: UpdateQuizOverrideParams,
-) => {
+export const updateQuizOverride = async (id: QuizOverrideId, quizOverride: UpdateQuizOverrideParams) => {
   const { session } = await getUserAuth();
   const { id: quizOverrideId } = quizOverrideIdSchema.parse({ id });
-  const newQuizOverride = updateQuizOverrideSchema.parse({
-    ...quizOverride,
-    userId: session?.user.id!,
-  });
+  const newQuizOverride = updateQuizOverrideSchema.parse({ ...quizOverride, userId: session?.user.id! });
   try {
-    const [q] = await db
-      .update(quizOverrides)
-      .set(newQuizOverride)
-      .where(
-        and(
-          eq(quizOverrides.id, quizOverrideId!),
-          eq(quizOverrides.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [q] =  await db
+     .update(quizOverrides)
+     .set(newQuizOverride)
+     .where(and(eq(quizOverrides.id, quizOverrideId!), eq(quizOverrides.userId, session?.user.id!)))
+     .returning();
     return { quizOverride: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -65,15 +46,8 @@ export const deleteQuizOverride = async (id: QuizOverrideId) => {
   const { session } = await getUserAuth();
   const { id: quizOverrideId } = quizOverrideIdSchema.parse({ id });
   try {
-    const [q] = await db
-      .delete(quizOverrides)
-      .where(
-        and(
-          eq(quizOverrides.id, quizOverrideId!),
-          eq(quizOverrides.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [q] =  await db.delete(quizOverrides).where(and(eq(quizOverrides.id, quizOverrideId!), eq(quizOverrides.userId, session?.user.id!)))
+    .returning();
     return { quizOverride: q };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -81,3 +55,4 @@ export const deleteQuizOverride = async (id: QuizOverrideId) => {
     throw { error: message };
   }
 };
+

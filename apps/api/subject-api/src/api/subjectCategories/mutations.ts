@@ -1,9 +1,9 @@
 import { db } from "@soco/subject-db/client";
 import { eq } from "@soco/subject-db";
 import { 
-  SubjectCategoryId, 
-  NewSubjectCategoryParams,
-  UpdateSubjectCategoryParams, 
+  type SubjectCategoryId, 
+  type NewSubjectCategoryParams,
+  type UpdateSubjectCategoryParams, 
   updateSubjectCategorySchema,
   insertSubjectCategorySchema, 
   subjectCategories,

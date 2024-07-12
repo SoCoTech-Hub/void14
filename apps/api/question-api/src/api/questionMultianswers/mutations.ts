@@ -1,9 +1,9 @@
 import { db } from "@soco/question-db/client";
 import { eq } from "@soco/question-db";
 import { 
-  QuestionMultianswerId, 
-  NewQuestionMultianswerParams,
-  UpdateQuestionMultianswerParams, 
+  type QuestionMultianswerId, 
+  type NewQuestionMultianswerParams,
+  type UpdateQuestionMultianswerParams, 
   updateQuestionMultianswerSchema,
   insertQuestionMultianswerSchema, 
   questionMultianswers,

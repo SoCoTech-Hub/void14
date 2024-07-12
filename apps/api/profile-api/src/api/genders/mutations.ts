@@ -1,9 +1,9 @@
 import { db } from "@soco/profile-db/client";
 import { eq } from "@soco/profile-db";
 import { 
-  GenderId, 
-  NewGenderParams,
-  UpdateGenderParams, 
+  type GenderId, 
+  type NewGenderParams,
+  type UpdateGenderParams, 
   updateGenderSchema,
   insertGenderSchema, 
   genders,

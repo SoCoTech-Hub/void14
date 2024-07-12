@@ -1,9 +1,9 @@
 import { db } from "@soco/qtype-db/client";
 import { eq } from "@soco/qtype-db";
 import { 
-  QtypeMultichoiceOptionId, 
-  NewQtypeMultichoiceOptionParams,
-  UpdateQtypeMultichoiceOptionParams, 
+  type QtypeMultichoiceOptionId, 
+  type NewQtypeMultichoiceOptionParams,
+  type UpdateQtypeMultichoiceOptionParams, 
   updateQtypeMultichoiceOptionSchema,
   insertQtypeMultichoiceOptionSchema, 
   qtypeMultichoiceOptions,

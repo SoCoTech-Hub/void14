@@ -1,9 +1,9 @@
 import { db } from "@soco/organization-db/client";
 import { eq } from "@soco/organization-db";
 import { 
-  OrganizationId, 
-  NewOrganizationParams,
-  UpdateOrganizationParams, 
+  type OrganizationId, 
+  type NewOrganizationParams,
+  type UpdateOrganizationParams, 
   updateOrganizationSchema,
   insertOrganizationSchema, 
   organizations,

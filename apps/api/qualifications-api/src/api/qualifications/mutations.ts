@@ -1,9 +1,9 @@
 import { db } from "@soco/qualifications-db/client";
 import { eq } from "@soco/qualifications-db";
 import { 
-  QualificationId, 
-  NewQualificationParams,
-  UpdateQualificationParams, 
+  type QualificationId, 
+  type NewQualificationParams,
+  type UpdateQualificationParams, 
   updateQualificationSchema,
   insertQualificationSchema, 
   qualifications,

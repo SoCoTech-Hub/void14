@@ -1,9 +1,9 @@
 import { db } from "@soco/sessions-db/client";
 import { and, eq } from "@soco/sessions-db";
 import { 
-  SessionId, 
-  NewSessionParams,
-  UpdateSessionParams, 
+  type SessionId, 
+  type NewSessionParams,
+  type UpdateSessionParams, 
   updateSessionSchema,
   insertSessionSchema, 
   sessions,

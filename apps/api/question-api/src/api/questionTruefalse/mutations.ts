@@ -1,9 +1,9 @@
 import { db } from "@soco/question-db/client";
 import { eq } from "@soco/question-db";
 import { 
-  QuestionTruefalseId, 
-  NewQuestionTruefalseParams,
-  UpdateQuestionTruefalseParams, 
+  type QuestionTruefalseId, 
+  type NewQuestionTruefalseParams,
+  type UpdateQuestionTruefalseParams, 
   updateQuestionTruefalseSchema,
   insertQuestionTruefalseSchema, 
   questionTruefalse,

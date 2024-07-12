@@ -1,9 +1,9 @@
 import { db } from "@soco/tag-db/client";
 import { eq } from "@soco/tag-db";
 import { 
-  TagCorrelationId, 
-  NewTagCorrelationParams,
-  UpdateTagCorrelationParams, 
+  type TagCorrelationId, 
+  type NewTagCorrelationParams,
+  type UpdateTagCorrelationParams, 
   updateTagCorrelationSchema,
   insertTagCorrelationSchema, 
   tagCorrelations,

@@ -1,9 +1,9 @@
 import { db } from "@soco/lti-db/client";
 import { eq } from "@soco/lti-db";
 import { 
-  LtiserviceGradebookserviceId, 
-  NewLtiserviceGradebookserviceParams,
-  UpdateLtiserviceGradebookserviceParams, 
+  type LtiserviceGradebookserviceId, 
+  type NewLtiserviceGradebookserviceParams,
+  type UpdateLtiserviceGradebookserviceParams, 
   updateLtiserviceGradebookserviceSchema,
   insertLtiserviceGradebookserviceSchema, 
   ltiserviceGradebookservices,

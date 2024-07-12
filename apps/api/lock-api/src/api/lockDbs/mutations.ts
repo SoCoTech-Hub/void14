@@ -1,9 +1,9 @@
 import { db } from "@soco/lock-db/client";
 import { eq } from "@soco/lock-db";
 import { 
-  LockDbId, 
-  NewLockDbParams,
-  UpdateLockDbParams, 
+  type LockDbId, 
+  type NewLockDbParams,
+  type UpdateLockDbParams, 
   updateLockDbSchema,
   insertLockDbSchema, 
   lockDbs,

@@ -1,9 +1,9 @@
 import { db } from "@soco/assignment-db/client";
 import { eq } from "@soco/assignment-db";
 import { 
-  AssignFeedbackCommentId, 
-  NewAssignFeedbackCommentParams,
-  UpdateAssignFeedbackCommentParams, 
+  type AssignFeedbackCommentId, 
+  type NewAssignFeedbackCommentParams,
+  type UpdateAssignFeedbackCommentParams, 
   updateAssignFeedbackCommentSchema,
   insertAssignFeedbackCommentSchema, 
   assignFeedbackComments,

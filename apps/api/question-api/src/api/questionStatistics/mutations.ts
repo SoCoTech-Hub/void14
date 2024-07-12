@@ -1,9 +1,9 @@
 import { db } from "@soco/question-db/client";
 import { eq } from "@soco/question-db";
 import { 
-  QuestionStatisticId, 
-  NewQuestionStatisticParams,
-  UpdateQuestionStatisticParams, 
+  type QuestionStatisticId, 
+  type NewQuestionStatisticParams,
+  type UpdateQuestionStatisticParams, 
   updateQuestionStatisticSchema,
   insertQuestionStatisticSchema, 
   questionStatistics,

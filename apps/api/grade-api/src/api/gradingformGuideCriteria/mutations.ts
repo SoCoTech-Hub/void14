@@ -1,9 +1,9 @@
 import { db } from "@soco/grade-db/client";
 import { eq } from "@soco/grade-db";
 import { 
-  GradingformGuideCriterionId, 
-  NewGradingformGuideCriterionParams,
-  UpdateGradingformGuideCriterionParams, 
+  type GradingformGuideCriterionId, 
+  type NewGradingformGuideCriterionParams,
+  type UpdateGradingformGuideCriterionParams, 
   updateGradingformGuideCriterionSchema,
   insertGradingformGuideCriterionSchema, 
   gradingformGuideCriteria,

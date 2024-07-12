@@ -1,9 +1,9 @@
 import { db } from "@soco/repository-db/client";
 import { eq } from "@soco/repository-db";
 import { 
-  RepositoryInstanceConfigId, 
-  NewRepositoryInstanceConfigParams,
-  UpdateRepositoryInstanceConfigParams, 
+  type RepositoryInstanceConfigId, 
+  type NewRepositoryInstanceConfigParams,
+  type UpdateRepositoryInstanceConfigParams, 
   updateRepositoryInstanceConfigSchema,
   insertRepositoryInstanceConfigSchema, 
   repositoryInstanceConfigs,

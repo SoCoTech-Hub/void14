@@ -1,9 +1,9 @@
 import { db } from "@soco/mnet-db/client";
 import { eq } from "@soco/mnet-db";
 import { 
-  MnetRemoteRpcId, 
-  NewMnetRemoteRpcParams,
-  UpdateMnetRemoteRpcParams, 
+  type MnetRemoteRpcId, 
+  type NewMnetRemoteRpcParams,
+  type UpdateMnetRemoteRpcParams, 
   updateMnetRemoteRpcSchema,
   insertMnetRemoteRpcSchema, 
   mnetRemoteRpc,

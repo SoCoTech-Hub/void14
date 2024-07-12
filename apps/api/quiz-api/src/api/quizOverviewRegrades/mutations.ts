@@ -1,9 +1,9 @@
 import { db } from "@soco/quiz-db/client";
 import { eq } from "@soco/quiz-db";
 import { 
-  QuizOverviewRegradeId, 
-  NewQuizOverviewRegradeParams,
-  UpdateQuizOverviewRegradeParams, 
+  type QuizOverviewRegradeId, 
+  type NewQuizOverviewRegradeParams,
+  type UpdateQuizOverviewRegradeParams, 
   updateQuizOverviewRegradeSchema,
   insertQuizOverviewRegradeSchema, 
   quizOverviewRegrades,

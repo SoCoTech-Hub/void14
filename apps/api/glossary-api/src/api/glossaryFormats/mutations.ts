@@ -1,9 +1,9 @@
 import { db } from "@soco/glossary-db/client";
 import { eq } from "@soco/glossary-db";
 import { 
-  GlossaryFormatId, 
-  NewGlossaryFormatParams,
-  UpdateGlossaryFormatParams, 
+  type GlossaryFormatId, 
+  type NewGlossaryFormatParams,
+  type UpdateGlossaryFormatParams, 
   updateGlossaryFormatSchema,
   insertGlossaryFormatSchema, 
   glossaryFormats,

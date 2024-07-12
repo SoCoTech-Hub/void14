@@ -1,9 +1,9 @@
 import { db } from "@soco/message-db/client";
 import { eq } from "@soco/message-db";
 import { 
-  MessageinboundHandlerId, 
-  NewMessageinboundHandlerParams,
-  UpdateMessageinboundHandlerParams, 
+  type MessageinboundHandlerId, 
+  type NewMessageinboundHandlerParams,
+  type UpdateMessageinboundHandlerParams, 
   updateMessageinboundHandlerSchema,
   insertMessageinboundHandlerSchema, 
   messageinboundHandlers,

@@ -1,9 +1,9 @@
 import { db } from "@soco/module-db/client";
 import { eq } from "@soco/module-db";
 import { 
-  ModuleId, 
-  NewModuleParams,
-  UpdateModuleParams, 
+  type ModuleId, 
+  type NewModuleParams,
+  type UpdateModuleParams, 
   updateModuleSchema,
   insertModuleSchema, 
   modules,

@@ -1,9 +1,9 @@
 import { db } from "@soco/tool-monitor-db/client";
 import { eq } from "@soco/tool-monitor-db";
 import { 
-  ToolMonitorEventId, 
-  NewToolMonitorEventParams,
-  UpdateToolMonitorEventParams, 
+  type ToolMonitorEventId, 
+  type NewToolMonitorEventParams,
+  type UpdateToolMonitorEventParams, 
   updateToolMonitorEventSchema,
   insertToolMonitorEventSchema, 
   toolMonitorEvents,

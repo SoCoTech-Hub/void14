@@ -1,9 +1,9 @@
 import { db } from "@soco/question-db/client";
 import { eq } from "@soco/question-db";
 import { 
-  QuestionGapselectId, 
-  NewQuestionGapselectParams,
-  UpdateQuestionGapselectParams, 
+  type QuestionGapselectId, 
+  type NewQuestionGapselectParams,
+  type UpdateQuestionGapselectParams, 
   updateQuestionGapselectSchema,
   insertQuestionGapselectSchema, 
   questionGapselects,

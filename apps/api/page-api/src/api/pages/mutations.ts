@@ -1,9 +1,9 @@
 import { db } from "@soco/page-db/client";
 import { eq } from "@soco/page-db";
 import { 
-  PageId, 
-  NewPageParams,
-  UpdatePageParams, 
+  type PageId, 
+  type NewPageParams,
+  type UpdatePageParams, 
   updatePageSchema,
   insertPageSchema, 
   pages,

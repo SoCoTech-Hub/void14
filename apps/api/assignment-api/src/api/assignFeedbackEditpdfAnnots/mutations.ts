@@ -1,9 +1,9 @@
 import { db } from "@soco/assignment-db/client";
 import { eq } from "@soco/assignment-db";
 import { 
-  AssignFeedbackEditpdfAnnotId, 
-  NewAssignFeedbackEditpdfAnnotParams,
-  UpdateAssignFeedbackEditpdfAnnotParams, 
+  type AssignFeedbackEditpdfAnnotId, 
+  type NewAssignFeedbackEditpdfAnnotParams,
+  type UpdateAssignFeedbackEditpdfAnnotParams, 
   updateAssignFeedbackEditpdfAnnotSchema,
   insertAssignFeedbackEditpdfAnnotSchema, 
   assignFeedbackEditpdfAnnots,

@@ -1,9 +1,9 @@
 import { db } from "@soco/assignment-db/client";
 import { eq } from "@soco/assignment-db";
 import { 
-  AssignFeedbackEditpdfRotId, 
-  NewAssignFeedbackEditpdfRotParams,
-  UpdateAssignFeedbackEditpdfRotParams, 
+  type AssignFeedbackEditpdfRotId, 
+  type NewAssignFeedbackEditpdfRotParams,
+  type UpdateAssignFeedbackEditpdfRotParams, 
   updateAssignFeedbackEditpdfRotSchema,
   insertAssignFeedbackEditpdfRotSchema, 
   assignFeedbackEditpdfRots,

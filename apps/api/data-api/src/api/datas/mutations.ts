@@ -1,9 +1,9 @@
 import { db } from "@soco/data-db/client";
 import { eq } from "@soco/data-db";
 import { 
-  DataId, 
-  NewDataParams,
-  UpdateDataParams, 
+  type DataId, 
+  type NewDataParams,
+  type UpdateDataParams, 
   updateDataSchema,
   insertDataSchema, 
   datas,

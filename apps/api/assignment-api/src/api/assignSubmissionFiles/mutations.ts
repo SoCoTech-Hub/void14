@@ -1,9 +1,9 @@
 import { db } from "@soco/assignment-db/client";
 import { eq } from "@soco/assignment-db";
 import { 
-  AssignSubmissionFileId, 
-  NewAssignSubmissionFileParams,
-  UpdateAssignSubmissionFileParams, 
+  type AssignSubmissionFileId, 
+  type NewAssignSubmissionFileParams,
+  type UpdateAssignSubmissionFileParams, 
   updateAssignSubmissionFileSchema,
   insertAssignSubmissionFileSchema, 
   assignSubmissionFiles,

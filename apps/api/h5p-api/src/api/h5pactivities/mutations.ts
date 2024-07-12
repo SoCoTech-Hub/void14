@@ -1,9 +1,9 @@
 import { db } from "@soco/h5p-db/client";
 import { eq } from "@soco/h5p-db";
 import { 
-  H5pactivityId, 
-  NewH5pactivityParams,
-  UpdateH5pactivityParams, 
+  type H5pactivityId, 
+  type NewH5pactivityParams,
+  type UpdateH5pactivityParams, 
   updateH5pactivitySchema,
   insertH5pactivitySchema, 
   h5pactivities,

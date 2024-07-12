@@ -1,9 +1,9 @@
 import { db } from "@soco/geolocalize-db/client";
 import { eq } from "@soco/geolocalize-db";
 import { 
-  ProvinceOrganizationId, 
-  NewProvinceOrganizationParams,
-  UpdateProvinceOrganizationParams, 
+  type ProvinceOrganizationId, 
+  type NewProvinceOrganizationParams,
+  type UpdateProvinceOrganizationParams, 
   updateProvinceOrganizationSchema,
   insertProvinceOrganizationSchema, 
   provinceOrganizations,

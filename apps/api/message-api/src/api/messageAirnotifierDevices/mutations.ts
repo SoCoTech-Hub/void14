@@ -1,9 +1,9 @@
 import { db } from "@soco/message-db/client";
 import { eq } from "@soco/message-db";
 import { 
-  MessageAirnotifierDeviceId, 
-  NewMessageAirnotifierDeviceParams,
-  UpdateMessageAirnotifierDeviceParams, 
+  type MessageAirnotifierDeviceId, 
+  type NewMessageAirnotifierDeviceParams,
+  type UpdateMessageAirnotifierDeviceParams, 
   updateMessageAirnotifierDeviceSchema,
   insertMessageAirnotifierDeviceSchema, 
   messageAirnotifierDevices,

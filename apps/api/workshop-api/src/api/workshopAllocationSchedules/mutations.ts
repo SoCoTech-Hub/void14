@@ -1,9 +1,9 @@
 import { db } from "@soco/workshop-db/client";
 import { eq } from "@soco/workshop-db";
 import { 
-  WorkshopAllocationScheduleId, 
-  NewWorkshopAllocationScheduleParams,
-  UpdateWorkshopAllocationScheduleParams, 
+  type WorkshopAllocationScheduleId, 
+  type NewWorkshopAllocationScheduleParams,
+  type UpdateWorkshopAllocationScheduleParams, 
   updateWorkshopAllocationScheduleSchema,
   insertWorkshopAllocationScheduleSchema, 
   workshopAllocationSchedules,

@@ -1,9 +1,9 @@
 import { db } from "@soco/label-db/client";
 import { eq } from "@soco/label-db";
 import { 
-  LabelId, 
-  NewLabelParams,
-  UpdateLabelParams, 
+  type LabelId, 
+  type NewLabelParams,
+  type UpdateLabelParams, 
   updateLabelSchema,
   insertLabelSchema, 
   labels,

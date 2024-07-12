@@ -1,9 +1,9 @@
 import { db } from "@soco/question-db/client";
 import { eq } from "@soco/question-db";
 import { 
-  QuestionAttemptId, 
-  NewQuestionAttemptParams,
-  UpdateQuestionAttemptParams, 
+  type QuestionAttemptId, 
+  type NewQuestionAttemptParams,
+  type UpdateQuestionAttemptParams, 
   updateQuestionAttemptSchema,
   insertQuestionAttemptSchema, 
   questionAttempts,

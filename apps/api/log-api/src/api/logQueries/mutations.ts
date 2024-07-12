@@ -1,9 +1,9 @@
 import { db } from "@soco/log-db/client";
 import { eq } from "@soco/log-db";
 import { 
-  LogQueryId, 
-  NewLogQueryParams,
-  UpdateLogQueryParams, 
+  type LogQueryId, 
+  type NewLogQueryParams,
+  type UpdateLogQueryParams, 
   updateLogQuerySchema,
   insertLogQuerySchema, 
   logQueries,

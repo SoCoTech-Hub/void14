@@ -1,29 +1,21 @@
-import { getUserAuth } from "@soco/auth-service";
-import { and, eq } from "@soco/competency-db";
 import { db } from "@soco/competency-db/client";
-import {
-  CompetencyUserEvidenceId,
-  competencyUserEvidenceIdSchema,
-  competencyUserEvidences,
-  insertCompetencyUserEvidenceSchema,
-  NewCompetencyUserEvidenceParams,
-  UpdateCompetencyUserEvidenceParams,
+import { and, eq } from "@soco/competency-db";
+import { 
+  type CompetencyUserEvidenceId, 
+  type NewCompetencyUserEvidenceParams,
+  type UpdateCompetencyUserEvidenceParams, 
   updateCompetencyUserEvidenceSchema,
+  insertCompetencyUserEvidenceSchema, 
+  competencyUserEvidences,
+  competencyUserEvidenceIdSchema 
 } from "@soco/competency-db/schema/competencyUserEvidences";
+import { getUserAuth } from "@soco/auth-service";
 
-export const createCompetencyUserEvidence = async (
-  competencyUserEvidence: NewCompetencyUserEvidenceParams,
-) => {
+export const createCompetencyUserEvidence = async (competencyUserEvidence: NewCompetencyUserEvidenceParams) => {
   const { session } = await getUserAuth();
-  const newCompetencyUserEvidence = insertCompetencyUserEvidenceSchema.parse({
-    ...competencyUserEvidence,
-    userId: session?.user.id!,
-  });
+  const newCompetencyUserEvidence = insertCompetencyUserEvidenceSchema.parse({ ...competencyUserEvidence, userId: session?.user.id! });
   try {
-    const [c] = await db
-      .insert(competencyUserEvidences)
-      .values(newCompetencyUserEvidence)
-      .returning();
+    const [c] =  await db.insert(competencyUserEvidences).values(newCompetencyUserEvidence).returning();
     return { competencyUserEvidence: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -32,29 +24,16 @@ export const createCompetencyUserEvidence = async (
   }
 };
 
-export const updateCompetencyUserEvidence = async (
-  id: CompetencyUserEvidenceId,
-  competencyUserEvidence: UpdateCompetencyUserEvidenceParams,
-) => {
+export const updateCompetencyUserEvidence = async (id: CompetencyUserEvidenceId, competencyUserEvidence: UpdateCompetencyUserEvidenceParams) => {
   const { session } = await getUserAuth();
-  const { id: competencyUserEvidenceId } = competencyUserEvidenceIdSchema.parse(
-    { id },
-  );
-  const newCompetencyUserEvidence = updateCompetencyUserEvidenceSchema.parse({
-    ...competencyUserEvidence,
-    userId: session?.user.id!,
-  });
+  const { id: competencyUserEvidenceId } = competencyUserEvidenceIdSchema.parse({ id });
+  const newCompetencyUserEvidence = updateCompetencyUserEvidenceSchema.parse({ ...competencyUserEvidence, userId: session?.user.id! });
   try {
-    const [c] = await db
-      .update(competencyUserEvidences)
-      .set({ ...newCompetencyUserEvidence, updatedAt: new Date() })
-      .where(
-        and(
-          eq(competencyUserEvidences.id, competencyUserEvidenceId!),
-          eq(competencyUserEvidences.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [c] =  await db
+     .update(competencyUserEvidences)
+     .set({...newCompetencyUserEvidence, updatedAt: new Date() })
+     .where(and(eq(competencyUserEvidences.id, competencyUserEvidenceId!), eq(competencyUserEvidences.userId, session?.user.id!)))
+     .returning();
     return { competencyUserEvidence: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -63,23 +42,12 @@ export const updateCompetencyUserEvidence = async (
   }
 };
 
-export const deleteCompetencyUserEvidence = async (
-  id: CompetencyUserEvidenceId,
-) => {
+export const deleteCompetencyUserEvidence = async (id: CompetencyUserEvidenceId) => {
   const { session } = await getUserAuth();
-  const { id: competencyUserEvidenceId } = competencyUserEvidenceIdSchema.parse(
-    { id },
-  );
+  const { id: competencyUserEvidenceId } = competencyUserEvidenceIdSchema.parse({ id });
   try {
-    const [c] = await db
-      .delete(competencyUserEvidences)
-      .where(
-        and(
-          eq(competencyUserEvidences.id, competencyUserEvidenceId!),
-          eq(competencyUserEvidences.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [c] =  await db.delete(competencyUserEvidences).where(and(eq(competencyUserEvidences.id, competencyUserEvidenceId!), eq(competencyUserEvidences.userId, session?.user.id!)))
+    .returning();
     return { competencyUserEvidence: c };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -87,3 +55,4 @@ export const deleteCompetencyUserEvidence = async (
     throw { error: message };
   }
 };
+

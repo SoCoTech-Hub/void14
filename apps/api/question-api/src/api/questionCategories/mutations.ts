@@ -1,9 +1,9 @@
 import { db } from "@soco/question-db/client";
 import { eq } from "@soco/question-db";
 import { 
-  QuestionCategoryId, 
-  NewQuestionCategoryParams,
-  UpdateQuestionCategoryParams, 
+  type QuestionCategoryId, 
+  type NewQuestionCategoryParams,
+  type UpdateQuestionCategoryParams, 
   updateQuestionCategorySchema,
   insertQuestionCategorySchema, 
   questionCategories,

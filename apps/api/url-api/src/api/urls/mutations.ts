@@ -1,9 +1,9 @@
 import { db } from "@soco/url-db/client";
 import { eq } from "@soco/url-db";
 import { 
-  UrlId, 
-  NewUrlParams,
-  UpdateUrlParams, 
+  type UrlId, 
+  type NewUrlParams,
+  type UpdateUrlParams, 
   updateUrlSchema,
   insertUrlSchema, 
   urls,

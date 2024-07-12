@@ -1,9 +1,9 @@
 import { db } from "@soco/badge-db/client";
 import { eq } from "@soco/badge-db";
 import { 
-  BadgeAlignmentId, 
-  NewBadgeAlignmentParams,
-  UpdateBadgeAlignmentParams, 
+  type BadgeAlignmentId, 
+  type NewBadgeAlignmentParams,
+  type UpdateBadgeAlignmentParams, 
   updateBadgeAlignmentSchema,
   insertBadgeAlignmentSchema, 
   badgeAlignments,

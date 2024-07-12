@@ -1,9 +1,9 @@
 import { db } from "@soco/payment-db/client";
 import { eq } from "@soco/payment-db";
 import { 
-  PaygwPaypalId, 
-  NewPaygwPaypalParams,
-  UpdatePaygwPaypalParams, 
+  type PaygwPaypalId, 
+  type NewPaygwPaypalParams,
+  type UpdatePaygwPaypalParams, 
   updatePaygwPaypalSchema,
   insertPaygwPaypalSchema, 
   paygwPaypals,

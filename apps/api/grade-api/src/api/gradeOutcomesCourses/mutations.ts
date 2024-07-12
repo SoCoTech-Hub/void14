@@ -1,9 +1,9 @@
 import { db } from "@soco/grade-db/client";
 import { eq } from "@soco/grade-db";
 import { 
-  GradeOutcomesCourseId, 
-  NewGradeOutcomesCourseParams,
-  UpdateGradeOutcomesCourseParams, 
+  type GradeOutcomesCourseId, 
+  type NewGradeOutcomesCourseParams,
+  type UpdateGradeOutcomesCourseParams, 
   updateGradeOutcomesCourseSchema,
   insertGradeOutcomesCourseSchema, 
   gradeOutcomesCourses,

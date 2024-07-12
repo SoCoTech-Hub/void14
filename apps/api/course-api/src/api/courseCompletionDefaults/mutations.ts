@@ -1,9 +1,9 @@
 import { db } from "@soco/course-db/client";
 import { eq } from "@soco/course-db";
 import { 
-  CourseCompletionDefaultId, 
-  NewCourseCompletionDefaultParams,
-  UpdateCourseCompletionDefaultParams, 
+  type CourseCompletionDefaultId, 
+  type NewCourseCompletionDefaultParams,
+  type UpdateCourseCompletionDefaultParams, 
   updateCourseCompletionDefaultSchema,
   insertCourseCompletionDefaultSchema, 
   courseCompletionDefaults,

@@ -1,9 +1,9 @@
 import { db } from "@soco/mnet-db/client";
 import { eq } from "@soco/mnet-db";
 import { 
-  MnetApplicationId, 
-  NewMnetApplicationParams,
-  UpdateMnetApplicationParams, 
+  type MnetApplicationId, 
+  type NewMnetApplicationParams,
+  type UpdateMnetApplicationParams, 
   updateMnetApplicationSchema,
   insertMnetApplicationSchema, 
   mnetApplications,

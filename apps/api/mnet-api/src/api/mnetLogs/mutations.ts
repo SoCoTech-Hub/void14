@@ -1,24 +1,21 @@
-import { getUserAuth } from "@soco/auth-service";
-import { and, eq } from "@soco/mnet-db";
 import { db } from "@soco/mnet-db/client";
-import {
-  insertMnetLogSchema,
-  MnetLogId,
-  mnetLogIdSchema,
-  mnetLogs,
-  NewMnetLogParams,
-  UpdateMnetLogParams,
+import { and, eq } from "@soco/mnet-db";
+import { 
+  type MnetLogId, 
+  type NewMnetLogParams,
+  type UpdateMnetLogParams, 
   updateMnetLogSchema,
+  insertMnetLogSchema, 
+  mnetLogs,
+  mnetLogIdSchema 
 } from "@soco/mnet-db/schema/mnetLogs";
+import { getUserAuth } from "@soco/auth-service";
 
 export const createMnetLog = async (mnetLog: NewMnetLogParams) => {
   const { session } = await getUserAuth();
-  const newMnetLog = insertMnetLogSchema.parse({
-    ...mnetLog,
-    userId: session?.user.id!,
-  });
+  const newMnetLog = insertMnetLogSchema.parse({ ...mnetLog, userId: session?.user.id! });
   try {
-    const [m] = await db.insert(mnetLogs).values(newMnetLog).returning();
+    const [m] =  await db.insert(mnetLogs).values(newMnetLog).returning();
     return { mnetLog: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -27,27 +24,16 @@ export const createMnetLog = async (mnetLog: NewMnetLogParams) => {
   }
 };
 
-export const updateMnetLog = async (
-  id: MnetLogId,
-  mnetLog: UpdateMnetLogParams,
-) => {
+export const updateMnetLog = async (id: MnetLogId, mnetLog: UpdateMnetLogParams) => {
   const { session } = await getUserAuth();
   const { id: mnetLogId } = mnetLogIdSchema.parse({ id });
-  const newMnetLog = updateMnetLogSchema.parse({
-    ...mnetLog,
-    userId: session?.user.id!,
-  });
+  const newMnetLog = updateMnetLogSchema.parse({ ...mnetLog, userId: session?.user.id! });
   try {
-    const [m] = await db
-      .update(mnetLogs)
-      .set(newMnetLog)
-      .where(
-        and(
-          eq(mnetLogs.id, mnetLogId!),
-          eq(mnetLogs.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [m] =  await db
+     .update(mnetLogs)
+     .set(newMnetLog)
+     .where(and(eq(mnetLogs.id, mnetLogId!), eq(mnetLogs.userId, session?.user.id!)))
+     .returning();
     return { mnetLog: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -60,15 +46,8 @@ export const deleteMnetLog = async (id: MnetLogId) => {
   const { session } = await getUserAuth();
   const { id: mnetLogId } = mnetLogIdSchema.parse({ id });
   try {
-    const [m] = await db
-      .delete(mnetLogs)
-      .where(
-        and(
-          eq(mnetLogs.id, mnetLogId!),
-          eq(mnetLogs.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [m] =  await db.delete(mnetLogs).where(and(eq(mnetLogs.id, mnetLogId!), eq(mnetLogs.userId, session?.user.id!)))
+    .returning();
     return { mnetLog: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -76,3 +55,4 @@ export const deleteMnetLog = async (id: MnetLogId) => {
     throw { error: message };
   }
 };
+

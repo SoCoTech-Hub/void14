@@ -1,9 +1,9 @@
 import { db } from "@soco/user-db/client";
 import { eq } from "@soco/user-db";
 import { 
-  UserInfoCategoryId, 
-  NewUserInfoCategoryParams,
-  UpdateUserInfoCategoryParams, 
+  type UserInfoCategoryId, 
+  type NewUserInfoCategoryParams,
+  type UpdateUserInfoCategoryParams, 
   updateUserInfoCategorySchema,
   insertUserInfoCategorySchema, 
   userInfoCategories,

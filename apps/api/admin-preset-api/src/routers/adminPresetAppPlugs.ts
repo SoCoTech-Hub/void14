@@ -1,5 +1,3 @@
-import type { TRPCRouterRecord } from "@trpc/server";
-
 import {
   adminPresetAppPlugIdSchema,
   insertAdminPresetAppPlugParams,
@@ -15,9 +13,9 @@ import {
   getAdminPresetAppPlugById,
   getAdminPresetAppPlugs,
 } from "../api/adminPresetAppPlugs/queries";
-import { createTRPCRouter, protectedProcedure, publicProcedure } from "../trpc";
+import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const adminPresetAppPlugsRouter = {
+export const adminPresetAppPlugsRouter = createTRPCRouter({
   getAdminPresetAppPlugs: publicProcedure.query(async () => {
     return getAdminPresetAppPlugs();
   }),
@@ -26,19 +24,19 @@ export const adminPresetAppPlugsRouter = {
     .query(async ({ input }) => {
       return getAdminPresetAppPlugById(input.id);
     }),
-  createAdminPresetAppPlug: protectedProcedure
+  createAdminPresetAppPlug: publicProcedure
     .input(insertAdminPresetAppPlugParams)
     .mutation(async ({ input }) => {
       return createAdminPresetAppPlug(input);
     }),
-  updateAdminPresetAppPlug: protectedProcedure
+  updateAdminPresetAppPlug: publicProcedure
     .input(updateAdminPresetAppPlugParams)
     .mutation(async ({ input }) => {
       return updateAdminPresetAppPlug(input.id, input);
     }),
-  deleteAdminPresetAppPlug: protectedProcedure
+  deleteAdminPresetAppPlug: publicProcedure
     .input(adminPresetAppPlugIdSchema)
     .mutation(async ({ input }) => {
       return deleteAdminPresetAppPlug(input.id);
     }),
-} satisfies TRPCRouterRecord;
+});

@@ -1,9 +1,9 @@
 import { db } from "@soco/tool-user-tours-db/client";
 import { eq } from "@soco/tool-user-tours-db";
 import { 
-  ToolUserToursTourId, 
-  NewToolUserToursTourParams,
-  UpdateToolUserToursTourParams, 
+  type ToolUserToursTourId, 
+  type NewToolUserToursTourParams,
+  type UpdateToolUserToursTourParams, 
   updateToolUserToursTourSchema,
   insertToolUserToursTourSchema, 
   toolUserToursTours,

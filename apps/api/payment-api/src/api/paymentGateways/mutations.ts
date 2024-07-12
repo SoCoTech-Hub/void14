@@ -1,9 +1,9 @@
 import { db } from "@soco/payment-db/client";
 import { eq } from "@soco/payment-db";
 import { 
-  PaymentGatewayId, 
-  NewPaymentGatewayParams,
-  UpdatePaymentGatewayParams, 
+  type PaymentGatewayId, 
+  type NewPaymentGatewayParams,
+  type UpdatePaymentGatewayParams, 
   updatePaymentGatewaySchema,
   insertPaymentGatewaySchema, 
   paymentGateways,

@@ -1,9 +1,9 @@
 import { db } from "@soco/stats-db/client";
 import { eq } from "@soco/stats-db";
 import { 
-  StatsDailyId, 
-  NewStatsDailyParams,
-  UpdateStatsDailyParams, 
+  type StatsDailyId, 
+  type NewStatsDailyParams,
+  type UpdateStatsDailyParams, 
   updateStatsDailySchema,
   insertStatsDailySchema, 
   statsDailies,

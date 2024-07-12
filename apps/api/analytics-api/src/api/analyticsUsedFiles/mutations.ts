@@ -1,9 +1,9 @@
 import { db } from "@soco/analytics-db/client";
 import { eq } from "@soco/analytics-db";
 import { 
-  AnalyticsUsedFileId, 
-  NewAnalyticsUsedFileParams,
-  UpdateAnalyticsUsedFileParams, 
+  type AnalyticsUsedFileId, 
+  type NewAnalyticsUsedFileParams,
+  type UpdateAnalyticsUsedFileParams, 
   updateAnalyticsUsedFileSchema,
   insertAnalyticsUsedFileSchema, 
   analyticsUsedFiles,

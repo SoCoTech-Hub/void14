@@ -1,9 +1,9 @@
 import { db } from "@soco/mnet-db/client";
 import { eq } from "@soco/mnet-db";
 import { 
-  MnetServiceId, 
-  NewMnetServiceParams,
-  UpdateMnetServiceParams, 
+  type MnetServiceId, 
+  type NewMnetServiceParams,
+  type UpdateMnetServiceParams, 
   updateMnetServiceSchema,
   insertMnetServiceSchema, 
   mnetServices,

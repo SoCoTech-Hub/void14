@@ -1,9 +1,9 @@
 import { db } from "@soco/workshop-db/client";
 import { eq } from "@soco/workshop-db";
 import { 
-  WorkshopAssessmentId, 
-  NewWorkshopAssessmentParams,
-  UpdateWorkshopAssessmentParams, 
+  type WorkshopAssessmentId, 
+  type NewWorkshopAssessmentParams,
+  type UpdateWorkshopAssessmentParams, 
   updateWorkshopAssessmentSchema,
   insertWorkshopAssessmentSchema, 
   workshopAssessments,

@@ -1,9 +1,9 @@
 import { db } from "@soco/license-db/client";
 import { eq } from "@soco/license-db";
 import { 
-  LicenseId, 
-  NewLicenseParams,
-  UpdateLicenseParams, 
+  type LicenseId, 
+  type NewLicenseParams,
+  type UpdateLicenseParams, 
   updateLicenseSchema,
   insertLicenseSchema, 
   licenses,

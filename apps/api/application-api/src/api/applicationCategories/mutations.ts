@@ -1,9 +1,9 @@
 import { db } from "@soco/application-db/client";
 import { eq } from "@soco/application-db";
 import { 
-  ApplicationCategoryId, 
-  NewApplicationCategoryParams,
-  UpdateApplicationCategoryParams, 
+  type ApplicationCategoryId, 
+  type NewApplicationCategoryParams,
+  type UpdateApplicationCategoryParams, 
   updateApplicationCategorySchema,
   insertApplicationCategorySchema, 
   applicationCategories,

@@ -1,9 +1,9 @@
 import { db } from "@soco/mnet-db/client";
 import { eq } from "@soco/mnet-db";
 import { 
-  MnetService2rpcId, 
-  NewMnetService2rpcParams,
-  UpdateMnetService2rpcParams, 
+  type MnetService2rpcId, 
+  type NewMnetService2rpcParams,
+  type UpdateMnetService2rpcParams, 
   updateMnetService2rpcSchema,
   insertMnetService2rpcSchema, 
   mnetService2rpcs,

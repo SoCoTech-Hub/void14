@@ -1,9 +1,9 @@
 import { db } from "@soco/assignment-db/client";
 import { eq } from "@soco/assignment-db";
 import { 
-  AssignPluginConfigId, 
-  NewAssignPluginConfigParams,
-  UpdateAssignPluginConfigParams, 
+  type AssignPluginConfigId, 
+  type NewAssignPluginConfigParams,
+  type UpdateAssignPluginConfigParams, 
   updateAssignPluginConfigSchema,
   insertAssignPluginConfigSchema, 
   assignPluginConfigs,

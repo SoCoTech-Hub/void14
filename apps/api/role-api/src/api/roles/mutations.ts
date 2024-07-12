@@ -1,9 +1,9 @@
 import { db } from "@soco/role-db/client";
 import { eq } from "@soco/role-db";
 import { 
-  RoleId, 
-  NewRoleParams,
-  UpdateRoleParams, 
+  type RoleId, 
+  type NewRoleParams,
+  type UpdateRoleParams, 
   updateRoleSchema,
   insertRoleSchema, 
   roles,

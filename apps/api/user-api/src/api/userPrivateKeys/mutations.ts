@@ -1,29 +1,21 @@
-import { getUserAuth } from "@soco/auth-service";
-import { and, eq } from "@soco/user-db";
 import { db } from "@soco/user-db/client";
-import {
-  insertUserPrivateKeySchema,
-  NewUserPrivateKeyParams,
-  UpdateUserPrivateKeyParams,
+import { and, eq } from "@soco/user-db";
+import { 
+  type UserPrivateKeyId, 
+  type NewUserPrivateKeyParams,
+  type UpdateUserPrivateKeyParams, 
   updateUserPrivateKeySchema,
-  UserPrivateKeyId,
-  userPrivateKeyIdSchema,
+  insertUserPrivateKeySchema, 
   userPrivateKeys,
+  userPrivateKeyIdSchema 
 } from "@soco/user-db/schema/userPrivateKeys";
+import { getUserAuth } from "@soco/auth-service";
 
-export const createUserPrivateKey = async (
-  userPrivateKey: NewUserPrivateKeyParams,
-) => {
+export const createUserPrivateKey = async (userPrivateKey: NewUserPrivateKeyParams) => {
   const { session } = await getUserAuth();
-  const newUserPrivateKey = insertUserPrivateKeySchema.parse({
-    ...userPrivateKey,
-    userId: session?.user.id!,
-  });
+  const newUserPrivateKey = insertUserPrivateKeySchema.parse({ ...userPrivateKey, userId: session?.user.id! });
   try {
-    const [u] = await db
-      .insert(userPrivateKeys)
-      .values(newUserPrivateKey)
-      .returning();
+    const [u] =  await db.insert(userPrivateKeys).values(newUserPrivateKey).returning();
     return { userPrivateKey: u };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -32,27 +24,16 @@ export const createUserPrivateKey = async (
   }
 };
 
-export const updateUserPrivateKey = async (
-  id: UserPrivateKeyId,
-  userPrivateKey: UpdateUserPrivateKeyParams,
-) => {
+export const updateUserPrivateKey = async (id: UserPrivateKeyId, userPrivateKey: UpdateUserPrivateKeyParams) => {
   const { session } = await getUserAuth();
   const { id: userPrivateKeyId } = userPrivateKeyIdSchema.parse({ id });
-  const newUserPrivateKey = updateUserPrivateKeySchema.parse({
-    ...userPrivateKey,
-    userId: session?.user.id!,
-  });
+  const newUserPrivateKey = updateUserPrivateKeySchema.parse({ ...userPrivateKey, userId: session?.user.id! });
   try {
-    const [u] = await db
-      .update(userPrivateKeys)
-      .set({ ...newUserPrivateKey, updatedAt: new Date() })
-      .where(
-        and(
-          eq(userPrivateKeys.id, userPrivateKeyId!),
-          eq(userPrivateKeys.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [u] =  await db
+     .update(userPrivateKeys)
+     .set({...newUserPrivateKey, updatedAt: new Date() })
+     .where(and(eq(userPrivateKeys.id, userPrivateKeyId!), eq(userPrivateKeys.userId, session?.user.id!)))
+     .returning();
     return { userPrivateKey: u };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -65,15 +46,8 @@ export const deleteUserPrivateKey = async (id: UserPrivateKeyId) => {
   const { session } = await getUserAuth();
   const { id: userPrivateKeyId } = userPrivateKeyIdSchema.parse({ id });
   try {
-    const [u] = await db
-      .delete(userPrivateKeys)
-      .where(
-        and(
-          eq(userPrivateKeys.id, userPrivateKeyId!),
-          eq(userPrivateKeys.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [u] =  await db.delete(userPrivateKeys).where(and(eq(userPrivateKeys.id, userPrivateKeyId!), eq(userPrivateKeys.userId, session?.user.id!)))
+    .returning();
     return { userPrivateKey: u };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -81,3 +55,4 @@ export const deleteUserPrivateKey = async (id: UserPrivateKeyId) => {
     throw { error: message };
   }
 };
+

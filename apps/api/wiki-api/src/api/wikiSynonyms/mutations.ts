@@ -1,9 +1,9 @@
 import { db } from "@soco/wiki-db/client";
 import { eq } from "@soco/wiki-db";
 import { 
-  WikiSynonymId, 
-  NewWikiSynonymParams,
-  UpdateWikiSynonymParams, 
+  type WikiSynonymId, 
+  type NewWikiSynonymParams,
+  type UpdateWikiSynonymParams, 
   updateWikiSynonymSchema,
   insertWikiSynonymSchema, 
   wikiSynonyms,

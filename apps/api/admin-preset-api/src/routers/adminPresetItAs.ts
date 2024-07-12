@@ -1,5 +1,3 @@
-import type { TRPCRouterRecord } from "@trpc/server";
-
 import {
   adminPresetItAIdSchema,
   insertAdminPresetItAParams,
@@ -15,9 +13,9 @@ import {
   getAdminPresetItAById,
   getAdminPresetItAs,
 } from "../api/adminPresetItAs/queries";
-import { publicProcedure } from "../trpc";
+import { createTRPCRouter, publicProcedure } from "../trpc";
 
-export const adminPresetItAsRouter = {
+export const adminPresetItAsRouter = createTRPCRouter({
   getAdminPresetItAs: publicProcedure.query(async () => {
     return getAdminPresetItAs();
   }),
@@ -41,4 +39,4 @@ export const adminPresetItAsRouter = {
     .mutation(async ({ input }) => {
       return deleteAdminPresetItA(input.id);
     }),
-} satisfies TRPCRouterRecord;
+});

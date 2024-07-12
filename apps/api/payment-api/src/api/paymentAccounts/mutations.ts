@@ -1,9 +1,9 @@
 import { db } from "@soco/payment-db/client";
 import { eq } from "@soco/payment-db";
 import { 
-  PaymentAccountId, 
-  NewPaymentAccountParams,
-  UpdatePaymentAccountParams, 
+  type PaymentAccountId, 
+  type NewPaymentAccountParams,
+  type UpdatePaymentAccountParams, 
   updatePaymentAccountSchema,
   insertPaymentAccountSchema, 
   paymentAccounts,

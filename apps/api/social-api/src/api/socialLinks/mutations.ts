@@ -1,9 +1,9 @@
 import { db } from "@soco/social-db/client";
 import { eq } from "@soco/social-db";
 import { 
-  SocialLinkId, 
-  NewSocialLinkParams,
-  UpdateSocialLinkParams, 
+  type SocialLinkId, 
+  type NewSocialLinkParams,
+  type UpdateSocialLinkParams, 
   updateSocialLinkSchema,
   insertSocialLinkSchema, 
   socialLinks,

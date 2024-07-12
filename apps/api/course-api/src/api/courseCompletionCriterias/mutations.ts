@@ -1,9 +1,9 @@
 import { db } from "@soco/course-db/client";
 import { eq } from "@soco/course-db";
 import { 
-  CourseCompletionCriteriaId, 
-  NewCourseCompletionCriteriaParams,
-  UpdateCourseCompletionCriteriaParams, 
+  type CourseCompletionCriteriaId, 
+  type NewCourseCompletionCriteriaParams,
+  type UpdateCourseCompletionCriteriaParams, 
   updateCourseCompletionCriteriaSchema,
   insertCourseCompletionCriteriaSchema, 
   courseCompletionCriterias,

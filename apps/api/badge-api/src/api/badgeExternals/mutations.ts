@@ -1,9 +1,9 @@
 import { db } from "@soco/badge-db/client";
 import { eq } from "@soco/badge-db";
 import { 
-  BadgeExternalId, 
-  NewBadgeExternalParams,
-  UpdateBadgeExternalParams, 
+  type BadgeExternalId, 
+  type NewBadgeExternalParams,
+  type UpdateBadgeExternalParams, 
   updateBadgeExternalSchema,
   insertBadgeExternalSchema, 
   badgeExternals,

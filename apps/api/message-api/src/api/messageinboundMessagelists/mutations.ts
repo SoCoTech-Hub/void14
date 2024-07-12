@@ -1,30 +1,21 @@
-import { getUserAuth } from "@soco/auth-service";
-import { and, eq } from "@soco/message-db";
 import { db } from "@soco/message-db/client";
-import {
-  insertMessageinboundMessagelistSchema,
-  MessageinboundMessagelistId,
-  messageinboundMessagelistIdSchema,
-  messageinboundMessagelists,
-  NewMessageinboundMessagelistParams,
-  UpdateMessageinboundMessagelistParams,
+import { and, eq } from "@soco/message-db";
+import { 
+  type MessageinboundMessagelistId, 
+  type NewMessageinboundMessagelistParams,
+  type UpdateMessageinboundMessagelistParams, 
   updateMessageinboundMessagelistSchema,
+  insertMessageinboundMessagelistSchema, 
+  messageinboundMessagelists,
+  messageinboundMessagelistIdSchema 
 } from "@soco/message-db/schema/messageinboundMessagelists";
+import { getUserAuth } from "@soco/auth-service";
 
-export const createMessageinboundMessagelist = async (
-  messageinboundMessagelist: NewMessageinboundMessagelistParams,
-) => {
+export const createMessageinboundMessagelist = async (messageinboundMessagelist: NewMessageinboundMessagelistParams) => {
   const { session } = await getUserAuth();
-  const newMessageinboundMessagelist =
-    insertMessageinboundMessagelistSchema.parse({
-      ...messageinboundMessagelist,
-      userId: session?.user.id!,
-    });
+  const newMessageinboundMessagelist = insertMessageinboundMessagelistSchema.parse({ ...messageinboundMessagelist, userId: session?.user.id! });
   try {
-    const [m] = await db
-      .insert(messageinboundMessagelists)
-      .values(newMessageinboundMessagelist)
-      .returning();
+    const [m] =  await db.insert(messageinboundMessagelists).values(newMessageinboundMessagelist).returning();
     return { messageinboundMessagelist: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -33,29 +24,16 @@ export const createMessageinboundMessagelist = async (
   }
 };
 
-export const updateMessageinboundMessagelist = async (
-  id: MessageinboundMessagelistId,
-  messageinboundMessagelist: UpdateMessageinboundMessagelistParams,
-) => {
+export const updateMessageinboundMessagelist = async (id: MessageinboundMessagelistId, messageinboundMessagelist: UpdateMessageinboundMessagelistParams) => {
   const { session } = await getUserAuth();
-  const { id: messageinboundMessagelistId } =
-    messageinboundMessagelistIdSchema.parse({ id });
-  const newMessageinboundMessagelist =
-    updateMessageinboundMessagelistSchema.parse({
-      ...messageinboundMessagelist,
-      userId: session?.user.id!,
-    });
+  const { id: messageinboundMessagelistId } = messageinboundMessagelistIdSchema.parse({ id });
+  const newMessageinboundMessagelist = updateMessageinboundMessagelistSchema.parse({ ...messageinboundMessagelist, userId: session?.user.id! });
   try {
-    const [m] = await db
-      .update(messageinboundMessagelists)
-      .set({ ...newMessageinboundMessagelist, updatedAt: new Date() })
-      .where(
-        and(
-          eq(messageinboundMessagelists.id, messageinboundMessagelistId!),
-          eq(messageinboundMessagelists.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [m] =  await db
+     .update(messageinboundMessagelists)
+     .set({...newMessageinboundMessagelist, updatedAt: new Date() })
+     .where(and(eq(messageinboundMessagelists.id, messageinboundMessagelistId!), eq(messageinboundMessagelists.userId, session?.user.id!)))
+     .returning();
     return { messageinboundMessagelist: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -64,22 +42,12 @@ export const updateMessageinboundMessagelist = async (
   }
 };
 
-export const deleteMessageinboundMessagelist = async (
-  id: MessageinboundMessagelistId,
-) => {
+export const deleteMessageinboundMessagelist = async (id: MessageinboundMessagelistId) => {
   const { session } = await getUserAuth();
-  const { id: messageinboundMessagelistId } =
-    messageinboundMessagelistIdSchema.parse({ id });
+  const { id: messageinboundMessagelistId } = messageinboundMessagelistIdSchema.parse({ id });
   try {
-    const [m] = await db
-      .delete(messageinboundMessagelists)
-      .where(
-        and(
-          eq(messageinboundMessagelists.id, messageinboundMessagelistId!),
-          eq(messageinboundMessagelists.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [m] =  await db.delete(messageinboundMessagelists).where(and(eq(messageinboundMessagelists.id, messageinboundMessagelistId!), eq(messageinboundMessagelists.userId, session?.user.id!)))
+    .returning();
     return { messageinboundMessagelist: m };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -87,3 +55,4 @@ export const deleteMessageinboundMessagelist = async (
     throw { error: message };
   }
 };
+

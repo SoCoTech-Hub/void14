@@ -1,9 +1,9 @@
 import { db } from "@soco/lti-db/client";
 import { eq } from "@soco/lti-db";
 import { 
-  LtiId, 
-  NewLtiParams,
-  UpdateLtiParams, 
+  type LtiId, 
+  type NewLtiParams,
+  type UpdateLtiParams, 
   updateLtiSchema,
   insertLtiSchema, 
   ltis,

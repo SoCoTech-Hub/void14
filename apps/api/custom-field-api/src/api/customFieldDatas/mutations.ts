@@ -1,9 +1,9 @@
 import { db } from "@soco/custom-field-db/client";
 import { eq } from "@soco/custom-field-db";
 import { 
-  CustomFieldDataId, 
-  NewCustomFieldDataParams,
-  UpdateCustomFieldDataParams, 
+  type CustomFieldDataId, 
+  type NewCustomFieldDataParams,
+  type UpdateCustomFieldDataParams, 
   updateCustomFieldDataSchema,
   insertCustomFieldDataSchema, 
   customFieldDatas,

@@ -1,9 +1,9 @@
 import { db } from "@soco/question-db/client";
 import { eq } from "@soco/question-db";
 import { 
-  QuestionCalculatedOptionId, 
-  NewQuestionCalculatedOptionParams,
-  UpdateQuestionCalculatedOptionParams, 
+  type QuestionCalculatedOptionId, 
+  type NewQuestionCalculatedOptionParams,
+  type UpdateQuestionCalculatedOptionParams, 
   updateQuestionCalculatedOptionSchema,
   insertQuestionCalculatedOptionSchema, 
   questionCalculatedOptions,

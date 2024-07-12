@@ -1,13 +1,15 @@
+import type {
+  CompetencyId,
+  NewCompetencyParams,
+  UpdateCompetencyParams,
+} from "@soco/competency-db/schema/competencies";
 import { getUserAuth } from "@soco/auth-service";
 import { and, eq } from "@soco/competency-db";
 import { db } from "@soco/competency-db/client";
 import {
   competencies,
-  CompetencyId,
   competencyIdSchema,
   insertCompetencySchema,
-  NewCompetencyParams,
-  UpdateCompetencyParams,
   updateCompetencySchema,
 } from "@soco/competency-db/schema/competencies";
 

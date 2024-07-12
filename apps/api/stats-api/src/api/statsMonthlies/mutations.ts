@@ -1,9 +1,9 @@
 import { db } from "@soco/stats-db/client";
 import { eq } from "@soco/stats-db";
 import { 
-  StatsMonthlyId, 
-  NewStatsMonthlyParams,
-  UpdateStatsMonthlyParams, 
+  type StatsMonthlyId, 
+  type NewStatsMonthlyParams,
+  type UpdateStatsMonthlyParams, 
   updateStatsMonthlySchema,
   insertStatsMonthlySchema, 
   statsMonthlies,

@@ -1,9 +1,9 @@
 import { db } from "@soco/data-db/client";
 import { eq } from "@soco/data-db";
 import { 
-  FieldId, 
-  NewFieldParams,
-  UpdateFieldParams, 
+  type FieldId, 
+  type NewFieldParams,
+  type UpdateFieldParams, 
   updateFieldSchema,
   insertFieldSchema, 
   fields,

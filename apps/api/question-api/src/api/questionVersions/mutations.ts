@@ -1,9 +1,9 @@
 import { db } from "@soco/question-db/client";
 import { eq } from "@soco/question-db";
 import { 
-  QuestionVersionId, 
-  NewQuestionVersionParams,
-  UpdateQuestionVersionParams, 
+  type QuestionVersionId, 
+  type NewQuestionVersionParams,
+  type UpdateQuestionVersionParams, 
   updateQuestionVersionSchema,
   insertQuestionVersionSchema, 
   questionVersions,

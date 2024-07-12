@@ -1,9 +1,9 @@
 import { db } from "@soco/repository-db/client";
 import { eq } from "@soco/repository-db";
 import { 
-  RepositoryId, 
-  NewRepositoryParams,
-  UpdateRepositoryParams, 
+  type RepositoryId, 
+  type NewRepositoryParams,
+  type UpdateRepositoryParams, 
   updateRepositorySchema,
   insertRepositorySchema, 
   repositories,

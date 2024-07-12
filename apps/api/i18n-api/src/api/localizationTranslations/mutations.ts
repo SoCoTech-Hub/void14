@@ -1,9 +1,9 @@
 import { db } from "@soco/i18n-db/client";
 import { eq } from "@soco/i18n-db";
 import { 
-  LocalizationTranslationId, 
-  NewLocalizationTranslationParams,
-  UpdateLocalizationTranslationParams, 
+  type LocalizationTranslationId, 
+  type NewLocalizationTranslationParams,
+  type UpdateLocalizationTranslationParams, 
   updateLocalizationTranslationSchema,
   insertLocalizationTranslationSchema, 
   localizationTranslations,

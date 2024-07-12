@@ -1,9 +1,9 @@
 import { db } from "@soco/custom-field-db/client";
 import { eq } from "@soco/custom-field-db";
 import { 
-  CustomFieldCategoryId, 
-  NewCustomFieldCategoryParams,
-  UpdateCustomFieldCategoryParams, 
+  type CustomFieldCategoryId, 
+  type NewCustomFieldCategoryParams,
+  type UpdateCustomFieldCategoryParams, 
   updateCustomFieldCategorySchema,
   insertCustomFieldCategorySchema, 
   customFieldCategories,

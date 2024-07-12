@@ -1,9 +1,9 @@
 import { db } from "@soco/config-db/client";
 import { eq } from "@soco/config-db";
 import { 
-  ConfigPluginId, 
-  NewConfigPluginParams,
-  UpdateConfigPluginParams, 
+  type ConfigPluginId, 
+  type NewConfigPluginParams,
+  type UpdateConfigPluginParams, 
   updateConfigPluginSchema,
   insertConfigPluginSchema, 
   configPlugins,

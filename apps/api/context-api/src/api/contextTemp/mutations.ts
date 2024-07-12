@@ -1,9 +1,9 @@
 import { db } from "@soco/context-db/client";
 import { eq } from "@soco/context-db";
 import { 
-  ContextTempId, 
-  NewContextTempParams,
-  UpdateContextTempParams, 
+  type ContextTempId, 
+  type NewContextTempParams,
+  type UpdateContextTempParams, 
   updateContextTempSchema,
   insertContextTempSchema, 
   contextTemp,

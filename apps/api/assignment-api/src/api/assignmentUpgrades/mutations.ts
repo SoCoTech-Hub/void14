@@ -1,9 +1,9 @@
 import { db } from "@soco/assignment-db/client";
 import { eq } from "@soco/assignment-db";
 import { 
-  AssignmentUpgradeId, 
-  NewAssignmentUpgradeParams,
-  UpdateAssignmentUpgradeParams, 
+  type AssignmentUpgradeId, 
+  type NewAssignmentUpgradeParams,
+  type UpdateAssignmentUpgradeParams, 
   updateAssignmentUpgradeSchema,
   insertAssignmentUpgradeSchema, 
   assignmentUpgrades,

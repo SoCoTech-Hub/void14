@@ -1,9 +1,9 @@
 import { db } from "@soco/scorm-db/client";
 import { eq } from "@soco/scorm-db";
 import { 
-  ScormSeqRuleCondId, 
-  NewScormSeqRuleCondParams,
-  UpdateScormSeqRuleCondParams, 
+  type ScormSeqRuleCondId, 
+  type NewScormSeqRuleCondParams,
+  type UpdateScormSeqRuleCondParams, 
   updateScormSeqRuleCondSchema,
   insertScormSeqRuleCondSchema, 
   scormSeqRuleConds,

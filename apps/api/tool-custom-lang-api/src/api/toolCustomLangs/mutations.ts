@@ -1,9 +1,9 @@
 import { db } from "@soco/tool-custom-lang-db/client";
 import { eq } from "@soco/tool-custom-lang-db";
 import { 
-  ToolCustomLangId, 
-  NewToolCustomLangParams,
-  UpdateToolCustomLangParams, 
+  type ToolCustomLangId, 
+  type NewToolCustomLangParams,
+  type UpdateToolCustomLangParams, 
   updateToolCustomLangSchema,
   insertToolCustomLangSchema, 
   toolCustomLangs,

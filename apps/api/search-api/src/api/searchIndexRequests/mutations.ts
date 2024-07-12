@@ -1,9 +1,9 @@
 import { db } from "@soco/search-db/client";
 import { eq } from "@soco/search-db";
 import { 
-  SearchIndexRequestId, 
-  NewSearchIndexRequestParams,
-  UpdateSearchIndexRequestParams, 
+  type SearchIndexRequestId, 
+  type NewSearchIndexRequestParams,
+  type UpdateSearchIndexRequestParams, 
   updateSearchIndexRequestSchema,
   insertSearchIndexRequestSchema, 
   searchIndexRequests,

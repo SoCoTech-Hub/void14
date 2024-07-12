@@ -1,9 +1,9 @@
 import { db } from "@soco/analytics-db/client";
 import { eq } from "@soco/analytics-db";
 import { 
-  AnalyticsTrainSampleId, 
-  NewAnalyticsTrainSampleParams,
-  UpdateAnalyticsTrainSampleParams, 
+  type AnalyticsTrainSampleId, 
+  type NewAnalyticsTrainSampleParams,
+  type UpdateAnalyticsTrainSampleParams, 
   updateAnalyticsTrainSampleSchema,
   insertAnalyticsTrainSampleSchema, 
   analyticsTrainSamples,

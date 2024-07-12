@@ -1,9 +1,9 @@
 import { db } from "@soco/user-db/client";
 import { eq } from "@soco/user-db";
 import { 
-  UserInfoFieldId, 
-  NewUserInfoFieldParams,
-  UpdateUserInfoFieldParams, 
+  type UserInfoFieldId, 
+  type NewUserInfoFieldParams,
+  type UpdateUserInfoFieldParams, 
   updateUserInfoFieldSchema,
   insertUserInfoFieldSchema, 
   userInfoFields,

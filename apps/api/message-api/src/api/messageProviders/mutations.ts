@@ -1,9 +1,9 @@
 import { db } from "@soco/message-db/client";
 import { eq } from "@soco/message-db";
 import { 
-  MessageProviderId, 
-  NewMessageProviderParams,
-  UpdateMessageProviderParams, 
+  type MessageProviderId, 
+  type NewMessageProviderParams,
+  type UpdateMessageProviderParams, 
   updateMessageProviderSchema,
   insertMessageProviderSchema, 
   messageProviders,

@@ -1,9 +1,9 @@
 import { db } from "@soco/feedback-db/client";
 import { eq } from "@soco/feedback-db";
 import { 
-  FeedbackValuetmpId, 
-  NewFeedbackValuetmpParams,
-  UpdateFeedbackValuetmpParams, 
+  type FeedbackValuetmpId, 
+  type NewFeedbackValuetmpParams,
+  type UpdateFeedbackValuetmpParams, 
   updateFeedbackValuetmpSchema,
   insertFeedbackValuetmpSchema, 
   feedbackValuetmps,

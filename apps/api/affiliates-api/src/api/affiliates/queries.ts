@@ -1,35 +1,22 @@
-import type { AffiliateId } from "@soco/affiliates-db/schema/affiliates";
-import { and, eq } from "@soco/affiliates-db";
 import { db } from "@soco/affiliates-db/client";
-import {
-  affiliateIdSchema,
-  affiliates,
-} from "@soco/affiliates-db/schema/affiliates";
+import { eq, and } from "@soco/affiliates-db";
 import { getUserAuth } from "@soco/auth-service";
+import { type AffiliateId, affiliateIdSchema, affiliates } from "@soco/affiliates-db/schema/affiliates";
 
 export const getAffiliates = async () => {
   const { session } = await getUserAuth();
-  const rows = await db
-    .select()
-    .from(affiliates)
-    .where(eq(affiliates.userId, session?.user.id!));
-  const a = rows;
+  const rows = await db.select().from(affiliates).where(eq(affiliates.userId, session?.user.id!));
+  const a = rows
   return { affiliates: a };
 };
 
 export const getAffiliateById = async (id: AffiliateId) => {
   const { session } = await getUserAuth();
   const { id: affiliateId } = affiliateIdSchema.parse({ id });
-  const [row] = await db
-    .select()
-    .from(affiliates)
-    .where(
-      and(
-        eq(affiliates.id, affiliateId),
-        eq(affiliates.userId, session?.user.id!),
-      ),
-    );
+  const [row] = await db.select().from(affiliates).where(and(eq(affiliates.id, affiliateId), eq(affiliates.userId, session?.user.id!)));
   if (row === undefined) return {};
   const a = row;
   return { affiliate: a };
 };
+
+

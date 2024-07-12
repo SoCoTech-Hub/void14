@@ -1,9 +1,9 @@
 import { db } from "@soco/role-db/client";
 import { eq } from "@soco/role-db";
 import { 
-  RoleContextLevelId, 
-  NewRoleContextLevelParams,
-  UpdateRoleContextLevelParams, 
+  type RoleContextLevelId, 
+  type NewRoleContextLevelParams,
+  type UpdateRoleContextLevelParams, 
   updateRoleContextLevelSchema,
   insertRoleContextLevelSchema, 
   roleContextLevels,

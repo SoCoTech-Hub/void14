@@ -1,9 +1,9 @@
 import { db } from "@soco/show-db/client";
 import { eq } from "@soco/show-db";
 import { 
-  ShowsCategoryId, 
-  NewShowsCategoryParams,
-  UpdateShowsCategoryParams, 
+  type ShowsCategoryId, 
+  type NewShowsCategoryParams,
+  type UpdateShowsCategoryParams, 
   updateShowsCategorySchema,
   insertShowsCategorySchema, 
   showsCategories,

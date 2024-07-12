@@ -1,9 +1,9 @@
 import { db } from "@soco/course-db/client";
 import { eq } from "@soco/course-db";
 import { 
-  CourseFormatOptionId, 
-  NewCourseFormatOptionParams,
-  UpdateCourseFormatOptionParams, 
+  type CourseFormatOptionId, 
+  type NewCourseFormatOptionParams,
+  type UpdateCourseFormatOptionParams, 
   updateCourseFormatOptionSchema,
   insertCourseFormatOptionSchema, 
   courseFormatOptions,

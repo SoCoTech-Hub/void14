@@ -1,9 +1,9 @@
 import { db } from "@soco/blog-db/client";
 import { eq } from "@soco/blog-db";
 import { 
-  SocialIconId, 
-  NewSocialIconParams,
-  UpdateSocialIconParams, 
+  type SocialIconId, 
+  type NewSocialIconParams,
+  type UpdateSocialIconParams, 
   updateSocialIconSchema,
   insertSocialIconSchema, 
   socialIcons,

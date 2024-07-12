@@ -1,9 +1,9 @@
 import { db } from "@soco/question-db/client";
 import { eq } from "@soco/question-db";
 import { 
-  QuestionDatasetItemId, 
-  NewQuestionDatasetItemParams,
-  UpdateQuestionDatasetItemParams, 
+  type QuestionDatasetItemId, 
+  type NewQuestionDatasetItemParams,
+  type UpdateQuestionDatasetItemParams, 
   updateQuestionDatasetItemSchema,
   insertQuestionDatasetItemSchema, 
   questionDatasetItems,

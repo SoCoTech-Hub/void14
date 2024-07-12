@@ -1,9 +1,9 @@
 import { db } from "@soco/question-db/client";
 import { eq } from "@soco/question-db";
 import { 
-  QuestionHintId, 
-  NewQuestionHintParams,
-  UpdateQuestionHintParams, 
+  type QuestionHintId, 
+  type NewQuestionHintParams,
+  type UpdateQuestionHintParams, 
   updateQuestionHintSchema,
   insertQuestionHintSchema, 
   questionHints,

@@ -1,9 +1,9 @@
 import { db } from "@soco/grade-db/client";
 import { eq } from "@soco/grade-db";
 import { 
-  GradeCategoryId, 
-  NewGradeCategoryParams,
-  UpdateGradeCategoryParams, 
+  type GradeCategoryId, 
+  type NewGradeCategoryParams,
+  type UpdateGradeCategoryParams, 
   updateGradeCategorySchema,
   insertGradeCategorySchema, 
   gradeCategories,

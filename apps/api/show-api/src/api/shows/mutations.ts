@@ -1,9 +1,9 @@
 import { db } from "@soco/show-db/client";
 import { eq } from "@soco/show-db";
 import { 
-  ShowId, 
-  NewShowParams,
-  UpdateShowParams, 
+  type ShowId, 
+  type NewShowParams,
+  type UpdateShowParams, 
   updateShowSchema,
   insertShowSchema, 
   shows,

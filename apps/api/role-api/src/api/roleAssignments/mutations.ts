@@ -1,29 +1,21 @@
-import { getUserAuth } from "@soco/auth-service";
-import { and, eq } from "@soco/role-db";
 import { db } from "@soco/role-db/client";
-import {
-  insertRoleAssignmentSchema,
-  NewRoleAssignmentParams,
-  RoleAssignmentId,
-  roleAssignmentIdSchema,
-  roleAssignments,
-  UpdateRoleAssignmentParams,
+import { and, eq } from "@soco/role-db";
+import { 
+  type RoleAssignmentId, 
+  type NewRoleAssignmentParams,
+  type UpdateRoleAssignmentParams, 
   updateRoleAssignmentSchema,
+  insertRoleAssignmentSchema, 
+  roleAssignments,
+  roleAssignmentIdSchema 
 } from "@soco/role-db/schema/roleAssignments";
+import { getUserAuth } from "@soco/auth-service";
 
-export const createRoleAssignment = async (
-  roleAssignment: NewRoleAssignmentParams,
-) => {
+export const createRoleAssignment = async (roleAssignment: NewRoleAssignmentParams) => {
   const { session } = await getUserAuth();
-  const newRoleAssignment = insertRoleAssignmentSchema.parse({
-    ...roleAssignment,
-    userId: session?.user.id!,
-  });
+  const newRoleAssignment = insertRoleAssignmentSchema.parse({ ...roleAssignment, userId: session?.user.id! });
   try {
-    const [r] = await db
-      .insert(roleAssignments)
-      .values(newRoleAssignment)
-      .returning();
+    const [r] =  await db.insert(roleAssignments).values(newRoleAssignment).returning();
     return { roleAssignment: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -32,27 +24,16 @@ export const createRoleAssignment = async (
   }
 };
 
-export const updateRoleAssignment = async (
-  id: RoleAssignmentId,
-  roleAssignment: UpdateRoleAssignmentParams,
-) => {
+export const updateRoleAssignment = async (id: RoleAssignmentId, roleAssignment: UpdateRoleAssignmentParams) => {
   const { session } = await getUserAuth();
   const { id: roleAssignmentId } = roleAssignmentIdSchema.parse({ id });
-  const newRoleAssignment = updateRoleAssignmentSchema.parse({
-    ...roleAssignment,
-    userId: session?.user.id!,
-  });
+  const newRoleAssignment = updateRoleAssignmentSchema.parse({ ...roleAssignment, userId: session?.user.id! });
   try {
-    const [r] = await db
-      .update(roleAssignments)
-      .set({ ...newRoleAssignment, updatedAt: new Date() })
-      .where(
-        and(
-          eq(roleAssignments.id, roleAssignmentId!),
-          eq(roleAssignments.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [r] =  await db
+     .update(roleAssignments)
+     .set({...newRoleAssignment, updatedAt: new Date() })
+     .where(and(eq(roleAssignments.id, roleAssignmentId!), eq(roleAssignments.userId, session?.user.id!)))
+     .returning();
     return { roleAssignment: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -65,15 +46,8 @@ export const deleteRoleAssignment = async (id: RoleAssignmentId) => {
   const { session } = await getUserAuth();
   const { id: roleAssignmentId } = roleAssignmentIdSchema.parse({ id });
   try {
-    const [r] = await db
-      .delete(roleAssignments)
-      .where(
-        and(
-          eq(roleAssignments.id, roleAssignmentId!),
-          eq(roleAssignments.userId, session?.user.id!),
-        ),
-      )
-      .returning();
+    const [r] =  await db.delete(roleAssignments).where(and(eq(roleAssignments.id, roleAssignmentId!), eq(roleAssignments.userId, session?.user.id!)))
+    .returning();
     return { roleAssignment: r };
   } catch (err) {
     const message = (err as Error).message ?? "Error, please try again";
@@ -81,3 +55,4 @@ export const deleteRoleAssignment = async (id: RoleAssignmentId) => {
     throw { error: message };
   }
 };
+

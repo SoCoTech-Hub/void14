@@ -1,9 +1,9 @@
 import { db } from "@soco/backup-db/client";
 import { eq } from "@soco/backup-db";
 import { 
-  BackupLogId, 
-  NewBackupLogParams,
-  UpdateBackupLogParams, 
+  type BackupLogId, 
+  type NewBackupLogParams,
+  type UpdateBackupLogParams, 
   updateBackupLogSchema,
   insertBackupLogSchema, 
   backupLogs,

@@ -1,9 +1,9 @@
 import { db } from "@soco/workshop-db/client";
 import { eq } from "@soco/workshop-db";
 import { 
-  WorkshopFormNumErrorId, 
-  NewWorkshopFormNumErrorParams,
-  UpdateWorkshopFormNumErrorParams, 
+  type WorkshopFormNumErrorId, 
+  type NewWorkshopFormNumErrorParams,
+  type UpdateWorkshopFormNumErrorParams, 
   updateWorkshopFormNumErrorSchema,
   insertWorkshopFormNumErrorSchema, 
   workshopFormNumErrors,

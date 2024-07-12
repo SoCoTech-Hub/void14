@@ -1,9 +1,9 @@
 import { db } from "@soco/feedback-db/client";
 import { eq } from "@soco/feedback-db";
 import { 
-  FeedbackSitecourseMapId, 
-  NewFeedbackSitecourseMapParams,
-  UpdateFeedbackSitecourseMapParams, 
+  type FeedbackSitecourseMapId, 
+  type NewFeedbackSitecourseMapParams,
+  type UpdateFeedbackSitecourseMapParams, 
   updateFeedbackSitecourseMapSchema,
   insertFeedbackSitecourseMapSchema, 
   feedbackSitecourseMaps,

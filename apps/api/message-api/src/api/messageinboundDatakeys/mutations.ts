@@ -1,9 +1,9 @@
 import { db } from "@soco/message-db/client";
 import { eq } from "@soco/message-db";
 import { 
-  MessageinboundDatakeyId, 
-  NewMessageinboundDatakeyParams,
-  UpdateMessageinboundDatakeyParams, 
+  type MessageinboundDatakeyId, 
+  type NewMessageinboundDatakeyParams,
+  type UpdateMessageinboundDatakeyParams, 
   updateMessageinboundDatakeySchema,
   insertMessageinboundDatakeySchema, 
   messageinboundDatakeys,

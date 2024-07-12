@@ -1,9 +1,9 @@
 import { db } from "@soco/enrol-db/client";
 import { eq } from "@soco/enrol-db";
 import { 
-  EnrolId, 
-  NewEnrolParams,
-  UpdateEnrolParams, 
+  type EnrolId, 
+  type NewEnrolParams,
+  type UpdateEnrolParams, 
   updateEnrolSchema,
   insertEnrolSchema, 
   enrols,

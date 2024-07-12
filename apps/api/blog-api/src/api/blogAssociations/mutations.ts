@@ -1,9 +1,9 @@
 import { db } from "@soco/blog-db/client";
 import { eq } from "@soco/blog-db";
 import { 
-  BlogAssociationId, 
-  NewBlogAssociationParams,
-  UpdateBlogAssociationParams, 
+  type BlogAssociationId, 
+  type NewBlogAssociationParams,
+  type UpdateBlogAssociationParams, 
   updateBlogAssociationSchema,
   insertBlogAssociationSchema, 
   blogAssociations,

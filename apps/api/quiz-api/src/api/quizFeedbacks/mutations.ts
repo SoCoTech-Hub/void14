@@ -1,9 +1,9 @@
 import { db } from "@soco/quiz-db/client";
 import { eq } from "@soco/quiz-db";
 import { 
-  QuizFeedbackId, 
-  NewQuizFeedbackParams,
-  UpdateQuizFeedbackParams, 
+  type QuizFeedbackId, 
+  type NewQuizFeedbackParams,
+  type UpdateQuizFeedbackParams, 
   updateQuizFeedbackSchema,
   insertQuizFeedbackSchema, 
   quizFeedbacks,

@@ -1,9 +1,9 @@
 import { db } from "@soco/application-db/client";
 import { eq } from "@soco/application-db";
 import { 
-  JobApplicationsApplicationCategoryId, 
-  NewJobApplicationsApplicationCategoryParams,
-  UpdateJobApplicationsApplicationCategoryParams, 
+  type JobApplicationsApplicationCategoryId, 
+  type NewJobApplicationsApplicationCategoryParams,
+  type UpdateJobApplicationsApplicationCategoryParams, 
   updateJobApplicationsApplicationCategorySchema,
   insertJobApplicationsApplicationCategorySchema, 
   jobApplicationsApplicationCategories,

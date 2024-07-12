@@ -1,9 +1,9 @@
 import { db } from "@soco/analytics-db/client";
 import { eq } from "@soco/analytics-db";
 import { 
-  AnalyticsIndicatorCalcId, 
-  NewAnalyticsIndicatorCalcParams,
-  UpdateAnalyticsIndicatorCalcParams, 
+  type AnalyticsIndicatorCalcId, 
+  type NewAnalyticsIndicatorCalcParams,
+  type UpdateAnalyticsIndicatorCalcParams, 
   updateAnalyticsIndicatorCalcSchema,
   insertAnalyticsIndicatorCalcSchema, 
   analyticsIndicatorCalcs,

@@ -1,9 +1,9 @@
 import { db } from "@soco/affiliates-db/client";
 import { eq } from "@soco/affiliates-db";
 import { 
-  AffiliatesSettingId, 
-  NewAffiliatesSettingParams,
-  UpdateAffiliatesSettingParams, 
+  type AffiliatesSettingId, 
+  type NewAffiliatesSettingParams,
+  type UpdateAffiliatesSettingParams, 
   updateAffiliatesSettingSchema,
   insertAffiliatesSettingSchema, 
   affiliatesSettings,

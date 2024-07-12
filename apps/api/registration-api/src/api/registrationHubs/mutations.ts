@@ -1,9 +1,9 @@
 import { db } from "@soco/registration-db/client";
 import { eq } from "@soco/registration-db";
 import { 
-  RegistrationHubId, 
-  NewRegistrationHubParams,
-  UpdateRegistrationHubParams, 
+  type RegistrationHubId, 
+  type NewRegistrationHubParams,
+  type UpdateRegistrationHubParams, 
   updateRegistrationHubSchema,
   insertRegistrationHubSchema, 
   registrationHubs,

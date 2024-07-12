@@ -1,9 +1,9 @@
 import { db } from "@soco/file-db/client";
 import { eq } from "@soco/file-db";
 import { 
-  FolderId, 
-  NewFolderParams,
-  UpdateFolderParams, 
+  type FolderId, 
+  type NewFolderParams,
+  type UpdateFolderParams, 
   updateFolderSchema,
   insertFolderSchema, 
   folders,

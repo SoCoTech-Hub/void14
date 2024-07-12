@@ -1,9 +1,9 @@
 import { db } from "@soco/qtype-db/client";
 import { eq } from "@soco/qtype-db";
 import { 
-  QtypeDdmarkerId, 
-  NewQtypeDdmarkerParams,
-  UpdateQtypeDdmarkerParams, 
+  type QtypeDdmarkerId, 
+  type NewQtypeDdmarkerParams,
+  type UpdateQtypeDdmarkerParams, 
   updateQtypeDdmarkerSchema,
   insertQtypeDdmarkerSchema, 
   qtypeDdmarkers,

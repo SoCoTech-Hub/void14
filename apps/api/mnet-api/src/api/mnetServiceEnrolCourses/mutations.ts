@@ -1,9 +1,9 @@
 import { db } from "@soco/mnet-db/client";
 import { eq } from "@soco/mnet-db";
 import { 
-  MnetServiceEnrolCourseId, 
-  NewMnetServiceEnrolCourseParams,
-  UpdateMnetServiceEnrolCourseParams, 
+  type MnetServiceEnrolCourseId, 
+  type NewMnetServiceEnrolCourseParams,
+  type UpdateMnetServiceEnrolCourseParams, 
   updateMnetServiceEnrolCourseSchema,
   insertMnetServiceEnrolCourseSchema, 
   mnetServiceEnrolCourses,

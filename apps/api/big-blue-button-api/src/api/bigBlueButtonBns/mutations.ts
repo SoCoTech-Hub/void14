@@ -1,9 +1,9 @@
 import { db } from "@soco/big-blue-button-db/client";
 import { eq } from "@soco/big-blue-button-db";
 import { 
-  BigBlueButtonBnId, 
-  NewBigBlueButtonBnParams,
-  UpdateBigBlueButtonBnParams, 
+  type BigBlueButtonBnId, 
+  type NewBigBlueButtonBnParams,
+  type UpdateBigBlueButtonBnParams, 
   updateBigBlueButtonBnSchema,
   insertBigBlueButtonBnSchema, 
   bigBlueButtonBns,

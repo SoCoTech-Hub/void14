@@ -1,9 +1,9 @@
 import { db } from "@soco/role-db/client";
 import { eq } from "@soco/role-db";
 import { 
-  RoleAllowSwitchId, 
-  NewRoleAllowSwitchParams,
-  UpdateRoleAllowSwitchParams, 
+  type RoleAllowSwitchId, 
+  type NewRoleAllowSwitchParams,
+  type UpdateRoleAllowSwitchParams, 
   updateRoleAllowSwitchSchema,
   insertRoleAllowSwitchSchema, 
   roleAllowSwitches,

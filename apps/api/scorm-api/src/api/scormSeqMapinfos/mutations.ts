@@ -1,9 +1,9 @@
 import { db } from "@soco/scorm-db/client";
 import { eq } from "@soco/scorm-db";
 import { 
-  ScormSeqMapinfoId, 
-  NewScormSeqMapinfoParams,
-  UpdateScormSeqMapinfoParams, 
+  type ScormSeqMapinfoId, 
+  type NewScormSeqMapinfoParams,
+  type UpdateScormSeqMapinfoParams, 
   updateScormSeqMapinfoSchema,
   insertScormSeqMapinfoSchema, 
   scormSeqMapinfos,

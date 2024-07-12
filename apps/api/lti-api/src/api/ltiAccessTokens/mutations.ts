@@ -1,9 +1,9 @@
 import { db } from "@soco/lti-db/client";
 import { eq } from "@soco/lti-db";
 import { 
-  LtiAccessTokenId, 
-  NewLtiAccessTokenParams,
-  UpdateLtiAccessTokenParams, 
+  type LtiAccessTokenId, 
+  type NewLtiAccessTokenParams,
+  type UpdateLtiAccessTokenParams, 
   updateLtiAccessTokenSchema,
   insertLtiAccessTokenSchema, 
   ltiAccessTokens,

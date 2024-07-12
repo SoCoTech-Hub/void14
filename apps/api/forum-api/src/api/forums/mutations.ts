@@ -1,9 +1,9 @@
 import { db } from "@soco/forum-db/client";
 import { eq } from "@soco/forum-db";
 import { 
-  ForumId, 
-  NewForumParams,
-  UpdateForumParams, 
+  type ForumId, 
+  type NewForumParams,
+  type UpdateForumParams, 
   updateForumSchema,
   insertForumSchema, 
   forums,

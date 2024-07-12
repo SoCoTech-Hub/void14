@@ -1,9 +1,9 @@
 import { db } from "@soco/faq-db/client";
 import { eq } from "@soco/faq-db";
 import { 
-  FaqId, 
-  NewFaqParams,
-  UpdateFaqParams, 
+  type FaqId, 
+  type NewFaqParams,
+  type UpdateFaqParams, 
   updateFaqSchema,
   insertFaqSchema, 
   faqs,

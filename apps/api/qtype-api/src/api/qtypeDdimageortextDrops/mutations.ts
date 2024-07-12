@@ -1,9 +1,9 @@
 import { db } from "@soco/qtype-db/client";
 import { eq } from "@soco/qtype-db";
 import { 
-  QtypeDdimageortextDropId, 
-  NewQtypeDdimageortextDropParams,
-  UpdateQtypeDdimageortextDropParams, 
+  type QtypeDdimageortextDropId, 
+  type NewQtypeDdimageortextDropParams,
+  type UpdateQtypeDdimageortextDropParams, 
   updateQtypeDdimageortextDropSchema,
   insertQtypeDdimageortextDropSchema, 
   qtypeDdimageortextDrops,

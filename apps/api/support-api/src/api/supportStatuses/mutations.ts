@@ -1,9 +1,9 @@
 import { db } from "@soco/support-db/client";
 import { eq } from "@soco/support-db";
 import { 
-  SupportStatusId, 
-  NewSupportStatusParams,
-  UpdateSupportStatusParams, 
+  type SupportStatusId, 
+  type NewSupportStatusParams,
+  type UpdateSupportStatusParams, 
   updateSupportStatusSchema,
   insertSupportStatusSchema, 
   supportStatuses,

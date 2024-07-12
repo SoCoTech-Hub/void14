@@ -1,9 +1,9 @@
 import { db } from "@soco/group-db/client";
 import { eq } from "@soco/group-db";
 import { 
-  GroupId, 
-  NewGroupParams,
-  UpdateGroupParams, 
+  type GroupId, 
+  type NewGroupParams,
+  type UpdateGroupParams, 
   updateGroupSchema,
   insertGroupSchema, 
   groups,

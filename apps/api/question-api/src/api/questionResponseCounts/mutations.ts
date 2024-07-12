@@ -1,9 +1,9 @@
 import { db } from "@soco/question-db/client";
 import { eq } from "@soco/question-db";
 import { 
-  QuestionResponseCountId, 
-  NewQuestionResponseCountParams,
-  UpdateQuestionResponseCountParams, 
+  type QuestionResponseCountId, 
+  type NewQuestionResponseCountParams,
+  type UpdateQuestionResponseCountParams, 
   updateQuestionResponseCountSchema,
   insertQuestionResponseCountSchema, 
   questionResponseCounts,

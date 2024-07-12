@@ -1,9 +1,9 @@
 import { db } from "@soco/resource-db/client";
 import { eq } from "@soco/resource-db";
 import { 
-  ResourceOldId, 
-  NewResourceOldParams,
-  UpdateResourceOldParams, 
+  type ResourceOldId, 
+  type NewResourceOldParams,
+  type UpdateResourceOldParams, 
   updateResourceOldSchema,
   insertResourceOldSchema, 
   resourceOlds,

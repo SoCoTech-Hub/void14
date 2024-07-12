@@ -1,9 +1,9 @@
 import { db } from "@soco/log-db/client";
 import { eq } from "@soco/log-db";
 import { 
-  LogDisplayId, 
-  NewLogDisplayParams,
-  UpdateLogDisplayParams, 
+  type LogDisplayId, 
+  type NewLogDisplayParams,
+  type UpdateLogDisplayParams, 
   updateLogDisplaySchema,
   insertLogDisplaySchema, 
   logDisplays,

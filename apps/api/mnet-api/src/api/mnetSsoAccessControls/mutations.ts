@@ -1,9 +1,9 @@
 import { db } from "@soco/mnet-db/client";
 import { eq } from "@soco/mnet-db";
 import { 
-  MnetSsoAccessControlId, 
-  NewMnetSsoAccessControlParams,
-  UpdateMnetSsoAccessControlParams, 
+  type MnetSsoAccessControlId, 
+  type NewMnetSsoAccessControlParams,
+  type UpdateMnetSsoAccessControlParams, 
   updateMnetSsoAccessControlSchema,
   insertMnetSsoAccessControlSchema, 
   mnetSsoAccessControls,

@@ -1,9 +1,9 @@
 import { db } from "@soco/qtype-db/client";
 import { eq } from "@soco/qtype-db";
 import { 
-  QtypeRandomsamatchOptionId, 
-  NewQtypeRandomsamatchOptionParams,
-  UpdateQtypeRandomsamatchOptionParams, 
+  type QtypeRandomsamatchOptionId, 
+  type NewQtypeRandomsamatchOptionParams,
+  type UpdateQtypeRandomsamatchOptionParams, 
   updateQtypeRandomsamatchOptionSchema,
   insertQtypeRandomsamatchOptionSchema, 
   qtypeRandomsamatchOptions,

@@ -1,9 +1,9 @@
 import { db } from "@soco/role-db/client";
 import { eq } from "@soco/role-db";
 import { 
-  RoleAllowOverrideId, 
-  NewRoleAllowOverrideParams,
-  UpdateRoleAllowOverrideParams, 
+  type RoleAllowOverrideId, 
+  type NewRoleAllowOverrideParams,
+  type UpdateRoleAllowOverrideParams, 
   updateRoleAllowOverrideSchema,
   insertRoleAllowOverrideSchema, 
   roleAllowOverrides,

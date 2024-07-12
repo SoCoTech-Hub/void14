@@ -1,9 +1,9 @@
 import { db } from "@soco/qtype-db/client";
 import { eq } from "@soco/qtype-db";
 import { 
-  QtypeShortanswerOptionId, 
-  NewQtypeShortanswerOptionParams,
-  UpdateQtypeShortanswerOptionParams, 
+  type QtypeShortanswerOptionId, 
+  type NewQtypeShortanswerOptionParams,
+  type UpdateQtypeShortanswerOptionParams, 
   updateQtypeShortanswerOptionSchema,
   insertQtypeShortanswerOptionSchema, 
   qtypeShortanswerOptions,
