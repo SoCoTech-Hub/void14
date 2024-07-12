@@ -19,6 +19,7 @@ export const createScormAiccSession = async (
   const { session } = await getUserAuth();
   const newScormAiccSession = insertScormAiccSessionSchema.parse({
     ...scormAiccSession,
+    // biome-ignore lint/style/noNonNullAssertion: <explanation>
     userId: session?.user.id!,
   });
   try {
@@ -42,6 +43,7 @@ export const updateScormAiccSession = async (
   const { id: scormAiccSessionId } = scormAiccSessionIdSchema.parse({ id });
   const newScormAiccSession = updateScormAiccSessionSchema.parse({
     ...scormAiccSession,
+    // biome-ignore lint/style/noNonNullAssertion: <explanation>
     userId: session?.user.id!,
   });
   try {
@@ -50,7 +52,9 @@ export const updateScormAiccSession = async (
       .set({ ...newScormAiccSession, updatedAt: new Date() })
       .where(
         and(
+          // biome-ignore lint/style/noNonNullAssertion: <explanation>
           eq(scormAiccSessions.id, scormAiccSessionId!),
+          // biome-ignore lint/style/noNonNullAssertion: <explanation>
           eq(scormAiccSessions.userId, session?.user.id!),
         ),
       )
@@ -71,7 +75,9 @@ export const deleteScormAiccSession = async (id: ScormAiccSessionId) => {
       .delete(scormAiccSessions)
       .where(
         and(
+          // biome-ignore lint/style/noNonNullAssertion: <explanation>
           eq(scormAiccSessions.id, scormAiccSessionId!),
+          // biome-ignore lint/style/noNonNullAssertion: <explanation>
           eq(scormAiccSessions.userId, session?.user.id!),
         ),
       )

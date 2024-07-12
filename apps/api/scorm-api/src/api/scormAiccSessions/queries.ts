@@ -20,6 +20,7 @@ export const getScormAiccSessions = async () => {
     .from(scormAiccSessions)
     .leftJoin(scormScoes, eq(scormAiccSessions.scormScoeId, scormScoes.id))
     .leftJoin(scorms, eq(scormAiccSessions.scormId, scorms.id))
+    // biome-ignore lint/style/noNonNullAssertion: <explanation>
     .where(eq(scormAiccSessions.userId, session?.user.id!));
   const s = rows.map((r) => ({
     ...r.scormAiccSession,
@@ -42,6 +43,7 @@ export const getScormAiccSessionById = async (id: ScormAiccSessionId) => {
     .where(
       and(
         eq(scormAiccSessions.id, scormAiccSessionId),
+        // biome-ignore lint/style/noNonNullAssertion: <explanation>
         eq(scormAiccSessions.userId, session?.user.id!),
       ),
     )

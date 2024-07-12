@@ -17,6 +17,7 @@ export const createSession = async (session: NewSessionParams) => {
   const { session: Session } = await getUserAuth();
   const newSession = insertSessionSchema.parse({
     ...session,
+    // biome-ignore lint/style/noNonNullAssertion: <explanation>
     userId: Session?.user.id!,
   });
   try {
@@ -37,6 +38,7 @@ export const updateSession = async (
   const { id: sessionId } = sessionIdSchema.parse({ id });
   const newSession = updateSessionSchema.parse({
     ...session,
+    // biome-ignore lint/style/noNonNullAssertion: <explanation>
     userId: Session?.user.id!,
   });
   try {

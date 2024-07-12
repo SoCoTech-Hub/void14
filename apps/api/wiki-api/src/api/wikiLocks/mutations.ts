@@ -17,6 +17,7 @@ export const createWikiLock = async (wikiLock: NewWikiLockParams) => {
   const { session } = await getUserAuth();
   const newWikiLock = insertWikiLockSchema.parse({
     ...wikiLock,
+    // biome-ignore lint/style/noNonNullAssertion: <explanation>
     userId: session?.user.id!,
   });
   try {
@@ -37,6 +38,7 @@ export const updateWikiLock = async (
   const { id: wikiLockId } = wikiLockIdSchema.parse({ id });
   const newWikiLock = updateWikiLockSchema.parse({
     ...wikiLock,
+    // biome-ignore lint/style/noNonNullAssertion: <explanation>
     userId: session?.user.id!,
   });
   try {

@@ -19,6 +19,7 @@ export const createScormScoesTrack = async (
   const { session } = await getUserAuth();
   const newScormScoesTrack = insertScormScoesTrackSchema.parse({
     ...scormScoesTrack,
+    // biome-ignore lint/style/noNonNullAssertion: <explanation>
     userId: session?.user.id!,
   });
   try {
@@ -42,6 +43,7 @@ export const updateScormScoesTrack = async (
   const { id: scormScoesTrackId } = scormScoesTrackIdSchema.parse({ id });
   const newScormScoesTrack = updateScormScoesTrackSchema.parse({
     ...scormScoesTrack,
+    // biome-ignore lint/style/noNonNullAssertion: <explanation>
     userId: session?.user.id!,
   });
   try {
