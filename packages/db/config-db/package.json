@@ -12,6 +12,10 @@
       "types": "./dist/client.d.ts",
       "default": "./src/client.ts"
     },
+    "./schema": {
+      "types": "./dist/schema/index.d.ts",
+      "default": "./src/schema/index.ts"
+    },
     "./schema/configPlugins": {
       "types": "./dist/schema/configPlugins.d.ts",
       "default": "./src/schema/configPlugins.ts"

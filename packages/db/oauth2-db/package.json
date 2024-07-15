@@ -12,6 +12,10 @@
       "types": "./dist/client.d.ts",
       "default": "./src/client.ts"
     },
+    "./schema": {
+      "types": "./dist/schema/index.d.ts",
+      "default": "./src/schema/index.ts"
+    },
     "./schema/oauth2SystemAccounts": {
       "types": "./dist/schema/oauth2SystemAccounts.d.ts",
       "default": "./src/schema/oauth2SystemAccounts.ts"

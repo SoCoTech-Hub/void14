@@ -12,6 +12,10 @@
       "types": "./dist/client.d.ts",
       "default": "./src/client.ts"
     },
+    "./schema": {
+      "types": "./dist/schema/index.d.ts",
+      "default": "./src/schema/index.ts"
+    },
     "./schema/toolMonitorRules": {
       "types": "./dist/schema/toolMonitorRules.d.ts",
       "default": "./src/schema/toolMonitorRules.ts"

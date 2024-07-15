@@ -12,6 +12,10 @@
       "types": "./dist/client.d.ts",
       "default": "./src/client.ts"
     },
+    "./schema": {
+      "types": "./dist/schema/index.d.ts",
+      "default": "./src/schema/index.ts"
+    },
     "./schema/ratings": {
       "types": "./dist/schema/ratings.d.ts",
       "default": "./src/schema/ratings.ts"

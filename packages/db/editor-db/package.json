@@ -12,6 +12,10 @@
       "types": "./dist/client.d.ts",
       "default": "./src/client.ts"
     },
+    "./schema": {
+      "types": "./dist/schema/index.d.ts",
+      "default": "./src/schema/index.ts"
+    },
     "./schema/editorAttoAutosaves": {
       "types": "./dist/schema/editorAttoAutosaves.d.ts",
       "default": "./src/schema/editorAttoAutosaves.ts"

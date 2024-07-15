@@ -12,6 +12,10 @@
       "types": "./dist/client.d.ts",
       "default": "./src/client.ts"
     },
+    "./schema": {
+      "types": "./dist/schema/index.d.ts",
+      "default": "./src/schema/index.ts"
+    },
     "./schema/portfolioTempdatas": {
       "types": "./dist/schema/portfolioTempdatas.d.ts",
       "default": "./src/schema/portfolioTempdatas.ts"
