@@ -15,6 +15,10 @@
     "db:check": "drizzle-kit check"
   },
   "dependencies": {
+    "@soco/auth-service": "workspace:*",
+    "@soco/school-db": "workspace:*",
+    "@soco/school-api": "workspace:*",
+    "@soco/utils": "workspace:*",
     "@hookform/resolvers": "^3.3.4",
     "@lucia-auth/adapter-drizzle": "^1.0.7",
     "@node-rs/argon2": "^1.8.3",
