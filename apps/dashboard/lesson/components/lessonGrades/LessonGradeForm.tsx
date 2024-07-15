@@ -1,9 +1,9 @@
 "use client";
 
-import { LessonGrade, NewLessonGradeParams, insertLessonGradeParams } from "@/lib/db/schema/lessonGrades";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -13,17 +13,32 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  insertLessonGradeParams,
+  LessonGrade,
+  NewLessonGradeParams,
+} from "@/lib/db/schema/lessonGrades";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const LessonGradeForm = ({
   lessonGrade,
@@ -45,24 +60,25 @@ const LessonGradeForm = ({
     resolver: zodResolver(insertLessonGradeParams),
     defaultValues: lessonGrade ?? {
       completed: "",
-     grade: 0.0,
-     late: false,
-     lessonId: ""
+      grade: 0.0,
+      late: false,
+      lessonId: "",
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.lessonGrades.getLessonGrades.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Lesson Grade ${action}d!`);
+    toast.success(`Lesson Grade ${action}d!`);
   };
 
   const { mutate: createLessonGrade, isLoading: isCreating } =
@@ -96,9 +112,10 @@ const LessonGradeForm = ({
         <FormField
           control={form.control}
           name="completed"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Completed</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -106,7 +123,7 @@ const LessonGradeForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -138,11 +155,12 @@ const LessonGradeForm = ({
         <FormField
           control={form.control}
           name="grade"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Grade</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -151,12 +169,18 @@ const LessonGradeForm = ({
         <FormField
           control={form.control}
           name="late"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Late</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -164,9 +188,10 @@ const LessonGradeForm = ({
         <FormField
           control={form.control}
           name="lessonId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Lesson Id</FormLabel>
-                <FormControl>
+              <FormControl>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={String(field.value)}
@@ -177,12 +202,13 @@ const LessonGradeForm = ({
                   <SelectContent>
                     {lessons?.lessons.map((lesson) => (
                       <SelectItem key={lesson.id} value={lesson.id.toString()}>
-                        {lesson.id}  {/* TODO: Replace with a field from the lesson model */}
+                        {lesson.id}{" "}
+                        {/* TODO: Replace with a field from the lesson model */}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
-            </FormControl>
+              </FormControl>
 
               <FormMessage />
             </FormItem>

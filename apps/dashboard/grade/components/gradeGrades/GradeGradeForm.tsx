@@ -1,9 +1,9 @@
 "use client";
 
-import { GradeGrade, NewGradeGradeParams, insertGradeGradeParams } from "@/lib/db/schema/gradeGrades";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -13,16 +13,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  GradeGrade,
+  insertGradeGradeParams,
+  NewGradeGradeParams,
+} from "@/lib/db/schema/gradeGrades";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";
-import { Checkbox } from "@/components/ui/checkbox";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const GradeGradeForm = ({
   gradeGrade,
@@ -31,7 +40,6 @@ const GradeGradeForm = ({
   gradeGrade?: GradeGrade;
   closeModal?: () => void;
 }) => {
-  
   const editing = !!gradeGrade?.id;
 
   const router = useRouter();
@@ -44,38 +52,39 @@ const GradeGradeForm = ({
     resolver: zodResolver(insertGradeGradeParams),
     defaultValues: gradeGrade ?? {
       aggregationStatus: "",
-     aggregationWeight: 0.0,
-     excluded: false,
-     exported: "",
-     feedback: "",
-     feedbackFormat: 0,
-     finalGrade: 0.0,
-     hidden: false,
-     information: "",
-     informationFormat: 0,
-     itemId: "",
-     locked: false,
-     lockTime: "",
-     overridden: false,
-     rawGrade: 0.0,
-     rawGradeMax: 0.0,
-     rawGradeMin: 0.0,
-     rawScaleId: ""
+      aggregationWeight: 0.0,
+      excluded: false,
+      exported: "",
+      feedback: "",
+      feedbackFormat: 0,
+      finalGrade: 0.0,
+      hidden: false,
+      information: "",
+      informationFormat: 0,
+      itemId: "",
+      locked: false,
+      lockTime: "",
+      overridden: false,
+      rawGrade: 0.0,
+      rawGradeMax: 0.0,
+      rawGradeMin: 0.0,
+      rawScaleId: "",
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.gradeGrades.getGradeGrades.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Grade Grade ${action}d!`);
+    toast.success(`Grade Grade ${action}d!`);
   };
 
   const { mutate: createGradeGrade, isLoading: isCreating } =
@@ -109,11 +118,12 @@ const GradeGradeForm = ({
         <FormField
           control={form.control}
           name="aggregationStatus"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Aggregation Status</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -122,11 +132,12 @@ const GradeGradeForm = ({
         <FormField
           control={form.control}
           name="aggregationWeight"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Aggregation Weight</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -135,12 +146,18 @@ const GradeGradeForm = ({
         <FormField
           control={form.control}
           name="excluded"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Excluded</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -148,9 +165,10 @@ const GradeGradeForm = ({
         <FormField
           control={form.control}
           name="exported"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Exported</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -158,7 +176,7 @@ const GradeGradeForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -190,11 +208,12 @@ const GradeGradeForm = ({
         <FormField
           control={form.control}
           name="feedback"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Feedback</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -203,11 +222,12 @@ const GradeGradeForm = ({
         <FormField
           control={form.control}
           name="feedbackFormat"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Feedback Format</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -216,11 +236,12 @@ const GradeGradeForm = ({
         <FormField
           control={form.control}
           name="finalGrade"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Final Grade</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -229,12 +250,18 @@ const GradeGradeForm = ({
         <FormField
           control={form.control}
           name="hidden"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Hidden</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -242,11 +269,12 @@ const GradeGradeForm = ({
         <FormField
           control={form.control}
           name="information"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Information</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -255,11 +283,12 @@ const GradeGradeForm = ({
         <FormField
           control={form.control}
           name="informationFormat"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Information Format</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -268,11 +297,12 @@ const GradeGradeForm = ({
         <FormField
           control={form.control}
           name="itemId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Item Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -281,12 +311,18 @@ const GradeGradeForm = ({
         <FormField
           control={form.control}
           name="locked"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Locked</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -294,9 +330,10 @@ const GradeGradeForm = ({
         <FormField
           control={form.control}
           name="lockTime"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Lock Time</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -304,7 +341,7 @@ const GradeGradeForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -336,12 +373,18 @@ const GradeGradeForm = ({
         <FormField
           control={form.control}
           name="overridden"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Overridden</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -349,11 +392,12 @@ const GradeGradeForm = ({
         <FormField
           control={form.control}
           name="rawGrade"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Raw Grade</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -362,11 +406,12 @@ const GradeGradeForm = ({
         <FormField
           control={form.control}
           name="rawGradeMax"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Raw Grade Max</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -375,11 +420,12 @@ const GradeGradeForm = ({
         <FormField
           control={form.control}
           name="rawGradeMin"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Raw Grade Min</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -388,11 +434,12 @@ const GradeGradeForm = ({
         <FormField
           control={form.control}
           name="rawScaleId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Raw Scale Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>

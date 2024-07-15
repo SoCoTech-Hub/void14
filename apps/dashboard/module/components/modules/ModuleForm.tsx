@@ -1,9 +1,9 @@
 "use client";
 
-import { Module, NewModuleParams, insertModuleParams } from "@/lib/db/schema/modules";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -13,16 +13,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  insertModuleParams,
+  Module,
+  NewModuleParams,
+} from "@/lib/db/schema/modules";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";
-import { Checkbox } from "@/components/ui/checkbox";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const ModuleForm = ({
   module,
@@ -31,7 +40,6 @@ const ModuleForm = ({
   module?: Module;
   closeModal?: () => void;
 }) => {
-  
   const editing = !!module?.id;
 
   const router = useRouter();
@@ -44,25 +52,26 @@ const ModuleForm = ({
     resolver: zodResolver(insertModuleParams),
     defaultValues: module ?? {
       cron: 0,
-     lastCron: "",
-     name: "",
-     search: "",
-     visible: false
+      lastCron: "",
+      name: "",
+      search: "",
+      visible: false,
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.modules.getModules.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Module ${action}d!`);
+    toast.success(`Module ${action}d!`);
   };
 
   const { mutate: createModule, isLoading: isCreating } =
@@ -96,11 +105,12 @@ const ModuleForm = ({
         <FormField
           control={form.control}
           name="cron"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Cron</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -109,9 +119,10 @@ const ModuleForm = ({
         <FormField
           control={form.control}
           name="lastCron"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Last Cron</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -119,7 +130,7 @@ const ModuleForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -151,11 +162,12 @@ const ModuleForm = ({
         <FormField
           control={form.control}
           name="name"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Name</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -164,11 +176,12 @@ const ModuleForm = ({
         <FormField
           control={form.control}
           name="search"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Search</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -177,12 +190,18 @@ const ModuleForm = ({
         <FormField
           control={form.control}
           name="visible"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Visible</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}

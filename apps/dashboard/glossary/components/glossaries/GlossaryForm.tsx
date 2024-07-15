@@ -1,9 +1,9 @@
 "use client";
 
-import { Glossary, NewGlossaryParams, insertGlossaryParams } from "@/lib/db/schema/glossaries";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -13,16 +13,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Glossary,
+  insertGlossaryParams,
+  NewGlossaryParams,
+} from "@/lib/db/schema/glossaries";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";
-import { Checkbox } from "@/components/ui/checkbox";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const GlossaryForm = ({
   glossary,
@@ -31,7 +40,6 @@ const GlossaryForm = ({
   glossary?: Glossary;
   closeModal?: () => void;
 }) => {
-  
   const editing = !!glossary?.id;
 
   const router = useRouter();
@@ -44,45 +52,46 @@ const GlossaryForm = ({
     resolver: zodResolver(insertGlossaryParams),
     defaultValues: glossary ?? {
       allowComments: false,
-     allowDuplicatedEntries: false,
-     allowPrintView: false,
-     approvalDisplayFormat: "",
-     assessed: false,
-     assessTimeFinish: "",
-     assessTimeStart: "",
-     completionEntries: 0,
-     course: "",
-     defaultApproval: false,
-     displayFormat: "",
-     editAlways: false,
-     entByPage: 0,
-     globalGlossary: false,
-     intro: "",
-     introFormat: 0,
-     mainGlossary: false,
-     name: "",
-     rssArticles: 0,
-     rssType: 0,
-     scale: 0,
-     showAll: false,
-     showAlphabet: false,
-     showSpecial: false,
-     useDynaLink: false
+      allowDuplicatedEntries: false,
+      allowPrintView: false,
+      approvalDisplayFormat: "",
+      assessed: false,
+      assessTimeFinish: "",
+      assessTimeStart: "",
+      completionEntries: 0,
+      course: "",
+      defaultApproval: false,
+      displayFormat: "",
+      editAlways: false,
+      entByPage: 0,
+      globalGlossary: false,
+      intro: "",
+      introFormat: 0,
+      mainGlossary: false,
+      name: "",
+      rssArticles: 0,
+      rssType: 0,
+      scale: 0,
+      showAll: false,
+      showAlphabet: false,
+      showSpecial: false,
+      useDynaLink: false,
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.glossaries.getGlossaries.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Glossary ${action}d!`);
+    toast.success(`Glossary ${action}d!`);
   };
 
   const { mutate: createGlossary, isLoading: isCreating } =
@@ -116,12 +125,18 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="allowComments"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Allow Comments</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -129,12 +144,18 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="allowDuplicatedEntries"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Allow Duplicated Entries</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -142,12 +163,18 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="allowPrintView"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Allow Print View</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -155,11 +182,12 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="approvalDisplayFormat"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Approval Display Format</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -168,12 +196,18 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="assessed"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Assessed</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -181,9 +215,10 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="assessTimeFinish"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Assess Time Finish</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -191,7 +226,7 @@ const GlossaryForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -223,9 +258,10 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="assessTimeStart"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Assess Time Start</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -233,7 +269,7 @@ const GlossaryForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -265,11 +301,12 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="completionEntries"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Completion Entries</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -278,11 +315,12 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="course"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Course</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -291,12 +329,18 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="defaultApproval"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Default Approval</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -304,11 +348,12 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="displayFormat"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Display Format</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -317,12 +362,18 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="editAlways"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Edit Always</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -330,11 +381,12 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="entByPage"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Ent By Page</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -343,12 +395,18 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="globalGlossary"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Global Glossary</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -356,11 +414,12 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="intro"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Intro</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -369,11 +428,12 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="introFormat"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Intro Format</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -382,12 +442,18 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="mainGlossary"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Main Glossary</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -395,11 +461,12 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="name"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Name</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -408,11 +475,12 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="rssArticles"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Rss Articles</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -421,11 +489,12 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="rssType"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Rss Type</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -434,11 +503,12 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="scale"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Scale</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -447,12 +517,18 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="showAll"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Show All</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -460,12 +536,18 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="showAlphabet"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Show Alphabet</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -473,12 +555,18 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="showSpecial"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Show Special</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -486,12 +574,18 @@ const GlossaryForm = ({
         <FormField
           control={form.control}
           name="useDynaLink"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Use Dyna Link</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}

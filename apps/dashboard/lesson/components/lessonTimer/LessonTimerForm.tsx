@@ -1,9 +1,9 @@
 "use client";
 
-import { LessonTimer, NewLessonTimerParams, insertLessonTimerParams } from "@/lib/db/schema/lessonTimer";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -13,17 +13,32 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  insertLessonTimerParams,
+  LessonTimer,
+  NewLessonTimerParams,
+} from "@/lib/db/schema/lessonTimer";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const LessonTimerForm = ({
   lessonTimer,
@@ -45,24 +60,25 @@ const LessonTimerForm = ({
     resolver: zodResolver(insertLessonTimerParams),
     defaultValues: lessonTimer ?? {
       completed: false,
-     lessonId: "",
-     lessonTime: 0,
-     startTime: ""
+      lessonId: "",
+      lessonTime: 0,
+      startTime: "",
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.lessonTimer.getLessonTimer.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Lesson Timer ${action}d!`);
+    toast.success(`Lesson Timer ${action}d!`);
   };
 
   const { mutate: createLessonTimer, isLoading: isCreating } =
@@ -96,12 +112,18 @@ const LessonTimerForm = ({
         <FormField
           control={form.control}
           name="completed"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Completed</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -109,9 +131,10 @@ const LessonTimerForm = ({
         <FormField
           control={form.control}
           name="lessonId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Lesson Id</FormLabel>
-                <FormControl>
+              <FormControl>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={String(field.value)}
@@ -122,12 +145,13 @@ const LessonTimerForm = ({
                   <SelectContent>
                     {lessons?.lessons.map((lesson) => (
                       <SelectItem key={lesson.id} value={lesson.id.toString()}>
-                        {lesson.id}  {/* TODO: Replace with a field from the lesson model */}
+                        {lesson.id}{" "}
+                        {/* TODO: Replace with a field from the lesson model */}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
-            </FormControl>
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -136,11 +160,12 @@ const LessonTimerForm = ({
         <FormField
           control={form.control}
           name="lessonTime"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Lesson Time</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -149,9 +174,10 @@ const LessonTimerForm = ({
         <FormField
           control={form.control}
           name="startTime"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Start Time</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -159,7 +185,7 @@ const LessonTimerForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (

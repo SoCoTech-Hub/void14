@@ -1,9 +1,8 @@
 "use client";
 
-import { LtiSubmission, NewLtiSubmissionParams, insertLtiSubmissionParams } from "@/lib/db/schema/ltiSubmissions";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Form,
   FormControl,
@@ -13,15 +12,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  insertLtiSubmissionParams,
+  LtiSubmission,
+  NewLtiSubmissionParams,
+} from "@/lib/db/schema/ltiSubmissions";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const LtiSubmissionForm = ({
   ltiSubmission,
@@ -30,7 +39,6 @@ const LtiSubmissionForm = ({
   ltiSubmission?: LtiSubmission;
   closeModal?: () => void;
 }) => {
-  
   const editing = !!ltiSubmission?.id;
 
   const router = useRouter();
@@ -43,27 +51,28 @@ const LtiSubmissionForm = ({
     resolver: zodResolver(insertLtiSubmissionParams),
     defaultValues: ltiSubmission ?? {
       dateSubmitted: "",
-     dateUpdated: "",
-     gradePercent: 0.0,
-     launchId: "",
-     ltiId: "",
-     originalGrade: 0.0,
-     state: 0
+      dateUpdated: "",
+      gradePercent: 0.0,
+      launchId: "",
+      ltiId: "",
+      originalGrade: 0.0,
+      state: 0,
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.ltiSubmissions.getLtiSubmissions.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Lti Submission ${action}d!`);
+    toast.success(`Lti Submission ${action}d!`);
   };
 
   const { mutate: createLtiSubmission, isLoading: isCreating } =
@@ -97,9 +106,10 @@ const LtiSubmissionForm = ({
         <FormField
           control={form.control}
           name="dateSubmitted"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Date Submitted</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -107,7 +117,7 @@ const LtiSubmissionForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -139,9 +149,10 @@ const LtiSubmissionForm = ({
         <FormField
           control={form.control}
           name="dateUpdated"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Date Updated</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -149,7 +160,7 @@ const LtiSubmissionForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -181,11 +192,12 @@ const LtiSubmissionForm = ({
         <FormField
           control={form.control}
           name="gradePercent"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Grade Percent</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -194,11 +206,12 @@ const LtiSubmissionForm = ({
         <FormField
           control={form.control}
           name="launchId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Launch Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -207,11 +220,12 @@ const LtiSubmissionForm = ({
         <FormField
           control={form.control}
           name="ltiId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Lti Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -220,11 +234,12 @@ const LtiSubmissionForm = ({
         <FormField
           control={form.control}
           name="originalGrade"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Original Grade</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -233,11 +248,12 @@ const LtiSubmissionForm = ({
         <FormField
           control={form.control}
           name="state"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>State</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>

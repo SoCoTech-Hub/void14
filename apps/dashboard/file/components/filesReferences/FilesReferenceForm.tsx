@@ -1,9 +1,8 @@
 "use client";
 
-import { FilesReference, NewFilesReferenceParams, insertFilesReferenceParams } from "@/lib/db/schema/filesReferences";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Form,
   FormControl,
@@ -13,15 +12,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  FilesReference,
+  insertFilesReferenceParams,
+  NewFilesReferenceParams,
+} from "@/lib/db/schema/filesReferences";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const FilesReferenceForm = ({
   filesReference,
@@ -30,7 +39,6 @@ const FilesReferenceForm = ({
   filesReference?: FilesReference;
   closeModal?: () => void;
 }) => {
-  
   const editing = !!filesReference?.id;
 
   const router = useRouter();
@@ -43,24 +51,25 @@ const FilesReferenceForm = ({
     resolver: zodResolver(insertFilesReferenceParams),
     defaultValues: filesReference ?? {
       lastSync: "",
-     reference: "",
-     referenceHash: "",
-     repositoryId: ""
+      reference: "",
+      referenceHash: "",
+      repositoryId: "",
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.filesReferences.getFilesReferences.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Files Reference ${action}d!`);
+    toast.success(`Files Reference ${action}d!`);
   };
 
   const { mutate: createFilesReference, isLoading: isCreating } =
@@ -94,9 +103,10 @@ const FilesReferenceForm = ({
         <FormField
           control={form.control}
           name="lastSync"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Last Sync</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -104,7 +114,7 @@ const FilesReferenceForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -136,11 +146,12 @@ const FilesReferenceForm = ({
         <FormField
           control={form.control}
           name="reference"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Reference</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -149,11 +160,12 @@ const FilesReferenceForm = ({
         <FormField
           control={form.control}
           name="referenceHash"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Reference Hash</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -162,11 +174,12 @@ const FilesReferenceForm = ({
         <FormField
           control={form.control}
           name="repositoryId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Repository Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>

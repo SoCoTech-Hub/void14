@@ -1,9 +1,8 @@
 "use client";
 
-import { AdminPresetsApp, NewAdminPresetsAppParams, insertAdminPresetsAppParams } from "@/lib/db/schema/adminPresetsApps";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Form,
   FormControl,
@@ -13,16 +12,32 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  AdminPresetsApp,
+  insertAdminPresetsAppParams,
+  NewAdminPresetsAppParams,
+} from "@/lib/db/schema/adminPresetsApps";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const AdminPresetsAppForm = ({
   adminPresetsApp,
@@ -44,22 +59,23 @@ const AdminPresetsAppForm = ({
     resolver: zodResolver(insertAdminPresetsAppParams),
     defaultValues: adminPresetsApp ?? {
       time: "",
-     adminPresetId: ""
+      adminPresetId: "",
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.adminPresetsApps.getAdminPresetsApps.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Admin Presets App ${action}d!`);
+    toast.success(`Admin Presets App ${action}d!`);
   };
 
   const { mutate: createAdminPresetsApp, isLoading: isCreating } =
@@ -93,9 +109,10 @@ const AdminPresetsAppForm = ({
         <FormField
           control={form.control}
           name="time"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Time</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -103,7 +120,7 @@ const AdminPresetsAppForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -135,9 +152,10 @@ const AdminPresetsAppForm = ({
         <FormField
           control={form.control}
           name="adminPresetId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Admin Preset Id</FormLabel>
-                <FormControl>
+              <FormControl>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={String(field.value)}
@@ -147,13 +165,17 @@ const AdminPresetsAppForm = ({
                   </SelectTrigger>
                   <SelectContent>
                     {adminPresets?.adminPresets.map((adminPreset) => (
-                      <SelectItem key={adminPreset.id} value={adminPreset.id.toString()}>
-                        {adminPreset.id}  {/* TODO: Replace with a field from the adminPreset model */}
+                      <SelectItem
+                        key={adminPreset.id}
+                        value={adminPreset.id.toString()}
+                      >
+                        {adminPreset.id}{" "}
+                        {/* TODO: Replace with a field from the adminPreset model */}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
-            </FormControl>
+              </FormControl>
 
               <FormMessage />
             </FormItem>

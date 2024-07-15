@@ -1,9 +1,9 @@
 "use client";
 
-import { TaskAdhoc, NewTaskAdhocParams, insertTaskAdhocParams } from "@/lib/db/schema/taskAdhocs";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -13,16 +13,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  insertTaskAdhocParams,
+  NewTaskAdhocParams,
+  TaskAdhoc,
+} from "@/lib/db/schema/taskAdhocs";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";
-import { Checkbox } from "@/components/ui/checkbox";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const TaskAdhocForm = ({
   taskAdhoc,
@@ -31,7 +40,6 @@ const TaskAdhocForm = ({
   taskAdhoc?: TaskAdhoc;
   closeModal?: () => void;
 }) => {
-  
   const editing = !!taskAdhoc?.id;
 
   const router = useRouter();
@@ -44,28 +52,29 @@ const TaskAdhocForm = ({
     resolver: zodResolver(insertTaskAdhocParams),
     defaultValues: taskAdhoc ?? {
       blocking: false,
-     classname: "",
-     component: "",
-     customData: "",
-     failDelay: "",
-     hostName: "",
-     nextRuntime: "",
-     pid: ""
+      classname: "",
+      component: "",
+      customData: "",
+      failDelay: "",
+      hostName: "",
+      nextRuntime: "",
+      pid: "",
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.taskAdhocs.getTaskAdhocs.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Task Adhoc ${action}d!`);
+    toast.success(`Task Adhoc ${action}d!`);
   };
 
   const { mutate: createTaskAdhoc, isLoading: isCreating } =
@@ -99,12 +108,18 @@ const TaskAdhocForm = ({
         <FormField
           control={form.control}
           name="blocking"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Blocking</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -112,11 +127,12 @@ const TaskAdhocForm = ({
         <FormField
           control={form.control}
           name="classname"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Classname</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -125,11 +141,12 @@ const TaskAdhocForm = ({
         <FormField
           control={form.control}
           name="component"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Component</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -138,11 +155,12 @@ const TaskAdhocForm = ({
         <FormField
           control={form.control}
           name="customData"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Custom Data</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -151,11 +169,12 @@ const TaskAdhocForm = ({
         <FormField
           control={form.control}
           name="failDelay"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Fail Delay</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -164,11 +183,12 @@ const TaskAdhocForm = ({
         <FormField
           control={form.control}
           name="hostName"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Host Name</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -177,9 +197,10 @@ const TaskAdhocForm = ({
         <FormField
           control={form.control}
           name="nextRuntime"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Next Runtime</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -187,7 +208,7 @@ const TaskAdhocForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -219,11 +240,12 @@ const TaskAdhocForm = ({
         <FormField
           control={form.control}
           name="pid"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Pid</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>

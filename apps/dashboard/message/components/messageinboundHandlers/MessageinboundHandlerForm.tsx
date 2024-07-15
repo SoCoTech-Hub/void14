@@ -1,9 +1,9 @@
 "use client";
 
-import { MessageinboundHandler, NewMessageinboundHandlerParams, insertMessageinboundHandlerParams } from "@/lib/db/schema/messageinboundHandlers";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -13,16 +13,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  insertMessageinboundHandlerParams,
+  MessageinboundHandler,
+  NewMessageinboundHandlerParams,
+} from "@/lib/db/schema/messageinboundHandlers";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";
-import { Checkbox } from "@/components/ui/checkbox";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const MessageinboundHandlerForm = ({
   messageinboundHandler,
@@ -31,7 +40,6 @@ const MessageinboundHandlerForm = ({
   messageinboundHandler?: MessageinboundHandler;
   closeModal?: () => void;
 }) => {
-  
   const editing = !!messageinboundHandler?.id;
 
   const router = useRouter();
@@ -44,25 +52,26 @@ const MessageinboundHandlerForm = ({
     resolver: zodResolver(insertMessageinboundHandlerParams),
     defaultValues: messageinboundHandler ?? {
       className: "",
-     component: "",
-     defaultExpiration: "",
-     enabled: false,
-     validateAddress: false
+      component: "",
+      defaultExpiration: "",
+      enabled: false,
+      validateAddress: false,
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.messageinboundHandlers.getMessageinboundHandlers.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Messageinbound Handler ${action}d!`);
+    toast.success(`Messageinbound Handler ${action}d!`);
   };
 
   const { mutate: createMessageinboundHandler, isLoading: isCreating } =
@@ -96,11 +105,12 @@ const MessageinboundHandlerForm = ({
         <FormField
           control={form.control}
           name="className"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Class Name</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -109,11 +119,12 @@ const MessageinboundHandlerForm = ({
         <FormField
           control={form.control}
           name="component"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Component</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -122,9 +133,10 @@ const MessageinboundHandlerForm = ({
         <FormField
           control={form.control}
           name="defaultExpiration"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Default Expiration</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -132,7 +144,7 @@ const MessageinboundHandlerForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -164,12 +176,18 @@ const MessageinboundHandlerForm = ({
         <FormField
           control={form.control}
           name="enabled"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Enabled</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -177,12 +195,18 @@ const MessageinboundHandlerForm = ({
         <FormField
           control={form.control}
           name="validateAddress"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Validate Address</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -200,7 +224,9 @@ const MessageinboundHandlerForm = ({
           <Button
             type="button"
             variant={"destructive"}
-            onClick={() => deleteMessageinboundHandler({ id: messageinboundHandler.id })}
+            onClick={() =>
+              deleteMessageinboundHandler({ id: messageinboundHandler.id })
+            }
           >
             Delet{isDeleting ? "ing..." : "e"}
           </Button>

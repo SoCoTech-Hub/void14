@@ -1,9 +1,8 @@
 "use client";
 
-import { GradingDefinition, NewGradingDefinitionParams, insertGradingDefinitionParams } from "@/lib/db/schema/gradingDefinitions";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Form,
   FormControl,
@@ -13,15 +12,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  GradingDefinition,
+  insertGradingDefinitionParams,
+  NewGradingDefinitionParams,
+} from "@/lib/db/schema/gradingDefinitions";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const GradingDefinitionForm = ({
   gradingDefinition,
@@ -30,7 +39,6 @@ const GradingDefinitionForm = ({
   gradingDefinition?: GradingDefinition;
   closeModal?: () => void;
 }) => {
-  
   const editing = !!gradingDefinition?.id;
 
   const router = useRouter();
@@ -43,29 +51,30 @@ const GradingDefinitionForm = ({
     resolver: zodResolver(insertGradingDefinitionParams),
     defaultValues: gradingDefinition ?? {
       areaId: "",
-     copiedFromId: "",
-     description: "",
-     descriptionFormat: 0,
-     method: "",
-     name: "",
-     options: "",
-     status: 0,
-     timeCopied: ""
+      copiedFromId: "",
+      description: "",
+      descriptionFormat: 0,
+      method: "",
+      name: "",
+      options: "",
+      status: 0,
+      timeCopied: "",
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.gradingDefinitions.getGradingDefinitions.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Grading Definition ${action}d!`);
+    toast.success(`Grading Definition ${action}d!`);
   };
 
   const { mutate: createGradingDefinition, isLoading: isCreating } =
@@ -99,11 +108,12 @@ const GradingDefinitionForm = ({
         <FormField
           control={form.control}
           name="areaId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Area Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -112,11 +122,12 @@ const GradingDefinitionForm = ({
         <FormField
           control={form.control}
           name="copiedFromId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Copied From Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -125,11 +136,12 @@ const GradingDefinitionForm = ({
         <FormField
           control={form.control}
           name="description"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Description</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -138,11 +150,12 @@ const GradingDefinitionForm = ({
         <FormField
           control={form.control}
           name="descriptionFormat"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Description Format</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -151,11 +164,12 @@ const GradingDefinitionForm = ({
         <FormField
           control={form.control}
           name="method"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Method</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -164,11 +178,12 @@ const GradingDefinitionForm = ({
         <FormField
           control={form.control}
           name="name"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Name</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -177,11 +192,12 @@ const GradingDefinitionForm = ({
         <FormField
           control={form.control}
           name="options"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Options</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -190,11 +206,12 @@ const GradingDefinitionForm = ({
         <FormField
           control={form.control}
           name="status"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Status</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -203,9 +220,10 @@ const GradingDefinitionForm = ({
         <FormField
           control={form.control}
           name="timeCopied"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Time Copied</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -213,7 +231,7 @@ const GradingDefinitionForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -255,7 +273,9 @@ const GradingDefinitionForm = ({
           <Button
             type="button"
             variant={"destructive"}
-            onClick={() => deleteGradingDefinition({ id: gradingDefinition.id })}
+            onClick={() =>
+              deleteGradingDefinition({ id: gradingDefinition.id })
+            }
           >
             Delet{isDeleting ? "ing..." : "e"}
           </Button>

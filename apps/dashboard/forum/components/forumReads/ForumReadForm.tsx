@@ -1,9 +1,8 @@
 "use client";
 
-import { ForumRead, NewForumReadParams, insertForumReadParams } from "@/lib/db/schema/forumReads";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Form,
   FormControl,
@@ -13,15 +12,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  ForumRead,
+  insertForumReadParams,
+  NewForumReadParams,
+} from "@/lib/db/schema/forumReads";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const ForumReadForm = ({
   forumRead,
@@ -30,7 +39,6 @@ const ForumReadForm = ({
   forumRead?: ForumRead;
   closeModal?: () => void;
 }) => {
-  
   const editing = !!forumRead?.id;
 
   const router = useRouter();
@@ -43,25 +51,26 @@ const ForumReadForm = ({
     resolver: zodResolver(insertForumReadParams),
     defaultValues: forumRead ?? {
       discussionId: "",
-     firstRead: "",
-     lastRead: "",
-     forumId: "",
-     postId: ""
+      firstRead: "",
+      lastRead: "",
+      forumId: "",
+      postId: "",
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.forumReads.getForumReads.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Forum Read ${action}d!`);
+    toast.success(`Forum Read ${action}d!`);
   };
 
   const { mutate: createForumRead, isLoading: isCreating } =
@@ -95,11 +104,12 @@ const ForumReadForm = ({
         <FormField
           control={form.control}
           name="discussionId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Discussion Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -108,9 +118,10 @@ const ForumReadForm = ({
         <FormField
           control={form.control}
           name="firstRead"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>First Read</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -118,7 +129,7 @@ const ForumReadForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -150,9 +161,10 @@ const ForumReadForm = ({
         <FormField
           control={form.control}
           name="lastRead"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Last Read</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -160,7 +172,7 @@ const ForumReadForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -192,11 +204,12 @@ const ForumReadForm = ({
         <FormField
           control={form.control}
           name="forumId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Forum Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -205,11 +218,12 @@ const ForumReadForm = ({
         <FormField
           control={form.control}
           name="postId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Post Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>

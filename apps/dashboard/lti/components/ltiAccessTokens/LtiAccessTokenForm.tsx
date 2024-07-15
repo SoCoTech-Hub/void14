@@ -1,9 +1,8 @@
 "use client";
 
-import { LtiAccessToken, NewLtiAccessTokenParams, insertLtiAccessTokenParams } from "@/lib/db/schema/ltiAccessTokens";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Form,
   FormControl,
@@ -13,15 +12,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  insertLtiAccessTokenParams,
+  LtiAccessToken,
+  NewLtiAccessTokenParams,
+} from "@/lib/db/schema/ltiAccessTokens";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const LtiAccessTokenForm = ({
   ltiAccessToken,
@@ -30,7 +39,6 @@ const LtiAccessTokenForm = ({
   ltiAccessToken?: LtiAccessToken;
   closeModal?: () => void;
 }) => {
-  
   const editing = !!ltiAccessToken?.id;
 
   const router = useRouter();
@@ -43,25 +51,26 @@ const LtiAccessTokenForm = ({
     resolver: zodResolver(insertLtiAccessTokenParams),
     defaultValues: ltiAccessToken ?? {
       lastAccess: "",
-     scope: "",
-     token: "",
-     typeId: "",
-     validUntil: ""
+      scope: "",
+      token: "",
+      typeId: "",
+      validUntil: "",
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.ltiAccessTokens.getLtiAccessTokens.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Lti Access Token ${action}d!`);
+    toast.success(`Lti Access Token ${action}d!`);
   };
 
   const { mutate: createLtiAccessToken, isLoading: isCreating } =
@@ -95,9 +104,10 @@ const LtiAccessTokenForm = ({
         <FormField
           control={form.control}
           name="lastAccess"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Last Access</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -105,7 +115,7 @@ const LtiAccessTokenForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -137,11 +147,12 @@ const LtiAccessTokenForm = ({
         <FormField
           control={form.control}
           name="scope"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Scope</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -150,11 +161,12 @@ const LtiAccessTokenForm = ({
         <FormField
           control={form.control}
           name="token"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Token</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -163,11 +175,12 @@ const LtiAccessTokenForm = ({
         <FormField
           control={form.control}
           name="typeId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Type Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -176,9 +189,10 @@ const LtiAccessTokenForm = ({
         <FormField
           control={form.control}
           name="validUntil"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Valid Until</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -186,7 +200,7 @@ const LtiAccessTokenForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
