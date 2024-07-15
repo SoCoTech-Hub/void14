@@ -1,9 +1,9 @@
 "use client";
 
-import { ReportbuilderSchedule, NewReportbuilderScheduleParams, insertReportbuilderScheduleParams } from "@/lib/db/schema/reportbuilderSchedules";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -13,16 +13,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  insertReportbuilderScheduleParams,
+  NewReportbuilderScheduleParams,
+  ReportbuilderSchedule,
+} from "@/lib/db/schema/reportbuilderSchedules";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";
-import { Checkbox } from "@/components/ui/checkbox";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const ReportbuilderScheduleForm = ({
   reportbuilderSchedule,
@@ -31,7 +40,6 @@ const ReportbuilderScheduleForm = ({
   reportbuilderSchedule?: ReportbuilderSchedule;
   closeModal?: () => void;
 }) => {
-  
   const editing = !!reportbuilderSchedule?.id;
 
   const router = useRouter();
@@ -44,35 +52,36 @@ const ReportbuilderScheduleForm = ({
     resolver: zodResolver(insertReportbuilderScheduleParams),
     defaultValues: reportbuilderSchedule ?? {
       audiences: "",
-     enabled: false,
-     format: "",
-     message: "",
-     messageFormat: 0,
-     name: "",
-     recurrence: 0,
-     reportEmpty: false,
-     reportId: "",
-     subject: "",
-     timeLastSent: "",
-     timeNextSend: "",
-     timeScheduled: "",
-     userModified: "",
-     userViewAs: ""
+      enabled: false,
+      format: "",
+      message: "",
+      messageFormat: 0,
+      name: "",
+      recurrence: 0,
+      reportEmpty: false,
+      reportId: "",
+      subject: "",
+      timeLastSent: "",
+      timeNextSend: "",
+      timeScheduled: "",
+      userModified: "",
+      userViewAs: "",
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.reportbuilderSchedules.getReportbuilderSchedules.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Reportbuilder Schedule ${action}d!`);
+    toast.success(`Reportbuilder Schedule ${action}d!`);
   };
 
   const { mutate: createReportbuilderSchedule, isLoading: isCreating } =
@@ -106,11 +115,12 @@ const ReportbuilderScheduleForm = ({
         <FormField
           control={form.control}
           name="audiences"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Audiences</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -119,12 +129,18 @@ const ReportbuilderScheduleForm = ({
         <FormField
           control={form.control}
           name="enabled"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Enabled</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -132,11 +148,12 @@ const ReportbuilderScheduleForm = ({
         <FormField
           control={form.control}
           name="format"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Format</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -145,11 +162,12 @@ const ReportbuilderScheduleForm = ({
         <FormField
           control={form.control}
           name="message"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Message</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -158,11 +176,12 @@ const ReportbuilderScheduleForm = ({
         <FormField
           control={form.control}
           name="messageFormat"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Message Format</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -171,11 +190,12 @@ const ReportbuilderScheduleForm = ({
         <FormField
           control={form.control}
           name="name"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Name</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -184,11 +204,12 @@ const ReportbuilderScheduleForm = ({
         <FormField
           control={form.control}
           name="recurrence"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Recurrence</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -197,12 +218,18 @@ const ReportbuilderScheduleForm = ({
         <FormField
           control={form.control}
           name="reportEmpty"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Report Empty</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -210,11 +237,12 @@ const ReportbuilderScheduleForm = ({
         <FormField
           control={form.control}
           name="reportId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Report Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -223,11 +251,12 @@ const ReportbuilderScheduleForm = ({
         <FormField
           control={form.control}
           name="subject"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Subject</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -236,9 +265,10 @@ const ReportbuilderScheduleForm = ({
         <FormField
           control={form.control}
           name="timeLastSent"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Time Last Sent</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -246,7 +276,7 @@ const ReportbuilderScheduleForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -278,9 +308,10 @@ const ReportbuilderScheduleForm = ({
         <FormField
           control={form.control}
           name="timeNextSend"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Time Next Send</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -288,7 +319,7 @@ const ReportbuilderScheduleForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -320,9 +351,10 @@ const ReportbuilderScheduleForm = ({
         <FormField
           control={form.control}
           name="timeScheduled"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Time Scheduled</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -330,7 +362,7 @@ const ReportbuilderScheduleForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -362,11 +394,12 @@ const ReportbuilderScheduleForm = ({
         <FormField
           control={form.control}
           name="userModified"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>User Modified</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -375,11 +408,12 @@ const ReportbuilderScheduleForm = ({
         <FormField
           control={form.control}
           name="userViewAs"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>User View As</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -398,7 +432,9 @@ const ReportbuilderScheduleForm = ({
           <Button
             type="button"
             variant={"destructive"}
-            onClick={() => deleteReportbuilderSchedule({ id: reportbuilderSchedule.id })}
+            onClick={() =>
+              deleteReportbuilderSchedule({ id: reportbuilderSchedule.id })
+            }
           >
             Delet{isDeleting ? "ing..." : "e"}
           </Button>

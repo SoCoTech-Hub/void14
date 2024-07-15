@@ -1,9 +1,9 @@
 "use client";
 
-import { ExternalToken, NewExternalTokenParams, insertExternalTokenParams } from "@/lib/db/schema/externalTokens";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -13,16 +13,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  ExternalToken,
+  insertExternalTokenParams,
+  NewExternalTokenParams,
+} from "@/lib/db/schema/externalTokens";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";
-import { Checkbox } from "@/components/ui/checkbox";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const ExternalTokenForm = ({
   externalToken,
@@ -31,7 +40,6 @@ const ExternalTokenForm = ({
   externalToken?: ExternalToken;
   closeModal?: () => void;
 }) => {
-  
   const editing = !!externalToken?.id;
 
   const router = useRouter();
@@ -44,30 +52,31 @@ const ExternalTokenForm = ({
     resolver: zodResolver(insertExternalTokenParams),
     defaultValues: externalToken ?? {
       contextId: "",
-     creatorId: "",
-     externalServiceId: "",
-     ipRestriction: "",
-     lastAccess: "",
-     privateToken: "",
-     sId: "",
-     token: "",
-     tokenType: false,
-     validUntil: ""
+      creatorId: "",
+      externalServiceId: "",
+      ipRestriction: "",
+      lastAccess: "",
+      privateToken: "",
+      sId: "",
+      token: "",
+      tokenType: false,
+      validUntil: "",
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.externalTokens.getExternalTokens.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`External Token ${action}d!`);
+    toast.success(`External Token ${action}d!`);
   };
 
   const { mutate: createExternalToken, isLoading: isCreating } =
@@ -101,11 +110,12 @@ const ExternalTokenForm = ({
         <FormField
           control={form.control}
           name="contextId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Context Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -114,11 +124,12 @@ const ExternalTokenForm = ({
         <FormField
           control={form.control}
           name="creatorId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Creator Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -127,11 +138,12 @@ const ExternalTokenForm = ({
         <FormField
           control={form.control}
           name="externalServiceId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>External Service Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -140,11 +152,12 @@ const ExternalTokenForm = ({
         <FormField
           control={form.control}
           name="ipRestriction"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Ip Restriction</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -153,9 +166,10 @@ const ExternalTokenForm = ({
         <FormField
           control={form.control}
           name="lastAccess"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Last Access</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -163,7 +177,7 @@ const ExternalTokenForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -195,11 +209,12 @@ const ExternalTokenForm = ({
         <FormField
           control={form.control}
           name="privateToken"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Private Token</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -208,11 +223,12 @@ const ExternalTokenForm = ({
         <FormField
           control={form.control}
           name="sId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>S Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -221,11 +237,12 @@ const ExternalTokenForm = ({
         <FormField
           control={form.control}
           name="token"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Token</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -234,12 +251,18 @@ const ExternalTokenForm = ({
         <FormField
           control={form.control}
           name="tokenType"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Token Type</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -247,9 +270,10 @@ const ExternalTokenForm = ({
         <FormField
           control={form.control}
           name="validUntil"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Valid Until</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -257,7 +281,7 @@ const ExternalTokenForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (

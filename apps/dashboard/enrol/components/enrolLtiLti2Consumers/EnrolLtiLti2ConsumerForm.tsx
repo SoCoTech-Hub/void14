@@ -1,9 +1,9 @@
 "use client";
 
-import { EnrolLtiLti2Consumer, NewEnrolLtiLti2ConsumerParams, insertEnrolLtiLti2ConsumerParams } from "@/lib/db/schema/enrolLtiLti2Consumers";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -13,16 +13,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  EnrolLtiLti2Consumer,
+  insertEnrolLtiLti2ConsumerParams,
+  NewEnrolLtiLti2ConsumerParams,
+} from "@/lib/db/schema/enrolLtiLti2Consumers";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";
-import { Checkbox } from "@/components/ui/checkbox";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const EnrolLtiLti2ConsumerForm = ({
   enrolLtiLti2Consumer,
@@ -31,7 +40,6 @@ const EnrolLtiLti2ConsumerForm = ({
   enrolLtiLti2Consumer?: EnrolLtiLti2Consumer;
   closeModal?: () => void;
 }) => {
-  
   const editing = !!enrolLtiLti2Consumer?.id;
 
   const router = useRouter();
@@ -44,36 +52,37 @@ const EnrolLtiLti2ConsumerForm = ({
     resolver: zodResolver(insertEnrolLtiLti2ConsumerParams),
     defaultValues: enrolLtiLti2Consumer ?? {
       consumerGuid: "",
-     consumerKey: "",
-     consumerKey256: "",
-     consumerName: "",
-     consumerVersion: "",
-     enabled: false,
-     lastAccess: "",
-     ltiVersion: "",
-     name: "",
-     profile: "",
-     protected: false,
-     secret: "",
-     settings: "",
-     toolProxy: "",
-     enableFrom: "",
-     enableUntil: ""
+      consumerKey: "",
+      consumerKey256: "",
+      consumerName: "",
+      consumerVersion: "",
+      enabled: false,
+      lastAccess: "",
+      ltiVersion: "",
+      name: "",
+      profile: "",
+      protected: false,
+      secret: "",
+      settings: "",
+      toolProxy: "",
+      enableFrom: "",
+      enableUntil: "",
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.enrolLtiLti2Consumers.getEnrolLtiLti2Consumers.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Enrol Lti Lti2 Consumer ${action}d!`);
+    toast.success(`Enrol Lti Lti2 Consumer ${action}d!`);
   };
 
   const { mutate: createEnrolLtiLti2Consumer, isLoading: isCreating } =
@@ -107,11 +116,12 @@ const EnrolLtiLti2ConsumerForm = ({
         <FormField
           control={form.control}
           name="consumerGuid"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Consumer Guid</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -120,11 +130,12 @@ const EnrolLtiLti2ConsumerForm = ({
         <FormField
           control={form.control}
           name="consumerKey"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Consumer Key</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -133,11 +144,12 @@ const EnrolLtiLti2ConsumerForm = ({
         <FormField
           control={form.control}
           name="consumerKey256"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Consumer Key256</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -146,11 +158,12 @@ const EnrolLtiLti2ConsumerForm = ({
         <FormField
           control={form.control}
           name="consumerName"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Consumer Name</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -159,11 +172,12 @@ const EnrolLtiLti2ConsumerForm = ({
         <FormField
           control={form.control}
           name="consumerVersion"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Consumer Version</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -172,12 +186,18 @@ const EnrolLtiLti2ConsumerForm = ({
         <FormField
           control={form.control}
           name="enabled"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Enabled</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -185,9 +205,10 @@ const EnrolLtiLti2ConsumerForm = ({
         <FormField
           control={form.control}
           name="lastAccess"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Last Access</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -195,7 +216,7 @@ const EnrolLtiLti2ConsumerForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -227,11 +248,12 @@ const EnrolLtiLti2ConsumerForm = ({
         <FormField
           control={form.control}
           name="ltiVersion"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Lti Version</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -240,11 +262,12 @@ const EnrolLtiLti2ConsumerForm = ({
         <FormField
           control={form.control}
           name="name"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Name</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -253,11 +276,12 @@ const EnrolLtiLti2ConsumerForm = ({
         <FormField
           control={form.control}
           name="profile"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Profile</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -266,12 +290,18 @@ const EnrolLtiLti2ConsumerForm = ({
         <FormField
           control={form.control}
           name="protected"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Protected</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -279,11 +309,12 @@ const EnrolLtiLti2ConsumerForm = ({
         <FormField
           control={form.control}
           name="secret"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Secret</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -292,11 +323,12 @@ const EnrolLtiLti2ConsumerForm = ({
         <FormField
           control={form.control}
           name="settings"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Settings</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -305,11 +337,12 @@ const EnrolLtiLti2ConsumerForm = ({
         <FormField
           control={form.control}
           name="toolProxy"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Tool Proxy</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -318,9 +351,10 @@ const EnrolLtiLti2ConsumerForm = ({
         <FormField
           control={form.control}
           name="enableFrom"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Enable From</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -328,7 +362,7 @@ const EnrolLtiLti2ConsumerForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -360,9 +394,10 @@ const EnrolLtiLti2ConsumerForm = ({
         <FormField
           control={form.control}
           name="enableUntil"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Enable Until</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -370,7 +405,7 @@ const EnrolLtiLti2ConsumerForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -412,7 +447,9 @@ const EnrolLtiLti2ConsumerForm = ({
           <Button
             type="button"
             variant={"destructive"}
-            onClick={() => deleteEnrolLtiLti2Consumer({ id: enrolLtiLti2Consumer.id })}
+            onClick={() =>
+              deleteEnrolLtiLti2Consumer({ id: enrolLtiLti2Consumer.id })
+            }
           >
             Delet{isDeleting ? "ing..." : "e"}
           </Button>

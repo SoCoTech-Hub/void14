@@ -1,5 +1,6 @@
 import { stripe } from "@/lib/stripe/index";
-import { absoluteUrl } from "@/lib/utils";
+
+import { absoluteUrl } from "@soco/utils";
 
 interface ManageStripeSubscriptionActionProps {
   isSubscribed: boolean;

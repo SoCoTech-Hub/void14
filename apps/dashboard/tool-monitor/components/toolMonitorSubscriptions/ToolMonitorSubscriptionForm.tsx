@@ -1,9 +1,8 @@
 "use client";
 
-import { ToolMonitorSubscription, NewToolMonitorSubscriptionParams, insertToolMonitorSubscriptionParams } from "@/lib/db/schema/toolMonitorSubscriptions";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Form,
   FormControl,
@@ -13,16 +12,32 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  insertToolMonitorSubscriptionParams,
+  NewToolMonitorSubscriptionParams,
+  ToolMonitorSubscription,
+} from "@/lib/db/schema/toolMonitorSubscriptions";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const ToolMonitorSubscriptionForm = ({
   toolMonitorSubscription,
@@ -31,7 +46,8 @@ const ToolMonitorSubscriptionForm = ({
   toolMonitorSubscription?: ToolMonitorSubscription;
   closeModal?: () => void;
 }) => {
-  const { data: toolMonitorRules } = trpc.toolMonitorRules.getToolMonitorRules.useQuery();
+  const { data: toolMonitorRules } =
+    trpc.toolMonitorRules.getToolMonitorRules.useQuery();
   const editing = !!toolMonitorSubscription?.id;
 
   const router = useRouter();
@@ -44,25 +60,26 @@ const ToolMonitorSubscriptionForm = ({
     resolver: zodResolver(insertToolMonitorSubscriptionParams),
     defaultValues: toolMonitorSubscription ?? {
       cmId: "",
-     courseId: "",
-     inactiveDate: "",
-     lastNotificationSent: "",
-     toolMonitorRuleId: ""
+      courseId: "",
+      inactiveDate: "",
+      lastNotificationSent: "",
+      toolMonitorRuleId: "",
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.toolMonitorSubscriptions.getToolMonitorSubscriptions.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Tool Monitor Subscription ${action}d!`);
+    toast.success(`Tool Monitor Subscription ${action}d!`);
   };
 
   const { mutate: createToolMonitorSubscription, isLoading: isCreating } =
@@ -85,7 +102,10 @@ const ToolMonitorSubscriptionForm = ({
 
   const handleSubmit = (values: NewToolMonitorSubscriptionParams) => {
     if (editing) {
-      updateToolMonitorSubscription({ ...values, id: toolMonitorSubscription.id });
+      updateToolMonitorSubscription({
+        ...values,
+        id: toolMonitorSubscription.id,
+      });
     } else {
       createToolMonitorSubscription(values);
     }
@@ -96,11 +116,12 @@ const ToolMonitorSubscriptionForm = ({
         <FormField
           control={form.control}
           name="cmId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Cm Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -109,11 +130,12 @@ const ToolMonitorSubscriptionForm = ({
         <FormField
           control={form.control}
           name="courseId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Course Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -122,9 +144,10 @@ const ToolMonitorSubscriptionForm = ({
         <FormField
           control={form.control}
           name="inactiveDate"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Inactive Date</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -132,7 +155,7 @@ const ToolMonitorSubscriptionForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -164,9 +187,10 @@ const ToolMonitorSubscriptionForm = ({
         <FormField
           control={form.control}
           name="lastNotificationSent"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Last Notification Sent</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -174,7 +198,7 @@ const ToolMonitorSubscriptionForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -206,9 +230,10 @@ const ToolMonitorSubscriptionForm = ({
         <FormField
           control={form.control}
           name="toolMonitorRuleId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Tool Monitor Rule Id</FormLabel>
-                <FormControl>
+              <FormControl>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={String(field.value)}
@@ -217,14 +242,20 @@ const ToolMonitorSubscriptionForm = ({
                     <SelectValue placeholder="Select a tool monitor rule" />
                   </SelectTrigger>
                   <SelectContent>
-                    {toolMonitorRules?.toolMonitorRules.map((toolMonitorRule) => (
-                      <SelectItem key={toolMonitorRule.id} value={toolMonitorRule.id.toString()}>
-                        {toolMonitorRule.id}  {/* TODO: Replace with a field from the toolMonitorRule model */}
-                      </SelectItem>
-                    ))}
+                    {toolMonitorRules?.toolMonitorRules.map(
+                      (toolMonitorRule) => (
+                        <SelectItem
+                          key={toolMonitorRule.id}
+                          value={toolMonitorRule.id.toString()}
+                        >
+                          {toolMonitorRule.id}{" "}
+                          {/* TODO: Replace with a field from the toolMonitorRule model */}
+                        </SelectItem>
+                      ),
+                    )}
                   </SelectContent>
                 </Select>
-            </FormControl>
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -243,7 +274,9 @@ const ToolMonitorSubscriptionForm = ({
           <Button
             type="button"
             variant={"destructive"}
-            onClick={() => deleteToolMonitorSubscription({ id: toolMonitorSubscription.id })}
+            onClick={() =>
+              deleteToolMonitorSubscription({ id: toolMonitorSubscription.id })
+            }
           >
             Delet{isDeleting ? "ing..." : "e"}
           </Button>

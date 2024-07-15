@@ -1,9 +1,9 @@
 "use client";
 
-import { GradeItemsHistory, NewGradeItemsHistoryParams, insertGradeItemsHistoryParams } from "@/lib/db/schema/gradeItemsHistories";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -13,16 +13,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  GradeItemsHistory,
+  insertGradeItemsHistoryParams,
+  NewGradeItemsHistoryParams,
+} from "@/lib/db/schema/gradeItemsHistories";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";
-import { Checkbox } from "@/components/ui/checkbox";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const GradeItemsHistoryForm = ({
   gradeItemsHistory,
@@ -31,7 +40,6 @@ const GradeItemsHistoryForm = ({
   gradeItemsHistory?: GradeItemsHistory;
   closeModal?: () => void;
 }) => {
-  
   const editing = !!gradeItemsHistory?.id;
 
   const router = useRouter();
@@ -44,51 +52,52 @@ const GradeItemsHistoryForm = ({
     resolver: zodResolver(insertGradeItemsHistoryParams),
     defaultValues: gradeItemsHistory ?? {
       action: 0,
-     aggregationCoef: 0.0,
-     aggregationCoef2: 0.0,
-     calculation: "",
-     categoryId: "",
-     courseId: "",
-     decimals: false,
-     display: 0,
-     gradeMax: 0.0,
-     gradeMin: 0.0,
-     gradePass: 0.0,
-     gradeType: 0,
-     hidden: false,
-     idNumber: "",
-     itemInfo: "",
-     itemInstance: "",
-     itemModule: "",
-     itemName: "",
-     itemNumber: 0,
-     itemType: "",
-     locked: false,
-     lockTime: "",
-     multFactor: 0.0,
-     needsUpdate: 0,
-     oldId: "",
-     outcomeId: "",
-     plusFactor: 0.0,
-     scaleId: "",
-     source: "",
-     weightOverride: false,
-     sortOrder: 0
+      aggregationCoef: 0.0,
+      aggregationCoef2: 0.0,
+      calculation: "",
+      categoryId: "",
+      courseId: "",
+      decimals: false,
+      display: 0,
+      gradeMax: 0.0,
+      gradeMin: 0.0,
+      gradePass: 0.0,
+      gradeType: 0,
+      hidden: false,
+      idNumber: "",
+      itemInfo: "",
+      itemInstance: "",
+      itemModule: "",
+      itemName: "",
+      itemNumber: 0,
+      itemType: "",
+      locked: false,
+      lockTime: "",
+      multFactor: 0.0,
+      needsUpdate: 0,
+      oldId: "",
+      outcomeId: "",
+      plusFactor: 0.0,
+      scaleId: "",
+      source: "",
+      weightOverride: false,
+      sortOrder: 0,
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.gradeItemsHistories.getGradeItemsHistories.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Grade Items History ${action}d!`);
+    toast.success(`Grade Items History ${action}d!`);
   };
 
   const { mutate: createGradeItemsHistory, isLoading: isCreating } =
@@ -122,11 +131,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="action"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Action</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -135,11 +145,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="aggregationCoef"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Aggregation Coef</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -148,11 +159,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="aggregationCoef2"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Aggregation Coef2</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -161,11 +173,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="calculation"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Calculation</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -174,11 +187,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="categoryId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Category Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -187,11 +201,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="courseId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Course Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -200,12 +215,18 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="decimals"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Decimals</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -213,11 +234,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="display"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Display</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -226,11 +248,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="gradeMax"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Grade Max</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -239,11 +262,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="gradeMin"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Grade Min</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -252,11 +276,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="gradePass"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Grade Pass</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -265,11 +290,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="gradeType"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Grade Type</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -278,12 +304,18 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="hidden"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Hidden</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -291,11 +323,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="idNumber"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Id Number</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -304,11 +337,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="itemInfo"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Item Info</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -317,11 +351,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="itemInstance"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Item Instance</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -330,11 +365,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="itemModule"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Item Module</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -343,11 +379,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="itemName"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Item Name</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -356,11 +393,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="itemNumber"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Item Number</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -369,11 +407,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="itemType"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Item Type</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -382,12 +421,18 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="locked"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Locked</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -395,9 +440,10 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="lockTime"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Lock Time</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -405,7 +451,7 @@ const GradeItemsHistoryForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -437,11 +483,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="multFactor"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Mult Factor</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -450,11 +497,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="needsUpdate"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Needs Update</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -463,11 +511,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="oldId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Old Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -476,11 +525,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="outcomeId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Outcome Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -489,11 +539,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="plusFactor"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Plus Factor</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -502,11 +553,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="scaleId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Scale Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -515,11 +567,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="source"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Source</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -528,12 +581,18 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="weightOverride"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Weight Override</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -541,11 +600,12 @@ const GradeItemsHistoryForm = ({
         <FormField
           control={form.control}
           name="sortOrder"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Sort Order</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -564,7 +624,9 @@ const GradeItemsHistoryForm = ({
           <Button
             type="button"
             variant={"destructive"}
-            onClick={() => deleteGradeItemsHistory({ id: gradeItemsHistory.id })}
+            onClick={() =>
+              deleteGradeItemsHistory({ id: gradeItemsHistory.id })
+            }
           >
             Delet{isDeleting ? "ing..." : "e"}
           </Button>

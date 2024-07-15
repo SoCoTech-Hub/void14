@@ -1,9 +1,9 @@
 "use client";
 
-import { ForumDiscussion, NewForumDiscussionParams, insertForumDiscussionParams } from "@/lib/db/schema/forumDiscussions";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -13,16 +13,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  ForumDiscussion,
+  insertForumDiscussionParams,
+  NewForumDiscussionParams,
+} from "@/lib/db/schema/forumDiscussions";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";
-import { Checkbox } from "@/components/ui/checkbox";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const ForumDiscussionForm = ({
   forumDiscussion,
@@ -31,7 +40,6 @@ const ForumDiscussionForm = ({
   forumDiscussion?: ForumDiscussion;
   closeModal?: () => void;
 }) => {
-  
   const editing = !!forumDiscussion?.id;
 
   const router = useRouter();
@@ -44,29 +52,30 @@ const ForumDiscussionForm = ({
     resolver: zodResolver(insertForumDiscussionParams),
     defaultValues: forumDiscussion ?? {
       assessed: false,
-     course: "",
-     firstPost: "",
-     forum: "",
-     groupId: "",
-     name: "",
-     pinned: false,
-     timeEnd: "",
-     timeLocked: ""
+      course: "",
+      firstPost: "",
+      forum: "",
+      groupId: "",
+      name: "",
+      pinned: false,
+      timeEnd: "",
+      timeLocked: "",
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.forumDiscussions.getForumDiscussions.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Forum Discussion ${action}d!`);
+    toast.success(`Forum Discussion ${action}d!`);
   };
 
   const { mutate: createForumDiscussion, isLoading: isCreating } =
@@ -100,12 +109,18 @@ const ForumDiscussionForm = ({
         <FormField
           control={form.control}
           name="assessed"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Assessed</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -113,11 +128,12 @@ const ForumDiscussionForm = ({
         <FormField
           control={form.control}
           name="course"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Course</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -126,11 +142,12 @@ const ForumDiscussionForm = ({
         <FormField
           control={form.control}
           name="firstPost"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>First Post</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -139,11 +156,12 @@ const ForumDiscussionForm = ({
         <FormField
           control={form.control}
           name="forum"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Forum</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -152,11 +170,12 @@ const ForumDiscussionForm = ({
         <FormField
           control={form.control}
           name="groupId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Group Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -165,11 +184,12 @@ const ForumDiscussionForm = ({
         <FormField
           control={form.control}
           name="name"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Name</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -178,12 +198,18 @@ const ForumDiscussionForm = ({
         <FormField
           control={form.control}
           name="pinned"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Pinned</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -191,9 +217,10 @@ const ForumDiscussionForm = ({
         <FormField
           control={form.control}
           name="timeEnd"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Time End</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -201,7 +228,7 @@ const ForumDiscussionForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -233,9 +260,10 @@ const ForumDiscussionForm = ({
         <FormField
           control={form.control}
           name="timeLocked"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Time Locked</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -243,7 +271,7 @@ const ForumDiscussionForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (

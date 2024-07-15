@@ -1,9 +1,8 @@
 "use client";
 
-import { ToolCustomLang, NewToolCustomLangParams, insertToolCustomLangParams } from "@/lib/db/schema/toolCustomLangs";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Form,
   FormControl,
@@ -13,15 +12,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  insertToolCustomLangParams,
+  NewToolCustomLangParams,
+  ToolCustomLang,
+} from "@/lib/db/schema/toolCustomLangs";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const ToolCustomLangForm = ({
   toolCustomLang,
@@ -30,7 +39,6 @@ const ToolCustomLangForm = ({
   toolCustomLang?: ToolCustomLang;
   closeModal?: () => void;
 }) => {
-  
   const editing = !!toolCustomLang?.id;
 
   const router = useRouter();
@@ -43,29 +51,30 @@ const ToolCustomLangForm = ({
     resolver: zodResolver(insertToolCustomLangParams),
     defaultValues: toolCustomLang ?? {
       componentId: "",
-     lang: "",
-     local: "",
-     master: "",
-     modified: 0,
-     original: "",
-     outdated: 0,
-     stringId: "",
-     customizedAt: ""
+      lang: "",
+      local: "",
+      master: "",
+      modified: 0,
+      original: "",
+      outdated: 0,
+      stringId: "",
+      customizedAt: "",
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.toolCustomLangs.getToolCustomLangs.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Tool Custom Lang ${action}d!`);
+    toast.success(`Tool Custom Lang ${action}d!`);
   };
 
   const { mutate: createToolCustomLang, isLoading: isCreating } =
@@ -99,11 +108,12 @@ const ToolCustomLangForm = ({
         <FormField
           control={form.control}
           name="componentId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Component Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -112,11 +122,12 @@ const ToolCustomLangForm = ({
         <FormField
           control={form.control}
           name="lang"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Lang</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -125,11 +136,12 @@ const ToolCustomLangForm = ({
         <FormField
           control={form.control}
           name="local"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Local</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -138,11 +150,12 @@ const ToolCustomLangForm = ({
         <FormField
           control={form.control}
           name="master"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Master</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -151,11 +164,12 @@ const ToolCustomLangForm = ({
         <FormField
           control={form.control}
           name="modified"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Modified</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -164,11 +178,12 @@ const ToolCustomLangForm = ({
         <FormField
           control={form.control}
           name="original"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Original</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -177,11 +192,12 @@ const ToolCustomLangForm = ({
         <FormField
           control={form.control}
           name="outdated"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Outdated</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -190,11 +206,12 @@ const ToolCustomLangForm = ({
         <FormField
           control={form.control}
           name="stringId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>String Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -203,9 +220,10 @@ const ToolCustomLangForm = ({
         <FormField
           control={form.control}
           name="customizedAt"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Customized At</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -213,7 +231,7 @@ const ToolCustomLangForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (

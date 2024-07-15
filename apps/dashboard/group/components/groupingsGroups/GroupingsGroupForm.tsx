@@ -1,9 +1,8 @@
 "use client";
 
-import { GroupingsGroup, NewGroupingsGroupParams, insertGroupingsGroupParams } from "@/lib/db/schema/groupingsGroups";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Form,
   FormControl,
@@ -13,16 +12,32 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  GroupingsGroup,
+  insertGroupingsGroupParams,
+  NewGroupingsGroupParams,
+} from "@/lib/db/schema/groupingsGroups";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const GroupingsGroupForm = ({
   groupingsGroup,
@@ -45,23 +60,24 @@ const GroupingsGroupForm = ({
     resolver: zodResolver(insertGroupingsGroupParams),
     defaultValues: groupingsGroup ?? {
       groupingId: "",
-     groupId: "",
-     timeAdded: ""
+      groupId: "",
+      timeAdded: "",
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.groupingsGroups.getGroupingsGroups.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Groupings Group ${action}d!`);
+    toast.success(`Groupings Group ${action}d!`);
   };
 
   const { mutate: createGroupingsGroup, isLoading: isCreating } =
@@ -95,9 +111,10 @@ const GroupingsGroupForm = ({
         <FormField
           control={form.control}
           name="groupingId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Grouping Id</FormLabel>
-                <FormControl>
+              <FormControl>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={String(field.value)}
@@ -107,13 +124,17 @@ const GroupingsGroupForm = ({
                   </SelectTrigger>
                   <SelectContent>
                     {groupings?.groupings.map((grouping) => (
-                      <SelectItem key={grouping.id} value={grouping.id.toString()}>
-                        {grouping.id}  {/* TODO: Replace with a field from the grouping model */}
+                      <SelectItem
+                        key={grouping.id}
+                        value={grouping.id.toString()}
+                      >
+                        {grouping.id}{" "}
+                        {/* TODO: Replace with a field from the grouping model */}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
-            </FormControl>
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -122,9 +143,10 @@ const GroupingsGroupForm = ({
         <FormField
           control={form.control}
           name="groupId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Group Id</FormLabel>
-                <FormControl>
+              <FormControl>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={String(field.value)}
@@ -135,12 +157,13 @@ const GroupingsGroupForm = ({
                   <SelectContent>
                     {groups?.groups.map((group) => (
                       <SelectItem key={group.id} value={group.id.toString()}>
-                        {group.id}  {/* TODO: Replace with a field from the group model */}
+                        {group.id}{" "}
+                        {/* TODO: Replace with a field from the group model */}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
-            </FormControl>
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -149,9 +172,10 @@ const GroupingsGroupForm = ({
         <FormField
           control={form.control}
           name="timeAdded"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Time Added</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -159,7 +183,7 @@ const GroupingsGroupForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (

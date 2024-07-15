@@ -1,9 +1,8 @@
 "use client";
 
-import { StatsDaily, NewStatsDailyParams, insertStatsDailyParams } from "@/lib/db/schema/statsDailies";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Form,
   FormControl,
@@ -13,15 +12,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  insertStatsDailyParams,
+  NewStatsDailyParams,
+  StatsDaily,
+} from "@/lib/db/schema/statsDailies";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const StatsDailyForm = ({
   statsDaily,
@@ -30,7 +39,6 @@ const StatsDailyForm = ({
   statsDaily?: StatsDaily;
   closeModal?: () => void;
 }) => {
-  
   const editing = !!statsDaily?.id;
 
   const router = useRouter();
@@ -43,26 +51,27 @@ const StatsDailyForm = ({
     resolver: zodResolver(insertStatsDailyParams),
     defaultValues: statsDaily ?? {
       courseId: "",
-     roleId: "",
-     stat1: "",
-     stat2: "",
-     statType: "",
-     timeEnd: ""
+      roleId: "",
+      stat1: "",
+      stat2: "",
+      statType: "",
+      timeEnd: "",
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.statsDailies.getStatsDailies.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Stats Daily ${action}d!`);
+    toast.success(`Stats Daily ${action}d!`);
   };
 
   const { mutate: createStatsDaily, isLoading: isCreating } =
@@ -96,11 +105,12 @@ const StatsDailyForm = ({
         <FormField
           control={form.control}
           name="courseId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Course Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -109,11 +119,12 @@ const StatsDailyForm = ({
         <FormField
           control={form.control}
           name="roleId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Role Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -122,11 +133,12 @@ const StatsDailyForm = ({
         <FormField
           control={form.control}
           name="stat1"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Stat1</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -135,11 +147,12 @@ const StatsDailyForm = ({
         <FormField
           control={form.control}
           name="stat2"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Stat2</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -148,11 +161,12 @@ const StatsDailyForm = ({
         <FormField
           control={form.control}
           name="statType"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Stat Type</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -161,9 +175,10 @@ const StatsDailyForm = ({
         <FormField
           control={form.control}
           name="timeEnd"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Time End</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -171,7 +186,7 @@ const StatsDailyForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (

@@ -1,9 +1,9 @@
 "use client";
 
-import { MessageRead, NewMessageReadParams, insertMessageReadParams } from "@/lib/db/schema/messageReads";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -13,16 +13,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  insertMessageReadParams,
+  MessageRead,
+  NewMessageReadParams,
+} from "@/lib/db/schema/messageReads";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";
-import { Checkbox } from "@/components/ui/checkbox";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const MessageReadForm = ({
   messageRead,
@@ -31,7 +40,6 @@ const MessageReadForm = ({
   messageRead?: MessageRead;
   closeModal?: () => void;
 }) => {
-  
   const editing = !!messageRead?.id;
 
   const router = useRouter();
@@ -44,34 +52,35 @@ const MessageReadForm = ({
     resolver: zodResolver(insertMessageReadParams),
     defaultValues: messageRead ?? {
       component: "",
-     contextUrl: "",
-     contextUrlName: "",
-     eventType: "",
-     fullMessage: "",
-     fullMessageFormat: 0,
-     fullMessageHtml: "",
-     notification: false,
-     smallMessage: "",
-     subject: "",
-     timeRead: "",
-     timeUserFromDeleted: "",
-     timeUserToDeleted: "",
-     userIdFrom: ""
+      contextUrl: "",
+      contextUrlName: "",
+      eventType: "",
+      fullMessage: "",
+      fullMessageFormat: 0,
+      fullMessageHtml: "",
+      notification: false,
+      smallMessage: "",
+      subject: "",
+      timeRead: "",
+      timeUserFromDeleted: "",
+      timeUserToDeleted: "",
+      userIdFrom: "",
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.messageReads.getMessageReads.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Message Read ${action}d!`);
+    toast.success(`Message Read ${action}d!`);
   };
 
   const { mutate: createMessageRead, isLoading: isCreating } =
@@ -105,11 +114,12 @@ const MessageReadForm = ({
         <FormField
           control={form.control}
           name="component"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Component</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -118,11 +128,12 @@ const MessageReadForm = ({
         <FormField
           control={form.control}
           name="contextUrl"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Context Url</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -131,11 +142,12 @@ const MessageReadForm = ({
         <FormField
           control={form.control}
           name="contextUrlName"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Context Url Name</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -144,11 +156,12 @@ const MessageReadForm = ({
         <FormField
           control={form.control}
           name="eventType"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Event Type</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -157,11 +170,12 @@ const MessageReadForm = ({
         <FormField
           control={form.control}
           name="fullMessage"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Full Message</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -170,11 +184,12 @@ const MessageReadForm = ({
         <FormField
           control={form.control}
           name="fullMessageFormat"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Full Message Format</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -183,11 +198,12 @@ const MessageReadForm = ({
         <FormField
           control={form.control}
           name="fullMessageHtml"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Full Message Html</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -196,12 +212,18 @@ const MessageReadForm = ({
         <FormField
           control={form.control}
           name="notification"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Notification</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -209,11 +231,12 @@ const MessageReadForm = ({
         <FormField
           control={form.control}
           name="smallMessage"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Small Message</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -222,11 +245,12 @@ const MessageReadForm = ({
         <FormField
           control={form.control}
           name="subject"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Subject</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -235,9 +259,10 @@ const MessageReadForm = ({
         <FormField
           control={form.control}
           name="timeRead"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Time Read</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -245,7 +270,7 @@ const MessageReadForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -277,9 +302,10 @@ const MessageReadForm = ({
         <FormField
           control={form.control}
           name="timeUserFromDeleted"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Time User From Deleted</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -287,7 +313,7 @@ const MessageReadForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -319,9 +345,10 @@ const MessageReadForm = ({
         <FormField
           control={form.control}
           name="timeUserToDeleted"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Time User To Deleted</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -329,7 +356,7 @@ const MessageReadForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -361,11 +388,12 @@ const MessageReadForm = ({
         <FormField
           control={form.control}
           name="userIdFrom"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>User Id From</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>

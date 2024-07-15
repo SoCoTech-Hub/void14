@@ -1,9 +1,8 @@
 "use client";
 
-import { LessonBranch, NewLessonBranchParams, insertLessonBranchParams } from "@/lib/db/schema/lessonBranches";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Form,
   FormControl,
@@ -13,16 +12,32 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  insertLessonBranchParams,
+  LessonBranch,
+  NewLessonBranchParams,
+} from "@/lib/db/schema/lessonBranches";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const LessonBranchForm = ({
   lessonBranch,
@@ -45,26 +60,27 @@ const LessonBranchForm = ({
     resolver: zodResolver(insertLessonBranchParams),
     defaultValues: lessonBranch ?? {
       flag: 0,
-     lessonId: "",
-     lessonPageId: "",
-     nextPageId: "",
-     retry: 0,
-     timeSeen: ""
+      lessonId: "",
+      lessonPageId: "",
+      nextPageId: "",
+      retry: 0,
+      timeSeen: "",
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.lessonBranches.getLessonBranches.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Lesson Branch ${action}d!`);
+    toast.success(`Lesson Branch ${action}d!`);
   };
 
   const { mutate: createLessonBranch, isLoading: isCreating } =
@@ -98,11 +114,12 @@ const LessonBranchForm = ({
         <FormField
           control={form.control}
           name="flag"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Flag</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -111,9 +128,10 @@ const LessonBranchForm = ({
         <FormField
           control={form.control}
           name="lessonId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Lesson Id</FormLabel>
-                <FormControl>
+              <FormControl>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={String(field.value)}
@@ -124,12 +142,13 @@ const LessonBranchForm = ({
                   <SelectContent>
                     {lessons?.lessons.map((lesson) => (
                       <SelectItem key={lesson.id} value={lesson.id.toString()}>
-                        {lesson.id}  {/* TODO: Replace with a field from the lesson model */}
+                        {lesson.id}{" "}
+                        {/* TODO: Replace with a field from the lesson model */}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
-            </FormControl>
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -138,9 +157,10 @@ const LessonBranchForm = ({
         <FormField
           control={form.control}
           name="lessonPageId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Lesson Page Id</FormLabel>
-                <FormControl>
+              <FormControl>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={String(field.value)}
@@ -150,13 +170,17 @@ const LessonBranchForm = ({
                   </SelectTrigger>
                   <SelectContent>
                     {lessonPages?.lessonPages.map((lessonPage) => (
-                      <SelectItem key={lessonPage.id} value={lessonPage.id.toString()}>
-                        {lessonPage.id}  {/* TODO: Replace with a field from the lessonPage model */}
+                      <SelectItem
+                        key={lessonPage.id}
+                        value={lessonPage.id.toString()}
+                      >
+                        {lessonPage.id}{" "}
+                        {/* TODO: Replace with a field from the lessonPage model */}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
-            </FormControl>
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -165,11 +189,12 @@ const LessonBranchForm = ({
         <FormField
           control={form.control}
           name="nextPageId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Next Page Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -178,11 +203,12 @@ const LessonBranchForm = ({
         <FormField
           control={form.control}
           name="retry"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Retry</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -191,9 +217,10 @@ const LessonBranchForm = ({
         <FormField
           control={form.control}
           name="timeSeen"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Time Seen</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -201,7 +228,7 @@ const LessonBranchForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (

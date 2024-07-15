@@ -1,9 +1,8 @@
 "use client";
 
-import { EnrolLtiLti2Nonce, NewEnrolLtiLti2NonceParams, insertEnrolLtiLti2NonceParams } from "@/lib/db/schema/enrolLtiLti2Nonces";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Form,
   FormControl,
@@ -13,15 +12,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  EnrolLtiLti2Nonce,
+  insertEnrolLtiLti2NonceParams,
+  NewEnrolLtiLti2NonceParams,
+} from "@/lib/db/schema/enrolLtiLti2Nonces";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const EnrolLtiLti2NonceForm = ({
   enrolLtiLti2Nonce,
@@ -30,7 +39,6 @@ const EnrolLtiLti2NonceForm = ({
   enrolLtiLti2Nonce?: EnrolLtiLti2Nonce;
   closeModal?: () => void;
 }) => {
-  
   const editing = !!enrolLtiLti2Nonce?.id;
 
   const router = useRouter();
@@ -43,23 +51,24 @@ const EnrolLtiLti2NonceForm = ({
     resolver: zodResolver(insertEnrolLtiLti2NonceParams),
     defaultValues: enrolLtiLti2Nonce ?? {
       consumerId: "",
-     expires: "",
-     value: ""
+      expires: "",
+      value: "",
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.enrolLtiLti2Nonces.getEnrolLtiLti2Nonces.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Enrol Lti Lti2 Nonce ${action}d!`);
+    toast.success(`Enrol Lti Lti2 Nonce ${action}d!`);
   };
 
   const { mutate: createEnrolLtiLti2Nonce, isLoading: isCreating } =
@@ -93,11 +102,12 @@ const EnrolLtiLti2NonceForm = ({
         <FormField
           control={form.control}
           name="consumerId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Consumer Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -106,9 +116,10 @@ const EnrolLtiLti2NonceForm = ({
         <FormField
           control={form.control}
           name="expires"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Expires</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -116,7 +127,7 @@ const EnrolLtiLti2NonceForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -148,11 +159,12 @@ const EnrolLtiLti2NonceForm = ({
         <FormField
           control={form.control}
           name="value"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Value</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -171,7 +183,9 @@ const EnrolLtiLti2NonceForm = ({
           <Button
             type="button"
             variant={"destructive"}
-            onClick={() => deleteEnrolLtiLti2Nonce({ id: enrolLtiLti2Nonce.id })}
+            onClick={() =>
+              deleteEnrolLtiLti2Nonce({ id: enrolLtiLti2Nonce.id })
+            }
           >
             Delet{isDeleting ? "ing..." : "e"}
           </Button>

@@ -1,9 +1,8 @@
 "use client";
 
-import { EnrolLtiUser, NewEnrolLtiUserParams, insertEnrolLtiUserParams } from "@/lib/db/schema/enrolLtiUsers";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Form,
   FormControl,
@@ -13,16 +12,32 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  EnrolLtiUser,
+  insertEnrolLtiUserParams,
+  NewEnrolLtiUserParams,
+} from "@/lib/db/schema/enrolLtiUsers";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const EnrolLtiUserForm = ({
   enrolLtiUser,
@@ -31,7 +46,8 @@ const EnrolLtiUserForm = ({
   enrolLtiUser?: EnrolLtiUser;
   closeModal?: () => void;
 }) => {
-  const { data: enrolLtiDeployments } = trpc.enrolLtiDeployments.getEnrolLtiDeployments.useQuery();
+  const { data: enrolLtiDeployments } =
+    trpc.enrolLtiDeployments.getEnrolLtiDeployments.useQuery();
   const editing = !!enrolLtiUser?.id;
 
   const router = useRouter();
@@ -44,30 +60,31 @@ const EnrolLtiUserForm = ({
     resolver: zodResolver(insertEnrolLtiUserParams),
     defaultValues: enrolLtiUser ?? {
       consumerKey: "",
-     consumerSecret: "",
-     lastAccess: "",
-     lastGrade: 0.0,
-     enrolLtiDeploymentId: "",
-     membershipsId: "",
-     membershipsUrl: "",
-     serviceUrl: "",
-     sourceId: "",
-     toolId: ""
+      consumerSecret: "",
+      lastAccess: "",
+      lastGrade: 0.0,
+      enrolLtiDeploymentId: "",
+      membershipsId: "",
+      membershipsUrl: "",
+      serviceUrl: "",
+      sourceId: "",
+      toolId: "",
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.enrolLtiUsers.getEnrolLtiUsers.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Enrol Lti User ${action}d!`);
+    toast.success(`Enrol Lti User ${action}d!`);
   };
 
   const { mutate: createEnrolLtiUser, isLoading: isCreating } =
@@ -101,11 +118,12 @@ const EnrolLtiUserForm = ({
         <FormField
           control={form.control}
           name="consumerKey"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Consumer Key</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -114,11 +132,12 @@ const EnrolLtiUserForm = ({
         <FormField
           control={form.control}
           name="consumerSecret"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Consumer Secret</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -127,9 +146,10 @@ const EnrolLtiUserForm = ({
         <FormField
           control={form.control}
           name="lastAccess"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Last Access</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -137,7 +157,7 @@ const EnrolLtiUserForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -169,11 +189,12 @@ const EnrolLtiUserForm = ({
         <FormField
           control={form.control}
           name="lastGrade"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Last Grade</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -182,9 +203,10 @@ const EnrolLtiUserForm = ({
         <FormField
           control={form.control}
           name="enrolLtiDeploymentId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Enrol Lti Deployment Id</FormLabel>
-                <FormControl>
+              <FormControl>
                 <Select
                   onValueChange={field.onChange}
                   defaultValue={String(field.value)}
@@ -193,14 +215,20 @@ const EnrolLtiUserForm = ({
                     <SelectValue placeholder="Select a enrol lti deployment" />
                   </SelectTrigger>
                   <SelectContent>
-                    {enrolLtiDeployments?.enrolLtiDeployments.map((enrolLtiDeployment) => (
-                      <SelectItem key={enrolLtiDeployment.id} value={enrolLtiDeployment.id.toString()}>
-                        {enrolLtiDeployment.id}  {/* TODO: Replace with a field from the enrolLtiDeployment model */}
-                      </SelectItem>
-                    ))}
+                    {enrolLtiDeployments?.enrolLtiDeployments.map(
+                      (enrolLtiDeployment) => (
+                        <SelectItem
+                          key={enrolLtiDeployment.id}
+                          value={enrolLtiDeployment.id.toString()}
+                        >
+                          {enrolLtiDeployment.id}{" "}
+                          {/* TODO: Replace with a field from the enrolLtiDeployment model */}
+                        </SelectItem>
+                      ),
+                    )}
                   </SelectContent>
                 </Select>
-            </FormControl>
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -209,11 +237,12 @@ const EnrolLtiUserForm = ({
         <FormField
           control={form.control}
           name="membershipsId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Memberships Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -222,11 +251,12 @@ const EnrolLtiUserForm = ({
         <FormField
           control={form.control}
           name="membershipsUrl"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Memberships Url</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -235,11 +265,12 @@ const EnrolLtiUserForm = ({
         <FormField
           control={form.control}
           name="serviceUrl"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Service Url</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -248,11 +279,12 @@ const EnrolLtiUserForm = ({
         <FormField
           control={form.control}
           name="sourceId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Source Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -261,11 +293,12 @@ const EnrolLtiUserForm = ({
         <FormField
           control={form.control}
           name="toolId"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Tool Id</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>

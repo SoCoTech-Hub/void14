@@ -1,9 +1,9 @@
 "use client";
 
-import { Forum, NewForumParams, insertForumParams } from "@/lib/db/schema/forums";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import { Checkbox } from "@/components/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -13,16 +13,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Forum,
+  insertForumParams,
+  NewForumParams,
+} from "@/lib/db/schema/forums";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";
-import { Checkbox } from "@/components/ui/checkbox";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const ForumForm = ({
   forum,
@@ -31,7 +40,6 @@ const ForumForm = ({
   forum?: Forum;
   closeModal?: () => void;
 }) => {
-  
   const editing = !!forum?.id;
 
   const router = useRouter();
@@ -44,47 +52,48 @@ const ForumForm = ({
     resolver: zodResolver(insertForumParams),
     defaultValues: forum ?? {
       assessed: "",
-     assessTimeFinish: "",
-     assessTimeStart: "",
-     blockAfter: 0,
-     blockPeriod: 0,
-     course: "",
-     completionDiscussions: 0,
-     completionPosts: 0,
-     completionReplies: 0,
-     cutOffDate: "",
-     displayWordCount: false,
-     dueDate: "",
-     forceSubscribe: false,
-     gradeForum: 0,
-     gradeForumNotify: 0,
-     intro: "",
-     introFormat: 0,
-     lockDiscussionAfter: "",
-     maxAttachments: 0,
-     maxBytes: 0,
-     name: "",
-     rssArticles: 0,
-     rssType: 0,
-     scale: 0,
-     trackingType: 0,
-     type: "",
-     warnAfter: 0
+      assessTimeFinish: "",
+      assessTimeStart: "",
+      blockAfter: 0,
+      blockPeriod: 0,
+      course: "",
+      completionDiscussions: 0,
+      completionPosts: 0,
+      completionReplies: 0,
+      cutOffDate: "",
+      displayWordCount: false,
+      dueDate: "",
+      forceSubscribe: false,
+      gradeForum: 0,
+      gradeForumNotify: 0,
+      intro: "",
+      introFormat: 0,
+      lockDiscussionAfter: "",
+      maxAttachments: 0,
+      maxBytes: 0,
+      name: "",
+      rssArticles: 0,
+      rssType: 0,
+      scale: 0,
+      trackingType: 0,
+      type: "",
+      warnAfter: 0,
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.forums.getForums.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Forum ${action}d!`);
+    toast.success(`Forum ${action}d!`);
   };
 
   const { mutate: createForum, isLoading: isCreating } =
@@ -118,11 +127,12 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="assessed"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Assessed</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -131,9 +141,10 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="assessTimeFinish"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Assess Time Finish</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -141,7 +152,7 @@ const ForumForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -173,9 +184,10 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="assessTimeStart"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Assess Time Start</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -183,7 +195,7 @@ const ForumForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -215,11 +227,12 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="blockAfter"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Block After</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -228,11 +241,12 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="blockPeriod"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Block Period</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -241,11 +255,12 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="course"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Course</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -254,11 +269,12 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="completionDiscussions"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Completion Discussions</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -267,11 +283,12 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="completionPosts"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Completion Posts</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -280,11 +297,12 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="completionReplies"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Completion Replies</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -293,9 +311,10 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="cutOffDate"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Cut Off Date</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -303,7 +322,7 @@ const ForumForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -335,12 +354,18 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="displayWordCount"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Display Word Count</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -348,9 +373,10 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="dueDate"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Due Date</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -358,7 +384,7 @@ const ForumForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -390,12 +416,18 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="forceSubscribe"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Force Subscribe</FormLabel>
-                <br />
-            <FormControl>
-              <Checkbox {...field} checked={!!field.value} onCheckedChange={field.onChange} value={""} />
-            </FormControl>
+              <br />
+              <FormControl>
+                <Checkbox
+                  {...field}
+                  checked={!!field.value}
+                  onCheckedChange={field.onChange}
+                  value={""}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
@@ -403,11 +435,12 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="gradeForum"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Grade Forum</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -416,11 +449,12 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="gradeForumNotify"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Grade Forum Notify</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -429,11 +463,12 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="intro"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Intro</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -442,11 +477,12 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="introFormat"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Intro Format</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -455,9 +491,10 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="lockDiscussionAfter"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Lock Discussion After</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -465,7 +502,7 @@ const ForumForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
@@ -497,11 +534,12 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="maxAttachments"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Max Attachments</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -510,11 +548,12 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="maxBytes"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Max Bytes</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -523,11 +562,12 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="name"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Name</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -536,11 +576,12 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="rssArticles"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Rss Articles</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -549,11 +590,12 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="rssType"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Rss Type</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -562,11 +604,12 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="scale"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Scale</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -575,11 +618,12 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="trackingType"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Tracking Type</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -588,11 +632,12 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="type"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Type</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -601,11 +646,12 @@ const ForumForm = ({
         <FormField
           control={form.control}
           name="warnAfter"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Warn After</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>

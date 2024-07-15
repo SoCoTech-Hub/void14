@@ -1,9 +1,8 @@
 "use client";
 
-import { LogQuery, NewLogQueryParams, insertLogQueryParams } from "@/lib/db/schema/logQueries";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-
+import { useRouter } from "next/navigation";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Form,
   FormControl,
@@ -13,15 +12,25 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  insertLogQueryParams,
+  LogQuery,
+  NewLogQueryParams,
+} from "@/lib/db/schema/logQueries";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
-import { z } from "zod";import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon } from "lucide-react";
-import { Calendar } from "@/components/ui/calendar";
-import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
-import { useRouter } from "next/navigation";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+
+import { cn } from "@soco/utils";
 
 const LogQueryForm = ({
   logQuery,
@@ -30,7 +39,6 @@ const LogQueryForm = ({
   logQuery?: LogQuery;
   closeModal?: () => void;
 }) => {
-  
   const editing = !!logQuery?.id;
 
   const router = useRouter();
@@ -43,28 +51,29 @@ const LogQueryForm = ({
     resolver: zodResolver(insertLogQueryParams),
     defaultValues: logQuery ?? {
       backTrace: "",
-     error: 0,
-     execTime: 0.0,
-     info: "",
-     qType: 0,
-     sqlParams: "",
-     sqlText: "",
-     timeLogged: ""
+      error: 0,
+      execTime: 0.0,
+      info: "",
+      qType: 0,
+      sqlParams: "",
+      sqlText: "",
+      timeLogged: "",
     },
   });
 
-  const onSuccess = async (action: "create" | "update" | "delete",
+  const onSuccess = async (
+    action: "create" | "update" | "delete",
     data?: { error?: string },
   ) => {
-        if (data?.error) {
-      toast.error(data.error)
+    if (data?.error) {
+      toast.error(data.error);
       return;
     }
 
     await utils.logQueries.getLogQueries.invalidate();
     router.refresh();
     if (closeModal) closeModal();
-        toast.success(`Log Query ${action}d!`);
+    toast.success(`Log Query ${action}d!`);
   };
 
   const { mutate: createLogQuery, isLoading: isCreating } =
@@ -98,11 +107,12 @@ const LogQueryForm = ({
         <FormField
           control={form.control}
           name="backTrace"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Back Trace</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -111,11 +121,12 @@ const LogQueryForm = ({
         <FormField
           control={form.control}
           name="error"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Error</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -124,11 +135,12 @@ const LogQueryForm = ({
         <FormField
           control={form.control}
           name="execTime"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Exec Time</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -137,11 +149,12 @@ const LogQueryForm = ({
         <FormField
           control={form.control}
           name="info"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Info</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -150,11 +163,12 @@ const LogQueryForm = ({
         <FormField
           control={form.control}
           name="qType"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Q Type</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -163,11 +177,12 @@ const LogQueryForm = ({
         <FormField
           control={form.control}
           name="sqlParams"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Sql Params</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -176,11 +191,12 @@ const LogQueryForm = ({
         <FormField
           control={form.control}
           name="sqlText"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Sql Text</FormLabel>
-                <FormControl>
-            <Input {...field} />
-          </FormControl>
+              <FormControl>
+                <Input {...field} />
+              </FormControl>
 
               <FormMessage />
             </FormItem>
@@ -189,9 +205,10 @@ const LogQueryForm = ({
         <FormField
           control={form.control}
           name="timeLogged"
-          render={({ field }) => (<FormItem>
+          render={({ field }) => (
+            <FormItem>
               <FormLabel>Time Logged</FormLabel>
-                <br />
+              <br />
               <Popover>
                 <PopoverTrigger asChild>
                   <FormControl>
@@ -199,7 +216,7 @@ const LogQueryForm = ({
                       variant={"outline"}
                       className={cn(
                         "w-[240px] pl-3 text-left font-normal",
-                        !field.value && "text-muted-foreground"
+                        !field.value && "text-muted-foreground",
                       )}
                     >
                       {field.value ? (
