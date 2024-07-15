@@ -1,6 +1,6 @@
 'use client'
 
-import { Faq, NewFaqParams, insertFaqParams } from '@/lib/db/schema/faqs'
+import { Faq, NewFaqParams, insertFaqParams } from '@soco/faq-db/schema/faqs'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

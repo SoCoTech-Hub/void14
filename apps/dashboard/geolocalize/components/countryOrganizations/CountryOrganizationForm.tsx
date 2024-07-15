@@ -1,6 +1,6 @@
 "use client";
 
-import { CountryOrganization, NewCountryOrganizationParams, insertCountryOrganizationParams } from "@/lib/db/schema/countryOrganizations";
+import { CountryOrganization, NewCountryOrganizationParams, insertCountryOrganizationParams } from "@soco/geolocalize-db/schema/countryOrganizations";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

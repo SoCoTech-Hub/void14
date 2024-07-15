@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import LicenseForm from "./LicenseForm";
-import { License } from "@/lib/db/schema/licenses";
+import { License } from "@soco/license-db/schema/licenses";
 
 export default function LicenseModal({ 
   license,

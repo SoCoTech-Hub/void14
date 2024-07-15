@@ -1,6 +1,6 @@
 "use client";
 
-import { Url, NewUrlParams, insertUrlParams } from "@/lib/db/schema/urls";
+import { Url, NewUrlParams, insertUrlParams } from "@soco/url-db/schema/urls";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

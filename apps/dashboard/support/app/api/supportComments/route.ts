@@ -6,12 +6,12 @@ import {
   createSupportComment,
   deleteSupportComment,
   updateSupportComment,
-} from "@/lib/api/supportComments/mutations";
+} from "@soco/support-api/supportComments/mutations";
 import { 
   supportCommentIdSchema,
   insertSupportCommentParams,
   updateSupportCommentParams 
-} from "@/lib/db/schema/supportComments";
+} from "@soco/support-db/schema/supportComments";
 
 export async function POST(req: Request) {
   try {

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ToolCohortRoleForm from "./ToolCohortRoleForm";
-import { ToolCohortRole } from "@/lib/db/schema/toolCohortRoles";
+import { ToolCohortRole } from "@soco/tool-brickfield-db/schema/toolCohortRoles";
 
 export default function ToolCohortRoleModal({ 
   toolCohortRole,

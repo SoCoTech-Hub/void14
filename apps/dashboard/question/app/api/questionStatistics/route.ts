@@ -6,12 +6,12 @@ import {
   createQuestionStatistic,
   deleteQuestionStatistic,
   updateQuestionStatistic,
-} from "@/lib/api/questionStatistics/mutations";
+} from "@soco/question-api/questionStatistics/mutations";
 import { 
   questionStatisticIdSchema,
   insertQuestionStatisticParams,
   updateQuestionStatisticParams 
-} from "@/lib/db/schema/questionStatistics";
+} from "@soco/question-db/schema/questionStatistics";
 
 export async function POST(req: Request) {
   try {

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import CourseRequestForm from "./CourseRequestForm";
-import { CourseRequest } from "@/lib/db/schema/courseRequests";
+import { CourseRequest } from "@soco/course-db/schema/courseRequests";
 
 export default function CourseRequestModal({ 
   courseRequest,

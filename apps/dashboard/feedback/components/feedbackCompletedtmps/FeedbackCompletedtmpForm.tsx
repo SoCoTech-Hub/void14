@@ -1,6 +1,6 @@
 "use client";
 
-import { FeedbackCompletedtmp, NewFeedbackCompletedtmpParams, insertFeedbackCompletedtmpParams } from "@/lib/db/schema/feedbackCompletedtmps";
+import { FeedbackCompletedtmp, NewFeedbackCompletedtmpParams, insertFeedbackCompletedtmpParams } from "@soco/feedback-db/schema/feedbackCompletedtmps";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

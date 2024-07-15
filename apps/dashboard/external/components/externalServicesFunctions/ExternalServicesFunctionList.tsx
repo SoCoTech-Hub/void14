@@ -1,5 +1,5 @@
 "use client";
-import { CompleteExternalServicesFunction } from "@/lib/db/schema/externalServicesFunctions";
+import { CompleteExternalServicesFunction } from "@soco/external-db/schema/externalServicesFunctions";
 import { trpc } from "@/lib/trpc/client";
 import ExternalServicesFunctionModal from "./ExternalServicesFunctionModal";
 

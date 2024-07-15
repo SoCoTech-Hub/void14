@@ -1,6 +1,6 @@
 "use client";
 
-import { Sticker, NewStickerParams, insertStickerParams } from "@/lib/db/schema/stickers";
+import { Sticker, NewStickerParams, insertStickerParams } from "@soco/stickers-db/schema/stickers";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

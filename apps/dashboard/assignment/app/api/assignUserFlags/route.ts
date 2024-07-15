@@ -6,12 +6,12 @@ import {
   createAssignUserFlag,
   deleteAssignUserFlag,
   updateAssignUserFlag,
-} from "@/lib/api/assignUserFlags/mutations";
+} from "@soco/assignment-api/assignUserFlags/mutations";
 import { 
   assignUserFlagIdSchema,
   insertAssignUserFlagParams,
   updateAssignUserFlagParams 
-} from "@/lib/db/schema/assignUserFlags";
+} from "@soco/assignment-db/schema/assignUserFlags";
 
 export async function POST(req: Request) {
   try {

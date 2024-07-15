@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QtypeMatchOptionForm from "./QtypeMatchOptionForm";
-import { QtypeMatchOption } from "@/lib/db/schema/qtypeMatchOptions";
+import { QtypeMatchOption } from "@soco/qtype-db/schema/qtypeMatchOptions";
 
 export default function QtypeMatchOptionModal({ 
   qtypeMatchOption,

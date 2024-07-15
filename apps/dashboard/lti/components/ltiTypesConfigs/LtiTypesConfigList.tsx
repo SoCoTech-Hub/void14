@@ -1,5 +1,5 @@
 "use client";
-import { CompleteLtiTypesConfig } from "@/lib/db/schema/ltiTypesConfigs";
+import { CompleteLtiTypesConfig } from "@soco/lti-db/schema/ltiTypesConfigs";
 import { trpc } from "@/lib/trpc/client";
 import LtiTypesConfigModal from "./LtiTypesConfigModal";
 

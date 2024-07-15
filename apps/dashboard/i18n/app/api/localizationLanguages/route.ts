@@ -6,12 +6,12 @@ import {
   createLocalizationLanguage,
   deleteLocalizationLanguage,
   updateLocalizationLanguage,
-} from "@/lib/api/localizationLanguages/mutations";
+} from "@soco/i18n-api/localizationLanguages/mutations";
 import { 
   localizationLanguageIdSchema,
   insertLocalizationLanguageParams,
   updateLocalizationLanguageParams 
-} from "@/lib/db/schema/localizationLanguages";
+} from "@soco/i18n-db/schema/localizationLanguages";
 
 export async function POST(req: Request) {
   try {

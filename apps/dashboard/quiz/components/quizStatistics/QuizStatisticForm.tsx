@@ -1,6 +1,6 @@
 "use client";
 
-import { QuizStatistic, NewQuizStatisticParams, insertQuizStatisticParams } from "@/lib/db/schema/quizStatistics";
+import { QuizStatistic, NewQuizStatisticParams, insertQuizStatisticParams } from "@soco/quiz-db/schema/quizStatistics";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

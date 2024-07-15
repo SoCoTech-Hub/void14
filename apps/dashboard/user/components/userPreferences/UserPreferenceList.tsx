@@ -1,5 +1,5 @@
 "use client";
-import { CompleteUserPreference } from "@/lib/db/schema/userPreferences";
+import { CompleteUserPreference } from "@soco/user-db/schema/userPreferences";
 import { trpc } from "@/lib/trpc/client";
 import UserPreferenceModal from "./UserPreferenceModal";
 

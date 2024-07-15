@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import InmailForm from "./InmailForm";
-import { Inmail } from "@/lib/db/schema/inmails";
+import { Inmail } from "@soco/inmail-db/schema/inmails";
 
 export default function InmailModal({ 
   inmail,

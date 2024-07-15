@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import CohortMemberForm from "./CohortMemberForm";
-import { CohortMember } from "@/lib/db/schema/cohortMembers";
+import { CohortMember } from "@soco/cohort-db/schema/cohortMembers";
 
 export default function CohortMemberModal({ 
   cohortMember,

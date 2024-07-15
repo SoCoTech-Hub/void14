@@ -6,12 +6,12 @@ import {
   createReportbuilderReport,
   deleteReportbuilderReport,
   updateReportbuilderReport,
-} from "@/lib/api/reportbuilderReports/mutations";
+} from "@soco/report-builder-api/reportbuilderReports/mutations";
 import { 
   reportbuilderReportIdSchema,
   insertReportbuilderReportParams,
   updateReportbuilderReportParams 
-} from "@/lib/db/schema/reportbuilderReports";
+} from "@soco/report-builder-db/schema/reportbuilderReports";
 
 export async function POST(req: Request) {
   try {

@@ -4,7 +4,7 @@ import {
 	RoleAllowSwitch,
 	NewRoleAllowSwitchParams,
 	insertRoleAllowSwitchParams
-} from '@/lib/db/schema/roleAllowSwitches'
+} from '@soco/role-db/schema/roleAllowSwitches'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

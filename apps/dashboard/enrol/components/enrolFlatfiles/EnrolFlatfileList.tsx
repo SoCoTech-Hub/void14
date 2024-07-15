@@ -1,5 +1,5 @@
 "use client";
-import { CompleteEnrolFlatfile } from "@/lib/db/schema/enrolFlatfiles";
+import { CompleteEnrolFlatfile } from "@soco/enrol-db/schema/enrolFlatfiles";
 import { trpc } from "@/lib/trpc/client";
 import EnrolFlatfileModal from "./EnrolFlatfileModal";
 

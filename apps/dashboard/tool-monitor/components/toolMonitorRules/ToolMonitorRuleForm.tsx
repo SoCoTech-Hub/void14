@@ -1,6 +1,6 @@
 "use client";
 
-import { ToolMonitorRule, NewToolMonitorRuleParams, insertToolMonitorRuleParams } from "@/lib/db/schema/toolMonitorRules";
+import { ToolMonitorRule, NewToolMonitorRuleParams, insertToolMonitorRuleParams } from "@soco/tool-monitor-db/schema/toolMonitorRules";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

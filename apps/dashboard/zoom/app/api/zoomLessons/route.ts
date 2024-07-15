@@ -6,12 +6,12 @@ import {
   createZoomLesson,
   deleteZoomLesson,
   updateZoomLesson,
-} from "@/lib/api/zoomLessons/mutations";
+} from "@soco/zoom-api/zoomLessons/mutations";
 import { 
   zoomLessonIdSchema,
   insertZoomLessonParams,
   updateZoomLessonParams 
-} from "@/lib/db/schema/zoomLessons";
+} from "@soco/zoom-db/schema/zoomLessons";
 
 export async function POST(req: Request) {
   try {

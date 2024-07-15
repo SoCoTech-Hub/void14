@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ReportbuilderAudienceForm from "./ReportbuilderAudienceForm";
-import { ReportbuilderAudience } from "@/lib/db/schema/reportbuilderAudiences";
+import { ReportbuilderAudience } from "@soco/report-builder-db/schema/reportbuilderAudiences";
 
 export default function ReportbuilderAudienceModal({ 
   reportbuilderAudience,

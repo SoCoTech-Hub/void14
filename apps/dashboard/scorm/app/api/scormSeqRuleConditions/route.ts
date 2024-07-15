@@ -6,12 +6,12 @@ import {
   createScormSeqRuleCondition,
   deleteScormSeqRuleCondition,
   updateScormSeqRuleCondition,
-} from "@/lib/api/scormSeqRuleConditions/mutations";
+} from "@soco/scorm-api/scormSeqRuleConditions/mutations";
 import { 
   scormSeqRuleConditionIdSchema,
   insertScormSeqRuleConditionParams,
   updateScormSeqRuleConditionParams 
-} from "@/lib/db/schema/scormSeqRuleConditions";
+} from "@soco/scorm-db/schema/scormSeqRuleConditions";
 
 export async function POST(req: Request) {
   try {

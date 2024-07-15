@@ -1,6 +1,6 @@
 "use client";
 
-import { QuestionMultianswer, NewQuestionMultianswerParams, insertQuestionMultianswerParams } from "@/lib/db/schema/questionMultianswers";
+import { QuestionMultianswer, NewQuestionMultianswerParams, insertQuestionMultianswerParams } from "@soco/question-db/schema/questionMultianswers";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

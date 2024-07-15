@@ -1,5 +1,5 @@
 "use client";
-import { CompleteMedia } from "@/lib/db/schema/medias";
+import { CompleteMedia } from "@soco/media-db/schema/medias";
 import { trpc } from "@/lib/trpc/client";
 import MediaModal from "./MediaModal";
 

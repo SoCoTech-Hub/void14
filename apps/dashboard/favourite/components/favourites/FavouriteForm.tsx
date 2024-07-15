@@ -1,6 +1,6 @@
 "use client";
 
-import { Favourite, NewFavouriteParams, insertFavouriteParams } from "@/lib/db/schema/favourites";
+import { Favourite, NewFavouriteParams, insertFavouriteParams } from "@soco/favourite-db/schema/favourites";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

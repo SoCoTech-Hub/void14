@@ -6,12 +6,12 @@ import {
   createCourseCompletionCriteria,
   deleteCourseCompletionCriteria,
   updateCourseCompletionCriteria,
-} from "@/lib/api/courseCompletionCriterias/mutations";
+} from "@soco/course-api/courseCompletionCriterias/mutations";
 import { 
   courseCompletionCriteriaIdSchema,
   insertCourseCompletionCriteriaParams,
   updateCourseCompletionCriteriaParams 
-} from "@/lib/db/schema/courseCompletionCriterias";
+} from "@soco/course-db/schema/courseCompletionCriterias";
 
 export async function POST(req: Request) {
   try {

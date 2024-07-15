@@ -1,6 +1,6 @@
 "use client";
 
-import { QuestionGapselect, NewQuestionGapselectParams, insertQuestionGapselectParams } from "@/lib/db/schema/questionGapselects";
+import { QuestionGapselect, NewQuestionGapselectParams, insertQuestionGapselectParams } from "@soco/question-db/schema/questionGapselects";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

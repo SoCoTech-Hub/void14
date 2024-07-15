@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ShowsCategoryForm from "./ShowsCategoryForm";
-import { ShowsCategory } from "@/lib/db/schema/showsCategories";
+import { ShowsCategory } from "@soco/show-db/schema/showsCategories";
 
 export default function ShowsCategoryModal({ 
   showsCategory,

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import BadgeCriteriaForm from "./BadgeCriteriaForm";
-import { BadgeCriteria } from "@/lib/db/schema/badgeCriterias";
+import { BadgeCriteria } from "@soco/badge-db/schema/badgeCriterias";
 
 export default function BadgeCriteriaModal({ 
   badgeCriteria,

@@ -1,6 +1,6 @@
 'use client'
 
-import { Note, NewNoteParams, insertNoteParams } from '@/lib/db/schema/notes'
+import { Note, NewNoteParams, insertNoteParams } from '@soco/note-db/schema/notes'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

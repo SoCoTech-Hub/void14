@@ -1,7 +1,7 @@
 import SocialReactionList from "@/components/socialReactions/SocialReactionList";
 import NewSocialReactionModal from "@/components/socialReactions/SocialReactionModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function SocialReactions() {
   await checkAuth();

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import AnalyticsUsedAnalysableForm from "./AnalyticsUsedAnalysableForm";
-import { AnalyticsUsedAnalysable } from "@/lib/db/schema/analyticsUsedAnalysables";
+import { AnalyticsUsedAnalysable } from "@soco/analytics-db/schema/analyticsUsedAnalysables";
 
 export default function AnalyticsUsedAnalysableModal({ 
   analyticsUsedAnalysable,

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import PortfolioInstanceUserForm from "./PortfolioInstanceUserForm";
-import { PortfolioInstanceUser } from "@/lib/db/schema/portfolioInstanceUsers";
+import { PortfolioInstanceUser } from "@soco/portfolio-db/schema/portfolioInstanceUsers";
 
 export default function PortfolioInstanceUserModal({ 
   portfolioInstanceUser,

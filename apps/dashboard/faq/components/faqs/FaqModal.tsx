@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import FaqForm from "./FaqForm";
-import { Faq } from "@/lib/db/schema/faqs";
+import { Faq } from "@soco/faq-db/schema/faqs";
 
 export default function FaqModal({ 
   faq,

@@ -1,5 +1,5 @@
 'use client'
-import { CompleteLocalizationTranslation } from '@/lib/db/schema/localizationTranslations'
+import { CompleteLocalizationTranslation } from '@soco/i18n-db/schema/localizationTranslations'
 import { trpc } from '@/lib/trpc/client'
 import LocalizationTranslationModal from './LocalizationTranslationModal'
 

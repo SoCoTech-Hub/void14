@@ -6,12 +6,12 @@ import {
   createRoleAllowSwitch,
   deleteRoleAllowSwitch,
   updateRoleAllowSwitch,
-} from "@/lib/api/roleAllowSwitches/mutations";
+} from "@soco/role-api/roleAllowSwitches/mutations";
 import { 
   roleAllowSwitchIdSchema,
   insertRoleAllowSwitchParams,
   updateRoleAllowSwitchParams 
-} from "@/lib/db/schema/roleAllowSwitches";
+} from "@soco/role-db/schema/roleAllowSwitches";
 
 export async function POST(req: Request) {
   try {

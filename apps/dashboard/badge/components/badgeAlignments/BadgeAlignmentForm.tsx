@@ -4,7 +4,7 @@ import {
 	BadgeAlignment,
 	NewBadgeAlignmentParams,
 	insertBadgeAlignmentParams
-} from '@/lib/db/schema/badgeAlignments'
+} from '@soco/badge-db/schema/badgeAlignments'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

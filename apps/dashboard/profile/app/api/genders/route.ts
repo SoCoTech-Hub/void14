@@ -6,12 +6,12 @@ import {
   createGender,
   deleteGender,
   updateGender,
-} from "@/lib/api/genders/mutations";
+} from "@soco/profile-api/genders/mutations";
 import { 
   genderIdSchema,
   insertGenderParams,
   updateGenderParams 
-} from "@/lib/db/schema/genders";
+} from "@soco/profile-db/schema/genders";
 
 export async function POST(req: Request) {
   try {

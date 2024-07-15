@@ -4,7 +4,7 @@ import {
 	WorkshopAllocationSchedule,
 	NewWorkshopAllocationScheduleParams,
 	insertWorkshopAllocationScheduleParams
-} from '@/lib/db/schema/workshopAllocationSchedules'
+} from '@soco/workshop-db/schema/workshopAllocationSchedules'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

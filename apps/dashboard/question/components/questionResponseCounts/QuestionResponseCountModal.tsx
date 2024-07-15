@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QuestionResponseCountForm from "./QuestionResponseCountForm";
-import { QuestionResponseCount } from "@/lib/db/schema/questionResponseCounts";
+import { QuestionResponseCount } from "@soco/question-db/schema/questionResponseCounts";
 
 export default function QuestionResponseCountModal({ 
   questionResponseCount,

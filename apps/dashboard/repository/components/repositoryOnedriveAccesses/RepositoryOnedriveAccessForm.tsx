@@ -4,7 +4,7 @@ import {
 	RepositoryOnedriveAccess,
 	NewRepositoryOnedriveAccessParams,
 	insertRepositoryOnedriveAccessParams
-} from '@/lib/db/schema/repositoryOnedriveAccesses'
+} from '@soco/repository-db/schema/repositoryOnedriveAccesses'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

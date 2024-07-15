@@ -1,5 +1,5 @@
 import UserSettings from './UserSettings'
-import { checkAuth, getUserAuth } from '@/lib/auth/utils'
+import { checkAuth, getUserAuth } from '@soco/auth-service'
 import { getUserSubscriptionPlan } from '@/lib/stripe/subscription'
 
 export default async function Account() {

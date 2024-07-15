@@ -1,6 +1,6 @@
 "use client";
 
-import { RoleName, NewRoleNameParams, insertRoleNameParams } from "@/lib/db/schema/roleNames";
+import { RoleName, NewRoleNameParams, insertRoleNameParams } from "@soco/role-db/schema/roleNames";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

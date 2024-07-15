@@ -6,12 +6,12 @@ import {
   createAssignGrade,
   deleteAssignGrade,
   updateAssignGrade,
-} from "@/lib/api/assignGrades/mutations";
+} from "@soco/assignment-api/assignGrades/mutations";
 import { 
   assignGradeIdSchema,
   insertAssignGradeParams,
   updateAssignGradeParams 
-} from "@/lib/db/schema/assignGrades";
+} from "@soco/assignment-db/schema/assignGrades";
 
 export async function POST(req: Request) {
   try {

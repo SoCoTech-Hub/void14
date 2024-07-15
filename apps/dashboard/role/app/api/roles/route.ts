@@ -6,12 +6,12 @@ import {
   createRole,
   deleteRole,
   updateRole,
-} from "@/lib/api/roles/mutations";
+} from "@soco/role-api/roles/mutations";
 import { 
   roleIdSchema,
   insertRoleParams,
   updateRoleParams 
-} from "@/lib/db/schema/roles";
+} from "@soco/role-db/schema/roles";
 
 export async function POST(req: Request) {
   try {

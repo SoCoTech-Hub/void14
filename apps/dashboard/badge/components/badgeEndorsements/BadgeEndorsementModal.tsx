@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import BadgeEndorsementForm from "./BadgeEndorsementForm";
-import { BadgeEndorsement } from "@/lib/db/schema/badgeEndorsements";
+import { BadgeEndorsement } from "@soco/badge-db/schema/badgeEndorsements";
 
 export default function BadgeEndorsementModal({ 
   badgeEndorsement,

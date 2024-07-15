@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import EnrolLtiDeploymentForm from "./EnrolLtiDeploymentForm";
-import { EnrolLtiDeployment } from "@/lib/db/schema/enrolLtiDeployments";
+import { EnrolLtiDeployment } from "@soco/enrol-db/schema/enrolLtiDeployments";
 
 export default function EnrolLtiDeploymentModal({ 
   enrolLtiDeployment,

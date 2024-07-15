@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import WorkshopAllocationScheduleForm from "./WorkshopAllocationScheduleForm";
-import { WorkshopAllocationSchedule } from "@/lib/db/schema/workshopAllocationSchedules";
+import { WorkshopAllocationSchedule } from "@soco/workshop-db/schema/workshopAllocationSchedules";
 
 export default function WorkshopAllocationScheduleModal({ 
   workshopAllocationSchedule,

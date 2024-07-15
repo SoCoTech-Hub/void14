@@ -1,5 +1,5 @@
 "use client";
-import { CompleteScormSeqRollupRule } from "@/lib/db/schema/scormSeqRollupRules";
+import { CompleteScormSeqRollupRule } from "@soco/scorm-db/schema/scormSeqRollupRules";
 import { trpc } from "@/lib/trpc/client";
 import ScormSeqRollupRuleModal from "./ScormSeqRollupRuleModal";
 

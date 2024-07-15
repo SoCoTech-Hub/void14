@@ -6,12 +6,12 @@ import {
   createAnalyticsUsedAnalysable,
   deleteAnalyticsUsedAnalysable,
   updateAnalyticsUsedAnalysable,
-} from "@/lib/api/analyticsUsedAnalysables/mutations";
+} from "@soco/analytics-api/analyticsUsedAnalysables/mutations";
 import { 
   analyticsUsedAnalysableIdSchema,
   insertAnalyticsUsedAnalysableParams,
   updateAnalyticsUsedAnalysableParams 
-} from "@/lib/db/schema/analyticsUsedAnalysables";
+} from "@soco/analytics-db/schema/analyticsUsedAnalysables";
 
 export async function POST(req: Request) {
   try {

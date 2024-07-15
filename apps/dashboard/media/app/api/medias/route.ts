@@ -6,12 +6,12 @@ import {
   createMedia,
   deleteMedia,
   updateMedia,
-} from "@/lib/api/medias/mutations";
+} from "@soco/media-api/medias/mutations";
 import { 
   mediaIdSchema,
   insertMediaParams,
   updateMediaParams 
-} from "@/lib/db/schema/medias";
+} from "@soco/media-db/schema/medias";
 
 export async function POST(req: Request) {
   try {

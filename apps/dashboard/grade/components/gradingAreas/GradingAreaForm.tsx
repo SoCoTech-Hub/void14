@@ -1,6 +1,6 @@
 "use client";
 
-import { GradingArea, NewGradingAreaParams, insertGradingAreaParams } from "@/lib/db/schema/gradingAreas";
+import { GradingArea, NewGradingAreaParams, insertGradingAreaParams } from "@soco/grade-db/schema/gradingAreas";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

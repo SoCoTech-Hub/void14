@@ -1,5 +1,5 @@
 "use client";
-import { CompleteApplicationCategory } from "@/lib/db/schema/applicationCategories";
+import { CompleteApplicationCategory } from "@soco/application-db/schema/applicationCategories";
 import { trpc } from "@/lib/trpc/client";
 import ApplicationCategoryModal from "./ApplicationCategoryModal";
 

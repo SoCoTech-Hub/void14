@@ -1,5 +1,5 @@
 "use client";
-import { CompleteInfectedFile } from "@/lib/db/schema/infectedFiles";
+import { CompleteInfectedFile } from "@soco/file-db/schema/infectedFiles";
 import { trpc } from "@/lib/trpc/client";
 import InfectedFileModal from "./InfectedFileModal";
 

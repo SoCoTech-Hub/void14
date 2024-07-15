@@ -1,7 +1,7 @@
 import MassMailMessageList from "@/components/massMailMessages/MassMailMessageList";
 import NewMassMailMessageModal from "@/components/massMailMessages/MassMailMessageModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function MassMailMessages() {
   await checkAuth();

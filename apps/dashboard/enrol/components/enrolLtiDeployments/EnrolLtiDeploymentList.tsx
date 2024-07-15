@@ -1,5 +1,5 @@
 "use client";
-import { CompleteEnrolLtiDeployment } from "@/lib/db/schema/enrolLtiDeployments";
+import { CompleteEnrolLtiDeployment } from "@soco/enrol-db/schema/enrolLtiDeployments";
 import { trpc } from "@/lib/trpc/client";
 import EnrolLtiDeploymentModal from "./EnrolLtiDeploymentModal";
 

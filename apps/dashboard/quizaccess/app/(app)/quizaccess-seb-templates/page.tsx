@@ -1,7 +1,7 @@
 import QuizaccessSebTemplateList from "@/components/quizaccessSebTemplates/QuizaccessSebTemplateList";
 import NewQuizaccessSebTemplateModal from "@/components/quizaccessSebTemplates/QuizaccessSebTemplateModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function QuizaccessSebTemplates() {
   await checkAuth();

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import CompetencyModuleCompForm from "./CompetencyModuleCompForm";
-import { CompetencyModuleComp } from "@/lib/db/schema/competencyModuleComps";
+import { CompetencyModuleComp } from "@soco/competency-db/schema/competencyModuleComps";
 
 export default function CompetencyModuleCompModal({ 
   competencyModuleComp,

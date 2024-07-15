@@ -6,12 +6,12 @@ import {
   createDataContent,
   deleteDataContent,
   updateDataContent,
-} from "@/lib/api/dataContents/mutations";
+} from "@soco/data-api/dataContents/mutations";
 import { 
   dataContentIdSchema,
   insertDataContentParams,
   updateDataContentParams 
-} from "@/lib/db/schema/dataContents";
+} from "@soco/data-db/schema/dataContents";
 
 export async function POST(req: Request) {
   try {

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import DataContentForm from "./DataContentForm";
-import { DataContent } from "@/lib/db/schema/dataContents";
+import { DataContent } from "@soco/data-db/schema/dataContents";
 
 export default function DataContentModal({ 
   dataContent,

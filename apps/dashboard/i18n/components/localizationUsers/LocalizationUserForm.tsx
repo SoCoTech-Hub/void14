@@ -1,6 +1,6 @@
 "use client";
 
-import { LocalizationUser, NewLocalizationUserParams, insertLocalizationUserParams } from "@/lib/db/schema/localizationUsers";
+import { LocalizationUser, NewLocalizationUserParams, insertLocalizationUserParams } from "@soco/i18n-db/schema/localizationUsers";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

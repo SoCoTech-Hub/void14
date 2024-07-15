@@ -6,12 +6,12 @@ import {
   createMessageAirnotifierDevice,
   deleteMessageAirnotifierDevice,
   updateMessageAirnotifierDevice,
-} from "@/lib/api/messageAirnotifierDevices/mutations";
+} from "@soco/message-api/messageAirnotifierDevices/mutations";
 import { 
   messageAirnotifierDeviceIdSchema,
   insertMessageAirnotifierDeviceParams,
   updateMessageAirnotifierDeviceParams 
-} from "@/lib/db/schema/messageAirnotifierDevices";
+} from "@soco/message-db/schema/messageAirnotifierDevices";
 
 export async function POST(req: Request) {
   try {

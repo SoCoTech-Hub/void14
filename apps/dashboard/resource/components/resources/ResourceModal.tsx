@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ResourceForm from "./ResourceForm";
-import { Resource } from "@/lib/db/schema/resources";
+import { Resource } from "@soco/resource-db/schema/resources";
 
 export default function ResourceModal({ 
   resource,

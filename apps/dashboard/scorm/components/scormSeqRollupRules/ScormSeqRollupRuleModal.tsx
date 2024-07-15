@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ScormSeqRollupRuleForm from "./ScormSeqRollupRuleForm";
-import { ScormSeqRollupRule } from "@/lib/db/schema/scormSeqRollupRules";
+import { ScormSeqRollupRule } from "@soco/scorm-db/schema/scormSeqRollupRules";
 
 export default function ScormSeqRollupRuleModal({ 
   scormSeqRollupRule,

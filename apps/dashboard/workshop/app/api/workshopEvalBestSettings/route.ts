@@ -6,12 +6,12 @@ import {
   createWorkshopEvalBestSetting,
   deleteWorkshopEvalBestSetting,
   updateWorkshopEvalBestSetting,
-} from "@/lib/api/workshopEvalBestSettings/mutations";
+} from "@soco/workshop-api/workshopEvalBestSettings/mutations";
 import { 
   workshopEvalBestSettingIdSchema,
   insertWorkshopEvalBestSettingParams,
   updateWorkshopEvalBestSettingParams 
-} from "@/lib/db/schema/workshopEvalBestSettings";
+} from "@soco/workshop-db/schema/workshopEvalBestSettings";
 
 export async function POST(req: Request) {
   try {

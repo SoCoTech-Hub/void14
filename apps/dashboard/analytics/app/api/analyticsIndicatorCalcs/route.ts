@@ -6,12 +6,12 @@ import {
   createAnalyticsIndicatorCalc,
   deleteAnalyticsIndicatorCalc,
   updateAnalyticsIndicatorCalc,
-} from "@/lib/api/analyticsIndicatorCalcs/mutations";
+} from "@soco/analytics-api/analyticsIndicatorCalcs/mutations";
 import { 
   analyticsIndicatorCalcIdSchema,
   insertAnalyticsIndicatorCalcParams,
   updateAnalyticsIndicatorCalcParams 
-} from "@/lib/db/schema/analyticsIndicatorCalcs";
+} from "@soco/analytics-db/schema/analyticsIndicatorCalcs";
 
 export async function POST(req: Request) {
   try {

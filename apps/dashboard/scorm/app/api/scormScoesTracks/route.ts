@@ -6,12 +6,12 @@ import {
   createScormScoesTrack,
   deleteScormScoesTrack,
   updateScormScoesTrack,
-} from "@/lib/api/scormScoesTracks/mutations";
+} from "@soco/scorm-api/scormScoesTracks/mutations";
 import { 
   scormScoesTrackIdSchema,
   insertScormScoesTrackParams,
   updateScormScoesTrackParams 
-} from "@/lib/db/schema/scormScoesTracks";
+} from "@soco/scorm-db/schema/scormScoesTracks";
 
 export async function POST(req: Request) {
   try {

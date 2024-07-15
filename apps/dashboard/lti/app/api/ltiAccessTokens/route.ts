@@ -6,12 +6,12 @@ import {
   createLtiAccessToken,
   deleteLtiAccessToken,
   updateLtiAccessToken,
-} from "@/lib/api/ltiAccessTokens/mutations";
+} from "@soco/lti-api/ltiAccessTokens/mutations";
 import { 
   ltiAccessTokenIdSchema,
   insertLtiAccessTokenParams,
   updateLtiAccessTokenParams 
-} from "@/lib/db/schema/ltiAccessTokens";
+} from "@soco/lti-db/schema/ltiAccessTokens";
 
 export async function POST(req: Request) {
   try {

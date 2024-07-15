@@ -4,7 +4,7 @@ import {
 	Social,
 	NewSocialParams,
 	insertSocialParams
-} from '@/lib/db/schema/socials'
+} from '@soco/social-db/schema/socials'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

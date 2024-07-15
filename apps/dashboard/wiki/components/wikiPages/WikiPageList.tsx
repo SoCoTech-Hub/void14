@@ -1,5 +1,5 @@
 "use client";
-import { CompleteWikiPage } from "@/lib/db/schema/wikiPages";
+import { CompleteWikiPage } from "@soco/wiki-db/schema/wikiPages";
 import { trpc } from "@/lib/trpc/client";
 import WikiPageModal from "./WikiPageModal";
 

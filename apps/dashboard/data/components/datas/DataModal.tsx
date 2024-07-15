@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import DataForm from "./DataForm";
-import { Data } from "@/lib/db/schema/datas";
+import { Data } from "@soco/data-db/schema/datas";
 
 export default function DataModal({ 
   data,

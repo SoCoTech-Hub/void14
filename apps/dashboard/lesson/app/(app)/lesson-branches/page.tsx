@@ -1,7 +1,7 @@
 import LessonBranchList from "@/components/lessonBranches/LessonBranchList";
 import NewLessonBranchModal from "@/components/lessonBranches/LessonBranchModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function LessonBranches() {
   await checkAuth();

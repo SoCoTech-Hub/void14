@@ -1,5 +1,5 @@
 "use client";
-import { CompleteFeedbackTemplate } from "@/lib/db/schema/feedbackTemplates";
+import { CompleteFeedbackTemplate } from "@soco/feedback-db/schema/feedbackTemplates";
 import { trpc } from "@/lib/trpc/client";
 import FeedbackTemplateModal from "./FeedbackTemplateModal";
 

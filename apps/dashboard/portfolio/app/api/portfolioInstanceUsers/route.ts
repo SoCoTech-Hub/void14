@@ -6,12 +6,12 @@ import {
   createPortfolioInstanceUser,
   deletePortfolioInstanceUser,
   updatePortfolioInstanceUser,
-} from "@/lib/api/portfolioInstanceUsers/mutations";
+} from "@soco/portfolio-api/portfolioInstanceUsers/mutations";
 import { 
   portfolioInstanceUserIdSchema,
   insertPortfolioInstanceUserParams,
   updatePortfolioInstanceUserParams 
-} from "@/lib/db/schema/portfolioInstanceUsers";
+} from "@soco/portfolio-db/schema/portfolioInstanceUsers";
 
 export async function POST(req: Request) {
   try {

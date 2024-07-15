@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import AssignUserFlagForm from "./AssignUserFlagForm";
-import { AssignUserFlag } from "@/lib/db/schema/assignUserFlags";
+import { AssignUserFlag } from "@soco/assignment-db/schema/assignUserFlags";
 
 export default function AssignUserFlagModal({ 
   assignUserFlag,

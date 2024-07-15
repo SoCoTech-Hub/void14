@@ -29,7 +29,7 @@ import {
   CoursePublish,
   insertCoursePublishParams,
   NewCoursePublishParams,
-} from "@/lib/db/schema/coursePublishes";
+} from "@soco/course-db/schema/coursePublishes";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

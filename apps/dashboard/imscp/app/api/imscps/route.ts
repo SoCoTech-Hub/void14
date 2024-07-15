@@ -6,12 +6,12 @@ import {
   createImscp,
   deleteImscp,
   updateImscp,
-} from "@/lib/api/imscps/mutations";
+} from "@soco/imscp-api/imscps/mutations";
 import { 
   imscpIdSchema,
   insertImscpParams,
   updateImscpParams 
-} from "@/lib/db/schema/imscps";
+} from "@soco/imscp-db/schema/imscps";
 
 export async function POST(req: Request) {
   try {

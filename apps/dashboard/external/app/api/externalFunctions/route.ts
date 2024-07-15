@@ -6,12 +6,12 @@ import {
   createExternalFunction,
   deleteExternalFunction,
   updateExternalFunction,
-} from "@/lib/api/externalFunctions/mutations";
+} from "@soco/external-api/externalFunctions/mutations";
 import { 
   externalFunctionIdSchema,
   insertExternalFunctionParams,
   updateExternalFunctionParams 
-} from "@/lib/db/schema/externalFunctions";
+} from "@soco/external-db/schema/externalFunctions";
 
 export async function POST(req: Request) {
   try {

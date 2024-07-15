@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ApplicationCategoryForm from "./ApplicationCategoryForm";
-import { ApplicationCategory } from "@/lib/db/schema/applicationCategories";
+import { ApplicationCategory } from "@soco/application-db/schema/applicationCategories";
 
 export default function ApplicationCategoryModal({ 
   applicationCategory,

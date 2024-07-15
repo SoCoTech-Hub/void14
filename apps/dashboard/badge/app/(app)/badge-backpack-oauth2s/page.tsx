@@ -1,7 +1,7 @@
 import BadgeBackpackOauth2List from "@/components/badgeBackpackOauth2s/BadgeBackpackOauth2List";
 import NewBadgeBackpackOauth2Modal from "@/components/badgeBackpackOauth2s/BadgeBackpackOauth2Modal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function BadgeBackpackOauth2s() {
   await checkAuth();

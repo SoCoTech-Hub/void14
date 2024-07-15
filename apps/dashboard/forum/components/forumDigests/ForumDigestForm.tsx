@@ -1,6 +1,6 @@
 "use client";
 
-import { ForumDigest, NewForumDigestParams, insertForumDigestParams } from "@/lib/db/schema/forumDigests";
+import { ForumDigest, NewForumDigestParams, insertForumDigestParams } from "@soco/forum-db/schema/forumDigests";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

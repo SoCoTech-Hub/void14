@@ -1,5 +1,5 @@
 "use client";
-import { CompleteTagInstance } from "@/lib/db/schema/tagInstances";
+import { CompleteTagInstance } from "@soco/tag-db/schema/tagInstances";
 import { trpc } from "@/lib/trpc/client";
 import TagInstanceModal from "./TagInstanceModal";
 

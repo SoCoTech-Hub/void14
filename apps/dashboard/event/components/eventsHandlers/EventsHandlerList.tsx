@@ -1,5 +1,5 @@
 "use client";
-import { CompleteEventsHandler } from "@/lib/db/schema/eventsHandlers";
+import { CompleteEventsHandler } from "@soco/event-db/schema/eventsHandlers";
 import { trpc } from "@/lib/trpc/client";
 import EventsHandlerModal from "./EventsHandlerModal";
 

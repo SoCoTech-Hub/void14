@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import LtiserviceGradebookserviceForm from "./LtiserviceGradebookserviceForm";
-import { LtiserviceGradebookservice } from "@/lib/db/schema/ltiserviceGradebookservices";
+import { LtiserviceGradebookservice } from "@soco/lti-db/schema/ltiserviceGradebookservices";
 
 export default function LtiserviceGradebookserviceModal({ 
   ltiserviceGradebookservice,

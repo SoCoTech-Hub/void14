@@ -1,5 +1,5 @@
 "use client";
-import { CompleteToolPolicyAcceptance } from "@/lib/db/schema/toolPolicyAcceptances";
+import { CompleteToolPolicyAcceptance } from "@soco/tool-policy-db/schema/toolPolicyAcceptances";
 import { trpc } from "@/lib/trpc/client";
 import ToolPolicyAcceptanceModal from "./ToolPolicyAcceptanceModal";
 

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import PostForm from "./PostForm";
-import { Post } from "@/lib/db/schema/posts";
+import { Post } from "@soco/post-db/schema/posts";
 
 export default function PostModal({ 
   post,

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteScormAiccSession } from "@/lib/db/schema/scormAiccSessions";
+import { CompleteScormAiccSession } from "@soco/scorm-db/schema/scormAiccSessions";
 import { trpc } from "@/lib/trpc/client";
 import ScormAiccSessionModal from "./ScormAiccSessionModal";
 

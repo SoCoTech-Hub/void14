@@ -6,12 +6,12 @@ import {
   createApplicationResponse,
   deleteApplicationResponse,
   updateApplicationResponse,
-} from "@/lib/api/applicationResponses/mutations";
+} from "@soco/application-api/applicationResponses/mutations";
 import { 
   applicationResponseIdSchema,
   insertApplicationResponseParams,
   updateApplicationResponseParams 
-} from "@/lib/db/schema/applicationResponses";
+} from "@soco/application-db/schema/applicationResponses";
 
 export async function POST(req: Request) {
   try {

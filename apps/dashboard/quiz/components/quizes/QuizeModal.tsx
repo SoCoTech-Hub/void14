@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QuizeForm from "./QuizeForm";
-import { Quize } from "@/lib/db/schema/quizes";
+import { Quize } from "@soco/quiz-db/schema/quizes";
 
 export default function QuizeModal({ 
   quize,

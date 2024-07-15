@@ -1,7 +1,7 @@
 'use client'
 import UpdateNameCard from './UpdateNameCard'
 import UpdateEmailCard from './UpdateEmailCard'
-import { AuthSession } from '@/lib/auth/utils'
+import { AuthSession } from '@soco/auth-service'
 
 export default function UserSettings({
 	session

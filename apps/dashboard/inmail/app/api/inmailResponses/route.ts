@@ -6,12 +6,12 @@ import {
   createInmailResponse,
   deleteInmailResponse,
   updateInmailResponse,
-} from "@/lib/api/inmailResponses/mutations";
+} from "@soco/inmail-api/inmailResponses/mutations";
 import { 
   inmailResponseIdSchema,
   insertInmailResponseParams,
   updateInmailResponseParams 
-} from "@/lib/db/schema/inmailResponses";
+} from "@soco/inmail-db/schema/inmailResponses";
 
 export async function POST(req: Request) {
   try {

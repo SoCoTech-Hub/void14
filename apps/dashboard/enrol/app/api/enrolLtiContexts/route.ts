@@ -6,12 +6,12 @@ import {
   createEnrolLtiContext,
   deleteEnrolLtiContext,
   updateEnrolLtiContext,
-} from "@/lib/api/enrolLtiContexts/mutations";
+} from "@soco/enrol-api/enrolLtiContexts/mutations";
 import { 
   enrolLtiContextIdSchema,
   insertEnrolLtiContextParams,
   updateEnrolLtiContextParams 
-} from "@/lib/db/schema/enrolLtiContexts";
+} from "@soco/enrol-db/schema/enrolLtiContexts";
 
 export async function POST(req: Request) {
   try {

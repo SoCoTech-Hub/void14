@@ -4,7 +4,7 @@ import {
 	AnalyticsPrediction,
 	NewAnalyticsPredictionParams,
 	insertAnalyticsPredictionParams
-} from '@/lib/db/schema/analyticsPredictions'
+} from '@soco/analytics-db/schema/analyticsPredictions'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

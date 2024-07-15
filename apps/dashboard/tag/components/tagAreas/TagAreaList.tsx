@@ -1,5 +1,5 @@
 "use client";
-import { CompleteTagArea } from "@/lib/db/schema/tagAreas";
+import { CompleteTagArea } from "@soco/tag-db/schema/tagAreas";
 import { trpc } from "@/lib/trpc/client";
 import TagAreaModal from "./TagAreaModal";
 

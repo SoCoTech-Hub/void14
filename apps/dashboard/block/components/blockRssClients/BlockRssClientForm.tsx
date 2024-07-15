@@ -4,7 +4,7 @@ import {
 	BlockRssClient,
 	NewBlockRssClientParams,
 	insertBlockRssClientParams
-} from '@/lib/db/schema/blockRssClients'
+} from '@soco/block-db/schema/blockRssClients'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

@@ -21,7 +21,7 @@ import {
   insertLtiSubmissionParams,
   LtiSubmission,
   NewLtiSubmissionParams,
-} from "@/lib/db/schema/ltiSubmissions";
+} from "@soco/lti-db/schema/ltiSubmissions";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

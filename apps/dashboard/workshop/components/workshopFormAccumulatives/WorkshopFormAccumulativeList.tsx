@@ -1,5 +1,5 @@
 "use client";
-import { CompleteWorkshopFormAccumulative } from "@/lib/db/schema/workshopFormAccumulatives";
+import { CompleteWorkshopFormAccumulative } from "@soco/workshop-db/schema/workshopFormAccumulatives";
 import { trpc } from "@/lib/trpc/client";
 import WorkshopFormAccumulativeModal from "./WorkshopFormAccumulativeModal";
 

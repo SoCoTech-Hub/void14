@@ -1,5 +1,5 @@
 "use client";
-import { CompleteRoleAllowOverride } from "@/lib/db/schema/roleAllowOverrides";
+import { CompleteRoleAllowOverride } from "@soco/role-db/schema/roleAllowOverrides";
 import { trpc } from "@/lib/trpc/client";
 import RoleAllowOverrideModal from "./RoleAllowOverrideModal";
 

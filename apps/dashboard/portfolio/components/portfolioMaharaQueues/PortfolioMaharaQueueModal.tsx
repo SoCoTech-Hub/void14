@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import PortfolioMaharaQueueForm from "./PortfolioMaharaQueueForm";
-import { PortfolioMaharaQueue } from "@/lib/db/schema/portfolioMaharaQueues";
+import { PortfolioMaharaQueue } from "@soco/portfolio-db/schema/portfolioMaharaQueues";
 
 export default function PortfolioMaharaQueueModal({ 
   portfolioMaharaQueue,

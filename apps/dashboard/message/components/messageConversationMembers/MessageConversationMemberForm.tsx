@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageConversationMember, NewMessageConversationMemberParams, insertMessageConversationMemberParams } from "@/lib/db/schema/messageConversationMembers";
+import { MessageConversationMember, NewMessageConversationMemberParams, insertMessageConversationMemberParams } from "@soco/message-db/schema/messageConversationMembers";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

@@ -4,7 +4,7 @@ import {
 	Cohort,
 	NewCohortParams,
 	insertCohortParams
-} from '@/lib/db/schema/cohorts'
+} from '@soco/cohort-db/schema/cohorts'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

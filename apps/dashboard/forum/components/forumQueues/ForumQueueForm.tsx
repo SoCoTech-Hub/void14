@@ -1,6 +1,6 @@
 "use client";
 
-import { ForumQueue, NewForumQueueParams, insertForumQueueParams } from "@/lib/db/schema/forumQueues";
+import { ForumQueue, NewForumQueueParams, insertForumQueueParams } from "@soco/forum-db/schema/forumQueues";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import AddressForm from "./AddressForm";
-import { Address } from "@/lib/db/schema/addresses";
+import { Address } from "@soco/profile-db/schema/addresses";
 
 export default function AddressModal({ 
   address,

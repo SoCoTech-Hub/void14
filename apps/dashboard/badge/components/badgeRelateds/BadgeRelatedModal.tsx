@@ -10,7 +10,7 @@ import {
 	DialogTrigger
 } from '../ui/dialog'
 import BadgeRelatedForm from './BadgeRelatedForm'
-import { BadgeRelated } from '@/lib/db/schema/badgeRelateds'
+import { BadgeRelated } from '@soco/badge-db/schema/badgeRelateds'
 
 export default function BadgeRelatedModal({
 	badgeRelated,

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import FileConversionForm from "./FileConversionForm";
-import { FileConversion } from "@/lib/db/schema/fileConversions";
+import { FileConversion } from "@soco/file-db/schema/fileConversions";
 
 export default function FileConversionModal({ 
   fileConversion,

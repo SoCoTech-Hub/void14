@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import GroupsMemberForm from "./GroupsMemberForm";
-import { GroupsMember } from "@/lib/db/schema/groupsMembers";
+import { GroupsMember } from "@soco/group-db/schema/groupsMembers";
 
 export default function GroupsMemberModal({ 
   groupsMember,

@@ -1,7 +1,7 @@
 import EventsQueueList from "@/components/eventsQueues/EventsQueueList";
 import NewEventsQueueModal from "@/components/eventsQueues/EventsQueueModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function EventsQueues() {
   await checkAuth();

@@ -6,12 +6,12 @@ import {
   createBadgeExternal,
   deleteBadgeExternal,
   updateBadgeExternal,
-} from "@/lib/api/badgeExternals/mutations";
+} from "@soco/badge-api/badgeExternals/mutations";
 import { 
   badgeExternalIdSchema,
   insertBadgeExternalParams,
   updateBadgeExternalParams 
-} from "@/lib/db/schema/badgeExternals";
+} from "@soco/badge-db/schema/badgeExternals";
 
 export async function POST(req: Request) {
   try {

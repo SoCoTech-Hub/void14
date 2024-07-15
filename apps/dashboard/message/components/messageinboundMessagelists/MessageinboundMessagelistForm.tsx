@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageinboundMessagelist, NewMessageinboundMessagelistParams, insertMessageinboundMessagelistParams } from "@/lib/db/schema/messageinboundMessagelists";
+import { MessageinboundMessagelist, NewMessageinboundMessagelistParams, insertMessageinboundMessagelistParams } from "@soco/message-db/schema/messageinboundMessagelists";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

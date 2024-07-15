@@ -4,7 +4,7 @@ import {
 	Digilib,
 	NewDigilibParams,
 	insertDigilibParams
-} from '@/lib/db/schema/digilibs'
+} from '@soco/digilib-db/schema/digilibs'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

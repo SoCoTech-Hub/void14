@@ -6,12 +6,12 @@ import {
   createToolUserToursTour,
   deleteToolUserToursTour,
   updateToolUserToursTour,
-} from "@/lib/api/toolUserToursTours/mutations";
+} from "@soco/tool-user-tours-api/toolUserToursTours/mutations";
 import { 
   toolUserToursTourIdSchema,
   insertToolUserToursTourParams,
   updateToolUserToursTourParams 
-} from "@/lib/db/schema/toolUserToursTours";
+} from "@soco/tool-user-tours-db/schema/toolUserToursTours";
 
 export async function POST(req: Request) {
   try {

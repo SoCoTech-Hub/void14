@@ -6,12 +6,12 @@ import {
   createPaymentGateway,
   deletePaymentGateway,
   updatePaymentGateway,
-} from "@/lib/api/paymentGateways/mutations";
+} from "@soco/payment-api/paymentGateways/mutations";
 import { 
   paymentGatewayIdSchema,
   insertPaymentGatewayParams,
   updatePaymentGatewayParams 
-} from "@/lib/db/schema/paymentGateways";
+} from "@soco/payment-db/schema/paymentGateways";
 
 export async function POST(req: Request) {
   try {

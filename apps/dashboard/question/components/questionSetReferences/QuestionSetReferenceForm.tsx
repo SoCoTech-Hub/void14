@@ -1,6 +1,6 @@
 "use client";
 
-import { QuestionSetReference, NewQuestionSetReferenceParams, insertQuestionSetReferenceParams } from "@/lib/db/schema/questionSetReferences";
+import { QuestionSetReference, NewQuestionSetReferenceParams, insertQuestionSetReferenceParams } from "@soco/question-db/schema/questionSetReferences";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

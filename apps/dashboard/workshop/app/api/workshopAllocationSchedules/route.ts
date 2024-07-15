@@ -6,12 +6,12 @@ import {
   createWorkshopAllocationSchedule,
   deleteWorkshopAllocationSchedule,
   updateWorkshopAllocationSchedule,
-} from "@/lib/api/workshopAllocationSchedules/mutations";
+} from "@soco/workshop-api/workshopAllocationSchedules/mutations";
 import { 
   workshopAllocationScheduleIdSchema,
   insertWorkshopAllocationScheduleParams,
   updateWorkshopAllocationScheduleParams 
-} from "@/lib/db/schema/workshopAllocationSchedules";
+} from "@soco/workshop-db/schema/workshopAllocationSchedules";
 
 export async function POST(req: Request) {
   try {

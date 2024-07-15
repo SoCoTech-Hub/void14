@@ -6,12 +6,12 @@ import {
   createMnetLog,
   deleteMnetLog,
   updateMnetLog,
-} from "@/lib/api/mnetLogs/mutations";
+} from "@soco/mnet-api/mnetLogs/mutations";
 import { 
   mnetLogIdSchema,
   insertMnetLogParams,
   updateMnetLogParams 
-} from "@/lib/db/schema/mnetLogs";
+} from "@soco/mnet-db/schema/mnetLogs";
 
 export async function POST(req: Request) {
   try {

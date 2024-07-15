@@ -1,5 +1,5 @@
 "use client";
-import { CompletePage } from "@/lib/db/schema/pages";
+import { CompletePage } from "@soco/page-db/schema/pages";
 import { trpc } from "@/lib/trpc/client";
 import PageModal from "./PageModal";
 

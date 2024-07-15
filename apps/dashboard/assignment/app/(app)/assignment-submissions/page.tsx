@@ -1,7 +1,7 @@
 import AssignmentSubmissionList from "@/components/assignmentSubmissions/AssignmentSubmissionList";
 import NewAssignmentSubmissionModal from "@/components/assignmentSubmissions/AssignmentSubmissionModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function AssignmentSubmissions() {
   await checkAuth();

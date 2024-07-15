@@ -1,6 +1,6 @@
 "use client";
 
-import { FileConversion, NewFileConversionParams, insertFileConversionParams } from "@/lib/db/schema/fileConversions";
+import { FileConversion, NewFileConversionParams, insertFileConversionParams } from "@soco/file-db/schema/fileConversions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

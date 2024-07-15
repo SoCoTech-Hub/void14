@@ -1,5 +1,5 @@
 "use client";
-import { CompleteThemeComponent } from "@/lib/db/schema/themeComponents";
+import { CompleteThemeComponent } from "@soco/theme-db/schema/themeComponents";
 import { trpc } from "@/lib/trpc/client";
 import ThemeComponentModal from "./ThemeComponentModal";
 

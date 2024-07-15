@@ -1,5 +1,5 @@
 "use client";
-import { CompletePayment } from "@/lib/db/schema/payments";
+import { CompletePayment } from "@soco/payment-db/schema/payments";
 import { trpc } from "@/lib/trpc/client";
 import PaymentModal from "./PaymentModal";
 

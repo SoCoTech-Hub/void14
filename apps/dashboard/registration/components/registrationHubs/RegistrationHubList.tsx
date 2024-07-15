@@ -1,5 +1,5 @@
 "use client";
-import { CompleteRegistrationHub } from "@/lib/db/schema/registrationHubs";
+import { CompleteRegistrationHub } from "@soco/registration-db/schema/registrationHubs";
 import { trpc } from "@/lib/trpc/client";
 import RegistrationHubModal from "./RegistrationHubModal";
 

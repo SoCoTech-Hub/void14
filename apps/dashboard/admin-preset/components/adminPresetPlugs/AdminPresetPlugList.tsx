@@ -1,5 +1,5 @@
 "use client";
-import { CompleteAdminPresetPlug } from "@/lib/db/schema/adminPresetPlugs";
+import { CompleteAdminPresetPlug } from "@soco/admin-preset-db/schema/adminPresetPlugs";
 import { trpc } from "@/lib/trpc/client";
 import AdminPresetPlugModal from "./AdminPresetPlugModal";
 

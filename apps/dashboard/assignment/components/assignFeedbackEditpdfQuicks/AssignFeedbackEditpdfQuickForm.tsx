@@ -4,7 +4,7 @@ import {
 	AssignFeedbackEditpdfQuick,
 	NewAssignFeedbackEditpdfQuickParams,
 	insertAssignFeedbackEditpdfQuickParams
-} from '@/lib/db/schema/assignFeedbackEditpdfQuicks'
+} from '@soco/assignment-db/schema/assignFeedbackEditpdfQuicks'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

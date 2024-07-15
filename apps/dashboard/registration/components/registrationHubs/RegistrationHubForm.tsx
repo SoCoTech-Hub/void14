@@ -1,6 +1,6 @@
 "use client";
 
-import { RegistrationHub, NewRegistrationHubParams, insertRegistrationHubParams } from "@/lib/db/schema/registrationHubs";
+import { RegistrationHub, NewRegistrationHubParams, insertRegistrationHubParams } from "@soco/registration-db/schema/registrationHubs";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

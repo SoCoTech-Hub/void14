@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import AssignSubmissionForm from "./AssignSubmissionForm";
-import { AssignSubmission } from "@/lib/db/schema/assignSubmissions";
+import { AssignSubmission } from "@soco/assignment-db/schema/assignSubmissions";
 
 export default function AssignSubmissionModal({ 
   assignSubmission,

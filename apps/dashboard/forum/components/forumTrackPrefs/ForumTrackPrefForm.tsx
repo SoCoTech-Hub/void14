@@ -1,6 +1,6 @@
 "use client";
 
-import { ForumTrackPref, NewForumTrackPrefParams, insertForumTrackPrefParams } from "@/lib/db/schema/forumTrackPrefs";
+import { ForumTrackPref, NewForumTrackPrefParams, insertForumTrackPrefParams } from "@soco/forum-db/schema/forumTrackPrefs";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

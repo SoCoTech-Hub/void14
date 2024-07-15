@@ -6,12 +6,12 @@ import {
   createCompetencyTemplateCohort,
   deleteCompetencyTemplateCohort,
   updateCompetencyTemplateCohort,
-} from "@/lib/api/competencyTemplateCohorts/mutations";
+} from "@soco/competency-api/competencyTemplateCohorts/mutations";
 import { 
   competencyTemplateCohortIdSchema,
   insertCompetencyTemplateCohortParams,
   updateCompetencyTemplateCohortParams 
-} from "@/lib/db/schema/competencyTemplateCohorts";
+} from "@soco/competency-db/schema/competencyTemplateCohorts";
 
 export async function POST(req: Request) {
   try {

@@ -1,6 +1,6 @@
 "use client";
 
-import { ForumPost, NewForumPostParams, insertForumPostParams } from "@/lib/db/schema/forumPosts";
+import { ForumPost, NewForumPostParams, insertForumPostParams } from "@soco/forum-db/schema/forumPosts";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

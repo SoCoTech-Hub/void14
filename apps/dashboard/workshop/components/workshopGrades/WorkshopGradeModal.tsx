@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import WorkshopGradeForm from "./WorkshopGradeForm";
-import { WorkshopGrade } from "@/lib/db/schema/workshopGrades";
+import { WorkshopGrade } from "@soco/workshop-db/schema/workshopGrades";
 
 export default function WorkshopGradeModal({ 
   workshopGrade,

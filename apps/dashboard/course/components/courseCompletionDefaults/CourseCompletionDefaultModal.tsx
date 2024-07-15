@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import CourseCompletionDefaultForm from "./CourseCompletionDefaultForm";
-import { CourseCompletionDefault } from "@/lib/db/schema/courseCompletionDefaults";
+import { CourseCompletionDefault } from "@soco/course-db/schema/courseCompletionDefaults";
 
 export default function CourseCompletionDefaultModal({ 
   courseCompletionDefault,

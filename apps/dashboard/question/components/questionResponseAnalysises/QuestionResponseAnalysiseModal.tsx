@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QuestionResponseAnalysiseForm from "./QuestionResponseAnalysiseForm";
-import { QuestionResponseAnalysise } from "@/lib/db/schema/questionResponseAnalysises";
+import { QuestionResponseAnalysise } from "@soco/question-db/schema/questionResponseAnalysises";
 
 export default function QuestionResponseAnalysiseModal({ 
   questionResponseAnalysise,

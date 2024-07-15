@@ -6,12 +6,12 @@ import {
   createJobApplication,
   deleteJobApplication,
   updateJobApplication,
-} from "@/lib/api/jobApplications/mutations";
+} from "@soco/application-api/jobApplications/mutations";
 import { 
   jobApplicationIdSchema,
   insertJobApplicationParams,
   updateJobApplicationParams 
-} from "@/lib/db/schema/jobApplications";
+} from "@soco/application-db/schema/jobApplications";
 
 export async function POST(req: Request) {
   try {

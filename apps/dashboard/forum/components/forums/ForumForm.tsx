@@ -22,7 +22,7 @@ import {
   Forum,
   insertForumParams,
   NewForumParams,
-} from "@/lib/db/schema/forums";
+} from "@soco/forum-db/schema/forums";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

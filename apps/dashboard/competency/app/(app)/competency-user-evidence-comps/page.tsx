@@ -1,7 +1,7 @@
 import CompetencyUserEvidenceCompList from "@/components/competencyUserEvidenceComps/CompetencyUserEvidenceCompList";
 import NewCompetencyUserEvidenceCompModal from "@/components/competencyUserEvidenceComps/CompetencyUserEvidenceCompModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function CompetencyUserEvidenceComps() {
   await checkAuth();

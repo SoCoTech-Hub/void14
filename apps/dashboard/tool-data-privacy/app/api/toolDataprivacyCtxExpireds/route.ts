@@ -6,12 +6,12 @@ import {
   createToolDataprivacyCtxExpired,
   deleteToolDataprivacyCtxExpired,
   updateToolDataprivacyCtxExpired,
-} from "@/lib/api/toolDataprivacyCtxExpireds/mutations";
+} from "@soco/tool-data-privacy-api/toolDataprivacyCtxExpireds/mutations";
 import { 
   toolDataprivacyCtxExpiredIdSchema,
   insertToolDataprivacyCtxExpiredParams,
   updateToolDataprivacyCtxExpiredParams 
-} from "@/lib/db/schema/toolDataprivacyCtxExpireds";
+} from "@soco/tool-data-privacy-db/schema/toolDataprivacyCtxExpireds";
 
 export async function POST(req: Request) {
   try {

@@ -1,7 +1,7 @@
 import TagList from "@/components/tags/TagList";
 import NewTagModal from "@/components/tags/TagModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function Tags() {
   await checkAuth();

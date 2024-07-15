@@ -1,5 +1,5 @@
 "use client";
-import { CompleteReportbuilderReport } from "@/lib/db/schema/reportbuilderReports";
+import { CompleteReportbuilderReport } from "@soco/report-builder-db/schema/reportbuilderReports";
 import { trpc } from "@/lib/trpc/client";
 import ReportbuilderReportModal from "./ReportbuilderReportModal";
 

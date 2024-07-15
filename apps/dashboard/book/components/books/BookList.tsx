@@ -1,5 +1,5 @@
 "use client";
-import { CompleteBook } from "@/lib/db/schema/books";
+import { CompleteBook } from "@soco/book-db/schema/books";
 import { trpc } from "@/lib/trpc/client";
 import BookModal from "./BookModal";
 

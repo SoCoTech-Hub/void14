@@ -1,5 +1,5 @@
 "use client";
-import { CompleteUserEnrolment } from "@/lib/db/schema/userEnrolments";
+import { CompleteUserEnrolment } from "@soco/user-db/schema/userEnrolments";
 import { trpc } from "@/lib/trpc/client";
 import UserEnrolmentModal from "./UserEnrolmentModal";
 

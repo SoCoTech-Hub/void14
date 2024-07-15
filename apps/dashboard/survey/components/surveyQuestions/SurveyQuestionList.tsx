@@ -1,5 +1,5 @@
 "use client";
-import { CompleteSurveyQuestion } from "@/lib/db/schema/surveyQuestions";
+import { CompleteSurveyQuestion } from "@soco/survey-db/schema/surveyQuestions";
 import { trpc } from "@/lib/trpc/client";
 import SurveyQuestionModal from "./SurveyQuestionModal";
 

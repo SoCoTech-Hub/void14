@@ -1,6 +1,6 @@
 "use client";
 
-import { ScormAiccSession, NewScormAiccSessionParams, insertScormAiccSessionParams } from "@/lib/db/schema/scormAiccSessions";
+import { ScormAiccSession, NewScormAiccSessionParams, insertScormAiccSessionParams } from "@soco/scorm-db/schema/scormAiccSessions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

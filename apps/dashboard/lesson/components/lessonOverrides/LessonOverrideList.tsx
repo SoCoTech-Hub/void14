@@ -1,5 +1,5 @@
 "use client";
-import { CompleteLessonOverride } from "@/lib/db/schema/lessonOverrides";
+import { CompleteLessonOverride } from "@soco/lesson-db/schema/lessonOverrides";
 import { trpc } from "@/lib/trpc/client";
 import LessonOverrideModal from "./LessonOverrideModal";
 

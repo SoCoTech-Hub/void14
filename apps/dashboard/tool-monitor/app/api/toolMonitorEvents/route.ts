@@ -6,12 +6,12 @@ import {
   createToolMonitorEvent,
   deleteToolMonitorEvent,
   updateToolMonitorEvent,
-} from "@/lib/api/toolMonitorEvents/mutations";
+} from "@soco/tool-monitor-api/toolMonitorEvents/mutations";
 import { 
   toolMonitorEventIdSchema,
   insertToolMonitorEventParams,
   updateToolMonitorEventParams 
-} from "@/lib/db/schema/toolMonitorEvents";
+} from "@soco/tool-monitor-db/schema/toolMonitorEvents";
 
 export async function POST(req: Request) {
   try {

@@ -1,6 +1,6 @@
 "use client";
 
-import { GradeCategoriesHistory, NewGradeCategoriesHistoryParams, insertGradeCategoriesHistoryParams } from "@/lib/db/schema/gradeCategoriesHistories";
+import { GradeCategoriesHistory, NewGradeCategoriesHistoryParams, insertGradeCategoriesHistoryParams } from "@soco/grade-db/schema/gradeCategoriesHistories";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

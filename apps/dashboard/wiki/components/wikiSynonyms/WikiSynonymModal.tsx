@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import WikiSynonymForm from "./WikiSynonymForm";
-import { WikiSynonym } from "@/lib/db/schema/wikiSynonyms";
+import { WikiSynonym } from "@soco/wiki-db/schema/wikiSynonyms";
 
 export default function WikiSynonymModal({ 
   wikiSynonym,

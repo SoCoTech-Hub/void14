@@ -1,5 +1,5 @@
 "use client";
-import { CompleteResourceOld } from "@/lib/db/schema/resourceOlds";
+import { CompleteResourceOld } from "@soco/resource-db/schema/resourceOlds";
 import { trpc } from "@/lib/trpc/client";
 import ResourceOldModal from "./ResourceOldModal";
 

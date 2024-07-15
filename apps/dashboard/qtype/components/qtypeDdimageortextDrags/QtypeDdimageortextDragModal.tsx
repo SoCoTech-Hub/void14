@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QtypeDdimageortextDragForm from "./QtypeDdimageortextDragForm";
-import { QtypeDdimageortextDrag } from "@/lib/db/schema/qtypeDdimageortextDrags";
+import { QtypeDdimageortextDrag } from "@soco/qtype-db/schema/qtypeDdimageortextDrags";
 
 export default function QtypeDdimageortextDragModal({ 
   qtypeDdimageortextDrag,

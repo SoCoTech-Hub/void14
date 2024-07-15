@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import StatsMonthlyForm from "./StatsMonthlyForm";
-import { StatsMonthly } from "@/lib/db/schema/statsMonthlies";
+import { StatsMonthly } from "@soco/stats-db/schema/statsMonthlies";
 
 export default function StatsMonthlyModal({ 
   statsMonthly,

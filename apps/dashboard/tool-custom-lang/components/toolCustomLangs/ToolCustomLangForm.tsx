@@ -21,7 +21,7 @@ import {
   insertToolCustomLangParams,
   NewToolCustomLangParams,
   ToolCustomLang,
-} from "@/lib/db/schema/toolCustomLangs";
+} from "@soco/tool-custom-lang-db/schema/toolCustomLangs";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

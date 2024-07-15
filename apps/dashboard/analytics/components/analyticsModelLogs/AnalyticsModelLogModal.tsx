@@ -10,7 +10,7 @@ import {
 	DialogTrigger
 } from '../ui/dialog'
 import AnalyticsModelLogForm from './AnalyticsModelLogForm'
-import { AnalyticsModelLog } from '@/lib/db/schema/analyticsModelLogs'
+import { AnalyticsModelLog } from '@soco/analytics-db/schema/analyticsModelLogs'
 
 export default function AnalyticsModelLogModal({
 	analyticsModelLog,

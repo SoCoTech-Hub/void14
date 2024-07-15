@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQuestionMultianswer } from "@/lib/db/schema/questionMultianswers";
+import { CompleteQuestionMultianswer } from "@soco/question-db/schema/questionMultianswers";
 import { trpc } from "@/lib/trpc/client";
 import QuestionMultianswerModal from "./QuestionMultianswerModal";
 

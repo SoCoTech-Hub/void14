@@ -1,6 +1,6 @@
 "use client";
 
-import { GlossaryCategory, NewGlossaryCategoryParams, insertGlossaryCategoryParams } from "@/lib/db/schema/glossaryCategories";
+import { GlossaryCategory, NewGlossaryCategoryParams, insertGlossaryCategoryParams } from "@soco/glossary-db/schema/glossaryCategories";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

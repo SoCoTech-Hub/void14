@@ -6,12 +6,12 @@ import {
   createPortfolioLog,
   deletePortfolioLog,
   updatePortfolioLog,
-} from "@/lib/api/portfolioLogs/mutations";
+} from "@soco/portfolio-api/portfolioLogs/mutations";
 import { 
   portfolioLogIdSchema,
   insertPortfolioLogParams,
   updatePortfolioLogParams 
-} from "@/lib/db/schema/portfolioLogs";
+} from "@soco/portfolio-db/schema/portfolioLogs";
 
 export async function POST(req: Request) {
   try {

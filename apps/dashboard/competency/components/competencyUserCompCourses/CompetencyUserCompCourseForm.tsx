@@ -4,7 +4,7 @@ import {
 	CompetencyUserCompCourse,
 	NewCompetencyUserCompCourseParams,
 	insertCompetencyUserCompCourseParams
-} from '@/lib/db/schema/competencyUserCompCourses'
+} from '@soco/competency-db/schema/competencyUserCompCourses'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

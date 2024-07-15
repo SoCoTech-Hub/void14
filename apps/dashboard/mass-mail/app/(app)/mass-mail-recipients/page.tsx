@@ -1,7 +1,7 @@
 import MassMailRecipientList from '@/components/massMailRecipients/MassMailRecipientList'
 import NewMassMailRecipientModal from '@/components/massMailRecipients/MassMailRecipientModal'
 import { api } from '@/lib/trpc/api'
-import { checkAuth } from '@/lib/auth/utils'
+import { checkAuth } from '@soco/auth-service'
 
 export default async function MassMailRecipients() {
 	await checkAuth()

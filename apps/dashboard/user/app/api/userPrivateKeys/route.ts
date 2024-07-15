@@ -6,12 +6,12 @@ import {
   createUserPrivateKey,
   deleteUserPrivateKey,
   updateUserPrivateKey,
-} from "@/lib/api/userPrivateKeys/mutations";
+} from "@soco/user-api/userPrivateKeys/mutations";
 import { 
   userPrivateKeyIdSchema,
   insertUserPrivateKeyParams,
   updateUserPrivateKeyParams 
-} from "@/lib/db/schema/userPrivateKeys";
+} from "@soco/user-db/schema/userPrivateKeys";
 
 export async function POST(req: Request) {
   try {

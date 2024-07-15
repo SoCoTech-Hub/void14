@@ -6,12 +6,12 @@ import {
   createAnalyticsPredictionAction,
   deleteAnalyticsPredictionAction,
   updateAnalyticsPredictionAction,
-} from "@/lib/api/analyticsPredictionActions/mutations";
+} from "@soco/analytics-api/analyticsPredictionActions/mutations";
 import { 
   analyticsPredictionActionIdSchema,
   insertAnalyticsPredictionActionParams,
   updateAnalyticsPredictionActionParams 
-} from "@/lib/db/schema/analyticsPredictionActions";
+} from "@soco/analytics-db/schema/analyticsPredictionActions";
 
 export async function POST(req: Request) {
   try {

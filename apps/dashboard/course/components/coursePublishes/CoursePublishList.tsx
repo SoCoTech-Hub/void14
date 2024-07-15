@@ -1,5 +1,5 @@
 'use client'
-import { CompleteCoursePublish } from '@/lib/db/schema/coursePublishes'
+import { CompleteCoursePublish } from '@soco/course-db/schema/coursePublishes'
 import { trpc } from '@/lib/trpc/client'
 import CoursePublishModal from './CoursePublishModal'
 

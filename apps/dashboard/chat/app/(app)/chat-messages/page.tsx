@@ -1,7 +1,7 @@
 import ChatMessageList from "@/components/chatMessages/ChatMessageList";
 import NewChatMessageModal from "@/components/chatMessages/ChatMessageModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function ChatMessages() {
   await checkAuth();

@@ -28,7 +28,7 @@ import {
   CourseCompletion,
   insertCourseCompletionParams,
   NewCourseCompletionParams,
-} from "@/lib/db/schema/courseCompletions";
+} from "@soco/course-db/schema/courseCompletions";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

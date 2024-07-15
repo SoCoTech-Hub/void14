@@ -4,7 +4,7 @@ import {
 	ContextTemp,
 	NewContextTempParams,
 	insertContextTempParams
-} from '@/lib/db/schema/contextTemp'
+} from '@soco/context-db/schema/contextTemp'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

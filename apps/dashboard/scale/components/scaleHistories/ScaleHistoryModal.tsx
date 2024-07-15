@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ScaleHistoryForm from "./ScaleHistoryForm";
-import { ScaleHistory } from "@/lib/db/schema/scaleHistories";
+import { ScaleHistory } from "@soco/scale-db/schema/scaleHistories";
 
 export default function ScaleHistoryModal({ 
   scaleHistory,

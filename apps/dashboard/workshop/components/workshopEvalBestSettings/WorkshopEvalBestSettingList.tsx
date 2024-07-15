@@ -1,5 +1,5 @@
 "use client";
-import { CompleteWorkshopEvalBestSetting } from "@/lib/db/schema/workshopEvalBestSettings";
+import { CompleteWorkshopEvalBestSetting } from "@soco/workshop-db/schema/workshopEvalBestSettings";
 import { trpc } from "@/lib/trpc/client";
 import WorkshopEvalBestSettingModal from "./WorkshopEvalBestSettingModal";
 

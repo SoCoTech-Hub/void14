@@ -22,7 +22,7 @@ import {
   CompetencyTemplate,
   insertCompetencyTemplateParams,
   NewCompetencyTemplateParams,
-} from "@/lib/db/schema/competencyTemplates";
+} from "@soco/competency-db/schema/competencyTemplates";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

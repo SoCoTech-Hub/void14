@@ -1,5 +1,5 @@
 "use client";
-import { CompleteWikiSynonym } from "@/lib/db/schema/wikiSynonyms";
+import { CompleteWikiSynonym } from "@soco/wiki-db/schema/wikiSynonyms";
 import { trpc } from "@/lib/trpc/client";
 import WikiSynonymModal from "./WikiSynonymModal";
 

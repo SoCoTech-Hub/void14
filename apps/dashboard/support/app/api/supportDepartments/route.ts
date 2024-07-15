@@ -6,12 +6,12 @@ import {
   createSupportDepartment,
   deleteSupportDepartment,
   updateSupportDepartment,
-} from "@/lib/api/supportDepartments/mutations";
+} from "@soco/support-api/supportDepartments/mutations";
 import { 
   supportDepartmentIdSchema,
   insertSupportDepartmentParams,
   updateSupportDepartmentParams 
-} from "@/lib/db/schema/supportDepartments";
+} from "@soco/support-db/schema/supportDepartments";
 
 export async function POST(req: Request) {
   try {

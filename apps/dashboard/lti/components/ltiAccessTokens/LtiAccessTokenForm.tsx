@@ -21,7 +21,7 @@ import {
   insertLtiAccessTokenParams,
   LtiAccessToken,
   NewLtiAccessTokenParams,
-} from "@/lib/db/schema/ltiAccessTokens";
+} from "@soco/lti-db/schema/ltiAccessTokens";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

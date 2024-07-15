@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QuizaccessSebQuizSettingForm from "./QuizaccessSebQuizSettingForm";
-import { QuizaccessSebQuizSetting } from "@/lib/db/schema/quizaccessSebQuizSettings";
+import { QuizaccessSebQuizSetting } from "@soco/quizaccess-db/schema/quizaccessSebQuizSettings";
 
 export default function QuizaccessSebQuizSettingModal({ 
   quizaccessSebQuizSetting,

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteContextTemp } from "@/lib/db/schema/contextTemp";
+import { CompleteContextTemp } from "@soco/context-db/schema/contextTemp";
 import { trpc } from "@/lib/trpc/client";
 import ContextTempModal from "./ContextTempModal";
 

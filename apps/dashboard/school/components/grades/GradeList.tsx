@@ -1,5 +1,5 @@
 "use client";
-import { CompleteGrade } from "@/lib/db/schema/grades";
+import { CompleteGrade } from "@soco/school-db/schema/grades";
 import { trpc } from "@/lib/trpc/client";
 import GradeModal from "./GradeModal";
 

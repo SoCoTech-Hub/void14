@@ -1,6 +1,6 @@
 "use client";
 
-import { GlossaryFormat, NewGlossaryFormatParams, insertGlossaryFormatParams } from "@/lib/db/schema/glossaryFormats";
+import { GlossaryFormat, NewGlossaryFormatParams, insertGlossaryFormatParams } from "@soco/glossary-db/schema/glossaryFormats";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

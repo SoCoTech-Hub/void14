@@ -4,7 +4,7 @@ import {
 	ChatUser,
 	NewChatUserParams,
 	insertChatUserParams
-} from '@/lib/db/schema/chatUsers'
+} from '@soco/chat-db/schema/chatUsers'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

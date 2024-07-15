@@ -4,7 +4,7 @@ import {
 	AssignGrade,
 	NewAssignGradeParams,
 	insertAssignGradeParams
-} from '@/lib/db/schema/assignGrades'
+} from '@soco/assignment-db/schema/assignGrades'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import CourseCategoryForm from "./CourseCategoryForm";
-import { CourseCategory } from "@/lib/db/schema/courseCategories";
+import { CourseCategory } from "@soco/course-db/schema/courseCategories";
 
 export default function CourseCategoryModal({ 
   courseCategory,

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteMessageConversationAction } from "@/lib/db/schema/messageConversationActions";
+import { CompleteMessageConversationAction } from "@soco/message-db/schema/messageConversationActions";
 import { trpc } from "@/lib/trpc/client";
 import MessageConversationActionModal from "./MessageConversationActionModal";
 

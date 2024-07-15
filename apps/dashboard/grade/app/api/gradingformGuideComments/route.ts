@@ -6,12 +6,12 @@ import {
   createGradingformGuideComment,
   deleteGradingformGuideComment,
   updateGradingformGuideComment,
-} from "@/lib/api/gradingformGuideComments/mutations";
+} from "@soco/grade-api/gradingformGuideComments/mutations";
 import { 
   gradingformGuideCommentIdSchema,
   insertGradingformGuideCommentParams,
   updateGradingformGuideCommentParams 
-} from "@/lib/db/schema/gradingformGuideComments";
+} from "@soco/grade-db/schema/gradingformGuideComments";
 
 export async function POST(req: Request) {
   try {

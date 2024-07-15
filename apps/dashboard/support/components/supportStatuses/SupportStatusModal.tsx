@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import SupportStatusForm from "./SupportStatusForm";
-import { SupportStatus } from "@/lib/db/schema/supportStatuses";
+import { SupportStatus } from "@soco/support-db/schema/supportStatuses";
 
 export default function SupportStatusModal({ 
   supportStatus,

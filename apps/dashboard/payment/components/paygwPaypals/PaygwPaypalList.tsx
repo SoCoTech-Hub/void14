@@ -1,5 +1,5 @@
 "use client";
-import { CompletePaygwPaypal } from "@/lib/db/schema/paygwPaypals";
+import { CompletePaygwPaypal } from "@soco/payment-db/schema/paygwPaypals";
 import { trpc } from "@/lib/trpc/client";
 import PaygwPaypalModal from "./PaygwPaypalModal";
 

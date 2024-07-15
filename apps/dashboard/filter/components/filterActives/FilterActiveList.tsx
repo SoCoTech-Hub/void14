@@ -1,5 +1,5 @@
 "use client";
-import { CompleteFilterActive } from "@/lib/db/schema/filterActives";
+import { CompleteFilterActive } from "@soco/filter-db/schema/filterActives";
 import { trpc } from "@/lib/trpc/client";
 import FilterActiveModal from "./FilterActiveModal";
 

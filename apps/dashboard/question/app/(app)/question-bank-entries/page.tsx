@@ -1,7 +1,7 @@
 import QuestionBankEntryList from "@/components/questionBankEntries/QuestionBankEntryList";
 import NewQuestionBankEntryModal from "@/components/questionBankEntries/QuestionBankEntryModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function QuestionBankEntries() {
   await checkAuth();

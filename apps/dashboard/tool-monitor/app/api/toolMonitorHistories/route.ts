@@ -6,12 +6,12 @@ import {
   createToolMonitorHistory,
   deleteToolMonitorHistory,
   updateToolMonitorHistory,
-} from "@/lib/api/toolMonitorHistories/mutations";
+} from "@soco/tool-monitor-api/toolMonitorHistories/mutations";
 import { 
   toolMonitorHistoryIdSchema,
   insertToolMonitorHistoryParams,
   updateToolMonitorHistoryParams 
-} from "@/lib/db/schema/toolMonitorHistories";
+} from "@soco/tool-monitor-db/schema/toolMonitorHistories";
 
 export async function POST(req: Request) {
   try {

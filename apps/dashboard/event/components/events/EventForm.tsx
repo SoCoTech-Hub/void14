@@ -22,7 +22,7 @@ import {
   Event,
   insertEventParams,
   NewEventParams,
-} from "@/lib/db/schema/events";
+} from "@soco/event-db/schema/events";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

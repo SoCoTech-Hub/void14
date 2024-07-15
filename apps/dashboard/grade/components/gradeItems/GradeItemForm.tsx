@@ -22,7 +22,7 @@ import {
   GradeItem,
   insertGradeItemParams,
   NewGradeItemParams,
-} from "@/lib/db/schema/gradeItems";
+} from "@soco/grade-db/schema/gradeItems";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import MessageUsersBlockedForm from "./MessageUsersBlockedForm";
-import { MessageUsersBlocked } from "@/lib/db/schema/messageUsersBlockeds";
+import { MessageUsersBlocked } from "@soco/message-db/schema/messageUsersBlockeds";
 
 export default function MessageUsersBlockedModal({ 
   messageUsersBlocked,

@@ -6,12 +6,12 @@ import {
   createMessageContactRequest,
   deleteMessageContactRequest,
   updateMessageContactRequest,
-} from "@/lib/api/messageContactRequests/mutations";
+} from "@soco/message-api/messageContactRequests/mutations";
 import { 
   messageContactRequestIdSchema,
   insertMessageContactRequestParams,
   updateMessageContactRequestParams 
-} from "@/lib/db/schema/messageContactRequests";
+} from "@soco/message-db/schema/messageContactRequests";
 
 export async function POST(req: Request) {
   try {

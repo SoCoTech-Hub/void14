@@ -21,7 +21,7 @@ import {
   insertUserEnrolmentParams,
   NewUserEnrolmentParams,
   UserEnrolment,
-} from "@/lib/db/schema/userEnrolments";
+} from "@soco/user-db/schema/userEnrolments";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

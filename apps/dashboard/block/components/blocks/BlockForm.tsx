@@ -22,7 +22,7 @@ import {
   Block,
   insertBlockParams,
   NewBlockParams,
-} from "@/lib/db/schema/blocks";
+} from "@soco/block-db/schema/blocks";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

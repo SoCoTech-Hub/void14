@@ -21,7 +21,7 @@ import {
   insertNotificationParams,
   NewNotificationParams,
   Notification,
-} from "@/lib/db/schema/notifications";
+} from "@soco/notification-db/schema/notifications";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

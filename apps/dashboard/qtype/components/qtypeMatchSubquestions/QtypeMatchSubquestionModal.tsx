@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QtypeMatchSubquestionForm from "./QtypeMatchSubquestionForm";
-import { QtypeMatchSubquestion } from "@/lib/db/schema/qtypeMatchSubquestions";
+import { QtypeMatchSubquestion } from "@soco/qtype-db/schema/qtypeMatchSubquestions";
 
 export default function QtypeMatchSubquestionModal({ 
   qtypeMatchSubquestion,

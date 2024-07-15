@@ -1,7 +1,7 @@
 import AffiliateList from "@/components/affiliates/AffiliateList";
 import NewAffiliateModal from "@/components/affiliates/AffiliateModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function Affiliates() {
   await checkAuth();

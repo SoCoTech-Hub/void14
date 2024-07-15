@@ -6,12 +6,12 @@ import {
   createMessageRead,
   deleteMessageRead,
   updateMessageRead,
-} from "@/lib/api/messageReads/mutations";
+} from "@soco/message-api/messageReads/mutations";
 import { 
   messageReadIdSchema,
   insertMessageReadParams,
   updateMessageReadParams 
-} from "@/lib/db/schema/messageReads";
+} from "@soco/message-db/schema/messageReads";
 
 export async function POST(req: Request) {
   try {

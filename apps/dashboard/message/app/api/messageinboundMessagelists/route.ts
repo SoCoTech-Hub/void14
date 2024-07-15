@@ -6,12 +6,12 @@ import {
   createMessageinboundMessagelist,
   deleteMessageinboundMessagelist,
   updateMessageinboundMessagelist,
-} from "@/lib/api/messageinboundMessagelists/mutations";
+} from "@soco/message-api/messageinboundMessagelists/mutations";
 import { 
   messageinboundMessagelistIdSchema,
   insertMessageinboundMessagelistParams,
   updateMessageinboundMessagelistParams 
-} from "@/lib/db/schema/messageinboundMessagelists";
+} from "@soco/message-db/schema/messageinboundMessagelists";
 
 export async function POST(req: Request) {
   try {

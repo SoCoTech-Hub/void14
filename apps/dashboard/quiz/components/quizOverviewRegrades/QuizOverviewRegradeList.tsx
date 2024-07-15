@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQuizOverviewRegrade } from "@/lib/db/schema/quizOverviewRegrades";
+import { CompleteQuizOverviewRegrade } from "@soco/quiz-db/schema/quizOverviewRegrades";
 import { trpc } from "@/lib/trpc/client";
 import QuizOverviewRegradeModal from "./QuizOverviewRegradeModal";
 

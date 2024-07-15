@@ -6,12 +6,12 @@ import {
   createOauth2AccessToken,
   deleteOauth2AccessToken,
   updateOauth2AccessToken,
-} from "@/lib/api/oauth2AccessTokens/mutations";
+} from "@soco/oauth2-api/oauth2AccessTokens/mutations";
 import { 
   oauth2AccessTokenIdSchema,
   insertOauth2AccessTokenParams,
   updateOauth2AccessTokenParams 
-} from "@/lib/db/schema/oauth2AccessTokens";
+} from "@soco/oauth2-db/schema/oauth2AccessTokens";
 
 export async function POST(req: Request) {
   try {

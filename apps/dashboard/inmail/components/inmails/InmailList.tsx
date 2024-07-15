@@ -1,5 +1,5 @@
 "use client";
-import { CompleteInmail } from "@/lib/db/schema/inmails";
+import { CompleteInmail } from "@soco/inmail-db/schema/inmails";
 import { trpc } from "@/lib/trpc/client";
 import InmailModal from "./InmailModal";
 

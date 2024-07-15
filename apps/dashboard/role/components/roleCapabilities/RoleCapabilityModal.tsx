@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import RoleCapabilityForm from "./RoleCapabilityForm";
-import { RoleCapability } from "@/lib/db/schema/roleCapabilities";
+import { RoleCapability } from "@soco/role-db/schema/roleCapabilities";
 
 export default function RoleCapabilityModal({ 
   roleCapability,

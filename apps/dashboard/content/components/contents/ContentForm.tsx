@@ -4,7 +4,7 @@ import {
 	Content,
 	NewContentParams,
 	insertContentParams
-} from '@/lib/db/schema/contents'
+} from '@soco/content-db/schema/contents'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

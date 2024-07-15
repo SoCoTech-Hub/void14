@@ -1,5 +1,5 @@
 "use client";
-import { CompleteWiki } from "@/lib/db/schema/wikis";
+import { CompleteWiki } from "@soco/wiki-db/schema/wikis";
 import { trpc } from "@/lib/trpc/client";
 import WikiModal from "./WikiModal";
 

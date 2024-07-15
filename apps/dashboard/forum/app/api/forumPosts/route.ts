@@ -6,12 +6,12 @@ import {
   createForumPost,
   deleteForumPost,
   updateForumPost,
-} from "@/lib/api/forumPosts/mutations";
+} from "@soco/forum-api/forumPosts/mutations";
 import { 
   forumPostIdSchema,
   insertForumPostParams,
   updateForumPostParams 
-} from "@/lib/db/schema/forumPosts";
+} from "@soco/forum-db/schema/forumPosts";
 
 export async function POST(req: Request) {
   try {

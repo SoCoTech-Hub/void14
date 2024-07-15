@@ -6,12 +6,12 @@ import {
   createExternalServicesUser,
   deleteExternalServicesUser,
   updateExternalServicesUser,
-} from "@/lib/api/externalServicesUsers/mutations";
+} from "@soco/external-api/externalServicesUsers/mutations";
 import { 
   externalServicesUserIdSchema,
   insertExternalServicesUserParams,
   updateExternalServicesUserParams 
-} from "@/lib/db/schema/externalServicesUsers";
+} from "@soco/external-db/schema/externalServicesUsers";
 
 export async function POST(req: Request) {
   try {

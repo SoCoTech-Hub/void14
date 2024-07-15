@@ -1,5 +1,5 @@
 "use client";
-import { CompleteFeedbackSitecourseMap } from "@/lib/db/schema/feedbackSitecourseMaps";
+import { CompleteFeedbackSitecourseMap } from "@soco/feedback-db/schema/feedbackSitecourseMaps";
 import { trpc } from "@/lib/trpc/client";
 import FeedbackSitecourseMapModal from "./FeedbackSitecourseMapModal";
 

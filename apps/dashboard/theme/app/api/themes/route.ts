@@ -6,12 +6,12 @@ import {
   createTheme,
   deleteTheme,
   updateTheme,
-} from "@/lib/api/themes/mutations";
+} from "@soco/theme-api/themes/mutations";
 import { 
   themeIdSchema,
   insertThemeParams,
   updateThemeParams 
-} from "@/lib/db/schema/themes";
+} from "@soco/theme-db/schema/themes";
 
 export async function POST(req: Request) {
   try {

@@ -6,12 +6,12 @@ import {
   createQuestionTruefalse,
   deleteQuestionTruefalse,
   updateQuestionTruefalse,
-} from "@/lib/api/questionTruefalse/mutations";
+} from "@soco/question-api/questionTruefalse/mutations";
 import { 
   questionTruefalseIdSchema,
   insertQuestionTruefalseParams,
   updateQuestionTruefalseParams 
-} from "@/lib/db/schema/questionTruefalse";
+} from "@soco/question-db/schema/questionTruefalse";
 
 export async function POST(req: Request) {
   try {

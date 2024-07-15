@@ -4,7 +4,7 @@ import {
 	Gender,
 	NewGenderParams,
 	insertGenderParams
-} from '@/lib/db/schema/genders'
+} from '@soco/profile-db/schema/genders'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

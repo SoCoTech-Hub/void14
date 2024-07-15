@@ -1,6 +1,6 @@
 "use client";
 
-import { QuestionAttemptStepData, NewQuestionAttemptStepDataParams, insertQuestionAttemptStepDataParams } from "@/lib/db/schema/questionAttemptStepDatas";
+import { QuestionAttemptStepData, NewQuestionAttemptStepDataParams, insertQuestionAttemptStepDataParams } from "@soco/question-db/schema/questionAttemptStepDatas";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

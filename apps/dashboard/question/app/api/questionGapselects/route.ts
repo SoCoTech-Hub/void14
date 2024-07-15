@@ -6,12 +6,12 @@ import {
   createQuestionGapselect,
   deleteQuestionGapselect,
   updateQuestionGapselect,
-} from "@/lib/api/questionGapselects/mutations";
+} from "@soco/question-api/questionGapselects/mutations";
 import { 
   questionGapselectIdSchema,
   insertQuestionGapselectParams,
   updateQuestionGapselectParams 
-} from "@/lib/db/schema/questionGapselects";
+} from "@soco/question-db/schema/questionGapselects";
 
 export async function POST(req: Request) {
   try {

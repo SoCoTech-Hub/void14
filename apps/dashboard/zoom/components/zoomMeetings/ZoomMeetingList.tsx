@@ -1,5 +1,5 @@
 "use client";
-import { CompleteZoomMeeting } from "@/lib/db/schema/zoomMeetings";
+import { CompleteZoomMeeting } from "@soco/zoom-db/schema/zoomMeetings";
 import { trpc } from "@/lib/trpc/client";
 import ZoomMeetingModal from "./ZoomMeetingModal";
 

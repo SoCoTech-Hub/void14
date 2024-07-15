@@ -6,12 +6,12 @@ import {
   createAssignFeedbackComment,
   deleteAssignFeedbackComment,
   updateAssignFeedbackComment,
-} from "@/lib/api/assignFeedbackComments/mutations";
+} from "@soco/assignment-api/assignFeedbackComments/mutations";
 import { 
   assignFeedbackCommentIdSchema,
   insertAssignFeedbackCommentParams,
   updateAssignFeedbackCommentParams 
-} from "@/lib/db/schema/assignFeedbackComments";
+} from "@soco/assignment-db/schema/assignFeedbackComments";
 
 export async function POST(req: Request) {
   try {

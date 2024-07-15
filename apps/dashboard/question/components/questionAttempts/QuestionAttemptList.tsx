@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQuestionAttempt } from "@/lib/db/schema/questionAttempts";
+import { CompleteQuestionAttempt } from "@soco/question-db/schema/questionAttempts";
 import { trpc } from "@/lib/trpc/client";
 import QuestionAttemptModal from "./QuestionAttemptModal";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { ForumDiscussionSub, NewForumDiscussionSubParams, insertForumDiscussionSubParams } from "@/lib/db/schema/forumDiscussionSubs";
+import { ForumDiscussionSub, NewForumDiscussionSubParams, insertForumDiscussionSubParams } from "@soco/forum-db/schema/forumDiscussionSubs";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

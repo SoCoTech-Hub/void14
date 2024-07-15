@@ -1,6 +1,6 @@
 "use client";
 
-import { EnrolLtiContext, NewEnrolLtiContextParams, insertEnrolLtiContextParams } from "@/lib/db/schema/enrolLtiContexts";
+import { EnrolLtiContext, NewEnrolLtiContextParams, insertEnrolLtiContextParams } from "@soco/enrol-db/schema/enrolLtiContexts";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

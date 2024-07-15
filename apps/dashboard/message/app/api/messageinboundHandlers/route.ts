@@ -6,12 +6,12 @@ import {
   createMessageinboundHandler,
   deleteMessageinboundHandler,
   updateMessageinboundHandler,
-} from "@/lib/api/messageinboundHandlers/mutations";
+} from "@soco/message-api/messageinboundHandlers/mutations";
 import { 
   messageinboundHandlerIdSchema,
   insertMessageinboundHandlerParams,
   updateMessageinboundHandlerParams 
-} from "@/lib/db/schema/messageinboundHandlers";
+} from "@soco/message-db/schema/messageinboundHandlers";
 
 export async function POST(req: Request) {
   try {

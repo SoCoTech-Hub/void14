@@ -22,7 +22,7 @@ import {
   EnrolLtiLti2ShareKey,
   insertEnrolLtiLti2ShareKeyParams,
   NewEnrolLtiLti2ShareKeyParams,
-} from "@/lib/db/schema/enrolLtiLti2ShareKeys";
+} from "@soco/enrol-db/schema/enrolLtiLti2ShareKeys";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

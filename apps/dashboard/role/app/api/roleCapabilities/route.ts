@@ -6,12 +6,12 @@ import {
   createRoleCapability,
   deleteRoleCapability,
   updateRoleCapability,
-} from "@/lib/api/roleCapabilities/mutations";
+} from "@soco/role-api/roleCapabilities/mutations";
 import { 
   roleCapabilityIdSchema,
   insertRoleCapabilityParams,
   updateRoleCapabilityParams 
-} from "@/lib/db/schema/roleCapabilities";
+} from "@soco/role-db/schema/roleCapabilities";
 
 export async function POST(req: Request) {
   try {

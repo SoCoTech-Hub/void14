@@ -6,12 +6,12 @@ import {
   createWorkshopFormComment,
   deleteWorkshopFormComment,
   updateWorkshopFormComment,
-} from "@/lib/api/workshopFormComments/mutations";
+} from "@soco/workshop-api/workshopFormComments/mutations";
 import { 
   workshopFormCommentIdSchema,
   insertWorkshopFormCommentParams,
   updateWorkshopFormCommentParams 
-} from "@/lib/db/schema/workshopFormComments";
+} from "@soco/workshop-db/schema/workshopFormComments";
 
 export async function POST(req: Request) {
   try {

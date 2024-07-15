@@ -1,7 +1,7 @@
 import GradeItemsHistoryList from "@/components/gradeItemsHistories/GradeItemsHistoryList";
 import NewGradeItemsHistoryModal from "@/components/gradeItemsHistories/GradeItemsHistoryModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function GradeItemsHistories() {
   await checkAuth();

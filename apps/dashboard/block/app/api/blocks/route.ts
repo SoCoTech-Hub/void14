@@ -6,12 +6,12 @@ import {
   createBlock,
   deleteBlock,
   updateBlock,
-} from "@/lib/api/blocks/mutations";
+} from "@soco/block-api/blocks/mutations";
 import { 
   blockIdSchema,
   insertBlockParams,
   updateBlockParams 
-} from "@/lib/db/schema/blocks";
+} from "@soco/block-db/schema/blocks";
 
 export async function POST(req: Request) {
   try {

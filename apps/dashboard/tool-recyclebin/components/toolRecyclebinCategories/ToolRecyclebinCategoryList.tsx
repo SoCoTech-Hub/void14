@@ -1,5 +1,5 @@
 "use client";
-import { CompleteToolRecyclebinCategory } from "@/lib/db/schema/toolRecyclebinCategories";
+import { CompleteToolRecyclebinCategory } from "@soco/tool-recyclebin-db/schema/toolRecyclebinCategories";
 import { trpc } from "@/lib/trpc/client";
 import ToolRecyclebinCategoryModal from "./ToolRecyclebinCategoryModal";
 

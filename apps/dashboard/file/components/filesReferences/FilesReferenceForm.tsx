@@ -21,7 +21,7 @@ import {
   FilesReference,
   insertFilesReferenceParams,
   NewFilesReferenceParams,
-} from "@/lib/db/schema/filesReferences";
+} from "@soco/file-db/schema/filesReferences";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

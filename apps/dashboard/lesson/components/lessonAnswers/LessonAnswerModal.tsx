@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import LessonAnswerForm from "./LessonAnswerForm";
-import { LessonAnswer } from "@/lib/db/schema/lessonAnswers";
+import { LessonAnswer } from "@soco/lesson-db/schema/lessonAnswers";
 
 export default function LessonAnswerModal({ 
   lessonAnswer,

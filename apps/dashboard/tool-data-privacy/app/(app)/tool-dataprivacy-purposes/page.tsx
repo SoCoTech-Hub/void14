@@ -1,7 +1,7 @@
 import ToolDataprivacyPurposeList from "@/components/toolDataprivacyPurposes/ToolDataprivacyPurposeList";
 import NewToolDataprivacyPurposeModal from "@/components/toolDataprivacyPurposes/ToolDataprivacyPurposeModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function ToolDataprivacyPurposes() {
   await checkAuth();

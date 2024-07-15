@@ -4,7 +4,7 @@ import {
 	CourseRequest,
 	NewCourseRequestParams,
 	insertCourseRequestParams
-} from '@/lib/db/schema/courseRequests'
+} from '@soco/course-db/schema/courseRequests'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

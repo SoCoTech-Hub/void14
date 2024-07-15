@@ -6,12 +6,12 @@ import {
   createDigilibCategory,
   deleteDigilibCategory,
   updateDigilibCategory,
-} from "@/lib/api/digilibCategories/mutations";
+} from "@soco/digilib-api/digilibCategories/mutations";
 import { 
   digilibCategoryIdSchema,
   insertDigilibCategoryParams,
   updateDigilibCategoryParams 
-} from "@/lib/db/schema/digilibCategories";
+} from "@soco/digilib-db/schema/digilibCategories";
 
 export async function POST(req: Request) {
   try {

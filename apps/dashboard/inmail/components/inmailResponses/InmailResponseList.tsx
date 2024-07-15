@@ -1,5 +1,5 @@
 'use client'
-import { CompleteInmailResponse } from '@/lib/db/schema/inmailResponses'
+import { CompleteInmailResponse } from '@soco/inmail-db/schema/inmailResponses'
 import { trpc } from '@/lib/trpc/client'
 import InmailResponseModal from './InmailResponseModal'
 

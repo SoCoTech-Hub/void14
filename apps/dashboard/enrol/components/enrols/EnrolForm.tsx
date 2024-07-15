@@ -22,7 +22,7 @@ import {
   Enrol,
   insertEnrolParams,
   NewEnrolParams,
-} from "@/lib/db/schema/enrols";
+} from "@soco/enrol-db/schema/enrols";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

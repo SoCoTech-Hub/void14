@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import BigBlueButtonBnLogForm from "./BigBlueButtonBnLogForm";
-import { BigBlueButtonBnLog } from "@/lib/db/schema/bigBlueButtonBnLogs";
+import { BigBlueButtonBnLog } from "@soco/big-blue-button-db/schema/bigBlueButtonBnLogs";
 
 export default function BigBlueButtonBnLogModal({ 
   bigBlueButtonBnLog,

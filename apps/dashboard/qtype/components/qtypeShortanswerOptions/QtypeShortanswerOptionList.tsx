@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQtypeShortanswerOption } from "@/lib/db/schema/qtypeShortanswerOptions";
+import { CompleteQtypeShortanswerOption } from "@soco/qtype-db/schema/qtypeShortanswerOptions";
 import { trpc } from "@/lib/trpc/client";
 import QtypeShortanswerOptionModal from "./QtypeShortanswerOptionModal";
 

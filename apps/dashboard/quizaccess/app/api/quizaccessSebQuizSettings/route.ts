@@ -6,12 +6,12 @@ import {
   createQuizaccessSebQuizSetting,
   deleteQuizaccessSebQuizSetting,
   updateQuizaccessSebQuizSetting,
-} from "@/lib/api/quizaccessSebQuizSettings/mutations";
+} from "@soco/quizaccess-api/quizaccessSebQuizSettings/mutations";
 import { 
   quizaccessSebQuizSettingIdSchema,
   insertQuizaccessSebQuizSettingParams,
   updateQuizaccessSebQuizSettingParams 
-} from "@/lib/db/schema/quizaccessSebQuizSettings";
+} from "@soco/quizaccess-db/schema/quizaccessSebQuizSettings";
 
 export async function POST(req: Request) {
   try {

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteProfile } from "@/lib/db/schema/profiles";
+import { CompleteProfile } from "@soco/profile-db/schema/profiles";
 import { trpc } from "@/lib/trpc/client";
 import ProfileModal from "./ProfileModal";
 

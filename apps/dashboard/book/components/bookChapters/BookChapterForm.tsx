@@ -4,7 +4,7 @@ import {
 	type BookChapter,
 	type NewBookChapterParams,
 	insertBookChapterParams
-} from '@/lib/db/schema/bookChapters'
+} from '@soco/book-db/schema/bookChapters'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

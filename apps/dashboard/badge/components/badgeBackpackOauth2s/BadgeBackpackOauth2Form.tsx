@@ -4,7 +4,7 @@ import {
 	BadgeBackpackOauth2,
 	NewBadgeBackpackOauth2Params,
 	insertBadgeBackpackOauth2Params
-} from '@/lib/db/schema/badgeBackpackOauth2s'
+} from '@soco/badge-db/schema/badgeBackpackOauth2s'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

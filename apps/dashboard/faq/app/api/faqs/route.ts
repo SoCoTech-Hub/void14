@@ -6,12 +6,12 @@ import {
   createFaq,
   deleteFaq,
   updateFaq,
-} from "@/lib/api/faqs/mutations";
+} from "@soco/faq-api/faqs/mutations";
 import { 
   faqIdSchema,
   insertFaqParams,
   updateFaqParams 
-} from "@/lib/db/schema/faqs";
+} from "@soco/faq-db/schema/faqs";
 
 export async function POST(req: Request) {
   try {

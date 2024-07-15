@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQuestionCategory } from "@/lib/db/schema/questionCategories";
+import { CompleteQuestionCategory } from "@soco/question-db/schema/questionCategories";
 import { trpc } from "@/lib/trpc/client";
 import QuestionCategoryModal from "./QuestionCategoryModal";
 

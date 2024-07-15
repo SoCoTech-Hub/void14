@@ -1,5 +1,5 @@
 "use client";
-import { CompleteEnrolLtiContext } from "@/lib/db/schema/enrolLtiContexts";
+import { CompleteEnrolLtiContext } from "@soco/enrol-db/schema/enrolLtiContexts";
 import { trpc } from "@/lib/trpc/client";
 import EnrolLtiContextModal from "./EnrolLtiContextModal";
 

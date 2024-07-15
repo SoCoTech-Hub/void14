@@ -1,5 +1,5 @@
 "use client";
-import { CompleteMessageinboundHandler } from "@/lib/db/schema/messageinboundHandlers";
+import { CompleteMessageinboundHandler } from "@soco/message-db/schema/messageinboundHandlers";
 import { trpc } from "@/lib/trpc/client";
 import MessageinboundHandlerModal from "./MessageinboundHandlerModal";
 

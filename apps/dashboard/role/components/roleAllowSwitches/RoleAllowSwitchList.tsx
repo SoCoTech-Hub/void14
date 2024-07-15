@@ -1,5 +1,5 @@
 "use client";
-import { CompleteRoleAllowSwitch } from "@/lib/db/schema/roleAllowSwitches";
+import { CompleteRoleAllowSwitch } from "@soco/role-db/schema/roleAllowSwitches";
 import { trpc } from "@/lib/trpc/client";
 import RoleAllowSwitchModal from "./RoleAllowSwitchModal";
 

@@ -6,12 +6,12 @@ import {
   createAssignSubmissionOnlineText,
   deleteAssignSubmissionOnlineText,
   updateAssignSubmissionOnlineText,
-} from "@/lib/api/assignSubmissionOnlineTexts/mutations";
+} from "@soco/assignment-api/assignSubmissionOnlineTexts/mutations";
 import { 
   assignSubmissionOnlineTextIdSchema,
   insertAssignSubmissionOnlineTextParams,
   updateAssignSubmissionOnlineTextParams 
-} from "@/lib/db/schema/assignSubmissionOnlineTexts";
+} from "@soco/assignment-db/schema/assignSubmissionOnlineTexts";
 
 export async function POST(req: Request) {
   try {

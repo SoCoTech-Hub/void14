@@ -6,12 +6,12 @@ import {
   createUserPasswordReset,
   deleteUserPasswordReset,
   updateUserPasswordReset,
-} from "@/lib/api/userPasswordResets/mutations";
+} from "@soco/user-api/userPasswordResets/mutations";
 import { 
   userPasswordResetIdSchema,
   insertUserPasswordResetParams,
   updateUserPasswordResetParams 
-} from "@/lib/db/schema/userPasswordResets";
+} from "@soco/user-db/schema/userPasswordResets";
 
 export async function POST(req: Request) {
   try {

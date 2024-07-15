@@ -6,12 +6,12 @@ import {
   createFileConversion,
   deleteFileConversion,
   updateFileConversion,
-} from "@/lib/api/fileConversions/mutations";
+} from "@soco/file-api/fileConversions/mutations";
 import { 
   fileConversionIdSchema,
   insertFileConversionParams,
   updateFileConversionParams 
-} from "@/lib/db/schema/fileConversions";
+} from "@soco/file-db/schema/fileConversions";
 
 export async function POST(req: Request) {
   try {

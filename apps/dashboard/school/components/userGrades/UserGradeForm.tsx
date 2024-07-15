@@ -1,6 +1,6 @@
 "use client";
 
-import { UserGrade, NewUserGradeParams, insertUserGradeParams } from "@/lib/db/schema/userGrades";
+import { UserGrade, NewUserGradeParams, insertUserGradeParams } from "@soco/school-db/schema/userGrades";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

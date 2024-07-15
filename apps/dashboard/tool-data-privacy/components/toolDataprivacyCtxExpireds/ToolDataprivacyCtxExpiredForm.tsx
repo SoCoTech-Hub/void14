@@ -1,6 +1,6 @@
 "use client";
 
-import { ToolDataprivacyCtxExpired, NewToolDataprivacyCtxExpiredParams, insertToolDataprivacyCtxExpiredParams } from "@/lib/db/schema/toolDataprivacyCtxExpireds";
+import { ToolDataprivacyCtxExpired, NewToolDataprivacyCtxExpiredParams, insertToolDataprivacyCtxExpiredParams } from "@soco/tool-data-privacy-db/schema/toolDataprivacyCtxExpireds";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

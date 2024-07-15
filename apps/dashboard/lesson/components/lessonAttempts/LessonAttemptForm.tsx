@@ -1,6 +1,6 @@
 "use client";
 
-import { LessonAttempt, NewLessonAttemptParams, insertLessonAttemptParams } from "@/lib/db/schema/lessonAttempts";
+import { LessonAttempt, NewLessonAttemptParams, insertLessonAttemptParams } from "@soco/lesson-db/schema/lessonAttempts";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

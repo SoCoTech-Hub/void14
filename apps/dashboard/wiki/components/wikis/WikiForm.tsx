@@ -1,6 +1,6 @@
 'use client'
 
-import { Wiki, NewWikiParams, insertWikiParams } from '@/lib/db/schema/wikis'
+import { Wiki, NewWikiParams, insertWikiParams } from '@soco/wiki-db/schema/wikis'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

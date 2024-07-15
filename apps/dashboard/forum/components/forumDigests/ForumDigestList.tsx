@@ -1,5 +1,5 @@
 "use client";
-import { CompleteForumDigest } from "@/lib/db/schema/forumDigests";
+import { CompleteForumDigest } from "@soco/forum-db/schema/forumDigests";
 import { trpc } from "@/lib/trpc/client";
 import ForumDigestModal from "./ForumDigestModal";
 

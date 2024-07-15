@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import FieldForm from "./FieldForm";
-import { Field } from "@/lib/db/schema/fields";
+import { Field } from "@soco/data-db/schema/fields";
 
 export default function FieldModal({ 
   field,

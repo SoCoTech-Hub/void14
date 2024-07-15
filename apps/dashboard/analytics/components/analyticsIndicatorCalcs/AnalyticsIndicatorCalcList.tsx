@@ -1,5 +1,5 @@
 "use client";
-import { CompleteAnalyticsIndicatorCalc } from "@/lib/db/schema/analyticsIndicatorCalcs";
+import { CompleteAnalyticsIndicatorCalc } from "@soco/analytics-db/schema/analyticsIndicatorCalcs";
 import { trpc } from "@/lib/trpc/client";
 import AnalyticsIndicatorCalcModal from "./AnalyticsIndicatorCalcModal";
 

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import SearchIndexRequestForm from "./SearchIndexRequestForm";
-import { SearchIndexRequest } from "@/lib/db/schema/searchIndexRequests";
+import { SearchIndexRequest } from "@soco/search-db/schema/searchIndexRequests";
 
 export default function SearchIndexRequestModal({ 
   searchIndexRequest,

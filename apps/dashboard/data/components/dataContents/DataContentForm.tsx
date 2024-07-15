@@ -1,6 +1,6 @@
 "use client";
 
-import { DataContent, NewDataContentParams, insertDataContentParams } from "@/lib/db/schema/dataContents";
+import { DataContent, NewDataContentParams, insertDataContentParams } from "@soco/data-db/schema/dataContents";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

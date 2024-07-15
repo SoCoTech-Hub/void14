@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import LtiForm from "./LtiForm";
-import { Lti } from "@/lib/db/schema/ltis";
+import { Lti } from "@soco/lti-db/schema/ltis";
 
 export default function LtiModal({ 
   lti,

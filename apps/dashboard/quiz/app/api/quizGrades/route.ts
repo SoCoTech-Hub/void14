@@ -6,12 +6,12 @@ import {
   createQuizGrade,
   deleteQuizGrade,
   updateQuizGrade,
-} from "@/lib/api/quizGrades/mutations";
+} from "@soco/quiz-api/quizGrades/mutations";
 import { 
   quizGradeIdSchema,
   insertQuizGradeParams,
   updateQuizGradeParams 
-} from "@/lib/db/schema/quizGrades";
+} from "@soco/quiz-db/schema/quizGrades";
 
 export async function POST(req: Request) {
   try {

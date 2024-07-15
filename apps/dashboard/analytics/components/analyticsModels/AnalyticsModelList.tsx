@@ -1,5 +1,5 @@
 "use client";
-import { CompleteAnalyticsModel } from "@/lib/db/schema/analyticsModels";
+import { CompleteAnalyticsModel } from "@soco/analytics-db/schema/analyticsModels";
 import { trpc } from "@/lib/trpc/client";
 import AnalyticsModelModal from "./AnalyticsModelModal";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { ToolDataprivacyPurpose, NewToolDataprivacyPurposeParams, insertToolDataprivacyPurposeParams } from "@/lib/db/schema/toolDataprivacyPurposes";
+import { ToolDataprivacyPurpose, NewToolDataprivacyPurposeParams, insertToolDataprivacyPurposeParams } from "@soco/tool-data-privacy-db/schema/toolDataprivacyPurposes";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

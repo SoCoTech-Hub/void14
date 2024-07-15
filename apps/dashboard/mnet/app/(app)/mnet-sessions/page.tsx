@@ -1,7 +1,7 @@
 import MnetSessionList from "@/components/mnetSessions/MnetSessionList";
 import NewMnetSessionModal from "@/components/mnetSessions/MnetSessionModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function MnetSessions() {
   await checkAuth();

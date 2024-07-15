@@ -1,5 +1,5 @@
 "use client";
-import { CompleteContent } from "@/lib/db/schema/contents";
+import { CompleteContent } from "@soco/content-db/schema/contents";
 import { trpc } from "@/lib/trpc/client";
 import ContentModal from "./ContentModal";
 

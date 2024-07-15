@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import EnrolLtiAppRegistrationForm from "./EnrolLtiAppRegistrationForm";
-import { EnrolLtiAppRegistration } from "@/lib/db/schema/enrolLtiAppRegistrations";
+import { EnrolLtiAppRegistration } from "@soco/enrol-db/schema/enrolLtiAppRegistrations";
 
 export default function EnrolLtiAppRegistrationModal({ 
   enrolLtiAppRegistration,

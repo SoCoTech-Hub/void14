@@ -6,12 +6,12 @@ import {
   createForumDigest,
   deleteForumDigest,
   updateForumDigest,
-} from "@/lib/api/forumDigests/mutations";
+} from "@soco/forum-api/forumDigests/mutations";
 import { 
   forumDigestIdSchema,
   insertForumDigestParams,
   updateForumDigestParams 
-} from "@/lib/db/schema/forumDigests";
+} from "@soco/forum-db/schema/forumDigests";
 
 export async function POST(req: Request) {
   try {

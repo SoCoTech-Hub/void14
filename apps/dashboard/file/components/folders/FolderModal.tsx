@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import FolderForm from "./FolderForm";
-import { Folder } from "@/lib/db/schema/folders";
+import { Folder } from "@soco/file-db/schema/folders";
 
 export default function FolderModal({ 
   folder,

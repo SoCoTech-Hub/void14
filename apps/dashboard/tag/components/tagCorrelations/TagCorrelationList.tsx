@@ -1,5 +1,5 @@
 "use client";
-import { CompleteTagCorrelation } from "@/lib/db/schema/tagCorrelations";
+import { CompleteTagCorrelation } from "@soco/tag-db/schema/tagCorrelations";
 import { trpc } from "@/lib/trpc/client";
 import TagCorrelationModal from "./TagCorrelationModal";
 

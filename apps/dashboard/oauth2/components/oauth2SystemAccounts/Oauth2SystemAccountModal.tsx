@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import Oauth2SystemAccountForm from "./Oauth2SystemAccountForm";
-import { Oauth2SystemAccount } from "@/lib/db/schema/oauth2SystemAccounts";
+import { Oauth2SystemAccount } from "@soco/oauth2-db/schema/oauth2SystemAccounts";
 
 export default function Oauth2SystemAccountModal({ 
   oauth2SystemAccount,

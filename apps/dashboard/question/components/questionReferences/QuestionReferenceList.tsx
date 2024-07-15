@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQuestionReference } from "@/lib/db/schema/questionReferences";
+import { CompleteQuestionReference } from "@soco/question-db/schema/questionReferences";
 import { trpc } from "@/lib/trpc/client";
 import QuestionReferenceModal from "./QuestionReferenceModal";
 

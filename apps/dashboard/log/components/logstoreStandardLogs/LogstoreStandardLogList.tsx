@@ -1,5 +1,5 @@
 "use client";
-import { CompleteLogstoreStandardLog } from "@/lib/db/schema/logstoreStandardLogs";
+import { CompleteLogstoreStandardLog } from "@soco/log-db/schema/logstoreStandardLogs";
 import { trpc } from "@/lib/trpc/client";
 import LogstoreStandardLogModal from "./LogstoreStandardLogModal";
 

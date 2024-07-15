@@ -1,5 +1,5 @@
 "use client";
-import { CompleteShow } from "@/lib/db/schema/shows";
+import { CompleteShow } from "@soco/show-db/schema/shows";
 import { trpc } from "@/lib/trpc/client";
 import ShowModal from "./ShowModal";
 

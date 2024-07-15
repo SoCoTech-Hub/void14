@@ -1,5 +1,5 @@
 "use client";
-import { CompleteEnrolPaypal } from "@/lib/db/schema/enrolPaypals";
+import { CompleteEnrolPaypal } from "@soco/enrol-db/schema/enrolPaypals";
 import { trpc } from "@/lib/trpc/client";
 import EnrolPaypalModal from "./EnrolPaypalModal";
 

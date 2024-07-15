@@ -6,12 +6,12 @@ import {
   createGlossaryEntry,
   deleteGlossaryEntry,
   updateGlossaryEntry,
-} from "@/lib/api/glossaryEntries/mutations";
+} from "@soco/glossary-api/glossaryEntries/mutations";
 import { 
   glossaryEntryIdSchema,
   insertGlossaryEntryParams,
   updateGlossaryEntryParams 
-} from "@/lib/db/schema/glossaryEntries";
+} from "@soco/glossary-db/schema/glossaryEntries";
 
 export async function POST(req: Request) {
   try {

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import MnetLogForm from "./MnetLogForm";
-import { MnetLog } from "@/lib/db/schema/mnetLogs";
+import { MnetLog } from "@soco/mnet-db/schema/mnetLogs";
 
 export default function MnetLogModal({ 
   mnetLog,

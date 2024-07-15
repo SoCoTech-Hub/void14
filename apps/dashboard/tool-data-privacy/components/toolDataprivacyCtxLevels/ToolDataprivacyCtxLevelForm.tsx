@@ -1,6 +1,6 @@
 "use client";
 
-import { ToolDataprivacyCtxLevel, NewToolDataprivacyCtxLevelParams, insertToolDataprivacyCtxLevelParams } from "@/lib/db/schema/toolDataprivacyCtxLevels";
+import { ToolDataprivacyCtxLevel, NewToolDataprivacyCtxLevelParams, insertToolDataprivacyCtxLevelParams } from "@soco/tool-data-privacy-db/schema/toolDataprivacyCtxLevels";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

@@ -6,12 +6,12 @@ import {
   createCountry,
   deleteCountry,
   updateCountry,
-} from "@/lib/api/countries/mutations";
+} from "@soco/geolocalize-api/countries/mutations";
 import { 
   countryIdSchema,
   insertCountryParams,
   updateCountryParams 
-} from "@/lib/db/schema/countries";
+} from "@soco/geolocalize-db/schema/countries";
 
 export async function POST(req: Request) {
   try {

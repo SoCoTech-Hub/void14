@@ -6,12 +6,12 @@ import {
   createModule,
   deleteModule,
   updateModule,
-} from "@/lib/api/modules/mutations";
+} from "@soco/module-api/modules/mutations";
 import { 
   moduleIdSchema,
   insertModuleParams,
   updateModuleParams 
-} from "@/lib/db/schema/modules";
+} from "@soco/module-db/schema/modules";
 
 export async function POST(req: Request) {
   try {

@@ -6,12 +6,12 @@ import {
   createSearchIndexRequest,
   deleteSearchIndexRequest,
   updateSearchIndexRequest,
-} from "@/lib/api/searchIndexRequests/mutations";
+} from "@soco/search-api/searchIndexRequests/mutations";
 import { 
   searchIndexRequestIdSchema,
   insertSearchIndexRequestParams,
   updateSearchIndexRequestParams 
-} from "@/lib/db/schema/searchIndexRequests";
+} from "@soco/search-db/schema/searchIndexRequests";
 
 export async function POST(req: Request) {
   try {

@@ -4,7 +4,7 @@ import {
 	PortfolioInstanceUser,
 	NewPortfolioInstanceUserParams,
 	insertPortfolioInstanceUserParams
-} from '@/lib/db/schema/portfolioInstanceUsers'
+} from '@soco/portfolio-db/schema/portfolioInstanceUsers'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

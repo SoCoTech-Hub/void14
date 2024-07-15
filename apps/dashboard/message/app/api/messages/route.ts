@@ -6,12 +6,12 @@ import {
   createMessage,
   deleteMessage,
   updateMessage,
-} from "@/lib/api/messages/mutations";
+} from "@soco/message-api/messages/mutations";
 import { 
   messageIdSchema,
   insertMessageParams,
   updateMessageParams 
-} from "@/lib/db/schema/messages";
+} from "@soco/message-db/schema/messages";
 
 export async function POST(req: Request) {
   try {

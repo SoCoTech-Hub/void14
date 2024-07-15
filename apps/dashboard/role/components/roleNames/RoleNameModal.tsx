@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import RoleNameForm from "./RoleNameForm";
-import { RoleName } from "@/lib/db/schema/roleNames";
+import { RoleName } from "@soco/role-db/schema/roleNames";
 
 export default function RoleNameModal({ 
   roleName,

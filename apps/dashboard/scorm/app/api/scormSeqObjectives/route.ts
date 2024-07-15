@@ -6,12 +6,12 @@ import {
   createScormSeqObjective,
   deleteScormSeqObjective,
   updateScormSeqObjective,
-} from "@/lib/api/scormSeqObjectives/mutations";
+} from "@soco/scorm-api/scormSeqObjectives/mutations";
 import { 
   scormSeqObjectiveIdSchema,
   insertScormSeqObjectiveParams,
   updateScormSeqObjectiveParams 
-} from "@/lib/db/schema/scormSeqObjectives";
+} from "@soco/scorm-db/schema/scormSeqObjectives";
 
 export async function POST(req: Request) {
   try {

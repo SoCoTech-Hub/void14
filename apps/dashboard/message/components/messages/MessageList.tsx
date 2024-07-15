@@ -1,5 +1,5 @@
 "use client";
-import { CompleteMessage } from "@/lib/db/schema/messages";
+import { CompleteMessage } from "@soco/message-db/schema/messages";
 import { trpc } from "@/lib/trpc/client";
 import MessageModal from "./MessageModal";
 

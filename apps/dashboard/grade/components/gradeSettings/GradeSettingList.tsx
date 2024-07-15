@@ -1,5 +1,5 @@
 "use client";
-import { CompleteGradeSetting } from "@/lib/db/schema/gradeSettings";
+import { CompleteGradeSetting } from "@soco/grade-db/schema/gradeSettings";
 import { trpc } from "@/lib/trpc/client";
 import GradeSettingModal from "./GradeSettingModal";
 

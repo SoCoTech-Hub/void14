@@ -4,7 +4,7 @@ import {
 	BackupLog,
 	NewBackupLogParams,
 	insertBackupLogParams
-} from '@/lib/db/schema/backupLogs'
+} from '@soco/backup-db/schema/backupLogs'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

@@ -4,7 +4,7 @@ import {
 	AnalyticsUsedAnalysable,
 	NewAnalyticsUsedAnalysableParams,
 	insertAnalyticsUsedAnalysableParams
-} from '@/lib/db/schema/analyticsUsedAnalysables'
+} from '@soco/analytics-db/schema/analyticsUsedAnalysables'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

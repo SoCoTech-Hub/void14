@@ -6,12 +6,12 @@ import {
   createTagArea,
   deleteTagArea,
   updateTagArea,
-} from "@/lib/api/tagAreas/mutations";
+} from "@soco/tag-api/tagAreas/mutations";
 import { 
   tagAreaIdSchema,
   insertTagAreaParams,
   updateTagAreaParams 
-} from "@/lib/db/schema/tagAreas";
+} from "@soco/tag-db/schema/tagAreas";
 
 export async function POST(req: Request) {
   try {

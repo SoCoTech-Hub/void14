@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import Oauth2AccessTokenForm from "./Oauth2AccessTokenForm";
-import { Oauth2AccessToken } from "@/lib/db/schema/oauth2AccessTokens";
+import { Oauth2AccessToken } from "@soco/oauth2-db/schema/oauth2AccessTokens";
 
 export default function Oauth2AccessTokenModal({ 
   oauth2AccessToken,

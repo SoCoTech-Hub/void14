@@ -1,6 +1,6 @@
 "use client";
 
-import { LtiserviceGradebookservice, NewLtiserviceGradebookserviceParams, insertLtiserviceGradebookserviceParams } from "@/lib/db/schema/ltiserviceGradebookservices";
+import { LtiserviceGradebookservice, NewLtiserviceGradebookserviceParams, insertLtiserviceGradebookserviceParams } from "@soco/lti-db/schema/ltiserviceGradebookservices";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

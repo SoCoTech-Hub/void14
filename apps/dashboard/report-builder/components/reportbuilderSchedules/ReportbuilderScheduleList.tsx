@@ -1,5 +1,5 @@
 "use client";
-import { CompleteReportbuilderSchedule } from "@/lib/db/schema/reportbuilderSchedules";
+import { CompleteReportbuilderSchedule } from "@soco/report-builder-db/schema/reportbuilderSchedules";
 import { trpc } from "@/lib/trpc/client";
 import ReportbuilderScheduleModal from "./ReportbuilderScheduleModal";
 

@@ -6,12 +6,12 @@ import {
   createReportbuilderSchedule,
   deleteReportbuilderSchedule,
   updateReportbuilderSchedule,
-} from "@/lib/api/reportbuilderSchedules/mutations";
+} from "@soco/report-builder-api/reportbuilderSchedules/mutations";
 import { 
   reportbuilderScheduleIdSchema,
   insertReportbuilderScheduleParams,
   updateReportbuilderScheduleParams 
-} from "@/lib/db/schema/reportbuilderSchedules";
+} from "@soco/report-builder-db/schema/reportbuilderSchedules";
 
 export async function POST(req: Request) {
   try {

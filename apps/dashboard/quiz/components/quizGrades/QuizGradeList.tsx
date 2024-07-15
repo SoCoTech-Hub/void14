@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQuizGrade } from "@/lib/db/schema/quizGrades";
+import { CompleteQuizGrade } from "@soco/quiz-db/schema/quizGrades";
 import { trpc } from "@/lib/trpc/client";
 import QuizGradeModal from "./QuizGradeModal";
 

@@ -6,12 +6,12 @@ import {
   createPage,
   deletePage,
   updatePage,
-} from "@/lib/api/pages/mutations";
+} from "@soco/page-api/pages/mutations";
 import { 
   pageIdSchema,
   insertPageParams,
   updatePageParams 
-} from "@/lib/db/schema/pages";
+} from "@soco/page-db/schema/pages";
 
 export async function POST(req: Request) {
   try {

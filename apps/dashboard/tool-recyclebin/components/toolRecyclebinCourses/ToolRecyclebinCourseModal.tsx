@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ToolRecyclebinCourseForm from "./ToolRecyclebinCourseForm";
-import { ToolRecyclebinCourse } from "@/lib/db/schema/toolRecyclebinCourses";
+import { ToolRecyclebinCourse } from "@soco/tool-recyclebin-db/schema/toolRecyclebinCourses";
 
 export default function ToolRecyclebinCourseModal({ 
   toolRecyclebinCourse,

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteSearchSimpledbIndex } from "@/lib/db/schema/searchSimpledbIndexes";
+import { CompleteSearchSimpledbIndex } from "@soco/search-db/schema/searchSimpledbIndexes";
 import { trpc } from "@/lib/trpc/client";
 import SearchSimpledbIndexModal from "./SearchSimpledbIndexModal";
 

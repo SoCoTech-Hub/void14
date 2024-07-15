@@ -1,5 +1,5 @@
 "use client";
-import { CompleteDigilib } from "@/lib/db/schema/digilibs";
+import { CompleteDigilib } from "@soco/digilib-db/schema/digilibs";
 import { trpc } from "@/lib/trpc/client";
 import DigilibModal from "./DigilibModal";
 

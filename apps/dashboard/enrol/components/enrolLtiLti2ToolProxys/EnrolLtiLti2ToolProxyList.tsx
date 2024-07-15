@@ -1,5 +1,5 @@
 "use client";
-import { CompleteEnrolLtiLti2ToolProxy } from "@/lib/db/schema/enrolLtiLti2ToolProxys";
+import { CompleteEnrolLtiLti2ToolProxy } from "@soco/enrol-db/schema/enrolLtiLti2ToolProxys";
 import { trpc } from "@/lib/trpc/client";
 import EnrolLtiLti2ToolProxyModal from "./EnrolLtiLti2ToolProxyModal";
 

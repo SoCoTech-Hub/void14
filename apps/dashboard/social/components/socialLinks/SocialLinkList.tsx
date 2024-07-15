@@ -1,5 +1,5 @@
 "use client";
-import { CompleteSocialLink } from "@/lib/db/schema/socialLinks";
+import { CompleteSocialLink } from "@soco/social-db/schema/socialLinks";
 import { trpc } from "@/lib/trpc/client";
 import SocialLinkModal from "./SocialLinkModal";
 

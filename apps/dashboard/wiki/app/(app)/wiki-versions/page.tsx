@@ -1,7 +1,7 @@
 import WikiVersionList from "@/components/wikiVersions/WikiVersionList";
 import NewWikiVersionModal from "@/components/wikiVersions/WikiVersionModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function WikiVersions() {
   await checkAuth();

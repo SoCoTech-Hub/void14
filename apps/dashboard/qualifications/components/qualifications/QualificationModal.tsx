@@ -10,7 +10,7 @@ import {
 	DialogTrigger
 } from '../ui/dialog'
 import QualificationForm from './QualificationForm'
-import { Qualification } from '@/lib/db/schema/qualifications'
+import { Qualification } from '@soco/qualifications-db/schema/qualifications'
 
 export default function QualificationModal({
 	qualification,

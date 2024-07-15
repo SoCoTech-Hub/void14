@@ -6,12 +6,12 @@ import {
   createEnrolLtiToolConsumerMap,
   deleteEnrolLtiToolConsumerMap,
   updateEnrolLtiToolConsumerMap,
-} from "@/lib/api/enrolLtiToolConsumerMaps/mutations";
+} from "@soco/enrol-api/enrolLtiToolConsumerMaps/mutations";
 import { 
   enrolLtiToolConsumerMapIdSchema,
   insertEnrolLtiToolConsumerMapParams,
   updateEnrolLtiToolConsumerMapParams 
-} from "@/lib/db/schema/enrolLtiToolConsumerMaps";
+} from "@soco/enrol-db/schema/enrolLtiToolConsumerMaps";
 
 export async function POST(req: Request) {
   try {

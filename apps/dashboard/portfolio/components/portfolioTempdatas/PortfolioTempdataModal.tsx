@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import PortfolioTempdataForm from "./PortfolioTempdataForm";
-import { PortfolioTempdata } from "@/lib/db/schema/portfolioTempdatas";
+import { PortfolioTempdata } from "@soco/portfolio-db/schema/portfolioTempdatas";
 
 export default function PortfolioTempdataModal({ 
   portfolioTempdata,

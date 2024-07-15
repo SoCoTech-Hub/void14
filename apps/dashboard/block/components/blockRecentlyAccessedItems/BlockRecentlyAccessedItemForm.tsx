@@ -4,7 +4,7 @@ import {
 	BlockRecentlyAccessedItem,
 	NewBlockRecentlyAccessedItemParams,
 	insertBlockRecentlyAccessedItemParams
-} from '@/lib/db/schema/blockRecentlyAccessedItems'
+} from '@soco/block-db/schema/blockRecentlyAccessedItems'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

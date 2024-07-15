@@ -1,7 +1,7 @@
 import PortfolioTempdataList from "@/components/portfolioTempdatas/PortfolioTempdataList";
 import NewPortfolioTempdataModal from "@/components/portfolioTempdatas/PortfolioTempdataModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function PortfolioTempdatas() {
   await checkAuth();

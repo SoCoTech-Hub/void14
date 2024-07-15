@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQtypeMultichoiceOption } from "@/lib/db/schema/qtypeMultichoiceOptions";
+import { CompleteQtypeMultichoiceOption } from "@soco/qtype-db/schema/qtypeMultichoiceOptions";
 import { trpc } from "@/lib/trpc/client";
 import QtypeMultichoiceOptionModal from "./QtypeMultichoiceOptionModal";
 

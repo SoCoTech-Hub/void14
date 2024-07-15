@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQuestionNumericalOption } from "@/lib/db/schema/questionNumericalOptions";
+import { CompleteQuestionNumericalOption } from "@soco/question-db/schema/questionNumericalOptions";
 import { trpc } from "@/lib/trpc/client";
 import QuestionNumericalOptionModal from "./QuestionNumericalOptionModal";
 

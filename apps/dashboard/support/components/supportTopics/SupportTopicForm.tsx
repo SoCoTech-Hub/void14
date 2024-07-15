@@ -4,7 +4,7 @@ import {
 	SupportTopic,
 	NewSupportTopicParams,
 	insertSupportTopicParams
-} from '@/lib/db/schema/supportTopics'
+} from '@soco/support-db/schema/supportTopics'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

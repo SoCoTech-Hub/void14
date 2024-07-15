@@ -1,5 +1,5 @@
 "use client";
-import { CompleteShowsCategory } from "@/lib/db/schema/showsCategories";
+import { CompleteShowsCategory } from "@soco/show-db/schema/showsCategories";
 import { trpc } from "@/lib/trpc/client";
 import ShowsCategoryModal from "./ShowsCategoryModal";
 

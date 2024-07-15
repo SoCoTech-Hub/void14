@@ -6,12 +6,12 @@ import {
   createEventSubscription,
   deleteEventSubscription,
   updateEventSubscription,
-} from "@/lib/api/eventSubscriptions/mutations";
+} from "@soco/event-api/eventSubscriptions/mutations";
 import { 
   eventSubscriptionIdSchema,
   insertEventSubscriptionParams,
   updateEventSubscriptionParams 
-} from "@/lib/db/schema/eventSubscriptions";
+} from "@soco/event-db/schema/eventSubscriptions";
 
 export async function POST(req: Request) {
   try {

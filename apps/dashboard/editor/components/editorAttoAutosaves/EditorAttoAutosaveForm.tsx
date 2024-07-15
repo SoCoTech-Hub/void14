@@ -1,6 +1,6 @@
 "use client";
 
-import { EditorAttoAutosave, NewEditorAttoAutosaveParams, insertEditorAttoAutosaveParams } from "@/lib/db/schema/editorAttoAutosaves";
+import { EditorAttoAutosave, NewEditorAttoAutosaveParams, insertEditorAttoAutosaveParams } from "@soco/editor-db/schema/editorAttoAutosaves";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

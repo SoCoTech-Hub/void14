@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ExternalServicesUserForm from "./ExternalServicesUserForm";
-import { ExternalServicesUser } from "@/lib/db/schema/externalServicesUsers";
+import { ExternalServicesUser } from "@soco/external-db/schema/externalServicesUsers";
 
 export default function ExternalServicesUserModal({ 
   externalServicesUser,

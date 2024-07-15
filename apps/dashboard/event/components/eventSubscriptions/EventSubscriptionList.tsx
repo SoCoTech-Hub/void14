@@ -1,5 +1,5 @@
 "use client";
-import { CompleteEventSubscription } from "@/lib/db/schema/eventSubscriptions";
+import { CompleteEventSubscription } from "@soco/event-db/schema/eventSubscriptions";
 import { trpc } from "@/lib/trpc/client";
 import EventSubscriptionModal from "./EventSubscriptionModal";
 

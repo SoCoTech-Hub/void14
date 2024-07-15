@@ -1,5 +1,5 @@
 "use client";
-import { CompleteH5pactivity } from "@/lib/db/schema/h5pactivities";
+import { CompleteH5pactivity } from "@soco/h5p-db/schema/h5pactivities";
 import { trpc } from "@/lib/trpc/client";
 import H5pactivityModal from "./H5pactivityModal";
 

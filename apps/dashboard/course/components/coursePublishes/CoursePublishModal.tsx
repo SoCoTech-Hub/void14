@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import CoursePublishForm from "./CoursePublishForm";
-import { CoursePublish } from "@/lib/db/schema/coursePublishes";
+import { CoursePublish } from "@soco/course-db/schema/coursePublishes";
 
 export default function CoursePublishModal({ 
   coursePublish,

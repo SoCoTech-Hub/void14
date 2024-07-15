@@ -1,5 +1,5 @@
 "use client";
-import { CompleteLockDb } from "@/lib/db/schema/lockDbs";
+import { CompleteLockDb } from "@soco/lock-db/schema/lockDbs";
 import { trpc } from "@/lib/trpc/client";
 import LockDbModal from "./LockDbModal";
 

@@ -6,12 +6,12 @@ import {
   createMassMailMessage,
   deleteMassMailMessage,
   updateMassMailMessage,
-} from "@/lib/api/massMailMessages/mutations";
+} from "@soco/mass-mail-api/massMailMessages/mutations";
 import { 
   massMailMessageIdSchema,
   insertMassMailMessageParams,
   updateMassMailMessageParams 
-} from "@/lib/db/schema/massMailMessages";
+} from "@soco/mass-mail-db/schema/massMailMessages";
 
 export async function POST(req: Request) {
   try {

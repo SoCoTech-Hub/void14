@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import FileForm from "./FileForm";
-import { File } from "@/lib/db/schema/files";
+import { File } from "@soco/file-db/schema/files";
 
 export default function FileModal({ 
   file,

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import CourseFormatOptionForm from "./CourseFormatOptionForm";
-import { CourseFormatOption } from "@/lib/db/schema/courseFormatOptions";
+import { CourseFormatOption } from "@soco/course-db/schema/courseFormatOptions";
 
 export default function CourseFormatOptionModal({ 
   courseFormatOption,

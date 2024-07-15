@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ForumTrackPrefForm from "./ForumTrackPrefForm";
-import { ForumTrackPref } from "@/lib/db/schema/forumTrackPrefs";
+import { ForumTrackPref } from "@soco/forum-db/schema/forumTrackPrefs";
 
 export default function ForumTrackPrefModal({ 
   forumTrackPref,

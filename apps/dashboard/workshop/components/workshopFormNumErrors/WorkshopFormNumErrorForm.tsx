@@ -4,7 +4,7 @@ import {
 	WorkshopFormNumError,
 	NewWorkshopFormNumErrorParams,
 	insertWorkshopFormNumErrorParams
-} from '@/lib/db/schema/workshopFormNumErrors'
+} from '@soco/workshop-db/schema/workshopFormNumErrors'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

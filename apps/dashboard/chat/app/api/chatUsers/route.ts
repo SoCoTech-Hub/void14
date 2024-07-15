@@ -6,12 +6,12 @@ import {
   createChatUser,
   deleteChatUser,
   updateChatUser,
-} from "@/lib/api/chatUsers/mutations";
+} from "@soco/chat-api/chatUsers/mutations";
 import { 
   chatUserIdSchema,
   insertChatUserParams,
   updateChatUserParams 
-} from "@/lib/db/schema/chatUsers";
+} from "@soco/chat-db/schema/chatUsers";
 
 export async function POST(req: Request) {
   try {

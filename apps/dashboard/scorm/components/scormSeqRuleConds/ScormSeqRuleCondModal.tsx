@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ScormSeqRuleCondForm from "./ScormSeqRuleCondForm";
-import { ScormSeqRuleCond } from "@/lib/db/schema/scormSeqRuleConds";
+import { ScormSeqRuleCond } from "@soco/scorm-db/schema/scormSeqRuleConds";
 
 export default function ScormSeqRuleCondModal({ 
   scormSeqRuleCond,

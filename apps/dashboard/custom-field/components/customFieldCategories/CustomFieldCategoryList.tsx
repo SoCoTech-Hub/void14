@@ -1,5 +1,5 @@
 "use client";
-import { CompleteCustomFieldCategory } from "@/lib/db/schema/customFieldCategories";
+import { CompleteCustomFieldCategory } from "@soco/custom-field-db/schema/customFieldCategories";
 import { trpc } from "@/lib/trpc/client";
 import CustomFieldCategoryModal from "./CustomFieldCategoryModal";
 

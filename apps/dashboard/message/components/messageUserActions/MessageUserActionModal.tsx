@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import MessageUserActionForm from "./MessageUserActionForm";
-import { MessageUserAction } from "@/lib/db/schema/messageUserActions";
+import { MessageUserAction } from "@soco/message-db/schema/messageUserActions";
 
 export default function MessageUserActionModal({ 
   messageUserAction,

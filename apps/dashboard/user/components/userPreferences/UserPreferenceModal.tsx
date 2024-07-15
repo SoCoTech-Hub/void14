@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import UserPreferenceForm from "./UserPreferenceForm";
-import { UserPreference } from "@/lib/db/schema/userPreferences";
+import { UserPreference } from "@soco/user-db/schema/userPreferences";
 
 export default function UserPreferenceModal({ 
   userPreference,

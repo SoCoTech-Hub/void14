@@ -6,12 +6,12 @@ import {
   createFeedbackSitecourseMap,
   deleteFeedbackSitecourseMap,
   updateFeedbackSitecourseMap,
-} from "@/lib/api/feedbackSitecourseMaps/mutations";
+} from "@soco/feedback-api/feedbackSitecourseMaps/mutations";
 import { 
   feedbackSitecourseMapIdSchema,
   insertFeedbackSitecourseMapParams,
   updateFeedbackSitecourseMapParams 
-} from "@/lib/db/schema/feedbackSitecourseMaps";
+} from "@soco/feedback-db/schema/feedbackSitecourseMaps";
 
 export async function POST(req: Request) {
   try {

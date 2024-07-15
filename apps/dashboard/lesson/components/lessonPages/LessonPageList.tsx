@@ -1,5 +1,5 @@
 "use client";
-import { CompleteLessonPage } from "@/lib/db/schema/lessonPages";
+import { CompleteLessonPage } from "@soco/lesson-db/schema/lessonPages";
 import { trpc } from "@/lib/trpc/client";
 import LessonPageModal from "./LessonPageModal";
 

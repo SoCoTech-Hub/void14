@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageEmailMessage, NewMessageEmailMessageParams, insertMessageEmailMessageParams } from "@/lib/db/schema/messageEmailMessages";
+import { MessageEmailMessage, NewMessageEmailMessageParams, insertMessageEmailMessageParams } from "@soco/message-db/schema/messageEmailMessages";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

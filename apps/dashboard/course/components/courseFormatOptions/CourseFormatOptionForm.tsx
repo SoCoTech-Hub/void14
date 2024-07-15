@@ -4,7 +4,7 @@ import {
 	CourseFormatOption,
 	NewCourseFormatOptionParams,
 	insertCourseFormatOptionParams
-} from '@/lib/db/schema/courseFormatOptions'
+} from '@soco/course-db/schema/courseFormatOptions'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

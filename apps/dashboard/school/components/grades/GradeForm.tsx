@@ -4,7 +4,7 @@ import {
 	Grade,
 	NewGradeParams,
 	insertGradeParams
-} from '@/lib/db/schema/grades'
+} from '@soco/school-db/schema/grades'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

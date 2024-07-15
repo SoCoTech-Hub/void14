@@ -4,7 +4,7 @@ import {
 	ToolMonitorHistory,
 	NewToolMonitorHistoryParams,
 	insertToolMonitorHistoryParams
-} from '@/lib/db/schema/toolMonitorHistories'
+} from '@soco/tool-monitor-db/schema/toolMonitorHistories'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

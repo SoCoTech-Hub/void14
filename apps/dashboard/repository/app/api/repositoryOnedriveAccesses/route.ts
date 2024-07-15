@@ -6,12 +6,12 @@ import {
   createRepositoryOnedriveAccess,
   deleteRepositoryOnedriveAccess,
   updateRepositoryOnedriveAccess,
-} from "@/lib/api/repositoryOnedriveAccesses/mutations";
+} from "@soco/repository-api/repositoryOnedriveAccesses/mutations";
 import { 
   repositoryOnedriveAccessIdSchema,
   insertRepositoryOnedriveAccessParams,
   updateRepositoryOnedriveAccessParams 
-} from "@/lib/db/schema/repositoryOnedriveAccesses";
+} from "@soco/repository-db/schema/repositoryOnedriveAccesses";
 
 export async function POST(req: Request) {
   try {

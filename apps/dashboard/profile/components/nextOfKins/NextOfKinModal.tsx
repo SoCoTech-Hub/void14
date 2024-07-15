@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import NextOfKinForm from "./NextOfKinForm";
-import { NextOfKin } from "@/lib/db/schema/nextOfKins";
+import { NextOfKin } from "@soco/profile-db/schema/nextOfKins";
 
 export default function NextOfKinModal({ 
   nextOfKin,

@@ -4,7 +4,7 @@ import {
 	ShowsCategory,
 	NewShowsCategoryParams,
 	insertShowsCategoryParams
-} from '@/lib/db/schema/showsCategories'
+} from '@soco/show-db/schema/showsCategories'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { MnetHost2service, NewMnetHost2serviceParams, insertMnetHost2serviceParams } from "@/lib/db/schema/mnetHost2services";
+import { MnetHost2service, NewMnetHost2serviceParams, insertMnetHost2serviceParams } from "@soco/mnet-db/schema/mnetHost2services";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

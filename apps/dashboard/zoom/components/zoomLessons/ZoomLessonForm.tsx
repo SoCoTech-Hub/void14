@@ -4,7 +4,7 @@ import {
 	ZoomLesson,
 	NewZoomLessonParams,
 	insertZoomLessonParams
-} from '@/lib/db/schema/zoomLessons'
+} from '@soco/zoom-db/schema/zoomLessons'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

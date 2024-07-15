@@ -6,12 +6,12 @@ import {
   createApplicationCategory,
   deleteApplicationCategory,
   updateApplicationCategory,
-} from "@/lib/api/applicationCategories/mutations";
+} from "@soco/application-api/applicationCategories/mutations";
 import { 
   applicationCategoryIdSchema,
   insertApplicationCategoryParams,
   updateApplicationCategoryParams 
-} from "@/lib/db/schema/applicationCategories";
+} from "@soco/application-db/schema/applicationCategories";
 
 export async function POST(req: Request) {
   try {

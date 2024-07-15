@@ -6,12 +6,12 @@ import {
   createMessagePopup,
   deleteMessagePopup,
   updateMessagePopup,
-} from "@/lib/api/messagePopups/mutations";
+} from "@soco/message-api/messagePopups/mutations";
 import { 
   messagePopupIdSchema,
   insertMessagePopupParams,
   updateMessagePopupParams 
-} from "@/lib/db/schema/messagePopups";
+} from "@soco/message-db/schema/messagePopups";
 
 export async function POST(req: Request) {
   try {

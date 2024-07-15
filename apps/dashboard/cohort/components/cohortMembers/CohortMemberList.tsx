@@ -1,5 +1,5 @@
 "use client";
-import { CompleteCohortMember } from "@/lib/db/schema/cohortMembers";
+import { CompleteCohortMember } from "@soco/cohort-db/schema/cohortMembers";
 import { trpc } from "@/lib/trpc/client";
 import CohortMemberModal from "./CohortMemberModal";
 

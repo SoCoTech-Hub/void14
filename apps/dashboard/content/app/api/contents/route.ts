@@ -6,12 +6,12 @@ import {
   createContent,
   deleteContent,
   updateContent,
-} from "@/lib/api/contents/mutations";
+} from "@soco/content-api/contents/mutations";
 import { 
   contentIdSchema,
   insertContentParams,
   updateContentParams 
-} from "@/lib/db/schema/contents";
+} from "@soco/content-db/schema/contents";
 
 export async function POST(req: Request) {
   try {

@@ -1,6 +1,6 @@
 "use client";
 
-import { QtypeMultichoiceOption, NewQtypeMultichoiceOptionParams, insertQtypeMultichoiceOptionParams } from "@/lib/db/schema/qtypeMultichoiceOptions";
+import { QtypeMultichoiceOption, NewQtypeMultichoiceOptionParams, insertQtypeMultichoiceOptionParams } from "@soco/qtype-db/schema/qtypeMultichoiceOptions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

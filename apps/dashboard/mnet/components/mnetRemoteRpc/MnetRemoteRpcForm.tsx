@@ -1,6 +1,6 @@
 "use client";
 
-import { MnetRemoteRpc, NewMnetRemoteRpcParams, insertMnetRemoteRpcParams } from "@/lib/db/schema/mnetRemoteRpc";
+import { MnetRemoteRpc, NewMnetRemoteRpcParams, insertMnetRemoteRpcParams } from "@soco/mnet-db/schema/mnetRemoteRpc";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteDistrictOrganization } from "@/lib/db/schema/districtOrganizations";
+import { CompleteDistrictOrganization } from "@soco/geolocalize-db/schema/districtOrganizations";
 import { trpc } from "@/lib/trpc/client";
 import DistrictOrganizationModal from "./DistrictOrganizationModal";
 

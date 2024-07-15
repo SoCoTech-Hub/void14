@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQuestionHint } from "@/lib/db/schema/questionHints";
+import { CompleteQuestionHint } from "@soco/question-db/schema/questionHints";
 import { trpc } from "@/lib/trpc/client";
 import QuestionHintModal from "./QuestionHintModal";
 

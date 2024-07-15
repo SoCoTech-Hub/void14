@@ -6,12 +6,12 @@ import {
   createFavourite,
   deleteFavourite,
   updateFavourite,
-} from "@/lib/api/favourites/mutations";
+} from "@soco/favourite-api/favourites/mutations";
 import { 
   favouriteIdSchema,
   insertFavouriteParams,
   updateFavouriteParams 
-} from "@/lib/db/schema/favourites";
+} from "@soco/favourite-db/schema/favourites";
 
 export async function POST(req: Request) {
   try {

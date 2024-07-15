@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ModuleForm from "./ModuleForm";
-import { Module } from "@/lib/db/schema/modules";
+import { Module } from "@soco/module-db/schema/modules";
 
 export default function ModuleModal({ 
   module,

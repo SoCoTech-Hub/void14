@@ -4,7 +4,7 @@ import {
 	AssignmentUpgrade,
 	NewAssignmentUpgradeParams,
 	insertAssignmentUpgradeParams
-} from '@/lib/db/schema/assignmentUpgrades'
+} from '@soco/assignment-db/schema/assignmentUpgrades'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

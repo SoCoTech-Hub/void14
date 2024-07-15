@@ -6,12 +6,12 @@ import {
   createChoiceAnswer,
   deleteChoiceAnswer,
   updateChoiceAnswer,
-} from "@/lib/api/choiceAnswers/mutations";
+} from "@soco/choice-api/choiceAnswers/mutations";
 import { 
   choiceAnswerIdSchema,
   insertChoiceAnswerParams,
   updateChoiceAnswerParams 
-} from "@/lib/db/schema/choiceAnswers";
+} from "@soco/choice-db/schema/choiceAnswers";
 
 export async function POST(req: Request) {
   try {

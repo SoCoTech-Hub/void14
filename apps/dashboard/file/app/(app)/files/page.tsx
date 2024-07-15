@@ -1,7 +1,7 @@
 import FileList from "@/components/files/FileList";
 import NewFileModal from "@/components/files/FileModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function Files() {
   await checkAuth();

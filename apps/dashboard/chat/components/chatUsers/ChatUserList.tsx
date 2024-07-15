@@ -1,5 +1,5 @@
 "use client";
-import { CompleteChatUser } from "@/lib/db/schema/chatUsers";
+import { CompleteChatUser } from "@soco/chat-db/schema/chatUsers";
 import { trpc } from "@/lib/trpc/client";
 import ChatUserModal from "./ChatUserModal";
 

@@ -4,7 +4,7 @@ import {
 	FaqCategory,
 	NewFaqCategoryParams,
 	insertFaqCategoryParams
-} from '@/lib/db/schema/faqCategories'
+} from '@soco/faq-db/schema/faqCategories'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

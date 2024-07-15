@@ -1,6 +1,6 @@
 "use client";
 
-import { MnetSsoAccessControl, NewMnetSsoAccessControlParams, insertMnetSsoAccessControlParams } from "@/lib/db/schema/mnetSsoAccessControls";
+import { MnetSsoAccessControl, NewMnetSsoAccessControlParams, insertMnetSsoAccessControlParams } from "@soco/mnet-db/schema/mnetSsoAccessControls";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

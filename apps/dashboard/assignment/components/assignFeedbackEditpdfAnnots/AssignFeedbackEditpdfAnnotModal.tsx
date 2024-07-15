@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import AssignFeedbackEditpdfAnnotForm from "./AssignFeedbackEditpdfAnnotForm";
-import { AssignFeedbackEditpdfAnnot } from "@/lib/db/schema/assignFeedbackEditpdfAnnots";
+import { AssignFeedbackEditpdfAnnot } from "@soco/assignment-db/schema/assignFeedbackEditpdfAnnots";
 
 export default function AssignFeedbackEditpdfAnnotModal({ 
   assignFeedbackEditpdfAnnot,

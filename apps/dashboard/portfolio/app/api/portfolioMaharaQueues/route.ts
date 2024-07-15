@@ -6,12 +6,12 @@ import {
   createPortfolioMaharaQueue,
   deletePortfolioMaharaQueue,
   updatePortfolioMaharaQueue,
-} from "@/lib/api/portfolioMaharaQueues/mutations";
+} from "@soco/portfolio-api/portfolioMaharaQueues/mutations";
 import { 
   portfolioMaharaQueueIdSchema,
   insertPortfolioMaharaQueueParams,
   updatePortfolioMaharaQueueParams 
-} from "@/lib/db/schema/portfolioMaharaQueues";
+} from "@soco/portfolio-db/schema/portfolioMaharaQueues";
 
 export async function POST(req: Request) {
   try {

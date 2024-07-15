@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import EnrolLtiToolConsumerMapForm from "./EnrolLtiToolConsumerMapForm";
-import { EnrolLtiToolConsumerMap } from "@/lib/db/schema/enrolLtiToolConsumerMaps";
+import { EnrolLtiToolConsumerMap } from "@soco/enrol-db/schema/enrolLtiToolConsumerMaps";
 
 export default function EnrolLtiToolConsumerMapModal({ 
   enrolLtiToolConsumerMap,

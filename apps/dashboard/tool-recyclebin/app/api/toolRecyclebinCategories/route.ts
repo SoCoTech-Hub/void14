@@ -6,12 +6,12 @@ import {
   createToolRecyclebinCategory,
   deleteToolRecyclebinCategory,
   updateToolRecyclebinCategory,
-} from "@/lib/api/toolRecyclebinCategories/mutations";
+} from "@soco/tool-recyclebin-api/toolRecyclebinCategories/mutations";
 import { 
   toolRecyclebinCategoryIdSchema,
   insertToolRecyclebinCategoryParams,
   updateToolRecyclebinCategoryParams 
-} from "@/lib/db/schema/toolRecyclebinCategories";
+} from "@soco/tool-recyclebin-db/schema/toolRecyclebinCategories";
 
 export async function POST(req: Request) {
   try {

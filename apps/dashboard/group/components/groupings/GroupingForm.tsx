@@ -1,6 +1,6 @@
 "use client";
 
-import { Grouping, NewGroupingParams, insertGroupingParams } from "@/lib/db/schema/groupings";
+import { Grouping, NewGroupingParams, insertGroupingParams } from "@soco/group-db/schema/groupings";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { CourseCompletionAggrMethd, NewCourseCompletionAggrMethdParams, insertCourseCompletionAggrMethdParams } from "@/lib/db/schema/courseCompletionAggrMethds";
+import { CourseCompletionAggrMethd, NewCourseCompletionAggrMethdParams, insertCourseCompletionAggrMethdParams } from "@soco/course-db/schema/courseCompletionAggrMethds";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

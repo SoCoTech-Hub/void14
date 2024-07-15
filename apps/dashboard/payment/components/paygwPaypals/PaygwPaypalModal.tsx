@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import PaygwPaypalForm from "./PaygwPaypalForm";
-import { PaygwPaypal } from "@/lib/db/schema/paygwPaypals";
+import { PaygwPaypal } from "@soco/payment-db/schema/paygwPaypals";
 
 export default function PaygwPaypalModal({ 
   paygwPaypal,

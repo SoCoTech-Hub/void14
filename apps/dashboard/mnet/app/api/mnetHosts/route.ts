@@ -6,12 +6,12 @@ import {
   createMnetHost,
   deleteMnetHost,
   updateMnetHost,
-} from "@/lib/api/mnetHosts/mutations";
+} from "@soco/mnet-api/mnetHosts/mutations";
 import { 
   mnetHostIdSchema,
   insertMnetHostParams,
   updateMnetHostParams 
-} from "@/lib/db/schema/mnetHosts";
+} from "@soco/mnet-db/schema/mnetHosts";
 
 export async function POST(req: Request) {
   try {

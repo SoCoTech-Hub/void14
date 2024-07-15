@@ -1,5 +1,5 @@
 "use client";
-import { CompleteFavourite } from "@/lib/db/schema/favourites";
+import { CompleteFavourite } from "@soco/favourite-db/schema/favourites";
 import { trpc } from "@/lib/trpc/client";
 import FavouriteModal from "./FavouriteModal";
 

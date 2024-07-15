@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import SocialLinkForm from "./SocialLinkForm";
-import { SocialLink } from "@/lib/db/schema/socialLinks";
+import { SocialLink } from "@soco/social-db/schema/socialLinks";
 
 export default function SocialLinkModal({ 
   socialLink,

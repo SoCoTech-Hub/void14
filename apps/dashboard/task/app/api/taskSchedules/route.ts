@@ -6,12 +6,12 @@ import {
   createTaskSchedule,
   deleteTaskSchedule,
   updateTaskSchedule,
-} from "@/lib/api/taskSchedules/mutations";
+} from "@soco/task-api/taskSchedules/mutations";
 import { 
   taskScheduleIdSchema,
   insertTaskScheduleParams,
   updateTaskScheduleParams 
-} from "@/lib/db/schema/taskSchedules";
+} from "@soco/task-db/schema/taskSchedules";
 
 export async function POST(req: Request) {
   try {

@@ -1,7 +1,7 @@
 import InfectedFileList from "@/components/infectedFiles/InfectedFileList";
 import NewInfectedFileModal from "@/components/infectedFiles/InfectedFileModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function InfectedFiles() {
   await checkAuth();

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ForumQueueForm from "./ForumQueueForm";
-import { ForumQueue } from "@/lib/db/schema/forumQueues";
+import { ForumQueue } from "@soco/forum-db/schema/forumQueues";
 
 export default function ForumQueueModal({ 
   forumQueue,

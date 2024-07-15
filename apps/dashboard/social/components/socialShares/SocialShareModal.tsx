@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import SocialShareForm from "./SocialShareForm";
-import { SocialShare } from "@/lib/db/schema/socialShares";
+import { SocialShare } from "@soco/social-db/schema/socialShares";
 
 export default function SocialShareModal({ 
   socialShare,

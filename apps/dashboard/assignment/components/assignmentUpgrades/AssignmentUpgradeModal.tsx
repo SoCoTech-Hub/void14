@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import AssignmentUpgradeForm from "./AssignmentUpgradeForm";
-import { AssignmentUpgrade } from "@/lib/db/schema/assignmentUpgrades";
+import { AssignmentUpgrade } from "@soco/assignment-db/schema/assignmentUpgrades";
 
 export default function AssignmentUpgradeModal({ 
   assignmentUpgrade,

@@ -6,12 +6,12 @@ import {
   createCoursePublish,
   deleteCoursePublish,
   updateCoursePublish,
-} from "@/lib/api/coursePublishes/mutations";
+} from "@soco/course-api/coursePublishes/mutations";
 import { 
   coursePublishIdSchema,
   insertCoursePublishParams,
   updateCoursePublishParams 
-} from "@/lib/db/schema/coursePublishes";
+} from "@soco/course-db/schema/coursePublishes";
 
 export async function POST(req: Request) {
   try {

@@ -6,12 +6,12 @@ import {
   createRoleContextLevel,
   deleteRoleContextLevel,
   updateRoleContextLevel,
-} from "@/lib/api/roleContextLevels/mutations";
+} from "@soco/role-api/roleContextLevels/mutations";
 import { 
   roleContextLevelIdSchema,
   insertRoleContextLevelParams,
   updateRoleContextLevelParams 
-} from "@/lib/db/schema/roleContextLevels";
+} from "@soco/role-db/schema/roleContextLevels";
 
 export async function POST(req: Request) {
   try {

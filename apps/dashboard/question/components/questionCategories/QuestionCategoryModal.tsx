@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QuestionCategoryForm from "./QuestionCategoryForm";
-import { QuestionCategory } from "@/lib/db/schema/questionCategories";
+import { QuestionCategory } from "@soco/question-db/schema/questionCategories";
 
 export default function QuestionCategoryModal({ 
   questionCategory,

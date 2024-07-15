@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import SupportCommentForm from "./SupportCommentForm";
-import { SupportComment } from "@/lib/db/schema/supportComments";
+import { SupportComment } from "@soco/support-db/schema/supportComments";
 
 export default function SupportCommentModal({ 
   supportComment,

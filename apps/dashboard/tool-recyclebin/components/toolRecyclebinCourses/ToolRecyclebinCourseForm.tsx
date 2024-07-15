@@ -1,6 +1,6 @@
 "use client";
 
-import { ToolRecyclebinCourse, NewToolRecyclebinCourseParams, insertToolRecyclebinCourseParams } from "@/lib/db/schema/toolRecyclebinCourses";
+import { ToolRecyclebinCourse, NewToolRecyclebinCourseParams, insertToolRecyclebinCourseParams } from "@soco/tool-recyclebin-db/schema/toolRecyclebinCourses";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import FilterActiveForm from "./FilterActiveForm";
-import { FilterActive } from "@/lib/db/schema/filterActives";
+import { FilterActive } from "@soco/filter-db/schema/filterActives";
 
 export default function FilterActiveModal({ 
   filterActive,

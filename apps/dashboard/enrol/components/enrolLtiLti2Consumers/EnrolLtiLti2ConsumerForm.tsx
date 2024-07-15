@@ -22,7 +22,7 @@ import {
   EnrolLtiLti2Consumer,
   insertEnrolLtiLti2ConsumerParams,
   NewEnrolLtiLti2ConsumerParams,
-} from "@/lib/db/schema/enrolLtiLti2Consumers";
+} from "@soco/enrol-db/schema/enrolLtiLti2Consumers";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

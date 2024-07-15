@@ -1,7 +1,7 @@
 import ScormAiccSessionList from "@/components/scormAiccSessions/ScormAiccSessionList";
 import NewScormAiccSessionModal from "@/components/scormAiccSessions/ScormAiccSessionModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function ScormAiccSessions() {
   await checkAuth();

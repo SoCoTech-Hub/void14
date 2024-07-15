@@ -6,12 +6,12 @@ import {
   createBook,
   deleteBook,
   updateBook,
-} from "@/lib/api/books/mutations";
+} from "@soco/book-api/books/mutations";
 import { 
   bookIdSchema,
   insertBookParams,
   updateBookParams 
-} from "@/lib/db/schema/books";
+} from "@soco/book-db/schema/books";
 
 export async function POST(req: Request) {
   try {

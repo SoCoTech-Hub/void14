@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QuestionTruefalseForm from "./QuestionTruefalseForm";
-import { QuestionTruefalse } from "@/lib/db/schema/questionTruefalse";
+import { QuestionTruefalse } from "@soco/question-db/schema/questionTruefalse";
 
 export default function QuestionTruefalseModal({ 
   questionTruefalse,

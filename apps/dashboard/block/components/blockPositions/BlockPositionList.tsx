@@ -1,5 +1,5 @@
 "use client";
-import { CompleteBlockPosition } from "@/lib/db/schema/blockPositions";
+import { CompleteBlockPosition } from "@soco/block-db/schema/blockPositions";
 import { trpc } from "@/lib/trpc/client";
 import BlockPositionModal from "./BlockPositionModal";
 

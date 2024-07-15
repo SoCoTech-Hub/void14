@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import EnrolPaypalForm from "./EnrolPaypalForm";
-import { EnrolPaypal } from "@/lib/db/schema/enrolPaypals";
+import { EnrolPaypal } from "@soco/enrol-db/schema/enrolPaypals";
 
 export default function EnrolPaypalModal({ 
   enrolPaypal,

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteAnalyticsPrediction } from "@/lib/db/schema/analyticsPredictions";
+import { CompleteAnalyticsPrediction } from "@soco/analytics-db/schema/analyticsPredictions";
 import { trpc } from "@/lib/trpc/client";
 import AnalyticsPredictionModal from "./AnalyticsPredictionModal";
 

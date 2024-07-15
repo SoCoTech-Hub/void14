@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageProcessor, NewMessageProcessorParams, insertMessageProcessorParams } from "@/lib/db/schema/messageProcessors";
+import { MessageProcessor, NewMessageProcessorParams, insertMessageProcessorParams } from "@soco/message-db/schema/messageProcessors";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

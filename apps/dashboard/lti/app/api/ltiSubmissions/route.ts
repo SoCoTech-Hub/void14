@@ -6,12 +6,12 @@ import {
   createLtiSubmission,
   deleteLtiSubmission,
   updateLtiSubmission,
-} from "@/lib/api/ltiSubmissions/mutations";
+} from "@soco/lti-api/ltiSubmissions/mutations";
 import { 
   ltiSubmissionIdSchema,
   insertLtiSubmissionParams,
   updateLtiSubmissionParams 
-} from "@/lib/db/schema/ltiSubmissions";
+} from "@soco/lti-db/schema/ltiSubmissions";
 
 export async function POST(req: Request) {
   try {

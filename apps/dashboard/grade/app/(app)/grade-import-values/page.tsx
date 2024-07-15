@@ -1,7 +1,7 @@
 import GradeImportValueList from "@/components/gradeImportValues/GradeImportValueList";
 import NewGradeImportValueModal from "@/components/gradeImportValues/GradeImportValueModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function GradeImportValues() {
   await checkAuth();

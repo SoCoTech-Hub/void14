@@ -1,5 +1,5 @@
 "use client";
-import { CompleteFeedbackValuetmp } from "@/lib/db/schema/feedbackValuetmps";
+import { CompleteFeedbackValuetmp } from "@soco/feedback-db/schema/feedbackValuetmps";
 import { trpc } from "@/lib/trpc/client";
 import FeedbackValuetmpModal from "./FeedbackValuetmpModal";
 

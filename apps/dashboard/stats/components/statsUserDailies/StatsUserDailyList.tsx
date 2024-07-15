@@ -1,5 +1,5 @@
 "use client";
-import { CompleteStatsUserDaily } from "@/lib/db/schema/statsUserDailies";
+import { CompleteStatsUserDaily } from "@soco/stats-db/schema/statsUserDailies";
 import { trpc } from "@/lib/trpc/client";
 import StatsUserDailyModal from "./StatsUserDailyModal";
 

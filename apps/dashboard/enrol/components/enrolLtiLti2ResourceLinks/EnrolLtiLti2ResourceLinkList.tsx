@@ -1,5 +1,5 @@
 "use client";
-import { CompleteEnrolLtiLti2ResourceLink } from "@/lib/db/schema/enrolLtiLti2ResourceLinks";
+import { CompleteEnrolLtiLti2ResourceLink } from "@soco/enrol-db/schema/enrolLtiLti2ResourceLinks";
 import { trpc } from "@/lib/trpc/client";
 import EnrolLtiLti2ResourceLinkModal from "./EnrolLtiLti2ResourceLinkModal";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { TaskLog, NewTaskLogParams, insertTaskLogParams } from "@/lib/db/schema/taskLogs";
+import { TaskLog, NewTaskLogParams, insertTaskLogParams } from "@soco/task-db/schema/taskLogs";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

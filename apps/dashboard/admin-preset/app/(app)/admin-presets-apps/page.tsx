@@ -1,7 +1,7 @@
 import AdminPresetsAppList from "@/components/adminPresetsApps/AdminPresetsAppList";
 import NewAdminPresetsAppModal from "@/components/adminPresetsApps/AdminPresetsAppModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function AdminPresetsApps() {
   await checkAuth();

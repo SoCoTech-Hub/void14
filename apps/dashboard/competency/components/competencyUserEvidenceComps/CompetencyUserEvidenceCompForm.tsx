@@ -1,6 +1,6 @@
 "use client";
 
-import { CompetencyUserEvidenceComp, NewCompetencyUserEvidenceCompParams, insertCompetencyUserEvidenceCompParams } from "@/lib/db/schema/competencyUserEvidenceComps";
+import { CompetencyUserEvidenceComp, NewCompetencyUserEvidenceCompParams, insertCompetencyUserEvidenceCompParams } from "@soco/competency-db/schema/competencyUserEvidenceComps";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

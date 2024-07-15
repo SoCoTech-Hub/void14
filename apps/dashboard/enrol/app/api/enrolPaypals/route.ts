@@ -6,12 +6,12 @@ import {
   createEnrolPaypal,
   deleteEnrolPaypal,
   updateEnrolPaypal,
-} from "@/lib/api/enrolPaypals/mutations";
+} from "@soco/enrol-api/enrolPaypals/mutations";
 import { 
   enrolPaypalIdSchema,
   insertEnrolPaypalParams,
   updateEnrolPaypalParams 
-} from "@/lib/db/schema/enrolPaypals";
+} from "@soco/enrol-db/schema/enrolPaypals";
 
 export async function POST(req: Request) {
   try {

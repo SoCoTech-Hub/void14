@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ZoomForm from "./ZoomForm";
-import { Zoom } from "@/lib/db/schema/zooms";
+import { Zoom } from "@soco/zoom-db/schema/zooms";
 
 export default function ZoomModal({ 
   zoom,

@@ -1,6 +1,6 @@
 "use client";
 
-import { EventsHandler, NewEventsHandlerParams, insertEventsHandlerParams } from "@/lib/db/schema/eventsHandlers";
+import { EventsHandler, NewEventsHandlerParams, insertEventsHandlerParams } from "@soco/event-db/schema/eventsHandlers";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

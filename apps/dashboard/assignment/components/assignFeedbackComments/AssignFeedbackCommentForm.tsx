@@ -4,7 +4,7 @@ import {
 	AssignFeedbackComment,
 	NewAssignFeedbackCommentParams,
 	insertAssignFeedbackCommentParams
-} from '@/lib/db/schema/assignFeedbackComments'
+} from '@soco/assignment-db/schema/assignFeedbackComments'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

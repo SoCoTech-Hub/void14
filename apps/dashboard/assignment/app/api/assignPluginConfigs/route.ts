@@ -6,12 +6,12 @@ import {
   createAssignPluginConfig,
   deleteAssignPluginConfig,
   updateAssignPluginConfig,
-} from "@/lib/api/assignPluginConfigs/mutations";
+} from "@soco/assignment-api/assignPluginConfigs/mutations";
 import { 
   assignPluginConfigIdSchema,
   insertAssignPluginConfigParams,
   updateAssignPluginConfigParams 
-} from "@/lib/db/schema/assignPluginConfigs";
+} from "@soco/assignment-db/schema/assignPluginConfigs";
 
 export async function POST(req: Request) {
   try {

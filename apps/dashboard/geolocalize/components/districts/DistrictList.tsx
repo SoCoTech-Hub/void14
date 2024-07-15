@@ -1,5 +1,5 @@
 "use client";
-import { CompleteDistrict } from "@/lib/db/schema/districts";
+import { CompleteDistrict } from "@soco/geolocalize-db/schema/districts";
 import { trpc } from "@/lib/trpc/client";
 import DistrictModal from "./DistrictModal";
 

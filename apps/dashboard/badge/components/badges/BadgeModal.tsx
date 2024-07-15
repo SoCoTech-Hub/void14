@@ -10,7 +10,7 @@ import {
 	DialogTrigger
 } from '../ui/dialog'
 import BadgeForm from './BadgeForm'
-import type { Badge } from '@/lib/db/schema/badges'
+import type { Badge } from '@soco/badge-db/schema/badges'
 
 export default function BadgeModal({
 	badge,

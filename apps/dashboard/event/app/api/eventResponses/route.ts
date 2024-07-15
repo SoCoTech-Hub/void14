@@ -6,12 +6,12 @@ import {
   createEventResponse,
   deleteEventResponse,
   updateEventResponse,
-} from "@/lib/api/eventResponses/mutations";
+} from "@soco/event-api/eventResponses/mutations";
 import { 
   eventResponseIdSchema,
   insertEventResponseParams,
   updateEventResponseParams 
-} from "@/lib/db/schema/eventResponses";
+} from "@soco/event-db/schema/eventResponses";
 
 export async function POST(req: Request) {
   try {

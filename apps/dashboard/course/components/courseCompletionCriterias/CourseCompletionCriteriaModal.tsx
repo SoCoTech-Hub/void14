@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import CourseCompletionCriteriaForm from "./CourseCompletionCriteriaForm";
-import { CourseCompletionCriteria } from "@/lib/db/schema/courseCompletionCriterias";
+import { CourseCompletionCriteria } from "@soco/course-db/schema/courseCompletionCriterias";
 
 export default function CourseCompletionCriteriaModal({ 
   courseCompletionCriteria,

@@ -1,4 +1,4 @@
-import { getUserAuth } from '@/lib/auth/utils'
+import { getUserAuth } from '@soco/auth-service'
 import { redirect } from 'next/navigation'
 
 export default async function AuthLayout({

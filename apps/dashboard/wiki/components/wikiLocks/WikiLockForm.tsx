@@ -28,7 +28,7 @@ import {
   insertWikiLockParams,
   NewWikiLockParams,
   WikiLock,
-} from "@/lib/db/schema/wikiLocks";
+} from "@soco/wiki-db/schema/wikiLocks";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

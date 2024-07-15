@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import WikiVersionForm from "./WikiVersionForm";
-import { WikiVersion } from "@/lib/db/schema/wikiVersions";
+import { WikiVersion } from "@soco/wiki-db/schema/wikiVersions";
 
 export default function WikiVersionModal({ 
   wikiVersion,

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteUser } from "@/lib/db/schema/users";
+import { CompleteUser } from "@soco/user-db/schema/users";
 import { trpc } from "@/lib/trpc/client";
 import UserModal from "./UserModal";
 

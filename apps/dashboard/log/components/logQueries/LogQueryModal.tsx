@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import LogQueryForm from "./LogQueryForm";
-import { LogQuery } from "@/lib/db/schema/logQueries";
+import { LogQuery } from "@soco/log-db/schema/logQueries";
 
 export default function LogQueryModal({ 
   logQuery,

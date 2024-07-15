@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ToolDataprivacyCtxInstanceForm from "./ToolDataprivacyCtxInstanceForm";
-import { ToolDataprivacyCtxInstance } from "@/lib/db/schema/toolDataprivacyCtxInstances";
+import { ToolDataprivacyCtxInstance } from "@soco/tool-data-privacy-db/schema/toolDataprivacyCtxInstances";
 
 export default function ToolDataprivacyCtxInstanceModal({ 
   toolDataprivacyCtxInstance,

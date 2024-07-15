@@ -1,6 +1,6 @@
 "use client";
 
-import { QuizOverviewRegrade, NewQuizOverviewRegradeParams, insertQuizOverviewRegradeParams } from "@/lib/db/schema/quizOverviewRegrades";
+import { QuizOverviewRegrade, NewQuizOverviewRegradeParams, insertQuizOverviewRegradeParams } from "@soco/quiz-db/schema/quizOverviewRegrades";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

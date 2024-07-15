@@ -1,6 +1,6 @@
 "use client";
 
-import { ScormSeqRollupRuleCond, NewScormSeqRollupRuleCondParams, insertScormSeqRollupRuleCondParams } from "@/lib/db/schema/scormSeqRollupRuleConds";
+import { ScormSeqRollupRuleCond, NewScormSeqRollupRuleCondParams, insertScormSeqRollupRuleCondParams } from "@soco/scorm-db/schema/scormSeqRollupRuleConds";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

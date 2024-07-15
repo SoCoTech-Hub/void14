@@ -4,7 +4,7 @@ import {
 	RoleAllowView,
 	NewRoleAllowViewParams,
 	insertRoleAllowViewParams
-} from '@/lib/db/schema/roleAllowViews'
+} from '@soco/role-db/schema/roleAllowViews'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

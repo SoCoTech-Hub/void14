@@ -4,7 +4,7 @@ import {
 	LocalizationField,
 	NewLocalizationFieldParams,
 	insertLocalizationFieldParams
-} from '@/lib/db/schema/localizationFields'
+} from '@soco/i18n-db/schema/localizationFields'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

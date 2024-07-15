@@ -1,5 +1,5 @@
 'use client'
-import type { CompleteBadge } from '@/lib/db/schema/badges'
+import type { CompleteBadge } from '@soco/badge-db/schema/badges'
 import { trpc } from '@/lib/trpc/client'
 import BadgeModal from './BadgeModal'
 

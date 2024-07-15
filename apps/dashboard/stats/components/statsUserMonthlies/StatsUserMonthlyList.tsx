@@ -1,5 +1,5 @@
 "use client";
-import { CompleteStatsUserMonthly } from "@/lib/db/schema/statsUserMonthlies";
+import { CompleteStatsUserMonthly } from "@soco/stats-db/schema/statsUserMonthlies";
 import { trpc } from "@/lib/trpc/client";
 import StatsUserMonthlyModal from "./StatsUserMonthlyModal";
 

@@ -6,12 +6,12 @@ import {
   createMessageEmailMessage,
   deleteMessageEmailMessage,
   updateMessageEmailMessage,
-} from "@/lib/api/messageEmailMessages/mutations";
+} from "@soco/message-api/messageEmailMessages/mutations";
 import { 
   messageEmailMessageIdSchema,
   insertMessageEmailMessageParams,
   updateMessageEmailMessageParams 
-} from "@/lib/db/schema/messageEmailMessages";
+} from "@soco/message-db/schema/messageEmailMessages";
 
 export async function POST(req: Request) {
   try {

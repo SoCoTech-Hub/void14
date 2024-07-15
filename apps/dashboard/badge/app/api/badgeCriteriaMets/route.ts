@@ -6,12 +6,12 @@ import {
   createBadgeCriteriaMet,
   deleteBadgeCriteriaMet,
   updateBadgeCriteriaMet,
-} from "@/lib/api/badgeCriteriaMets/mutations";
+} from "@soco/badge-api/badgeCriteriaMets/mutations";
 import { 
   badgeCriteriaMetIdSchema,
   insertBadgeCriteriaMetParams,
   updateBadgeCriteriaMetParams 
-} from "@/lib/db/schema/badgeCriteriaMets";
+} from "@soco/badge-db/schema/badgeCriteriaMets";
 
 export async function POST(req: Request) {
   try {

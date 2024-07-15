@@ -1,5 +1,5 @@
 "use client";
-import { CompleteJobApplication } from "@/lib/db/schema/jobApplications";
+import { CompleteJobApplication } from "@soco/application-db/schema/jobApplications";
 import { trpc } from "@/lib/trpc/client";
 import JobApplicationModal from "./JobApplicationModal";
 

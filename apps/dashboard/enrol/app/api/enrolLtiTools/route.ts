@@ -6,12 +6,12 @@ import {
   createEnrolLtiTool,
   deleteEnrolLtiTool,
   updateEnrolLtiTool,
-} from "@/lib/api/enrolLtiTools/mutations";
+} from "@soco/enrol-api/enrolLtiTools/mutations";
 import { 
   enrolLtiToolIdSchema,
   insertEnrolLtiToolParams,
   updateEnrolLtiToolParams 
-} from "@/lib/db/schema/enrolLtiTools";
+} from "@soco/enrol-db/schema/enrolLtiTools";
 
 export async function POST(req: Request) {
   try {

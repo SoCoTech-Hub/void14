@@ -6,12 +6,12 @@ import {
   createRoleAllowView,
   deleteRoleAllowView,
   updateRoleAllowView,
-} from "@/lib/api/roleAllowViews/mutations";
+} from "@soco/role-api/roleAllowViews/mutations";
 import { 
   roleAllowViewIdSchema,
   insertRoleAllowViewParams,
   updateRoleAllowViewParams 
-} from "@/lib/db/schema/roleAllowViews";
+} from "@soco/role-db/schema/roleAllowViews";
 
 export async function POST(req: Request) {
   try {

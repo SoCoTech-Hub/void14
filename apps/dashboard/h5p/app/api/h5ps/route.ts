@@ -6,12 +6,12 @@ import {
   createH5p,
   deleteH5p,
   updateH5p,
-} from "@/lib/api/h5ps/mutations";
+} from "@soco/h5p-api/h5ps/mutations";
 import { 
   h5pIdSchema,
   insertH5pParams,
   updateH5pParams 
-} from "@/lib/db/schema/h5ps";
+} from "@soco/h5p-db/schema/h5ps";
 
 export async function POST(req: Request) {
   try {

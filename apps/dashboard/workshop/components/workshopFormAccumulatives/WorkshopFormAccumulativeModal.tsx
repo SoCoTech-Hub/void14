@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import WorkshopFormAccumulativeForm from "./WorkshopFormAccumulativeForm";
-import { WorkshopFormAccumulative } from "@/lib/db/schema/workshopFormAccumulatives";
+import { WorkshopFormAccumulative } from "@soco/workshop-db/schema/workshopFormAccumulatives";
 
 export default function WorkshopFormAccumulativeModal({ 
   workshopFormAccumulative,

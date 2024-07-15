@@ -6,12 +6,12 @@ import {
   createAssignFeedbackFile,
   deleteAssignFeedbackFile,
   updateAssignFeedbackFile,
-} from "@/lib/api/assignFeedbackFiles/mutations";
+} from "@soco/assignment-api/assignFeedbackFiles/mutations";
 import { 
   assignFeedbackFileIdSchema,
   insertAssignFeedbackFileParams,
   updateAssignFeedbackFileParams 
-} from "@/lib/db/schema/assignFeedbackFiles";
+} from "@soco/assignment-db/schema/assignFeedbackFiles";
 
 export async function POST(req: Request) {
   try {

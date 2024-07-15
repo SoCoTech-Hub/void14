@@ -6,12 +6,12 @@ import {
   createQtypeEssayOption,
   deleteQtypeEssayOption,
   updateQtypeEssayOption,
-} from "@/lib/api/qtypeEssayOptions/mutations";
+} from "@soco/qtype-api/qtypeEssayOptions/mutations";
 import { 
   qtypeEssayOptionIdSchema,
   insertQtypeEssayOptionParams,
   updateQtypeEssayOptionParams 
-} from "@/lib/db/schema/qtypeEssayOptions";
+} from "@soco/qtype-db/schema/qtypeEssayOptions";
 
 export async function POST(req: Request) {
   try {

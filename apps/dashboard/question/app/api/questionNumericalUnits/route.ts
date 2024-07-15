@@ -6,12 +6,12 @@ import {
   createQuestionNumericalUnit,
   deleteQuestionNumericalUnit,
   updateQuestionNumericalUnit,
-} from "@/lib/api/questionNumericalUnits/mutations";
+} from "@soco/question-api/questionNumericalUnits/mutations";
 import { 
   questionNumericalUnitIdSchema,
   insertQuestionNumericalUnitParams,
   updateQuestionNumericalUnitParams 
-} from "@/lib/db/schema/questionNumericalUnits";
+} from "@soco/question-db/schema/questionNumericalUnits";
 
 export async function POST(req: Request) {
   try {

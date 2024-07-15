@@ -1,7 +1,7 @@
 import ZoomLessonList from "@/components/zoomLessons/ZoomLessonList";
 import NewZoomLessonModal from "@/components/zoomLessons/ZoomLessonModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function ZoomLessons() {
   await checkAuth();

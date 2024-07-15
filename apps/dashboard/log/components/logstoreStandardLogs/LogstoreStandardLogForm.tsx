@@ -1,6 +1,6 @@
 "use client";
 
-import { LogstoreStandardLog, NewLogstoreStandardLogParams, insertLogstoreStandardLogParams } from "@/lib/db/schema/logstoreStandardLogs";
+import { LogstoreStandardLog, NewLogstoreStandardLogParams, insertLogstoreStandardLogParams } from "@soco/log-db/schema/logstoreStandardLogs";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

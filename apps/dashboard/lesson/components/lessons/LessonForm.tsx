@@ -22,7 +22,7 @@ import {
   insertLessonParams,
   Lesson,
   NewLessonParams,
-} from "@/lib/db/schema/lessons";
+} from "@soco/lesson-db/schema/lessons";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

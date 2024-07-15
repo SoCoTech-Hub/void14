@@ -1,5 +1,5 @@
 "use client";
-import { CompleteLessonBranch } from "@/lib/db/schema/lessonBranches";
+import { CompleteLessonBranch } from "@soco/lesson-db/schema/lessonBranches";
 import { trpc } from "@/lib/trpc/client";
 import LessonBranchModal from "./LessonBranchModal";
 

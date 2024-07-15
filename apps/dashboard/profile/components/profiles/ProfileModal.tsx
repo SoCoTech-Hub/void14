@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ProfileForm from "./ProfileForm";
-import { Profile } from "@/lib/db/schema/profiles";
+import { Profile } from "@soco/profile-db/schema/profiles";
 
 export default function ProfileModal({ 
   profile,

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteLtiToolProxy } from "@/lib/db/schema/ltiToolProxies";
+import { CompleteLtiToolProxy } from "@soco/lti-db/schema/ltiToolProxies";
 import { trpc } from "@/lib/trpc/client";
 import LtiToolProxyModal from "./LtiToolProxyModal";
 

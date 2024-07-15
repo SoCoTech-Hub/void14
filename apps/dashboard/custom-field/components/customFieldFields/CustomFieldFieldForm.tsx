@@ -1,6 +1,6 @@
 "use client";
 
-import { CustomFieldField, NewCustomFieldFieldParams, insertCustomFieldFieldParams } from "@/lib/db/schema/customFieldFields";
+import { CustomFieldField, NewCustomFieldFieldParams, insertCustomFieldFieldParams } from "@soco/custom-field-db/schema/customFieldFields";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteMessageProcessor } from "@/lib/db/schema/messageProcessors";
+import { CompleteMessageProcessor } from "@soco/message-db/schema/messageProcessors";
 import { trpc } from "@/lib/trpc/client";
 import MessageProcessorModal from "./MessageProcessorModal";
 

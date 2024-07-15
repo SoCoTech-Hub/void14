@@ -4,7 +4,7 @@ import {
 	WorkshopAggregation,
 	NewWorkshopAggregationParams,
 	insertWorkshopAggregationParams
-} from '@/lib/db/schema/workshopAggregations'
+} from '@soco/workshop-db/schema/workshopAggregations'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

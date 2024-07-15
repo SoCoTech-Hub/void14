@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import DataRecordForm from "./DataRecordForm";
-import { DataRecord } from "@/lib/db/schema/dataRecords";
+import { DataRecord } from "@soco/data-db/schema/dataRecords";
 
 export default function DataRecordModal({ 
   dataRecord,

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import SocialEmojiForm from "./SocialEmojiForm";
-import { SocialEmoji } from "@/lib/db/schema/socialEmojis";
+import { SocialEmoji } from "@soco/social-db/schema/socialEmojis";
 
 export default function SocialEmojiModal({ 
   socialEmoji,

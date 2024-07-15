@@ -22,7 +22,7 @@ import {
   Assign,
   insertAssignParams,
   NewAssignParams,
-} from "@/lib/db/schema/assigns";
+} from "@soco/assignment-db/schema/assigns";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

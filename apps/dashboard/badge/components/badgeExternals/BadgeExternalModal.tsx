@@ -10,7 +10,7 @@ import {
 	DialogTrigger
 } from '../ui/dialog'
 import BadgeExternalForm from './BadgeExternalForm'
-import { BadgeExternal } from '@/lib/db/schema/badgeExternals'
+import { BadgeExternal } from '@soco/badge-db/schema/badgeExternals'
 
 export default function BadgeExternalModal({
 	badgeExternal,

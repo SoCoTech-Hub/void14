@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import DigilibCategoryForm from "./DigilibCategoryForm";
-import { DigilibCategory } from "@/lib/db/schema/digilibCategories";
+import { DigilibCategory } from "@soco/digilib-db/schema/digilibCategories";
 
 export default function DigilibCategoryModal({ 
   digilibCategory,

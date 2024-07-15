@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQtypeMatchOption } from "@/lib/db/schema/qtypeMatchOptions";
+import { CompleteQtypeMatchOption } from "@soco/qtype-db/schema/qtypeMatchOptions";
 import { trpc } from "@/lib/trpc/client";
 import QtypeMatchOptionModal from "./QtypeMatchOptionModal";
 

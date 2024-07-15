@@ -1,5 +1,5 @@
 "use client";
-import { CompleteApplicationResponse } from "@/lib/db/schema/applicationResponses";
+import { CompleteApplicationResponse } from "@soco/application-db/schema/applicationResponses";
 import { trpc } from "@/lib/trpc/client";
 import ApplicationResponseModal from "./ApplicationResponseModal";
 

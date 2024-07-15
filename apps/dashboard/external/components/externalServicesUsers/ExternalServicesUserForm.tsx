@@ -21,7 +21,7 @@ import {
   ExternalServicesUser,
   insertExternalServicesUserParams,
   NewExternalServicesUserParams,
-} from "@/lib/db/schema/externalServicesUsers";
+} from "@soco/external-db/schema/externalServicesUsers";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

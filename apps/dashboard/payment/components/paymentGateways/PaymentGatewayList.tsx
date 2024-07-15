@@ -1,5 +1,5 @@
 "use client";
-import { CompletePaymentGateway } from "@/lib/db/schema/paymentGateways";
+import { CompletePaymentGateway } from "@soco/payment-db/schema/paymentGateways";
 import { trpc } from "@/lib/trpc/client";
 import PaymentGatewayModal from "./PaymentGatewayModal";
 

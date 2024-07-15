@@ -1,5 +1,5 @@
 "use client";
-import { CompleteChoice } from "@/lib/db/schema/choices";
+import { CompleteChoice } from "@soco/choice-db/schema/choices";
 import { trpc } from "@/lib/trpc/client";
 import ChoiceModal from "./ChoiceModal";
 

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteFaq } from "@/lib/db/schema/faqs";
+import { CompleteFaq } from "@soco/faq-db/schema/faqs";
 import { trpc } from "@/lib/trpc/client";
 import FaqModal from "./FaqModal";
 

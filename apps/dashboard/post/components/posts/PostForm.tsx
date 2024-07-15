@@ -1,6 +1,6 @@
 "use client";
 
-import { Post, NewPostParams, insertPostParams } from "@/lib/db/schema/posts";
+import { Post, NewPostParams, insertPostParams } from "@soco/post-db/schema/posts";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

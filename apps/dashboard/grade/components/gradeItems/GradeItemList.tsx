@@ -1,5 +1,5 @@
 "use client";
-import { CompleteGradeItem } from "@/lib/db/schema/gradeItems";
+import { CompleteGradeItem } from "@soco/grade-db/schema/gradeItems";
 import { trpc } from "@/lib/trpc/client";
 import GradeItemModal from "./GradeItemModal";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { H5pactivityAttempt, NewH5pactivityAttemptParams, insertH5pactivityAttemptParams } from "@/lib/db/schema/h5pactivityAttempts";
+import { H5pactivityAttempt, NewH5pactivityAttemptParams, insertH5pactivityAttemptParams } from "@soco/h5p-db/schema/h5pactivityAttempts";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

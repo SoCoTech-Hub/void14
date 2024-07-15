@@ -1,5 +1,5 @@
 'use client'
-import { CompleteBadgeManualAward } from '@/lib/db/schema/badgeManualAwards'
+import { CompleteBadgeManualAward } from '@soco/badge-db/schema/badgeManualAwards'
 import { trpc } from '@/lib/trpc/client'
 import BadgeManualAwardModal from './BadgeManualAwardModal'
 

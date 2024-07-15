@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import UserForm from "./UserForm";
-import { User } from "@/lib/db/schema/users";
+import { User } from "@soco/user-db/schema/users";
 
 export default function UserModal({ 
   user,

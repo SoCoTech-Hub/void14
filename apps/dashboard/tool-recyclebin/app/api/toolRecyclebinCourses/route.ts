@@ -6,12 +6,12 @@ import {
   createToolRecyclebinCourse,
   deleteToolRecyclebinCourse,
   updateToolRecyclebinCourse,
-} from "@/lib/api/toolRecyclebinCourses/mutations";
+} from "@soco/tool-recyclebin-api/toolRecyclebinCourses/mutations";
 import { 
   toolRecyclebinCourseIdSchema,
   insertToolRecyclebinCourseParams,
   updateToolRecyclebinCourseParams 
-} from "@/lib/db/schema/toolRecyclebinCourses";
+} from "@soco/tool-recyclebin-db/schema/toolRecyclebinCourses";
 
 export async function POST(req: Request) {
   try {

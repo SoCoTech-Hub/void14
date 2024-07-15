@@ -1,6 +1,6 @@
 "use client";
 
-import { LtiToolProxy, NewLtiToolProxyParams, insertLtiToolProxyParams } from "@/lib/db/schema/ltiToolProxies";
+import { LtiToolProxy, NewLtiToolProxyParams, insertLtiToolProxyParams } from "@soco/lti-db/schema/ltiToolProxies";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

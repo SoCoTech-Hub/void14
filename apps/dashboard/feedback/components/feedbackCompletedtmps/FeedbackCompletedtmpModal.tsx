@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import FeedbackCompletedtmpForm from "./FeedbackCompletedtmpForm";
-import { FeedbackCompletedtmp } from "@/lib/db/schema/feedbackCompletedtmps";
+import { FeedbackCompletedtmp } from "@soco/feedback-db/schema/feedbackCompletedtmps";
 
 export default function FeedbackCompletedtmpModal({ 
   feedbackCompletedtmp,

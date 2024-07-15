@@ -1,6 +1,6 @@
 "use client";
 
-import { JobApplicationsApplicationCategory, NewJobApplicationsApplicationCategoryParams, insertJobApplicationsApplicationCategoryParams } from "@/lib/db/schema/jobApplicationsApplicationCategories";
+import { JobApplicationsApplicationCategory, NewJobApplicationsApplicationCategoryParams, insertJobApplicationsApplicationCategoryParams } from "@soco/application-db/schema/jobApplicationsApplicationCategories";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

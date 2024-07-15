@@ -1,6 +1,6 @@
 "use client";
 
-import { UserInfoField, NewUserInfoFieldParams, insertUserInfoFieldParams } from "@/lib/db/schema/userInfoFields";
+import { UserInfoField, NewUserInfoFieldParams, insertUserInfoFieldParams } from "@soco/user-db/schema/userInfoFields";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

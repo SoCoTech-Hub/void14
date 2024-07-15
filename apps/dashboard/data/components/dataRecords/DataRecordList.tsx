@@ -1,5 +1,5 @@
 "use client";
-import { CompleteDataRecord } from "@/lib/db/schema/dataRecords";
+import { CompleteDataRecord } from "@soco/data-db/schema/dataRecords";
 import { trpc } from "@/lib/trpc/client";
 import DataRecordModal from "./DataRecordModal";
 

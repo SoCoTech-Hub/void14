@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import BursaryResponseForm from "./BursaryResponseForm";
-import { BursaryResponse } from "@/lib/db/schema/bursaryResponses";
+import { BursaryResponse } from "@soco/bursaries-db/schema/bursaryResponses";
 
 export default function BursaryResponseModal({ 
   bursaryResponse,

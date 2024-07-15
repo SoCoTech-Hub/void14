@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import MnetRemoteRpcForm from "./MnetRemoteRpcForm";
-import { MnetRemoteRpc } from "@/lib/db/schema/mnetRemoteRpc";
+import { MnetRemoteRpc } from "@soco/mnet-db/schema/mnetRemoteRpc";
 
 export default function MnetRemoteRpcModal({ 
   mnetRemoteRpc,

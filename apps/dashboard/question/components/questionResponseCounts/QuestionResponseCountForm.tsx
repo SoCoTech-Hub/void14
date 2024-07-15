@@ -1,6 +1,6 @@
 "use client";
 
-import { QuestionResponseCount, NewQuestionResponseCountParams, insertQuestionResponseCountParams } from "@/lib/db/schema/questionResponseCounts";
+import { QuestionResponseCount, NewQuestionResponseCountParams, insertQuestionResponseCountParams } from "@soco/question-db/schema/questionResponseCounts";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

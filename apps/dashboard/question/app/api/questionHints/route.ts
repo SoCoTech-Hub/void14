@@ -6,12 +6,12 @@ import {
   createQuestionHint,
   deleteQuestionHint,
   updateQuestionHint,
-} from "@/lib/api/questionHints/mutations";
+} from "@soco/question-api/questionHints/mutations";
 import { 
   questionHintIdSchema,
   insertQuestionHintParams,
   updateQuestionHintParams 
-} from "@/lib/db/schema/questionHints";
+} from "@soco/question-db/schema/questionHints";
 
 export async function POST(req: Request) {
   try {

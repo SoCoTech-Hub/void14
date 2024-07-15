@@ -6,12 +6,12 @@ import {
   createSocialEmoji,
   deleteSocialEmoji,
   updateSocialEmoji,
-} from "@/lib/api/socialEmojis/mutations";
+} from "@soco/social-api/socialEmojis/mutations";
 import { 
   socialEmojiIdSchema,
   insertSocialEmojiParams,
   updateSocialEmojiParams 
-} from "@/lib/db/schema/socialEmojis";
+} from "@soco/social-db/schema/socialEmojis";
 
 export async function POST(req: Request) {
   try {

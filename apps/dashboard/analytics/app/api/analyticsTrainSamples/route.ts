@@ -6,12 +6,12 @@ import {
   createAnalyticsTrainSample,
   deleteAnalyticsTrainSample,
   updateAnalyticsTrainSample,
-} from "@/lib/api/analyticsTrainSamples/mutations";
+} from "@soco/analytics-api/analyticsTrainSamples/mutations";
 import { 
   analyticsTrainSampleIdSchema,
   insertAnalyticsTrainSampleParams,
   updateAnalyticsTrainSampleParams 
-} from "@/lib/db/schema/analyticsTrainSamples";
+} from "@soco/analytics-db/schema/analyticsTrainSamples";
 
 export async function POST(req: Request) {
   try {

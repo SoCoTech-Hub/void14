@@ -1,5 +1,5 @@
 "use client";
-import { CompleteMessageinboundDatakey } from "@/lib/db/schema/messageinboundDatakeys";
+import { CompleteMessageinboundDatakey } from "@soco/message-db/schema/messageinboundDatakeys";
 import { trpc } from "@/lib/trpc/client";
 import MessageinboundDatakeyModal from "./MessageinboundDatakeyModal";
 

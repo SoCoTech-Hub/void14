@@ -6,12 +6,12 @@ import {
   createForumQueue,
   deleteForumQueue,
   updateForumQueue,
-} from "@/lib/api/forumQueues/mutations";
+} from "@soco/forum-api/forumQueues/mutations";
 import { 
   forumQueueIdSchema,
   insertForumQueueParams,
   updateForumQueueParams 
-} from "@/lib/db/schema/forumQueues";
+} from "@soco/forum-db/schema/forumQueues";
 
 export async function POST(req: Request) {
   try {

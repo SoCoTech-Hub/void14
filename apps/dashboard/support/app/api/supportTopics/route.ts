@@ -6,12 +6,12 @@ import {
   createSupportTopic,
   deleteSupportTopic,
   updateSupportTopic,
-} from "@/lib/api/supportTopics/mutations";
+} from "@soco/support-api/supportTopics/mutations";
 import { 
   supportTopicIdSchema,
   insertSupportTopicParams,
   updateSupportTopicParams 
-} from "@/lib/db/schema/supportTopics";
+} from "@soco/support-db/schema/supportTopics";
 
 export async function POST(req: Request) {
   try {

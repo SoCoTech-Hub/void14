@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ToolDataprivacyCtxExpiredForm from "./ToolDataprivacyCtxExpiredForm";
-import { ToolDataprivacyCtxExpired } from "@/lib/db/schema/toolDataprivacyCtxExpireds";
+import { ToolDataprivacyCtxExpired } from "@soco/tool-data-privacy-db/schema/toolDataprivacyCtxExpireds";
 
 export default function ToolDataprivacyCtxExpiredModal({ 
   toolDataprivacyCtxExpired,

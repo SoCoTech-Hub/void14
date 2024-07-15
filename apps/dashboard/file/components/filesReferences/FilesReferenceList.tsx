@@ -1,5 +1,5 @@
 "use client";
-import { CompleteFilesReference } from "@/lib/db/schema/filesReferences";
+import { CompleteFilesReference } from "@soco/file-db/schema/filesReferences";
 import { trpc } from "@/lib/trpc/client";
 import FilesReferenceModal from "./FilesReferenceModal";
 

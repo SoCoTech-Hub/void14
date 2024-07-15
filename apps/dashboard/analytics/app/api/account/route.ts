@@ -1,7 +1,7 @@
-import { getUserAuth } from "@/lib/auth/utils";
-import { db } from "@/lib/db/index";
-import { users } from "@/lib/db/schema/auth";
-import { eq } from "drizzle-orm";
+import { getUserAuth } from "@soco/auth-service";
+import { db } from "@soco/analytics-db/client";
+import { users } from "@soco/analytics-db/schema/auth";
+import { eq } from "@soco/analytics-db";
 import { revalidatePath } from "next/cache";
 
 export async function PUT(request: Request) {

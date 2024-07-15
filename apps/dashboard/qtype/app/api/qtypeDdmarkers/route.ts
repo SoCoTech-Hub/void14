@@ -6,12 +6,12 @@ import {
   createQtypeDdmarker,
   deleteQtypeDdmarker,
   updateQtypeDdmarker,
-} from "@/lib/api/qtypeDdmarkers/mutations";
+} from "@soco/qtype-api/qtypeDdmarkers/mutations";
 import { 
   qtypeDdmarkerIdSchema,
   insertQtypeDdmarkerParams,
   updateQtypeDdmarkerParams 
-} from "@/lib/db/schema/qtypeDdmarkers";
+} from "@soco/qtype-db/schema/qtypeDdmarkers";
 
 export async function POST(req: Request) {
   try {

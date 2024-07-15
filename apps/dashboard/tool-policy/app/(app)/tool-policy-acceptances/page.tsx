@@ -1,7 +1,7 @@
 import ToolPolicyAcceptanceList from "@/components/toolPolicyAcceptances/ToolPolicyAcceptanceList";
 import NewToolPolicyAcceptanceModal from "@/components/toolPolicyAcceptances/ToolPolicyAcceptanceModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function ToolPolicyAcceptances() {
   await checkAuth();

@@ -1,6 +1,6 @@
 "use client";
 
-import { PortfolioTempdata, NewPortfolioTempdataParams, insertPortfolioTempdataParams } from "@/lib/db/schema/portfolioTempdatas";
+import { PortfolioTempdata, NewPortfolioTempdataParams, insertPortfolioTempdataParams } from "@soco/portfolio-db/schema/portfolioTempdatas";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

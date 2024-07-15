@@ -6,12 +6,12 @@ import {
   createQuizaccessSebTemplate,
   deleteQuizaccessSebTemplate,
   updateQuizaccessSebTemplate,
-} from "@/lib/api/quizaccessSebTemplates/mutations";
+} from "@soco/quizaccess-api/quizaccessSebTemplates/mutations";
 import { 
   quizaccessSebTemplateIdSchema,
   insertQuizaccessSebTemplateParams,
   updateQuizaccessSebTemplateParams 
-} from "@/lib/db/schema/quizaccessSebTemplates";
+} from "@soco/quizaccess-db/schema/quizaccessSebTemplates";
 
 export async function POST(req: Request) {
   try {

@@ -6,12 +6,12 @@ import {
   createWorkshopFormRubricConfig,
   deleteWorkshopFormRubricConfig,
   updateWorkshopFormRubricConfig,
-} from "@/lib/api/workshopFormRubricConfigs/mutations";
+} from "@soco/workshop-api/workshopFormRubricConfigs/mutations";
 import { 
   workshopFormRubricConfigIdSchema,
   insertWorkshopFormRubricConfigParams,
   updateWorkshopFormRubricConfigParams 
-} from "@/lib/db/schema/workshopFormRubricConfigs";
+} from "@soco/workshop-db/schema/workshopFormRubricConfigs";
 
 export async function POST(req: Request) {
   try {

@@ -28,7 +28,7 @@ import {
   insertToolMonitorSubscriptionParams,
   NewToolMonitorSubscriptionParams,
   ToolMonitorSubscription,
-} from "@/lib/db/schema/toolMonitorSubscriptions";
+} from "@soco/tool-monitor-db/schema/toolMonitorSubscriptions";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

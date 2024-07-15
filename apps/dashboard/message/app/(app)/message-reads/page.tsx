@@ -1,7 +1,7 @@
 import MessageReadList from "@/components/messageReads/MessageReadList";
 import NewMessageReadModal from "@/components/messageReads/MessageReadModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function MessageReads() {
   await checkAuth();

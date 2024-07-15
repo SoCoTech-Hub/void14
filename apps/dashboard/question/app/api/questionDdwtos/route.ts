@@ -6,12 +6,12 @@ import {
   createQuestionDdwto,
   deleteQuestionDdwto,
   updateQuestionDdwto,
-} from "@/lib/api/questionDdwtos/mutations";
+} from "@soco/question-api/questionDdwtos/mutations";
 import { 
   questionDdwtoIdSchema,
   insertQuestionDdwtoParams,
   updateQuestionDdwtoParams 
-} from "@/lib/db/schema/questionDdwtos";
+} from "@soco/question-db/schema/questionDdwtos";
 
 export async function POST(req: Request) {
   try {

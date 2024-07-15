@@ -1,6 +1,6 @@
 "use client";
 
-import { PaygwPaypal, NewPaygwPaypalParams, insertPaygwPaypalParams } from "@/lib/db/schema/paygwPaypals";
+import { PaygwPaypal, NewPaygwPaypalParams, insertPaygwPaypalParams } from "@soco/payment-db/schema/paygwPaypals";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

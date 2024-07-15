@@ -6,12 +6,12 @@ import {
   createStatsDaily,
   deleteStatsDaily,
   updateStatsDaily,
-} from "@/lib/api/statsDailies/mutations";
+} from "@soco/stats-api/statsDailies/mutations";
 import { 
   statsDailyIdSchema,
   insertStatsDailyParams,
   updateStatsDailyParams 
-} from "@/lib/db/schema/statsDailies";
+} from "@soco/stats-db/schema/statsDailies";
 
 export async function POST(req: Request) {
   try {

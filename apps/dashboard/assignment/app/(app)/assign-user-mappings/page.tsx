@@ -1,7 +1,7 @@
 import AssignUserMappingList from "@/components/assignUserMappings/AssignUserMappingList";
 import NewAssignUserMappingModal from "@/components/assignUserMappings/AssignUserMappingModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function AssignUserMappings() {
   await checkAuth();

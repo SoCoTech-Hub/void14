@@ -1,5 +1,5 @@
 "use client";
-import { CompleteWorkshopFormNumErrorMap } from "@/lib/db/schema/workshopFormNumErrorMaps";
+import { CompleteWorkshopFormNumErrorMap } from "@soco/workshop-db/schema/workshopFormNumErrorMaps";
 import { trpc } from "@/lib/trpc/client";
 import WorkshopFormNumErrorMapModal from "./WorkshopFormNumErrorMapModal";
 

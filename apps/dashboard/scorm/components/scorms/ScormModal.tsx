@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ScormForm from "./ScormForm";
-import { Scorm } from "@/lib/db/schema/scorms";
+import { Scorm } from "@soco/scorm-db/schema/scorms";
 
 export default function ScormModal({ 
   scorm,

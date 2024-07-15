@@ -1,6 +1,6 @@
 "use client";
 
-import { GlossaryAlias, NewGlossaryAliasParams, insertGlossaryAliasParams } from "@/lib/db/schema/glossaryAliases";
+import { GlossaryAlias, NewGlossaryAliasParams, insertGlossaryAliasParams } from "@soco/glossary-db/schema/glossaryAliases";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

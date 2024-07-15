@@ -6,12 +6,12 @@ import {
   createFeedbackValuetmp,
   deleteFeedbackValuetmp,
   updateFeedbackValuetmp,
-} from "@/lib/api/feedbackValuetmps/mutations";
+} from "@soco/feedback-api/feedbackValuetmps/mutations";
 import { 
   feedbackValuetmpIdSchema,
   insertFeedbackValuetmpParams,
   updateFeedbackValuetmpParams 
-} from "@/lib/db/schema/feedbackValuetmps";
+} from "@soco/feedback-db/schema/feedbackValuetmps";
 
 export async function POST(req: Request) {
   try {

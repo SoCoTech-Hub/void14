@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import WikiForm from "./WikiForm";
-import { Wiki } from "@/lib/db/schema/wikis";
+import { Wiki } from "@soco/wiki-db/schema/wikis";
 
 export default function WikiModal({ 
   wiki,

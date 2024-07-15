@@ -1,6 +1,6 @@
 "use client";
 
-import { MassMailListsRecipient, NewMassMailListsRecipientParams, insertMassMailListsRecipientParams } from "@/lib/db/schema/massMailListsRecipients";
+import { MassMailListsRecipient, NewMassMailListsRecipientParams, insertMassMailListsRecipientParams } from "@soco/mass-mail-db/schema/massMailListsRecipients";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

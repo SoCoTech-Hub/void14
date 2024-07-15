@@ -6,12 +6,12 @@ import {
   createLocalizationField,
   deleteLocalizationField,
   updateLocalizationField,
-} from "@/lib/api/localizationFields/mutations";
+} from "@soco/i18n-api/localizationFields/mutations";
 import { 
   localizationFieldIdSchema,
   insertLocalizationFieldParams,
   updateLocalizationFieldParams 
-} from "@/lib/db/schema/localizationFields";
+} from "@soco/i18n-db/schema/localizationFields";
 
 export async function POST(req: Request) {
   try {

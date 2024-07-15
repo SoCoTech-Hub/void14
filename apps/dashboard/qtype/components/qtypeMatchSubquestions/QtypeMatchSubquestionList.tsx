@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQtypeMatchSubquestion } from "@/lib/db/schema/qtypeMatchSubquestions";
+import { CompleteQtypeMatchSubquestion } from "@soco/qtype-db/schema/qtypeMatchSubquestions";
 import { trpc } from "@/lib/trpc/client";
 import QtypeMatchSubquestionModal from "./QtypeMatchSubquestionModal";
 

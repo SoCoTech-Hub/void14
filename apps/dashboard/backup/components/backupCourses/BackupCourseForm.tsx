@@ -21,7 +21,7 @@ import {
   BackupCourse,
   insertBackupCourseParams,
   NewBackupCourseParams,
-} from "@/lib/db/schema/backupCourses";
+} from "@soco/backup-db/schema/backupCourses";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

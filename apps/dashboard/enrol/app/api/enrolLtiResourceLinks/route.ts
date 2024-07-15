@@ -6,12 +6,12 @@ import {
   createEnrolLtiResourceLink,
   deleteEnrolLtiResourceLink,
   updateEnrolLtiResourceLink,
-} from "@/lib/api/enrolLtiResourceLinks/mutations";
+} from "@soco/enrol-api/enrolLtiResourceLinks/mutations";
 import { 
   enrolLtiResourceLinkIdSchema,
   insertEnrolLtiResourceLinkParams,
   updateEnrolLtiResourceLinkParams 
-} from "@/lib/db/schema/enrolLtiResourceLinks";
+} from "@soco/enrol-db/schema/enrolLtiResourceLinks";
 
 export async function POST(req: Request) {
   try {

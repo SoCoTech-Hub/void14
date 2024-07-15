@@ -1,7 +1,7 @@
 import ForumQueueList from "@/components/forumQueues/ForumQueueList";
 import NewForumQueueModal from "@/components/forumQueues/ForumQueueModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function ForumQueues() {
   await checkAuth();

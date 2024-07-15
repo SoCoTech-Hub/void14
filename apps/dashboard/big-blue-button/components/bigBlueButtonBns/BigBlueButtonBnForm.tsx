@@ -22,7 +22,7 @@ import {
   BigBlueButtonBn,
   insertBigBlueButtonBnParams,
   NewBigBlueButtonBnParams,
-} from "@/lib/db/schema/bigBlueButtonBns";
+} from "@soco/big-blue-button-db/schema/bigBlueButtonBns";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

@@ -1,6 +1,6 @@
 "use client";
 
-import { ForumSubscription, NewForumSubscriptionParams, insertForumSubscriptionParams } from "@/lib/db/schema/forumSubscriptions";
+import { ForumSubscription, NewForumSubscriptionParams, insertForumSubscriptionParams } from "@soco/forum-db/schema/forumSubscriptions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

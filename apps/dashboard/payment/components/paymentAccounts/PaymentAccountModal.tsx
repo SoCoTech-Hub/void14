@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import PaymentAccountForm from "./PaymentAccountForm";
-import { PaymentAccount } from "@/lib/db/schema/paymentAccounts";
+import { PaymentAccount } from "@soco/payment-db/schema/paymentAccounts";
 
 export default function PaymentAccountModal({ 
   paymentAccount,

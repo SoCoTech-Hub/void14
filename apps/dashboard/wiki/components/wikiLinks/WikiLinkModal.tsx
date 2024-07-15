@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import WikiLinkForm from "./WikiLinkForm";
-import { WikiLink } from "@/lib/db/schema/wikiLinks";
+import { WikiLink } from "@soco/wiki-db/schema/wikiLinks";
 
 export default function WikiLinkModal({ 
   wikiLink,

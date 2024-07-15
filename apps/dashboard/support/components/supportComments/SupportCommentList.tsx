@@ -1,5 +1,5 @@
 "use client";
-import { CompleteSupportComment } from "@/lib/db/schema/supportComments";
+import { CompleteSupportComment } from "@soco/support-db/schema/supportComments";
 import { trpc } from "@/lib/trpc/client";
 import SupportCommentModal from "./SupportCommentModal";
 

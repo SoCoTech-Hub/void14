@@ -1,7 +1,7 @@
 import LessonGradeList from "@/components/lessonGrades/LessonGradeList";
 import NewLessonGradeModal from "@/components/lessonGrades/LessonGradeModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function LessonGrades() {
   await checkAuth();

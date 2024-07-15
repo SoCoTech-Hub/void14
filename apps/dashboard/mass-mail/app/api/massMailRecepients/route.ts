@@ -6,12 +6,12 @@ import {
 	createMassMailRecipient,
 	deleteMassMailRecipient,
 	updateMassMailRecipient
-} from '@/lib/api/massMailRecipients/mutations'
+} from '@soco/mass-mail-api/massMailRecipients/mutations'
 import {
 	massMailRecipientIdSchema,
 	insertMassMailRecipientParams,
 	updateMassMailRecipientParams
-} from '@/lib/db/schema/massMailRecipients'
+} from '@soco/mass-mail-db/schema/massMailRecipients'
 
 export async function POST(req: Request) {
 	try {

@@ -1,7 +1,7 @@
 import ThemeComponentStyleList from "@/components/themeComponentStyles/ThemeComponentStyleList";
 import NewThemeComponentStyleModal from "@/components/themeComponentStyles/ThemeComponentStyleModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function ThemeComponentStyles() {
   await checkAuth();

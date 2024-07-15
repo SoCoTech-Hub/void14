@@ -6,12 +6,12 @@ import {
   createCourseCompletionDefault,
   deleteCourseCompletionDefault,
   updateCourseCompletionDefault,
-} from "@/lib/api/courseCompletionDefaults/mutations";
+} from "@soco/course-api/courseCompletionDefaults/mutations";
 import { 
   courseCompletionDefaultIdSchema,
   insertCourseCompletionDefaultParams,
   updateCourseCompletionDefaultParams 
-} from "@/lib/db/schema/courseCompletionDefaults";
+} from "@soco/course-db/schema/courseCompletionDefaults";
 
 export async function POST(req: Request) {
   try {

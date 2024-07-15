@@ -6,12 +6,12 @@ import {
   createRepositoryInstanceConfig,
   deleteRepositoryInstanceConfig,
   updateRepositoryInstanceConfig,
-} from "@/lib/api/repositoryInstanceConfigs/mutations";
+} from "@soco/repository-api/repositoryInstanceConfigs/mutations";
 import { 
   repositoryInstanceConfigIdSchema,
   insertRepositoryInstanceConfigParams,
   updateRepositoryInstanceConfigParams 
-} from "@/lib/db/schema/repositoryInstanceConfigs";
+} from "@soco/repository-db/schema/repositoryInstanceConfigs";
 
 export async function POST(req: Request) {
   try {

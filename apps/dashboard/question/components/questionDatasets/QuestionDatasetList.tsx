@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQuestionDataset } from "@/lib/db/schema/questionDatasets";
+import { CompleteQuestionDataset } from "@soco/question-db/schema/questionDatasets";
 import { trpc } from "@/lib/trpc/client";
 import QuestionDatasetModal from "./QuestionDatasetModal";
 

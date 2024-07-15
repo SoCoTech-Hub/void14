@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ChatMessageForm from "./ChatMessageForm";
-import { ChatMessage } from "@/lib/db/schema/chatMessages";
+import { ChatMessage } from "@soco/chat-db/schema/chatMessages";
 
 export default function ChatMessageModal({ 
   chatMessage,

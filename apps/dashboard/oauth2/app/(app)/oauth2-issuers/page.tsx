@@ -1,7 +1,7 @@
 import Oauth2IssuerList from "@/components/oauth2Issuers/Oauth2IssuerList";
 import NewOauth2IssuerModal from "@/components/oauth2Issuers/Oauth2IssuerModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function Oauth2Issuers() {
   await checkAuth();

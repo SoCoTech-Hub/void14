@@ -1,5 +1,5 @@
 "use client";
-import { CompleteAssignSubmission } from "@/lib/db/schema/assignSubmissions";
+import { CompleteAssignSubmission } from "@soco/assignment-db/schema/assignSubmissions";
 import { trpc } from "@/lib/trpc/client";
 import AssignSubmissionModal from "./AssignSubmissionModal";
 

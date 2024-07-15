@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QuizStatisticForm from "./QuizStatisticForm";
-import { QuizStatistic } from "@/lib/db/schema/quizStatistics";
+import { QuizStatistic } from "@soco/quiz-db/schema/quizStatistics";
 
 export default function QuizStatisticModal({ 
   quizStatistic,

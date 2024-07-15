@@ -6,12 +6,12 @@ import {
   createToolDataprivacyCategory,
   deleteToolDataprivacyCategory,
   updateToolDataprivacyCategory,
-} from "@/lib/api/toolDataprivacyCategories/mutations";
+} from "@soco/tool-data-privacy-api/toolDataprivacyCategories/mutations";
 import { 
   toolDataprivacyCategoryIdSchema,
   insertToolDataprivacyCategoryParams,
   updateToolDataprivacyCategoryParams 
-} from "@/lib/db/schema/toolDataprivacyCategories";
+} from "@soco/tool-data-privacy-db/schema/toolDataprivacyCategories";
 
 export async function POST(req: Request) {
   try {

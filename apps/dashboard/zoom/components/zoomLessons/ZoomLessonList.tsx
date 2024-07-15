@@ -1,5 +1,5 @@
 "use client";
-import { CompleteZoomLesson } from "@/lib/db/schema/zoomLessons";
+import { CompleteZoomLesson } from "@soco/zoom-db/schema/zoomLessons";
 import { trpc } from "@/lib/trpc/client";
 import ZoomLessonModal from "./ZoomLessonModal";
 

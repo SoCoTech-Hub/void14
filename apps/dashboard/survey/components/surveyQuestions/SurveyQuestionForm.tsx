@@ -1,6 +1,6 @@
 "use client";
 
-import { SurveyQuestion, NewSurveyQuestionParams, insertSurveyQuestionParams } from "@/lib/db/schema/surveyQuestions";
+import { SurveyQuestion, NewSurveyQuestionParams, insertSurveyQuestionParams } from "@soco/survey-db/schema/surveyQuestions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

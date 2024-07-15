@@ -6,12 +6,12 @@ import {
   createQtypeMultichoiceOption,
   deleteQtypeMultichoiceOption,
   updateQtypeMultichoiceOption,
-} from "@/lib/api/qtypeMultichoiceOptions/mutations";
+} from "@soco/qtype-api/qtypeMultichoiceOptions/mutations";
 import { 
   qtypeMultichoiceOptionIdSchema,
   insertQtypeMultichoiceOptionParams,
   updateQtypeMultichoiceOptionParams 
-} from "@/lib/db/schema/qtypeMultichoiceOptions";
+} from "@soco/qtype-db/schema/qtypeMultichoiceOptions";
 
 export async function POST(req: Request) {
   try {

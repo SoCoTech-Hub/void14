@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import RatingForm from "./RatingForm";
-import { Rating } from "@/lib/db/schema/ratings";
+import { Rating } from "@soco/rating-db/schema/ratings";
 
 export default function RatingModal({ 
   rating,

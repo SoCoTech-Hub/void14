@@ -6,12 +6,12 @@ import {
   createGradingInstance,
   deleteGradingInstance,
   updateGradingInstance,
-} from "@/lib/api/gradingInstances/mutations";
+} from "@soco/grade-api/gradingInstances/mutations";
 import { 
   gradingInstanceIdSchema,
   insertGradingInstanceParams,
   updateGradingInstanceParams 
-} from "@/lib/db/schema/gradingInstances";
+} from "@soco/grade-db/schema/gradingInstances";
 
 export async function POST(req: Request) {
   try {

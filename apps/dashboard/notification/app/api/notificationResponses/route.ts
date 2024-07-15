@@ -6,12 +6,12 @@ import {
   createNotificationResponse,
   deleteNotificationResponse,
   updateNotificationResponse,
-} from "@/lib/api/notificationResponses/mutations";
+} from "@soco/notification-api/notificationResponses/mutations";
 import { 
   notificationResponseIdSchema,
   insertNotificationResponseParams,
   updateNotificationResponseParams 
-} from "@/lib/db/schema/notificationResponses";
+} from "@soco/notification-db/schema/notificationResponses";
 
 export async function POST(req: Request) {
   try {

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import InfectedFileForm from "./InfectedFileForm";
-import { InfectedFile } from "@/lib/db/schema/infectedFiles";
+import { InfectedFile } from "@soco/file-db/schema/infectedFiles";
 
 export default function InfectedFileModal({ 
   infectedFile,

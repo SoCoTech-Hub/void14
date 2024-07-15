@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import EnrolFlatfileForm from "./EnrolFlatfileForm";
-import { EnrolFlatfile } from "@/lib/db/schema/enrolFlatfiles";
+import { EnrolFlatfile } from "@soco/enrol-db/schema/enrolFlatfiles";
 
 export default function EnrolFlatfileModal({ 
   enrolFlatfile,

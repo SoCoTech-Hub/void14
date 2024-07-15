@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ToolUserToursStepForm from "./ToolUserToursStepForm";
-import { ToolUserToursStep } from "@/lib/db/schema/toolUserToursSteps";
+import { ToolUserToursStep } from "@soco/tool-user-tours-db/schema/toolUserToursSteps";
 
 export default function ToolUserToursStepModal({ 
   toolUserToursStep,

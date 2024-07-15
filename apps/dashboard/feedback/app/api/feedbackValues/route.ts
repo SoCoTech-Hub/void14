@@ -6,12 +6,12 @@ import {
   createFeedbackValue,
   deleteFeedbackValue,
   updateFeedbackValue,
-} from "@/lib/api/feedbackValues/mutations";
+} from "@soco/feedback-api/feedbackValues/mutations";
 import { 
   feedbackValueIdSchema,
   insertFeedbackValueParams,
   updateFeedbackValueParams 
-} from "@/lib/db/schema/feedbackValues";
+} from "@soco/feedback-db/schema/feedbackValues";
 
 export async function POST(req: Request) {
   try {

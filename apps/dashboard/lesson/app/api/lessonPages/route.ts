@@ -6,12 +6,12 @@ import {
   createLessonPage,
   deleteLessonPage,
   updateLessonPage,
-} from "@/lib/api/lessonPages/mutations";
+} from "@soco/lesson-api/lessonPages/mutations";
 import { 
   lessonPageIdSchema,
   insertLessonPageParams,
   updateLessonPageParams 
-} from "@/lib/db/schema/lessonPages";
+} from "@soco/lesson-db/schema/lessonPages";
 
 export async function POST(req: Request) {
   try {

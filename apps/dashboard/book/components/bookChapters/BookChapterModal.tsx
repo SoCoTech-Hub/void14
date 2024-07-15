@@ -10,7 +10,7 @@ import {
 	DialogTrigger
 } from '../ui/dialog'
 import BookChapterForm from './BookChapterForm'
-import type { BookChapter } from '@/lib/db/schema/bookChapters'
+import type { BookChapter } from '@soco/book-db/schema/bookChapters'
 
 export default function BookChapterModal({
 	bookChapter,

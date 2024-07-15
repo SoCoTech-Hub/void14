@@ -4,7 +4,7 @@ import {
 	Organization,
 	NewOrganizationParams,
 	insertOrganizationParams
-} from '@/lib/db/schema/organizations'
+} from '@soco/organization-db/schema/organizations'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

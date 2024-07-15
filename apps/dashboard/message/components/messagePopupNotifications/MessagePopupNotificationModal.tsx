@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import MessagePopupNotificationForm from "./MessagePopupNotificationForm";
-import { MessagePopupNotification } from "@/lib/db/schema/messagePopupNotifications";
+import { MessagePopupNotification } from "@soco/message-db/schema/messagePopupNotifications";
 
 export default function MessagePopupNotificationModal({ 
   messagePopupNotification,

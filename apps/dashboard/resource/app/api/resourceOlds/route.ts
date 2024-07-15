@@ -6,12 +6,12 @@ import {
   createResourceOld,
   deleteResourceOld,
   updateResourceOld,
-} from "@/lib/api/resourceOlds/mutations";
+} from "@soco/resource-api/resourceOlds/mutations";
 import { 
   resourceOldIdSchema,
   insertResourceOldParams,
   updateResourceOldParams 
-} from "@/lib/db/schema/resourceOlds";
+} from "@soco/resource-db/schema/resourceOlds";
 
 export async function POST(req: Request) {
   try {

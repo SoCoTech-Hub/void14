@@ -1,5 +1,5 @@
 "use client";
-import { CompleteUserInfoCategory } from "@/lib/db/schema/userInfoCategories";
+import { CompleteUserInfoCategory } from "@soco/user-db/schema/userInfoCategories";
 import { trpc } from "@/lib/trpc/client";
 import UserInfoCategoryModal from "./UserInfoCategoryModal";
 

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQuestionUsage } from "@/lib/db/schema/questionUsages";
+import { CompleteQuestionUsage } from "@soco/question-db/schema/questionUsages";
 import { trpc } from "@/lib/trpc/client";
 import QuestionUsageModal from "./QuestionUsageModal";
 

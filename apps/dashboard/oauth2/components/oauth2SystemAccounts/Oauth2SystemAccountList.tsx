@@ -1,5 +1,5 @@
 "use client";
-import { CompleteOauth2SystemAccount } from "@/lib/db/schema/oauth2SystemAccounts";
+import { CompleteOauth2SystemAccount } from "@soco/oauth2-db/schema/oauth2SystemAccounts";
 import { trpc } from "@/lib/trpc/client";
 import Oauth2SystemAccountModal from "./Oauth2SystemAccountModal";
 

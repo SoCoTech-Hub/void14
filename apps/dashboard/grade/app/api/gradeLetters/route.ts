@@ -6,12 +6,12 @@ import {
   createGradeLetter,
   deleteGradeLetter,
   updateGradeLetter,
-} from "@/lib/api/gradeLetters/mutations";
+} from "@soco/grade-api/gradeLetters/mutations";
 import { 
   gradeLetterIdSchema,
   insertGradeLetterParams,
   updateGradeLetterParams 
-} from "@/lib/db/schema/gradeLetters";
+} from "@soco/grade-db/schema/gradeLetters";
 
 export async function POST(req: Request) {
   try {

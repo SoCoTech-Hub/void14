@@ -4,7 +4,7 @@ import {
 	WorkshopFormComment,
 	NewWorkshopFormCommentParams,
 	insertWorkshopFormCommentParams
-} from '@/lib/db/schema/workshopFormComments'
+} from '@soco/workshop-db/schema/workshopFormComments'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

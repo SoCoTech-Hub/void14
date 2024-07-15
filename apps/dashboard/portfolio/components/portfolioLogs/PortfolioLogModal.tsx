@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import PortfolioLogForm from "./PortfolioLogForm";
-import { PortfolioLog } from "@/lib/db/schema/portfolioLogs";
+import { PortfolioLog } from "@soco/portfolio-db/schema/portfolioLogs";
 
 export default function PortfolioLogModal({ 
   portfolioLog,

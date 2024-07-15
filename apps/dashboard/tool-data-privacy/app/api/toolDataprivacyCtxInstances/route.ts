@@ -6,12 +6,12 @@ import {
   createToolDataprivacyCtxInstance,
   deleteToolDataprivacyCtxInstance,
   updateToolDataprivacyCtxInstance,
-} from "@/lib/api/toolDataprivacyCtxInstances/mutations";
+} from "@soco/tool-data-privacy-api/toolDataprivacyCtxInstances/mutations";
 import { 
   toolDataprivacyCtxInstanceIdSchema,
   insertToolDataprivacyCtxInstanceParams,
   updateToolDataprivacyCtxInstanceParams 
-} from "@/lib/db/schema/toolDataprivacyCtxInstances";
+} from "@soco/tool-data-privacy-db/schema/toolDataprivacyCtxInstances";
 
 export async function POST(req: Request) {
   try {

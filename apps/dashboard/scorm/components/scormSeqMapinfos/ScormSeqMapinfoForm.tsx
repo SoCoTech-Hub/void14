@@ -4,7 +4,7 @@ import {
 	ScormSeqMapinfo,
 	NewScormSeqMapinfoParams,
 	insertScormSeqMapinfoParams
-} from '@/lib/db/schema/scormSeqMapinfos'
+} from '@soco/scorm-db/schema/scormSeqMapinfos'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

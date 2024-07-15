@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import LessonOverrideForm from "./LessonOverrideForm";
-import { LessonOverride } from "@/lib/db/schema/lessonOverrides";
+import { LessonOverride } from "@soco/lesson-db/schema/lessonOverrides";
 
 export default function LessonOverrideModal({ 
   lessonOverride,

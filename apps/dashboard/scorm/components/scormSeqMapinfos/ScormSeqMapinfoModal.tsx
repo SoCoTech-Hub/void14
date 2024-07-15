@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ScormSeqMapinfoForm from "./ScormSeqMapinfoForm";
-import { ScormSeqMapinfo } from "@/lib/db/schema/scormSeqMapinfos";
+import { ScormSeqMapinfo } from "@soco/scorm-db/schema/scormSeqMapinfos";
 
 export default function ScormSeqMapinfoModal({ 
   scormSeqMapinfo,

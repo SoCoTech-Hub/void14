@@ -6,12 +6,12 @@ import {
   createFilterActive,
   deleteFilterActive,
   updateFilterActive,
-} from "@/lib/api/filterActives/mutations";
+} from "@soco/filter-api/filterActives/mutations";
 import { 
   filterActiveIdSchema,
   insertFilterActiveParams,
   updateFilterActiveParams 
-} from "@/lib/db/schema/filterActives";
+} from "@soco/filter-db/schema/filterActives";
 
 export async function POST(req: Request) {
   try {

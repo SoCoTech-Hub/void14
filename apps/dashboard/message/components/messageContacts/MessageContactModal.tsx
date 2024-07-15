@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import MessageContactForm from "./MessageContactForm";
-import { MessageContact } from "@/lib/db/schema/messageContacts";
+import { MessageContact } from "@soco/message-db/schema/messageContacts";
 
 export default function MessageContactModal({ 
   messageContact,

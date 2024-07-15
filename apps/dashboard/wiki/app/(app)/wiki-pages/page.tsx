@@ -1,7 +1,7 @@
 import WikiPageList from "@/components/wikiPages/WikiPageList";
 import NewWikiPageModal from "@/components/wikiPages/WikiPageModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function WikiPages() {
   await checkAuth();

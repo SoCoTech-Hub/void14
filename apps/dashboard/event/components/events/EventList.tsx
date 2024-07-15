@@ -1,5 +1,5 @@
 "use client";
-import { CompleteEvent } from "@/lib/db/schema/events";
+import { CompleteEvent } from "@soco/event-db/schema/events";
 import { trpc } from "@/lib/trpc/client";
 import EventModal from "./EventModal";
 

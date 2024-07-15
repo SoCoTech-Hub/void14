@@ -6,12 +6,12 @@ import {
   createSubjectCategory,
   deleteSubjectCategory,
   updateSubjectCategory,
-} from "@/lib/api/subjectCategories/mutations";
+} from "@soco/subject-api/subjectCategories/mutations";
 import { 
   subjectCategoryIdSchema,
   insertSubjectCategoryParams,
   updateSubjectCategoryParams 
-} from "@/lib/db/schema/subjectCategories";
+} from "@soco/subject-db/schema/subjectCategories";
 
 export async function POST(req: Request) {
   try {

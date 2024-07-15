@@ -1,5 +1,5 @@
 "use client";
-import { CompleteModule } from "@/lib/db/schema/modules";
+import { CompleteModule } from "@soco/module-db/schema/modules";
 import { trpc } from "@/lib/trpc/client";
 import ModuleModal from "./ModuleModal";
 

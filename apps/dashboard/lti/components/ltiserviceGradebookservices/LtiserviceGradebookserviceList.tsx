@@ -1,5 +1,5 @@
 "use client";
-import { CompleteLtiserviceGradebookservice } from "@/lib/db/schema/ltiserviceGradebookservices";
+import { CompleteLtiserviceGradebookservice } from "@soco/lti-db/schema/ltiserviceGradebookservices";
 import { trpc } from "@/lib/trpc/client";
 import LtiserviceGradebookserviceModal from "./LtiserviceGradebookserviceModal";
 

@@ -6,12 +6,12 @@ import {
   createUserInfoData,
   deleteUserInfoData,
   updateUserInfoData,
-} from "@/lib/api/userInfoDatas/mutations";
+} from "@soco/user-api/userInfoDatas/mutations";
 import { 
   userInfoDataIdSchema,
   insertUserInfoDataParams,
   updateUserInfoDataParams 
-} from "@/lib/db/schema/userInfoDatas";
+} from "@soco/user-db/schema/userInfoDatas";
 
 export async function POST(req: Request) {
   try {

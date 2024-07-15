@@ -1,6 +1,6 @@
 "use client";
 
-import { LtiToolSetting, NewLtiToolSettingParams, insertLtiToolSettingParams } from "@/lib/db/schema/ltiToolSettings";
+import { LtiToolSetting, NewLtiToolSettingParams, insertLtiToolSettingParams } from "@soco/lti-db/schema/ltiToolSettings";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

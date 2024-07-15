@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ScaleForm from "./ScaleForm";
-import { Scale } from "@/lib/db/schema/scales";
+import { Scale } from "@soco/scale-db/schema/scales";
 
 export default function ScaleModal({ 
   scale,

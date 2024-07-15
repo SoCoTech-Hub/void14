@@ -1,5 +1,5 @@
 "use client";
-import { CompleteOauth2Endpoint } from "@/lib/db/schema/oauth2Endpoints";
+import { CompleteOauth2Endpoint } from "@soco/oauth2-db/schema/oauth2Endpoints";
 import { trpc } from "@/lib/trpc/client";
 import Oauth2EndpointModal from "./Oauth2EndpointModal";
 

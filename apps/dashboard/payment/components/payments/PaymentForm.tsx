@@ -1,6 +1,6 @@
 "use client";
 
-import { Payment, NewPaymentParams, insertPaymentParams } from "@/lib/db/schema/payments";
+import { Payment, NewPaymentParams, insertPaymentParams } from "@soco/payment-db/schema/payments";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

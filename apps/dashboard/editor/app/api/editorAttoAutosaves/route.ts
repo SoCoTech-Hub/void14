@@ -6,12 +6,12 @@ import {
   createEditorAttoAutosave,
   deleteEditorAttoAutosave,
   updateEditorAttoAutosave,
-} from "@/lib/api/editorAttoAutosaves/mutations";
+} from "@soco/editor-api/editorAttoAutosaves/mutations";
 import { 
   editorAttoAutosaveIdSchema,
   insertEditorAttoAutosaveParams,
   updateEditorAttoAutosaveParams 
-} from "@/lib/db/schema/editorAttoAutosaves";
+} from "@soco/editor-db/schema/editorAttoAutosaves";
 
 export async function POST(req: Request) {
   try {

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteOauth2RefreshToken } from "@/lib/db/schema/oauth2RefreshTokens";
+import { CompleteOauth2RefreshToken } from "@soco/oauth2-db/schema/oauth2RefreshTokens";
 import { trpc } from "@/lib/trpc/client";
 import Oauth2RefreshTokenModal from "./Oauth2RefreshTokenModal";
 

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteBadgeExternalBackpack } from "@/lib/db/schema/badgeExternalBackpacks";
+import { CompleteBadgeExternalBackpack } from "@soco/badge-db/schema/badgeExternalBackpacks";
 import { trpc } from "@/lib/trpc/client";
 import BadgeExternalBackpackModal from "./BadgeExternalBackpackModal";
 

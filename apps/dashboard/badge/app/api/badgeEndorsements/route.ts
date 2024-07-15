@@ -6,12 +6,12 @@ import {
   createBadgeEndorsement,
   deleteBadgeEndorsement,
   updateBadgeEndorsement,
-} from "@/lib/api/badgeEndorsements/mutations";
+} from "@soco/badge-api/badgeEndorsements/mutations";
 import { 
   badgeEndorsementIdSchema,
   insertBadgeEndorsementParams,
   updateBadgeEndorsementParams 
-} from "@/lib/db/schema/badgeEndorsements";
+} from "@soco/badge-db/schema/badgeEndorsements";
 
 export async function POST(req: Request) {
   try {

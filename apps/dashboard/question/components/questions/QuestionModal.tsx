@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QuestionForm from "./QuestionForm";
-import { Question } from "@/lib/db/schema/questions";
+import { Question } from "@soco/question-db/schema/questions";
 
 export default function QuestionModal({ 
   question,

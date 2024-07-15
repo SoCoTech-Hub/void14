@@ -1,6 +1,6 @@
 "use client";
 
-import { ScaleHistory, NewScaleHistoryParams, insertScaleHistoryParams } from "@/lib/db/schema/scaleHistories";
+import { ScaleHistory, NewScaleHistoryParams, insertScaleHistoryParams } from "@soco/scale-db/schema/scaleHistories";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

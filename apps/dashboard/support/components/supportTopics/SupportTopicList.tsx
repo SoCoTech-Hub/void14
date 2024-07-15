@@ -1,5 +1,5 @@
 "use client";
-import { CompleteSupportTopic } from "@/lib/db/schema/supportTopics";
+import { CompleteSupportTopic } from "@soco/support-db/schema/supportTopics";
 import { trpc } from "@/lib/trpc/client";
 import SupportTopicModal from "./SupportTopicModal";
 

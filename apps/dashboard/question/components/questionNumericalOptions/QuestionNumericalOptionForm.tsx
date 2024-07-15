@@ -1,6 +1,6 @@
 "use client";
 
-import { QuestionNumericalOption, NewQuestionNumericalOptionParams, insertQuestionNumericalOptionParams } from "@/lib/db/schema/questionNumericalOptions";
+import { QuestionNumericalOption, NewQuestionNumericalOptionParams, insertQuestionNumericalOptionParams } from "@soco/question-db/schema/questionNumericalOptions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

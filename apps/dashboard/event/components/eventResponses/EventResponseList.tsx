@@ -1,5 +1,5 @@
 "use client";
-import { CompleteEventResponse } from "@/lib/db/schema/eventResponses";
+import { CompleteEventResponse } from "@soco/event-db/schema/eventResponses";
 import { trpc } from "@/lib/trpc/client";
 import EventResponseModal from "./EventResponseModal";
 

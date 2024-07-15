@@ -1,5 +1,5 @@
 "use client";
-import { CompleteEnrolLtiLti2ShareKey } from "@/lib/db/schema/enrolLtiLti2ShareKeys";
+import { CompleteEnrolLtiLti2ShareKey } from "@soco/enrol-db/schema/enrolLtiLti2ShareKeys";
 import { trpc } from "@/lib/trpc/client";
 import EnrolLtiLti2ShareKeyModal from "./EnrolLtiLti2ShareKeyModal";
 

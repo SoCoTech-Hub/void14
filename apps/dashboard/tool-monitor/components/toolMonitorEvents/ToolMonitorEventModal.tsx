@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ToolMonitorEventForm from "./ToolMonitorEventForm";
-import { ToolMonitorEvent } from "@/lib/db/schema/toolMonitorEvents";
+import { ToolMonitorEvent } from "@soco/tool-monitor-db/schema/toolMonitorEvents";
 
 export default function ToolMonitorEventModal({ 
   toolMonitorEvent,

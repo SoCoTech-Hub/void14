@@ -4,7 +4,7 @@ import {
 	BursaryCategory,
 	NewBursaryCategoryParams,
 	insertBursaryCategoryParams
-} from '@/lib/db/schema/bursaryCategories'
+} from '@soco/bursaries-db/schema/bursaryCategories'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

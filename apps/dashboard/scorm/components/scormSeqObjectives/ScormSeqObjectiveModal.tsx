@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ScormSeqObjectiveForm from "./ScormSeqObjectiveForm";
-import { ScormSeqObjective } from "@/lib/db/schema/scormSeqObjectives";
+import { ScormSeqObjective } from "@soco/scorm-db/schema/scormSeqObjectives";
 
 export default function ScormSeqObjectiveModal({ 
   scormSeqObjective,

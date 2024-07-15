@@ -6,12 +6,12 @@ import {
 	createQuestionAnswer,
 	deleteQuestionAnswer,
 	updateQuestionAnswer
-} from '@/lib/api/questionAnswers/mutations'
+} from '@soco/question-api/questionAnswers/mutations'
 import {
 	questionAnswerIdSchema,
 	insertQuestionAnswerParams,
 	updateQuestionAnswerParams
-} from '@/lib/db/schema/questionAnswers'
+} from '@soco/question-db/schema/questionAnswers'
 
 export async function POST(req: Request) {
 	try {

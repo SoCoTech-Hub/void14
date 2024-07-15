@@ -1,6 +1,6 @@
 "use client";
 
-import { GradeCategory, NewGradeCategoryParams, insertGradeCategoryParams } from "@/lib/db/schema/gradeCategories";
+import { GradeCategory, NewGradeCategoryParams, insertGradeCategoryParams } from "@soco/grade-db/schema/gradeCategories";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

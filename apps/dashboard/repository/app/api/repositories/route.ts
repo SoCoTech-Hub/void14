@@ -6,12 +6,12 @@ import {
   createRepository,
   deleteRepository,
   updateRepository,
-} from "@/lib/api/repositories/mutations";
+} from "@soco/repository-api/repositories/mutations";
 import { 
   repositoryIdSchema,
   insertRepositoryParams,
   updateRepositoryParams 
-} from "@/lib/db/schema/repositories";
+} from "@soco/repository-db/schema/repositories";
 
 export async function POST(req: Request) {
   try {

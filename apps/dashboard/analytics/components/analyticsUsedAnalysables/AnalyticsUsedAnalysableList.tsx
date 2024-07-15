@@ -1,5 +1,5 @@
 "use client";
-import { CompleteAnalyticsUsedAnalysable } from "@/lib/db/schema/analyticsUsedAnalysables";
+import { CompleteAnalyticsUsedAnalysable } from "@soco/analytics-db/schema/analyticsUsedAnalysables";
 import { trpc } from "@/lib/trpc/client";
 import AnalyticsUsedAnalysableModal from "./AnalyticsUsedAnalysableModal";
 

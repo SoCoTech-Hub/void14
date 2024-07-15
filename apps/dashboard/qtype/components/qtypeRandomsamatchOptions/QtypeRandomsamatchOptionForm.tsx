@@ -1,6 +1,6 @@
 "use client";
 
-import { QtypeRandomsamatchOption, NewQtypeRandomsamatchOptionParams, insertQtypeRandomsamatchOptionParams } from "@/lib/db/schema/qtypeRandomsamatchOptions";
+import { QtypeRandomsamatchOption, NewQtypeRandomsamatchOptionParams, insertQtypeRandomsamatchOptionParams } from "@soco/qtype-db/schema/qtypeRandomsamatchOptions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

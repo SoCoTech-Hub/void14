@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import LtiAccessTokenForm from "./LtiAccessTokenForm";
-import { LtiAccessToken } from "@/lib/db/schema/ltiAccessTokens";
+import { LtiAccessToken } from "@soco/lti-db/schema/ltiAccessTokens";
 
 export default function LtiAccessTokenModal({ 
   ltiAccessToken,

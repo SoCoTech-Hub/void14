@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import OrganizationForm from "./OrganizationForm";
-import { Organization } from "@/lib/db/schema/organizations";
+import { Organization } from "@soco/organization-db/schema/organizations";
 
 export default function OrganizationModal({ 
   organization,

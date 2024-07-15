@@ -1,5 +1,5 @@
 "use client";
-import { CompleteCompetencyPlanComp } from "@/lib/db/schema/competencyPlanComps";
+import { CompleteCompetencyPlanComp } from "@soco/competency-db/schema/competencyPlanComps";
 import { trpc } from "@/lib/trpc/client";
 import CompetencyPlanCompModal from "./CompetencyPlanCompModal";
 

@@ -6,12 +6,12 @@ import {
   createToolCohortRole,
   deleteToolCohortRole,
   updateToolCohortRole,
-} from "@/lib/api/toolCohortRoles/mutations";
+} from "@soco/tool-brickfield-api/toolCohortRoles/mutations";
 import { 
   toolCohortRoleIdSchema,
   insertToolCohortRoleParams,
   updateToolCohortRoleParams 
-} from "@/lib/db/schema/toolCohortRoles";
+} from "@soco/tool-brickfield-db/schema/toolCohortRoles";
 
 export async function POST(req: Request) {
   try {

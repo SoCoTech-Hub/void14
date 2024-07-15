@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import GradeOutcomeForm from "./GradeOutcomeForm";
-import { GradeOutcome } from "@/lib/db/schema/gradeOutcomes";
+import { GradeOutcome } from "@soco/grade-db/schema/gradeOutcomes";
 
 export default function GradeOutcomeModal({ 
   gradeOutcome,

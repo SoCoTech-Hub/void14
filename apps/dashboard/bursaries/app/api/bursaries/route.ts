@@ -6,12 +6,12 @@ import {
   createBursary,
   deleteBursary,
   updateBursary,
-} from "@/lib/api/bursaries/mutations";
+} from "@soco/bursaries-api/bursaries/mutations";
 import { 
   bursaryIdSchema,
   insertBursaryParams,
   updateBursaryParams 
-} from "@/lib/db/schema/bursaries";
+} from "@soco/bursaries-db/schema/bursaries";
 
 export async function POST(req: Request) {
   try {

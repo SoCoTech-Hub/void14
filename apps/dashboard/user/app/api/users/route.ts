@@ -6,12 +6,12 @@ import {
   createUser,
   deleteUser,
   updateUser,
-} from "@/lib/api/users/mutations";
+} from "@soco/user-api/users/mutations";
 import { 
   userIdSchema,
   insertUserParams,
   updateUserParams 
-} from "@/lib/db/schema/users";
+} from "@soco/user-db/schema/users";
 
 export async function POST(req: Request) {
   try {

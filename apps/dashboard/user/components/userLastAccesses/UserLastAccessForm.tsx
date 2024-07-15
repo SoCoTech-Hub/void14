@@ -4,7 +4,7 @@ import {
 	UserLastAccess,
 	NewUserLastAccessParams,
 	insertUserLastAccessParams
-} from '@/lib/db/schema/userLastAccesses'
+} from '@soco/user-db/schema/userLastAccesses'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

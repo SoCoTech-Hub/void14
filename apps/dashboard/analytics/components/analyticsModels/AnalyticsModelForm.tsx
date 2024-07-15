@@ -4,7 +4,7 @@ import {
 	AnalyticsModel,
 	NewAnalyticsModelParams,
 	insertAnalyticsModelParams
-} from '@/lib/db/schema/analyticsModels'
+} from '@soco/analytics-db/schema/analyticsModels'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

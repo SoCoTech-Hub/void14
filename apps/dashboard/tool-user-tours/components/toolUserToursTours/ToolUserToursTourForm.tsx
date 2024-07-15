@@ -1,6 +1,6 @@
 "use client";
 
-import { ToolUserToursTour, NewToolUserToursTourParams, insertToolUserToursTourParams } from "@/lib/db/schema/toolUserToursTours";
+import { ToolUserToursTour, NewToolUserToursTourParams, insertToolUserToursTourParams } from "@soco/tool-user-tours-db/schema/toolUserToursTours";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

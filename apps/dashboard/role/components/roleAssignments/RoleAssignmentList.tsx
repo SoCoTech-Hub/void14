@@ -1,5 +1,5 @@
 "use client";
-import { CompleteRoleAssignment } from "@/lib/db/schema/roleAssignments";
+import { CompleteRoleAssignment } from "@soco/role-db/schema/roleAssignments";
 import { trpc } from "@/lib/trpc/client";
 import RoleAssignmentModal from "./RoleAssignmentModal";
 

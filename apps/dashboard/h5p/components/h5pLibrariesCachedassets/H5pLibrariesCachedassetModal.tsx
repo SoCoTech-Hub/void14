@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import H5pLibrariesCachedassetForm from "./H5pLibrariesCachedassetForm";
-import { H5pLibrariesCachedasset } from "@/lib/db/schema/h5pLibrariesCachedassets";
+import { H5pLibrariesCachedasset } from "@soco/h5p-db/schema/h5pLibrariesCachedassets";
 
 export default function H5pLibrariesCachedassetModal({ 
   h5pLibrariesCachedasset,

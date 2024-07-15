@@ -6,12 +6,12 @@ import {
   createScale,
   deleteScale,
   updateScale,
-} from "@/lib/api/scales/mutations";
+} from "@soco/scale-api/scales/mutations";
 import { 
   scaleIdSchema,
   insertScaleParams,
   updateScaleParams 
-} from "@/lib/db/schema/scales";
+} from "@soco/scale-db/schema/scales";
 
 export async function POST(req: Request) {
   try {

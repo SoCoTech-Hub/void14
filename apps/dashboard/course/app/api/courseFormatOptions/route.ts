@@ -6,12 +6,12 @@ import {
   createCourseFormatOption,
   deleteCourseFormatOption,
   updateCourseFormatOption,
-} from "@/lib/api/courseFormatOptions/mutations";
+} from "@soco/course-api/courseFormatOptions/mutations";
 import { 
   courseFormatOptionIdSchema,
   insertCourseFormatOptionParams,
   updateCourseFormatOptionParams 
-} from "@/lib/db/schema/courseFormatOptions";
+} from "@soco/course-db/schema/courseFormatOptions";
 
 export async function POST(req: Request) {
   try {

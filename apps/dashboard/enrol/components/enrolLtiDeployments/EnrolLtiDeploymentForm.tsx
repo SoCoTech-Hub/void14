@@ -1,6 +1,6 @@
 "use client";
 
-import { EnrolLtiDeployment, NewEnrolLtiDeploymentParams, insertEnrolLtiDeploymentParams } from "@/lib/db/schema/enrolLtiDeployments";
+import { EnrolLtiDeployment, NewEnrolLtiDeploymentParams, insertEnrolLtiDeploymentParams } from "@soco/enrol-db/schema/enrolLtiDeployments";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

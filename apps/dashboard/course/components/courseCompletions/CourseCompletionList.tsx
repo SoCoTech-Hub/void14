@@ -1,5 +1,5 @@
 "use client";
-import { CompleteCourseCompletion } from "@/lib/db/schema/courseCompletions";
+import { CompleteCourseCompletion } from "@soco/course-db/schema/courseCompletions";
 import { trpc } from "@/lib/trpc/client";
 import CourseCompletionModal from "./CourseCompletionModal";
 

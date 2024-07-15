@@ -1,6 +1,6 @@
 "use client";
 
-import { Resource, NewResourceParams, insertResourceParams } from "@/lib/db/schema/resources";
+import { Resource, NewResourceParams, insertResourceParams } from "@soco/resource-db/schema/resources";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

@@ -22,7 +22,7 @@ import {
   insertModuleParams,
   Module,
   NewModuleParams,
-} from "@/lib/db/schema/modules";
+} from "@soco/module-db/schema/modules";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

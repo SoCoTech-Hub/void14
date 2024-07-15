@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import LocalizationLanguageForm from "./LocalizationLanguageForm";
-import { LocalizationLanguage } from "@/lib/db/schema/localizationLanguages";
+import { LocalizationLanguage } from "@soco/i18n-db/schema/localizationLanguages";
 
 export default function LocalizationLanguageModal({ 
   localizationLanguage,

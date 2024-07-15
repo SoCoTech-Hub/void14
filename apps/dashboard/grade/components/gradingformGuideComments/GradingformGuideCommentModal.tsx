@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import GradingformGuideCommentForm from "./GradingformGuideCommentForm";
-import { GradingformGuideComment } from "@/lib/db/schema/gradingformGuideComments";
+import { GradingformGuideComment } from "@soco/grade-db/schema/gradingformGuideComments";
 
 export default function GradingformGuideCommentModal({ 
   gradingformGuideComment,

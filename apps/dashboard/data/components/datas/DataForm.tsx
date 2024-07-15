@@ -1,6 +1,6 @@
 "use client";
 
-import { Data, NewDataParams, insertDataParams } from "@/lib/db/schema/datas";
+import { Data, NewDataParams, insertDataParams } from "@soco/data-db/schema/datas";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

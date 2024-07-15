@@ -1,5 +1,5 @@
 "use client";
-import { CompleteProvinceOrganization } from "@/lib/db/schema/provinceOrganizations";
+import { CompleteProvinceOrganization } from "@soco/geolocalize-db/schema/provinceOrganizations";
 import { trpc } from "@/lib/trpc/client";
 import ProvinceOrganizationModal from "./ProvinceOrganizationModal";
 

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteEnrolLtiLti2Consumer } from "@/lib/db/schema/enrolLtiLti2Consumers";
+import { CompleteEnrolLtiLti2Consumer } from "@soco/enrol-db/schema/enrolLtiLti2Consumers";
 import { trpc } from "@/lib/trpc/client";
 import EnrolLtiLti2ConsumerModal from "./EnrolLtiLti2ConsumerModal";
 

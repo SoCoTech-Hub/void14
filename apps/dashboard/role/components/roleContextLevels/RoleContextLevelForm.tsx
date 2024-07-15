@@ -1,6 +1,6 @@
 "use client";
 
-import { RoleContextLevel, NewRoleContextLevelParams, insertRoleContextLevelParams } from "@/lib/db/schema/roleContextLevels";
+import { RoleContextLevel, NewRoleContextLevelParams, insertRoleContextLevelParams } from "@soco/role-db/schema/roleContextLevels";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

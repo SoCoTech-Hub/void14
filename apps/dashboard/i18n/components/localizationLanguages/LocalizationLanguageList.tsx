@@ -1,5 +1,5 @@
 "use client";
-import { CompleteLocalizationLanguage } from "@/lib/db/schema/localizationLanguages";
+import { CompleteLocalizationLanguage } from "@soco/i18n-db/schema/localizationLanguages";
 import { trpc } from "@/lib/trpc/client";
 import LocalizationLanguageModal from "./LocalizationLanguageModal";
 

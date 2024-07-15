@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import RepositoryOnedriveAccessForm from "./RepositoryOnedriveAccessForm";
-import { RepositoryOnedriveAccess } from "@/lib/db/schema/repositoryOnedriveAccesses";
+import { RepositoryOnedriveAccess } from "@soco/repository-db/schema/repositoryOnedriveAccesses";
 
 export default function RepositoryOnedriveAccessModal({ 
   repositoryOnedriveAccess,

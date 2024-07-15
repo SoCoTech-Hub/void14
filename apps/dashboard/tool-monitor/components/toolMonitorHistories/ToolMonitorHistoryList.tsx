@@ -1,5 +1,5 @@
 "use client";
-import { CompleteToolMonitorHistory } from "@/lib/db/schema/toolMonitorHistories";
+import { CompleteToolMonitorHistory } from "@soco/tool-monitor-db/schema/toolMonitorHistories";
 import { trpc } from "@/lib/trpc/client";
 import ToolMonitorHistoryModal from "./ToolMonitorHistoryModal";
 

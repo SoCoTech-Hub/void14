@@ -1,5 +1,5 @@
 "use client";
-import { CompleteAssignmentUpgrade } from "@/lib/db/schema/assignmentUpgrades";
+import { CompleteAssignmentUpgrade } from "@soco/assignment-db/schema/assignmentUpgrades";
 import { trpc } from "@/lib/trpc/client";
 import AssignmentUpgradeModal from "./AssignmentUpgradeModal";
 

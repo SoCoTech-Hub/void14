@@ -1,7 +1,7 @@
 import ProfileList from "@/components/profiles/ProfileList";
 import NewProfileModal from "@/components/profiles/ProfileModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function Profiles() {
   await checkAuth();

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import AssignFeedbackEditpdfRotForm from "./AssignFeedbackEditpdfRotForm";
-import { AssignFeedbackEditpdfRot } from "@/lib/db/schema/assignFeedbackEditpdfRots";
+import { AssignFeedbackEditpdfRot } from "@soco/assignment-db/schema/assignFeedbackEditpdfRots";
 
 export default function AssignFeedbackEditpdfRotModal({ 
   assignFeedbackEditpdfRot,

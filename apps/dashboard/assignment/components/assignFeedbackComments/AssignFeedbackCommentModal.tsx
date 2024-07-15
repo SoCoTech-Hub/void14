@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import AssignFeedbackCommentForm from "./AssignFeedbackCommentForm";
-import { AssignFeedbackComment } from "@/lib/db/schema/assignFeedbackComments";
+import { AssignFeedbackComment } from "@soco/assignment-db/schema/assignFeedbackComments";
 
 export default function AssignFeedbackCommentModal({ 
   assignFeedbackComment,

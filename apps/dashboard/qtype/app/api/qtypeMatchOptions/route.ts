@@ -6,12 +6,12 @@ import {
   createQtypeMatchOption,
   deleteQtypeMatchOption,
   updateQtypeMatchOption,
-} from "@/lib/api/qtypeMatchOptions/mutations";
+} from "@soco/qtype-api/qtypeMatchOptions/mutations";
 import { 
   qtypeMatchOptionIdSchema,
   insertQtypeMatchOptionParams,
   updateQtypeMatchOptionParams 
-} from "@/lib/db/schema/qtypeMatchOptions";
+} from "@soco/qtype-db/schema/qtypeMatchOptions";
 
 export async function POST(req: Request) {
   try {

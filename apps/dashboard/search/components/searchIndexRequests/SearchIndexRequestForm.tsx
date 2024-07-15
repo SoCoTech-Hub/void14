@@ -21,7 +21,7 @@ import {
   insertSearchIndexRequestParams,
   NewSearchIndexRequestParams,
   SearchIndexRequest,
-} from "@/lib/db/schema/searchIndexRequests";
+} from "@soco/search-db/schema/searchIndexRequests";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

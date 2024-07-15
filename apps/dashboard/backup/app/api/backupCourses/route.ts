@@ -6,12 +6,12 @@ import {
   createBackupCourse,
   deleteBackupCourse,
   updateBackupCourse,
-} from "@/lib/api/backupCourses/mutations";
+} from "@soco/backup-api/backupCourses/mutations";
 import { 
   backupCourseIdSchema,
   insertBackupCourseParams,
   updateBackupCourseParams 
-} from "@/lib/db/schema/backupCourses";
+} from "@soco/backup-db/schema/backupCourses";
 
 export async function POST(req: Request) {
   try {

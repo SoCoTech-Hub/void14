@@ -1,6 +1,6 @@
 "use client";
 
-import { TagArea, NewTagAreaParams, insertTagAreaParams } from "@/lib/db/schema/tagAreas";
+import { TagArea, NewTagAreaParams, insertTagAreaParams } from "@soco/tag-db/schema/tagAreas";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

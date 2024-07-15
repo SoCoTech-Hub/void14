@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import RoleAllowSwitchForm from "./RoleAllowSwitchForm";
-import { RoleAllowSwitch } from "@/lib/db/schema/roleAllowSwitches";
+import { RoleAllowSwitch } from "@soco/role-db/schema/roleAllowSwitches";
 
 export default function RoleAllowSwitchModal({ 
   roleAllowSwitch,

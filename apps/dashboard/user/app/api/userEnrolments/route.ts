@@ -6,12 +6,12 @@ import {
   createUserEnrolment,
   deleteUserEnrolment,
   updateUserEnrolment,
-} from "@/lib/api/userEnrolments/mutations";
+} from "@soco/user-api/userEnrolments/mutations";
 import { 
   userEnrolmentIdSchema,
   insertUserEnrolmentParams,
   updateUserEnrolmentParams 
-} from "@/lib/db/schema/userEnrolments";
+} from "@soco/user-db/schema/userEnrolments";
 
 export async function POST(req: Request) {
   try {

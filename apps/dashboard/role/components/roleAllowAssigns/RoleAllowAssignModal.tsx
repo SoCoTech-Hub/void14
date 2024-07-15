@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import RoleAllowAssignForm from "./RoleAllowAssignForm";
-import { RoleAllowAssign } from "@/lib/db/schema/roleAllowAssigns";
+import { RoleAllowAssign } from "@soco/role-db/schema/roleAllowAssigns";
 
 export default function RoleAllowAssignModal({ 
   roleAllowAssign,

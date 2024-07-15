@@ -6,12 +6,12 @@ import {
   createDataRecord,
   deleteDataRecord,
   updateDataRecord,
-} from "@/lib/api/dataRecords/mutations";
+} from "@soco/data-api/dataRecords/mutations";
 import { 
   dataRecordIdSchema,
   insertDataRecordParams,
   updateDataRecordParams 
-} from "@/lib/db/schema/dataRecords";
+} from "@soco/data-db/schema/dataRecords";
 
 export async function POST(req: Request) {
   try {

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import GroupForm from "./GroupForm";
-import { Group } from "@/lib/db/schema/groups";
+import { Group } from "@soco/group-db/schema/groups";
 
 export default function GroupModal({ 
   group,

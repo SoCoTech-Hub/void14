@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import AssignGradeForm from "./AssignGradeForm";
-import { AssignGrade } from "@/lib/db/schema/assignGrades";
+import { AssignGrade } from "@soco/assignment-db/schema/assignGrades";
 
 export default function AssignGradeModal({ 
   assignGrade,

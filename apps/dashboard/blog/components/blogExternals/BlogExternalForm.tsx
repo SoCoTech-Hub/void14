@@ -4,7 +4,7 @@ import {
 	BlogExternal,
 	NewBlogExternalParams,
 	insertBlogExternalParams
-} from '@/lib/db/schema/blogExternals'
+} from '@soco/blog-db/schema/blogExternals'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

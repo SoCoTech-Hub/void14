@@ -1,5 +1,5 @@
 "use client";
-import { CompleteH5pLibrariesCachedasset } from "@/lib/db/schema/h5pLibrariesCachedassets";
+import { CompleteH5pLibrariesCachedasset } from "@soco/h5p-db/schema/h5pLibrariesCachedassets";
 import { trpc } from "@/lib/trpc/client";
 import H5pLibrariesCachedassetModal from "./H5pLibrariesCachedassetModal";
 

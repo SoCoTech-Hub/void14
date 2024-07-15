@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import AnalyticsTrainSampleForm from "./AnalyticsTrainSampleForm";
-import { AnalyticsTrainSample } from "@/lib/db/schema/analyticsTrainSamples";
+import { AnalyticsTrainSample } from "@soco/analytics-db/schema/analyticsTrainSamples";
 
 export default function AnalyticsTrainSampleModal({ 
   analyticsTrainSample,

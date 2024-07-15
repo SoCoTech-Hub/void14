@@ -1,7 +1,7 @@
 import LtiSubmissionList from "@/components/ltiSubmissions/LtiSubmissionList";
 import NewLtiSubmissionModal from "@/components/ltiSubmissions/LtiSubmissionModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function LtiSubmissions() {
   await checkAuth();

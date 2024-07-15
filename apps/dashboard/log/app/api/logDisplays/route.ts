@@ -6,12 +6,12 @@ import {
   createLogDisplay,
   deleteLogDisplay,
   updateLogDisplay,
-} from "@/lib/api/logDisplays/mutations";
+} from "@soco/log-api/logDisplays/mutations";
 import { 
   logDisplayIdSchema,
   insertLogDisplayParams,
   updateLogDisplayParams 
-} from "@/lib/db/schema/logDisplays";
+} from "@soco/log-db/schema/logDisplays";
 
 export async function POST(req: Request) {
   try {

@@ -1,7 +1,7 @@
 import AnalyticsModelList from "@/components/analyticsModels/AnalyticsModelList";
 import NewAnalyticsModelModal from "@/components/analyticsModels/AnalyticsModelModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function AnalyticsModels() {
   await checkAuth();

@@ -1,6 +1,6 @@
 "use client";
 
-import { File, NewFileParams, insertFileParams } from "@/lib/db/schema/files";
+import { File, NewFileParams, insertFileParams } from "@soco/file-db/schema/files";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

@@ -6,12 +6,12 @@ import {
   createStatsMonthly,
   deleteStatsMonthly,
   updateStatsMonthly,
-} from "@/lib/api/statsMonthlies/mutations";
+} from "@soco/stats-api/statsMonthlies/mutations";
 import { 
   statsMonthlyIdSchema,
   insertStatsMonthlyParams,
   updateStatsMonthlyParams 
-} from "@/lib/db/schema/statsMonthlies";
+} from "@soco/stats-db/schema/statsMonthlies";
 
 export async function POST(req: Request) {
   try {

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import GradeImportNewitemForm from "./GradeImportNewitemForm";
-import { GradeImportNewitem } from "@/lib/db/schema/gradeImportNewitems";
+import { GradeImportNewitem } from "@soco/grade-db/schema/gradeImportNewitems";
 
 export default function GradeImportNewitemModal({ 
   gradeImportNewitem,

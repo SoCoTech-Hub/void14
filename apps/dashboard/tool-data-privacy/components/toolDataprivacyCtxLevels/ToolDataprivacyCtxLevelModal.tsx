@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ToolDataprivacyCtxLevelForm from "./ToolDataprivacyCtxLevelForm";
-import { ToolDataprivacyCtxLevel } from "@/lib/db/schema/toolDataprivacyCtxLevels";
+import { ToolDataprivacyCtxLevel } from "@soco/tool-data-privacy-db/schema/toolDataprivacyCtxLevels";
 
 export default function ToolDataprivacyCtxLevelModal({ 
   toolDataprivacyCtxLevel,

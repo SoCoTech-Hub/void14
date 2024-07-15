@@ -6,12 +6,12 @@ import {
   createToolPolicyAcceptance,
   deleteToolPolicyAcceptance,
   updateToolPolicyAcceptance,
-} from "@/lib/api/toolPolicyAcceptances/mutations";
+} from "@soco/tool-policy-api/toolPolicyAcceptances/mutations";
 import { 
   toolPolicyAcceptanceIdSchema,
   insertToolPolicyAcceptanceParams,
   updateToolPolicyAcceptanceParams 
-} from "@/lib/db/schema/toolPolicyAcceptances";
+} from "@soco/tool-policy-db/schema/toolPolicyAcceptances";
 
 export async function POST(req: Request) {
   try {

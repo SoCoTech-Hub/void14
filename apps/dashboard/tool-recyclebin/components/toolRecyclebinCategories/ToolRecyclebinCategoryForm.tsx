@@ -4,7 +4,7 @@ import {
 	ToolRecyclebinCategory,
 	NewToolRecyclebinCategoryParams,
 	insertToolRecyclebinCategoryParams
-} from '@/lib/db/schema/toolRecyclebinCategories'
+} from '@soco/tool-recyclebin-db/schema/toolRecyclebinCategories'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

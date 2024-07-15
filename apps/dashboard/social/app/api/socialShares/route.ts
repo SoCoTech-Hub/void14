@@ -6,12 +6,12 @@ import {
   createSocialShare,
   deleteSocialShare,
   updateSocialShare,
-} from "@/lib/api/socialShares/mutations";
+} from "@soco/social-api/socialShares/mutations";
 import { 
   socialShareIdSchema,
   insertSocialShareParams,
   updateSocialShareParams 
-} from "@/lib/db/schema/socialShares";
+} from "@soco/social-db/schema/socialShares";
 
 export async function POST(req: Request) {
   try {

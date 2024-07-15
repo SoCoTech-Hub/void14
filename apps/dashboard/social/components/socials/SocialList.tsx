@@ -1,5 +1,5 @@
 "use client";
-import { CompleteSocial } from "@/lib/db/schema/socials";
+import { CompleteSocial } from "@soco/social-db/schema/socials";
 import { trpc } from "@/lib/trpc/client";
 import SocialModal from "./SocialModal";
 

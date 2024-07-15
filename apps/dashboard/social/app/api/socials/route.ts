@@ -6,12 +6,12 @@ import {
   createSocial,
   deleteSocial,
   updateSocial,
-} from "@/lib/api/socials/mutations";
+} from "@soco/social-api/socials/mutations";
 import { 
   socialIdSchema,
   insertSocialParams,
   updateSocialParams 
-} from "@/lib/db/schema/socials";
+} from "@soco/social-db/schema/socials";
 
 export async function POST(req: Request) {
   try {

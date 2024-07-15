@@ -1,5 +1,5 @@
 "use client";
-import { CompleteAssignUserFlag } from "@/lib/db/schema/assignUserFlags";
+import { CompleteAssignUserFlag } from "@soco/assignment-db/schema/assignUserFlags";
 import { trpc } from "@/lib/trpc/client";
 import AssignUserFlagModal from "./AssignUserFlagModal";
 

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteUniversity } from "@/lib/db/schema/universities";
+import { CompleteUniversity } from "@soco/universities-db/schema/universities";
 import { trpc } from "@/lib/trpc/client";
 import UniversityModal from "./UniversityModal";
 

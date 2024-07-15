@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import LessonBranchForm from "./LessonBranchForm";
-import { LessonBranch } from "@/lib/db/schema/lessonBranches";
+import { LessonBranch } from "@soco/lesson-db/schema/lessonBranches";
 
 export default function LessonBranchModal({ 
   lessonBranch,

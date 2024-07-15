@@ -4,7 +4,7 @@ import {
 	WorkshopFormRubricLevel,
 	NewWorkshopFormRubricLevelParams,
 	insertWorkshopFormRubricLevelParams
-} from '@/lib/db/schema/workshopFormRubricLevels'
+} from '@soco/workshop-db/schema/workshopFormRubricLevels'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

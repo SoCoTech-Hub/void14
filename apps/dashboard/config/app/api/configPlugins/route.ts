@@ -6,12 +6,12 @@ import {
   createConfigPlugin,
   deleteConfigPlugin,
   updateConfigPlugin,
-} from "@/lib/api/configPlugins/mutations";
+} from "@soco/config-api/configPlugins/mutations";
 import { 
   configPluginIdSchema,
   insertConfigPluginParams,
   updateConfigPluginParams 
-} from "@/lib/db/schema/configPlugins";
+} from "@soco/config-db/schema/configPlugins";
 
 export async function POST(req: Request) {
   try {

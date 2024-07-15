@@ -6,12 +6,12 @@ import {
   createToolCustomLang,
   deleteToolCustomLang,
   updateToolCustomLang,
-} from "@/lib/api/toolCustomLangs/mutations";
+} from "@soco/tool-custom-lang-api/toolCustomLangs/mutations";
 import { 
   toolCustomLangIdSchema,
   insertToolCustomLangParams,
   updateToolCustomLangParams 
-} from "@/lib/db/schema/toolCustomLangs";
+} from "@soco/tool-custom-lang-db/schema/toolCustomLangs";
 
 export async function POST(req: Request) {
   try {

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQuizReport } from "@/lib/db/schema/quizReports";
+import { CompleteQuizReport } from "@soco/quiz-db/schema/quizReports";
 import { trpc } from "@/lib/trpc/client";
 import QuizReportModal from "./QuizReportModal";
 

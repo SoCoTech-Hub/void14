@@ -6,12 +6,12 @@ import {
   createAnalyticsUsedFile,
   deleteAnalyticsUsedFile,
   updateAnalyticsUsedFile,
-} from "@/lib/api/analyticsUsedFiles/mutations";
+} from "@soco/analytics-api/analyticsUsedFiles/mutations";
 import { 
   analyticsUsedFileIdSchema,
   insertAnalyticsUsedFileParams,
   updateAnalyticsUsedFileParams 
-} from "@/lib/db/schema/analyticsUsedFiles";
+} from "@soco/analytics-db/schema/analyticsUsedFiles";
 
 export async function POST(req: Request) {
   try {

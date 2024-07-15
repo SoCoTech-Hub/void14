@@ -6,12 +6,12 @@ import {
   createMnetServiceEnrolEnrolment,
   deleteMnetServiceEnrolEnrolment,
   updateMnetServiceEnrolEnrolment,
-} from "@/lib/api/mnetServiceEnrolEnrolments/mutations";
+} from "@soco/mnet-api/mnetServiceEnrolEnrolments/mutations";
 import { 
   mnetServiceEnrolEnrolmentIdSchema,
   insertMnetServiceEnrolEnrolmentParams,
   updateMnetServiceEnrolEnrolmentParams 
-} from "@/lib/db/schema/mnetServiceEnrolEnrolments";
+} from "@soco/mnet-db/schema/mnetServiceEnrolEnrolments";
 
 export async function POST(req: Request) {
   try {

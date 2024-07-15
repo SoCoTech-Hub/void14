@@ -28,7 +28,7 @@ import {
   insertLessonOverrideParams,
   LessonOverride,
   NewLessonOverrideParams,
-} from "@/lib/db/schema/lessonOverrides";
+} from "@soco/lesson-db/schema/lessonOverrides";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

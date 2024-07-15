@@ -1,5 +1,5 @@
 "use client";
-import { CompleteMessageAirnotifierDevice } from "@/lib/db/schema/messageAirnotifierDevices";
+import { CompleteMessageAirnotifierDevice } from "@soco/message-db/schema/messageAirnotifierDevices";
 import { trpc } from "@/lib/trpc/client";
 import MessageAirnotifierDeviceModal from "./MessageAirnotifierDeviceModal";
 

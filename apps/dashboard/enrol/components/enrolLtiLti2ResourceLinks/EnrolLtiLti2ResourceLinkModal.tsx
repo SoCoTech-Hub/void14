@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import EnrolLtiLti2ResourceLinkForm from "./EnrolLtiLti2ResourceLinkForm";
-import { EnrolLtiLti2ResourceLink } from "@/lib/db/schema/enrolLtiLti2ResourceLinks";
+import { EnrolLtiLti2ResourceLink } from "@soco/enrol-db/schema/enrolLtiLti2ResourceLinks";
 
 export default function EnrolLtiLti2ResourceLinkModal({ 
   enrolLtiLti2ResourceLink,

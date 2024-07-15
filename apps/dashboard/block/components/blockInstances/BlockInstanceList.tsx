@@ -1,5 +1,5 @@
 "use client";
-import { CompleteBlockInstance } from "@/lib/db/schema/blockInstances";
+import { CompleteBlockInstance } from "@soco/block-db/schema/blockInstances";
 import { trpc } from "@/lib/trpc/client";
 import BlockInstanceModal from "./BlockInstanceModal";
 

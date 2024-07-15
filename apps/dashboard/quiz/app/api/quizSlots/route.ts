@@ -6,12 +6,12 @@ import {
   createQuizSlot,
   deleteQuizSlot,
   updateQuizSlot,
-} from "@/lib/api/quizSlots/mutations";
+} from "@soco/quiz-api/quizSlots/mutations";
 import { 
   quizSlotIdSchema,
   insertQuizSlotParams,
   updateQuizSlotParams 
-} from "@/lib/db/schema/quizSlots";
+} from "@soco/quiz-db/schema/quizSlots";
 
 export async function POST(req: Request) {
   try {

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteLogQuery } from "@/lib/db/schema/logQueries";
+import { CompleteLogQuery } from "@soco/log-db/schema/logQueries";
 import { trpc } from "@/lib/trpc/client";
 import LogQueryModal from "./LogQueryModal";
 

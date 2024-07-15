@@ -4,7 +4,7 @@ import {
 	JobApplication,
 	NewJobApplicationParams,
 	insertJobApplicationParams
-} from '@/lib/db/schema/jobApplications'
+} from '@soco/application-db/schema/jobApplications'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

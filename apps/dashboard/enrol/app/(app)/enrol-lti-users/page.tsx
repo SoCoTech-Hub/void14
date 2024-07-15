@@ -1,7 +1,7 @@
 import EnrolLtiUserList from "@/components/enrolLtiUsers/EnrolLtiUserList";
 import NewEnrolLtiUserModal from "@/components/enrolLtiUsers/EnrolLtiUserModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function EnrolLtiUsers() {
   await checkAuth();

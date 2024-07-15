@@ -1,5 +1,5 @@
 "use client";
-import { CompleteCompetencyTemplateCohort } from "@/lib/db/schema/competencyTemplateCohorts";
+import { CompleteCompetencyTemplateCohort } from "@soco/competency-db/schema/competencyTemplateCohorts";
 import { trpc } from "@/lib/trpc/client";
 import CompetencyTemplateCohortModal from "./CompetencyTemplateCohortModal";
 

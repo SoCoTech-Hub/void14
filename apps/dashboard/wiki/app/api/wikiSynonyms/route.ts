@@ -6,12 +6,12 @@ import {
   createWikiSynonym,
   deleteWikiSynonym,
   updateWikiSynonym,
-} from "@/lib/api/wikiSynonyms/mutations";
+} from "@soco/wiki-api/wikiSynonyms/mutations";
 import { 
   wikiSynonymIdSchema,
   insertWikiSynonymParams,
   updateWikiSynonymParams 
-} from "@/lib/db/schema/wikiSynonyms";
+} from "@soco/wiki-db/schema/wikiSynonyms";
 
 export async function POST(req: Request) {
   try {

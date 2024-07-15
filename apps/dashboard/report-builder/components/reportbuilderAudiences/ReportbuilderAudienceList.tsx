@@ -1,5 +1,5 @@
 "use client";
-import { CompleteReportbuilderAudience } from "@/lib/db/schema/reportbuilderAudiences";
+import { CompleteReportbuilderAudience } from "@soco/report-builder-db/schema/reportbuilderAudiences";
 import { trpc } from "@/lib/trpc/client";
 import ReportbuilderAudienceModal from "./ReportbuilderAudienceModal";
 

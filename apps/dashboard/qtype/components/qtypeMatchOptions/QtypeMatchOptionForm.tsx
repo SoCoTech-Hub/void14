@@ -1,6 +1,6 @@
 "use client";
 
-import { QtypeMatchOption, NewQtypeMatchOptionParams, insertQtypeMatchOptionParams } from "@/lib/db/schema/qtypeMatchOptions";
+import { QtypeMatchOption, NewQtypeMatchOptionParams, insertQtypeMatchOptionParams } from "@soco/qtype-db/schema/qtypeMatchOptions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

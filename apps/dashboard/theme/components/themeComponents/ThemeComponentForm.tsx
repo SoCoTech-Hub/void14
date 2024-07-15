@@ -1,6 +1,6 @@
 "use client";
 
-import { ThemeComponent, NewThemeComponentParams, insertThemeComponentParams } from "@/lib/db/schema/themeComponents";
+import { ThemeComponent, NewThemeComponentParams, insertThemeComponentParams } from "@soco/theme-db/schema/themeComponents";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

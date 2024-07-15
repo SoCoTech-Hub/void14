@@ -6,12 +6,12 @@ import {
   createQtypeShortanswerOption,
   deleteQtypeShortanswerOption,
   updateQtypeShortanswerOption,
-} from "@/lib/api/qtypeShortanswerOptions/mutations";
+} from "@soco/qtype-api/qtypeShortanswerOptions/mutations";
 import { 
   qtypeShortanswerOptionIdSchema,
   insertQtypeShortanswerOptionParams,
   updateQtypeShortanswerOptionParams 
-} from "@/lib/db/schema/qtypeShortanswerOptions";
+} from "@soco/qtype-db/schema/qtypeShortanswerOptions";
 
 export async function POST(req: Request) {
   try {

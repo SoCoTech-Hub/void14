@@ -4,7 +4,7 @@ import {
 	BigBlueButtonBnRecording,
 	NewBigBlueButtonBnRecordingParams,
 	insertBigBlueButtonBnRecordingParams
-} from '@/lib/db/schema/bigBlueButtonBnRecordings'
+} from '@soco/big-blue-button-db/schema/bigBlueButtonBnRecordings'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

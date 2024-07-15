@@ -1,5 +1,5 @@
 "use client";
-import { CompleteBursaryCategory } from "@/lib/db/schema/bursaryCategories";
+import { CompleteBursaryCategory } from "@soco/bursaries-db/schema/bursaryCategories";
 import { trpc } from "@/lib/trpc/client";
 import BursaryCategoryModal from "./BursaryCategoryModal";
 

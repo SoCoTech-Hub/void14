@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import BlockRecentActivityForm from "./BlockRecentActivityForm";
-import { BlockRecentActivity } from "@/lib/db/schema/blockRecentActivities";
+import { BlockRecentActivity } from "@soco/block-db/schema/blockRecentActivities";
 
 export default function BlockRecentActivityModal({ 
   blockRecentActivity,

@@ -1,7 +1,7 @@
 import SocialList from "@/components/socials/SocialList";
 import NewSocialModal from "@/components/socials/SocialModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function Socials() {
   await checkAuth();

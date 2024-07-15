@@ -6,12 +6,12 @@ import {
   createEnrolLtiDeployment,
   deleteEnrolLtiDeployment,
   updateEnrolLtiDeployment,
-} from "@/lib/api/enrolLtiDeployments/mutations";
+} from "@soco/enrol-api/enrolLtiDeployments/mutations";
 import { 
   enrolLtiDeploymentIdSchema,
   insertEnrolLtiDeploymentParams,
   updateEnrolLtiDeploymentParams 
-} from "@/lib/db/schema/enrolLtiDeployments";
+} from "@soco/enrol-db/schema/enrolLtiDeployments";
 
 export async function POST(req: Request) {
   try {

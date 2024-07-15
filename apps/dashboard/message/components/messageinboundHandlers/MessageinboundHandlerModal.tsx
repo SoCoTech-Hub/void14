@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import MessageinboundHandlerForm from "./MessageinboundHandlerForm";
-import { MessageinboundHandler } from "@/lib/db/schema/messageinboundHandlers";
+import { MessageinboundHandler } from "@soco/message-db/schema/messageinboundHandlers";
 
 export default function MessageinboundHandlerModal({ 
   messageinboundHandler,

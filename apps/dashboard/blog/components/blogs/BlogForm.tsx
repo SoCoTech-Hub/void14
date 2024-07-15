@@ -4,7 +4,7 @@ import {
 	type Blog,
 	type NewBlogParams,
 	insertBlogParams
-} from '@/lib/db/schema/blogs'
+} from '@soco/blog-db/schema/blogs'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

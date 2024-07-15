@@ -6,12 +6,12 @@ import {
   createDigilib,
   deleteDigilib,
   updateDigilib,
-} from "@/lib/api/digilibs/mutations";
+} from "@soco/digilib-api/digilibs/mutations";
 import { 
   digilibIdSchema,
   insertDigilibParams,
   updateDigilibParams 
-} from "@/lib/db/schema/digilibs";
+} from "@soco/digilib-db/schema/digilibs";
 
 export async function POST(req: Request) {
   try {

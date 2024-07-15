@@ -10,7 +10,7 @@ import {
 	DialogTrigger
 } from '../ui/dialog'
 import BadgeManualAwardForm from './BadgeManualAwardForm'
-import { BadgeManualAward } from '@/lib/db/schema/badgeManualAwards'
+import { BadgeManualAward } from '@soco/badge-db/schema/badgeManualAwards'
 
 export default function BadgeManualAwardModal({
 	badgeManualAward,

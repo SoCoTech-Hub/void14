@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ReportbuilderReportForm from "./ReportbuilderReportForm";
-import { ReportbuilderReport } from "@/lib/db/schema/reportbuilderReports";
+import { ReportbuilderReport } from "@soco/report-builder-db/schema/reportbuilderReports";
 
 export default function ReportbuilderReportModal({ 
   reportbuilderReport,

@@ -1,7 +1,7 @@
 import EventResponseList from "@/components/eventResponses/EventResponseList";
 import NewEventResponseModal from "@/components/eventResponses/EventResponseModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function EventResponses() {
   await checkAuth();

@@ -4,7 +4,7 @@ import {
 	BadgeManualAward,
 	NewBadgeManualAwardParams,
 	insertBadgeManualAwardParams
-} from '@/lib/db/schema/badgeManualAwards'
+} from '@soco/badge-db/schema/badgeManualAwards'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

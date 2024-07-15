@@ -4,7 +4,7 @@ import {
 	RoleAllowAssign,
 	NewRoleAllowAssignParams,
 	insertRoleAllowAssignParams
-} from '@/lib/db/schema/roleAllowAssigns'
+} from '@soco/role-db/schema/roleAllowAssigns'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

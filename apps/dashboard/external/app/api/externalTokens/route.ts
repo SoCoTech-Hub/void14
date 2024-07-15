@@ -6,12 +6,12 @@ import {
   createExternalToken,
   deleteExternalToken,
   updateExternalToken,
-} from "@/lib/api/externalTokens/mutations";
+} from "@soco/external-api/externalTokens/mutations";
 import { 
   externalTokenIdSchema,
   insertExternalTokenParams,
   updateExternalTokenParams 
-} from "@/lib/db/schema/externalTokens";
+} from "@soco/external-db/schema/externalTokens";
 
 export async function POST(req: Request) {
   try {

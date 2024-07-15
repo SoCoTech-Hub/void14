@@ -1,7 +1,7 @@
 import EnrolPaypalList from "@/components/enrolPaypals/EnrolPaypalList";
 import NewEnrolPaypalModal from "@/components/enrolPaypals/EnrolPaypalModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function EnrolPaypals() {
   await checkAuth();

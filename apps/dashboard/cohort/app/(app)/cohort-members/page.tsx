@@ -1,7 +1,7 @@
 import CohortMemberList from "@/components/cohortMembers/CohortMemberList";
 import NewCohortMemberModal from "@/components/cohortMembers/CohortMemberModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function CohortMembers() {
   await checkAuth();

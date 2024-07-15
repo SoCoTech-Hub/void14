@@ -1,5 +1,5 @@
 "use client";
-import { CompleteUserPrivateKey } from "@/lib/db/schema/userPrivateKeys";
+import { CompleteUserPrivateKey } from "@soco/user-db/schema/userPrivateKeys";
 import { trpc } from "@/lib/trpc/client";
 import UserPrivateKeyModal from "./UserPrivateKeyModal";
 

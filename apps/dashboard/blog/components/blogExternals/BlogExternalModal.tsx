@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import BlogExternalForm from "./BlogExternalForm";
-import { BlogExternal } from "@/lib/db/schema/blogExternals";
+import { BlogExternal } from "@soco/blog-db/schema/blogExternals";
 
 export default function BlogExternalModal({ 
   blogExternal,

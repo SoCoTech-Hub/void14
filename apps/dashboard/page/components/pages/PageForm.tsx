@@ -1,6 +1,6 @@
 "use client";
 
-import { Page, NewPageParams, insertPageParams } from "@/lib/db/schema/pages";
+import { Page, NewPageParams, insertPageParams } from "@soco/page-db/schema/pages";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

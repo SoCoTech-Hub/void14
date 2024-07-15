@@ -6,12 +6,12 @@ import {
   createEnrolLtiLti2Nonce,
   deleteEnrolLtiLti2Nonce,
   updateEnrolLtiLti2Nonce,
-} from "@/lib/api/enrolLtiLti2Nonces/mutations";
+} from "@soco/enrol-api/enrolLtiLti2Nonces/mutations";
 import { 
   enrolLtiLti2NonceIdSchema,
   insertEnrolLtiLti2NonceParams,
   updateEnrolLtiLti2NonceParams 
-} from "@/lib/db/schema/enrolLtiLti2Nonces";
+} from "@soco/enrol-db/schema/enrolLtiLti2Nonces";
 
 export async function POST(req: Request) {
   try {

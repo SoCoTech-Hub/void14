@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQuizaccessSebTemplate } from "@/lib/db/schema/quizaccessSebTemplates";
+import { CompleteQuizaccessSebTemplate } from "@soco/quizaccess-db/schema/quizaccessSebTemplates";
 import { trpc } from "@/lib/trpc/client";
 import QuizaccessSebTemplateModal from "./QuizaccessSebTemplateModal";
 

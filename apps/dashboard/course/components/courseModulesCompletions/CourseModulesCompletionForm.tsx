@@ -4,7 +4,7 @@ import {
 	CourseModulesCompletion,
 	NewCourseModulesCompletionParams,
 	insertCourseModulesCompletionParams
-} from '@/lib/db/schema/courseModulesCompletions'
+} from '@soco/course-db/schema/courseModulesCompletions'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

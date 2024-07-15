@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import UserPrivateKeyForm from "./UserPrivateKeyForm";
-import { UserPrivateKey } from "@/lib/db/schema/userPrivateKeys";
+import { UserPrivateKey } from "@soco/user-db/schema/userPrivateKeys";
 
 export default function UserPrivateKeyModal({ 
   userPrivateKey,

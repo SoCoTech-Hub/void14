@@ -1,6 +1,6 @@
 "use client";
 
-import { EnrolPaypal, NewEnrolPaypalParams, insertEnrolPaypalParams } from "@/lib/db/schema/enrolPaypals";
+import { EnrolPaypal, NewEnrolPaypalParams, insertEnrolPaypalParams } from "@soco/enrol-db/schema/enrolPaypals";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

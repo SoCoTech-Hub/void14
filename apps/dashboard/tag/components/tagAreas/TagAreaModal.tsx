@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import TagAreaForm from "./TagAreaForm";
-import { TagArea } from "@/lib/db/schema/tagAreas";
+import { TagArea } from "@soco/tag-db/schema/tagAreas";
 
 export default function TagAreaModal({ 
   tagArea,

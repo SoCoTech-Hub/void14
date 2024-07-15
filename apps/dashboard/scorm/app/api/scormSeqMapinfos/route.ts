@@ -6,12 +6,12 @@ import {
   createScormSeqMapinfo,
   deleteScormSeqMapinfo,
   updateScormSeqMapinfo,
-} from "@/lib/api/scormSeqMapinfos/mutations";
+} from "@soco/scorm-api/scormSeqMapinfos/mutations";
 import { 
   scormSeqMapinfoIdSchema,
   insertScormSeqMapinfoParams,
   updateScormSeqMapinfoParams 
-} from "@/lib/db/schema/scormSeqMapinfos";
+} from "@soco/scorm-db/schema/scormSeqMapinfos";
 
 export async function POST(req: Request) {
   try {

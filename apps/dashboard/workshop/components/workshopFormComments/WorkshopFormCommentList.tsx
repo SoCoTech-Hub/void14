@@ -1,5 +1,5 @@
 "use client";
-import { CompleteWorkshopFormComment } from "@/lib/db/schema/workshopFormComments";
+import { CompleteWorkshopFormComment } from "@soco/workshop-db/schema/workshopFormComments";
 import { trpc } from "@/lib/trpc/client";
 import WorkshopFormCommentModal from "./WorkshopFormCommentModal";
 

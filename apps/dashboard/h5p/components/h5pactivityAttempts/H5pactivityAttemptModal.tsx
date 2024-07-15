@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import H5pactivityAttemptForm from "./H5pactivityAttemptForm";
-import { H5pactivityAttempt } from "@/lib/db/schema/h5pactivityAttempts";
+import { H5pactivityAttempt } from "@soco/h5p-db/schema/h5pactivityAttempts";
 
 export default function H5pactivityAttemptModal({ 
   h5pactivityAttempt,

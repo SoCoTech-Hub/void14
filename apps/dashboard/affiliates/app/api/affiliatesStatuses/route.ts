@@ -6,12 +6,12 @@ import {
   createAffiliatesStatus,
   deleteAffiliatesStatus,
   updateAffiliatesStatus,
-} from "@/lib/api/affiliatesStatuses/mutations";
+} from "@soco/affiliates-api/affiliatesStatuses/mutations";
 import { 
   affiliatesStatusIdSchema,
   insertAffiliatesStatusParams,
   updateAffiliatesStatusParams 
-} from "@/lib/db/schema/affiliatesStatuses";
+} from "@soco/affiliates-db/schema/affiliatesStatuses";
 
 export async function POST(req: Request) {
   try {

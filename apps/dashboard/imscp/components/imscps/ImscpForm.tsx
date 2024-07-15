@@ -1,6 +1,6 @@
 "use client";
 
-import { Imscp, NewImscpParams, insertImscpParams } from "@/lib/db/schema/imscps";
+import { Imscp, NewImscpParams, insertImscpParams } from "@soco/imscp-db/schema/imscps";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

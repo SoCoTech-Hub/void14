@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import BlockRssClientForm from "./BlockRssClientForm";
-import { BlockRssClient } from "@/lib/db/schema/blockRssClients";
+import { BlockRssClient } from "@soco/block-db/schema/blockRssClients";
 
 export default function BlockRssClientModal({ 
   blockRssClient,

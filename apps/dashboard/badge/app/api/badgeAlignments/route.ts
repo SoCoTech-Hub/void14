@@ -6,12 +6,12 @@ import {
   createBadgeAlignment,
   deleteBadgeAlignment,
   updateBadgeAlignment,
-} from "@/lib/api/badgeAlignments/mutations";
+} from "@soco/badge-api/badgeAlignments/mutations";
 import { 
   badgeAlignmentIdSchema,
   insertBadgeAlignmentParams,
   updateBadgeAlignmentParams 
-} from "@/lib/db/schema/badgeAlignments";
+} from "@soco/badge-db/schema/badgeAlignments";
 
 export async function POST(req: Request) {
   try {

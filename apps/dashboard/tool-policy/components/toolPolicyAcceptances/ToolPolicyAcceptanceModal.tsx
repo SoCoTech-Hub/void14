@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ToolPolicyAcceptanceForm from "./ToolPolicyAcceptanceForm";
-import { ToolPolicyAcceptance } from "@/lib/db/schema/toolPolicyAcceptances";
+import { ToolPolicyAcceptance } from "@soco/tool-policy-db/schema/toolPolicyAcceptances";
 
 export default function ToolPolicyAcceptanceModal({ 
   toolPolicyAcceptance,

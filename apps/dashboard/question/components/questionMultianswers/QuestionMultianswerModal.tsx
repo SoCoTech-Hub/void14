@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QuestionMultianswerForm from "./QuestionMultianswerForm";
-import { QuestionMultianswer } from "@/lib/db/schema/questionMultianswers";
+import { QuestionMultianswer } from "@soco/question-db/schema/questionMultianswers";
 
 export default function QuestionMultianswerModal({ 
   questionMultianswer,

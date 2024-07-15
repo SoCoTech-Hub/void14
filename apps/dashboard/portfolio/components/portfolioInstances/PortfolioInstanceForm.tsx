@@ -1,6 +1,6 @@
 "use client";
 
-import { PortfolioInstance, NewPortfolioInstanceParams, insertPortfolioInstanceParams } from "@/lib/db/schema/portfolioInstances";
+import { PortfolioInstance, NewPortfolioInstanceParams, insertPortfolioInstanceParams } from "@soco/portfolio-db/schema/portfolioInstances";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

@@ -6,12 +6,12 @@ import {
   createZoomMeeting,
   deleteZoomMeeting,
   updateZoomMeeting,
-} from "@/lib/api/zoomMeetings/mutations";
+} from "@soco/zoom-api/zoomMeetings/mutations";
 import { 
   zoomMeetingIdSchema,
   insertZoomMeetingParams,
   updateZoomMeetingParams 
-} from "@/lib/db/schema/zoomMeetings";
+} from "@soco/zoom-db/schema/zoomMeetings";
 
 export async function POST(req: Request) {
   try {

@@ -6,12 +6,12 @@ import {
   createMnetRpc,
   deleteMnetRpc,
   updateMnetRpc,
-} from "@/lib/api/mnetRpcs/mutations";
+} from "@soco/mnet-api/mnetRpcs/mutations";
 import { 
   mnetRpcIdSchema,
   insertMnetRpcParams,
   updateMnetRpcParams 
-} from "@/lib/db/schema/mnetRpcs";
+} from "@soco/mnet-db/schema/mnetRpcs";
 
 export async function POST(req: Request) {
   try {

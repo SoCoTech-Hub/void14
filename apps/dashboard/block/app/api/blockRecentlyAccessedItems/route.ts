@@ -6,12 +6,12 @@ import {
   createBlockRecentlyAccessedItem,
   deleteBlockRecentlyAccessedItem,
   updateBlockRecentlyAccessedItem,
-} from "@/lib/api/blockRecentlyAccessedItems/mutations";
+} from "@soco/block-api/blockRecentlyAccessedItems/mutations";
 import { 
   blockRecentlyAccessedItemIdSchema,
   insertBlockRecentlyAccessedItemParams,
   updateBlockRecentlyAccessedItemParams 
-} from "@/lib/db/schema/blockRecentlyAccessedItems";
+} from "@soco/block-db/schema/blockRecentlyAccessedItems";
 
 export async function POST(req: Request) {
   try {

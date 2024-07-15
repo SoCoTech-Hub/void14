@@ -1,5 +1,5 @@
 "use client";
-import { CompleteUserPasswordReset } from "@/lib/db/schema/userPasswordResets";
+import { CompleteUserPasswordReset } from "@soco/user-db/schema/userPasswordResets";
 import { trpc } from "@/lib/trpc/client";
 import UserPasswordResetModal from "./UserPasswordResetModal";
 

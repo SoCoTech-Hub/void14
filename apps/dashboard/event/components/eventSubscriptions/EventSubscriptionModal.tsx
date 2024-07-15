@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import EventSubscriptionForm from "./EventSubscriptionForm";
-import { EventSubscription } from "@/lib/db/schema/eventSubscriptions";
+import { EventSubscription } from "@soco/event-db/schema/eventSubscriptions";
 
 export default function EventSubscriptionModal({ 
   eventSubscription,

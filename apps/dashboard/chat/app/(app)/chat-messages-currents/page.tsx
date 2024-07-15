@@ -1,7 +1,7 @@
 import ChatMessagesCurrentList from "@/components/chatMessagesCurrents/ChatMessagesCurrentList";
 import NewChatMessagesCurrentModal from "@/components/chatMessagesCurrents/ChatMessagesCurrentModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function ChatMessagesCurrents() {
   await checkAuth();

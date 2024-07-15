@@ -1,5 +1,5 @@
 "use client";
-import { CompleteBigBlueButtonBn } from "@/lib/db/schema/bigBlueButtonBns";
+import { CompleteBigBlueButtonBn } from "@soco/big-blue-button-db/schema/bigBlueButtonBns";
 import { trpc } from "@/lib/trpc/client";
 import BigBlueButtonBnModal from "./BigBlueButtonBnModal";
 

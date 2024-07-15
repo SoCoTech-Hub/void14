@@ -6,12 +6,12 @@ import {
   createPortfolioTempdata,
   deletePortfolioTempdata,
   updatePortfolioTempdata,
-} from "@/lib/api/portfolioTempdatas/mutations";
+} from "@soco/portfolio-api/portfolioTempdatas/mutations";
 import { 
   portfolioTempdataIdSchema,
   insertPortfolioTempdataParams,
   updatePortfolioTempdataParams 
-} from "@/lib/db/schema/portfolioTempdatas";
+} from "@soco/portfolio-db/schema/portfolioTempdatas";
 
 export async function POST(req: Request) {
   try {

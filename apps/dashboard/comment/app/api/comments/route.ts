@@ -6,12 +6,12 @@ import {
   createComment,
   deleteComment,
   updateComment,
-} from "@/lib/api/comments/mutations";
+} from "@soco/comment-api/comments/mutations";
 import { 
   commentIdSchema,
   insertCommentParams,
   updateCommentParams 
-} from "@/lib/db/schema/comments";
+} from "@soco/comment-db/schema/comments";
 
 export async function POST(req: Request) {
   try {

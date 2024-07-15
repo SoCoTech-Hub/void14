@@ -1,6 +1,6 @@
 "use client";
 
-import { GradingformRubricLevel, NewGradingformRubricLevelParams, insertGradingformRubricLevelParams } from "@/lib/db/schema/gradingformRubricLevels";
+import { GradingformRubricLevel, NewGradingformRubricLevelParams, insertGradingformRubricLevelParams } from "@soco/grade-db/schema/gradingformRubricLevels";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

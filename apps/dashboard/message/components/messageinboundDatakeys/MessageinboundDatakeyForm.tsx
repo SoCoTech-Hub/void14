@@ -21,7 +21,7 @@ import {
   insertMessageinboundDatakeyParams,
   MessageinboundDatakey,
   NewMessageinboundDatakeyParams,
-} from "@/lib/db/schema/messageinboundDatakeys";
+} from "@soco/message-db/schema/messageinboundDatakeys";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

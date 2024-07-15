@@ -6,12 +6,12 @@ import {
   createQuestionVersion,
   deleteQuestionVersion,
   updateQuestionVersion,
-} from "@/lib/api/questionVersions/mutations";
+} from "@soco/question-api/questionVersions/mutations";
 import { 
   questionVersionIdSchema,
   insertQuestionVersionParams,
   updateQuestionVersionParams 
-} from "@/lib/db/schema/questionVersions";
+} from "@soco/question-db/schema/questionVersions";
 
 export async function POST(req: Request) {
   try {

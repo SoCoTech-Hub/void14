@@ -6,12 +6,12 @@ import {
   createFilesReference,
   deleteFilesReference,
   updateFilesReference,
-} from "@/lib/api/filesReferences/mutations";
+} from "@soco/file-api/filesReferences/mutations";
 import { 
   filesReferenceIdSchema,
   insertFilesReferenceParams,
   updateFilesReferenceParams 
-} from "@/lib/db/schema/filesReferences";
+} from "@soco/file-db/schema/filesReferences";
 
 export async function POST(req: Request) {
   try {

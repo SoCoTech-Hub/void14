@@ -1,5 +1,5 @@
 "use client";
-import { CompleteUserPasswordHistory } from "@/lib/db/schema/userPasswordHistories";
+import { CompleteUserPasswordHistory } from "@soco/user-db/schema/userPasswordHistories";
 import { trpc } from "@/lib/trpc/client";
 import UserPasswordHistoryModal from "./UserPasswordHistoryModal";
 

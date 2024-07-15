@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QtypeMultichoiceOptionForm from "./QtypeMultichoiceOptionForm";
-import { QtypeMultichoiceOption } from "@/lib/db/schema/qtypeMultichoiceOptions";
+import { QtypeMultichoiceOption } from "@soco/qtype-db/schema/qtypeMultichoiceOptions";
 
 export default function QtypeMultichoiceOptionModal({ 
   qtypeMultichoiceOption,

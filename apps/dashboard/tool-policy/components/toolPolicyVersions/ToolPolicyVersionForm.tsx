@@ -1,6 +1,6 @@
 "use client";
 
-import { ToolPolicyVersion, NewToolPolicyVersionParams, insertToolPolicyVersionParams } from "@/lib/db/schema/toolPolicyVersions";
+import { ToolPolicyVersion, NewToolPolicyVersionParams, insertToolPolicyVersionParams } from "@soco/tool-policy-db/schema/toolPolicyVersions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { DistrictOrganization, NewDistrictOrganizationParams, insertDistrictOrganizationParams } from "@/lib/db/schema/districtOrganizations";
+import { DistrictOrganization, NewDistrictOrganizationParams, insertDistrictOrganizationParams } from "@soco/geolocalize-db/schema/districtOrganizations";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

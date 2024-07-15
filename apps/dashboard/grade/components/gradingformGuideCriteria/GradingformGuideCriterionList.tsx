@@ -1,5 +1,5 @@
 "use client";
-import { CompleteGradingformGuideCriterion } from "@/lib/db/schema/gradingformGuideCriteria";
+import { CompleteGradingformGuideCriterion } from "@soco/grade-db/schema/gradingformGuideCriteria";
 import { trpc } from "@/lib/trpc/client";
 import GradingformGuideCriterionModal from "./GradingformGuideCriterionModal";
 

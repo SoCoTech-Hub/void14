@@ -1,7 +1,7 @@
 import SupportTicketList from "@/components/supportTickets/SupportTicketList";
 import NewSupportTicketModal from "@/components/supportTickets/SupportTicketModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function SupportTickets() {
   await checkAuth();

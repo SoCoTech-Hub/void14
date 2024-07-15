@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import MnetServiceEnrolEnrolmentForm from "./MnetServiceEnrolEnrolmentForm";
-import { MnetServiceEnrolEnrolment } from "@/lib/db/schema/mnetServiceEnrolEnrolments";
+import { MnetServiceEnrolEnrolment } from "@soco/mnet-db/schema/mnetServiceEnrolEnrolments";
 
 export default function MnetServiceEnrolEnrolmentModal({ 
   mnetServiceEnrolEnrolment,

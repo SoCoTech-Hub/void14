@@ -29,7 +29,7 @@ import {
   CourseCompletionDefault,
   insertCourseCompletionDefaultParams,
   NewCourseCompletionDefaultParams,
-} from "@/lib/db/schema/courseCompletionDefaults";
+} from "@soco/course-db/schema/courseCompletionDefaults";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

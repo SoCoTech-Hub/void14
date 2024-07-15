@@ -6,12 +6,12 @@ import {
   createToolMonitorRule,
   deleteToolMonitorRule,
   updateToolMonitorRule,
-} from "@/lib/api/toolMonitorRules/mutations";
+} from "@soco/tool-monitor-api/toolMonitorRules/mutations";
 import { 
   toolMonitorRuleIdSchema,
   insertToolMonitorRuleParams,
   updateToolMonitorRuleParams 
-} from "@/lib/db/schema/toolMonitorRules";
+} from "@soco/tool-monitor-db/schema/toolMonitorRules";
 
 export async function POST(req: Request) {
   try {

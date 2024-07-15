@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import RoleAllowOverrideForm from "./RoleAllowOverrideForm";
-import { RoleAllowOverride } from "@/lib/db/schema/roleAllowOverrides";
+import { RoleAllowOverride } from "@soco/role-db/schema/roleAllowOverrides";
 
 export default function RoleAllowOverrideModal({ 
   roleAllowOverride,

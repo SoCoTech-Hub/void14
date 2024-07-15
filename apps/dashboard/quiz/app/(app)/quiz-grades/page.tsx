@@ -1,7 +1,7 @@
 import QuizGradeList from "@/components/quizGrades/QuizGradeList";
 import NewQuizGradeModal from "@/components/quizGrades/QuizGradeModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function QuizGrades() {
   await checkAuth();

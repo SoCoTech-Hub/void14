@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import LocalizationFieldForm from "./LocalizationFieldForm";
-import { LocalizationField } from "@/lib/db/schema/localizationFields";
+import { LocalizationField } from "@soco/i18n-db/schema/localizationFields";
 
 export default function LocalizationFieldModal({ 
   localizationField,

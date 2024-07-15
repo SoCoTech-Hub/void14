@@ -1,7 +1,7 @@
 import BlogCommentList from "@/components/blogComments/BlogCommentList";
 import NewBlogCommentModal from "@/components/blogComments/BlogCommentModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function BlogComments() {
   await checkAuth();

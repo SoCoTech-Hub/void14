@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQtypeDdimageortext } from "@/lib/db/schema/qtypeDdimageortexts";
+import { CompleteQtypeDdimageortext } from "@soco/qtype-db/schema/qtypeDdimageortexts";
 import { trpc } from "@/lib/trpc/client";
 import QtypeDdimageortextModal from "./QtypeDdimageortextModal";
 

@@ -6,12 +6,12 @@ import {
   createTagCorrelation,
   deleteTagCorrelation,
   updateTagCorrelation,
-} from "@/lib/api/tagCorrelations/mutations";
+} from "@soco/tag-api/tagCorrelations/mutations";
 import { 
   tagCorrelationIdSchema,
   insertTagCorrelationParams,
   updateTagCorrelationParams 
-} from "@/lib/db/schema/tagCorrelations";
+} from "@soco/tag-db/schema/tagCorrelations";
 
 export async function POST(req: Request) {
   try {

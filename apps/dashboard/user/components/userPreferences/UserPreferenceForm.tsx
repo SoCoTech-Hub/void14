@@ -1,6 +1,6 @@
 "use client";
 
-import { UserPreference, NewUserPreferenceParams, insertUserPreferenceParams } from "@/lib/db/schema/userPreferences";
+import { UserPreference, NewUserPreferenceParams, insertUserPreferenceParams } from "@soco/user-db/schema/userPreferences";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

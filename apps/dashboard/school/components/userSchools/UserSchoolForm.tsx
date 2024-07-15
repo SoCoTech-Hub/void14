@@ -1,6 +1,6 @@
 "use client";
 
-import { UserSchool, NewUserSchoolParams, insertUserSchoolParams } from "@/lib/db/schema/userSchools";
+import { UserSchool, NewUserSchoolParams, insertUserSchoolParams } from "@soco/school-db/schema/userSchools";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

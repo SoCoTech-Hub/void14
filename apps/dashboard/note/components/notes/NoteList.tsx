@@ -1,5 +1,5 @@
 "use client";
-import { CompleteNote } from "@/lib/db/schema/notes";
+import { CompleteNote } from "@soco/note-db/schema/notes";
 import { trpc } from "@/lib/trpc/client";
 import NoteModal from "./NoteModal";
 

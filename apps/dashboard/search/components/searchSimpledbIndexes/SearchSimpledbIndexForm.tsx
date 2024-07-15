@@ -1,6 +1,6 @@
 "use client";
 
-import { SearchSimpledbIndex, NewSearchSimpledbIndexParams, insertSearchSimpledbIndexParams } from "@/lib/db/schema/searchSimpledbIndexes";
+import { SearchSimpledbIndex, NewSearchSimpledbIndexParams, insertSearchSimpledbIndexParams } from "@soco/search-db/schema/searchSimpledbIndexes";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

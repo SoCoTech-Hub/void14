@@ -6,12 +6,12 @@ import {
   createCompetencyFramework,
   deleteCompetencyFramework,
   updateCompetencyFramework,
-} from "@/lib/api/competencyFrameworks/mutations";
+} from "@soco/competency-api/competencyFrameworks/mutations";
 import { 
   competencyFrameworkIdSchema,
   insertCompetencyFrameworkParams,
   updateCompetencyFrameworkParams 
-} from "@/lib/db/schema/competencyFrameworks";
+} from "@soco/competency-db/schema/competencyFrameworks";
 
 export async function POST(req: Request) {
   try {

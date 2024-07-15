@@ -6,12 +6,12 @@ import {
   createWorkshopSubmission,
   deleteWorkshopSubmission,
   updateWorkshopSubmission,
-} from "@/lib/api/workshopSubmissions/mutations";
+} from "@soco/workshop-api/workshopSubmissions/mutations";
 import { 
   workshopSubmissionIdSchema,
   insertWorkshopSubmissionParams,
   updateWorkshopSubmissionParams 
-} from "@/lib/db/schema/workshopSubmissions";
+} from "@soco/workshop-db/schema/workshopSubmissions";
 
 export async function POST(req: Request) {
   try {

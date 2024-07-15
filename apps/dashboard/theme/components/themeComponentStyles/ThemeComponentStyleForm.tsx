@@ -4,7 +4,7 @@ import {
 	ThemeComponentStyle,
 	NewThemeComponentStyleParams,
 	insertThemeComponentStyleParams
-} from '@/lib/db/schema/themeComponentStyles'
+} from '@soco/theme-db/schema/themeComponentStyles'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import TagCollForm from "./TagCollForm";
-import { TagColl } from "@/lib/db/schema/tagColls";
+import { TagColl } from "@soco/tag-db/schema/tagColls";
 
 export default function TagCollModal({ 
   tagColl,

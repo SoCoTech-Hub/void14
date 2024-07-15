@@ -1,7 +1,7 @@
 import AnalyticsPredictionActionList from "@/components/analyticsPredictionActions/AnalyticsPredictionActionList";
 import NewAnalyticsPredictionActionModal from "@/components/analyticsPredictionActions/AnalyticsPredictionActionModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function AnalyticsPredictionActions() {
   await checkAuth();

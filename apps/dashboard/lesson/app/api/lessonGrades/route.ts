@@ -6,12 +6,12 @@ import {
   createLessonGrade,
   deleteLessonGrade,
   updateLessonGrade,
-} from "@/lib/api/lessonGrades/mutations";
+} from "@soco/lesson-api/lessonGrades/mutations";
 import { 
   lessonGradeIdSchema,
   insertLessonGradeParams,
   updateLessonGradeParams 
-} from "@/lib/db/schema/lessonGrades";
+} from "@soco/lesson-db/schema/lessonGrades";
 
 export async function POST(req: Request) {
   try {

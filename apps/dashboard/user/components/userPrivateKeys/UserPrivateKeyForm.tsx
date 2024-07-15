@@ -21,7 +21,7 @@ import {
   insertUserPrivateKeyParams,
   NewUserPrivateKeyParams,
   UserPrivateKey,
-} from "@/lib/db/schema/userPrivateKeys";
+} from "@soco/user-db/schema/userPrivateKeys";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

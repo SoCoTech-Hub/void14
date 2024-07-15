@@ -1,7 +1,7 @@
 import WikiLockList from "@/components/wikiLocks/WikiLockList";
 import NewWikiLockModal from "@/components/wikiLocks/WikiLockModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function WikiLocks() {
   await checkAuth();

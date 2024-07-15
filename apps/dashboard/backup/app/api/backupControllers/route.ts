@@ -6,12 +6,12 @@ import {
   createBackupController,
   deleteBackupController,
   updateBackupController,
-} from "@/lib/api/backupControllers/mutations";
+} from "@soco/backup-api/backupControllers/mutations";
 import { 
   backupControllerIdSchema,
   insertBackupControllerParams,
   updateBackupControllerParams 
-} from "@/lib/db/schema/backupControllers";
+} from "@soco/backup-db/schema/backupControllers";
 
 export async function POST(req: Request) {
   try {

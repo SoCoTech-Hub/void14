@@ -29,7 +29,7 @@ import {
   insertLessonTimerParams,
   LessonTimer,
   NewLessonTimerParams,
-} from "@/lib/db/schema/lessonTimer";
+} from "@soco/lesson-db/schema/lessonTimer";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

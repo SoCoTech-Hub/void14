@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import AffiliatesTransactionForm from "./AffiliatesTransactionForm";
-import { AffiliatesTransaction } from "@/lib/db/schema/affiliatesTransactions";
+import { AffiliatesTransaction } from "@soco/affiliates-db/schema/affiliatesTransactions";
 
 export default function AffiliatesTransactionModal({ 
   affiliatesTransaction,

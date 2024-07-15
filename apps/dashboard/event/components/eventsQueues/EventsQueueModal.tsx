@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import EventsQueueForm from "./EventsQueueForm";
-import { EventsQueue } from "@/lib/db/schema/eventsQueues";
+import { EventsQueue } from "@soco/event-db/schema/eventsQueues";
 
 export default function EventsQueueModal({ 
   eventsQueue,

@@ -6,12 +6,12 @@ import {
   createPost,
   deletePost,
   updatePost,
-} from "@/lib/api/posts/mutations";
+} from "@soco/post-api/posts/mutations";
 import { 
   postIdSchema,
   insertPostParams,
   updatePostParams 
-} from "@/lib/db/schema/posts";
+} from "@soco/post-db/schema/posts";
 
 export async function POST(req: Request) {
   try {

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import AssignPluginConfigForm from "./AssignPluginConfigForm";
-import { AssignPluginConfig } from "@/lib/db/schema/assignPluginConfigs";
+import { AssignPluginConfig } from "@soco/assignment-db/schema/assignPluginConfigs";
 
 export default function AssignPluginConfigModal({ 
   assignPluginConfig,

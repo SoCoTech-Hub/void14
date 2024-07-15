@@ -4,7 +4,7 @@ import {
 	WorkshopFormAccumulative,
 	NewWorkshopFormAccumulativeParams,
 	insertWorkshopFormAccumulativeParams
-} from '@/lib/db/schema/workshopFormAccumulatives'
+} from '@soco/workshop-db/schema/workshopFormAccumulatives'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

@@ -6,12 +6,12 @@ import {
   createH5pLibraryDependency,
   deleteH5pLibraryDependency,
   updateH5pLibraryDependency,
-} from "@/lib/api/h5pLibraryDependencies/mutations";
+} from "@soco/h5p-api/h5pLibraryDependencies/mutations";
 import { 
   h5pLibraryDependencyIdSchema,
   insertH5pLibraryDependencyParams,
   updateH5pLibraryDependencyParams 
-} from "@/lib/db/schema/h5pLibraryDependencies";
+} from "@soco/h5p-db/schema/h5pLibraryDependencies";
 
 export async function POST(req: Request) {
   try {

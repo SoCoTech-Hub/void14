@@ -1,6 +1,6 @@
 'use client'
 
-import { Book, NewBookParams, insertBookParams } from '@/lib/db/schema/books'
+import { Book, NewBookParams, insertBookParams } from '@soco/book-db/schema/books'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

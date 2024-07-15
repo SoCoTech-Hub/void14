@@ -6,12 +6,12 @@ import {
   createEnrolLtiLti2ShareKey,
   deleteEnrolLtiLti2ShareKey,
   updateEnrolLtiLti2ShareKey,
-} from "@/lib/api/enrolLtiLti2ShareKeys/mutations";
+} from "@soco/enrol-api/enrolLtiLti2ShareKeys/mutations";
 import { 
   enrolLtiLti2ShareKeyIdSchema,
   insertEnrolLtiLti2ShareKeyParams,
   updateEnrolLtiLti2ShareKeyParams 
-} from "@/lib/db/schema/enrolLtiLti2ShareKeys";
+} from "@soco/enrol-db/schema/enrolLtiLti2ShareKeys";
 
 export async function POST(req: Request) {
   try {

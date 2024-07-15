@@ -6,12 +6,12 @@ import {
   createAdminPresetIt,
   deleteAdminPresetIt,
   updateAdminPresetIt,
-} from "@/lib/api/adminPresetIts/mutations";
+} from "@soco/admin-preset-api/adminPresetIts/mutations";
 import { 
   adminPresetItIdSchema,
   insertAdminPresetItParams,
   updateAdminPresetItParams 
-} from "@/lib/db/schema/adminPresetIts";
+} from "@soco/admin-preset-db/schema/adminPresetIts";
 
 export async function POST(req: Request) {
   try {

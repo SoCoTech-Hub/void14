@@ -1,7 +1,7 @@
 import ForumGradeList from "@/components/forumGrades/ForumGradeList";
 import NewForumGradeModal from "@/components/forumGrades/ForumGradeModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function ForumGrades() {
   await checkAuth();

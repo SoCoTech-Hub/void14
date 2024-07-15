@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQuizOverride } from "@/lib/db/schema/quizOverrides";
+import { CompleteQuizOverride } from "@soco/quiz-db/schema/quizOverrides";
 import { trpc } from "@/lib/trpc/client";
 import QuizOverrideModal from "./QuizOverrideModal";
 

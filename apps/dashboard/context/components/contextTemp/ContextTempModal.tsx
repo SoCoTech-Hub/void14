@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ContextTempForm from "./ContextTempForm";
-import { ContextTemp } from "@/lib/db/schema/contextTemp";
+import { ContextTemp } from "@soco/context-db/schema/contextTemp";
 
 export default function ContextTempModal({ 
   contextTemp,

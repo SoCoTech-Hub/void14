@@ -6,12 +6,12 @@ import {
   createRoleAllowOverride,
   deleteRoleAllowOverride,
   updateRoleAllowOverride,
-} from "@/lib/api/roleAllowOverrides/mutations";
+} from "@soco/role-api/roleAllowOverrides/mutations";
 import { 
   roleAllowOverrideIdSchema,
   insertRoleAllowOverrideParams,
   updateRoleAllowOverrideParams 
-} from "@/lib/db/schema/roleAllowOverrides";
+} from "@soco/role-db/schema/roleAllowOverrides";
 
 export async function POST(req: Request) {
   try {

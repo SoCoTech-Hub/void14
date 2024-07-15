@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQuestionNumericalUnit } from "@/lib/db/schema/questionNumericalUnits";
+import { CompleteQuestionNumericalUnit } from "@soco/question-db/schema/questionNumericalUnits";
 import { trpc } from "@/lib/trpc/client";
 import QuestionNumericalUnitModal from "./QuestionNumericalUnitModal";
 

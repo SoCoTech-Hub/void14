@@ -1,6 +1,6 @@
 "use client";
 
-import { LessonPage, NewLessonPageParams, insertLessonPageParams } from "@/lib/db/schema/lessonPages";
+import { LessonPage, NewLessonPageParams, insertLessonPageParams } from "@soco/lesson-db/schema/lessonPages";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

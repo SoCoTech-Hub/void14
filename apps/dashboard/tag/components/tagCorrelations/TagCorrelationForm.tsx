@@ -1,6 +1,6 @@
 "use client";
 
-import { TagCorrelation, NewTagCorrelationParams, insertTagCorrelationParams } from "@/lib/db/schema/tagCorrelations";
+import { TagCorrelation, NewTagCorrelationParams, insertTagCorrelationParams } from "@soco/tag-db/schema/tagCorrelations";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

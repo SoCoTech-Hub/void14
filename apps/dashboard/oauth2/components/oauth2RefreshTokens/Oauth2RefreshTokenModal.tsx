@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import Oauth2RefreshTokenForm from "./Oauth2RefreshTokenForm";
-import { Oauth2RefreshToken } from "@/lib/db/schema/oauth2RefreshTokens";
+import { Oauth2RefreshToken } from "@soco/oauth2-db/schema/oauth2RefreshTokens";
 
 export default function Oauth2RefreshTokenModal({ 
   oauth2RefreshToken,

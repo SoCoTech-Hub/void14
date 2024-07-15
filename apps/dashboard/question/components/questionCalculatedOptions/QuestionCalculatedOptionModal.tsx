@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QuestionCalculatedOptionForm from "./QuestionCalculatedOptionForm";
-import { QuestionCalculatedOption } from "@/lib/db/schema/questionCalculatedOptions";
+import { QuestionCalculatedOption } from "@soco/question-db/schema/questionCalculatedOptions";
 
 export default function QuestionCalculatedOptionModal({ 
   questionCalculatedOption,

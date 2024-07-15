@@ -1,5 +1,5 @@
 "use client";
-import { CompleteLtiSubmission } from "@/lib/db/schema/ltiSubmissions";
+import { CompleteLtiSubmission } from "@soco/lti-db/schema/ltiSubmissions";
 import { trpc } from "@/lib/trpc/client";
 import LtiSubmissionModal from "./LtiSubmissionModal";
 

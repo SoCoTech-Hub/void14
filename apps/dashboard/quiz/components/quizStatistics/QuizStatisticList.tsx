@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQuizStatistic } from "@/lib/db/schema/quizStatistics";
+import { CompleteQuizStatistic } from "@soco/quiz-db/schema/quizStatistics";
 import { trpc } from "@/lib/trpc/client";
 import QuizStatisticModal from "./QuizStatisticModal";
 

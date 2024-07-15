@@ -1,5 +1,5 @@
 "use client";
-import { CompleteSticker } from "@/lib/db/schema/stickers";
+import { CompleteSticker } from "@soco/stickers-db/schema/stickers";
 import { trpc } from "@/lib/trpc/client";
 import StickerModal from "./StickerModal";
 

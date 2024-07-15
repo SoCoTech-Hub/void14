@@ -1,6 +1,6 @@
 'use client'
 
-import { Show, NewShowParams, insertShowParams } from '@/lib/db/schema/shows'
+import { Show, NewShowParams, insertShowParams } from '@soco/show-db/schema/shows'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

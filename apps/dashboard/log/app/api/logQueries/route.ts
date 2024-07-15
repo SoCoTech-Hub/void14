@@ -6,12 +6,12 @@ import {
   createLogQuery,
   deleteLogQuery,
   updateLogQuery,
-} from "@/lib/api/logQueries/mutations";
+} from "@soco/log-api/logQueries/mutations";
 import { 
   logQueryIdSchema,
   insertLogQueryParams,
   updateLogQueryParams 
-} from "@/lib/db/schema/logQueries";
+} from "@soco/log-db/schema/logQueries";
 
 export async function POST(req: Request) {
   try {

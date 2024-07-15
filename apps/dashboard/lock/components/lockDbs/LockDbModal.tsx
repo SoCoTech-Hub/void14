@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import LockDbForm from "./LockDbForm";
-import { LockDb } from "@/lib/db/schema/lockDbs";
+import { LockDb } from "@soco/lock-db/schema/lockDbs";
 
 export default function LockDbModal({ 
   lockDb,

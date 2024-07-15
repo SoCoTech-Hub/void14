@@ -4,7 +4,7 @@ import {
 	AdminPresetPlug,
 	NewAdminPresetPlugParams,
 	insertAdminPresetPlugParams
-} from '@/lib/db/schema/adminPresetPlugs'
+} from '@soco/admin-preset-db/schema/adminPresetPlugs'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

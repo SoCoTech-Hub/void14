@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import MnetServiceForm from "./MnetServiceForm";
-import { MnetService } from "@/lib/db/schema/mnetServices";
+import { MnetService } from "@soco/mnet-db/schema/mnetServices";
 
 export default function MnetServiceModal({ 
   mnetService,

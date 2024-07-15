@@ -4,7 +4,7 @@ import {
 	SupportStatus,
 	NewSupportStatusParams,
 	insertSupportStatusParams
-} from '@/lib/db/schema/supportStatuses'
+} from '@soco/support-db/schema/supportStatuses'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ExternalTokenForm from "./ExternalTokenForm";
-import { ExternalToken } from "@/lib/db/schema/externalTokens";
+import { ExternalToken } from "@soco/external-db/schema/externalTokens";
 
 export default function ExternalTokenModal({ 
   externalToken,

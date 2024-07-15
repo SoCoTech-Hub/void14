@@ -1,6 +1,6 @@
 "use client";
 
-import { SocialReaction, NewSocialReactionParams, insertSocialReactionParams } from "@/lib/db/schema/socialReactions";
+import { SocialReaction, NewSocialReactionParams, insertSocialReactionParams } from "@soco/blog-db/schema/socialReactions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

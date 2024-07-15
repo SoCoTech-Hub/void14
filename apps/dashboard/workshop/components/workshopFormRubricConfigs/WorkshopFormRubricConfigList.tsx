@@ -1,5 +1,5 @@
 "use client";
-import { CompleteWorkshopFormRubricConfig } from "@/lib/db/schema/workshopFormRubricConfigs";
+import { CompleteWorkshopFormRubricConfig } from "@soco/workshop-db/schema/workshopFormRubricConfigs";
 import { trpc } from "@/lib/trpc/client";
 import WorkshopFormRubricConfigModal from "./WorkshopFormRubricConfigModal";
 

@@ -4,7 +4,7 @@ import {
 	AnalyticsTrainSample,
 	NewAnalyticsTrainSampleParams,
 	insertAnalyticsTrainSampleParams
-} from '@/lib/db/schema/analyticsTrainSamples'
+} from '@soco/analytics-db/schema/analyticsTrainSamples'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import WikiLockForm from "./WikiLockForm";
-import { WikiLock } from "@/lib/db/schema/wikiLocks";
+import { WikiLock } from "@soco/wiki-db/schema/wikiLocks";
 
 export default function WikiLockModal({ 
   wikiLock,

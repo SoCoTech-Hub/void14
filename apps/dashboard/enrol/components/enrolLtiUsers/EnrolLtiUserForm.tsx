@@ -28,7 +28,7 @@ import {
   EnrolLtiUser,
   insertEnrolLtiUserParams,
   NewEnrolLtiUserParams,
-} from "@/lib/db/schema/enrolLtiUsers";
+} from "@soco/enrol-db/schema/enrolLtiUsers";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

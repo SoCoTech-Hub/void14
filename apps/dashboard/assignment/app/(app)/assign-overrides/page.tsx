@@ -1,7 +1,7 @@
 import AssignOverrideList from "@/components/assignOverrides/AssignOverrideList";
 import NewAssignOverrideModal from "@/components/assignOverrides/AssignOverrideModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function AssignOverrides() {
   await checkAuth();

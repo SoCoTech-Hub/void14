@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import NoteForm from "./NoteForm";
-import { Note } from "@/lib/db/schema/notes";
+import { Note } from "@soco/note-db/schema/notes";
 
 export default function NoteModal({ 
   note,

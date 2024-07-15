@@ -1,5 +1,5 @@
 "use client";
-import { CompleteBlogComment } from "@/lib/db/schema/blogComments";
+import { CompleteBlogComment } from "@soco/blog-db/schema/blogComments";
 import { trpc } from "@/lib/trpc/client";
 import BlogCommentModal from "./BlogCommentModal";
 

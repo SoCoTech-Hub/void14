@@ -4,7 +4,7 @@ import {
 	NextOfKin,
 	NewNextOfKinParams,
 	insertNextOfKinParams
-} from '@/lib/db/schema/nextOfKins'
+} from '@soco/profile-db/schema/nextOfKins'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

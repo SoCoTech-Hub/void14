@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import GradingDefinitionForm from "./GradingDefinitionForm";
-import { GradingDefinition } from "@/lib/db/schema/gradingDefinitions";
+import { GradingDefinition } from "@soco/grade-db/schema/gradingDefinitions";
 
 export default function GradingDefinitionModal({ 
   gradingDefinition,

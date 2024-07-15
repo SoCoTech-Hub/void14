@@ -6,12 +6,12 @@ import {
   createFile,
   deleteFile,
   updateFile,
-} from "@/lib/api/files/mutations";
+} from "@soco/file-api/files/mutations";
 import { 
   fileIdSchema,
   insertFileParams,
   updateFileParams 
-} from "@/lib/db/schema/files";
+} from "@soco/file-db/schema/files";
 
 export async function POST(req: Request) {
   try {

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import GradingformGuideCriterionForm from "./GradingformGuideCriterionForm";
-import { GradingformGuideCriterion } from "@/lib/db/schema/gradingformGuideCriteria";
+import { GradingformGuideCriterion } from "@soco/grade-db/schema/gradingformGuideCriteria";
 
 export default function GradingformGuideCriterionModal({ 
   gradingformGuideCriterion,

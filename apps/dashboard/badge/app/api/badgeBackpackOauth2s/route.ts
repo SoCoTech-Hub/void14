@@ -6,12 +6,12 @@ import {
   createBadgeBackpackOauth2,
   deleteBadgeBackpackOauth2,
   updateBadgeBackpackOauth2,
-} from "@/lib/api/badgeBackpackOauth2s/mutations";
+} from "@soco/badge-api/badgeBackpackOauth2s/mutations";
 import { 
   badgeBackpackOauth2IdSchema,
   insertBadgeBackpackOauth2Params,
   updateBadgeBackpackOauth2Params 
-} from "@/lib/db/schema/badgeBackpackOauth2s";
+} from "@soco/badge-db/schema/badgeBackpackOauth2s";
 
 export async function POST(req: Request) {
   try {

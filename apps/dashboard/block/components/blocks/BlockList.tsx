@@ -1,5 +1,5 @@
 "use client";
-import { CompleteBlock } from "@/lib/db/schema/blocks";
+import { CompleteBlock } from "@soco/block-db/schema/blocks";
 import { trpc } from "@/lib/trpc/client";
 import BlockModal from "./BlockModal";
 

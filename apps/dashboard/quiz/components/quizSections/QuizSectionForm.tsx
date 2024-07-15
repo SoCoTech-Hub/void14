@@ -4,7 +4,7 @@ import {
 	QuizSection,
 	NewQuizSectionParams,
 	insertQuizSectionParams
-} from '@/lib/db/schema/quizSections'
+} from '@soco/quiz-db/schema/quizSections'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

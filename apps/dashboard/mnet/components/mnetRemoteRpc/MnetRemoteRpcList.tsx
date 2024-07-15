@@ -1,5 +1,5 @@
 "use client";
-import { CompleteMnetRemoteRpc } from "@/lib/db/schema/mnetRemoteRpc";
+import { CompleteMnetRemoteRpc } from "@soco/mnet-db/schema/mnetRemoteRpc";
 import { trpc } from "@/lib/trpc/client";
 import MnetRemoteRpcModal from "./MnetRemoteRpcModal";
 

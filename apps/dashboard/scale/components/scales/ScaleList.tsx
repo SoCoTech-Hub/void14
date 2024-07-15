@@ -1,5 +1,5 @@
 "use client";
-import { CompleteScale } from "@/lib/db/schema/scales";
+import { CompleteScale } from "@soco/scale-db/schema/scales";
 import { trpc } from "@/lib/trpc/client";
 import ScaleModal from "./ScaleModal";
 

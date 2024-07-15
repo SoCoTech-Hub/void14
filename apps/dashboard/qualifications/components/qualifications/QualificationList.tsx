@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQualification } from "@/lib/db/schema/qualifications";
+import { CompleteQualification } from "@soco/qualifications-db/schema/qualifications";
 import { trpc } from "@/lib/trpc/client";
 import QualificationModal from "./QualificationModal";
 

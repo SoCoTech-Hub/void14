@@ -6,12 +6,12 @@ import {
   createQuestionResponseCount,
   deleteQuestionResponseCount,
   updateQuestionResponseCount,
-} from "@/lib/api/questionResponseCounts/mutations";
+} from "@soco/question-api/questionResponseCounts/mutations";
 import { 
   questionResponseCountIdSchema,
   insertQuestionResponseCountParams,
   updateQuestionResponseCountParams 
-} from "@/lib/db/schema/questionResponseCounts";
+} from "@soco/question-db/schema/questionResponseCounts";
 
 export async function POST(req: Request) {
   try {

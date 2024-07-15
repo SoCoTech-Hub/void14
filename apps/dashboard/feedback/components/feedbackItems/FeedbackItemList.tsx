@@ -1,5 +1,5 @@
 "use client";
-import { CompleteFeedbackItem } from "@/lib/db/schema/feedbackItems";
+import { CompleteFeedbackItem } from "@soco/feedback-db/schema/feedbackItems";
 import { trpc } from "@/lib/trpc/client";
 import FeedbackItemModal from "./FeedbackItemModal";
 

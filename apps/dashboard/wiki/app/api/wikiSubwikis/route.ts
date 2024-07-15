@@ -6,12 +6,12 @@ import {
   createWikiSubwiki,
   deleteWikiSubwiki,
   updateWikiSubwiki,
-} from "@/lib/api/wikiSubwikis/mutations";
+} from "@soco/wiki-api/wikiSubwikis/mutations";
 import { 
   wikiSubwikiIdSchema,
   insertWikiSubwikiParams,
   updateWikiSubwikiParams 
-} from "@/lib/db/schema/wikiSubwikis";
+} from "@soco/wiki-db/schema/wikiSubwikis";
 
 export async function POST(req: Request) {
   try {

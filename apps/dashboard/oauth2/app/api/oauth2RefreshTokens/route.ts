@@ -6,12 +6,12 @@ import {
   createOauth2RefreshToken,
   deleteOauth2RefreshToken,
   updateOauth2RefreshToken,
-} from "@/lib/api/oauth2RefreshTokens/mutations";
+} from "@soco/oauth2-api/oauth2RefreshTokens/mutations";
 import { 
   oauth2RefreshTokenIdSchema,
   insertOauth2RefreshTokenParams,
   updateOauth2RefreshTokenParams 
-} from "@/lib/db/schema/oauth2RefreshTokens";
+} from "@soco/oauth2-db/schema/oauth2RefreshTokens";
 
 export async function POST(req: Request) {
   try {

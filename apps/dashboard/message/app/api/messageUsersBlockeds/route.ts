@@ -6,12 +6,12 @@ import {
   createMessageUsersBlocked,
   deleteMessageUsersBlocked,
   updateMessageUsersBlocked,
-} from "@/lib/api/messageUsersBlockeds/mutations";
+} from "@soco/message-api/messageUsersBlockeds/mutations";
 import { 
   messageUsersBlockedIdSchema,
   insertMessageUsersBlockedParams,
   updateMessageUsersBlockedParams 
-} from "@/lib/db/schema/messageUsersBlockeds";
+} from "@soco/message-db/schema/messageUsersBlockeds";
 
 export async function POST(req: Request) {
   try {

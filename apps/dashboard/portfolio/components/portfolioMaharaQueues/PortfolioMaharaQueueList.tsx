@@ -1,5 +1,5 @@
 "use client";
-import { CompletePortfolioMaharaQueue } from "@/lib/db/schema/portfolioMaharaQueues";
+import { CompletePortfolioMaharaQueue } from "@soco/portfolio-db/schema/portfolioMaharaQueues";
 import { trpc } from "@/lib/trpc/client";
 import PortfolioMaharaQueueModal from "./PortfolioMaharaQueueModal";
 

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteGradingInstance } from "@/lib/db/schema/gradingInstances";
+import { CompleteGradingInstance } from "@soco/grade-db/schema/gradingInstances";
 import { trpc } from "@/lib/trpc/client";
 import GradingInstanceModal from "./GradingInstanceModal";
 

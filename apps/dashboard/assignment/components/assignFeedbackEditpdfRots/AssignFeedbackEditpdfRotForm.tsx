@@ -4,7 +4,7 @@ import {
 	AssignFeedbackEditpdfRot,
 	NewAssignFeedbackEditpdfRotParams,
 	insertAssignFeedbackEditpdfRotParams
-} from '@/lib/db/schema/assignFeedbackEditpdfRots'
+} from '@soco/assignment-db/schema/assignFeedbackEditpdfRots'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

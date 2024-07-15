@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import BlockPositionForm from "./BlockPositionForm";
-import { BlockPosition } from "@/lib/db/schema/blockPositions";
+import { BlockPosition } from "@soco/block-db/schema/blockPositions";
 
 export default function BlockPositionModal({ 
   blockPosition,

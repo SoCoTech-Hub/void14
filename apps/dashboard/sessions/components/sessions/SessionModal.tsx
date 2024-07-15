@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import SessionForm from "./SessionForm";
-import { Session } from "@/lib/db/schema/sessions";
+import { Session } from "@soco/sessions-db/schema/sessions";
 
 export default function SessionModal({ 
   session,

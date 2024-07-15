@@ -1,5 +1,5 @@
 "use client";
-import { CompleteTaskLog } from "@/lib/db/schema/taskLogs";
+import { CompleteTaskLog } from "@soco/task-db/schema/taskLogs";
 import { trpc } from "@/lib/trpc/client";
 import TaskLogModal from "./TaskLogModal";
 

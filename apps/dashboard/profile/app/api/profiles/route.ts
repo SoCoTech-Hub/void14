@@ -6,12 +6,12 @@ import {
   createProfile,
   deleteProfile,
   updateProfile,
-} from "@/lib/api/profiles/mutations";
+} from "@soco/profile-api/profiles/mutations";
 import { 
   profileIdSchema,
   insertProfileParams,
   updateProfileParams 
-} from "@/lib/db/schema/profiles";
+} from "@soco/profile-db/schema/profiles";
 
 export async function POST(req: Request) {
   try {

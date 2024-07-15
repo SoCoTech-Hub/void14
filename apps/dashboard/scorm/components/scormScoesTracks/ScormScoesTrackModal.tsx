@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ScormScoesTrackForm from "./ScormScoesTrackForm";
-import { ScormScoesTrack } from "@/lib/db/schema/scormScoesTracks";
+import { ScormScoesTrack } from "@soco/scorm-db/schema/scormScoesTracks";
 
 export default function ScormScoesTrackModal({ 
   scormScoesTrack,

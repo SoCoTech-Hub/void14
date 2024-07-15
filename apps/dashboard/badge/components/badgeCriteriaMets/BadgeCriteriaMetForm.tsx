@@ -4,7 +4,7 @@ import {
 	BadgeCriteriaMet,
 	NewBadgeCriteriaMetParams,
 	insertBadgeCriteriaMetParams
-} from '@/lib/db/schema/badgeCriteriaMets'
+} from '@soco/badge-db/schema/badgeCriteriaMets'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { Label, NewLabelParams, insertLabelParams } from "@/lib/db/schema/labels";
+import { Label, NewLabelParams, insertLabelParams } from "@soco/label-db/schema/labels";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

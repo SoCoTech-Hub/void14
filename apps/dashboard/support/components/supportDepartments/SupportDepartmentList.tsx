@@ -1,5 +1,5 @@
 "use client";
-import { CompleteSupportDepartment } from "@/lib/db/schema/supportDepartments";
+import { CompleteSupportDepartment } from "@soco/support-db/schema/supportDepartments";
 import { trpc } from "@/lib/trpc/client";
 import SupportDepartmentModal from "./SupportDepartmentModal";
 

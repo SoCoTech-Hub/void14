@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QuizGradeForm from "./QuizGradeForm";
-import { QuizGrade } from "@/lib/db/schema/quizGrades";
+import { QuizGrade } from "@soco/quiz-db/schema/quizGrades";
 
 export default function QuizGradeModal({ 
   quizGrade,

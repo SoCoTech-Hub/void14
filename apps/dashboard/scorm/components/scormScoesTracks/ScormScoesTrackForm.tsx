@@ -4,7 +4,7 @@ import {
 	ScormScoesTrack,
 	NewScormScoesTrackParams,
 	insertScormScoesTrackParams
-} from '@/lib/db/schema/scormScoesTracks'
+} from '@soco/scorm-db/schema/scormScoesTracks'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

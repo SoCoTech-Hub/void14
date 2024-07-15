@@ -1,7 +1,7 @@
 import MessageUserActionList from "@/components/messageUserActions/MessageUserActionList";
 import NewMessageUserActionModal from "@/components/messageUserActions/MessageUserActionModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function MessageUserActions() {
   await checkAuth();

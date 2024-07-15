@@ -1,6 +1,6 @@
 "use client";
 
-import { ReportbuilderColumn, NewReportbuilderColumnParams, insertReportbuilderColumnParams } from "@/lib/db/schema/reportbuilderColumns";
+import { ReportbuilderColumn, NewReportbuilderColumnParams, insertReportbuilderColumnParams } from "@soco/report-builder-db/schema/reportbuilderColumns";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

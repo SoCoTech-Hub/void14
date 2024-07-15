@@ -1,5 +1,5 @@
 "use client";
-import { CompleteWorkshopGrade } from "@/lib/db/schema/workshopGrades";
+import { CompleteWorkshopGrade } from "@soco/workshop-db/schema/workshopGrades";
 import { trpc } from "@/lib/trpc/client";
 import WorkshopGradeModal from "./WorkshopGradeModal";
 

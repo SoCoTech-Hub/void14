@@ -6,12 +6,12 @@ import {
   createBlockPosition,
   deleteBlockPosition,
   updateBlockPosition,
-} from "@/lib/api/blockPositions/mutations";
+} from "@soco/block-api/blockPositions/mutations";
 import { 
   blockPositionIdSchema,
   insertBlockPositionParams,
   updateBlockPositionParams 
-} from "@/lib/db/schema/blockPositions";
+} from "@soco/block-db/schema/blockPositions";
 
 export async function POST(req: Request) {
   try {

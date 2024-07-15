@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import WikiPageForm from "./WikiPageForm";
-import { WikiPage } from "@/lib/db/schema/wikiPages";
+import { WikiPage } from "@soco/wiki-db/schema/wikiPages";
 
 export default function WikiPageModal({ 
   wikiPage,

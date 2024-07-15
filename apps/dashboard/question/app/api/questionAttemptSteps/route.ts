@@ -6,12 +6,12 @@ import {
   createQuestionAttemptStep,
   deleteQuestionAttemptStep,
   updateQuestionAttemptStep,
-} from "@/lib/api/questionAttemptSteps/mutations";
+} from "@soco/question-api/questionAttemptSteps/mutations";
 import { 
   questionAttemptStepIdSchema,
   insertQuestionAttemptStepParams,
   updateQuestionAttemptStepParams 
-} from "@/lib/db/schema/questionAttemptSteps";
+} from "@soco/question-db/schema/questionAttemptSteps";
 
 export async function POST(req: Request) {
   try {

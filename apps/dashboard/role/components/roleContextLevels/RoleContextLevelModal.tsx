@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import RoleContextLevelForm from "./RoleContextLevelForm";
-import { RoleContextLevel } from "@/lib/db/schema/roleContextLevels";
+import { RoleContextLevel } from "@soco/role-db/schema/roleContextLevels";
 
 export default function RoleContextLevelModal({ 
   roleContextLevel,

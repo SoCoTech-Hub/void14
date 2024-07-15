@@ -1,5 +1,5 @@
 "use client";
-import { CompleteAddress } from "@/lib/db/schema/addresses";
+import { CompleteAddress } from "@soco/profile-db/schema/addresses";
 import { trpc } from "@/lib/trpc/client";
 import AddressModal from "./AddressModal";
 

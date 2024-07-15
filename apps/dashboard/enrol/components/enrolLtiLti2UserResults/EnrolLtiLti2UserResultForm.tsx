@@ -1,6 +1,6 @@
 "use client";
 
-import { EnrolLtiLti2UserResult, NewEnrolLtiLti2UserResultParams, insertEnrolLtiLti2UserResultParams } from "@/lib/db/schema/enrolLtiLti2UserResults";
+import { EnrolLtiLti2UserResult, NewEnrolLtiLti2UserResultParams, insertEnrolLtiLti2UserResultParams } from "@soco/enrol-db/schema/enrolLtiLti2UserResults";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import LessonAttemptForm from "./LessonAttemptForm";
-import { LessonAttempt } from "@/lib/db/schema/lessonAttempts";
+import { LessonAttempt } from "@soco/lesson-db/schema/lessonAttempts";
 
 export default function LessonAttemptModal({ 
   lessonAttempt,

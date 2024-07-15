@@ -1,6 +1,6 @@
 'use client'
 
-import { Zoom, NewZoomParams, insertZoomParams } from '@/lib/db/schema/zooms'
+import { Zoom, NewZoomParams, insertZoomParams } from '@soco/zoom-db/schema/zooms'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

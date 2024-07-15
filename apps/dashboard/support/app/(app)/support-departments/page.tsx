@@ -1,7 +1,7 @@
 import SupportDepartmentList from "@/components/supportDepartments/SupportDepartmentList";
 import NewSupportDepartmentModal from "@/components/supportDepartments/SupportDepartmentModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function SupportDepartments() {
   await checkAuth();

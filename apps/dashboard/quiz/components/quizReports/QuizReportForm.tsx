@@ -1,6 +1,6 @@
 "use client";
 
-import { QuizReport, NewQuizReportParams, insertQuizReportParams } from "@/lib/db/schema/quizReports";
+import { QuizReport, NewQuizReportParams, insertQuizReportParams } from "@soco/quiz-db/schema/quizReports";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

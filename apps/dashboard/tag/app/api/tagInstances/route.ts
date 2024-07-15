@@ -6,12 +6,12 @@ import {
   createTagInstance,
   deleteTagInstance,
   updateTagInstance,
-} from "@/lib/api/tagInstances/mutations";
+} from "@soco/tag-api/tagInstances/mutations";
 import { 
   tagInstanceIdSchema,
   insertTagInstanceParams,
   updateTagInstanceParams 
-} from "@/lib/db/schema/tagInstances";
+} from "@soco/tag-db/schema/tagInstances";
 
 export async function POST(req: Request) {
   try {

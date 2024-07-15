@@ -1,5 +1,5 @@
 "use client";
-import { CompleteLogDisplay } from "@/lib/db/schema/logDisplays";
+import { CompleteLogDisplay } from "@soco/log-db/schema/logDisplays";
 import { trpc } from "@/lib/trpc/client";
 import LogDisplayModal from "./LogDisplayModal";
 

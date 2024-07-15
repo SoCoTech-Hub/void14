@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QtypeDdmarkerDropForm from "./QtypeDdmarkerDropForm";
-import { QtypeDdmarkerDrop } from "@/lib/db/schema/qtypeDdmarkerDrops";
+import { QtypeDdmarkerDrop } from "@soco/qtype-db/schema/qtypeDdmarkerDrops";
 
 export default function QtypeDdmarkerDropModal({ 
   qtypeDdmarkerDrop,

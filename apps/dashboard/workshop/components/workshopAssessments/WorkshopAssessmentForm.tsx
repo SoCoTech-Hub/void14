@@ -4,7 +4,7 @@ import {
 	WorkshopAssessment,
 	NewWorkshopAssessmentParams,
 	insertWorkshopAssessmentParams
-} from '@/lib/db/schema/workshopAssessments'
+} from '@soco/workshop-db/schema/workshopAssessments'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

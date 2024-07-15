@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import MnetSessionForm from "./MnetSessionForm";
-import { MnetSession } from "@/lib/db/schema/mnetSessions";
+import { MnetSession } from "@soco/mnet-db/schema/mnetSessions";
 
 export default function MnetSessionModal({ 
   mnetSession,

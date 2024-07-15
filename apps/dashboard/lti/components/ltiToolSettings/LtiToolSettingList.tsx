@@ -1,5 +1,5 @@
 "use client";
-import { CompleteLtiToolSetting } from "@/lib/db/schema/ltiToolSettings";
+import { CompleteLtiToolSetting } from "@soco/lti-db/schema/ltiToolSettings";
 import { trpc } from "@/lib/trpc/client";
 import LtiToolSettingModal from "./LtiToolSettingModal";
 

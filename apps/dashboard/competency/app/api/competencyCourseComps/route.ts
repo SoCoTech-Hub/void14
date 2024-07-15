@@ -6,12 +6,12 @@ import {
   createCompetencyCourseComp,
   deleteCompetencyCourseComp,
   updateCompetencyCourseComp,
-} from "@/lib/api/competencyCourseComps/mutations";
+} from "@soco/competency-api/competencyCourseComps/mutations";
 import { 
   competencyCourseCompIdSchema,
   insertCompetencyCourseCompParams,
   updateCompetencyCourseCompParams 
-} from "@/lib/db/schema/competencyCourseComps";
+} from "@soco/competency-db/schema/competencyCourseComps";
 
 export async function POST(req: Request) {
   try {

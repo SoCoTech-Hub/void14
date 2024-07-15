@@ -1,5 +1,5 @@
 "use client";
-import { CompleteToolDataprivacyPurposeRole } from "@/lib/db/schema/toolDataprivacyPurposeRoles";
+import { CompleteToolDataprivacyPurposeRole } from "@soco/tool-data-privacy-db/schema/toolDataprivacyPurposeRoles";
 import { trpc } from "@/lib/trpc/client";
 import ToolDataprivacyPurposeRoleModal from "./ToolDataprivacyPurposeRoleModal";
 

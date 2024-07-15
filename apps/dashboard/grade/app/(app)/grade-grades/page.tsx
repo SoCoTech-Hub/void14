@@ -1,7 +1,7 @@
 import GradeGradeList from "@/components/gradeGrades/GradeGradeList";
 import NewGradeGradeModal from "@/components/gradeGrades/GradeGradeModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function GradeGrades() {
   await checkAuth();

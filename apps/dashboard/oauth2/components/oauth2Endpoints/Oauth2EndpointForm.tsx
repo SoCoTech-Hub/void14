@@ -1,6 +1,6 @@
 "use client";
 
-import { Oauth2Endpoint, NewOauth2EndpointParams, insertOauth2EndpointParams } from "@/lib/db/schema/oauth2Endpoints";
+import { Oauth2Endpoint, NewOauth2EndpointParams, insertOauth2EndpointParams } from "@soco/oauth2-db/schema/oauth2Endpoints";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

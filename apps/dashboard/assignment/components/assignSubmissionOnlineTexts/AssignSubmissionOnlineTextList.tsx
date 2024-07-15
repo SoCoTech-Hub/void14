@@ -1,5 +1,5 @@
 "use client";
-import { CompleteAssignSubmissionOnlineText } from "@/lib/db/schema/assignSubmissionOnlineTexts";
+import { CompleteAssignSubmissionOnlineText } from "@soco/assignment-db/schema/assignSubmissionOnlineTexts";
 import { trpc } from "@/lib/trpc/client";
 import AssignSubmissionOnlineTextModal from "./AssignSubmissionOnlineTextModal";
 

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import LtiSubmissionForm from "./LtiSubmissionForm";
-import { LtiSubmission } from "@/lib/db/schema/ltiSubmissions";
+import { LtiSubmission } from "@soco/lti-db/schema/ltiSubmissions";
 
 export default function LtiSubmissionModal({ 
   ltiSubmission,

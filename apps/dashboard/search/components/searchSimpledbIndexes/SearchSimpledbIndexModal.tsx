@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import SearchSimpledbIndexForm from "./SearchSimpledbIndexForm";
-import { SearchSimpledbIndex } from "@/lib/db/schema/searchSimpledbIndexes";
+import { SearchSimpledbIndex } from "@soco/search-db/schema/searchSimpledbIndexes";
 
 export default function SearchSimpledbIndexModal({ 
   searchSimpledbIndex,

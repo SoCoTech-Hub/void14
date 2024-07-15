@@ -1,5 +1,5 @@
 "use client";
-import { CompleteScormScoesTrack } from "@/lib/db/schema/scormScoesTracks";
+import { CompleteScormScoesTrack } from "@soco/scorm-db/schema/scormScoesTracks";
 import { trpc } from "@/lib/trpc/client";
 import ScormScoesTrackModal from "./ScormScoesTrackModal";
 

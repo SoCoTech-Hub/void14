@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import AnalyticsPredictionForm from "./AnalyticsPredictionForm";
-import { AnalyticsPrediction } from "@/lib/db/schema/analyticsPredictions";
+import { AnalyticsPrediction } from "@soco/analytics-db/schema/analyticsPredictions";
 
 export default function AnalyticsPredictionModal({ 
   analyticsPrediction,

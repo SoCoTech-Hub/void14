@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import LabelForm from "./LabelForm";
-import { Label } from "@/lib/db/schema/labels";
+import { Label } from "@soco/label-db/schema/labels";
 
 export default function LabelModal({ 
   label,

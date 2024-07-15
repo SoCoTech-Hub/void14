@@ -6,12 +6,12 @@ import {
   createQuizFeedback,
   deleteQuizFeedback,
   updateQuizFeedback,
-} from "@/lib/api/quizFeedbacks/mutations";
+} from "@soco/quiz-api/quizFeedbacks/mutations";
 import { 
   quizFeedbackIdSchema,
   insertQuizFeedbackParams,
   updateQuizFeedbackParams 
-} from "@/lib/db/schema/quizFeedbacks";
+} from "@soco/quiz-db/schema/quizFeedbacks";
 
 export async function POST(req: Request) {
   try {

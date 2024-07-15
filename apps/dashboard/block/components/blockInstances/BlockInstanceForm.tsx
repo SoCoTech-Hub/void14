@@ -4,7 +4,7 @@ import {
 	BlockInstance,
 	NewBlockInstanceParams,
 	insertBlockInstanceParams
-} from '@/lib/db/schema/blockInstances'
+} from '@soco/block-db/schema/blockInstances'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

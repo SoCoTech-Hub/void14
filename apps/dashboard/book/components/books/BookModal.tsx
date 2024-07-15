@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import BookForm from "./BookForm";
-import { Book } from "@/lib/db/schema/books";
+import { Book } from "@soco/book-db/schema/books";
 
 export default function BookModal({ 
   book,

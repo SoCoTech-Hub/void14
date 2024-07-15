@@ -28,7 +28,7 @@ import {
   insertMassMailMessageParams,
   MassMailMessage,
   NewMassMailMessageParams,
-} from "@/lib/db/schema/massMailMessages";
+} from "@soco/mass-mail-db/schema/massMailMessages";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

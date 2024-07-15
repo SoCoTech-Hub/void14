@@ -28,7 +28,7 @@ import {
   AssignOverride,
   insertAssignOverrideParams,
   NewAssignOverrideParams,
-} from "@/lib/db/schema/assignOverrides";
+} from "@soco/assignment-db/schema/assignOverrides";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteSession } from "@/lib/db/schema/sessions";
+import { CompleteSession } from "@soco/sessions-db/schema/sessions";
 import { trpc } from "@/lib/trpc/client";
 import SessionModal from "./SessionModal";
 

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QuestionStatisticForm from "./QuestionStatisticForm";
-import { QuestionStatistic } from "@/lib/db/schema/questionStatistics";
+import { QuestionStatistic } from "@soco/question-db/schema/questionStatistics";
 
 export default function QuestionStatisticModal({ 
   questionStatistic,

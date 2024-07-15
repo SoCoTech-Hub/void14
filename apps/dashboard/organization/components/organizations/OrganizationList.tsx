@@ -1,5 +1,5 @@
 "use client";
-import { CompleteOrganization } from "@/lib/db/schema/organizations";
+import { CompleteOrganization } from "@soco/organization-db/schema/organizations";
 import { trpc } from "@/lib/trpc/client";
 import OrganizationModal from "./OrganizationModal";
 

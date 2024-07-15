@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import DigilibForm from "./DigilibForm";
-import { Digilib } from "@/lib/db/schema/digilibs";
+import { Digilib } from "@soco/digilib-db/schema/digilibs";
 
 export default function DigilibModal({ 
   digilib,

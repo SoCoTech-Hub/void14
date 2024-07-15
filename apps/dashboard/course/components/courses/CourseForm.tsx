@@ -22,7 +22,7 @@ import {
   Course,
   insertCourseParams,
   NewCourseParams,
-} from "@/lib/db/schema/courses";
+} from "@soco/course-db/schema/courses";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

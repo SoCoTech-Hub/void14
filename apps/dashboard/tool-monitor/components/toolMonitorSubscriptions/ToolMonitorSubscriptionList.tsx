@@ -1,5 +1,5 @@
 "use client";
-import { CompleteToolMonitorSubscription } from "@/lib/db/schema/toolMonitorSubscriptions";
+import { CompleteToolMonitorSubscription } from "@soco/tool-monitor-db/schema/toolMonitorSubscriptions";
 import { trpc } from "@/lib/trpc/client";
 import ToolMonitorSubscriptionModal from "./ToolMonitorSubscriptionModal";
 

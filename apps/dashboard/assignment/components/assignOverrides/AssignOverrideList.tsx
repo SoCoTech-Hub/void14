@@ -1,5 +1,5 @@
 "use client";
-import { CompleteAssignOverride } from "@/lib/db/schema/assignOverrides";
+import { CompleteAssignOverride } from "@soco/assignment-db/schema/assignOverrides";
 import { trpc } from "@/lib/trpc/client";
 import AssignOverrideModal from "./AssignOverrideModal";
 

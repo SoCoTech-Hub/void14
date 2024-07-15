@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QuizSlotForm from "./QuizSlotForm";
-import { QuizSlot } from "@/lib/db/schema/quizSlots";
+import { QuizSlot } from "@soco/quiz-db/schema/quizSlots";
 
 export default function QuizSlotModal({ 
   quizSlot,

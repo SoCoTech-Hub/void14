@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ContextForm from "./ContextForm";
-import { Context } from "@/lib/db/schema/contexts";
+import { Context } from "@soco/context-db/schema/contexts";
 
 export default function ContextModal({ 
   context,

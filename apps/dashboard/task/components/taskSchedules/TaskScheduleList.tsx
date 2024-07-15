@@ -1,5 +1,5 @@
 "use client";
-import { CompleteTaskSchedule } from "@/lib/db/schema/taskSchedules";
+import { CompleteTaskSchedule } from "@soco/task-db/schema/taskSchedules";
 import { trpc } from "@/lib/trpc/client";
 import TaskScheduleModal from "./TaskScheduleModal";
 

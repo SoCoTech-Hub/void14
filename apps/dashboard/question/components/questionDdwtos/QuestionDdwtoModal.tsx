@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QuestionDdwtoForm from "./QuestionDdwtoForm";
-import { QuestionDdwto } from "@/lib/db/schema/questionDdwtos";
+import { QuestionDdwto } from "@soco/question-db/schema/questionDdwtos";
 
 export default function QuestionDdwtoModal({ 
   questionDdwto,

@@ -1,6 +1,6 @@
 "use client";
 
-import { LtiTypesConfig, NewLtiTypesConfigParams, insertLtiTypesConfigParams } from "@/lib/db/schema/ltiTypesConfigs";
+import { LtiTypesConfig, NewLtiTypesConfigParams, insertLtiTypesConfigParams } from "@soco/lti-db/schema/ltiTypesConfigs";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

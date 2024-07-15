@@ -6,12 +6,12 @@ import {
   createSurveyAnalysiss,
   deleteSurveyAnalysiss,
   updateSurveyAnalysiss,
-} from "@/lib/api/surveyAnalysiss/mutations";
+} from "@soco/survey-api/surveyAnalysiss/mutations";
 import { 
   surveyAnalysissIdSchema,
   insertSurveyAnalysissParams,
   updateSurveyAnalysissParams 
-} from "@/lib/db/schema/surveyAnalysiss";
+} from "@soco/survey-db/schema/surveyAnalysiss";
 
 export async function POST(req: Request) {
   try {

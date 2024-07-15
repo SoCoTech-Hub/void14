@@ -1,6 +1,6 @@
 "use client";
 
-import { ReportbuilderAudience, NewReportbuilderAudienceParams, insertReportbuilderAudienceParams } from "@/lib/db/schema/reportbuilderAudiences";
+import { ReportbuilderAudience, NewReportbuilderAudienceParams, insertReportbuilderAudienceParams } from "@soco/report-builder-db/schema/reportbuilderAudiences";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

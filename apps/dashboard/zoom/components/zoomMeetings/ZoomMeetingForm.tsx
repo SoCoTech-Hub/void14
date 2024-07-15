@@ -4,7 +4,7 @@ import {
 	ZoomMeeting,
 	NewZoomMeetingParams,
 	insertZoomMeetingParams
-} from '@/lib/db/schema/zoomMeetings'
+} from '@soco/zoom-db/schema/zoomMeetings'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

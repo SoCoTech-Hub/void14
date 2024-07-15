@@ -1,7 +1,7 @@
 import MessageList from "@/components/messages/MessageList";
 import NewMessageModal from "@/components/messages/MessageModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function Messages() {
   await checkAuth();

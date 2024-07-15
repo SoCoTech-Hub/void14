@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQtypeEssayOption } from "@/lib/db/schema/qtypeEssayOptions";
+import { CompleteQtypeEssayOption } from "@soco/qtype-db/schema/qtypeEssayOptions";
 import { trpc } from "@/lib/trpc/client";
 import QtypeEssayOptionModal from "./QtypeEssayOptionModal";
 

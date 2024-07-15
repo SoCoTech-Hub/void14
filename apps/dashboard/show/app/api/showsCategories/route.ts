@@ -6,12 +6,12 @@ import {
   createShowsCategory,
   deleteShowsCategory,
   updateShowsCategory,
-} from "@/lib/api/showsCategories/mutations";
+} from "@soco/show-api/showsCategories/mutations";
 import { 
   showsCategoryIdSchema,
   insertShowsCategoryParams,
   updateShowsCategoryParams 
-} from "@/lib/db/schema/showsCategories";
+} from "@soco/show-db/schema/showsCategories";
 
 export async function POST(req: Request) {
   try {

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteForumTrackPref } from "@/lib/db/schema/forumTrackPrefs";
+import { CompleteForumTrackPref } from "@soco/forum-db/schema/forumTrackPrefs";
 import { trpc } from "@/lib/trpc/client";
 import ForumTrackPrefModal from "./ForumTrackPrefModal";
 

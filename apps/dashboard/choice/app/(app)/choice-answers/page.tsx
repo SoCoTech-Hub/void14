@@ -1,7 +1,7 @@
 import ChoiceAnswerList from "@/components/choiceAnswers/ChoiceAnswerList";
 import NewChoiceAnswerModal from "@/components/choiceAnswers/ChoiceAnswerModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function ChoiceAnswers() {
   await checkAuth();

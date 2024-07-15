@@ -4,7 +4,7 @@ import {
 	AnalyticsUsedFile,
 	NewAnalyticsUsedFileParams,
 	insertAnalyticsUsedFileParams
-} from '@/lib/db/schema/analyticsUsedFiles'
+} from '@soco/analytics-db/schema/analyticsUsedFiles'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

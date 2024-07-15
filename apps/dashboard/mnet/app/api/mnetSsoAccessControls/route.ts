@@ -6,12 +6,12 @@ import {
   createMnetSsoAccessControl,
   deleteMnetSsoAccessControl,
   updateMnetSsoAccessControl,
-} from "@/lib/api/mnetSsoAccessControls/mutations";
+} from "@soco/mnet-api/mnetSsoAccessControls/mutations";
 import { 
   mnetSsoAccessControlIdSchema,
   insertMnetSsoAccessControlParams,
   updateMnetSsoAccessControlParams 
-} from "@/lib/db/schema/mnetSsoAccessControls";
+} from "@soco/mnet-db/schema/mnetSsoAccessControls";
 
 export async function POST(req: Request) {
   try {

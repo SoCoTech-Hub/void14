@@ -1,5 +1,5 @@
 "use client";
-import { CompleteGroupsMember } from "@/lib/db/schema/groupsMembers";
+import { CompleteGroupsMember } from "@soco/group-db/schema/groupsMembers";
 import { trpc } from "@/lib/trpc/client";
 import GroupsMemberModal from "./GroupsMemberModal";
 

@@ -6,12 +6,12 @@ import {
   createLtiTypesConfig,
   deleteLtiTypesConfig,
   updateLtiTypesConfig,
-} from "@/lib/api/ltiTypesConfigs/mutations";
+} from "@soco/lti-api/ltiTypesConfigs/mutations";
 import { 
   ltiTypesConfigIdSchema,
   insertLtiTypesConfigParams,
   updateLtiTypesConfigParams 
-} from "@/lib/db/schema/ltiTypesConfigs";
+} from "@soco/lti-db/schema/ltiTypesConfigs";
 
 export async function POST(req: Request) {
   try {

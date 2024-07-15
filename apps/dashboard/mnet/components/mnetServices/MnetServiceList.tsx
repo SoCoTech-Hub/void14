@@ -1,5 +1,5 @@
 "use client";
-import { CompleteMnetService } from "@/lib/db/schema/mnetServices";
+import { CompleteMnetService } from "@soco/mnet-db/schema/mnetServices";
 import { trpc } from "@/lib/trpc/client";
 import MnetServiceModal from "./MnetServiceModal";
 

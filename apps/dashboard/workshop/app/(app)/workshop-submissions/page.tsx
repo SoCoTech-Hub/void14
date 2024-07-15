@@ -1,7 +1,7 @@
 import WorkshopSubmissionList from "@/components/workshopSubmissions/WorkshopSubmissionList";
 import NewWorkshopSubmissionModal from "@/components/workshopSubmissions/WorkshopSubmissionModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function WorkshopSubmissions() {
   await checkAuth();

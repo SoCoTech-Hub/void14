@@ -1,5 +1,5 @@
 "use client";
-import { CompleteBlockRecentlyAccessedItem } from "@/lib/db/schema/blockRecentlyAccessedItems";
+import { CompleteBlockRecentlyAccessedItem } from "@soco/block-db/schema/blockRecentlyAccessedItems";
 import { trpc } from "@/lib/trpc/client";
 import BlockRecentlyAccessedItemModal from "./BlockRecentlyAccessedItemModal";
 

@@ -4,7 +4,7 @@ import {
 	SocialLink,
 	NewSocialLinkParams,
 	insertSocialLinkParams
-} from '@/lib/db/schema/socialLinks'
+} from '@soco/social-db/schema/socialLinks'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

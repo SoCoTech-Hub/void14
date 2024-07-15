@@ -6,12 +6,12 @@ import {
   createOauth2Endpoint,
   deleteOauth2Endpoint,
   updateOauth2Endpoint,
-} from "@/lib/api/oauth2Endpoints/mutations";
+} from "@soco/oauth2-api/oauth2Endpoints/mutations";
 import { 
   oauth2EndpointIdSchema,
   insertOauth2EndpointParams,
   updateOauth2EndpointParams 
-} from "@/lib/db/schema/oauth2Endpoints";
+} from "@soco/oauth2-db/schema/oauth2Endpoints";
 
 export async function POST(req: Request) {
   try {

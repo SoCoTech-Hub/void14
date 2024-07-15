@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ConfigForm from "./ConfigForm";
-import { Config } from "@/lib/db/schema/configs";
+import { Config } from "@soco/config-db/schema/configs";
 
 export default function ConfigModal({ 
   config,

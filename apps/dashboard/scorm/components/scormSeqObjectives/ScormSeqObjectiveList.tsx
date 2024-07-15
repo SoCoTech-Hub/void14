@@ -1,5 +1,5 @@
 "use client";
-import { CompleteScormSeqObjective } from "@/lib/db/schema/scormSeqObjectives";
+import { CompleteScormSeqObjective } from "@soco/scorm-db/schema/scormSeqObjectives";
 import { trpc } from "@/lib/trpc/client";
 import ScormSeqObjectiveModal from "./ScormSeqObjectiveModal";
 

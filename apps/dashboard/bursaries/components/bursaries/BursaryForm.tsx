@@ -21,7 +21,7 @@ import {
   Bursary,
   insertBursaryParams,
   NewBursaryParams,
-} from "@/lib/db/schema/bursaries";
+} from "@soco/bursaries-db/schema/bursaries";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

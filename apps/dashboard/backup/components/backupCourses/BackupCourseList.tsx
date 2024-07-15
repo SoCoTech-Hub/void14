@@ -1,5 +1,5 @@
 "use client";
-import { CompleteBackupCourse } from "@/lib/db/schema/backupCourses";
+import { CompleteBackupCourse } from "@soco/backup-db/schema/backupCourses";
 import { trpc } from "@/lib/trpc/client";
 import BackupCourseModal from "./BackupCourseModal";
 

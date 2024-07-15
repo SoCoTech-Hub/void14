@@ -6,12 +6,12 @@ import {
   createContextTemp,
   deleteContextTemp,
   updateContextTemp,
-} from "@/lib/api/contextTemp/mutations";
+} from "@soco/context-api/contextTemp/mutations";
 import { 
   contextTempIdSchema,
   insertContextTempParams,
   updateContextTempParams 
-} from "@/lib/db/schema/contextTemp";
+} from "@soco/context-db/schema/contextTemp";
 
 export async function POST(req: Request) {
   try {

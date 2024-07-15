@@ -1,5 +1,5 @@
 "use client";
-import { CompleteForumSubscription } from "@/lib/db/schema/forumSubscriptions";
+import { CompleteForumSubscription } from "@soco/forum-db/schema/forumSubscriptions";
 import { trpc } from "@/lib/trpc/client";
 import ForumSubscriptionModal from "./ForumSubscriptionModal";
 

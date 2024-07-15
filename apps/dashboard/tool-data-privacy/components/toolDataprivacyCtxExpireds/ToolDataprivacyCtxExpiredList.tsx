@@ -1,5 +1,5 @@
 "use client";
-import { CompleteToolDataprivacyCtxExpired } from "@/lib/db/schema/toolDataprivacyCtxExpireds";
+import { CompleteToolDataprivacyCtxExpired } from "@soco/tool-data-privacy-db/schema/toolDataprivacyCtxExpireds";
 import { trpc } from "@/lib/trpc/client";
 import ToolDataprivacyCtxExpiredModal from "./ToolDataprivacyCtxExpiredModal";
 

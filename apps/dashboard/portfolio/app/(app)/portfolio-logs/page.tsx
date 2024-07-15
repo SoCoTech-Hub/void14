@@ -1,7 +1,7 @@
 import PortfolioLogList from "@/components/portfolioLogs/PortfolioLogList";
 import NewPortfolioLogModal from "@/components/portfolioLogs/PortfolioLogModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function PortfolioLogs() {
   await checkAuth();

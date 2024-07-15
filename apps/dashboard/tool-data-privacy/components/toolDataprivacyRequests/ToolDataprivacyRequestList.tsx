@@ -1,5 +1,5 @@
 "use client";
-import { CompleteToolDataprivacyRequest } from "@/lib/db/schema/toolDataprivacyRequests";
+import { CompleteToolDataprivacyRequest } from "@soco/tool-data-privacy-db/schema/toolDataprivacyRequests";
 import { trpc } from "@/lib/trpc/client";
 import ToolDataprivacyRequestModal from "./ToolDataprivacyRequestModal";
 

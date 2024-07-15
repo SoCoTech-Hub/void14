@@ -6,12 +6,12 @@ import {
   createMessageConversationMember,
   deleteMessageConversationMember,
   updateMessageConversationMember,
-} from "@/lib/api/messageConversationMembers/mutations";
+} from "@soco/message-api/messageConversationMembers/mutations";
 import { 
   messageConversationMemberIdSchema,
   insertMessageConversationMemberParams,
   updateMessageConversationMemberParams 
-} from "@/lib/db/schema/messageConversationMembers";
+} from "@soco/message-db/schema/messageConversationMembers";
 
 export async function POST(req: Request) {
   try {

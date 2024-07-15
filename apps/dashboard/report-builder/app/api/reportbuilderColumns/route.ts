@@ -6,12 +6,12 @@ import {
   createReportbuilderColumn,
   deleteReportbuilderColumn,
   updateReportbuilderColumn,
-} from "@/lib/api/reportbuilderColumns/mutations";
+} from "@soco/report-builder-api/reportbuilderColumns/mutations";
 import { 
   reportbuilderColumnIdSchema,
   insertReportbuilderColumnParams,
   updateReportbuilderColumnParams 
-} from "@/lib/db/schema/reportbuilderColumns";
+} from "@soco/report-builder-db/schema/reportbuilderColumns";
 
 export async function POST(req: Request) {
   try {

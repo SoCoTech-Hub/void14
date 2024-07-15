@@ -1,5 +1,5 @@
 "use client";
-import { CompleteUserSchool } from "@/lib/db/schema/userSchools";
+import { CompleteUserSchool } from "@soco/school-db/schema/userSchools";
 import { trpc } from "@/lib/trpc/client";
 import UserSchoolModal from "./UserSchoolModal";
 

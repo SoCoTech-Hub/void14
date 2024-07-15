@@ -6,12 +6,12 @@ import {
   createTagColl,
   deleteTagColl,
   updateTagColl,
-} from "@/lib/api/tagColls/mutations";
+} from "@soco/tag-api/tagColls/mutations";
 import { 
   tagCollIdSchema,
   insertTagCollParams,
   updateTagCollParams 
-} from "@/lib/db/schema/tagColls";
+} from "@soco/tag-db/schema/tagColls";
 
 export async function POST(req: Request) {
   try {

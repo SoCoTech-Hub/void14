@@ -4,7 +4,7 @@ import {
 	AnalyticsPredictSample,
 	NewAnalyticsPredictSampleParams,
 	insertAnalyticsPredictSampleParams
-} from '@/lib/db/schema/analyticsPredictSamples'
+} from '@soco/analytics-db/schema/analyticsPredictSamples'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

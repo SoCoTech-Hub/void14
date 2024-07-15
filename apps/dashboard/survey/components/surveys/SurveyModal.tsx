@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import SurveyForm from "./SurveyForm";
-import { Survey } from "@/lib/db/schema/surveys";
+import { Survey } from "@soco/survey-db/schema/surveys";
 
 export default function SurveyModal({ 
   survey,

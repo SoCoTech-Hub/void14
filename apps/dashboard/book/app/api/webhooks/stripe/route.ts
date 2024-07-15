@@ -1,9 +1,9 @@
-import { db } from "@/lib/db/index";
+import { db } from "@soco/book-db/client";
 import { stripe } from "@/lib/stripe/index";
 import { headers } from "next/headers";
 import type Stripe from "stripe";
-import { subscriptions } from "@/lib/db/schema/subscriptions";
-import { eq } from "drizzle-orm";
+import { subscriptions } from "@soco/book-db/schema/subscriptions";
+import { eq } from "@soco/book-db";
 
 export async function POST(request: Request) {
   const body = await request.text();

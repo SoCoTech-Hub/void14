@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import SchoolForm from "./SchoolForm";
-import { School } from "@/lib/db/schema/schools";
+import { School } from "@soco/school-db/schema/schools";
 
 export default function SchoolModal({ 
   school,

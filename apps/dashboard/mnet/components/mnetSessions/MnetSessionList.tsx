@@ -1,5 +1,5 @@
 "use client";
-import { CompleteMnetSession } from "@/lib/db/schema/mnetSessions";
+import { CompleteMnetSession } from "@soco/mnet-db/schema/mnetSessions";
 import { trpc } from "@/lib/trpc/client";
 import MnetSessionModal from "./MnetSessionModal";
 

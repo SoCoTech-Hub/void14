@@ -21,7 +21,7 @@ import {
   insertQualificationParams,
   NewQualificationParams,
   Qualification,
-} from "@/lib/db/schema/qualifications";
+} from "@soco/qualifications-db/schema/qualifications";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

@@ -1,6 +1,6 @@
 "use client";
 
-import { ProvinceOrganization, NewProvinceOrganizationParams, insertProvinceOrganizationParams } from "@/lib/db/schema/provinceOrganizations";
+import { ProvinceOrganization, NewProvinceOrganizationParams, insertProvinceOrganizationParams } from "@soco/geolocalize-db/schema/provinceOrganizations";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

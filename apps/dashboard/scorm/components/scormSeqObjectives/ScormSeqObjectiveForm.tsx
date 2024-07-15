@@ -1,6 +1,6 @@
 "use client";
 
-import { ScormSeqObjective, NewScormSeqObjectiveParams, insertScormSeqObjectiveParams } from "@/lib/db/schema/scormSeqObjectives";
+import { ScormSeqObjective, NewScormSeqObjectiveParams, insertScormSeqObjectiveParams } from "@soco/scorm-db/schema/scormSeqObjectives";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

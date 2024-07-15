@@ -1,5 +1,5 @@
 "use client";
-import { CompleteScormScoesData } from "@/lib/db/schema/scormScoesDatas";
+import { CompleteScormScoesData } from "@soco/scorm-db/schema/scormScoesDatas";
 import { trpc } from "@/lib/trpc/client";
 import ScormScoesDataModal from "./ScormScoesDataModal";
 

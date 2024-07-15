@@ -4,7 +4,7 @@ import {
 	WikiVersion,
 	NewWikiVersionParams,
 	insertWikiVersionParams
-} from '@/lib/db/schema/wikiVersions'
+} from '@soco/wiki-db/schema/wikiVersions'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

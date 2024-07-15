@@ -1,6 +1,6 @@
 "use client";
 
-import { QuestionDdwto, NewQuestionDdwtoParams, insertQuestionDdwtoParams } from "@/lib/db/schema/questionDdwtos";
+import { QuestionDdwto, NewQuestionDdwtoParams, insertQuestionDdwtoParams } from "@soco/question-db/schema/questionDdwtos";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

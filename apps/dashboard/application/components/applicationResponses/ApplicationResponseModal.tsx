@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ApplicationResponseForm from "./ApplicationResponseForm";
-import { ApplicationResponse } from "@/lib/db/schema/applicationResponses";
+import { ApplicationResponse } from "@soco/application-db/schema/applicationResponses";
 
 export default function ApplicationResponseModal({ 
   applicationResponse,

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import BlockRecentlyAccessedItemForm from "./BlockRecentlyAccessedItemForm";
-import { BlockRecentlyAccessedItem } from "@/lib/db/schema/blockRecentlyAccessedItems";
+import { BlockRecentlyAccessedItem } from "@soco/block-db/schema/blockRecentlyAccessedItems";
 
 export default function BlockRecentlyAccessedItemModal({ 
   blockRecentlyAccessedItem,

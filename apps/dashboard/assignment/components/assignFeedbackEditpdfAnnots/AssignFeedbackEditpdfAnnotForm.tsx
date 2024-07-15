@@ -4,7 +4,7 @@ import {
 	AssignFeedbackEditpdfAnnot,
 	NewAssignFeedbackEditpdfAnnotParams,
 	insertAssignFeedbackEditpdfAnnotParams
-} from '@/lib/db/schema/assignFeedbackEditpdfAnnots'
+} from '@soco/assignment-db/schema/assignFeedbackEditpdfAnnots'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

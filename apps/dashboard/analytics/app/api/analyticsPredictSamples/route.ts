@@ -6,12 +6,12 @@ import {
   createAnalyticsPredictSample,
   deleteAnalyticsPredictSample,
   updateAnalyticsPredictSample,
-} from "@/lib/api/analyticsPredictSamples/mutations";
+} from "@soco/analytics-api/analyticsPredictSamples/mutations";
 import { 
   analyticsPredictSampleIdSchema,
   insertAnalyticsPredictSampleParams,
   updateAnalyticsPredictSampleParams 
-} from "@/lib/db/schema/analyticsPredictSamples";
+} from "@soco/analytics-db/schema/analyticsPredictSamples";
 
 export async function POST(req: Request) {
   try {

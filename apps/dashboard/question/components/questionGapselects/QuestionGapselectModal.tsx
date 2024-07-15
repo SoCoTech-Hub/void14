@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QuestionGapselectForm from "./QuestionGapselectForm";
-import { QuestionGapselect } from "@/lib/db/schema/questionGapselects";
+import { QuestionGapselect } from "@soco/question-db/schema/questionGapselects";
 
 export default function QuestionGapselectModal({ 
   questionGapselect,

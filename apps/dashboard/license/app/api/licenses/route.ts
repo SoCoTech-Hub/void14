@@ -6,12 +6,12 @@ import {
   createLicense,
   deleteLicense,
   updateLicense,
-} from "@/lib/api/licenses/mutations";
+} from "@soco/license-api/licenses/mutations";
 import { 
   licenseIdSchema,
   insertLicenseParams,
   updateLicenseParams 
-} from "@/lib/db/schema/licenses";
+} from "@soco/license-db/schema/licenses";
 
 export async function POST(req: Request) {
   try {

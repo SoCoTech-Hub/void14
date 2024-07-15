@@ -6,12 +6,12 @@ import {
   createAssignFeedbackEditpdfRot,
   deleteAssignFeedbackEditpdfRot,
   updateAssignFeedbackEditpdfRot,
-} from "@/lib/api/assignFeedbackEditpdfRots/mutations";
+} from "@soco/assignment-api/assignFeedbackEditpdfRots/mutations";
 import { 
   assignFeedbackEditpdfRotIdSchema,
   insertAssignFeedbackEditpdfRotParams,
   updateAssignFeedbackEditpdfRotParams 
-} from "@/lib/db/schema/assignFeedbackEditpdfRots";
+} from "@soco/assignment-db/schema/assignFeedbackEditpdfRots";
 
 export async function POST(req: Request) {
   try {

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import MessageReadForm from "./MessageReadForm";
-import { MessageRead } from "@/lib/db/schema/messageReads";
+import { MessageRead } from "@soco/message-db/schema/messageReads";
 
 export default function MessageReadModal({ 
   messageRead,

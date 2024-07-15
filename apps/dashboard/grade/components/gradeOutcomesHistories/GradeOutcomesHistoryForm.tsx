@@ -1,6 +1,6 @@
 "use client";
 
-import { GradeOutcomesHistory, NewGradeOutcomesHistoryParams, insertGradeOutcomesHistoryParams } from "@/lib/db/schema/gradeOutcomesHistories";
+import { GradeOutcomesHistory, NewGradeOutcomesHistoryParams, insertGradeOutcomesHistoryParams } from "@soco/grade-db/schema/gradeOutcomesHistories";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

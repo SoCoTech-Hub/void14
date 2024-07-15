@@ -1,5 +1,5 @@
 "use client";
-import { CompleteAnalyticsTrainSample } from "@/lib/db/schema/analyticsTrainSamples";
+import { CompleteAnalyticsTrainSample } from "@soco/analytics-db/schema/analyticsTrainSamples";
 import { trpc } from "@/lib/trpc/client";
 import AnalyticsTrainSampleModal from "./AnalyticsTrainSampleModal";
 

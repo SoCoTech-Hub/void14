@@ -6,12 +6,12 @@ import {
   createScormAiccSession,
   deleteScormAiccSession,
   updateScormAiccSession,
-} from "@/lib/api/scormAiccSessions/mutations";
+} from "@soco/scorm-api/scormAiccSessions/mutations";
 import { 
   scormAiccSessionIdSchema,
   insertScormAiccSessionParams,
   updateScormAiccSessionParams 
-} from "@/lib/db/schema/scormAiccSessions";
+} from "@soco/scorm-db/schema/scormAiccSessions";
 
 export async function POST(req: Request) {
   try {

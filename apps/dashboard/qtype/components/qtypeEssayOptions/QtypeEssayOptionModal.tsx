@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QtypeEssayOptionForm from "./QtypeEssayOptionForm";
-import { QtypeEssayOption } from "@/lib/db/schema/qtypeEssayOptions";
+import { QtypeEssayOption } from "@soco/qtype-db/schema/qtypeEssayOptions";
 
 export default function QtypeEssayOptionModal({ 
   qtypeEssayOption,

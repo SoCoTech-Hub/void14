@@ -22,7 +22,7 @@ import {
   insertTaskAdhocParams,
   NewTaskAdhocParams,
   TaskAdhoc,
-} from "@/lib/db/schema/taskAdhocs";
+} from "@soco/task-db/schema/taskAdhocs";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

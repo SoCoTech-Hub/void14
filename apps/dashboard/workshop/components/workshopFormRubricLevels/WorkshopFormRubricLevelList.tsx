@@ -1,5 +1,5 @@
 "use client";
-import { CompleteWorkshopFormRubricLevel } from "@/lib/db/schema/workshopFormRubricLevels";
+import { CompleteWorkshopFormRubricLevel } from "@soco/workshop-db/schema/workshopFormRubricLevels";
 import { trpc } from "@/lib/trpc/client";
 import WorkshopFormRubricLevelModal from "./WorkshopFormRubricLevelModal";
 

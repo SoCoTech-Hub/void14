@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ForumPostForm from "./ForumPostForm";
-import { ForumPost } from "@/lib/db/schema/forumPosts";
+import { ForumPost } from "@soco/forum-db/schema/forumPosts";
 
 export default function ForumPostModal({ 
   forumPost,

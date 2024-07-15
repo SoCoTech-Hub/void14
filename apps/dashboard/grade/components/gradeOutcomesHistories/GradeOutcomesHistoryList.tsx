@@ -1,5 +1,5 @@
 "use client";
-import { CompleteGradeOutcomesHistory } from "@/lib/db/schema/gradeOutcomesHistories";
+import { CompleteGradeOutcomesHistory } from "@soco/grade-db/schema/gradeOutcomesHistories";
 import { trpc } from "@/lib/trpc/client";
 import GradeOutcomesHistoryModal from "./GradeOutcomesHistoryModal";
 

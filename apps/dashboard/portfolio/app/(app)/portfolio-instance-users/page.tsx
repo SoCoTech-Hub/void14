@@ -1,7 +1,7 @@
 import PortfolioInstanceUserList from "@/components/portfolioInstanceUsers/PortfolioInstanceUserList";
 import NewPortfolioInstanceUserModal from "@/components/portfolioInstanceUsers/PortfolioInstanceUserModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function PortfolioInstanceUsers() {
   await checkAuth();

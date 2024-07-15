@@ -1,5 +1,5 @@
 "use client";
-import { CompleteH5pLibrary } from "@/lib/db/schema/h5pLibraries";
+import { CompleteH5pLibrary } from "@soco/h5p-db/schema/h5pLibraries";
 import { trpc } from "@/lib/trpc/client";
 import H5pLibraryModal from "./H5pLibraryModal";
 

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteBlogAssociation } from "@/lib/db/schema/blogAssociations";
+import { CompleteBlogAssociation } from "@soco/blog-db/schema/blogAssociations";
 import { trpc } from "@/lib/trpc/client";
 import BlogAssociationModal from "./BlogAssociationModal";
 

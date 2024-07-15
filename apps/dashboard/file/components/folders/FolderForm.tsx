@@ -1,6 +1,6 @@
 "use client";
 
-import { Folder, NewFolderParams, insertFolderParams } from "@/lib/db/schema/folders";
+import { Folder, NewFolderParams, insertFolderParams } from "@soco/file-db/schema/folders";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import WikiSubwikiForm from "./WikiSubwikiForm";
-import { WikiSubwiki } from "@/lib/db/schema/wikiSubwikis";
+import { WikiSubwiki } from "@soco/wiki-db/schema/wikiSubwikis";
 
 export default function WikiSubwikiModal({ 
   wikiSubwiki,

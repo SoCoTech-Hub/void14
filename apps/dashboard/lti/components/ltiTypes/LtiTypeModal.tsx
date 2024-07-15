@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import LtiTypeForm from "./LtiTypeForm";
-import { LtiType } from "@/lib/db/schema/ltiTypes";
+import { LtiType } from "@soco/lti-db/schema/ltiTypes";
 
 export default function LtiTypeModal({ 
   ltiType,

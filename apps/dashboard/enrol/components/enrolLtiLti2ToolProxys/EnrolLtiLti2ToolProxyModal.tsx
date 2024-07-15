@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import EnrolLtiLti2ToolProxyForm from "./EnrolLtiLti2ToolProxyForm";
-import { EnrolLtiLti2ToolProxy } from "@/lib/db/schema/enrolLtiLti2ToolProxys";
+import { EnrolLtiLti2ToolProxy } from "@soco/enrol-db/schema/enrolLtiLti2ToolProxys";
 
 export default function EnrolLtiLti2ToolProxyModal({ 
   enrolLtiLti2ToolProxy,

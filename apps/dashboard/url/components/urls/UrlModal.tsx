@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import UrlForm from "./UrlForm";
-import { Url } from "@/lib/db/schema/urls";
+import { Url } from "@soco/url-db/schema/urls";
 
 export default function UrlModal({ 
   url,

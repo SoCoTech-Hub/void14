@@ -1,7 +1,7 @@
 import ReportbuilderAudienceList from "@/components/reportbuilderAudiences/ReportbuilderAudienceList";
 import NewReportbuilderAudienceModal from "@/components/reportbuilderAudiences/ReportbuilderAudienceModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function ReportbuilderAudiences() {
   await checkAuth();

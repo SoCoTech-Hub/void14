@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import MessageinboundDatakeyForm from "./MessageinboundDatakeyForm";
-import { MessageinboundDatakey } from "@/lib/db/schema/messageinboundDatakeys";
+import { MessageinboundDatakey } from "@soco/message-db/schema/messageinboundDatakeys";
 
 export default function MessageinboundDatakeyModal({ 
   messageinboundDatakey,

@@ -6,12 +6,12 @@ import {
   createField,
   deleteField,
   updateField,
-} from "@/lib/api/fields/mutations";
+} from "@soco/data-api/fields/mutations";
 import { 
   fieldIdSchema,
   insertFieldParams,
   updateFieldParams 
-} from "@/lib/db/schema/fields";
+} from "@soco/data-db/schema/fields";
 
 export async function POST(req: Request) {
   try {

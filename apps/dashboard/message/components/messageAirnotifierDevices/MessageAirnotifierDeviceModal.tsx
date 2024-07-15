@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import MessageAirnotifierDeviceForm from "./MessageAirnotifierDeviceForm";
-import { MessageAirnotifierDevice } from "@/lib/db/schema/messageAirnotifierDevices";
+import { MessageAirnotifierDevice } from "@soco/message-db/schema/messageAirnotifierDevices";
 
 export default function MessageAirnotifierDeviceModal({ 
   messageAirnotifierDevice,

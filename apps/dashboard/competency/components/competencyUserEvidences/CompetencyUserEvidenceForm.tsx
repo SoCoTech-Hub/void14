@@ -4,7 +4,7 @@ import {
 	CompetencyUserEvidence,
 	NewCompetencyUserEvidenceParams,
 	insertCompetencyUserEvidenceParams
-} from '@/lib/db/schema/competencyUserEvidences'
+} from '@soco/competency-db/schema/competencyUserEvidences'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

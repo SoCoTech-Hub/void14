@@ -1,6 +1,6 @@
 "use client";
 
-import { ScormSeqRuleCondition, NewScormSeqRuleConditionParams, insertScormSeqRuleConditionParams } from "@/lib/db/schema/scormSeqRuleConditions";
+import { ScormSeqRuleCondition, NewScormSeqRuleConditionParams, insertScormSeqRuleConditionParams } from "@soco/scorm-db/schema/scormSeqRuleConditions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

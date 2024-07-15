@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQuestionResponseCount } from "@/lib/db/schema/questionResponseCounts";
+import { CompleteQuestionResponseCount } from "@soco/question-db/schema/questionResponseCounts";
 import { trpc } from "@/lib/trpc/client";
 import QuestionResponseCountModal from "./QuestionResponseCountModal";
 

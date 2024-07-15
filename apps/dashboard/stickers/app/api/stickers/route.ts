@@ -6,12 +6,12 @@ import {
   createSticker,
   deleteSticker,
   updateSticker,
-} from "@/lib/api/stickers/mutations";
+} from "@soco/stickers-api/stickers/mutations";
 import { 
   stickerIdSchema,
   insertStickerParams,
   updateStickerParams 
-} from "@/lib/db/schema/stickers";
+} from "@soco/stickers-db/schema/stickers";
 
 export async function POST(req: Request) {
   try {

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import CourseSectionForm from "./CourseSectionForm";
-import { CourseSection } from "@/lib/db/schema/courseSections";
+import { CourseSection } from "@soco/course-db/schema/courseSections";
 
 export default function CourseSectionModal({ 
   courseSection,

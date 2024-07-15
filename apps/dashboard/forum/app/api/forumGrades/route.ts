@@ -6,12 +6,12 @@ import {
   createForumGrade,
   deleteForumGrade,
   updateForumGrade,
-} from "@/lib/api/forumGrades/mutations";
+} from "@soco/forum-api/forumGrades/mutations";
 import { 
   forumGradeIdSchema,
   insertForumGradeParams,
   updateForumGradeParams 
-} from "@/lib/db/schema/forumGrades";
+} from "@soco/forum-db/schema/forumGrades";
 
 export async function POST(req: Request) {
   try {

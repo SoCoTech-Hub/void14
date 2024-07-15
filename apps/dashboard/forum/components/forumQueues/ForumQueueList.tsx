@@ -1,5 +1,5 @@
 "use client";
-import { CompleteForumQueue } from "@/lib/db/schema/forumQueues";
+import { CompleteForumQueue } from "@soco/forum-db/schema/forumQueues";
 import { trpc } from "@/lib/trpc/client";
 import ForumQueueModal from "./ForumQueueModal";
 

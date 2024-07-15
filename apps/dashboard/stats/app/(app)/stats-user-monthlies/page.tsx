@@ -1,7 +1,7 @@
 import StatsUserMonthlyList from "@/components/statsUserMonthlies/StatsUserMonthlyList";
 import NewStatsUserMonthlyModal from "@/components/statsUserMonthlies/StatsUserMonthlyModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function StatsUserMonthlies() {
   await checkAuth();

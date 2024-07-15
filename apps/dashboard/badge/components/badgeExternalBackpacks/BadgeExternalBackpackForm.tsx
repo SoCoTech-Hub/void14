@@ -4,7 +4,7 @@ import {
 	BadgeExternalBackpack,
 	NewBadgeExternalBackpackParams,
 	insertBadgeExternalBackpackParams
-} from '@/lib/db/schema/badgeExternalBackpacks'
+} from '@soco/badge-db/schema/badgeExternalBackpacks'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

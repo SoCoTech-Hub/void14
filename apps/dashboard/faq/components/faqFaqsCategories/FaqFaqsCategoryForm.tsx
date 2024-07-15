@@ -1,6 +1,6 @@
 "use client";
 
-import { FaqFaqsCategory, NewFaqFaqsCategoryParams, insertFaqFaqsCategoryParams } from "@/lib/db/schema/faqFaqsCategories";
+import { FaqFaqsCategory, NewFaqFaqsCategoryParams, insertFaqFaqsCategoryParams } from "@soco/faq-db/schema/faqFaqsCategories";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

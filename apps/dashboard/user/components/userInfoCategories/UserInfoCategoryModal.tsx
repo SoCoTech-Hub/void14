@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import UserInfoCategoryForm from "./UserInfoCategoryForm";
-import { UserInfoCategory } from "@/lib/db/schema/userInfoCategories";
+import { UserInfoCategory } from "@soco/user-db/schema/userInfoCategories";
 
 export default function UserInfoCategoryModal({ 
   userInfoCategory,

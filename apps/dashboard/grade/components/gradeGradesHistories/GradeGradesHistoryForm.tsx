@@ -22,7 +22,7 @@ import {
   GradeGradesHistory,
   insertGradeGradesHistoryParams,
   NewGradeGradesHistoryParams,
-} from "@/lib/db/schema/gradeGradesHistories";
+} from "@soco/grade-db/schema/gradeGradesHistories";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

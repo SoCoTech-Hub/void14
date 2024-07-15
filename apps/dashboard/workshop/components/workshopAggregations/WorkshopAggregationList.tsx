@@ -1,5 +1,5 @@
 "use client";
-import { CompleteWorkshopAggregation } from "@/lib/db/schema/workshopAggregations";
+import { CompleteWorkshopAggregation } from "@soco/workshop-db/schema/workshopAggregations";
 import { trpc } from "@/lib/trpc/client";
 import WorkshopAggregationModal from "./WorkshopAggregationModal";
 

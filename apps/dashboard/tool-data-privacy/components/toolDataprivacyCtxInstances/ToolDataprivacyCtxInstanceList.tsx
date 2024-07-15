@@ -1,5 +1,5 @@
 "use client";
-import { CompleteToolDataprivacyCtxInstance } from "@/lib/db/schema/toolDataprivacyCtxInstances";
+import { CompleteToolDataprivacyCtxInstance } from "@soco/tool-data-privacy-db/schema/toolDataprivacyCtxInstances";
 import { trpc } from "@/lib/trpc/client";
 import ToolDataprivacyCtxInstanceModal from "./ToolDataprivacyCtxInstanceModal";
 

@@ -6,12 +6,12 @@ import {
   createRating,
   deleteRating,
   updateRating,
-} from "@/lib/api/ratings/mutations";
+} from "@soco/rating-api/ratings/mutations";
 import { 
   ratingIdSchema,
   insertRatingParams,
   updateRatingParams 
-} from "@/lib/db/schema/ratings";
+} from "@soco/rating-db/schema/ratings";
 
 export async function POST(req: Request) {
   try {

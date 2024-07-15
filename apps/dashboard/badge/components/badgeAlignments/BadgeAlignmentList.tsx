@@ -1,5 +1,5 @@
 'use client'
-import { CompleteBadgeAlignment } from '@/lib/db/schema/badgeAlignments'
+import { CompleteBadgeAlignment } from '@soco/badge-db/schema/badgeAlignments'
 import { trpc } from '@/lib/trpc/client'
 import BadgeAlignmentModal from './BadgeAlignmentModal'
 

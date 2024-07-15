@@ -4,7 +4,7 @@ import {
 	Calendar,
 	NewCalendarParams,
 	insertCalendarParams
-} from '@/lib/db/schema/calendar'
+} from '@soco/calendar-db/schema/calendar'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

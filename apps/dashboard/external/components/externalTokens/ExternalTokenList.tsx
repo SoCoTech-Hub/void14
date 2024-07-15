@@ -1,5 +1,5 @@
 "use client";
-import { CompleteExternalToken } from "@/lib/db/schema/externalTokens";
+import { CompleteExternalToken } from "@soco/external-db/schema/externalTokens";
 import { trpc } from "@/lib/trpc/client";
 import ExternalTokenModal from "./ExternalTokenModal";
 

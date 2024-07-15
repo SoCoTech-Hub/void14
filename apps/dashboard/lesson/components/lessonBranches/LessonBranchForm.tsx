@@ -28,7 +28,7 @@ import {
   insertLessonBranchParams,
   LessonBranch,
   NewLessonBranchParams,
-} from "@/lib/db/schema/lessonBranches";
+} from "@soco/lesson-db/schema/lessonBranches";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteStatsUserWeekly } from "@/lib/db/schema/statsUserWeeklies";
+import { CompleteStatsUserWeekly } from "@soco/stats-db/schema/statsUserWeeklies";
 import { trpc } from "@/lib/trpc/client";
 import StatsUserWeeklyModal from "./StatsUserWeeklyModal";
 

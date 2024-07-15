@@ -1,6 +1,6 @@
 "use client";
 
-import { GradeSetting, NewGradeSettingParams, insertGradeSettingParams } from "@/lib/db/schema/gradeSettings";
+import { GradeSetting, NewGradeSettingParams, insertGradeSettingParams } from "@soco/grade-db/schema/gradeSettings";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

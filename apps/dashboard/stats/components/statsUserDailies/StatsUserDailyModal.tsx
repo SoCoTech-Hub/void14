@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import StatsUserDailyForm from "./StatsUserDailyForm";
-import { StatsUserDaily } from "@/lib/db/schema/statsUserDailies";
+import { StatsUserDaily } from "@soco/stats-db/schema/statsUserDailies";
 
 export default function StatsUserDailyModal({ 
   statsUserDaily,

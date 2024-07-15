@@ -1,7 +1,7 @@
 import UserPrivateKeyList from "@/components/userPrivateKeys/UserPrivateKeyList";
 import NewUserPrivateKeyModal from "@/components/userPrivateKeys/UserPrivateKeyModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function UserPrivateKeys() {
   await checkAuth();

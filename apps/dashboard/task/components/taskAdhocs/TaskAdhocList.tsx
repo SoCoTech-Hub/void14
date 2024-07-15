@@ -1,5 +1,5 @@
 "use client";
-import { CompleteTaskAdhoc } from "@/lib/db/schema/taskAdhocs";
+import { CompleteTaskAdhoc } from "@soco/task-db/schema/taskAdhocs";
 import { trpc } from "@/lib/trpc/client";
 import TaskAdhocModal from "./TaskAdhocModal";
 

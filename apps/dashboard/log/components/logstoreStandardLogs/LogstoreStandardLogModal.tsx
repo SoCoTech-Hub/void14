@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import LogstoreStandardLogForm from "./LogstoreStandardLogForm";
-import { LogstoreStandardLog } from "@/lib/db/schema/logstoreStandardLogs";
+import { LogstoreStandardLog } from "@soco/log-db/schema/logstoreStandardLogs";
 
 export default function LogstoreStandardLogModal({ 
   logstoreStandardLog,

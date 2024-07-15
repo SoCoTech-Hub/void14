@@ -4,7 +4,7 @@ import {
 	District,
 	NewDistrictParams,
 	insertDistrictParams
-} from '@/lib/db/schema/districts'
+} from '@soco/geolocalize-db/schema/districts'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

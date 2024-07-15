@@ -6,12 +6,12 @@ import {
   createOauth2UserFieldMapping,
   deleteOauth2UserFieldMapping,
   updateOauth2UserFieldMapping,
-} from "@/lib/api/oauth2UserFieldMappings/mutations";
+} from "@soco/oauth2-api/oauth2UserFieldMappings/mutations";
 import { 
   oauth2UserFieldMappingIdSchema,
   insertOauth2UserFieldMappingParams,
   updateOauth2UserFieldMappingParams 
-} from "@/lib/db/schema/oauth2UserFieldMappings";
+} from "@soco/oauth2-db/schema/oauth2UserFieldMappings";
 
 export async function POST(req: Request) {
   try {

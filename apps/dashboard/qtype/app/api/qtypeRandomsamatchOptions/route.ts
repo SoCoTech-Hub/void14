@@ -6,12 +6,12 @@ import {
   createQtypeRandomsamatchOption,
   deleteQtypeRandomsamatchOption,
   updateQtypeRandomsamatchOption,
-} from "@/lib/api/qtypeRandomsamatchOptions/mutations";
+} from "@soco/qtype-api/qtypeRandomsamatchOptions/mutations";
 import { 
   qtypeRandomsamatchOptionIdSchema,
   insertQtypeRandomsamatchOptionParams,
   updateQtypeRandomsamatchOptionParams 
-} from "@/lib/db/schema/qtypeRandomsamatchOptions";
+} from "@soco/qtype-db/schema/qtypeRandomsamatchOptions";
 
 export async function POST(req: Request) {
   try {

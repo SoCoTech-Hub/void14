@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QtypeRandomsamatchOptionForm from "./QtypeRandomsamatchOptionForm";
-import { QtypeRandomsamatchOption } from "@/lib/db/schema/qtypeRandomsamatchOptions";
+import { QtypeRandomsamatchOption } from "@soco/qtype-db/schema/qtypeRandomsamatchOptions";
 
 export default function QtypeRandomsamatchOptionModal({ 
   qtypeRandomsamatchOption,

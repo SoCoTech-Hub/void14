@@ -1,6 +1,6 @@
 "use client";
 
-import { QuestionDatasetDefinition, NewQuestionDatasetDefinitionParams, insertQuestionDatasetDefinitionParams } from "@/lib/db/schema/questionDatasetDefinitions";
+import { QuestionDatasetDefinition, NewQuestionDatasetDefinitionParams, insertQuestionDatasetDefinitionParams } from "@soco/question-db/schema/questionDatasetDefinitions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

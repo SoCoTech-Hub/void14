@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import CompetencyEvidenceForm from "./CompetencyEvidenceForm";
-import { CompetencyEvidence } from "@/lib/db/schema/competencyEvidences";
+import { CompetencyEvidence } from "@soco/competency-db/schema/competencyEvidences";
 
 export default function CompetencyEvidenceModal({ 
   competencyEvidence,

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteTagColl } from "@/lib/db/schema/tagColls";
+import { CompleteTagColl } from "@soco/tag-db/schema/tagColls";
 import { trpc } from "@/lib/trpc/client";
 import TagCollModal from "./TagCollModal";
 

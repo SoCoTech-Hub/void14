@@ -1,5 +1,5 @@
 "use client";
-import { CompleteRoleContextLevel } from "@/lib/db/schema/roleContextLevels";
+import { CompleteRoleContextLevel } from "@soco/role-db/schema/roleContextLevels";
 import { trpc } from "@/lib/trpc/client";
 import RoleContextLevelModal from "./RoleContextLevelModal";
 

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import WorkshopFormNumErrorMapForm from "./WorkshopFormNumErrorMapForm";
-import { WorkshopFormNumErrorMap } from "@/lib/db/schema/workshopFormNumErrorMaps";
+import { WorkshopFormNumErrorMap } from "@soco/workshop-db/schema/workshopFormNumErrorMaps";
 
 export default function WorkshopFormNumErrorMapModal({ 
   workshopFormNumErrorMap,

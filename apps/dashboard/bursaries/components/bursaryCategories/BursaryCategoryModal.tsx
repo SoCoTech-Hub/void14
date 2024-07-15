@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import BursaryCategoryForm from "./BursaryCategoryForm";
-import { BursaryCategory } from "@/lib/db/schema/bursaryCategories";
+import { BursaryCategory } from "@soco/bursaries-db/schema/bursaryCategories";
 
 export default function BursaryCategoryModal({ 
   bursaryCategory,

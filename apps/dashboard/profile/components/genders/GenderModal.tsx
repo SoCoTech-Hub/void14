@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import GenderForm from "./GenderForm";
-import { Gender } from "@/lib/db/schema/genders";
+import { Gender } from "@soco/profile-db/schema/genders";
 
 export default function GenderModal({ 
   gender,

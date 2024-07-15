@@ -1,5 +1,5 @@
 "use client";
-import { CompleteToolUserToursTour } from "@/lib/db/schema/toolUserToursTours";
+import { CompleteToolUserToursTour } from "@soco/tool-user-tours-db/schema/toolUserToursTours";
 import { trpc } from "@/lib/trpc/client";
 import ToolUserToursTourModal from "./ToolUserToursTourModal";
 

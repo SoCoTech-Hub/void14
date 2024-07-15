@@ -6,12 +6,12 @@ import {
   createInfectedFile,
   deleteInfectedFile,
   updateInfectedFile,
-} from "@/lib/api/infectedFiles/mutations";
+} from "@soco/file-api/infectedFiles/mutations";
 import { 
   infectedFileIdSchema,
   insertInfectedFileParams,
   updateInfectedFileParams 
-} from "@/lib/db/schema/infectedFiles";
+} from "@soco/file-db/schema/infectedFiles";
 
 export async function POST(req: Request) {
   try {

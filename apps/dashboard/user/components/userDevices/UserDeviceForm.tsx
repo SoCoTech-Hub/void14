@@ -4,7 +4,7 @@ import {
 	UserDevice,
 	NewUserDeviceParams,
 	insertUserDeviceParams
-} from '@/lib/db/schema/userDevices'
+} from '@soco/user-db/schema/userDevices'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

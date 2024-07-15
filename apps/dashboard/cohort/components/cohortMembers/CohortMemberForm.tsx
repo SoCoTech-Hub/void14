@@ -1,6 +1,6 @@
 "use client";
 
-import { CohortMember, NewCohortMemberParams, insertCohortMemberParams } from "@/lib/db/schema/cohortMembers";
+import { CohortMember, NewCohortMemberParams, insertCohortMemberParams } from "@soco/cohort-db/schema/cohortMembers";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

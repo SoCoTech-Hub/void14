@@ -6,12 +6,12 @@ import {
   createAddress,
   deleteAddress,
   updateAddress,
-} from "@/lib/api/addresses/mutations";
+} from "@soco/profile-api/addresses/mutations";
 import { 
   addressIdSchema,
   insertAddressParams,
   updateAddressParams 
-} from "@/lib/db/schema/addresses";
+} from "@soco/profile-db/schema/addresses";
 
 export async function POST(req: Request) {
   try {

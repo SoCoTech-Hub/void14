@@ -6,12 +6,12 @@ import {
   createSocialLink,
   deleteSocialLink,
   updateSocialLink,
-} from "@/lib/api/socialLinks/mutations";
+} from "@soco/social-api/socialLinks/mutations";
 import { 
   socialLinkIdSchema,
   insertSocialLinkParams,
   updateSocialLinkParams 
-} from "@/lib/db/schema/socialLinks";
+} from "@soco/social-db/schema/socialLinks";
 
 export async function POST(req: Request) {
   try {

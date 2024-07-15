@@ -21,7 +21,7 @@ import {
   GradingDefinition,
   insertGradingDefinitionParams,
   NewGradingDefinitionParams,
-} from "@/lib/db/schema/gradingDefinitions";
+} from "@soco/grade-db/schema/gradingDefinitions";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

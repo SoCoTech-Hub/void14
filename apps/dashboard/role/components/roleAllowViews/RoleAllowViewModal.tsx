@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import RoleAllowViewForm from "./RoleAllowViewForm";
-import { RoleAllowView } from "@/lib/db/schema/roleAllowViews";
+import { RoleAllowView } from "@soco/role-db/schema/roleAllowViews";
 
 export default function RoleAllowViewModal({ 
   roleAllowView,

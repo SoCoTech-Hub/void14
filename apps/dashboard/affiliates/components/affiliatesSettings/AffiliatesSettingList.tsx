@@ -1,5 +1,5 @@
 "use client";
-import { CompleteAffiliatesSetting } from "@/lib/db/schema/affiliatesSettings";
+import { CompleteAffiliatesSetting } from "@soco/affiliates-db/schema/affiliatesSettings";
 import { trpc } from "@/lib/trpc/client";
 import AffiliatesSettingModal from "./AffiliatesSettingModal";
 

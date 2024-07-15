@@ -1,5 +1,5 @@
 "use client";
-import { CompleteScaleHistory } from "@/lib/db/schema/scaleHistories";
+import { CompleteScaleHistory } from "@soco/scale-db/schema/scaleHistories";
 import { trpc } from "@/lib/trpc/client";
 import ScaleHistoryModal from "./ScaleHistoryModal";
 

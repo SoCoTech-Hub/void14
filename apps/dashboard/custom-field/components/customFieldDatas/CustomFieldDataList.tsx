@@ -1,5 +1,5 @@
 "use client";
-import { CompleteCustomFieldData } from "@/lib/db/schema/customFieldDatas";
+import { CompleteCustomFieldData } from "@soco/custom-field-db/schema/customFieldDatas";
 import { trpc } from "@/lib/trpc/client";
 import CustomFieldDataModal from "./CustomFieldDataModal";
 

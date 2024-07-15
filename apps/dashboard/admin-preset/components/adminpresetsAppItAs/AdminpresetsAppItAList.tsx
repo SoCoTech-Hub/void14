@@ -1,5 +1,5 @@
 "use client";
-import { CompleteAdminpresetsAppItA } from "@/lib/db/schema/adminpresetsAppItAs";
+import { CompleteAdminpresetsAppItA } from "@soco/admin-preset-db/schema/adminpresetsAppItAs";
 import { trpc } from "@/lib/trpc/client";
 import AdminpresetsAppItAModal from "./AdminpresetsAppItAModal";
 

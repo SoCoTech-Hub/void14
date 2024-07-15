@@ -1,5 +1,5 @@
 "use client";
-import { CompleteSocialReaction } from "@/lib/db/schema/socialReactions";
+import { CompleteSocialReaction } from "@soco/blog-db/schema/socialReactions";
 import { trpc } from "@/lib/trpc/client";
 import SocialReactionModal from "./SocialReactionModal";
 

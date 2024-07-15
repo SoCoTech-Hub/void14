@@ -1,5 +1,5 @@
 "use client";
-import { CompleteSupportTicket } from "@/lib/db/schema/supportTickets";
+import { CompleteSupportTicket } from "@soco/support-db/schema/supportTickets";
 import { trpc } from "@/lib/trpc/client";
 import SupportTicketModal from "./SupportTicketModal";
 

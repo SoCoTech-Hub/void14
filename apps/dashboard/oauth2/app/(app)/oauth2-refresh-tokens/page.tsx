@@ -1,7 +1,7 @@
 import Oauth2RefreshTokenList from "@/components/oauth2RefreshTokens/Oauth2RefreshTokenList";
 import NewOauth2RefreshTokenModal from "@/components/oauth2RefreshTokens/Oauth2RefreshTokenModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function Oauth2RefreshTokens() {
   await checkAuth();

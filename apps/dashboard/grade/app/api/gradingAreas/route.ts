@@ -6,12 +6,12 @@ import {
   createGradingArea,
   deleteGradingArea,
   updateGradingArea,
-} from "@/lib/api/gradingAreas/mutations";
+} from "@soco/grade-api/gradingAreas/mutations";
 import { 
   gradingAreaIdSchema,
   insertGradingAreaParams,
   updateGradingAreaParams 
-} from "@/lib/db/schema/gradingAreas";
+} from "@soco/grade-db/schema/gradingAreas";
 
 export async function POST(req: Request) {
   try {

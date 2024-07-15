@@ -6,12 +6,12 @@ import {
   createGlossaryAlias,
   deleteGlossaryAlias,
   updateGlossaryAlias,
-} from "@/lib/api/glossaryAliases/mutations";
+} from "@soco/glossary-api/glossaryAliases/mutations";
 import { 
   glossaryAliasIdSchema,
   insertGlossaryAliasParams,
   updateGlossaryAliasParams 
-} from "@/lib/db/schema/glossaryAliases";
+} from "@soco/glossary-db/schema/glossaryAliases";
 
 export async function POST(req: Request) {
   try {

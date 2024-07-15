@@ -6,12 +6,12 @@ import {
   createSupportStatus,
   deleteSupportStatus,
   updateSupportStatus,
-} from "@/lib/api/supportStatuses/mutations";
+} from "@soco/support-api/supportStatuses/mutations";
 import { 
   supportStatusIdSchema,
   insertSupportStatusParams,
   updateSupportStatusParams 
-} from "@/lib/db/schema/supportStatuses";
+} from "@soco/support-db/schema/supportStatuses";
 
 export async function POST(req: Request) {
   try {

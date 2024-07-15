@@ -1,5 +1,5 @@
 "use client";
-import { CompleteEnrolLtiToolConsumerMap } from "@/lib/db/schema/enrolLtiToolConsumerMaps";
+import { CompleteEnrolLtiToolConsumerMap } from "@soco/enrol-db/schema/enrolLtiToolConsumerMaps";
 import { trpc } from "@/lib/trpc/client";
 import EnrolLtiToolConsumerMapModal from "./EnrolLtiToolConsumerMapModal";
 

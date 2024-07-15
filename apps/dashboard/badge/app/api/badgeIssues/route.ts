@@ -6,12 +6,12 @@ import {
   createBadgeIssue,
   deleteBadgeIssue,
   updateBadgeIssue,
-} from "@/lib/api/badgeIssues/mutations";
+} from "@soco/badge-api/badgeIssues/mutations";
 import { 
   badgeIssueIdSchema,
   insertBadgeIssueParams,
   updateBadgeIssueParams 
-} from "@/lib/db/schema/badgeIssues";
+} from "@soco/badge-db/schema/badgeIssues";
 
 export async function POST(req: Request) {
   try {

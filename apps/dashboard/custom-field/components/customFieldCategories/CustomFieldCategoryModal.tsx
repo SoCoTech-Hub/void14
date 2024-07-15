@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import CustomFieldCategoryForm from "./CustomFieldCategoryForm";
-import { CustomFieldCategory } from "@/lib/db/schema/customFieldCategories";
+import { CustomFieldCategory } from "@soco/custom-field-db/schema/customFieldCategories";
 
 export default function CustomFieldCategoryModal({ 
   customFieldCategory,

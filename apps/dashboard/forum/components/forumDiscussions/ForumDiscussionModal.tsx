@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ForumDiscussionForm from "./ForumDiscussionForm";
-import { ForumDiscussion } from "@/lib/db/schema/forumDiscussions";
+import { ForumDiscussion } from "@soco/forum-db/schema/forumDiscussions";
 
 export default function ForumDiscussionModal({ 
   forumDiscussion,

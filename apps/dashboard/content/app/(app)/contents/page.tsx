@@ -1,7 +1,7 @@
 import ContentList from "@/components/contents/ContentList";
 import NewContentModal from "@/components/contents/ContentModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function Contents() {
   await checkAuth();

@@ -1,6 +1,6 @@
 "use client";
 
-import { MnetServiceEnrolCourse, NewMnetServiceEnrolCourseParams, insertMnetServiceEnrolCourseParams } from "@/lib/db/schema/mnetServiceEnrolCourses";
+import { MnetServiceEnrolCourse, NewMnetServiceEnrolCourseParams, insertMnetServiceEnrolCourseParams } from "@soco/mnet-db/schema/mnetServiceEnrolCourses";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

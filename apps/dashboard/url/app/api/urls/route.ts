@@ -6,12 +6,12 @@ import {
   createUrl,
   deleteUrl,
   updateUrl,
-} from "@/lib/api/urls/mutations";
+} from "@soco/url-api/urls/mutations";
 import { 
   urlIdSchema,
   insertUrlParams,
   updateUrlParams 
-} from "@/lib/db/schema/urls";
+} from "@soco/url-db/schema/urls";
 
 export async function POST(req: Request) {
   try {

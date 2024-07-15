@@ -6,12 +6,12 @@ import {
   createAffiliatesTransaction,
   deleteAffiliatesTransaction,
   updateAffiliatesTransaction,
-} from "@/lib/api/affiliatesTransactions/mutations";
+} from "@soco/affiliates-api/affiliatesTransactions/mutations";
 import { 
   affiliatesTransactionIdSchema,
   insertAffiliatesTransactionParams,
   updateAffiliatesTransactionParams 
-} from "@/lib/db/schema/affiliatesTransactions";
+} from "@soco/affiliates-db/schema/affiliatesTransactions";
 
 export async function POST(req: Request) {
   try {

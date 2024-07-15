@@ -18,7 +18,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
-import { insertUserParams, NewUserParams, User } from "@/lib/db/schema/users";
+import { insertUserParams, NewUserParams, User } from "@soco/user-db/schema/users";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

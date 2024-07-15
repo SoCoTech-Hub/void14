@@ -1,7 +1,7 @@
 import ForumDiscussionSubList from "@/components/forumDiscussionSubs/ForumDiscussionSubList";
 import NewForumDiscussionSubModal from "@/components/forumDiscussionSubs/ForumDiscussionSubModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function ForumDiscussionSubs() {
   await checkAuth();

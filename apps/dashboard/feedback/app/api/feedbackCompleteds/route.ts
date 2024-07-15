@@ -6,12 +6,12 @@ import {
   createFeedbackCompleted,
   deleteFeedbackCompleted,
   updateFeedbackCompleted,
-} from "@/lib/api/feedbackCompleteds/mutations";
+} from "@soco/feedback-api/feedbackCompleteds/mutations";
 import { 
   feedbackCompletedIdSchema,
   insertFeedbackCompletedParams,
   updateFeedbackCompletedParams 
-} from "@/lib/db/schema/feedbackCompleteds";
+} from "@soco/feedback-db/schema/feedbackCompleteds";
 
 export async function POST(req: Request) {
   try {

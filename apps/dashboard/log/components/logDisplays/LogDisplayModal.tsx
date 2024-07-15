@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import LogDisplayForm from "./LogDisplayForm";
-import { LogDisplay } from "@/lib/db/schema/logDisplays";
+import { LogDisplay } from "@soco/log-db/schema/logDisplays";
 
 export default function LogDisplayModal({ 
   logDisplay,

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import GradingAreaForm from "./GradingAreaForm";
-import { GradingArea } from "@/lib/db/schema/gradingAreas";
+import { GradingArea } from "@soco/grade-db/schema/gradingAreas";
 
 export default function GradingAreaModal({ 
   gradingArea,

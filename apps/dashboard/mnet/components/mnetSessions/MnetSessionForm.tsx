@@ -1,6 +1,6 @@
 "use client";
 
-import { MnetSession, NewMnetSessionParams, insertMnetSessionParams } from "@/lib/db/schema/mnetSessions";
+import { MnetSession, NewMnetSessionParams, insertMnetSessionParams } from "@soco/mnet-db/schema/mnetSessions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

@@ -6,12 +6,12 @@ import {
   createUserInfoCategory,
   deleteUserInfoCategory,
   updateUserInfoCategory,
-} from "@/lib/api/userInfoCategories/mutations";
+} from "@soco/user-api/userInfoCategories/mutations";
 import { 
   userInfoCategoryIdSchema,
   insertUserInfoCategoryParams,
   updateUserInfoCategoryParams 
-} from "@/lib/db/schema/userInfoCategories";
+} from "@soco/user-db/schema/userInfoCategories";
 
 export async function POST(req: Request) {
   try {

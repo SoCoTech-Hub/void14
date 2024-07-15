@@ -22,7 +22,7 @@ import {
   insertScormParams,
   NewScormParams,
   Scorm,
-} from "@/lib/db/schema/scorms";
+} from "@soco/scorm-db/schema/scorms";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

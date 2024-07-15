@@ -1,7 +1,7 @@
 import ScaleHistoryList from "@/components/scaleHistories/ScaleHistoryList";
 import NewScaleHistoryModal from "@/components/scaleHistories/ScaleHistoryModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function ScaleHistories() {
   await checkAuth();

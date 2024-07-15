@@ -6,12 +6,12 @@ import {
   createEventsQueueHandler,
   deleteEventsQueueHandler,
   updateEventsQueueHandler,
-} from "@/lib/api/eventsQueueHandlers/mutations";
+} from "@soco/event-api/eventsQueueHandlers/mutations";
 import { 
   eventsQueueHandlerIdSchema,
   insertEventsQueueHandlerParams,
   updateEventsQueueHandlerParams 
-} from "@/lib/db/schema/eventsQueueHandlers";
+} from "@soco/event-db/schema/eventsQueueHandlers";
 
 export async function POST(req: Request) {
   try {

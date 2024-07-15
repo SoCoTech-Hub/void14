@@ -21,7 +21,7 @@ import {
   GroupsMember,
   insertGroupsMemberParams,
   NewGroupsMemberParams,
-} from "@/lib/db/schema/groupsMembers";
+} from "@soco/group-db/schema/groupsMembers";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

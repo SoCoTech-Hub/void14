@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import BackupControllerForm from "./BackupControllerForm";
-import { BackupController } from "@/lib/db/schema/backupControllers";
+import { BackupController } from "@soco/backup-db/schema/backupControllers";
 
 export default function BackupControllerModal({ 
   backupController,

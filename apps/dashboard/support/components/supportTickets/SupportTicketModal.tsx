@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import SupportTicketForm from "./SupportTicketForm";
-import { SupportTicket } from "@/lib/db/schema/supportTickets";
+import { SupportTicket } from "@soco/support-db/schema/supportTickets";
 
 export default function SupportTicketModal({ 
   supportTicket,

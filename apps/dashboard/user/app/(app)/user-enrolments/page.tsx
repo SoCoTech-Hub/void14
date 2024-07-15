@@ -1,7 +1,7 @@
 import UserEnrolmentList from "@/components/userEnrolments/UserEnrolmentList";
 import NewUserEnrolmentModal from "@/components/userEnrolments/UserEnrolmentModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function UserEnrolments() {
   await checkAuth();

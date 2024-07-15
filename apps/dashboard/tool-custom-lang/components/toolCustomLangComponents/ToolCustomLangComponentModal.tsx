@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ToolCustomLangComponentForm from "./ToolCustomLangComponentForm";
-import { ToolCustomLangComponent } from "@/lib/db/schema/toolCustomLangComponents";
+import { ToolCustomLangComponent } from "@soco/tool-custom-lang-db/schema/toolCustomLangComponents";
 
 export default function ToolCustomLangComponentModal({ 
   toolCustomLangComponent,

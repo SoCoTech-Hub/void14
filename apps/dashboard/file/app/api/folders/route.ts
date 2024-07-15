@@ -6,12 +6,12 @@ import {
   createFolder,
   deleteFolder,
   updateFolder,
-} from "@/lib/api/folders/mutations";
+} from "@soco/file-api/folders/mutations";
 import { 
   folderIdSchema,
   insertFolderParams,
   updateFolderParams 
-} from "@/lib/db/schema/folders";
+} from "@soco/file-db/schema/folders";
 
 export async function POST(req: Request) {
   try {

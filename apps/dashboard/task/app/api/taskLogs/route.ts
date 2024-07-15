@@ -6,12 +6,12 @@ import {
   createTaskLog,
   deleteTaskLog,
   updateTaskLog,
-} from "@/lib/api/taskLogs/mutations";
+} from "@soco/task-api/taskLogs/mutations";
 import { 
   taskLogIdSchema,
   insertTaskLogParams,
   updateTaskLogParams 
-} from "@/lib/db/schema/taskLogs";
+} from "@soco/task-db/schema/taskLogs";
 
 export async function POST(req: Request) {
   try {

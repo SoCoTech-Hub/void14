@@ -1,7 +1,7 @@
 import EnrolFlatfileList from "@/components/enrolFlatfiles/EnrolFlatfileList";
 import NewEnrolFlatfileModal from "@/components/enrolFlatfiles/EnrolFlatfileModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function EnrolFlatfiles() {
   await checkAuth();

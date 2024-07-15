@@ -4,7 +4,7 @@ import {
 	BadgeRelated,
 	NewBadgeRelatedParams,
 	insertBadgeRelatedParams
-} from '@/lib/db/schema/badgeRelateds'
+} from '@soco/badge-db/schema/badgeRelateds'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

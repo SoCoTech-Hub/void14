@@ -1,5 +1,5 @@
 "use client";
-import { CompleteCourseCategory } from "@/lib/db/schema/courseCategories";
+import { CompleteCourseCategory } from "@soco/course-db/schema/courseCategories";
 import { trpc } from "@/lib/trpc/client";
 import CourseCategoryModal from "./CourseCategoryModal";
 

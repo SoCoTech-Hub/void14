@@ -4,7 +4,7 @@ import {
 	WorkshopFormRubric,
 	NewWorkshopFormRubricParams,
 	insertWorkshopFormRubricParams
-} from '@/lib/db/schema/workshopFormRubrics'
+} from '@soco/workshop-db/schema/workshopFormRubrics'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

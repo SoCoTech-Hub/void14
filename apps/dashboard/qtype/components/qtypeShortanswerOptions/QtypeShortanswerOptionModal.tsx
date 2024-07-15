@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QtypeShortanswerOptionForm from "./QtypeShortanswerOptionForm";
-import { QtypeShortanswerOption } from "@/lib/db/schema/qtypeShortanswerOptions";
+import { QtypeShortanswerOption } from "@soco/qtype-db/schema/qtypeShortanswerOptions";
 
 export default function QtypeShortanswerOptionModal({ 
   qtypeShortanswerOption,

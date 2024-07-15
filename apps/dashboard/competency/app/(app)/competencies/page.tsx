@@ -1,7 +1,7 @@
 import CompetencyList from "@/components/competencies/CompetencyList";
 import NewCompetencyModal from "@/components/competencies/CompetencyModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function Competencies() {
   await checkAuth();

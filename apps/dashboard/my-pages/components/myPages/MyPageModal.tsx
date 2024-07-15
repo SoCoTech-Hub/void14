@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import MyPageForm from "./MyPageForm";
-import { MyPage } from "@/lib/db/schema/myPages";
+import { MyPage } from "@soco/my-pages-db/schema/myPages";
 
 export default function MyPageModal({ 
   myPage,

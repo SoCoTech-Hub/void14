@@ -1,5 +1,5 @@
 "use client";
-import { CompleteAssignPluginConfig } from "@/lib/db/schema/assignPluginConfigs";
+import { CompleteAssignPluginConfig } from "@soco/assignment-db/schema/assignPluginConfigs";
 import { trpc } from "@/lib/trpc/client";
 import AssignPluginConfigModal from "./AssignPluginConfigModal";
 

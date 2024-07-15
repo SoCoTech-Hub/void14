@@ -6,12 +6,12 @@ import {
   createEnrolLtiUser,
   deleteEnrolLtiUser,
   updateEnrolLtiUser,
-} from "@/lib/api/enrolLtiUsers/mutations";
+} from "@soco/enrol-api/enrolLtiUsers/mutations";
 import { 
   enrolLtiUserIdSchema,
   insertEnrolLtiUserParams,
   updateEnrolLtiUserParams 
-} from "@/lib/db/schema/enrolLtiUsers";
+} from "@soco/enrol-db/schema/enrolLtiUsers";
 
 export async function POST(req: Request) {
   try {

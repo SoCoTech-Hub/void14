@@ -6,12 +6,12 @@ import {
   createNextOfKin,
   deleteNextOfKin,
   updateNextOfKin,
-} from "@/lib/api/nextOfKins/mutations";
+} from "@soco/profile-api/nextOfKins/mutations";
 import { 
   nextOfKinIdSchema,
   insertNextOfKinParams,
   updateNextOfKinParams 
-} from "@/lib/db/schema/nextOfKins";
+} from "@soco/profile-db/schema/nextOfKins";
 
 export async function POST(req: Request) {
   try {

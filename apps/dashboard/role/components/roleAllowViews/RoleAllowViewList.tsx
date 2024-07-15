@@ -1,5 +1,5 @@
 "use client";
-import { CompleteRoleAllowView } from "@/lib/db/schema/roleAllowViews";
+import { CompleteRoleAllowView } from "@soco/role-db/schema/roleAllowViews";
 import { trpc } from "@/lib/trpc/client";
 import RoleAllowViewModal from "./RoleAllowViewModal";
 

@@ -1,7 +1,7 @@
 import QuizOverrideList from "@/components/quizOverrides/QuizOverrideList";
 import NewQuizOverrideModal from "@/components/quizOverrides/QuizOverrideModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function QuizOverrides() {
   await checkAuth();

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteGradeCategory } from "@/lib/db/schema/gradeCategories";
+import { CompleteGradeCategory } from "@soco/grade-db/schema/gradeCategories";
 import { trpc } from "@/lib/trpc/client";
 import GradeCategoryModal from "./GradeCategoryModal";
 

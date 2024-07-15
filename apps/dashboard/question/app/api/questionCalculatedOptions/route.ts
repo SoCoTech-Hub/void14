@@ -6,12 +6,12 @@ import {
   createQuestionCalculatedOption,
   deleteQuestionCalculatedOption,
   updateQuestionCalculatedOption,
-} from "@/lib/api/questionCalculatedOptions/mutations";
+} from "@soco/question-api/questionCalculatedOptions/mutations";
 import { 
   questionCalculatedOptionIdSchema,
   insertQuestionCalculatedOptionParams,
   updateQuestionCalculatedOptionParams 
-} from "@/lib/db/schema/questionCalculatedOptions";
+} from "@soco/question-db/schema/questionCalculatedOptions";
 
 export async function POST(req: Request) {
   try {

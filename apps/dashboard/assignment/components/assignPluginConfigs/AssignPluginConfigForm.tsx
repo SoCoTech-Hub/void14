@@ -4,7 +4,7 @@ import {
 	AssignPluginConfig,
 	NewAssignPluginConfigParams,
 	insertAssignPluginConfigParams
-} from '@/lib/db/schema/assignPluginConfigs'
+} from '@soco/assignment-db/schema/assignPluginConfigs'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

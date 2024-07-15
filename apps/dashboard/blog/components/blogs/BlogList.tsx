@@ -1,5 +1,5 @@
 "use client";
-import { CompleteBlog } from "@/lib/db/schema/blogs";
+import { CompleteBlog } from "@soco/blog-db/schema/blogs";
 import { trpc } from "@/lib/trpc/client";
 import BlogModal from "./BlogModal";
 

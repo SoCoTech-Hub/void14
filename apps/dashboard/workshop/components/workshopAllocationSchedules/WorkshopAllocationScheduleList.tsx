@@ -1,5 +1,5 @@
 "use client";
-import { CompleteWorkshopAllocationSchedule } from "@/lib/db/schema/workshopAllocationSchedules";
+import { CompleteWorkshopAllocationSchedule } from "@soco/workshop-db/schema/workshopAllocationSchedules";
 import { trpc } from "@/lib/trpc/client";
 import WorkshopAllocationScheduleModal from "./WorkshopAllocationScheduleModal";
 

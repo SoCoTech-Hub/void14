@@ -1,5 +1,5 @@
 "use client";
-import { CompleteAffiliatesDetail } from "@/lib/db/schema/affiliatesDetails";
+import { CompleteAffiliatesDetail } from "@soco/affiliates-db/schema/affiliatesDetails";
 import { trpc } from "@/lib/trpc/client";
 import AffiliatesDetailModal from "./AffiliatesDetailModal";
 

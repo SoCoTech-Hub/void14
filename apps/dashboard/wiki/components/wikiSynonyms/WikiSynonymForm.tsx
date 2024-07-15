@@ -4,7 +4,7 @@ import {
 	WikiSynonym,
 	NewWikiSynonymParams,
 	insertWikiSynonymParams
-} from '@/lib/db/schema/wikiSynonyms'
+} from '@soco/wiki-db/schema/wikiSynonyms'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

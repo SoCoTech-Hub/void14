@@ -6,12 +6,12 @@ import {
   createQuizSection,
   deleteQuizSection,
   updateQuizSection,
-} from "@/lib/api/quizSections/mutations";
+} from "@soco/quiz-api/quizSections/mutations";
 import { 
   quizSectionIdSchema,
   insertQuizSectionParams,
   updateQuizSectionParams 
-} from "@/lib/db/schema/quizSections";
+} from "@soco/quiz-db/schema/quizSections";
 
 export async function POST(req: Request) {
   try {

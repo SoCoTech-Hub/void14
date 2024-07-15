@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QualificationsResponseForm from "./QualificationsResponseForm";
-import { QualificationsResponse } from "@/lib/db/schema/qualificationsResponses";
+import { QualificationsResponse } from "@soco/qualifications-db/schema/qualificationsResponses";
 
 export default function QualificationsResponseModal({ 
   qualificationsResponse,

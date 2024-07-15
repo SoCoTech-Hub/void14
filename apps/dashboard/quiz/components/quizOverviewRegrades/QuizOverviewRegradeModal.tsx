@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QuizOverviewRegradeForm from "./QuizOverviewRegradeForm";
-import { QuizOverviewRegrade } from "@/lib/db/schema/quizOverviewRegrades";
+import { QuizOverviewRegrade } from "@soco/quiz-db/schema/quizOverviewRegrades";
 
 export default function QuizOverviewRegradeModal({ 
   quizOverviewRegrade,

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import SurveyAnalysissForm from "./SurveyAnalysissForm";
-import { SurveyAnalysiss } from "@/lib/db/schema/surveyAnalysiss";
+import { SurveyAnalysiss } from "@soco/survey-db/schema/surveyAnalysiss";
 
 export default function SurveyAnalysissModal({ 
   surveyAnalysiss,

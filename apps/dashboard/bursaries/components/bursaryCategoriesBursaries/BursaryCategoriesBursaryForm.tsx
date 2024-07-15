@@ -1,6 +1,6 @@
 "use client";
 
-import { BursaryCategoriesBursary, NewBursaryCategoriesBursaryParams, insertBursaryCategoriesBursaryParams } from "@/lib/db/schema/bursaryCategoriesBursaries";
+import { BursaryCategoriesBursary, NewBursaryCategoriesBursaryParams, insertBursaryCategoriesBursaryParams } from "@soco/bursaries-db/schema/bursaryCategoriesBursaries";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

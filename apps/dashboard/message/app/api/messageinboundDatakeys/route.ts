@@ -6,12 +6,12 @@ import {
   createMessageinboundDatakey,
   deleteMessageinboundDatakey,
   updateMessageinboundDatakey,
-} from "@/lib/api/messageinboundDatakeys/mutations";
+} from "@soco/message-api/messageinboundDatakeys/mutations";
 import { 
   messageinboundDatakeyIdSchema,
   insertMessageinboundDatakeyParams,
   updateMessageinboundDatakeyParams 
-} from "@/lib/db/schema/messageinboundDatakeys";
+} from "@soco/message-db/schema/messageinboundDatakeys";
 
 export async function POST(req: Request) {
   try {

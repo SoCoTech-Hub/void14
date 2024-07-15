@@ -6,12 +6,12 @@ import {
   createForumDiscussionSub,
   deleteForumDiscussionSub,
   updateForumDiscussionSub,
-} from "@/lib/api/forumDiscussionSubs/mutations";
+} from "@soco/forum-api/forumDiscussionSubs/mutations";
 import { 
   forumDiscussionSubIdSchema,
   insertForumDiscussionSubParams,
   updateForumDiscussionSubParams 
-} from "@/lib/db/schema/forumDiscussionSubs";
+} from "@soco/forum-db/schema/forumDiscussionSubs";
 
 export async function POST(req: Request) {
   try {

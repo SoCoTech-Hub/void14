@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import LessonGradeForm from "./LessonGradeForm";
-import { LessonGrade } from "@/lib/db/schema/lessonGrades";
+import { LessonGrade } from "@soco/lesson-db/schema/lessonGrades";
 
 export default function LessonGradeModal({ 
   lessonGrade,

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteToolRecyclebinCourse } from "@/lib/db/schema/toolRecyclebinCourses";
+import { CompleteToolRecyclebinCourse } from "@soco/tool-recyclebin-db/schema/toolRecyclebinCourses";
 import { trpc } from "@/lib/trpc/client";
 import ToolRecyclebinCourseModal from "./ToolRecyclebinCourseModal";
 

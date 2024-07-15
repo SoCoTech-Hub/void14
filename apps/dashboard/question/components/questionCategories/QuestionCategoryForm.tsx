@@ -1,6 +1,6 @@
 "use client";
 
-import { QuestionCategory, NewQuestionCategoryParams, insertQuestionCategoryParams } from "@/lib/db/schema/questionCategories";
+import { QuestionCategory, NewQuestionCategoryParams, insertQuestionCategoryParams } from "@soco/question-db/schema/questionCategories";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

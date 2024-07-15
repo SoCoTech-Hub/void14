@@ -1,7 +1,7 @@
 import InmailList from "@/components/inmails/InmailList";
 import NewInmailModal from "@/components/inmails/InmailModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function Inmails() {
   await checkAuth();

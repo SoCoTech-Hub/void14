@@ -21,7 +21,7 @@ import {
   insertStatsWeeklyParams,
   NewStatsWeeklyParams,
   StatsWeekly,
-} from "@/lib/db/schema/statsWeeklies";
+} from "@soco/stats-db/schema/statsWeeklies";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

@@ -1,6 +1,6 @@
 "use client";
 
-import { ToolCustomLangComponent, NewToolCustomLangComponentParams, insertToolCustomLangComponentParams } from "@/lib/db/schema/toolCustomLangComponents";
+import { ToolCustomLangComponent, NewToolCustomLangComponentParams, insertToolCustomLangComponentParams } from "@soco/tool-custom-lang-db/schema/toolCustomLangComponents";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

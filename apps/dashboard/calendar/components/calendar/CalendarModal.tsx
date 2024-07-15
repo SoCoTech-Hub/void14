@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import CalendarForm from "./CalendarForm";
-import { Calendar } from "@/lib/db/schema/calendar";
+import { Calendar } from "@soco/calendar-db/schema/calendar";
 
 export default function CalendarModal({ 
   calendar,

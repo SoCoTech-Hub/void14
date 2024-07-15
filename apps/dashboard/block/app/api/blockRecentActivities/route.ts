@@ -6,12 +6,12 @@ import {
   createBlockRecentActivity,
   deleteBlockRecentActivity,
   updateBlockRecentActivity,
-} from "@/lib/api/blockRecentActivities/mutations";
+} from "@soco/block-api/blockRecentActivities/mutations";
 import { 
   blockRecentActivityIdSchema,
   insertBlockRecentActivityParams,
   updateBlockRecentActivityParams 
-} from "@/lib/db/schema/blockRecentActivities";
+} from "@soco/block-db/schema/blockRecentActivities";
 
 export async function POST(req: Request) {
   try {

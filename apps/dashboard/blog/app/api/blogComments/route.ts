@@ -6,12 +6,12 @@ import {
   createBlogComment,
   deleteBlogComment,
   updateBlogComment,
-} from "@/lib/api/blogComments/mutations";
+} from "@soco/blog-api/blogComments/mutations";
 import { 
   blogCommentIdSchema,
   insertBlogCommentParams,
   updateBlogCommentParams 
-} from "@/lib/db/schema/blogComments";
+} from "@soco/blog-db/schema/blogComments";
 
 export async function POST(req: Request) {
   try {

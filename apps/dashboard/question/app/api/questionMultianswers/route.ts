@@ -6,12 +6,12 @@ import {
   createQuestionMultianswer,
   deleteQuestionMultianswer,
   updateQuestionMultianswer,
-} from "@/lib/api/questionMultianswers/mutations";
+} from "@soco/question-api/questionMultianswers/mutations";
 import { 
   questionMultianswerIdSchema,
   insertQuestionMultianswerParams,
   updateQuestionMultianswerParams 
-} from "@/lib/db/schema/questionMultianswers";
+} from "@soco/question-db/schema/questionMultianswers";
 
 export async function POST(req: Request) {
   try {

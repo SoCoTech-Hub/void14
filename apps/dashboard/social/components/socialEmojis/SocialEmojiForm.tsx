@@ -4,7 +4,7 @@ import {
 	SocialEmoji,
 	NewSocialEmojiParams,
 	insertSocialEmojiParams
-} from '@/lib/db/schema/socialEmojis'
+} from '@soco/social-db/schema/socialEmojis'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

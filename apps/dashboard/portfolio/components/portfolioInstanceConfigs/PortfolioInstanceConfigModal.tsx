@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import PortfolioInstanceConfigForm from "./PortfolioInstanceConfigForm";
-import { PortfolioInstanceConfig } from "@/lib/db/schema/portfolioInstanceConfigs";
+import { PortfolioInstanceConfig } from "@soco/portfolio-db/schema/portfolioInstanceConfigs";
 
 export default function PortfolioInstanceConfigModal({ 
   portfolioInstanceConfig,

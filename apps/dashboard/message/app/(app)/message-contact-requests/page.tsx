@@ -1,7 +1,7 @@
 import MessageContactRequestList from "@/components/messageContactRequests/MessageContactRequestList";
 import NewMessageContactRequestModal from "@/components/messageContactRequests/MessageContactRequestModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function MessageContactRequests() {
   await checkAuth();

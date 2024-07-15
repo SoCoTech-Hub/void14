@@ -1,5 +1,5 @@
 "use client";
-import { CompleteMassMailList } from "@/lib/db/schema/massMailLists";
+import { CompleteMassMailList } from "@soco/mass-mail-db/schema/massMailLists";
 import { trpc } from "@/lib/trpc/client";
 import MassMailListModal from "./MassMailListModal";
 

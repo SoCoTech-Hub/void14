@@ -1,5 +1,5 @@
 "use client";
-import { CompleteAnalyticsUsedFile } from "@/lib/db/schema/analyticsUsedFiles";
+import { CompleteAnalyticsUsedFile } from "@soco/analytics-db/schema/analyticsUsedFiles";
 import { trpc } from "@/lib/trpc/client";
 import AnalyticsUsedFileModal from "./AnalyticsUsedFileModal";
 

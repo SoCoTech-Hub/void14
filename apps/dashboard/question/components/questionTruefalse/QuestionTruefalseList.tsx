@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQuestionTruefalse } from "@/lib/db/schema/questionTruefalse";
+import { CompleteQuestionTruefalse } from "@soco/question-db/schema/questionTruefalse";
 import { trpc } from "@/lib/trpc/client";
 import QuestionTruefalseModal from "./QuestionTruefalseModal";
 

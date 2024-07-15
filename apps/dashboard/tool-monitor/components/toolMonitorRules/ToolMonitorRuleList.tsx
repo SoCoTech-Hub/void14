@@ -1,5 +1,5 @@
 "use client";
-import { CompleteToolMonitorRule } from "@/lib/db/schema/toolMonitorRules";
+import { CompleteToolMonitorRule } from "@soco/tool-monitor-db/schema/toolMonitorRules";
 import { trpc } from "@/lib/trpc/client";
 import ToolMonitorRuleModal from "./ToolMonitorRuleModal";
 

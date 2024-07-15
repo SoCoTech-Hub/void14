@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import EnrolForm from "./EnrolForm";
-import { Enrol } from "@/lib/db/schema/enrols";
+import { Enrol } from "@soco/enrol-db/schema/enrols";
 
 export default function EnrolModal({ 
   enrol,

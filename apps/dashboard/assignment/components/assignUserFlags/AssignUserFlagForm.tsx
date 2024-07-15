@@ -29,7 +29,7 @@ import {
   AssignUserFlag,
   insertAssignUserFlagParams,
   NewAssignUserFlagParams,
-} from "@/lib/db/schema/assignUserFlags";
+} from "@soco/assignment-db/schema/assignUserFlags";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

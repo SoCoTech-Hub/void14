@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import NotificationResponseForm from "./NotificationResponseForm";
-import { NotificationResponse } from "@/lib/db/schema/notificationResponses";
+import { NotificationResponse } from "@soco/notification-db/schema/notificationResponses";
 
 export default function NotificationResponseModal({ 
   notificationResponse,

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteWikiVersion } from "@/lib/db/schema/wikiVersions";
+import { CompleteWikiVersion } from "@soco/wiki-db/schema/wikiVersions";
 import { trpc } from "@/lib/trpc/client";
 import WikiVersionModal from "./WikiVersionModal";
 

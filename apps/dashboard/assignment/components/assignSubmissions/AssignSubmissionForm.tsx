@@ -29,7 +29,7 @@ import {
   AssignSubmission,
   insertAssignSubmissionParams,
   NewAssignSubmissionParams,
-} from "@/lib/db/schema/assignSubmissions";
+} from "@soco/assignment-db/schema/assignSubmissions";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

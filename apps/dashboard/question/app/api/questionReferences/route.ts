@@ -6,12 +6,12 @@ import {
   createQuestionReference,
   deleteQuestionReference,
   updateQuestionReference,
-} from "@/lib/api/questionReferences/mutations";
+} from "@soco/question-api/questionReferences/mutations";
 import { 
   questionReferenceIdSchema,
   insertQuestionReferenceParams,
   updateQuestionReferenceParams 
-} from "@/lib/db/schema/questionReferences";
+} from "@soco/question-db/schema/questionReferences";
 
 export async function POST(req: Request) {
   try {

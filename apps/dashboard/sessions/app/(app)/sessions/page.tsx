@@ -1,7 +1,7 @@
 import SessionList from "@/components/sessions/SessionList";
 import NewSessionModal from "@/components/sessions/SessionModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function Sessions() {
   await checkAuth();

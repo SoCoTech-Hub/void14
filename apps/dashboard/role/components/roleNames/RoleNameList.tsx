@@ -1,5 +1,5 @@
 "use client";
-import { CompleteRoleName } from "@/lib/db/schema/roleNames";
+import { CompleteRoleName } from "@soco/role-db/schema/roleNames";
 import { trpc } from "@/lib/trpc/client";
 import RoleNameModal from "./RoleNameModal";
 

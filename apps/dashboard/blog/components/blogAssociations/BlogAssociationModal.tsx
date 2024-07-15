@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import BlogAssociationForm from "./BlogAssociationForm";
-import { BlogAssociation } from "@/lib/db/schema/blogAssociations";
+import { BlogAssociation } from "@soco/blog-db/schema/blogAssociations";
 
 export default function BlogAssociationModal({ 
   blogAssociation,

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QuestionReferenceForm from "./QuestionReferenceForm";
-import { QuestionReference } from "@/lib/db/schema/questionReferences";
+import { QuestionReference } from "@soco/question-db/schema/questionReferences";
 
 export default function QuestionReferenceModal({ 
   questionReference,

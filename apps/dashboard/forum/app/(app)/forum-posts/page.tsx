@@ -1,7 +1,7 @@
 import ForumPostList from "@/components/forumPosts/ForumPostList";
 import NewForumPostModal from "@/components/forumPosts/ForumPostModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function ForumPosts() {
   await checkAuth();

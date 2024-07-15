@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageUsersBlocked, NewMessageUsersBlockedParams, insertMessageUsersBlockedParams } from "@/lib/db/schema/messageUsersBlockeds";
+import { MessageUsersBlocked, NewMessageUsersBlockedParams, insertMessageUsersBlockedParams } from "@soco/message-db/schema/messageUsersBlockeds";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

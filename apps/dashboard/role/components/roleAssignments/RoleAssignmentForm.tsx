@@ -1,6 +1,6 @@
 "use client";
 
-import { RoleAssignment, NewRoleAssignmentParams, insertRoleAssignmentParams } from "@/lib/db/schema/roleAssignments";
+import { RoleAssignment, NewRoleAssignmentParams, insertRoleAssignmentParams } from "@soco/role-db/schema/roleAssignments";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

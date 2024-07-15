@@ -6,12 +6,12 @@ import {
   createPaygwPaypal,
   deletePaygwPaypal,
   updatePaygwPaypal,
-} from "@/lib/api/paygwPaypals/mutations";
+} from "@soco/payment-api/paygwPaypals/mutations";
 import { 
   paygwPaypalIdSchema,
   insertPaygwPaypalParams,
   updatePaygwPaypalParams 
-} from "@/lib/db/schema/paygwPaypals";
+} from "@soco/payment-db/schema/paygwPaypals";
 
 export async function POST(req: Request) {
   try {

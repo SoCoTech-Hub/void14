@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import WorkshopEvalBestSettingForm from "./WorkshopEvalBestSettingForm";
-import { WorkshopEvalBestSetting } from "@/lib/db/schema/workshopEvalBestSettings";
+import { WorkshopEvalBestSetting } from "@soco/workshop-db/schema/workshopEvalBestSettings";
 
 export default function WorkshopEvalBestSettingModal({ 
   workshopEvalBestSetting,

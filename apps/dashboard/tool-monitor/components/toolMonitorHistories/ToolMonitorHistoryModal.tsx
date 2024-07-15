@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ToolMonitorHistoryForm from "./ToolMonitorHistoryForm";
-import { ToolMonitorHistory } from "@/lib/db/schema/toolMonitorHistories";
+import { ToolMonitorHistory } from "@soco/tool-monitor-db/schema/toolMonitorHistories";
 
 export default function ToolMonitorHistoryModal({ 
   toolMonitorHistory,

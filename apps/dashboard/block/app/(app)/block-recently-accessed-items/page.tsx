@@ -1,7 +1,7 @@
 import BlockRecentlyAccessedItemList from "@/components/blockRecentlyAccessedItems/BlockRecentlyAccessedItemList";
 import NewBlockRecentlyAccessedItemModal from "@/components/blockRecentlyAccessedItems/BlockRecentlyAccessedItemModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function BlockRecentlyAccessedItems() {
   await checkAuth();

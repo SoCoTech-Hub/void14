@@ -6,12 +6,12 @@ import {
   createEnrolFlatfile,
   deleteEnrolFlatfile,
   updateEnrolFlatfile,
-} from "@/lib/api/enrolFlatfiles/mutations";
+} from "@soco/enrol-api/enrolFlatfiles/mutations";
 import { 
   enrolFlatfileIdSchema,
   insertEnrolFlatfileParams,
   updateEnrolFlatfileParams 
-} from "@/lib/db/schema/enrolFlatfiles";
+} from "@soco/enrol-db/schema/enrolFlatfiles";
 
 export async function POST(req: Request) {
   try {

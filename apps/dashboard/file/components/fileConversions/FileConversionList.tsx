@@ -1,5 +1,5 @@
 "use client";
-import { CompleteFileConversion } from "@/lib/db/schema/fileConversions";
+import { CompleteFileConversion } from "@soco/file-db/schema/fileConversions";
 import { trpc } from "@/lib/trpc/client";
 import FileConversionModal from "./FileConversionModal";
 

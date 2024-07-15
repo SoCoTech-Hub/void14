@@ -6,12 +6,12 @@ import {
   createH5pactivityAttempt,
   deleteH5pactivityAttempt,
   updateH5pactivityAttempt,
-} from "@/lib/api/h5pactivityAttempts/mutations";
+} from "@soco/h5p-api/h5pactivityAttempts/mutations";
 import { 
   h5pactivityAttemptIdSchema,
   insertH5pactivityAttemptParams,
   updateH5pactivityAttemptParams 
-} from "@/lib/db/schema/h5pactivityAttempts";
+} from "@soco/h5p-db/schema/h5pactivityAttempts";
 
 export async function POST(req: Request) {
   try {

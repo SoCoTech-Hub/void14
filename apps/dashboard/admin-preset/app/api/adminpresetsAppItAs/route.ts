@@ -6,12 +6,12 @@ import {
   createAdminpresetsAppItA,
   deleteAdminpresetsAppItA,
   updateAdminpresetsAppItA,
-} from "@/lib/api/adminpresetsAppItAs/mutations";
+} from "@soco/admin-preset-api/adminpresetsAppItAs/mutations";
 import { 
   adminpresetsAppItAIdSchema,
   insertAdminpresetsAppItAParams,
   updateAdminpresetsAppItAParams 
-} from "@/lib/db/schema/adminpresetsAppItAs";
+} from "@soco/admin-preset-db/schema/adminpresetsAppItAs";
 
 export async function POST(req: Request) {
   try {

@@ -1,7 +1,7 @@
 import QuizaccessSebQuizSettingList from "@/components/quizaccessSebQuizSettings/QuizaccessSebQuizSettingList";
 import NewQuizaccessSebQuizSettingModal from "@/components/quizaccessSebQuizSettings/QuizaccessSebQuizSettingModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function QuizaccessSebQuizSettings() {
   await checkAuth();

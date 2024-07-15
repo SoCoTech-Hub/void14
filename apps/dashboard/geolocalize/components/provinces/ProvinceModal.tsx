@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ProvinceForm from "./ProvinceForm";
-import { Province } from "@/lib/db/schema/provinces";
+import { Province } from "@soco/geolocalize-db/schema/provinces";
 
 export default function ProvinceModal({ 
   province,

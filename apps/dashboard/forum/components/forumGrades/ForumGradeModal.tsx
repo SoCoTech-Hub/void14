@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ForumGradeForm from "./ForumGradeForm";
-import { ForumGrade } from "@/lib/db/schema/forumGrades";
+import { ForumGrade } from "@soco/forum-db/schema/forumGrades";
 
 export default function ForumGradeModal({ 
   forumGrade,

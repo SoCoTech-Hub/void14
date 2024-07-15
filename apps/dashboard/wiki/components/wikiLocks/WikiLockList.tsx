@@ -1,5 +1,5 @@
 "use client";
-import { CompleteWikiLock } from "@/lib/db/schema/wikiLocks";
+import { CompleteWikiLock } from "@soco/wiki-db/schema/wikiLocks";
 import { trpc } from "@/lib/trpc/client";
 import WikiLockModal from "./WikiLockModal";
 

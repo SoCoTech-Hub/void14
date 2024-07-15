@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import WorkshopAssessmentForm from "./WorkshopAssessmentForm";
-import { WorkshopAssessment } from "@/lib/db/schema/workshopAssessments";
+import { WorkshopAssessment } from "@soco/workshop-db/schema/workshopAssessments";
 
 export default function WorkshopAssessmentModal({ 
   workshopAssessment,

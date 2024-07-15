@@ -1,6 +1,6 @@
 "use client";
 
-import { MnetLog, NewMnetLogParams, insertMnetLogParams } from "@/lib/db/schema/mnetLogs";
+import { MnetLog, NewMnetLogParams, insertMnetLogParams } from "@soco/mnet-db/schema/mnetLogs";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

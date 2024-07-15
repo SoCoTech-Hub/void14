@@ -1,7 +1,7 @@
 import CourseRequestList from "@/components/courseRequests/CourseRequestList";
 import NewCourseRequestModal from "@/components/courseRequests/CourseRequestModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function CourseRequests() {
   await checkAuth();

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteMnetLog } from "@/lib/db/schema/mnetLogs";
+import { CompleteMnetLog } from "@soco/mnet-db/schema/mnetLogs";
 import { trpc } from "@/lib/trpc/client";
 import MnetLogModal from "./MnetLogModal";
 

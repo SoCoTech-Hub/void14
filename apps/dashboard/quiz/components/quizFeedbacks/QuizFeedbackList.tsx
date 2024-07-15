@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQuizFeedback } from "@/lib/db/schema/quizFeedbacks";
+import { CompleteQuizFeedback } from "@soco/quiz-db/schema/quizFeedbacks";
 import { trpc } from "@/lib/trpc/client";
 import QuizFeedbackModal from "./QuizFeedbackModal";
 

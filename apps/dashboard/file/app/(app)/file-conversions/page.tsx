@@ -1,7 +1,7 @@
 import FileConversionList from "@/components/fileConversions/FileConversionList";
 import NewFileConversionModal from "@/components/fileConversions/FileConversionModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function FileConversions() {
   await checkAuth();

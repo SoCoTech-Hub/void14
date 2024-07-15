@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import RoleAssignmentForm from "./RoleAssignmentForm";
-import { RoleAssignment } from "@/lib/db/schema/roleAssignments";
+import { RoleAssignment } from "@soco/role-db/schema/roleAssignments";
 
 export default function RoleAssignmentModal({ 
   roleAssignment,

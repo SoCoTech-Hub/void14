@@ -4,7 +4,7 @@ import {
 	Province,
 	NewProvinceParams,
 	insertProvinceParams
-} from '@/lib/db/schema/provinces'
+} from '@soco/geolocalize-db/schema/provinces'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

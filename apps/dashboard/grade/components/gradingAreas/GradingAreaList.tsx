@@ -1,5 +1,5 @@
 "use client";
-import { CompleteGradingArea } from "@/lib/db/schema/gradingAreas";
+import { CompleteGradingArea } from "@soco/grade-db/schema/gradingAreas";
 import { trpc } from "@/lib/trpc/client";
 import GradingAreaModal from "./GradingAreaModal";
 

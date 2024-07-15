@@ -1,7 +1,7 @@
 import JobApplicationList from "@/components/jobApplications/JobApplicationList";
 import NewJobApplicationModal from "@/components/jobApplications/JobApplicationModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function JobApplications() {
   await checkAuth();

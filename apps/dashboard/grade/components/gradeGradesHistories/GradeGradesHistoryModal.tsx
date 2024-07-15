@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import GradeGradesHistoryForm from "./GradeGradesHistoryForm";
-import { GradeGradesHistory } from "@/lib/db/schema/gradeGradesHistories";
+import { GradeGradesHistory } from "@soco/grade-db/schema/gradeGradesHistories";
 
 export default function GradeGradesHistoryModal({ 
   gradeGradesHistory,

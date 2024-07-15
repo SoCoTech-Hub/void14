@@ -1,5 +1,5 @@
 "use client";
-import { CompleteOauth2UserFieldMapping } from "@/lib/db/schema/oauth2UserFieldMappings";
+import { CompleteOauth2UserFieldMapping } from "@soco/oauth2-db/schema/oauth2UserFieldMappings";
 import { trpc } from "@/lib/trpc/client";
 import Oauth2UserFieldMappingModal from "./Oauth2UserFieldMappingModal";
 

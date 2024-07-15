@@ -6,12 +6,12 @@ import {
   createAssignment,
   deleteAssignment,
   updateAssignment,
-} from "@/lib/api/assignments/mutations";
+} from "@soco/assignment-api/assignments/mutations";
 import { 
   assignmentIdSchema,
   insertAssignmentParams,
   updateAssignmentParams 
-} from "@/lib/db/schema/assignments";
+} from "@soco/assignment-db/schema/assignments";
 
 export async function POST(req: Request) {
   try {

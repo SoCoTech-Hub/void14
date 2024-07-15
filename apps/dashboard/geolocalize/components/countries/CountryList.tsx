@@ -1,5 +1,5 @@
 "use client";
-import { CompleteCountry } from "@/lib/db/schema/countries";
+import { CompleteCountry } from "@soco/geolocalize-db/schema/countries";
 import { trpc } from "@/lib/trpc/client";
 import CountryModal from "./CountryModal";
 

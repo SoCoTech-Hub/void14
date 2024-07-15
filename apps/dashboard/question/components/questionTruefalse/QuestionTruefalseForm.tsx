@@ -1,6 +1,6 @@
 "use client";
 
-import { QuestionTruefalse, NewQuestionTruefalseParams, insertQuestionTruefalseParams } from "@/lib/db/schema/questionTruefalse";
+import { QuestionTruefalse, NewQuestionTruefalseParams, insertQuestionTruefalseParams } from "@soco/question-db/schema/questionTruefalse";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

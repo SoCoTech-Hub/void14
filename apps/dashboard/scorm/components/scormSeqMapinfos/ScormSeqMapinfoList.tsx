@@ -1,5 +1,5 @@
 "use client";
-import { CompleteScormSeqMapinfo } from "@/lib/db/schema/scormSeqMapinfos";
+import { CompleteScormSeqMapinfo } from "@soco/scorm-db/schema/scormSeqMapinfos";
 import { trpc } from "@/lib/trpc/client";
 import ScormSeqMapinfoModal from "./ScormSeqMapinfoModal";
 

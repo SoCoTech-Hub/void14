@@ -1,5 +1,5 @@
 "use client";
-import { CompleteSocialIcon } from "@/lib/db/schema/socialIcons";
+import { CompleteSocialIcon } from "@soco/blog-db/schema/socialIcons";
 import { trpc } from "@/lib/trpc/client";
 import SocialIconModal from "./SocialIconModal";
 

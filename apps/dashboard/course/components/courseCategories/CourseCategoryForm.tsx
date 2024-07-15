@@ -21,7 +21,7 @@ import {
 	CourseCategory,
 	insertCourseCategoryParams,
 	NewCourseCategoryParams
-} from '@/lib/db/schema/courseCategories'
+} from '@soco/course-db/schema/courseCategories'
 
 type GenericFormProps<T> = {
 	defaultValues: T

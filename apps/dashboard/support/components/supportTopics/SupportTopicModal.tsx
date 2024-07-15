@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import SupportTopicForm from "./SupportTopicForm";
-import { SupportTopic } from "@/lib/db/schema/supportTopics";
+import { SupportTopic } from "@soco/support-db/schema/supportTopics";
 
 export default function SupportTopicModal({ 
   supportTopic,

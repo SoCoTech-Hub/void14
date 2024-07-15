@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import H5pLibraryForm from "./H5pLibraryForm";
-import { H5pLibrary } from "@/lib/db/schema/h5pLibraries";
+import { H5pLibrary } from "@soco/h5p-db/schema/h5pLibraries";
 
 export default function H5pLibraryModal({ 
   h5pLibrary,

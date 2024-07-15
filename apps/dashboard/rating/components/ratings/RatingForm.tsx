@@ -1,6 +1,6 @@
 "use client";
 
-import { Rating, NewRatingParams, insertRatingParams } from "@/lib/db/schema/ratings";
+import { Rating, NewRatingParams, insertRatingParams } from "@soco/rating-db/schema/ratings";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

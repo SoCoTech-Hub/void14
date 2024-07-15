@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import UniversityForm from "./UniversityForm";
-import { University } from "@/lib/db/schema/universities";
+import { University } from "@soco/universities-db/schema/universities";
 
 export default function UniversityModal({ 
   university,

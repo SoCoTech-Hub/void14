@@ -22,7 +22,7 @@ import {
   AdminPreset,
   insertAdminPresetParams,
   NewAdminPresetParams,
-} from "@/lib/db/schema/adminPresets";
+} from "@soco/admin-preset-db/schema/adminPresets";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

@@ -6,12 +6,12 @@ import {
   createLessonAttempt,
   deleteLessonAttempt,
   updateLessonAttempt,
-} from "@/lib/api/lessonAttempts/mutations";
+} from "@soco/lesson-api/lessonAttempts/mutations";
 import { 
   lessonAttemptIdSchema,
   insertLessonAttemptParams,
   updateLessonAttemptParams 
-} from "@/lib/db/schema/lessonAttempts";
+} from "@soco/lesson-db/schema/lessonAttempts";
 
 export async function POST(req: Request) {
   try {

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ToolDataprivacyRequestForm from "./ToolDataprivacyRequestForm";
-import { ToolDataprivacyRequest } from "@/lib/db/schema/toolDataprivacyRequests";
+import { ToolDataprivacyRequest } from "@soco/tool-data-privacy-db/schema/toolDataprivacyRequests";
 
 export default function ToolDataprivacyRequestModal({ 
   toolDataprivacyRequest,

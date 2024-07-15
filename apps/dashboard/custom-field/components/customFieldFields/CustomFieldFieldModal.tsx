@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import CustomFieldFieldForm from "./CustomFieldFieldForm";
-import { CustomFieldField } from "@/lib/db/schema/customFieldFields";
+import { CustomFieldField } from "@soco/custom-field-db/schema/customFieldFields";
 
 export default function CustomFieldFieldModal({ 
   customFieldField,

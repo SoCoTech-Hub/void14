@@ -6,12 +6,12 @@ import {
   createLabel,
   deleteLabel,
   updateLabel,
-} from "@/lib/api/labels/mutations";
+} from "@soco/label-api/labels/mutations";
 import { 
   labelIdSchema,
   insertLabelParams,
   updateLabelParams 
-} from "@/lib/db/schema/labels";
+} from "@soco/label-db/schema/labels";
 
 export async function POST(req: Request) {
   try {

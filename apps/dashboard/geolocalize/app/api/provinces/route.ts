@@ -6,12 +6,12 @@ import {
   createProvince,
   deleteProvince,
   updateProvince,
-} from "@/lib/api/provinces/mutations";
+} from "@soco/geolocalize-api/provinces/mutations";
 import { 
   provinceIdSchema,
   insertProvinceParams,
   updateProvinceParams 
-} from "@/lib/db/schema/provinces";
+} from "@soco/geolocalize-db/schema/provinces";
 
 export async function POST(req: Request) {
   try {

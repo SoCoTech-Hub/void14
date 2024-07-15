@@ -1,7 +1,7 @@
 import FeedbackCompletedtmpList from "@/components/feedbackCompletedtmps/FeedbackCompletedtmpList";
 import NewFeedbackCompletedtmpModal from "@/components/feedbackCompletedtmps/FeedbackCompletedtmpModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function FeedbackCompletedtmps() {
   await checkAuth();

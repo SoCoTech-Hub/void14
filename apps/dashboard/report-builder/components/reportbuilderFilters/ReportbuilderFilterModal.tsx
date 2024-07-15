@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ReportbuilderFilterForm from "./ReportbuilderFilterForm";
-import { ReportbuilderFilter } from "@/lib/db/schema/reportbuilderFilters";
+import { ReportbuilderFilter } from "@soco/report-builder-db/schema/reportbuilderFilters";
 
 export default function ReportbuilderFilterModal({ 
   reportbuilderFilter,

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteImscp } from "@/lib/db/schema/imscps";
+import { CompleteImscp } from "@soco/imscp-db/schema/imscps";
 import { trpc } from "@/lib/trpc/client";
 import ImscpModal from "./ImscpModal";
 

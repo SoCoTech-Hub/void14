@@ -1,5 +1,5 @@
 "use client";
-import { CompleteOauth2Issuer } from "@/lib/db/schema/oauth2Issuers";
+import { CompleteOauth2Issuer } from "@soco/oauth2-db/schema/oauth2Issuers";
 import { trpc } from "@/lib/trpc/client";
 import Oauth2IssuerModal from "./Oauth2IssuerModal";
 

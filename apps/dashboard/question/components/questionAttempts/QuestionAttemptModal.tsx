@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QuestionAttemptForm from "./QuestionAttemptForm";
-import { QuestionAttempt } from "@/lib/db/schema/questionAttempts";
+import { QuestionAttempt } from "@soco/question-db/schema/questionAttempts";
 
 export default function QuestionAttemptModal({ 
   questionAttempt,

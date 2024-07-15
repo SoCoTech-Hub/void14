@@ -6,12 +6,12 @@ import {
   createLockDb,
   deleteLockDb,
   updateLockDb,
-} from "@/lib/api/lockDbs/mutations";
+} from "@soco/lock-api/lockDbs/mutations";
 import { 
   lockDbIdSchema,
   insertLockDbParams,
   updateLockDbParams 
-} from "@/lib/db/schema/lockDbs";
+} from "@soco/lock-db/schema/lockDbs";
 
 export async function POST(req: Request) {
   try {

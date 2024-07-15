@@ -4,7 +4,7 @@ import {
 	ChoiceOption,
 	NewChoiceOptionParams,
 	insertChoiceOptionParams
-} from '@/lib/db/schema/choiceOptions'
+} from '@soco/choice-db/schema/choiceOptions'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

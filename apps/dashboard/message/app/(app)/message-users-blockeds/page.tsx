@@ -1,7 +1,7 @@
 import MessageUsersBlockedList from "@/components/messageUsersBlockeds/MessageUsersBlockedList";
 import NewMessageUsersBlockedModal from "@/components/messageUsersBlockeds/MessageUsersBlockedModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function MessageUsersBlockeds() {
   await checkAuth();

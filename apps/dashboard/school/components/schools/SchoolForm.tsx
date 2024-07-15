@@ -4,7 +4,7 @@ import {
 	School,
 	NewSchoolParams,
 	insertSchoolParams
-} from '@/lib/db/schema/schools'
+} from '@soco/school-db/schema/schools'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

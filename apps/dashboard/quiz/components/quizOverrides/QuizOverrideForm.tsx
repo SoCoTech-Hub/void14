@@ -4,7 +4,7 @@ import {
 	QuizOverride,
 	NewQuizOverrideParams,
 	insertQuizOverrideParams
-} from '@/lib/db/schema/quizOverrides'
+} from '@soco/quiz-db/schema/quizOverrides'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

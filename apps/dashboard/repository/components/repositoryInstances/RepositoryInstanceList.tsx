@@ -1,5 +1,5 @@
 "use client";
-import { CompleteRepositoryInstance } from "@/lib/db/schema/repositoryInstances";
+import { CompleteRepositoryInstance } from "@soco/repository-db/schema/repositoryInstances";
 import { trpc } from "@/lib/trpc/client";
 import RepositoryInstanceModal from "./RepositoryInstanceModal";
 

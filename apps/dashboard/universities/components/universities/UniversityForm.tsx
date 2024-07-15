@@ -4,7 +4,7 @@ import {
 	University,
 	NewUniversityParams,
 	insertUniversityParams
-} from '@/lib/db/schema/universities'
+} from '@soco/universities-db/schema/universities'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

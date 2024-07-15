@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageAirnotifierDevice, NewMessageAirnotifierDeviceParams, insertMessageAirnotifierDeviceParams } from "@/lib/db/schema/messageAirnotifierDevices";
+import { MessageAirnotifierDevice, NewMessageAirnotifierDeviceParams, insertMessageAirnotifierDeviceParams } from "@soco/message-db/schema/messageAirnotifierDevices";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

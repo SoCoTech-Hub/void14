@@ -4,7 +4,7 @@ import {
 	AssignSubmissionOnlineText,
 	NewAssignSubmissionOnlineTextParams,
 	insertAssignSubmissionOnlineTextParams
-} from '@/lib/db/schema/assignSubmissionOnlineTexts'
+} from '@soco/assignment-db/schema/assignSubmissionOnlineTexts'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteAssignFeedbackEditpdfAnnot } from "@/lib/db/schema/assignFeedbackEditpdfAnnots";
+import { CompleteAssignFeedbackEditpdfAnnot } from "@soco/assignment-db/schema/assignFeedbackEditpdfAnnots";
 import { trpc } from "@/lib/trpc/client";
 import AssignFeedbackEditpdfAnnotModal from "./AssignFeedbackEditpdfAnnotModal";
 

@@ -21,7 +21,7 @@ import {
   ForumRead,
   insertForumReadParams,
   NewForumReadParams,
-} from "@/lib/db/schema/forumReads";
+} from "@soco/forum-db/schema/forumReads";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

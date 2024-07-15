@@ -1,5 +1,5 @@
 "use client";
-import { CompleteMessagePopup } from "@/lib/db/schema/messagePopups";
+import { CompleteMessagePopup } from "@soco/message-db/schema/messagePopups";
 import { trpc } from "@/lib/trpc/client";
 import MessagePopupModal from "./MessagePopupModal";
 

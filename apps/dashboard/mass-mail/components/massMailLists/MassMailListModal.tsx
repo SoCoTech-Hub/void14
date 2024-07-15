@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import MassMailListForm from "./MassMailListForm";
-import { MassMailList } from "@/lib/db/schema/massMailLists";
+import { MassMailList } from "@soco/mass-mail-db/schema/massMailLists";
 
 export default function MassMailListModal({ 
   massMailList,

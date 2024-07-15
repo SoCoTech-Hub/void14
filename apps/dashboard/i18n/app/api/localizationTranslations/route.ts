@@ -6,12 +6,12 @@ import {
   createLocalizationTranslation,
   deleteLocalizationTranslation,
   updateLocalizationTranslation,
-} from "@/lib/api/localizationTranslations/mutations";
+} from "@soco/i18n-api/localizationTranslations/mutations";
 import { 
   localizationTranslationIdSchema,
   insertLocalizationTranslationParams,
   updateLocalizationTranslationParams 
-} from "@/lib/db/schema/localizationTranslations";
+} from "@soco/i18n-db/schema/localizationTranslations";
 
 export async function POST(req: Request) {
   try {

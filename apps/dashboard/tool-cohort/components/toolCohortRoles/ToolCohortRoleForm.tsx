@@ -1,6 +1,6 @@
 "use client";
 
-import { ToolCohortRole, NewToolCohortRoleParams, insertToolCohortRoleParams } from "@/lib/db/schema/toolCohortRoles";
+import { ToolCohortRole, NewToolCohortRoleParams, insertToolCohortRoleParams } from "@soco/tool-cohort-db/schema/toolCohortRoles";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

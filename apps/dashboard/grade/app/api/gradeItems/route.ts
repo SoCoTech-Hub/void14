@@ -6,12 +6,12 @@ import {
   createGradeItem,
   deleteGradeItem,
   updateGradeItem,
-} from "@/lib/api/gradeItems/mutations";
+} from "@soco/grade-api/gradeItems/mutations";
 import { 
   gradeItemIdSchema,
   insertGradeItemParams,
   updateGradeItemParams 
-} from "@/lib/db/schema/gradeItems";
+} from "@soco/grade-db/schema/gradeItems";
 
 export async function POST(req: Request) {
   try {

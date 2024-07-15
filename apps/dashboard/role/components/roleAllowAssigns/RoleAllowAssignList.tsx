@@ -1,5 +1,5 @@
 "use client";
-import { CompleteRoleAllowAssign } from "@/lib/db/schema/roleAllowAssigns";
+import { CompleteRoleAllowAssign } from "@soco/role-db/schema/roleAllowAssigns";
 import { trpc } from "@/lib/trpc/client";
 import RoleAllowAssignModal from "./RoleAllowAssignModal";
 

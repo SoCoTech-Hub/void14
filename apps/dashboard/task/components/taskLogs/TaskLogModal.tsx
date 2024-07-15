@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import TaskLogForm from "./TaskLogForm";
-import { TaskLog } from "@/lib/db/schema/taskLogs";
+import { TaskLog } from "@soco/task-db/schema/taskLogs";
 
 export default function TaskLogModal({ 
   taskLog,

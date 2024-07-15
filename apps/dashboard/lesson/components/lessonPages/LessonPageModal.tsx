@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import LessonPageForm from "./LessonPageForm";
-import { LessonPage } from "@/lib/db/schema/lessonPages";
+import { LessonPage } from "@soco/lesson-db/schema/lessonPages";
 
 export default function LessonPageModal({ 
   lessonPage,

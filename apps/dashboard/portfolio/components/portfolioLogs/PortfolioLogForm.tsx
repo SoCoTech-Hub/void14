@@ -1,6 +1,6 @@
 "use client";
 
-import { PortfolioLog, NewPortfolioLogParams, insertPortfolioLogParams } from "@/lib/db/schema/portfolioLogs";
+import { PortfolioLog, NewPortfolioLogParams, insertPortfolioLogParams } from "@soco/portfolio-db/schema/portfolioLogs";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

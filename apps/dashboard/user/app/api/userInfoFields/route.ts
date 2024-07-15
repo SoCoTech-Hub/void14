@@ -6,12 +6,12 @@ import {
   createUserInfoField,
   deleteUserInfoField,
   updateUserInfoField,
-} from "@/lib/api/userInfoFields/mutations";
+} from "@soco/user-api/userInfoFields/mutations";
 import { 
   userInfoFieldIdSchema,
   insertUserInfoFieldParams,
   updateUserInfoFieldParams 
-} from "@/lib/db/schema/userInfoFields";
+} from "@soco/user-db/schema/userInfoFields";
 
 export async function POST(req: Request) {
   try {

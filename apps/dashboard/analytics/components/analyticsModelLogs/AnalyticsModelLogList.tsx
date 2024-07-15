@@ -1,5 +1,5 @@
 'use client'
-import { CompleteAnalyticsModelLog } from '@/lib/db/schema/analyticsModelLogs'
+import { CompleteAnalyticsModelLog } from '@soco/analytics-db/schema/analyticsModelLogs'
 import { trpc } from '@/lib/trpc/client'
 import AnalyticsModelLogModal from './AnalyticsModelLogModal'
 

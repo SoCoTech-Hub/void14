@@ -4,7 +4,7 @@ import {
 	RoleAllowOverride,
 	NewRoleAllowOverrideParams,
 	insertRoleAllowOverrideParams
-} from '@/lib/db/schema/roleAllowOverrides'
+} from '@soco/role-db/schema/roleAllowOverrides'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

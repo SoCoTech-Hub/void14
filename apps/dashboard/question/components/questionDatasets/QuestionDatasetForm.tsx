@@ -1,6 +1,6 @@
 "use client";
 
-import { QuestionDataset, NewQuestionDatasetParams, insertQuestionDatasetParams } from "@/lib/db/schema/questionDatasets";
+import { QuestionDataset, NewQuestionDatasetParams, insertQuestionDatasetParams } from "@soco/question-db/schema/questionDatasets";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

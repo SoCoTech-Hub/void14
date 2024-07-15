@@ -1,7 +1,7 @@
 import QualificationsResponseList from "@/components/qualificationsResponses/QualificationsResponseList";
 import NewQualificationsResponseModal from "@/components/qualificationsResponses/QualificationsResponseModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function QualificationsResponses() {
   await checkAuth();

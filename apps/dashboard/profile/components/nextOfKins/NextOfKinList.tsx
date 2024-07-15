@@ -1,5 +1,5 @@
 "use client";
-import { CompleteNextOfKin } from "@/lib/db/schema/nextOfKins";
+import { CompleteNextOfKin } from "@soco/profile-db/schema/nextOfKins";
 import { trpc } from "@/lib/trpc/client";
 import NextOfKinModal from "./NextOfKinModal";
 

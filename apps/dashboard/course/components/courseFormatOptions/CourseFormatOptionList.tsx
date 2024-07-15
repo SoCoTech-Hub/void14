@@ -1,5 +1,5 @@
 "use client";
-import { CompleteCourseFormatOption } from "@/lib/db/schema/courseFormatOptions";
+import { CompleteCourseFormatOption } from "@soco/course-db/schema/courseFormatOptions";
 import { trpc } from "@/lib/trpc/client";
 import CourseFormatOptionModal from "./CourseFormatOptionModal";
 

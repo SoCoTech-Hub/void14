@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import MediaForm from "./MediaForm";
-import { Media } from "@/lib/db/schema/medias";
+import { Media } from "@soco/media-db/schema/medias";
 
 export default function MediaModal({ 
   media,

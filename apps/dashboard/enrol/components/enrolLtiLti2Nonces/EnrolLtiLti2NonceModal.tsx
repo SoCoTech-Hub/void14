@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import EnrolLtiLti2NonceForm from "./EnrolLtiLti2NonceForm";
-import { EnrolLtiLti2Nonce } from "@/lib/db/schema/enrolLtiLti2Nonces";
+import { EnrolLtiLti2Nonce } from "@soco/enrol-db/schema/enrolLtiLti2Nonces";
 
 export default function EnrolLtiLti2NonceModal({ 
   enrolLtiLti2Nonce,

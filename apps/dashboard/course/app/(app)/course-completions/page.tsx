@@ -1,7 +1,7 @@
 import CourseCompletionList from "@/components/courseCompletions/CourseCompletionList";
 import NewCourseCompletionModal from "@/components/courseCompletions/CourseCompletionModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function CourseCompletions() {
   await checkAuth();

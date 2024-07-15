@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ToolMonitorSubscriptionForm from "./ToolMonitorSubscriptionForm";
-import { ToolMonitorSubscription } from "@/lib/db/schema/toolMonitorSubscriptions";
+import { ToolMonitorSubscription } from "@soco/tool-monitor-db/schema/toolMonitorSubscriptions";
 
 export default function ToolMonitorSubscriptionModal({ 
   toolMonitorSubscription,

@@ -4,7 +4,7 @@ import {
 	AssignFeedbackFile,
 	NewAssignFeedbackFileParams,
 	insertAssignFeedbackFileParams
-} from '@/lib/db/schema/assignFeedbackFiles'
+} from '@soco/assignment-db/schema/assignFeedbackFiles'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { FeedbackCompleted, NewFeedbackCompletedParams, insertFeedbackCompletedParams } from "@/lib/db/schema/feedbackCompleteds";
+import { FeedbackCompleted, NewFeedbackCompletedParams, insertFeedbackCompletedParams } from "@soco/feedback-db/schema/feedbackCompleteds";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

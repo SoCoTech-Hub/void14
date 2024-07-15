@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import TaskScheduleForm from "./TaskScheduleForm";
-import { TaskSchedule } from "@/lib/db/schema/taskSchedules";
+import { TaskSchedule } from "@soco/task-db/schema/taskSchedules";
 
 export default function TaskScheduleModal({ 
   taskSchedule,

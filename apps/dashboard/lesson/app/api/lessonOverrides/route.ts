@@ -6,12 +6,12 @@ import {
   createLessonOverride,
   deleteLessonOverride,
   updateLessonOverride,
-} from "@/lib/api/lessonOverrides/mutations";
+} from "@soco/lesson-api/lessonOverrides/mutations";
 import { 
   lessonOverrideIdSchema,
   insertLessonOverrideParams,
   updateLessonOverrideParams 
-} from "@/lib/db/schema/lessonOverrides";
+} from "@soco/lesson-db/schema/lessonOverrides";
 
 export async function POST(req: Request) {
   try {

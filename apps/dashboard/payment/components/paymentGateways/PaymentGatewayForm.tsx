@@ -1,6 +1,6 @@
 "use client";
 
-import { PaymentGateway, NewPaymentGatewayParams, insertPaymentGatewayParams } from "@/lib/db/schema/paymentGateways";
+import { PaymentGateway, NewPaymentGatewayParams, insertPaymentGatewayParams } from "@soco/payment-db/schema/paymentGateways";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

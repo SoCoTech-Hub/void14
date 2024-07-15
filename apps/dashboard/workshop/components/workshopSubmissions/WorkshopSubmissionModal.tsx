@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import WorkshopSubmissionForm from "./WorkshopSubmissionForm";
-import { WorkshopSubmission } from "@/lib/db/schema/workshopSubmissions";
+import { WorkshopSubmission } from "@soco/workshop-db/schema/workshopSubmissions";
 
 export default function WorkshopSubmissionModal({ 
   workshopSubmission,

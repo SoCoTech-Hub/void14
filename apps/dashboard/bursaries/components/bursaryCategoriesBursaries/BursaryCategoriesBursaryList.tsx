@@ -1,5 +1,5 @@
 "use client";
-import { CompleteBursaryCategoriesBursary } from "@/lib/db/schema/bursaryCategoriesBursaries";
+import { CompleteBursaryCategoriesBursary } from "@soco/bursaries-db/schema/bursaryCategoriesBursaries";
 import { trpc } from "@/lib/trpc/client";
 import BursaryCategoriesBursaryModal from "./BursaryCategoriesBursaryModal";
 

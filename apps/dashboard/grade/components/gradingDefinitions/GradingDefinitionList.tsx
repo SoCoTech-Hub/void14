@@ -1,5 +1,5 @@
 "use client";
-import { CompleteGradingDefinition } from "@/lib/db/schema/gradingDefinitions";
+import { CompleteGradingDefinition } from "@soco/grade-db/schema/gradingDefinitions";
 import { trpc } from "@/lib/trpc/client";
 import GradingDefinitionModal from "./GradingDefinitionModal";
 

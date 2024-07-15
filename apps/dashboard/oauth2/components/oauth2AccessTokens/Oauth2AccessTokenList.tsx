@@ -1,5 +1,5 @@
 "use client";
-import { CompleteOauth2AccessToken } from "@/lib/db/schema/oauth2AccessTokens";
+import { CompleteOauth2AccessToken } from "@soco/oauth2-db/schema/oauth2AccessTokens";
 import { trpc } from "@/lib/trpc/client";
 import Oauth2AccessTokenModal from "./Oauth2AccessTokenModal";
 

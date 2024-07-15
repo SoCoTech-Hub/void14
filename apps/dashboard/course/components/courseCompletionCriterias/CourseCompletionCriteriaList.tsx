@@ -1,5 +1,5 @@
 "use client";
-import { CompleteCourseCompletionCriteria } from "@/lib/db/schema/courseCompletionCriterias";
+import { CompleteCourseCompletionCriteria } from "@soco/course-db/schema/courseCompletionCriterias";
 import { trpc } from "@/lib/trpc/client";
 import CourseCompletionCriteriaModal from "./CourseCompletionCriteriaModal";
 

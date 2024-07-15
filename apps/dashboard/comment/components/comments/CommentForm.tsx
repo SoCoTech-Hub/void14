@@ -4,7 +4,7 @@ import {
 	Comment,
 	NewCommentParams,
 	insertCommentParams
-} from '@/lib/db/schema/comments'
+} from '@soco/comment-db/schema/comments'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

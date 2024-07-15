@@ -6,12 +6,12 @@ import {
   createGradeOutcomesHistory,
   deleteGradeOutcomesHistory,
   updateGradeOutcomesHistory,
-} from "@/lib/api/gradeOutcomesHistories/mutations";
+} from "@soco/grade-api/gradeOutcomesHistories/mutations";
 import { 
   gradeOutcomesHistoryIdSchema,
   insertGradeOutcomesHistoryParams,
   updateGradeOutcomesHistoryParams 
-} from "@/lib/db/schema/gradeOutcomesHistories";
+} from "@soco/grade-db/schema/gradeOutcomesHistories";
 
 export async function POST(req: Request) {
   try {

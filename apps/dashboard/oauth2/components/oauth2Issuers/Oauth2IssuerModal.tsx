@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import Oauth2IssuerForm from "./Oauth2IssuerForm";
-import { Oauth2Issuer } from "@/lib/db/schema/oauth2Issuers";
+import { Oauth2Issuer } from "@soco/oauth2-db/schema/oauth2Issuers";
 
 export default function Oauth2IssuerModal({ 
   oauth2Issuer,

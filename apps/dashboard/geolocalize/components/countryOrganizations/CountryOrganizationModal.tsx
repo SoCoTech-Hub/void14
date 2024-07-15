@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import CountryOrganizationForm from "./CountryOrganizationForm";
-import { CountryOrganization } from "@/lib/db/schema/countryOrganizations";
+import { CountryOrganization } from "@soco/geolocalize-db/schema/countryOrganizations";
 
 export default function CountryOrganizationModal({ 
   countryOrganization,

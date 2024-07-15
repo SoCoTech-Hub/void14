@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import WorkshopAggregationForm from "./WorkshopAggregationForm";
-import { WorkshopAggregation } from "@/lib/db/schema/workshopAggregations";
+import { WorkshopAggregation } from "@soco/workshop-db/schema/workshopAggregations";
 
 export default function WorkshopAggregationModal({ 
   workshopAggregation,

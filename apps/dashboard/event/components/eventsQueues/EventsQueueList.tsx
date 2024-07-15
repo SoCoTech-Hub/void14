@@ -1,5 +1,5 @@
 "use client";
-import { CompleteEventsQueue } from "@/lib/db/schema/eventsQueues";
+import { CompleteEventsQueue } from "@soco/event-db/schema/eventsQueues";
 import { trpc } from "@/lib/trpc/client";
 import EventsQueueModal from "./EventsQueueModal";
 

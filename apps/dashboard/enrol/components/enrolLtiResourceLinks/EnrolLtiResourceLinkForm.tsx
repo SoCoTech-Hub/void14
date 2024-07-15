@@ -1,6 +1,6 @@
 "use client";
 
-import { EnrolLtiResourceLink, NewEnrolLtiResourceLinkParams, insertEnrolLtiResourceLinkParams } from "@/lib/db/schema/enrolLtiResourceLinks";
+import { EnrolLtiResourceLink, NewEnrolLtiResourceLinkParams, insertEnrolLtiResourceLinkParams } from "@soco/enrol-db/schema/enrolLtiResourceLinks";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

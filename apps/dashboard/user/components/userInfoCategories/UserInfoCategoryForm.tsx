@@ -4,7 +4,7 @@ import {
 	UserInfoCategory,
 	NewUserInfoCategoryParams,
 	insertUserInfoCategoryParams
-} from '@/lib/db/schema/userInfoCategories'
+} from '@soco/user-db/schema/userInfoCategories'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

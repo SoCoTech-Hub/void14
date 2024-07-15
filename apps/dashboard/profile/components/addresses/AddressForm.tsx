@@ -4,7 +4,7 @@ import {
 	Address,
 	NewAddressParams,
 	insertAddressParams
-} from '@/lib/db/schema/addresses'
+} from '@soco/profile-db/schema/addresses'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

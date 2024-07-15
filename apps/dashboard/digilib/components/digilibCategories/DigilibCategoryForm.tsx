@@ -4,7 +4,7 @@ import {
 	DigilibCategory,
 	NewDigilibCategoryParams,
 	insertDigilibCategoryParams
-} from '@/lib/db/schema/digilibCategories'
+} from '@soco/digilib-db/schema/digilibCategories'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

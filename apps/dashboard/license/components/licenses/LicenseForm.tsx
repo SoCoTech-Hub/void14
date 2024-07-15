@@ -1,6 +1,6 @@
 "use client";
 
-import { License, NewLicenseParams, insertLicenseParams } from "@/lib/db/schema/licenses";
+import { License, NewLicenseParams, insertLicenseParams } from "@soco/license-db/schema/licenses";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

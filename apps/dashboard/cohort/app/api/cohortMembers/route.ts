@@ -6,12 +6,12 @@ import {
   createCohortMember,
   deleteCohortMember,
   updateCohortMember,
-} from "@/lib/api/cohortMembers/mutations";
+} from "@soco/cohort-api/cohortMembers/mutations";
 import { 
   cohortMemberIdSchema,
   insertCohortMemberParams,
   updateCohortMemberParams 
-} from "@/lib/db/schema/cohortMembers";
+} from "@soco/cohort-db/schema/cohortMembers";
 
 export async function POST(req: Request) {
   try {

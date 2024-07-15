@@ -1,6 +1,6 @@
 "use client";
 
-import { H5pLibrariesCachedasset, NewH5pLibrariesCachedassetParams, insertH5pLibrariesCachedassetParams } from "@/lib/db/schema/h5pLibrariesCachedassets";
+import { H5pLibrariesCachedasset, NewH5pLibrariesCachedassetParams, insertH5pLibrariesCachedassetParams } from "@soco/h5p-db/schema/h5pLibrariesCachedassets";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

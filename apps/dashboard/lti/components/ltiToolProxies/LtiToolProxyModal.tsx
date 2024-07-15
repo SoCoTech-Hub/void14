@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import LtiToolProxyForm from "./LtiToolProxyForm";
-import { LtiToolProxy } from "@/lib/db/schema/ltiToolProxies";
+import { LtiToolProxy } from "@soco/lti-db/schema/ltiToolProxies";
 
 export default function LtiToolProxyModal({ 
   ltiToolProxy,

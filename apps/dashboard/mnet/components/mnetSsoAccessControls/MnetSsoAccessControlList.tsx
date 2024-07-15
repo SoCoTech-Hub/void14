@@ -1,5 +1,5 @@
 "use client";
-import { CompleteMnetSsoAccessControl } from "@/lib/db/schema/mnetSsoAccessControls";
+import { CompleteMnetSsoAccessControl } from "@soco/mnet-db/schema/mnetSsoAccessControls";
 import { trpc } from "@/lib/trpc/client";
 import MnetSsoAccessControlModal from "./MnetSsoAccessControlModal";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { DataRecord, NewDataRecordParams, insertDataRecordParams } from "@/lib/db/schema/dataRecords";
+import { DataRecord, NewDataRecordParams, insertDataRecordParams } from "@soco/data-db/schema/dataRecords";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

@@ -4,7 +4,7 @@ import {
 	Media,
 	NewMediaParams,
 	insertMediaParams
-} from '@/lib/db/schema/medias'
+} from '@soco/media-db/schema/medias'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

@@ -6,12 +6,12 @@ import {
   createUniversity,
   deleteUniversity,
   updateUniversity,
-} from "@/lib/api/universities/mutations";
+} from "@soco/universities-api/universities/mutations";
 import { 
   universityIdSchema,
   insertUniversityParams,
   updateUniversityParams 
-} from "@/lib/db/schema/universities";
+} from "@soco/universities-db/schema/universities";
 
 export async function POST(req: Request) {
   try {

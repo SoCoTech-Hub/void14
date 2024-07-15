@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import Oauth2EndpointForm from "./Oauth2EndpointForm";
-import { Oauth2Endpoint } from "@/lib/db/schema/oauth2Endpoints";
+import { Oauth2Endpoint } from "@soco/oauth2-db/schema/oauth2Endpoints";
 
 export default function Oauth2EndpointModal({ 
   oauth2Endpoint,

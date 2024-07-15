@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import RepositoryInstanceConfigForm from "./RepositoryInstanceConfigForm";
-import { RepositoryInstanceConfig } from "@/lib/db/schema/repositoryInstanceConfigs";
+import { RepositoryInstanceConfig } from "@soco/repository-db/schema/repositoryInstanceConfigs";
 
 export default function RepositoryInstanceConfigModal({ 
   repositoryInstanceConfig,

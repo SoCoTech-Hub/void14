@@ -1,5 +1,5 @@
 "use client";
-import { CompleteUserLastAccess } from "@/lib/db/schema/userLastAccesses";
+import { CompleteUserLastAccess } from "@soco/user-db/schema/userLastAccesses";
 import { trpc } from "@/lib/trpc/client";
 import UserLastAccessModal from "./UserLastAccessModal";
 

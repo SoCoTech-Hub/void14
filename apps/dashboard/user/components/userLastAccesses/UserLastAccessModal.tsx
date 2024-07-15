@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import UserLastAccessForm from "./UserLastAccessForm";
-import { UserLastAccess } from "@/lib/db/schema/userLastAccesses";
+import { UserLastAccess } from "@soco/user-db/schema/userLastAccesses";
 
 export default function UserLastAccessModal({ 
   userLastAccess,

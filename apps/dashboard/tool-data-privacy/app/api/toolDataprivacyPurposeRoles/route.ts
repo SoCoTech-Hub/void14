@@ -6,12 +6,12 @@ import {
   createToolDataprivacyPurposeRole,
   deleteToolDataprivacyPurposeRole,
   updateToolDataprivacyPurposeRole,
-} from "@/lib/api/toolDataprivacyPurposeRoles/mutations";
+} from "@soco/tool-data-privacy-api/toolDataprivacyPurposeRoles/mutations";
 import { 
   toolDataprivacyPurposeRoleIdSchema,
   insertToolDataprivacyPurposeRoleParams,
   updateToolDataprivacyPurposeRoleParams 
-} from "@/lib/db/schema/toolDataprivacyPurposeRoles";
+} from "@soco/tool-data-privacy-db/schema/toolDataprivacyPurposeRoles";
 
 export async function POST(req: Request) {
   try {

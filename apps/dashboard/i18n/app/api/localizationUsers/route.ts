@@ -6,12 +6,12 @@ import {
   createLocalizationUser,
   deleteLocalizationUser,
   updateLocalizationUser,
-} from "@/lib/api/localizationUsers/mutations";
+} from "@soco/i18n-api/localizationUsers/mutations";
 import { 
   localizationUserIdSchema,
   insertLocalizationUserParams,
   updateLocalizationUserParams 
-} from "@/lib/db/schema/localizationUsers";
+} from "@soco/i18n-db/schema/localizationUsers";
 
 export async function POST(req: Request) {
   try {

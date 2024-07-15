@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ThemeComponentStyleForm from "./ThemeComponentStyleForm";
-import { ThemeComponentStyle } from "@/lib/db/schema/themeComponentStyles";
+import { ThemeComponentStyle } from "@soco/theme-db/schema/themeComponentStyles";
 
 export default function ThemeComponentStyleModal({ 
   themeComponentStyle,

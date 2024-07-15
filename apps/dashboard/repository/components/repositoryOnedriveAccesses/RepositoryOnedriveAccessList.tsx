@@ -1,5 +1,5 @@
 "use client";
-import { CompleteRepositoryOnedriveAccess } from "@/lib/db/schema/repositoryOnedriveAccesses";
+import { CompleteRepositoryOnedriveAccess } from "@soco/repository-db/schema/repositoryOnedriveAccesses";
 import { trpc } from "@/lib/trpc/client";
 import RepositoryOnedriveAccessModal from "./RepositoryOnedriveAccessModal";
 

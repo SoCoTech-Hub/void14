@@ -1,5 +1,5 @@
 "use client";
-import { CompleteToolCohortRole } from "@/lib/db/schema/toolCohortRoles";
+import { CompleteToolCohortRole } from "@soco/tool-cohort-db/schema/toolCohortRoles";
 import { trpc } from "@/lib/trpc/client";
 import ToolCohortRoleModal from "./ToolCohortRoleModal";
 

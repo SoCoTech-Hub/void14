@@ -1,6 +1,6 @@
 "use client";
 
-import { Theme, NewThemeParams, insertThemeParams } from "@/lib/db/schema/themes";
+import { Theme, NewThemeParams, insertThemeParams } from "@soco/theme-db/schema/themes";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

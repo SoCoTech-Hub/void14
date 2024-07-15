@@ -1,5 +1,5 @@
 "use client";
-import { CompleteRating } from "@/lib/db/schema/ratings";
+import { CompleteRating } from "@soco/rating-db/schema/ratings";
 import { trpc } from "@/lib/trpc/client";
 import RatingModal from "./RatingModal";
 

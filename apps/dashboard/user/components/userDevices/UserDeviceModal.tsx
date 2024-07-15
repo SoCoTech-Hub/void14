@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import UserDeviceForm from "./UserDeviceForm";
-import { UserDevice } from "@/lib/db/schema/userDevices";
+import { UserDevice } from "@soco/user-db/schema/userDevices";
 
 export default function UserDeviceModal({ 
   userDevice,

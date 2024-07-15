@@ -4,7 +4,7 @@ import {
 	ScormSeqRuleCond,
 	NewScormSeqRuleCondParams,
 	insertScormSeqRuleCondParams
-} from '@/lib/db/schema/scormSeqRuleConds'
+} from '@soco/scorm-db/schema/scormSeqRuleConds'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

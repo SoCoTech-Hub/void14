@@ -4,7 +4,7 @@ import {
 	WorkshopEvalBestSetting,
 	NewWorkshopEvalBestSettingParams,
 	insertWorkshopEvalBestSettingParams
-} from '@/lib/db/schema/workshopEvalBestSettings'
+} from '@soco/workshop-db/schema/workshopEvalBestSettings'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

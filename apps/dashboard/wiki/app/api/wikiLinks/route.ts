@@ -6,12 +6,12 @@ import {
   createWikiLink,
   deleteWikiLink,
   updateWikiLink,
-} from "@/lib/api/wikiLinks/mutations";
+} from "@soco/wiki-api/wikiLinks/mutations";
 import { 
   wikiLinkIdSchema,
   insertWikiLinkParams,
   updateWikiLinkParams 
-} from "@/lib/db/schema/wikiLinks";
+} from "@soco/wiki-db/schema/wikiLinks";
 
 export async function POST(req: Request) {
   try {

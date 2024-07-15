@@ -1,5 +1,5 @@
 "use client";
-import { CompleteToolCustomLangComponent } from "@/lib/db/schema/toolCustomLangComponents";
+import { CompleteToolCustomLangComponent } from "@soco/tool-custom-lang-db/schema/toolCustomLangComponents";
 import { trpc } from "@/lib/trpc/client";
 import ToolCustomLangComponentModal from "./ToolCustomLangComponentModal";
 

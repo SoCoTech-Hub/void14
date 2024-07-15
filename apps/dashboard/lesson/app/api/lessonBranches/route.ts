@@ -6,12 +6,12 @@ import {
   createLessonBranch,
   deleteLessonBranch,
   updateLessonBranch,
-} from "@/lib/api/lessonBranches/mutations";
+} from "@soco/lesson-api/lessonBranches/mutations";
 import { 
   lessonBranchIdSchema,
   insertLessonBranchParams,
   updateLessonBranchParams 
-} from "@/lib/db/schema/lessonBranches";
+} from "@soco/lesson-db/schema/lessonBranches";
 
 export async function POST(req: Request) {
   try {

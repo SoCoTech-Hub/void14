@@ -21,7 +21,7 @@ import {
   insertStatsUserMonthlyParams,
   NewStatsUserMonthlyParams,
   StatsUserMonthly,
-} from "@/lib/db/schema/statsUserMonthlies";
+} from "@soco/stats-db/schema/statsUserMonthlies";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

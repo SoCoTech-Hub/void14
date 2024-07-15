@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import GradingformRubricLevelForm from "./GradingformRubricLevelForm";
-import { GradingformRubricLevel } from "@/lib/db/schema/gradingformRubricLevels";
+import { GradingformRubricLevel } from "@soco/grade-db/schema/gradingformRubricLevels";
 
 export default function GradingformRubricLevelModal({ 
   gradingformRubricLevel,

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import GroupingForm from "./GroupingForm";
-import { Grouping } from "@/lib/db/schema/groupings";
+import { Grouping } from "@soco/group-db/schema/groupings";
 
 export default function GroupingModal({ 
   grouping,

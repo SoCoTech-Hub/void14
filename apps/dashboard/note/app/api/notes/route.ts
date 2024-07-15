@@ -6,12 +6,12 @@ import {
   createNote,
   deleteNote,
   updateNote,
-} from "@/lib/api/notes/mutations";
+} from "@soco/note-api/notes/mutations";
 import { 
   noteIdSchema,
   insertNoteParams,
   updateNoteParams 
-} from "@/lib/db/schema/notes";
+} from "@soco/note-db/schema/notes";
 
 export async function POST(req: Request) {
   try {

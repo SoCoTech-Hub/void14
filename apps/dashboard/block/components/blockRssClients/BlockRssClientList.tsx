@@ -1,5 +1,5 @@
 "use client";
-import { CompleteBlockRssClient } from "@/lib/db/schema/blockRssClients";
+import { CompleteBlockRssClient } from "@soco/block-db/schema/blockRssClients";
 import { trpc } from "@/lib/trpc/client";
 import BlockRssClientModal from "./BlockRssClientModal";
 

@@ -6,12 +6,12 @@ import {
   createForumTrackPref,
   deleteForumTrackPref,
   updateForumTrackPref,
-} from "@/lib/api/forumTrackPrefs/mutations";
+} from "@soco/forum-api/forumTrackPrefs/mutations";
 import { 
   forumTrackPrefIdSchema,
   insertForumTrackPrefParams,
   updateForumTrackPrefParams 
-} from "@/lib/db/schema/forumTrackPrefs";
+} from "@soco/forum-db/schema/forumTrackPrefs";
 
 export async function POST(req: Request) {
   try {

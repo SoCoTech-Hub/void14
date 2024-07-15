@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import GradingformRubricFillingForm from "./GradingformRubricFillingForm";
-import { GradingformRubricFilling } from "@/lib/db/schema/gradingformRubricFillings";
+import { GradingformRubricFilling } from "@soco/grade-db/schema/gradingformRubricFillings";
 
 export default function GradingformRubricFillingModal({ 
   gradingformRubricFilling,

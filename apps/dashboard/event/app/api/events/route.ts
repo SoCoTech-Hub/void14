@@ -6,12 +6,12 @@ import {
   createEvent,
   deleteEvent,
   updateEvent,
-} from "@/lib/api/events/mutations";
+} from "@soco/event-api/events/mutations";
 import { 
   eventIdSchema,
   insertEventParams,
   updateEventParams 
-} from "@/lib/db/schema/events";
+} from "@soco/event-db/schema/events";
 
 export async function POST(req: Request) {
   try {

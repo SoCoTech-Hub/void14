@@ -1,6 +1,6 @@
 "use client";
 
-import { GradingformGuideFilling, NewGradingformGuideFillingParams, insertGradingformGuideFillingParams } from "@/lib/db/schema/gradingformGuideFillings";
+import { GradingformGuideFilling, NewGradingformGuideFillingParams, insertGradingformGuideFillingParams } from "@soco/grade-db/schema/gradingformGuideFillings";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

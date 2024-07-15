@@ -1,7 +1,7 @@
 import BigBlueButtonBnRecordingList from '@/components/bigBlueButtonBnRecordings/BigBlueButtonBnRecordingList'
 import NewBigBlueButtonBnRecordingModal from '@/components/bigBlueButtonBnRecordings/BigBlueButtonBnRecordingModal'
 import { api } from '@/lib/trpc/api'
-import { checkAuth } from '@/lib/auth/utils'
+import { checkAuth } from '@soco/auth-service'
 
 export default async function BigBlueButtonBnRecordings() {
 	await checkAuth()

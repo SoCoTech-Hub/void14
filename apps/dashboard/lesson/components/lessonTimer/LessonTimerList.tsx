@@ -1,5 +1,5 @@
 "use client";
-import { CompleteLessonTimer } from "@/lib/db/schema/lessonTimer";
+import { CompleteLessonTimer } from "@soco/lesson-db/schema/lessonTimer";
 import { trpc } from "@/lib/trpc/client";
 import LessonTimerModal from "./LessonTimerModal";
 

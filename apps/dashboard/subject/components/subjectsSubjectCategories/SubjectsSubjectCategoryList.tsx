@@ -1,5 +1,5 @@
 "use client";
-import { CompleteSubjectsSubjectCategory } from "@/lib/db/schema/subjectsSubjectCategories";
+import { CompleteSubjectsSubjectCategory } from "@soco/subject-db/schema/subjectsSubjectCategories";
 import { trpc } from "@/lib/trpc/client";
 import SubjectsSubjectCategoryModal from "./SubjectsSubjectCategoryModal";
 

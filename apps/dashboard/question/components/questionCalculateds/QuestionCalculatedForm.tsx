@@ -1,6 +1,6 @@
 "use client";
 
-import { QuestionCalculated, NewQuestionCalculatedParams, insertQuestionCalculatedParams } from "@/lib/db/schema/questionCalculateds";
+import { QuestionCalculated, NewQuestionCalculatedParams, insertQuestionCalculatedParams } from "@soco/question-db/schema/questionCalculateds";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

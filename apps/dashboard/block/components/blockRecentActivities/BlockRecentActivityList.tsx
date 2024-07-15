@@ -1,5 +1,5 @@
 "use client";
-import { CompleteBlockRecentActivity } from "@/lib/db/schema/blockRecentActivities";
+import { CompleteBlockRecentActivity } from "@soco/block-db/schema/blockRecentActivities";
 import { trpc } from "@/lib/trpc/client";
 import BlockRecentActivityModal from "./BlockRecentActivityModal";
 

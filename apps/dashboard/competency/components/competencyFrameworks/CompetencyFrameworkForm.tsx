@@ -4,7 +4,7 @@ import {
 	CompetencyFramework,
 	NewCompetencyFrameworkParams,
 	insertCompetencyFrameworkParams
-} from '@/lib/db/schema/competencyFrameworks'
+} from '@soco/competency-db/schema/competencyFrameworks'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

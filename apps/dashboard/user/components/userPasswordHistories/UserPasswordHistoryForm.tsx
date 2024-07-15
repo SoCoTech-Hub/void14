@@ -4,7 +4,7 @@ import {
 	UserPasswordHistory,
 	NewUserPasswordHistoryParams,
 	insertUserPasswordHistoryParams
-} from '@/lib/db/schema/userPasswordHistories'
+} from '@soco/user-db/schema/userPasswordHistories'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

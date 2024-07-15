@@ -1,6 +1,6 @@
 'use client'
 
-import { Chat, NewChatParams, insertChatParams } from '@/lib/db/schema/chats'
+import { Chat, NewChatParams, insertChatParams } from '@soco/chat-db/schema/chats'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { PortfolioMaharaQueue, NewPortfolioMaharaQueueParams, insertPortfolioMaharaQueueParams } from "@/lib/db/schema/portfolioMaharaQueues";
+import { PortfolioMaharaQueue, NewPortfolioMaharaQueueParams, insertPortfolioMaharaQueueParams } from "@soco/portfolio-db/schema/portfolioMaharaQueues";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

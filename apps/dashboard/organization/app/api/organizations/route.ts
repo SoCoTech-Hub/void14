@@ -6,12 +6,12 @@ import {
   createOrganization,
   deleteOrganization,
   updateOrganization,
-} from "@/lib/api/organizations/mutations";
+} from "@soco/organization-api/organizations/mutations";
 import { 
   organizationIdSchema,
   insertOrganizationParams,
   updateOrganizationParams 
-} from "@/lib/db/schema/organizations";
+} from "@soco/organization-db/schema/organizations";
 
 export async function POST(req: Request) {
   try {

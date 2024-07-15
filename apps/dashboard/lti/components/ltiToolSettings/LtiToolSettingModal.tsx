@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import LtiToolSettingForm from "./LtiToolSettingForm";
-import { LtiToolSetting } from "@/lib/db/schema/ltiToolSettings";
+import { LtiToolSetting } from "@soco/lti-db/schema/ltiToolSettings";
 
 export default function LtiToolSettingModal({ 
   ltiToolSetting,

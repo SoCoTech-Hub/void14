@@ -4,7 +4,7 @@ import {
 	ConfigLog,
 	NewConfigLogParams,
 	insertConfigLogParams
-} from '@/lib/db/schema/configLogs'
+} from '@soco/config-db/schema/configLogs'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

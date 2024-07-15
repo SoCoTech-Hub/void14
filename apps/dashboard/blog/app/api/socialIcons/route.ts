@@ -6,12 +6,12 @@ import {
   createSocialIcon,
   deleteSocialIcon,
   updateSocialIcon,
-} from "@/lib/api/socialIcons/mutations";
+} from "@soco/blog-api/socialIcons/mutations";
 import { 
   socialIconIdSchema,
   insertSocialIconParams,
   updateSocialIconParams 
-} from "@/lib/db/schema/socialIcons";
+} from "@soco/blog-db/schema/socialIcons";
 
 export async function POST(req: Request) {
   try {

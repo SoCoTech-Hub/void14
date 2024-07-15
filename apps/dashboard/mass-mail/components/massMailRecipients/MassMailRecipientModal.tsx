@@ -10,7 +10,7 @@ import {
 	DialogTrigger
 } from '../ui/dialog'
 import MassMailRecipientForm from './MassMailRecipientForm'
-import { MassMailRecipient } from '@/lib/db/schema/massMailRecipients'
+import { MassMailRecipient } from '@soco/mass-mail-db/schema/massMailRecipients'
 
 export default function MassMailRecipientModal({
 	massMailRecipient,

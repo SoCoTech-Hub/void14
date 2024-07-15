@@ -4,7 +4,7 @@ import {
 	QuestionResponseAnalysise,
 	NewQuestionResponseAnalysiseParams,
 	insertQuestionResponseAnalysiseParams
-} from '@/lib/db/schema/questionResponseAnalysises'
+} from '@soco/question-db/schema/questionResponseAnalysises'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

@@ -6,12 +6,12 @@ import {
   createBadgeExternalIdentifier,
   deleteBadgeExternalIdentifier,
   updateBadgeExternalIdentifier,
-} from "@/lib/api/badgeExternalIdentifiers/mutations";
+} from "@soco/badge-api/badgeExternalIdentifiers/mutations";
 import { 
   badgeExternalIdentifierIdSchema,
   insertBadgeExternalIdentifierParams,
   updateBadgeExternalIdentifierParams 
-} from "@/lib/db/schema/badgeExternalIdentifiers";
+} from "@soco/badge-db/schema/badgeExternalIdentifiers";
 
 export async function POST(req: Request) {
   try {

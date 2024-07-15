@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import SocialIconForm from "./SocialIconForm";
-import { SocialIcon } from "@/lib/db/schema/socialIcons";
+import { SocialIcon } from "@soco/blog-db/schema/socialIcons";
 
 export default function SocialIconModal({ 
   socialIcon,

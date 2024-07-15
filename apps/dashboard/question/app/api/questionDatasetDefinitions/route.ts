@@ -6,12 +6,12 @@ import {
   createQuestionDatasetDefinition,
   deleteQuestionDatasetDefinition,
   updateQuestionDatasetDefinition,
-} from "@/lib/api/questionDatasetDefinitions/mutations";
+} from "@soco/question-api/questionDatasetDefinitions/mutations";
 import { 
   questionDatasetDefinitionIdSchema,
   insertQuestionDatasetDefinitionParams,
   updateQuestionDatasetDefinitionParams 
-} from "@/lib/db/schema/questionDatasetDefinitions";
+} from "@soco/question-db/schema/questionDatasetDefinitions";
 
 export async function POST(req: Request) {
   try {

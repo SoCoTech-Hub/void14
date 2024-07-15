@@ -6,12 +6,12 @@ import {
   createToolCustomLangComponent,
   deleteToolCustomLangComponent,
   updateToolCustomLangComponent,
-} from "@/lib/api/toolCustomLangComponents/mutations";
+} from "@soco/tool-custom-lang-api/toolCustomLangComponents/mutations";
 import { 
   toolCustomLangComponentIdSchema,
   insertToolCustomLangComponentParams,
   updateToolCustomLangComponentParams 
-} from "@/lib/db/schema/toolCustomLangComponents";
+} from "@soco/tool-custom-lang-db/schema/toolCustomLangComponents";
 
 export async function POST(req: Request) {
   try {

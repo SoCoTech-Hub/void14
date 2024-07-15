@@ -1,5 +1,5 @@
 "use client";
-import { CompleteUrl } from "@/lib/db/schema/urls";
+import { CompleteUrl } from "@soco/url-db/schema/urls";
 import { trpc } from "@/lib/trpc/client";
 import UrlModal from "./UrlModal";
 

@@ -4,7 +4,7 @@ import {
 	BadgeEndorsement,
 	NewBadgeEndorsementParams,
 	insertBadgeEndorsementParams
-} from '@/lib/db/schema/badgeEndorsements'
+} from '@soco/badge-db/schema/badgeEndorsements'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

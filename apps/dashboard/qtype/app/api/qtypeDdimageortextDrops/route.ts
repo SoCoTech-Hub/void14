@@ -6,12 +6,12 @@ import {
   createQtypeDdimageortextDrop,
   deleteQtypeDdimageortextDrop,
   updateQtypeDdimageortextDrop,
-} from "@/lib/api/qtypeDdimageortextDrops/mutations";
+} from "@soco/qtype-api/qtypeDdimageortextDrops/mutations";
 import { 
   qtypeDdimageortextDropIdSchema,
   insertQtypeDdimageortextDropParams,
   updateQtypeDdimageortextDropParams 
-} from "@/lib/db/schema/qtypeDdimageortextDrops";
+} from "@soco/qtype-db/schema/qtypeDdimageortextDrops";
 
 export async function POST(req: Request) {
   try {

@@ -1,6 +1,6 @@
 "use client";
 
-import { QtypeDdmarker, NewQtypeDdmarkerParams, insertQtypeDdmarkerParams } from "@/lib/db/schema/qtypeDdmarkers";
+import { QtypeDdmarker, NewQtypeDdmarkerParams, insertQtypeDdmarkerParams } from "@soco/qtype-db/schema/qtypeDdmarkers";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

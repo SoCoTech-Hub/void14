@@ -4,7 +4,7 @@ import {
 	Assignment,
 	NewAssignmentParams,
 	insertAssignmentParams
-} from '@/lib/db/schema/assignments'
+} from '@soco/assignment-db/schema/assignments'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

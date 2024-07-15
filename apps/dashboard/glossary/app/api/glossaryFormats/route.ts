@@ -6,12 +6,12 @@ import {
   createGlossaryFormat,
   deleteGlossaryFormat,
   updateGlossaryFormat,
-} from "@/lib/api/glossaryFormats/mutations";
+} from "@soco/glossary-api/glossaryFormats/mutations";
 import { 
   glossaryFormatIdSchema,
   insertGlossaryFormatParams,
   updateGlossaryFormatParams 
-} from "@/lib/db/schema/glossaryFormats";
+} from "@soco/glossary-db/schema/glossaryFormats";
 
 export async function POST(req: Request) {
   try {

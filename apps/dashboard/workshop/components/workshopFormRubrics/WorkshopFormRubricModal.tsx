@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import WorkshopFormRubricForm from "./WorkshopFormRubricForm";
-import { WorkshopFormRubric } from "@/lib/db/schema/workshopFormRubrics";
+import { WorkshopFormRubric } from "@soco/workshop-db/schema/workshopFormRubrics";
 
 export default function WorkshopFormRubricModal({ 
   workshopFormRubric,

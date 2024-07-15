@@ -6,12 +6,12 @@ import {
   createGroupsMember,
   deleteGroupsMember,
   updateGroupsMember,
-} from "@/lib/api/groupsMembers/mutations";
+} from "@soco/group-api/groupsMembers/mutations";
 import { 
   groupsMemberIdSchema,
   insertGroupsMemberParams,
   updateGroupsMemberParams 
-} from "@/lib/db/schema/groupsMembers";
+} from "@soco/group-db/schema/groupsMembers";
 
 export async function POST(req: Request) {
   try {

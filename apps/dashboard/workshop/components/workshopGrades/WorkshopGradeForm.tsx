@@ -4,7 +4,7 @@ import {
 	WorkshopGrade,
 	NewWorkshopGradeParams,
 	insertWorkshopGradeParams
-} from '@/lib/db/schema/workshopGrades'
+} from '@soco/workshop-db/schema/workshopGrades'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

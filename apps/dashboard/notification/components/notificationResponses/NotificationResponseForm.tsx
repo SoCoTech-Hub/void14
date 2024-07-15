@@ -1,6 +1,6 @@
 "use client";
 
-import { NotificationResponse, NewNotificationResponseParams, insertNotificationResponseParams } from "@/lib/db/schema/notificationResponses";
+import { NotificationResponse, NewNotificationResponseParams, insertNotificationResponseParams } from "@soco/notification-db/schema/notificationResponses";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

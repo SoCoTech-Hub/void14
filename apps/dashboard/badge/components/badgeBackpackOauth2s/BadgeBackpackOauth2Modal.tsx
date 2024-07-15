@@ -10,7 +10,7 @@ import {
 	DialogTrigger
 } from '../ui/dialog'
 import BadgeBackpackOauth2Form from './BadgeBackpackOauth2Form'
-import { BadgeBackpackOauth2 } from '@/lib/db/schema/badgeBackpackOauth2s'
+import { BadgeBackpackOauth2 } from '@soco/badge-db/schema/badgeBackpackOauth2s'
 
 export default function BadgeBackpackOauth2Modal({
 	badgeBackpackOauth2,

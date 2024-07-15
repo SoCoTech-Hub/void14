@@ -4,7 +4,7 @@ import {
 	MassMailList,
 	NewMassMailListParams,
 	insertMassMailListParams
-} from '@/lib/db/schema/massMailLists'
+} from '@soco/mass-mail-db/schema/massMailLists'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

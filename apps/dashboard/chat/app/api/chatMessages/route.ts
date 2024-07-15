@@ -6,12 +6,12 @@ import {
   createChatMessage,
   deleteChatMessage,
   updateChatMessage,
-} from "@/lib/api/chatMessages/mutations";
+} from "@soco/chat-api/chatMessages/mutations";
 import { 
   chatMessageIdSchema,
   insertChatMessageParams,
   updateChatMessageParams 
-} from "@/lib/db/schema/chatMessages";
+} from "@soco/chat-db/schema/chatMessages";
 
 export async function POST(req: Request) {
   try {

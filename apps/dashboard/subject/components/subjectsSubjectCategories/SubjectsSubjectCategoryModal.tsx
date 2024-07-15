@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import SubjectsSubjectCategoryForm from "./SubjectsSubjectCategoryForm";
-import { SubjectsSubjectCategory } from "@/lib/db/schema/subjectsSubjectCategories";
+import { SubjectsSubjectCategory } from "@soco/subject-db/schema/subjectsSubjectCategories";
 
 export default function SubjectsSubjectCategoryModal({ 
   subjectsSubjectCategory,

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ContentForm from "./ContentForm";
-import { Content } from "@/lib/db/schema/contents";
+import { Content } from "@soco/content-db/schema/contents";
 
 export default function ContentModal({ 
   content,

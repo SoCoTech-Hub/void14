@@ -1,5 +1,5 @@
 "use client";
-import { CompletePortfolioLog } from "@/lib/db/schema/portfolioLogs";
+import { CompletePortfolioLog } from "@soco/portfolio-db/schema/portfolioLogs";
 import { trpc } from "@/lib/trpc/client";
 import PortfolioLogModal from "./PortfolioLogModal";
 

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteBackupLog } from "@/lib/db/schema/backupLogs";
+import { CompleteBackupLog } from "@soco/backup-db/schema/backupLogs";
 import { trpc } from "@/lib/trpc/client";
 import BackupLogModal from "./BackupLogModal";
 

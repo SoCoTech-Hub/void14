@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import FeedbackValuetmpForm from "./FeedbackValuetmpForm";
-import { FeedbackValuetmp } from "@/lib/db/schema/feedbackValuetmps";
+import { FeedbackValuetmp } from "@soco/feedback-db/schema/feedbackValuetmps";
 
 export default function FeedbackValuetmpModal({ 
   feedbackValuetmp,

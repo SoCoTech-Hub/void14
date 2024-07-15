@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import MessageProcessorForm from "./MessageProcessorForm";
-import { MessageProcessor } from "@/lib/db/schema/messageProcessors";
+import { MessageProcessor } from "@soco/message-db/schema/messageProcessors";
 
 export default function MessageProcessorModal({ 
   messageProcessor,

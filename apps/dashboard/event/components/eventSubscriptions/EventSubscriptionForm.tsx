@@ -1,6 +1,6 @@
 "use client";
 
-import { EventSubscription, NewEventSubscriptionParams, insertEventSubscriptionParams } from "@/lib/db/schema/eventSubscriptions";
+import { EventSubscription, NewEventSubscriptionParams, insertEventSubscriptionParams } from "@soco/event-db/schema/eventSubscriptions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

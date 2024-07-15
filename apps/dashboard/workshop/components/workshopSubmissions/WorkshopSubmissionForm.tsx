@@ -4,7 +4,7 @@ import {
 	WorkshopSubmission,
 	NewWorkshopSubmissionParams,
 	insertWorkshopSubmissionParams
-} from '@/lib/db/schema/workshopSubmissions'
+} from '@soco/workshop-db/schema/workshopSubmissions'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

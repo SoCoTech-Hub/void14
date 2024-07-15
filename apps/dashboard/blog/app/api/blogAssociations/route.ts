@@ -6,12 +6,12 @@ import {
   createBlogAssociation,
   deleteBlogAssociation,
   updateBlogAssociation,
-} from "@/lib/api/blogAssociations/mutations";
+} from "@soco/blog-api/blogAssociations/mutations";
 import { 
   blogAssociationIdSchema,
   insertBlogAssociationParams,
   updateBlogAssociationParams 
-} from "@/lib/db/schema/blogAssociations";
+} from "@soco/blog-db/schema/blogAssociations";
 
 export async function POST(req: Request) {
   try {

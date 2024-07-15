@@ -1,5 +1,5 @@
 "use client";
-import { CompleteGlossaryFormat } from "@/lib/db/schema/glossaryFormats";
+import { CompleteGlossaryFormat } from "@soco/glossary-db/schema/glossaryFormats";
 import { trpc } from "@/lib/trpc/client";
 import GlossaryFormatModal from "./GlossaryFormatModal";
 

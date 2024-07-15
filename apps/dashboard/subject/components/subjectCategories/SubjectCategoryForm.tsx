@@ -1,6 +1,6 @@
 "use client";
 
-import { SubjectCategory, NewSubjectCategoryParams, insertSubjectCategoryParams } from "@/lib/db/schema/subjectCategories";
+import { SubjectCategory, NewSubjectCategoryParams, insertSubjectCategoryParams } from "@soco/subject-db/schema/subjectCategories";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteCountriesOrganization } from "@/lib/db/schema/countriesOrganization";
+import { CompleteCountriesOrganization } from "@soco/geolocalize-db/schema/countriesOrganization";
 import { trpc } from "@/lib/trpc/client";
 import CountriesOrganizationModal from "./CountriesOrganizationModal";
 

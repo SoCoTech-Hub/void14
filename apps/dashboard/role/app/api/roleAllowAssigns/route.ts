@@ -6,12 +6,12 @@ import {
   createRoleAllowAssign,
   deleteRoleAllowAssign,
   updateRoleAllowAssign,
-} from "@/lib/api/roleAllowAssigns/mutations";
+} from "@soco/role-api/roleAllowAssigns/mutations";
 import { 
   roleAllowAssignIdSchema,
   insertRoleAllowAssignParams,
   updateRoleAllowAssignParams 
-} from "@/lib/db/schema/roleAllowAssigns";
+} from "@soco/role-db/schema/roleAllowAssigns";
 
 export async function POST(req: Request) {
   try {

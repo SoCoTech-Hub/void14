@@ -6,12 +6,12 @@ import {
   createUserDevice,
   deleteUserDevice,
   updateUserDevice,
-} from "@/lib/api/userDevices/mutations";
+} from "@soco/user-api/userDevices/mutations";
 import { 
   userDeviceIdSchema,
   insertUserDeviceParams,
   updateUserDeviceParams 
-} from "@/lib/db/schema/userDevices";
+} from "@soco/user-db/schema/userDevices";
 
 export async function POST(req: Request) {
   try {

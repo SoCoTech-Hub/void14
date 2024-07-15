@@ -6,12 +6,12 @@ import {
   createLtiToolSetting,
   deleteLtiToolSetting,
   updateLtiToolSetting,
-} from "@/lib/api/ltiToolSettings/mutations";
+} from "@soco/lti-api/ltiToolSettings/mutations";
 import { 
   ltiToolSettingIdSchema,
   insertLtiToolSettingParams,
   updateLtiToolSettingParams 
-} from "@/lib/db/schema/ltiToolSettings";
+} from "@soco/lti-db/schema/ltiToolSettings";
 
 export async function POST(req: Request) {
   try {

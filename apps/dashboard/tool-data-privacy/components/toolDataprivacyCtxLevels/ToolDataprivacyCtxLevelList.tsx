@@ -1,5 +1,5 @@
 "use client";
-import { CompleteToolDataprivacyCtxLevel } from "@/lib/db/schema/toolDataprivacyCtxLevels";
+import { CompleteToolDataprivacyCtxLevel } from "@soco/tool-data-privacy-db/schema/toolDataprivacyCtxLevels";
 import { trpc } from "@/lib/trpc/client";
 import ToolDataprivacyCtxLevelModal from "./ToolDataprivacyCtxLevelModal";
 

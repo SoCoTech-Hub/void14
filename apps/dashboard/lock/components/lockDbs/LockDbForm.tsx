@@ -21,7 +21,7 @@ import {
   insertLockDbParams,
   LockDb,
   NewLockDbParams,
-} from "@/lib/db/schema/lockDbs";
+} from "@soco/lock-db/schema/lockDbs";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

@@ -6,12 +6,12 @@ import {
   createMnetServiceEnrolCourse,
   deleteMnetServiceEnrolCourse,
   updateMnetServiceEnrolCourse,
-} from "@/lib/api/mnetServiceEnrolCourses/mutations";
+} from "@soco/mnet-api/mnetServiceEnrolCourses/mutations";
 import { 
   mnetServiceEnrolCourseIdSchema,
   insertMnetServiceEnrolCourseParams,
   updateMnetServiceEnrolCourseParams 
-} from "@/lib/db/schema/mnetServiceEnrolCourses";
+} from "@soco/mnet-db/schema/mnetServiceEnrolCourses";
 
 export async function POST(req: Request) {
   try {

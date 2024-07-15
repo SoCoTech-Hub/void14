@@ -4,7 +4,7 @@ import {
 	InmailResponse,
 	NewInmailResponseParams,
 	insertInmailResponseParams
-} from '@/lib/db/schema/inmailResponses'
+} from '@soco/inmail-db/schema/inmailResponses'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

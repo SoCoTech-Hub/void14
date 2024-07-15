@@ -1,7 +1,7 @@
 import RepositoryOnedriveAccessList from "@/components/repositoryOnedriveAccesses/RepositoryOnedriveAccessList";
 import NewRepositoryOnedriveAccessModal from "@/components/repositoryOnedriveAccesses/RepositoryOnedriveAccessModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function RepositoryOnedriveAccesses() {
   await checkAuth();

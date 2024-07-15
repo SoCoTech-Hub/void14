@@ -1,5 +1,5 @@
 "use client";
-import { CompleteSupportStatus } from "@/lib/db/schema/supportStatuses";
+import { CompleteSupportStatus } from "@soco/support-db/schema/supportStatuses";
 import { trpc } from "@/lib/trpc/client";
 import SupportStatusModal from "./SupportStatusModal";
 

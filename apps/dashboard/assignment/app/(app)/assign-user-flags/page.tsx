@@ -1,7 +1,7 @@
 import AssignUserFlagList from "@/components/assignUserFlags/AssignUserFlagList";
 import NewAssignUserFlagModal from "@/components/assignUserFlags/AssignUserFlagModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function AssignUserFlags() {
   await checkAuth();

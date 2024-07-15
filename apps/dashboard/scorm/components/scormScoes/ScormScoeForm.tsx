@@ -1,6 +1,6 @@
 "use client";
 
-import { ScormScoe, NewScormScoeParams, insertScormScoeParams } from "@/lib/db/schema/scormScoes";
+import { ScormScoe, NewScormScoeParams, insertScormScoeParams } from "@soco/scorm-db/schema/scormScoes";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

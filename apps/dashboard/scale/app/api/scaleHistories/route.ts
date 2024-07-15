@@ -6,12 +6,12 @@ import {
   createScaleHistory,
   deleteScaleHistory,
   updateScaleHistory,
-} from "@/lib/api/scaleHistories/mutations";
+} from "@soco/scale-api/scaleHistories/mutations";
 import { 
   scaleHistoryIdSchema,
   insertScaleHistoryParams,
   updateScaleHistoryParams 
-} from "@/lib/db/schema/scaleHistories";
+} from "@soco/scale-db/schema/scaleHistories";
 
 export async function POST(req: Request) {
   try {

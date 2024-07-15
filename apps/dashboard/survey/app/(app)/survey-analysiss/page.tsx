@@ -1,7 +1,7 @@
 import SurveyAnalysissList from "@/components/surveyAnalysiss/SurveyAnalysissList";
 import NewSurveyAnalysissModal from "@/components/surveyAnalysiss/SurveyAnalysissModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function SurveyAnalysiss() {
   await checkAuth();

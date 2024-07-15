@@ -1,6 +1,6 @@
 "use client";
 
-import { QtypeMatchSubquestion, NewQtypeMatchSubquestionParams, insertQtypeMatchSubquestionParams } from "@/lib/db/schema/qtypeMatchSubquestions";
+import { QtypeMatchSubquestion, NewQtypeMatchSubquestionParams, insertQtypeMatchSubquestionParams } from "@soco/qtype-db/schema/qtypeMatchSubquestions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

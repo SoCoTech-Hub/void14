@@ -1,7 +1,7 @@
 import Oauth2SystemAccountList from "@/components/oauth2SystemAccounts/Oauth2SystemAccountList";
 import NewOauth2SystemAccountModal from "@/components/oauth2SystemAccounts/Oauth2SystemAccountModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function Oauth2SystemAccounts() {
   await checkAuth();

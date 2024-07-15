@@ -6,12 +6,12 @@ import {
   createDistrict,
   deleteDistrict,
   updateDistrict,
-} from "@/lib/api/districts/mutations";
+} from "@soco/geolocalize-api/districts/mutations";
 import { 
   districtIdSchema,
   insertDistrictParams,
   updateDistrictParams 
-} from "@/lib/db/schema/districts";
+} from "@soco/geolocalize-db/schema/districts";
 
 export async function POST(req: Request) {
   try {

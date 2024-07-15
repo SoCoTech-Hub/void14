@@ -6,12 +6,12 @@ import {
   createReportbuilderAudience,
   deleteReportbuilderAudience,
   updateReportbuilderAudience,
-} from "@/lib/api/reportbuilderAudiences/mutations";
+} from "@soco/report-builder-api/reportbuilderAudiences/mutations";
 import { 
   reportbuilderAudienceIdSchema,
   insertReportbuilderAudienceParams,
   updateReportbuilderAudienceParams 
-} from "@/lib/db/schema/reportbuilderAudiences";
+} from "@soco/report-builder-db/schema/reportbuilderAudiences";
 
 export async function POST(req: Request) {
   try {

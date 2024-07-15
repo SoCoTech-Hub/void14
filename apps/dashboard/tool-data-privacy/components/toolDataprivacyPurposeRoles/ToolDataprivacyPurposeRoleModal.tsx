@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ToolDataprivacyPurposeRoleForm from "./ToolDataprivacyPurposeRoleForm";
-import { ToolDataprivacyPurposeRole } from "@/lib/db/schema/toolDataprivacyPurposeRoles";
+import { ToolDataprivacyPurposeRole } from "@soco/tool-data-privacy-db/schema/toolDataprivacyPurposeRoles";
 
 export default function ToolDataprivacyPurposeRoleModal({ 
   toolDataprivacyPurposeRole,

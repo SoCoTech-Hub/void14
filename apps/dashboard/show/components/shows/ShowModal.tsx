@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ShowForm from "./ShowForm";
-import { Show } from "@/lib/db/schema/shows";
+import { Show } from "@soco/show-db/schema/shows";
 
 export default function ShowModal({ 
   show,

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteAssignUserMapping } from "@/lib/db/schema/assignUserMappings";
+import { CompleteAssignUserMapping } from "@soco/assignment-db/schema/assignUserMappings";
 import { trpc } from "@/lib/trpc/client";
 import AssignUserMappingModal from "./AssignUserMappingModal";
 

@@ -6,12 +6,12 @@ import {
   createOauth2SystemAccount,
   deleteOauth2SystemAccount,
   updateOauth2SystemAccount,
-} from "@/lib/api/oauth2SystemAccounts/mutations";
+} from "@soco/oauth2-api/oauth2SystemAccounts/mutations";
 import { 
   oauth2SystemAccountIdSchema,
   insertOauth2SystemAccountParams,
   updateOauth2SystemAccountParams 
-} from "@/lib/db/schema/oauth2SystemAccounts";
+} from "@soco/oauth2-db/schema/oauth2SystemAccounts";
 
 export async function POST(req: Request) {
   try {

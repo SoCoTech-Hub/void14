@@ -6,12 +6,12 @@ import {
   createRepositoryInstance,
   deleteRepositoryInstance,
   updateRepositoryInstance,
-} from "@/lib/api/repositoryInstances/mutations";
+} from "@soco/repository-api/repositoryInstances/mutations";
 import { 
   repositoryInstanceIdSchema,
   insertRepositoryInstanceParams,
   updateRepositoryInstanceParams 
-} from "@/lib/db/schema/repositoryInstances";
+} from "@soco/repository-db/schema/repositoryInstances";
 
 export async function POST(req: Request) {
   try {

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteNotificationResponse } from "@/lib/db/schema/notificationResponses";
+import { CompleteNotificationResponse } from "@soco/notification-db/schema/notificationResponses";
 import { trpc } from "@/lib/trpc/client";
 import NotificationResponseModal from "./NotificationResponseModal";
 

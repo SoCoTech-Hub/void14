@@ -6,12 +6,12 @@ import {
   createRegistrationHub,
   deleteRegistrationHub,
   updateRegistrationHub,
-} from "@/lib/api/registrationHubs/mutations";
+} from "@soco/registration-api/registrationHubs/mutations";
 import { 
   registrationHubIdSchema,
   insertRegistrationHubParams,
   updateRegistrationHubParams 
-} from "@/lib/db/schema/registrationHubs";
+} from "@soco/registration-db/schema/registrationHubs";
 
 export async function POST(req: Request) {
   try {

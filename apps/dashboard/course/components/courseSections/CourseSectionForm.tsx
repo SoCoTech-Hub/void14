@@ -4,7 +4,7 @@ import {
 	CourseSection,
 	NewCourseSectionParams,
 	insertCourseSectionParams
-} from '@/lib/db/schema/courseSections'
+} from '@soco/course-db/schema/courseSections'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

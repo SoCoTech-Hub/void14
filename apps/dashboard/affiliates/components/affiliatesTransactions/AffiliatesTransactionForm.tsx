@@ -28,7 +28,7 @@ import {
   AffiliatesTransaction,
   insertAffiliatesTransactionParams,
   NewAffiliatesTransactionParams,
-} from "@/lib/db/schema/affiliatesTransactions";
+} from "@soco/affiliates-db/schema/affiliatesTransactions";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

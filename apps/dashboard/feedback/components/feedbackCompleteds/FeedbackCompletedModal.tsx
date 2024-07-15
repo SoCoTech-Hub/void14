@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import FeedbackCompletedForm from "./FeedbackCompletedForm";
-import { FeedbackCompleted } from "@/lib/db/schema/feedbackCompleteds";
+import { FeedbackCompleted } from "@soco/feedback-db/schema/feedbackCompleteds";
 
 export default function FeedbackCompletedModal({ 
   feedbackCompleted,

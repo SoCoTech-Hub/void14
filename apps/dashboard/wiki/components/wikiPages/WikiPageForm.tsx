@@ -22,7 +22,7 @@ import {
   insertWikiPageParams,
   NewWikiPageParams,
   WikiPage,
-} from "@/lib/db/schema/wikiPages";
+} from "@soco/wiki-db/schema/wikiPages";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

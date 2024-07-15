@@ -6,12 +6,12 @@ import {
   createWorkshopGrade,
   deleteWorkshopGrade,
   updateWorkshopGrade,
-} from "@/lib/api/workshopGrades/mutations";
+} from "@soco/workshop-api/workshopGrades/mutations";
 import { 
   workshopGradeIdSchema,
   insertWorkshopGradeParams,
   updateWorkshopGradeParams 
-} from "@/lib/db/schema/workshopGrades";
+} from "@soco/workshop-db/schema/workshopGrades";
 
 export async function POST(req: Request) {
   try {

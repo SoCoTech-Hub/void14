@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQuestionResponseAnalysise } from "@/lib/db/schema/questionResponseAnalysises";
+import { CompleteQuestionResponseAnalysise } from "@soco/question-db/schema/questionResponseAnalysises";
 import { trpc } from "@/lib/trpc/client";
 import QuestionResponseAnalysiseModal from "./QuestionResponseAnalysiseModal";
 

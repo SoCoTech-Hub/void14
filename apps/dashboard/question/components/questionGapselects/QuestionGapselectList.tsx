@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQuestionGapselect } from "@/lib/db/schema/questionGapselects";
+import { CompleteQuestionGapselect } from "@soco/question-db/schema/questionGapselects";
 import { trpc } from "@/lib/trpc/client";
 import QuestionGapselectModal from "./QuestionGapselectModal";
 

@@ -6,12 +6,12 @@ import {
   createCalendar,
   deleteCalendar,
   updateCalendar,
-} from "@/lib/api/calendar/mutations";
+} from "@soco/calendar-api/calendar/mutations";
 import { 
   calendarIdSchema,
   insertCalendarParams,
   updateCalendarParams 
-} from "@/lib/db/schema/calendar";
+} from "@soco/calendar-db/schema/calendar";
 
 export async function POST(req: Request) {
   try {

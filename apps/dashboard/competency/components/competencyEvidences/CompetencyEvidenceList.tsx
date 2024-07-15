@@ -1,5 +1,5 @@
 "use client";
-import { CompleteCompetencyEvidence } from "@/lib/db/schema/competencyEvidences";
+import { CompleteCompetencyEvidence } from "@soco/competency-db/schema/competencyEvidences";
 import { trpc } from "@/lib/trpc/client";
 import CompetencyEvidenceModal from "./CompetencyEvidenceModal";
 

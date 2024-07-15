@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import TaskAdhocForm from "./TaskAdhocForm";
-import { TaskAdhoc } from "@/lib/db/schema/taskAdhocs";
+import { TaskAdhoc } from "@soco/task-db/schema/taskAdhocs";
 
 export default function TaskAdhocModal({ 
   taskAdhoc,

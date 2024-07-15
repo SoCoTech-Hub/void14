@@ -1,6 +1,6 @@
 "use client";
 
-import { QtypeDdimageortext, NewQtypeDdimageortextParams, insertQtypeDdimageortextParams } from "@/lib/db/schema/qtypeDdimageortexts";
+import { QtypeDdimageortext, NewQtypeDdimageortextParams, insertQtypeDdimageortextParams } from "@soco/qtype-db/schema/qtypeDdimageortexts";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

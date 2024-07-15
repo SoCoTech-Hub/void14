@@ -1,5 +1,5 @@
 "use client";
-import { CompleteLesson } from "@/lib/db/schema/lessons";
+import { CompleteLesson } from "@soco/lesson-db/schema/lessons";
 import { trpc } from "@/lib/trpc/client";
 import LessonModal from "./LessonModal";
 

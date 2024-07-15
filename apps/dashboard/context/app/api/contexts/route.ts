@@ -6,12 +6,12 @@ import {
   createContext,
   deleteContext,
   updateContext,
-} from "@/lib/api/contexts/mutations";
+} from "@soco/context-api/contexts/mutations";
 import { 
   contextIdSchema,
   insertContextParams,
   updateContextParams 
-} from "@/lib/db/schema/contexts";
+} from "@soco/context-db/schema/contexts";
 
 export async function POST(req: Request) {
   try {

@@ -10,7 +10,7 @@ import {
 	DialogTrigger
 } from '../ui/dialog'
 import BadgeBackpackForm from './BadgeBackpackForm'
-import { BadgeBackpack } from '@/lib/db/schema/badgeBackpacks'
+import { BadgeBackpack } from '@soco/badge-db/schema/badgeBackpacks'
 
 export default function BadgeBackpackModal({
 	badgeBackpack,

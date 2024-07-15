@@ -1,6 +1,6 @@
 "use client";
 
-import { Oauth2SystemAccount, NewOauth2SystemAccountParams, insertOauth2SystemAccountParams } from "@/lib/db/schema/oauth2SystemAccounts";
+import { Oauth2SystemAccount, NewOauth2SystemAccountParams, insertOauth2SystemAccountParams } from "@soco/oauth2-db/schema/oauth2SystemAccounts";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

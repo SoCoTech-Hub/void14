@@ -1,5 +1,5 @@
 "use client";
-import { CompleteZoom } from "@/lib/db/schema/zooms";
+import { CompleteZoom } from "@soco/zoom-db/schema/zooms";
 import { trpc } from "@/lib/trpc/client";
 import ZoomModal from "./ZoomModal";
 

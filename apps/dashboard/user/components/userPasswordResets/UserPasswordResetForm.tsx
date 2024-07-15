@@ -1,6 +1,6 @@
 "use client";
 
-import { UserPasswordReset, NewUserPasswordResetParams, insertUserPasswordResetParams } from "@/lib/db/schema/userPasswordResets";
+import { UserPasswordReset, NewUserPasswordResetParams, insertUserPasswordResetParams } from "@soco/user-db/schema/userPasswordResets";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

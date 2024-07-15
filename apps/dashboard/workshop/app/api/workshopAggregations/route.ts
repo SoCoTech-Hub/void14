@@ -6,12 +6,12 @@ import {
   createWorkshopAggregation,
   deleteWorkshopAggregation,
   updateWorkshopAggregation,
-} from "@/lib/api/workshopAggregations/mutations";
+} from "@soco/workshop-api/workshopAggregations/mutations";
 import { 
   workshopAggregationIdSchema,
   insertWorkshopAggregationParams,
   updateWorkshopAggregationParams 
-} from "@/lib/db/schema/workshopAggregations";
+} from "@soco/workshop-db/schema/workshopAggregations";
 
 export async function POST(req: Request) {
   try {

@@ -1,7 +1,7 @@
 import ThemeList from "@/components/themes/ThemeList";
 import NewThemeModal from "@/components/themes/ThemeModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function Themes() {
   await checkAuth();

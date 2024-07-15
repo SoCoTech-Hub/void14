@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import JobApplicationForm from "./JobApplicationForm";
-import { JobApplication } from "@/lib/db/schema/jobApplications";
+import { JobApplication } from "@soco/application-db/schema/jobApplications";
 
 export default function JobApplicationModal({ 
   jobApplication,

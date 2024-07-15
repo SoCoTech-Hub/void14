@@ -6,12 +6,12 @@ import {
   createOauth2Issuer,
   deleteOauth2Issuer,
   updateOauth2Issuer,
-} from "@/lib/api/oauth2Issuers/mutations";
+} from "@soco/oauth2-api/oauth2Issuers/mutations";
 import { 
   oauth2IssuerIdSchema,
   insertOauth2IssuerParams,
   updateOauth2IssuerParams 
-} from "@/lib/db/schema/oauth2Issuers";
+} from "@soco/oauth2-db/schema/oauth2Issuers";
 
 export async function POST(req: Request) {
   try {

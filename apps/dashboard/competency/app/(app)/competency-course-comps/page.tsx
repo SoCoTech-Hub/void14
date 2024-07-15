@@ -1,7 +1,7 @@
 import CompetencyCourseCompList from "@/components/competencyCourseComps/CompetencyCourseCompList";
 import NewCompetencyCourseCompModal from "@/components/competencyCourseComps/CompetencyCourseCompModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function CompetencyCourseComps() {
   await checkAuth();

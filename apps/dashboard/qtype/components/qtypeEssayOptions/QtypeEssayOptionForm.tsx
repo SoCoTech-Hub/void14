@@ -1,6 +1,6 @@
 "use client";
 
-import { QtypeEssayOption, NewQtypeEssayOptionParams, insertQtypeEssayOptionParams } from "@/lib/db/schema/qtypeEssayOptions";
+import { QtypeEssayOption, NewQtypeEssayOptionParams, insertQtypeEssayOptionParams } from "@soco/qtype-db/schema/qtypeEssayOptions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

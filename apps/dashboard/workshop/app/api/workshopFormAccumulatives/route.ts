@@ -6,12 +6,12 @@ import {
   createWorkshopFormAccumulative,
   deleteWorkshopFormAccumulative,
   updateWorkshopFormAccumulative,
-} from "@/lib/api/workshopFormAccumulatives/mutations";
+} from "@soco/workshop-api/workshopFormAccumulatives/mutations";
 import { 
   workshopFormAccumulativeIdSchema,
   insertWorkshopFormAccumulativeParams,
   updateWorkshopFormAccumulativeParams 
-} from "@/lib/db/schema/workshopFormAccumulatives";
+} from "@soco/workshop-db/schema/workshopFormAccumulatives";
 
 export async function POST(req: Request) {
   try {

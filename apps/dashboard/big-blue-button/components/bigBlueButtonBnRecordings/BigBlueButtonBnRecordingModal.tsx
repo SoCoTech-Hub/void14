@@ -10,7 +10,7 @@ import {
 	DialogTrigger
 } from '../ui/dialog'
 import BigBlueButtonBnRecordingForm from './BigBlueButtonBnRecordingForm'
-import { BigBlueButtonBnRecording } from '@/lib/db/schema/bigBlueButtonBnRecordings'
+import { BigBlueButtonBnRecording } from '@soco/big-blue-button-db/schema/bigBlueButtonBnRecordings'
 
 export default function BigBlueButtonBnRecordingModal({
 	bigBlueButtonBnRecording,

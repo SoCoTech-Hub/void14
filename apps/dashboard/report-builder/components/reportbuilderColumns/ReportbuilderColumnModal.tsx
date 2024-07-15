@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ReportbuilderColumnForm from "./ReportbuilderColumnForm";
-import { ReportbuilderColumn } from "@/lib/db/schema/reportbuilderColumns";
+import { ReportbuilderColumn } from "@soco/report-builder-db/schema/reportbuilderColumns";
 
 export default function ReportbuilderColumnModal({ 
   reportbuilderColumn,

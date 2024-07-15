@@ -6,12 +6,12 @@ import {
   createMnetRemoteService2rpc,
   deleteMnetRemoteService2rpc,
   updateMnetRemoteService2rpc,
-} from "@/lib/api/mnetRemoteService2rpcs/mutations";
+} from "@soco/mnet-api/mnetRemoteService2rpcs/mutations";
 import { 
   mnetRemoteService2rpcIdSchema,
   insertMnetRemoteService2rpcParams,
   updateMnetRemoteService2rpcParams 
-} from "@/lib/db/schema/mnetRemoteService2rpcs";
+} from "@soco/mnet-db/schema/mnetRemoteService2rpcs";
 
 export async function POST(req: Request) {
   try {

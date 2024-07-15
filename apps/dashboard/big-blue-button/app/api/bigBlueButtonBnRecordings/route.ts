@@ -6,12 +6,12 @@ import {
   createBigBlueButtonBnRecording,
   deleteBigBlueButtonBnRecording,
   updateBigBlueButtonBnRecording,
-} from "@/lib/api/bigBlueButtonBnRecordings/mutations";
+} from "@soco/big-blue-button-api/bigBlueButtonBnRecordings/mutations";
 import { 
   bigBlueButtonBnRecordingIdSchema,
   insertBigBlueButtonBnRecordingParams,
   updateBigBlueButtonBnRecordingParams 
-} from "@/lib/db/schema/bigBlueButtonBnRecordings";
+} from "@soco/big-blue-button-db/schema/bigBlueButtonBnRecordings";
 
 export async function POST(req: Request) {
   try {

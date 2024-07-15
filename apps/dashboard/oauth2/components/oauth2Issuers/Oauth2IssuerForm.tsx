@@ -1,6 +1,6 @@
 "use client";
 
-import { Oauth2Issuer, NewOauth2IssuerParams, insertOauth2IssuerParams } from "@/lib/db/schema/oauth2Issuers";
+import { Oauth2Issuer, NewOauth2IssuerParams, insertOauth2IssuerParams } from "@soco/oauth2-db/schema/oauth2Issuers";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

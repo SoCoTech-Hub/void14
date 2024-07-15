@@ -1,5 +1,5 @@
 "use client";
-import { CompleteGroupingsGroup } from "@/lib/db/schema/groupingsGroups";
+import { CompleteGroupingsGroup } from "@soco/group-db/schema/groupingsGroups";
 import { trpc } from "@/lib/trpc/client";
 import GroupingsGroupModal from "./GroupingsGroupModal";
 

@@ -10,7 +10,7 @@ import {
 	DialogTrigger
 } from '../ui/dialog'
 import BadgeIssueForm from './BadgeIssueForm'
-import { BadgeIssue } from '@/lib/db/schema/badgeIssues'
+import { BadgeIssue } from '@soco/badge-db/schema/badgeIssues'
 
 export default function BadgeIssueModal({
 	badgeIssue,

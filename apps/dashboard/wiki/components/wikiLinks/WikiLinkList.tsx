@@ -1,5 +1,5 @@
 "use client";
-import { CompleteWikiLink } from "@/lib/db/schema/wikiLinks";
+import { CompleteWikiLink } from "@soco/wiki-db/schema/wikiLinks";
 import { trpc } from "@/lib/trpc/client";
 import WikiLinkModal from "./WikiLinkModal";
 

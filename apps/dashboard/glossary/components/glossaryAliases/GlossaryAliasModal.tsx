@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import GlossaryAliasForm from "./GlossaryAliasForm";
-import { GlossaryAlias } from "@/lib/db/schema/glossaryAliases";
+import { GlossaryAlias } from "@soco/glossary-db/schema/glossaryAliases";
 
 export default function GlossaryAliasModal({ 
   glossaryAlias,

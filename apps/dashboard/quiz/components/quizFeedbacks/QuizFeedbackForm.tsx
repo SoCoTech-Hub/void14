@@ -4,7 +4,7 @@ import {
 	QuizFeedback,
 	NewQuizFeedbackParams,
 	insertQuizFeedbackParams
-} from '@/lib/db/schema/quizFeedbacks'
+} from '@soco/quiz-db/schema/quizFeedbacks'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

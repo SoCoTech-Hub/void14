@@ -6,12 +6,12 @@ import {
   createEnrol,
   deleteEnrol,
   updateEnrol,
-} from "@/lib/api/enrols/mutations";
+} from "@soco/enrol-api/enrols/mutations";
 import { 
   enrolIdSchema,
   insertEnrolParams,
   updateEnrolParams 
-} from "@/lib/db/schema/enrols";
+} from "@soco/enrol-db/schema/enrols";
 
 export async function POST(req: Request) {
   try {

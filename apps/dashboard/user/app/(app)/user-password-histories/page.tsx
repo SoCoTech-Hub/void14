@@ -1,7 +1,7 @@
 import UserPasswordHistoryList from "@/components/userPasswordHistories/UserPasswordHistoryList";
 import NewUserPasswordHistoryModal from "@/components/userPasswordHistories/UserPasswordHistoryModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function UserPasswordHistories() {
   await checkAuth();

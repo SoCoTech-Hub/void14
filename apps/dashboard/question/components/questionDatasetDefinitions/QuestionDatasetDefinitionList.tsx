@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQuestionDatasetDefinition } from "@/lib/db/schema/questionDatasetDefinitions";
+import { CompleteQuestionDatasetDefinition } from "@soco/question-db/schema/questionDatasetDefinitions";
 import { trpc } from "@/lib/trpc/client";
 import QuestionDatasetDefinitionModal from "./QuestionDatasetDefinitionModal";
 

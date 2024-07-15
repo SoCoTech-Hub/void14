@@ -1,5 +1,5 @@
 "use client";
-import { CompleteForumRead } from "@/lib/db/schema/forumReads";
+import { CompleteForumRead } from "@soco/forum-db/schema/forumReads";
 import { trpc } from "@/lib/trpc/client";
 import ForumReadModal from "./ForumReadModal";
 

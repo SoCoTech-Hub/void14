@@ -6,12 +6,12 @@ import {
   createMnetService,
   deleteMnetService,
   updateMnetService,
-} from "@/lib/api/mnetServices/mutations";
+} from "@soco/mnet-api/mnetServices/mutations";
 import { 
   mnetServiceIdSchema,
   insertMnetServiceParams,
   updateMnetServiceParams 
-} from "@/lib/db/schema/mnetServices";
+} from "@soco/mnet-db/schema/mnetServices";
 
 export async function POST(req: Request) {
   try {

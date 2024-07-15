@@ -1,5 +1,5 @@
 "use client";
-import { CompleteAssignFeedbackComment } from "@/lib/db/schema/assignFeedbackComments";
+import { CompleteAssignFeedbackComment } from "@soco/assignment-db/schema/assignFeedbackComments";
 import { trpc } from "@/lib/trpc/client";
 import AssignFeedbackCommentModal from "./AssignFeedbackCommentModal";
 

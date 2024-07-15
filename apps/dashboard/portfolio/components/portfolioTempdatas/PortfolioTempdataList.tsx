@@ -1,5 +1,5 @@
 "use client";
-import { CompletePortfolioTempdata } from "@/lib/db/schema/portfolioTempdatas";
+import { CompletePortfolioTempdata } from "@soco/portfolio-db/schema/portfolioTempdatas";
 import { trpc } from "@/lib/trpc/client";
 import PortfolioTempdataModal from "./PortfolioTempdataModal";
 

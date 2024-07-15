@@ -1,5 +1,5 @@
 "use client";
-import { CompletePortfolioInstance } from "@/lib/db/schema/portfolioInstances";
+import { CompletePortfolioInstance } from "@soco/portfolio-db/schema/portfolioInstances";
 import { trpc } from "@/lib/trpc/client";
 import PortfolioInstanceModal from "./PortfolioInstanceModal";
 

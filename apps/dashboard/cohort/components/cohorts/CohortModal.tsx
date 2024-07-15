@@ -10,7 +10,7 @@ import {
 	DialogTrigger
 } from '../ui/dialog'
 import CohortForm from './CohortForm'
-import { Cohort } from '@/lib/db/schema/cohorts'
+import { Cohort } from '@soco/cohort-db/schema/cohorts'
 
 export default function CohortModal({
 	cohort,

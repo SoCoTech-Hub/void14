@@ -6,12 +6,12 @@ import {
   createUserPasswordHistory,
   deleteUserPasswordHistory,
   updateUserPasswordHistory,
-} from "@/lib/api/userPasswordHistories/mutations";
+} from "@soco/user-api/userPasswordHistories/mutations";
 import { 
   userPasswordHistoryIdSchema,
   insertUserPasswordHistoryParams,
   updateUserPasswordHistoryParams 
-} from "@/lib/db/schema/userPasswordHistories";
+} from "@soco/user-db/schema/userPasswordHistories";
 
 export async function POST(req: Request) {
   try {

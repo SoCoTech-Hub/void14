@@ -6,12 +6,12 @@ import {
 	createQuize,
 	deleteQuize,
 	updateQuize
-} from '@/lib/api/quizes/mutations'
+} from '@soco/quiz-api/quizes/mutations'
 import {
 	quizIdSchema,
 	insertQuizeParams,
 	updateQuizeParams
-} from '@/lib/db/schema/quizes'
+} from '@soco/quiz-db/schema/quizes'
 
 export async function POST(req: Request) {
 	try {

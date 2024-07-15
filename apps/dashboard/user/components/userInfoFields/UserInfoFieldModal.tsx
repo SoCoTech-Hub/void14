@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import UserInfoFieldForm from "./UserInfoFieldForm";
-import { UserInfoField } from "@/lib/db/schema/userInfoFields";
+import { UserInfoField } from "@soco/user-db/schema/userInfoFields";
 
 export default function UserInfoFieldModal({ 
   userInfoField,

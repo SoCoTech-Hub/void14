@@ -21,7 +21,7 @@ import {
   AnalyticsIndicatorCalc,
   insertAnalyticsIndicatorCalcParams,
   NewAnalyticsIndicatorCalcParams,
-} from "@/lib/db/schema/analyticsIndicatorCalcs";
+} from "@soco/analytics-db/schema/analyticsIndicatorCalcs";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

@@ -6,12 +6,12 @@ import {
   createScormSeqRollupRule,
   deleteScormSeqRollupRule,
   updateScormSeqRollupRule,
-} from "@/lib/api/scormSeqRollupRules/mutations";
+} from "@soco/scorm-api/scormSeqRollupRules/mutations";
 import { 
   scormSeqRollupRuleIdSchema,
   insertScormSeqRollupRuleParams,
   updateScormSeqRollupRuleParams 
-} from "@/lib/db/schema/scormSeqRollupRules";
+} from "@soco/scorm-db/schema/scormSeqRollupRules";
 
 export async function POST(req: Request) {
   try {

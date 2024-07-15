@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import UserPasswordHistoryForm from "./UserPasswordHistoryForm";
-import { UserPasswordHistory } from "@/lib/db/schema/userPasswordHistories";
+import { UserPasswordHistory } from "@soco/user-db/schema/userPasswordHistories";
 
 export default function UserPasswordHistoryModal({ 
   userPasswordHistory,

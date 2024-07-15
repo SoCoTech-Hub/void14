@@ -6,12 +6,12 @@ import {
   createBadgeManualAward,
   deleteBadgeManualAward,
   updateBadgeManualAward,
-} from "@/lib/api/badgeManualAwards/mutations";
+} from "@soco/badge-api/badgeManualAwards/mutations";
 import { 
   badgeManualAwardIdSchema,
   insertBadgeManualAwardParams,
   updateBadgeManualAwardParams 
-} from "@/lib/db/schema/badgeManualAwards";
+} from "@soco/badge-db/schema/badgeManualAwards";
 
 export async function POST(req: Request) {
   try {

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import AssignSubmissionOnlineTextForm from "./AssignSubmissionOnlineTextForm";
-import { AssignSubmissionOnlineText } from "@/lib/db/schema/assignSubmissionOnlineTexts";
+import { AssignSubmissionOnlineText } from "@soco/assignment-db/schema/assignSubmissionOnlineTexts";
 
 export default function AssignSubmissionOnlineTextModal({ 
   assignSubmissionOnlineText,

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteCompetencyRelatedComp } from "@/lib/db/schema/competencyRelatedComps";
+import { CompleteCompetencyRelatedComp } from "@soco/competency-db/schema/competencyRelatedComps";
 import { trpc } from "@/lib/trpc/client";
 import CompetencyRelatedCompModal from "./CompetencyRelatedCompModal";
 

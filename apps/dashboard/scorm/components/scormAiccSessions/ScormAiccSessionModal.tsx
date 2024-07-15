@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ScormAiccSessionForm from "./ScormAiccSessionForm";
-import { ScormAiccSession } from "@/lib/db/schema/scormAiccSessions";
+import { ScormAiccSession } from "@soco/scorm-db/schema/scormAiccSessions";
 
 export default function ScormAiccSessionModal({ 
   scormAiccSession,

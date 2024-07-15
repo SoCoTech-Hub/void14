@@ -1,7 +1,7 @@
 import BlockRecentActivityList from "@/components/blockRecentActivities/BlockRecentActivityList";
 import NewBlockRecentActivityModal from "@/components/blockRecentActivities/BlockRecentActivityModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function BlockRecentActivities() {
   await checkAuth();

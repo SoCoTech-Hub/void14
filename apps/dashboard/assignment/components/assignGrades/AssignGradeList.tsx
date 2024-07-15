@@ -1,5 +1,5 @@
 "use client";
-import { CompleteAssignGrade } from "@/lib/db/schema/assignGrades";
+import { CompleteAssignGrade } from "@soco/assignment-db/schema/assignGrades";
 import { trpc } from "@/lib/trpc/client";
 import AssignGradeModal from "./AssignGradeModal";
 

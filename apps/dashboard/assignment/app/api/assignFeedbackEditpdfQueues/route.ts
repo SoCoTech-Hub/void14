@@ -6,12 +6,12 @@ import {
   createAssignFeedbackEditpdfQueue,
   deleteAssignFeedbackEditpdfQueue,
   updateAssignFeedbackEditpdfQueue,
-} from "@/lib/api/assignFeedbackEditpdfQueues/mutations";
+} from "@soco/assignment-api/assignFeedbackEditpdfQueues/mutations";
 import { 
   assignFeedbackEditpdfQueueIdSchema,
   insertAssignFeedbackEditpdfQueueParams,
   updateAssignFeedbackEditpdfQueueParams 
-} from "@/lib/db/schema/assignFeedbackEditpdfQueues";
+} from "@soco/assignment-db/schema/assignFeedbackEditpdfQueues";
 
 export async function POST(req: Request) {
   try {

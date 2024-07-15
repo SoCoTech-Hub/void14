@@ -1,6 +1,6 @@
 "use client";
 
-import { GradingInstance, NewGradingInstanceParams, insertGradingInstanceParams } from "@/lib/db/schema/gradingInstances";
+import { GradingInstance, NewGradingInstanceParams, insertGradingInstanceParams } from "@soco/grade-db/schema/gradingInstances";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

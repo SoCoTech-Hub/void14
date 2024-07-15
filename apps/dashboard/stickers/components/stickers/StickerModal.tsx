@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import StickerForm from "./StickerForm";
-import { Sticker } from "@/lib/db/schema/stickers";
+import { Sticker } from "@soco/stickers-db/schema/stickers";
 
 export default function StickerModal({ 
   sticker,

@@ -6,12 +6,12 @@ import {
   createQuestionNumericalOption,
   deleteQuestionNumericalOption,
   updateQuestionNumericalOption,
-} from "@/lib/api/questionNumericalOptions/mutations";
+} from "@soco/question-api/questionNumericalOptions/mutations";
 import { 
   questionNumericalOptionIdSchema,
   insertQuestionNumericalOptionParams,
   updateQuestionNumericalOptionParams 
-} from "@/lib/db/schema/questionNumericalOptions";
+} from "@soco/question-db/schema/questionNumericalOptions";
 
 export async function POST(req: Request) {
   try {

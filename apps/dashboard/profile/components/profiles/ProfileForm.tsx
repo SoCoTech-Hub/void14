@@ -28,7 +28,7 @@ import {
   insertProfileParams,
   NewProfileParams,
   Profile,
-} from "@/lib/db/schema/profiles";
+} from "@soco/profile-db/schema/profiles";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

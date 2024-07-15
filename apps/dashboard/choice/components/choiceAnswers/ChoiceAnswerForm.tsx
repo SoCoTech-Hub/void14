@@ -1,6 +1,6 @@
 "use client";
 
-import { ChoiceAnswer, NewChoiceAnswerParams, insertChoiceAnswerParams } from "@/lib/db/schema/choiceAnswers";
+import { ChoiceAnswer, NewChoiceAnswerParams, insertChoiceAnswerParams } from "@soco/choice-db/schema/choiceAnswers";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

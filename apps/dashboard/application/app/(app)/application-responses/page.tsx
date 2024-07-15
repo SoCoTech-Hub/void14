@@ -1,7 +1,7 @@
 import ApplicationResponseList from "@/components/applicationResponses/ApplicationResponseList";
 import NewApplicationResponseModal from "@/components/applicationResponses/ApplicationResponseModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function ApplicationResponses() {
   await checkAuth();

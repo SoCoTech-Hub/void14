@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ToolRecyclebinCategoryForm from "./ToolRecyclebinCategoryForm";
-import { ToolRecyclebinCategory } from "@/lib/db/schema/toolRecyclebinCategories";
+import { ToolRecyclebinCategory } from "@soco/tool-recyclebin-db/schema/toolRecyclebinCategories";
 
 export default function ToolRecyclebinCategoryModal({ 
   toolRecyclebinCategory,

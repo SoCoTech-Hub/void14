@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QuestionHintForm from "./QuestionHintForm";
-import { QuestionHint } from "@/lib/db/schema/questionHints";
+import { QuestionHint } from "@soco/question-db/schema/questionHints";
 
 export default function QuestionHintModal({ 
   questionHint,

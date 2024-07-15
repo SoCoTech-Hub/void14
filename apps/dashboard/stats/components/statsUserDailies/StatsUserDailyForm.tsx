@@ -21,7 +21,7 @@ import {
   insertStatsUserDailyParams,
   NewStatsUserDailyParams,
   StatsUserDaily,
-} from "@/lib/db/schema/statsUserDailies";
+} from "@soco/stats-db/schema/statsUserDailies";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

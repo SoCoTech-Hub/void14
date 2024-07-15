@@ -1,5 +1,5 @@
 "use client";
-import { CompleteBackupController } from "@/lib/db/schema/backupControllers";
+import { CompleteBackupController } from "@soco/backup-db/schema/backupControllers";
 import { trpc } from "@/lib/trpc/client";
 import BackupControllerModal from "./BackupControllerModal";
 

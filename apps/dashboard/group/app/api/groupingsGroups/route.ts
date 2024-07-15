@@ -6,12 +6,12 @@ import {
   createGroupingsGroup,
   deleteGroupingsGroup,
   updateGroupingsGroup,
-} from "@/lib/api/groupingsGroups/mutations";
+} from "@soco/group-api/groupingsGroups/mutations";
 import { 
   groupingsGroupIdSchema,
   insertGroupingsGroupParams,
   updateGroupingsGroupParams 
-} from "@/lib/db/schema/groupingsGroups";
+} from "@soco/group-db/schema/groupingsGroups";
 
 export async function POST(req: Request) {
   try {

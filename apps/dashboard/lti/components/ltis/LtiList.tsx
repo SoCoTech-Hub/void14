@@ -1,5 +1,5 @@
 "use client";
-import { CompleteLti } from "@/lib/db/schema/ltis";
+import { CompleteLti } from "@soco/lti-db/schema/ltis";
 import { trpc } from "@/lib/trpc/client";
 import LtiModal from "./LtiModal";
 

@@ -6,12 +6,12 @@ import {
   createAssignUserMapping,
   deleteAssignUserMapping,
   updateAssignUserMapping,
-} from "@/lib/api/assignUserMappings/mutations";
+} from "@soco/assignment-api/assignUserMappings/mutations";
 import { 
   assignUserMappingIdSchema,
   insertAssignUserMappingParams,
   updateAssignUserMappingParams 
-} from "@/lib/db/schema/assignUserMappings";
+} from "@soco/assignment-db/schema/assignUserMappings";
 
 export async function POST(req: Request) {
   try {

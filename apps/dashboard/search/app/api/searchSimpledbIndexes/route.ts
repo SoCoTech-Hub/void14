@@ -6,12 +6,12 @@ import {
   createSearchSimpledbIndex,
   deleteSearchSimpledbIndex,
   updateSearchSimpledbIndex,
-} from "@/lib/api/searchSimpledbIndexes/mutations";
+} from "@soco/search-api/searchSimpledbIndexes/mutations";
 import { 
   searchSimpledbIndexIdSchema,
   insertSearchSimpledbIndexParams,
   updateSearchSimpledbIndexParams 
-} from "@/lib/db/schema/searchSimpledbIndexes";
+} from "@soco/search-db/schema/searchSimpledbIndexes";
 
 export async function POST(req: Request) {
   try {

@@ -21,7 +21,7 @@ import {
   insertLogQueryParams,
   LogQuery,
   NewLogQueryParams,
-} from "@/lib/db/schema/logQueries";
+} from "@soco/log-db/schema/logQueries";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

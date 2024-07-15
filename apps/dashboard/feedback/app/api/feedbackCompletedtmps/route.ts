@@ -6,12 +6,12 @@ import {
   createFeedbackCompletedtmp,
   deleteFeedbackCompletedtmp,
   updateFeedbackCompletedtmp,
-} from "@/lib/api/feedbackCompletedtmps/mutations";
+} from "@soco/feedback-api/feedbackCompletedtmps/mutations";
 import { 
   feedbackCompletedtmpIdSchema,
   insertFeedbackCompletedtmpParams,
   updateFeedbackCompletedtmpParams 
-} from "@/lib/db/schema/feedbackCompletedtmps";
+} from "@soco/feedback-db/schema/feedbackCompletedtmps";
 
 export async function POST(req: Request) {
   try {

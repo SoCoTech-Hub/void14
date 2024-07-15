@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import EventForm from "./EventForm";
-import { Event } from "@/lib/db/schema/events";
+import { Event } from "@soco/event-db/schema/events";
 
 export default function EventModal({ 
   event,

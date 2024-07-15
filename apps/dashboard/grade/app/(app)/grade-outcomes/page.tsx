@@ -1,7 +1,7 @@
 import GradeOutcomeList from "@/components/gradeOutcomes/GradeOutcomeList";
 import NewGradeOutcomeModal from "@/components/gradeOutcomes/GradeOutcomeModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function GradeOutcomes() {
   await checkAuth();

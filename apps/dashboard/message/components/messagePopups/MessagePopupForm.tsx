@@ -1,6 +1,6 @@
 "use client";
 
-import { MessagePopup, NewMessagePopupParams, insertMessagePopupParams } from "@/lib/db/schema/messagePopups";
+import { MessagePopup, NewMessagePopupParams, insertMessagePopupParams } from "@soco/message-db/schema/messagePopups";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

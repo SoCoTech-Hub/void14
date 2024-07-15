@@ -1,6 +1,6 @@
 "use client";
 
-import { FilterConfig, NewFilterConfigParams, insertFilterConfigParams } from "@/lib/db/schema/filterConfigs";
+import { FilterConfig, NewFilterConfigParams, insertFilterConfigParams } from "@soco/filter-db/schema/filterConfigs";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

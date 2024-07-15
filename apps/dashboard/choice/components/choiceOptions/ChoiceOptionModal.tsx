@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ChoiceOptionForm from "./ChoiceOptionForm";
-import { ChoiceOption } from "@/lib/db/schema/choiceOptions";
+import { ChoiceOption } from "@soco/choice-db/schema/choiceOptions";
 
 export default function ChoiceOptionModal({ 
   choiceOption,

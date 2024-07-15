@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import GlossaryEntriesCategoryForm from "./GlossaryEntriesCategoryForm";
-import { GlossaryEntriesCategory } from "@/lib/db/schema/glossaryEntriesCategories";
+import { GlossaryEntriesCategory } from "@soco/glossary-db/schema/glossaryEntriesCategories";
 
 export default function GlossaryEntriesCategoryModal({ 
   glossaryEntriesCategory,

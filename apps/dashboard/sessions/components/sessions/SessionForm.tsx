@@ -1,6 +1,6 @@
 "use client";
 
-import { Session, NewSessionParams, insertSessionParams } from "@/lib/db/schema/sessions";
+import { Session, NewSessionParams, insertSessionParams } from "@soco/sessions-db/schema/sessions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

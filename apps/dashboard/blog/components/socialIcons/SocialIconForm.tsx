@@ -4,7 +4,7 @@ import {
 	SocialIcon,
 	NewSocialIconParams,
 	insertSocialIconParams
-} from '@/lib/db/schema/socialIcons'
+} from '@soco/blog-db/schema/socialIcons'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

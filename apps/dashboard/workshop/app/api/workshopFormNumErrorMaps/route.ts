@@ -6,12 +6,12 @@ import {
   createWorkshopFormNumErrorMap,
   deleteWorkshopFormNumErrorMap,
   updateWorkshopFormNumErrorMap,
-} from "@/lib/api/workshopFormNumErrorMaps/mutations";
+} from "@soco/workshop-api/workshopFormNumErrorMaps/mutations";
 import { 
   workshopFormNumErrorMapIdSchema,
   insertWorkshopFormNumErrorMapParams,
   updateWorkshopFormNumErrorMapParams 
-} from "@/lib/db/schema/workshopFormNumErrorMaps";
+} from "@soco/workshop-db/schema/workshopFormNumErrorMaps";
 
 export async function POST(req: Request) {
   try {

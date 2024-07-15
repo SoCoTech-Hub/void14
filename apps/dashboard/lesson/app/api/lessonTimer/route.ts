@@ -6,12 +6,12 @@ import {
   createLessonTimer,
   deleteLessonTimer,
   updateLessonTimer,
-} from "@/lib/api/lessonTimer/mutations";
+} from "@soco/lesson-api/lessonTimer/mutations";
 import { 
   lessonTimerIdSchema,
   insertLessonTimerParams,
   updateLessonTimerParams 
-} from "@/lib/db/schema/lessonTimer";
+} from "@soco/lesson-db/schema/lessonTimer";
 
 export async function POST(req: Request) {
   try {

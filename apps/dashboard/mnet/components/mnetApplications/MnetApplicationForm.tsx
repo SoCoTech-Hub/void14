@@ -1,6 +1,6 @@
 "use client";
 
-import { MnetApplication, NewMnetApplicationParams, insertMnetApplicationParams } from "@/lib/db/schema/mnetApplications";
+import { MnetApplication, NewMnetApplicationParams, insertMnetApplicationParams } from "@soco/mnet-db/schema/mnetApplications";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

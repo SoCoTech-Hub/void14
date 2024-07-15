@@ -6,12 +6,12 @@ import {
   createMessageUserAction,
   deleteMessageUserAction,
   updateMessageUserAction,
-} from "@/lib/api/messageUserActions/mutations";
+} from "@soco/message-api/messageUserActions/mutations";
 import { 
   messageUserActionIdSchema,
   insertMessageUserActionParams,
   updateMessageUserActionParams 
-} from "@/lib/db/schema/messageUserActions";
+} from "@soco/message-db/schema/messageUserActions";
 
 export async function POST(req: Request) {
   try {

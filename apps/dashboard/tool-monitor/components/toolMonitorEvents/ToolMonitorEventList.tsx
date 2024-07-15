@@ -1,5 +1,5 @@
 "use client";
-import { CompleteToolMonitorEvent } from "@/lib/db/schema/toolMonitorEvents";
+import { CompleteToolMonitorEvent } from "@soco/tool-monitor-db/schema/toolMonitorEvents";
 import { trpc } from "@/lib/trpc/client";
 import ToolMonitorEventModal from "./ToolMonitorEventModal";
 

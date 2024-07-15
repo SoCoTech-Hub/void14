@@ -1,5 +1,5 @@
 "use client";
-import { CompleteLicense } from "@/lib/db/schema/licenses";
+import { CompleteLicense } from "@soco/license-db/schema/licenses";
 import { trpc } from "@/lib/trpc/client";
 import LicenseModal from "./LicenseModal";
 

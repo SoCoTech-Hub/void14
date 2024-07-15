@@ -6,12 +6,12 @@ import {
   createLtiserviceGradebookservice,
   deleteLtiserviceGradebookservice,
   updateLtiserviceGradebookservice,
-} from "@/lib/api/ltiserviceGradebookservices/mutations";
+} from "@soco/lti-api/ltiserviceGradebookservices/mutations";
 import { 
   ltiserviceGradebookserviceIdSchema,
   insertLtiserviceGradebookserviceParams,
   updateLtiserviceGradebookserviceParams 
-} from "@/lib/db/schema/ltiserviceGradebookservices";
+} from "@soco/lti-db/schema/ltiserviceGradebookservices";
 
 export async function POST(req: Request) {
   try {

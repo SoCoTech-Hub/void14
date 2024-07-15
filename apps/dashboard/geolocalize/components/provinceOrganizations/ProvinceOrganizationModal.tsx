@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ProvinceOrganizationForm from "./ProvinceOrganizationForm";
-import { ProvinceOrganization } from "@/lib/db/schema/provinceOrganizations";
+import { ProvinceOrganization } from "@soco/geolocalize-db/schema/provinceOrganizations";
 
 export default function ProvinceOrganizationModal({ 
   provinceOrganization,

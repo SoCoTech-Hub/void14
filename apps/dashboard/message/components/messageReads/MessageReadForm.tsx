@@ -22,7 +22,7 @@ import {
   insertMessageReadParams,
   MessageRead,
   NewMessageReadParams,
-} from "@/lib/db/schema/messageReads";
+} from "@soco/message-db/schema/messageReads";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

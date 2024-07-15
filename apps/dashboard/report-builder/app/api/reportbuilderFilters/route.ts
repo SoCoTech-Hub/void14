@@ -6,12 +6,12 @@ import {
   createReportbuilderFilter,
   deleteReportbuilderFilter,
   updateReportbuilderFilter,
-} from "@/lib/api/reportbuilderFilters/mutations";
+} from "@soco/report-builder-api/reportbuilderFilters/mutations";
 import { 
   reportbuilderFilterIdSchema,
   insertReportbuilderFilterParams,
   updateReportbuilderFilterParams 
-} from "@/lib/db/schema/reportbuilderFilters";
+} from "@soco/report-builder-db/schema/reportbuilderFilters";
 
 export async function POST(req: Request) {
   try {

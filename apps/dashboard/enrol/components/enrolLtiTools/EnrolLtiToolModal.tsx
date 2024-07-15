@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import EnrolLtiToolForm from "./EnrolLtiToolForm";
-import { EnrolLtiTool } from "@/lib/db/schema/enrolLtiTools";
+import { EnrolLtiTool } from "@soco/enrol-db/schema/enrolLtiTools";
 
 export default function EnrolLtiToolModal({ 
   enrolLtiTool,

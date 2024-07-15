@@ -6,12 +6,12 @@ import {
   createBlogExternal,
   deleteBlogExternal,
   updateBlogExternal,
-} from "@/lib/api/blogExternals/mutations";
+} from "@soco/blog-api/blogExternals/mutations";
 import { 
   blogExternalIdSchema,
   insertBlogExternalParams,
   updateBlogExternalParams 
-} from "@/lib/db/schema/blogExternals";
+} from "@soco/blog-db/schema/blogExternals";
 
 export async function POST(req: Request) {
   try {

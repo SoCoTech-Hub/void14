@@ -1,6 +1,6 @@
 "use client";
 
-import { RepositoryInstance, NewRepositoryInstanceParams, insertRepositoryInstanceParams } from "@/lib/db/schema/repositoryInstances";
+import { RepositoryInstance, NewRepositoryInstanceParams, insertRepositoryInstanceParams } from "@soco/repository-db/schema/repositoryInstances";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

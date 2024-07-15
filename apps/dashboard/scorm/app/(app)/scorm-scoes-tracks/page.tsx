@@ -1,7 +1,7 @@
 import ScormScoesTrackList from "@/components/scormScoesTracks/ScormScoesTrackList";
 import NewScormScoesTrackModal from "@/components/scormScoesTracks/ScormScoesTrackModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function ScormScoesTracks() {
   await checkAuth();

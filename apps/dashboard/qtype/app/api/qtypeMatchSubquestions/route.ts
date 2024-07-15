@@ -6,12 +6,12 @@ import {
   createQtypeMatchSubquestion,
   deleteQtypeMatchSubquestion,
   updateQtypeMatchSubquestion,
-} from "@/lib/api/qtypeMatchSubquestions/mutations";
+} from "@soco/qtype-api/qtypeMatchSubquestions/mutations";
 import { 
   qtypeMatchSubquestionIdSchema,
   insertQtypeMatchSubquestionParams,
   updateQtypeMatchSubquestionParams 
-} from "@/lib/db/schema/qtypeMatchSubquestions";
+} from "@soco/qtype-db/schema/qtypeMatchSubquestions";
 
 export async function POST(req: Request) {
   try {

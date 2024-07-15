@@ -28,7 +28,7 @@ import {
   GroupingsGroup,
   insertGroupingsGroupParams,
   NewGroupingsGroupParams,
-} from "@/lib/db/schema/groupingsGroups";
+} from "@soco/group-db/schema/groupingsGroups";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

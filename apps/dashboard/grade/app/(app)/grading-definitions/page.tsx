@@ -1,7 +1,7 @@
 import GradingDefinitionList from "@/components/gradingDefinitions/GradingDefinitionList";
 import NewGradingDefinitionModal from "@/components/gradingDefinitions/GradingDefinitionModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function GradingDefinitions() {
   await checkAuth();

@@ -4,7 +4,7 @@ import {
 	ApplicationResponse,
 	NewApplicationResponseParams,
 	insertApplicationResponseParams
-} from '@/lib/db/schema/applicationResponses'
+} from '@soco/application-db/schema/applicationResponses'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

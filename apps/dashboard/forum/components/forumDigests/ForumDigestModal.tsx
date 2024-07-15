@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ForumDigestForm from "./ForumDigestForm";
-import { ForumDigest } from "@/lib/db/schema/forumDigests";
+import { ForumDigest } from "@soco/forum-db/schema/forumDigests";
 
 export default function ForumDigestModal({ 
   forumDigest,

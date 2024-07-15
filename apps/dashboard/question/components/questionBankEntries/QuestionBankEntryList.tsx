@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQuestionBankEntry } from "@/lib/db/schema/questionBankEntries";
+import { CompleteQuestionBankEntry } from "@soco/question-db/schema/questionBankEntries";
 import { trpc } from "@/lib/trpc/client";
 import QuestionBankEntryModal from "./QuestionBankEntryModal";
 

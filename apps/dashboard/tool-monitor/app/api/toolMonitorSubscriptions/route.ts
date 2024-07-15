@@ -6,12 +6,12 @@ import {
   createToolMonitorSubscription,
   deleteToolMonitorSubscription,
   updateToolMonitorSubscription,
-} from "@/lib/api/toolMonitorSubscriptions/mutations";
+} from "@soco/tool-monitor-api/toolMonitorSubscriptions/mutations";
 import { 
   toolMonitorSubscriptionIdSchema,
   insertToolMonitorSubscriptionParams,
   updateToolMonitorSubscriptionParams 
-} from "@/lib/db/schema/toolMonitorSubscriptions";
+} from "@soco/tool-monitor-db/schema/toolMonitorSubscriptions";
 
 export async function POST(req: Request) {
   try {

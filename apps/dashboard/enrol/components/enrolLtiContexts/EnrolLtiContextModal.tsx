@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import EnrolLtiContextForm from "./EnrolLtiContextForm";
-import { EnrolLtiContext } from "@/lib/db/schema/enrolLtiContexts";
+import { EnrolLtiContext } from "@soco/enrol-db/schema/enrolLtiContexts";
 
 export default function EnrolLtiContextModal({ 
   enrolLtiContext,

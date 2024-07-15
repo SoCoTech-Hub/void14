@@ -1,5 +1,5 @@
 "use client";
-import { CompleteSearchIndexRequest } from "@/lib/db/schema/searchIndexRequests";
+import { CompleteSearchIndexRequest } from "@soco/search-db/schema/searchIndexRequests";
 import { trpc } from "@/lib/trpc/client";
 import SearchIndexRequestModal from "./SearchIndexRequestModal";
 

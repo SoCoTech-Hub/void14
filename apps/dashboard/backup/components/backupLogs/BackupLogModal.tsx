@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import BackupLogForm from "./BackupLogForm";
-import { BackupLog } from "@/lib/db/schema/backupLogs";
+import { BackupLog } from "@soco/backup-db/schema/backupLogs";
 
 export default function BackupLogModal({ 
   backupLog,

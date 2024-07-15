@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import GlossaryFormatForm from "./GlossaryFormatForm";
-import { GlossaryFormat } from "@/lib/db/schema/glossaryFormats";
+import { GlossaryFormat } from "@soco/glossary-db/schema/glossaryFormats";
 
 export default function GlossaryFormatModal({ 
   glossaryFormat,

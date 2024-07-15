@@ -6,12 +6,12 @@ import {
   createTaskAdhoc,
   deleteTaskAdhoc,
   updateTaskAdhoc,
-} from "@/lib/api/taskAdhocs/mutations";
+} from "@soco/task-api/taskAdhocs/mutations";
 import { 
   taskAdhocIdSchema,
   insertTaskAdhocParams,
   updateTaskAdhocParams 
-} from "@/lib/db/schema/taskAdhocs";
+} from "@soco/task-db/schema/taskAdhocs";
 
 export async function POST(req: Request) {
   try {

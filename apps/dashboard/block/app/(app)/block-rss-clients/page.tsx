@@ -1,7 +1,7 @@
 import BlockRssClientList from "@/components/blockRssClients/BlockRssClientList";
 import NewBlockRssClientModal from "@/components/blockRssClients/BlockRssClientModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function BlockRssClients() {
   await checkAuth();

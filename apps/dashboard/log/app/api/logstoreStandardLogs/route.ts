@@ -6,12 +6,12 @@ import {
   createLogstoreStandardLog,
   deleteLogstoreStandardLog,
   updateLogstoreStandardLog,
-} from "@/lib/api/logstoreStandardLogs/mutations";
+} from "@soco/log-api/logstoreStandardLogs/mutations";
 import { 
   logstoreStandardLogIdSchema,
   insertLogstoreStandardLogParams,
   updateLogstoreStandardLogParams 
-} from "@/lib/db/schema/logstoreStandardLogs";
+} from "@soco/log-db/schema/logstoreStandardLogs";
 
 export async function POST(req: Request) {
   try {

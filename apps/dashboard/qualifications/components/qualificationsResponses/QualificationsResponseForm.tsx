@@ -1,6 +1,6 @@
 "use client";
 
-import { QualificationsResponse, NewQualificationsResponseParams, insertQualificationsResponseParams } from "@/lib/db/schema/qualificationsResponses";
+import { QualificationsResponse, NewQualificationsResponseParams, insertQualificationsResponseParams } from "@soco/qualifications-db/schema/qualificationsResponses";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

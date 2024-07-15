@@ -1,5 +1,5 @@
 import SignOutBtn from "@/components/auth/SignOutBtn";
-import { getUserAuth } from "@/lib/auth/utils";
+import { getUserAuth } from "@soco/auth-service";
 
 export default async function Home() {
   const { session } = await getUserAuth();

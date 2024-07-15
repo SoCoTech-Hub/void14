@@ -29,7 +29,7 @@ import {
   insertLessonGradeParams,
   LessonGrade,
   NewLessonGradeParams,
-} from "@/lib/db/schema/lessonGrades";
+} from "@soco/lesson-db/schema/lessonGrades";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

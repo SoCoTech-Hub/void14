@@ -1,6 +1,6 @@
 "use client";
 
-import { GradeImportValue, NewGradeImportValueParams, insertGradeImportValueParams } from "@/lib/db/schema/gradeImportValues";
+import { GradeImportValue, NewGradeImportValueParams, insertGradeImportValueParams } from "@soco/grade-db/schema/gradeImportValues";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

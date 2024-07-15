@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import GradeLetterForm from "./GradeLetterForm";
-import { GradeLetter } from "@/lib/db/schema/gradeLetters";
+import { GradeLetter } from "@soco/grade-db/schema/gradeLetters";
 
 export default function GradeLetterModal({ 
   gradeLetter,

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteCompetencyCourseCompSetting } from "@/lib/db/schema/competencyCourseCompSettings";
+import { CompleteCompetencyCourseCompSetting } from "@soco/competency-db/schema/competencyCourseCompSettings";
 import { trpc } from "@/lib/trpc/client";
 import CompetencyCourseCompSettingModal from "./CompetencyCourseCompSettingModal";
 

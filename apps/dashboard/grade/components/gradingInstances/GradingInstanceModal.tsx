@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import GradingInstanceForm from "./GradingInstanceForm";
-import { GradingInstance } from "@/lib/db/schema/gradingInstances";
+import { GradingInstance } from "@soco/grade-db/schema/gradingInstances";
 
 export default function GradingInstanceModal({ 
   gradingInstance,

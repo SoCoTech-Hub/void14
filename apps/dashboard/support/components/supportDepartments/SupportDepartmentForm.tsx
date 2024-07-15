@@ -4,7 +4,7 @@ import {
 	SupportDepartment,
 	NewSupportDepartmentParams,
 	insertSupportDepartmentParams
-} from '@/lib/db/schema/supportDepartments'
+} from '@soco/support-db/schema/supportDepartments'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

@@ -6,12 +6,12 @@ import {
   createCustomFieldCategory,
   deleteCustomFieldCategory,
   updateCustomFieldCategory,
-} from "@/lib/api/customFieldCategories/mutations";
+} from "@soco/custom-field-api/customFieldCategories/mutations";
 import { 
   customFieldCategoryIdSchema,
   insertCustomFieldCategoryParams,
   updateCustomFieldCategoryParams 
-} from "@/lib/db/schema/customFieldCategories";
+} from "@soco/custom-field-db/schema/customFieldCategories";
 
 export async function POST(req: Request) {
   try {

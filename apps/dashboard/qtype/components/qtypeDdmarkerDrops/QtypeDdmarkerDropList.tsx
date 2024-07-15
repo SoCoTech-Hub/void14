@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQtypeDdmarkerDrop } from "@/lib/db/schema/qtypeDdmarkerDrops";
+import { CompleteQtypeDdmarkerDrop } from "@soco/qtype-db/schema/qtypeDdmarkerDrops";
 import { trpc } from "@/lib/trpc/client";
 import QtypeDdmarkerDropModal from "./QtypeDdmarkerDropModal";
 

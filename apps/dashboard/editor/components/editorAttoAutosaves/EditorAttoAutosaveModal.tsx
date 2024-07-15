@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import EditorAttoAutosaveForm from "./EditorAttoAutosaveForm";
-import { EditorAttoAutosave } from "@/lib/db/schema/editorAttoAutosaves";
+import { EditorAttoAutosave } from "@soco/editor-db/schema/editorAttoAutosaves";
 
 export default function EditorAttoAutosaveModal({ 
   editorAttoAutosave,

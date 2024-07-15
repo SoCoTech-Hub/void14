@@ -4,7 +4,7 @@ import {
 	WikiLink,
 	NewWikiLinkParams,
 	insertWikiLinkParams
-} from '@/lib/db/schema/wikiLinks'
+} from '@soco/wiki-db/schema/wikiLinks'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

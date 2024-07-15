@@ -22,7 +22,7 @@ import {
   Feedback,
   insertFeedbackParams,
   NewFeedbackParams,
-} from "@/lib/db/schema/feedbacks";
+} from "@soco/feedback-db/schema/feedbacks";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

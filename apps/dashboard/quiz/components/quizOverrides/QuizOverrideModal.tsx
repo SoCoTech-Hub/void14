@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QuizOverrideForm from "./QuizOverrideForm";
-import { QuizOverride } from "@/lib/db/schema/quizOverrides";
+import { QuizOverride } from "@soco/quiz-db/schema/quizOverrides";
 
 export default function QuizOverrideModal({ 
   quizOverride,

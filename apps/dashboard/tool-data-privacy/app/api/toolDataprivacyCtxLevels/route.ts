@@ -6,12 +6,12 @@ import {
   createToolDataprivacyCtxLevel,
   deleteToolDataprivacyCtxLevel,
   updateToolDataprivacyCtxLevel,
-} from "@/lib/api/toolDataprivacyCtxLevels/mutations";
+} from "@soco/tool-data-privacy-api/toolDataprivacyCtxLevels/mutations";
 import { 
   toolDataprivacyCtxLevelIdSchema,
   insertToolDataprivacyCtxLevelParams,
   updateToolDataprivacyCtxLevelParams 
-} from "@/lib/db/schema/toolDataprivacyCtxLevels";
+} from "@soco/tool-data-privacy-db/schema/toolDataprivacyCtxLevels";
 
 export async function POST(req: Request) {
   try {

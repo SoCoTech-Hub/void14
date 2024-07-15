@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import AnalyticsIndicatorCalcForm from "./AnalyticsIndicatorCalcForm";
-import { AnalyticsIndicatorCalc } from "@/lib/db/schema/analyticsIndicatorCalcs";
+import { AnalyticsIndicatorCalc } from "@soco/analytics-db/schema/analyticsIndicatorCalcs";
 
 export default function AnalyticsIndicatorCalcModal({ 
   analyticsIndicatorCalc,

@@ -1,7 +1,7 @@
 import NotificationResponseList from "@/components/notificationResponses/NotificationResponseList";
 import NewNotificationResponseModal from "@/components/notificationResponses/NotificationResponseModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function NotificationResponses() {
   await checkAuth();

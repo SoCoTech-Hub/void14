@@ -1,7 +1,7 @@
 import MessageConversationMemberList from "@/components/messageConversationMembers/MessageConversationMemberList";
 import NewMessageConversationMemberModal from "@/components/messageConversationMembers/MessageConversationMemberModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function MessageConversationMembers() {
   await checkAuth();

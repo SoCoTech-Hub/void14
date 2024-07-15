@@ -1,5 +1,5 @@
 "use client";
-import { CompleteData } from "@/lib/db/schema/datas";
+import { CompleteData } from "@soco/data-db/schema/datas";
 import { trpc } from "@/lib/trpc/client";
 import DataModal from "./DataModal";
 

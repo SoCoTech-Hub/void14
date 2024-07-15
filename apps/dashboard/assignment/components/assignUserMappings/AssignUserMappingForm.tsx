@@ -1,6 +1,6 @@
 "use client";
 
-import { AssignUserMapping, NewAssignUserMappingParams, insertAssignUserMappingParams } from "@/lib/db/schema/assignUserMappings";
+import { AssignUserMapping, NewAssignUserMappingParams, insertAssignUserMappingParams } from "@soco/assignment-db/schema/assignUserMappings";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

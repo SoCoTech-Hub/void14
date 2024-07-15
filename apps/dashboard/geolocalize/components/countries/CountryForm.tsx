@@ -4,7 +4,7 @@ import {
 	Country,
 	NewCountryParams,
 	insertCountryParams
-} from '@/lib/db/schema/countries'
+} from '@soco/geolocalize-db/schema/countries'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

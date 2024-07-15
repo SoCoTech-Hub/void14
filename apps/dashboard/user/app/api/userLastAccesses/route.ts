@@ -6,12 +6,12 @@ import {
   createUserLastAccess,
   deleteUserLastAccess,
   updateUserLastAccess,
-} from "@/lib/api/userLastAccesses/mutations";
+} from "@soco/user-api/userLastAccesses/mutations";
 import { 
   userLastAccessIdSchema,
   insertUserLastAccessParams,
   updateUserLastAccessParams 
-} from "@/lib/db/schema/userLastAccesses";
+} from "@soco/user-db/schema/userLastAccesses";
 
 export async function POST(req: Request) {
   try {

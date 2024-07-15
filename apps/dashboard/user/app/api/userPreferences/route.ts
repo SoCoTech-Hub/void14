@@ -6,12 +6,12 @@ import {
   createUserPreference,
   deleteUserPreference,
   updateUserPreference,
-} from "@/lib/api/userPreferences/mutations";
+} from "@soco/user-api/userPreferences/mutations";
 import { 
   userPreferenceIdSchema,
   insertUserPreferenceParams,
   updateUserPreferenceParams 
-} from "@/lib/db/schema/userPreferences";
+} from "@soco/user-db/schema/userPreferences";
 
 export async function POST(req: Request) {
   try {

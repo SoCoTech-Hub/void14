@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import PaymentGatewayForm from "./PaymentGatewayForm";
-import { PaymentGateway } from "@/lib/db/schema/paymentGateways";
+import { PaymentGateway } from "@soco/payment-db/schema/paymentGateways";
 
 export default function PaymentGatewayModal({ 
   paymentGateway,

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import MnetService2rpcForm from "./MnetService2rpcForm";
-import { MnetService2rpc } from "@/lib/db/schema/mnetService2rpcs";
+import { MnetService2rpc } from "@soco/mnet-db/schema/mnetService2rpcs";
 
 export default function MnetService2rpcModal({ 
   mnetService2rpc,

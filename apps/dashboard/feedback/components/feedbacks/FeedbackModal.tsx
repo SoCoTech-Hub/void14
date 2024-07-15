@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import FeedbackForm from "./FeedbackForm";
-import { Feedback } from "@/lib/db/schema/feedbacks";
+import { Feedback } from "@soco/feedback-db/schema/feedbacks";
 
 export default function FeedbackModal({ 
   feedback,

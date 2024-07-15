@@ -1,5 +1,5 @@
 "use client";
-import { CompleteMyPage } from "@/lib/db/schema/myPages";
+import { CompleteMyPage } from "@soco/my-pages-db/schema/myPages";
 import { trpc } from "@/lib/trpc/client";
 import MyPageModal from "./MyPageModal";
 

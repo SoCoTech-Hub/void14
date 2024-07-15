@@ -6,12 +6,12 @@ import {
   createToolDataprivacyRequest,
   deleteToolDataprivacyRequest,
   updateToolDataprivacyRequest,
-} from "@/lib/api/toolDataprivacyRequests/mutations";
+} from "@soco/tool-data-privacy-api/toolDataprivacyRequests/mutations";
 import { 
   toolDataprivacyRequestIdSchema,
   insertToolDataprivacyRequestParams,
   updateToolDataprivacyRequestParams 
-} from "@/lib/db/schema/toolDataprivacyRequests";
+} from "@soco/tool-data-privacy-db/schema/toolDataprivacyRequests";
 
 export async function POST(req: Request) {
   try {

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteMessageContact } from "@/lib/db/schema/messageContacts";
+import { CompleteMessageContact } from "@soco/message-db/schema/messageContacts";
 import { trpc } from "@/lib/trpc/client";
 import MessageContactModal from "./MessageContactModal";
 

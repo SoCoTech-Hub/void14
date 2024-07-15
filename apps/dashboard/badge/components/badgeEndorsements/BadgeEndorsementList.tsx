@@ -1,5 +1,5 @@
 'use client'
-import { CompleteBadgeEndorsement } from '@/lib/db/schema/badgeEndorsements'
+import { CompleteBadgeEndorsement } from '@soco/badge-db/schema/badgeEndorsements'
 import { trpc } from '@/lib/trpc/client'
 import BadgeEndorsementModal from './BadgeEndorsementModal'
 

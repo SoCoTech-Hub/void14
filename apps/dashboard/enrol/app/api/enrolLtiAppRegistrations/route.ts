@@ -6,12 +6,12 @@ import {
   createEnrolLtiAppRegistration,
   deleteEnrolLtiAppRegistration,
   updateEnrolLtiAppRegistration,
-} from "@/lib/api/enrolLtiAppRegistrations/mutations";
+} from "@soco/enrol-api/enrolLtiAppRegistrations/mutations";
 import { 
   enrolLtiAppRegistrationIdSchema,
   insertEnrolLtiAppRegistrationParams,
   updateEnrolLtiAppRegistrationParams 
-} from "@/lib/db/schema/enrolLtiAppRegistrations";
+} from "@soco/enrol-db/schema/enrolLtiAppRegistrations";
 
 export async function POST(req: Request) {
   try {

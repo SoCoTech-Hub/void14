@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import TagInstanceForm from "./TagInstanceForm";
-import { TagInstance } from "@/lib/db/schema/tagInstances";
+import { TagInstance } from "@soco/tag-db/schema/tagInstances";
 
 export default function TagInstanceModal({ 
   tagInstance,

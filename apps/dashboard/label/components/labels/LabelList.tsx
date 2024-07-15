@@ -1,5 +1,5 @@
 "use client";
-import { CompleteLabel } from "@/lib/db/schema/labels";
+import { CompleteLabel } from "@soco/label-db/schema/labels";
 import { trpc } from "@/lib/trpc/client";
 import LabelModal from "./LabelModal";
 

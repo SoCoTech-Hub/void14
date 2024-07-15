@@ -1,6 +1,6 @@
 "use client";
 
-import { Oauth2RefreshToken, NewOauth2RefreshTokenParams, insertOauth2RefreshTokenParams } from "@/lib/db/schema/oauth2RefreshTokens";
+import { Oauth2RefreshToken, NewOauth2RefreshTokenParams, insertOauth2RefreshTokenParams } from "@soco/oauth2-db/schema/oauth2RefreshTokens";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

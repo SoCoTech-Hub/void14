@@ -6,12 +6,12 @@ import {
   createQtypeDdmarkerDrag,
   deleteQtypeDdmarkerDrag,
   updateQtypeDdmarkerDrag,
-} from "@/lib/api/qtypeDdmarkerDrags/mutations";
+} from "@soco/qtype-api/qtypeDdmarkerDrags/mutations";
 import { 
   qtypeDdmarkerDragIdSchema,
   insertQtypeDdmarkerDragParams,
   updateQtypeDdmarkerDragParams 
-} from "@/lib/db/schema/qtypeDdmarkerDrags";
+} from "@soco/qtype-db/schema/qtypeDdmarkerDrags";
 
 export async function POST(req: Request) {
   try {

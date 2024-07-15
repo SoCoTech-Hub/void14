@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import TagCorrelationForm from "./TagCorrelationForm";
-import { TagCorrelation } from "@/lib/db/schema/tagCorrelations";
+import { TagCorrelation } from "@soco/tag-db/schema/tagCorrelations";
 
 export default function TagCorrelationModal({ 
   tagCorrelation,

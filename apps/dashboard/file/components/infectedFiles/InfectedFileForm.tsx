@@ -1,6 +1,6 @@
 "use client";
 
-import { InfectedFile, NewInfectedFileParams, insertInfectedFileParams } from "@/lib/db/schema/infectedFiles";
+import { InfectedFile, NewInfectedFileParams, insertInfectedFileParams } from "@soco/file-db/schema/infectedFiles";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

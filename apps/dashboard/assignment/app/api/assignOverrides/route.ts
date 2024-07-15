@@ -6,12 +6,12 @@ import {
   createAssignOverride,
   deleteAssignOverride,
   updateAssignOverride,
-} from "@/lib/api/assignOverrides/mutations";
+} from "@soco/assignment-api/assignOverrides/mutations";
 import { 
   assignOverrideIdSchema,
   insertAssignOverrideParams,
   updateAssignOverrideParams 
-} from "@/lib/db/schema/assignOverrides";
+} from "@soco/assignment-db/schema/assignOverrides";
 
 export async function POST(req: Request) {
   try {

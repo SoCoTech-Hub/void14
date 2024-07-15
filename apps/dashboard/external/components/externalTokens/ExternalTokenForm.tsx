@@ -22,7 +22,7 @@ import {
   ExternalToken,
   insertExternalTokenParams,
   NewExternalTokenParams,
-} from "@/lib/db/schema/externalTokens";
+} from "@soco/external-db/schema/externalTokens";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

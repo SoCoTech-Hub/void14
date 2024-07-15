@@ -1,6 +1,6 @@
 "use client";
 
-import { LogDisplay, NewLogDisplayParams, insertLogDisplayParams } from "@/lib/db/schema/logDisplays";
+import { LogDisplay, NewLogDisplayParams, insertLogDisplayParams } from "@soco/log-db/schema/logDisplays";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

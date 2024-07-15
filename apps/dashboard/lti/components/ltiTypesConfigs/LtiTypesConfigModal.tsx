@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import LtiTypesConfigForm from "./LtiTypesConfigForm";
-import { LtiTypesConfig } from "@/lib/db/schema/ltiTypesConfigs";
+import { LtiTypesConfig } from "@soco/lti-db/schema/ltiTypesConfigs";
 
 export default function LtiTypesConfigModal({ 
   ltiTypesConfig,

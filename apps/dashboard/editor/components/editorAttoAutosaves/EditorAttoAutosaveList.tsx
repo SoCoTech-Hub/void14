@@ -1,5 +1,5 @@
 "use client";
-import { CompleteEditorAttoAutosave } from "@/lib/db/schema/editorAttoAutosaves";
+import { CompleteEditorAttoAutosave } from "@soco/editor-db/schema/editorAttoAutosaves";
 import { trpc } from "@/lib/trpc/client";
 import EditorAttoAutosaveModal from "./EditorAttoAutosaveModal";
 

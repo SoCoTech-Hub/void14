@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import EnrolLtiLti2ShareKeyForm from "./EnrolLtiLti2ShareKeyForm";
-import { EnrolLtiLti2ShareKey } from "@/lib/db/schema/enrolLtiLti2ShareKeys";
+import { EnrolLtiLti2ShareKey } from "@soco/enrol-db/schema/enrolLtiLti2ShareKeys";
 
 export default function EnrolLtiLti2ShareKeyModal({ 
   enrolLtiLti2ShareKey,

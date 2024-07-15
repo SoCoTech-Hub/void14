@@ -1,7 +1,7 @@
 import SocialShareList from "@/components/socialShares/SocialShareList";
 import NewSocialShareModal from "@/components/socialShares/SocialShareModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function SocialShares() {
   await checkAuth();

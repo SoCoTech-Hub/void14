@@ -1,5 +1,5 @@
 "use client";
-import { CompleteGradingformGuideComment } from "@/lib/db/schema/gradingformGuideComments";
+import { CompleteGradingformGuideComment } from "@soco/grade-db/schema/gradingformGuideComments";
 import { trpc } from "@/lib/trpc/client";
 import GradingformGuideCommentModal from "./GradingformGuideCommentModal";
 

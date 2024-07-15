@@ -6,12 +6,12 @@ import {
   createShow,
   deleteShow,
   updateShow,
-} from "@/lib/api/shows/mutations";
+} from "@soco/show-api/shows/mutations";
 import { 
   showIdSchema,
   insertShowParams,
   updateShowParams 
-} from "@/lib/db/schema/shows";
+} from "@soco/show-db/schema/shows";
 
 export async function POST(req: Request) {
   try {

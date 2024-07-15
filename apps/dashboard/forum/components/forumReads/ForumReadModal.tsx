@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ForumReadForm from "./ForumReadForm";
-import { ForumRead } from "@/lib/db/schema/forumReads";
+import { ForumRead } from "@soco/forum-db/schema/forumReads";
 
 export default function ForumReadModal({ 
   forumRead,

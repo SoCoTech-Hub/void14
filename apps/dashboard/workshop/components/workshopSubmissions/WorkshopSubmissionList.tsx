@@ -1,5 +1,5 @@
 "use client";
-import { CompleteWorkshopSubmission } from "@/lib/db/schema/workshopSubmissions";
+import { CompleteWorkshopSubmission } from "@soco/workshop-db/schema/workshopSubmissions";
 import { trpc } from "@/lib/trpc/client";
 import WorkshopSubmissionModal from "./WorkshopSubmissionModal";
 

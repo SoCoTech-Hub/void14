@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import BlockInstanceForm from "./BlockInstanceForm";
-import { BlockInstance } from "@/lib/db/schema/blockInstances";
+import { BlockInstance } from "@soco/block-db/schema/blockInstances";
 
 export default function BlockInstanceModal({ 
   blockInstance,

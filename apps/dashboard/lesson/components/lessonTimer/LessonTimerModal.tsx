@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import LessonTimerForm from "./LessonTimerForm";
-import { LessonTimer } from "@/lib/db/schema/lessonTimer";
+import { LessonTimer } from "@soco/lesson-db/schema/lessonTimer";
 
 export default function LessonTimerModal({ 
   lessonTimer,

@@ -6,12 +6,12 @@ import {
   createAssignmentUpgrade,
   deleteAssignmentUpgrade,
   updateAssignmentUpgrade,
-} from "@/lib/api/assignmentUpgrades/mutations";
+} from "@soco/assignment-api/assignmentUpgrades/mutations";
 import { 
   assignmentUpgradeIdSchema,
   insertAssignmentUpgradeParams,
   updateAssignmentUpgradeParams 
-} from "@/lib/db/schema/assignmentUpgrades";
+} from "@soco/assignment-db/schema/assignmentUpgrades";
 
 export async function POST(req: Request) {
   try {

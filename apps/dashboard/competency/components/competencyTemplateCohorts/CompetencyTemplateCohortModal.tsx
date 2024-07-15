@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import CompetencyTemplateCohortForm from "./CompetencyTemplateCohortForm";
-import { CompetencyTemplateCohort } from "@/lib/db/schema/competencyTemplateCohorts";
+import { CompetencyTemplateCohort } from "@soco/competency-db/schema/competencyTemplateCohorts";
 
 export default function CompetencyTemplateCohortModal({ 
   competencyTemplateCohort,

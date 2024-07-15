@@ -1,6 +1,6 @@
 "use client";
 
-import { H5pContentsLibrary, NewH5pContentsLibraryParams, insertH5pContentsLibraryParams } from "@/lib/db/schema/h5pContentsLibraries";
+import { H5pContentsLibrary, NewH5pContentsLibraryParams, insertH5pContentsLibraryParams } from "@soco/h5p-db/schema/h5pContentsLibraries";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

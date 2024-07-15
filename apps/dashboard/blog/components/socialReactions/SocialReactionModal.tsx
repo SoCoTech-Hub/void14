@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import SocialReactionForm from "./SocialReactionForm";
-import { SocialReaction } from "@/lib/db/schema/socialReactions";
+import { SocialReaction } from "@soco/blog-db/schema/socialReactions";
 
 export default function SocialReactionModal({ 
   socialReaction,

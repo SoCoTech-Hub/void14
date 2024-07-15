@@ -6,12 +6,12 @@ import {
   createBackupLog,
   deleteBackupLog,
   updateBackupLog,
-} from "@/lib/api/backupLogs/mutations";
+} from "@soco/backup-api/backupLogs/mutations";
 import { 
   backupLogIdSchema,
   insertBackupLogParams,
   updateBackupLogParams 
-} from "@/lib/db/schema/backupLogs";
+} from "@soco/backup-db/schema/backupLogs";
 
 export async function POST(req: Request) {
   try {

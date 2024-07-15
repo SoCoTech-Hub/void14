@@ -4,7 +4,7 @@ import {
 	CompetencyTemplateCohort,
 	NewCompetencyTemplateCohortParams,
 	insertCompetencyTemplateCohortParams
-} from '@/lib/db/schema/competencyTemplateCohorts'
+} from '@soco/competency-db/schema/competencyTemplateCohorts'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

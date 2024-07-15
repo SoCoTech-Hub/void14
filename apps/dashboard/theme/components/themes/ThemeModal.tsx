@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ThemeForm from "./ThemeForm";
-import { Theme } from "@/lib/db/schema/themes";
+import { Theme } from "@soco/theme-db/schema/themes";
 
 export default function ThemeModal({ 
   theme,

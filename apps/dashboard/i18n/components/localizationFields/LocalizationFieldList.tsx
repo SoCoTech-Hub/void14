@@ -1,5 +1,5 @@
 "use client";
-import { CompleteLocalizationField } from "@/lib/db/schema/localizationFields";
+import { CompleteLocalizationField } from "@soco/i18n-db/schema/localizationFields";
 import { trpc } from "@/lib/trpc/client";
 import LocalizationFieldModal from "./LocalizationFieldModal";
 

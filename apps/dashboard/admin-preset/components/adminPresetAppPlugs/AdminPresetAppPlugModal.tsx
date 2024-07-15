@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import AdminPresetAppPlugForm from "./AdminPresetAppPlugForm";
-import { AdminPresetAppPlug } from "@/lib/db/schema/adminPresetAppPlugs";
+import { AdminPresetAppPlug } from "@soco/admin-preset-db/schema/adminPresetAppPlugs";
 
 export default function AdminPresetAppPlugModal({ 
   adminPresetAppPlug,

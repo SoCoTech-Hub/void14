@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import BadgeAlignmentForm from "./BadgeAlignmentForm";
-import { BadgeAlignment } from "@/lib/db/schema/badgeAlignments";
+import { BadgeAlignment } from "@soco/badge-db/schema/badgeAlignments";
 
 export default function BadgeAlignmentModal({ 
   badgeAlignment,

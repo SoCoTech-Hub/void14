@@ -4,7 +4,7 @@ import {
 	AssignSubmissionFile,
 	NewAssignSubmissionFileParams,
 	insertAssignSubmissionFileParams
-} from '@/lib/db/schema/assignSubmissionFiles'
+} from '@soco/assignment-db/schema/assignSubmissionFiles'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

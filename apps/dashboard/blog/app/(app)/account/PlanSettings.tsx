@@ -6,7 +6,7 @@ import {
 } from "./AccountCard";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { AuthSession } from "@/lib/auth/utils";
+import { AuthSession } from "@soco/auth-service";
 
 interface PlanSettingsProps {
   stripeSubscriptionId: string | null;

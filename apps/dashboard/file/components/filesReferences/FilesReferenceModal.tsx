@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import FilesReferenceForm from "./FilesReferenceForm";
-import { FilesReference } from "@/lib/db/schema/filesReferences";
+import { FilesReference } from "@soco/file-db/schema/filesReferences";
 
 export default function FilesReferenceModal({ 
   filesReference,

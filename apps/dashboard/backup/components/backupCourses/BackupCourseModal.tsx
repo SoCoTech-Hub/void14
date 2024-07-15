@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import BackupCourseForm from "./BackupCourseForm";
-import { BackupCourse } from "@/lib/db/schema/backupCourses";
+import { BackupCourse } from "@soco/backup-db/schema/backupCourses";
 
 export default function BackupCourseModal({ 
   backupCourse,

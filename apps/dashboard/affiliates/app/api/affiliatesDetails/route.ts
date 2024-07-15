@@ -6,12 +6,12 @@ import {
   createAffiliatesDetail,
   deleteAffiliatesDetail,
   updateAffiliatesDetail,
-} from "@/lib/api/affiliatesDetails/mutations";
+} from "@soco/affiliates-api/affiliatesDetails/mutations";
 import { 
   affiliatesDetailIdSchema,
   insertAffiliatesDetailParams,
   updateAffiliatesDetailParams 
-} from "@/lib/db/schema/affiliatesDetails";
+} from "@soco/affiliates-db/schema/affiliatesDetails";
 
 export async function POST(req: Request) {
   try {

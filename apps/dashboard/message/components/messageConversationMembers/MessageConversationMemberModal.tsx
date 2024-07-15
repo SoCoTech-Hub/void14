@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import MessageConversationMemberForm from "./MessageConversationMemberForm";
-import { MessageConversationMember } from "@/lib/db/schema/messageConversationMembers";
+import { MessageConversationMember } from "@soco/message-db/schema/messageConversationMembers";
 
 export default function MessageConversationMemberModal({ 
   messageConversationMember,

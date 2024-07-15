@@ -1,5 +1,5 @@
 "use client";
-import { CompleteConfigLog } from "@/lib/db/schema/configLogs";
+import { CompleteConfigLog } from "@soco/config-db/schema/configLogs";
 import { trpc } from "@/lib/trpc/client";
 import ConfigLogModal from "./ConfigLogModal";
 

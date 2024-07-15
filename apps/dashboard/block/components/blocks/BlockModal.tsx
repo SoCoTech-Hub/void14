@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import BlockForm from "./BlockForm";
-import { Block } from "@/lib/db/schema/blocks";
+import { Block } from "@soco/block-db/schema/blocks";
 
 export default function BlockModal({ 
   block,

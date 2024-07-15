@@ -6,12 +6,12 @@ import {
   createCustomFieldData,
   deleteCustomFieldData,
   updateCustomFieldData,
-} from "@/lib/api/customFieldDatas/mutations";
+} from "@soco/custom-field-api/customFieldDatas/mutations";
 import { 
   customFieldDataIdSchema,
   insertCustomFieldDataParams,
   updateCustomFieldDataParams 
-} from "@/lib/db/schema/customFieldDatas";
+} from "@soco/custom-field-db/schema/customFieldDatas";
 
 export async function POST(req: Request) {
   try {

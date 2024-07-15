@@ -4,7 +4,7 @@ import {
 	ToolUserToursStep,
 	NewToolUserToursStepParams,
 	insertToolUserToursStepParams
-} from '@/lib/db/schema/toolUserToursSteps'
+} from '@soco/tool-user-tours-db/schema/toolUserToursSteps'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

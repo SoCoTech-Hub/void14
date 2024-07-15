@@ -6,12 +6,12 @@ import {
   createEnrolLtiLti2ToolProxy,
   deleteEnrolLtiLti2ToolProxy,
   updateEnrolLtiLti2ToolProxy,
-} from "@/lib/api/enrolLtiLti2ToolProxys/mutations";
+} from "@soco/enrol-api/enrolLtiLti2ToolProxys/mutations";
 import { 
   enrolLtiLti2ToolProxyIdSchema,
   insertEnrolLtiLti2ToolProxyParams,
   updateEnrolLtiLti2ToolProxyParams 
-} from "@/lib/db/schema/enrolLtiLti2ToolProxys";
+} from "@soco/enrol-db/schema/enrolLtiLti2ToolProxys";
 
 export async function POST(req: Request) {
   try {

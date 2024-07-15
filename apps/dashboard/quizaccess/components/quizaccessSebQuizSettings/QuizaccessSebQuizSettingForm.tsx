@@ -1,6 +1,6 @@
 "use client";
 
-import { QuizaccessSebQuizSetting, NewQuizaccessSebQuizSettingParams, insertQuizaccessSebQuizSettingParams } from "@/lib/db/schema/quizaccessSebQuizSettings";
+import { QuizaccessSebQuizSetting, NewQuizaccessSebQuizSettingParams, insertQuizaccessSebQuizSettingParams } from "@soco/quizaccess-db/schema/quizaccessSebQuizSettings";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { ExternalService, NewExternalServiceParams, insertExternalServiceParams } from "@/lib/db/schema/externalServices";
+import { ExternalService, NewExternalServiceParams, insertExternalServiceParams } from "@soco/external-db/schema/externalServices";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

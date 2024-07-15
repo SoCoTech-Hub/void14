@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQuestionCalculated } from "@/lib/db/schema/questionCalculateds";
+import { CompleteQuestionCalculated } from "@soco/question-db/schema/questionCalculateds";
 import { trpc } from "@/lib/trpc/client";
 import QuestionCalculatedModal from "./QuestionCalculatedModal";
 

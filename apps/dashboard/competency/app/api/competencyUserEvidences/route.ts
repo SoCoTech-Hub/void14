@@ -6,12 +6,12 @@ import {
   createCompetencyUserEvidence,
   deleteCompetencyUserEvidence,
   updateCompetencyUserEvidence,
-} from "@/lib/api/competencyUserEvidences/mutations";
+} from "@soco/competency-api/competencyUserEvidences/mutations";
 import { 
   competencyUserEvidenceIdSchema,
   insertCompetencyUserEvidenceParams,
   updateCompetencyUserEvidenceParams 
-} from "@/lib/db/schema/competencyUserEvidences";
+} from "@soco/competency-db/schema/competencyUserEvidences";
 
 export async function POST(req: Request) {
   try {

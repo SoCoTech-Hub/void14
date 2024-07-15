@@ -1,5 +1,5 @@
 "use client";
-import { CompleteContext } from "@/lib/db/schema/contexts";
+import { CompleteContext } from "@soco/context-db/schema/contexts";
 import { trpc } from "@/lib/trpc/client";
 import ContextModal from "./ContextModal";
 

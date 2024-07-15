@@ -6,12 +6,12 @@ import {
   createWikiPage,
   deleteWikiPage,
   updateWikiPage,
-} from "@/lib/api/wikiPages/mutations";
+} from "@soco/wiki-api/wikiPages/mutations";
 import { 
   wikiPageIdSchema,
   insertWikiPageParams,
   updateWikiPageParams 
-} from "@/lib/db/schema/wikiPages";
+} from "@soco/wiki-db/schema/wikiPages";
 
 export async function POST(req: Request) {
   try {

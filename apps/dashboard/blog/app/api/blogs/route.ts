@@ -6,12 +6,12 @@ import {
   createBlog,
   deleteBlog,
   updateBlog,
-} from "@/lib/api/blogs/mutations";
+} from "@soco/blog-api/blogs/mutations";
 import { 
   blogIdSchema,
   insertBlogParams,
   updateBlogParams 
-} from "@/lib/db/schema/blogs";
+} from "@soco/blog-db/schema/blogs";
 
 export async function POST(req: Request) {
   try {

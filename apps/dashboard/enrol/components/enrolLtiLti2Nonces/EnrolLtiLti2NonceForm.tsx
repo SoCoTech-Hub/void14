@@ -21,7 +21,7 @@ import {
   EnrolLtiLti2Nonce,
   insertEnrolLtiLti2NonceParams,
   NewEnrolLtiLti2NonceParams,
-} from "@/lib/db/schema/enrolLtiLti2Nonces";
+} from "@soco/enrol-db/schema/enrolLtiLti2Nonces";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

@@ -1,5 +1,5 @@
 'use client'
-import { CompleteBadgeCriteria } from '@/lib/db/schema/badgeCriterias'
+import { CompleteBadgeCriteria } from '@soco/badge-db/schema/badgeCriterias'
 import { trpc } from '@/lib/trpc/client'
 import BadgeCriteriaModal from './BadgeCriteriaModal'
 

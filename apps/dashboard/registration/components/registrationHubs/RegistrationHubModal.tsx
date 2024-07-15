@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import RegistrationHubForm from "./RegistrationHubForm";
-import { RegistrationHub } from "@/lib/db/schema/registrationHubs";
+import { RegistrationHub } from "@soco/registration-db/schema/registrationHubs";
 
 export default function RegistrationHubModal({ 
   registrationHub,

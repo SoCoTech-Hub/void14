@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import RepositoryForm from "./RepositoryForm";
-import { Repository } from "@/lib/db/schema/repositories";
+import { Repository } from "@soco/repository-db/schema/repositories";
 
 export default function RepositoryModal({ 
   repository,

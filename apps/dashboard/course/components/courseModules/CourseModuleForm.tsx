@@ -29,7 +29,7 @@ import {
   CourseModule,
   insertCourseModuleParams,
   NewCourseModuleParams,
-} from "@/lib/db/schema/courseModules";
+} from "@soco/course-db/schema/courseModules";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

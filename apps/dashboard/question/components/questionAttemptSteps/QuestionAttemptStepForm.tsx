@@ -4,7 +4,7 @@ import {
 	QuestionAttemptStep,
 	NewQuestionAttemptStepParams,
 	insertQuestionAttemptStepParams
-} from '@/lib/db/schema/questionAttemptSteps'
+} from '@soco/question-db/schema/questionAttemptSteps'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

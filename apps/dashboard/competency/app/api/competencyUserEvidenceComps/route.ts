@@ -6,12 +6,12 @@ import {
   createCompetencyUserEvidenceComp,
   deleteCompetencyUserEvidenceComp,
   updateCompetencyUserEvidenceComp,
-} from "@/lib/api/competencyUserEvidenceComps/mutations";
+} from "@soco/competency-api/competencyUserEvidenceComps/mutations";
 import { 
   competencyUserEvidenceCompIdSchema,
   insertCompetencyUserEvidenceCompParams,
   updateCompetencyUserEvidenceCompParams 
-} from "@/lib/db/schema/competencyUserEvidenceComps";
+} from "@soco/competency-db/schema/competencyUserEvidenceComps";
 
 export async function POST(req: Request) {
   try {

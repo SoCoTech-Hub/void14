@@ -4,7 +4,7 @@ import {
 	AffiliatesStatus,
 	NewAffiliatesStatusParams,
 	insertAffiliatesStatusParams
-} from '@/lib/db/schema/affiliatesStatuses'
+} from '@soco/affiliates-db/schema/affiliatesStatuses'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

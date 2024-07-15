@@ -1,5 +1,5 @@
 "use client";
-import { CompleteGender } from "@/lib/db/schema/genders";
+import { CompleteGender } from "@soco/profile-db/schema/genders";
 import { trpc } from "@/lib/trpc/client";
 import GenderModal from "./GenderModal";
 

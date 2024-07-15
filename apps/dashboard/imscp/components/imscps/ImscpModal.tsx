@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ImscpForm from "./ImscpForm";
-import { Imscp } from "@/lib/db/schema/imscps";
+import { Imscp } from "@soco/imscp-db/schema/imscps";
 
 export default function ImscpModal({ 
   imscp,

@@ -6,12 +6,12 @@ import {
   createMessageProvider,
   deleteMessageProvider,
   updateMessageProvider,
-} from "@/lib/api/messageProviders/mutations";
+} from "@soco/message-api/messageProviders/mutations";
 import { 
   messageProviderIdSchema,
   insertMessageProviderParams,
   updateMessageProviderParams 
-} from "@/lib/db/schema/messageProviders";
+} from "@soco/message-db/schema/messageProviders";
 
 export async function POST(req: Request) {
   try {

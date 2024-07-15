@@ -6,12 +6,12 @@ import {
   createCourseCategory,
   deleteCourseCategory,
   updateCourseCategory,
-} from "@/lib/api/courseCategories/mutations";
+} from "@soco/course-api/courseCategories/mutations";
 import { 
   courseCategoryIdSchema,
   insertCourseCategoryParams,
   updateCourseCategoryParams 
-} from "@/lib/db/schema/courseCategories";
+} from "@soco/course-db/schema/courseCategories";
 
 export async function POST(req: Request) {
   try {

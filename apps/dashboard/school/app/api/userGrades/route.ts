@@ -6,12 +6,12 @@ import {
   createUserGrade,
   deleteUserGrade,
   updateUserGrade,
-} from "@/lib/api/userGrades/mutations";
+} from "@soco/school-api/userGrades/mutations";
 import { 
   userGradeIdSchema,
   insertUserGradeParams,
   updateUserGradeParams 
-} from "@/lib/db/schema/userGrades";
+} from "@soco/school-db/schema/userGrades";
 
 export async function POST(req: Request) {
   try {

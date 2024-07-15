@@ -10,7 +10,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { storeSubscriptionPlans } from "@/config/subscriptions";
-import { checkAuth, getUserAuth } from "@/lib/auth/utils";
+import { checkAuth, getUserAuth } from "@soco/auth-service";
 import { getUserSubscriptionPlan } from "@/lib/stripe/subscription";
 import { CheckCircle2Icon } from "lucide-react";
 import Link from "next/link";

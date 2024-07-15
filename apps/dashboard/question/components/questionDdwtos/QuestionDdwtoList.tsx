@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQuestionDdwto } from "@/lib/db/schema/questionDdwtos";
+import { CompleteQuestionDdwto } from "@soco/question-db/schema/questionDdwtos";
 import { trpc } from "@/lib/trpc/client";
 import QuestionDdwtoModal from "./QuestionDdwtoModal";
 

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QuestionDatasetDefinitionForm from "./QuestionDatasetDefinitionForm";
-import { QuestionDatasetDefinition } from "@/lib/db/schema/questionDatasetDefinitions";
+import { QuestionDatasetDefinition } from "@soco/question-db/schema/questionDatasetDefinitions";
 
 export default function QuestionDatasetDefinitionModal({ 
   questionDatasetDefinition,

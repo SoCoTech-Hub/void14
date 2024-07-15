@@ -6,12 +6,12 @@ import {
   createMnetApplication,
   deleteMnetApplication,
   updateMnetApplication,
-} from "@/lib/api/mnetApplications/mutations";
+} from "@soco/mnet-api/mnetApplications/mutations";
 import { 
   mnetApplicationIdSchema,
   insertMnetApplicationParams,
   updateMnetApplicationParams 
-} from "@/lib/db/schema/mnetApplications";
+} from "@soco/mnet-db/schema/mnetApplications";
 
 export async function POST(req: Request) {
   try {

@@ -6,12 +6,12 @@ import {
   createScorm,
   deleteScorm,
   updateScorm,
-} from "@/lib/api/scorms/mutations";
+} from "@soco/scorm-api/scorms/mutations";
 import { 
   scormIdSchema,
   insertScormParams,
   updateScormParams 
-} from "@/lib/db/schema/scorms";
+} from "@soco/scorm-db/schema/scorms";
 
 export async function POST(req: Request) {
   try {

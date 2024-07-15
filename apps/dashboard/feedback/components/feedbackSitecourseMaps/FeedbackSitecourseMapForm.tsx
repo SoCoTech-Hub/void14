@@ -1,6 +1,6 @@
 "use client";
 
-import { FeedbackSitecourseMap, NewFeedbackSitecourseMapParams, insertFeedbackSitecourseMapParams } from "@/lib/db/schema/feedbackSitecourseMaps";
+import { FeedbackSitecourseMap, NewFeedbackSitecourseMapParams, insertFeedbackSitecourseMapParams } from "@soco/feedback-db/schema/feedbackSitecourseMaps";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

@@ -6,12 +6,12 @@ import {
   createBlockRssClient,
   deleteBlockRssClient,
   updateBlockRssClient,
-} from "@/lib/api/blockRssClients/mutations";
+} from "@soco/block-api/blockRssClients/mutations";
 import { 
   blockRssClientIdSchema,
   insertBlockRssClientParams,
   updateBlockRssClientParams 
-} from "@/lib/db/schema/blockRssClients";
+} from "@soco/block-db/schema/blockRssClients";
 
 export async function POST(req: Request) {
   try {

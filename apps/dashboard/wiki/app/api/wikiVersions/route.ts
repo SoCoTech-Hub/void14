@@ -6,12 +6,12 @@ import {
   createWikiVersion,
   deleteWikiVersion,
   updateWikiVersion,
-} from "@/lib/api/wikiVersions/mutations";
+} from "@soco/wiki-api/wikiVersions/mutations";
 import { 
   wikiVersionIdSchema,
   insertWikiVersionParams,
   updateWikiVersionParams 
-} from "@/lib/db/schema/wikiVersions";
+} from "@soco/wiki-db/schema/wikiVersions";
 
 export async function POST(req: Request) {
   try {

@@ -4,7 +4,7 @@ import {
 	SocialShare,
 	NewSocialShareParams,
 	insertSocialShareParams
-} from '@/lib/db/schema/socialShares'
+} from '@soco/social-db/schema/socialShares'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

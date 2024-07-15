@@ -22,7 +22,7 @@ import {
   insertReportbuilderScheduleParams,
   NewReportbuilderScheduleParams,
   ReportbuilderSchedule,
-} from "@/lib/db/schema/reportbuilderSchedules";
+} from "@soco/report-builder-db/schema/reportbuilderSchedules";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

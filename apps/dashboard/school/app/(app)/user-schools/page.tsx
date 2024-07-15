@@ -1,7 +1,7 @@
 import UserSchoolList from "@/components/userSchools/UserSchoolList";
 import NewUserSchoolModal from "@/components/userSchools/UserSchoolModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function UserSchools() {
   await checkAuth();

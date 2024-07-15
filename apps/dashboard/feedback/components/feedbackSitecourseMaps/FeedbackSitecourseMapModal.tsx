@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import FeedbackSitecourseMapForm from "./FeedbackSitecourseMapForm";
-import { FeedbackSitecourseMap } from "@/lib/db/schema/feedbackSitecourseMaps";
+import { FeedbackSitecourseMap } from "@soco/feedback-db/schema/feedbackSitecourseMaps";
 
 export default function FeedbackSitecourseMapModal({ 
   feedbackSitecourseMap,

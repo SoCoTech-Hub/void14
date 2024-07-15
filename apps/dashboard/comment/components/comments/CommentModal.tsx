@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import CommentForm from "./CommentForm";
-import { Comment } from "@/lib/db/schema/comments";
+import { Comment } from "@soco/comment-db/schema/comments";
 
 export default function CommentModal({ 
   comment,

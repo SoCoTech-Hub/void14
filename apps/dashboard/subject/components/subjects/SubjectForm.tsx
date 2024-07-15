@@ -4,7 +4,7 @@ import {
 	Subject,
 	NewSubjectParams,
 	insertSubjectParams
-} from '@/lib/db/schema/subjects'
+} from '@soco/subject-db/schema/subjects'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

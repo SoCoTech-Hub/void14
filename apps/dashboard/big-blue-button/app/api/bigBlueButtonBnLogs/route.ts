@@ -6,12 +6,12 @@ import {
   createBigBlueButtonBnLog,
   deleteBigBlueButtonBnLog,
   updateBigBlueButtonBnLog,
-} from "@/lib/api/bigBlueButtonBnLogs/mutations";
+} from "@soco/big-blue-button-api/bigBlueButtonBnLogs/mutations";
 import { 
   bigBlueButtonBnLogIdSchema,
   insertBigBlueButtonBnLogParams,
   updateBigBlueButtonBnLogParams 
-} from "@/lib/db/schema/bigBlueButtonBnLogs";
+} from "@soco/big-blue-button-db/schema/bigBlueButtonBnLogs";
 
 export async function POST(req: Request) {
   try {

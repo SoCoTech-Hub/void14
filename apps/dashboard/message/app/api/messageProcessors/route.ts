@@ -6,12 +6,12 @@ import {
   createMessageProcessor,
   deleteMessageProcessor,
   updateMessageProcessor,
-} from "@/lib/api/messageProcessors/mutations";
+} from "@soco/message-api/messageProcessors/mutations";
 import { 
   messageProcessorIdSchema,
   insertMessageProcessorParams,
   updateMessageProcessorParams 
-} from "@/lib/db/schema/messageProcessors";
+} from "@soco/message-db/schema/messageProcessors";
 
 export async function POST(req: Request) {
   try {

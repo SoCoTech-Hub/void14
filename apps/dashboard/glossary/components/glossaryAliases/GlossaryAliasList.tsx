@@ -1,5 +1,5 @@
 "use client";
-import { CompleteGlossaryAlias } from "@/lib/db/schema/glossaryAliases";
+import { CompleteGlossaryAlias } from "@soco/glossary-db/schema/glossaryAliases";
 import { trpc } from "@/lib/trpc/client";
 import GlossaryAliasModal from "./GlossaryAliasModal";
 

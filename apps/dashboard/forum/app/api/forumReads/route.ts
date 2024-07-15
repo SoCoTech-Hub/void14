@@ -6,12 +6,12 @@ import {
   createForumRead,
   deleteForumRead,
   updateForumRead,
-} from "@/lib/api/forumReads/mutations";
+} from "@soco/forum-api/forumReads/mutations";
 import { 
   forumReadIdSchema,
   insertForumReadParams,
   updateForumReadParams 
-} from "@/lib/db/schema/forumReads";
+} from "@soco/forum-db/schema/forumReads";
 
 export async function POST(req: Request) {
   try {

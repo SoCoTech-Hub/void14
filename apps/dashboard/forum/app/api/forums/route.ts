@@ -6,12 +6,12 @@ import {
   createForum,
   deleteForum,
   updateForum,
-} from "@/lib/api/forums/mutations";
+} from "@soco/forum-api/forums/mutations";
 import { 
   forumIdSchema,
   insertForumParams,
   updateForumParams 
-} from "@/lib/db/schema/forums";
+} from "@soco/forum-db/schema/forums";
 
 export async function POST(req: Request) {
   try {

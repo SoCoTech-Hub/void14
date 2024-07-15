@@ -6,12 +6,12 @@ import {
   createWikiLock,
   deleteWikiLock,
   updateWikiLock,
-} from "@/lib/api/wikiLocks/mutations";
+} from "@soco/wiki-api/wikiLocks/mutations";
 import { 
   wikiLockIdSchema,
   insertWikiLockParams,
   updateWikiLockParams 
-} from "@/lib/db/schema/wikiLocks";
+} from "@soco/wiki-db/schema/wikiLocks";
 
 export async function POST(req: Request) {
   try {

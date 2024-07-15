@@ -4,7 +4,7 @@ import {
 	SupportTicket,
 	NewSupportTicketParams,
 	insertSupportTicketParams
-} from '@/lib/db/schema/supportTickets'
+} from '@soco/support-db/schema/supportTickets'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

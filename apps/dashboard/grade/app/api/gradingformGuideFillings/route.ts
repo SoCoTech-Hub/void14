@@ -6,12 +6,12 @@ import {
   createGradingformGuideFilling,
   deleteGradingformGuideFilling,
   updateGradingformGuideFilling,
-} from "@/lib/api/gradingformGuideFillings/mutations";
+} from "@soco/grade-api/gradingformGuideFillings/mutations";
 import { 
   gradingformGuideFillingIdSchema,
   insertGradingformGuideFillingParams,
   updateGradingformGuideFillingParams 
-} from "@/lib/db/schema/gradingformGuideFillings";
+} from "@soco/grade-db/schema/gradingformGuideFillings";
 
 export async function POST(req: Request) {
   try {

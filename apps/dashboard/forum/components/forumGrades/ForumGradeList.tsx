@@ -1,5 +1,5 @@
 "use client";
-import { CompleteForumGrade } from "@/lib/db/schema/forumGrades";
+import { CompleteForumGrade } from "@soco/forum-db/schema/forumGrades";
 import { trpc } from "@/lib/trpc/client";
 import ForumGradeModal from "./ForumGradeModal";
 

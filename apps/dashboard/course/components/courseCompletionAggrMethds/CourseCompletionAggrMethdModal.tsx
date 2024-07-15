@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import CourseCompletionAggrMethdForm from "./CourseCompletionAggrMethdForm";
-import { CourseCompletionAggrMethd } from "@/lib/db/schema/courseCompletionAggrMethds";
+import { CourseCompletionAggrMethd } from "@soco/course-db/schema/courseCompletionAggrMethds";
 
 export default function CourseCompletionAggrMethdModal({ 
   courseCompletionAggrMethd,

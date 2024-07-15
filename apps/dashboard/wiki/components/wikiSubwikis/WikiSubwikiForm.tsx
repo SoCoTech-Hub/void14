@@ -4,7 +4,7 @@ import {
 	WikiSubwiki,
 	NewWikiSubwikiParams,
 	insertWikiSubwikiParams
-} from '@/lib/db/schema/wikiSubwikis'
+} from '@soco/wiki-db/schema/wikiSubwikis'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

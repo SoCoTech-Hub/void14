@@ -6,12 +6,12 @@ import {
   createQualificationsResponse,
   deleteQualificationsResponse,
   updateQualificationsResponse,
-} from "@/lib/api/qualificationsResponses/mutations";
+} from "@soco/qualifications-api/qualificationsResponses/mutations";
 import { 
   qualificationsResponseIdSchema,
   insertQualificationsResponseParams,
   updateQualificationsResponseParams 
-} from "@/lib/db/schema/qualificationsResponses";
+} from "@soco/qualifications-db/schema/qualificationsResponses";
 
 export async function POST(req: Request) {
   try {

@@ -4,7 +4,7 @@ import {
 	BlockPosition,
 	NewBlockPositionParams,
 	insertBlockPositionParams
-} from '@/lib/db/schema/blockPositions'
+} from '@soco/block-db/schema/blockPositions'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

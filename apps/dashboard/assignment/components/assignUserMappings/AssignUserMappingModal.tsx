@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import AssignUserMappingForm from "./AssignUserMappingForm";
-import { AssignUserMapping } from "@/lib/db/schema/assignUserMappings";
+import { AssignUserMapping } from "@soco/assignment-db/schema/assignUserMappings";
 
 export default function AssignUserMappingModal({ 
   assignUserMapping,

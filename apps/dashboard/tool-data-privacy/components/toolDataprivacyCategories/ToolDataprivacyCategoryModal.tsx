@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ToolDataprivacyCategoryForm from "./ToolDataprivacyCategoryForm";
-import { ToolDataprivacyCategory } from "@/lib/db/schema/toolDataprivacyCategories";
+import { ToolDataprivacyCategory } from "@soco/tool-data-privacy-db/schema/toolDataprivacyCategories";
 
 export default function ToolDataprivacyCategoryModal({ 
   toolDataprivacyCategory,

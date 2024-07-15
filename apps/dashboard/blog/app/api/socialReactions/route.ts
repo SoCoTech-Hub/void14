@@ -6,12 +6,12 @@ import {
   createSocialReaction,
   deleteSocialReaction,
   updateSocialReaction,
-} from "@/lib/api/socialReactions/mutations";
+} from "@soco/blog-api/socialReactions/mutations";
 import { 
   socialReactionIdSchema,
   insertSocialReactionParams,
   updateSocialReactionParams 
-} from "@/lib/db/schema/socialReactions";
+} from "@soco/blog-db/schema/socialReactions";
 
 export async function POST(req: Request) {
   try {

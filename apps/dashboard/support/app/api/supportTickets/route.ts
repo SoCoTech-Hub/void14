@@ -6,12 +6,12 @@ import {
   createSupportTicket,
   deleteSupportTicket,
   updateSupportTicket,
-} from "@/lib/api/supportTickets/mutations";
+} from "@soco/support-api/supportTickets/mutations";
 import { 
   supportTicketIdSchema,
   insertSupportTicketParams,
   updateSupportTicketParams 
-} from "@/lib/db/schema/supportTickets";
+} from "@soco/support-db/schema/supportTickets";
 
 export async function POST(req: Request) {
   try {

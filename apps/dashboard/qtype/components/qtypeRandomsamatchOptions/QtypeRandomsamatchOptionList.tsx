@@ -1,5 +1,5 @@
 "use client";
-import { CompleteQtypeRandomsamatchOption } from "@/lib/db/schema/qtypeRandomsamatchOptions";
+import { CompleteQtypeRandomsamatchOption } from "@soco/qtype-db/schema/qtypeRandomsamatchOptions";
 import { trpc } from "@/lib/trpc/client";
 import QtypeRandomsamatchOptionModal from "./QtypeRandomsamatchOptionModal";
 

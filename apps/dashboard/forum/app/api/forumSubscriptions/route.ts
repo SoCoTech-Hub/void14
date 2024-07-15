@@ -6,12 +6,12 @@ import {
   createForumSubscription,
   deleteForumSubscription,
   updateForumSubscription,
-} from "@/lib/api/forumSubscriptions/mutations";
+} from "@soco/forum-api/forumSubscriptions/mutations";
 import { 
   forumSubscriptionIdSchema,
   insertForumSubscriptionParams,
   updateForumSubscriptionParams 
-} from "@/lib/db/schema/forumSubscriptions";
+} from "@soco/forum-db/schema/forumSubscriptions";
 
 export async function POST(req: Request) {
   try {

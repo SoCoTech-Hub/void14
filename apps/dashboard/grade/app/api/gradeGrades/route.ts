@@ -6,12 +6,12 @@ import {
   createGradeGrade,
   deleteGradeGrade,
   updateGradeGrade,
-} from "@/lib/api/gradeGrades/mutations";
+} from "@soco/grade-api/gradeGrades/mutations";
 import { 
   gradeGradeIdSchema,
   insertGradeGradeParams,
   updateGradeGradeParams 
-} from "@/lib/db/schema/gradeGrades";
+} from "@soco/grade-db/schema/gradeGrades";
 
 export async function POST(req: Request) {
   try {

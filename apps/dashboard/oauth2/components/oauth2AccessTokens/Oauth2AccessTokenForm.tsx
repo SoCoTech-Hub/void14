@@ -4,7 +4,7 @@ import {
 	Oauth2AccessToken,
 	NewOauth2AccessTokenParams,
 	insertOauth2AccessTokenParams
-} from '@/lib/db/schema/oauth2AccessTokens'
+} from '@soco/oauth2-db/schema/oauth2AccessTokens'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

@@ -1,5 +1,5 @@
 "use client";
-import { CompleteWikiSubwiki } from "@/lib/db/schema/wikiSubwikis";
+import { CompleteWikiSubwiki } from "@soco/wiki-db/schema/wikiSubwikis";
 import { trpc } from "@/lib/trpc/client";
 import WikiSubwikiModal from "./WikiSubwikiModal";
 

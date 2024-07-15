@@ -1,6 +1,6 @@
 "use client";
 
-import { MessageContact, NewMessageContactParams, insertMessageContactParams } from "@/lib/db/schema/messageContacts";
+import { MessageContact, NewMessageContactParams, insertMessageContactParams } from "@soco/message-db/schema/messageContacts";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

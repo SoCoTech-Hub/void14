@@ -28,7 +28,7 @@ import {
   CourseCompletionCritCompl,
   insertCourseCompletionCritComplParams,
   NewCourseCompletionCritComplParams,
-} from "@/lib/db/schema/courseCompletionCritCompls";
+} from "@soco/course-db/schema/courseCompletionCritCompls";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

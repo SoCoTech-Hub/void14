@@ -1,5 +1,5 @@
 "use client";
-import { CompleteAssignFeedbackFile } from "@/lib/db/schema/assignFeedbackFiles";
+import { CompleteAssignFeedbackFile } from "@soco/assignment-db/schema/assignFeedbackFiles";
 import { trpc } from "@/lib/trpc/client";
 import AssignFeedbackFileModal from "./AssignFeedbackFileModal";
 

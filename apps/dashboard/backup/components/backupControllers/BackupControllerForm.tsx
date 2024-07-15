@@ -4,7 +4,7 @@ import {
 	BackupController,
 	NewBackupControllerParams,
 	insertBackupControllerParams
-} from '@/lib/db/schema/backupControllers'
+} from '@soco/backup-db/schema/backupControllers'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import AssignFeedbackEditpdfQuickForm from "./AssignFeedbackEditpdfQuickForm";
-import { AssignFeedbackEditpdfQuick } from "@/lib/db/schema/assignFeedbackEditpdfQuicks";
+import { AssignFeedbackEditpdfQuick } from "@soco/assignment-db/schema/assignFeedbackEditpdfQuicks";
 
 export default function AssignFeedbackEditpdfQuickModal({ 
   assignFeedbackEditpdfQuick,

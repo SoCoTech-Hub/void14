@@ -1,6 +1,6 @@
 "use client";
 
-import { EnrolLtiToolConsumerMap, NewEnrolLtiToolConsumerMapParams, insertEnrolLtiToolConsumerMapParams } from "@/lib/db/schema/enrolLtiToolConsumerMaps";
+import { EnrolLtiToolConsumerMap, NewEnrolLtiToolConsumerMapParams, insertEnrolLtiToolConsumerMapParams } from "@soco/enrol-db/schema/enrolLtiToolConsumerMaps";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

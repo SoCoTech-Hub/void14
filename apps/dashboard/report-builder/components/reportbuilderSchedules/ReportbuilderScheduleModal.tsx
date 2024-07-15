@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ReportbuilderScheduleForm from "./ReportbuilderScheduleForm";
-import { ReportbuilderSchedule } from "@/lib/db/schema/reportbuilderSchedules";
+import { ReportbuilderSchedule } from "@soco/report-builder-db/schema/reportbuilderSchedules";
 
 export default function ReportbuilderScheduleModal({ 
   reportbuilderSchedule,

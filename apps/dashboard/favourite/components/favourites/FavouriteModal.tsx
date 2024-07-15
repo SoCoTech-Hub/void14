@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import FavouriteForm from "./FavouriteForm";
-import { Favourite } from "@/lib/db/schema/favourites";
+import { Favourite } from "@soco/favourite-db/schema/favourites";
 
 export default function FavouriteModal({ 
   favourite,

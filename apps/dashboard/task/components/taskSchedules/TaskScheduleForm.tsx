@@ -22,7 +22,7 @@ import {
   insertTaskScheduleParams,
   NewTaskScheduleParams,
   TaskSchedule,
-} from "@/lib/db/schema/taskSchedules";
+} from "@soco/task-db/schema/taskSchedules";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

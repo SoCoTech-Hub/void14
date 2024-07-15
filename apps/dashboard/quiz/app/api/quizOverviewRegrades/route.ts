@@ -6,12 +6,12 @@ import {
   createQuizOverviewRegrade,
   deleteQuizOverviewRegrade,
   updateQuizOverviewRegrade,
-} from "@/lib/api/quizOverviewRegrades/mutations";
+} from "@soco/quiz-api/quizOverviewRegrades/mutations";
 import { 
   quizOverviewRegradeIdSchema,
   insertQuizOverviewRegradeParams,
   updateQuizOverviewRegradeParams 
-} from "@/lib/db/schema/quizOverviewRegrades";
+} from "@soco/quiz-db/schema/quizOverviewRegrades";
 
 export async function POST(req: Request) {
   try {

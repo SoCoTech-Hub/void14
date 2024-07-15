@@ -1,6 +1,6 @@
 "use client";
 
-import { FilterActive, NewFilterActiveParams, insertFilterActiveParams } from "@/lib/db/schema/filterActives";
+import { FilterActive, NewFilterActiveParams, insertFilterActiveParams } from "@soco/filter-db/schema/filterActives";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

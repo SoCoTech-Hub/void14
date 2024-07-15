@@ -1,5 +1,5 @@
 "use client";
-import { CompleteDigilibCategory } from "@/lib/db/schema/digilibCategories";
+import { CompleteDigilibCategory } from "@soco/digilib-db/schema/digilibCategories";
 import { trpc } from "@/lib/trpc/client";
 import DigilibCategoryModal from "./DigilibCategoryModal";
 

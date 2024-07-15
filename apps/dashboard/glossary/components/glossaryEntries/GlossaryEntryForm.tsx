@@ -1,6 +1,6 @@
 "use client";
 
-import { GlossaryEntry, NewGlossaryEntryParams, insertGlossaryEntryParams } from "@/lib/db/schema/glossaryEntries";
+import { GlossaryEntry, NewGlossaryEntryParams, insertGlossaryEntryParams } from "@soco/glossary-db/schema/glossaryEntries";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

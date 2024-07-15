@@ -1,5 +1,5 @@
 "use client";
-import { CompleteMnetServiceEnrolEnrolment } from "@/lib/db/schema/mnetServiceEnrolEnrolments";
+import { CompleteMnetServiceEnrolEnrolment } from "@soco/mnet-db/schema/mnetServiceEnrolEnrolments";
 import { trpc } from "@/lib/trpc/client";
 import MnetServiceEnrolEnrolmentModal from "./MnetServiceEnrolEnrolmentModal";
 

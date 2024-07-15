@@ -6,12 +6,12 @@ import {
 	createAnalyticsModelLog,
 	deleteAnalyticsModelLog,
 	updateAnalyticsModelLog
-} from '@/lib/api/analyticsModelLogs/mutations'
+} from '@soco/analytics-api/analyticsModelLogs/mutations'
 import {
 	analyticsModelLogIdSchema,
 	insertAnalyticsModelLogParams,
 	updateAnalyticsModelLogParams
-} from '@/lib/db/schema/analyticsModelLogs'
+} from '@soco/analytics-db/schema/analyticsModelLogs'
 
 export async function POST(req: Request) {
 	try {

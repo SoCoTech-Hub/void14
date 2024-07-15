@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import MnetSsoAccessControlForm from "./MnetSsoAccessControlForm";
-import { MnetSsoAccessControl } from "@/lib/db/schema/mnetSsoAccessControls";
+import { MnetSsoAccessControl } from "@soco/mnet-db/schema/mnetSsoAccessControls";
 
 export default function MnetSsoAccessControlModal({ 
   mnetSsoAccessControl,

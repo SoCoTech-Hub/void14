@@ -1,5 +1,5 @@
 "use client";
-import { CompletePost } from "@/lib/db/schema/posts";
+import { CompletePost } from "@soco/post-db/schema/posts";
 import { trpc } from "@/lib/trpc/client";
 import PostModal from "./PostModal";
 

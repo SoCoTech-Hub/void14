@@ -4,7 +4,7 @@ import {
 	ChatMessagesCurrent,
 	NewChatMessagesCurrentParams,
 	insertChatMessagesCurrentParams
-} from '@/lib/db/schema/chatMessagesCurrents'
+} from '@soco/chat-db/schema/chatMessagesCurrents'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

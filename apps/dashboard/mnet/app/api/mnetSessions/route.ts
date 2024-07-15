@@ -6,12 +6,12 @@ import {
   createMnetSession,
   deleteMnetSession,
   updateMnetSession,
-} from "@/lib/api/mnetSessions/mutations";
+} from "@soco/mnet-api/mnetSessions/mutations";
 import { 
   mnetSessionIdSchema,
   insertMnetSessionParams,
   updateMnetSessionParams 
-} from "@/lib/db/schema/mnetSessions";
+} from "@soco/mnet-db/schema/mnetSessions";
 
 export async function POST(req: Request) {
   try {

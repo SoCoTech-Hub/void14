@@ -1,6 +1,6 @@
 "use client";
 
-import { Oauth2UserFieldMapping, NewOauth2UserFieldMappingParams, insertOauth2UserFieldMappingParams } from "@/lib/db/schema/oauth2UserFieldMappings";
+import { Oauth2UserFieldMapping, NewOauth2UserFieldMappingParams, insertOauth2UserFieldMappingParams } from "@soco/oauth2-db/schema/oauth2UserFieldMappings";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

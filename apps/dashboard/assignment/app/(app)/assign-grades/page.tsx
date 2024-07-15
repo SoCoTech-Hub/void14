@@ -1,7 +1,7 @@
 import AssignGradeList from "@/components/assignGrades/AssignGradeList";
 import NewAssignGradeModal from "@/components/assignGrades/AssignGradeModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function AssignGrades() {
   await checkAuth();

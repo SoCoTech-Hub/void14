@@ -4,7 +4,7 @@ import {
 	BlogAssociation,
 	NewBlogAssociationParams,
 	insertBlogAssociationParams
-} from '@/lib/db/schema/blogAssociations'
+} from '@soco/blog-db/schema/blogAssociations'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

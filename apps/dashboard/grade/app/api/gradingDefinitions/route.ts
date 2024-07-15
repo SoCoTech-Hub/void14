@@ -6,12 +6,12 @@ import {
   createGradingDefinition,
   deleteGradingDefinition,
   updateGradingDefinition,
-} from "@/lib/api/gradingDefinitions/mutations";
+} from "@soco/grade-api/gradingDefinitions/mutations";
 import { 
   gradingDefinitionIdSchema,
   insertGradingDefinitionParams,
   updateGradingDefinitionParams 
-} from "@/lib/db/schema/gradingDefinitions";
+} from "@soco/grade-db/schema/gradingDefinitions";
 
 export async function POST(req: Request) {
   try {

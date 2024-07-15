@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ZoomMeetingForm from "./ZoomMeetingForm";
-import { ZoomMeeting } from "@/lib/db/schema/zoomMeetings";
+import { ZoomMeeting } from "@soco/zoom-db/schema/zoomMeetings";
 
 export default function ZoomMeetingModal({ 
   zoomMeeting,

@@ -6,12 +6,12 @@ import {
   createCompetencyPlan,
   deleteCompetencyPlan,
   updateCompetencyPlan,
-} from "@/lib/api/competencyPlans/mutations";
+} from "@soco/competency-api/competencyPlans/mutations";
 import { 
   competencyPlanIdSchema,
   insertCompetencyPlanParams,
   updateCompetencyPlanParams 
-} from "@/lib/db/schema/competencyPlans";
+} from "@soco/competency-db/schema/competencyPlans";
 
 export async function POST(req: Request) {
   try {

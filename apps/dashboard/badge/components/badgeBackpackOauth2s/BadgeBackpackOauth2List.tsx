@@ -1,5 +1,5 @@
 "use client";
-import { CompleteBadgeBackpackOauth2 } from "@/lib/db/schema/badgeBackpackOauth2s";
+import { CompleteBadgeBackpackOauth2 } from "@soco/badge-db/schema/badgeBackpackOauth2s";
 import { trpc } from "@/lib/trpc/client";
 import BadgeBackpackOauth2Modal from "./BadgeBackpackOauth2Modal";
 

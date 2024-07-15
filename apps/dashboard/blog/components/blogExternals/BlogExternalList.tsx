@@ -1,5 +1,5 @@
 "use client";
-import { CompleteBlogExternal } from "@/lib/db/schema/blogExternals";
+import { CompleteBlogExternal } from "@soco/blog-db/schema/blogExternals";
 import { trpc } from "@/lib/trpc/client";
 import BlogExternalModal from "./BlogExternalModal";
 

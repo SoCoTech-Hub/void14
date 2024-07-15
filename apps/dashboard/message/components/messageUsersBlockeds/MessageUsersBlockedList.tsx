@@ -1,5 +1,5 @@
 "use client";
-import { CompleteMessageUsersBlocked } from "@/lib/db/schema/messageUsersBlockeds";
+import { CompleteMessageUsersBlocked } from "@soco/message-db/schema/messageUsersBlockeds";
 import { trpc } from "@/lib/trpc/client";
 import MessageUsersBlockedModal from "./MessageUsersBlockedModal";
 

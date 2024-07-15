@@ -22,7 +22,7 @@ import {
   Choice,
   insertChoiceParams,
   NewChoiceParams,
-} from "@/lib/db/schema/choices";
+} from "@soco/choice-db/schema/choices";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

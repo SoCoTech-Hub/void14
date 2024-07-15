@@ -6,12 +6,12 @@ import {
   createLtiToolProxy,
   deleteLtiToolProxy,
   updateLtiToolProxy,
-} from "@/lib/api/ltiToolProxies/mutations";
+} from "@soco/lti-api/ltiToolProxies/mutations";
 import { 
   ltiToolProxyIdSchema,
   insertLtiToolProxyParams,
   updateLtiToolProxyParams 
-} from "@/lib/db/schema/ltiToolProxies";
+} from "@soco/lti-db/schema/ltiToolProxies";
 
 export async function POST(req: Request) {
   try {

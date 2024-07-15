@@ -6,12 +6,12 @@ import {
   createToolPolicy,
   deleteToolPolicy,
   updateToolPolicy,
-} from "@/lib/api/toolPolicies/mutations";
+} from "@soco/tool-policy-api/toolPolicies/mutations";
 import { 
   toolPolicyIdSchema,
   insertToolPolicyParams,
   updateToolPolicyParams 
-} from "@/lib/db/schema/toolPolicies";
+} from "@soco/tool-policy-db/schema/toolPolicies";
 
 export async function POST(req: Request) {
   try {

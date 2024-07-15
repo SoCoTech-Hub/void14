@@ -22,7 +22,7 @@ import {
   Glossary,
   insertGlossaryParams,
   NewGlossaryParams,
-} from "@/lib/db/schema/glossaries";
+} from "@soco/glossary-db/schema/glossaries";
 import { trpc } from "@/lib/trpc/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";

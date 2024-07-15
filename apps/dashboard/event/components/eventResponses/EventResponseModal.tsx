@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import EventResponseForm from "./EventResponseForm";
-import { EventResponse } from "@/lib/db/schema/eventResponses";
+import { EventResponse } from "@soco/event-db/schema/eventResponses";
 
 export default function EventResponseModal({ 
   eventResponse,

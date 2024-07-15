@@ -1,5 +1,5 @@
 "use client";
-import { CompleteLtiAccessToken } from "@/lib/db/schema/ltiAccessTokens";
+import { CompleteLtiAccessToken } from "@soco/lti-db/schema/ltiAccessTokens";
 import { trpc } from "@/lib/trpc/client";
 import LtiAccessTokenModal from "./LtiAccessTokenModal";
 

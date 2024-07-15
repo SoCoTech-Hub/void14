@@ -6,12 +6,12 @@ import {
   createSchool,
   deleteSchool,
   updateSchool,
-} from "@/lib/api/schools/mutations";
+} from "@soco/school-api/schools/mutations";
 import { 
   schoolIdSchema,
   insertSchoolParams,
   updateSchoolParams 
-} from "@/lib/db/schema/schools";
+} from "@soco/school-db/schema/schools";
 
 export async function POST(req: Request) {
   try {

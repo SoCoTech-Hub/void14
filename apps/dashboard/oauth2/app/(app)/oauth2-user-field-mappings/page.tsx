@@ -1,7 +1,7 @@
 import Oauth2UserFieldMappingList from "@/components/oauth2UserFieldMappings/Oauth2UserFieldMappingList";
 import NewOauth2UserFieldMappingModal from "@/components/oauth2UserFieldMappings/Oauth2UserFieldMappingModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function Oauth2UserFieldMappings() {
   await checkAuth();

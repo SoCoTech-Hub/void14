@@ -6,12 +6,12 @@ import {
   createPaymentAccount,
   deletePaymentAccount,
   updatePaymentAccount,
-} from "@/lib/api/paymentAccounts/mutations";
+} from "@soco/payment-api/paymentAccounts/mutations";
 import { 
   paymentAccountIdSchema,
   insertPaymentAccountParams,
   updatePaymentAccountParams 
-} from "@/lib/db/schema/paymentAccounts";
+} from "@soco/payment-db/schema/paymentAccounts";
 
 export async function POST(req: Request) {
   try {

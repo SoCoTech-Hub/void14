@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import Oauth2UserFieldMappingForm from "./Oauth2UserFieldMappingForm";
-import { Oauth2UserFieldMapping } from "@/lib/db/schema/oauth2UserFieldMappings";
+import { Oauth2UserFieldMapping } from "@soco/oauth2-db/schema/oauth2UserFieldMappings";
 
 export default function Oauth2UserFieldMappingModal({ 
   oauth2UserFieldMapping,

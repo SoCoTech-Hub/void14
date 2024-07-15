@@ -1,6 +1,6 @@
 "use client";
 
-import { ReportbuilderFilter, NewReportbuilderFilterParams, insertReportbuilderFilterParams } from "@/lib/db/schema/reportbuilderFilters";
+import { ReportbuilderFilter, NewReportbuilderFilterParams, insertReportbuilderFilterParams } from "@soco/report-builder-db/schema/reportbuilderFilters";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

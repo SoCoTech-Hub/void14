@@ -1,5 +1,5 @@
 'use client'
-import { CompleteMassMailRecipient } from '@/lib/db/schema/massMailRecipients'
+import { CompleteMassMailRecipient } from '@soco/mass-mail-db/schema/massMailRecipients'
 import { trpc } from '@/lib/trpc/client'
 import MassMailRecipientModal from './MassMailRecipientModal'
 

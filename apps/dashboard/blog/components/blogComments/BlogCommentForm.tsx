@@ -4,7 +4,7 @@ import {
 	type BlogComment,
 	type NewBlogCommentParams,
 	insertBlogCommentParams
-} from '@/lib/db/schema/blogComments'
+} from '@soco/blog-db/schema/blogComments'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

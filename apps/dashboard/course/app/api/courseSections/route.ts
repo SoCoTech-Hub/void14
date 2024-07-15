@@ -6,12 +6,12 @@ import {
   createCourseSection,
   deleteCourseSection,
   updateCourseSection,
-} from "@/lib/api/courseSections/mutations";
+} from "@soco/course-api/courseSections/mutations";
 import { 
   courseSectionIdSchema,
   insertCourseSectionParams,
   updateCourseSectionParams 
-} from "@/lib/db/schema/courseSections";
+} from "@soco/course-db/schema/courseSections";
 
 export async function POST(req: Request) {
   try {

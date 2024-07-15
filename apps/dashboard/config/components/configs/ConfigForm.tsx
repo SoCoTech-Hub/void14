@@ -4,7 +4,7 @@ import {
 	Config,
 	NewConfigParams,
 	insertConfigParams
-} from '@/lib/db/schema/configs'
+} from '@soco/config-db/schema/configs'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

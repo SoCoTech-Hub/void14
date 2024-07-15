@@ -6,12 +6,12 @@ import {
   createSession,
   deleteSession,
   updateSession,
-} from "@/lib/api/sessions/mutations";
+} from "@soco/sessions-api/sessions/mutations";
 import { 
   sessionIdSchema,
   insertSessionParams,
   updateSessionParams 
-} from "@/lib/db/schema/sessions";
+} from "@soco/sessions-db/schema/sessions";
 
 export async function POST(req: Request) {
   try {

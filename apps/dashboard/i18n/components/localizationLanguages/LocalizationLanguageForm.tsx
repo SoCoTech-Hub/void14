@@ -4,7 +4,7 @@ import {
 	LocalizationLanguage,
 	NewLocalizationLanguageParams,
 	insertLocalizationLanguageParams
-} from '@/lib/db/schema/localizationLanguages'
+} from '@soco/i18n-db/schema/localizationLanguages'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

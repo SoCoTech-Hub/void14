@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ZoomLessonForm from "./ZoomLessonForm";
-import { ZoomLesson } from "@/lib/db/schema/zoomLessons";
+import { ZoomLesson } from "@soco/zoom-db/schema/zoomLessons";
 
 export default function ZoomLessonModal({ 
   zoomLesson,

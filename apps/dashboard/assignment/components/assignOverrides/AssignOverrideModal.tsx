@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import AssignOverrideForm from "./AssignOverrideForm";
-import { AssignOverride } from "@/lib/db/schema/assignOverrides";
+import { AssignOverride } from "@soco/assignment-db/schema/assignOverrides";
 
 export default function AssignOverrideModal({ 
   assignOverride,

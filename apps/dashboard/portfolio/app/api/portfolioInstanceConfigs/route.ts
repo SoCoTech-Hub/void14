@@ -6,12 +6,12 @@ import {
   createPortfolioInstanceConfig,
   deletePortfolioInstanceConfig,
   updatePortfolioInstanceConfig,
-} from "@/lib/api/portfolioInstanceConfigs/mutations";
+} from "@soco/portfolio-api/portfolioInstanceConfigs/mutations";
 import { 
   portfolioInstanceConfigIdSchema,
   insertPortfolioInstanceConfigParams,
   updatePortfolioInstanceConfigParams 
-} from "@/lib/db/schema/portfolioInstanceConfigs";
+} from "@soco/portfolio-db/schema/portfolioInstanceConfigs";
 
 export async function POST(req: Request) {
   try {

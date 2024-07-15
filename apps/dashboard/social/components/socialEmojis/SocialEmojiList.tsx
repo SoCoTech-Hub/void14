@@ -1,5 +1,5 @@
 "use client";
-import { CompleteSocialEmoji } from "@/lib/db/schema/socialEmojis";
+import { CompleteSocialEmoji } from "@soco/social-db/schema/socialEmojis";
 import { trpc } from "@/lib/trpc/client";
 import SocialEmojiModal from "./SocialEmojiModal";
 

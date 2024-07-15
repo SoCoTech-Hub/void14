@@ -1,5 +1,5 @@
 "use client";
-import { CompleteUserDevice } from "@/lib/db/schema/userDevices";
+import { CompleteUserDevice } from "@soco/user-db/schema/userDevices";
 import { trpc } from "@/lib/trpc/client";
 import UserDeviceModal from "./UserDeviceModal";
 

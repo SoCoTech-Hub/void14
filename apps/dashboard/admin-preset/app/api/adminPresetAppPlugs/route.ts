@@ -6,12 +6,12 @@ import {
   createAdminPresetAppPlug,
   deleteAdminPresetAppPlug,
   updateAdminPresetAppPlug,
-} from "@/lib/api/adminPresetAppPlugs/mutations";
+} from "@soco/admin-preset-api/adminPresetAppPlugs/mutations";
 import { 
   adminPresetAppPlugIdSchema,
   insertAdminPresetAppPlugParams,
   updateAdminPresetAppPlugParams 
-} from "@/lib/db/schema/adminPresetAppPlugs";
+} from "@soco/admin-preset-db/schema/adminPresetAppPlugs";
 
 export async function POST(req: Request) {
   try {

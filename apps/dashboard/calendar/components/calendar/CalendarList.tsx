@@ -1,5 +1,5 @@
 "use client";
-import { CompleteCalendar } from "@/lib/db/schema/calendar";
+import { CompleteCalendar } from "@soco/calendar-db/schema/calendar";
 import { trpc } from "@/lib/trpc/client";
 import CalendarModal from "./CalendarModal";
 

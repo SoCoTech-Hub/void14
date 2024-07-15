@@ -1,5 +1,5 @@
 "use client";
-import { CompleteScormSeqRuleCondition } from "@/lib/db/schema/scormSeqRuleConditions";
+import { CompleteScormSeqRuleCondition } from "@soco/scorm-db/schema/scormSeqRuleConditions";
 import { trpc } from "@/lib/trpc/client";
 import ScormSeqRuleConditionModal from "./ScormSeqRuleConditionModal";
 

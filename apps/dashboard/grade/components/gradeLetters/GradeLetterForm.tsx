@@ -1,6 +1,6 @@
 "use client";
 
-import { GradeLetter, NewGradeLetterParams, insertGradeLetterParams } from "@/lib/db/schema/gradeLetters";
+import { GradeLetter, NewGradeLetterParams, insertGradeLetterParams } from "@soco/grade-db/schema/gradeLetters";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { QtypeShortanswerOption, NewQtypeShortanswerOptionParams, insertQtypeShortanswerOptionParams } from "@/lib/db/schema/qtypeShortanswerOptions";
+import { QtypeShortanswerOption, NewQtypeShortanswerOptionParams, insertQtypeShortanswerOptionParams } from "@soco/qtype-db/schema/qtypeShortanswerOptions";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

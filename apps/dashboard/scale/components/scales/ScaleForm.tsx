@@ -1,6 +1,6 @@
 "use client";
 
-import { Scale, NewScaleParams, insertScaleParams } from "@/lib/db/schema/scales";
+import { Scale, NewScaleParams, insertScaleParams } from "@soco/scale-db/schema/scales";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

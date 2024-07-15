@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QuizSectionForm from "./QuizSectionForm";
-import { QuizSection } from "@/lib/db/schema/quizSections";
+import { QuizSection } from "@soco/quiz-db/schema/quizSections";
 
 export default function QuizSectionModal({ 
   quizSection,

@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import ToolMonitorRuleForm from "./ToolMonitorRuleForm";
-import { ToolMonitorRule } from "@/lib/db/schema/toolMonitorRules";
+import { ToolMonitorRule } from "@soco/tool-monitor-db/schema/toolMonitorRules";
 
 export default function ToolMonitorRuleModal({ 
   toolMonitorRule,

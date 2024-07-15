@@ -1,7 +1,7 @@
 import Oauth2AccessTokenList from "@/components/oauth2AccessTokens/Oauth2AccessTokenList";
 import NewOauth2AccessTokenModal from "@/components/oauth2AccessTokens/Oauth2AccessTokenModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function Oauth2AccessTokens() {
   await checkAuth();

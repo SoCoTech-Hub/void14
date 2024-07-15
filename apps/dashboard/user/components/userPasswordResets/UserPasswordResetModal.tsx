@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import UserPasswordResetForm from "./UserPasswordResetForm";
-import { UserPasswordReset } from "@/lib/db/schema/userPasswordResets";
+import { UserPasswordReset } from "@soco/user-db/schema/userPasswordResets";
 
 export default function UserPasswordResetModal({ 
   userPasswordReset,

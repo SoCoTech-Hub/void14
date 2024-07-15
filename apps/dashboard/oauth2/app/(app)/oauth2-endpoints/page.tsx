@@ -1,7 +1,7 @@
 import Oauth2EndpointList from "@/components/oauth2Endpoints/Oauth2EndpointList";
 import NewOauth2EndpointModal from "@/components/oauth2Endpoints/Oauth2EndpointModal";
 import { api } from "@/lib/trpc/api";
-import { checkAuth } from "@/lib/auth/utils";
+import { checkAuth } from "@soco/auth-service";
 
 export default async function Oauth2Endpoints() {
   await checkAuth();

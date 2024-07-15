@@ -6,12 +6,12 @@ import {
   createStatsUserWeekly,
   deleteStatsUserWeekly,
   updateStatsUserWeekly,
-} from "@/lib/api/statsUserWeeklies/mutations";
+} from "@soco/stats-api/statsUserWeeklies/mutations";
 import { 
   statsUserWeeklyIdSchema,
   insertStatsUserWeeklyParams,
   updateStatsUserWeeklyParams 
-} from "@/lib/db/schema/statsUserWeeklies";
+} from "@soco/stats-db/schema/statsUserWeeklies";
 
 export async function POST(req: Request) {
   try {

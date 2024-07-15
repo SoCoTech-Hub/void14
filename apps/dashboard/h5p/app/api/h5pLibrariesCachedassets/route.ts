@@ -6,12 +6,12 @@ import {
   createH5pLibrariesCachedasset,
   deleteH5pLibrariesCachedasset,
   updateH5pLibrariesCachedasset,
-} from "@/lib/api/h5pLibrariesCachedassets/mutations";
+} from "@soco/h5p-api/h5pLibrariesCachedassets/mutations";
 import { 
   h5pLibrariesCachedassetIdSchema,
   insertH5pLibrariesCachedassetParams,
   updateH5pLibrariesCachedassetParams 
-} from "@/lib/db/schema/h5pLibrariesCachedassets";
+} from "@soco/h5p-db/schema/h5pLibrariesCachedassets";
 
 export async function POST(req: Request) {
   try {

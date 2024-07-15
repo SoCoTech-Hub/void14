@@ -1,6 +1,6 @@
 "use client";
 
-import { EnrolLtiLti2ToolProxy, NewEnrolLtiLti2ToolProxyParams, insertEnrolLtiLti2ToolProxyParams } from "@/lib/db/schema/enrolLtiLti2ToolProxys";
+import { EnrolLtiLti2ToolProxy, NewEnrolLtiLti2ToolProxyParams, insertEnrolLtiLti2ToolProxyParams } from "@soco/enrol-db/schema/enrolLtiLti2ToolProxys";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

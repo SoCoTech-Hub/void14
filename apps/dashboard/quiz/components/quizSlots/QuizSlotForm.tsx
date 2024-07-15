@@ -4,7 +4,7 @@ import {
 	QuizSlot,
 	NewQuizSlotParams,
 	insertQuizSlotParams
-} from '@/lib/db/schema/quizSlots'
+} from '@soco/quiz-db/schema/quizSlots'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 

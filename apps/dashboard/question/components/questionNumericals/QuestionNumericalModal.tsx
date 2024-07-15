@@ -10,7 +10,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 import QuestionNumericalForm from "./QuestionNumericalForm";
-import { QuestionNumerical } from "@/lib/db/schema/questionNumericals";
+import { QuestionNumerical } from "@soco/question-db/schema/questionNumericals";
 
 export default function QuestionNumericalModal({ 
   questionNumerical,

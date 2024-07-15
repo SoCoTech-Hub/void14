@@ -1,6 +1,6 @@
 "use client";
 
-import { EnrolFlatfile, NewEnrolFlatfileParams, insertEnrolFlatfileParams } from "@/lib/db/schema/enrolFlatfiles";
+import { EnrolFlatfile, NewEnrolFlatfileParams, insertEnrolFlatfileParams } from "@soco/enrol-db/schema/enrolFlatfiles";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 

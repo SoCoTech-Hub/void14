@@ -6,12 +6,12 @@ import {
   createGradingformRubricCriteria,
   deleteGradingformRubricCriteria,
   updateGradingformRubricCriteria,
-} from "@/lib/api/gradingformRubricCriterias/mutations";
+} from "@soco/grade-api/gradingformRubricCriterias/mutations";
 import { 
   gradingformRubricCriteriaIdSchema,
   insertGradingformRubricCriteriaParams,
   updateGradingformRubricCriteriaParams 
-} from "@/lib/db/schema/gradingformRubricCriterias";
+} from "@soco/grade-db/schema/gradingformRubricCriterias";
 
 export async function POST(req: Request) {
   try {

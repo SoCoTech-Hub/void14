@@ -6,12 +6,12 @@ import {
   createQuizOverride,
   deleteQuizOverride,
   updateQuizOverride,
-} from "@/lib/api/quizOverrides/mutations";
+} from "@soco/quiz-api/quizOverrides/mutations";
 import { 
   quizOverrideIdSchema,
   insertQuizOverrideParams,
   updateQuizOverrideParams 
-} from "@/lib/db/schema/quizOverrides";
+} from "@soco/quiz-db/schema/quizOverrides";
 
 export async function POST(req: Request) {
   try {

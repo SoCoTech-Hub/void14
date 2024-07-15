@@ -1,5 +1,5 @@
 "use client";
-import { CompleteGradingformRubricFilling } from "@/lib/db/schema/gradingformRubricFillings";
+import { CompleteGradingformRubricFilling } from "@soco/grade-db/schema/gradingformRubricFillings";
 import { trpc } from "@/lib/trpc/client";
 import GradingformRubricFillingModal from "./GradingformRubricFillingModal";
 

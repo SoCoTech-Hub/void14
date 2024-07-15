@@ -6,12 +6,12 @@ import {
   createCourseCompletionAggrMethd,
   deleteCourseCompletionAggrMethd,
   updateCourseCompletionAggrMethd,
-} from "@/lib/api/courseCompletionAggrMethds/mutations";
+} from "@soco/course-api/courseCompletionAggrMethds/mutations";
 import { 
   courseCompletionAggrMethdIdSchema,
   insertCourseCompletionAggrMethdParams,
   updateCourseCompletionAggrMethdParams 
-} from "@/lib/db/schema/courseCompletionAggrMethds";
+} from "@soco/course-db/schema/courseCompletionAggrMethds";
 
 export async function POST(req: Request) {
   try {
