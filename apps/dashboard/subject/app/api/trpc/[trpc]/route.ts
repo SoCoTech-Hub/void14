@@ -3,7 +3,7 @@ import { env } from "@/lib/env.mjs";
 import { createTRPCContext } from "@/lib/trpc/context";
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 
-import { appRouter } from "@soco/<folderName>-api";
+import { appRouter } from "@soco/subject-api";
 
 const createContext = async (req: NextRequest) => {
   return createTRPCContext({
