@@ -4222,9 +4222,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/admin-preset-api':
+        specifier: workspace:*
+        version: link:../../api/admin-preset-api
+      '@soco/admin-preset-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/admin-preset-db
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -4388,9 +4400,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/affiliates-api':
+        specifier: workspace:*
+        version: link:../../api/affiliates-api
+      '@soco/affiliates-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/affiliates-db
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -4554,9 +4578,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/analytics-api':
+        specifier: workspace:*
+        version: link:../../api/analytics-api
+      '@soco/analytics-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/analytics-db
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -4720,9 +4756,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/application-api':
+        specifier: workspace:*
+        version: link:../../api/application-api
+      '@soco/application-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/application-db
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -4886,9 +4934,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/assignment-api':
+        specifier: workspace:*
+        version: link:../../api/assignment-api
+      '@soco/assignment-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/assignment-db
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -5019,6 +5079,12 @@ importers:
       '@auth/core':
         specifier: 0.32.0
         version: 0.32.0
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
     devDependencies:
       '@soco/eslint-config':
         specifier: workspace:*
@@ -5086,9 +5152,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/backup-api':
+        specifier: workspace:*
+        version: link:../../api/backup-api
+      '@soco/backup-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/backup-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -5252,9 +5330,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/badge-api':
+        specifier: workspace:*
+        version: link:../../api/badge-api
+      '@soco/badge-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/badge-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -5418,9 +5508,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/big-blue-button-api':
+        specifier: workspace:*
+        version: link:../../api/big-blue-button-api
+      '@soco/big-blue-button-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/big-blue-button-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -5584,9 +5686,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/block-api':
+        specifier: workspace:*
+        version: link:../../api/block-api
+      '@soco/block-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/block-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -5750,9 +5864,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/blog-api':
+        specifier: workspace:*
+        version: link:../../api/blog-api
+      '@soco/blog-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/blog-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -5916,9 +6042,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/book-api':
+        specifier: workspace:*
+        version: link:../../api/book-api
+      '@soco/book-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/book-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -6082,9 +6220,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/bursaries-api':
+        specifier: workspace:*
+        version: link:../../api/bursaries-api
+      '@soco/bursaries-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/bursaries-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -6248,9 +6398,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/calendar-api':
+        specifier: workspace:*
+        version: link:../../api/calendar-api
+      '@soco/calendar-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/calendar-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -6414,9 +6576,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/chat-api':
+        specifier: workspace:*
+        version: link:../../api/chat-api
+      '@soco/chat-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/chat-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -6580,9 +6754,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/choice-api':
+        specifier: workspace:*
+        version: link:../../api/choice-api
+      '@soco/choice-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/choice-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -6746,9 +6932,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/cohort-api':
+        specifier: workspace:*
+        version: link:../../api/cohort-api
+      '@soco/cohort-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/cohort-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -6912,9 +7110,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/comment-api':
+        specifier: workspace:*
+        version: link:../../api/comment-api
+      '@soco/comment-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/comment-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -7078,9 +7288,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/competency-api':
+        specifier: workspace:*
+        version: link:../../api/competency-api
+      '@soco/competency-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/competency-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -7244,9 +7466,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/config-api':
+        specifier: workspace:*
+        version: link:../../api/config-api
+      '@soco/config-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/config-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -7410,9 +7644,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/content-api':
+        specifier: workspace:*
+        version: link:../../api/content-api
+      '@soco/content-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/content-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -7576,9 +7822,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/context-api':
+        specifier: workspace:*
+        version: link:../../api/context-api
+      '@soco/context-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/context-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -7742,9 +8000,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/course-api':
+        specifier: workspace:*
+        version: link:../../api/course-api
+      '@soco/course-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/course-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -7908,9 +8178,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/custom-field-api':
+        specifier: workspace:*
+        version: link:../../api/custom-field-api
+      '@soco/custom-field-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/custom-field-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -8074,9 +8356,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/data-api':
+        specifier: workspace:*
+        version: link:../../api/data-api
+      '@soco/data-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/data-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -8240,9 +8534,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/digilib-api':
+        specifier: workspace:*
+        version: link:../../api/digilib-api
+      '@soco/digilib-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/digilib-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -8406,9 +8712,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/editor-api':
+        specifier: workspace:*
+        version: link:../../api/editor-api
+      '@soco/editor-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/editor-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -8572,9 +8890,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/enrol-api':
+        specifier: workspace:*
+        version: link:../../api/enrol-api
+      '@soco/enrol-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/enrol-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -8738,9 +9068,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/event-api':
+        specifier: workspace:*
+        version: link:../../api/event-api
+      '@soco/event-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/event-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -8904,9 +9246,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/external-api':
+        specifier: workspace:*
+        version: link:../../api/external-api
+      '@soco/external-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/external-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -9070,9 +9424,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/faq-api':
+        specifier: workspace:*
+        version: link:../../api/faq-api
+      '@soco/faq-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/faq-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -9236,9 +9602,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/favourite-api':
+        specifier: workspace:*
+        version: link:../../api/favourite-api
+      '@soco/favourite-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/favourite-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -9402,9 +9780,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/feedback-api':
+        specifier: workspace:*
+        version: link:../../api/feedback-api
+      '@soco/feedback-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/feedback-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -9568,9 +9958,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/file-api':
+        specifier: workspace:*
+        version: link:../../api/file-api
+      '@soco/file-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/file-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -9734,9 +10136,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/filter-api':
+        specifier: workspace:*
+        version: link:../../api/filter-api
+      '@soco/filter-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/filter-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -9900,9 +10314,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/forum-api':
+        specifier: workspace:*
+        version: link:../../api/forum-api
+      '@soco/forum-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/forum-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -10066,9 +10492,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/geolocalize-api':
+        specifier: workspace:*
+        version: link:../../api/geolocalize-api
+      '@soco/geolocalize-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/geolocalize-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -10232,9 +10670,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/glossary-api':
+        specifier: workspace:*
+        version: link:../../api/glossary-api
+      '@soco/glossary-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/glossary-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -10398,9 +10848,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/grade-api':
+        specifier: workspace:*
+        version: link:../../api/grade-api
+      '@soco/grade-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/grade-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -10552,6 +11014,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/group-api':
+        specifier: workspace:*
+        version: link:../../api/group-api
+      '@soco/group-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/group-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -10700,6 +11174,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/h5p-api':
+        specifier: workspace:*
+        version: link:../../api/h5p-api
+      '@soco/h5p-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/h5p-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -10854,9 +11340,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/i18n-api':
+        specifier: workspace:*
+        version: link:../../api/i18n-api
+      '@soco/i18n-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/i18n-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -11005,6 +11503,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/imscp-api':
+        specifier: workspace:*
+        version: link:../../api/imscp-api
+      '@soco/imscp-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/imscp-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -11159,9 +11669,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/inmail-api':
+        specifier: workspace:*
+        version: link:../../api/inmail-api
+      '@soco/inmail-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/inmail-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -11310,6 +11832,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/label-api':
+        specifier: workspace:*
+        version: link:../../api/label-api
+      '@soco/label-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/label-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -11455,6 +11989,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/lesson-api':
+        specifier: workspace:*
+        version: link:../../api/lesson-api
+      '@soco/lesson-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/lesson-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -11603,6 +12149,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/license-api':
+        specifier: workspace:*
+        version: link:../../api/license-api
+      '@soco/license-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/license-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -11745,6 +12303,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/lock-api':
+        specifier: workspace:*
+        version: link:../../api/lock-api
+      '@soco/lock-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/lock-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -11896,6 +12466,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/log-api':
+        specifier: workspace:*
+        version: link:../../api/log-api
+      '@soco/log-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/log-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -12047,6 +12629,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/lti-api':
+        specifier: workspace:*
+        version: link:../../api/lti-api
+      '@soco/lti-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/lti-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -12207,9 +12801,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/mass-mail-api':
+        specifier: workspace:*
+        version: link:../../api/mass-mail-api
+      '@soco/mass-mail-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/mass-mail-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -12373,9 +12979,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/media-api':
+        specifier: workspace:*
+        version: link:../../api/media-api
+      '@soco/media-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/media-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -12530,6 +13148,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/message-api':
+        specifier: workspace:*
+        version: link:../../api/message-api
+      '@soco/message-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/message-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -12678,6 +13308,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/mnet-api':
+        specifier: workspace:*
+        version: link:../../api/mnet-api
+      '@soco/mnet-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/mnet-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -12823,6 +13465,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/module-api':
+        specifier: workspace:*
+        version: link:../../api/module-api
+      '@soco/module-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/module-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -12971,6 +13625,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/my-pages-api':
+        specifier: workspace:*
+        version: link:../../api/my-pages-api
+      '@soco/my-pages-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/my-pages-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -13125,9 +13791,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/note-api':
+        specifier: workspace:*
+        version: link:../../api/note-api
+      '@soco/note-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/note-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -13291,9 +13969,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/notification-api':
+        specifier: workspace:*
+        version: link:../../api/notification-api
+      '@soco/notification-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/notification-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -13445,6 +14135,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/oauth2-api':
+        specifier: workspace:*
+        version: link:../../api/oauth2-api
+      '@soco/oauth2-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/oauth2-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -13599,9 +14301,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/organization-api':
+        specifier: workspace:*
+        version: link:../../api/organization-api
+      '@soco/organization-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/organization-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -13750,6 +14464,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/page-api':
+        specifier: workspace:*
+        version: link:../../api/page-api
+      '@soco/page-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/page-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -13892,6 +14618,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/payment-api':
+        specifier: workspace:*
+        version: link:../../api/payment-api
+      '@soco/payment-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/payment-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -14034,6 +14772,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/portfolio-api':
+        specifier: workspace:*
+        version: link:../../api/portfolio-api
+      '@soco/portfolio-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/portfolio-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -14173,6 +14923,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/post-api':
+        specifier: workspace:*
+        version: link:../../api/post-api
+      '@soco/post-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/post-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -14327,9 +15089,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/profile-api':
+        specifier: workspace:*
+        version: link:../../api/profile-api
+      '@soco/profile-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/profile-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -14481,6 +15255,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/qtype-api':
+        specifier: workspace:*
+        version: link:../../api/qtype-api
+      '@soco/qtype-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/qtype-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -14635,9 +15421,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/qualifications-api':
+        specifier: workspace:*
+        version: link:../../api/qualifications-api
+      '@soco/qualifications-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/qualifications-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -14789,6 +15587,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/question-api':
+        specifier: workspace:*
+        version: link:../../api/question-api
+      '@soco/question-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/question-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -14943,9 +15753,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/quiz-api':
+        specifier: workspace:*
+        version: link:../../api/quiz-api
+      '@soco/quiz-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/quiz-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -15097,6 +15919,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/quizaccess-api':
+        specifier: workspace:*
+        version: link:../../api/quizaccess-api
+      '@soco/quizaccess-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/quizaccess-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -15236,6 +16070,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/rating-api':
+        specifier: workspace:*
+        version: link:../../api/rating-api
+      '@soco/rating-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/rating-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -15378,6 +16224,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/registration-api':
+        specifier: workspace:*
+        version: link:../../api/registration-api
+      '@soco/registration-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/registration-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -15523,6 +16381,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/report-builder-api':
+        specifier: workspace:*
+        version: link:../../api/report-builder-api
+      '@soco/report-builder-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/report-builder-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -15671,6 +16541,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/repository-api':
+        specifier: workspace:*
+        version: link:../../api/repository-api
+      '@soco/repository-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/repository-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -15813,6 +16695,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/resource-api':
+        specifier: workspace:*
+        version: link:../../api/resource-api
+      '@soco/resource-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/resource-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -15952,6 +16846,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/role-api':
+        specifier: workspace:*
+        version: link:../../api/role-api
+      '@soco/role-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/role-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -16091,6 +16997,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/scale-api':
+        specifier: workspace:*
+        version: link:../../api/scale-api
+      '@soco/scale-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/scale-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -16245,9 +17163,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/school-api':
+        specifier: workspace:*
+        version: link:../../api/school-api
+      '@soco/school-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/school-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -16411,9 +17341,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/scorm-api':
+        specifier: workspace:*
+        version: link:../../api/scorm-api
+      '@soco/scorm-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/scorm-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -16568,6 +17510,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/search-api':
+        specifier: workspace:*
+        version: link:../../api/search-api
+      '@soco/search-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/search-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -16713,6 +17667,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/sessions-api':
+        specifier: workspace:*
+        version: link:../../api/sessions-api
+      '@soco/sessions-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/sessions-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -16867,9 +17833,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/show-api':
+        specifier: workspace:*
+        version: link:../../api/show-api
+      '@soco/show-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/show-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -17033,9 +18011,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/social-api':
+        specifier: workspace:*
+        version: link:../../api/social-api
+      '@soco/social-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/social-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -17187,6 +18177,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/stats-api':
+        specifier: workspace:*
+        version: link:../../api/stats-api
+      '@soco/stats-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/stats-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -17332,6 +18334,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/stickers-api':
+        specifier: workspace:*
+        version: link:../../api/stickers-api
+      '@soco/stickers-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/stickers-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -17486,9 +18500,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/subject-api':
+        specifier: workspace:*
+        version: link:../../api/subject-api
+      '@soco/subject-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/subject-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -17652,9 +18678,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/support-api':
+        specifier: workspace:*
+        version: link:../../api/support-api
+      '@soco/support-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/support-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -17812,6 +18850,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/survey-api':
+        specifier: workspace:*
+        version: link:../../api/survey-api
+      '@soco/survey-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/survey-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -17966,6 +19016,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/tag-api':
+        specifier: workspace:*
+        version: link:../../api/tag-api
+      '@soco/tag-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/tag-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -18117,6 +19179,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/task-api':
+        specifier: workspace:*
+        version: link:../../api/task-api
+      '@soco/task-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/task-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -18277,9 +19351,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/theme-api':
+        specifier: workspace:*
+        version: link:../../api/theme-api
+      '@soco/theme-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/theme-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -18434,6 +19520,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/tool-brickfield-api':
+        specifier: workspace:*
+        version: link:../../api/tool-brickfield-api
+      '@soco/tool-brickfield-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/tool-brickfield-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -18582,6 +19680,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/tool-cohort-api':
+        specifier: workspace:*
+        version: link:../../api/tool-cohort-api
+      '@soco/tool-cohort-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/tool-cohort-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -18733,6 +19843,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/tool-custom-lang-api':
+        specifier: workspace:*
+        version: link:../../api/tool-custom-lang-api
+      '@soco/tool-custom-lang-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/tool-custom-lang-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -18893,6 +20015,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/tool-data-privacy-api':
+        specifier: workspace:*
+        version: link:../../api/tool-data-privacy-api
+      '@soco/tool-data-privacy-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/tool-data-privacy-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -19044,6 +20178,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/tool-monitor-api':
+        specifier: workspace:*
+        version: link:../../api/tool-monitor-api
+      '@soco/tool-monitor-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/tool-monitor-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -19201,6 +20347,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/tool-policy-api':
+        specifier: workspace:*
+        version: link:../../api/tool-policy-api
+      '@soco/tool-policy-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/tool-policy-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -19343,6 +20501,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/tool-recyclebin-api':
+        specifier: workspace:*
+        version: link:../../api/tool-recyclebin-api
+      '@soco/tool-recyclebin-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/tool-recyclebin-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -19497,9 +20667,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/tool-user-tours-api':
+        specifier: workspace:*
+        version: link:../../api/tool-user-tours-api
+      '@soco/tool-user-tours-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/tool-user-tours-db
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -19663,9 +20845,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/universities-api':
+        specifier: workspace:*
+        version: link:../../api/universities-api
+      '@soco/universities-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/universities-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -19829,9 +21023,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/url-api':
+        specifier: workspace:*
+        version: link:../../api/url-api
+      '@soco/url-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/url-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -19995,9 +21201,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/user-api':
+        specifier: workspace:*
+        version: link:../../api/user-api
+      '@soco/user-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/user-db
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -20161,9 +21379,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
+      '@soco/wiki-api':
+        specifier: workspace:*
+        version: link:../../api/wiki-api
+      '@soco/wiki-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/wiki-db
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -20327,9 +21557,21 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
       '@soco/ui':
         specifier: workspace:*
         version: link:../../../packages/ui
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
+      '@soco/workshop-api':
+        specifier: workspace:*
+        version: link:../../api/workshop-api
+      '@soco/workshop-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/workshop-db
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -20490,6 +21732,18 @@ importers:
       '@radix-ui/react-slot':
         specifier: ^1.0.2
         version: 1.1.0(@types/react@18.3.3)(react@18.3.1)
+      '@soco/auth-service':
+        specifier: workspace:*
+        version: link:../../../packages/auth-service
+      '@soco/utils':
+        specifier: workspace:*
+        version: link:../../../packages/utils
+      '@soco/zoom-api':
+        specifier: workspace:*
+        version: link:../../api/zoom-api
+      '@soco/zoom-db':
+        specifier: workspace:*
+        version: link:../../../packages/db/zoom-db
       '@t3-oss/env-nextjs':
         specifier: ^0.10.1
         version: 0.10.1(typescript@5.5.3)(zod@3.23.8)
@@ -25612,7 +26866,7 @@ importers:
         version: 14.2.4
       eslint-plugin-import:
         specifier: ^2.29.1
-        version: 2.29.1(@typescript-eslint/parser@8.0.0-alpha.41(eslint@8.57.0)(typescript@5.5.3))(eslint@8.57.0)
+        version: 2.29.1(@typescript-eslint/parser@8.0.0-alpha.44(eslint@8.57.0)(typescript@5.5.3))(eslint@8.57.0)
       eslint-plugin-jsx-a11y:
         specifier: ^6.8.0
         version: 6.9.0(eslint@8.57.0)
@@ -25621,13 +26875,13 @@ importers:
         version: 7.34.3(eslint@8.57.0)
       eslint-plugin-react-hooks:
         specifier: rc
-        version: 5.1.0-rc-85acf2d195-20240711(eslint@8.57.0)
+        version: 5.1.0-rc-df5f2736-20240712(eslint@8.57.0)
       eslint-plugin-turbo:
         specifier: ^2.0.3
         version: 2.0.6(eslint@8.57.0)
       typescript-eslint:
         specifier: rc-v8
-        version: 8.0.0-alpha.41(eslint@8.57.0)(typescript@5.5.3)
+        version: 8.0.0-alpha.44(eslint@8.57.0)(typescript@5.5.3)
     devDependencies:
       '@soco/prettier-config':
         specifier: workspace:*
@@ -27843,8 +29097,8 @@ packages:
   '@types/tinycolor2@1.4.6':
     resolution: {integrity: sha512-iEN8J0BoMnsWBqjVbWH/c0G0Hh7O21lpR2/+PrvAVgWdzL7eexIFm4JN/Wn10PTcmNdtS6U67r499mlWMXOxNw==}
 
-  '@typescript-eslint/eslint-plugin@8.0.0-alpha.41':
-    resolution: {integrity: sha512-WePtbzWMaQO4qtGAXp3zzEN8yYZCEuAHVCERCUXgoSUTQ80F5UB7T5lYyA9ySpFDB7rqJ2ev98DtnbS4U3Ms+w==}
+  '@typescript-eslint/eslint-plugin@8.0.0-alpha.44':
+    resolution: {integrity: sha512-3hqJa/Ak3ahypkcNoNmkkmUg54zV3AWSaalSWAKTQKF5UtXMvRjM5w3nKqS2AQP0dQAkM1u9cXCnOuLeUZr7rw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       '@typescript-eslint/parser': ^8.0.0 || ^8.0.0-alpha.0
@@ -27854,8 +29108,8 @@ packages:
       typescript:
         optional: true
 
-  '@typescript-eslint/parser@8.0.0-alpha.41':
-    resolution: {integrity: sha512-7HMXwy/q/59ZASBXz2FtdIsR7LgABrR8j2dTKq9GMR8OkjjdO4klxWSY/uOBozVt4UxlMRYsBdBDhEq4/tHRiw==}
+  '@typescript-eslint/parser@8.0.0-alpha.44':
+    resolution: {integrity: sha512-ho5CiKhp3hDCvkFVpLqiHlMUbgvGELmdVfvpIiKQ1TFGyDcEVpSJUZCDO+gyymgZreJyTfUDHH6eKhF3pgkb0Q==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
@@ -27864,25 +29118,12 @@ packages:
       typescript:
         optional: true
 
-  '@typescript-eslint/scope-manager@8.0.0-alpha.41':
-    resolution: {integrity: sha512-iNxuQ0TMVfFiMJ2al4bGd/mY9+aLtBxnHfo7B2xoVzR6cRFgUdBLlMa//MSIjSmVRpCEqNLQnkxpJb96tFG+xw==}
+  '@typescript-eslint/scope-manager@8.0.0-alpha.44':
+    resolution: {integrity: sha512-0w0pDILwfwRXSz9lQBXnJmeGaIbSBgl4vAw/lB2kCnOKYl2SXCVbdNOHPwxWigvQ08QVpuaKy+wEjbFKr9Xwfg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@typescript-eslint/type-utils@8.0.0-alpha.41':
-    resolution: {integrity: sha512-+QIA1z/jrox6bbvqlyqBQjotpevieLTycfiuoKuqGcKoskFZV5Rma51BV8LCJacnOafwJtSi+7b8zDo8OsXUvA==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-    peerDependencies:
-      typescript: '*'
-    peerDependenciesMeta:
-      typescript:
-        optional: true
-
-  '@typescript-eslint/types@8.0.0-alpha.41':
-    resolution: {integrity: sha512-n0P2FP3YC3pD3yoiCf4lHqbUP45xlnOk8HkjB+LtKSUZZWLLJ8k1ZXZtQj7MEX22tytCMj//Bmq403xFuCwfIg==}
-    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
-
-  '@typescript-eslint/typescript-estree@8.0.0-alpha.41':
-    resolution: {integrity: sha512-adCr+vbLYTFhwhIwjIjjMxTdUYiPA2Jlyuhnbj092IzgLHtT79bvuwcgPWeTyLbFb/13SMKmOEka00xHiqLpig==}
+  '@typescript-eslint/type-utils@8.0.0-alpha.44':
+    resolution: {integrity: sha512-52V6rQxNiebKYLxjcRTzIuTMw/wgrCcLncV27u2O142WyD07gLbICGcxtrxurDIQLMwQ/BuStV2x0cypKSwwdw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       typescript: '*'
@@ -27890,14 +29131,27 @@ packages:
       typescript:
         optional: true
 
-  '@typescript-eslint/utils@8.0.0-alpha.41':
-    resolution: {integrity: sha512-DTxc9VdERS6iloiw1P5tgRDqRArmp/sIuvgdHBvGh2SiltEFc3VjLGnHHGSTr6GfH7tjFWvcCnCtxx+pjWfp5Q==}
+  '@typescript-eslint/types@8.0.0-alpha.44':
+    resolution: {integrity: sha512-FNBBUTJBNbIaTJhhBbSNxKv+qS8lrwwnpBg36APp5fhDRu8K/YFQZP/VEa19nKBz+8+QUK7R6wV9DHYjj56S7w==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@typescript-eslint/typescript-estree@8.0.0-alpha.44':
+    resolution: {integrity: sha512-IyLELYPMFaleWpEVrcYhSfgFXFx4/505P4/vi9Dfp6s6T2xapyAdti6WL9iZbnXk72SL5M0wMp3V73nHn8ce1A==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+    peerDependencies:
+      typescript: '*'
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+
+  '@typescript-eslint/utils@8.0.0-alpha.44':
+    resolution: {integrity: sha512-gOSA4Yo1jufcOuV68yX3hzpwzufd/Ru6KYL04od1T1c5tt6cvN3i5D5Tc3BBJ3xYFE7ge821mJbUJMTc+BMaWg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
 
-  '@typescript-eslint/visitor-keys@8.0.0-alpha.41':
-    resolution: {integrity: sha512-uetCAUBVC+YarBdZnWzDDgX11PpAEGV8Cw31I3d1xNrhx6/bJGThKX+holEmd3amMdnr4w/XUKH/4YuQOgtjDA==}
+  '@typescript-eslint/visitor-keys@8.0.0-alpha.44':
+    resolution: {integrity: sha512-geWzLM8S6vYGdhA01mWJyGh2V/7VRzAmsD6ZKuc/rLkeJhYjvkMY0g0uMDw/7wmNLeRrpjHnL8HJklrpAlrb9g==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@ungap/structured-clone@1.2.0':
@@ -28779,8 +30033,8 @@ packages:
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
 
-  eslint-plugin-react-hooks@5.1.0-rc-85acf2d195-20240711:
-    resolution: {integrity: sha512-akG0N/HBM7XOIMbHLjSev2vV7ch2L+alWT3bdQ3sRzmXH6czIPRcDoS3ejowNxwE7TRAzNdQHPs0G4R5aDOVRw==}
+  eslint-plugin-react-hooks@5.1.0-rc-df5f2736-20240712:
+    resolution: {integrity: sha512-7rU6g+0yCvGAoJ3iIpK89XRir4FokHYJ8mUnOMuEt04UdTONOFVoMeXDC6Vjy6TnS3BMxMwOUDeDooEhK2ud1A==}
     engines: {node: '>=10'}
     peerDependencies:
       eslint: ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0-0 || ^9.0.0
@@ -30864,8 +32118,8 @@ packages:
     resolution: {integrity: sha512-/OxDN6OtAk5KBpGb28T+HZc2M+ADtvRxXrKKbUwtsLgdoxgX13hyy7ek6bFRl5+aBs2yZzB0c4CnQfAtVypW/g==}
     engines: {node: '>= 0.4'}
 
-  typescript-eslint@8.0.0-alpha.41:
-    resolution: {integrity: sha512-+e7D2XDZeHLe9D3bP7S0Va8YdLHzn3YcesoxMS9SjMWhtaSb5ylxk2txqT84sUS0WIDQetZlvDg2/UmY5B/ycg==}
+  typescript-eslint@8.0.0-alpha.44:
+    resolution: {integrity: sha512-4oRisGPvIJFnLqpfrpdcFjkFZg4/mhbE+0faGiomEFv9r5ziXETxuGY6VmwACPXHEakp2nDEqnp3ZdU0bsuiHQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       typescript: '*'
@@ -33002,14 +34256,14 @@ snapshots:
 
   '@types/tinycolor2@1.4.6': {}
 
-  '@typescript-eslint/eslint-plugin@8.0.0-alpha.41(@typescript-eslint/parser@8.0.0-alpha.41(eslint@8.57.0)(typescript@5.5.3))(eslint@8.57.0)(typescript@5.5.3)':
+  '@typescript-eslint/eslint-plugin@8.0.0-alpha.44(@typescript-eslint/parser@8.0.0-alpha.44(eslint@8.57.0)(typescript@5.5.3))(eslint@8.57.0)(typescript@5.5.3)':
     dependencies:
       '@eslint-community/regexpp': 4.10.1
-      '@typescript-eslint/parser': 8.0.0-alpha.41(eslint@8.57.0)(typescript@5.5.3)
-      '@typescript-eslint/scope-manager': 8.0.0-alpha.41
-      '@typescript-eslint/type-utils': 8.0.0-alpha.41(eslint@8.57.0)(typescript@5.5.3)
-      '@typescript-eslint/utils': 8.0.0-alpha.41(eslint@8.57.0)(typescript@5.5.3)
-      '@typescript-eslint/visitor-keys': 8.0.0-alpha.41
+      '@typescript-eslint/parser': 8.0.0-alpha.44(eslint@8.57.0)(typescript@5.5.3)
+      '@typescript-eslint/scope-manager': 8.0.0-alpha.44
+      '@typescript-eslint/type-utils': 8.0.0-alpha.44(eslint@8.57.0)(typescript@5.5.3)
+      '@typescript-eslint/utils': 8.0.0-alpha.44(eslint@8.57.0)(typescript@5.5.3)
+      '@typescript-eslint/visitor-keys': 8.0.0-alpha.44
       eslint: 8.57.0
       graphemer: 1.4.0
       ignore: 5.3.1
@@ -33020,12 +34274,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/parser@8.0.0-alpha.41(eslint@8.57.0)(typescript@5.5.3)':
+  '@typescript-eslint/parser@8.0.0-alpha.44(eslint@8.57.0)(typescript@5.5.3)':
     dependencies:
-      '@typescript-eslint/scope-manager': 8.0.0-alpha.41
-      '@typescript-eslint/types': 8.0.0-alpha.41
-      '@typescript-eslint/typescript-estree': 8.0.0-alpha.41(typescript@5.5.3)
-      '@typescript-eslint/visitor-keys': 8.0.0-alpha.41
+      '@typescript-eslint/scope-manager': 8.0.0-alpha.44
+      '@typescript-eslint/types': 8.0.0-alpha.44
+      '@typescript-eslint/typescript-estree': 8.0.0-alpha.44(typescript@5.5.3)
+      '@typescript-eslint/visitor-keys': 8.0.0-alpha.44
       debug: 4.3.5
       eslint: 8.57.0
     optionalDependencies:
@@ -33033,15 +34287,15 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/scope-manager@8.0.0-alpha.41':
+  '@typescript-eslint/scope-manager@8.0.0-alpha.44':
     dependencies:
-      '@typescript-eslint/types': 8.0.0-alpha.41
-      '@typescript-eslint/visitor-keys': 8.0.0-alpha.41
+      '@typescript-eslint/types': 8.0.0-alpha.44
+      '@typescript-eslint/visitor-keys': 8.0.0-alpha.44
 
-  '@typescript-eslint/type-utils@8.0.0-alpha.41(eslint@8.57.0)(typescript@5.5.3)':
+  '@typescript-eslint/type-utils@8.0.0-alpha.44(eslint@8.57.0)(typescript@5.5.3)':
     dependencies:
-      '@typescript-eslint/typescript-estree': 8.0.0-alpha.41(typescript@5.5.3)
-      '@typescript-eslint/utils': 8.0.0-alpha.41(eslint@8.57.0)(typescript@5.5.3)
+      '@typescript-eslint/typescript-estree': 8.0.0-alpha.44(typescript@5.5.3)
+      '@typescript-eslint/utils': 8.0.0-alpha.44(eslint@8.57.0)(typescript@5.5.3)
       debug: 4.3.5
       ts-api-utils: 1.3.0(typescript@5.5.3)
     optionalDependencies:
@@ -33050,12 +34304,12 @@ snapshots:
       - eslint
       - supports-color
 
-  '@typescript-eslint/types@8.0.0-alpha.41': {}
+  '@typescript-eslint/types@8.0.0-alpha.44': {}
 
-  '@typescript-eslint/typescript-estree@8.0.0-alpha.41(typescript@5.5.3)':
+  '@typescript-eslint/typescript-estree@8.0.0-alpha.44(typescript@5.5.3)':
     dependencies:
-      '@typescript-eslint/types': 8.0.0-alpha.41
-      '@typescript-eslint/visitor-keys': 8.0.0-alpha.41
+      '@typescript-eslint/types': 8.0.0-alpha.44
+      '@typescript-eslint/visitor-keys': 8.0.0-alpha.44
       debug: 4.3.5
       globby: 11.1.0
       is-glob: 4.0.3
@@ -33067,20 +34321,20 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/utils@8.0.0-alpha.41(eslint@8.57.0)(typescript@5.5.3)':
+  '@typescript-eslint/utils@8.0.0-alpha.44(eslint@8.57.0)(typescript@5.5.3)':
     dependencies:
       '@eslint-community/eslint-utils': 4.4.0(eslint@8.57.0)
-      '@typescript-eslint/scope-manager': 8.0.0-alpha.41
-      '@typescript-eslint/types': 8.0.0-alpha.41
-      '@typescript-eslint/typescript-estree': 8.0.0-alpha.41(typescript@5.5.3)
+      '@typescript-eslint/scope-manager': 8.0.0-alpha.44
+      '@typescript-eslint/types': 8.0.0-alpha.44
+      '@typescript-eslint/typescript-estree': 8.0.0-alpha.44(typescript@5.5.3)
       eslint: 8.57.0
     transitivePeerDependencies:
       - supports-color
       - typescript
 
-  '@typescript-eslint/visitor-keys@8.0.0-alpha.41':
+  '@typescript-eslint/visitor-keys@8.0.0-alpha.44':
     dependencies:
-      '@typescript-eslint/types': 8.0.0-alpha.41
+      '@typescript-eslint/types': 8.0.0-alpha.44
       eslint-visitor-keys: 3.4.3
 
   '@ungap/structured-clone@1.2.0': {}
@@ -34029,17 +35283,17 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-module-utils@2.8.1(@typescript-eslint/parser@8.0.0-alpha.41(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint@8.57.0):
+  eslint-module-utils@2.8.1(@typescript-eslint/parser@8.0.0-alpha.44(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint@8.57.0):
     dependencies:
       debug: 3.2.7
     optionalDependencies:
-      '@typescript-eslint/parser': 8.0.0-alpha.41(eslint@8.57.0)(typescript@5.5.3)
+      '@typescript-eslint/parser': 8.0.0-alpha.44(eslint@8.57.0)(typescript@5.5.3)
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.0.0-alpha.41(eslint@8.57.0)(typescript@5.5.3))(eslint@8.57.0):
+  eslint-plugin-import@2.29.1(@typescript-eslint/parser@8.0.0-alpha.44(eslint@8.57.0)(typescript@5.5.3))(eslint@8.57.0):
     dependencies:
       array-includes: 3.1.8
       array.prototype.findlastindex: 1.2.5
@@ -34049,7 +35303,7 @@ snapshots:
       doctrine: 2.1.0
       eslint: 8.57.0
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.8.1(@typescript-eslint/parser@8.0.0-alpha.41(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint@8.57.0)
+      eslint-module-utils: 2.8.1(@typescript-eslint/parser@8.0.0-alpha.44(eslint@8.57.0)(typescript@5.5.3))(eslint-import-resolver-node@0.3.9)(eslint@8.57.0)
       hasown: 2.0.2
       is-core-module: 2.14.0
       is-glob: 4.0.3
@@ -34060,7 +35314,7 @@ snapshots:
       semver: 6.3.1
       tsconfig-paths: 3.15.0
     optionalDependencies:
-      '@typescript-eslint/parser': 8.0.0-alpha.41(eslint@8.57.0)(typescript@5.5.3)
+      '@typescript-eslint/parser': 8.0.0-alpha.44(eslint@8.57.0)(typescript@5.5.3)
     transitivePeerDependencies:
       - eslint-import-resolver-typescript
       - eslint-import-resolver-webpack
@@ -34086,7 +35340,7 @@ snapshots:
       safe-regex-test: 1.0.3
       string.prototype.includes: 2.0.0
 
-  eslint-plugin-react-hooks@5.1.0-rc-85acf2d195-20240711(eslint@8.57.0):
+  eslint-plugin-react-hooks@5.1.0-rc-df5f2736-20240712(eslint@8.57.0):
     dependencies:
       eslint: 8.57.0
 
@@ -36417,11 +37671,11 @@ snapshots:
       is-typed-array: 1.1.13
       possible-typed-array-names: 1.0.0
 
-  typescript-eslint@8.0.0-alpha.41(eslint@8.57.0)(typescript@5.5.3):
+  typescript-eslint@8.0.0-alpha.44(eslint@8.57.0)(typescript@5.5.3):
     dependencies:
-      '@typescript-eslint/eslint-plugin': 8.0.0-alpha.41(@typescript-eslint/parser@8.0.0-alpha.41(eslint@8.57.0)(typescript@5.5.3))(eslint@8.57.0)(typescript@5.5.3)
-      '@typescript-eslint/parser': 8.0.0-alpha.41(eslint@8.57.0)(typescript@5.5.3)
-      '@typescript-eslint/utils': 8.0.0-alpha.41(eslint@8.57.0)(typescript@5.5.3)
+      '@typescript-eslint/eslint-plugin': 8.0.0-alpha.44(@typescript-eslint/parser@8.0.0-alpha.44(eslint@8.57.0)(typescript@5.5.3))(eslint@8.57.0)(typescript@5.5.3)
+      '@typescript-eslint/parser': 8.0.0-alpha.44(eslint@8.57.0)(typescript@5.5.3)
+      '@typescript-eslint/utils': 8.0.0-alpha.44(eslint@8.57.0)(typescript@5.5.3)
     optionalDependencies:
       typescript: 5.5.3
     transitivePeerDependencies:

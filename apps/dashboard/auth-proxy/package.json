@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "@soco/auth-service": "workspace:*",
-    "@soco/auth-proxy-db": "workspace:*",
-    "@soco/auth-proxy-api": "workspace:*",
     "@soco/utils": "workspace:*",
     "@auth/core": "0.32.0"
   },
