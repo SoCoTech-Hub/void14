@@ -1,16 +1,11 @@
-# TODO:
+### Table: my_pages
 
-1. Duplicate this project
-2. Rename project name to `@soco/<microservice>-db`
-3. Copy schema files from microservice to schema folder
-4. Rename `"@soco/utils"` to `"@soco/utils"` in the schema folder
-5. Remove the `type infers the return` section along with it's import
-6. Export said schema files in the index folder as `export * from ./<fileName>`
-7. Add file names listed in `schema/index` to `package.json` as:
+This table stores extra user pages for the My Moodle system.
 
-```json
-"./schema/<fileName>": {
-      "types": "./dist/schema/<fileName>.d.ts",
-      "default": "./src/schema/<fileName>.ts"
-    },
-```
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the page.
+- **name**: `VARCHAR(200)`, The name of the page (freeform text).
+- **private**: `BIT(1)`, Indicates whether the page is private (`1`, dashboard) or public (`0`, profile).
+- **sort_order**: `MEDIUMINT(7)`, The order of the pages for a user.
+- **userid**: `BIGINT(19)`, The user who owns this page or `0` for system defaults.

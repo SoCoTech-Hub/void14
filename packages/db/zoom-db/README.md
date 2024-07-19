@@ -1,16 +1,40 @@
-# TODO:
+# zooms Dash
 
-1. Duplicate this project
-2. Rename project name to `@soco/<microservice>-db`
-3. Copy schema files from microservice to schema folder
-4. Rename `"@soco/utils"` to `"@soco/utils"` in the schema folder
-5. Remove the `type infers the return` section along with it's import
-6. Export said schema files in the index folder as `export * from ./<fileName>`
-7. Add file names listed in `schema/index` to `package.json` as:
+## Tables
 
-```json
-"./schema/<fileName>": {
-      "types": "./dist/schema/<fileName>.d.ts",
-      "default": "./src/schema/<fileName>.ts"
-    },
-```
+List of Tables with their function described below:
+
+### zooms
+
+This table saves information about users zoom details
+
+#### Fields
+
+- email
+- key
+- Secret
+- SdkKey
+- StsApiKey
+- StsApiSecret
+- StsAccountId
+
+### zoom_meetings
+
+This table saves information about the zoom calls
+
+#### Fields
+
+- meeting_link
+- participants
+- zoom_id
+- user_id
+
+### zoom_lessons
+
+shows the meetings associated with lessons
+
+#### Fields
+
+- active
+- course_id
+- user_id

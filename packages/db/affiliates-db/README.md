@@ -1,16 +1,66 @@
-# TODO:
+# affiliates Dash
 
-1. Duplicate this project
-2. Rename project name to `@soco/<microservice>-db`
-3. Copy schema files from microservice to schema folder
-4. Rename `"@soco/utils"` to `"@soco/utils"` in the schema folder
-5. Remove the `type infers the return` section along with it's import
-6. Export said schema files in the index folder as `export * from ./<fileName>`
-7. Add file names listed in `schema/index` to `package.json` as:
+## Tables
 
-```json
-"./schema/<fileName>": {
-      "types": "./dist/schema/<fileName>.d.ts",
-      "default": "./src/schema/<fileName>.ts"
-    },
-```
+List of Tables with their function described below:
+
+### affiliates
+
+This table saves a record of all the affiliates
+
+#### Fields
+
+- id
+- is_approved
+- note
+- user_id
+
+### affiliates_details
+
+this table stores information about the affiliates
+
+#### Fields
+
+- id
+- name
+- number
+- code
+- bank
+- type
+- affiliate_id
+
+### affiliates_settings
+
+fields hold a record of the terms the affiliate has agreed to
+
+#### Fields
+
+- id
+- rate
+- terms
+- is_active
+- organization_id
+
+### affiliates_statuses
+
+records more information about the affiliate
+
+#### fields
+
+- id
+- name
+- color
+
+### affiliates_transactions
+
+records the payments done to affiliates
+
+#### fields
+
+- id
+- paid
+- balance
+- paid_date
+- account_number
+- affiliate_id
+- affiliate_status_id

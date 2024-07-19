@@ -1,16 +1,28 @@
-# TODO:
+### social_emojis
 
-1. Duplicate this project
-2. Rename project name to `@soco/<microservice>-db`
-3. Copy schema files from microservice to schema folder
-4. Rename `"@soco/utils"` to `"@soco/utils"` in the schema folder
-5. Remove the `type infers the return` section along with it's import
-6. Export said schema files in the index folder as `export * from ./<fileName>`
-7. Add file names listed in `schema/index` to `package.json` as:
+id: varchar("id", { length: 191 }).primaryKey().$defaultFn(() => nanoid()),
+name: varchar("name", { length: 256 }).notNull(),
+image: varchar("image", { length: 256 })
 
-```json
-"./schema/<fileName>": {
-      "types": "./dist/schema/<fileName>.d.ts",
-      "default": "./src/schema/<fileName>.ts"
-    },
-```
+### social_links
+
+id: varchar("id", { length: 191 }).primaryKey().$defaultFn(() => nanoid()),
+name: varchar("name", { length: 256 }).notNull(),
+image: varchar("image", { length: 256 }),
+url: varchar("url", { length: 256 })
+
+### socials
+
+id: varchar("id", { length: 191 }).primaryKey().$defaultFn(() => nanoid()),
+tableName: varchar("table_name", { length: 256 }).notNull(),
+fieldId: varchar("field_id", { length: 256 }).notNull(),
+socialEmojiId: varchar("social_emoji_id", { length: 256 }).references(() => socialEmojis.id, { onDelete: "cascade" }).notNull(),
+userId: varchar("user_id", { length: 256 }).notNull()
+
+### social_shares
+
+id: varchar("id", { length: 191 }).primaryKey().$defaultFn(() => nanoid()),
+fieldId: varchar("field_id", { length: 256 }).notNull(),
+tableName: varchar("table_name", { length: 256 }).notNull(),
+socialLinkId: varchar("social_link_id", { length: 256 }).references(() => socialLinks.id, { onDelete: "cascade" }).notNull(),
+userId: varchar("user_id", { length: 256 }).notNull()

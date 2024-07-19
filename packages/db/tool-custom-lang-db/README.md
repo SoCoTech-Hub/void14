@@ -1,16 +1,36 @@
-# TODO:
+# Tool Custom Language Dash
 
-1. Duplicate this project
-2. Rename project name to `@soco/<microservice>-db`
-3. Copy schema files from microservice to schema folder
-4. Rename `"@soco/utils"` to `"@soco/utils"` in the schema folder
-5. Remove the `type infers the return` section along with it's import
-6. Export said schema files in the index folder as `export * from ./<fileName>`
-7. Add file names listed in `schema/index` to `package.json` as:
+## Tables
 
-```json
-"./schema/<fileName>": {
-      "types": "./dist/schema/<fileName>.d.ts",
-      "default": "./src/schema/<fileName>.ts"
-    },
-```
+List of Tables with their function described below:
+
+### Table: tool_custom_langs
+
+Contains the working checkout of all strings and their customizations.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **component_id**: `BIGINT(19)`, The ID of the component.
+- **lang**: `VARCHAR(20)`, The code of the language this string belongs to, e.g., en, cs, or es.
+- **local**: `LONGTEXT(2147483647)`, Local customization of the string, null if not customized.
+- **master**: `LONGTEXT(2147483647)`, Master translation of the string as distributed in the official lang pack, null if not translated.
+- **modified**: `SMALLINT(5)`, Indicates if the string has been modified via the translator (default 0).
+- **original**: `LONGTEXT(2147483647)`, English original of the string.
+- **outdated**: `SMALLINT(5)`, Indicates if the customization may be outdated due to changes in the original or master translation (default 0).
+- **string_id**: `VARCHAR(255)`, The identifier of the string.
+- **customized_at**: `BIGINT(19)`, Timestamp of when the local translation was recently modified, null if not customized yet.
+- **created_at**: `BIGINT(19)`, Timestamp of when the original or master was created.
+- **updated_at**: `BIGINT(19)`, Timestamp of when the original or master was recently modified.
+
+---
+
+### Table: tool_custom_lang_components
+
+Contains the list of all installed plugins that provide their own strings.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **name**: `VARCHAR(255)`, The normalized name of the plugin.
+- **version**: `VARCHAR(255)`, The checked out version of the plugin, null if the version is unknown.

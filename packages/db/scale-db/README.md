@@ -1,16 +1,36 @@
-# TODO:
+### Table: scales
 
-1. Duplicate this project
-2. Rename project name to `@soco/<microservice>-db`
-3. Copy schema files from microservice to schema folder
-4. Rename `"@soco/utils"` to `"@soco/utils"` in the schema folder
-5. Remove the `type infers the return` section along with it's import
-6. Export said schema files in the index folder as `export * from ./<fileName>`
-7. Add file names listed in `schema/index` to `package.json` as:
+Defines grading scales.
 
-```json
-"./schema/<fileName>": {
-      "types": "./dist/schema/<fileName>.d.ts",
-      "default": "./src/schema/<fileName>.ts"
-    },
-```
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **course_id**: `BIGINT(19)`, ID of the course to which the scale belongs.
+- **description**: `LONGTEXT(2147483647)` (Nullable), Description of the scale.
+- **description_format**: `TINYINT(3)`, Format of the description.
+- **name**: `VARCHAR(255)`, Name of the scale.
+- **scale**: `LONGTEXT(2147483647)`, Scale values.
+- **created_at**: `BIGINT(19)`, Timestamp when the scale was created.
+- **updated_at**: `BIGINT(19)`, Timestamp when the scale was last modified.
+- **user_id**: `BIGINT(19)`, ID of the user who created the scale.
+
+---
+
+### Table: scale_histories
+
+History table for grading scales.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **action**: `BIGINT(19)`, Action performed on the scale (e.g., created, modified, deleted).
+- **course_id**: `BIGINT(19)`, ID of the course to which the scale belongs.
+- **description**: `LONGTEXT(2147483647)` (Nullable), Description of the scale.
+- **logged_user**: `BIGINT(19)` (Nullable), ID of the user who last modified this scale.
+- **name**: `VARCHAR(255)`, Name of the scale.
+- **old_id**: `BIGINT(19)`, ID of the old scale before modification.
+- **scale**: `LONGTEXT(2147483647)`, Scale values.
+- **source**: `VARCHAR(255)` (Nullable), Source of the modification (e.g., manual, module, import).
+- **created_at**: `BIGINT(19)` (Nullable), Timestamp when the scale was created.
+- **updated_at**: `BIGINT(19)` (Nullable), Timestamp when the scale was last modified.
+- **user_id**: `BIGINT(19)`, ID of the user who created or modified the scale.

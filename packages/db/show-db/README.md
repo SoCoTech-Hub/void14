@@ -1,16 +1,18 @@
-# TODO:
+### shows
 
-1. Duplicate this project
-2. Rename project name to `@soco/<microservice>-db`
-3. Copy schema files from microservice to schema folder
-4. Rename `"@soco/utils"` to `"@soco/utils"` in the schema folder
-5. Remove the `type infers the return` section along with it's import
-6. Export said schema files in the index folder as `export * from ./<fileName>`
-7. Add file names listed in `schema/index` to `package.json` as:
+id: varchar("id", { length: 191 }).primaryKey().$defaultFn(() => nanoid()),
+name: varchar("name", { length: 256 }).notNull(),
+image: varchar("image", { length: 256 }),
+url: varchar("url", { length: 256 }),
+description: text("description"),
+transcript: text("transcript"),
+showsCategoryId: varchar("shows_category_id", { length: 256 }).references(() => showsCategories.id, { onDelete: "cascade" }).notNull(),
+createdAt: timestamp("created_at").notNull().default(sql`now()`),
+updatedAt: timestamp("updated_at").notNull().default(sql`now()`),
 
-```json
-"./schema/<fileName>": {
-      "types": "./dist/schema/<fileName>.d.ts",
-      "default": "./src/schema/<fileName>.ts"
-    },
-```
+### shows_categories
+
+id: varchar("id", { length: 191 }).primaryKey().$defaultFn(() => nanoid()),
+name: varchar("name", { length: 256 }).notNull(),
+image: varchar("image", { length: 256 }),
+description: text("description")

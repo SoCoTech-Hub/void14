@@ -1,16 +1,45 @@
-# TODO:
+# i18n Dash
 
-1. Duplicate this project
-2. Rename project name to `@soco/<microservice>-db`
-3. Copy schema files from microservice to schema folder
-4. Rename `"@soco/utils"` to `"@soco/utils"` in the schema folder
-5. Remove the `type infers the return` section along with it's import
-6. Export said schema files in the index folder as `export * from ./<fileName>`
-7. Add file names listed in `schema/index` to `package.json` as:
+## Tables
 
-```json
-"./schema/<fileName>": {
-      "types": "./dist/schema/<fileName>.d.ts",
-      "default": "./src/schema/<fileName>.ts"
-    },
-```
+List of Tables with their function described below:
+
+### localization_languages
+
+This table saves information about languages for localization
+
+#### Fields
+
+- id
+- name
+- flag
+- country_id
+
+### localization_fields
+
+list of field used throughout the platform
+
+#### Fields
+
+- id
+- name
+- description
+- default_value
+
+### localization_translations
+
+fields translated to localized language
+
+#### Fields
+
+- id
+- localization_field_id
+- localization_language_id
+- value
+
+### localization_user
+
+#### fields
+
+- id
+- localization_language_id

@@ -1,16 +1,20 @@
-# TODO:
+### Table: registration_hubs
 
-1. Duplicate this project
-2. Rename project name to `@soco/<microservice>-db`
-3. Copy schema files from microservice to schema folder
-4. Rename `"@soco/utils"` to `"@soco/utils"` in the schema folder
-5. Remove the `type infers the return` section along with it's import
-6. Export said schema files in the index folder as `export * from ./<fileName>`
-7. Add file names listed in `schema/index` to `package.json` as:
+Hub where the site is registered on with their associated tokens.
 
-```json
-"./schema/<fileName>": {
-      "types": "./dist/schema/<fileName>.d.ts",
-      "default": "./src/schema/<fileName>.ts"
-    },
-```
+#### Fields
+
+- **id**: `BIGINT` PRIMARY KEY, Unique identifier for the record.
+- **confirmed**: `BOOLEAN` NOT NULL DEFAULT FALSE, Indicates whether the registration is confirmed (FALSE for no, TRUE for yes).
+- **hub_name**: `VARCHAR(255)` NOT NULL, The name of the hub.
+- **hub_url**: `VARCHAR(255)` NOT NULL, The URL of the hub.
+- **secret**: `VARCHAR(255)`, The unique site identifier for this hub.
+- **token**: `VARCHAR(255)` NOT NULL, The token used to communicate with the hub by web service.
+- **created_at**: `TIMESTAMP` NOT NULL DEFAULT CURRENT_TIMESTAMP, Timestamp of creation.
+- **updated_at**: `TIMESTAMP` NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, Timestamp of the last modification.
+
+#### Indexes
+
+- `CREATE INDEX idx_hub_name ON registration_hubs(hub_name);`
+- `CREATE INDEX idx_hub_url ON registration_hubs(hub_url);`
+- `CREATE INDEX idx_token ON registration_hubs(token);`

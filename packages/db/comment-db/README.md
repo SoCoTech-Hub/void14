@@ -1,16 +1,22 @@
-# TODO:
+# Comments Management
 
-1. Duplicate this project
-2. Rename project name to `@soco/<microservice>-db`
-3. Copy schema files from microservice to schema folder
-4. Rename `"@soco/utils"` to `"@soco/utils"` in the schema folder
-5. Remove the `type infers the return` section along with it's import
-6. Export said schema files in the index folder as `export * from ./<fileName>`
-7. Add file names listed in `schema/index` to `package.json` as:
+## Tables
 
-```json
-"./schema/<fileName>": {
-      "types": "./dist/schema/<fileName>.d.ts",
-      "default": "./src/schema/<fileName>.ts"
-    },
-```
+This README provides an overview of the tables in the Comments Management application, along with their fields and functions.
+
+### Table: comments
+
+This table stores comments for the comments module.
+
+#### Fields
+
+- **id**: BIGINT(19)
+- **comment_area**: VARCHAR(255)
+- **component**: VARCHAR(255) \* The plugin this comment belongs to.
+- **content**: LONGTEXT(2147483647)
+- **context_id**: BIGINT(19)
+- **format**: TINYINT(3) \* Default: 0.
+- **item_id**: BIGINT(19)
+- **created_at**: BIGINT(19)
+- **updated_at**: BIGINT(19)
+- **userid**: BIGINT(19)

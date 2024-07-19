@@ -1,16 +1,19 @@
-# TODO:
+# Tool Cohort Dash
 
-1. Duplicate this project
-2. Rename project name to `@soco/<microservice>-db`
-3. Copy schema files from microservice to schema folder
-4. Rename `"@soco/utils"` to `"@soco/utils"` in the schema folder
-5. Remove the `type infers the return` section along with it's import
-6. Export said schema files in the index folder as `export * from ./<fileName>`
-7. Add file names listed in `schema/index` to `package.json` as:
+## Tables
 
-```json
-"./schema/<fileName>": {
-      "types": "./dist/schema/<fileName>.d.ts",
-      "default": "./src/schema/<fileName>.ts"
-    },
-```
+List of Tables with their function described below:
+
+### Table: tool_cohort_roles
+
+Mapping of users to cohort role assignments.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **cohort_id**: `BIGINT(19)`, The cohort to sync.
+- **role_id**: `BIGINT(19)`, The role to assign.
+- **user_modified**: `BIGINT(19)`, Who last modified this record.
+- **created_at**: `BIGINT(19)`, The time this record was created.
+- **updated_at**: `BIGINT(19)`, The time this record was modified.
+- **user_id**: `BIGINT(19)`, The user to sync.

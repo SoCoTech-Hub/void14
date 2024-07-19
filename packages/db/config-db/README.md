@@ -1,16 +1,40 @@
-# TODO:
+# Configuration Management
 
-1. Duplicate this project
-2. Rename project name to `@soco/<microservice>-db`
-3. Copy schema files from microservice to schema folder
-4. Rename `"@soco/utils"` to `"@soco/utils"` in the schema folder
-5. Remove the `type infers the return` section along with it's import
-6. Export said schema files in the index folder as `export * from ./<fileName>`
-7. Add file names listed in `schema/index` to `package.json` as:
+## Tables
 
-```json
-"./schema/<fileName>": {
-      "types": "./dist/schema/<fileName>.d.ts",
-      "default": "./src/schema/<fileName>.ts"
-    },
-```
+This README provides an overview of the tables in the Configuration Management application, along with their fields and functions.
+
+### Table: config
+
+This table stores configuration variables.
+
+#### Fields
+
+- **id**: BIGINT(19)
+- **name**: VARCHAR(255)
+- **value**: LONGTEXT(2147483647)
+
+### Table: config_log
+
+This table stores changes done in server configuration through the admin UI.
+
+#### Fields
+
+- **id**: BIGINT(19)
+- **name**: VARCHAR(100)
+- **oldvalue**: LONGTEXT(2147483647)
+- **plugin**: VARCHAR(100)
+- **timemodified**: BIGINT(19)
+- **userid**: BIGINT(19)
+- **value**: LONGTEXT(2147483647)
+
+### Table: config_plugins
+
+This table stores modules and plugins configuration variables.
+
+#### Fields
+
+- **id**: BIGINT(19)
+- **name**: VARCHAR(100)
+- **plugin**: VARCHAR(100) \* Default: 'core'.
+- **value**: LONGTEXT(2147483647)

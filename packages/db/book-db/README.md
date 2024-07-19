@@ -1,16 +1,41 @@
-# TODO:
+# Book Management
 
-1. Duplicate this project
-2. Rename project name to `@soco/<microservice>-db`
-3. Copy schema files from microservice to schema folder
-4. Rename `"@soco/utils"` to `"@soco/utils"` in the schema folder
-5. Remove the `type infers the return` section along with it's import
-6. Export said schema files in the index folder as `export * from ./<fileName>`
-7. Add file names listed in `schema/index` to `package.json` as:
+## Tables
 
-```json
-"./schema/<fileName>": {
-      "types": "./dist/schema/<fileName>.d.ts",
-      "default": "./src/schema/<fileName>.ts"
-    },
-```
+This README provides an overview of the tables in the Book Management application, along with their fields and functions.
+
+### Table: book
+
+This table defines a book.
+
+#### Fields
+
+- **id**: BIGINT(19)
+- **course**: BIGINT(19)
+- **customtitles**: TINYINT(3) \* Default: 0.
+- **intro**: LONGTEXT(2147483647)
+- **introformat**: SMALLINT(5) \* Default: 0.
+- **name**: VARCHAR(255)
+- **navstyle**: SMALLINT(5) \* Default: 1.
+- **numbering**: SMALLINT(5) \* Default: 0.
+- **revision**: BIGINT(19)
+- **created_at**: BIGINT(19)
+- **updated_at**: BIGINT(19)
+
+### Table: book_chapters
+
+This table defines book chapters.
+
+#### Fields
+
+- **id**: BIGINT(19)
+- **bookid**: BIGINT(19)
+- **content**: LONGTEXT(2147483647)
+- **contentformat**: SMALLINT(5) \* Default: 0.
+- **hidden**: TINYINT(3) \* Default: 0.
+- **importsrc**: VARCHAR(255)
+- **pagenum**: BIGINT(19)
+- **subchapter**: BIGINT(19)
+- **title**: VARCHAR(255)
+- **created_at**: BIGINT(19)
+- **updated_at**: BIGINT(19)

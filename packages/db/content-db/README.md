@@ -1,16 +1,23 @@
-# TODO:
+# Content Bank Management
 
-1. Duplicate this project
-2. Rename project name to `@soco/<microservice>-db`
-3. Copy schema files from microservice to schema folder
-4. Rename `"@soco/utils"` to `"@soco/utils"` in the schema folder
-5. Remove the `type infers the return` section along with it's import
-6. Export said schema files in the index folder as `export * from ./<fileName>`
-7. Add file names listed in `schema/index` to `package.json` as:
+## Tables
 
-```json
-"./schema/<fileName>": {
-      "types": "./dist/schema/<fileName>.d.ts",
-      "default": "./src/schema/<fileName>.ts"
-    },
-```
+This README provides an overview of the tables in the Content Bank Management application, along with their fields and functions.
+
+### Table: contentbank_content
+
+This table stores content data in the content bank.
+
+#### Fields
+
+- **id**: BIGINT(19)
+- **config_data**: LONGTEXT(2147483647)
+- **content_type**: VARCHAR(100)
+- **context_id**: BIGINT(19) \* References context.id.
+- **instance_id**: BIGINT(19)
+- **name**: VARCHAR(255)
+- **usermodified**: BIGINT(19)
+- **visibility**: BIT(1) \* Default: 1.
+- **created_at**: BIGINT(19) \* Default: 0.
+- **updated_at**: BIGINT(19)
+- **user_id**: BIGINT(19) \* The original author of the content.

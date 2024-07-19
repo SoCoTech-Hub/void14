@@ -1,16 +1,9 @@
-# TODO:
+### organizations
 
-1. Duplicate this project
-2. Rename project name to `@soco/<microservice>-db`
-3. Copy schema files from microservice to schema folder
-4. Rename `"@soco/utils"` to `"@soco/utils"` in the schema folder
-5. Remove the `type infers the return` section along with it's import
-6. Export said schema files in the index folder as `export * from ./<fileName>`
-7. Add file names listed in `schema/index` to `package.json` as:
-
-```json
-"./schema/<fileName>": {
-      "types": "./dist/schema/<fileName>.d.ts",
-      "default": "./src/schema/<fileName>.ts"
-    },
-```
+- id: varchar("id", { length: 191 }).primaryKey().$defaultFn(() => nanoid()),
+- name: varchar("name", { length: 256 }).notNull(),
+- shortName: varchar("short_name", { length: 256 }),
+- logo: varchar("logo", { length: 256 }),
+- favicon: varchar("favicon", { length: 256 }),
+- avatar: varchar("avatar", { length: 256 }),
+- banner: varchar("banner", { length: 256 })

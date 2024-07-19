@@ -1,16 +1,29 @@
-# TODO:
+# Context Management
 
-1. Duplicate this project
-2. Rename project name to `@soco/<microservice>-db`
-3. Copy schema files from microservice to schema folder
-4. Rename `"@soco/utils"` to `"@soco/utils"` in the schema folder
-5. Remove the `type infers the return` section along with it's import
-6. Export said schema files in the index folder as `export * from ./<fileName>`
-7. Add file names listed in `schema/index` to `package.json` as:
+## Tables
 
-```json
-"./schema/<fileName>": {
-      "types": "./dist/schema/<fileName>.d.ts",
-      "default": "./src/schema/<fileName>.ts"
-    },
-```
+This README provides an overview of the tables in the Context Management application, along with their fields and functions.
+
+### Table: context
+
+This table stores context information, one of these must be set.
+
+#### Fields
+
+- **id**: BIGINT(19)
+- **contextlevel**: BIGINT(19)
+- **depth**: TINYINT(3)
+- **instanceid**: BIGINT(19)
+- **locked**: TINYINT(3) \* Whether this context and its children are locked.
+- **path**: VARCHAR(255)
+
+### Table: context_temp
+
+This table is used by `build_context_path()` in upgrade and cron to keep context paths temporarily.
+
+#### Fields
+
+- **id**: BIGINT(19) \* This id isn’t autonumeric/sequence. It’s the context->id.
+- **depth**: TINYINT(3)
+- **locked**: TINYINT(3) \* Default: 0. Whether this context and its children are locked.
+- **path**: VARCHAR(255)

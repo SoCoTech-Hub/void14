@@ -1,16 +1,34 @@
-# TODO:
+# Tool Recyclebin Dash
 
-1. Duplicate this project
-2. Rename project name to `@soco/<microservice>-db`
-3. Copy schema files from microservice to schema folder
-4. Rename `"@soco/utils"` to `"@soco/utils"` in the schema folder
-5. Remove the `type infers the return` section along with it's import
-6. Export said schema files in the index folder as `export * from ./<fileName>`
-7. Add file names listed in `schema/index` to `package.json` as:
+## Tables
 
-```json
-"./schema/<fileName>": {
-      "types": "./dist/schema/<fileName>.d.ts",
-      "default": "./src/schema/<fileName>.ts"
-    },
-```
+List of Tables with their function described below:
+
+### Table: tool_recyclebin_categories
+
+A list of items in the category recycle bin.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **category_id**: `BIGINT(19)`, ID of the category.
+- **full_name**: `VARCHAR(255)`, Full name of the category.
+- **short_name**: `VARCHAR(255)`, Short name of the category.
+- **created_at**: `BIGINT(19)`, Timestamp of when the record was created.
+- **updated_at**: `BIGINT(19)`, Timestamp of when the record was updated.
+
+---
+
+### Table: tool_recyclebin_courses
+
+A list of items in the course recycle bin.
+
+#### Fields
+
+- **id**: `BIGINT(19)` (Primary Key), Unique identifier for the record.
+- **course_id**: `BIGINT(19)`, ID of the course.
+- **module_id**: `BIGINT(19)`, ID of the module.
+- **name**: `VARCHAR(255)`, Name of the item.
+- **section_id**: `BIGINT(19)`, Section ID.
+- **created_at**: `BIGINT(19)`, Timestamp of when the record was created.
+- **updated_at**: `BIGINT(19)`, Timestamp of when the record was updated.
