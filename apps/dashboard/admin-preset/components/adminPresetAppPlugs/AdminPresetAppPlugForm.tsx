@@ -63,7 +63,7 @@ const AdminPresetAppPlugForm = ({
     data?: { error?: string },
   ) => {
     if (data?.error) {
-      toast.error(data.error);
+      toast.error(`Error on ${action}: ${data.error}`);
       return;
     }
     return;
@@ -74,7 +74,7 @@ const AdminPresetAppPlugForm = ({
     data?: { error?: string },
   ) => {
     if (data?.error) {
-      toast.error(data.error);
+      toast.error(`Error on ${action}: ${data.error}`);
       return;
     }
 
@@ -109,7 +109,7 @@ const AdminPresetAppPlugForm = ({
       createAdminPresetAppPlug(values);
     }
   };
-	
+
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className={"space-y-8"}>

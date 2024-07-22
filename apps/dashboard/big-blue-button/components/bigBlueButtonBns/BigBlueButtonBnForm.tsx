@@ -1,6 +1,19 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { trpc } from "@/lib/trpc/client";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { format } from "date-fns";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
+
+import {
+  BigBlueButtonBn,
+  insertBigBlueButtonBnParams,
+  NewBigBlueButtonBnParams,
+} from "@soco/big-blue-button-db/schema/bigBlueButtonBns";
 import { Button } from "@soco/ui/button";
 import { Calendar } from "@soco/ui/calendar";
 import { Checkbox } from "@soco/ui/checkbox";
@@ -13,24 +26,7 @@ import {
   FormMessage,
 } from "@soco/ui/form";
 import { Input } from "@soco/ui/input";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@soco/ui/popover";
-import {
-  BigBlueButtonBn,
-  insertBigBlueButtonBnParams,
-  NewBigBlueButtonBnParams,
-} from "@soco/big-blue-button-db/schema/bigBlueButtonBns";
-import { trpc } from "@/lib/trpc/client";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
-import { z } from "zod";
-
+import { Popover, PopoverContent, PopoverTrigger } from "@soco/ui/popover";
 import { cn } from "@soco/utils";
 
 const BigBlueButtonBnForm = ({
@@ -99,7 +95,7 @@ const BigBlueButtonBnForm = ({
     data?: { error?: string },
   ) => {
     if (data?.error) {
-      toast.error(data.error);
+      toast.error(`Error on ${action}: ${data.error}`);
       return;
     }
     return;
@@ -110,7 +106,7 @@ const BigBlueButtonBnForm = ({
     data?: { error?: string },
   ) => {
     if (data?.error) {
-      toast.error(data.error);
+      toast.error(`Error on ${action}: ${data.error}`);
       return;
     }
 

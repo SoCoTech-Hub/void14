@@ -1,6 +1,19 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { trpc } from "@/lib/trpc/client";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { format } from "date-fns";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
+
+import {
+  Bursary,
+  insertBursaryParams,
+  NewBursaryParams,
+} from "@soco/bursaries-db/schema/bursaries";
 import { Button } from "@soco/ui/button";
 import { Calendar } from "@soco/ui/calendar";
 import {
@@ -12,24 +25,7 @@ import {
   FormMessage,
 } from "@soco/ui/form";
 import { Input } from "@soco/ui/input";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@soco/ui/popover";
-import {
-  Bursary,
-  insertBursaryParams,
-  NewBursaryParams,
-} from "@soco/bursaries-db/schema/bursaries";
-import { trpc } from "@/lib/trpc/client";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
-import { z } from "zod";
-
+import { Popover, PopoverContent, PopoverTrigger } from "@soco/ui/popover";
 import { cn } from "@soco/utils";
 
 const BursaryForm = ({
@@ -67,7 +63,7 @@ const BursaryForm = ({
     data?: { error?: string },
   ) => {
     if (data?.error) {
-      toast.error(data.error);
+      toast.error(`Error on ${action}: ${data.error}`);
       return;
     }
     return;
@@ -78,7 +74,7 @@ const BursaryForm = ({
     data?: { error?: string },
   ) => {
     if (data?.error) {
-      toast.error(data.error);
+      toast.error(`Error on ${action}: ${data.error}`);
       return;
     }
 

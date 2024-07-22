@@ -1,6 +1,19 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import { trpc } from "@/lib/trpc/client";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { format } from "date-fns";
+import { CalendarIcon } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { z } from "zod";
+
+import {
+  CourseCompletionDefault,
+  insertCourseCompletionDefaultParams,
+  NewCourseCompletionDefaultParams,
+} from "@soco/course-db/schema/courseCompletionDefaults";
 import { Button } from "@soco/ui/button";
 import { Calendar } from "@soco/ui/calendar";
 import { Checkbox } from "@soco/ui/checkbox";
@@ -13,11 +26,7 @@ import {
   FormMessage,
 } from "@soco/ui/form";
 import { Input } from "@soco/ui/input";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@soco/ui/popover";
+import { Popover, PopoverContent, PopoverTrigger } from "@soco/ui/popover";
 import {
   Select,
   SelectContent,
@@ -25,19 +34,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@soco/ui/select";
-import {
-  CourseCompletionDefault,
-  insertCourseCompletionDefaultParams,
-  NewCourseCompletionDefaultParams,
-} from "@soco/course-db/schema/courseCompletionDefaults";
-import { trpc } from "@/lib/trpc/client";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
-import { useForm } from "react-hook-form";
-import { toast } from "sonner";
-import { z } from "zod";
-
 import { cn } from "@soco/utils";
 
 const CourseCompletionDefaultForm = ({
@@ -75,7 +71,7 @@ const CourseCompletionDefaultForm = ({
     data?: { error?: string },
   ) => {
     if (data?.error) {
-      toast.error(data.error);
+      toast.error(`Error on ${action}: ${data.error}`);
       return;
     }
     return;
@@ -86,7 +82,7 @@ const CourseCompletionDefaultForm = ({
     data?: { error?: string },
   ) => {
     if (data?.error) {
-      toast.error(data.error);
+      toast.error(`Error on ${action}: ${data.error}`);
       return;
     }
 
