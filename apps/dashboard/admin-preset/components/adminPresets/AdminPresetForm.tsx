@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Button } from "@soco/ui/button";
+import { Calendar } from "@soco/ui/calendar";
+import { Checkbox } from "@soco/ui/checkbox";
 import {
   Form,
   FormControl,
@@ -11,13 +11,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "@soco/ui/form";
+import { Input } from "@soco/ui/input";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@soco/ui/popover";
 import {
   AdminPreset,
   insertAdminPresetParams,

@@ -1,4 +1,4 @@
-import { Card } from "@/components/ui/card";
+import { Card } from "@soco/ui/card";
 
 interface AccountCardProps {
   params: {

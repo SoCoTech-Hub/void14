@@ -11,10 +11,10 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "@soco/ui/form";
+import { Input } from "@soco/ui/input";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
+import { Button } from "@soco/ui/button";
 import { z } from "zod";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";

@@ -7,8 +7,8 @@ import { AccountCard, AccountCardFooter, AccountCardBody } from "./AccountCard";
 import { updateUser } from "@/lib/actions/users";
 
 import { toast } from "sonner";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Input } from "@soco/ui/input";
+import { Button } from "@soco/ui/button";
 
 export default function UpdateEmailCard({ email }: { email: string }) {
   const [state, formAction] = useFormState(updateUser, {

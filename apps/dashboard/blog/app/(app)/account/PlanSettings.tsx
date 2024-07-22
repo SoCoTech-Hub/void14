@@ -4,7 +4,7 @@ import {
   AccountCardBody,
   AccountCardFooter,
 } from "./AccountCard";
-import { Button } from "@/components/ui/button";
+import { Button } from "@soco/ui/button";
 import Link from "next/link";
 import { AuthSession } from "@soco/auth-service";
 

@@ -1,4 +1,4 @@
-import { Toaster } from "@/components/ui/sonner";
+import { Toaster } from "@soco/ui/sonner";
 import Navbar from "@/components/Navbar";
 import Sidebar from "@/components/Sidebar";
 export default async function AppLayout({

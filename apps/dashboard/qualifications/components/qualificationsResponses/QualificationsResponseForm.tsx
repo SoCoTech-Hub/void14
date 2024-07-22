@@ -11,13 +11,13 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "@soco/ui/form";
+import { Input } from "@soco/ui/input";
 import { trpc } from "@/lib/trpc/client";
-import { Button } from "@/components/ui/button";
+import { Button } from "@soco/ui/button";
 import { z } from "zod";
-import { Checkbox } from "@/components/ui/checkbox";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Checkbox } from "@soco/ui/checkbox";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@soco/ui/select";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 

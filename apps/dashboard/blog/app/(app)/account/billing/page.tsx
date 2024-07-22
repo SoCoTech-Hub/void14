@@ -1,6 +1,6 @@
 import SuccessToast from "./SuccessToast";
 import { ManageUserSubscriptionButton } from "./ManageSubscription";
-import { Button } from "@/components/ui/button";
+import { Button } from "@soco/ui/button";
 import {
   Card,
   CardContent,
@@ -8,7 +8,7 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
+} from "@soco/ui/card";
 import { storeSubscriptionPlans } from "@/config/subscriptions";
 import { checkAuth, getUserAuth } from "@soco/auth-service";
 import { getUserSubscriptionPlan } from "@/lib/stripe/subscription";

@@ -1,8 +1,8 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
+import { Button } from "@soco/ui/button";
+import { Calendar } from "@soco/ui/calendar";
 import {
   Form,
   FormControl,
@@ -10,20 +10,20 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
+} from "@soco/ui/form";
+import { Input } from "@soco/ui/input";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover";
+} from "@soco/ui/popover";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from "@soco/ui/select";
 import {
   CourseCompletionCriteria,
   insertCourseCompletionCriteriaParams,

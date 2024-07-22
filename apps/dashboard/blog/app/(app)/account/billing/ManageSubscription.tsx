@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@soco/ui/button";
 import React from "react";
 import { toast } from "sonner";
 import { Loader2 } from "lucide-react";
