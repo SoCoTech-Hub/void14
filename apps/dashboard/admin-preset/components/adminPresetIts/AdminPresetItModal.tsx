@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { AdminPresetIt } from "@soco/admin-preset-db/schema/adminPresetIts";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import AdminPresetItForm from "./AdminPresetItForm";
-import { AdminPresetIt } from "@soco/admin-preset-db/schema/adminPresetIts";
+} from "@soco/ui/dialog";
 
-export default function AdminPresetItModal({ 
+import AdminPresetItForm from "./AdminPresetItForm";
+
+export default function AdminPresetItModal({
   adminPresetIt,
   emptyState,
-}: { 
+}: {
   adminPresetIt?: AdminPresetIt;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function AdminPresetItModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function AdminPresetItModal({
             New Admin Preset It
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Admin Preset It</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Admin Preset It
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <AdminPresetItForm closeModal={closeModal} adminPresetIt={adminPresetIt} />
+          <AdminPresetItForm
+            closeModal={closeModal}
+            adminPresetIt={adminPresetIt}
+          />
         </div>
       </DialogContent>
     </Dialog>

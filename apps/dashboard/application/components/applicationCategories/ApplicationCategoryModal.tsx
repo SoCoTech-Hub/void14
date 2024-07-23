@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ApplicationCategory } from "@soco/application-db/schema/applicationCategories";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ApplicationCategoryForm from "./ApplicationCategoryForm";
-import { ApplicationCategory } from "@soco/application-db/schema/applicationCategories";
+} from "@soco/ui/dialog";
 
-export default function ApplicationCategoryModal({ 
+import ApplicationCategoryForm from "./ApplicationCategoryForm";
+
+export default function ApplicationCategoryModal({
   applicationCategory,
   emptyState,
-}: { 
+}: {
   applicationCategory?: ApplicationCategory;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ApplicationCategoryModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ApplicationCategoryModal({
             New Application Category
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Application Category</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Application Category
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ApplicationCategoryForm closeModal={closeModal} applicationCategory={applicationCategory} />
+          <ApplicationCategoryForm
+            closeModal={closeModal}
+            applicationCategory={applicationCategory}
+          />
         </div>
       </DialogContent>
     </Dialog>

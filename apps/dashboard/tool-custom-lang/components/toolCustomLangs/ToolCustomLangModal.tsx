@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ToolCustomLang } from "@soco/tool-custom-lang-db/schema/toolCustomLangs";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ToolCustomLangForm from "./ToolCustomLangForm";
-import { ToolCustomLang } from "@soco/tool-custom-lang-db/schema/toolCustomLangs";
+} from "@soco/ui/dialog";
 
-export default function ToolCustomLangModal({ 
+import ToolCustomLangForm from "./ToolCustomLangForm";
+
+export default function ToolCustomLangModal({
   toolCustomLang,
   emptyState,
-}: { 
+}: {
   toolCustomLang?: ToolCustomLang;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ToolCustomLangModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ToolCustomLangModal({
             New Tool Custom Lang
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Tool Custom Lang</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Tool Custom Lang
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ToolCustomLangForm closeModal={closeModal} toolCustomLang={toolCustomLang} />
+          <ToolCustomLangForm
+            closeModal={closeModal}
+            toolCustomLang={toolCustomLang}
+          />
         </div>
       </DialogContent>
     </Dialog>

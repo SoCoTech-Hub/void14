@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Feedback } from "@soco/feedback-db/schema/feedbacks";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import FeedbackForm from "./FeedbackForm";
-import { Feedback } from "@soco/feedback-db/schema/feedbacks";
+} from "@soco/ui/dialog";
 
-export default function FeedbackModal({ 
+import FeedbackForm from "./FeedbackForm";
+
+export default function FeedbackModal({
   feedback,
   emptyState,
-}: { 
+}: {
   feedback?: Feedback;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function FeedbackModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function FeedbackModal({
             New Feedback
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Feedback</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Feedback</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <FeedbackForm closeModal={closeModal} feedback={feedback} />

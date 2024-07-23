@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { GradingformRubricFilling } from "@soco/grade-db/schema/gradingformRubricFillings";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import GradingformRubricFillingForm from "./GradingformRubricFillingForm";
-import { GradingformRubricFilling } from "@soco/grade-db/schema/gradingformRubricFillings";
+} from "@soco/ui/dialog";
 
-export default function GradingformRubricFillingModal({ 
+import GradingformRubricFillingForm from "./GradingformRubricFillingForm";
+
+export default function GradingformRubricFillingModal({
   gradingformRubricFilling,
   emptyState,
-}: { 
+}: {
   gradingformRubricFilling?: GradingformRubricFilling;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function GradingformRubricFillingModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function GradingformRubricFillingModal({
             New Gradingform Rubric Filling
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Gradingform Rubric Filling</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Gradingform Rubric Filling
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <GradingformRubricFillingForm closeModal={closeModal} gradingformRubricFilling={gradingformRubricFilling} />
+          <GradingformRubricFillingForm
+            closeModal={closeModal}
+            gradingformRubricFilling={gradingformRubricFilling}
+          />
         </div>
       </DialogContent>
     </Dialog>

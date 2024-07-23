@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { CompetencyModuleComp } from "@soco/competency-db/schema/competencyModuleComps";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import CompetencyModuleCompForm from "./CompetencyModuleCompForm";
-import { CompetencyModuleComp } from "@soco/competency-db/schema/competencyModuleComps";
+} from "@soco/ui/dialog";
 
-export default function CompetencyModuleCompModal({ 
+import CompetencyModuleCompForm from "./CompetencyModuleCompForm";
+
+export default function CompetencyModuleCompModal({
   competencyModuleComp,
   emptyState,
-}: { 
+}: {
   competencyModuleComp?: CompetencyModuleComp;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function CompetencyModuleCompModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function CompetencyModuleCompModal({
             New Competency Module Comp
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Competency Module Comp</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Competency Module Comp
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <CompetencyModuleCompForm closeModal={closeModal} competencyModuleComp={competencyModuleComp} />
+          <CompetencyModuleCompForm
+            closeModal={closeModal}
+            competencyModuleComp={competencyModuleComp}
+          />
         </div>
       </DialogContent>
     </Dialog>

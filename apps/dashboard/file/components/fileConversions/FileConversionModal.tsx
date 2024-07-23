@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { FileConversion } from "@soco/file-db/schema/fileConversions";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import FileConversionForm from "./FileConversionForm";
-import { FileConversion } from "@soco/file-db/schema/fileConversions";
+} from "@soco/ui/dialog";
 
-export default function FileConversionModal({ 
+import FileConversionForm from "./FileConversionForm";
+
+export default function FileConversionModal({
   fileConversion,
   emptyState,
-}: { 
+}: {
   fileConversion?: FileConversion;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function FileConversionModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function FileConversionModal({
             New File Conversion
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } File Conversion</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} File Conversion
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <FileConversionForm closeModal={closeModal} fileConversion={fileConversion} />
+          <FileConversionForm
+            closeModal={closeModal}
+            fileConversion={fileConversion}
+          />
         </div>
       </DialogContent>
     </Dialog>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +9,15 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import WorkshopFormAccumulativeForm from "./WorkshopFormAccumulativeForm";
+} from "@soco/ui/dialog";
 import { WorkshopFormAccumulative } from "@soco/workshop-db/schema/workshopFormAccumulatives";
 
-export default function WorkshopFormAccumulativeModal({ 
+import WorkshopFormAccumulativeForm from "./WorkshopFormAccumulativeForm";
+
+export default function WorkshopFormAccumulativeModal({
   workshopFormAccumulative,
   emptyState,
-}: { 
+}: {
   workshopFormAccumulative?: WorkshopFormAccumulative;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function WorkshopFormAccumulativeModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function WorkshopFormAccumulativeModal({
             New Workshop Form Accumulative
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Workshop Form Accumulative</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Workshop Form Accumulative
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <WorkshopFormAccumulativeForm closeModal={closeModal} workshopFormAccumulative={workshopFormAccumulative} />
+          <WorkshopFormAccumulativeForm
+            closeModal={closeModal}
+            workshopFormAccumulative={workshopFormAccumulative}
+          />
         </div>
       </DialogContent>
     </Dialog>

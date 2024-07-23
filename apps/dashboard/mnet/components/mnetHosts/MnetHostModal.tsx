@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { MnetHost } from "@soco/mnet-db/schema/mnetHosts";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import MnetHostForm from "./MnetHostForm";
-import { MnetHost } from "@soco/mnet-db/schema/mnetHosts";
+} from "@soco/ui/dialog";
 
-export default function MnetHostModal({ 
+import MnetHostForm from "./MnetHostForm";
+
+export default function MnetHostModal({
   mnetHost,
   emptyState,
-}: { 
+}: {
   mnetHost?: MnetHost;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function MnetHostModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function MnetHostModal({
             New Mnet Host
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Mnet Host</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Mnet Host</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <MnetHostForm closeModal={closeModal} mnetHost={mnetHost} />

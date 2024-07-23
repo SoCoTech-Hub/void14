@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Digilib } from "@soco/digilib-db/schema/digilibs";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import DigilibForm from "./DigilibForm";
-import { Digilib } from "@soco/digilib-db/schema/digilibs";
+} from "@soco/ui/dialog";
 
-export default function DigilibModal({ 
+import DigilibForm from "./DigilibForm";
+
+export default function DigilibModal({
   digilib,
   emptyState,
-}: { 
+}: {
   digilib?: Digilib;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function DigilibModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function DigilibModal({
             New Digilib
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Digilib</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Digilib</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <DigilibForm closeModal={closeModal} digilib={digilib} />

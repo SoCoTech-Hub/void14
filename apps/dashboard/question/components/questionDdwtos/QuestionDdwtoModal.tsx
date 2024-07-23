@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { QuestionDdwto } from "@soco/question-db/schema/questionDdwtos";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import QuestionDdwtoForm from "./QuestionDdwtoForm";
-import { QuestionDdwto } from "@soco/question-db/schema/questionDdwtos";
+} from "@soco/ui/dialog";
 
-export default function QuestionDdwtoModal({ 
+import QuestionDdwtoForm from "./QuestionDdwtoForm";
+
+export default function QuestionDdwtoModal({
   questionDdwto,
   emptyState,
-}: { 
+}: {
   questionDdwto?: QuestionDdwto;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function QuestionDdwtoModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function QuestionDdwtoModal({
             New Question Ddwto
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Question Ddwto</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Question Ddwto
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <QuestionDdwtoForm closeModal={closeModal} questionDdwto={questionDdwto} />
+          <QuestionDdwtoForm
+            closeModal={closeModal}
+            questionDdwto={questionDdwto}
+          />
         </div>
       </DialogContent>
     </Dialog>

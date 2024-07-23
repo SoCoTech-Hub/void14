@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { BursaryCategoriesBursary } from "@soco/bursaries-db/schema/bursaryCategoriesBursaries";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import BursaryCategoriesBursaryForm from "./BursaryCategoriesBursaryForm";
-import { BursaryCategoriesBursary } from "@soco/bursaries-db/schema/bursaryCategoriesBursaries";
+} from "@soco/ui/dialog";
 
-export default function BursaryCategoriesBursaryModal({ 
+import BursaryCategoriesBursaryForm from "./BursaryCategoriesBursaryForm";
+
+export default function BursaryCategoriesBursaryModal({
   bursaryCategoriesBursary,
   emptyState,
-}: { 
+}: {
   bursaryCategoriesBursary?: BursaryCategoriesBursary;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function BursaryCategoriesBursaryModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function BursaryCategoriesBursaryModal({
             New Bursary Categories Bursary
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Bursary Categories Bursary</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Bursary Categories Bursary
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <BursaryCategoriesBursaryForm closeModal={closeModal} bursaryCategoriesBursary={bursaryCategoriesBursary} />
+          <BursaryCategoriesBursaryForm
+            closeModal={closeModal}
+            bursaryCategoriesBursary={bursaryCategoriesBursary}
+          />
         </div>
       </DialogContent>
     </Dialog>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { QtypeDdmarker } from "@soco/qtype-db/schema/qtypeDdmarkers";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import QtypeDdmarkerForm from "./QtypeDdmarkerForm";
-import { QtypeDdmarker } from "@soco/qtype-db/schema/qtypeDdmarkers";
+} from "@soco/ui/dialog";
 
-export default function QtypeDdmarkerModal({ 
+import QtypeDdmarkerForm from "./QtypeDdmarkerForm";
+
+export default function QtypeDdmarkerModal({
   qtypeDdmarker,
   emptyState,
-}: { 
+}: {
   qtypeDdmarker?: QtypeDdmarker;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function QtypeDdmarkerModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function QtypeDdmarkerModal({
             New Qtype Ddmarker
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Qtype Ddmarker</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Qtype Ddmarker
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <QtypeDdmarkerForm closeModal={closeModal} qtypeDdmarker={qtypeDdmarker} />
+          <QtypeDdmarkerForm
+            closeModal={closeModal}
+            qtypeDdmarker={qtypeDdmarker}
+          />
         </div>
       </DialogContent>
     </Dialog>

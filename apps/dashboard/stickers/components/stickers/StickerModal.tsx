@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Sticker } from "@soco/stickers-db/schema/stickers";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import StickerForm from "./StickerForm";
-import { Sticker } from "@soco/stickers-db/schema/stickers";
+} from "@soco/ui/dialog";
 
-export default function StickerModal({ 
+import StickerForm from "./StickerForm";
+
+export default function StickerModal({
   sticker,
   emptyState,
-}: { 
+}: {
   sticker?: Sticker;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function StickerModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function StickerModal({
             New Sticker
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Sticker</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Sticker</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <StickerForm closeModal={closeModal} sticker={sticker} />

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { MessagePopup } from "@soco/message-db/schema/messagePopups";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import MessagePopupForm from "./MessagePopupForm";
-import { MessagePopup } from "@soco/message-db/schema/messagePopups";
+} from "@soco/ui/dialog";
 
-export default function MessagePopupModal({ 
+import MessagePopupForm from "./MessagePopupForm";
+
+export default function MessagePopupModal({
   messagePopup,
   emptyState,
-}: { 
+}: {
   messagePopup?: MessagePopup;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function MessagePopupModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,23 @@ export default function MessagePopupModal({
             New Message Popup
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Message Popup</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Message Popup</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <MessagePopupForm closeModal={closeModal} messagePopup={messagePopup} />
+          <MessagePopupForm
+            closeModal={closeModal}
+            messagePopup={messagePopup}
+          />
         </div>
       </DialogContent>
     </Dialog>

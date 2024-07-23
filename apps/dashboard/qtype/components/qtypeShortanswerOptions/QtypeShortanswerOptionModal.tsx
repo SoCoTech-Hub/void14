@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { QtypeShortanswerOption } from "@soco/qtype-db/schema/qtypeShortanswerOptions";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import QtypeShortanswerOptionForm from "./QtypeShortanswerOptionForm";
-import { QtypeShortanswerOption } from "@soco/qtype-db/schema/qtypeShortanswerOptions";
+} from "@soco/ui/dialog";
 
-export default function QtypeShortanswerOptionModal({ 
+import QtypeShortanswerOptionForm from "./QtypeShortanswerOptionForm";
+
+export default function QtypeShortanswerOptionModal({
   qtypeShortanswerOption,
   emptyState,
-}: { 
+}: {
   qtypeShortanswerOption?: QtypeShortanswerOption;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function QtypeShortanswerOptionModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function QtypeShortanswerOptionModal({
             New Qtype Shortanswer Option
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Qtype Shortanswer Option</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Qtype Shortanswer Option
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <QtypeShortanswerOptionForm closeModal={closeModal} qtypeShortanswerOption={qtypeShortanswerOption} />
+          <QtypeShortanswerOptionForm
+            closeModal={closeModal}
+            qtypeShortanswerOption={qtypeShortanswerOption}
+          />
         </div>
       </DialogContent>
     </Dialog>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { GradeCategory } from "@soco/grade-db/schema/gradeCategories";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import GradeCategoryForm from "./GradeCategoryForm";
-import { GradeCategory } from "@soco/grade-db/schema/gradeCategories";
+} from "@soco/ui/dialog";
 
-export default function GradeCategoryModal({ 
+import GradeCategoryForm from "./GradeCategoryForm";
+
+export default function GradeCategoryModal({
   gradeCategory,
   emptyState,
-}: { 
+}: {
   gradeCategory?: GradeCategory;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function GradeCategoryModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function GradeCategoryModal({
             New Grade Category
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Grade Category</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Grade Category
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <GradeCategoryForm closeModal={closeModal} gradeCategory={gradeCategory} />
+          <GradeCategoryForm
+            closeModal={closeModal}
+            gradeCategory={gradeCategory}
+          />
         </div>
       </DialogContent>
     </Dialog>

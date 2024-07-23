@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { LessonTimer } from "@soco/lesson-db/schema/lessonTimer";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import LessonTimerForm from "./LessonTimerForm";
-import { LessonTimer } from "@soco/lesson-db/schema/lessonTimer";
+} from "@soco/ui/dialog";
 
-export default function LessonTimerModal({ 
+import LessonTimerForm from "./LessonTimerForm";
+
+export default function LessonTimerModal({
   lessonTimer,
   emptyState,
-}: { 
+}: {
   lessonTimer?: LessonTimer;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function LessonTimerModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function LessonTimerModal({
             New Lesson Timer
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Lesson Timer</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Lesson Timer</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <LessonTimerForm closeModal={closeModal} lessonTimer={lessonTimer} />

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +9,15 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import WorkshopAggregationForm from "./WorkshopAggregationForm";
+} from "@soco/ui/dialog";
 import { WorkshopAggregation } from "@soco/workshop-db/schema/workshopAggregations";
 
-export default function WorkshopAggregationModal({ 
+import WorkshopAggregationForm from "./WorkshopAggregationForm";
+
+export default function WorkshopAggregationModal({
   workshopAggregation,
   emptyState,
-}: { 
+}: {
   workshopAggregation?: WorkshopAggregation;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function WorkshopAggregationModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function WorkshopAggregationModal({
             New Workshop Aggregation
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Workshop Aggregation</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Workshop Aggregation
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <WorkshopAggregationForm closeModal={closeModal} workshopAggregation={workshopAggregation} />
+          <WorkshopAggregationForm
+            closeModal={closeModal}
+            workshopAggregation={workshopAggregation}
+          />
         </div>
       </DialogContent>
     </Dialog>

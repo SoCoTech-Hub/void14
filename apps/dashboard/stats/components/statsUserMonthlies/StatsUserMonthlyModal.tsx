@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { StatsUserMonthly } from "@soco/stats-db/schema/statsUserMonthlies";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import StatsUserMonthlyForm from "./StatsUserMonthlyForm";
-import { StatsUserMonthly } from "@soco/stats-db/schema/statsUserMonthlies";
+} from "@soco/ui/dialog";
 
-export default function StatsUserMonthlyModal({ 
+import StatsUserMonthlyForm from "./StatsUserMonthlyForm";
+
+export default function StatsUserMonthlyModal({
   statsUserMonthly,
   emptyState,
-}: { 
+}: {
   statsUserMonthly?: StatsUserMonthly;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function StatsUserMonthlyModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function StatsUserMonthlyModal({
             New Stats User Monthly
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Stats User Monthly</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Stats User Monthly
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <StatsUserMonthlyForm closeModal={closeModal} statsUserMonthly={statsUserMonthly} />
+          <StatsUserMonthlyForm
+            closeModal={closeModal}
+            statsUserMonthly={statsUserMonthly}
+          />
         </div>
       </DialogContent>
     </Dialog>

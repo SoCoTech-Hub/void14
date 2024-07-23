@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Label } from "@soco/label-db/schema/labels";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import LabelForm from "./LabelForm";
-import { Label } from "@soco/label-db/schema/labels";
+} from "@soco/ui/dialog";
 
-export default function LabelModal({ 
+import LabelForm from "./LabelForm";
+
+export default function LabelModal({
   label,
   emptyState,
-}: { 
+}: {
   label?: Label;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function LabelModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function LabelModal({
             New Label
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Label</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Label</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <LabelForm closeModal={closeModal} label={label} />

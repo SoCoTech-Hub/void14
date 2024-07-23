@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { GradeLetter } from "@soco/grade-db/schema/gradeLetters";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import GradeLetterForm from "./GradeLetterForm";
-import { GradeLetter } from "@soco/grade-db/schema/gradeLetters";
+} from "@soco/ui/dialog";
 
-export default function GradeLetterModal({ 
+import GradeLetterForm from "./GradeLetterForm";
+
+export default function GradeLetterModal({
   gradeLetter,
   emptyState,
-}: { 
+}: {
   gradeLetter?: GradeLetter;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function GradeLetterModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function GradeLetterModal({
             New Grade Letter
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Grade Letter</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Grade Letter</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <GradeLetterForm closeModal={closeModal} gradeLetter={gradeLetter} />

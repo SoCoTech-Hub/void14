@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +9,15 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import WorkshopForm from "./WorkshopForm";
+} from "@soco/ui/dialog";
 import { Workshop } from "@soco/workshop-db/schema/workshops";
 
-export default function WorkshopModal({ 
+import WorkshopForm from "./WorkshopForm";
+
+export default function WorkshopModal({
   workshop,
   emptyState,
-}: { 
+}: {
   workshop?: Workshop;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function WorkshopModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function WorkshopModal({
             New Workshop
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Workshop</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Workshop</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <WorkshopForm closeModal={closeModal} workshop={workshop} />

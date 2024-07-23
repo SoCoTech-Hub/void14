@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { AffiliatesTransaction } from "@soco/affiliates-db/schema/affiliatesTransactions";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import AffiliatesTransactionForm from "./AffiliatesTransactionForm";
-import { AffiliatesTransaction } from "@soco/affiliates-db/schema/affiliatesTransactions";
+} from "@soco/ui/dialog";
 
-export default function AffiliatesTransactionModal({ 
+import AffiliatesTransactionForm from "./AffiliatesTransactionForm";
+
+export default function AffiliatesTransactionModal({
   affiliatesTransaction,
   emptyState,
-}: { 
+}: {
   affiliatesTransaction?: AffiliatesTransaction;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function AffiliatesTransactionModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function AffiliatesTransactionModal({
             New Affiliates Transaction
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Affiliates Transaction</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Affiliates Transaction
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <AffiliatesTransactionForm closeModal={closeModal} affiliatesTransaction={affiliatesTransaction} />
+          <AffiliatesTransactionForm
+            closeModal={closeModal}
+            affiliatesTransaction={affiliatesTransaction}
+          />
         </div>
       </DialogContent>
     </Dialog>

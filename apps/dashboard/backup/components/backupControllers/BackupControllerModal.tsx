@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { BackupController } from "@soco/backup-db/schema/backupControllers";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import BackupControllerForm from "./BackupControllerForm";
-import { BackupController } from "@soco/backup-db/schema/backupControllers";
+} from "@soco/ui/dialog";
 
-export default function BackupControllerModal({ 
+import BackupControllerForm from "./BackupControllerForm";
+
+export default function BackupControllerModal({
   backupController,
   emptyState,
-}: { 
+}: {
   backupController?: BackupController;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function BackupControllerModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function BackupControllerModal({
             New Backup Controller
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Backup Controller</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Backup Controller
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <BackupControllerForm closeModal={closeModal} backupController={backupController} />
+          <BackupControllerForm
+            closeModal={closeModal}
+            backupController={backupController}
+          />
         </div>
       </DialogContent>
     </Dialog>

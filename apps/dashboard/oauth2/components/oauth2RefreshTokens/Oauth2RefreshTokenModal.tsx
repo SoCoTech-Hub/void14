@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Oauth2RefreshToken } from "@soco/oauth2-db/schema/oauth2RefreshTokens";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import Oauth2RefreshTokenForm from "./Oauth2RefreshTokenForm";
-import { Oauth2RefreshToken } from "@soco/oauth2-db/schema/oauth2RefreshTokens";
+} from "@soco/ui/dialog";
 
-export default function Oauth2RefreshTokenModal({ 
+import Oauth2RefreshTokenForm from "./Oauth2RefreshTokenForm";
+
+export default function Oauth2RefreshTokenModal({
   oauth2RefreshToken,
   emptyState,
-}: { 
+}: {
   oauth2RefreshToken?: Oauth2RefreshToken;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function Oauth2RefreshTokenModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function Oauth2RefreshTokenModal({
             New Oauth2 Refresh Token
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Oauth2 Refresh Token</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Oauth2 Refresh Token
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <Oauth2RefreshTokenForm closeModal={closeModal} oauth2RefreshToken={oauth2RefreshToken} />
+          <Oauth2RefreshTokenForm
+            closeModal={closeModal}
+            oauth2RefreshToken={oauth2RefreshToken}
+          />
         </div>
       </DialogContent>
     </Dialog>

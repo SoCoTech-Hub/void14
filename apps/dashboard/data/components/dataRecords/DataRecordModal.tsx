@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { DataRecord } from "@soco/data-db/schema/dataRecords";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import DataRecordForm from "./DataRecordForm";
-import { DataRecord } from "@soco/data-db/schema/dataRecords";
+} from "@soco/ui/dialog";
 
-export default function DataRecordModal({ 
+import DataRecordForm from "./DataRecordForm";
+
+export default function DataRecordModal({
   dataRecord,
   emptyState,
-}: { 
+}: {
   dataRecord?: DataRecord;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function DataRecordModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function DataRecordModal({
             New Data Record
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Data Record</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Data Record</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <DataRecordForm closeModal={closeModal} dataRecord={dataRecord} />

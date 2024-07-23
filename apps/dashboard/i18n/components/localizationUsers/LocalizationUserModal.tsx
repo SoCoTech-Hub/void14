@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { LocalizationUser } from "@soco/i18n-db/schema/localizationUsers";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import LocalizationUserForm from "./LocalizationUserForm";
-import { LocalizationUser } from "@soco/i18n-db/schema/localizationUsers";
+} from "@soco/ui/dialog";
 
-export default function LocalizationUserModal({ 
+import LocalizationUserForm from "./LocalizationUserForm";
+
+export default function LocalizationUserModal({
   localizationUser,
   emptyState,
-}: { 
+}: {
   localizationUser?: LocalizationUser;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function LocalizationUserModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function LocalizationUserModal({
             New Localization User
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Localization User</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Localization User
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <LocalizationUserForm closeModal={closeModal} localizationUser={localizationUser} />
+          <LocalizationUserForm
+            closeModal={closeModal}
+            localizationUser={localizationUser}
+          />
         </div>
       </DialogContent>
     </Dialog>

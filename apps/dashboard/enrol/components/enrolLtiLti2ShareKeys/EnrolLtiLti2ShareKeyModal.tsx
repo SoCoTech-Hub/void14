@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { EnrolLtiLti2ShareKey } from "@soco/enrol-db/schema/enrolLtiLti2ShareKeys";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import EnrolLtiLti2ShareKeyForm from "./EnrolLtiLti2ShareKeyForm";
-import { EnrolLtiLti2ShareKey } from "@soco/enrol-db/schema/enrolLtiLti2ShareKeys";
+} from "@soco/ui/dialog";
 
-export default function EnrolLtiLti2ShareKeyModal({ 
+import EnrolLtiLti2ShareKeyForm from "./EnrolLtiLti2ShareKeyForm";
+
+export default function EnrolLtiLti2ShareKeyModal({
   enrolLtiLti2ShareKey,
   emptyState,
-}: { 
+}: {
   enrolLtiLti2ShareKey?: EnrolLtiLti2ShareKey;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function EnrolLtiLti2ShareKeyModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function EnrolLtiLti2ShareKeyModal({
             New Enrol Lti Lti2 Share Key
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Enrol Lti Lti2 Share Key</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Enrol Lti Lti2 Share Key
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <EnrolLtiLti2ShareKeyForm closeModal={closeModal} enrolLtiLti2ShareKey={enrolLtiLti2ShareKey} />
+          <EnrolLtiLti2ShareKeyForm
+            closeModal={closeModal}
+            enrolLtiLti2ShareKey={enrolLtiLti2ShareKey}
+          />
         </div>
       </DialogContent>
     </Dialog>

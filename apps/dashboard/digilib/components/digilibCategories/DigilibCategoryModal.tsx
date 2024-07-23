@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { DigilibCategory } from "@soco/digilib-db/schema/digilibCategories";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import DigilibCategoryForm from "./DigilibCategoryForm";
-import { DigilibCategory } from "@soco/digilib-db/schema/digilibCategories";
+} from "@soco/ui/dialog";
 
-export default function DigilibCategoryModal({ 
+import DigilibCategoryForm from "./DigilibCategoryForm";
+
+export default function DigilibCategoryModal({
   digilibCategory,
   emptyState,
-}: { 
+}: {
   digilibCategory?: DigilibCategory;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function DigilibCategoryModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function DigilibCategoryModal({
             New Digilib Category
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Digilib Category</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Digilib Category
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <DigilibCategoryForm closeModal={closeModal} digilibCategory={digilibCategory} />
+          <DigilibCategoryForm
+            closeModal={closeModal}
+            digilibCategory={digilibCategory}
+          />
         </div>
       </DialogContent>
     </Dialog>

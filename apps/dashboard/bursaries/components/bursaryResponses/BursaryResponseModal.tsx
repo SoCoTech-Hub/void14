@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { BursaryResponse } from "@soco/bursaries-db/schema/bursaryResponses";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import BursaryResponseForm from "./BursaryResponseForm";
-import { BursaryResponse } from "@soco/bursaries-db/schema/bursaryResponses";
+} from "@soco/ui/dialog";
 
-export default function BursaryResponseModal({ 
+import BursaryResponseForm from "./BursaryResponseForm";
+
+export default function BursaryResponseModal({
   bursaryResponse,
   emptyState,
-}: { 
+}: {
   bursaryResponse?: BursaryResponse;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function BursaryResponseModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function BursaryResponseModal({
             New Bursary Response
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Bursary Response</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Bursary Response
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <BursaryResponseForm closeModal={closeModal} bursaryResponse={bursaryResponse} />
+          <BursaryResponseForm
+            closeModal={closeModal}
+            bursaryResponse={bursaryResponse}
+          />
         </div>
       </DialogContent>
     </Dialog>

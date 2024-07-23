@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { QuizReport } from "@soco/quiz-db/schema/quizReports";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import QuizReportForm from "./QuizReportForm";
-import { QuizReport } from "@soco/quiz-db/schema/quizReports";
+} from "@soco/ui/dialog";
 
-export default function QuizReportModal({ 
+import QuizReportForm from "./QuizReportForm";
+
+export default function QuizReportModal({
   quizReport,
   emptyState,
-}: { 
+}: {
   quizReport?: QuizReport;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function QuizReportModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function QuizReportModal({
             New Quiz Report
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Quiz Report</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Quiz Report</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <QuizReportForm closeModal={closeModal} quizReport={quizReport} />

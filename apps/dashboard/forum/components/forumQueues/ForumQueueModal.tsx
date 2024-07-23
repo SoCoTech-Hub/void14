@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ForumQueue } from "@soco/forum-db/schema/forumQueues";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ForumQueueForm from "./ForumQueueForm";
-import { ForumQueue } from "@soco/forum-db/schema/forumQueues";
+} from "@soco/ui/dialog";
 
-export default function ForumQueueModal({ 
+import ForumQueueForm from "./ForumQueueForm";
+
+export default function ForumQueueModal({
   forumQueue,
   emptyState,
-}: { 
+}: {
   forumQueue?: ForumQueue;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ForumQueueModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function ForumQueueModal({
             New Forum Queue
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Forum Queue</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Forum Queue</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <ForumQueueForm closeModal={closeModal} forumQueue={forumQueue} />

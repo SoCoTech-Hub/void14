@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { QuestionAttemptStepData } from "@soco/question-db/schema/questionAttemptStepDatas";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import QuestionAttemptStepDataForm from "./QuestionAttemptStepDataForm";
-import { QuestionAttemptStepData } from "@soco/question-db/schema/questionAttemptStepDatas";
+} from "@soco/ui/dialog";
 
-export default function QuestionAttemptStepDataModal({ 
+import QuestionAttemptStepDataForm from "./QuestionAttemptStepDataForm";
+
+export default function QuestionAttemptStepDataModal({
   questionAttemptStepData,
   emptyState,
-}: { 
+}: {
   questionAttemptStepData?: QuestionAttemptStepData;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function QuestionAttemptStepDataModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function QuestionAttemptStepDataModal({
             New Question Attempt Step Data
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Question Attempt Step Data</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Question Attempt Step Data
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <QuestionAttemptStepDataForm closeModal={closeModal} questionAttemptStepData={questionAttemptStepData} />
+          <QuestionAttemptStepDataForm
+            closeModal={closeModal}
+            questionAttemptStepData={questionAttemptStepData}
+          />
         </div>
       </DialogContent>
     </Dialog>

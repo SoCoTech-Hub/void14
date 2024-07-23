@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ForumPost } from "@soco/forum-db/schema/forumPosts";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ForumPostForm from "./ForumPostForm";
-import { ForumPost } from "@soco/forum-db/schema/forumPosts";
+} from "@soco/ui/dialog";
 
-export default function ForumPostModal({ 
+import ForumPostForm from "./ForumPostForm";
+
+export default function ForumPostModal({
   forumPost,
   emptyState,
-}: { 
+}: {
   forumPost?: ForumPost;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ForumPostModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function ForumPostModal({
             New Forum Post
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Forum Post</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Forum Post</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <ForumPostForm closeModal={closeModal} forumPost={forumPost} />

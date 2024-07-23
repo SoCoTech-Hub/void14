@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Survey } from "@soco/survey-db/schema/surveys";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import SurveyForm from "./SurveyForm";
-import { Survey } from "@soco/survey-db/schema/surveys";
+} from "@soco/ui/dialog";
 
-export default function SurveyModal({ 
+import SurveyForm from "./SurveyForm";
+
+export default function SurveyModal({
   survey,
   emptyState,
-}: { 
+}: {
   survey?: Survey;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function SurveyModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function SurveyModal({
             New Survey
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Survey</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Survey</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <SurveyForm closeModal={closeModal} survey={survey} />

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { H5pLibrariesCachedasset } from "@soco/h5p-db/schema/h5pLibrariesCachedassets";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import H5pLibrariesCachedassetForm from "./H5pLibrariesCachedassetForm";
-import { H5pLibrariesCachedasset } from "@soco/h5p-db/schema/h5pLibrariesCachedassets";
+} from "@soco/ui/dialog";
 
-export default function H5pLibrariesCachedassetModal({ 
+import H5pLibrariesCachedassetForm from "./H5pLibrariesCachedassetForm";
+
+export default function H5pLibrariesCachedassetModal({
   h5pLibrariesCachedasset,
   emptyState,
-}: { 
+}: {
   h5pLibrariesCachedasset?: H5pLibrariesCachedasset;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function H5pLibrariesCachedassetModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function H5pLibrariesCachedassetModal({
             New H5p Libraries Cachedasset
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } H5p Libraries Cachedasset</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} H5p Libraries Cachedasset
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <H5pLibrariesCachedassetForm closeModal={closeModal} h5pLibrariesCachedasset={h5pLibrariesCachedasset} />
+          <H5pLibrariesCachedassetForm
+            closeModal={closeModal}
+            h5pLibrariesCachedasset={h5pLibrariesCachedasset}
+          />
         </div>
       </DialogContent>
     </Dialog>

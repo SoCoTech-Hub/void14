@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ToolDataprivacyPurposeRole } from "@soco/tool-data-privacy-db/schema/toolDataprivacyPurposeRoles";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ToolDataprivacyPurposeRoleForm from "./ToolDataprivacyPurposeRoleForm";
-import { ToolDataprivacyPurposeRole } from "@soco/tool-data-privacy-db/schema/toolDataprivacyPurposeRoles";
+} from "@soco/ui/dialog";
 
-export default function ToolDataprivacyPurposeRoleModal({ 
+import ToolDataprivacyPurposeRoleForm from "./ToolDataprivacyPurposeRoleForm";
+
+export default function ToolDataprivacyPurposeRoleModal({
   toolDataprivacyPurposeRole,
   emptyState,
-}: { 
+}: {
   toolDataprivacyPurposeRole?: ToolDataprivacyPurposeRole;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ToolDataprivacyPurposeRoleModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ToolDataprivacyPurposeRoleModal({
             New Tool Dataprivacy Purpose Role
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Tool Dataprivacy Purpose Role</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Tool Dataprivacy Purpose Role
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ToolDataprivacyPurposeRoleForm closeModal={closeModal} toolDataprivacyPurposeRole={toolDataprivacyPurposeRole} />
+          <ToolDataprivacyPurposeRoleForm
+            closeModal={closeModal}
+            toolDataprivacyPurposeRole={toolDataprivacyPurposeRole}
+          />
         </div>
       </DialogContent>
     </Dialog>

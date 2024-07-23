@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { AdminpresetsAppItA } from "@soco/admin-preset-db/schema/adminpresetsAppItAs";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import AdminpresetsAppItAForm from "./AdminpresetsAppItAForm";
-import { AdminpresetsAppItA } from "@soco/admin-preset-db/schema/adminpresetsAppItAs";
+} from "@soco/ui/dialog";
 
-export default function AdminpresetsAppItAModal({ 
+import AdminpresetsAppItAForm from "./AdminpresetsAppItAForm";
+
+export default function AdminpresetsAppItAModal({
   adminpresetsAppItA,
   emptyState,
-}: { 
+}: {
   adminpresetsAppItA?: AdminpresetsAppItA;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function AdminpresetsAppItAModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function AdminpresetsAppItAModal({
             New Adminpresets App It A
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Adminpresets App It A</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Adminpresets App It A
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <AdminpresetsAppItAForm closeModal={closeModal} adminpresetsAppItA={adminpresetsAppItA} />
+          <AdminpresetsAppItAForm
+            closeModal={closeModal}
+            adminpresetsAppItA={adminpresetsAppItA}
+          />
         </div>
       </DialogContent>
     </Dialog>

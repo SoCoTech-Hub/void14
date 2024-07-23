@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +9,15 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import UserPasswordHistoryForm from "./UserPasswordHistoryForm";
+} from "@soco/ui/dialog";
 import { UserPasswordHistory } from "@soco/user-db/schema/userPasswordHistories";
 
-export default function UserPasswordHistoryModal({ 
+import UserPasswordHistoryForm from "./UserPasswordHistoryForm";
+
+export default function UserPasswordHistoryModal({
   userPasswordHistory,
   emptyState,
-}: { 
+}: {
   userPasswordHistory?: UserPasswordHistory;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function UserPasswordHistoryModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function UserPasswordHistoryModal({
             New User Password History
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } User Password History</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} User Password History
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <UserPasswordHistoryForm closeModal={closeModal} userPasswordHistory={userPasswordHistory} />
+          <UserPasswordHistoryForm
+            closeModal={closeModal}
+            userPasswordHistory={userPasswordHistory}
+          />
         </div>
       </DialogContent>
     </Dialog>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { SupportDepartment } from "@soco/support-db/schema/supportDepartments";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import SupportDepartmentForm from "./SupportDepartmentForm";
-import { SupportDepartment } from "@soco/support-db/schema/supportDepartments";
+} from "@soco/ui/dialog";
 
-export default function SupportDepartmentModal({ 
+import SupportDepartmentForm from "./SupportDepartmentForm";
+
+export default function SupportDepartmentModal({
   supportDepartment,
   emptyState,
-}: { 
+}: {
   supportDepartment?: SupportDepartment;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function SupportDepartmentModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function SupportDepartmentModal({
             New Support Department
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Support Department</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Support Department
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <SupportDepartmentForm closeModal={closeModal} supportDepartment={supportDepartment} />
+          <SupportDepartmentForm
+            closeModal={closeModal}
+            supportDepartment={supportDepartment}
+          />
         </div>
       </DialogContent>
     </Dialog>

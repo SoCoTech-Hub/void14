@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { SubjectsSubjectCategory } from "@soco/subject-db/schema/subjectsSubjectCategories";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import SubjectsSubjectCategoryForm from "./SubjectsSubjectCategoryForm";
-import { SubjectsSubjectCategory } from "@soco/subject-db/schema/subjectsSubjectCategories";
+} from "@soco/ui/dialog";
 
-export default function SubjectsSubjectCategoryModal({ 
+import SubjectsSubjectCategoryForm from "./SubjectsSubjectCategoryForm";
+
+export default function SubjectsSubjectCategoryModal({
   subjectsSubjectCategory,
   emptyState,
-}: { 
+}: {
   subjectsSubjectCategory?: SubjectsSubjectCategory;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function SubjectsSubjectCategoryModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function SubjectsSubjectCategoryModal({
             New Subjects Subject Category
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Subjects Subject Category</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Subjects Subject Category
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <SubjectsSubjectCategoryForm closeModal={closeModal} subjectsSubjectCategory={subjectsSubjectCategory} />
+          <SubjectsSubjectCategoryForm
+            closeModal={closeModal}
+            subjectsSubjectCategory={subjectsSubjectCategory}
+          />
         </div>
       </DialogContent>
     </Dialog>

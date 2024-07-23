@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { CourseCompletionCriteria } from "@soco/course-db/schema/courseCompletionCriterias";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import CourseCompletionCriteriaForm from "./CourseCompletionCriteriaForm";
-import { CourseCompletionCriteria } from "@soco/course-db/schema/courseCompletionCriterias";
+} from "@soco/ui/dialog";
 
-export default function CourseCompletionCriteriaModal({ 
+import CourseCompletionCriteriaForm from "./CourseCompletionCriteriaForm";
+
+export default function CourseCompletionCriteriaModal({
   courseCompletionCriteria,
   emptyState,
-}: { 
+}: {
   courseCompletionCriteria?: CourseCompletionCriteria;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function CourseCompletionCriteriaModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function CourseCompletionCriteriaModal({
             New Course Completion Criteria
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Course Completion Criteria</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Course Completion Criteria
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <CourseCompletionCriteriaForm closeModal={closeModal} courseCompletionCriteria={courseCompletionCriteria} />
+          <CourseCompletionCriteriaForm
+            closeModal={closeModal}
+            courseCompletionCriteria={courseCompletionCriteria}
+          />
         </div>
       </DialogContent>
     </Dialog>

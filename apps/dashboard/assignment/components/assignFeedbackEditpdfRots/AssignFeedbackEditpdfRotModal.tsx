@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { AssignFeedbackEditpdfRot } from "@soco/assignment-db/schema/assignFeedbackEditpdfRots";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import AssignFeedbackEditpdfRotForm from "./AssignFeedbackEditpdfRotForm";
-import { AssignFeedbackEditpdfRot } from "@soco/assignment-db/schema/assignFeedbackEditpdfRots";
+} from "@soco/ui/dialog";
 
-export default function AssignFeedbackEditpdfRotModal({ 
+import AssignFeedbackEditpdfRotForm from "./AssignFeedbackEditpdfRotForm";
+
+export default function AssignFeedbackEditpdfRotModal({
   assignFeedbackEditpdfRot,
   emptyState,
-}: { 
+}: {
   assignFeedbackEditpdfRot?: AssignFeedbackEditpdfRot;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function AssignFeedbackEditpdfRotModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function AssignFeedbackEditpdfRotModal({
             New Assign Feedback Editpdf Rot
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Assign Feedback Editpdf Rot</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Assign Feedback Editpdf Rot
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <AssignFeedbackEditpdfRotForm closeModal={closeModal} assignFeedbackEditpdfRot={assignFeedbackEditpdfRot} />
+          <AssignFeedbackEditpdfRotForm
+            closeModal={closeModal}
+            assignFeedbackEditpdfRot={assignFeedbackEditpdfRot}
+          />
         </div>
       </DialogContent>
     </Dialog>

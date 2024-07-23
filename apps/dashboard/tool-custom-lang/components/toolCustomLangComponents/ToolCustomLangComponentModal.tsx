@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ToolCustomLangComponent } from "@soco/tool-custom-lang-db/schema/toolCustomLangComponents";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ToolCustomLangComponentForm from "./ToolCustomLangComponentForm";
-import { ToolCustomLangComponent } from "@soco/tool-custom-lang-db/schema/toolCustomLangComponents";
+} from "@soco/ui/dialog";
 
-export default function ToolCustomLangComponentModal({ 
+import ToolCustomLangComponentForm from "./ToolCustomLangComponentForm";
+
+export default function ToolCustomLangComponentModal({
   toolCustomLangComponent,
   emptyState,
-}: { 
+}: {
   toolCustomLangComponent?: ToolCustomLangComponent;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ToolCustomLangComponentModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ToolCustomLangComponentModal({
             New Tool Custom Lang Component
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Tool Custom Lang Component</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Tool Custom Lang Component
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ToolCustomLangComponentForm closeModal={closeModal} toolCustomLangComponent={toolCustomLangComponent} />
+          <ToolCustomLangComponentForm
+            closeModal={closeModal}
+            toolCustomLangComponent={toolCustomLangComponent}
+          />
         </div>
       </DialogContent>
     </Dialog>

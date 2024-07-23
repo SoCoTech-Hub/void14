@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ToolPolicyAcceptance } from "@soco/tool-policy-db/schema/toolPolicyAcceptances";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ToolPolicyAcceptanceForm from "./ToolPolicyAcceptanceForm";
-import { ToolPolicyAcceptance } from "@soco/tool-policy-db/schema/toolPolicyAcceptances";
+} from "@soco/ui/dialog";
 
-export default function ToolPolicyAcceptanceModal({ 
+import ToolPolicyAcceptanceForm from "./ToolPolicyAcceptanceForm";
+
+export default function ToolPolicyAcceptanceModal({
   toolPolicyAcceptance,
   emptyState,
-}: { 
+}: {
   toolPolicyAcceptance?: ToolPolicyAcceptance;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ToolPolicyAcceptanceModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ToolPolicyAcceptanceModal({
             New Tool Policy Acceptance
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Tool Policy Acceptance</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Tool Policy Acceptance
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ToolPolicyAcceptanceForm closeModal={closeModal} toolPolicyAcceptance={toolPolicyAcceptance} />
+          <ToolPolicyAcceptanceForm
+            closeModal={closeModal}
+            toolPolicyAcceptance={toolPolicyAcceptance}
+          />
         </div>
       </DialogContent>
     </Dialog>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { LessonGrade } from "@soco/lesson-db/schema/lessonGrades";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import LessonGradeForm from "./LessonGradeForm";
-import { LessonGrade } from "@soco/lesson-db/schema/lessonGrades";
+} from "@soco/ui/dialog";
 
-export default function LessonGradeModal({ 
+import LessonGradeForm from "./LessonGradeForm";
+
+export default function LessonGradeModal({
   lessonGrade,
   emptyState,
-}: { 
+}: {
   lessonGrade?: LessonGrade;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function LessonGradeModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function LessonGradeModal({
             New Lesson Grade
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Lesson Grade</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Lesson Grade</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <LessonGradeForm closeModal={closeModal} lessonGrade={lessonGrade} />

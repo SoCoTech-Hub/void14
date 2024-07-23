@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { LogstoreStandardLog } from "@soco/log-db/schema/logstoreStandardLogs";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import LogstoreStandardLogForm from "./LogstoreStandardLogForm";
-import { LogstoreStandardLog } from "@soco/log-db/schema/logstoreStandardLogs";
+} from "@soco/ui/dialog";
 
-export default function LogstoreStandardLogModal({ 
+import LogstoreStandardLogForm from "./LogstoreStandardLogForm";
+
+export default function LogstoreStandardLogModal({
   logstoreStandardLog,
   emptyState,
-}: { 
+}: {
   logstoreStandardLog?: LogstoreStandardLog;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function LogstoreStandardLogModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function LogstoreStandardLogModal({
             New Logstore Standard Log
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Logstore Standard Log</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Logstore Standard Log
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <LogstoreStandardLogForm closeModal={closeModal} logstoreStandardLog={logstoreStandardLog} />
+          <LogstoreStandardLogForm
+            closeModal={closeModal}
+            logstoreStandardLog={logstoreStandardLog}
+          />
         </div>
       </DialogContent>
     </Dialog>

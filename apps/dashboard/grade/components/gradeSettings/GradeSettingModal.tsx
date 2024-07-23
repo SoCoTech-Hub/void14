@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { GradeSetting } from "@soco/grade-db/schema/gradeSettings";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import GradeSettingForm from "./GradeSettingForm";
-import { GradeSetting } from "@soco/grade-db/schema/gradeSettings";
+} from "@soco/ui/dialog";
 
-export default function GradeSettingModal({ 
+import GradeSettingForm from "./GradeSettingForm";
+
+export default function GradeSettingModal({
   gradeSetting,
   emptyState,
-}: { 
+}: {
   gradeSetting?: GradeSetting;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function GradeSettingModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,23 @@ export default function GradeSettingModal({
             New Grade Setting
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Grade Setting</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Grade Setting</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <GradeSettingForm closeModal={closeModal} gradeSetting={gradeSetting} />
+          <GradeSettingForm
+            closeModal={closeModal}
+            gradeSetting={gradeSetting}
+          />
         </div>
       </DialogContent>
     </Dialog>

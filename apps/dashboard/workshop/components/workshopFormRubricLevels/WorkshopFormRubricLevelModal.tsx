@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +9,15 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import WorkshopFormRubricLevelForm from "./WorkshopFormRubricLevelForm";
+} from "@soco/ui/dialog";
 import { WorkshopFormRubricLevel } from "@soco/workshop-db/schema/workshopFormRubricLevels";
 
-export default function WorkshopFormRubricLevelModal({ 
+import WorkshopFormRubricLevelForm from "./WorkshopFormRubricLevelForm";
+
+export default function WorkshopFormRubricLevelModal({
   workshopFormRubricLevel,
   emptyState,
-}: { 
+}: {
   workshopFormRubricLevel?: WorkshopFormRubricLevel;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function WorkshopFormRubricLevelModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function WorkshopFormRubricLevelModal({
             New Workshop Form Rubric Level
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Workshop Form Rubric Level</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Workshop Form Rubric Level
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <WorkshopFormRubricLevelForm closeModal={closeModal} workshopFormRubricLevel={workshopFormRubricLevel} />
+          <WorkshopFormRubricLevelForm
+            closeModal={closeModal}
+            workshopFormRubricLevel={workshopFormRubricLevel}
+          />
         </div>
       </DialogContent>
     </Dialog>

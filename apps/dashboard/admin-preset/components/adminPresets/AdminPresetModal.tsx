@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { AdminPreset } from "@soco/admin-preset-db/schema/adminPresets";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import AdminPresetForm from "./AdminPresetForm";
-import { AdminPreset } from "@soco/admin-preset-db/schema/adminPresets";
+} from "@soco/ui/dialog";
 
-export default function AdminPresetModal({ 
+import AdminPresetForm from "./AdminPresetForm";
+
+export default function AdminPresetModal({
   adminPreset,
   emptyState,
-}: { 
+}: {
   adminPreset?: AdminPreset;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function AdminPresetModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function AdminPresetModal({
             New Admin Preset
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Admin Preset</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Admin Preset</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <AdminPresetForm closeModal={closeModal} adminPreset={adminPreset} />

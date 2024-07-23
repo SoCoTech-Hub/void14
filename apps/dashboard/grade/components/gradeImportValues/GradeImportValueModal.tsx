@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { GradeImportValue } from "@soco/grade-db/schema/gradeImportValues";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import GradeImportValueForm from "./GradeImportValueForm";
-import { GradeImportValue } from "@soco/grade-db/schema/gradeImportValues";
+} from "@soco/ui/dialog";
 
-export default function GradeImportValueModal({ 
+import GradeImportValueForm from "./GradeImportValueForm";
+
+export default function GradeImportValueModal({
   gradeImportValue,
   emptyState,
-}: { 
+}: {
   gradeImportValue?: GradeImportValue;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function GradeImportValueModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function GradeImportValueModal({
             New Grade Import Value
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Grade Import Value</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Grade Import Value
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <GradeImportValueForm closeModal={closeModal} gradeImportValue={gradeImportValue} />
+          <GradeImportValueForm
+            closeModal={closeModal}
+            gradeImportValue={gradeImportValue}
+          />
         </div>
       </DialogContent>
     </Dialog>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { QtypeRandomsamatchOption } from "@soco/qtype-db/schema/qtypeRandomsamatchOptions";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import QtypeRandomsamatchOptionForm from "./QtypeRandomsamatchOptionForm";
-import { QtypeRandomsamatchOption } from "@soco/qtype-db/schema/qtypeRandomsamatchOptions";
+} from "@soco/ui/dialog";
 
-export default function QtypeRandomsamatchOptionModal({ 
+import QtypeRandomsamatchOptionForm from "./QtypeRandomsamatchOptionForm";
+
+export default function QtypeRandomsamatchOptionModal({
   qtypeRandomsamatchOption,
   emptyState,
-}: { 
+}: {
   qtypeRandomsamatchOption?: QtypeRandomsamatchOption;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function QtypeRandomsamatchOptionModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function QtypeRandomsamatchOptionModal({
             New Qtype Randomsamatch Option
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Qtype Randomsamatch Option</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Qtype Randomsamatch Option
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <QtypeRandomsamatchOptionForm closeModal={closeModal} qtypeRandomsamatchOption={qtypeRandomsamatchOption} />
+          <QtypeRandomsamatchOptionForm
+            closeModal={closeModal}
+            qtypeRandomsamatchOption={qtypeRandomsamatchOption}
+          />
         </div>
       </DialogContent>
     </Dialog>

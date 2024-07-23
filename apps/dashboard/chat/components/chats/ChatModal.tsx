@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Chat } from "@soco/chat-db/schema/chats";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ChatForm from "./ChatForm";
-import { Chat } from "@soco/chat-db/schema/chats";
+} from "@soco/ui/dialog";
 
-export default function ChatModal({ 
+import ChatForm from "./ChatForm";
+
+export default function ChatModal({
   chat,
   emptyState,
-}: { 
+}: {
   chat?: Chat;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ChatModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function ChatModal({
             New Chat
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Chat</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Chat</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <ChatForm closeModal={closeModal} chat={chat} />

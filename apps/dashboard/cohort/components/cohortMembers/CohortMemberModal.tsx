@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { CohortMember } from "@soco/cohort-db/schema/cohortMembers";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import CohortMemberForm from "./CohortMemberForm";
-import { CohortMember } from "@soco/cohort-db/schema/cohortMembers";
+} from "@soco/ui/dialog";
 
-export default function CohortMemberModal({ 
+import CohortMemberForm from "./CohortMemberForm";
+
+export default function CohortMemberModal({
   cohortMember,
   emptyState,
-}: { 
+}: {
   cohortMember?: CohortMember;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function CohortMemberModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,23 @@ export default function CohortMemberModal({
             New Cohort Member
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Cohort Member</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Cohort Member</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <CohortMemberForm closeModal={closeModal} cohortMember={cohortMember} />
+          <CohortMemberForm
+            closeModal={closeModal}
+            cohortMember={cohortMember}
+          />
         </div>
       </DialogContent>
     </Dialog>

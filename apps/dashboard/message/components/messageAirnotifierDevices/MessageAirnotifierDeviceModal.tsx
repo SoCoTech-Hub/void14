@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { MessageAirnotifierDevice } from "@soco/message-db/schema/messageAirnotifierDevices";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import MessageAirnotifierDeviceForm from "./MessageAirnotifierDeviceForm";
-import { MessageAirnotifierDevice } from "@soco/message-db/schema/messageAirnotifierDevices";
+} from "@soco/ui/dialog";
 
-export default function MessageAirnotifierDeviceModal({ 
+import MessageAirnotifierDeviceForm from "./MessageAirnotifierDeviceForm";
+
+export default function MessageAirnotifierDeviceModal({
   messageAirnotifierDevice,
   emptyState,
-}: { 
+}: {
   messageAirnotifierDevice?: MessageAirnotifierDevice;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function MessageAirnotifierDeviceModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function MessageAirnotifierDeviceModal({
             New Message Airnotifier Device
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Message Airnotifier Device</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Message Airnotifier Device
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <MessageAirnotifierDeviceForm closeModal={closeModal} messageAirnotifierDevice={messageAirnotifierDevice} />
+          <MessageAirnotifierDeviceForm
+            closeModal={closeModal}
+            messageAirnotifierDevice={messageAirnotifierDevice}
+          />
         </div>
       </DialogContent>
     </Dialog>

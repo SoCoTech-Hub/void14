@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +9,15 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import WikiVersionForm from "./WikiVersionForm";
+} from "@soco/ui/dialog";
 import { WikiVersion } from "@soco/wiki-db/schema/wikiVersions";
 
-export default function WikiVersionModal({ 
+import WikiVersionForm from "./WikiVersionForm";
+
+export default function WikiVersionModal({
   wikiVersion,
   emptyState,
-}: { 
+}: {
   wikiVersion?: WikiVersion;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function WikiVersionModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function WikiVersionModal({
             New Wiki Version
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Wiki Version</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Wiki Version</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <WikiVersionForm closeModal={closeModal} wikiVersion={wikiVersion} />

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ExternalServicesFunction } from "@soco/external-db/schema/externalServicesFunctions";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ExternalServicesFunctionForm from "./ExternalServicesFunctionForm";
-import { ExternalServicesFunction } from "@soco/external-db/schema/externalServicesFunctions";
+} from "@soco/ui/dialog";
 
-export default function ExternalServicesFunctionModal({ 
+import ExternalServicesFunctionForm from "./ExternalServicesFunctionForm";
+
+export default function ExternalServicesFunctionModal({
   externalServicesFunction,
   emptyState,
-}: { 
+}: {
   externalServicesFunction?: ExternalServicesFunction;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ExternalServicesFunctionModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ExternalServicesFunctionModal({
             New External Services Function
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } External Services Function</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} External Services Function
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ExternalServicesFunctionForm closeModal={closeModal} externalServicesFunction={externalServicesFunction} />
+          <ExternalServicesFunctionForm
+            closeModal={closeModal}
+            externalServicesFunction={externalServicesFunction}
+          />
         </div>
       </DialogContent>
     </Dialog>

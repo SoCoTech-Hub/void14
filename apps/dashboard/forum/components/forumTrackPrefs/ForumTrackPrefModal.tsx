@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ForumTrackPref } from "@soco/forum-db/schema/forumTrackPrefs";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ForumTrackPrefForm from "./ForumTrackPrefForm";
-import { ForumTrackPref } from "@soco/forum-db/schema/forumTrackPrefs";
+} from "@soco/ui/dialog";
 
-export default function ForumTrackPrefModal({ 
+import ForumTrackPrefForm from "./ForumTrackPrefForm";
+
+export default function ForumTrackPrefModal({
   forumTrackPref,
   emptyState,
-}: { 
+}: {
   forumTrackPref?: ForumTrackPref;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ForumTrackPrefModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ForumTrackPrefModal({
             New Forum Track Pref
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Forum Track Pref</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Forum Track Pref
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ForumTrackPrefForm closeModal={closeModal} forumTrackPref={forumTrackPref} />
+          <ForumTrackPrefForm
+            closeModal={closeModal}
+            forumTrackPref={forumTrackPref}
+          />
         </div>
       </DialogContent>
     </Dialog>

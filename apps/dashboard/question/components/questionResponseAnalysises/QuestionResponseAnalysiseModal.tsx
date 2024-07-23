@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { QuestionResponseAnalysise } from "@soco/question-db/schema/questionResponseAnalysises";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import QuestionResponseAnalysiseForm from "./QuestionResponseAnalysiseForm";
-import { QuestionResponseAnalysise } from "@soco/question-db/schema/questionResponseAnalysises";
+} from "@soco/ui/dialog";
 
-export default function QuestionResponseAnalysiseModal({ 
+import QuestionResponseAnalysiseForm from "./QuestionResponseAnalysiseForm";
+
+export default function QuestionResponseAnalysiseModal({
   questionResponseAnalysise,
   emptyState,
-}: { 
+}: {
   questionResponseAnalysise?: QuestionResponseAnalysise;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function QuestionResponseAnalysiseModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function QuestionResponseAnalysiseModal({
             New Question Response Analysise
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Question Response Analysise</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Question Response Analysise
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <QuestionResponseAnalysiseForm closeModal={closeModal} questionResponseAnalysise={questionResponseAnalysise} />
+          <QuestionResponseAnalysiseForm
+            closeModal={closeModal}
+            questionResponseAnalysise={questionResponseAnalysise}
+          />
         </div>
       </DialogContent>
     </Dialog>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { AssignmentUpgrade } from "@soco/assignment-db/schema/assignmentUpgrades";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import AssignmentUpgradeForm from "./AssignmentUpgradeForm";
-import { AssignmentUpgrade } from "@soco/assignment-db/schema/assignmentUpgrades";
+} from "@soco/ui/dialog";
 
-export default function AssignmentUpgradeModal({ 
+import AssignmentUpgradeForm from "./AssignmentUpgradeForm";
+
+export default function AssignmentUpgradeModal({
   assignmentUpgrade,
   emptyState,
-}: { 
+}: {
   assignmentUpgrade?: AssignmentUpgrade;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function AssignmentUpgradeModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function AssignmentUpgradeModal({
             New Assignment Upgrade
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Assignment Upgrade</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Assignment Upgrade
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <AssignmentUpgradeForm closeModal={closeModal} assignmentUpgrade={assignmentUpgrade} />
+          <AssignmentUpgradeForm
+            closeModal={closeModal}
+            assignmentUpgrade={assignmentUpgrade}
+          />
         </div>
       </DialogContent>
     </Dialog>

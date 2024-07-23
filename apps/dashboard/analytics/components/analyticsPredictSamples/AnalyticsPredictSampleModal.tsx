@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { AnalyticsPredictSample } from "@soco/analytics-db/schema/analyticsPredictSamples";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import AnalyticsPredictSampleForm from "./AnalyticsPredictSampleForm";
-import { AnalyticsPredictSample } from "@soco/analytics-db/schema/analyticsPredictSamples";
+} from "@soco/ui/dialog";
 
-export default function AnalyticsPredictSampleModal({ 
+import AnalyticsPredictSampleForm from "./AnalyticsPredictSampleForm";
+
+export default function AnalyticsPredictSampleModal({
   analyticsPredictSample,
   emptyState,
-}: { 
+}: {
   analyticsPredictSample?: AnalyticsPredictSample;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function AnalyticsPredictSampleModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function AnalyticsPredictSampleModal({
             New Analytics Predict Sample
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Analytics Predict Sample</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Analytics Predict Sample
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <AnalyticsPredictSampleForm closeModal={closeModal} analyticsPredictSample={analyticsPredictSample} />
+          <AnalyticsPredictSampleForm
+            closeModal={closeModal}
+            analyticsPredictSample={analyticsPredictSample}
+          />
         </div>
       </DialogContent>
     </Dialog>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { AdminPresetPlug } from "@soco/admin-preset-db/schema/adminPresetPlugs";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import AdminPresetPlugForm from "./AdminPresetPlugForm";
-import { AdminPresetPlug } from "@soco/admin-preset-db/schema/adminPresetPlugs";
+} from "@soco/ui/dialog";
 
-export default function AdminPresetPlugModal({ 
+import AdminPresetPlugForm from "./AdminPresetPlugForm";
+
+export default function AdminPresetPlugModal({
   adminPresetPlug,
   emptyState,
-}: { 
+}: {
   adminPresetPlug?: AdminPresetPlug;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function AdminPresetPlugModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function AdminPresetPlugModal({
             New Admin Preset Plug
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Admin Preset Plug</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Admin Preset Plug
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <AdminPresetPlugForm closeModal={closeModal} adminPresetPlug={adminPresetPlug} />
+          <AdminPresetPlugForm
+            closeModal={closeModal}
+            adminPresetPlug={adminPresetPlug}
+          />
         </div>
       </DialogContent>
     </Dialog>

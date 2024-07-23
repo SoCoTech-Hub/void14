@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { FeedbackCompletedtmp } from "@soco/feedback-db/schema/feedbackCompletedtmps";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import FeedbackCompletedtmpForm from "./FeedbackCompletedtmpForm";
-import { FeedbackCompletedtmp } from "@soco/feedback-db/schema/feedbackCompletedtmps";
+} from "@soco/ui/dialog";
 
-export default function FeedbackCompletedtmpModal({ 
+import FeedbackCompletedtmpForm from "./FeedbackCompletedtmpForm";
+
+export default function FeedbackCompletedtmpModal({
   feedbackCompletedtmp,
   emptyState,
-}: { 
+}: {
   feedbackCompletedtmp?: FeedbackCompletedtmp;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function FeedbackCompletedtmpModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function FeedbackCompletedtmpModal({
             New Feedback Completedtmp
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Feedback Completedtmp</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Feedback Completedtmp
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <FeedbackCompletedtmpForm closeModal={closeModal} feedbackCompletedtmp={feedbackCompletedtmp} />
+          <FeedbackCompletedtmpForm
+            closeModal={closeModal}
+            feedbackCompletedtmp={feedbackCompletedtmp}
+          />
         </div>
       </DialogContent>
     </Dialog>

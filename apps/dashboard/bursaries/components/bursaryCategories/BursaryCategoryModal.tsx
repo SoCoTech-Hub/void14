@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { BursaryCategory } from "@soco/bursaries-db/schema/bursaryCategories";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import BursaryCategoryForm from "./BursaryCategoryForm";
-import { BursaryCategory } from "@soco/bursaries-db/schema/bursaryCategories";
+} from "@soco/ui/dialog";
 
-export default function BursaryCategoryModal({ 
+import BursaryCategoryForm from "./BursaryCategoryForm";
+
+export default function BursaryCategoryModal({
   bursaryCategory,
   emptyState,
-}: { 
+}: {
   bursaryCategory?: BursaryCategory;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function BursaryCategoryModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function BursaryCategoryModal({
             New Bursary Category
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Bursary Category</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Bursary Category
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <BursaryCategoryForm closeModal={closeModal} bursaryCategory={bursaryCategory} />
+          <BursaryCategoryForm
+            closeModal={closeModal}
+            bursaryCategory={bursaryCategory}
+          />
         </div>
       </DialogContent>
     </Dialog>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { MnetApplication } from "@soco/mnet-db/schema/mnetApplications";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import MnetApplicationForm from "./MnetApplicationForm";
-import { MnetApplication } from "@soco/mnet-db/schema/mnetApplications";
+} from "@soco/ui/dialog";
 
-export default function MnetApplicationModal({ 
+import MnetApplicationForm from "./MnetApplicationForm";
+
+export default function MnetApplicationModal({
   mnetApplication,
   emptyState,
-}: { 
+}: {
   mnetApplication?: MnetApplication;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function MnetApplicationModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function MnetApplicationModal({
             New Mnet Application
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Mnet Application</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Mnet Application
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <MnetApplicationForm closeModal={closeModal} mnetApplication={mnetApplication} />
+          <MnetApplicationForm
+            closeModal={closeModal}
+            mnetApplication={mnetApplication}
+          />
         </div>
       </DialogContent>
     </Dialog>

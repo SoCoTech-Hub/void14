@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { FilesReference } from "@soco/file-db/schema/filesReferences";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import FilesReferenceForm from "./FilesReferenceForm";
-import { FilesReference } from "@soco/file-db/schema/filesReferences";
+} from "@soco/ui/dialog";
 
-export default function FilesReferenceModal({ 
+import FilesReferenceForm from "./FilesReferenceForm";
+
+export default function FilesReferenceModal({
   filesReference,
   emptyState,
-}: { 
+}: {
   filesReference?: FilesReference;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function FilesReferenceModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function FilesReferenceModal({
             New Files Reference
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Files Reference</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Files Reference
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <FilesReferenceForm closeModal={closeModal} filesReference={filesReference} />
+          <FilesReferenceForm
+            closeModal={closeModal}
+            filesReference={filesReference}
+          />
         </div>
       </DialogContent>
     </Dialog>

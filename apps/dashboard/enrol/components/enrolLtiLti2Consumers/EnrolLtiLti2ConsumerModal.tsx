@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { EnrolLtiLti2Consumer } from "@soco/enrol-db/schema/enrolLtiLti2Consumers";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import EnrolLtiLti2ConsumerForm from "./EnrolLtiLti2ConsumerForm";
-import { EnrolLtiLti2Consumer } from "@soco/enrol-db/schema/enrolLtiLti2Consumers";
+} from "@soco/ui/dialog";
 
-export default function EnrolLtiLti2ConsumerModal({ 
+import EnrolLtiLti2ConsumerForm from "./EnrolLtiLti2ConsumerForm";
+
+export default function EnrolLtiLti2ConsumerModal({
   enrolLtiLti2Consumer,
   emptyState,
-}: { 
+}: {
   enrolLtiLti2Consumer?: EnrolLtiLti2Consumer;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function EnrolLtiLti2ConsumerModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function EnrolLtiLti2ConsumerModal({
             New Enrol Lti Lti2 Consumer
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Enrol Lti Lti2 Consumer</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Enrol Lti Lti2 Consumer
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <EnrolLtiLti2ConsumerForm closeModal={closeModal} enrolLtiLti2Consumer={enrolLtiLti2Consumer} />
+          <EnrolLtiLti2ConsumerForm
+            closeModal={closeModal}
+            enrolLtiLti2Consumer={enrolLtiLti2Consumer}
+          />
         </div>
       </DialogContent>
     </Dialog>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { MessageinboundHandler } from "@soco/message-db/schema/messageinboundHandlers";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import MessageinboundHandlerForm from "./MessageinboundHandlerForm";
-import { MessageinboundHandler } from "@soco/message-db/schema/messageinboundHandlers";
+} from "@soco/ui/dialog";
 
-export default function MessageinboundHandlerModal({ 
+import MessageinboundHandlerForm from "./MessageinboundHandlerForm";
+
+export default function MessageinboundHandlerModal({
   messageinboundHandler,
   emptyState,
-}: { 
+}: {
   messageinboundHandler?: MessageinboundHandler;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function MessageinboundHandlerModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function MessageinboundHandlerModal({
             New Messageinbound Handler
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Messageinbound Handler</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Messageinbound Handler
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <MessageinboundHandlerForm closeModal={closeModal} messageinboundHandler={messageinboundHandler} />
+          <MessageinboundHandlerForm
+            closeModal={closeModal}
+            messageinboundHandler={messageinboundHandler}
+          />
         </div>
       </DialogContent>
     </Dialog>

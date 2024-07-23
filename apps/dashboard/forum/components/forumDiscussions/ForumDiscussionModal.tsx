@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ForumDiscussion } from "@soco/forum-db/schema/forumDiscussions";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ForumDiscussionForm from "./ForumDiscussionForm";
-import { ForumDiscussion } from "@soco/forum-db/schema/forumDiscussions";
+} from "@soco/ui/dialog";
 
-export default function ForumDiscussionModal({ 
+import ForumDiscussionForm from "./ForumDiscussionForm";
+
+export default function ForumDiscussionModal({
   forumDiscussion,
   emptyState,
-}: { 
+}: {
   forumDiscussion?: ForumDiscussion;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ForumDiscussionModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ForumDiscussionModal({
             New Forum Discussion
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Forum Discussion</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Forum Discussion
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ForumDiscussionForm closeModal={closeModal} forumDiscussion={forumDiscussion} />
+          <ForumDiscussionForm
+            closeModal={closeModal}
+            forumDiscussion={forumDiscussion}
+          />
         </div>
       </DialogContent>
     </Dialog>

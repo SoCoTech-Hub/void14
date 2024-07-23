@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { GradingArea } from "@soco/grade-db/schema/gradingAreas";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import GradingAreaForm from "./GradingAreaForm";
-import { GradingArea } from "@soco/grade-db/schema/gradingAreas";
+} from "@soco/ui/dialog";
 
-export default function GradingAreaModal({ 
+import GradingAreaForm from "./GradingAreaForm";
+
+export default function GradingAreaModal({
   gradingArea,
   emptyState,
-}: { 
+}: {
   gradingArea?: GradingArea;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function GradingAreaModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function GradingAreaModal({
             New Grading Area
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Grading Area</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Grading Area</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <GradingAreaForm closeModal={closeModal} gradingArea={gradingArea} />

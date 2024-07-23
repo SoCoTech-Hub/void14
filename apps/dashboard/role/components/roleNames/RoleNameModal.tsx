@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { RoleName } from "@soco/role-db/schema/roleNames";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import RoleNameForm from "./RoleNameForm";
-import { RoleName } from "@soco/role-db/schema/roleNames";
+} from "@soco/ui/dialog";
 
-export default function RoleNameModal({ 
+import RoleNameForm from "./RoleNameForm";
+
+export default function RoleNameModal({
   roleName,
   emptyState,
-}: { 
+}: {
   roleName?: RoleName;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function RoleNameModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function RoleNameModal({
             New Role Name
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Role Name</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Role Name</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <RoleNameForm closeModal={closeModal} roleName={roleName} />

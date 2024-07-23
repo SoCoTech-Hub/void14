@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Module } from "@soco/module-db/schema/modules";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ModuleForm from "./ModuleForm";
-import { Module } from "@soco/module-db/schema/modules";
+} from "@soco/ui/dialog";
 
-export default function ModuleModal({ 
+import ModuleForm from "./ModuleForm";
+
+export default function ModuleModal({
   module,
   emptyState,
-}: { 
+}: {
   module?: Module;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ModuleModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function ModuleModal({
             New Module
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Module</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Module</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <ModuleForm closeModal={closeModal} module={module} />

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ToolMonitorHistory } from "@soco/tool-monitor-db/schema/toolMonitorHistories";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ToolMonitorHistoryForm from "./ToolMonitorHistoryForm";
-import { ToolMonitorHistory } from "@soco/tool-monitor-db/schema/toolMonitorHistories";
+} from "@soco/ui/dialog";
 
-export default function ToolMonitorHistoryModal({ 
+import ToolMonitorHistoryForm from "./ToolMonitorHistoryForm";
+
+export default function ToolMonitorHistoryModal({
   toolMonitorHistory,
   emptyState,
-}: { 
+}: {
   toolMonitorHistory?: ToolMonitorHistory;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ToolMonitorHistoryModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ToolMonitorHistoryModal({
             New Tool Monitor History
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Tool Monitor History</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Tool Monitor History
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ToolMonitorHistoryForm closeModal={closeModal} toolMonitorHistory={toolMonitorHistory} />
+          <ToolMonitorHistoryForm
+            closeModal={closeModal}
+            toolMonitorHistory={toolMonitorHistory}
+          />
         </div>
       </DialogContent>
     </Dialog>

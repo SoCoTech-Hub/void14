@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { QuestionBankEntry } from "@soco/question-db/schema/questionBankEntries";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import QuestionBankEntryForm from "./QuestionBankEntryForm";
-import { QuestionBankEntry } from "@soco/question-db/schema/questionBankEntries";
+} from "@soco/ui/dialog";
 
-export default function QuestionBankEntryModal({ 
+import QuestionBankEntryForm from "./QuestionBankEntryForm";
+
+export default function QuestionBankEntryModal({
   questionBankEntry,
   emptyState,
-}: { 
+}: {
   questionBankEntry?: QuestionBankEntry;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function QuestionBankEntryModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function QuestionBankEntryModal({
             New Question Bank Entry
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Question Bank Entry</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Question Bank Entry
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <QuestionBankEntryForm closeModal={closeModal} questionBankEntry={questionBankEntry} />
+          <QuestionBankEntryForm
+            closeModal={closeModal}
+            questionBankEntry={questionBankEntry}
+          />
         </div>
       </DialogContent>
     </Dialog>

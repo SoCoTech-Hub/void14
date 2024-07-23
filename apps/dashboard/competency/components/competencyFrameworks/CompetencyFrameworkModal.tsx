@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { CompetencyFramework } from "@soco/competency-db/schema/competencyFrameworks";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import CompetencyFrameworkForm from "./CompetencyFrameworkForm";
-import { CompetencyFramework } from "@soco/competency-db/schema/competencyFrameworks";
+} from "@soco/ui/dialog";
 
-export default function CompetencyFrameworkModal({ 
+import CompetencyFrameworkForm from "./CompetencyFrameworkForm";
+
+export default function CompetencyFrameworkModal({
   competencyFramework,
   emptyState,
-}: { 
+}: {
   competencyFramework?: CompetencyFramework;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function CompetencyFrameworkModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function CompetencyFrameworkModal({
             New Competency Framework
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Competency Framework</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Competency Framework
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <CompetencyFrameworkForm closeModal={closeModal} competencyFramework={competencyFramework} />
+          <CompetencyFrameworkForm
+            closeModal={closeModal}
+            competencyFramework={competencyFramework}
+          />
         </div>
       </DialogContent>
     </Dialog>

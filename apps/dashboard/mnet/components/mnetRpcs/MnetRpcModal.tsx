@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { MnetRpc } from "@soco/mnet-db/schema/mnetRpcs";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import MnetRpcForm from "./MnetRpcForm";
-import { MnetRpc } from "@soco/mnet-db/schema/mnetRpcs";
+} from "@soco/ui/dialog";
 
-export default function MnetRpcModal({ 
+import MnetRpcForm from "./MnetRpcForm";
+
+export default function MnetRpcModal({
   mnetRpc,
   emptyState,
-}: { 
+}: {
   mnetRpc?: MnetRpc;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function MnetRpcModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function MnetRpcModal({
             New Mnet Rpc
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Mnet Rpc</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Mnet Rpc</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <MnetRpcForm closeModal={closeModal} mnetRpc={mnetRpc} />

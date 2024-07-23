@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ReportbuilderAudience } from "@soco/report-builder-db/schema/reportbuilderAudiences";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ReportbuilderAudienceForm from "./ReportbuilderAudienceForm";
-import { ReportbuilderAudience } from "@soco/report-builder-db/schema/reportbuilderAudiences";
+} from "@soco/ui/dialog";
 
-export default function ReportbuilderAudienceModal({ 
+import ReportbuilderAudienceForm from "./ReportbuilderAudienceForm";
+
+export default function ReportbuilderAudienceModal({
   reportbuilderAudience,
   emptyState,
-}: { 
+}: {
   reportbuilderAudience?: ReportbuilderAudience;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ReportbuilderAudienceModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ReportbuilderAudienceModal({
             New Reportbuilder Audience
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Reportbuilder Audience</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Reportbuilder Audience
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ReportbuilderAudienceForm closeModal={closeModal} reportbuilderAudience={reportbuilderAudience} />
+          <ReportbuilderAudienceForm
+            closeModal={closeModal}
+            reportbuilderAudience={reportbuilderAudience}
+          />
         </div>
       </DialogContent>
     </Dialog>

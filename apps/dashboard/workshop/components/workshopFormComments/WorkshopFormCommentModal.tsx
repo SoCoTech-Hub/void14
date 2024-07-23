@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +9,15 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import WorkshopFormCommentForm from "./WorkshopFormCommentForm";
+} from "@soco/ui/dialog";
 import { WorkshopFormComment } from "@soco/workshop-db/schema/workshopFormComments";
 
-export default function WorkshopFormCommentModal({ 
+import WorkshopFormCommentForm from "./WorkshopFormCommentForm";
+
+export default function WorkshopFormCommentModal({
   workshopFormComment,
   emptyState,
-}: { 
+}: {
   workshopFormComment?: WorkshopFormComment;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function WorkshopFormCommentModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function WorkshopFormCommentModal({
             New Workshop Form Comment
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Workshop Form Comment</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Workshop Form Comment
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <WorkshopFormCommentForm closeModal={closeModal} workshopFormComment={workshopFormComment} />
+          <WorkshopFormCommentForm
+            closeModal={closeModal}
+            workshopFormComment={workshopFormComment}
+          />
         </div>
       </DialogContent>
     </Dialog>

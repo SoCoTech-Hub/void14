@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { MassMailList } from "@soco/mass-mail-db/schema/massMailLists";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import MassMailListForm from "./MassMailListForm";
-import { MassMailList } from "@soco/mass-mail-db/schema/massMailLists";
+} from "@soco/ui/dialog";
 
-export default function MassMailListModal({ 
+import MassMailListForm from "./MassMailListForm";
+
+export default function MassMailListModal({
   massMailList,
   emptyState,
-}: { 
+}: {
   massMailList?: MassMailList;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function MassMailListModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function MassMailListModal({
             New Mass Mail List
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Mass Mail List</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Mass Mail List
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <MassMailListForm closeModal={closeModal} massMailList={massMailList} />
+          <MassMailListForm
+            closeModal={closeModal}
+            massMailList={massMailList}
+          />
         </div>
       </DialogContent>
     </Dialog>

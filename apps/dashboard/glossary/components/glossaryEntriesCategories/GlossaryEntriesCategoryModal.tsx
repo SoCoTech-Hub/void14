@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { GlossaryEntriesCategory } from "@soco/glossary-db/schema/glossaryEntriesCategories";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import GlossaryEntriesCategoryForm from "./GlossaryEntriesCategoryForm";
-import { GlossaryEntriesCategory } from "@soco/glossary-db/schema/glossaryEntriesCategories";
+} from "@soco/ui/dialog";
 
-export default function GlossaryEntriesCategoryModal({ 
+import GlossaryEntriesCategoryForm from "./GlossaryEntriesCategoryForm";
+
+export default function GlossaryEntriesCategoryModal({
   glossaryEntriesCategory,
   emptyState,
-}: { 
+}: {
   glossaryEntriesCategory?: GlossaryEntriesCategory;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function GlossaryEntriesCategoryModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function GlossaryEntriesCategoryModal({
             New Glossary Entries Category
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Glossary Entries Category</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Glossary Entries Category
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <GlossaryEntriesCategoryForm closeModal={closeModal} glossaryEntriesCategory={glossaryEntriesCategory} />
+          <GlossaryEntriesCategoryForm
+            closeModal={closeModal}
+            glossaryEntriesCategory={glossaryEntriesCategory}
+          />
         </div>
       </DialogContent>
     </Dialog>

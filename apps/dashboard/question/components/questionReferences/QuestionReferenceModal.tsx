@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { QuestionReference } from "@soco/question-db/schema/questionReferences";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import QuestionReferenceForm from "./QuestionReferenceForm";
-import { QuestionReference } from "@soco/question-db/schema/questionReferences";
+} from "@soco/ui/dialog";
 
-export default function QuestionReferenceModal({ 
+import QuestionReferenceForm from "./QuestionReferenceForm";
+
+export default function QuestionReferenceModal({
   questionReference,
   emptyState,
-}: { 
+}: {
   questionReference?: QuestionReference;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function QuestionReferenceModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function QuestionReferenceModal({
             New Question Reference
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Question Reference</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Question Reference
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <QuestionReferenceForm closeModal={closeModal} questionReference={questionReference} />
+          <QuestionReferenceForm
+            closeModal={closeModal}
+            questionReference={questionReference}
+          />
         </div>
       </DialogContent>
     </Dialog>

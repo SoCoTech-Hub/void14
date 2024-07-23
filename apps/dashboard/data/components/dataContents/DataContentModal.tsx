@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { DataContent } from "@soco/data-db/schema/dataContents";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import DataContentForm from "./DataContentForm";
-import { DataContent } from "@soco/data-db/schema/dataContents";
+} from "@soco/ui/dialog";
 
-export default function DataContentModal({ 
+import DataContentForm from "./DataContentForm";
+
+export default function DataContentModal({
   dataContent,
   emptyState,
-}: { 
+}: {
   dataContent?: DataContent;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function DataContentModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function DataContentModal({
             New Data Content
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Data Content</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Data Content</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <DataContentForm closeModal={closeModal} dataContent={dataContent} />

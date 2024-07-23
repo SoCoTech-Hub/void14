@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Assignment } from "@soco/assignment-db/schema/assignments";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import AssignmentForm from "./AssignmentForm";
-import { Assignment } from "@soco/assignment-db/schema/assignments";
+} from "@soco/ui/dialog";
 
-export default function AssignmentModal({ 
+import AssignmentForm from "./AssignmentForm";
+
+export default function AssignmentModal({
   assignment,
   emptyState,
-}: { 
+}: {
   assignment?: Assignment;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function AssignmentModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function AssignmentModal({
             New Assignment
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Assignment</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Assignment</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <AssignmentForm closeModal={closeModal} assignment={assignment} />

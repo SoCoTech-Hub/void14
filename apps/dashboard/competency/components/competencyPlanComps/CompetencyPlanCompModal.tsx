@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { CompetencyPlanComp } from "@soco/competency-db/schema/competencyPlanComps";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import CompetencyPlanCompForm from "./CompetencyPlanCompForm";
-import { CompetencyPlanComp } from "@soco/competency-db/schema/competencyPlanComps";
+} from "@soco/ui/dialog";
 
-export default function CompetencyPlanCompModal({ 
+import CompetencyPlanCompForm from "./CompetencyPlanCompForm";
+
+export default function CompetencyPlanCompModal({
   competencyPlanComp,
   emptyState,
-}: { 
+}: {
   competencyPlanComp?: CompetencyPlanComp;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function CompetencyPlanCompModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function CompetencyPlanCompModal({
             New Competency Plan Comp
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Competency Plan Comp</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Competency Plan Comp
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <CompetencyPlanCompForm closeModal={closeModal} competencyPlanComp={competencyPlanComp} />
+          <CompetencyPlanCompForm
+            closeModal={closeModal}
+            competencyPlanComp={competencyPlanComp}
+          />
         </div>
       </DialogContent>
     </Dialog>

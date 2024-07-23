@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { AssignSubmissionOnlineText } from "@soco/assignment-db/schema/assignSubmissionOnlineTexts";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import AssignSubmissionOnlineTextForm from "./AssignSubmissionOnlineTextForm";
-import { AssignSubmissionOnlineText } from "@soco/assignment-db/schema/assignSubmissionOnlineTexts";
+} from "@soco/ui/dialog";
 
-export default function AssignSubmissionOnlineTextModal({ 
+import AssignSubmissionOnlineTextForm from "./AssignSubmissionOnlineTextForm";
+
+export default function AssignSubmissionOnlineTextModal({
   assignSubmissionOnlineText,
   emptyState,
-}: { 
+}: {
   assignSubmissionOnlineText?: AssignSubmissionOnlineText;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function AssignSubmissionOnlineTextModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function AssignSubmissionOnlineTextModal({
             New Assign Submission Online Text
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Assign Submission Online Text</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Assign Submission Online Text
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <AssignSubmissionOnlineTextForm closeModal={closeModal} assignSubmissionOnlineText={assignSubmissionOnlineText} />
+          <AssignSubmissionOnlineTextForm
+            closeModal={closeModal}
+            assignSubmissionOnlineText={assignSubmissionOnlineText}
+          />
         </div>
       </DialogContent>
     </Dialog>

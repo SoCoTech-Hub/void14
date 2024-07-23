@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { EnrolLtiLti2Context } from "@soco/enrol-db/schema/enrolLtiLti2Contexts";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import EnrolLtiLti2ContextForm from "./EnrolLtiLti2ContextForm";
-import { EnrolLtiLti2Context } from "@soco/enrol-db/schema/enrolLtiLti2Contexts";
+} from "@soco/ui/dialog";
 
-export default function EnrolLtiLti2ContextModal({ 
+import EnrolLtiLti2ContextForm from "./EnrolLtiLti2ContextForm";
+
+export default function EnrolLtiLti2ContextModal({
   enrolLtiLti2Context,
   emptyState,
-}: { 
+}: {
   enrolLtiLti2Context?: EnrolLtiLti2Context;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function EnrolLtiLti2ContextModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function EnrolLtiLti2ContextModal({
             New Enrol Lti Lti2 Context
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Enrol Lti Lti2 Context</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Enrol Lti Lti2 Context
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <EnrolLtiLti2ContextForm closeModal={closeModal} enrolLtiLti2Context={enrolLtiLti2Context} />
+          <EnrolLtiLti2ContextForm
+            closeModal={closeModal}
+            enrolLtiLti2Context={enrolLtiLti2Context}
+          />
         </div>
       </DialogContent>
     </Dialog>

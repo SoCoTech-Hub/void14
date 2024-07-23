@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { AssignFeedbackEditpdfQueue } from "@soco/assignment-db/schema/assignFeedbackEditpdfQueues";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import AssignFeedbackEditpdfQueueForm from "./AssignFeedbackEditpdfQueueForm";
-import { AssignFeedbackEditpdfQueue } from "@soco/assignment-db/schema/assignFeedbackEditpdfQueues";
+} from "@soco/ui/dialog";
 
-export default function AssignFeedbackEditpdfQueueModal({ 
+import AssignFeedbackEditpdfQueueForm from "./AssignFeedbackEditpdfQueueForm";
+
+export default function AssignFeedbackEditpdfQueueModal({
   assignFeedbackEditpdfQueue,
   emptyState,
-}: { 
+}: {
   assignFeedbackEditpdfQueue?: AssignFeedbackEditpdfQueue;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function AssignFeedbackEditpdfQueueModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function AssignFeedbackEditpdfQueueModal({
             New Assign Feedback Editpdf Queue
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Assign Feedback Editpdf Queue</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Assign Feedback Editpdf Queue
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <AssignFeedbackEditpdfQueueForm closeModal={closeModal} assignFeedbackEditpdfQueue={assignFeedbackEditpdfQueue} />
+          <AssignFeedbackEditpdfQueueForm
+            closeModal={closeModal}
+            assignFeedbackEditpdfQueue={assignFeedbackEditpdfQueue}
+          />
         </div>
       </DialogContent>
     </Dialog>

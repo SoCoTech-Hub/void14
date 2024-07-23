@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ScormSeqRollupRuleCond } from "@soco/scorm-db/schema/scormSeqRollupRuleConds";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ScormSeqRollupRuleCondForm from "./ScormSeqRollupRuleCondForm";
-import { ScormSeqRollupRuleCond } from "@soco/scorm-db/schema/scormSeqRollupRuleConds";
+} from "@soco/ui/dialog";
 
-export default function ScormSeqRollupRuleCondModal({ 
+import ScormSeqRollupRuleCondForm from "./ScormSeqRollupRuleCondForm";
+
+export default function ScormSeqRollupRuleCondModal({
   scormSeqRollupRuleCond,
   emptyState,
-}: { 
+}: {
   scormSeqRollupRuleCond?: ScormSeqRollupRuleCond;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ScormSeqRollupRuleCondModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ScormSeqRollupRuleCondModal({
             New Scorm Seq Rollup Rule Cond
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Scorm Seq Rollup Rule Cond</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Scorm Seq Rollup Rule Cond
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ScormSeqRollupRuleCondForm closeModal={closeModal} scormSeqRollupRuleCond={scormSeqRollupRuleCond} />
+          <ScormSeqRollupRuleCondForm
+            closeModal={closeModal}
+            scormSeqRollupRuleCond={scormSeqRollupRuleCond}
+          />
         </div>
       </DialogContent>
     </Dialog>

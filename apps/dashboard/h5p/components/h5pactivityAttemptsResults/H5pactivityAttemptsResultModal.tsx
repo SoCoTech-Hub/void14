@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { H5pactivityAttemptsResult } from "@soco/h5p-db/schema/h5pactivityAttemptsResults";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import H5pactivityAttemptsResultForm from "./H5pactivityAttemptsResultForm";
-import { H5pactivityAttemptsResult } from "@soco/h5p-db/schema/h5pactivityAttemptsResults";
+} from "@soco/ui/dialog";
 
-export default function H5pactivityAttemptsResultModal({ 
+import H5pactivityAttemptsResultForm from "./H5pactivityAttemptsResultForm";
+
+export default function H5pactivityAttemptsResultModal({
   h5pactivityAttemptsResult,
   emptyState,
-}: { 
+}: {
   h5pactivityAttemptsResult?: H5pactivityAttemptsResult;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function H5pactivityAttemptsResultModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function H5pactivityAttemptsResultModal({
             New H5pactivity Attempts Result
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } H5pactivity Attempts Result</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} H5pactivity Attempts Result
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <H5pactivityAttemptsResultForm closeModal={closeModal} h5pactivityAttemptsResult={h5pactivityAttemptsResult} />
+          <H5pactivityAttemptsResultForm
+            closeModal={closeModal}
+            h5pactivityAttemptsResult={h5pactivityAttemptsResult}
+          />
         </div>
       </DialogContent>
     </Dialog>

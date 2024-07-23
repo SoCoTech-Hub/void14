@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { BigBlueButtonBnLog } from "@soco/big-blue-button-db/schema/bigBlueButtonBnLogs";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import BigBlueButtonBnLogForm from "./BigBlueButtonBnLogForm";
-import { BigBlueButtonBnLog } from "@soco/big-blue-button-db/schema/bigBlueButtonBnLogs";
+} from "@soco/ui/dialog";
 
-export default function BigBlueButtonBnLogModal({ 
+import BigBlueButtonBnLogForm from "./BigBlueButtonBnLogForm";
+
+export default function BigBlueButtonBnLogModal({
   bigBlueButtonBnLog,
   emptyState,
-}: { 
+}: {
   bigBlueButtonBnLog?: BigBlueButtonBnLog;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function BigBlueButtonBnLogModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function BigBlueButtonBnLogModal({
             New Big Blue Button Bn Log
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Big Blue Button Bn Log</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Big Blue Button Bn Log
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <BigBlueButtonBnLogForm closeModal={closeModal} bigBlueButtonBnLog={bigBlueButtonBnLog} />
+          <BigBlueButtonBnLogForm
+            closeModal={closeModal}
+            bigBlueButtonBnLog={bigBlueButtonBnLog}
+          />
         </div>
       </DialogContent>
     </Dialog>

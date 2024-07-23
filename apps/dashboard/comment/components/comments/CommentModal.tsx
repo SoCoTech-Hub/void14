@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Comment } from "@soco/comment-db/schema/comments";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import CommentForm from "./CommentForm";
-import { Comment } from "@soco/comment-db/schema/comments";
+} from "@soco/ui/dialog";
 
-export default function CommentModal({ 
+import CommentForm from "./CommentForm";
+
+export default function CommentModal({
   comment,
   emptyState,
-}: { 
+}: {
   comment?: Comment;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function CommentModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function CommentModal({
             New Comment
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Comment</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Comment</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <CommentForm closeModal={closeModal} comment={comment} />

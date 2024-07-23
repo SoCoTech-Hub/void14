@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Favourite } from "@soco/favourite-db/schema/favourites";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import FavouriteForm from "./FavouriteForm";
-import { Favourite } from "@soco/favourite-db/schema/favourites";
+} from "@soco/ui/dialog";
 
-export default function FavouriteModal({ 
+import FavouriteForm from "./FavouriteForm";
+
+export default function FavouriteModal({
   favourite,
   emptyState,
-}: { 
+}: {
   favourite?: Favourite;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function FavouriteModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function FavouriteModal({
             New Favourite
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Favourite</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Favourite</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <FavouriteForm closeModal={closeModal} favourite={favourite} />

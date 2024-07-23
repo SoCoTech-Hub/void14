@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { CompetencyCourseCompSetting } from "@soco/competency-db/schema/competencyCourseCompSettings";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import CompetencyCourseCompSettingForm from "./CompetencyCourseCompSettingForm";
-import { CompetencyCourseCompSetting } from "@soco/competency-db/schema/competencyCourseCompSettings";
+} from "@soco/ui/dialog";
 
-export default function CompetencyCourseCompSettingModal({ 
+import CompetencyCourseCompSettingForm from "./CompetencyCourseCompSettingForm";
+
+export default function CompetencyCourseCompSettingModal({
   competencyCourseCompSetting,
   emptyState,
-}: { 
+}: {
   competencyCourseCompSetting?: CompetencyCourseCompSetting;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function CompetencyCourseCompSettingModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function CompetencyCourseCompSettingModal({
             New Competency Course Comp Setting
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Competency Course Comp Setting</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Competency Course Comp Setting
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <CompetencyCourseCompSettingForm closeModal={closeModal} competencyCourseCompSetting={competencyCourseCompSetting} />
+          <CompetencyCourseCompSettingForm
+            closeModal={closeModal}
+            competencyCourseCompSetting={competencyCourseCompSetting}
+          />
         </div>
       </DialogContent>
     </Dialog>

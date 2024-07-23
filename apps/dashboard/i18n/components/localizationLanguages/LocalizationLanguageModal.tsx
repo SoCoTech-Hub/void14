@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { LocalizationLanguage } from "@soco/i18n-db/schema/localizationLanguages";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import LocalizationLanguageForm from "./LocalizationLanguageForm";
-import { LocalizationLanguage } from "@soco/i18n-db/schema/localizationLanguages";
+} from "@soco/ui/dialog";
 
-export default function LocalizationLanguageModal({ 
+import LocalizationLanguageForm from "./LocalizationLanguageForm";
+
+export default function LocalizationLanguageModal({
   localizationLanguage,
   emptyState,
-}: { 
+}: {
   localizationLanguage?: LocalizationLanguage;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function LocalizationLanguageModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function LocalizationLanguageModal({
             New Localization Language
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Localization Language</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Localization Language
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <LocalizationLanguageForm closeModal={closeModal} localizationLanguage={localizationLanguage} />
+          <LocalizationLanguageForm
+            closeModal={closeModal}
+            localizationLanguage={localizationLanguage}
+          />
         </div>
       </DialogContent>
     </Dialog>

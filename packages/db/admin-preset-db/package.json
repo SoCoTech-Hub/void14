@@ -62,6 +62,7 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
+    "@soco/admin-preset-api": "workspace:*",
     "@soco/utils": "workspace:*",
     "@t3-oss/env-core": "^0.10.1",
     "postgres": "^3.4.4",

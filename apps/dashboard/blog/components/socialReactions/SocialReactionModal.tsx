@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { SocialReaction } from "@soco/blog-db/schema/socialReactions";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import SocialReactionForm from "./SocialReactionForm";
-import { SocialReaction } from "@soco/blog-db/schema/socialReactions";
+} from "@soco/ui/dialog";
 
-export default function SocialReactionModal({ 
+import SocialReactionForm from "./SocialReactionForm";
+
+export default function SocialReactionModal({
   socialReaction,
   emptyState,
-}: { 
+}: {
   socialReaction?: SocialReaction;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function SocialReactionModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function SocialReactionModal({
             New Social Reaction
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Social Reaction</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Social Reaction
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <SocialReactionForm closeModal={closeModal} socialReaction={socialReaction} />
+          <SocialReactionForm
+            closeModal={closeModal}
+            socialReaction={socialReaction}
+          />
         </div>
       </DialogContent>
     </Dialog>

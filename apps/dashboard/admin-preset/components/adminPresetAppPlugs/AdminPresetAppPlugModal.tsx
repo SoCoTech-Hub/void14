@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import type { AdminPresetAppPlug } from "@soco/admin-preset-db/schema/adminPresetAppPlugs";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import AdminPresetAppPlugForm from "./AdminPresetAppPlugForm";
-import { AdminPresetAppPlug } from "@soco/admin-preset-db/schema/adminPresetAppPlugs";
+} from "@soco/ui/dialog";
 
-export default function AdminPresetAppPlugModal({ 
+import AdminPresetAppPlugForm from "./AdminPresetAppPlugForm";
+
+export default function AdminPresetAppPlugModal({
   adminPresetAppPlug,
   emptyState,
-}: { 
+}: {
   adminPresetAppPlug?: AdminPresetAppPlug;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function AdminPresetAppPlugModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -39,25 +41,32 @@ export default function AdminPresetAppPlugModal({
               strokeLinejoin="round"
               className="mr-1"
             >
+              <title>New Admin Preset App Plug</title>
               <path d="M5 12h14" />
               <path d="M12 5v14" />
             </svg>
             New Admin Preset App Plug
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Admin Preset App Plug</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Admin Preset App Plug
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <AdminPresetAppPlugForm closeModal={closeModal} adminPresetAppPlug={adminPresetAppPlug} />
+          <AdminPresetAppPlugForm
+            closeModal={closeModal}
+            adminPresetAppPlug={adminPresetAppPlug}
+          />
         </div>
       </DialogContent>
     </Dialog>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { AssignUserMapping } from "@soco/assignment-db/schema/assignUserMappings";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import AssignUserMappingForm from "./AssignUserMappingForm";
-import { AssignUserMapping } from "@soco/assignment-db/schema/assignUserMappings";
+} from "@soco/ui/dialog";
 
-export default function AssignUserMappingModal({ 
+import AssignUserMappingForm from "./AssignUserMappingForm";
+
+export default function AssignUserMappingModal({
   assignUserMapping,
   emptyState,
-}: { 
+}: {
   assignUserMapping?: AssignUserMapping;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function AssignUserMappingModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function AssignUserMappingModal({
             New Assign User Mapping
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Assign User Mapping</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Assign User Mapping
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <AssignUserMappingForm closeModal={closeModal} assignUserMapping={assignUserMapping} />
+          <AssignUserMappingForm
+            closeModal={closeModal}
+            assignUserMapping={assignUserMapping}
+          />
         </div>
       </DialogContent>
     </Dialog>

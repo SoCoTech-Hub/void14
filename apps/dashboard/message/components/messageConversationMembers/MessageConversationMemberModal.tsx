@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { MessageConversationMember } from "@soco/message-db/schema/messageConversationMembers";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import MessageConversationMemberForm from "./MessageConversationMemberForm";
-import { MessageConversationMember } from "@soco/message-db/schema/messageConversationMembers";
+} from "@soco/ui/dialog";
 
-export default function MessageConversationMemberModal({ 
+import MessageConversationMemberForm from "./MessageConversationMemberForm";
+
+export default function MessageConversationMemberModal({
   messageConversationMember,
   emptyState,
-}: { 
+}: {
   messageConversationMember?: MessageConversationMember;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function MessageConversationMemberModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function MessageConversationMemberModal({
             New Message Conversation Member
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Message Conversation Member</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Message Conversation Member
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <MessageConversationMemberForm closeModal={closeModal} messageConversationMember={messageConversationMember} />
+          <MessageConversationMemberForm
+            closeModal={closeModal}
+            messageConversationMember={messageConversationMember}
+          />
         </div>
       </DialogContent>
     </Dialog>

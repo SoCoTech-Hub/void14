@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { RepositoryInstance } from "@soco/repository-db/schema/repositoryInstances";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import RepositoryInstanceForm from "./RepositoryInstanceForm";
-import { RepositoryInstance } from "@soco/repository-db/schema/repositoryInstances";
+} from "@soco/ui/dialog";
 
-export default function RepositoryInstanceModal({ 
+import RepositoryInstanceForm from "./RepositoryInstanceForm";
+
+export default function RepositoryInstanceModal({
   repositoryInstance,
   emptyState,
-}: { 
+}: {
   repositoryInstance?: RepositoryInstance;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function RepositoryInstanceModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function RepositoryInstanceModal({
             New Repository Instance
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Repository Instance</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Repository Instance
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <RepositoryInstanceForm closeModal={closeModal} repositoryInstance={repositoryInstance} />
+          <RepositoryInstanceForm
+            closeModal={closeModal}
+            repositoryInstance={repositoryInstance}
+          />
         </div>
       </DialogContent>
     </Dialog>

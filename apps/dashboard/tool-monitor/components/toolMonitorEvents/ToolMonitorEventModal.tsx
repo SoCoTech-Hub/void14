@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ToolMonitorEvent } from "@soco/tool-monitor-db/schema/toolMonitorEvents";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ToolMonitorEventForm from "./ToolMonitorEventForm";
-import { ToolMonitorEvent } from "@soco/tool-monitor-db/schema/toolMonitorEvents";
+} from "@soco/ui/dialog";
 
-export default function ToolMonitorEventModal({ 
+import ToolMonitorEventForm from "./ToolMonitorEventForm";
+
+export default function ToolMonitorEventModal({
   toolMonitorEvent,
   emptyState,
-}: { 
+}: {
   toolMonitorEvent?: ToolMonitorEvent;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ToolMonitorEventModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ToolMonitorEventModal({
             New Tool Monitor Event
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Tool Monitor Event</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Tool Monitor Event
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ToolMonitorEventForm closeModal={closeModal} toolMonitorEvent={toolMonitorEvent} />
+          <ToolMonitorEventForm
+            closeModal={closeModal}
+            toolMonitorEvent={toolMonitorEvent}
+          />
         </div>
       </DialogContent>
     </Dialog>

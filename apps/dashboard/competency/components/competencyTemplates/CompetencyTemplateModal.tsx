@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { CompetencyTemplate } from "@soco/competency-db/schema/competencyTemplates";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import CompetencyTemplateForm from "./CompetencyTemplateForm";
-import { CompetencyTemplate } from "@soco/competency-db/schema/competencyTemplates";
+} from "@soco/ui/dialog";
 
-export default function CompetencyTemplateModal({ 
+import CompetencyTemplateForm from "./CompetencyTemplateForm";
+
+export default function CompetencyTemplateModal({
   competencyTemplate,
   emptyState,
-}: { 
+}: {
   competencyTemplate?: CompetencyTemplate;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function CompetencyTemplateModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function CompetencyTemplateModal({
             New Competency Template
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Competency Template</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Competency Template
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <CompetencyTemplateForm closeModal={closeModal} competencyTemplate={competencyTemplate} />
+          <CompetencyTemplateForm
+            closeModal={closeModal}
+            competencyTemplate={competencyTemplate}
+          />
         </div>
       </DialogContent>
     </Dialog>

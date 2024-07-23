@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { AssignFeedbackComment } from "@soco/assignment-db/schema/assignFeedbackComments";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import AssignFeedbackCommentForm from "./AssignFeedbackCommentForm";
-import { AssignFeedbackComment } from "@soco/assignment-db/schema/assignFeedbackComments";
+} from "@soco/ui/dialog";
 
-export default function AssignFeedbackCommentModal({ 
+import AssignFeedbackCommentForm from "./AssignFeedbackCommentForm";
+
+export default function AssignFeedbackCommentModal({
   assignFeedbackComment,
   emptyState,
-}: { 
+}: {
   assignFeedbackComment?: AssignFeedbackComment;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function AssignFeedbackCommentModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function AssignFeedbackCommentModal({
             New Assign Feedback Comment
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Assign Feedback Comment</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Assign Feedback Comment
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <AssignFeedbackCommentForm closeModal={closeModal} assignFeedbackComment={assignFeedbackComment} />
+          <AssignFeedbackCommentForm
+            closeModal={closeModal}
+            assignFeedbackComment={assignFeedbackComment}
+          />
         </div>
       </DialogContent>
     </Dialog>

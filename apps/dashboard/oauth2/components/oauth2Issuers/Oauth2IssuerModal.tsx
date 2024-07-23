@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Oauth2Issuer } from "@soco/oauth2-db/schema/oauth2Issuers";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import Oauth2IssuerForm from "./Oauth2IssuerForm";
-import { Oauth2Issuer } from "@soco/oauth2-db/schema/oauth2Issuers";
+} from "@soco/ui/dialog";
 
-export default function Oauth2IssuerModal({ 
+import Oauth2IssuerForm from "./Oauth2IssuerForm";
+
+export default function Oauth2IssuerModal({
   oauth2Issuer,
   emptyState,
-}: { 
+}: {
   oauth2Issuer?: Oauth2Issuer;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function Oauth2IssuerModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,23 @@ export default function Oauth2IssuerModal({
             New Oauth2 Issuer
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Oauth2 Issuer</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Oauth2 Issuer</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <Oauth2IssuerForm closeModal={closeModal} oauth2Issuer={oauth2Issuer} />
+          <Oauth2IssuerForm
+            closeModal={closeModal}
+            oauth2Issuer={oauth2Issuer}
+          />
         </div>
       </DialogContent>
     </Dialog>

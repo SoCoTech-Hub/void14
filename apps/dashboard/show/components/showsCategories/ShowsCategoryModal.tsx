@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ShowsCategory } from "@soco/show-db/schema/showsCategories";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ShowsCategoryForm from "./ShowsCategoryForm";
-import { ShowsCategory } from "@soco/show-db/schema/showsCategories";
+} from "@soco/ui/dialog";
 
-export default function ShowsCategoryModal({ 
+import ShowsCategoryForm from "./ShowsCategoryForm";
+
+export default function ShowsCategoryModal({
   showsCategory,
   emptyState,
-}: { 
+}: {
   showsCategory?: ShowsCategory;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ShowsCategoryModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ShowsCategoryModal({
             New Shows Category
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Shows Category</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Shows Category
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ShowsCategoryForm closeModal={closeModal} showsCategory={showsCategory} />
+          <ShowsCategoryForm
+            closeModal={closeModal}
+            showsCategory={showsCategory}
+          />
         </div>
       </DialogContent>
     </Dialog>

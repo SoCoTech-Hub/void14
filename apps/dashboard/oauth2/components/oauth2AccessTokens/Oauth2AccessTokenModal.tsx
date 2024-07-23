@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Oauth2AccessToken } from "@soco/oauth2-db/schema/oauth2AccessTokens";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import Oauth2AccessTokenForm from "./Oauth2AccessTokenForm";
-import { Oauth2AccessToken } from "@soco/oauth2-db/schema/oauth2AccessTokens";
+} from "@soco/ui/dialog";
 
-export default function Oauth2AccessTokenModal({ 
+import Oauth2AccessTokenForm from "./Oauth2AccessTokenForm";
+
+export default function Oauth2AccessTokenModal({
   oauth2AccessToken,
   emptyState,
-}: { 
+}: {
   oauth2AccessToken?: Oauth2AccessToken;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function Oauth2AccessTokenModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function Oauth2AccessTokenModal({
             New Oauth2 Access Token
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Oauth2 Access Token</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Oauth2 Access Token
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <Oauth2AccessTokenForm closeModal={closeModal} oauth2AccessToken={oauth2AccessToken} />
+          <Oauth2AccessTokenForm
+            closeModal={closeModal}
+            oauth2AccessToken={oauth2AccessToken}
+          />
         </div>
       </DialogContent>
     </Dialog>

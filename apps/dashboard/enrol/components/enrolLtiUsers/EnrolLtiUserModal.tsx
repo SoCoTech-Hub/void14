@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { EnrolLtiUser } from "@soco/enrol-db/schema/enrolLtiUsers";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import EnrolLtiUserForm from "./EnrolLtiUserForm";
-import { EnrolLtiUser } from "@soco/enrol-db/schema/enrolLtiUsers";
+} from "@soco/ui/dialog";
 
-export default function EnrolLtiUserModal({ 
+import EnrolLtiUserForm from "./EnrolLtiUserForm";
+
+export default function EnrolLtiUserModal({
   enrolLtiUser,
   emptyState,
-}: { 
+}: {
   enrolLtiUser?: EnrolLtiUser;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function EnrolLtiUserModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function EnrolLtiUserModal({
             New Enrol Lti User
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Enrol Lti User</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Enrol Lti User
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <EnrolLtiUserForm closeModal={closeModal} enrolLtiUser={enrolLtiUser} />
+          <EnrolLtiUserForm
+            closeModal={closeModal}
+            enrolLtiUser={enrolLtiUser}
+          />
         </div>
       </DialogContent>
     </Dialog>

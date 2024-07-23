@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ApplicationResponse } from "@soco/application-db/schema/applicationResponses";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ApplicationResponseForm from "./ApplicationResponseForm";
-import { ApplicationResponse } from "@soco/application-db/schema/applicationResponses";
+} from "@soco/ui/dialog";
 
-export default function ApplicationResponseModal({ 
+import ApplicationResponseForm from "./ApplicationResponseForm";
+
+export default function ApplicationResponseModal({
   applicationResponse,
   emptyState,
-}: { 
+}: {
   applicationResponse?: ApplicationResponse;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ApplicationResponseModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ApplicationResponseModal({
             New Application Response
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Application Response</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Application Response
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ApplicationResponseForm closeModal={closeModal} applicationResponse={applicationResponse} />
+          <ApplicationResponseForm
+            closeModal={closeModal}
+            applicationResponse={applicationResponse}
+          />
         </div>
       </DialogContent>
     </Dialog>

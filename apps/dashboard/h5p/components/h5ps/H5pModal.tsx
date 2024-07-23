@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { H5p } from "@soco/h5p-db/schema/h5ps";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import H5pForm from "./H5pForm";
-import { H5p } from "@soco/h5p-db/schema/h5ps";
+} from "@soco/ui/dialog";
 
-export default function H5pModal({ 
+import H5pForm from "./H5pForm";
+
+export default function H5pModal({
   h5p,
   emptyState,
-}: { 
+}: {
   h5p?: H5p;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function H5pModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function H5pModal({
             New H5p
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } H5p</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} H5p</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <H5pForm closeModal={closeModal} h5p={h5p} />

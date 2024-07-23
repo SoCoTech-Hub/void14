@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { LessonAttempt } from "@soco/lesson-db/schema/lessonAttempts";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import LessonAttemptForm from "./LessonAttemptForm";
-import { LessonAttempt } from "@soco/lesson-db/schema/lessonAttempts";
+} from "@soco/ui/dialog";
 
-export default function LessonAttemptModal({ 
+import LessonAttemptForm from "./LessonAttemptForm";
+
+export default function LessonAttemptModal({
   lessonAttempt,
   emptyState,
-}: { 
+}: {
   lessonAttempt?: LessonAttempt;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function LessonAttemptModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function LessonAttemptModal({
             New Lesson Attempt
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Lesson Attempt</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Lesson Attempt
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <LessonAttemptForm closeModal={closeModal} lessonAttempt={lessonAttempt} />
+          <LessonAttemptForm
+            closeModal={closeModal}
+            lessonAttempt={lessonAttempt}
+          />
         </div>
       </DialogContent>
     </Dialog>

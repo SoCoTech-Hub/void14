@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { FeedbackTemplate } from "@soco/feedback-db/schema/feedbackTemplates";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import FeedbackTemplateForm from "./FeedbackTemplateForm";
-import { FeedbackTemplate } from "@soco/feedback-db/schema/feedbackTemplates";
+} from "@soco/ui/dialog";
 
-export default function FeedbackTemplateModal({ 
+import FeedbackTemplateForm from "./FeedbackTemplateForm";
+
+export default function FeedbackTemplateModal({
   feedbackTemplate,
   emptyState,
-}: { 
+}: {
   feedbackTemplate?: FeedbackTemplate;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function FeedbackTemplateModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function FeedbackTemplateModal({
             New Feedback Template
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Feedback Template</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Feedback Template
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <FeedbackTemplateForm closeModal={closeModal} feedbackTemplate={feedbackTemplate} />
+          <FeedbackTemplateForm
+            closeModal={closeModal}
+            feedbackTemplate={feedbackTemplate}
+          />
         </div>
       </DialogContent>
     </Dialog>

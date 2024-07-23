@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { AssignPluginConfig } from "@soco/assignment-db/schema/assignPluginConfigs";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import AssignPluginConfigForm from "./AssignPluginConfigForm";
-import { AssignPluginConfig } from "@soco/assignment-db/schema/assignPluginConfigs";
+} from "@soco/ui/dialog";
 
-export default function AssignPluginConfigModal({ 
+import AssignPluginConfigForm from "./AssignPluginConfigForm";
+
+export default function AssignPluginConfigModal({
   assignPluginConfig,
   emptyState,
-}: { 
+}: {
   assignPluginConfig?: AssignPluginConfig;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function AssignPluginConfigModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function AssignPluginConfigModal({
             New Assign Plugin Config
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Assign Plugin Config</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Assign Plugin Config
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <AssignPluginConfigForm closeModal={closeModal} assignPluginConfig={assignPluginConfig} />
+          <AssignPluginConfigForm
+            closeModal={closeModal}
+            assignPluginConfig={assignPluginConfig}
+          />
         </div>
       </DialogContent>
     </Dialog>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +9,15 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import UserPasswordResetForm from "./UserPasswordResetForm";
+} from "@soco/ui/dialog";
 import { UserPasswordReset } from "@soco/user-db/schema/userPasswordResets";
 
-export default function UserPasswordResetModal({ 
+import UserPasswordResetForm from "./UserPasswordResetForm";
+
+export default function UserPasswordResetModal({
   userPasswordReset,
   emptyState,
-}: { 
+}: {
   userPasswordReset?: UserPasswordReset;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function UserPasswordResetModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function UserPasswordResetModal({
             New User Password Reset
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } User Password Reset</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} User Password Reset
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <UserPasswordResetForm closeModal={closeModal} userPasswordReset={userPasswordReset} />
+          <UserPasswordResetForm
+            closeModal={closeModal}
+            userPasswordReset={userPasswordReset}
+          />
         </div>
       </DialogContent>
     </Dialog>

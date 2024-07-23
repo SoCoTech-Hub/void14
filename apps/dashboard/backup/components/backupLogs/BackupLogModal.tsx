@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { BackupLog } from "@soco/backup-db/schema/backupLogs";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import BackupLogForm from "./BackupLogForm";
-import { BackupLog } from "@soco/backup-db/schema/backupLogs";
+} from "@soco/ui/dialog";
 
-export default function BackupLogModal({ 
+import BackupLogForm from "./BackupLogForm";
+
+export default function BackupLogModal({
   backupLog,
   emptyState,
-}: { 
+}: {
   backupLog?: BackupLog;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function BackupLogModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function BackupLogModal({
             New Backup Log
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Backup Log</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Backup Log</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <BackupLogForm closeModal={closeModal} backupLog={backupLog} />

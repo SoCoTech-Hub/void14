@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ExternalFunction } from "@soco/external-db/schema/externalFunctions";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ExternalFunctionForm from "./ExternalFunctionForm";
-import { ExternalFunction } from "@soco/external-db/schema/externalFunctions";
+} from "@soco/ui/dialog";
 
-export default function ExternalFunctionModal({ 
+import ExternalFunctionForm from "./ExternalFunctionForm";
+
+export default function ExternalFunctionModal({
   externalFunction,
   emptyState,
-}: { 
+}: {
   externalFunction?: ExternalFunction;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ExternalFunctionModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ExternalFunctionModal({
             New External Function
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } External Function</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} External Function
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ExternalFunctionForm closeModal={closeModal} externalFunction={externalFunction} />
+          <ExternalFunctionForm
+            closeModal={closeModal}
+            externalFunction={externalFunction}
+          />
         </div>
       </DialogContent>
     </Dialog>

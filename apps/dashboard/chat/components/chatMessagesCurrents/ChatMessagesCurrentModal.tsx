@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ChatMessagesCurrent } from "@soco/chat-db/schema/chatMessagesCurrents";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ChatMessagesCurrentForm from "./ChatMessagesCurrentForm";
-import { ChatMessagesCurrent } from "@soco/chat-db/schema/chatMessagesCurrents";
+} from "@soco/ui/dialog";
 
-export default function ChatMessagesCurrentModal({ 
+import ChatMessagesCurrentForm from "./ChatMessagesCurrentForm";
+
+export default function ChatMessagesCurrentModal({
   chatMessagesCurrent,
   emptyState,
-}: { 
+}: {
   chatMessagesCurrent?: ChatMessagesCurrent;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ChatMessagesCurrentModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ChatMessagesCurrentModal({
             New Chat Messages Current
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Chat Messages Current</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Chat Messages Current
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ChatMessagesCurrentForm closeModal={closeModal} chatMessagesCurrent={chatMessagesCurrent} />
+          <ChatMessagesCurrentForm
+            closeModal={closeModal}
+            chatMessagesCurrent={chatMessagesCurrent}
+          />
         </div>
       </DialogContent>
     </Dialog>

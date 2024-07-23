@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { GradingformGuideCriterion } from "@soco/grade-db/schema/gradingformGuideCriteria";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import GradingformGuideCriterionForm from "./GradingformGuideCriterionForm";
-import { GradingformGuideCriterion } from "@soco/grade-db/schema/gradingformGuideCriteria";
+} from "@soco/ui/dialog";
 
-export default function GradingformGuideCriterionModal({ 
+import GradingformGuideCriterionForm from "./GradingformGuideCriterionForm";
+
+export default function GradingformGuideCriterionModal({
   gradingformGuideCriterion,
   emptyState,
-}: { 
+}: {
   gradingformGuideCriterion?: GradingformGuideCriterion;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function GradingformGuideCriterionModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function GradingformGuideCriterionModal({
             New Gradingform Guide Criterion
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Gradingform Guide Criterion</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Gradingform Guide Criterion
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <GradingformGuideCriterionForm closeModal={closeModal} gradingformGuideCriterion={gradingformGuideCriterion} />
+          <GradingformGuideCriterionForm
+            closeModal={closeModal}
+            gradingformGuideCriterion={gradingformGuideCriterion}
+          />
         </div>
       </DialogContent>
     </Dialog>

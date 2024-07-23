@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { CourseFormatOption } from "@soco/course-db/schema/courseFormatOptions";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import CourseFormatOptionForm from "./CourseFormatOptionForm";
-import { CourseFormatOption } from "@soco/course-db/schema/courseFormatOptions";
+} from "@soco/ui/dialog";
 
-export default function CourseFormatOptionModal({ 
+import CourseFormatOptionForm from "./CourseFormatOptionForm";
+
+export default function CourseFormatOptionModal({
   courseFormatOption,
   emptyState,
-}: { 
+}: {
   courseFormatOption?: CourseFormatOption;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function CourseFormatOptionModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function CourseFormatOptionModal({
             New Course Format Option
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Course Format Option</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Course Format Option
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <CourseFormatOptionForm closeModal={closeModal} courseFormatOption={courseFormatOption} />
+          <CourseFormatOptionForm
+            closeModal={closeModal}
+            courseFormatOption={courseFormatOption}
+          />
         </div>
       </DialogContent>
     </Dialog>

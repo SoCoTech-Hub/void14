@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { LtiTypesConfig } from "@soco/lti-db/schema/ltiTypesConfigs";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import LtiTypesConfigForm from "./LtiTypesConfigForm";
-import { LtiTypesConfig } from "@soco/lti-db/schema/ltiTypesConfigs";
+} from "@soco/ui/dialog";
 
-export default function LtiTypesConfigModal({ 
+import LtiTypesConfigForm from "./LtiTypesConfigForm";
+
+export default function LtiTypesConfigModal({
   ltiTypesConfig,
   emptyState,
-}: { 
+}: {
   ltiTypesConfig?: LtiTypesConfig;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function LtiTypesConfigModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function LtiTypesConfigModal({
             New Lti Types Config
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Lti Types Config</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Lti Types Config
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <LtiTypesConfigForm closeModal={closeModal} ltiTypesConfig={ltiTypesConfig} />
+          <LtiTypesConfigForm
+            closeModal={closeModal}
+            ltiTypesConfig={ltiTypesConfig}
+          />
         </div>
       </DialogContent>
     </Dialog>

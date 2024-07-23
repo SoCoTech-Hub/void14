@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { CompetencyUserCompCourse } from "@soco/competency-db/schema/competencyUserCompCourses";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import CompetencyUserCompCourseForm from "./CompetencyUserCompCourseForm";
-import { CompetencyUserCompCourse } from "@soco/competency-db/schema/competencyUserCompCourses";
+} from "@soco/ui/dialog";
 
-export default function CompetencyUserCompCourseModal({ 
+import CompetencyUserCompCourseForm from "./CompetencyUserCompCourseForm";
+
+export default function CompetencyUserCompCourseModal({
   competencyUserCompCourse,
   emptyState,
-}: { 
+}: {
   competencyUserCompCourse?: CompetencyUserCompCourse;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function CompetencyUserCompCourseModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function CompetencyUserCompCourseModal({
             New Competency User Comp Course
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Competency User Comp Course</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Competency User Comp Course
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <CompetencyUserCompCourseForm closeModal={closeModal} competencyUserCompCourse={competencyUserCompCourse} />
+          <CompetencyUserCompCourseForm
+            closeModal={closeModal}
+            competencyUserCompCourse={competencyUserCompCourse}
+          />
         </div>
       </DialogContent>
     </Dialog>

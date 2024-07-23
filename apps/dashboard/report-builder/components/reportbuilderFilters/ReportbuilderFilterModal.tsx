@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ReportbuilderFilter } from "@soco/report-builder-db/schema/reportbuilderFilters";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ReportbuilderFilterForm from "./ReportbuilderFilterForm";
-import { ReportbuilderFilter } from "@soco/report-builder-db/schema/reportbuilderFilters";
+} from "@soco/ui/dialog";
 
-export default function ReportbuilderFilterModal({ 
+import ReportbuilderFilterForm from "./ReportbuilderFilterForm";
+
+export default function ReportbuilderFilterModal({
   reportbuilderFilter,
   emptyState,
-}: { 
+}: {
   reportbuilderFilter?: ReportbuilderFilter;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ReportbuilderFilterModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ReportbuilderFilterModal({
             New Reportbuilder Filter
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Reportbuilder Filter</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Reportbuilder Filter
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ReportbuilderFilterForm closeModal={closeModal} reportbuilderFilter={reportbuilderFilter} />
+          <ReportbuilderFilterForm
+            closeModal={closeModal}
+            reportbuilderFilter={reportbuilderFilter}
+          />
         </div>
       </DialogContent>
     </Dialog>

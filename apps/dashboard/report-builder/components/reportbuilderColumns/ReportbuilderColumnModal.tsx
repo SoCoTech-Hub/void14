@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ReportbuilderColumn } from "@soco/report-builder-db/schema/reportbuilderColumns";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ReportbuilderColumnForm from "./ReportbuilderColumnForm";
-import { ReportbuilderColumn } from "@soco/report-builder-db/schema/reportbuilderColumns";
+} from "@soco/ui/dialog";
 
-export default function ReportbuilderColumnModal({ 
+import ReportbuilderColumnForm from "./ReportbuilderColumnForm";
+
+export default function ReportbuilderColumnModal({
   reportbuilderColumn,
   emptyState,
-}: { 
+}: {
   reportbuilderColumn?: ReportbuilderColumn;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ReportbuilderColumnModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ReportbuilderColumnModal({
             New Reportbuilder Column
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Reportbuilder Column</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Reportbuilder Column
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ReportbuilderColumnForm closeModal={closeModal} reportbuilderColumn={reportbuilderColumn} />
+          <ReportbuilderColumnForm
+            closeModal={closeModal}
+            reportbuilderColumn={reportbuilderColumn}
+          />
         </div>
       </DialogContent>
     </Dialog>

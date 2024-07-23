@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { RoleAllowAssign } from "@soco/role-db/schema/roleAllowAssigns";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import RoleAllowAssignForm from "./RoleAllowAssignForm";
-import { RoleAllowAssign } from "@soco/role-db/schema/roleAllowAssigns";
+} from "@soco/ui/dialog";
 
-export default function RoleAllowAssignModal({ 
+import RoleAllowAssignForm from "./RoleAllowAssignForm";
+
+export default function RoleAllowAssignModal({
   roleAllowAssign,
   emptyState,
-}: { 
+}: {
   roleAllowAssign?: RoleAllowAssign;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function RoleAllowAssignModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function RoleAllowAssignModal({
             New Role Allow Assign
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Role Allow Assign</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Role Allow Assign
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <RoleAllowAssignForm closeModal={closeModal} roleAllowAssign={roleAllowAssign} />
+          <RoleAllowAssignForm
+            closeModal={closeModal}
+            roleAllowAssign={roleAllowAssign}
+          />
         </div>
       </DialogContent>
     </Dialog>

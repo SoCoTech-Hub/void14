@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { UserSchool } from "@soco/school-db/schema/userSchools";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import UserSchoolForm from "./UserSchoolForm";
-import { UserSchool } from "@soco/school-db/schema/userSchools";
+} from "@soco/ui/dialog";
 
-export default function UserSchoolModal({ 
+import UserSchoolForm from "./UserSchoolForm";
+
+export default function UserSchoolModal({
   userSchool,
   emptyState,
-}: { 
+}: {
   userSchool?: UserSchool;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function UserSchoolModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function UserSchoolModal({
             New User School
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } User School</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} User School</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <UserSchoolForm closeModal={closeModal} userSchool={userSchool} />

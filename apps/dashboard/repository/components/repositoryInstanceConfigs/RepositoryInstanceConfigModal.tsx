@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { RepositoryInstanceConfig } from "@soco/repository-db/schema/repositoryInstanceConfigs";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import RepositoryInstanceConfigForm from "./RepositoryInstanceConfigForm";
-import { RepositoryInstanceConfig } from "@soco/repository-db/schema/repositoryInstanceConfigs";
+} from "@soco/ui/dialog";
 
-export default function RepositoryInstanceConfigModal({ 
+import RepositoryInstanceConfigForm from "./RepositoryInstanceConfigForm";
+
+export default function RepositoryInstanceConfigModal({
   repositoryInstanceConfig,
   emptyState,
-}: { 
+}: {
   repositoryInstanceConfig?: RepositoryInstanceConfig;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function RepositoryInstanceConfigModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function RepositoryInstanceConfigModal({
             New Repository Instance Config
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Repository Instance Config</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Repository Instance Config
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <RepositoryInstanceConfigForm closeModal={closeModal} repositoryInstanceConfig={repositoryInstanceConfig} />
+          <RepositoryInstanceConfigForm
+            closeModal={closeModal}
+            repositoryInstanceConfig={repositoryInstanceConfig}
+          />
         </div>
       </DialogContent>
     </Dialog>

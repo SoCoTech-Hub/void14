@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ToolMonitorSubscription } from "@soco/tool-monitor-db/schema/toolMonitorSubscriptions";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ToolMonitorSubscriptionForm from "./ToolMonitorSubscriptionForm";
-import { ToolMonitorSubscription } from "@soco/tool-monitor-db/schema/toolMonitorSubscriptions";
+} from "@soco/ui/dialog";
 
-export default function ToolMonitorSubscriptionModal({ 
+import ToolMonitorSubscriptionForm from "./ToolMonitorSubscriptionForm";
+
+export default function ToolMonitorSubscriptionModal({
   toolMonitorSubscription,
   emptyState,
-}: { 
+}: {
   toolMonitorSubscription?: ToolMonitorSubscription;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ToolMonitorSubscriptionModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ToolMonitorSubscriptionModal({
             New Tool Monitor Subscription
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Tool Monitor Subscription</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Tool Monitor Subscription
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ToolMonitorSubscriptionForm closeModal={closeModal} toolMonitorSubscription={toolMonitorSubscription} />
+          <ToolMonitorSubscriptionForm
+            closeModal={closeModal}
+            toolMonitorSubscription={toolMonitorSubscription}
+          />
         </div>
       </DialogContent>
     </Dialog>

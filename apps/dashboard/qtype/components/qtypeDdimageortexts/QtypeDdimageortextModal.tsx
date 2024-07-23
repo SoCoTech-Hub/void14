@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { QtypeDdimageortext } from "@soco/qtype-db/schema/qtypeDdimageortexts";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import QtypeDdimageortextForm from "./QtypeDdimageortextForm";
-import { QtypeDdimageortext } from "@soco/qtype-db/schema/qtypeDdimageortexts";
+} from "@soco/ui/dialog";
 
-export default function QtypeDdimageortextModal({ 
+import QtypeDdimageortextForm from "./QtypeDdimageortextForm";
+
+export default function QtypeDdimageortextModal({
   qtypeDdimageortext,
   emptyState,
-}: { 
+}: {
   qtypeDdimageortext?: QtypeDdimageortext;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function QtypeDdimageortextModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function QtypeDdimageortextModal({
             New Qtype Ddimageortext
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Qtype Ddimageortext</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Qtype Ddimageortext
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <QtypeDdimageortextForm closeModal={closeModal} qtypeDdimageortext={qtypeDdimageortext} />
+          <QtypeDdimageortextForm
+            closeModal={closeModal}
+            qtypeDdimageortext={qtypeDdimageortext}
+          />
         </div>
       </DialogContent>
     </Dialog>

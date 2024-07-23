@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { EnrolLtiDeployment } from "@soco/enrol-db/schema/enrolLtiDeployments";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import EnrolLtiDeploymentForm from "./EnrolLtiDeploymentForm";
-import { EnrolLtiDeployment } from "@soco/enrol-db/schema/enrolLtiDeployments";
+} from "@soco/ui/dialog";
 
-export default function EnrolLtiDeploymentModal({ 
+import EnrolLtiDeploymentForm from "./EnrolLtiDeploymentForm";
+
+export default function EnrolLtiDeploymentModal({
   enrolLtiDeployment,
   emptyState,
-}: { 
+}: {
   enrolLtiDeployment?: EnrolLtiDeployment;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function EnrolLtiDeploymentModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function EnrolLtiDeploymentModal({
             New Enrol Lti Deployment
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Enrol Lti Deployment</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Enrol Lti Deployment
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <EnrolLtiDeploymentForm closeModal={closeModal} enrolLtiDeployment={enrolLtiDeployment} />
+          <EnrolLtiDeploymentForm
+            closeModal={closeModal}
+            enrolLtiDeployment={enrolLtiDeployment}
+          />
         </div>
       </DialogContent>
     </Dialog>

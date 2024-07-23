@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Rating } from "@soco/rating-db/schema/ratings";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import RatingForm from "./RatingForm";
-import { Rating } from "@soco/rating-db/schema/ratings";
+} from "@soco/ui/dialog";
 
-export default function RatingModal({ 
+import RatingForm from "./RatingForm";
+
+export default function RatingModal({
   rating,
   emptyState,
-}: { 
+}: {
   rating?: Rating;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function RatingModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function RatingModal({
             New Rating
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Rating</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Rating</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <RatingForm closeModal={closeModal} rating={rating} />

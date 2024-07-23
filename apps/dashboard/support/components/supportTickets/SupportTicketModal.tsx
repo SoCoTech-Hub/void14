@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { SupportTicket } from "@soco/support-db/schema/supportTickets";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import SupportTicketForm from "./SupportTicketForm";
-import { SupportTicket } from "@soco/support-db/schema/supportTickets";
+} from "@soco/ui/dialog";
 
-export default function SupportTicketModal({ 
+import SupportTicketForm from "./SupportTicketForm";
+
+export default function SupportTicketModal({
   supportTicket,
   emptyState,
-}: { 
+}: {
   supportTicket?: SupportTicket;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function SupportTicketModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function SupportTicketModal({
             New Support Ticket
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Support Ticket</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Support Ticket
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <SupportTicketForm closeModal={closeModal} supportTicket={supportTicket} />
+          <SupportTicketForm
+            closeModal={closeModal}
+            supportTicket={supportTicket}
+          />
         </div>
       </DialogContent>
     </Dialog>

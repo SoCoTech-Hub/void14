@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { FilterActive } from "@soco/filter-db/schema/filterActives";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import FilterActiveForm from "./FilterActiveForm";
-import { FilterActive } from "@soco/filter-db/schema/filterActives";
+} from "@soco/ui/dialog";
 
-export default function FilterActiveModal({ 
+import FilterActiveForm from "./FilterActiveForm";
+
+export default function FilterActiveModal({
   filterActive,
   emptyState,
-}: { 
+}: {
   filterActive?: FilterActive;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function FilterActiveModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,23 @@ export default function FilterActiveModal({
             New Filter Active
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Filter Active</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Filter Active</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <FilterActiveForm closeModal={closeModal} filterActive={filterActive} />
+          <FilterActiveForm
+            closeModal={closeModal}
+            filterActive={filterActive}
+          />
         </div>
       </DialogContent>
     </Dialog>

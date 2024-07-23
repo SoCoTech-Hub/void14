@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Message } from "@soco/message-db/schema/messages";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import MessageForm from "./MessageForm";
-import { Message } from "@soco/message-db/schema/messages";
+} from "@soco/ui/dialog";
 
-export default function MessageModal({ 
+import MessageForm from "./MessageForm";
+
+export default function MessageModal({
   message,
   emptyState,
-}: { 
+}: {
   message?: Message;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function MessageModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function MessageModal({
             New Message
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Message</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Message</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <MessageForm closeModal={closeModal} message={message} />

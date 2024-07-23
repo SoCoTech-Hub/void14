@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Oauth2UserFieldMapping } from "@soco/oauth2-db/schema/oauth2UserFieldMappings";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import Oauth2UserFieldMappingForm from "./Oauth2UserFieldMappingForm";
-import { Oauth2UserFieldMapping } from "@soco/oauth2-db/schema/oauth2UserFieldMappings";
+} from "@soco/ui/dialog";
 
-export default function Oauth2UserFieldMappingModal({ 
+import Oauth2UserFieldMappingForm from "./Oauth2UserFieldMappingForm";
+
+export default function Oauth2UserFieldMappingModal({
   oauth2UserFieldMapping,
   emptyState,
-}: { 
+}: {
   oauth2UserFieldMapping?: Oauth2UserFieldMapping;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function Oauth2UserFieldMappingModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function Oauth2UserFieldMappingModal({
             New Oauth2 User Field Mapping
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Oauth2 User Field Mapping</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Oauth2 User Field Mapping
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <Oauth2UserFieldMappingForm closeModal={closeModal} oauth2UserFieldMapping={oauth2UserFieldMapping} />
+          <Oauth2UserFieldMappingForm
+            closeModal={closeModal}
+            oauth2UserFieldMapping={oauth2UserFieldMapping}
+          />
         </div>
       </DialogContent>
     </Dialog>

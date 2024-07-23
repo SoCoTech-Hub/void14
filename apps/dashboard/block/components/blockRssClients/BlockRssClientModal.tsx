@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { BlockRssClient } from "@soco/block-db/schema/blockRssClients";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import BlockRssClientForm from "./BlockRssClientForm";
-import { BlockRssClient } from "@soco/block-db/schema/blockRssClients";
+} from "@soco/ui/dialog";
 
-export default function BlockRssClientModal({ 
+import BlockRssClientForm from "./BlockRssClientForm";
+
+export default function BlockRssClientModal({
   blockRssClient,
   emptyState,
-}: { 
+}: {
   blockRssClient?: BlockRssClient;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function BlockRssClientModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function BlockRssClientModal({
             New Block Rss Client
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Block Rss Client</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Block Rss Client
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <BlockRssClientForm closeModal={closeModal} blockRssClient={blockRssClient} />
+          <BlockRssClientForm
+            closeModal={closeModal}
+            blockRssClient={blockRssClient}
+          />
         </div>
       </DialogContent>
     </Dialog>

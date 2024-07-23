@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { MassMailListsRecipient } from "@soco/mass-mail-db/schema/massMailListsRecipients";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import MassMailListsRecipientForm from "./MassMailListsRecipientForm";
-import { MassMailListsRecipient } from "@soco/mass-mail-db/schema/massMailListsRecipients";
+} from "@soco/ui/dialog";
 
-export default function MassMailListsRecipientModal({ 
+import MassMailListsRecipientForm from "./MassMailListsRecipientForm";
+
+export default function MassMailListsRecipientModal({
   massMailListsRecipient,
   emptyState,
-}: { 
+}: {
   massMailListsRecipient?: MassMailListsRecipient;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function MassMailListsRecipientModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function MassMailListsRecipientModal({
             New Mass Mail Lists Recipient
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Mass Mail Lists Recipient</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Mass Mail Lists Recipient
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <MassMailListsRecipientForm closeModal={closeModal} massMailListsRecipient={massMailListsRecipient} />
+          <MassMailListsRecipientForm
+            closeModal={closeModal}
+            massMailListsRecipient={massMailListsRecipient}
+          />
         </div>
       </DialogContent>
     </Dialog>

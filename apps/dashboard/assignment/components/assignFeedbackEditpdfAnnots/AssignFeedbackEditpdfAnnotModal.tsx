@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { AssignFeedbackEditpdfAnnot } from "@soco/assignment-db/schema/assignFeedbackEditpdfAnnots";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import AssignFeedbackEditpdfAnnotForm from "./AssignFeedbackEditpdfAnnotForm";
-import { AssignFeedbackEditpdfAnnot } from "@soco/assignment-db/schema/assignFeedbackEditpdfAnnots";
+} from "@soco/ui/dialog";
 
-export default function AssignFeedbackEditpdfAnnotModal({ 
+import AssignFeedbackEditpdfAnnotForm from "./AssignFeedbackEditpdfAnnotForm";
+
+export default function AssignFeedbackEditpdfAnnotModal({
   assignFeedbackEditpdfAnnot,
   emptyState,
-}: { 
+}: {
   assignFeedbackEditpdfAnnot?: AssignFeedbackEditpdfAnnot;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function AssignFeedbackEditpdfAnnotModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function AssignFeedbackEditpdfAnnotModal({
             New Assign Feedback Editpdf Annot
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Assign Feedback Editpdf Annot</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Assign Feedback Editpdf Annot
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <AssignFeedbackEditpdfAnnotForm closeModal={closeModal} assignFeedbackEditpdfAnnot={assignFeedbackEditpdfAnnot} />
+          <AssignFeedbackEditpdfAnnotForm
+            closeModal={closeModal}
+            assignFeedbackEditpdfAnnot={assignFeedbackEditpdfAnnot}
+          />
         </div>
       </DialogContent>
     </Dialog>

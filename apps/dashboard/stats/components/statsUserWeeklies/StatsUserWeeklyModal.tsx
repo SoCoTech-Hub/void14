@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { StatsUserWeekly } from "@soco/stats-db/schema/statsUserWeeklies";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import StatsUserWeeklyForm from "./StatsUserWeeklyForm";
-import { StatsUserWeekly } from "@soco/stats-db/schema/statsUserWeeklies";
+} from "@soco/ui/dialog";
 
-export default function StatsUserWeeklyModal({ 
+import StatsUserWeeklyForm from "./StatsUserWeeklyForm";
+
+export default function StatsUserWeeklyModal({
   statsUserWeekly,
   emptyState,
-}: { 
+}: {
   statsUserWeekly?: StatsUserWeekly;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function StatsUserWeeklyModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function StatsUserWeeklyModal({
             New Stats User Weekly
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Stats User Weekly</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Stats User Weekly
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <StatsUserWeeklyForm closeModal={closeModal} statsUserWeekly={statsUserWeekly} />
+          <StatsUserWeeklyForm
+            closeModal={closeModal}
+            statsUserWeekly={statsUserWeekly}
+          />
         </div>
       </DialogContent>
     </Dialog>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Social } from "@soco/social-db/schema/socials";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import SocialForm from "./SocialForm";
-import { Social } from "@soco/social-db/schema/socials";
+} from "@soco/ui/dialog";
 
-export default function SocialModal({ 
+import SocialForm from "./SocialForm";
+
+export default function SocialModal({
   social,
   emptyState,
-}: { 
+}: {
   social?: Social;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function SocialModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function SocialModal({
             New Social
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Social</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Social</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <SocialForm closeModal={closeModal} social={social} />

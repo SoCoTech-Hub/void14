@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { JobApplicationsApplicationCategory } from "@soco/application-db/schema/jobApplicationsApplicationCategories";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import JobApplicationsApplicationCategoryForm from "./JobApplicationsApplicationCategoryForm";
-import { JobApplicationsApplicationCategory } from "@soco/application-db/schema/jobApplicationsApplicationCategories";
+} from "@soco/ui/dialog";
 
-export default function JobApplicationsApplicationCategoryModal({ 
+import JobApplicationsApplicationCategoryForm from "./JobApplicationsApplicationCategoryForm";
+
+export default function JobApplicationsApplicationCategoryModal({
   jobApplicationsApplicationCategory,
   emptyState,
-}: { 
+}: {
   jobApplicationsApplicationCategory?: JobApplicationsApplicationCategory;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function JobApplicationsApplicationCategoryModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,27 @@ export default function JobApplicationsApplicationCategoryModal({
             New Job Applications Application Category
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Job Applications Application Category</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Job Applications Application Category
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <JobApplicationsApplicationCategoryForm closeModal={closeModal} jobApplicationsApplicationCategory={jobApplicationsApplicationCategory} />
+          <JobApplicationsApplicationCategoryForm
+            closeModal={closeModal}
+            jobApplicationsApplicationCategory={
+              jobApplicationsApplicationCategory
+            }
+          />
         </div>
       </DialogContent>
     </Dialog>

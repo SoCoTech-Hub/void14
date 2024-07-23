@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Repository } from "@soco/repository-db/schema/repositories";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import RepositoryForm from "./RepositoryForm";
-import { Repository } from "@soco/repository-db/schema/repositories";
+} from "@soco/ui/dialog";
 
-export default function RepositoryModal({ 
+import RepositoryForm from "./RepositoryForm";
+
+export default function RepositoryModal({
   repository,
   emptyState,
-}: { 
+}: {
   repository?: Repository;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function RepositoryModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function RepositoryModal({
             New Repository
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Repository</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Repository</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <RepositoryForm closeModal={closeModal} repository={repository} />

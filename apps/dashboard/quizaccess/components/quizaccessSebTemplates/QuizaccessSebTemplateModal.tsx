@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { QuizaccessSebTemplate } from "@soco/quizaccess-db/schema/quizaccessSebTemplates";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import QuizaccessSebTemplateForm from "./QuizaccessSebTemplateForm";
-import { QuizaccessSebTemplate } from "@soco/quizaccess-db/schema/quizaccessSebTemplates";
+} from "@soco/ui/dialog";
 
-export default function QuizaccessSebTemplateModal({ 
+import QuizaccessSebTemplateForm from "./QuizaccessSebTemplateForm";
+
+export default function QuizaccessSebTemplateModal({
   quizaccessSebTemplate,
   emptyState,
-}: { 
+}: {
   quizaccessSebTemplate?: QuizaccessSebTemplate;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function QuizaccessSebTemplateModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function QuizaccessSebTemplateModal({
             New Quizaccess Seb Template
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Quizaccess Seb Template</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Quizaccess Seb Template
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <QuizaccessSebTemplateForm closeModal={closeModal} quizaccessSebTemplate={quizaccessSebTemplate} />
+          <QuizaccessSebTemplateForm
+            closeModal={closeModal}
+            quizaccessSebTemplate={quizaccessSebTemplate}
+          />
         </div>
       </DialogContent>
     </Dialog>

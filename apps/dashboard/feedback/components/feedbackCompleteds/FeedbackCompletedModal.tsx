@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { FeedbackCompleted } from "@soco/feedback-db/schema/feedbackCompleteds";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import FeedbackCompletedForm from "./FeedbackCompletedForm";
-import { FeedbackCompleted } from "@soco/feedback-db/schema/feedbackCompleteds";
+} from "@soco/ui/dialog";
 
-export default function FeedbackCompletedModal({ 
+import FeedbackCompletedForm from "./FeedbackCompletedForm";
+
+export default function FeedbackCompletedModal({
   feedbackCompleted,
   emptyState,
-}: { 
+}: {
   feedbackCompleted?: FeedbackCompleted;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function FeedbackCompletedModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function FeedbackCompletedModal({
             New Feedback Completed
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Feedback Completed</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Feedback Completed
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <FeedbackCompletedForm closeModal={closeModal} feedbackCompleted={feedbackCompleted} />
+          <FeedbackCompletedForm
+            closeModal={closeModal}
+            feedbackCompleted={feedbackCompleted}
+          />
         </div>
       </DialogContent>
     </Dialog>

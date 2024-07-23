@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { DistrictOrganization } from "@soco/geolocalize-db/schema/districtOrganizations";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import DistrictOrganizationForm from "./DistrictOrganizationForm";
-import { DistrictOrganization } from "@soco/geolocalize-db/schema/districtOrganizations";
+} from "@soco/ui/dialog";
 
-export default function DistrictOrganizationModal({ 
+import DistrictOrganizationForm from "./DistrictOrganizationForm";
+
+export default function DistrictOrganizationModal({
   districtOrganization,
   emptyState,
-}: { 
+}: {
   districtOrganization?: DistrictOrganization;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function DistrictOrganizationModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function DistrictOrganizationModal({
             New District Organization
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } District Organization</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} District Organization
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <DistrictOrganizationForm closeModal={closeModal} districtOrganization={districtOrganization} />
+          <DistrictOrganizationForm
+            closeModal={closeModal}
+            districtOrganization={districtOrganization}
+          />
         </div>
       </DialogContent>
     </Dialog>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { QuestionDataset } from "@soco/question-db/schema/questionDatasets";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import QuestionDatasetForm from "./QuestionDatasetForm";
-import { QuestionDataset } from "@soco/question-db/schema/questionDatasets";
+} from "@soco/ui/dialog";
 
-export default function QuestionDatasetModal({ 
+import QuestionDatasetForm from "./QuestionDatasetForm";
+
+export default function QuestionDatasetModal({
   questionDataset,
   emptyState,
-}: { 
+}: {
   questionDataset?: QuestionDataset;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function QuestionDatasetModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function QuestionDatasetModal({
             New Question Dataset
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Question Dataset</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Question Dataset
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <QuestionDatasetForm closeModal={closeModal} questionDataset={questionDataset} />
+          <QuestionDatasetForm
+            closeModal={closeModal}
+            questionDataset={questionDataset}
+          />
         </div>
       </DialogContent>
     </Dialog>

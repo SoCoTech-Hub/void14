@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { QuestionNumericalUnit } from "@soco/question-db/schema/questionNumericalUnits";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import QuestionNumericalUnitForm from "./QuestionNumericalUnitForm";
-import { QuestionNumericalUnit } from "@soco/question-db/schema/questionNumericalUnits";
+} from "@soco/ui/dialog";
 
-export default function QuestionNumericalUnitModal({ 
+import QuestionNumericalUnitForm from "./QuestionNumericalUnitForm";
+
+export default function QuestionNumericalUnitModal({
   questionNumericalUnit,
   emptyState,
-}: { 
+}: {
   questionNumericalUnit?: QuestionNumericalUnit;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function QuestionNumericalUnitModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function QuestionNumericalUnitModal({
             New Question Numerical Unit
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Question Numerical Unit</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Question Numerical Unit
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <QuestionNumericalUnitForm closeModal={closeModal} questionNumericalUnit={questionNumericalUnit} />
+          <QuestionNumericalUnitForm
+            closeModal={closeModal}
+            questionNumericalUnit={questionNumericalUnit}
+          />
         </div>
       </DialogContent>
     </Dialog>

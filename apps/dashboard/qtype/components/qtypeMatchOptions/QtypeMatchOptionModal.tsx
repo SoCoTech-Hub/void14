@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { QtypeMatchOption } from "@soco/qtype-db/schema/qtypeMatchOptions";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import QtypeMatchOptionForm from "./QtypeMatchOptionForm";
-import { QtypeMatchOption } from "@soco/qtype-db/schema/qtypeMatchOptions";
+} from "@soco/ui/dialog";
 
-export default function QtypeMatchOptionModal({ 
+import QtypeMatchOptionForm from "./QtypeMatchOptionForm";
+
+export default function QtypeMatchOptionModal({
   qtypeMatchOption,
   emptyState,
-}: { 
+}: {
   qtypeMatchOption?: QtypeMatchOption;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function QtypeMatchOptionModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function QtypeMatchOptionModal({
             New Qtype Match Option
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Qtype Match Option</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Qtype Match Option
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <QtypeMatchOptionForm closeModal={closeModal} qtypeMatchOption={qtypeMatchOption} />
+          <QtypeMatchOptionForm
+            closeModal={closeModal}
+            qtypeMatchOption={qtypeMatchOption}
+          />
         </div>
       </DialogContent>
     </Dialog>

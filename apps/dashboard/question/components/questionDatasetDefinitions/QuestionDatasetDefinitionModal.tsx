@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { QuestionDatasetDefinition } from "@soco/question-db/schema/questionDatasetDefinitions";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import QuestionDatasetDefinitionForm from "./QuestionDatasetDefinitionForm";
-import { QuestionDatasetDefinition } from "@soco/question-db/schema/questionDatasetDefinitions";
+} from "@soco/ui/dialog";
 
-export default function QuestionDatasetDefinitionModal({ 
+import QuestionDatasetDefinitionForm from "./QuestionDatasetDefinitionForm";
+
+export default function QuestionDatasetDefinitionModal({
   questionDatasetDefinition,
   emptyState,
-}: { 
+}: {
   questionDatasetDefinition?: QuestionDatasetDefinition;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function QuestionDatasetDefinitionModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function QuestionDatasetDefinitionModal({
             New Question Dataset Definition
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Question Dataset Definition</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Question Dataset Definition
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <QuestionDatasetDefinitionForm closeModal={closeModal} questionDatasetDefinition={questionDatasetDefinition} />
+          <QuestionDatasetDefinitionForm
+            closeModal={closeModal}
+            questionDatasetDefinition={questionDatasetDefinition}
+          />
         </div>
       </DialogContent>
     </Dialog>

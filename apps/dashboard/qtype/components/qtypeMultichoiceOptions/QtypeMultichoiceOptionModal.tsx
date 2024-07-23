@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { QtypeMultichoiceOption } from "@soco/qtype-db/schema/qtypeMultichoiceOptions";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import QtypeMultichoiceOptionForm from "./QtypeMultichoiceOptionForm";
-import { QtypeMultichoiceOption } from "@soco/qtype-db/schema/qtypeMultichoiceOptions";
+} from "@soco/ui/dialog";
 
-export default function QtypeMultichoiceOptionModal({ 
+import QtypeMultichoiceOptionForm from "./QtypeMultichoiceOptionForm";
+
+export default function QtypeMultichoiceOptionModal({
   qtypeMultichoiceOption,
   emptyState,
-}: { 
+}: {
   qtypeMultichoiceOption?: QtypeMultichoiceOption;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function QtypeMultichoiceOptionModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function QtypeMultichoiceOptionModal({
             New Qtype Multichoice Option
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Qtype Multichoice Option</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Qtype Multichoice Option
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <QtypeMultichoiceOptionForm closeModal={closeModal} qtypeMultichoiceOption={qtypeMultichoiceOption} />
+          <QtypeMultichoiceOptionForm
+            closeModal={closeModal}
+            qtypeMultichoiceOption={qtypeMultichoiceOption}
+          />
         </div>
       </DialogContent>
     </Dialog>

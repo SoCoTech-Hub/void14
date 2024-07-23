@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { StatsDaily } from "@soco/stats-db/schema/statsDailies";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import StatsDailyForm from "./StatsDailyForm";
-import { StatsDaily } from "@soco/stats-db/schema/statsDailies";
+} from "@soco/ui/dialog";
 
-export default function StatsDailyModal({ 
+import StatsDailyForm from "./StatsDailyForm";
+
+export default function StatsDailyModal({
   statsDaily,
   emptyState,
-}: { 
+}: {
   statsDaily?: StatsDaily;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function StatsDailyModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function StatsDailyModal({
             New Stats Daily
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Stats Daily</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Stats Daily</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <StatsDailyForm closeModal={closeModal} statsDaily={statsDaily} />

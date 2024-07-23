@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ToolDataprivacyCtxExpired } from "@soco/tool-data-privacy-db/schema/toolDataprivacyCtxExpireds";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ToolDataprivacyCtxExpiredForm from "./ToolDataprivacyCtxExpiredForm";
-import { ToolDataprivacyCtxExpired } from "@soco/tool-data-privacy-db/schema/toolDataprivacyCtxExpireds";
+} from "@soco/ui/dialog";
 
-export default function ToolDataprivacyCtxExpiredModal({ 
+import ToolDataprivacyCtxExpiredForm from "./ToolDataprivacyCtxExpiredForm";
+
+export default function ToolDataprivacyCtxExpiredModal({
   toolDataprivacyCtxExpired,
   emptyState,
-}: { 
+}: {
   toolDataprivacyCtxExpired?: ToolDataprivacyCtxExpired;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ToolDataprivacyCtxExpiredModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ToolDataprivacyCtxExpiredModal({
             New Tool Dataprivacy Ctx Expired
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Tool Dataprivacy Ctx Expired</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Tool Dataprivacy Ctx Expired
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ToolDataprivacyCtxExpiredForm closeModal={closeModal} toolDataprivacyCtxExpired={toolDataprivacyCtxExpired} />
+          <ToolDataprivacyCtxExpiredForm
+            closeModal={closeModal}
+            toolDataprivacyCtxExpired={toolDataprivacyCtxExpired}
+          />
         </div>
       </DialogContent>
     </Dialog>

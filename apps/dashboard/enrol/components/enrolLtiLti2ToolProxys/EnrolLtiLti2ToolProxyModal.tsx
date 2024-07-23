@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { EnrolLtiLti2ToolProxy } from "@soco/enrol-db/schema/enrolLtiLti2ToolProxys";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import EnrolLtiLti2ToolProxyForm from "./EnrolLtiLti2ToolProxyForm";
-import { EnrolLtiLti2ToolProxy } from "@soco/enrol-db/schema/enrolLtiLti2ToolProxys";
+} from "@soco/ui/dialog";
 
-export default function EnrolLtiLti2ToolProxyModal({ 
+import EnrolLtiLti2ToolProxyForm from "./EnrolLtiLti2ToolProxyForm";
+
+export default function EnrolLtiLti2ToolProxyModal({
   enrolLtiLti2ToolProxy,
   emptyState,
-}: { 
+}: {
   enrolLtiLti2ToolProxy?: EnrolLtiLti2ToolProxy;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function EnrolLtiLti2ToolProxyModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function EnrolLtiLti2ToolProxyModal({
             New Enrol Lti Lti2 Tool Proxy
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Enrol Lti Lti2 Tool Proxy</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Enrol Lti Lti2 Tool Proxy
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <EnrolLtiLti2ToolProxyForm closeModal={closeModal} enrolLtiLti2ToolProxy={enrolLtiLti2ToolProxy} />
+          <EnrolLtiLti2ToolProxyForm
+            closeModal={closeModal}
+            enrolLtiLti2ToolProxy={enrolLtiLti2ToolProxy}
+          />
         </div>
       </DialogContent>
     </Dialog>

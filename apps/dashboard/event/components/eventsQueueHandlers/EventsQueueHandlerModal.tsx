@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { EventsQueueHandler } from "@soco/event-db/schema/eventsQueueHandlers";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import EventsQueueHandlerForm from "./EventsQueueHandlerForm";
-import { EventsQueueHandler } from "@soco/event-db/schema/eventsQueueHandlers";
+} from "@soco/ui/dialog";
 
-export default function EventsQueueHandlerModal({ 
+import EventsQueueHandlerForm from "./EventsQueueHandlerForm";
+
+export default function EventsQueueHandlerModal({
   eventsQueueHandler,
   emptyState,
-}: { 
+}: {
   eventsQueueHandler?: EventsQueueHandler;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function EventsQueueHandlerModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function EventsQueueHandlerModal({
             New Events Queue Handler
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Events Queue Handler</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Events Queue Handler
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <EventsQueueHandlerForm closeModal={closeModal} eventsQueueHandler={eventsQueueHandler} />
+          <EventsQueueHandlerForm
+            closeModal={closeModal}
+            eventsQueueHandler={eventsQueueHandler}
+          />
         </div>
       </DialogContent>
     </Dialog>

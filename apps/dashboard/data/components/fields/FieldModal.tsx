@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Field } from "@soco/data-db/schema/fields";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import FieldForm from "./FieldForm";
-import { Field } from "@soco/data-db/schema/fields";
+} from "@soco/ui/dialog";
 
-export default function FieldModal({ 
+import FieldForm from "./FieldForm";
+
+export default function FieldModal({
   field,
   emptyState,
-}: { 
+}: {
   field?: Field;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function FieldModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function FieldModal({
             New Field
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Field</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Field</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <FieldForm closeModal={closeModal} field={field} />

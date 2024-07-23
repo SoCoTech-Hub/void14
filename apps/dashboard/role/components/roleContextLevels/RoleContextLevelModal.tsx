@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { RoleContextLevel } from "@soco/role-db/schema/roleContextLevels";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import RoleContextLevelForm from "./RoleContextLevelForm";
-import { RoleContextLevel } from "@soco/role-db/schema/roleContextLevels";
+} from "@soco/ui/dialog";
 
-export default function RoleContextLevelModal({ 
+import RoleContextLevelForm from "./RoleContextLevelForm";
+
+export default function RoleContextLevelModal({
   roleContextLevel,
   emptyState,
-}: { 
+}: {
   roleContextLevel?: RoleContextLevel;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function RoleContextLevelModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function RoleContextLevelModal({
             New Role Context Level
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Role Context Level</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Role Context Level
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <RoleContextLevelForm closeModal={closeModal} roleContextLevel={roleContextLevel} />
+          <RoleContextLevelForm
+            closeModal={closeModal}
+            roleContextLevel={roleContextLevel}
+          />
         </div>
       </DialogContent>
     </Dialog>

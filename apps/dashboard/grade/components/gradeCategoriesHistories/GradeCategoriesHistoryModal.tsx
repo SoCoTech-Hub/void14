@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { GradeCategoriesHistory } from "@soco/grade-db/schema/gradeCategoriesHistories";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import GradeCategoriesHistoryForm from "./GradeCategoriesHistoryForm";
-import { GradeCategoriesHistory } from "@soco/grade-db/schema/gradeCategoriesHistories";
+} from "@soco/ui/dialog";
 
-export default function GradeCategoriesHistoryModal({ 
+import GradeCategoriesHistoryForm from "./GradeCategoriesHistoryForm";
+
+export default function GradeCategoriesHistoryModal({
   gradeCategoriesHistory,
   emptyState,
-}: { 
+}: {
   gradeCategoriesHistory?: GradeCategoriesHistory;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function GradeCategoriesHistoryModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function GradeCategoriesHistoryModal({
             New Grade Categories History
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Grade Categories History</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Grade Categories History
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <GradeCategoriesHistoryForm closeModal={closeModal} gradeCategoriesHistory={gradeCategoriesHistory} />
+          <GradeCategoriesHistoryForm
+            closeModal={closeModal}
+            gradeCategoriesHistory={gradeCategoriesHistory}
+          />
         </div>
       </DialogContent>
     </Dialog>

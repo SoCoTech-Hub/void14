@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ScormScoesData } from "@soco/scorm-db/schema/scormScoesDatas";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ScormScoesDataForm from "./ScormScoesDataForm";
-import { ScormScoesData } from "@soco/scorm-db/schema/scormScoesDatas";
+} from "@soco/ui/dialog";
 
-export default function ScormScoesDataModal({ 
+import ScormScoesDataForm from "./ScormScoesDataForm";
+
+export default function ScormScoesDataModal({
   scormScoesData,
   emptyState,
-}: { 
+}: {
   scormScoesData?: ScormScoesData;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ScormScoesDataModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ScormScoesDataModal({
             New Scorm Scoes Data
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Scorm Scoes Data</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Scorm Scoes Data
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ScormScoesDataForm closeModal={closeModal} scormScoesData={scormScoesData} />
+          <ScormScoesDataForm
+            closeModal={closeModal}
+            scormScoesData={scormScoesData}
+          />
         </div>
       </DialogContent>
     </Dialog>

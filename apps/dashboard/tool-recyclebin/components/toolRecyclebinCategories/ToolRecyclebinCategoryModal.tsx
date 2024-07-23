@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ToolRecyclebinCategory } from "@soco/tool-recyclebin-db/schema/toolRecyclebinCategories";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ToolRecyclebinCategoryForm from "./ToolRecyclebinCategoryForm";
-import { ToolRecyclebinCategory } from "@soco/tool-recyclebin-db/schema/toolRecyclebinCategories";
+} from "@soco/ui/dialog";
 
-export default function ToolRecyclebinCategoryModal({ 
+import ToolRecyclebinCategoryForm from "./ToolRecyclebinCategoryForm";
+
+export default function ToolRecyclebinCategoryModal({
   toolRecyclebinCategory,
   emptyState,
-}: { 
+}: {
   toolRecyclebinCategory?: ToolRecyclebinCategory;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ToolRecyclebinCategoryModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ToolRecyclebinCategoryModal({
             New Tool Recyclebin Category
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Tool Recyclebin Category</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Tool Recyclebin Category
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ToolRecyclebinCategoryForm closeModal={closeModal} toolRecyclebinCategory={toolRecyclebinCategory} />
+          <ToolRecyclebinCategoryForm
+            closeModal={closeModal}
+            toolRecyclebinCategory={toolRecyclebinCategory}
+          />
         </div>
       </DialogContent>
     </Dialog>

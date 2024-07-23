@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { QuestionCalculatedOption } from "@soco/question-db/schema/questionCalculatedOptions";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import QuestionCalculatedOptionForm from "./QuestionCalculatedOptionForm";
-import { QuestionCalculatedOption } from "@soco/question-db/schema/questionCalculatedOptions";
+} from "@soco/ui/dialog";
 
-export default function QuestionCalculatedOptionModal({ 
+import QuestionCalculatedOptionForm from "./QuestionCalculatedOptionForm";
+
+export default function QuestionCalculatedOptionModal({
   questionCalculatedOption,
   emptyState,
-}: { 
+}: {
   questionCalculatedOption?: QuestionCalculatedOption;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function QuestionCalculatedOptionModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function QuestionCalculatedOptionModal({
             New Question Calculated Option
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Question Calculated Option</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Question Calculated Option
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <QuestionCalculatedOptionForm closeModal={closeModal} questionCalculatedOption={questionCalculatedOption} />
+          <QuestionCalculatedOptionForm
+            closeModal={closeModal}
+            questionCalculatedOption={questionCalculatedOption}
+          />
         </div>
       </DialogContent>
     </Dialog>

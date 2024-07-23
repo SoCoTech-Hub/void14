@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ScormSeqRuleCondition } from "@soco/scorm-db/schema/scormSeqRuleConditions";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ScormSeqRuleConditionForm from "./ScormSeqRuleConditionForm";
-import { ScormSeqRuleCondition } from "@soco/scorm-db/schema/scormSeqRuleConditions";
+} from "@soco/ui/dialog";
 
-export default function ScormSeqRuleConditionModal({ 
+import ScormSeqRuleConditionForm from "./ScormSeqRuleConditionForm";
+
+export default function ScormSeqRuleConditionModal({
   scormSeqRuleCondition,
   emptyState,
-}: { 
+}: {
   scormSeqRuleCondition?: ScormSeqRuleCondition;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ScormSeqRuleConditionModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ScormSeqRuleConditionModal({
             New Scorm Seq Rule Condition
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Scorm Seq Rule Condition</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Scorm Seq Rule Condition
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ScormSeqRuleConditionForm closeModal={closeModal} scormSeqRuleCondition={scormSeqRuleCondition} />
+          <ScormSeqRuleConditionForm
+            closeModal={closeModal}
+            scormSeqRuleCondition={scormSeqRuleCondition}
+          />
         </div>
       </DialogContent>
     </Dialog>

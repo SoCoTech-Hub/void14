@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { CustomFieldField } from "@soco/custom-field-db/schema/customFieldFields";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import CustomFieldFieldForm from "./CustomFieldFieldForm";
-import { CustomFieldField } from "@soco/custom-field-db/schema/customFieldFields";
+} from "@soco/ui/dialog";
 
-export default function CustomFieldFieldModal({ 
+import CustomFieldFieldForm from "./CustomFieldFieldForm";
+
+export default function CustomFieldFieldModal({
   customFieldField,
   emptyState,
-}: { 
+}: {
   customFieldField?: CustomFieldField;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function CustomFieldFieldModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function CustomFieldFieldModal({
             New Custom Field Field
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Custom Field Field</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Custom Field Field
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <CustomFieldFieldForm closeModal={closeModal} customFieldField={customFieldField} />
+          <CustomFieldFieldForm
+            closeModal={closeModal}
+            customFieldField={customFieldField}
+          />
         </div>
       </DialogContent>
     </Dialog>

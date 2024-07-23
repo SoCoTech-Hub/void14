@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ToolDataprivacyRequest } from "@soco/tool-data-privacy-db/schema/toolDataprivacyRequests";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ToolDataprivacyRequestForm from "./ToolDataprivacyRequestForm";
-import { ToolDataprivacyRequest } from "@soco/tool-data-privacy-db/schema/toolDataprivacyRequests";
+} from "@soco/ui/dialog";
 
-export default function ToolDataprivacyRequestModal({ 
+import ToolDataprivacyRequestForm from "./ToolDataprivacyRequestForm";
+
+export default function ToolDataprivacyRequestModal({
   toolDataprivacyRequest,
   emptyState,
-}: { 
+}: {
   toolDataprivacyRequest?: ToolDataprivacyRequest;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ToolDataprivacyRequestModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ToolDataprivacyRequestModal({
             New Tool Dataprivacy Request
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Tool Dataprivacy Request</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Tool Dataprivacy Request
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ToolDataprivacyRequestForm closeModal={closeModal} toolDataprivacyRequest={toolDataprivacyRequest} />
+          <ToolDataprivacyRequestForm
+            closeModal={closeModal}
+            toolDataprivacyRequest={toolDataprivacyRequest}
+          />
         </div>
       </DialogContent>
     </Dialog>

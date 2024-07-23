@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { QuizStatistic } from "@soco/quiz-db/schema/quizStatistics";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import QuizStatisticForm from "./QuizStatisticForm";
-import { QuizStatistic } from "@soco/quiz-db/schema/quizStatistics";
+} from "@soco/ui/dialog";
 
-export default function QuizStatisticModal({ 
+import QuizStatisticForm from "./QuizStatisticForm";
+
+export default function QuizStatisticModal({
   quizStatistic,
   emptyState,
-}: { 
+}: {
   quizStatistic?: QuizStatistic;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function QuizStatisticModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function QuizStatisticModal({
             New Quiz Statistic
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Quiz Statistic</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Quiz Statistic
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <QuizStatisticForm closeModal={closeModal} quizStatistic={quizStatistic} />
+          <QuizStatisticForm
+            closeModal={closeModal}
+            quizStatistic={quizStatistic}
+          />
         </div>
       </DialogContent>
     </Dialog>

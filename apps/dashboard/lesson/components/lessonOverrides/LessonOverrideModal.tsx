@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { LessonOverride } from "@soco/lesson-db/schema/lessonOverrides";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import LessonOverrideForm from "./LessonOverrideForm";
-import { LessonOverride } from "@soco/lesson-db/schema/lessonOverrides";
+} from "@soco/ui/dialog";
 
-export default function LessonOverrideModal({ 
+import LessonOverrideForm from "./LessonOverrideForm";
+
+export default function LessonOverrideModal({
   lessonOverride,
   emptyState,
-}: { 
+}: {
   lessonOverride?: LessonOverride;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function LessonOverrideModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function LessonOverrideModal({
             New Lesson Override
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Lesson Override</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Lesson Override
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <LessonOverrideForm closeModal={closeModal} lessonOverride={lessonOverride} />
+          <LessonOverrideForm
+            closeModal={closeModal}
+            lessonOverride={lessonOverride}
+          />
         </div>
       </DialogContent>
     </Dialog>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Calendar } from "@soco/calendar-db/schema/calendar";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import CalendarForm from "./CalendarForm";
-import { Calendar } from "@soco/calendar-db/schema/calendar";
+} from "@soco/ui/dialog";
 
-export default function CalendarModal({ 
+import CalendarForm from "./CalendarForm";
+
+export default function CalendarModal({
   calendar,
   emptyState,
-}: { 
+}: {
   calendar?: Calendar;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function CalendarModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function CalendarModal({
             New Calendar
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Calendar</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Calendar</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <CalendarForm closeModal={closeModal} calendar={calendar} />

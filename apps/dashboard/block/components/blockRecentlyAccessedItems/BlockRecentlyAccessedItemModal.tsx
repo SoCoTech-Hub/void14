@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { BlockRecentlyAccessedItem } from "@soco/block-db/schema/blockRecentlyAccessedItems";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import BlockRecentlyAccessedItemForm from "./BlockRecentlyAccessedItemForm";
-import { BlockRecentlyAccessedItem } from "@soco/block-db/schema/blockRecentlyAccessedItems";
+} from "@soco/ui/dialog";
 
-export default function BlockRecentlyAccessedItemModal({ 
+import BlockRecentlyAccessedItemForm from "./BlockRecentlyAccessedItemForm";
+
+export default function BlockRecentlyAccessedItemModal({
   blockRecentlyAccessedItem,
   emptyState,
-}: { 
+}: {
   blockRecentlyAccessedItem?: BlockRecentlyAccessedItem;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function BlockRecentlyAccessedItemModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function BlockRecentlyAccessedItemModal({
             New Block Recently Accessed Item
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Block Recently Accessed Item</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Block Recently Accessed Item
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <BlockRecentlyAccessedItemForm closeModal={closeModal} blockRecentlyAccessedItem={blockRecentlyAccessedItem} />
+          <BlockRecentlyAccessedItemForm
+            closeModal={closeModal}
+            blockRecentlyAccessedItem={blockRecentlyAccessedItem}
+          />
         </div>
       </DialogContent>
     </Dialog>

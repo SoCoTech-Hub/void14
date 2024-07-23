@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { PortfolioLog } from "@soco/portfolio-db/schema/portfolioLogs";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import PortfolioLogForm from "./PortfolioLogForm";
-import { PortfolioLog } from "@soco/portfolio-db/schema/portfolioLogs";
+} from "@soco/ui/dialog";
 
-export default function PortfolioLogModal({ 
+import PortfolioLogForm from "./PortfolioLogForm";
+
+export default function PortfolioLogModal({
   portfolioLog,
   emptyState,
-}: { 
+}: {
   portfolioLog?: PortfolioLog;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function PortfolioLogModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,23 @@ export default function PortfolioLogModal({
             New Portfolio Log
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Portfolio Log</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Portfolio Log</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <PortfolioLogForm closeModal={closeModal} portfolioLog={portfolioLog} />
+          <PortfolioLogForm
+            closeModal={closeModal}
+            portfolioLog={portfolioLog}
+          />
         </div>
       </DialogContent>
     </Dialog>

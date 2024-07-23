@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { FaqCategory } from "@soco/faq-db/schema/faqCategories";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import FaqCategoryForm from "./FaqCategoryForm";
-import { FaqCategory } from "@soco/faq-db/schema/faqCategories";
+} from "@soco/ui/dialog";
 
-export default function FaqCategoryModal({ 
+import FaqCategoryForm from "./FaqCategoryForm";
+
+export default function FaqCategoryModal({
   faqCategory,
   emptyState,
-}: { 
+}: {
   faqCategory?: FaqCategory;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function FaqCategoryModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function FaqCategoryModal({
             New Faq Category
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Faq Category</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Faq Category</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <FaqCategoryForm closeModal={closeModal} faqCategory={faqCategory} />

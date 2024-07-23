@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +9,15 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import UserEnrolmentForm from "./UserEnrolmentForm";
+} from "@soco/ui/dialog";
 import { UserEnrolment } from "@soco/user-db/schema/userEnrolments";
 
-export default function UserEnrolmentModal({ 
+import UserEnrolmentForm from "./UserEnrolmentForm";
+
+export default function UserEnrolmentModal({
   userEnrolment,
   emptyState,
-}: { 
+}: {
   userEnrolment?: UserEnrolment;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function UserEnrolmentModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function UserEnrolmentModal({
             New User Enrolment
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } User Enrolment</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} User Enrolment
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <UserEnrolmentForm closeModal={closeModal} userEnrolment={userEnrolment} />
+          <UserEnrolmentForm
+            closeModal={closeModal}
+            userEnrolment={userEnrolment}
+          />
         </div>
       </DialogContent>
     </Dialog>

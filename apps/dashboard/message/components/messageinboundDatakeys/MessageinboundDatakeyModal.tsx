@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { MessageinboundDatakey } from "@soco/message-db/schema/messageinboundDatakeys";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import MessageinboundDatakeyForm from "./MessageinboundDatakeyForm";
-import { MessageinboundDatakey } from "@soco/message-db/schema/messageinboundDatakeys";
+} from "@soco/ui/dialog";
 
-export default function MessageinboundDatakeyModal({ 
+import MessageinboundDatakeyForm from "./MessageinboundDatakeyForm";
+
+export default function MessageinboundDatakeyModal({
   messageinboundDatakey,
   emptyState,
-}: { 
+}: {
   messageinboundDatakey?: MessageinboundDatakey;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function MessageinboundDatakeyModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function MessageinboundDatakeyModal({
             New Messageinbound Datakey
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Messageinbound Datakey</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Messageinbound Datakey
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <MessageinboundDatakeyForm closeModal={closeModal} messageinboundDatakey={messageinboundDatakey} />
+          <MessageinboundDatakeyForm
+            closeModal={closeModal}
+            messageinboundDatakey={messageinboundDatakey}
+          />
         </div>
       </DialogContent>
     </Dialog>

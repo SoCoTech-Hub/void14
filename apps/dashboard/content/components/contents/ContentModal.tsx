@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Content } from "@soco/content-db/schema/contents";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ContentForm from "./ContentForm";
-import { Content } from "@soco/content-db/schema/contents";
+} from "@soco/ui/dialog";
 
-export default function ContentModal({ 
+import ContentForm from "./ContentForm";
+
+export default function ContentModal({
   content,
   emptyState,
-}: { 
+}: {
   content?: Content;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ContentModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function ContentModal({
             New Content
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Content</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Content</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <ContentForm closeModal={closeModal} content={content} />

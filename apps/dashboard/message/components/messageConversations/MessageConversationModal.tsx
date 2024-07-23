@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { MessageConversation } from "@soco/message-db/schema/messageConversations";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import MessageConversationForm from "./MessageConversationForm";
-import { MessageConversation } from "@soco/message-db/schema/messageConversations";
+} from "@soco/ui/dialog";
 
-export default function MessageConversationModal({ 
+import MessageConversationForm from "./MessageConversationForm";
+
+export default function MessageConversationModal({
   messageConversation,
   emptyState,
-}: { 
+}: {
   messageConversation?: MessageConversation;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function MessageConversationModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function MessageConversationModal({
             New Message Conversation
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Message Conversation</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Message Conversation
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <MessageConversationForm closeModal={closeModal} messageConversation={messageConversation} />
+          <MessageConversationForm
+            closeModal={closeModal}
+            messageConversation={messageConversation}
+          />
         </div>
       </DialogContent>
     </Dialog>

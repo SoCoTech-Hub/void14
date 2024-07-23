@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { QuestionCalculated } from "@soco/question-db/schema/questionCalculateds";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import QuestionCalculatedForm from "./QuestionCalculatedForm";
-import { QuestionCalculated } from "@soco/question-db/schema/questionCalculateds";
+} from "@soco/ui/dialog";
 
-export default function QuestionCalculatedModal({ 
+import QuestionCalculatedForm from "./QuestionCalculatedForm";
+
+export default function QuestionCalculatedModal({
   questionCalculated,
   emptyState,
-}: { 
+}: {
   questionCalculated?: QuestionCalculated;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function QuestionCalculatedModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function QuestionCalculatedModal({
             New Question Calculated
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Question Calculated</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Question Calculated
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <QuestionCalculatedForm closeModal={closeModal} questionCalculated={questionCalculated} />
+          <QuestionCalculatedForm
+            closeModal={closeModal}
+            questionCalculated={questionCalculated}
+          />
         </div>
       </DialogContent>
     </Dialog>

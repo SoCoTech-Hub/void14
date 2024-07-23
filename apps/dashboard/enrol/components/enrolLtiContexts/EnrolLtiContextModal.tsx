@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { EnrolLtiContext } from "@soco/enrol-db/schema/enrolLtiContexts";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import EnrolLtiContextForm from "./EnrolLtiContextForm";
-import { EnrolLtiContext } from "@soco/enrol-db/schema/enrolLtiContexts";
+} from "@soco/ui/dialog";
 
-export default function EnrolLtiContextModal({ 
+import EnrolLtiContextForm from "./EnrolLtiContextForm";
+
+export default function EnrolLtiContextModal({
   enrolLtiContext,
   emptyState,
-}: { 
+}: {
   enrolLtiContext?: EnrolLtiContext;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function EnrolLtiContextModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function EnrolLtiContextModal({
             New Enrol Lti Context
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Enrol Lti Context</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Enrol Lti Context
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <EnrolLtiContextForm closeModal={closeModal} enrolLtiContext={enrolLtiContext} />
+          <EnrolLtiContextForm
+            closeModal={closeModal}
+            enrolLtiContext={enrolLtiContext}
+          />
         </div>
       </DialogContent>
     </Dialog>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { EventsHandler } from "@soco/event-db/schema/eventsHandlers";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import EventsHandlerForm from "./EventsHandlerForm";
-import { EventsHandler } from "@soco/event-db/schema/eventsHandlers";
+} from "@soco/ui/dialog";
 
-export default function EventsHandlerModal({ 
+import EventsHandlerForm from "./EventsHandlerForm";
+
+export default function EventsHandlerModal({
   eventsHandler,
   emptyState,
-}: { 
+}: {
   eventsHandler?: EventsHandler;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function EventsHandlerModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function EventsHandlerModal({
             New Events Handler
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Events Handler</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Events Handler
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <EventsHandlerForm closeModal={closeModal} eventsHandler={eventsHandler} />
+          <EventsHandlerForm
+            closeModal={closeModal}
+            eventsHandler={eventsHandler}
+          />
         </div>
       </DialogContent>
     </Dialog>

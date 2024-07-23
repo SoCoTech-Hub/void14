@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ConfigLog } from "@soco/config-db/schema/configLogs";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ConfigLogForm from "./ConfigLogForm";
-import { ConfigLog } from "@soco/config-db/schema/configLogs";
+} from "@soco/ui/dialog";
 
-export default function ConfigLogModal({ 
+import ConfigLogForm from "./ConfigLogForm";
+
+export default function ConfigLogModal({
   configLog,
   emptyState,
-}: { 
+}: {
   configLog?: ConfigLog;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ConfigLogModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function ConfigLogModal({
             New Config Log
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Config Log</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Config Log</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <ConfigLogForm closeModal={closeModal} configLog={configLog} />

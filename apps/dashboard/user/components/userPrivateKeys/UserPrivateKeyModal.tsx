@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +9,15 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import UserPrivateKeyForm from "./UserPrivateKeyForm";
+} from "@soco/ui/dialog";
 import { UserPrivateKey } from "@soco/user-db/schema/userPrivateKeys";
 
-export default function UserPrivateKeyModal({ 
+import UserPrivateKeyForm from "./UserPrivateKeyForm";
+
+export default function UserPrivateKeyModal({
   userPrivateKey,
   emptyState,
-}: { 
+}: {
   userPrivateKey?: UserPrivateKey;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function UserPrivateKeyModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function UserPrivateKeyModal({
             New User Private Key
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } User Private Key</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} User Private Key
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <UserPrivateKeyForm closeModal={closeModal} userPrivateKey={userPrivateKey} />
+          <UserPrivateKeyForm
+            closeModal={closeModal}
+            userPrivateKey={userPrivateKey}
+          />
         </div>
       </DialogContent>
     </Dialog>

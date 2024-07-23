@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { MnetService2rpc } from "@soco/mnet-db/schema/mnetService2rpcs";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import MnetService2rpcForm from "./MnetService2rpcForm";
-import { MnetService2rpc } from "@soco/mnet-db/schema/mnetService2rpcs";
+} from "@soco/ui/dialog";
 
-export default function MnetService2rpcModal({ 
+import MnetService2rpcForm from "./MnetService2rpcForm";
+
+export default function MnetService2rpcModal({
   mnetService2rpc,
   emptyState,
-}: { 
+}: {
   mnetService2rpc?: MnetService2rpc;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function MnetService2rpcModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function MnetService2rpcModal({
             New Mnet Service2rpc
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Mnet Service2rpc</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Mnet Service2rpc
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <MnetService2rpcForm closeModal={closeModal} mnetService2rpc={mnetService2rpc} />
+          <MnetService2rpcForm
+            closeModal={closeModal}
+            mnetService2rpc={mnetService2rpc}
+          />
         </div>
       </DialogContent>
     </Dialog>

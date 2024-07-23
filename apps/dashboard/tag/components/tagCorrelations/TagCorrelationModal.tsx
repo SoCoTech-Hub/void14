@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { TagCorrelation } from "@soco/tag-db/schema/tagCorrelations";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import TagCorrelationForm from "./TagCorrelationForm";
-import { TagCorrelation } from "@soco/tag-db/schema/tagCorrelations";
+} from "@soco/ui/dialog";
 
-export default function TagCorrelationModal({ 
+import TagCorrelationForm from "./TagCorrelationForm";
+
+export default function TagCorrelationModal({
   tagCorrelation,
   emptyState,
-}: { 
+}: {
   tagCorrelation?: TagCorrelation;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function TagCorrelationModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function TagCorrelationModal({
             New Tag Correlation
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Tag Correlation</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Tag Correlation
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <TagCorrelationForm closeModal={closeModal} tagCorrelation={tagCorrelation} />
+          <TagCorrelationForm
+            closeModal={closeModal}
+            tagCorrelation={tagCorrelation}
+          />
         </div>
       </DialogContent>
     </Dialog>

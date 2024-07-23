@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Gender } from "@soco/profile-db/schema/genders";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import GenderForm from "./GenderForm";
-import { Gender } from "@soco/profile-db/schema/genders";
+} from "@soco/ui/dialog";
 
-export default function GenderModal({ 
+import GenderForm from "./GenderForm";
+
+export default function GenderModal({
   gender,
   emptyState,
-}: { 
+}: {
   gender?: Gender;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function GenderModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function GenderModal({
             New Gender
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Gender</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Gender</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <GenderForm closeModal={closeModal} gender={gender} />

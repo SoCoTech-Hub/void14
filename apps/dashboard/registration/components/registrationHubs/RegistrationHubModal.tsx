@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { RegistrationHub } from "@soco/registration-db/schema/registrationHubs";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import RegistrationHubForm from "./RegistrationHubForm";
-import { RegistrationHub } from "@soco/registration-db/schema/registrationHubs";
+} from "@soco/ui/dialog";
 
-export default function RegistrationHubModal({ 
+import RegistrationHubForm from "./RegistrationHubForm";
+
+export default function RegistrationHubModal({
   registrationHub,
   emptyState,
-}: { 
+}: {
   registrationHub?: RegistrationHub;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function RegistrationHubModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function RegistrationHubModal({
             New Registration Hub
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Registration Hub</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Registration Hub
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <RegistrationHubForm closeModal={closeModal} registrationHub={registrationHub} />
+          <RegistrationHubForm
+            closeModal={closeModal}
+            registrationHub={registrationHub}
+          />
         </div>
       </DialogContent>
     </Dialog>

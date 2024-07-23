@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { FeedbackSitecourseMap } from "@soco/feedback-db/schema/feedbackSitecourseMaps";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import FeedbackSitecourseMapForm from "./FeedbackSitecourseMapForm";
-import { FeedbackSitecourseMap } from "@soco/feedback-db/schema/feedbackSitecourseMaps";
+} from "@soco/ui/dialog";
 
-export default function FeedbackSitecourseMapModal({ 
+import FeedbackSitecourseMapForm from "./FeedbackSitecourseMapForm";
+
+export default function FeedbackSitecourseMapModal({
   feedbackSitecourseMap,
   emptyState,
-}: { 
+}: {
   feedbackSitecourseMap?: FeedbackSitecourseMap;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function FeedbackSitecourseMapModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function FeedbackSitecourseMapModal({
             New Feedback Sitecourse Map
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Feedback Sitecourse Map</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Feedback Sitecourse Map
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <FeedbackSitecourseMapForm closeModal={closeModal} feedbackSitecourseMap={feedbackSitecourseMap} />
+          <FeedbackSitecourseMapForm
+            closeModal={closeModal}
+            feedbackSitecourseMap={feedbackSitecourseMap}
+          />
         </div>
       </DialogContent>
     </Dialog>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ToolUserToursTour } from "@soco/tool-user-tours-db/schema/toolUserToursTours";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ToolUserToursTourForm from "./ToolUserToursTourForm";
-import { ToolUserToursTour } from "@soco/tool-user-tours-db/schema/toolUserToursTours";
+} from "@soco/ui/dialog";
 
-export default function ToolUserToursTourModal({ 
+import ToolUserToursTourForm from "./ToolUserToursTourForm";
+
+export default function ToolUserToursTourModal({
   toolUserToursTour,
   emptyState,
-}: { 
+}: {
   toolUserToursTour?: ToolUserToursTour;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ToolUserToursTourModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ToolUserToursTourModal({
             New Tool User Tours Tour
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Tool User Tours Tour</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Tool User Tours Tour
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ToolUserToursTourForm closeModal={closeModal} toolUserToursTour={toolUserToursTour} />
+          <ToolUserToursTourForm
+            closeModal={closeModal}
+            toolUserToursTour={toolUserToursTour}
+          />
         </div>
       </DialogContent>
     </Dialog>

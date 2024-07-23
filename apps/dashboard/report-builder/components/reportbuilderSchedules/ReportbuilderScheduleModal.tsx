@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ReportbuilderSchedule } from "@soco/report-builder-db/schema/reportbuilderSchedules";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ReportbuilderScheduleForm from "./ReportbuilderScheduleForm";
-import { ReportbuilderSchedule } from "@soco/report-builder-db/schema/reportbuilderSchedules";
+} from "@soco/ui/dialog";
 
-export default function ReportbuilderScheduleModal({ 
+import ReportbuilderScheduleForm from "./ReportbuilderScheduleForm";
+
+export default function ReportbuilderScheduleModal({
   reportbuilderSchedule,
   emptyState,
-}: { 
+}: {
   reportbuilderSchedule?: ReportbuilderSchedule;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ReportbuilderScheduleModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ReportbuilderScheduleModal({
             New Reportbuilder Schedule
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Reportbuilder Schedule</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Reportbuilder Schedule
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ReportbuilderScheduleForm closeModal={closeModal} reportbuilderSchedule={reportbuilderSchedule} />
+          <ReportbuilderScheduleForm
+            closeModal={closeModal}
+            reportbuilderSchedule={reportbuilderSchedule}
+          />
         </div>
       </DialogContent>
     </Dialog>

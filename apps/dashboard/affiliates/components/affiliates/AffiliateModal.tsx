@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Affiliate } from "@soco/affiliates-db/schema/affiliates";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import AffiliateForm from "./AffiliateForm";
-import { Affiliate } from "@soco/affiliates-db/schema/affiliates";
+} from "@soco/ui/dialog";
 
-export default function AffiliateModal({ 
+import AffiliateForm from "./AffiliateForm";
+
+export default function AffiliateModal({
   affiliate,
   emptyState,
-}: { 
+}: {
   affiliate?: Affiliate;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function AffiliateModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function AffiliateModal({
             New Affiliate
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Affiliate</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Affiliate</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <AffiliateForm closeModal={closeModal} affiliate={affiliate} />

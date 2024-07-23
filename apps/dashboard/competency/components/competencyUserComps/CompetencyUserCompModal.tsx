@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { CompetencyUserComp } from "@soco/competency-db/schema/competencyUserComps";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import CompetencyUserCompForm from "./CompetencyUserCompForm";
-import { CompetencyUserComp } from "@soco/competency-db/schema/competencyUserComps";
+} from "@soco/ui/dialog";
 
-export default function CompetencyUserCompModal({ 
+import CompetencyUserCompForm from "./CompetencyUserCompForm";
+
+export default function CompetencyUserCompModal({
   competencyUserComp,
   emptyState,
-}: { 
+}: {
   competencyUserComp?: CompetencyUserComp;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function CompetencyUserCompModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function CompetencyUserCompModal({
             New Competency User Comp
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Competency User Comp</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Competency User Comp
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <CompetencyUserCompForm closeModal={closeModal} competencyUserComp={competencyUserComp} />
+          <CompetencyUserCompForm
+            closeModal={closeModal}
+            competencyUserComp={competencyUserComp}
+          />
         </div>
       </DialogContent>
     </Dialog>

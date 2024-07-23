@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +9,15 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import WikiSynonymForm from "./WikiSynonymForm";
+} from "@soco/ui/dialog";
 import { WikiSynonym } from "@soco/wiki-db/schema/wikiSynonyms";
 
-export default function WikiSynonymModal({ 
+import WikiSynonymForm from "./WikiSynonymForm";
+
+export default function WikiSynonymModal({
   wikiSynonym,
   emptyState,
-}: { 
+}: {
   wikiSynonym?: WikiSynonym;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function WikiSynonymModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function WikiSynonymModal({
             New Wiki Synonym
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Wiki Synonym</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Wiki Synonym</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <WikiSynonymForm closeModal={closeModal} wikiSynonym={wikiSynonym} />

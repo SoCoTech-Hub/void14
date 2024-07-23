@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { RepositoryOnedriveAccess } from "@soco/repository-db/schema/repositoryOnedriveAccesses";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import RepositoryOnedriveAccessForm from "./RepositoryOnedriveAccessForm";
-import { RepositoryOnedriveAccess } from "@soco/repository-db/schema/repositoryOnedriveAccesses";
+} from "@soco/ui/dialog";
 
-export default function RepositoryOnedriveAccessModal({ 
+import RepositoryOnedriveAccessForm from "./RepositoryOnedriveAccessForm";
+
+export default function RepositoryOnedriveAccessModal({
   repositoryOnedriveAccess,
   emptyState,
-}: { 
+}: {
   repositoryOnedriveAccess?: RepositoryOnedriveAccess;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function RepositoryOnedriveAccessModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function RepositoryOnedriveAccessModal({
             New Repository Onedrive Access
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Repository Onedrive Access</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Repository Onedrive Access
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <RepositoryOnedriveAccessForm closeModal={closeModal} repositoryOnedriveAccess={repositoryOnedriveAccess} />
+          <RepositoryOnedriveAccessForm
+            closeModal={closeModal}
+            repositoryOnedriveAccess={repositoryOnedriveAccess}
+          />
         </div>
       </DialogContent>
     </Dialog>

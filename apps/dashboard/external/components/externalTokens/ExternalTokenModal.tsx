@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ExternalToken } from "@soco/external-db/schema/externalTokens";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ExternalTokenForm from "./ExternalTokenForm";
-import { ExternalToken } from "@soco/external-db/schema/externalTokens";
+} from "@soco/ui/dialog";
 
-export default function ExternalTokenModal({ 
+import ExternalTokenForm from "./ExternalTokenForm";
+
+export default function ExternalTokenModal({
   externalToken,
   emptyState,
-}: { 
+}: {
   externalToken?: ExternalToken;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ExternalTokenModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ExternalTokenModal({
             New External Token
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } External Token</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} External Token
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ExternalTokenForm closeModal={closeModal} externalToken={externalToken} />
+          <ExternalTokenForm
+            closeModal={closeModal}
+            externalToken={externalToken}
+          />
         </div>
       </DialogContent>
     </Dialog>

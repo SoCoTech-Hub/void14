@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { EnrolLtiUserResourceLink } from "@soco/enrol-db/schema/enrolLtiUserResourceLinks";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import EnrolLtiUserResourceLinkForm from "./EnrolLtiUserResourceLinkForm";
-import { EnrolLtiUserResourceLink } from "@soco/enrol-db/schema/enrolLtiUserResourceLinks";
+} from "@soco/ui/dialog";
 
-export default function EnrolLtiUserResourceLinkModal({ 
+import EnrolLtiUserResourceLinkForm from "./EnrolLtiUserResourceLinkForm";
+
+export default function EnrolLtiUserResourceLinkModal({
   enrolLtiUserResourceLink,
   emptyState,
-}: { 
+}: {
   enrolLtiUserResourceLink?: EnrolLtiUserResourceLink;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function EnrolLtiUserResourceLinkModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function EnrolLtiUserResourceLinkModal({
             New Enrol Lti User Resource Link
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Enrol Lti User Resource Link</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Enrol Lti User Resource Link
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <EnrolLtiUserResourceLinkForm closeModal={closeModal} enrolLtiUserResourceLink={enrolLtiUserResourceLink} />
+          <EnrolLtiUserResourceLinkForm
+            closeModal={closeModal}
+            enrolLtiUserResourceLink={enrolLtiUserResourceLink}
+          />
         </div>
       </DialogContent>
     </Dialog>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { StatsUserDaily } from "@soco/stats-db/schema/statsUserDailies";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import StatsUserDailyForm from "./StatsUserDailyForm";
-import { StatsUserDaily } from "@soco/stats-db/schema/statsUserDailies";
+} from "@soco/ui/dialog";
 
-export default function StatsUserDailyModal({ 
+import StatsUserDailyForm from "./StatsUserDailyForm";
+
+export default function StatsUserDailyModal({
   statsUserDaily,
   emptyState,
-}: { 
+}: {
   statsUserDaily?: StatsUserDaily;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function StatsUserDailyModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function StatsUserDailyModal({
             New Stats User Daily
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Stats User Daily</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Stats User Daily
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <StatsUserDailyForm closeModal={closeModal} statsUserDaily={statsUserDaily} />
+          <StatsUserDailyForm
+            closeModal={closeModal}
+            statsUserDaily={statsUserDaily}
+          />
         </div>
       </DialogContent>
     </Dialog>

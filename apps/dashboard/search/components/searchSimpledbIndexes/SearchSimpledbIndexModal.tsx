@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { SearchSimpledbIndex } from "@soco/search-db/schema/searchSimpledbIndexes";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import SearchSimpledbIndexForm from "./SearchSimpledbIndexForm";
-import { SearchSimpledbIndex } from "@soco/search-db/schema/searchSimpledbIndexes";
+} from "@soco/ui/dialog";
 
-export default function SearchSimpledbIndexModal({ 
+import SearchSimpledbIndexForm from "./SearchSimpledbIndexForm";
+
+export default function SearchSimpledbIndexModal({
   searchSimpledbIndex,
   emptyState,
-}: { 
+}: {
   searchSimpledbIndex?: SearchSimpledbIndex;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function SearchSimpledbIndexModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function SearchSimpledbIndexModal({
             New Search Simpledb Index
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Search Simpledb Index</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Search Simpledb Index
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <SearchSimpledbIndexForm closeModal={closeModal} searchSimpledbIndex={searchSimpledbIndex} />
+          <SearchSimpledbIndexForm
+            closeModal={closeModal}
+            searchSimpledbIndex={searchSimpledbIndex}
+          />
         </div>
       </DialogContent>
     </Dialog>

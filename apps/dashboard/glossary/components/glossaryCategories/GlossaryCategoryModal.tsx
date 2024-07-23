@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { GlossaryCategory } from "@soco/glossary-db/schema/glossaryCategories";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import GlossaryCategoryForm from "./GlossaryCategoryForm";
-import { GlossaryCategory } from "@soco/glossary-db/schema/glossaryCategories";
+} from "@soco/ui/dialog";
 
-export default function GlossaryCategoryModal({ 
+import GlossaryCategoryForm from "./GlossaryCategoryForm";
+
+export default function GlossaryCategoryModal({
   glossaryCategory,
   emptyState,
-}: { 
+}: {
   glossaryCategory?: GlossaryCategory;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function GlossaryCategoryModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function GlossaryCategoryModal({
             New Glossary Category
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Glossary Category</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Glossary Category
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <GlossaryCategoryForm closeModal={closeModal} glossaryCategory={glossaryCategory} />
+          <GlossaryCategoryForm
+            closeModal={closeModal}
+            glossaryCategory={glossaryCategory}
+          />
         </div>
       </DialogContent>
     </Dialog>

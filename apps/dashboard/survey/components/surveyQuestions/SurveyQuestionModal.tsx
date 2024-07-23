@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { SurveyQuestion } from "@soco/survey-db/schema/surveyQuestions";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import SurveyQuestionForm from "./SurveyQuestionForm";
-import { SurveyQuestion } from "@soco/survey-db/schema/surveyQuestions";
+} from "@soco/ui/dialog";
 
-export default function SurveyQuestionModal({ 
+import SurveyQuestionForm from "./SurveyQuestionForm";
+
+export default function SurveyQuestionModal({
   surveyQuestion,
   emptyState,
-}: { 
+}: {
   surveyQuestion?: SurveyQuestion;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function SurveyQuestionModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function SurveyQuestionModal({
             New Survey Question
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Survey Question</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Survey Question
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <SurveyQuestionForm closeModal={closeModal} surveyQuestion={surveyQuestion} />
+          <SurveyQuestionForm
+            closeModal={closeModal}
+            surveyQuestion={surveyQuestion}
+          />
         </div>
       </DialogContent>
     </Dialog>

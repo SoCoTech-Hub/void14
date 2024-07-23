@@ -15,7 +15,7 @@ import {
   getAdminPresetAppPlugById,
   getAdminPresetAppPlugs,
 } from "../api/adminPresetAppPlugs/queries";
-import { createTRPCRouter, publicProcedure } from "../trpc";
+import { publicProcedure } from "../trpc";
 
 export const adminPresetAppPlugsRouter = {
   getAdminPresetAppPlugs: publicProcedure.query(async () => {

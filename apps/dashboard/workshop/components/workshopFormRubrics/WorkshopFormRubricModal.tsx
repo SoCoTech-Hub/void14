@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +9,15 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import WorkshopFormRubricForm from "./WorkshopFormRubricForm";
+} from "@soco/ui/dialog";
 import { WorkshopFormRubric } from "@soco/workshop-db/schema/workshopFormRubrics";
 
-export default function WorkshopFormRubricModal({ 
+import WorkshopFormRubricForm from "./WorkshopFormRubricForm";
+
+export default function WorkshopFormRubricModal({
   workshopFormRubric,
   emptyState,
-}: { 
+}: {
   workshopFormRubric?: WorkshopFormRubric;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function WorkshopFormRubricModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function WorkshopFormRubricModal({
             New Workshop Form Rubric
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Workshop Form Rubric</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Workshop Form Rubric
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <WorkshopFormRubricForm closeModal={closeModal} workshopFormRubric={workshopFormRubric} />
+          <WorkshopFormRubricForm
+            closeModal={closeModal}
+            workshopFormRubric={workshopFormRubric}
+          />
         </div>
       </DialogContent>
     </Dialog>

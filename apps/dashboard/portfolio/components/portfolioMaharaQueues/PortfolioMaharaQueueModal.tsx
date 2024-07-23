@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { PortfolioMaharaQueue } from "@soco/portfolio-db/schema/portfolioMaharaQueues";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import PortfolioMaharaQueueForm from "./PortfolioMaharaQueueForm";
-import { PortfolioMaharaQueue } from "@soco/portfolio-db/schema/portfolioMaharaQueues";
+} from "@soco/ui/dialog";
 
-export default function PortfolioMaharaQueueModal({ 
+import PortfolioMaharaQueueForm from "./PortfolioMaharaQueueForm";
+
+export default function PortfolioMaharaQueueModal({
   portfolioMaharaQueue,
   emptyState,
-}: { 
+}: {
   portfolioMaharaQueue?: PortfolioMaharaQueue;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function PortfolioMaharaQueueModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function PortfolioMaharaQueueModal({
             New Portfolio Mahara Queue
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Portfolio Mahara Queue</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Portfolio Mahara Queue
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <PortfolioMaharaQueueForm closeModal={closeModal} portfolioMaharaQueue={portfolioMaharaQueue} />
+          <PortfolioMaharaQueueForm
+            closeModal={closeModal}
+            portfolioMaharaQueue={portfolioMaharaQueue}
+          />
         </div>
       </DialogContent>
     </Dialog>

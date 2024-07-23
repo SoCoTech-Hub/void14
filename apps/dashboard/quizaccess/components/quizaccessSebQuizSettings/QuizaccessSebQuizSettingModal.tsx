@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { QuizaccessSebQuizSetting } from "@soco/quizaccess-db/schema/quizaccessSebQuizSettings";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import QuizaccessSebQuizSettingForm from "./QuizaccessSebQuizSettingForm";
-import { QuizaccessSebQuizSetting } from "@soco/quizaccess-db/schema/quizaccessSebQuizSettings";
+} from "@soco/ui/dialog";
 
-export default function QuizaccessSebQuizSettingModal({ 
+import QuizaccessSebQuizSettingForm from "./QuizaccessSebQuizSettingForm";
+
+export default function QuizaccessSebQuizSettingModal({
   quizaccessSebQuizSetting,
   emptyState,
-}: { 
+}: {
   quizaccessSebQuizSetting?: QuizaccessSebQuizSetting;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function QuizaccessSebQuizSettingModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function QuizaccessSebQuizSettingModal({
             New Quizaccess Seb Quiz Setting
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Quizaccess Seb Quiz Setting</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Quizaccess Seb Quiz Setting
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <QuizaccessSebQuizSettingForm closeModal={closeModal} quizaccessSebQuizSetting={quizaccessSebQuizSetting} />
+          <QuizaccessSebQuizSettingForm
+            closeModal={closeModal}
+            quizaccessSebQuizSetting={quizaccessSebQuizSetting}
+          />
         </div>
       </DialogContent>
     </Dialog>

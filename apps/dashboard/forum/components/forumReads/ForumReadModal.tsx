@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ForumRead } from "@soco/forum-db/schema/forumReads";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ForumReadForm from "./ForumReadForm";
-import { ForumRead } from "@soco/forum-db/schema/forumReads";
+} from "@soco/ui/dialog";
 
-export default function ForumReadModal({ 
+import ForumReadForm from "./ForumReadForm";
+
+export default function ForumReadModal({
   forumRead,
   emptyState,
-}: { 
+}: {
   forumRead?: ForumRead;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ForumReadModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function ForumReadModal({
             New Forum Read
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Forum Read</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Forum Read</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <ForumReadForm closeModal={closeModal} forumRead={forumRead} />

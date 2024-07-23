@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Blog } from "@soco/blog-db/schema/blogs";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import BlogForm from "./BlogForm";
-import { Blog } from "@soco/blog-db/schema/blogs";
+} from "@soco/ui/dialog";
 
-export default function BlogModal({ 
+import BlogForm from "./BlogForm";
+
+export default function BlogModal({
   blog,
   emptyState,
-}: { 
+}: {
   blog?: Blog;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function BlogModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function BlogModal({
             New Blog
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Blog</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Blog</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <BlogForm closeModal={closeModal} blog={blog} />

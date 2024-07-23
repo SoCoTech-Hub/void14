@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { CompetencyTemplateCohort } from "@soco/competency-db/schema/competencyTemplateCohorts";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import CompetencyTemplateCohortForm from "./CompetencyTemplateCohortForm";
-import { CompetencyTemplateCohort } from "@soco/competency-db/schema/competencyTemplateCohorts";
+} from "@soco/ui/dialog";
 
-export default function CompetencyTemplateCohortModal({ 
+import CompetencyTemplateCohortForm from "./CompetencyTemplateCohortForm";
+
+export default function CompetencyTemplateCohortModal({
   competencyTemplateCohort,
   emptyState,
-}: { 
+}: {
   competencyTemplateCohort?: CompetencyTemplateCohort;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function CompetencyTemplateCohortModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function CompetencyTemplateCohortModal({
             New Competency Template Cohort
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Competency Template Cohort</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Competency Template Cohort
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <CompetencyTemplateCohortForm closeModal={closeModal} competencyTemplateCohort={competencyTemplateCohort} />
+          <CompetencyTemplateCohortForm
+            closeModal={closeModal}
+            competencyTemplateCohort={competencyTemplateCohort}
+          />
         </div>
       </DialogContent>
     </Dialog>

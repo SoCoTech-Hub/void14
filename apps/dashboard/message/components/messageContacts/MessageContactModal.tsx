@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { MessageContact } from "@soco/message-db/schema/messageContacts";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import MessageContactForm from "./MessageContactForm";
-import { MessageContact } from "@soco/message-db/schema/messageContacts";
+} from "@soco/ui/dialog";
 
-export default function MessageContactModal({ 
+import MessageContactForm from "./MessageContactForm";
+
+export default function MessageContactModal({
   messageContact,
   emptyState,
-}: { 
+}: {
   messageContact?: MessageContact;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function MessageContactModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function MessageContactModal({
             New Message Contact
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Message Contact</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Message Contact
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <MessageContactForm closeModal={closeModal} messageContact={messageContact} />
+          <MessageContactForm
+            closeModal={closeModal}
+            messageContact={messageContact}
+          />
         </div>
       </DialogContent>
     </Dialog>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { CompetencyEvidence } from "@soco/competency-db/schema/competencyEvidences";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import CompetencyEvidenceForm from "./CompetencyEvidenceForm";
-import { CompetencyEvidence } from "@soco/competency-db/schema/competencyEvidences";
+} from "@soco/ui/dialog";
 
-export default function CompetencyEvidenceModal({ 
+import CompetencyEvidenceForm from "./CompetencyEvidenceForm";
+
+export default function CompetencyEvidenceModal({
   competencyEvidence,
   emptyState,
-}: { 
+}: {
   competencyEvidence?: CompetencyEvidence;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function CompetencyEvidenceModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function CompetencyEvidenceModal({
             New Competency Evidence
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Competency Evidence</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Competency Evidence
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <CompetencyEvidenceForm closeModal={closeModal} competencyEvidence={competencyEvidence} />
+          <CompetencyEvidenceForm
+            closeModal={closeModal}
+            competencyEvidence={competencyEvidence}
+          />
         </div>
       </DialogContent>
     </Dialog>

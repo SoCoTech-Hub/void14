@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { RoleAllowSwitch } from "@soco/role-db/schema/roleAllowSwitches";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import RoleAllowSwitchForm from "./RoleAllowSwitchForm";
-import { RoleAllowSwitch } from "@soco/role-db/schema/roleAllowSwitches";
+} from "@soco/ui/dialog";
 
-export default function RoleAllowSwitchModal({ 
+import RoleAllowSwitchForm from "./RoleAllowSwitchForm";
+
+export default function RoleAllowSwitchModal({
   roleAllowSwitch,
   emptyState,
-}: { 
+}: {
   roleAllowSwitch?: RoleAllowSwitch;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function RoleAllowSwitchModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function RoleAllowSwitchModal({
             New Role Allow Switch
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Role Allow Switch</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Role Allow Switch
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <RoleAllowSwitchForm closeModal={closeModal} roleAllowSwitch={roleAllowSwitch} />
+          <RoleAllowSwitchForm
+            closeModal={closeModal}
+            roleAllowSwitch={roleAllowSwitch}
+          />
         </div>
       </DialogContent>
     </Dialog>

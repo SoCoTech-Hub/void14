@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { District } from "@soco/geolocalize-db/schema/districts";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import DistrictForm from "./DistrictForm";
-import { District } from "@soco/geolocalize-db/schema/districts";
+} from "@soco/ui/dialog";
 
-export default function DistrictModal({ 
+import DistrictForm from "./DistrictForm";
+
+export default function DistrictModal({
   district,
   emptyState,
-}: { 
+}: {
   district?: District;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function DistrictModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function DistrictModal({
             New District
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } District</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} District</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <DistrictForm closeModal={closeModal} district={district} />

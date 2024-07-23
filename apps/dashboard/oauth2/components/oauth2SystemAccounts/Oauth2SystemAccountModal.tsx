@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Oauth2SystemAccount } from "@soco/oauth2-db/schema/oauth2SystemAccounts";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import Oauth2SystemAccountForm from "./Oauth2SystemAccountForm";
-import { Oauth2SystemAccount } from "@soco/oauth2-db/schema/oauth2SystemAccounts";
+} from "@soco/ui/dialog";
 
-export default function Oauth2SystemAccountModal({ 
+import Oauth2SystemAccountForm from "./Oauth2SystemAccountForm";
+
+export default function Oauth2SystemAccountModal({
   oauth2SystemAccount,
   emptyState,
-}: { 
+}: {
   oauth2SystemAccount?: Oauth2SystemAccount;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function Oauth2SystemAccountModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function Oauth2SystemAccountModal({
             New Oauth2 System Account
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Oauth2 System Account</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Oauth2 System Account
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <Oauth2SystemAccountForm closeModal={closeModal} oauth2SystemAccount={oauth2SystemAccount} />
+          <Oauth2SystemAccountForm
+            closeModal={closeModal}
+            oauth2SystemAccount={oauth2SystemAccount}
+          />
         </div>
       </DialogContent>
     </Dialog>

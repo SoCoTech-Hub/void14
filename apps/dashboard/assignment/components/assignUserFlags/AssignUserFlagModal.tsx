@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { AssignUserFlag } from "@soco/assignment-db/schema/assignUserFlags";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import AssignUserFlagForm from "./AssignUserFlagForm";
-import { AssignUserFlag } from "@soco/assignment-db/schema/assignUserFlags";
+} from "@soco/ui/dialog";
 
-export default function AssignUserFlagModal({ 
+import AssignUserFlagForm from "./AssignUserFlagForm";
+
+export default function AssignUserFlagModal({
   assignUserFlag,
   emptyState,
-}: { 
+}: {
   assignUserFlag?: AssignUserFlag;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function AssignUserFlagModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function AssignUserFlagModal({
             New Assign User Flag
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Assign User Flag</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Assign User Flag
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <AssignUserFlagForm closeModal={closeModal} assignUserFlag={assignUserFlag} />
+          <AssignUserFlagForm
+            closeModal={closeModal}
+            assignUserFlag={assignUserFlag}
+          />
         </div>
       </DialogContent>
     </Dialog>

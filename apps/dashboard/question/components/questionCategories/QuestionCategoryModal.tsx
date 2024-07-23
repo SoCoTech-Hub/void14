@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { QuestionCategory } from "@soco/question-db/schema/questionCategories";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import QuestionCategoryForm from "./QuestionCategoryForm";
-import { QuestionCategory } from "@soco/question-db/schema/questionCategories";
+} from "@soco/ui/dialog";
 
-export default function QuestionCategoryModal({ 
+import QuestionCategoryForm from "./QuestionCategoryForm";
+
+export default function QuestionCategoryModal({
   questionCategory,
   emptyState,
-}: { 
+}: {
   questionCategory?: QuestionCategory;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function QuestionCategoryModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function QuestionCategoryModal({
             New Question Category
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Question Category</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Question Category
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <QuestionCategoryForm closeModal={closeModal} questionCategory={questionCategory} />
+          <QuestionCategoryForm
+            closeModal={closeModal}
+            questionCategory={questionCategory}
+          />
         </div>
       </DialogContent>
     </Dialog>

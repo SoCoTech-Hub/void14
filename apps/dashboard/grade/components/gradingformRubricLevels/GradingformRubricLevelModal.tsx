@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { GradingformRubricLevel } from "@soco/grade-db/schema/gradingformRubricLevels";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import GradingformRubricLevelForm from "./GradingformRubricLevelForm";
-import { GradingformRubricLevel } from "@soco/grade-db/schema/gradingformRubricLevels";
+} from "@soco/ui/dialog";
 
-export default function GradingformRubricLevelModal({ 
+import GradingformRubricLevelForm from "./GradingformRubricLevelForm";
+
+export default function GradingformRubricLevelModal({
   gradingformRubricLevel,
   emptyState,
-}: { 
+}: {
   gradingformRubricLevel?: GradingformRubricLevel;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function GradingformRubricLevelModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function GradingformRubricLevelModal({
             New Gradingform Rubric Level
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Gradingform Rubric Level</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Gradingform Rubric Level
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <GradingformRubricLevelForm closeModal={closeModal} gradingformRubricLevel={gradingformRubricLevel} />
+          <GradingformRubricLevelForm
+            closeModal={closeModal}
+            gradingformRubricLevel={gradingformRubricLevel}
+          />
         </div>
       </DialogContent>
     </Dialog>

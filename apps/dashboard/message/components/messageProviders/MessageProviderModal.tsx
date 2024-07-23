@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { MessageProvider } from "@soco/message-db/schema/messageProviders";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import MessageProviderForm from "./MessageProviderForm";
-import { MessageProvider } from "@soco/message-db/schema/messageProviders";
+} from "@soco/ui/dialog";
 
-export default function MessageProviderModal({ 
+import MessageProviderForm from "./MessageProviderForm";
+
+export default function MessageProviderModal({
   messageProvider,
   emptyState,
-}: { 
+}: {
   messageProvider?: MessageProvider;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function MessageProviderModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function MessageProviderModal({
             New Message Provider
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Message Provider</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Message Provider
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <MessageProviderForm closeModal={closeModal} messageProvider={messageProvider} />
+          <MessageProviderForm
+            closeModal={closeModal}
+            messageProvider={messageProvider}
+          />
         </div>
       </DialogContent>
     </Dialog>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Profile } from "@soco/profile-db/schema/profiles";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ProfileForm from "./ProfileForm";
-import { Profile } from "@soco/profile-db/schema/profiles";
+} from "@soco/ui/dialog";
 
-export default function ProfileModal({ 
+import ProfileForm from "./ProfileForm";
+
+export default function ProfileModal({
   profile,
   emptyState,
-}: { 
+}: {
   profile?: Profile;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ProfileModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function ProfileModal({
             New Profile
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Profile</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Profile</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <ProfileForm closeModal={closeModal} profile={profile} />

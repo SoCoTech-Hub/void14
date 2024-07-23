@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +9,15 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import WorkshopEvalBestSettingForm from "./WorkshopEvalBestSettingForm";
+} from "@soco/ui/dialog";
 import { WorkshopEvalBestSetting } from "@soco/workshop-db/schema/workshopEvalBestSettings";
 
-export default function WorkshopEvalBestSettingModal({ 
+import WorkshopEvalBestSettingForm from "./WorkshopEvalBestSettingForm";
+
+export default function WorkshopEvalBestSettingModal({
   workshopEvalBestSetting,
   emptyState,
-}: { 
+}: {
   workshopEvalBestSetting?: WorkshopEvalBestSetting;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function WorkshopEvalBestSettingModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function WorkshopEvalBestSettingModal({
             New Workshop Eval Best Setting
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Workshop Eval Best Setting</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Workshop Eval Best Setting
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <WorkshopEvalBestSettingForm closeModal={closeModal} workshopEvalBestSetting={workshopEvalBestSetting} />
+          <WorkshopEvalBestSettingForm
+            closeModal={closeModal}
+            workshopEvalBestSetting={workshopEvalBestSetting}
+          />
         </div>
       </DialogContent>
     </Dialog>

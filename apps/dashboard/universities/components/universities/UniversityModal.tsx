@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +9,15 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import UniversityForm from "./UniversityForm";
+} from "@soco/ui/dialog";
 import { University } from "@soco/universities-db/schema/universities";
 
-export default function UniversityModal({ 
+import UniversityForm from "./UniversityForm";
+
+export default function UniversityModal({
   university,
   emptyState,
-}: { 
+}: {
   university?: University;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function UniversityModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function UniversityModal({
             New University
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } University</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} University</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <UniversityForm closeModal={closeModal} university={university} />

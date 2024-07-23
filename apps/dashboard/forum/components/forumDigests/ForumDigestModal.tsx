@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ForumDigest } from "@soco/forum-db/schema/forumDigests";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ForumDigestForm from "./ForumDigestForm";
-import { ForumDigest } from "@soco/forum-db/schema/forumDigests";
+} from "@soco/ui/dialog";
 
-export default function ForumDigestModal({ 
+import ForumDigestForm from "./ForumDigestForm";
+
+export default function ForumDigestModal({
   forumDigest,
   emptyState,
-}: { 
+}: {
   forumDigest?: ForumDigest;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ForumDigestModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function ForumDigestModal({
             New Forum Digest
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Forum Digest</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Forum Digest</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <ForumDigestForm closeModal={closeModal} forumDigest={forumDigest} />

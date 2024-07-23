@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { MnetRemoteService2rpc } from "@soco/mnet-db/schema/mnetRemoteService2rpcs";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import MnetRemoteService2rpcForm from "./MnetRemoteService2rpcForm";
-import { MnetRemoteService2rpc } from "@soco/mnet-db/schema/mnetRemoteService2rpcs";
+} from "@soco/ui/dialog";
 
-export default function MnetRemoteService2rpcModal({ 
+import MnetRemoteService2rpcForm from "./MnetRemoteService2rpcForm";
+
+export default function MnetRemoteService2rpcModal({
   mnetRemoteService2rpc,
   emptyState,
-}: { 
+}: {
   mnetRemoteService2rpc?: MnetRemoteService2rpc;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function MnetRemoteService2rpcModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function MnetRemoteService2rpcModal({
             New Mnet Remote Service2rpc
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Mnet Remote Service2rpc</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Mnet Remote Service2rpc
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <MnetRemoteService2rpcForm closeModal={closeModal} mnetRemoteService2rpc={mnetRemoteService2rpc} />
+          <MnetRemoteService2rpcForm
+            closeModal={closeModal}
+            mnetRemoteService2rpc={mnetRemoteService2rpc}
+          />
         </div>
       </DialogContent>
     </Dialog>

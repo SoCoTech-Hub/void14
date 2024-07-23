@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Lti } from "@soco/lti-db/schema/ltis";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import LtiForm from "./LtiForm";
-import { Lti } from "@soco/lti-db/schema/ltis";
+} from "@soco/ui/dialog";
 
-export default function LtiModal({ 
+import LtiForm from "./LtiForm";
+
+export default function LtiModal({
   lti,
   emptyState,
-}: { 
+}: {
   lti?: Lti;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function LtiModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function LtiModal({
             New Lti
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Lti</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Lti</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <LtiForm closeModal={closeModal} lti={lti} />

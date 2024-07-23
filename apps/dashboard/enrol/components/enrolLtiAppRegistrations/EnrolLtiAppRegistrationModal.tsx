@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { EnrolLtiAppRegistration } from "@soco/enrol-db/schema/enrolLtiAppRegistrations";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import EnrolLtiAppRegistrationForm from "./EnrolLtiAppRegistrationForm";
-import { EnrolLtiAppRegistration } from "@soco/enrol-db/schema/enrolLtiAppRegistrations";
+} from "@soco/ui/dialog";
 
-export default function EnrolLtiAppRegistrationModal({ 
+import EnrolLtiAppRegistrationForm from "./EnrolLtiAppRegistrationForm";
+
+export default function EnrolLtiAppRegistrationModal({
   enrolLtiAppRegistration,
   emptyState,
-}: { 
+}: {
   enrolLtiAppRegistration?: EnrolLtiAppRegistration;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function EnrolLtiAppRegistrationModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function EnrolLtiAppRegistrationModal({
             New Enrol Lti App Registration
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Enrol Lti App Registration</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Enrol Lti App Registration
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <EnrolLtiAppRegistrationForm closeModal={closeModal} enrolLtiAppRegistration={enrolLtiAppRegistration} />
+          <EnrolLtiAppRegistrationForm
+            closeModal={closeModal}
+            enrolLtiAppRegistration={enrolLtiAppRegistration}
+          />
         </div>
       </DialogContent>
     </Dialog>

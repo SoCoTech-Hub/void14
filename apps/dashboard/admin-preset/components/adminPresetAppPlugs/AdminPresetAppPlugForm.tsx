@@ -49,12 +49,12 @@ const AdminPresetAppPlugForm = ({
     // open issue: https://github.com/colinhacks/zod/issues/2663
     // errors locally but not in production
     resolver: zodResolver(insertAdminPresetAppPlugParams),
-    defaultValues: adminPresetAppPlug ?? {
-      name: "",
-      adminPresetsAppId: "",
-      oldValue: 0,
-      value: 0,
-      plugin: "",
+    defaultValues: {
+      name: adminPresetAppPlug?.name || "",
+      adminPresetsAppId: adminPresetAppPlug?.adminPresetsAppId || "",
+      oldValue: adminPresetAppPlug?.oldValue || 0,
+      value: adminPresetAppPlug?.value || 0,
+      plugin: adminPresetAppPlug?.plugin || "",
     },
   });
 

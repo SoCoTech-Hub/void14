@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { MessageRead } from "@soco/message-db/schema/messageReads";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import MessageReadForm from "./MessageReadForm";
-import { MessageRead } from "@soco/message-db/schema/messageReads";
+} from "@soco/ui/dialog";
 
-export default function MessageReadModal({ 
+import MessageReadForm from "./MessageReadForm";
+
+export default function MessageReadModal({
   messageRead,
   emptyState,
-}: { 
+}: {
   messageRead?: MessageRead;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function MessageReadModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function MessageReadModal({
             New Message Read
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Message Read</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Message Read</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <MessageReadForm closeModal={closeModal} messageRead={messageRead} />

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Glossary } from "@soco/glossary-db/schema/glossaries";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import GlossaryForm from "./GlossaryForm";
-import { Glossary } from "@soco/glossary-db/schema/glossaries";
+} from "@soco/ui/dialog";
 
-export default function GlossaryModal({ 
+import GlossaryForm from "./GlossaryForm";
+
+export default function GlossaryModal({
   glossary,
   emptyState,
-}: { 
+}: {
   glossary?: Glossary;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function GlossaryModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function GlossaryModal({
             New Glossary
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Glossary</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Glossary</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <GlossaryForm closeModal={closeModal} glossary={glossary} />

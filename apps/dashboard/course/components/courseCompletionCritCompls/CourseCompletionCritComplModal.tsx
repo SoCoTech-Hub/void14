@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { CourseCompletionCritCompl } from "@soco/course-db/schema/courseCompletionCritCompls";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import CourseCompletionCritComplForm from "./CourseCompletionCritComplForm";
-import { CourseCompletionCritCompl } from "@soco/course-db/schema/courseCompletionCritCompls";
+} from "@soco/ui/dialog";
 
-export default function CourseCompletionCritComplModal({ 
+import CourseCompletionCritComplForm from "./CourseCompletionCritComplForm";
+
+export default function CourseCompletionCritComplModal({
   courseCompletionCritCompl,
   emptyState,
-}: { 
+}: {
   courseCompletionCritCompl?: CourseCompletionCritCompl;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function CourseCompletionCritComplModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function CourseCompletionCritComplModal({
             New Course Completion Crit Compl
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Course Completion Crit Compl</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Course Completion Crit Compl
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <CourseCompletionCritComplForm closeModal={closeModal} courseCompletionCritCompl={courseCompletionCritCompl} />
+          <CourseCompletionCritComplForm
+            closeModal={closeModal}
+            courseCompletionCritCompl={courseCompletionCritCompl}
+          />
         </div>
       </DialogContent>
     </Dialog>

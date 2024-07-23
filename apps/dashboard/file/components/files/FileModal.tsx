@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { File } from "@soco/file-db/schema/files";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import FileForm from "./FileForm";
-import { File } from "@soco/file-db/schema/files";
+} from "@soco/ui/dialog";
 
-export default function FileModal({ 
+import FileForm from "./FileForm";
+
+export default function FileModal({
   file,
   emptyState,
-}: { 
+}: {
   file?: File;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function FileModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function FileModal({
             New File
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } File</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} File</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <FileForm closeModal={closeModal} file={file} />

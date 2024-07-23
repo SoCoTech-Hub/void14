@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Oauth2Endpoint } from "@soco/oauth2-db/schema/oauth2Endpoints";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import Oauth2EndpointForm from "./Oauth2EndpointForm";
-import { Oauth2Endpoint } from "@soco/oauth2-db/schema/oauth2Endpoints";
+} from "@soco/ui/dialog";
 
-export default function Oauth2EndpointModal({ 
+import Oauth2EndpointForm from "./Oauth2EndpointForm";
+
+export default function Oauth2EndpointModal({
   oauth2Endpoint,
   emptyState,
-}: { 
+}: {
   oauth2Endpoint?: Oauth2Endpoint;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function Oauth2EndpointModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function Oauth2EndpointModal({
             New Oauth2 Endpoint
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Oauth2 Endpoint</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Oauth2 Endpoint
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <Oauth2EndpointForm closeModal={closeModal} oauth2Endpoint={oauth2Endpoint} />
+          <Oauth2EndpointForm
+            closeModal={closeModal}
+            oauth2Endpoint={oauth2Endpoint}
+          />
         </div>
       </DialogContent>
     </Dialog>

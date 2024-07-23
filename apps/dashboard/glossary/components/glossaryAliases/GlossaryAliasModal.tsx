@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { GlossaryAlias } from "@soco/glossary-db/schema/glossaryAliases";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import GlossaryAliasForm from "./GlossaryAliasForm";
-import { GlossaryAlias } from "@soco/glossary-db/schema/glossaryAliases";
+} from "@soco/ui/dialog";
 
-export default function GlossaryAliasModal({ 
+import GlossaryAliasForm from "./GlossaryAliasForm";
+
+export default function GlossaryAliasModal({
   glossaryAlias,
   emptyState,
-}: { 
+}: {
   glossaryAlias?: GlossaryAlias;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function GlossaryAliasModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function GlossaryAliasModal({
             New Glossary Alias
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Glossary Alias</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Glossary Alias
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <GlossaryAliasForm closeModal={closeModal} glossaryAlias={glossaryAlias} />
+          <GlossaryAliasForm
+            closeModal={closeModal}
+            glossaryAlias={glossaryAlias}
+          />
         </div>
       </DialogContent>
     </Dialog>

@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { QualificationsResponse } from "@soco/qualifications-db/schema/qualificationsResponses";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import QualificationsResponseForm from "./QualificationsResponseForm";
-import { QualificationsResponse } from "@soco/qualifications-db/schema/qualificationsResponses";
+} from "@soco/ui/dialog";
 
-export default function QualificationsResponseModal({ 
+import QualificationsResponseForm from "./QualificationsResponseForm";
+
+export default function QualificationsResponseModal({
   qualificationsResponse,
   emptyState,
-}: { 
+}: {
   qualificationsResponse?: QualificationsResponse;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function QualificationsResponseModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function QualificationsResponseModal({
             New Qualifications Response
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Qualifications Response</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Qualifications Response
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <QualificationsResponseForm closeModal={closeModal} qualificationsResponse={qualificationsResponse} />
+          <QualificationsResponseForm
+            closeModal={closeModal}
+            qualificationsResponse={qualificationsResponse}
+          />
         </div>
       </DialogContent>
     </Dialog>

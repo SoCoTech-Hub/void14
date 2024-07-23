@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ToolUserToursStep } from "@soco/tool-user-tours-db/schema/toolUserToursSteps";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ToolUserToursStepForm from "./ToolUserToursStepForm";
-import { ToolUserToursStep } from "@soco/tool-user-tours-db/schema/toolUserToursSteps";
+} from "@soco/ui/dialog";
 
-export default function ToolUserToursStepModal({ 
+import ToolUserToursStepForm from "./ToolUserToursStepForm";
+
+export default function ToolUserToursStepModal({
   toolUserToursStep,
   emptyState,
-}: { 
+}: {
   toolUserToursStep?: ToolUserToursStep;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ToolUserToursStepModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ToolUserToursStepModal({
             New Tool User Tours Step
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Tool User Tours Step</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Tool User Tours Step
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ToolUserToursStepForm closeModal={closeModal} toolUserToursStep={toolUserToursStep} />
+          <ToolUserToursStepForm
+            closeModal={closeModal}
+            toolUserToursStep={toolUserToursStep}
+          />
         </div>
       </DialogContent>
     </Dialog>

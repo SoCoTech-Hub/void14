@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { ScormSeqMapinfo } from "@soco/scorm-db/schema/scormSeqMapinfos";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import ScormSeqMapinfoForm from "./ScormSeqMapinfoForm";
-import { ScormSeqMapinfo } from "@soco/scorm-db/schema/scormSeqMapinfos";
+} from "@soco/ui/dialog";
 
-export default function ScormSeqMapinfoModal({ 
+import ScormSeqMapinfoForm from "./ScormSeqMapinfoForm";
+
+export default function ScormSeqMapinfoModal({
   scormSeqMapinfo,
   emptyState,
-}: { 
+}: {
   scormSeqMapinfo?: ScormSeqMapinfo;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function ScormSeqMapinfoModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function ScormSeqMapinfoModal({
             New Scorm Seq Mapinfo
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Scorm Seq Mapinfo</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Scorm Seq Mapinfo
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <ScormSeqMapinfoForm closeModal={closeModal} scormSeqMapinfo={scormSeqMapinfo} />
+          <ScormSeqMapinfoForm
+            closeModal={closeModal}
+            scormSeqMapinfo={scormSeqMapinfo}
+          />
         </div>
       </DialogContent>
     </Dialog>

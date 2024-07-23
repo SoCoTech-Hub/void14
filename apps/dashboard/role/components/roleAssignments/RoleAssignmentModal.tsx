@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { RoleAssignment } from "@soco/role-db/schema/roleAssignments";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import RoleAssignmentForm from "./RoleAssignmentForm";
-import { RoleAssignment } from "@soco/role-db/schema/roleAssignments";
+} from "@soco/ui/dialog";
 
-export default function RoleAssignmentModal({ 
+import RoleAssignmentForm from "./RoleAssignmentForm";
+
+export default function RoleAssignmentModal({
   roleAssignment,
   emptyState,
-}: { 
+}: {
   roleAssignment?: RoleAssignment;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function RoleAssignmentModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function RoleAssignmentModal({
             New Role Assignment
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Role Assignment</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Role Assignment
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <RoleAssignmentForm closeModal={closeModal} roleAssignment={roleAssignment} />
+          <RoleAssignmentForm
+            closeModal={closeModal}
+            roleAssignment={roleAssignment}
+          />
         </div>
       </DialogContent>
     </Dialog>

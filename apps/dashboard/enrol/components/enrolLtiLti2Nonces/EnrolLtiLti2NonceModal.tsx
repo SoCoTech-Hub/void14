@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { EnrolLtiLti2Nonce } from "@soco/enrol-db/schema/enrolLtiLti2Nonces";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import EnrolLtiLti2NonceForm from "./EnrolLtiLti2NonceForm";
-import { EnrolLtiLti2Nonce } from "@soco/enrol-db/schema/enrolLtiLti2Nonces";
+} from "@soco/ui/dialog";
 
-export default function EnrolLtiLti2NonceModal({ 
+import EnrolLtiLti2NonceForm from "./EnrolLtiLti2NonceForm";
+
+export default function EnrolLtiLti2NonceModal({
   enrolLtiLti2Nonce,
   emptyState,
-}: { 
+}: {
   enrolLtiLti2Nonce?: EnrolLtiLti2Nonce;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function EnrolLtiLti2NonceModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function EnrolLtiLti2NonceModal({
             New Enrol Lti Lti2 Nonce
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Enrol Lti Lti2 Nonce</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Enrol Lti Lti2 Nonce
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <EnrolLtiLti2NonceForm closeModal={closeModal} enrolLtiLti2Nonce={enrolLtiLti2Nonce} />
+          <EnrolLtiLti2NonceForm
+            closeModal={closeModal}
+            enrolLtiLti2Nonce={enrolLtiLti2Nonce}
+          />
         </div>
       </DialogContent>
     </Dialog>

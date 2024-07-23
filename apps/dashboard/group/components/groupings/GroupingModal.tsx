@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { Grouping } from "@soco/group-db/schema/groupings";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import GroupingForm from "./GroupingForm";
-import { Grouping } from "@soco/group-db/schema/groupings";
+} from "@soco/ui/dialog";
 
-export default function GroupingModal({ 
+import GroupingForm from "./GroupingForm";
+
+export default function GroupingModal({
   grouping,
   emptyState,
-}: { 
+}: {
   grouping?: Grouping;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function GroupingModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function GroupingModal({
             New Grouping
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Grouping</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Grouping</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <GroupingForm closeModal={closeModal} grouping={grouping} />

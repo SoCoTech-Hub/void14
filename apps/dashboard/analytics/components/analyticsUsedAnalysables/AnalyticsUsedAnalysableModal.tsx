@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { AnalyticsUsedAnalysable } from "@soco/analytics-db/schema/analyticsUsedAnalysables";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import AnalyticsUsedAnalysableForm from "./AnalyticsUsedAnalysableForm";
-import { AnalyticsUsedAnalysable } from "@soco/analytics-db/schema/analyticsUsedAnalysables";
+} from "@soco/ui/dialog";
 
-export default function AnalyticsUsedAnalysableModal({ 
+import AnalyticsUsedAnalysableForm from "./AnalyticsUsedAnalysableForm";
+
+export default function AnalyticsUsedAnalysableModal({
   analyticsUsedAnalysable,
   emptyState,
-}: { 
+}: {
   analyticsUsedAnalysable?: AnalyticsUsedAnalysable;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function AnalyticsUsedAnalysableModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function AnalyticsUsedAnalysableModal({
             New Analytics Used Analysable
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Analytics Used Analysable</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Analytics Used Analysable
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <AnalyticsUsedAnalysableForm closeModal={closeModal} analyticsUsedAnalysable={analyticsUsedAnalysable} />
+          <AnalyticsUsedAnalysableForm
+            closeModal={closeModal}
+            analyticsUsedAnalysable={analyticsUsedAnalysable}
+          />
         </div>
       </DialogContent>
     </Dialog>

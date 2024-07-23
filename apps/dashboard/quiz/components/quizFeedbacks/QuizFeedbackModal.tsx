@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { QuizFeedback } from "@soco/quiz-db/schema/quizFeedbacks";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import QuizFeedbackForm from "./QuizFeedbackForm";
-import { QuizFeedback } from "@soco/quiz-db/schema/quizFeedbacks";
+} from "@soco/ui/dialog";
 
-export default function QuizFeedbackModal({ 
+import QuizFeedbackForm from "./QuizFeedbackForm";
+
+export default function QuizFeedbackModal({
   quizFeedback,
   emptyState,
-}: { 
+}: {
   quizFeedback?: QuizFeedback;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function QuizFeedbackModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,23 @@ export default function QuizFeedbackModal({
             New Quiz Feedback
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Quiz Feedback</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Quiz Feedback</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <QuizFeedbackForm closeModal={closeModal} quizFeedback={quizFeedback} />
+          <QuizFeedbackForm
+            closeModal={closeModal}
+            quizFeedback={quizFeedback}
+          />
         </div>
       </DialogContent>
     </Dialog>

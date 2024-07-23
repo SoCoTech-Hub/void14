@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { QtypeDdmarkerDrop } from "@soco/qtype-db/schema/qtypeDdmarkerDrops";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import QtypeDdmarkerDropForm from "./QtypeDdmarkerDropForm";
-import { QtypeDdmarkerDrop } from "@soco/qtype-db/schema/qtypeDdmarkerDrops";
+} from "@soco/ui/dialog";
 
-export default function QtypeDdmarkerDropModal({ 
+import QtypeDdmarkerDropForm from "./QtypeDdmarkerDropForm";
+
+export default function QtypeDdmarkerDropModal({
   qtypeDdmarkerDrop,
   emptyState,
-}: { 
+}: {
   qtypeDdmarkerDrop?: QtypeDdmarkerDrop;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function QtypeDdmarkerDropModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function QtypeDdmarkerDropModal({
             New Qtype Ddmarker Drop
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Qtype Ddmarker Drop</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Qtype Ddmarker Drop
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <QtypeDdmarkerDropForm closeModal={closeModal} qtypeDdmarkerDrop={qtypeDdmarkerDrop} />
+          <QtypeDdmarkerDropForm
+            closeModal={closeModal}
+            qtypeDdmarkerDrop={qtypeDdmarkerDrop}
+          />
         </div>
       </DialogContent>
     </Dialog>

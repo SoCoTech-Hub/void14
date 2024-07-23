@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+
+import { MnetServiceEnrolCourse } from "@soco/mnet-db/schema/mnetServiceEnrolCourses";
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +10,14 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import MnetServiceEnrolCourseForm from "./MnetServiceEnrolCourseForm";
-import { MnetServiceEnrolCourse } from "@soco/mnet-db/schema/mnetServiceEnrolCourses";
+} from "@soco/ui/dialog";
 
-export default function MnetServiceEnrolCourseModal({ 
+import MnetServiceEnrolCourseForm from "./MnetServiceEnrolCourseForm";
+
+export default function MnetServiceEnrolCourseModal({
   mnetServiceEnrolCourse,
   emptyState,
-}: { 
+}: {
   mnetServiceEnrolCourse?: MnetServiceEnrolCourse;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function MnetServiceEnrolCourseModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,19 +47,25 @@ export default function MnetServiceEnrolCourseModal({
             New Mnet Service Enrol Course
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Mnet Service Enrol Course</DialogTitle>
+          <DialogTitle>
+            {editing ? "Edit" : "Create"} Mnet Service Enrol Course
+          </DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
-          <MnetServiceEnrolCourseForm closeModal={closeModal} mnetServiceEnrolCourse={mnetServiceEnrolCourse} />
+          <MnetServiceEnrolCourseForm
+            closeModal={closeModal}
+            mnetServiceEnrolCourse={mnetServiceEnrolCourse}
+          />
         </div>
       </DialogContent>
     </Dialog>

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+
 import { Button } from "@soco/ui/button";
 import {
   Dialog,
@@ -8,14 +9,15 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
-import UrlForm from "./UrlForm";
+} from "@soco/ui/dialog";
 import { Url } from "@soco/url-db/schema/urls";
 
-export default function UrlModal({ 
+import UrlForm from "./UrlForm";
+
+export default function UrlModal({
   url,
   emptyState,
-}: { 
+}: {
   url?: Url;
   emptyState?: boolean;
 }) {
@@ -25,7 +27,7 @@ export default function UrlModal({
   return (
     <Dialog onOpenChange={setOpen} open={open}>
       <DialogTrigger asChild>
-      { emptyState ? (
+        {emptyState ? (
           <Button>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,16 +47,17 @@ export default function UrlModal({
             New Url
           </Button>
         ) : (
-        <Button
-          variant={editing ? "ghost" : "outline"}
-          size={editing ? "sm" : "icon"}
-        >
-          {editing ? "Edit" : "+"}
-        </Button> )}
+          <Button
+            variant={editing ? "ghost" : "outline"}
+            size={editing ? "sm" : "icon"}
+          >
+            {editing ? "Edit" : "+"}
+          </Button>
+        )}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader className="px-5 pt-5">
-          <DialogTitle>{ editing ? "Edit" : "Create" } Url</DialogTitle>
+          <DialogTitle>{editing ? "Edit" : "Create"} Url</DialogTitle>
         </DialogHeader>
         <div className="px-5 pb-5">
           <UrlForm closeModal={closeModal} url={url} />
